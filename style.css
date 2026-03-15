@@ -96,18 +96,20 @@ a {
 }
 
 .logo {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
 }
 
-.logo-shos { color: var(--white); }
-.logo-med { color: var(--teal-light); }
-.logo-global { color: var(--gold); font-weight: 500; font-size: 0.9em; margin-left: 2px; }
+.logo-img {
+  height: 44px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+}
 
-.navbar.scrolled .logo-shos { color: var(--navy); }
-.navbar.scrolled .logo-med { color: var(--teal); }
+.navbar.scrolled .logo-img {
+  filter: none;
+}
 
 .nav-links {
   display: flex;
@@ -970,6 +972,199 @@ a {
 
   .cta-box {
     padding: 32px 24px;
+  }
+}
+
+/* ===== Why Europe Box ===== */
+.why-europe-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  margin-bottom: 48px;
+}
+
+.why-europe-box h3 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 1.5rem;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.why-item {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+}
+
+.why-item strong {
+  display: block;
+  color: var(--teal-dark);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.why-item p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ===== USMLE Pathway ===== */
+.pathway-timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 60px;
+}
+
+.pathway-timeline::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), var(--green));
+}
+
+.pathway-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.pathway-marker {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--teal);
+  color: var(--teal);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  left: -60px;
+  z-index: 2;
+}
+
+.highlight-marker {
+  background: linear-gradient(135deg, var(--green), var(--teal)) !important;
+  color: var(--white) !important;
+  border-color: var(--green) !important;
+  font-size: 1.3rem;
+}
+
+.pathway-content {
+  background: var(--white);
+  padding: 24px 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  flex: 1;
+}
+
+.pathway-content h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+
+.pathway-content p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.pathway-note {
+  max-width: 700px;
+  margin: 40px auto 0;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(8,145,178,0.05), rgba(11,110,79,0.05));
+  padding: 24px 32px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(8,145,178,0.15);
+}
+
+.pathway-note p {
+  color: var(--gray-700);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ===== For Parents ===== */
+.parent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.parent-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+
+.parent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.parent-card h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.parent-card p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  .why-europe-box {
+    padding: 32px 24px;
+  }
+  .pathway-timeline {
+    padding-left: 50px;
+  }
+  .pathway-marker {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+    left: -50px;
+  }
+  .pathway-timeline::before {
+    left: 18px;
+  }
+  .parent-grid {
+    grid-template-columns: 1fr;
   }
 }
 
