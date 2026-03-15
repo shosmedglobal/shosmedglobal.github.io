@@ -102,9 +102,13 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
   <script>
+    // Get redirect destination (default: dashboard)
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get('redirect') === 'qbank' ? 'qbank.html' : 'dashboard.html';
+
     // Redirect if already logged in
     auth.onAuthStateChanged((user) => {
-      if (user) window.location.href = 'dashboard.html';
+      if (user) window.location.href = redirectTo;
     });
 
     // Email/Password Sign Up
@@ -123,7 +127,7 @@
 
       const result = await signUpWithEmail(name, email, password, path);
       if (result.success) {
-        window.location.href = 'dashboard.html';
+        window.location.href = redirectTo;
       } else {
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';
@@ -140,7 +144,7 @@
 
       const result = await signInWithGoogle(path);
       if (result.success) {
-        window.location.href = 'dashboard.html';
+        window.location.href = redirectTo;
       } else {
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';

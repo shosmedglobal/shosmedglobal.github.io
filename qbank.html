@@ -204,5 +204,87 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
   <script src="qbank.js"></script>
+  <script>
+    // ===== Access Control =====
+    // Fixed sample question IDs — same 5 every time for free users
+    const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-2', 'chem-1', 'chem-2', 'phys-1'];
+
+    // Require login to access QBank
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        // Not logged in — redirect to signup
+        window.location.href = 'signup.html?redirect=qbank';
+        return;
+      }
+
+      // Check user's subscription tier from Firestore
+      const profile = await getUserProfile(user.uid);
+      const qbankAccess = profile?.payments?.['exam-bank'];
+
+      if (qbankAccess === 'paid') {
+        // Full access — show all questions, no restrictions
+        window.qbankAccessLevel = 'full';
+      } else {
+        // Free sample — filter to only sample questions
+        window.qbankAccessLevel = 'sample';
+      }
+
+      // Now load questions with access level applied
+      loadQuestionsWithAccess();
+    });
+
+    function loadQuestionsWithAccess() {
+      // Override the loadQuestions function to filter based on access
+      fetch('questions.json')
+        .then(res => res.json())
+        .then(data => {
+          if (window.qbankAccessLevel === 'sample') {
+            // Filter to only sample questions
+            for (const subject in data) {
+              data[subject] = data[subject].filter(q => SAMPLE_QUESTION_IDS.includes(q.id));
+            }
+            // Remove subjects with 0 questions
+            for (const subject in data) {
+              if (data[subject].length === 0) delete data[subject];
+            }
+
+            // Show sample banner
+            const banner = document.createElement('div');
+            banner.className = 'sample-banner';
+            banner.innerHTML = `
+              <div class="sample-banner-content">
+                <span>🔒 Free Sample — You're viewing 5 sample questions.</span>
+                <a href="applicants.html#qbank-pricing" class="btn btn-primary btn-small">Unlock Full Question Bank</a>
+              </div>
+            `;
+            document.querySelector('.qbank-section .container').prepend(banner);
+          }
+
+          // Set the global allQuestions
+          allQuestions = data;
+
+          // Update counts on start screen
+          document.getElementById('countBiology').textContent =
+            (data.biology?.length || 0) + ' questions';
+          document.getElementById('countChemistry').textContent =
+            (data.chemistry?.length || 0) + ' questions';
+          document.getElementById('countPhysics').textContent =
+            (data.physics?.length || 0) + ' questions';
+          document.getElementById('countMathematics').textContent =
+            (data.mathematics?.length || 0) + ' questions';
+
+          // Hide subjects with 0 questions
+          document.querySelectorAll('.subject-card').forEach(card => {
+            const checkbox = card.querySelector('input[name="subject"]');
+            const subject = checkbox.value;
+            if (!data[subject] || data[subject].length === 0) {
+              card.style.display = 'none';
+              checkbox.checked = false;
+            }
+          });
+        })
+        .catch(err => console.error('Failed to load questions:', err));
+    }
+  </script>
 </body>
 </html>

@@ -106,6 +106,24 @@
             </div>
           </div>
 
+          <!-- Question Bank — always visible -->
+          <div class="dash-card services-card" id="qbankCard">
+            <div class="dash-card-header">
+              <h3>📝 Entrance Exam Question Bank</h3>
+            </div>
+            <div class="service-row">
+              <div class="service-info">
+                <h4>Practice Questions</h4>
+                <p>Biology, Chemistry, Physics & Mathematics — original questions with detailed explanations</p>
+                <span class="service-price" id="qbankPriceLabel">Free Sample (5 questions)</span>
+              </div>
+              <div class="service-status" id="examBankStatus">
+                <span class="status-badge status-paid">Available</span>
+                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
+              </div>
+            </div>
+          </div>
+
           <!-- Services for Applicants -->
           <div class="dash-card services-card" id="applicantServices">
             <div class="dash-card-header">
@@ -122,19 +140,6 @@
               <div class="service-status" id="applicationStatus">
                 <span class="status-badge status-unpaid">Not purchased</span>
                 <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Pay Now</a>
-              </div>
-            </div>
-
-            <!-- Entrance Exam Question Bank -->
-            <div class="service-row">
-              <div class="service-info">
-                <h4>Entrance Exam Question Bank</h4>
-                <p>Practice questions for the Charles University entrance exam - Biology, Chemistry, Physics, Mathematics</p>
-                <span class="service-price">Free Preview</span>
-              </div>
-              <div class="service-status" id="examBankStatus">
-                <span class="status-badge status-paid">Available</span>
-                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
               </div>
             </div>
           </div>
@@ -250,9 +255,25 @@
       }
 
       // Show relevant services based on path
-      const isApplicant = profile?.path === 'applicant';
-      document.getElementById('applicantServices').style.display = isApplicant ? 'block' : 'none';
-      document.getElementById('studentServices').style.display = isApplicant ? 'none' : 'block';
+      // If profile couldn't load (Firestore rules issue), show both
+      const userPath = profile?.path;
+      const isApplicant = userPath === 'applicant';
+      const isStudent = userPath === 'student';
+
+      if (!userPath) {
+        // No profile loaded — show both sections
+        document.getElementById('applicantServices').style.display = 'block';
+        document.getElementById('studentServices').style.display = 'block';
+        console.warn('Could not determine user path. Check Firestore security rules.');
+      } else {
+        document.getElementById('applicantServices').style.display = isApplicant ? 'block' : 'none';
+        document.getElementById('studentServices').style.display = isStudent ? 'block' : 'none';
+      }
+
+      // Update QBank label based on payment
+      if (profile?.payments?.['exam-bank'] === 'paid') {
+        document.getElementById('qbankPriceLabel').textContent = 'Full Access — 155 questions';
+      }
 
       // Update payment statuses
       if (profile?.payments) {

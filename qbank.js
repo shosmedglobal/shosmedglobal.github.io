@@ -60,9 +60,9 @@ function startQuiz() {
     return;
   }
 
-  // Shuffle if checked
+  // Shuffle if checked (disabled in sample mode to keep questions consistent)
   const shouldShuffle = document.getElementById('shuffleQuestions').checked;
-  if (shouldShuffle) {
+  if (shouldShuffle && window.qbankAccessLevel !== 'sample') {
     pool = shuffle(pool);
   }
 
@@ -341,7 +341,7 @@ function showScreen(id) {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  loadQuestions();
+  // loadQuestions() is called by access control in qbank.html instead
 
   document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
   document.getElementById('nextBtn').addEventListener('click', goNext);
