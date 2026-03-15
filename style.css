@@ -1248,6 +1248,7 @@ a {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: top;
   border: 4px solid var(--teal);
 }
 
