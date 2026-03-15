@@ -30,7 +30,10 @@
         <li><a href="#mentorship-program">IMG Mentorship</a></li>
         <li><a href="#mentors">Mentors</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+        <li id="auth-links">
+          <a href="login.html">Log In</a>
+        </li>
+        <li><a href="signup.html" class="nav-cta">Sign Up</a></li>
       </ul>
     </div>
   </nav>
@@ -933,15 +936,25 @@
       observer.observe(el);
     });
 
-    // Stripe payment links
+    // Stripe payment links - redirect to signup/dashboard
     document.querySelectorAll('.stripe-link').forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         const tier = this.dataset.tier;
-        // TODO: Replace with actual Stripe Payment Links after creating Stripe account
-        alert('Payment coming soon! For now, email shosmedglobal@gmail.com to get started with the ' + tier.charAt(0).toUpperCase() + tier.slice(1) + ' plan.');
+        // Check if Firebase is loaded and user is logged in
+        if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+          window.location.href = 'dashboard.html';
+        } else {
+          window.location.href = 'signup.html';
+        }
       });
     });
   </script>
+
+  <!-- Firebase SDKs (for auth navbar state) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>

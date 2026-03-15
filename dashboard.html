@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SHOS Med Global</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="SHOS Med Global" class="logo-img logo-dark" style="display:block;">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li id="auth-links">
+          <a href="#" onclick="signOut()" class="nav-cta">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Dashboard -->
+  <section class="dashboard-section">
+    <div class="container">
+
+      <!-- Loading state -->
+      <div id="loadingState" class="dashboard-loading">
+        <div class="spinner"></div>
+        <p>Loading your dashboard...</p>
+      </div>
+
+      <!-- Dashboard content (hidden until loaded) -->
+      <div id="dashboardContent" style="display:none;">
+
+        <!-- Welcome Header -->
+        <div class="dashboard-header">
+          <h1>Welcome, <span id="userName">Student</span></h1>
+          <p class="dashboard-sub">Manage your profile, track your progress, and access your services.</p>
+        </div>
+
+        <div class="dashboard-grid">
+
+          <!-- Profile Card -->
+          <div class="dash-card profile-card">
+            <div class="dash-card-header">
+              <h3>Your Profile</h3>
+              <button class="btn-small" id="editProfileBtn">Edit</button>
+            </div>
+            <div class="profile-info">
+              <div class="profile-row">
+                <span class="profile-label">Name</span>
+                <span class="profile-value" id="profileName">-</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Email</span>
+                <span class="profile-value" id="profileEmail">-</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Path</span>
+                <span class="profile-value" id="profilePath">-</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Member since</span>
+                <span class="profile-value" id="profileDate">-</span>
+              </div>
+            </div>
+
+            <!-- Edit form (hidden) -->
+            <div id="editProfileForm" class="edit-form" style="display:none;">
+              <div class="form-group">
+                <label for="editName">Name</label>
+                <input type="text" id="editName">
+              </div>
+              <div class="form-group">
+                <label>Path</label>
+                <div class="path-selector compact">
+                  <label class="path-option">
+                    <input type="radio" name="editPath" value="applicant">
+                    <div class="path-option-content">
+                      <span class="path-option-icon">🎓</span>
+                      <div><strong>Applying to Med School</strong></div>
+                    </div>
+                  </label>
+                  <label class="path-option">
+                    <input type="radio" name="editPath" value="student">
+                    <div class="path-option-content">
+                      <span class="path-option-icon">🩺</span>
+                      <div><strong>Current Med Student</strong></div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="edit-actions">
+                <button class="btn btn-primary btn-small" id="saveProfileBtn">Save</button>
+                <button class="btn btn-secondary btn-small" id="cancelEditBtn">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Services for Applicants -->
+          <div class="dash-card services-card" id="applicantServices">
+            <div class="dash-card-header">
+              <h3>🎓 Med School Application Services</h3>
+            </div>
+
+            <!-- Application Package -->
+            <div class="service-row">
+              <div class="service-info">
+                <h4>Application Package</h4>
+                <p>Complete guidance for your Czech Republic med school application</p>
+                <span class="service-price">$499</span>
+              </div>
+              <div class="service-status" id="applicationStatus">
+                <span class="status-badge status-unpaid">Not purchased</span>
+                <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Pay Now</a>
+              </div>
+            </div>
+
+            <!-- Entrance Exam Question Bank -->
+            <div class="service-row">
+              <div class="service-info">
+                <h4>Entrance Exam Question Bank</h4>
+                <p>Practice questions for the Charles University entrance exam - Biology, Chemistry, Physics</p>
+                <span class="service-price coming-soon-text">Price TBD</span>
+              </div>
+              <div class="service-status" id="examBankStatus">
+                <span class="status-badge status-coming">Coming Soon</span>
+                <a href="mailto:shosmedglobal@gmail.com?subject=Entrance Exam Prep - Notify Me&body=Please notify me when the entrance exam question bank is ready." class="btn btn-secondary btn-small">Get Notified</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Services for Current Students -->
+          <div class="dash-card services-card" id="studentServices">
+            <div class="dash-card-header">
+              <h3>🩺 Mentorship Services</h3>
+            </div>
+
+            <!-- Starter -->
+            <div class="service-row">
+              <div class="service-info">
+                <h4>Starter</h4>
+                <p>CV review, personal statement review, 1 mentoring session</p>
+                <span class="service-price">$299</span>
+              </div>
+              <div class="service-status" id="starterStatus">
+                <span class="status-badge status-unpaid">Not purchased</span>
+                <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="starter">Pay Now</a>
+              </div>
+            </div>
+
+            <!-- Mentorship -->
+            <div class="service-row">
+              <div class="service-info">
+                <h4>Mentorship</h4>
+                <p>4 monthly sessions, unlimited CV/PS revisions, mock interview, ERAS strategy</p>
+                <span class="service-price">$999</span>
+              </div>
+              <div class="service-status" id="mentorshipStatus">
+                <span class="status-badge status-unpaid">Not purchased</span>
+                <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="mentorship">Pay Now</a>
+              </div>
+            </div>
+
+            <!-- VIP -->
+            <div class="service-row">
+              <div class="service-info">
+                <h4>VIP</h4>
+                <p>Unlimited sessions, direct access, mock interviews, SOAP support</p>
+                <span class="service-price">$2,499</span>
+              </div>
+              <div class="service-status" id="vipStatus">
+                <span class="status-badge status-unpaid">Not purchased</span>
+                <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="vip">Pay Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3>Quick Links</h3>
+            </div>
+            <div class="quick-links">
+              <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation Request" class="quick-link">
+                <span>📞</span> Book Free Consultation
+              </a>
+              <a href="index.html#community" class="quick-link">
+                <span>💬</span> Join WhatsApp Community
+              </a>
+              <a href="index.html#mentors" class="quick-link">
+                <span>👨‍⚕️</span> Meet Your Mentors
+              </a>
+              <a href="index.html#blog" class="quick-link">
+                <span>📖</span> Free Resources
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    let currentProfile = null;
+    let currentUser = null;
+
+    // Redirect if not logged in, load dashboard if logged in
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      currentUser = user;
+      await loadDashboard(user);
+    });
+
+    async function loadDashboard(user) {
+      const profile = await getUserProfile(user.uid);
+      currentProfile = profile;
+
+      // Update welcome
+      document.getElementById('userName').textContent = user.displayName || profile?.name || 'Student';
+
+      // Update profile card
+      document.getElementById('profileName').textContent = user.displayName || profile?.name || '-';
+      document.getElementById('profileEmail').textContent = user.email || '-';
+
+      const pathText = profile?.path === 'applicant' ? '🎓 Applying to Med School' : '🩺 Current Med Student';
+      document.getElementById('profilePath').textContent = pathText;
+
+      if (profile?.createdAt) {
+        const date = profile.createdAt.toDate();
+        document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      }
+
+      // Show relevant services based on path
+      const isApplicant = profile?.path === 'applicant';
+      document.getElementById('applicantServices').style.display = isApplicant ? 'block' : 'none';
+      document.getElementById('studentServices').style.display = isApplicant ? 'none' : 'block';
+
+      // Update payment statuses
+      if (profile?.payments) {
+        Object.entries(profile.payments).forEach(([tier, status]) => {
+          updatePaymentStatus(tier, status);
+        });
+      }
+
+      // Show dashboard, hide loading
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('dashboardContent').style.display = 'block';
+    }
+
+    function updatePaymentStatus(tier, status) {
+      const statusMap = {
+        'application': 'applicationStatus',
+        'starter': 'starterStatus',
+        'mentorship': 'mentorshipStatus',
+        'vip': 'vipStatus',
+        'exam-bank': 'examBankStatus'
+      };
+      const el = document.getElementById(statusMap[tier]);
+      if (!el) return;
+
+      if (status === 'paid') {
+        el.innerHTML = '<span class="status-badge status-paid">Paid</span><span class="status-active">Active</span>';
+      } else if (status === 'pending') {
+        el.innerHTML = '<span class="status-badge status-pending">Payment pending</span>';
+      }
+    }
+
+    // Edit profile
+    document.getElementById('editProfileBtn').addEventListener('click', () => {
+      document.getElementById('editProfileForm').style.display = 'block';
+      document.getElementById('editName').value = currentProfile?.name || currentUser?.displayName || '';
+      const pathRadio = document.querySelector(`input[name="editPath"][value="${currentProfile?.path || 'applicant'}"]`);
+      if (pathRadio) pathRadio.checked = true;
+    });
+
+    document.getElementById('cancelEditBtn').addEventListener('click', () => {
+      document.getElementById('editProfileForm').style.display = 'none';
+    });
+
+    document.getElementById('saveProfileBtn').addEventListener('click', async () => {
+      const name = document.getElementById('editName').value.trim();
+      const path = document.querySelector('input[name="editPath"]:checked').value;
+      const btn = document.getElementById('saveProfileBtn');
+
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      // Update Firebase Auth display name
+      await currentUser.updateProfile({ displayName: name });
+
+      // Update Firestore
+      const result = await updateUserProfile(currentUser.uid, { name, path });
+      if (result.success) {
+        document.getElementById('editProfileForm').style.display = 'none';
+        await loadDashboard(currentUser);
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Save';
+    });
+
+    // Stripe payment links
+    document.querySelectorAll('.stripe-pay').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tier = this.dataset.tier;
+        // TODO: Replace with actual Stripe Payment Links
+        alert('Payment coming soon! For now, email shosmedglobal@gmail.com to get started with the ' + tier.charAt(0).toUpperCase() + tier.slice(1) + ' plan.');
+      });
+    });
+  </script>
+</body>
+</html>
