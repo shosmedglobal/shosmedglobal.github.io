@@ -103,12 +103,23 @@ a {
 .logo-img {
   height: 44px;
   width: auto;
-  filter: brightness(0) invert(1);
   transition: var(--transition);
 }
 
-.navbar.scrolled .logo-img {
-  filter: none;
+.logo-dark {
+  display: none;
+}
+
+.logo-white {
+  display: block;
+}
+
+.navbar.scrolled .logo-dark {
+  display: block;
+}
+
+.navbar.scrolled .logo-white {
+  display: none;
 }
 
 .nav-links {
