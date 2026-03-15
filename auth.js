@@ -1,12 +1,11 @@
 // ===== Firebase Configuration =====
-// TODO: Replace with your actual Firebase config after creating a project at console.firebase.google.com
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDGYSvXADpcZWNHuKXAzOKuRL9FlfJ7-u0",
+  authDomain: "shos-med-global-6eb19.firebaseapp.com",
+  projectId: "shos-med-global-6eb19",
+  storageBucket: "shos-med-global-6eb19.firebasestorage.app",
+  messagingSenderId: "66913419368",
+  appId: "1:66913419368:web:69e97029afbabf96fe7bdd"
 };
 
 // Initialize Firebase

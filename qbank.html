@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrance Exam Question Bank - SHOS Med Global</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="qbank.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="SHOS Med Global" class="logo-img logo-dark" style="display:block;">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li id="auth-links">
+          <a href="#" onclick="signOut()" class="nav-cta">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Question Bank App -->
+  <section class="qbank-section">
+    <div class="container">
+
+      <!-- ===== START SCREEN ===== -->
+      <div id="startScreen" class="qbank-start">
+        <div class="qbank-start-header">
+          <h1>Entrance Exam <span>Question Bank</span></h1>
+          <p>Practice for the Charles University Medical Faculty entrance exam with original questions and detailed explanations.</p>
+        </div>
+
+        <div class="subject-grid">
+          <label class="subject-card">
+            <input type="checkbox" name="subject" value="biology" checked>
+            <div class="subject-card-inner">
+              <span class="subject-icon">🧬</span>
+              <h3>Biology</h3>
+              <span class="subject-count" id="countBiology">0 questions</span>
+            </div>
+          </label>
+          <label class="subject-card">
+            <input type="checkbox" name="subject" value="chemistry" checked>
+            <div class="subject-card-inner">
+              <span class="subject-icon">⚗️</span>
+              <h3>Chemistry</h3>
+              <span class="subject-count" id="countChemistry">0 questions</span>
+            </div>
+          </label>
+          <label class="subject-card">
+            <input type="checkbox" name="subject" value="physics" checked>
+            <div class="subject-card-inner">
+              <span class="subject-icon">⚡</span>
+              <h3>Physics</h3>
+              <span class="subject-count" id="countPhysics">0 questions</span>
+            </div>
+          </label>
+          <label class="subject-card">
+            <input type="checkbox" name="subject" value="mathematics" checked>
+            <div class="subject-card-inner">
+              <span class="subject-icon">📐</span>
+              <h3>Mathematics</h3>
+              <span class="subject-count" id="countMathematics">0 questions</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="start-options">
+          <div class="option-row">
+            <label for="questionCount">Number of questions:</label>
+            <select id="questionCount">
+              <option value="10">10 questions</option>
+              <option value="20">20 questions</option>
+              <option value="0" selected>All available</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label>
+              <input type="checkbox" id="shuffleQuestions" checked>
+              Shuffle question order
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" id="startQuizBtn">
+          Start Practice Session
+        </button>
+        <p class="start-note">Select at least one subject to begin.</p>
+      </div>
+
+      <!-- ===== QUIZ SCREEN ===== -->
+      <div id="quizScreen" class="qbank-quiz" style="display:none;">
+
+        <!-- Top Bar -->
+        <div class="quiz-topbar">
+          <div class="quiz-progress">
+            <span id="questionIndex">1</span> / <span id="totalQuestions">0</span>
+          </div>
+          <div class="quiz-subject-badge" id="currentSubject">Biology</div>
+          <div class="quiz-score">
+            <span class="score-correct" id="scoreCorrect">0</span> ✓
+            <span class="score-wrong" id="scoreWrong">0</span> ✗
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="quiz-card">
+          <div class="quiz-topic" id="questionTopic">Cell Biology</div>
+          <div class="quiz-question" id="questionText"></div>
+
+          <div class="quiz-options" id="optionsContainer">
+            <!-- Options injected by JS -->
+          </div>
+
+          <!-- Explanation (hidden until answered) -->
+          <div class="quiz-explanation" id="explanationBox" style="display:none;">
+            <div class="explanation-header">
+              <span class="explanation-icon" id="explanationIcon">✓</span>
+              <span id="explanationTitle">Correct!</span>
+            </div>
+            <div class="explanation-content" id="explanationContent"></div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="quiz-nav">
+          <button class="btn btn-secondary" id="prevBtn" disabled>← Previous</button>
+          <button class="btn btn-primary" id="nextBtn" style="display:none;">Next →</button>
+          <button class="btn btn-primary" id="finishBtn" style="display:none;">Finish Quiz</button>
+        </div>
+      </div>
+
+      <!-- ===== RESULTS SCREEN ===== -->
+      <div id="resultsScreen" class="qbank-results" style="display:none;">
+        <div class="results-card">
+          <h2>Practice Session Complete</h2>
+
+          <div class="results-score-circle">
+            <svg viewBox="0 0 120 120">
+              <circle class="score-bg" cx="60" cy="60" r="54" />
+              <circle class="score-fill" id="scoreCircle" cx="60" cy="60" r="54" />
+            </svg>
+            <div class="score-text">
+              <span class="score-percent" id="scorePercent">0%</span>
+            </div>
+          </div>
+
+          <div class="results-stats">
+            <div class="stat-item stat-correct">
+              <span class="stat-num" id="finalCorrect">0</span>
+              <span class="stat-label">Correct</span>
+            </div>
+            <div class="stat-item stat-wrong">
+              <span class="stat-num" id="finalWrong">0</span>
+              <span class="stat-label">Incorrect</span>
+            </div>
+            <div class="stat-item stat-total">
+              <span class="stat-num" id="finalTotal">0</span>
+              <span class="stat-label">Total</span>
+            </div>
+          </div>
+
+          <!-- Per-subject breakdown -->
+          <div class="results-breakdown" id="subjectBreakdown"></div>
+
+          <div class="results-actions">
+            <button class="btn btn-primary" id="retryBtn">Try Again</button>
+            <button class="btn btn-secondary" id="reviewBtn">Review Answers</button>
+            <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== REVIEW SCREEN ===== -->
+      <div id="reviewScreen" class="qbank-review" style="display:none;">
+        <div class="review-header">
+          <h2>Review Your Answers</h2>
+          <button class="btn btn-secondary" id="backToResultsBtn">← Back to Results</button>
+        </div>
+        <div id="reviewContainer"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js"></script>
+  <script src="qbank.js"></script>
+</body>
+</html>
