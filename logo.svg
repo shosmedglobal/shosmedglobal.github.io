@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
   <defs>
     <linearGradient id="globeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0B6E4F;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#14919B;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#8B2332;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6E1B28;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="crossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#e8f4f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5e8ea;stop-opacity:1" />
     </linearGradient>
   </defs>
 
@@ -26,14 +26,14 @@
   <rect x="32" y="42" width="36" height="16" rx="2.5" fill="url(#crossGrad)" opacity="0.95"/>
 
   <!-- Text: SHOS -->
-  <text x="105" y="45" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="800" font-size="36" fill="#0F2B3C" letter-spacing="1">SHOS</text>
+  <text x="105" y="45" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="800" font-size="36" fill="#1A1A2E" letter-spacing="1">SHOS</text>
 
   <!-- Text: Med -->
-  <text x="228" y="45" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="600" font-size="36" fill="#14919B" letter-spacing="0.5">Med</text>
+  <text x="228" y="45" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="600" font-size="36" fill="#8B2332" letter-spacing="0.5">Med</text>
 
   <!-- Text: Global -->
-  <text x="105" y="75" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="400" font-size="22" fill="#5A7184" letter-spacing="4">GLOBAL</text>
+  <text x="105" y="75" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="400" font-size="22" fill="#737373" letter-spacing="4">GLOBAL</text>
 
   <!-- Subtle dot separator -->
-  <circle cx="300" cy="70" r="3" fill="#14919B" opacity="0.5"/>
+  <circle cx="300" cy="70" r="3" fill="#8B2332" opacity="0.5"/>
 </svg>
