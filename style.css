@@ -148,6 +148,16 @@ a {
   color: var(--navy);
 }
 
+.nav-links a.active {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.navbar.scrolled .nav-links a.active {
+  color: var(--teal);
+  font-weight: 700;
+}
+
 .nav-cta {
   background: var(--teal);
   color: var(--white) !important;
@@ -268,6 +278,14 @@ a {
   border-radius: 50%;
   border: 1px solid rgba(232,164,76,0.08);
   background: radial-gradient(circle, rgba(232,164,76,0.05) 0%, transparent 60%);
+}
+
+.hero-subpage {
+  min-height: auto;
+}
+
+.hero-subpage .hero-content {
+  padding: 100px 0 60px;
 }
 
 .hero-content {
