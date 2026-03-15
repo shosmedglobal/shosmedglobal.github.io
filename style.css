@@ -1,26 +1,26 @@
 /* ===== CSS Variables ===== */
 :root {
-  --navy: #1A1A2E;
-  --navy-light: #2D2D44;
-  --teal: #8B2332;
-  --teal-light: #C4384D;
-  --teal-dark: #6E1B28;
-  --gold: #C8956C;
-  --gold-light: #E0B890;
+  --navy: #1B2137;
+  --navy-light: #2A3352;
+  --teal: #CF5B2E;
+  --teal-light: #E8784A;
+  --teal-dark: #A84823;
+  --gold: #E8A44C;
+  --gold-light: #F0C078;
   --white: #FFFFFF;
-  --gray-50: #FAFAFA;
-  --gray-100: #F5F5F5;
-  --gray-200: #E5E5E5;
-  --gray-300: #D4D4D4;
-  --gray-400: #A3A3A3;
-  --gray-500: #737373;
-  --gray-600: #525252;
-  --gray-700: #404040;
-  --gray-800: #262626;
-  --gray-900: #171717;
+  --gray-50: #FAFAF9;
+  --gray-100: #F5F4F2;
+  --gray-200: #E7E5E2;
+  --gray-300: #D4D1CC;
+  --gray-400: #A3A09B;
+  --gray-500: #6E6B66;
+  --gray-600: #4A4844;
+  --gray-700: #3A3835;
+  --gray-800: #262524;
+  --gray-900: #1A1918;
   --green: #2D8659;
   --red: #DC2626;
-  --orange: #C2762E;
+  --orange: #CF5B2E;
   --radius: 12px;
   --radius-lg: 20px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
@@ -242,30 +242,32 @@ a {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 40%, #3D1520 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 40%, #3B2218 100%);
   overflow: hidden;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
+  top: -30%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(8,145,178,0.15) 0%, transparent 70%);
+  border: 1px solid rgba(207,91,46,0.12);
+  background: radial-gradient(circle, rgba(207,91,46,0.08) 0%, transparent 60%);
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
+  bottom: -40%;
+  left: -8%;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+  border: 1px solid rgba(232,164,76,0.08);
+  background: radial-gradient(circle, rgba(232,164,76,0.05) 0%, transparent 60%);
 }
 
 .hero-content {
@@ -359,6 +361,32 @@ a {
 
 .section-alt {
   background: var(--gray-50);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-alt::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(207,91,46,0.06);
+  pointer-events: none;
+}
+
+.section-alt::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(207,91,46,0.05);
+  pointer-events: none;
 }
 
 .section-dark {
@@ -381,7 +409,7 @@ a {
 
 .section-tag {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(8,145,178,0.05));
+  background: linear-gradient(135deg, rgba(207,91,46,0.1), rgba(207,91,46,0.04));
   color: var(--teal);
   padding: 6px 16px;
   border-radius: 50px;
@@ -1107,10 +1135,10 @@ a {
   max-width: 700px;
   margin: 40px auto 0;
   text-align: center;
-  background: linear-gradient(135deg, rgba(8,145,178,0.05), rgba(11,110,79,0.05));
+  background: linear-gradient(135deg, rgba(207,91,46,0.04), rgba(232,164,76,0.04));
   padding: 24px 32px;
   border-radius: var(--radius);
-  border: 1px solid rgba(8,145,178,0.15);
+  border: 1px solid rgba(207,91,46,0.12);
 }
 
 .pathway-note p {
