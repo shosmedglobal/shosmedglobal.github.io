@@ -359,14 +359,14 @@
                     <input type="radio" name="editPath" value="applicant">
                     <div class="path-option-content">
                       <span class="path-option-icon">🎓</span>
-                      <div><strong>Applying to Med School</strong></div>
+                      <div><strong>Med School Application</strong></div>
                     </div>
                   </label>
                   <label class="path-option">
                     <input type="radio" name="editPath" value="student">
                     <div class="path-option-content">
                       <span class="path-option-icon">🩺</span>
-                      <div><strong>Applying to Residency</strong></div>
+                      <div><strong>Residency Application</strong></div>
                     </div>
                   </label>
                 </div>
@@ -459,13 +459,13 @@
       document.getElementById('sidebarName').textContent = displayName;
       document.getElementById('sidebarAvatar').textContent = displayName.charAt(0).toUpperCase();
 
-      const pathLabel = profile?.path === 'applicant' ? 'Applying to Med School' : profile?.path === 'student' ? 'Applying to Residency' : 'Set your path in Settings';
+      const pathLabel = profile?.path === 'applicant' ? 'Med School Application' : profile?.path === 'student' ? 'Residency Application' : 'Set your path in Settings';
       document.getElementById('sidebarPath').textContent = pathLabel;
 
       // Update settings profile card
       document.getElementById('profileName').textContent = displayName;
       document.getElementById('profileEmail').textContent = user.email || '-';
-      const pathText = profile?.path === 'applicant' ? '🎓 Applying to Med School' : profile?.path === 'student' ? '🩺 Applying to Residency' : '-';
+      const pathText = profile?.path === 'applicant' ? '🎓 Med School Application' : profile?.path === 'student' ? '🩺 Residency Application' : '-';
       document.getElementById('profilePath').textContent = pathText;
 
       if (profile?.createdAt) {
