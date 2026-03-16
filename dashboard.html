@@ -13,24 +13,63 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar scrolled">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="logo.svg" alt="SHOS Med Global" class="logo-img logo-dark" style="display:block;">
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li id="auth-links">
-          <a href="#" onclick="signOut()" class="nav-cta">Log Out</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div class="dashboard-layout">
 
-  <!-- Dashboard -->
-  <section class="dashboard-section">
-    <div class="container">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <img src="logo-white.svg" alt="SHOS Med Global">
+        </a>
+        <button class="sidebar-close" id="sidebarClose">&times;</button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar" id="sidebarAvatar">S</div>
+        <div class="sidebar-user">
+          <span class="sidebar-name" id="sidebarName">Student</span>
+          <span class="sidebar-path" id="sidebarPath">Loading...</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" data-view="overview">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="sidebar-link" data-view="qbank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Question Bank
+        </a>
+        <a href="#" class="sidebar-link" data-view="settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Profile & Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-link" onclick="signOut(); return false;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Log Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== MOBILE TOP BAR ===== -->
+    <header class="mobile-topbar" id="mobileTopbar">
+      <button class="hamburger" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="mobile-logo">
+        <img src="logo.svg" alt="SHOS Med Global">
+      </a>
+    </header>
+
+    <!-- ===== MOBILE OVERLAY ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="dashboard-main">
 
       <!-- Loading state -->
       <div id="loadingState" class="dashboard-loading">
@@ -41,21 +80,212 @@
       <!-- Dashboard content (hidden until loaded) -->
       <div id="dashboardContent" style="display:none;">
 
-        <!-- Welcome Header -->
-        <div class="dashboard-header">
-          <h1>Welcome, <span id="userName">Student</span></h1>
-          <p class="dashboard-sub">Manage your profile, track your progress, and access your services.</p>
+        <!-- ========== VIEW: OVERVIEW ========== -->
+        <div class="view active" id="viewOverview">
+          <div class="dashboard-header">
+            <h1>Welcome, <span id="userName">Student</span></h1>
+            <p class="dashboard-sub">Manage your profile, track your progress, and access your services.</p>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- QBank Summary Card -->
+            <div class="dash-card services-card" id="qbankCard">
+              <div class="dash-card-header">
+                <h3>📝 Entrance Exam Question Bank</h3>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Practice Questions</h4>
+                  <p>Biology, Chemistry, Physics & Mathematics — original questions with detailed explanations</p>
+                  <span class="service-price" id="qbankPriceLabel">Free Sample (5 questions)</span>
+                </div>
+                <div class="service-status" id="examBankStatus">
+                  <span class="status-badge status-paid">Available</span>
+                  <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Services for Applicants -->
+            <div class="dash-card services-card" id="applicantServices" style="display:none;">
+              <div class="dash-card-header">
+                <h3>🎓 Med School Application Services</h3>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Application Package</h4>
+                  <p>Complete guidance for your Czech Republic med school application</p>
+                  <span class="service-price">$499</span>
+                </div>
+                <div class="service-status" id="applicationStatus">
+                  <span class="status-badge status-unpaid">Not purchased</span>
+                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Pay Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Services for Current Students -->
+            <div class="dash-card services-card" id="studentServices" style="display:none;">
+              <div class="dash-card-header">
+                <h3>🩺 Mentorship Services</h3>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Starter</h4>
+                  <p>CV review, personal statement review, 1 mentoring session</p>
+                  <span class="service-price">$299</span>
+                </div>
+                <div class="service-status" id="starterStatus">
+                  <span class="status-badge status-unpaid">Not purchased</span>
+                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="starter">Pay Now</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Mentorship</h4>
+                  <p>4 monthly sessions, unlimited CV/PS revisions, mock interview, ERAS strategy</p>
+                  <span class="service-price">$999</span>
+                </div>
+                <div class="service-status" id="mentorshipStatus">
+                  <span class="status-badge status-unpaid">Not purchased</span>
+                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="mentorship">Pay Now</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>VIP</h4>
+                  <p>Unlimited sessions, direct access, mock interviews, SOAP support</p>
+                  <span class="service-price">$2,499</span>
+                </div>
+                <div class="service-status" id="vipStatus">
+                  <span class="status-badge status-unpaid">Not purchased</span>
+                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="vip">Pay Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 30-Min Consultation — visible to ALL users -->
+            <div class="dash-card services-card">
+              <div class="dash-card-header">
+                <h3>📞 1-on-1 Consultation</h3>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>30-Minute Call with a US Physician</h4>
+                  <p>Get personal guidance from a doctor who completed this exact journey — medical school in Czech Republic through US residency match. Ask anything about applications, exams, or career planning.</p>
+                  <span class="service-price">$50</span>
+                </div>
+                <div class="service-status">
+                  <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($50)&body=Hi, I'd like to book a 30-minute consultation call. Please let me know available times." class="btn btn-primary btn-small">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <h3>Quick Links</h3>
+              </div>
+              <div class="quick-links">
+                <a href="mailto:shosmedglobal@gmail.com?subject=Question" class="quick-link">
+                  <span>📧</span> Contact Us
+                </a>
+                <a href="index.html#community" class="quick-link">
+                  <span>💬</span> Join WhatsApp Community
+                </a>
+                <a href="index.html#mentors" class="quick-link">
+                  <span>👨‍⚕️</span> Meet Your Mentors
+                </a>
+                <a href="index.html#blog" class="quick-link">
+                  <span>📖</span> Free Resources
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="dashboard-grid">
+        <!-- ========== VIEW: QUESTION BANK ========== -->
+        <div class="view" id="viewQbank">
+          <div class="dashboard-header">
+            <h1>Question Bank</h1>
+            <p class="dashboard-sub">Practice for the Charles University entrance exam with original questions and detailed explanations.</p>
+          </div>
 
-          <!-- Profile Card -->
-          <div class="dash-card profile-card">
+          <!-- Current Access -->
+          <div class="dash-card" style="margin-bottom: 24px;">
+            <div class="dash-card-header">
+              <h3>Your Access</h3>
+              <span class="status-badge status-paid" id="qbankAccessBadge">Free Sample</span>
+            </div>
+            <div class="service-row">
+              <div class="service-info">
+                <h4 id="qbankAccessTitle">Free Sample — 5 Questions</h4>
+                <p id="qbankAccessDesc">Try a sample of our question bank. Upgrade to unlock all 155+ questions across Biology, Chemistry, Physics & Mathematics.</p>
+              </div>
+              <div class="service-status">
+                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Purchase Plans -->
+          <h3 class="view-section-title" id="qbankUpgradeTitle">Upgrade Your Access</h3>
+          <div class="qbank-pricing-grid" id="qbankPricingGrid">
+            <div class="qbank-plan-card">
+              <h4>1 Month</h4>
+              <div class="plan-price">$49</div>
+              <p class="plan-per">$49/month</p>
+              <ul class="plan-features">
+                <li>All 155+ questions</li>
+                <li>All 4 subjects</li>
+                <li>Detailed explanations</li>
+                <li>New questions added regularly</li>
+              </ul>
+              <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-1mo">Purchase</a>
+            </div>
+            <div class="qbank-plan-card featured">
+              <div class="plan-badge">Best Value</div>
+              <h4>3 Months</h4>
+              <div class="plan-price">$99</div>
+              <p class="plan-per">$33/month — Save 33%</p>
+              <ul class="plan-features">
+                <li>All 155+ questions</li>
+                <li>All 4 subjects</li>
+                <li>Detailed explanations</li>
+                <li>New questions added regularly</li>
+              </ul>
+              <a href="#" class="btn btn-primary stripe-pay" data-tier="qbank-3mo">Purchase</a>
+            </div>
+            <div class="qbank-plan-card">
+              <h4>6 Months</h4>
+              <div class="plan-price">$149</div>
+              <p class="plan-per">$25/month — Save 49%</p>
+              <ul class="plan-features">
+                <li>All 155+ questions</li>
+                <li>All 4 subjects</li>
+                <li>Detailed explanations</li>
+                <li>New questions added regularly</li>
+              </ul>
+              <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-6mo">Purchase</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== VIEW: SETTINGS ========== -->
+        <div class="view" id="viewSettings">
+          <div class="dashboard-header">
+            <h1>Profile & Settings</h1>
+            <p class="dashboard-sub">Manage your account information and preferences.</p>
+          </div>
+
+          <div class="dash-card" style="max-width: 600px;">
             <div class="dash-card-header">
               <h3>Your Profile</h3>
               <button class="btn-small" id="editProfileBtn">Edit</button>
             </div>
-            <div class="profile-info">
+
+            <!-- Profile Display -->
+            <div id="profileDisplay">
               <div class="profile-row">
                 <span class="profile-label">Name</span>
                 <span class="profile-value" id="profileName">-</span>
@@ -105,116 +335,11 @@
               </div>
             </div>
           </div>
-
-          <!-- Question Bank — always visible -->
-          <div class="dash-card services-card" id="qbankCard">
-            <div class="dash-card-header">
-              <h3>📝 Entrance Exam Question Bank</h3>
-            </div>
-            <div class="service-row">
-              <div class="service-info">
-                <h4>Practice Questions</h4>
-                <p>Biology, Chemistry, Physics & Mathematics — original questions with detailed explanations</p>
-                <span class="service-price" id="qbankPriceLabel">Free Sample (5 questions)</span>
-              </div>
-              <div class="service-status" id="examBankStatus">
-                <span class="status-badge status-paid">Available</span>
-                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Services for Applicants -->
-          <div class="dash-card services-card" id="applicantServices">
-            <div class="dash-card-header">
-              <h3>🎓 Med School Application Services</h3>
-            </div>
-
-            <!-- Application Package -->
-            <div class="service-row">
-              <div class="service-info">
-                <h4>Application Package</h4>
-                <p>Complete guidance for your Czech Republic med school application</p>
-                <span class="service-price">$499</span>
-              </div>
-              <div class="service-status" id="applicationStatus">
-                <span class="status-badge status-unpaid">Not purchased</span>
-                <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Pay Now</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Services for Current Students -->
-          <div class="dash-card services-card" id="studentServices">
-            <div class="dash-card-header">
-              <h3>🩺 Mentorship Services</h3>
-            </div>
-
-            <!-- Starter -->
-            <div class="service-row">
-              <div class="service-info">
-                <h4>Starter</h4>
-                <p>CV review, personal statement review, 1 mentoring session</p>
-                <span class="service-price">$299</span>
-              </div>
-              <div class="service-status" id="starterStatus">
-                <span class="status-badge status-unpaid">Not purchased</span>
-                <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="starter">Pay Now</a>
-              </div>
-            </div>
-
-            <!-- Mentorship -->
-            <div class="service-row">
-              <div class="service-info">
-                <h4>Mentorship</h4>
-                <p>4 monthly sessions, unlimited CV/PS revisions, mock interview, ERAS strategy</p>
-                <span class="service-price">$999</span>
-              </div>
-              <div class="service-status" id="mentorshipStatus">
-                <span class="status-badge status-unpaid">Not purchased</span>
-                <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="mentorship">Pay Now</a>
-              </div>
-            </div>
-
-            <!-- VIP -->
-            <div class="service-row">
-              <div class="service-info">
-                <h4>VIP</h4>
-                <p>Unlimited sessions, direct access, mock interviews, SOAP support</p>
-                <span class="service-price">$2,499</span>
-              </div>
-              <div class="service-status" id="vipStatus">
-                <span class="status-badge status-unpaid">Not purchased</span>
-                <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="vip">Pay Now</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <h3>Quick Links</h3>
-            </div>
-            <div class="quick-links">
-              <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation Request" class="quick-link">
-                <span>📞</span> Book Free Consultation
-              </a>
-              <a href="index.html#community" class="quick-link">
-                <span>💬</span> Join WhatsApp Community
-              </a>
-              <a href="index.html#mentors" class="quick-link">
-                <span>👨‍⚕️</span> Meet Your Mentors
-              </a>
-              <a href="index.html#blog" class="quick-link">
-                <span>📖</span> Free Resources
-              </a>
-            </div>
-          </div>
-
         </div>
+
       </div>
-    </div>
-  </section>
+    </main>
+  </div>
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -225,7 +350,41 @@
     let currentProfile = null;
     let currentUser = null;
 
-    // Redirect if not logged in, load dashboard if logged in
+    // ===== Sidebar Navigation =====
+    function switchView(viewName) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById('view' + viewName.charAt(0).toUpperCase() + viewName.slice(1));
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.sidebar-link[data-view]').forEach(link => {
+        link.classList.toggle('active', link.dataset.view === viewName);
+      });
+
+      closeSidebar();
+    }
+
+    document.querySelectorAll('.sidebar-link[data-view]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView(link.dataset.view);
+      });
+    });
+
+    // ===== Mobile Sidebar =====
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').classList.remove('active');
+    }
+
+    document.getElementById('hamburgerBtn').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+      document.getElementById('sidebarOverlay').classList.add('active');
+    });
+
+    document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+    document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+    // ===== Auth State =====
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
         window.location.href = 'login.html';
@@ -235,18 +394,27 @@
       await loadDashboard(user);
     });
 
+    // ===== Load Dashboard =====
     async function loadDashboard(user) {
       const profile = await getUserProfile(user.uid);
       currentProfile = profile;
 
+      const displayName = user.displayName || profile?.name || 'Student';
+
       // Update welcome
-      document.getElementById('userName').textContent = user.displayName || profile?.name || 'Student';
+      document.getElementById('userName').textContent = displayName;
 
-      // Update profile card
-      document.getElementById('profileName').textContent = user.displayName || profile?.name || '-';
+      // Update sidebar profile
+      document.getElementById('sidebarName').textContent = displayName;
+      document.getElementById('sidebarAvatar').textContent = displayName.charAt(0).toUpperCase();
+
+      const pathLabel = profile?.path === 'applicant' ? 'Applying to Med School' : profile?.path === 'student' ? 'Current Med Student' : 'Set your path in Settings';
+      document.getElementById('sidebarPath').textContent = pathLabel;
+
+      // Update settings profile card
+      document.getElementById('profileName').textContent = displayName;
       document.getElementById('profileEmail').textContent = user.email || '-';
-
-      const pathText = profile?.path === 'applicant' ? '🎓 Applying to Med School' : '🩺 Current Med Student';
+      const pathText = profile?.path === 'applicant' ? '🎓 Applying to Med School' : profile?.path === 'student' ? '🩺 Current Med Student' : '-';
       document.getElementById('profilePath').textContent = pathText;
 
       if (profile?.createdAt) {
@@ -254,26 +422,28 @@
         document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       }
 
-      // Show relevant services based on path
-      // If profile couldn't load (Firestore rules issue), show both
+      // ===== Path-based service visibility =====
       const userPath = profile?.path;
-      const isApplicant = userPath === 'applicant';
-      const isStudent = userPath === 'student';
-
       if (!userPath) {
-        // No profile loaded — show both sections
         document.getElementById('applicantServices').style.display = 'block';
         document.getElementById('studentServices').style.display = 'block';
-        console.warn('Could not determine user path. Check Firestore security rules.');
       } else {
-        document.getElementById('applicantServices').style.display = isApplicant ? 'block' : 'none';
-        document.getElementById('studentServices').style.display = isStudent ? 'block' : 'none';
+        document.getElementById('applicantServices').style.display = userPath === 'applicant' ? 'block' : 'none';
+        document.getElementById('studentServices').style.display = userPath === 'student' ? 'block' : 'none';
       }
 
-      // Update QBank label based on payment
-      if (profile?.payments?.['exam-bank'] === 'paid') {
-        document.getElementById('qbankPriceLabel').textContent = 'Full Access — 155 questions';
-      }
+      // ===== QBank access level =====
+      const qbankPaid = profile?.payments?.['exam-bank'] === 'paid';
+      document.getElementById('qbankPriceLabel').textContent = qbankPaid ? 'Full Access — 155 questions' : 'Free Sample (5 questions)';
+      document.getElementById('qbankAccessBadge').textContent = qbankPaid ? 'Full Access' : 'Free Sample';
+      document.getElementById('qbankAccessBadge').className = 'status-badge ' + (qbankPaid ? 'status-paid' : 'status-unpaid');
+      document.getElementById('qbankAccessTitle').textContent = qbankPaid ? 'Full Access — 155+ Questions' : 'Free Sample — 5 Questions';
+      document.getElementById('qbankAccessDesc').textContent = qbankPaid
+        ? 'You have full access to all questions. Practice across Biology, Chemistry, Physics & Mathematics.'
+        : 'Try a sample of our question bank. Upgrade to unlock all 155+ questions with detailed explanations.';
+      // Hide pricing grid if already paid
+      document.getElementById('qbankPricingGrid').style.display = qbankPaid ? 'none' : '';
+      document.getElementById('qbankUpgradeTitle').style.display = qbankPaid ? 'none' : '';
 
       // Update payment statuses
       if (profile?.payments) {
@@ -305,9 +475,10 @@
       }
     }
 
-    // Edit profile
+    // ===== Edit Profile =====
     document.getElementById('editProfileBtn').addEventListener('click', () => {
       document.getElementById('editProfileForm').style.display = 'block';
+      document.getElementById('profileDisplay').style.display = 'none';
       document.getElementById('editName').value = currentProfile?.name || currentUser?.displayName || '';
       const pathRadio = document.querySelector(`input[name="editPath"][value="${currentProfile?.path || 'applicant'}"]`);
       if (pathRadio) pathRadio.checked = true;
@@ -315,6 +486,7 @@
 
     document.getElementById('cancelEditBtn').addEventListener('click', () => {
       document.getElementById('editProfileForm').style.display = 'none';
+      document.getElementById('profileDisplay').style.display = 'block';
     });
 
     document.getElementById('saveProfileBtn').addEventListener('click', async () => {
@@ -325,13 +497,11 @@
       btn.disabled = true;
       btn.textContent = 'Saving...';
 
-      // Update Firebase Auth display name
       await currentUser.updateProfile({ displayName: name });
-
-      // Update Firestore
       const result = await updateUserProfile(currentUser.uid, { name, path });
       if (result.success) {
         document.getElementById('editProfileForm').style.display = 'none';
+        document.getElementById('profileDisplay').style.display = 'block';
         await loadDashboard(currentUser);
       }
 
@@ -339,13 +509,13 @@
       btn.textContent = 'Save';
     });
 
-    // Stripe payment links
+    // ===== Stripe Payment Links =====
     document.querySelectorAll('.stripe-pay').forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         const tier = this.dataset.tier;
-        // TODO: Replace with actual Stripe Payment Links
-        alert('Payment coming soon! For now, email shosmedglobal@gmail.com to get started with the ' + tier.charAt(0).toUpperCase() + tier.slice(1) + ' plan.');
+        const tierName = tier.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        alert('Payment coming soon! For now, email shosmedglobal@gmail.com to get started with the ' + tierName + ' plan.');
       });
     });
   </script>
