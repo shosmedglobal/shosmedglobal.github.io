@@ -83,9 +83,49 @@
         <!-- ========== VIEW: OVERVIEW ========== -->
         <div class="view active" id="viewOverview">
           <div class="dashboard-header">
-            <h1>Welcome, <span id="userName">Student</span></h1>
-            <p class="dashboard-sub">Manage your profile, track your progress, and access your services.</p>
+            <h1>Welcome back, <span id="userName">Student</span></h1>
+            <p class="dashboard-sub">What would you like to do today?</p>
           </div>
+
+          <!-- ===== Quick Actions — prominent cards at top ===== -->
+          <div class="action-cards">
+            <a href="qbank.html" class="action-card action-qbank">
+              <div class="action-icon">📝</div>
+              <div class="action-text">
+                <h3>Start Practice Questions</h3>
+                <p id="actionQbankDesc">Test yourself on Biology, Chemistry, Physics & Math</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+            <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($50)&body=Hi, I'd like to book a 30-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="action-card action-consult">
+              <div class="action-icon">📞</div>
+              <div class="action-text">
+                <h3>Schedule a Consultation</h3>
+                <p>30-min Zoom call with a US physician — $50</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+            <!-- Path-specific action — shown/hidden by JS -->
+            <a href="applicants.html#pricing" class="action-card action-path" id="actionApplicant" style="display:none;">
+              <div class="action-icon">🎓</div>
+              <div class="action-text">
+                <h3>Explore Application Services</h3>
+                <p>Get help with your Czech med school application</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+            <a href="students.html#pricing" class="action-card action-path" id="actionStudent" style="display:none;">
+              <div class="action-icon">🩺</div>
+              <div class="action-text">
+                <h3>Explore Mentorship</h3>
+                <p>USMLE prep, residency match, and career guidance</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- ===== Your Services ===== -->
+          <h3 class="overview-section-title">Your Services</h3>
 
           <div class="dashboard-grid">
             <!-- QBank Summary Card -->
@@ -113,13 +153,24 @@
               </div>
               <div class="service-row">
                 <div class="service-info">
-                  <h4>Application Package</h4>
-                  <p>Complete guidance for your Czech Republic med school application</p>
-                  <span class="service-price">$499</span>
+                  <h4>Application Guide</h4>
+                  <p>30-min Zoom meeting, school recommendations, application walkthrough</p>
+                  <span class="service-price">$99</span>
+                </div>
+                <div class="service-status" id="applicationGuideStatus">
+                  <span class="status-badge status-unpaid">Not purchased</span>
+                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="application-guide">Details</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Full Application Package</h4>
+                  <p>Up to 3 Zoom meetings, interview prep, 6 months QBank, Life in Prague session</p>
+                  <span class="service-price">$249</span>
                 </div>
                 <div class="service-status" id="applicationStatus">
                   <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Pay Now</a>
+                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Details</a>
                 </div>
               </div>
             </div>
@@ -131,52 +182,24 @@
               </div>
               <div class="service-row">
                 <div class="service-info">
-                  <h4>Starter</h4>
-                  <p>CV review, personal statement review, 1 mentoring session</p>
-                  <span class="service-price">$299</span>
-                </div>
-                <div class="service-status" id="starterStatus">
-                  <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="starter">Pay Now</a>
-                </div>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
                   <h4>Mentorship</h4>
-                  <p>4 monthly sessions, unlimited CV/PS revisions, mock interview, ERAS strategy</p>
-                  <span class="service-price">$999</span>
+                  <p>1-on-1 strategy session, CV and personal statement review, program list</p>
+                  <span class="service-price">$199</span>
                 </div>
                 <div class="service-status" id="mentorshipStatus">
                   <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="mentorship">Pay Now</a>
+                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="mentorship">Details</a>
                 </div>
               </div>
               <div class="service-row">
                 <div class="service-info">
-                  <h4>VIP</h4>
-                  <p>Unlimited sessions, direct access, mock interviews, SOAP support</p>
-                  <span class="service-price">$2,499</span>
+                  <h4>Match Ready</h4>
+                  <p>3 mentoring sessions, CV/PS edits, mock interview, ERAS strategy</p>
+                  <span class="service-price">$499</span>
                 </div>
-                <div class="service-status" id="vipStatus">
+                <div class="service-status" id="matchReadyStatus">
                   <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="vip">Pay Now</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- 30-Min Consultation — visible to ALL users -->
-            <div class="dash-card services-card">
-              <div class="dash-card-header">
-                <h3>📞 1-on-1 Consultation</h3>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>30-Minute Call with a US Physician</h4>
-                  <p>Get personal guidance from a doctor who completed this exact journey — medical school in Czech Republic through US residency match. Ask anything about applications, exams, or career planning.</p>
-                  <span class="service-price">$50</span>
-                </div>
-                <div class="service-status">
-                  <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($50)&body=Hi, I'd like to book a 30-minute consultation call. Please let me know available times." class="btn btn-primary btn-small">Book Now</a>
+                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="match-ready">Details</a>
                 </div>
               </div>
             </div>
@@ -184,14 +207,11 @@
             <!-- Quick Links -->
             <div class="dash-card">
               <div class="dash-card-header">
-                <h3>Quick Links</h3>
+                <h3>Resources</h3>
               </div>
               <div class="quick-links">
                 <a href="mailto:shosmedglobal@gmail.com?subject=Question" class="quick-link">
                   <span>📧</span> Contact Us
-                </a>
-                <a href="index.html#community" class="quick-link">
-                  <span>💬</span> Join WhatsApp Community
                 </a>
                 <a href="index.html#mentors" class="quick-link">
                   <span>👨‍⚕️</span> Meet Your Mentors
@@ -422,14 +442,18 @@
         document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       }
 
-      // ===== Path-based service visibility =====
+      // ===== Path-based service & action visibility =====
       const userPath = profile?.path;
       if (!userPath) {
         document.getElementById('applicantServices').style.display = 'block';
         document.getElementById('studentServices').style.display = 'block';
+        document.getElementById('actionApplicant').style.display = 'flex';
+        document.getElementById('actionStudent').style.display = 'flex';
       } else {
         document.getElementById('applicantServices').style.display = userPath === 'applicant' ? 'block' : 'none';
         document.getElementById('studentServices').style.display = userPath === 'student' ? 'block' : 'none';
+        document.getElementById('actionApplicant').style.display = userPath === 'applicant' ? 'flex' : 'none';
+        document.getElementById('actionStudent').style.display = userPath === 'student' ? 'flex' : 'none';
       }
 
       // ===== QBank access level =====
@@ -459,10 +483,10 @@
 
     function updatePaymentStatus(tier, status) {
       const statusMap = {
+        'application-guide': 'applicationGuideStatus',
         'application': 'applicationStatus',
-        'starter': 'starterStatus',
         'mentorship': 'mentorshipStatus',
-        'vip': 'vipStatus',
+        'match-ready': 'matchReadyStatus',
         'exam-bank': 'examBankStatus'
       };
       const el = document.getElementById(statusMap[tier]);
