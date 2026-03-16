@@ -6,10 +6,9 @@ let currentIndex = 0;
 let answers = {}; // { index: selectedOptionIndex }
 let score = { correct: 0, wrong: 0 };
 
-// ===== Progress Tracking =====
-// Stored in Firestore: users/{uid}/qbankProgress
-// Structure: { completedQuestions: { 'bio-1': { correct: true, date: timestamp }, ... }, resetCount: 0 }
+// ===== Progress & History Tracking =====
 let userProgress = {};
+let testHistory = [];
 let currentUserId = null;
 
 async function loadProgress() {
@@ -27,6 +26,35 @@ async function loadProgress() {
   }
 }
 
+async function loadTestHistory() {
+  if (!currentUserId) return;
+  try {
+    const snapshot = await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('history').get();
+    if (snapshot.exists && snapshot.data().tests) {
+      testHistory = snapshot.data().tests;
+    } else {
+      testHistory = [];
+    }
+  } catch (err) {
+    console.error('Failed to load test history:', err);
+    testHistory = [];
+  }
+}
+
+async function saveTestRecord(testData) {
+  if (!currentUserId) return;
+  testHistory.unshift(testData); // Add to beginning (newest first)
+  // Keep only last 100 tests
+  if (testHistory.length > 100) testHistory = testHistory.slice(0, 100);
+  try {
+    await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('history').set({ tests: testHistory });
+  } catch (err) {
+    console.error('Failed to save test record:', err);
+  }
+}
+
 async function saveProgress() {
   if (!currentUserId) return;
   try {
@@ -38,15 +66,12 @@ async function saveProgress() {
 
 async function resetProgress() {
   if (!currentUserId) return;
-
-  // Check if user can reset (only 6-month subscribers get 1 reset)
   const profile = await getUserProfile(currentUserId);
   const plan = profile?.payments?.['exam-bank-plan'];
   const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
   const isAdmin = ADMIN_EMAILS.includes(profile?.email || '');
 
   if (isAdmin) {
-    // Admin can always reset
     userProgress = { completedQuestions: {}, resetCount: (userProgress.resetCount || 0) + 1 };
     await saveProgress();
     updateProgressDisplay();
@@ -78,16 +103,38 @@ function getUnansweredQuestions(pool) {
   return pool.filter(q => !isQuestionDone(q.id));
 }
 
+// ===== Subject Performance from Progress =====
+function getSubjectPerformance() {
+  const completed = userProgress.completedQuestions || {};
+  const subjects = {};
+
+  // Initialize all subjects
+  Object.entries(allQuestions).forEach(([subj, questions]) => {
+    subjects[subj] = { total: questions.length, done: 0, correct: 0 };
+  });
+
+  // Count from completed questions
+  Object.entries(completed).forEach(([qId, data]) => {
+    // Find which subject this question belongs to
+    for (const [subj, questions] of Object.entries(allQuestions)) {
+      if (questions.find(q => q.id === qId)) {
+        subjects[subj].done++;
+        if (data.correct) subjects[subj].correct++;
+        break;
+      }
+    }
+  });
+
+  return subjects;
+}
+
 function updateProgressDisplay() {
   const stats = getProgressStats();
-
-  // Count total questions available
   let totalAvailable = 0;
   Object.values(allQuestions).forEach(arr => { totalAvailable += arr.length; });
 
   const pct = totalAvailable > 0 ? Math.round((stats.totalDone / totalAvailable) * 100) : 0;
 
-  // Update progress bar on start screen
   const progressEl = document.getElementById('overallProgress');
   if (progressEl) {
     progressEl.innerHTML = `
@@ -117,7 +164,6 @@ function updateProgressDisplay() {
   });
 }
 
-// Save completed questions after answering each one
 function markQuestionCompleted(questionId, isCorrect) {
   if (!userProgress.completedQuestions) {
     userProgress.completedQuestions = {};
@@ -126,7 +172,135 @@ function markQuestionCompleted(questionId, isCorrect) {
     correct: isCorrect,
     date: new Date().toISOString()
   };
-  // Save to Firestore (debounced - will save at end of quiz too)
+}
+
+// ===== Performance Screen =====
+function showPerformance() {
+  showScreen('performanceScreen');
+  renderPerformance();
+}
+
+function renderPerformance() {
+  const container = document.getElementById('performanceContent');
+  if (!container) return;
+
+  const stats = getProgressStats();
+  const subjPerf = getSubjectPerformance();
+  let totalAvailable = 0;
+  Object.values(allQuestions).forEach(arr => { totalAvailable += arr.length; });
+
+  const overallPct = stats.totalDone > 0 ? Math.round((stats.totalCorrect / stats.totalDone) * 100) : 0;
+  const progressPct = totalAvailable > 0 ? Math.round((stats.totalDone / totalAvailable) * 100) : 0;
+
+  // Build subject breakdown rows
+  let subjectRows = '';
+  const subjectIcons = { biology: '🧬', chemistry: '⚗️', physics: '⚡', mathematics: '📐' };
+  Object.entries(subjPerf).forEach(([subj, data]) => {
+    const pct = data.done > 0 ? Math.round((data.correct / data.done) * 100) : 0;
+    const donePct = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
+    const barColor = pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--gold, #f59e0b)' : 'var(--red)';
+    subjectRows += `
+      <div class="perf-subject-row">
+        <div class="perf-subject-name">
+          <span>${subjectIcons[subj] || ''}</span>
+          <strong>${subj.charAt(0).toUpperCase() + subj.slice(1)}</strong>
+        </div>
+        <div class="perf-subject-stats">
+          <div class="perf-mini-bar">
+            <div class="perf-mini-fill" style="width: ${pct}%; background: ${barColor};"></div>
+          </div>
+          <span class="perf-subject-pct">${data.done > 0 ? pct + '%' : '—'}</span>
+          <span class="perf-subject-detail">${data.correct}/${data.done} correct · ${data.done}/${data.total} done (${donePct}%)</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // Build test history rows
+  let historyRows = '';
+  if (testHistory.length === 0) {
+    historyRows = '<tr><td colspan="6" class="perf-empty">No tests completed yet. Start a block to see your history.</td></tr>';
+  } else {
+    testHistory.forEach((test, i) => {
+      const date = new Date(test.date);
+      const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
+      const pctClass = pct >= 70 ? 'perf-score-good' : pct >= 50 ? 'perf-score-mid' : 'perf-score-low';
+      const subjects = test.subjects ? test.subjects.join(', ') : '—';
+      historyRows += `
+        <tr>
+          <td>${testHistory.length - i}</td>
+          <td>${dateStr}<br><small>${timeStr}</small></td>
+          <td class="${pctClass}"><strong>${pct}%</strong></td>
+          <td>${test.correct}/${test.total}</td>
+          <td>${subjects}</td>
+          <td>${test.mode || 'All'}</td>
+        </tr>
+      `;
+    });
+  }
+
+  // Cumulative score across all tests
+  let totalTestQuestions = 0, totalTestCorrect = 0;
+  testHistory.forEach(t => { totalTestQuestions += t.total; totalTestCorrect += t.correct; });
+  const cumulativePct = totalTestQuestions > 0 ? Math.round((totalTestCorrect / totalTestQuestions) * 100) : 0;
+
+  container.innerHTML = `
+    <!-- Cumulative Stats Cards -->
+    <div class="perf-stats-grid">
+      <div class="perf-stat-card">
+        <div class="perf-stat-number">${progressPct}%</div>
+        <div class="perf-stat-label">QBank Completed</div>
+        <div class="perf-stat-sub">${stats.totalDone} / ${totalAvailable} questions</div>
+      </div>
+      <div class="perf-stat-card">
+        <div class="perf-stat-number ${overallPct >= 70 ? 'perf-score-good' : overallPct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${stats.totalDone > 0 ? overallPct + '%' : '—'}</div>
+        <div class="perf-stat-label">Overall Accuracy</div>
+        <div class="perf-stat-sub">${stats.totalCorrect} correct / ${stats.totalDone} answered</div>
+      </div>
+      <div class="perf-stat-card">
+        <div class="perf-stat-number">${testHistory.length}</div>
+        <div class="perf-stat-label">Tests Completed</div>
+        <div class="perf-stat-sub">${totalTestQuestions} total questions attempted</div>
+      </div>
+      <div class="perf-stat-card">
+        <div class="perf-stat-number ${cumulativePct >= 70 ? 'perf-score-good' : cumulativePct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${totalTestQuestions > 0 ? cumulativePct + '%' : '—'}</div>
+        <div class="perf-stat-label">Cumulative Test Score</div>
+        <div class="perf-stat-sub">${totalTestCorrect} / ${totalTestQuestions} across all tests</div>
+      </div>
+    </div>
+
+    <!-- Subject Breakdown -->
+    <div class="perf-section">
+      <h3>Subject Performance</h3>
+      <div class="perf-subject-list">
+        ${subjectRows}
+      </div>
+    </div>
+
+    <!-- Test History -->
+    <div class="perf-section">
+      <h3>Test History</h3>
+      <div class="perf-table-wrap">
+        <table class="perf-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Score</th>
+              <th>Correct</th>
+              <th>Subjects</th>
+              <th>Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${historyRows}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
 }
 
 // Load questions from JSON
@@ -161,7 +335,6 @@ function startQuiz() {
     return;
   }
 
-  // Gather questions from selected subjects
   let pool = [];
   selectedSubjects.forEach(subj => {
     if (allQuestions[subj]) {
@@ -174,7 +347,7 @@ function startQuiz() {
     return;
   }
 
-  // Filter by mode: unanswered only or all
+  // Filter by mode
   const filterMode = document.getElementById('questionFilter')?.value || 'all';
   if (filterMode === 'unanswered') {
     pool = getUnansweredQuestions(pool);
@@ -193,31 +366,32 @@ function startQuiz() {
     }
   }
 
-  // Shuffle if checked (disabled in sample mode to keep questions consistent)
+  // Store quiz metadata for history
+  window._quizMeta = {
+    subjects: selectedSubjects.map(s => s.charAt(0).toUpperCase() + s.slice(1)),
+    mode: filterMode === 'unanswered' ? 'Unanswered' : filterMode === 'incorrect' ? 'Incorrect' : 'All'
+  };
+
   const shouldShuffle = document.getElementById('shuffleQuestions').checked;
   if (shouldShuffle && window.qbankAccessLevel !== 'sample') {
     pool = shuffle(pool);
   }
 
-  // Limit count
   const countSelect = document.getElementById('questionCount').value;
   const limit = parseInt(countSelect);
   if (limit > 0 && limit < pool.length) {
     pool = pool.slice(0, limit);
   }
 
-  // Initialize quiz state
   quizQuestions = pool;
   currentIndex = 0;
   answers = {};
   score = { correct: 0, wrong: 0 };
 
-  // Update UI
   document.getElementById('totalQuestions').textContent = quizQuestions.length;
   document.getElementById('scoreCorrect').textContent = '0';
   document.getElementById('scoreWrong').textContent = '0';
 
-  // Show quiz screen
   showScreen('quizScreen');
   renderQuestion();
 }
@@ -227,20 +401,16 @@ function renderQuestion() {
   const q = quizQuestions[currentIndex];
   if (!q) return;
 
-  // Update topbar
   document.getElementById('questionIndex').textContent = currentIndex + 1;
   document.getElementById('currentSubject').textContent =
     q.subject.charAt(0).toUpperCase() + q.subject.slice(1);
 
-  // Progress bar
   const pct = ((currentIndex + 1) / quizQuestions.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
 
-  // Topic & question
   document.getElementById('questionTopic').textContent = q.topic;
   document.getElementById('questionText').innerHTML = q.question;
 
-  // Options
   const container = document.getElementById('optionsContainer');
   const letters = ['A', 'B', 'C', 'D'];
   container.innerHTML = '';
@@ -251,15 +421,10 @@ function renderQuestion() {
     div.dataset.index = i;
     div.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
 
-    // If already answered this question, restore state
     if (answers[currentIndex] !== undefined) {
       div.classList.add('disabled');
-      if (i === q.correct) {
-        div.classList.add('correct');
-      }
-      if (i === answers[currentIndex] && i !== q.correct) {
-        div.classList.add('wrong');
-      }
+      if (i === q.correct) div.classList.add('correct');
+      if (i === answers[currentIndex] && i !== q.correct) div.classList.add('wrong');
     } else {
       div.addEventListener('click', () => selectAnswer(i));
     }
@@ -267,7 +432,6 @@ function renderQuestion() {
     container.appendChild(div);
   });
 
-  // Explanation
   const expBox = document.getElementById('explanationBox');
   if (answers[currentIndex] !== undefined) {
     showExplanation(q, answers[currentIndex] === q.correct);
@@ -275,60 +439,43 @@ function renderQuestion() {
     expBox.style.display = 'none';
   }
 
-  // Navigation buttons
   document.getElementById('prevBtn').disabled = currentIndex === 0;
-
   const isAnswered = answers[currentIndex] !== undefined;
   const isLast = currentIndex === quizQuestions.length - 1;
-
-  document.getElementById('nextBtn').style.display =
-    (isAnswered && !isLast) ? 'inline-flex' : 'none';
-  document.getElementById('finishBtn').style.display =
-    (isAnswered && isLast) ? 'inline-flex' : 'none';
+  document.getElementById('nextBtn').style.display = (isAnswered && !isLast) ? 'inline-flex' : 'none';
+  document.getElementById('finishBtn').style.display = (isAnswered && isLast) ? 'inline-flex' : 'none';
 }
 
 // Select an answer
 function selectAnswer(index) {
-  if (answers[currentIndex] !== undefined) return; // already answered
+  if (answers[currentIndex] !== undefined) return;
 
   const q = quizQuestions[currentIndex];
   answers[currentIndex] = index;
   const isCorrect = index === q.correct;
 
-  if (isCorrect) {
-    score.correct++;
-  } else {
-    score.wrong++;
-  }
+  if (isCorrect) score.correct++;
+  else score.wrong++;
 
-  // Track progress for this question
   markQuestionCompleted(q.id, isCorrect);
 
-  // Update score display
   document.getElementById('scoreCorrect').textContent = score.correct;
   document.getElementById('scoreWrong').textContent = score.wrong;
 
-  // Update option styles
   const options = document.querySelectorAll('.quiz-option');
   options.forEach(opt => {
     const i = parseInt(opt.dataset.index);
     opt.classList.add('disabled');
-    opt.replaceWith(opt.cloneNode(true)); // Remove event listeners
+    opt.replaceWith(opt.cloneNode(true));
 
     const newOpt = document.querySelectorAll('.quiz-option')[i];
-    if (i === q.correct) {
-      newOpt.classList.add('correct');
-    }
-    if (i === index && !isCorrect) {
-      newOpt.classList.add('wrong');
-    }
+    if (i === q.correct) newOpt.classList.add('correct');
+    if (i === index && !isCorrect) newOpt.classList.add('wrong');
     newOpt.classList.add('disabled');
   });
 
-  // Show explanation
   showExplanation(q, isCorrect);
 
-  // Show next/finish button
   const isLast = currentIndex === quizQuestions.length - 1;
   document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-flex';
   document.getElementById('finishBtn').style.display = isLast ? 'inline-flex' : 'none';
@@ -346,10 +493,8 @@ function showExplanation(q, isCorrect) {
   icon.textContent = isCorrect ? '✓' : '✗';
   title.textContent = isCorrect ? 'Correct!' : 'Incorrect';
   content.innerHTML = q.explanation;
-
   box.style.display = 'block';
 
-  // Scroll explanation into view
   setTimeout(() => {
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 100);
@@ -373,8 +518,20 @@ function goPrev() {
 }
 
 function finishQuiz() {
-  // Save all progress to Firestore
+  // Save progress to Firestore
   saveProgress();
+
+  // Save test record
+  const meta = window._quizMeta || { subjects: [], mode: 'All' };
+  saveTestRecord({
+    date: new Date().toISOString(),
+    correct: score.correct,
+    wrong: score.wrong,
+    total: quizQuestions.length,
+    subjects: meta.subjects,
+    mode: meta.mode
+  });
+
   showResults();
 }
 
@@ -385,39 +542,25 @@ function showResults() {
   const total = quizQuestions.length;
   const pct = total > 0 ? Math.round((score.correct / total) * 100) : 0;
 
-  // Animate score circle
   document.getElementById('scorePercent').textContent = pct + '%';
   const circle = document.getElementById('scoreCircle');
   const circumference = 339.292;
   const offset = circumference - (pct / 100) * circumference;
-  setTimeout(() => {
-    circle.style.strokeDashoffset = offset;
-  }, 100);
+  setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
 
-  // Update color based on score
-  if (pct >= 70) {
-    circle.style.stroke = 'var(--green)';
-  } else if (pct >= 50) {
-    circle.style.stroke = 'var(--gold)';
-  } else {
-    circle.style.stroke = 'var(--red)';
-  }
+  if (pct >= 70) circle.style.stroke = 'var(--green)';
+  else if (pct >= 50) circle.style.stroke = 'var(--gold)';
+  else circle.style.stroke = 'var(--red)';
 
-  // Stats
   document.getElementById('finalCorrect').textContent = score.correct;
   document.getElementById('finalWrong').textContent = score.wrong;
   document.getElementById('finalTotal').textContent = total;
 
-  // Subject breakdown
   const breakdown = {};
   quizQuestions.forEach((q, i) => {
-    if (!breakdown[q.subject]) {
-      breakdown[q.subject] = { correct: 0, total: 0 };
-    }
+    if (!breakdown[q.subject]) breakdown[q.subject] = { correct: 0, total: 0 };
     breakdown[q.subject].total++;
-    if (answers[i] === q.correct) {
-      breakdown[q.subject].correct++;
-    }
+    if (answers[i] === q.correct) breakdown[q.subject].correct++;
   });
 
   const breakdownEl = document.getElementById('subjectBreakdown');
@@ -472,30 +615,32 @@ function showReview() {
 
 // Screen switching
 function showScreen(id) {
-  ['startScreen', 'quizScreen', 'resultsScreen', 'reviewScreen'].forEach(s => {
-    document.getElementById(s).style.display = s === id ? 'block' : 'none';
+  ['startScreen', 'quizScreen', 'resultsScreen', 'reviewScreen', 'performanceScreen'].forEach(s => {
+    const el = document.getElementById(s);
+    if (el) el.style.display = s === id ? 'block' : 'none';
   });
-  // Update progress display when returning to start screen
-  if (id === 'startScreen') {
-    updateProgressDisplay();
-  }
+  if (id === 'startScreen') updateProgressDisplay();
 }
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // loadQuestions() is called by access control in qbank.html instead
-
   document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
   document.getElementById('nextBtn').addEventListener('click', goNext);
   document.getElementById('prevBtn').addEventListener('click', goPrev);
   document.getElementById('finishBtn').addEventListener('click', finishQuiz);
   document.getElementById('retryBtn').addEventListener('click', () => {
-    // Reset score circle
     document.getElementById('scoreCircle').style.strokeDashoffset = 339.292;
     showScreen('startScreen');
   });
   document.getElementById('reviewBtn').addEventListener('click', showReview);
   document.getElementById('backToResultsBtn').addEventListener('click', () => showScreen('resultsScreen'));
+
+  // Performance button
+  const perfBtn = document.getElementById('performanceBtn');
+  if (perfBtn) perfBtn.addEventListener('click', showPerformance);
+
+  const backFromPerf = document.getElementById('backFromPerformance');
+  if (backFromPerf) backFromPerf.addEventListener('click', () => showScreen('startScreen'));
 
   // Reset button
   const resetBtn = document.getElementById('resetProgressBtn');
@@ -524,7 +669,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (e.key === 'ArrowLeft') goPrev();
 
-    // Number keys 1-4 to select answers
     const num = parseInt(e.key);
     if (num >= 1 && num <= 4 && answers[currentIndex] === undefined) {
       selectAnswer(num - 1);

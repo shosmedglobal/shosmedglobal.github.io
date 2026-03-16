@@ -927,6 +927,200 @@
   color: var(--gray-700);
 }
 
+/* Start Buttons Row */
+.start-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== Performance Screen ===== */
+.qbank-performance {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.perf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.perf-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+/* Stat Cards */
+.perf-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.perf-stat-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+}
+
+.perf-stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.perf-stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+
+.perf-stat-sub {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+.perf-score-good { color: var(--green) !important; }
+.perf-score-mid { color: var(--gold, #f59e0b) !important; }
+.perf-score-low { color: var(--red) !important; }
+
+/* Subject Performance */
+.perf-section {
+  margin-bottom: 32px;
+}
+
+.perf-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.perf-subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perf-subject-row {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.perf-subject-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 130px;
+  font-size: 0.95rem;
+}
+
+.perf-subject-stats {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.perf-mini-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.perf-mini-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.perf-subject-pct {
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 40px;
+  text-align: right;
+  color: var(--navy);
+}
+
+.perf-subject-detail {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  min-width: 160px;
+}
+
+/* Test History Table */
+.perf-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.perf-table thead {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.perf-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.perf-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+
+.perf-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.perf-table td small {
+  color: var(--gray-400);
+  font-size: 0.75rem;
+}
+
+.perf-empty {
+  text-align: center;
+  padding: 40px 20px !important;
+  color: var(--gray-400);
+  font-style: italic;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .qbank-start-header h1 {
@@ -961,6 +1155,39 @@
 
   .review-item {
     padding: 24px;
+  }
+
+  .perf-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perf-subject-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .perf-subject-stats {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .perf-subject-detail {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .perf-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .start-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .start-buttons .btn {
+    width: 100%;
   }
 }
 

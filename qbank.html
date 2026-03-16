@@ -109,9 +109,14 @@
           </div>
         </div>
 
-        <button class="btn btn-primary btn-lg" id="startQuizBtn">
-          Start Block
-        </button>
+        <div class="start-buttons">
+          <button class="btn btn-primary btn-lg" id="startQuizBtn">
+            Start Block
+          </button>
+          <button class="btn btn-secondary btn-lg" id="performanceBtn">
+            📊 Performance
+          </button>
+        </div>
         <p class="start-note">Select subjects and question mode, then start your block.</p>
 
         <!-- Reset Progress (only for 6-month or admin) -->
@@ -119,6 +124,15 @@
           <button class="btn btn-outline btn-small" id="resetProgressBtn">Reset All Progress</button>
           <p class="reset-note">Start fresh with all questions marked as unanswered.</p>
         </div>
+      </div>
+
+      <!-- ===== PERFORMANCE SCREEN ===== -->
+      <div id="performanceScreen" class="qbank-performance" style="display:none;">
+        <div class="perf-header">
+          <h2>📊 Performance Dashboard</h2>
+          <button class="btn btn-secondary" id="backFromPerformance">← Back to Questions</button>
+        </div>
+        <div id="performanceContent"></div>
       </div>
 
       <!-- ===== QUIZ SCREEN ===== -->
@@ -264,9 +278,10 @@
         window.qbankAccessLevel = 'sample';
       }
 
-      // Load user progress from Firestore
+      // Load user progress and test history from Firestore
       currentUserId = user.uid;
       await loadProgress();
+      await loadTestHistory();
 
       // Show reset button for admin or 6-month subscribers who haven't used their reset
       if (isAdmin || (plan === '6mo' && (userProgress.resetCount || 0) < 1)) {
