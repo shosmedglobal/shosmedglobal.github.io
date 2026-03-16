@@ -55,6 +55,71 @@ async function saveTestRecord(testData) {
   }
 }
 
+async function renameTest(index, newName) {
+  if (!currentUserId || !testHistory[index]) return;
+  testHistory[index].name = newName.trim();
+  try {
+    await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('history').set({ tests: testHistory });
+  } catch (err) {
+    console.error('Failed to rename test:', err);
+  }
+}
+
+function renderTestHistoryList() {
+  const section = document.getElementById('testHistorySection');
+  const list = document.getElementById('testHistoryList');
+  if (!section || !list) return;
+
+  if (testHistory.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  list.innerHTML = '';
+
+  testHistory.forEach((test, i) => {
+    const date = new Date(test.date);
+    const defaultName = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+      ' — ' + date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    const displayName = test.name || defaultName;
+    const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
+    const pctClass = pct >= 70 ? 'score-good' : pct >= 50 ? 'score-mid' : 'score-low';
+    const subjects = test.subjects ? test.subjects.join(', ') : '';
+
+    const row = document.createElement('div');
+    row.className = 'test-history-row';
+    row.innerHTML = `
+      <div class="th-name-wrap">
+        <span class="th-name" id="thName-${i}" title="Click to rename">${displayName}</span>
+        <button class="th-rename-btn" data-index="${i}" title="Rename">✏️</button>
+      </div>
+      <div class="th-stats">
+        <span class="th-score ${pctClass}">${pct}%</span>
+        <span class="th-detail">${test.correct}/${test.total} correct</span>
+        <span class="th-subjects">${subjects}</span>
+      </div>
+    `;
+    list.appendChild(row);
+  });
+
+  // Attach rename handlers
+  list.querySelectorAll('.th-rename-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.index);
+      const nameEl = document.getElementById('thName-' + idx);
+      const currentName = testHistory[idx].name || nameEl.textContent;
+      const newName = prompt('Rename this test:', currentName);
+      if (newName !== null && newName.trim()) {
+        nameEl.textContent = newName.trim();
+        renameTest(idx, newName.trim());
+      }
+    });
+  });
+}
+
 async function saveProgress() {
   if (!currentUserId) return;
   try {
@@ -523,8 +588,12 @@ function finishQuiz() {
 
   // Save test record
   const meta = window._quizMeta || { subjects: [], mode: 'All' };
+  const now = new Date();
+  const defaultName = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+    ' — ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   saveTestRecord({
-    date: new Date().toISOString(),
+    date: now.toISOString(),
+    name: defaultName,
     correct: score.correct,
     wrong: score.wrong,
     total: quizQuestions.length,
@@ -619,7 +688,10 @@ function showScreen(id) {
     const el = document.getElementById(s);
     if (el) el.style.display = s === id ? 'block' : 'none';
   });
-  if (id === 'startScreen') updateProgressDisplay();
+  if (id === 'startScreen') {
+    updateProgressDisplay();
+    renderTestHistoryList();
+  }
 }
 
 // Event listeners
@@ -634,6 +706,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('reviewBtn').addEventListener('click', showReview);
   document.getElementById('backToResultsBtn').addEventListener('click', () => showScreen('resultsScreen'));
+  document.getElementById('backToQbankBtn').addEventListener('click', () => {
+    document.getElementById('scoreCircle').style.strokeDashoffset = 339.292;
+    showScreen('startScreen');
+  });
 
   // Performance button
   const perfBtn = document.getElementById('performanceBtn');

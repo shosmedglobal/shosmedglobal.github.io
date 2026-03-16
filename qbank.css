@@ -1212,3 +1212,113 @@
     width: 100%;
   }
 }
+
+/* ===== Test History on Start Screen ===== */
+.test-history-section {
+  margin: 24px 0;
+}
+
+.test-history-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.test-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.test-history-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: box-shadow 0.2s;
+}
+
+.test-history-row:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.th-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.th-name {
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.th-rename-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 4px;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.th-rename-btn:hover {
+  opacity: 1;
+}
+
+.th-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.th-score {
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 40px;
+  text-align: right;
+}
+
+.th-score.score-good { color: var(--green, #16a34a); }
+.th-score.score-mid { color: var(--gold, #f59e0b); }
+.th-score.score-low { color: var(--red, #dc2626); }
+
+.th-detail {
+  color: #6b7280;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.th-subjects {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .test-history-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .th-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

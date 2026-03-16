@@ -83,6 +83,12 @@
         <!-- Progress Overview -->
         <div id="overallProgress" class="overall-progress"></div>
 
+        <!-- Test History List -->
+        <div id="testHistorySection" class="test-history-section" style="display:none;">
+          <h3 class="test-history-title">📋 Previous Tests</h3>
+          <div id="testHistoryList" class="test-history-list"></div>
+        </div>
+
         <div class="start-options">
           <div class="option-row">
             <label for="questionFilter">Question mode:</label>
@@ -218,7 +224,7 @@
           <div class="results-actions">
             <button class="btn btn-primary" id="retryBtn">Try Again</button>
             <button class="btn btn-secondary" id="reviewBtn">Review Answers</button>
-            <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+            <button class="btn btn-secondary" id="backToQbankBtn">Back to Question Bank</button>
           </div>
         </div>
       </div>
@@ -400,6 +406,7 @@
 
           // Update progress display with loaded questions
           updateProgressDisplay();
+          renderTestHistoryList();
 
           // Show the start screen now that questions are loaded
           document.getElementById('startScreen').style.display = 'block';

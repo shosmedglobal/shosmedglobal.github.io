@@ -93,7 +93,7 @@
 
           <!-- ===== Quick Actions — prominent cards at top ===== -->
           <div class="action-cards">
-            <a href="qbank.html" class="action-card action-qbank">
+            <a href="qbank.html" class="action-card action-qbank" id="actionQbank" style="display:none;">
               <div class="action-icon">📝</div>
               <div class="action-text">
                 <h3>Start Practice Questions</h3>
@@ -129,7 +129,7 @@
           </div>
 
           <!-- QBank Summary -->
-          <div class="dash-card" style="margin-bottom: 20px;">
+          <div class="dash-card" id="overviewQbankCard" style="margin-bottom: 20px; display:none;">
             <div class="dash-card-header">
               <h3>📝 Question Bank</h3>
               <span class="status-badge status-paid" id="overviewQbankBadge">Free Sample</span>
@@ -199,7 +199,7 @@
           </div>
 
           <!-- QBank Plans -->
-          <h3 class="view-section-title">Question Bank Plans</h3>
+          <h3 class="view-section-title" id="qbankPricingTitle">Question Bank Plans</h3>
           <div class="qbank-pricing-grid" id="qbankPricingGrid">
             <div class="qbank-plan-card">
               <h4>1 Month</h4>
@@ -473,18 +473,37 @@
         document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       }
 
-      // ===== Path-based action & store visibility =====
+      // ===== Path-based visibility =====
+      // Med School applicants: see QBank + Application Services, NOT Mentorship
+      // Residency applicants: see Mentorship, NOT QBank or Application Services
+      // No path set: see everything
       const userPath = profile?.path;
+      const isApplicant = userPath === 'applicant';
+      const isStudent = userPath === 'student';
+
       if (!userPath) {
+        // No path — show everything
+        document.getElementById('actionQbank').style.display = 'flex';
         document.getElementById('actionApplicant').style.display = 'flex';
         document.getElementById('actionStudent').style.display = 'flex';
+        document.getElementById('overviewQbankCard').style.display = 'block';
         document.getElementById('storeApplicantServices').style.display = 'block';
         document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        document.getElementById('actionApplicant').style.display = userPath === 'applicant' ? 'flex' : 'none';
-        document.getElementById('actionStudent').style.display = userPath === 'student' ? 'flex' : 'none';
-        document.getElementById('storeApplicantServices').style.display = userPath === 'applicant' ? 'block' : 'none';
-        document.getElementById('storeStudentServices').style.display = userPath === 'student' ? 'block' : 'none';
+        // QBank + application services only for med school applicants
+        document.getElementById('actionQbank').style.display = isApplicant ? 'flex' : 'none';
+        document.getElementById('overviewQbankCard').style.display = isApplicant ? 'block' : 'none';
+        document.getElementById('actionApplicant').style.display = isApplicant ? 'flex' : 'none';
+        document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
+
+        // Hide QBank sidebar link + view for residency applicants
+        const qbankSidebarLink = document.querySelector('.sidebar-link[data-view="qbank"]');
+        if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        document.getElementById('viewQbank').style.display = isApplicant ? '' : 'none';
+
+        // Mentorship only for residency applicants
+        document.getElementById('actionStudent').style.display = isStudent ? 'flex' : 'none';
+        document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
       }
 
       // ===== QBank access level =====
@@ -500,9 +519,11 @@
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
         ? 'You have full access to all questions. Practice across Biology, Chemistry, Physics & Mathematics.'
         : 'Try a sample of our question bank. Upgrade to unlock all 155+ questions with detailed explanations.';
-      // Show upgrade prompt for free users, hide pricing grid if paid
-      document.getElementById('qbankUpgradePrompt').style.display = qbankPaid ? 'none' : '';
-      document.getElementById('qbankPricingGrid').style.display = qbankPaid ? 'none' : '';
+      // Show upgrade prompt for free users, hide pricing grid if paid OR if residency applicant
+      const hideQbankStore = qbankPaid || isStudent;
+      document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
+      document.getElementById('qbankPricingGrid').style.display = hideQbankStore ? 'none' : '';
+      document.getElementById('qbankPricingTitle').style.display = hideQbankStore ? 'none' : '';
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
