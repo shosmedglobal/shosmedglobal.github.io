@@ -1,3 +1,54 @@
+/* ===== Content Protection ===== */
+.qbank-section {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Hide content when printing */
+@media print {
+  body * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body::after {
+    content: 'Printing is not allowed. © SHOS Med Global';
+    display: block !important;
+    visibility: visible !important;
+    font-size: 2rem;
+    text-align: center;
+    padding: 100px 20px;
+    color: #333;
+  }
+}
+
+/* Blur overlay when window loses focus (screenshot deterrent) */
+.content-protected-blur .qbank-section {
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.screenshot-warning {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 25, 49, 0.95);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 40px;
+}
+
+.content-protected-blur .screenshot-warning {
+  display: flex;
+}
+
 /* ===== Sample Banner ===== */
 .sample-banner {
   background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);

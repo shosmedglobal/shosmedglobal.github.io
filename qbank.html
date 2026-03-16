@@ -247,6 +247,62 @@
       loadQuestionsWithAccess();
     });
 
+    // ===== Content Protection =====
+    (function() {
+      // Add screenshot warning overlay
+      const warning = document.createElement('div');
+      warning.className = 'screenshot-warning';
+      warning.innerHTML = '🔒 Content protected<br><small>Return to this window to continue</small>';
+      document.body.appendChild(warning);
+
+      // Disable right-click context menu
+      document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+
+      // Disable copy, cut, paste
+      document.addEventListener('copy', e => { e.preventDefault(); return false; });
+      document.addEventListener('cut', e => { e.preventDefault(); return false; });
+
+      // Block keyboard shortcuts for copy, print, save, select all, print screen
+      document.addEventListener('keydown', e => {
+        // Ctrl/Cmd + C, P, S, A, U (view source)
+        if ((e.ctrlKey || e.metaKey) && ['c','p','s','a','u'].includes(e.key.toLowerCase())) {
+          e.preventDefault();
+          return false;
+        }
+        // PrintScreen key
+        if (e.key === 'PrintScreen') {
+          e.preventDefault();
+          navigator.clipboard.writeText('').catch(() => {});
+          return false;
+        }
+        // F12 (dev tools), Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.key === 'F12') { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Blur content when window loses focus (screenshot deterrent)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          document.body.classList.add('content-protected-blur');
+        } else {
+          document.body.classList.remove('content-protected-blur');
+        }
+      });
+
+      window.addEventListener('blur', () => {
+        document.body.classList.add('content-protected-blur');
+      });
+      window.addEventListener('focus', () => {
+        document.body.classList.remove('content-protected-blur');
+      });
+
+      // Disable drag (prevents dragging text/images)
+      document.addEventListener('dragstart', e => { e.preventDefault(); return false; });
+    })();
+
     function loadQuestionsWithAccess() {
       // Override the loadQuestions function to filter based on access
       fetch('questions.json')
