@@ -238,7 +238,7 @@ function renderQuestion() {
 
   // Topic & question
   document.getElementById('questionTopic').textContent = q.topic;
-  document.getElementById('questionText').textContent = q.question;
+  document.getElementById('questionText').innerHTML = q.question;
 
   // Options
   const container = document.getElementById('optionsContainer');
