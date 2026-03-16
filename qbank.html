@@ -232,8 +232,11 @@
       const profile = await getUserProfile(user.uid);
       const qbankAccess = profile?.payments?.['exam-bank'];
 
-      if (qbankAccess === 'paid') {
-        // Full access — show all questions, no restrictions
+      // Admin emails get full access without payment
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+
+      if (ADMIN_EMAILS.includes(user.email) || qbankAccess === 'paid') {
+        // Full access — admin or paid subscriber
         window.qbankAccessLevel = 'full';
       } else {
         // Free sample — filter to only sample questions

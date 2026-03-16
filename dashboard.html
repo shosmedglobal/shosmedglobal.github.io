@@ -457,7 +457,9 @@
       }
 
       // ===== QBank access level =====
-      const qbankPaid = profile?.payments?.['exam-bank'] === 'paid';
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+      const isAdmin = ADMIN_EMAILS.includes(user.email);
+      const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       document.getElementById('qbankPriceLabel').textContent = qbankPaid ? 'Full Access — 155 questions' : 'Free Sample (5 questions)';
       document.getElementById('qbankAccessBadge').textContent = qbankPaid ? 'Full Access' : 'Free Sample';
       document.getElementById('qbankAccessBadge').className = 'status-badge ' + (qbankPaid ? 'status-paid' : 'status-unpaid');
