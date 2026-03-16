@@ -29,12 +29,17 @@
     </div>
   </nav>
 
-  <!-- Question Bank App -->
-  <section class="qbank-section">
+  <!-- Question Bank App — hidden until auth check completes -->
+  <section class="qbank-section" id="qbankSection" style="display:none;">
     <div class="container">
 
+      <!-- Loading state while checking auth -->
+      <div id="authLoading" style="text-align:center; padding:80px 20px;">
+        <p style="font-size:1.1rem; color:#666;">Checking access...</p>
+      </div>
+
       <!-- ===== START SCREEN ===== -->
-      <div id="startScreen" class="qbank-start">
+      <div id="startScreen" class="qbank-start" style="display:none;">
         <div class="qbank-start-header">
           <h1>Entrance Exam <span>Question Bank</span></h1>
           <p>Practice for the Charles University Medical Faculty entrance exam with original questions and detailed explanations.</p>
@@ -209,6 +214,9 @@
     // Fixed sample question IDs — same 5 every time for free users
     const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-2', 'chem-1', 'chem-2', 'phys-1'];
 
+    // Show the section container (still hidden content until auth resolves)
+    document.getElementById('qbankSection').style.display = '';
+
     // Require login to access QBank
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
@@ -216,6 +224,9 @@
         window.location.href = 'signup.html?redirect=qbank';
         return;
       }
+
+      // Auth passed — hide loading, show quiz content
+      document.getElementById('authLoading').style.display = 'none';
 
       // Check user's subscription tier from Firestore
       const profile = await getUserProfile(user.uid);
@@ -282,6 +293,9 @@
               checkbox.checked = false;
             }
           });
+
+          // Show the start screen now that questions are loaded
+          document.getElementById('startScreen').style.display = 'block';
         })
         .catch(err => console.error('Failed to load questions:', err));
     }
