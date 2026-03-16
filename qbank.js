@@ -6,21 +6,135 @@ let currentIndex = 0;
 let answers = {}; // { index: selectedOptionIndex }
 let score = { correct: 0, wrong: 0 };
 
+// ===== Progress Tracking =====
+// Stored in Firestore: users/{uid}/qbankProgress
+// Structure: { completedQuestions: { 'bio-1': { correct: true, date: timestamp }, ... }, resetCount: 0 }
+let userProgress = {};
+let currentUserId = null;
+
+async function loadProgress() {
+  if (!currentUserId) return;
+  try {
+    const doc = await db.collection('users').doc(currentUserId).collection('qbankData').doc('progress').get();
+    if (doc.exists) {
+      userProgress = doc.data();
+    } else {
+      userProgress = { completedQuestions: {}, resetCount: 0 };
+    }
+  } catch (err) {
+    console.error('Failed to load progress:', err);
+    userProgress = { completedQuestions: {}, resetCount: 0 };
+  }
+}
+
+async function saveProgress() {
+  if (!currentUserId) return;
+  try {
+    await db.collection('users').doc(currentUserId).collection('qbankData').doc('progress').set(userProgress, { merge: true });
+  } catch (err) {
+    console.error('Failed to save progress:', err);
+  }
+}
+
+async function resetProgress() {
+  if (!currentUserId) return;
+
+  // Check if user can reset (only 6-month subscribers get 1 reset)
+  const profile = await getUserProfile(currentUserId);
+  const plan = profile?.payments?.['exam-bank-plan'];
+  const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+  const isAdmin = ADMIN_EMAILS.includes(profile?.email || '');
+
+  if (isAdmin) {
+    // Admin can always reset
+    userProgress = { completedQuestions: {}, resetCount: (userProgress.resetCount || 0) + 1 };
+    await saveProgress();
+    updateProgressDisplay();
+    return true;
+  }
+
+  if (plan === '6mo' && (userProgress.resetCount || 0) < 1) {
+    userProgress = { completedQuestions: {}, resetCount: 1 };
+    await saveProgress();
+    updateProgressDisplay();
+    return true;
+  }
+
+  return false;
+}
+
+function getProgressStats() {
+  const completed = userProgress.completedQuestions || {};
+  const totalDone = Object.keys(completed).length;
+  const totalCorrect = Object.values(completed).filter(q => q.correct).length;
+  return { totalDone, totalCorrect, totalWrong: totalDone - totalCorrect };
+}
+
+function isQuestionDone(questionId) {
+  return !!(userProgress.completedQuestions && userProgress.completedQuestions[questionId]);
+}
+
+function getUnansweredQuestions(pool) {
+  return pool.filter(q => !isQuestionDone(q.id));
+}
+
+function updateProgressDisplay() {
+  const stats = getProgressStats();
+
+  // Count total questions available
+  let totalAvailable = 0;
+  Object.values(allQuestions).forEach(arr => { totalAvailable += arr.length; });
+
+  const pct = totalAvailable > 0 ? Math.round((stats.totalDone / totalAvailable) * 100) : 0;
+
+  // Update progress bar on start screen
+  const progressEl = document.getElementById('overallProgress');
+  if (progressEl) {
+    progressEl.innerHTML = `
+      <div class="progress-stats-row">
+        <span class="progress-label">Overall Progress</span>
+        <span class="progress-numbers">${stats.totalDone} / ${totalAvailable} questions (${pct}%)</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width: ${pct}%"></div>
+      </div>
+      <div class="progress-detail-row">
+        <span class="progress-correct">✓ ${stats.totalCorrect} correct</span>
+        <span class="progress-wrong">✗ ${stats.totalWrong} incorrect</span>
+        <span class="progress-remaining">${totalAvailable - stats.totalDone} remaining</span>
+      </div>
+    `;
+  }
+
+  // Update per-subject counts
+  ['biology', 'chemistry', 'physics', 'mathematics'].forEach(subj => {
+    const subjQuestions = allQuestions[subj] || [];
+    const done = subjQuestions.filter(q => isQuestionDone(q.id)).length;
+    const countEl = document.getElementById('count' + subj.charAt(0).toUpperCase() + subj.slice(1));
+    if (countEl) {
+      countEl.textContent = `${done}/${subjQuestions.length} done`;
+    }
+  });
+}
+
+// Save completed questions after answering each one
+function markQuestionCompleted(questionId, isCorrect) {
+  if (!userProgress.completedQuestions) {
+    userProgress.completedQuestions = {};
+  }
+  userProgress.completedQuestions[questionId] = {
+    correct: isCorrect,
+    date: new Date().toISOString()
+  };
+  // Save to Firestore (debounced - will save at end of quiz too)
+}
+
 // Load questions from JSON
 async function loadQuestions() {
   try {
     const res = await fetch('questions.json');
     allQuestions = await res.json();
-
-    // Update counts
-    document.getElementById('countBiology').textContent =
-      (allQuestions.biology?.length || 0) + ' questions';
-    document.getElementById('countChemistry').textContent =
-      (allQuestions.chemistry?.length || 0) + ' questions';
-    document.getElementById('countPhysics').textContent =
-      (allQuestions.physics?.length || 0) + ' questions';
-    document.getElementById('countMathematics').textContent =
-      (allQuestions.mathematics?.length || 0) + ' questions';
+    updateProgressDisplay();
   } catch (err) {
     console.error('Failed to load questions:', err);
   }
@@ -58,6 +172,25 @@ function startQuiz() {
   if (pool.length === 0) {
     alert('No questions available for the selected subjects.');
     return;
+  }
+
+  // Filter by mode: unanswered only or all
+  const filterMode = document.getElementById('questionFilter')?.value || 'all';
+  if (filterMode === 'unanswered') {
+    pool = getUnansweredQuestions(pool);
+    if (pool.length === 0) {
+      alert('You have completed all questions in the selected subjects! Switch to "All Questions" to review them.');
+      return;
+    }
+  } else if (filterMode === 'incorrect') {
+    pool = pool.filter(q => {
+      const progress = userProgress.completedQuestions?.[q.id];
+      return progress && !progress.correct;
+    });
+    if (pool.length === 0) {
+      alert('No previously incorrect questions found. Great job!');
+      return;
+    }
   }
 
   // Shuffle if checked (disabled in sample mode to keep questions consistent)
@@ -168,6 +301,9 @@ function selectAnswer(index) {
     score.wrong++;
   }
 
+  // Track progress for this question
+  markQuestionCompleted(q.id, isCorrect);
+
   // Update score display
   document.getElementById('scoreCorrect').textContent = score.correct;
   document.getElementById('scoreWrong').textContent = score.wrong;
@@ -237,6 +373,8 @@ function goPrev() {
 }
 
 function finishQuiz() {
+  // Save all progress to Firestore
+  saveProgress();
   showResults();
 }
 
@@ -337,6 +475,10 @@ function showScreen(id) {
   ['startScreen', 'quizScreen', 'resultsScreen', 'reviewScreen'].forEach(s => {
     document.getElementById(s).style.display = s === id ? 'block' : 'none';
   });
+  // Update progress display when returning to start screen
+  if (id === 'startScreen') {
+    updateProgressDisplay();
+  }
 }
 
 // Event listeners
@@ -354,6 +496,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('reviewBtn').addEventListener('click', showReview);
   document.getElementById('backToResultsBtn').addEventListener('click', () => showScreen('resultsScreen'));
+
+  // Reset button
+  const resetBtn = document.getElementById('resetProgressBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', async () => {
+      if (!confirm('Are you sure you want to reset all your progress? This cannot be undone.')) return;
+      const success = await resetProgress();
+      if (success) {
+        alert('Progress has been reset. You can start fresh!');
+        showScreen('startScreen');
+      } else {
+        alert('Progress reset is not available for your subscription plan. Only 6-month subscribers can reset once.');
+      }
+    });
+  }
 
   // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {

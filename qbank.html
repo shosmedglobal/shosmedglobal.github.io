@@ -80,13 +80,25 @@
           </label>
         </div>
 
+        <!-- Progress Overview -->
+        <div id="overallProgress" class="overall-progress"></div>
+
         <div class="start-options">
           <div class="option-row">
-            <label for="questionCount">Number of questions:</label>
+            <label for="questionFilter">Question mode:</label>
+            <select id="questionFilter">
+              <option value="unanswered" selected>Unanswered only</option>
+              <option value="all">All questions</option>
+              <option value="incorrect">Previously incorrect</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label for="questionCount">Block size:</label>
             <select id="questionCount">
               <option value="10">10 questions</option>
-              <option value="20">20 questions</option>
-              <option value="0" selected>All available</option>
+              <option value="20" selected>20 questions</option>
+              <option value="40">40 questions</option>
+              <option value="0">All available</option>
             </select>
           </div>
           <div class="option-row">
@@ -98,9 +110,15 @@
         </div>
 
         <button class="btn btn-primary btn-lg" id="startQuizBtn">
-          Start Practice Session
+          Start Block
         </button>
-        <p class="start-note">Select at least one subject to begin.</p>
+        <p class="start-note">Select subjects and question mode, then start your block.</p>
+
+        <!-- Reset Progress (only for 6-month or admin) -->
+        <div id="resetSection" class="reset-section" style="display:none;">
+          <button class="btn btn-outline btn-small" id="resetProgressBtn">Reset All Progress</button>
+          <p class="reset-note">Start fresh with all questions marked as unanswered.</p>
+        </div>
       </div>
 
       <!-- ===== QUIZ SCREEN ===== -->
@@ -235,12 +253,24 @@
       // Admin emails get full access without payment
       const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
 
-      if (ADMIN_EMAILS.includes(user.email) || qbankAccess === 'paid') {
+      const isAdmin = ADMIN_EMAILS.includes(user.email);
+      const plan = profile?.payments?.['exam-bank-plan']; // '1mo', '3mo', '6mo'
+
+      if (isAdmin || qbankAccess === 'paid') {
         // Full access — admin or paid subscriber
         window.qbankAccessLevel = 'full';
       } else {
         // Free sample — filter to only sample questions
         window.qbankAccessLevel = 'sample';
+      }
+
+      // Load user progress from Firestore
+      currentUserId = user.uid;
+      await loadProgress();
+
+      // Show reset button for admin or 6-month subscribers who haven't used their reset
+      if (isAdmin || (plan === '6mo' && (userProgress.resetCount || 0) < 1)) {
+        document.getElementById('resetSection').style.display = '';
       }
 
       // Now load questions with access level applied
@@ -352,6 +382,9 @@
               checkbox.checked = false;
             }
           });
+
+          // Update progress display with loaded questions
+          updateProgressDisplay();
 
           // Show the start screen now that questions are loaded
           document.getElementById('startScreen').style.display = 'block';

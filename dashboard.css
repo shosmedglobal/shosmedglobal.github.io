@@ -802,6 +802,39 @@
   margin-top: 8px;
 }
 
+/* Upgrade prompt */
+.upgrade-prompt {
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+  border: 1px solid #FFB74D;
+  padding: 16px 24px;
+}
+
+.upgrade-prompt p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #E65100;
+  font-weight: 500;
+}
+
+.sidebar-link-inline {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar-link-inline:hover {
+  text-decoration: underline;
+}
+
+/* Plan note */
+.plan-note {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
 .qbank-pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

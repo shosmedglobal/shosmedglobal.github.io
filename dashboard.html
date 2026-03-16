@@ -41,6 +41,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           Question Bank
         </a>
+        <a href="#" class="sidebar-link" data-view="store">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Store
+        </a>
         <a href="#" class="sidebar-link" data-view="settings">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Profile & Settings
@@ -124,102 +128,35 @@
             </a>
           </div>
 
-          <!-- ===== Your Services ===== -->
-          <h3 class="overview-section-title">Your Services</h3>
-
-          <div class="dashboard-grid">
-            <!-- QBank Summary Card -->
-            <div class="dash-card services-card" id="qbankCard">
-              <div class="dash-card-header">
-                <h3>📝 Entrance Exam Question Bank</h3>
+          <!-- QBank Summary -->
+          <div class="dash-card" style="margin-bottom: 20px;">
+            <div class="dash-card-header">
+              <h3>📝 Question Bank</h3>
+              <span class="status-badge status-paid" id="overviewQbankBadge">Free Sample</span>
+            </div>
+            <div class="service-row">
+              <div class="service-info">
+                <h4 id="qbankPriceLabel">Free Sample (5 questions)</h4>
+                <p>Biology, Chemistry, Physics & Mathematics</p>
               </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Practice Questions</h4>
-                  <p>Biology, Chemistry, Physics & Mathematics — original questions with detailed explanations</p>
-                  <span class="service-price" id="qbankPriceLabel">Free Sample (5 questions)</span>
-                </div>
-                <div class="service-status" id="examBankStatus">
-                  <span class="status-badge status-paid">Available</span>
-                  <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
-                </div>
+              <div class="service-status" id="examBankStatus">
+                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
               </div>
             </div>
+          </div>
 
-            <!-- Services for Applicants -->
-            <div class="dash-card services-card" id="applicantServices" style="display:none;">
-              <div class="dash-card-header">
-                <h3>🎓 Med School Application Services</h3>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Application Guide</h4>
-                  <p>30-min Zoom meeting, school recommendations, application walkthrough</p>
-                  <span class="service-price">$99</span>
-                </div>
-                <div class="service-status" id="applicationGuideStatus">
-                  <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="application-guide">Details</a>
-                </div>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Full Application Package</h4>
-                  <p>Up to 3 Zoom meetings, interview prep, 6 months QBank, Life in Prague session</p>
-                  <span class="service-price">$249</span>
-                </div>
-                <div class="service-status" id="applicationStatus">
-                  <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="application">Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Services for Residency Applicants -->
-            <div class="dash-card services-card" id="studentServices" style="display:none;">
-              <div class="dash-card-header">
-                <h3>🩺 Mentorship Services</h3>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Mentorship</h4>
-                  <p>1-on-1 strategy session, CV and personal statement review, program list</p>
-                  <span class="service-price">$199</span>
-                </div>
-                <div class="service-status" id="mentorshipStatus">
-                  <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-secondary btn-small stripe-pay" data-tier="mentorship">Details</a>
-                </div>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Match Ready</h4>
-                  <p>3 mentoring sessions, CV/PS edits, mock interview, ERAS strategy</p>
-                  <span class="service-price">$499</span>
-                </div>
-                <div class="service-status" id="matchReadyStatus">
-                  <span class="status-badge status-unpaid">Not purchased</span>
-                  <a href="#" class="btn btn-primary btn-small stripe-pay" data-tier="match-ready">Details</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="dash-card">
-              <div class="dash-card-header">
-                <h3>Resources</h3>
-              </div>
-              <div class="quick-links">
-                <a href="mailto:shosmedglobal@gmail.com?subject=Question" class="quick-link">
-                  <span>📧</span> Contact Us
-                </a>
-                <a href="index.html#mentors" class="quick-link">
-                  <span>👨‍⚕️</span> Meet Your Mentors
-                </a>
-                <a href="index.html#blog" class="quick-link">
-                  <span>📖</span> Free Resources
-                </a>
-              </div>
+          <!-- Quick Links -->
+          <div class="dash-card">
+            <div class="quick-links">
+              <a href="#" onclick="switchView('store'); return false;" class="quick-link">
+                <span>🛒</span> Browse Store
+              </a>
+              <a href="mailto:shosmedglobal@gmail.com?subject=Question" class="quick-link">
+                <span>📧</span> Contact Us
+              </a>
+              <a href="index.html#blog" class="quick-link">
+                <span>📖</span> Free Resources
+              </a>
             </div>
           </div>
         </div>
@@ -228,7 +165,7 @@
         <div class="view" id="viewQbank">
           <div class="dashboard-header">
             <h1>Question Bank</h1>
-            <p class="dashboard-sub">Practice for the Charles University entrance exam with original questions and detailed explanations.</p>
+            <p class="dashboard-sub">Practice for the Charles University entrance exam.</p>
           </div>
 
           <!-- Current Access -->
@@ -248,8 +185,21 @@
             </div>
           </div>
 
-          <!-- Purchase Plans -->
-          <h3 class="view-section-title" id="qbankUpgradeTitle">Upgrade Your Access</h3>
+          <!-- Upgrade prompt for free users -->
+          <div id="qbankUpgradePrompt" class="dash-card upgrade-prompt" style="display:none;">
+            <p>Want full access to all 155+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
+          </div>
+        </div>
+
+        <!-- ========== VIEW: STORE ========== -->
+        <div class="view" id="viewStore">
+          <div class="dashboard-header">
+            <h1>Store</h1>
+            <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
+          </div>
+
+          <!-- QBank Plans -->
+          <h3 class="view-section-title">Question Bank Plans</h3>
           <div class="qbank-pricing-grid" id="qbankPricingGrid">
             <div class="qbank-plan-card">
               <h4>1 Month</h4>
@@ -259,8 +209,9 @@
                 <li>All 155+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
-                <li>New questions added regularly</li>
+                <li>Progress tracking</li>
               </ul>
+              <p class="plan-note">No progress reset included</p>
               <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-1mo">Purchase</a>
             </div>
             <div class="qbank-plan-card featured">
@@ -272,8 +223,9 @@
                 <li>All 155+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
-                <li>New questions added regularly</li>
+                <li>Progress tracking</li>
               </ul>
+              <p class="plan-note">No progress reset included</p>
               <a href="#" class="btn btn-primary stripe-pay" data-tier="qbank-3mo">Purchase</a>
             </div>
             <div class="qbank-plan-card">
@@ -284,9 +236,79 @@
                 <li>All 155+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
-                <li>New questions added regularly</li>
+                <li>Progress tracking</li>
+                <li><strong>1 progress reset included</strong></li>
               </ul>
+              <p class="plan-note">Reset and start fresh once during your subscription</p>
               <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-6mo">Purchase</a>
+            </div>
+          </div>
+
+          <!-- Consultation -->
+          <h3 class="view-section-title">Consultation</h3>
+          <div class="dash-card" style="margin-bottom: 24px;">
+            <div class="service-row">
+              <div class="service-info">
+                <h4>📞 30-Minute Consultation</h4>
+                <p>1-on-1 Zoom call with a US physician who went through the Czech med school → US residency journey.</p>
+                <span class="service-price">$50</span>
+              </div>
+              <div class="service-status">
+                <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($50)&body=Hi, I'd like to book a 30-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="btn btn-primary btn-small">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Path-specific services -->
+          <div id="storeApplicantServices" style="display:none;">
+            <h3 class="view-section-title">Application Services</h3>
+            <div class="dash-card" style="margin-bottom: 24px;">
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Application Guide</h4>
+                  <p>30-min Zoom meeting, school recommendations, application walkthrough</p>
+                  <span class="service-price">$99</span>
+                </div>
+                <div class="service-status">
+                  <a href="applicants.html#pricing" class="btn btn-secondary btn-small">Details</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Full Application Package</h4>
+                  <p>Up to 3 Zoom meetings, interview prep, 6 months QBank, Life in Prague session</p>
+                  <span class="service-price">$249</span>
+                </div>
+                <div class="service-status">
+                  <a href="applicants.html#pricing" class="btn btn-primary btn-small">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="storeStudentServices" style="display:none;">
+            <h3 class="view-section-title">Mentorship Services</h3>
+            <div class="dash-card" style="margin-bottom: 24px;">
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Mentorship</h4>
+                  <p>1-on-1 strategy session, CV and personal statement review, program list</p>
+                  <span class="service-price">$199</span>
+                </div>
+                <div class="service-status">
+                  <a href="students.html#pricing" class="btn btn-secondary btn-small">Details</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Match Ready</h4>
+                  <p>3 mentoring sessions, CV/PS edits, mock interview, ERAS strategy</p>
+                  <span class="service-price">$499</span>
+                </div>
+                <div class="service-status">
+                  <a href="students.html#pricing" class="btn btn-primary btn-small">Details</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -372,8 +394,17 @@
 
     // ===== Sidebar Navigation =====
     function switchView(viewName) {
+      // Map view names to element IDs
+      const viewMap = {
+        'overview': 'viewOverview',
+        'qbank': 'viewQbank',
+        'store': 'viewStore',
+        'settings': 'viewSettings'
+      };
+
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      const target = document.getElementById('view' + viewName.charAt(0).toUpperCase() + viewName.slice(1));
+      const targetId = viewMap[viewName];
+      const target = targetId ? document.getElementById(targetId) : null;
       if (target) target.classList.add('active');
 
       document.querySelectorAll('.sidebar-link[data-view]').forEach(link => {
@@ -442,64 +473,43 @@
         document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       }
 
-      // ===== Path-based service & action visibility =====
+      // ===== Path-based action & store visibility =====
       const userPath = profile?.path;
       if (!userPath) {
-        document.getElementById('applicantServices').style.display = 'block';
-        document.getElementById('studentServices').style.display = 'block';
         document.getElementById('actionApplicant').style.display = 'flex';
         document.getElementById('actionStudent').style.display = 'flex';
+        document.getElementById('storeApplicantServices').style.display = 'block';
+        document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        document.getElementById('applicantServices').style.display = userPath === 'applicant' ? 'block' : 'none';
-        document.getElementById('studentServices').style.display = userPath === 'student' ? 'block' : 'none';
         document.getElementById('actionApplicant').style.display = userPath === 'applicant' ? 'flex' : 'none';
         document.getElementById('actionStudent').style.display = userPath === 'student' ? 'flex' : 'none';
+        document.getElementById('storeApplicantServices').style.display = userPath === 'applicant' ? 'block' : 'none';
+        document.getElementById('storeStudentServices').style.display = userPath === 'student' ? 'block' : 'none';
       }
 
       // ===== QBank access level =====
       const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
-      document.getElementById('qbankPriceLabel').textContent = qbankPaid ? 'Full Access — 155 questions' : 'Free Sample (5 questions)';
+      document.getElementById('qbankPriceLabel').textContent = qbankPaid ? 'Full Access — 155+ questions' : 'Free Sample (5 questions)';
       document.getElementById('qbankAccessBadge').textContent = qbankPaid ? 'Full Access' : 'Free Sample';
       document.getElementById('qbankAccessBadge').className = 'status-badge ' + (qbankPaid ? 'status-paid' : 'status-unpaid');
+      document.getElementById('overviewQbankBadge').textContent = qbankPaid ? 'Full Access' : 'Free Sample';
+      document.getElementById('overviewQbankBadge').className = 'status-badge ' + (qbankPaid ? 'status-paid' : 'status-unpaid');
       document.getElementById('qbankAccessTitle').textContent = qbankPaid ? 'Full Access — 155+ Questions' : 'Free Sample — 5 Questions';
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
         ? 'You have full access to all questions. Practice across Biology, Chemistry, Physics & Mathematics.'
         : 'Try a sample of our question bank. Upgrade to unlock all 155+ questions with detailed explanations.';
-      // Hide pricing grid if already paid
+      // Show upgrade prompt for free users, hide pricing grid if paid
+      document.getElementById('qbankUpgradePrompt').style.display = qbankPaid ? 'none' : '';
       document.getElementById('qbankPricingGrid').style.display = qbankPaid ? 'none' : '';
-      document.getElementById('qbankUpgradeTitle').style.display = qbankPaid ? 'none' : '';
-
-      // Update payment statuses
-      if (profile?.payments) {
-        Object.entries(profile.payments).forEach(([tier, status]) => {
-          updatePaymentStatus(tier, status);
-        });
-      }
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
       document.getElementById('dashboardContent').style.display = 'block';
     }
 
-    function updatePaymentStatus(tier, status) {
-      const statusMap = {
-        'application-guide': 'applicationGuideStatus',
-        'application': 'applicationStatus',
-        'mentorship': 'mentorshipStatus',
-        'match-ready': 'matchReadyStatus',
-        'exam-bank': 'examBankStatus'
-      };
-      const el = document.getElementById(statusMap[tier]);
-      if (!el) return;
-
-      if (status === 'paid') {
-        el.innerHTML = '<span class="status-badge status-paid">Paid</span><span class="status-active">Active</span>';
-      } else if (status === 'pending') {
-        el.innerHTML = '<span class="status-badge status-pending">Payment pending</span>';
-      }
-    }
+    // Payment status is now managed through the Store view
 
     // ===== Edit Profile =====
     document.getElementById('editProfileBtn').addEventListener('click', () => {
