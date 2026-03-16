@@ -108,9 +108,11 @@
       const errorMsg = document.getElementById('errorMsg');
       errorMsg.style.display = 'none';
 
-      const result = await signInWithGoogle();
+      const result = await signInWithGoogle(null, false);
       if (result.success) {
         window.location.href = 'dashboard.html';
+      } else if (result.needsSignup) {
+        window.location.href = 'signup.html';
       } else {
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';

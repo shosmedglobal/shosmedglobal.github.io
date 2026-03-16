@@ -15,6 +15,22 @@ const db = firebase.firestore();
 
 // ===== Auth Functions =====
 
+// Map Firebase error codes to user-friendly messages
+function friendlyError(error) {
+  const map = {
+    'auth/email-already-in-use': 'This email is already registered. Try logging in instead.',
+    'auth/invalid-email': 'Please enter a valid email address.',
+    'auth/weak-password': 'Password must be at least 6 characters.',
+    'auth/user-not-found': 'No account found with this email.',
+    'auth/wrong-password': 'Incorrect password. Please try again.',
+    'auth/invalid-credential': 'Incorrect email or password. Please try again.',
+    'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.',
+    'auth/popup-closed-by-user': 'Sign-in popup was closed. Please try again.',
+    'auth/network-request-failed': 'Network error. Please check your connection.',
+  };
+  return map[error.code] || error.message;
+}
+
 // Sign up with email/password
 async function signUpWithEmail(name, email, password, path) {
   try {
@@ -22,15 +38,17 @@ async function signUpWithEmail(name, email, password, path) {
     await result.user.updateProfile({ displayName: name });
     // Save profile to Firestore
     await db.collection('users').doc(result.user.uid).set({
-      name: name,
+      name: name.substring(0, 200),
       email: email,
       path: path, // 'applicant' or 'student'
+      agreedToTerms: true,
+      agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       payments: {}
     });
     return { success: true, user: result.user };
   } catch (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: friendlyError(error) };
   }
 }
 
@@ -40,30 +58,38 @@ async function signInWithEmail(email, password) {
     const result = await auth.signInWithEmailAndPassword(email, password);
     return { success: true, user: result.user };
   } catch (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: friendlyError(error) };
   }
 }
 
 // Sign in/up with Google
-async function signInWithGoogle(path) {
+async function signInWithGoogle(path, fromSignup) {
   try {
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
     // Check if user profile exists in Firestore
     const doc = await db.collection('users').doc(result.user.uid).get();
     if (!doc.exists) {
-      // New user - create profile
+      // New user - only allow account creation from the signup page
+      if (!fromSignup) {
+        // User tried to sign in but has no account - sign them out and redirect
+        await auth.signOut();
+        return { success: false, error: 'No account found. Please sign up first.', needsSignup: true };
+      }
+      // Create profile from signup page
       await db.collection('users').doc(result.user.uid).set({
-        name: result.user.displayName || '',
+        name: (result.user.displayName || '').substring(0, 200),
         email: result.user.email,
         path: path || 'applicant',
+        agreedToTerms: true,
+        agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         payments: {}
       });
     }
     return { success: true, user: result.user, isNewUser: !doc.exists };
   } catch (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: friendlyError(error) };
   }
 }
 
@@ -83,7 +109,8 @@ async function resetPassword(email) {
     await auth.sendPasswordResetEmail(email);
     return { success: true };
   } catch (error) {
-    return { success: false, error: error.message };
+    // Always show generic message to prevent email enumeration
+    return { success: true };
   }
 }
 
@@ -126,7 +153,7 @@ function initAuthNavbar() {
     } else {
       // Logged out
       authLinks.innerHTML = `
-        <a href="login.html">Log In</a>
+        <a href="login.html" class="nav-login">Log In</a>
         <a href="signup.html" class="nav-cta">Sign Up</a>
       `;
     }

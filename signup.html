@@ -10,6 +10,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .terms-agree {
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+    .terms-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--gray-600);
+      position: relative;
+      padding-left: 0;
+    }
+    .terms-checkbox-label input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      margin-top: 1px;
+      accent-color: var(--teal, #CF5B2E);
+      cursor: pointer;
+    }
+    .terms-text a {
+      color: var(--teal, #CF5B2E);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .terms-text a:hover {
+      color: var(--teal-dark, #A84823);
+    }
+    .terms-error {
+      color: var(--red, #DC2626);
+      font-size: 0.85rem;
+      margin-top: 6px;
+      display: none;
+    }
+    .terms-checkbox-label input[type="checkbox"]:invalid {
+      outline: 2px solid var(--red, #DC2626);
+      outline-offset: 1px;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,7 +64,7 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li id="auth-links">
-          <a href="login.html">Log In</a>
+          <a href="login.html" class="nav-login">Log In</a>
         </li>
       </ul>
     </div>
@@ -86,6 +129,14 @@
             </div>
           </div>
 
+          <!-- Terms of Service Agreement -->
+          <div class="form-group terms-agree">
+            <label class="terms-checkbox-label">
+              <input type="checkbox" id="agreeTerms" required>
+              <span class="terms-text">I have read and agree to the <a href="terms.html" target="_blank">Terms of Service</a></span>
+            </label>
+          </div>
+
           <div id="errorMsg" class="error-msg" style="display:none;"></div>
 
           <button type="submit" class="btn btn-primary btn-full">Create Account</button>
@@ -118,12 +169,21 @@
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const path = document.querySelector('input[name="path"]:checked').value;
+      const termsCheckbox = document.getElementById('agreeTerms');
       const errorMsg = document.getElementById('errorMsg');
       const btn = e.target.querySelector('button[type="submit"]');
 
+      errorMsg.style.display = 'none';
+
+      if (!termsCheckbox.checked) {
+        errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
+        errorMsg.style.display = 'block';
+        termsCheckbox.focus();
+        return;
+      }
+
       btn.disabled = true;
       btn.textContent = 'Creating account...';
-      errorMsg.style.display = 'none';
 
       const result = await signUpWithEmail(name, email, password, path);
       if (result.success) {
@@ -138,11 +198,20 @@
 
     // Google Sign Up
     document.getElementById('googleSignUp').addEventListener('click', async () => {
-      const path = document.querySelector('input[name="path"]:checked').value;
+      const termsCheckbox = document.getElementById('agreeTerms');
       const errorMsg = document.getElementById('errorMsg');
       errorMsg.style.display = 'none';
 
-      const result = await signInWithGoogle(path);
+      if (!termsCheckbox.checked) {
+        errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
+        errorMsg.style.display = 'block';
+        termsCheckbox.focus();
+        return;
+      }
+
+      const path = document.querySelector('input[name="path"]:checked').value;
+
+      const result = await signInWithGoogle(path, true);
       if (result.success) {
         window.location.href = redirectTo;
       } else {

@@ -30,7 +30,7 @@
         <li><a href="students.html">Residency</a></li>
         <li><a href="#mentors">Mentors</a></li>
         <li id="auth-links">
-          <a href="login.html">Log In</a>
+          <a href="login.html" class="nav-login">Log In</a>
           <a href="signup.html" class="nav-cta">Sign Up</a>
         </li>
       </ul>
@@ -84,7 +84,7 @@
           <ul class="pathway-highlights">
             <li>Application guidance and submission</li>
             <li>Entrance exam preparation course</li>
-            <li>School selection and visa support</li>
+            <li>Relocation support in Prague</li>
             <li>Alumni network from day one</li>
           </ul>
           <span class="pathway-cta">Learn More <span class="arrow">→</span></span>
@@ -140,9 +140,9 @@
                 <span>Hematology/Oncology Fellowship - HUMC John Theurer Cancer Center</span>
               </div>
             </div>
-            <p class="mentor-bio">Navigated the complete journey from European medical school through USMLE, ECFMG certification, residency match, and subspecialty fellowship. Has mentored 100+ students over 6 years. Guides students on med school applications, entrance exam prep, USMLE strategy, and competitive subspecialty pathways.</p>
+            <p class="mentor-bio">Navigated the complete journey from European medical school through USMLE, ECFMG certification, residency match, and subspecialty fellowship. Has mentored 100+ students over 10 years. Guides students on med school applications, entrance exam prep, USMLE strategy, and competitive subspecialty pathways.</p>
             <div class="mentor-specialties">
-              <strong>Can help with:</strong> Med school applications, entrance exam prep, Internal Medicine, Hematology/Oncology, USMLE strategy, research guidance
+              <strong>Can help with:</strong> Med school applications, entrance exam prep, USMLE strategy, CV building
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@
             </div>
             <p class="mentor-bio">Matched into Pediatrics residency as an IMG and earned a competitive GI fellowship at NYU Langone. Guides students through the challenges of building a competitive application from an international medical school.</p>
             <div class="mentor-specialties">
-              <strong>Can help with:</strong> Med school applications, Pediatrics, Gastroenterology, USMLE strategy, CV building, research guidance
+              <strong>Can help with:</strong> Med school applications, USMLE strategy, CV building
             </div>
           </div>
         </div>
@@ -360,7 +360,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="logo footer-logo">
-            <img src="logo.svg" alt="SHOS Med Global" class="logo-img" style="height:36px;">
+            <img src="logo-white.svg" alt="SHOS Med Global" class="logo-img" style="height:36px;">
           </a>
           <p>Your bridge to medical education in Europe and career success in the US. Founded by Charles University alumni.</p>
         </div>
@@ -383,6 +383,7 @@
           <a href="mailto:shosmedglobal@gmail.com">Email Us</a>
           <a href="#community">WhatsApp Community</a>
           <a href="#mentors">Meet Our Mentors</a>
+          <a href="terms.html">Terms of Service</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -420,8 +421,10 @@
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
