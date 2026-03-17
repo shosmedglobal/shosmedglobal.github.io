@@ -64,22 +64,7 @@
               <span class="subject-count" id="countChemistry">0 questions</span>
             </div>
           </label>
-          <label class="subject-card">
-            <input type="checkbox" name="subject" value="physics" checked>
-            <div class="subject-card-inner">
-              <span class="subject-icon">⚡</span>
-              <h3>Physics</h3>
-              <span class="subject-count" id="countPhysics">0 questions</span>
-            </div>
-          </label>
-          <label class="subject-card">
-            <input type="checkbox" name="subject" value="mathematics" checked>
-            <div class="subject-card-inner">
-              <span class="subject-icon">📐</span>
-              <h3>Mathematics</h3>
-              <span class="subject-count" id="countMathematics">0 questions</span>
-            </div>
-          </label>
+          <!-- Physics and Mathematics hidden — LF3 entrance exam tests only Biology and Chemistry -->
         </div>
 
         <!-- Progress Overview -->
@@ -414,10 +399,8 @@
             (data.biology?.length || 0) + ' questions';
           document.getElementById('countChemistry').textContent =
             (data.chemistry?.length || 0) + ' questions';
-          document.getElementById('countPhysics').textContent =
-            (data.physics?.length || 0) + ' questions';
-          document.getElementById('countMathematics').textContent =
-            (data.mathematics?.length || 0) + ' questions';
+          // Physics and Mathematics hidden for LF3 — counts not displayed
+          // but data still loaded for any legacy tests that used those subjects
 
           // Hide subjects with 0 questions
           document.querySelectorAll('.subject-card').forEach(card => {
