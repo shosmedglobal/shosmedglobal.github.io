@@ -1024,6 +1024,14 @@
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
       document.getElementById('dashboardContent').style.display = 'block';
+
+      // Check URL for ?view= parameter to open a specific tab
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedView = urlParams.get('view');
+      if (requestedView) {
+        switchView(requestedView);
+        history.replaceState(null, '', 'dashboard.html');
+      }
     }
 
     // Payment status is now managed through the Store view

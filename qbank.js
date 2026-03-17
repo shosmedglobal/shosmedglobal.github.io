@@ -889,8 +889,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('reviewBtn').addEventListener('click', showReview);
   document.getElementById('backToResultsBtn').addEventListener('click', () => showScreen('resultsScreen'));
   document.getElementById('backToQbankBtn').addEventListener('click', () => {
-    document.getElementById('scoreCircle').style.strokeDashoffset = 339.292;
-    showScreen('startScreen');
+    window.location.href = 'dashboard.html?view=qbank';
   });
 
   // Performance button
