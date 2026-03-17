@@ -73,25 +73,38 @@
     </div>
   </header>
 
-  <!-- Stats Strip -->
-  <div class="stats-strip">
-    <div class="container stats-strip-inner">
-      <div class="stat-item">
-        <span class="stat-number" data-count="100" data-suffix="">0</span>
-        <span class="stat-label">Students Guided</span>
+  <!-- About Us Strip -->
+  <section class="about-strip">
+    <div class="container about-strip-inner">
+      <div class="about-strip-headline">
+        <h2>Physician-Led. Not Agent-Driven.</h2>
+        <p>We are not a recruitment agency. We are practicing physicians who studied medicine in Europe, matched into US residencies, and completed subspecialty fellowships at major academic centers. We guide you because we walked this exact path.</p>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="10" data-suffix="">0</span>
-        <span class="stat-label">Years of Mentorship</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="10" data-suffix="">0</span>
-        <span class="stat-label">Countries Reached</span>
+      <div class="about-strip-points">
+        <div class="about-point">
+          <div class="about-point-accent"></div>
+          <div>
+            <h4>We Completed the Full Journey</h4>
+            <p>European medical school through USMLE, ECFMG, residency match, and subspecialty fellowship. Other services stop at GP-level advice. We don't.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-accent"></div>
+          <div>
+            <h4>Academic Partnerships, Not Commissions</h4>
+            <p>Our collaboration with Charles University is academic in nature. Our prep materials and guidance are informed by real faculty relationships, not sales agreements.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-accent"></div>
+          <div>
+            <h4>From Day One to Match Day &mdash; and Beyond</h4>
+            <p>Entrance exam prep, med school applications, USMLE strategy, residency match, and fellowship planning. One team, the entire journey.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Two Pathways Section -->
   <section class="section" id="pathways">
@@ -147,7 +160,7 @@
           </div>
           <div class="mentor-info">
             <h3>Eli Zolotov, MD</h3>
-            <div class="mentor-role">Founder</div>
+            <div class="mentor-role">Hematology/Oncology</div>
             <div class="mentor-tags">
               <span class="mentor-tag">Hematology/Oncology</span>
               <span class="mentor-tag">Internal Medicine</span>
@@ -178,7 +191,7 @@
           </div>
           <div class="mentor-info">
             <h3>Anat Sigal, MD</h3>
-            <div class="mentor-role">Co-Founder</div>
+            <div class="mentor-role">Pediatric Gastroenterology</div>
             <div class="mentor-tags">
               <span class="mentor-tag">Gastroenterology</span>
               <span class="mentor-tag">Pediatrics</span>
@@ -471,30 +484,6 @@
       observer.observe(el);
     });
 
-    // Count-up animation for hero stats
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.stat-number[data-count]').forEach(el => {
-            const target = parseInt(el.dataset.count);
-            const suffix = el.dataset.suffix || '';
-            const duration = 1600;
-            const start = performance.now();
-            function update(now) {
-              const elapsed = now - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              el.textContent = Math.round(target * eased) + suffix;
-              if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
-          });
-          countObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    const statsStrip = document.querySelector('.stats-strip');
-    if (statsStrip) countObserver.observe(statsStrip);
   </script>
 </body>
 </html>
