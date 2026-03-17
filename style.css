@@ -1717,117 +1717,103 @@ a {
 }
 
 /* ===== Board Review Banner ===== */
-.board-review-banner {
-  margin-top: 48px;
+/* ===== Board Review Card (inside pricing grid) ===== */
+.pricing-card-board {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-  border-radius: var(--radius-lg);
-  padding: 40px;
   color: var(--white);
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden;
 }
 
-.board-review-banner::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  right: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(207, 91, 46, 0.12) 0%, transparent 70%);
-  pointer-events: none;
+.pricing-card-board:hover {
+  border-color: rgba(207, 91, 46, 0.4);
 }
 
-.board-review-banner-content {
+.pricing-card-board .pricing-header-card h3 {
+  color: var(--white);
+}
+
+.pricing-card-board .pricing-header-card .price {
+  color: var(--white);
+}
+
+.pricing-card-board .pricing-header-card .price-sub {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pricing-card-board .btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.pricing-card-board .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.board-review-packages {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.board-review-banner-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.board-review-banner-text p {
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 640px;
-  margin: 0 auto 28px;
-  line-height: 1.6;
-}
-
-.board-review-banner-options {
-  display: flex;
-  gap: 16px;
+  gap: 10px;
   width: 100%;
-  max-width: 720px;
-  justify-content: center;
+  padding: 0;
+  margin-bottom: 20px;
+  flex: 1;
 }
 
-.board-review-option {
-  flex: 1;
+.board-pkg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 20px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 2px;
+  padding: 12px 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   transition: var(--transition);
   position: relative;
 }
 
-.board-review-option:hover {
-  background: rgba(255, 255, 255, 0.14);
-  transform: translateY(-2px);
+.board-pkg:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.board-review-option-featured {
+.board-pkg-featured {
   background: rgba(207, 91, 46, 0.18);
   border-color: rgba(207, 91, 46, 0.4);
 }
 
-.board-review-option-featured:hover {
+.board-pkg-featured:hover {
   background: rgba(207, 91, 46, 0.25);
 }
 
-.board-review-option-badge {
+.board-pkg-badge {
   position: absolute;
-  top: -10px;
+  top: -9px;
   background: var(--teal);
   color: var(--white);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 20px;
 }
 
-.board-review-option-name {
-  font-size: 0.85rem;
+.board-pkg-name {
+  font-size: 0.82rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.board-review-option-price {
+.board-pkg-price {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--white);
 }
 
-.board-review-option-detail {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+.board-pkg-detail {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ===== Community ===== */
@@ -2312,27 +2298,8 @@ a {
     margin-left: auto;
     margin-right: auto;
   }
-  .board-review-banner {
-    padding: 28px 20px;
-    margin-top: 36px;
-  }
-  .board-review-banner-options {
-    flex-direction: column;
-    gap: 12px;
-    max-width: 320px;
-  }
-  .board-review-option {
-    padding: 16px;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .board-review-option-featured {
-    flex-direction: column;
-    align-items: center;
-  }
-  .board-review-banner-text h3 {
-    font-size: 1.25rem;
+  .board-pkg-featured {
+    margin-top: 4px;
   }
 }
 
