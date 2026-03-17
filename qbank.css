@@ -597,30 +597,36 @@
 }
 
 /* Explanation Tables */
-.explanation-content .exp-table {
+.explanation-content .exp-table,
+.review-explanation .exp-table {
   width: 100%;
   border-collapse: collapse;
   margin: 16px 0;
   font-size: 0.85rem;
   border-radius: var(--radius);
   overflow: hidden;
+  border: 1px solid var(--gray-200);
 }
 
-.explanation-content .exp-table th {
+.explanation-content .exp-table th,
+.review-explanation .exp-table th {
   background: var(--navy);
   color: var(--white);
   padding: 10px 14px;
   text-align: left;
   font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.explanation-content .exp-table td {
+.explanation-content .exp-table td,
+.review-explanation .exp-table td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--gray-200);
+  border: 1px solid var(--gray-200);
   color: var(--gray-700);
 }
 
-.explanation-content .exp-table tr:nth-child(even) td {
+.explanation-content .exp-table tr:nth-child(even) td,
+.review-explanation .exp-table tr:nth-child(even) td {
   background: rgba(0, 0, 0, 0.02);
 }
 
