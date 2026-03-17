@@ -98,6 +98,11 @@
           <h4>US Clinical Experience</h4>
           <p>Guidance on securing observerships, externships, and clinical rotations in the US to strengthen your application.</p>
         </div>
+        <div class="mentorship-service">
+          <div class="service-icon">📝</div>
+          <h4>Board Review Sessions</h4>
+          <p>1-on-1 high-yield review sessions for USMLE Step 1 and Step 2 CK, led by physicians who scored competitively on every step.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -263,30 +268,32 @@
           <a href="#" class="btn btn-secondary stripe-link" data-tier="match-ready">Choose Match Ready</a>
         </div>
       </div>
-      <!-- Board Review Add-on -->
-      <div class="board-review-addon">
-        <div class="addon-content">
-          <span class="section-tag">Add-On</span>
-          <h3>Board Review Sessions</h3>
-          <p>Focused 1-on-1 review sessions covering high-yield topics for USMLE Step 1 and Step 2 CK. Led by physicians who scored competitively on every step. Available as an add-on to any tier.</p>
-          <div class="addon-options">
-            <div class="addon-option">
-              <strong>Single Session</strong>
-              <span class="addon-price">$75</span>
-              <span class="addon-desc">60-min focused review on a topic of your choice</span>
+      <!-- Board Review Add-On Banner -->
+      <div class="board-review-banner">
+        <div class="board-review-banner-content">
+          <div class="board-review-banner-text">
+            <h3>Board Review Sessions</h3>
+            <p>1-on-1 high-yield review sessions for USMLE Step 1 &amp; Step 2 CK. Led by physicians who scored competitively on every step. Available standalone or alongside any mentorship tier.</p>
+          </div>
+          <div class="board-review-banner-options">
+            <div class="board-review-option">
+              <span class="board-review-option-name">Single Session</span>
+              <span class="board-review-option-price">$75</span>
+              <span class="board-review-option-detail">60-min focused review</span>
             </div>
-            <div class="addon-option">
-              <strong>5-Session Pack</strong>
-              <span class="addon-price">$299</span>
-              <span class="addon-desc">5 sessions — save $76. Structured review across high-yield subjects</span>
+            <div class="board-review-option board-review-option-featured">
+              <span class="board-review-option-badge">Best Value</span>
+              <span class="board-review-option-name">5-Session Pack</span>
+              <span class="board-review-option-price">$299</span>
+              <span class="board-review-option-detail">Save $76 · Structured review plan</span>
             </div>
-            <div class="addon-option">
-              <strong>10-Session Pack</strong>
-              <span class="addon-price">$549</span>
-              <span class="addon-desc">10 sessions — save $201. Comprehensive board prep with progress tracking</span>
+            <div class="board-review-option">
+              <span class="board-review-option-name">10-Session Pack</span>
+              <span class="board-review-option-price">$549</span>
+              <span class="board-review-option-detail">Save $201 · Comprehensive prep</span>
             </div>
           </div>
-          <a href="mailto:shosmedglobal@gmail.com?subject=Board Review Sessions&body=Hi, I'd like to learn more about the board review sessions.%0A%0AMy name:%0AExam I'm preparing for:%0APreferred schedule:" class="btn btn-primary">Inquire About Board Review</a>
+          <a href="mailto:shosmedglobal@gmail.com?subject=Board Review Inquiry&body=Hi, I'd like to learn more about board review sessions.%0A%0AMy name:%0AExam I'm preparing for:%0APreferred package (Single / 5-Pack / 10-Pack):%0APreferred schedule:" class="btn btn-primary" style="margin-top: 16px;">Inquire About Board Review</a>
         </div>
       </div>
       <div class="pricing-note">
@@ -380,7 +387,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.mentorship-service, .pathway-step, .specialty-card, .pricing-card, .board-review-addon').forEach(el => {
+    document.querySelectorAll('.mentorship-service, .pathway-step, .specialty-card, .pricing-card').forEach(el => {
       el.classList.add('animate-in');
       observer.observe(el);
     });

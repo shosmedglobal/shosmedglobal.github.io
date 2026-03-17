@@ -90,6 +90,7 @@ function renderTestHistoryList() {
 
     const row = document.createElement('div');
     row.className = 'test-history-row';
+    const hasReview = test.questionIds && test.questionIds.length > 0;
     row.innerHTML = `
       <div class="th-name-wrap">
         <span class="th-name" id="thName-${i}" title="Click to rename">${displayName}</span>
@@ -99,6 +100,7 @@ function renderTestHistoryList() {
         <span class="th-score ${pctClass}">${pct}%</span>
         <span class="th-detail">${test.correct}/${test.total} correct</span>
         <span class="th-subjects">${subjects}</span>
+        ${hasReview ? `<button class="th-review-btn" data-index="${i}">Review</button>` : ''}
       </div>
     `;
     list.appendChild(row);
@@ -140,6 +142,17 @@ function renderTestHistoryList() {
         if (ev.key === 'Escape') { saved = true; nameEl.textContent = currentName; }
       });
       input.addEventListener('blur', () => { if (!saved) { saved = true; doSave(); } });
+    });
+  });
+
+  // Attach review handlers
+  list.querySelectorAll('.th-review-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.index);
+      const test = testHistory[idx];
+      if (!test.questionIds) return;
+      loadHistoricalReview(test);
     });
   });
 }
@@ -639,10 +652,120 @@ function showExplanation(q, isCorrect) {
   content.innerHTML = q.explanation;
   box.style.display = 'block';
 
+  // Restore saved highlights for this question
+  restoreHighlights(q.id, content);
+
   setTimeout(() => {
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 100);
 }
+
+// ===== Highlighter Feature =====
+function getHighlightKey(qId) { return 'qbank_highlights_' + qId; }
+
+function saveHighlights(qId, container) {
+  const marks = container.querySelectorAll('mark.user-highlight');
+  const texts = Array.from(marks).map(m => m.textContent);
+  if (texts.length > 0) {
+    localStorage.setItem(getHighlightKey(qId), JSON.stringify(texts));
+  } else {
+    localStorage.removeItem(getHighlightKey(qId));
+  }
+}
+
+function restoreHighlights(qId, container) {
+  const stored = localStorage.getItem(getHighlightKey(qId));
+  if (!stored) return;
+  try {
+    const texts = JSON.parse(stored);
+    texts.forEach(text => {
+      highlightTextInNode(container, text);
+    });
+  } catch (e) { /* ignore */ }
+}
+
+function highlightTextInNode(root, searchText) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    const idx = node.textContent.indexOf(searchText);
+    if (idx === -1 || node.parentElement.classList.contains('user-highlight')) continue;
+    const range = document.createRange();
+    range.setStart(node, idx);
+    range.setEnd(node, idx + searchText.length);
+    const mark = document.createElement('mark');
+    mark.className = 'user-highlight';
+    range.surroundContents(mark);
+    return;
+  }
+}
+
+// Highlight popup on text selection inside explanation
+(function initHighlighter() {
+  let popup = document.createElement('div');
+  popup.className = 'highlight-popup';
+  popup.innerHTML = '<button class="highlight-popup-btn" title="Highlight selection">Highlight</button><button class="highlight-popup-btn highlight-remove-btn" title="Remove highlight">Remove</button>';
+  popup.style.display = 'none';
+  document.body.appendChild(popup);
+
+  document.addEventListener('mouseup', (e) => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.toString().trim().length === 0) {
+      popup.style.display = 'none';
+      return;
+    }
+    const expContent = document.getElementById('explanationContent');
+    if (!expContent || !expContent.contains(sel.anchorNode)) {
+      popup.style.display = 'none';
+      return;
+    }
+    // Check if selection is inside an existing highlight
+    const anchorMark = sel.anchorNode.parentElement.closest('mark.user-highlight');
+    const rect = sel.getRangeAt(0).getBoundingClientRect();
+    popup.style.left = (rect.left + rect.width / 2 - 60) + 'px';
+    popup.style.top = (rect.top - 40 + window.scrollY) + 'px';
+    popup.style.display = 'flex';
+    popup.querySelector('.highlight-remove-btn').style.display = anchorMark ? 'block' : 'none';
+  });
+
+  popup.querySelector('.highlight-popup-btn:not(.highlight-remove-btn)').addEventListener('click', () => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) return;
+    const expContent = document.getElementById('explanationContent');
+    if (!expContent || !expContent.contains(sel.anchorNode)) return;
+    try {
+      const range = sel.getRangeAt(0);
+      const mark = document.createElement('mark');
+      mark.className = 'user-highlight';
+      range.surroundContents(mark);
+      sel.removeAllRanges();
+      popup.style.display = 'none';
+      const q = quizQuestions[currentIndex];
+      if (q) saveHighlights(q.id, expContent);
+    } catch (e) { /* cross-element selection */ }
+  });
+
+  popup.querySelector('.highlight-remove-btn').addEventListener('click', () => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) return;
+    const mark = sel.anchorNode.parentElement.closest('mark.user-highlight');
+    if (mark) {
+      const parent = mark.parentNode;
+      while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+      parent.removeChild(mark);
+      parent.normalize();
+      sel.removeAllRanges();
+      popup.style.display = 'none';
+      const q = quizQuestions[currentIndex];
+      const expContent = document.getElementById('explanationContent');
+      if (q && expContent) saveHighlights(q.id, expContent);
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    if (!popup.contains(e.target)) popup.style.display = 'none';
+  });
+})();
 
 // Navigation
 function goNext() {
@@ -872,7 +995,7 @@ function resumeInProgressTest(savedState) {
   renderQuestion();
 }
 
-// Load a historical test for review-only (from dashboard)
+// Load a historical test for review-only (from Previous Tests)
 function loadHistoricalReview(testRecord) {
   // Rebuild quizQuestions from stored IDs
   const allQMap = {};
@@ -880,12 +1003,15 @@ function loadHistoricalReview(testRecord) {
     arr.forEach(q => { allQMap[q.id] = q; });
   });
 
-  quizQuestions = (testRecord.questionIds || [])
-    .map(id => allQMap[id])
-    .filter(q => q);
+  const ids = testRecord.questionIds || [];
+  quizQuestions = ids.map(id => allQMap[id]).filter(q => q);
 
   if (quizQuestions.length === 0) {
-    alert('Could not load test questions for review. This test was taken before review data was saved.');
+    if (ids.length === 0) {
+      alert('This test was taken before review data was saved. No questions to review.');
+    } else {
+      alert('Could not match ' + ids.length + ' stored question IDs to current question bank. The questions may have been updated.');
+    }
     showScreen('startScreen');
     return;
   }
@@ -899,6 +1025,12 @@ function loadHistoricalReview(testRecord) {
   }
 
   score = { correct: testRecord.correct || 0, wrong: testRecord.wrong || 0 };
+
+  // Hide "Back to Results" (no results screen for historical review), show "Back to QBank"
+  const backToResults = document.getElementById('backToResultsBtn');
+  const backToStart = document.getElementById('backToQbankBtn');
+  if (backToResults) backToResults.style.display = 'none';
+
   showReview();
 }
 

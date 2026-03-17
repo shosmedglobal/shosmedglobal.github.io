@@ -1323,6 +1323,23 @@
   white-space: nowrap;
 }
 
+.th-review-btn {
+  background: #CF5B2E;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.th-review-btn:hover {
+  background: #b84e27;
+}
+
 @media (max-width: 600px) {
   .test-history-row {
     flex-direction: column;
@@ -1425,4 +1442,65 @@
 .report-submit {
   font-size: 0.82rem !important;
   padding: 6px 14px !important;
+}
+
+/* ===== Text Highlighter ===== */
+
+/* Allow text selection inside explanation area */
+#explanationContent {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+  cursor: text;
+}
+
+mark.user-highlight {
+  background: #ffe066;
+  color: inherit;
+  padding: 1px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.highlight-popup {
+  position: absolute;
+  display: flex;
+  gap: 4px;
+  z-index: 10000;
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  animation: popupFadeIn 0.15s ease;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.highlight-popup-btn {
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.highlight-popup-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.highlight-remove-btn {
+  color: #ff6b6b;
+}
+
+.highlight-remove-btn:hover {
+  background: rgba(255, 107, 107, 0.15);
 }

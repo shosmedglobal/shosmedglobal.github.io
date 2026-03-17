@@ -105,7 +105,7 @@
           <div class="overview-countdown" id="examCountdown">
             <div class="countdown-left">
               <div class="countdown-number" id="countdownDays">—</div>
-              <div class="countdown-label">days until exam</div>
+              <div class="countdown-label" id="countdownLabel">days until exam</div>
             </div>
             <div class="countdown-right">
               <label class="countdown-date-label">Exam date</label>
@@ -131,6 +131,14 @@
             <div class="overview-stat-card">
               <div class="overview-stat-value" id="statBestScore">—</div>
               <div class="overview-stat-label">Best Score</div>
+            </div>
+            <div class="overview-stat-card">
+              <div class="overview-stat-value" id="statQuestionsLeft">—</div>
+              <div class="overview-stat-label">Questions Left</div>
+            </div>
+            <div class="overview-stat-card">
+              <div class="overview-stat-value" id="statQuestionsPerDay">—</div>
+              <div class="overview-stat-label">Questions / Day</div>
             </div>
           </div>
 
@@ -1107,7 +1115,12 @@
           updateCountdown(examDate);
         }
         examInput.addEventListener('change', () => {
-          saveBtn.style.display = examInput.value ? 'inline-block' : 'none';
+          if (examInput.value) {
+            saveBtn.style.display = 'inline-block';
+            updateCountdown(examInput.value);
+          } else {
+            saveBtn.style.display = 'none';
+          }
         });
         saveBtn.addEventListener('click', async () => {
           const date = examInput.value;
@@ -1124,6 +1137,30 @@
           .collection('users').doc(uid)
           .collection('qbankData').doc('history').get();
         const tests = snapshot.exists ? (snapshot.data().tests || []) : [];
+
+        // Questions left + questions per day (runs even with 0 tests)
+        try {
+          const qRes = await fetch('questions.json');
+          const qBank = await qRes.json();
+          let totalInBank = 0;
+          Object.values(qBank).forEach(arr => { totalInBank += arr.length; });
+          const answeredIds = new Set();
+          tests.forEach(t => {
+            if (t.questionIds) t.questionIds.forEach(id => answeredIds.add(id));
+          });
+          const questionsLeft = Math.max(0, totalInBank - answeredIds.size);
+          document.getElementById('statQuestionsLeft').textContent = questionsLeft;
+          const daysLeft = window._examDaysLeft || 0;
+          if (daysLeft > 0 && questionsLeft > 0) {
+            document.getElementById('statQuestionsPerDay').textContent = Math.ceil(questionsLeft / daysLeft);
+          } else if (questionsLeft === 0) {
+            document.getElementById('statQuestionsPerDay').textContent = '0';
+          } else {
+            document.getElementById('statQuestionsPerDay').textContent = '—';
+          }
+        } catch (e) {
+          console.log('Could not load question bank for stats', e);
+        }
 
         if (tests.length === 0) return;
 
@@ -1207,21 +1244,28 @@
     }
 
     function updateCountdown(dateStr) {
-      const examDate = new Date(dateStr + 'T00:00:00');
+      const parts = dateStr.split('-');
+      const examDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const diff = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+      const diff = Math.round((examDate - today) / (1000 * 60 * 60 * 24));
       const el = document.getElementById('countdownDays');
+      const label = document.getElementById('countdownLabel');
       if (diff > 0) {
         el.textContent = diff;
+        label.textContent = diff === 1 ? 'day until exam' : 'days until exam';
         el.style.color = diff <= 30 ? '#ef4444' : diff <= 60 ? '#f59e0b' : '#10b981';
       } else if (diff === 0) {
         el.textContent = 'Today!';
+        label.textContent = 'Exam day';
         el.style.color = '#ef4444';
       } else {
-        el.textContent = 'Passed';
+        el.textContent = Math.abs(diff);
+        label.textContent = 'days since exam';
         el.style.color = '#6b7280';
       }
+      // Store diff globally for questions-per-day calculation
+      window._examDaysLeft = diff > 0 ? diff : 0;
     }
 
     // ===== Stripe Payment Links =====
