@@ -1108,3 +1108,469 @@
   font-size: 0.82rem;
   white-space: nowrap;
 }
+
+/* ===== Dashboard Test History Actions ===== */
+.dash-hist-actions {
+  white-space: nowrap;
+  display: flex;
+  gap: 6px;
+}
+
+.dash-action-btn {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-600);
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.dash-action-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(207, 91, 46, 0.04);
+}
+
+.dash-review-btn {
+  background: rgba(207, 91, 46, 0.06);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.dash-review-btn:hover {
+  background: var(--teal);
+  color: white;
+}
+
+/* ============================================
+   FREE RESOURCES TAB STYLES
+   ============================================ */
+
+/* Resource Navigation Tabs */
+.resource-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.resource-tab {
+  padding: 10px 20px;
+  border: 2px solid var(--gray-200);
+  border-radius: 50px;
+  background: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resource-tab:hover {
+  border-color: var(--gray-300);
+  color: var(--navy);
+}
+
+.resource-tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+/* Resource Panels */
+.resource-panel {
+  display: none;
+}
+
+.resource-panel.active {
+  display: block;
+}
+
+/* Faculty Cards */
+.resource-faculty-card {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.resource-faculty-card:hover {
+  border-color: var(--gray-300);
+  box-shadow: var(--shadow);
+}
+
+.resource-faculty-card.featured-faculty {
+  border-color: var(--teal);
+  border-width: 2px;
+  background: rgba(207, 91, 46, 0.02);
+}
+
+.faculty-header {
+  padding: 16px 20px;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.featured-faculty .faculty-header {
+  background: rgba(207, 91, 46, 0.06);
+}
+
+.faculty-header h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.faculty-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--gray-100);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.partner-badge {
+  background: rgba(207, 91, 46, 0.12);
+  color: var(--teal);
+}
+
+.faculty-details {
+  padding: 16px 20px;
+}
+
+.faculty-detail-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-100);
+  gap: 16px;
+}
+
+.faculty-detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  flex-shrink: 0;
+  width: 140px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-400);
+}
+
+.detail-value {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+/* Resource Tables */
+.resource-table-wrap {
+  overflow-x: auto;
+}
+
+.resource-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.resource-table thead {
+  background: var(--gray-50);
+}
+
+.resource-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.resource-table td {
+  padding: 12px 14px;
+  color: var(--gray-700);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.resource-table .featured-row {
+  background: rgba(207, 91, 46, 0.04);
+}
+
+.resource-table .featured-row td {
+  color: var(--navy);
+}
+
+/* Resource Checklist */
+.resource-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-checklist li {
+  padding: 10px 0;
+  padding-left: 28px;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.resource-checklist li:last-child {
+  border-bottom: none;
+}
+
+.resource-checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-size: 1.1rem;
+}
+
+/* Timeline */
+.timeline-visual {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline-visual::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--gray-200);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -27px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  border: 3px solid var(--white);
+}
+
+.timeline-item.highlight .timeline-dot {
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(207, 91, 46, 0.2);
+}
+
+.timeline-content strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Cost Comparison Grid */
+.cost-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cost-column {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.cost-header {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.cost-header.budget {
+  background: rgba(45, 134, 89, 0.08);
+  color: var(--green);
+}
+
+.cost-header.comfortable {
+  background: rgba(26, 54, 93, 0.08);
+  color: var(--navy);
+}
+
+.cost-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.cost-item:last-child {
+  border-bottom: none;
+}
+
+.cost-item.total {
+  background: var(--gray-50);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* LF3 Spotlight */
+.lf3-advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lf3-advantage-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  transition: all 0.2s ease;
+}
+
+.lf3-advantage-item:hover {
+  border-color: var(--gray-200);
+  background: var(--gray-50);
+}
+
+.advantage-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+
+.lf3-advantage-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.lf3-advantage-item p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Hospital Grid */
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.hospital-card {
+  padding: 16px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.hospital-card:hover {
+  border-color: var(--teal);
+  background: rgba(207, 91, 46, 0.02);
+}
+
+.hospital-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.hospital-card p {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin: 0;
+}
+
+/* Responsive for resource views */
+@media (max-width: 768px) {
+  .resource-tabs {
+    gap: 6px;
+  }
+
+  .resource-tab {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .faculty-detail-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .detail-label {
+    width: auto;
+  }
+
+  .cost-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lf3-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .dash-hist-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-history-table th:nth-child(7),
+  .dash-history-table td:nth-child(7) {
+    display: none;
+  }
+
+  .lf3-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
