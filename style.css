@@ -650,6 +650,117 @@ a {
   font-weight: 700;
 }
 
+/* ===== LF3 Featured Partner Card ===== */
+.lf3-feature-card {
+  background: linear-gradient(135deg, #1B2137 0%, #2D3555 100%);
+  border-radius: 20px;
+  padding: 48px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.lf3-feature-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(207, 91, 46, 0.12);
+  border-radius: 50%;
+}
+
+.lf3-feature-tag {
+  display: inline-block;
+  background: rgba(207, 91, 46, 0.2);
+  color: #E8784A;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.lf3-feature-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.lf3-feature-uni {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.lf3-feature-desc {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+.lf3-feature-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.lf3-stat {
+  text-align: center;
+}
+
+.lf3-stat-num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #E8784A;
+}
+
+.lf3-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.lf3-feature-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lf3-highlight {
+  background: rgba(255,255,255,0.08);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 768px) {
+  .lf3-feature-card {
+    padding: 32px 24px;
+  }
+  .lf3-feature-content h2 {
+    font-size: 1.6rem;
+  }
+  .lf3-feature-stats {
+    gap: 20px;
+  }
+  .lf3-feature-highlights {
+    flex-direction: column;
+  }
+}
+
 /* ===== Study Abroad / Comparison ===== */
 .comparison-grid {
   display: grid;
