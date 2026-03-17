@@ -51,6 +51,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           Store
         </a>
+        <a href="#" class="sidebar-link" data-view="contact">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact Us
+        </a>
         <a href="#" class="sidebar-link" data-view="settings">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Profile & Settings
@@ -99,14 +103,6 @@
 
           <!-- ===== Quick Actions — prominent cards at top ===== -->
           <div class="action-cards">
-            <a href="qbank.html" class="action-card action-qbank" id="actionQbank" style="display:none;">
-              <div class="action-icon">📝</div>
-              <div class="action-text">
-                <h3>Start Practice Questions</h3>
-                <p id="actionQbankDesc">Test yourself on Biology, Chemistry, Physics & Math</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
             <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($79)&body=Hi, I'd like to book a 30-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="action-card action-consult">
               <div class="action-icon">📞</div>
               <div class="action-text">
@@ -132,38 +128,6 @@
               </div>
               <span class="action-arrow">&rarr;</span>
             </a>
-          </div>
-
-          <!-- QBank Summary -->
-          <div class="dash-card" id="overviewQbankCard" style="margin-bottom: 20px; display:none;">
-            <div class="dash-card-header">
-              <h3>📝 Question Bank</h3>
-              <span class="status-badge status-paid" id="overviewQbankBadge">Free Sample</span>
-            </div>
-            <div class="service-row">
-              <div class="service-info">
-                <h4 id="qbankPriceLabel">Free Sample (5 questions)</h4>
-                <p>Biology, Chemistry, Physics & Mathematics</p>
-              </div>
-              <div class="service-status" id="examBankStatus">
-                <a href="qbank.html" class="btn btn-primary btn-small">Start Practice</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div class="dash-card">
-            <div class="quick-links">
-              <a href="#" onclick="switchView('store'); return false;" class="quick-link">
-                <span>🛒</span> Browse Store
-              </a>
-              <a href="mailto:shosmedglobal@gmail.com?subject=Question" class="quick-link">
-                <span>📧</span> Contact Us
-              </a>
-              <a href="#" onclick="switchView('resources'); return false;" class="quick-link">
-                <span>📖</span> Free Resources
-              </a>
-            </div>
           </div>
         </div>
 
@@ -809,6 +773,45 @@
           </div>
         </div>
 
+        <!-- ========== VIEW: CONTACT ========== -->
+        <div class="view" id="viewContact">
+          <div class="dashboard-header">
+            <h1>Contact Us</h1>
+            <p class="dashboard-sub">Have a question or need help? We're here for you.</p>
+          </div>
+
+          <div class="action-cards" style="margin-bottom: 24px;">
+            <a href="mailto:shosmedglobal@gmail.com?subject=Question from Dashboard" class="action-card action-consult">
+              <div class="action-icon">📧</div>
+              <div class="action-text">
+                <h3>Email Us</h3>
+                <p>shosmedglobal@gmail.com</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+            <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($79)&body=Hi, I'd like to book a 30-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="action-card action-consult">
+              <div class="action-icon">📞</div>
+              <div class="action-text">
+                <h3>Book a Consultation</h3>
+                <p>30-min Zoom call with a US physician — $79</p>
+              </div>
+              <span class="action-arrow">&rarr;</span>
+            </a>
+          </div>
+
+          <div class="dash-card" style="max-width: 600px;">
+            <h3 style="margin-bottom: 12px;">Common Questions</h3>
+            <p style="color: var(--gray-500); margin-bottom: 16px;">Most questions are answered within 24 hours. For urgent matters, book a consultation for a live Zoom call.</p>
+            <ul style="color: var(--gray-600); line-height: 2; padding-left: 20px;">
+              <li>Application process and deadlines</li>
+              <li>Entrance exam preparation</li>
+              <li>Question Bank access and subscriptions</li>
+              <li>USMLE guidance and residency match</li>
+              <li>Billing and account issues</li>
+            </ul>
+          </div>
+        </div>
+
         <!-- ========== VIEW: SETTINGS ========== -->
         <div class="view" id="viewSettings">
           <div class="dashboard-header">
@@ -896,6 +899,7 @@
         'qbank': 'viewQbank',
         'resources': 'viewResources',
         'store': 'viewStore',
+        'contact': 'viewContact',
         'settings': 'viewSettings'
       };
 
@@ -980,16 +984,12 @@
 
       if (!userPath) {
         // No path — show everything
-        document.getElementById('actionQbank').style.display = 'flex';
         document.getElementById('actionApplicant').style.display = 'flex';
         document.getElementById('actionStudent').style.display = 'flex';
-        document.getElementById('overviewQbankCard').style.display = 'block';
         document.getElementById('storeApplicantServices').style.display = 'block';
         document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        // QBank + application services only for med school applicants
-        document.getElementById('actionQbank').style.display = isApplicant ? 'flex' : 'none';
-        document.getElementById('overviewQbankCard').style.display = isApplicant ? 'block' : 'none';
+        // Application services only for med school applicants
         document.getElementById('actionApplicant').style.display = isApplicant ? 'flex' : 'none';
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
 
@@ -1006,9 +1006,6 @@
       const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
-      document.getElementById('qbankPriceLabel').textContent = qbankPaid ? 'Full Access — 1,000+ questions' : 'Free Sample (5 questions)';
-      document.getElementById('overviewQbankBadge').textContent = qbankPaid ? 'Full Access' : 'Free Sample';
-      document.getElementById('overviewQbankBadge').className = 'status-badge ' + (qbankPaid ? 'status-paid' : 'status-unpaid');
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
         ? 'Full Access — 1,000+ questions across Biology, Chemistry, Physics & Mathematics.'
         : 'Free Sample — 5 questions. Upgrade to unlock all 1,000+ questions.';
@@ -1031,7 +1028,12 @@
       if (requestedView) {
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
+      } else if (sessionStorage.getItem('dashboardVisited')) {
+        // After first visit, default to Question Bank
+        switchView('qbank');
       }
+      // Mark that user has seen the dashboard overview
+      sessionStorage.setItem('dashboardVisited', 'true');
     }
 
     // Payment status is now managed through the Store view
