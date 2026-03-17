@@ -707,14 +707,32 @@ function highlightTextInNode(root, searchText) {
   popup.style.display = 'none';
   document.body.appendChild(popup);
 
+  // Find the explanation container the selection is inside (quiz or review mode)
+  function getExpContainer(node) {
+    if (!node || !node.parentElement) return null;
+    const el = node.parentElement.closest ? node.parentElement : node;
+    // Check quiz-mode explanation
+    const quizExp = document.getElementById('explanationContent');
+    if (quizExp && quizExp.contains(node)) return { container: quizExp, qIndex: currentIndex };
+    // Check review-mode explanation
+    const reviewExp = el.closest ? el.closest('.review-explanation') : null;
+    if (reviewExp) {
+      const reviewItem = reviewExp.closest('.review-item');
+      const allItems = Array.from(document.querySelectorAll('#reviewContainer .review-item'));
+      const idx = allItems.indexOf(reviewItem);
+      return { container: reviewExp, qIndex: idx >= 0 ? idx : null };
+    }
+    return null;
+  }
+
   document.addEventListener('mouseup', (e) => {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed || sel.toString().trim().length === 0) {
       popup.style.display = 'none';
       return;
     }
-    const expContent = document.getElementById('explanationContent');
-    if (!expContent || !expContent.contains(sel.anchorNode)) {
+    const expInfo = getExpContainer(sel.anchorNode);
+    if (!expInfo) {
       popup.style.display = 'none';
       return;
     }
@@ -730,8 +748,8 @@ function highlightTextInNode(root, searchText) {
   popup.querySelector('.highlight-popup-btn:not(.highlight-remove-btn)').addEventListener('click', () => {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed) return;
-    const expContent = document.getElementById('explanationContent');
-    if (!expContent || !expContent.contains(sel.anchorNode)) return;
+    const expInfo = getExpContainer(sel.anchorNode);
+    if (!expInfo) return;
     try {
       const range = sel.getRangeAt(0);
       const mark = document.createElement('mark');
@@ -739,8 +757,8 @@ function highlightTextInNode(root, searchText) {
       range.surroundContents(mark);
       sel.removeAllRanges();
       popup.style.display = 'none';
-      const q = quizQuestions[currentIndex];
-      if (q) saveHighlights(q.id, expContent);
+      const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
+      if (q) saveHighlights(q.id, expInfo.container);
     } catch (e) { /* cross-element selection */ }
   });
 
@@ -749,15 +767,15 @@ function highlightTextInNode(root, searchText) {
     if (!sel || sel.isCollapsed) return;
     const mark = sel.anchorNode.parentElement.closest('mark.user-highlight');
     if (mark) {
+      const expInfo = getExpContainer(mark);
       const parent = mark.parentNode;
       while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
       parent.removeChild(mark);
       parent.normalize();
       sel.removeAllRanges();
       popup.style.display = 'none';
-      const q = quizQuestions[currentIndex];
-      const expContent = document.getElementById('explanationContent');
-      if (q && expContent) saveHighlights(q.id, expContent);
+      const q = expInfo && expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
+      if (q && expInfo) saveHighlights(q.id, expInfo.container);
     }
   });
 
@@ -888,6 +906,13 @@ function showReview() {
         </div>
       </div>
     `;
+  });
+
+  // Restore saved highlights for each review question
+  container.querySelectorAll('.review-item').forEach((item, i) => {
+    const q = quizQuestions[i];
+    const expEl = item.querySelector('.review-explanation');
+    if (q && expEl) restoreHighlights(q.id, expEl);
   });
 
   // Delegated click handler for review report buttons
