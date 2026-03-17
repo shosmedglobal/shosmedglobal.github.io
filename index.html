@@ -72,17 +72,18 @@
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-number">100+</span>
+          <span class="stat-icon">🎓</span>
+          <span class="stat-number" data-count="100" data-suffix="+">0</span>
           <span class="stat-label">Students Guided</span>
         </div>
-        <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-number">10+</span>
+          <span class="stat-icon">📅</span>
+          <span class="stat-number" data-count="10" data-suffix="+">0</span>
           <span class="stat-label">Years of Mentorship</span>
         </div>
-        <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-number">10+</span>
+          <span class="stat-icon">🌍</span>
+          <span class="stat-number" data-count="10" data-suffix="+">0</span>
           <span class="stat-label">Countries Reached</span>
         </div>
       </div>
@@ -466,6 +467,31 @@
       el.classList.add('animate-in');
       observer.observe(el);
     });
+
+    // Count-up animation for hero stats
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-number[data-count]').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1600;
+            const start = performance.now();
+            function update(now) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(target * eased) + suffix;
+              if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+          });
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) countObserver.observe(heroStats);
   </script>
 </body>
 </html>
