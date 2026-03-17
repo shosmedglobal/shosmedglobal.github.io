@@ -1168,7 +1168,7 @@
           <td class="dash-hist-subjects">${subjects}</td>
           <td class="dash-hist-date">${dateStr}</td>
           <td class="dash-hist-actions">
-            <button class="dash-action-btn dash-review-btn" data-index="${i}" title="${test.questionIds ? 'Review test' : 'Review not available for older tests'}" ${test.questionIds ? '' : 'disabled style="opacity:0.4;cursor:not-allowed;"'}>Review</button>
+            <button class="dash-action-btn dash-review-btn" data-index="${i}" title="Review test" data-has-questions="${test.questionIds ? 'true' : 'false'}">Review</button>
             <button class="dash-action-btn dash-rename-btn" data-index="${i}" title="Rename test">✏️</button>
           </td>
         </tr>`;
@@ -1239,6 +1239,10 @@
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const idx = parseInt(btn.dataset.index);
+          if (btn.dataset.hasQuestions === 'false') {
+            alert('Review is not available for this test. Tests taken from now on will support review.');
+            return;
+          }
           window.location.href = 'qbank.html?review=' + idx;
         });
       });
