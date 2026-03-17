@@ -977,6 +977,27 @@
         return;
       }
       currentUser = user;
+
+      // ===== Admin: Clear QBank data via URL param =====
+      const clearParam = new URLSearchParams(window.location.search).get('clearqbank');
+      if (clearParam === 'true') {
+        const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+        if (ADMIN_EMAILS.includes(user.email)) {
+          try {
+            const uid = user.uid;
+            const qbankRef = firebase.firestore().collection('users').doc(uid).collection('qbankData');
+            const docs = await qbankRef.get();
+            const batch = firebase.firestore().batch();
+            docs.forEach(doc => batch.delete(doc.ref));
+            await batch.commit();
+            alert('All QBank data cleared (progress, test history, in-progress). Refresh to start clean.');
+            history.replaceState(null, '', 'dashboard.html');
+          } catch (e) {
+            alert('Failed to clear QBank data: ' + e.message);
+          }
+        }
+      }
+
       await loadDashboard(user);
     });
 

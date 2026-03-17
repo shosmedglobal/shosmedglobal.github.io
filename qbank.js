@@ -591,7 +591,6 @@ function renderQuestion() {
     document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
     document.getElementById('reportDetails').value = '';
   });
-  }
 
   document.getElementById('prevBtn').disabled = currentIndex === 0;
   const isAnswered = answers[currentIndex] !== undefined;
