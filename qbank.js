@@ -869,6 +869,11 @@ function showScreen(id) {
     updateProgressDisplay();
     renderTestHistoryList();
   }
+  // Hide navbar during quiz/review to avoid double header
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    navbar.style.display = (id === 'quizScreen' || id === 'reviewScreen') ? 'none' : '';
+  }
 }
 
 // Event listeners

@@ -1165,48 +1165,29 @@
   border-color: var(--teal);
 }
 
-/* In-Progress Test Banner */
-.dash-in-progress-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, rgba(207,91,46,0.08), rgba(207,91,46,0.03));
-  border: 1.5px solid rgba(207,91,46,0.3);
-  border-radius: 12px;
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  gap: 16px;
+/* In-Progress Test Row */
+.dash-ip-row {
+  background: linear-gradient(135deg, rgba(207,91,46,0.07), rgba(207,91,46,0.02));
 }
 
-.dash-ip-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.dash-ip-icon {
-  font-size: 1.5rem;
-}
-
-.dash-ip-info strong {
-  display: block;
-  color: var(--navy);
-  font-size: 0.95rem;
-}
-
-.dash-ip-detail {
-  display: block;
-  color: var(--gray-500);
-  font-size: 0.8rem;
-  margin-top: 2px;
+.dash-ip-badge {
+  display: inline-block;
+  background: var(--teal);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .dash-resume-btn {
   background: var(--teal) !important;
   color: white !important;
   border-color: var(--teal) !important;
-  padding: 8px 18px !important;
-  font-size: 0.85rem !important;
+  padding: 6px 14px !important;
+  font-size: 0.8rem !important;
   text-decoration: none;
   white-space: nowrap;
 }

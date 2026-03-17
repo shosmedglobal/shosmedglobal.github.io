@@ -1104,35 +1104,10 @@
       }
     }
 
+    let dashInProgressData = null;
+
     function renderInProgressBanner(inProgress) {
-      // Remove existing banner if any
-      const existing = document.getElementById('dashInProgressBanner');
-      if (existing) existing.remove();
-
-      if (!inProgress || !inProgress.questionIds) return;
-
-      const answeredCount = inProgress.answers ? Object.keys(inProgress.answers).length : 0;
-      const totalCount = inProgress.total || inProgress.questionIds.length;
-      const subjects = inProgress.meta?.subjects?.join(', ') || 'Mixed';
-
-      const banner = document.createElement('div');
-      banner.id = 'dashInProgressBanner';
-      banner.className = 'dash-in-progress-banner';
-      banner.innerHTML = `
-        <div class="dash-ip-info">
-          <span class="dash-ip-icon">⏸️</span>
-          <div>
-            <strong>Test In Progress</strong>
-            <span class="dash-ip-detail">${answeredCount}/${totalCount} answered · ${subjects}</span>
-          </div>
-        </div>
-        <a href="qbank.html?resume=true" class="dash-action-btn dash-resume-btn">Resume Test →</a>
-      `;
-
-      const section = document.getElementById('dashTestHistorySection');
-      const empty = document.getElementById('dashTestHistoryEmpty');
-      const target = section.style.display !== 'none' ? section : empty;
-      target.parentNode.insertBefore(banner, target);
+      dashInProgressData = inProgress;
     }
 
     function renderDashTestHistory(tests) {
@@ -1140,7 +1115,9 @@
       const list = document.getElementById('dashTestHistoryList');
       const empty = document.getElementById('dashTestHistoryEmpty');
 
-      if (!tests || tests.length === 0) {
+      const hasInProgress = dashInProgressData && dashInProgressData.questionIds;
+
+      if ((!tests || tests.length === 0) && !hasInProgress) {
         section.style.display = 'none';
         empty.style.display = 'block';
         return;
@@ -1152,6 +1129,26 @@
       let html = '<table class="dash-history-table"><thead><tr>' +
         '<th>#</th><th>Name</th><th>Score</th><th>Correct</th><th>Subjects</th><th>Date</th><th>Actions</th>' +
         '</tr></thead><tbody>';
+
+      // In-progress test as first row
+      if (hasInProgress) {
+        const ip = dashInProgressData;
+        const answeredCount = ip.answers ? Object.keys(ip.answers).length : 0;
+        const totalCount = ip.total || ip.questionIds.length;
+        const ipSubjects = ip.meta?.subjects?.join(', ') || 'Mixed';
+        const ipDate = ip.startedAt ? new Date(ip.startedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
+        html += `<tr class="dash-ip-row">
+          <td>—</td>
+          <td class="dash-hist-name"><span class="dash-ip-badge">In Progress</span></td>
+          <td><span class="dash-hist-score">${answeredCount}/${totalCount}</span></td>
+          <td>${answeredCount} answered</td>
+          <td class="dash-hist-subjects">${ipSubjects}</td>
+          <td class="dash-hist-date">${ipDate}</td>
+          <td class="dash-hist-actions">
+            <a href="qbank.html?resume=true" class="dash-action-btn dash-resume-btn">Resume →</a>
+          </td>
+        </tr>`;
+      }
 
       tests.forEach((test, i) => {
         const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
