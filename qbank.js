@@ -413,6 +413,42 @@ function shuffle(arr) {
   return a;
 }
 
+// Topic-interleaved shuffle: spreads questions from the same topic apart
+// so you don't get similar questions back to back
+function topicInterleaveShuffle(arr) {
+  // Group questions by topic
+  const byTopic = {};
+  arr.forEach(q => {
+    const key = (q.subject || '') + '::' + (q.topic || '');
+    if (!byTopic[key]) byTopic[key] = [];
+    byTopic[key].push(q);
+  });
+
+  // Shuffle within each topic group
+  const topicKeys = Object.keys(byTopic);
+  topicKeys.forEach(key => { byTopic[key] = shuffle(byTopic[key]); });
+
+  // Sort topic groups by size (largest first) for better interleaving
+  topicKeys.sort((a, b) => byTopic[b].length - byTopic[a].length);
+
+  // Round-robin pick: take one from each topic in rotation
+  const result = [];
+  let remaining = true;
+  while (remaining) {
+    remaining = false;
+    // Shuffle the order of topics each round so it's not predictable
+    const roundOrder = shuffle(topicKeys);
+    for (const key of roundOrder) {
+      if (byTopic[key].length > 0) {
+        result.push(byTopic[key].shift());
+        remaining = true;
+      }
+    }
+  }
+
+  return result;
+}
+
 // Start quiz
 function startQuiz() {
   const selectedSubjects = Array.from(
@@ -463,7 +499,7 @@ function startQuiz() {
 
   const shouldShuffle = document.getElementById('shuffleQuestions').checked;
   if (shouldShuffle && window.qbankAccessLevel !== 'sample') {
-    pool = shuffle(pool);
+    pool = topicInterleaveShuffle(pool);
   }
 
   const countSelect = document.getElementById('questionCount').value;
