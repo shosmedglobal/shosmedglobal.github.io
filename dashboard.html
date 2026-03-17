@@ -177,7 +177,7 @@
 
           <!-- Upgrade prompt for free users -->
           <div id="qbankUpgradePrompt" class="dash-card upgrade-prompt" style="display:none; margin-bottom: 20px;">
-            <p>Want full access to all 1,000+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
+            <p>Want full access to all 860+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
           </div>
 
           <!-- Test History -->
@@ -700,7 +700,7 @@
               <div class="plan-price">$49</div>
               <p class="plan-per">$49/month</p>
               <ul class="plan-features">
-                <li>All 1,000+ questions</li>
+                <li>All 860+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -714,7 +714,7 @@
               <div class="plan-price">$99</div>
               <p class="plan-per">$33/month — Save 33%</p>
               <ul class="plan-features">
-                <li>All 1,000+ questions</li>
+                <li>All 860+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -727,7 +727,7 @@
               <div class="plan-price">$149</div>
               <p class="plan-per">$25/month — Save 49%</p>
               <ul class="plan-features">
-                <li>All 1,000+ questions</li>
+                <li>All 860+ questions</li>
                 <li>All 4 subjects</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -1056,8 +1056,8 @@
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
-        ? 'Full Access — 1,000+ questions across Biology, Chemistry, Physics & Mathematics.'
-        : 'Free Sample — 5 questions. Upgrade to unlock all 1,000+ questions.';
+        ? 'Full Access — 860+ questions across Biology and Chemistry.'
+        : 'Free Sample — 5 questions. Upgrade to unlock all 860+ questions.';
       // Show upgrade prompt for free users, hide pricing grid if paid OR if residency applicant
       const hideQbankStore = qbankPaid || isStudent;
       document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
