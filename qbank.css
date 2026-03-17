@@ -1457,22 +1457,26 @@
 }
 
 mark.user-highlight {
-  background: #ffe066;
   color: inherit;
   padding: 1px 0;
   border-radius: 2px;
   cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+mark.user-highlight:hover {
+  opacity: 0.6;
 }
 
 .highlight-popup {
   position: absolute;
   display: flex;
-  gap: 4px;
+  gap: 6px;
   z-index: 10000;
   background: #1a1a2e;
-  border-radius: 8px;
-  padding: 4px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   animation: popupFadeIn 0.15s ease;
 }
 
@@ -1481,27 +1485,26 @@ mark.user-highlight {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.highlight-popup-btn {
+.hl-color-btn {
   background: transparent;
-  color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  font-weight: 600;
+  padding: 4px;
   cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
 }
 
-.highlight-popup-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+.hl-color-btn:hover {
+  transform: scale(1.25);
 }
 
-.highlight-remove-btn {
-  color: #ff6b6b;
-}
-
-.highlight-remove-btn:hover {
-  background: rgba(255, 107, 107, 0.15);
+.hl-color-btn span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }

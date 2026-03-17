@@ -660,13 +660,19 @@ function showExplanation(q, isCorrect) {
 }
 
 // ===== Highlighter Feature =====
+const HL_COLORS = {
+  yellow: '#ffe066',
+  green:  '#a8edba',
+  blue:   '#a0d4f7'
+};
+
 function getHighlightKey(qId) { return 'qbank_highlights_' + qId; }
 
 function saveHighlights(qId, container) {
   const marks = container.querySelectorAll('mark.user-highlight');
-  const texts = Array.from(marks).map(m => m.textContent);
-  if (texts.length > 0) {
-    localStorage.setItem(getHighlightKey(qId), JSON.stringify(texts));
+  const data = Array.from(marks).map(m => ({ text: m.textContent, color: m.dataset.hlColor || 'yellow' }));
+  if (data.length > 0) {
+    localStorage.setItem(getHighlightKey(qId), JSON.stringify(data));
   } else {
     localStorage.removeItem(getHighlightKey(qId));
   }
@@ -676,14 +682,17 @@ function restoreHighlights(qId, container) {
   const stored = localStorage.getItem(getHighlightKey(qId));
   if (!stored) return;
   try {
-    const texts = JSON.parse(stored);
-    texts.forEach(text => {
-      highlightTextInNode(container, text);
+    const data = JSON.parse(stored);
+    data.forEach(item => {
+      // Support old format (plain string) and new format ({text, color})
+      const text = typeof item === 'string' ? item : item.text;
+      const color = typeof item === 'string' ? 'yellow' : (item.color || 'yellow');
+      highlightTextInNode(container, text, color);
     });
   } catch (e) { /* ignore */ }
 }
 
-function highlightTextInNode(root, searchText) {
+function highlightTextInNode(root, searchText, color) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
   while (walker.nextNode()) {
     const node = walker.currentNode;
@@ -694,16 +703,28 @@ function highlightTextInNode(root, searchText) {
     range.setEnd(node, idx + searchText.length);
     const mark = document.createElement('mark');
     mark.className = 'user-highlight';
+    mark.dataset.hlColor = color || 'yellow';
+    mark.style.background = HL_COLORS[color] || HL_COLORS.yellow;
     range.surroundContents(mark);
     return;
   }
+}
+
+function removeHighlightMark(mark) {
+  const parent = mark.parentNode;
+  while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+  parent.removeChild(mark);
+  parent.normalize();
 }
 
 // Highlight popup on text selection inside explanation
 (function initHighlighter() {
   let popup = document.createElement('div');
   popup.className = 'highlight-popup';
-  popup.innerHTML = '<button class="highlight-popup-btn" title="Highlight selection">Highlight</button><button class="highlight-popup-btn highlight-remove-btn" title="Remove highlight">Remove</button>';
+  popup.innerHTML =
+    '<button class="hl-color-btn" data-color="yellow" title="Yellow"><span style="background:#ffe066"></span></button>' +
+    '<button class="hl-color-btn" data-color="green" title="Green"><span style="background:#a8edba"></span></button>' +
+    '<button class="hl-color-btn" data-color="blue" title="Blue"><span style="background:#a0d4f7"></span></button>';
   popup.style.display = 'none';
   document.body.appendChild(popup);
 
@@ -711,10 +732,8 @@ function highlightTextInNode(root, searchText) {
   function getExpContainer(node) {
     if (!node || !node.parentElement) return null;
     const el = node.parentElement.closest ? node.parentElement : node;
-    // Check quiz-mode explanation
     const quizExp = document.getElementById('explanationContent');
     if (quizExp && quizExp.contains(node)) return { container: quizExp, qIndex: currentIndex };
-    // Check review-mode explanation
     const reviewExp = el.closest ? el.closest('.review-explanation') : null;
     if (reviewExp) {
       const reviewItem = reviewExp.closest('.review-item');
@@ -725,58 +744,68 @@ function highlightTextInNode(root, searchText) {
     return null;
   }
 
-  document.addEventListener('mouseup', (e) => {
+  // Click on existing highlight → remove it
+  document.addEventListener('click', (e) => {
+    const mark = e.target.closest('mark.user-highlight');
+    if (!mark) return;
+    // Only act if no text is being selected (pure click)
     const sel = window.getSelection();
-    if (!sel || sel.isCollapsed || sel.toString().trim().length === 0) {
-      popup.style.display = 'none';
-      return;
-    }
-    const expInfo = getExpContainer(sel.anchorNode);
-    if (!expInfo) {
-      popup.style.display = 'none';
-      return;
-    }
-    // Check if selection is inside an existing highlight
-    const anchorMark = sel.anchorNode.parentElement.closest('mark.user-highlight');
-    const rect = sel.getRangeAt(0).getBoundingClientRect();
-    popup.style.left = (rect.left + rect.width / 2 - 60) + 'px';
-    popup.style.top = (rect.top - 40 + window.scrollY) + 'px';
-    popup.style.display = 'flex';
-    popup.querySelector('.highlight-remove-btn').style.display = anchorMark ? 'block' : 'none';
-  });
-
-  popup.querySelector('.highlight-popup-btn:not(.highlight-remove-btn)').addEventListener('click', () => {
-    const sel = window.getSelection();
-    if (!sel || sel.isCollapsed) return;
-    const expInfo = getExpContainer(sel.anchorNode);
-    if (!expInfo) return;
-    try {
-      const range = sel.getRangeAt(0);
-      const mark = document.createElement('mark');
-      mark.className = 'user-highlight';
-      range.surroundContents(mark);
-      sel.removeAllRanges();
-      popup.style.display = 'none';
+    if (sel && !sel.isCollapsed && sel.toString().trim().length > 0) return;
+    const expInfo = getExpContainer(mark);
+    removeHighlightMark(mark);
+    if (expInfo) {
       const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
       if (q) saveHighlights(q.id, expInfo.container);
-    } catch (e) { /* cross-element selection */ }
+    }
   });
 
-  popup.querySelector('.highlight-remove-btn').addEventListener('click', () => {
-    const sel = window.getSelection();
-    if (!sel || sel.isCollapsed) return;
-    const mark = sel.anchorNode.parentElement.closest('mark.user-highlight');
-    if (mark) {
-      const expInfo = getExpContainer(mark);
-      const parent = mark.parentNode;
-      while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-      parent.removeChild(mark);
-      parent.normalize();
-      sel.removeAllRanges();
-      popup.style.display = 'none';
-      const q = expInfo && expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
-      if (q && expInfo) saveHighlights(q.id, expInfo.container);
-    }
+  // Show color picker popup on text selection
+  document.addEventListener('mouseup', (e) => {
+    // Small delay to let click-to-remove run first
+    setTimeout(() => {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed || sel.toString().trim().length === 0) {
+        popup.style.display = 'none';
+        return;
+      }
+      // Don't show popup if selection is inside an existing highlight
+      if (sel.anchorNode && sel.anchorNode.parentElement && sel.anchorNode.parentElement.closest('mark.user-highlight')) {
+        popup.style.display = 'none';
+        return;
+      }
+      const expInfo = getExpContainer(sel.anchorNode);
+      if (!expInfo) {
+        popup.style.display = 'none';
+        return;
+      }
+      const rect = sel.getRangeAt(0).getBoundingClientRect();
+      popup.style.left = (rect.left + rect.width / 2 - 52) + 'px';
+      popup.style.top = (rect.top - 44 + window.scrollY) + 'px';
+      popup.style.display = 'flex';
+    }, 10);
+  });
+
+  // Color button clicks → apply highlight
+  popup.querySelectorAll('.hl-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const color = btn.dataset.color;
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed) return;
+      const expInfo = getExpContainer(sel.anchorNode);
+      if (!expInfo) return;
+      try {
+        const range = sel.getRangeAt(0);
+        const mark = document.createElement('mark');
+        mark.className = 'user-highlight';
+        mark.dataset.hlColor = color;
+        mark.style.background = HL_COLORS[color] || HL_COLORS.yellow;
+        range.surroundContents(mark);
+        sel.removeAllRanges();
+        popup.style.display = 'none';
+        const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
+        if (q) saveHighlights(q.id, expInfo.container);
+      } catch (e) { /* cross-element selection */ }
+    });
   });
 
   document.addEventListener('mousedown', (e) => {
