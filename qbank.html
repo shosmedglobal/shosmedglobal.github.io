@@ -181,6 +181,27 @@
             </div>
             <div class="explanation-content" id="explanationContent"></div>
           </div>
+
+          <!-- Report button (shown after answering) -->
+          <div class="report-btn-wrap" id="reportBtnWrap" style="display:none;">
+            <button class="report-btn" id="reportBtn" title="Report a problem with this question">Report an issue</button>
+          </div>
+
+          <!-- Report form (hidden until clicked) -->
+          <div class="report-form" id="reportForm" style="display:none;">
+            <p class="report-form-title">What's wrong with this question?</p>
+            <div class="report-options">
+              <label class="report-option"><input type="radio" name="reportReason" value="incorrect_answer"> Incorrect answer marked as correct</label>
+              <label class="report-option"><input type="radio" name="reportReason" value="unclear_question"> Question is unclear or poorly worded</label>
+              <label class="report-option"><input type="radio" name="reportReason" value="wrong_explanation"> Explanation is incorrect</label>
+              <label class="report-option"><input type="radio" name="reportReason" value="other"> Other</label>
+            </div>
+            <textarea class="report-textarea" id="reportDetails" placeholder="Add details (optional)..." rows="2"></textarea>
+            <div class="report-form-actions">
+              <button class="btn btn-secondary report-cancel" id="reportCancel">Cancel</button>
+              <button class="btn btn-primary report-submit" id="reportSubmit">Submit Report</button>
+            </div>
+          </div>
         </div>
 
         <!-- Navigation -->

@@ -1335,3 +1335,94 @@
     justify-content: flex-start;
   }
 }
+
+/* ===== Report Issue ===== */
+.report-btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.report-btn {
+  background: none;
+  border: 1px solid var(--gray-300, #d1d5db);
+  color: var(--gray-500, #6b7280);
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.report-btn:hover {
+  border-color: #e8784a;
+  color: #e8784a;
+}
+
+.report-thanks {
+  font-size: 0.78rem;
+  color: var(--teal, #2ba89e);
+  font-weight: 500;
+}
+
+.report-form {
+  background: var(--gray-50, #f9fafb);
+  border: 1px solid var(--gray-200, #e5e7eb);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.report-form-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: var(--gray-800, #1f2937);
+}
+
+.report-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.report-option {
+  font-size: 0.85rem;
+  color: var(--gray-600, #4b5563);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-option input[type="radio"] {
+  accent-color: #e8784a;
+}
+
+.report-textarea {
+  width: 100%;
+  border: 1px solid var(--gray-300, #d1d5db);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.report-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.report-cancel {
+  font-size: 0.82rem !important;
+  padding: 6px 14px !important;
+}
+
+.report-submit {
+  font-size: 0.82rem !important;
+  padding: 6px 14px !important;
+}

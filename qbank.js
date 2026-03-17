@@ -559,10 +559,25 @@ function renderQuestion() {
   });
 
   const expBox = document.getElementById('explanationBox');
+  const reportWrap = document.getElementById('reportBtnWrap');
+  const reportForm = document.getElementById('reportForm');
   if (answers[currentIndex] !== undefined) {
     showExplanation(q, answers[currentIndex] === q.correct);
+    reportWrap.style.display = 'flex';
   } else {
     expBox.style.display = 'none';
+    reportWrap.style.display = 'none';
+  }
+  reportForm.style.display = 'none';
+  // Reset report button in case previous question had "submitted" state
+  reportWrap.innerHTML = '<button class="report-btn" id="reportBtn" title="Report a problem with this question">Report an issue</button>';
+  // Re-attach event listener
+  document.getElementById('reportBtn').addEventListener('click', () => {
+    document.getElementById('reportForm').style.display = 'block';
+    document.getElementById('reportBtnWrap').style.display = 'none';
+    document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
+    document.getElementById('reportDetails').value = '';
+  });
   }
 
   document.getElementById('prevBtn').disabled = currentIndex === 0;
@@ -746,8 +761,36 @@ function showReview() {
         <div class="review-question">${q.question}</div>
         <div class="review-answers">${answersHtml}</div>
         <div class="review-explanation">${q.explanation}</div>
+        <div class="report-btn-wrap" style="display:flex;">
+          <button class="report-btn review-report-btn" data-qid="${q.id}" data-subject="${q.subject}" data-topic="${q.topic}">Report an issue</button>
+        </div>
       </div>
     `;
+  });
+
+  // Delegated click handler for review report buttons
+  container.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.review-report-btn');
+    if (!btn) return;
+    const reason = prompt('What is the issue? (e.g., incorrect answer, unclear question, wrong explanation)');
+    if (!reason) return;
+    try {
+      await db.collection('questionReports').add({
+        questionId: btn.dataset.qid,
+        subject: btn.dataset.subject,
+        topic: btn.dataset.topic,
+        reason: 'review_report',
+        details: reason,
+        userId: currentUserId,
+        reportedAt: new Date().toISOString()
+      });
+      btn.textContent = 'Report submitted!';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+    } catch (err) {
+      console.error('Failed to submit report:', err);
+      alert('Failed to submit report. Please try again.');
+    }
   });
 }
 
@@ -929,6 +972,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const num = parseInt(e.key);
     if (num >= 1 && num <= 4 && answers[currentIndex] === undefined) {
       selectAnswer(num - 1);
+    }
+  });
+
+  // ===== Report Issue =====
+  document.getElementById('reportBtn').addEventListener('click', () => {
+    document.getElementById('reportForm').style.display = 'block';
+    document.getElementById('reportBtnWrap').style.display = 'none';
+    // Reset form
+    document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
+    document.getElementById('reportDetails').value = '';
+  });
+
+  document.getElementById('reportCancel').addEventListener('click', () => {
+    document.getElementById('reportForm').style.display = 'none';
+    document.getElementById('reportBtnWrap').style.display = 'flex';
+  });
+
+  document.getElementById('reportSubmit').addEventListener('click', async () => {
+    const reason = document.querySelector('input[name="reportReason"]:checked');
+    if (!reason) {
+      alert('Please select a reason for the report.');
+      return;
+    }
+    const q = quizQuestions[currentIndex];
+    const details = document.getElementById('reportDetails').value.trim();
+    try {
+      await db.collection('questionReports').add({
+        questionId: q.id,
+        subject: q.subject,
+        topic: q.topic,
+        reason: reason.value,
+        details: details,
+        userId: currentUserId,
+        reportedAt: new Date().toISOString()
+      });
+      document.getElementById('reportForm').style.display = 'none';
+      document.getElementById('reportBtnWrap').innerHTML =
+        '<span class="report-thanks">Report submitted. Thank you!</span>';
+      document.getElementById('reportBtnWrap').style.display = 'flex';
+    } catch (err) {
+      console.error('Failed to submit report:', err);
+      alert('Failed to submit report. Please try again.');
     }
   });
 });
