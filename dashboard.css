@@ -1146,6 +1146,76 @@
   color: white;
 }
 
+/* Inline rename input */
+.dash-inline-rename {
+  width: 100%;
+  padding: 4px 8px;
+  border: 2px solid var(--teal);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.15);
+  transition: border-color 0.2s;
+}
+
+.dash-inline-rename:focus {
+  border-color: var(--teal);
+}
+
+/* In-Progress Test Banner */
+.dash-in-progress-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(207,91,46,0.08), rgba(207,91,46,0.03));
+  border: 1.5px solid rgba(207,91,46,0.3);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.dash-ip-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-ip-icon {
+  font-size: 1.5rem;
+}
+
+.dash-ip-info strong {
+  display: block;
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+.dash-ip-detail {
+  display: block;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.dash-resume-btn {
+  background: var(--teal) !important;
+  color: white !important;
+  border-color: var(--teal) !important;
+  padding: 8px 18px !important;
+  font-size: 0.85rem !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dash-resume-btn:hover {
+  background: #b84f28 !important;
+  border-color: #b84f28 !important;
+}
+
 /* ============================================
    FREE RESOURCES TAB STYLES
    ============================================ */

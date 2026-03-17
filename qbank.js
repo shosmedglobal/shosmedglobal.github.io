@@ -104,18 +104,42 @@ function renderTestHistoryList() {
     list.appendChild(row);
   });
 
-  // Attach rename handlers
+  // Attach inline rename handlers
   list.querySelectorAll('.th-rename-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const idx = parseInt(btn.dataset.index);
       const nameEl = document.getElementById('thName-' + idx);
-      const currentName = testHistory[idx].name || nameEl.textContent;
-      const newName = prompt('Rename this test:', currentName);
-      if (newName !== null && newName.trim()) {
-        nameEl.textContent = newName.trim();
-        renameTest(idx, newName.trim());
+      if (nameEl.querySelector('.th-inline-rename')) {
+        nameEl.querySelector('.th-inline-rename').focus();
+        return;
       }
+      const currentName = testHistory[idx].name || nameEl.textContent;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = currentName;
+      input.className = 'th-inline-rename';
+      nameEl.textContent = '';
+      nameEl.appendChild(input);
+      input.focus();
+      input.select();
+
+      function doSave() {
+        const newName = input.value.trim();
+        if (!newName || newName === currentName) {
+          nameEl.textContent = currentName;
+          return;
+        }
+        nameEl.textContent = newName;
+        renameTest(idx, newName);
+      }
+
+      let saved = false;
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter') { saved = true; input.blur(); doSave(); }
+        if (ev.key === 'Escape') { saved = true; nameEl.textContent = currentName; }
+      });
+      input.addEventListener('blur', () => { if (!saved) { saved = true; doSave(); } });
     });
   });
 }
@@ -459,6 +483,7 @@ function startQuiz() {
 
   showScreen('quizScreen');
   renderQuestion();
+  saveInProgressTest();
 }
 
 // Render current question
@@ -544,6 +569,9 @@ function selectAnswer(index) {
   const isLast = currentIndex === quizQuestions.length - 1;
   document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-flex';
   document.getElementById('finishBtn').style.display = isLast ? 'inline-flex' : 'none';
+
+  // Auto-save in-progress state
+  saveInProgressTest();
 }
 
 // Show explanation
@@ -598,8 +626,13 @@ function finishQuiz() {
     wrong: score.wrong,
     total: quizQuestions.length,
     subjects: meta.subjects,
-    mode: meta.mode
+    mode: meta.mode,
+    questionIds: quizQuestions.map(q => q.id),
+    userAnswers: { ...answers }
   });
+
+  // Clear in-progress state
+  clearInProgressTest();
 
   showResults();
 }
@@ -680,6 +713,114 @@ function showReview() {
       </div>
     `;
   });
+}
+
+// ===== In-Progress Test Save/Restore =====
+async function saveInProgressTest() {
+  if (!currentUserId || quizQuestions.length === 0) return;
+  try {
+    const meta = window._quizMeta || { subjects: [], mode: 'All' };
+    await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('inProgress').set({
+        questionIds: quizQuestions.map(q => q.id),
+        answers: { ...answers },
+        currentIndex,
+        score: { ...score },
+        meta,
+        total: quizQuestions.length,
+        startedAt: new Date().toISOString()
+      });
+  } catch (err) {
+    console.error('Failed to save in-progress:', err);
+  }
+}
+
+async function clearInProgressTest() {
+  if (!currentUserId) return;
+  try {
+    await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('inProgress').delete();
+  } catch (err) {
+    console.error('Failed to clear in-progress:', err);
+  }
+}
+
+async function getInProgressTest() {
+  if (!currentUserId) return null;
+  try {
+    const doc = await db.collection('users').doc(currentUserId)
+      .collection('qbankData').doc('inProgress').get();
+    return doc.exists ? doc.data() : null;
+  } catch (err) {
+    console.error('Failed to load in-progress:', err);
+    return null;
+  }
+}
+
+// Restore an in-progress test and continue
+function resumeInProgressTest(savedState) {
+  // Rebuild quizQuestions from IDs using allQuestions
+  const allQMap = {};
+  Object.values(allQuestions).forEach(arr => {
+    arr.forEach(q => { allQMap[q.id] = q; });
+  });
+
+  quizQuestions = savedState.questionIds
+    .map(id => allQMap[id])
+    .filter(q => q); // skip any missing questions
+
+  if (quizQuestions.length === 0) {
+    alert('Could not restore test questions. The test may have been modified.');
+    return;
+  }
+
+  // Restore state — convert string keys back to numbers
+  answers = {};
+  if (savedState.answers) {
+    Object.keys(savedState.answers).forEach(k => {
+      answers[parseInt(k)] = savedState.answers[k];
+    });
+  }
+  currentIndex = savedState.currentIndex || 0;
+  score = savedState.score || { correct: 0, wrong: 0 };
+  window._quizMeta = savedState.meta || { subjects: [], mode: 'All' };
+
+  document.getElementById('totalQuestions').textContent = quizQuestions.length;
+  document.getElementById('scoreCorrect').textContent = score.correct;
+  document.getElementById('scoreWrong').textContent = score.wrong;
+
+  showScreen('quizScreen');
+  renderQuestion();
+}
+
+// Load a historical test for review-only (from dashboard)
+function loadHistoricalReview(testRecord) {
+  // Rebuild quizQuestions from stored IDs
+  const allQMap = {};
+  Object.values(allQuestions).forEach(arr => {
+    arr.forEach(q => { allQMap[q.id] = q; });
+  });
+
+  quizQuestions = (testRecord.questionIds || [])
+    .map(id => allQMap[id])
+    .filter(q => q);
+
+  if (quizQuestions.length === 0) {
+    alert('Could not load test questions for review. This test was taken before review data was saved.');
+    showScreen('startScreen');
+    return;
+  }
+
+  // Restore answers — convert string keys back to numbers
+  answers = {};
+  if (testRecord.userAnswers) {
+    Object.keys(testRecord.userAnswers).forEach(k => {
+      answers[parseInt(k)] = testRecord.userAnswers[k];
+    });
+  }
+
+  score = { correct: testRecord.correct || 0, wrong: testRecord.wrong || 0 };
+  showReview();
 }
 
 // Screen switching

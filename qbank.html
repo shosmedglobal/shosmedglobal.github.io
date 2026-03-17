@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Entrance Exam Question Bank - SHOS Med Global</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://shosmedglobal.github.io/qbank.html">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -234,6 +236,7 @@
         <div class="review-header">
           <h2>Review Your Answers</h2>
           <button class="btn btn-secondary" id="backToResultsBtn">← Back to Results</button>
+          <button class="btn btn-secondary" id="backToDashboardBtn" style="display:none;" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
         </div>
         <div id="reviewContainer"></div>
       </div>
@@ -358,7 +361,7 @@
       // Override the loadQuestions function to filter based on access
       fetch('questions.json')
         .then(res => res.json())
-        .then(data => {
+        .then(async (data) => {
           if (window.qbankAccessLevel === 'sample') {
             // Filter to only sample questions
             for (const subject in data) {
@@ -407,6 +410,36 @@
           // Update progress display with loaded questions
           updateProgressDisplay();
           renderTestHistoryList();
+
+          // Check URL parameters for review or resume
+          const urlParams = new URLSearchParams(window.location.search);
+          const reviewIdx = urlParams.get('review');
+          const resumeFlag = urlParams.get('resume');
+
+          if (reviewIdx !== null) {
+            // Coming from dashboard — load historical test for review
+            const idx = parseInt(reviewIdx);
+            if (testHistory[idx] && testHistory[idx].questionIds) {
+              document.getElementById('backToResultsBtn').style.display = 'none';
+              document.getElementById('backToDashboardBtn').style.display = '';
+              loadHistoricalReview(testHistory[idx]);
+              // Clean URL without reload
+              history.replaceState(null, '', 'qbank.html');
+              return;
+            } else {
+              alert('This test was taken before review data was saved, so it cannot be reviewed.');
+            }
+          }
+
+          if (resumeFlag === 'true') {
+            // Coming from dashboard — resume in-progress test
+            const saved = await getInProgressTest();
+            if (saved && saved.questionIds) {
+              resumeInProgressTest(saved);
+              history.replaceState(null, '', 'qbank.html');
+              return;
+            }
+          }
 
           // Show the start screen now that questions are loaded
           document.getElementById('startScreen').style.display = 'block';

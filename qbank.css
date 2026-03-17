@@ -1280,6 +1280,19 @@
   opacity: 1;
 }
 
+.th-inline-rename {
+  width: 100%;
+  padding: 3px 8px;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.15);
+}
+
 .th-stats {
   display: flex;
   align-items: center;

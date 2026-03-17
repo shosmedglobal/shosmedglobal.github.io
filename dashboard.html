@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - SHOS Med Global</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://shosmedglobal.github.io/dashboard.html">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -1085,6 +1087,12 @@
     // ===== Dashboard Test History =====
     async function loadDashTestHistory(uid) {
       try {
+        // Check for in-progress test
+        const inProgressDoc = await firebase.firestore()
+          .collection('users').doc(uid)
+          .collection('qbankData').doc('inProgress').get();
+        renderInProgressBanner(inProgressDoc.exists ? inProgressDoc.data() : null);
+
         const snapshot = await firebase.firestore()
           .collection('users').doc(uid)
           .collection('qbankData').doc('history').get();
@@ -1094,6 +1102,37 @@
         console.error('Failed to load test history:', e);
         renderDashTestHistory([]);
       }
+    }
+
+    function renderInProgressBanner(inProgress) {
+      // Remove existing banner if any
+      const existing = document.getElementById('dashInProgressBanner');
+      if (existing) existing.remove();
+
+      if (!inProgress || !inProgress.questionIds) return;
+
+      const answeredCount = inProgress.answers ? Object.keys(inProgress.answers).length : 0;
+      const totalCount = inProgress.total || inProgress.questionIds.length;
+      const subjects = inProgress.meta?.subjects?.join(', ') || 'Mixed';
+
+      const banner = document.createElement('div');
+      banner.id = 'dashInProgressBanner';
+      banner.className = 'dash-in-progress-banner';
+      banner.innerHTML = `
+        <div class="dash-ip-info">
+          <span class="dash-ip-icon">⏸️</span>
+          <div>
+            <strong>Test In Progress</strong>
+            <span class="dash-ip-detail">${answeredCount}/${totalCount} answered · ${subjects}</span>
+          </div>
+        </div>
+        <a href="qbank.html?resume=true" class="dash-action-btn dash-resume-btn">Resume Test →</a>
+      `;
+
+      const section = document.getElementById('dashTestHistorySection');
+      const empty = document.getElementById('dashTestHistoryEmpty');
+      const target = section.style.display !== 'none' ? section : empty;
+      target.parentNode.insertBefore(banner, target);
     }
 
     function renderDashTestHistory(tests) {
@@ -1129,7 +1168,7 @@
           <td class="dash-hist-subjects">${subjects}</td>
           <td class="dash-hist-date">${dateStr}</td>
           <td class="dash-hist-actions">
-            <button class="dash-action-btn dash-review-btn" data-index="${i}" title="Review test">Review</button>
+            <button class="dash-action-btn dash-review-btn" data-index="${i}" title="${test.questionIds ? 'Review test' : 'Review not available for older tests'}" ${test.questionIds ? '' : 'disabled style="opacity:0.4;cursor:not-allowed;"'}>Review</button>
             <button class="dash-action-btn dash-rename-btn" data-index="${i}" title="Rename test">✏️</button>
           </td>
         </tr>`;
@@ -1138,16 +1177,34 @@
       html += '</tbody></table>';
       list.innerHTML = html;
 
-      // Attach rename handlers
+      // Attach inline rename handlers
       list.querySelectorAll('.dash-rename-btn').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
+        btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const idx = parseInt(btn.dataset.index);
           const nameEl = document.getElementById('dashHistName-' + idx);
+          // Already editing? Focus existing input
+          if (nameEl.querySelector('.dash-inline-rename')) {
+            nameEl.querySelector('.dash-inline-rename').focus();
+            return;
+          }
           const currentName = nameEl.textContent;
-          const newName = prompt('Rename this test:', currentName);
-          if (newName !== null && newName.trim()) {
-            // Update in Firestore
+          // Replace text with input
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = currentName;
+          input.className = 'dash-inline-rename';
+          nameEl.textContent = '';
+          nameEl.appendChild(input);
+          input.focus();
+          input.select();
+
+          async function saveRename() {
+            const newName = input.value.trim();
+            if (!newName || newName === currentName) {
+              nameEl.textContent = currentName;
+              return;
+            }
             try {
               const histDoc = await firebase.firestore()
                 .collection('users').doc(currentUser.uid)
@@ -1155,17 +1212,25 @@
               if (histDoc.exists) {
                 const tests = histDoc.data().tests || [];
                 if (tests[idx]) {
-                  tests[idx].name = newName.trim();
+                  tests[idx].name = newName;
                   await firebase.firestore()
                     .collection('users').doc(currentUser.uid)
                     .collection('qbankData').doc('history').set({ tests });
-                  nameEl.textContent = newName.trim();
                 }
               }
+              nameEl.textContent = newName;
             } catch (err) {
               console.error('Failed to rename:', err);
+              nameEl.textContent = currentName;
             }
           }
+
+          let saved = false;
+          input.addEventListener('keydown', (ev) => {
+            if (ev.key === 'Enter') { saved = true; input.blur(); saveRename(); }
+            if (ev.key === 'Escape') { saved = true; nameEl.textContent = currentName; }
+          });
+          input.addEventListener('blur', () => { if (!saved) { saved = true; saveRename(); } });
         });
       });
 
