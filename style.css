@@ -900,7 +900,7 @@ a {
 /* ===== Mentorship Process ===== */
 .process-steps {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
@@ -916,6 +916,8 @@ a {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   border: 1px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
 }
 
 .step-number {
@@ -941,13 +943,16 @@ a {
 .step p {
   font-size: 0.9rem;
   color: var(--gray-500);
+  flex: 1;
 }
 
 .step-arrow {
   color: var(--teal);
   font-size: 1.5rem;
   font-weight: 700;
-  padding-top: 48px;
+  display: flex;
+  align-items: center;
+  align-self: center;
 }
 
 /* ===== Testimonials ===== */
@@ -1025,8 +1030,10 @@ a {
 /* ===== Contact ===== */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact-card {
