@@ -98,36 +98,62 @@
         <div class="view active" id="viewOverview">
           <div class="dashboard-header">
             <h1>Welcome back, <span id="userName">Student</span></h1>
-            <p class="dashboard-sub">What would you like to do today?</p>
+            <p class="dashboard-sub" id="overviewSub">Your preparation overview</p>
           </div>
 
-          <!-- ===== Quick Actions — prominent cards at top ===== -->
-          <div class="action-cards">
-            <a href="mailto:shosmedglobal@gmail.com?subject=Book 30-Min Consultation ($79)&body=Hi, I'd like to book a 30-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="action-card action-consult">
-              <div class="action-icon">📞</div>
-              <div class="action-text">
-                <h3>Schedule a Consultation</h3>
-                <p>30-min Zoom call with a US physician — $79</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
-            <!-- Path-specific action — shown/hidden by JS -->
-            <a href="applicants.html#pricing" class="action-card action-path" id="actionApplicant" style="display:none;">
-              <div class="action-icon">🎓</div>
-              <div class="action-text">
-                <h3>Explore Application Services</h3>
-                <p>Get help with your Czech med school application</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
-            <a href="students.html#pricing" class="action-card action-path" id="actionStudent" style="display:none;">
-              <div class="action-icon">🩺</div>
-              <div class="action-text">
-                <h3>Explore Mentorship</h3>
-                <p>USMLE prep, residency match, and career guidance</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
+          <!-- ===== Exam Countdown ===== -->
+          <div class="overview-countdown" id="examCountdown">
+            <div class="countdown-left">
+              <div class="countdown-number" id="countdownDays">—</div>
+              <div class="countdown-label">days until exam</div>
+            </div>
+            <div class="countdown-right">
+              <label class="countdown-date-label">Exam date</label>
+              <input type="date" class="countdown-date-input" id="examDateInput">
+              <button class="countdown-save-btn" id="saveExamDate" style="display:none;">Save</button>
+            </div>
+          </div>
+
+          <!-- ===== Stats Grid ===== -->
+          <div class="overview-stats-grid">
+            <div class="overview-stat-card">
+              <div class="overview-stat-value" id="statTestsCompleted">0</div>
+              <div class="overview-stat-label">Tests Completed</div>
+            </div>
+            <div class="overview-stat-card">
+              <div class="overview-stat-value" id="statTotalQuestions">0</div>
+              <div class="overview-stat-label">Questions Answered</div>
+            </div>
+            <div class="overview-stat-card">
+              <div class="overview-stat-value overview-stat-score" id="statAvgScore">—</div>
+              <div class="overview-stat-label">Average Score</div>
+            </div>
+            <div class="overview-stat-card">
+              <div class="overview-stat-value" id="statBestScore">—</div>
+              <div class="overview-stat-label">Best Score</div>
+            </div>
+          </div>
+
+          <!-- ===== Subject Performance ===== -->
+          <div class="overview-section">
+            <h3 class="overview-section-title">Performance by Subject</h3>
+            <div class="overview-subject-bars" id="subjectBars">
+              <p class="overview-empty-msg">Complete some tests to see your subject breakdown.</p>
+            </div>
+          </div>
+
+          <!-- ===== Recent Activity ===== -->
+          <div class="overview-section">
+            <h3 class="overview-section-title">Recent Activity</h3>
+            <div class="overview-recent" id="recentActivity">
+              <p class="overview-empty-msg">No tests yet. <a href="#" onclick="switchView('qbank'); return false;">Start practicing!</a></p>
+            </div>
+          </div>
+
+          <!-- ===== Quick Links (hidden items moved here) ===== -->
+          <div style="display:none;">
+            <span id="actionApplicant"></span>
+            <span id="actionStudent"></span>
           </div>
         </div>
 
@@ -983,23 +1009,17 @@
       const isStudent = userPath === 'student';
 
       if (!userPath) {
-        // No path — show everything
-        document.getElementById('actionApplicant').style.display = 'flex';
-        document.getElementById('actionStudent').style.display = 'flex';
+        // No path — show everything in store
         document.getElementById('storeApplicantServices').style.display = 'block';
         document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        // Application services only for med school applicants
-        document.getElementById('actionApplicant').style.display = isApplicant ? 'flex' : 'none';
+        // Store visibility
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
+        document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
 
         // Hide QBank sidebar link for residency applicants
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
-
-        // Mentorship only for residency applicants
-        document.getElementById('actionStudent').style.display = isStudent ? 'flex' : 'none';
-        document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
       }
 
       // ===== QBank access level =====
@@ -1017,6 +1037,9 @@
 
       // Load test history into dashboard QBank view
       loadDashTestHistory(user.uid);
+
+      // Load overview stats
+      loadOverviewStats(user.uid, profile);
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
@@ -1071,6 +1094,135 @@
       btn.disabled = false;
       btn.textContent = 'Save';
     });
+
+    // ===== Overview Stats =====
+    async function loadOverviewStats(uid, profile) {
+      try {
+        // Load exam date from profile
+        const examDate = profile?.examDate;
+        const examInput = document.getElementById('examDateInput');
+        const saveBtn = document.getElementById('saveExamDate');
+        if (examDate) {
+          examInput.value = examDate;
+          updateCountdown(examDate);
+        }
+        examInput.addEventListener('change', () => {
+          saveBtn.style.display = examInput.value ? 'inline-block' : 'none';
+        });
+        saveBtn.addEventListener('click', async () => {
+          const date = examInput.value;
+          if (!date) return;
+          await firebase.firestore().collection('users').doc(uid).set(
+            { examDate: date }, { merge: true }
+          );
+          updateCountdown(date);
+          saveBtn.style.display = 'none';
+        });
+
+        // Load test history for stats
+        const snapshot = await firebase.firestore()
+          .collection('users').doc(uid)
+          .collection('qbankData').doc('history').get();
+        const tests = snapshot.exists ? (snapshot.data().tests || []) : [];
+
+        if (tests.length === 0) return;
+
+        // Compute stats
+        const totalTests = tests.length;
+        const totalQs = tests.reduce((sum, t) => sum + (t.total || 0), 0);
+        const totalCorrect = tests.reduce((sum, t) => sum + (t.correct || 0), 0);
+        const avgScore = totalQs > 0 ? Math.round((totalCorrect / totalQs) * 100) : 0;
+        const bestScore = Math.max(...tests.map(t => t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0));
+
+        document.getElementById('statTestsCompleted').textContent = totalTests;
+        document.getElementById('statTotalQuestions').textContent = totalQs;
+        document.getElementById('statAvgScore').textContent = avgScore + '%';
+        document.getElementById('statAvgScore').style.color = avgScore >= 70 ? '#10b981' : avgScore >= 50 ? '#f59e0b' : '#ef4444';
+        document.getElementById('statBestScore').textContent = bestScore + '%';
+        document.getElementById('statBestScore').style.color = bestScore >= 70 ? '#10b981' : bestScore >= 50 ? '#f59e0b' : '#ef4444';
+
+        // Subject breakdown
+        const subjectStats = {};
+        tests.forEach(t => {
+          if (t.subjectBreakdown) {
+            Object.entries(t.subjectBreakdown).forEach(([subj, data]) => {
+              if (!subjectStats[subj]) subjectStats[subj] = { correct: 0, total: 0 };
+              subjectStats[subj].correct += data.correct || 0;
+              subjectStats[subj].total += data.total || 0;
+            });
+          } else if (t.subjects) {
+            // Fallback: distribute evenly across subjects
+            t.subjects.forEach(subj => {
+              if (!subjectStats[subj]) subjectStats[subj] = { correct: 0, total: 0 };
+              const perSubj = Math.ceil(t.total / t.subjects.length);
+              const perSubjCorrect = Math.ceil(t.correct / t.subjects.length);
+              subjectStats[subj].correct += perSubjCorrect;
+              subjectStats[subj].total += perSubj;
+            });
+          }
+        });
+
+        const barsContainer = document.getElementById('subjectBars');
+        if (Object.keys(subjectStats).length > 0) {
+          let barsHtml = '';
+          Object.entries(subjectStats).sort((a, b) => a[0].localeCompare(b[0])).forEach(([subj, data]) => {
+            const pct = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
+            const barColor = pct >= 70 ? '#10b981' : pct >= 50 ? '#f59e0b' : '#ef4444';
+            barsHtml += `
+              <div class="overview-subject-row">
+                <span class="overview-subject-name">${subj.charAt(0).toUpperCase() + subj.slice(1)}</span>
+                <div class="overview-bar-track">
+                  <div class="overview-bar-fill" style="width:${pct}%; background:${barColor};"></div>
+                </div>
+                <span class="overview-subject-pct">${pct}%</span>
+              </div>
+            `;
+          });
+          barsContainer.innerHTML = barsHtml;
+        }
+
+        // Recent activity (last 5 tests)
+        const recentContainer = document.getElementById('recentActivity');
+        const recent = tests.slice(0, 5);
+        if (recent.length > 0) {
+          let recentHtml = '';
+          recent.forEach(t => {
+            const pct = t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0;
+            const scoreClass = pct >= 70 ? 'score-good' : pct >= 50 ? 'score-mid' : 'score-low';
+            const name = t.name || t.date || 'Test';
+            const dateStr = t.date ? new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+            recentHtml += `
+              <div class="overview-recent-item">
+                <span class="overview-recent-name">${name}</span>
+                <span class="overview-recent-date">${dateStr}</span>
+                <span class="dash-hist-score ${scoreClass}">${pct}%</span>
+              </div>
+            `;
+          });
+          recentContainer.innerHTML = recentHtml;
+        }
+      } catch (err) {
+        console.error('Failed to load overview stats:', err);
+      }
+    }
+
+    function updateCountdown(dateStr) {
+      const examDate = new Date(dateStr + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const diff = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+      const el = document.getElementById('countdownDays');
+      if (diff > 0) {
+        el.textContent = diff;
+        el.style.color = diff <= 30 ? '#ef4444' : diff <= 60 ? '#f59e0b' : '#10b981';
+      } else if (diff === 0) {
+        el.textContent = 'Today!';
+        el.style.color = '#ef4444';
+      } else {
+        el.textContent = 'Passed';
+        el.style.color = '#6b7280';
+      }
+    }
 
     // ===== Stripe Payment Links =====
     document.querySelectorAll('.stripe-pay').forEach(btn => {

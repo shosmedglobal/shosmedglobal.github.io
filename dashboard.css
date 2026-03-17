@@ -1624,4 +1624,210 @@
   .lf3-stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
+  .overview-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .overview-countdown {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .countdown-right {
+    justify-content: center;
+  }
+}
+
+/* ===== Overview Stats ===== */
+.overview-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #141829, #1B2137);
+  border: 1px solid rgba(207, 91, 46, 0.25);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+}
+
+.countdown-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.countdown-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #10b981;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+.countdown-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.countdown-date-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.countdown-date-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.countdown-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+
+.countdown-save-btn {
+  background: #E8784A;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.countdown-save-btn:hover {
+  opacity: 0.85;
+}
+
+.overview-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.overview-stat-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.overview-stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.overview-stat-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.overview-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.overview-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.overview-empty-msg {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.overview-empty-msg a {
+  color: #E8784A;
+  font-weight: 600;
+}
+
+/* Subject bars */
+.overview-subject-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.overview-subject-name {
+  width: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+  flex-shrink: 0;
+}
+
+.overview-bar-track {
+  flex: 1;
+  height: 10px;
+  background: #f3f4f6;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.overview-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+
+.overview-subject-pct {
+  width: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: right;
+}
+
+/* Recent activity */
+.overview-recent-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 12px;
+}
+
+.overview-recent-item:last-child {
+  border-bottom: none;
+}
+
+.overview-recent-name {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.overview-recent-date {
+  font-size: 0.82rem;
+  color: #9ca3af;
 }
