@@ -368,57 +368,48 @@ a {
   margin-bottom: 60px;
 }
 
-.hero-stats {
+/* ===== Stats Strip ===== */
+.stats-strip {
+  background: linear-gradient(135deg, #141829, #1B2137);
+  border-top: 1px solid rgba(207, 91, 46, 0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 44px 0;
+}
+
+.stats-strip-inner {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 8px;
+  align-items: center;
+  gap: 56px;
 }
 
-.stat {
+.stat-item {
   text-align: center;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 28px 40px;
-  min-width: 180px;
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-}
-
-.stat:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(207, 91, 46, 0.4);
 }
 
 .stat-number {
   display: block;
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  color: var(--white);
+  color: #E8784A;
   line-height: 1;
 }
 
-.stat-accent {
-  display: block;
-  width: 32px;
-  height: 3px;
-  background: linear-gradient(90deg, #CF5B2E, #E8784A);
-  border-radius: 2px;
-  margin: 10px auto;
-}
-
 .stat-label {
+  display: block;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.1);
 }
 
 /* ===== Sections ===== */
@@ -1148,17 +1139,20 @@ a {
     padding: 100px 0 60px;
   }
 
-  .hero-stats {
-    gap: 12px;
-  }
-
-  .stat {
-    padding: 20px 24px;
-    min-width: 140px;
+  .stats-strip-inner {
+    gap: 28px;
   }
 
   .stat-number {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+  }
+
+  .stat-divider {
+    height: 36px;
+  }
+
+  .stats-strip {
+    padding: 32px 0;
   }
 
   .programs-grid {

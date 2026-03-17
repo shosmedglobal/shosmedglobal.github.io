@@ -70,25 +70,28 @@
         <a href="applicants.html" class="btn btn-primary">Med School Application</a>
         <a href="students.html" class="btn btn-outline">Residency Application</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number" data-count="100" data-suffix="">0</span>
-          <span class="stat-accent"></span>
-          <span class="stat-label">Students Guided</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number" data-count="10" data-suffix="">0</span>
-          <span class="stat-accent"></span>
-          <span class="stat-label">Years of Mentorship</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number" data-count="10" data-suffix="">0</span>
-          <span class="stat-accent"></span>
-          <span class="stat-label">Countries Reached</span>
-        </div>
-      </div>
     </div>
   </header>
+
+  <!-- Stats Strip -->
+  <div class="stats-strip">
+    <div class="container stats-strip-inner">
+      <div class="stat-item">
+        <span class="stat-number" data-count="100" data-suffix="">0</span>
+        <span class="stat-label">Students Guided</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="10" data-suffix="">0</span>
+        <span class="stat-label">Years of Mentorship</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="10" data-suffix="">0</span>
+        <span class="stat-label">Countries Reached</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Two Pathways Section -->
   <section class="section" id="pathways">
@@ -490,8 +493,8 @@
         }
       });
     }, { threshold: 0.5 });
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) countObserver.observe(heroStats);
+    const statsStrip = document.querySelector('.stats-strip');
+    if (statsStrip) countObserver.observe(statsStrip);
   </script>
 </body>
 </html>
