@@ -558,7 +558,13 @@ function renderQuestion() {
     const div = document.createElement('div');
     div.className = 'quiz-option';
     div.dataset.index = i;
-    div.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
+    const letterSpan = document.createElement('span');
+    letterSpan.className = 'option-letter';
+    letterSpan.textContent = letters[i];
+    const textSpan = document.createElement('span');
+    textSpan.textContent = opt;
+    div.appendChild(letterSpan);
+    div.appendChild(textSpan);
 
     if (answers[currentIndex] !== undefined) {
       div.classList.add('disabled');
@@ -648,7 +654,12 @@ function showExplanation(q, isCorrect) {
   header.className = 'explanation-header ' + (isCorrect ? 'correct-header' : 'wrong-header');
   icon.textContent = isCorrect ? '✓' : '✗';
   title.textContent = isCorrect ? 'Correct!' : 'Incorrect';
-  content.innerHTML = q.explanation;
+  // Sanitize: only allow safe HTML tags from questions.json
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = q.explanation;
+  // Remove any script tags
+  tempDiv.querySelectorAll('script,iframe,object,embed,form,input').forEach(el => el.remove());
+  content.innerHTML = tempDiv.innerHTML;
   box.style.display = 'block';
 
   // Restore saved highlights for this question

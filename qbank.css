@@ -1,11 +1,5 @@
 /* ===== Content Protection ===== */
-.qbank-section {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
+/* .qbank-section user-select rules are merged into the main .qbank-section block below */
 
 /* Hide content when printing */
 @media print {
@@ -81,10 +75,16 @@
 }
 
 /* ===== Question Bank Section ===== */
+/* Note: user-select:none for .qbank-section is defined above in Content Protection */
 .qbank-section {
   min-height: 100vh;
   padding: 100px 0 60px;
   background: var(--gray-50);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* ===== Start Screen ===== */
@@ -1216,6 +1216,10 @@
 
   .results-actions .btn {
     width: 100%;
+  }
+
+  .perf-stats-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
