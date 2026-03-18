@@ -260,7 +260,7 @@
   <script>
     // ===== Access Control =====
     // Fixed sample question IDs — same 5 every time for free users
-    const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-2', 'chem-1', 'chem-2', 'phys-1'];
+    const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-2', 'bio-3', 'chem-1', 'chem-2'];
 
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
@@ -281,7 +281,7 @@
       const qbankAccess = profile?.payments?.['exam-bank'];
 
       // Admin emails get full access without payment
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
 
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const plan = profile?.payments?.['exam-bank-plan']; // '1mo', '3mo', '6mo'
