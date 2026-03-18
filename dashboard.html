@@ -1193,10 +1193,6 @@
                 <span class="profile-label">Path</span>
                 <span class="profile-value" id="profilePath">-</span>
               </div>
-              <div class="profile-row">
-                <span class="profile-label">Member since</span>
-                <span class="profile-value" id="profileDate">-</span>
-              </div>
             </div>
 
             <!-- Edit form (hidden) -->
@@ -1344,10 +1340,6 @@
       const pathText = profile?.path === 'applicant' ? '🎓 Med School Application' : profile?.path === 'student' ? '🩺 Residency Application' : '-';
       document.getElementById('profilePath').textContent = pathText;
 
-      if (profile?.createdAt) {
-        const date = profile.createdAt.toDate();
-        document.getElementById('profileDate').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-      }
 
       // ===== Path-based visibility =====
       // Med School applicants: see QBank + Application Services, NOT Mentorship
@@ -1457,18 +1449,36 @@
 
     document.getElementById('saveProfileBtn').addEventListener('click', async () => {
       const name = document.getElementById('editName').value.trim();
-      const path = document.querySelector('input[name="editPath"]:checked').value;
+      const path = document.querySelector('input[name="editPath"]:checked')?.value;
       const btn = document.getElementById('saveProfileBtn');
+
+      if (!name) { alert('Please enter your name.'); return; }
 
       btn.disabled = true;
       btn.textContent = 'Saving...';
 
-      await currentUser.updateProfile({ displayName: name });
-      const result = await updateUserProfile(currentUser.uid, { name, path });
-      if (result.success) {
-        document.getElementById('editProfileForm').style.display = 'none';
-        document.getElementById('profileDisplay').style.display = 'block';
-        await loadDashboard(currentUser);
+      try {
+        await currentUser.updateProfile({ displayName: name });
+        const result = await updateUserProfile(currentUser.uid, { name, path });
+        if (result.success) {
+          // Immediately update profile display (don't wait for loadDashboard cache)
+          document.getElementById('profileName').textContent = name;
+          const pathText = path === 'applicant' ? '🎓 Med School Application' : path === 'student' ? '🩺 Residency Application' : '-';
+          document.getElementById('profilePath').textContent = pathText;
+          document.getElementById('sidebarPath').textContent = path === 'applicant' ? 'Med School Application' : path === 'student' ? 'Residency Application' : '';
+          document.getElementById('sidebarName').textContent = name;
+
+          document.getElementById('editProfileForm').style.display = 'none';
+          document.getElementById('profileDisplay').style.display = 'block';
+
+          // Full reload for path-based visibility changes
+          await loadDashboard(currentUser);
+        } else {
+          alert('Failed to save. Please try again.');
+        }
+      } catch (e) {
+        console.error('Save profile error:', e);
+        alert('Failed to save. Please try again.');
       }
 
       btn.disabled = false;

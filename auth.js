@@ -117,14 +117,21 @@ async function resetPassword(email) {
 // Get user profile from Firestore
 async function getUserProfile(uid) {
   try {
-    const doc = await db.collection('users').doc(uid).get();
+    // Force server read to avoid stale cache after profile updates
+    const doc = await db.collection('users').doc(uid).get({ source: 'server' });
     if (doc.exists) {
       return doc.data();
     }
     return null;
   } catch (error) {
-    console.error('Error getting profile:', error);
-    return null;
+    // Fallback to cache if offline
+    try {
+      const cached = await db.collection('users').doc(uid).get();
+      return cached.exists ? cached.data() : null;
+    } catch (e) {
+      console.error('Error getting profile:', e);
+      return null;
+    }
   }
 }
 
