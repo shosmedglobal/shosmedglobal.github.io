@@ -135,12 +135,13 @@ async function getUserProfile(uid) {
   }
 }
 
-// Update user profile
+// Update user profile (uses set+merge so it works even if doc doesn't exist yet)
 async function updateUserProfile(uid, data) {
   try {
-    await db.collection('users').doc(uid).update(data);
+    await db.collection('users').doc(uid).set(data, { merge: true });
     return { success: true };
   } catch (error) {
+    console.error('updateUserProfile error:', error);
     return { success: false, error: error.message };
   }
 }
