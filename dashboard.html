@@ -1456,10 +1456,19 @@
       btn.textContent = 'Saving...';
 
       try {
-        await currentUser.updateProfile({ displayName: name });
+        // Update Firebase Auth display name (may fail if token expired — non-critical)
+        try {
+          await currentUser.updateProfile({ displayName: name });
+        } catch (authErr) {
+          console.warn('Auth profile update failed (non-critical):', authErr);
+        }
+
+        // Update Firestore profile (this is the critical save)
         const result = await updateUserProfile(currentUser.uid, { name, path });
+        console.log('updateUserProfile result:', result);
+
         if (result.success) {
-          // Immediately update profile display (don't wait for loadDashboard cache)
+          // Immediately update profile display
           document.getElementById('profileName').textContent = name;
           const pathText = path === 'applicant' ? '🎓 Med School Application' : path === 'student' ? '🩺 Residency Application' : '-';
           document.getElementById('profilePath').textContent = pathText;
@@ -1472,11 +1481,12 @@
           // Full reload for path-based visibility changes
           await loadDashboard(currentUser);
         } else {
-          alert('Failed to save. Please try again.');
+          console.error('Firestore save failed:', result.error);
+          alert('Failed to save: ' + (result.error || 'Unknown error') + '. Please check browser console for details.');
         }
       } catch (e) {
         console.error('Save profile error:', e);
-        alert('Failed to save. Please try again.');
+        alert('Failed to save: ' + e.message + '. Please check browser console for details.');
       }
 
       btn.disabled = false;
