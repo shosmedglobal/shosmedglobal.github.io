@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" font-family="'Segoe UI', Arial, sans-serif" font-size="11">
+  <title>Organic Chemistry — Key Functional Groups</title>
+
+  <defs>
+    <!-- Card gradients -->
+    <linearGradient id="gHydroxyl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="gAldehyde" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffedd5"/><stop offset="100%" stop-color="#fed7aa"/>
+    </linearGradient>
+    <linearGradient id="gKetone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fce7f3"/><stop offset="100%" stop-color="#fbcfe8"/>
+    </linearGradient>
+    <linearGradient id="gCarboxyl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fee2e2"/><stop offset="100%" stop-color="#fecaca"/>
+    </linearGradient>
+    <linearGradient id="gEster" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e0e7ff"/><stop offset="100%" stop-color="#c7d2fe"/>
+    </linearGradient>
+    <linearGradient id="gAmine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d1fae5"/><stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <linearGradient id="gAmide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ccfbf1"/><stop offset="100%" stop-color="#99f6e4"/>
+    </linearGradient>
+    <linearGradient id="gEther" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef9c3"/><stop offset="100%" stop-color="#fef08a"/>
+    </linearGradient>
+    <linearGradient id="gThiol" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/><stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="gPhenol" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ede9fe"/><stop offset="100%" stop-color="#ddd6fe"/>
+    </linearGradient>
+    <linearGradient id="gHalogen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0"/><stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="gPhosphate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fae8ff"/><stop offset="100%" stop-color="#f0abfc"/>
+    </linearGradient>
+
+    <!-- Oxidation arrow gradient -->
+    <linearGradient id="gOxArrow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="25%" stop-color="#84cc16"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="75%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#9ca3af"/>
+    </linearGradient>
+
+    <!-- Title underline gradient -->
+    <linearGradient id="gTitle" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/><stop offset="50%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+
+    <!-- Drop shadow -->
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#00000020"/>
+    </filter>
+    <filter id="shadowLg" x="-3%" y="-6%" width="106%" height="118%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3.5" flood-color="#00000025"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="560" fill="#f8fafc" rx="6"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="17" fill="#1e293b" font-weight="bold" letter-spacing="0.3">Key Functional Groups in Organic Chemistry</text>
+  <rect x="180" y="33" width="360" height="2.5" rx="1.2" fill="url(#gTitle)"/>
+
+  <!-- ==================== ROW 1 ==================== -->
+  <!-- Hydroxyl -->
+  <g transform="translate(18,50)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gHydroxyl)" stroke="#93c5fd" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#3b82f6"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="bold">Hydroxyl (Alcohol)</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#93c5fd" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—OH</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-ol</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. ethanol, methanol</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">H-bonding, polar</text>
+  </g>
+
+  <!-- Aldehyde -->
+  <g transform="translate(192,50)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gAldehyde)" stroke="#fdba74" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#ea580c"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#c2410c" font-weight="bold">Aldehyde</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#fdba74" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—CHO</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-al</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. formaldehyde, ethanal</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Reducing agent, C=O terminal</text>
+  </g>
+
+  <!-- Ketone -->
+  <g transform="translate(366,50)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gKetone)" stroke="#f9a8d4" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#db2777"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#be185d" font-weight="bold">Ketone</text>
+    <rect x="15" y="26" width="130" height="30" rx="6" fill="#ffffffcc" stroke="#f9a8d4" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—CO—R'</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-one</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. acetone, propanone</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">C=O internal, polar</text>
+  </g>
+
+  <!-- Carboxylic Acid -->
+  <g transform="translate(540,50)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gCarboxyl)" stroke="#fca5a5" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#dc2626"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#b91c1c" font-weight="bold">Carboxylic Acid</text>
+    <rect x="15" y="26" width="130" height="30" rx="6" fill="#ffffffcc" stroke="#fca5a5" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—COOH</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-oic acid</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. acetic acid, citric acid</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Acidic, H-bonding dimers</text>
+  </g>
+
+  <!-- ==================== ROW 2 ==================== -->
+  <!-- Ester -->
+  <g transform="translate(18,165)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gEster)" stroke="#a5b4fc" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#6366f1"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#4338ca" font-weight="bold">Ester</text>
+    <rect x="10" y="26" width="140" height="30" rx="6" fill="#ffffffcc" stroke="#a5b4fc" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—COO—R'</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-oate</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. ethyl acetate</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Fruity smell, hydrolysis</text>
+  </g>
+
+  <!-- Amine -->
+  <g transform="translate(192,165)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gAmine)" stroke="#6ee7b7" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#059669"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">N</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#047857" font-weight="bold">Amine</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#6ee7b7" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—NH<tspan font-size="12" baseline-shift="sub">2</tspan></text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-amine</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. methylamine, aniline</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Basic, nucleophilic</text>
+  </g>
+
+  <!-- Amide -->
+  <g transform="translate(366,165)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gAmide)" stroke="#5eead4" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#0d9488"/><text x="148" y="15.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">N,O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#0f766e" font-weight="bold">Amide</text>
+    <rect x="10" y="26" width="140" height="30" rx="6" fill="#ffffffcc" stroke="#5eead4" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—CONH<tspan font-size="12" baseline-shift="sub">2</tspan></text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-amide</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. acetamide, urea</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Peptide bond, stable</text>
+  </g>
+
+  <!-- Ether -->
+  <g transform="translate(540,165)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gEther)" stroke="#fcd34d" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#ca8a04"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#a16207" font-weight="bold">Ether</text>
+    <rect x="15" y="26" width="130" height="30" rx="6" fill="#ffffffcc" stroke="#fcd34d" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—O—R'</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Prefix: <tspan font-weight="600">alkoxy- / -ether</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. diethyl ether, THF</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Inert solvent, low reactivity</text>
+  </g>
+
+  <!-- ==================== ROW 3 ==================== -->
+  <!-- Thiol -->
+  <g transform="translate(18,280)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gThiol)" stroke="#fbbf24" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#d97706"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">S</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#92400e" font-weight="bold">Thiol</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#fbbf24" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—SH</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-thiol</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. cysteine, ethanethiol</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Disulfide bridges, pungent</text>
+  </g>
+
+  <!-- Phenol -->
+  <g transform="translate(192,280)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gPhenol)" stroke="#c4b5fd" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#7c3aed"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">O</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#6d28d9" font-weight="bold">Phenol</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#c4b5fd" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">Ar—OH</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Suffix: <tspan font-weight="600">-phenol</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. phenol, tyrosine</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Weakly acidic, aromatic</text>
+  </g>
+
+  <!-- Halogen Derivative -->
+  <g transform="translate(366,280)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gHalogen)" stroke="#94a3b8" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#64748b"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">X</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#475569" font-weight="bold">Halogen Derivative</text>
+    <rect x="20" y="26" width="120" height="30" rx="6" fill="#ffffffcc" stroke="#94a3b8" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="18" fill="#1e293b" font-weight="bold">R—X</text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Prefix: <tspan font-weight="600">halo-</tspan> (F, Cl, Br, I)</text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. chloroform, CFCs</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Good leaving groups</text>
+  </g>
+
+  <!-- Phosphate -->
+  <g transform="translate(540,280)" filter="url(#shadow)">
+    <rect width="160" height="100" rx="10" fill="url(#gPhosphate)" stroke="#e879f9" stroke-width="1.2"/>
+    <circle cx="148" cy="12" r="7" fill="#a21caf"/><text x="148" y="15.5" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">P</text>
+    <text x="80" y="18" text-anchor="middle" font-size="11.5" fill="#86198f" font-weight="bold">Phosphate</text>
+    <rect x="5" y="26" width="150" height="30" rx="6" fill="#ffffffcc" stroke="#e879f9" stroke-width="0.6"/>
+    <text x="80" y="47" text-anchor="middle" font-size="16" fill="#1e293b" font-weight="bold">R—O—PO<tspan font-size="10" baseline-shift="sub">3</tspan><tspan font-size="9" baseline-shift="super">2&#x2212;</tspan></text>
+    <text x="80" y="70" text-anchor="middle" font-size="9" fill="#475569">Name: <tspan font-weight="600">phosphate ester</tspan></text>
+    <text x="80" y="82" text-anchor="middle" font-size="8" fill="#64748b">e.g. ATP, DNA backbone</text>
+    <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#94a3b8" font-style="italic">Energy transfer, signaling</text>
+  </g>
+
+  <!-- ==================== OXIDATION LEVEL ARROW ==================== -->
+  <g transform="translate(18,400)" filter="url(#shadowLg)">
+    <rect width="684" height="62" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="342" y="16" text-anchor="middle" font-size="11" fill="#334155" font-weight="bold">Oxidation Level Sequence (Carbon)</text>
+
+    <!-- Gradient arrow body -->
+    <rect x="30" y="26" width="610" height="14" rx="7" fill="url(#gOxArrow)" opacity="0.85"/>
+    <!-- Arrow head -->
+    <polygon points="640,22 640,46 660,33" fill="#9ca3af"/>
+
+    <!-- Labels on arrow -->
+    <text x="55" y="55" text-anchor="middle" font-size="8" fill="#16a34a" font-weight="600">Alkane</text>
+    <text x="150" y="55" text-anchor="middle" font-size="8" fill="#65a30d" font-weight="600">Alcohol</text>
+    <text x="250" y="55" text-anchor="middle" font-size="8" fill="#ca8a04" font-weight="600">Aldehyde</text>
+    <text x="370" y="55" text-anchor="middle" font-size="8" fill="#ea580c" font-weight="600">Carboxylic Acid</text>
+    <text x="510" y="55" text-anchor="middle" font-size="8" fill="#dc2626" font-weight="600">Ester / Amide</text>
+    <text x="635" y="55" text-anchor="middle" font-size="8" fill="#6b7280" font-weight="600">CO<tspan font-size="6" baseline-shift="sub">2</tspan></text>
+
+    <!-- Dots on arrow -->
+    <circle cx="55" cy="33" r="3" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+    <circle cx="150" cy="33" r="3" fill="#fff" stroke="#65a30d" stroke-width="1.5"/>
+    <circle cx="250" cy="33" r="3" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+    <circle cx="370" cy="33" r="3" fill="#fff" stroke="#ea580c" stroke-width="1.5"/>
+    <circle cx="510" cy="33" r="3" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+    <circle cx="635" cy="33" r="3" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+  </g>
+
+  <!-- ==================== IUPAC NAMING PRIORITY ==================== -->
+  <g transform="translate(18,476)" filter="url(#shadowLg)">
+    <rect width="684" height="68" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="342" y="16" text-anchor="middle" font-size="11" fill="#334155" font-weight="bold">IUPAC Naming Priority (Highest &#x2192; Lowest as Principal Characteristic Group)</text>
+
+    <!-- Numbered priority list with color coding -->
+    <g font-size="8.5" font-weight="600">
+      <!-- Row 1 -->
+      <circle cx="30" cy="33" r="7" fill="#dc2626"/><text x="30" y="36" text-anchor="middle" font-size="7" fill="#fff">1</text>
+      <text x="42" y="36" fill="#dc2626">Carboxylic Acid</text>
+
+      <circle cx="140" cy="33" r="7" fill="#ea580c"/><text x="140" y="36" text-anchor="middle" font-size="7" fill="#fff">2</text>
+      <text x="152" y="36" fill="#ea580c">Ester</text>
+
+      <circle cx="210" cy="33" r="7" fill="#0d9488"/><text x="210" y="36" text-anchor="middle" font-size="7" fill="#fff">3</text>
+      <text x="222" y="36" fill="#0d9488">Amide</text>
+
+      <circle cx="285" cy="33" r="7" fill="#c2410c"/><text x="285" y="36" text-anchor="middle" font-size="7" fill="#fff">4</text>
+      <text x="297" y="36" fill="#c2410c">Aldehyde</text>
+
+      <circle cx="375" cy="33" r="7" fill="#be185d"/><text x="375" y="36" text-anchor="middle" font-size="7" fill="#fff">5</text>
+      <text x="387" y="36" fill="#be185d">Ketone</text>
+
+      <circle cx="455" cy="33" r="7" fill="#1e40af"/><text x="455" y="36" text-anchor="middle" font-size="7" fill="#fff">6</text>
+      <text x="467" y="36" fill="#1e40af">Alcohol</text>
+
+      <circle cx="535" cy="33" r="7" fill="#6d28d9"/><text x="535" y="36" text-anchor="middle" font-size="7" fill="#fff">7</text>
+      <text x="547" y="36" fill="#6d28d9">Phenol</text>
+
+      <circle cx="610" cy="33" r="7" fill="#92400e"/><text x="610" y="36" text-anchor="middle" font-size="7" fill="#fff">8</text>
+      <text x="622" y="36" fill="#92400e">Thiol</text>
+
+      <!-- Row 2 -->
+      <circle cx="30" cy="55" r="7" fill="#047857"/><text x="30" y="58" text-anchor="middle" font-size="7" fill="#fff">9</text>
+      <text x="42" y="58" fill="#047857">Amine</text>
+
+      <circle cx="110" cy="55" r="7" fill="#a16207"/><text x="110" y="58" text-anchor="middle" font-size="7" fill="#fff">10</text>
+      <text x="124" y="58" fill="#a16207">Ether</text>
+
+      <circle cx="195" cy="55" r="7" fill="#64748b"/><text x="195" y="58" text-anchor="middle" font-size="7" fill="#fff">11</text>
+      <text x="209" y="58" fill="#64748b">Halide</text>
+
+      <circle cx="280" cy="55" r="7" fill="#a21caf"/><text x="280" y="58" text-anchor="middle" font-size="7" fill="#fff">12</text>
+      <text x="294" y="58" fill="#a21caf">Phosphate</text>
+    </g>
+
+    <text x="420" y="58" font-size="7.5" fill="#94a3b8" font-style="italic">* Highest-priority group named as suffix; others as prefixes</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="360" y="555" text-anchor="middle" font-size="7" fill="#cbd5e1">Shos Med Global  |  Organic Chemistry Reference</text>
+</svg>

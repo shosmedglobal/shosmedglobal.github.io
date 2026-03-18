@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" font-family="'Segoe UI', Arial, sans-serif" font-size="11">
+  <title>Mendelian Genetics -- Monohybrid Cross</title>
+
+  <defs>
+    <!-- Radial gradients for genotype cells -->
+    <radialGradient id="gradAA" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </radialGradient>
+    <radialGradient id="gradAa" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </radialGradient>
+    <radialGradient id="gradaa" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fca5a5"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </radialGradient>
+
+    <!-- Linear gradients for header cells -->
+    <linearGradient id="gradFather" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="gradMother" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+
+    <!-- Gradient for corner cell -->
+    <linearGradient id="gradCorner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+
+    <!-- Legend square gradients (match cells) -->
+    <linearGradient id="legAA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="legAa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="legaa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fca5a5"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+
+    <!-- Drop shadow filter -->
+    <filter id="shadow" x="-4%" y="-4%" width="112%" height="112%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.22"/>
+    </filter>
+
+    <!-- Lighter shadow for cards -->
+    <filter id="cardShadow" x="-4%" y="-4%" width="112%" height="112%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#000" flood-opacity="0.16"/>
+    </filter>
+
+    <!-- Text shadow filter -->
+    <filter id="textShadow">
+      <feDropShadow dx="0.5" dy="0.5" stdDeviation="0.5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- ======== TITLE ======== -->
+  <text x="350" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1e293b" filter="url(#textShadow)">Monohybrid Cross -- Punnett Square</text>
+  <line x1="200" y1="36" x2="500" y2="36" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="220" y1="40" x2="480" y2="40" stroke="#3b82f6" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- ======== PARENTS ======== -->
+  <!-- Father with chromosome icon -->
+  <g transform="translate(78,52)">
+    <!-- Chromosome pair icon -->
+    <ellipse cx="-16" cy="8" rx="3.5" ry="9" fill="none" stroke="#1d4ed8" stroke-width="1.4" transform="rotate(-8,-16,8)"/>
+    <ellipse cx="-9" cy="8" rx="3.5" ry="9" fill="none" stroke="#1d4ed8" stroke-width="1.4" transform="rotate(8,-9,8)"/>
+    <text x="0" y="6" font-size="12" fill="#1d4ed8" font-weight="600">Father (Aa)</text>
+    <text x="0" y="19" font-size="10" fill="#475569">Gametes: A, a</text>
+  </g>
+
+  <!-- Decorative cross symbol -->
+  <g transform="translate(196,60)">
+    <circle cx="0" cy="0" r="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+    <text x="0" y="4.5" text-anchor="middle" font-size="15" font-weight="700" fill="#64748b">x</text>
+  </g>
+
+  <!-- Mother with chromosome icon -->
+  <g transform="translate(228,52)">
+    <!-- Chromosome pair icon -->
+    <ellipse cx="-16" cy="8" rx="3.5" ry="9" fill="none" stroke="#be185d" stroke-width="1.4" transform="rotate(-8,-16,8)"/>
+    <ellipse cx="-9" cy="8" rx="3.5" ry="9" fill="none" stroke="#be185d" stroke-width="1.4" transform="rotate(8,-9,8)"/>
+    <text x="0" y="6" font-size="12" fill="#be185d" font-weight="600">Mother (Aa)</text>
+    <text x="0" y="19" font-size="10" fill="#475569">Gametes: A, a</text>
+  </g>
+
+  <!-- ======== PUNNETT SQUARE GRID ======== -->
+  <!-- Outer container with rounded corners and shadow -->
+  <rect x="48" y="88" width="276" height="276" rx="12" ry="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <!-- Clip path for rounded corners on inner cells -->
+  <!-- Corner cell (top-left) -->
+  <rect x="50" y="90" width="90" height="60" rx="10" ry="10" fill="url(#gradCorner)"/>
+  <!-- Square off inner corners of the corner cell -->
+  <rect x="100" y="90" width="40" height="60" fill="url(#gradCorner)"/>
+  <rect x="50" y="110" width="90" height="40" fill="url(#gradCorner)"/>
+
+  <!-- Father header cells (top row) -->
+  <rect x="142" y="90" width="90" height="60" fill="url(#gradFather)" rx="2" ry="2"/>
+  <rect x="234" y="90" width="88" height="60" fill="url(#gradFather)" rx="2" ry="2"/>
+  <!-- Round top-right corner -->
+  <rect x="234" y="90" width="88" height="60" fill="url(#gradFather)"/>
+  <rect x="300" y="90" width="22" height="12" rx="10" ry="10" fill="url(#gradFather)"/>
+
+  <!-- Mother header cells (left column) -->
+  <rect x="50" y="152" width="90" height="105" fill="url(#gradMother)"/>
+  <rect x="50" y="259" width="90" height="103" fill="url(#gradMother)"/>
+  <!-- Round bottom-left corner -->
+  <rect x="50" y="340" width="12" height="22" rx="10" ry="10" fill="url(#gradMother)"/>
+
+  <!-- Header labels -->
+  <text x="95" y="116" text-anchor="middle" font-size="10" fill="#475569" font-weight="600">Gametes</text>
+  <text x="95" y="130" text-anchor="middle" font-size="9" fill="#64748b">Father --></text>
+  <text x="95" y="142" text-anchor="middle" font-size="9" fill="#64748b">Mother v</text>
+
+  <!-- Father gamete labels -->
+  <text x="187" y="125" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" filter="url(#textShadow)">A</text>
+  <text x="278" y="125" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" filter="url(#textShadow)">a</text>
+
+  <!-- Mother gamete labels -->
+  <text x="95" y="210" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" filter="url(#textShadow)">A</text>
+  <text x="95" y="316" text-anchor="middle" font-size="18" font-weight="700" fill="#fff" filter="url(#textShadow)">a</text>
+
+  <!-- Genotype cells -->
+  <!-- AA cell (row1, col1) -->
+  <rect x="142" y="152" width="90" height="105" fill="url(#gradAA)" rx="2" ry="2"/>
+  <text x="187" y="203" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" filter="url(#textShadow)">AA</text>
+  <text x="187" y="220" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">Homozygous</text>
+  <text x="187" y="230" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">dominant</text>
+
+  <!-- Aa cell (row1, col2) -->
+  <rect x="234" y="152" width="88" height="105" fill="url(#gradAa)" rx="2" ry="2"/>
+  <text x="278" y="203" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" filter="url(#textShadow)">Aa</text>
+  <text x="278" y="220" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">Heterozygous</text>
+
+  <!-- Aa cell (row2, col1) -->
+  <rect x="142" y="259" width="90" height="103" fill="url(#gradAa)" rx="2" ry="2"/>
+  <text x="187" y="310" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" filter="url(#textShadow)">Aa</text>
+  <text x="187" y="327" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">Heterozygous</text>
+
+  <!-- aa cell (row2, col2) -->
+  <rect x="234" y="259" width="88" height="103" fill="url(#gradaa)" rx="2" ry="2"/>
+  <text x="278" y="310" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" filter="url(#textShadow)">aa</text>
+  <text x="278" y="327" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">Homozygous</text>
+  <text x="278" y="337" text-anchor="middle" font-size="9" fill="#fff" opacity="0.85">recessive</text>
+
+  <!-- Grid lines -->
+  <line x1="142" y1="90" x2="142" y2="362" stroke="#fff" stroke-width="2"/>
+  <line x1="234" y1="90" x2="234" y2="362" stroke="#fff" stroke-width="2"/>
+  <line x1="50" y1="152" x2="322" y2="152" stroke="#fff" stroke-width="2"/>
+  <line x1="50" y1="259" x2="322" y2="259" stroke="#fff" stroke-width="2"/>
+
+  <!-- ======== RATIOS PANEL (right side card) ======== -->
+  <rect x="348" y="88" width="338" height="182" rx="10" ry="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2" filter="url(#cardShadow)"/>
+
+  <!-- Genotype Ratio heading -->
+  <text x="365" y="112" font-size="13" font-weight="700" fill="#1e293b">Genotype Ratio  1 : 2 : 1</text>
+  <line x1="365" y1="117" x2="540" y2="117" stroke="#cbd5e1" stroke-width="0.8"/>
+
+  <!-- Legend with gradient squares -->
+  <rect x="365" y="126" width="14" height="14" rx="3" fill="url(#legAA)" stroke="#059669" stroke-width="0.6"/>
+  <text x="385" y="137" font-size="11" fill="#334155" font-weight="600">AA</text>
+  <text x="410" y="137" font-size="10" fill="#64748b">= 25% Homozygous dominant</text>
+
+  <rect x="365" y="148" width="14" height="14" rx="3" fill="url(#legAa)" stroke="#d97706" stroke-width="0.6"/>
+  <text x="385" y="159" font-size="11" fill="#334155" font-weight="600">Aa</text>
+  <text x="410" y="159" font-size="10" fill="#64748b">= 50% Heterozygous</text>
+
+  <rect x="365" y="170" width="14" height="14" rx="3" fill="url(#legaa)" stroke="#dc2626" stroke-width="0.6"/>
+  <text x="385" y="181" font-size="11" fill="#334155" font-weight="600">aa</text>
+  <text x="410" y="181" font-size="10" fill="#64748b">= 25% Homozygous recessive</text>
+
+  <!-- Phenotype Ratio heading -->
+  <text x="365" y="208" font-size="13" font-weight="700" fill="#1e293b">Phenotype Ratio  3 : 1</text>
+  <line x1="365" y1="213" x2="520" y2="213" stroke="#cbd5e1" stroke-width="0.8"/>
+
+  <!-- Phenotype bars -->
+  <rect x="365" y="222" width="168" height="14" rx="4" fill="url(#gradAa)" opacity="0.85"/>
+  <text x="449" y="233" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">75% Dominant phenotype</text>
+
+  <rect x="535" y="222" width="56" height="14" rx="4" fill="url(#gradaa)" opacity="0.85"/>
+  <text x="563" y="233" text-anchor="middle" font-size="9.5" fill="#fff" font-weight="600">25%</text>
+
+  <text x="365" y="256" font-size="10" fill="#64748b">Dominant = AA + Aa  |  Recessive = aa</text>
+
+  <!-- ======== KEY FACTS BOX ======== -->
+  <rect x="348" y="284" width="338" height="182" rx="10" ry="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2" filter="url(#cardShadow)"/>
+
+  <text x="365" y="308" font-size="13" font-weight="700" fill="#1e293b">Key Genetic Concepts</text>
+  <line x1="365" y1="313" x2="555" y2="313" stroke="#cbd5e1" stroke-width="0.8"/>
+
+  <!-- Fact items with bullet dots -->
+  <circle cx="372" cy="332" r="3" fill="#3b82f6"/>
+  <text x="382" y="336" font-size="10.5" fill="#334155" font-weight="600">Test cross:</text>
+  <text x="440" y="336" font-size="10.5" fill="#64748b">Aa x aa --> 50% Aa, 50% aa</text>
+
+  <circle cx="372" cy="356" r="3" fill="#3b82f6"/>
+  <text x="382" y="360" font-size="10.5" fill="#334155" font-weight="600">AA x aa:</text>
+  <text x="432" y="360" font-size="10.5" fill="#64748b">All offspring Aa (carriers)</text>
+
+  <circle cx="372" cy="380" r="3" fill="#3b82f6"/>
+  <text x="382" y="384" font-size="10.5" fill="#334155" font-weight="600">Incomplete dominance:</text>
+  <text x="510" y="384" font-size="10.5" fill="#64748b">blended</text>
+  <text x="382" y="398" font-size="10.5" fill="#64748b">phenotype in heterozygote (e.g. pink)</text>
+
+  <circle cx="372" cy="416" r="3" fill="#3b82f6"/>
+  <text x="382" y="420" font-size="10.5" fill="#334155" font-weight="600">Codominance:</text>
+  <text x="462" y="420" font-size="10.5" fill="#64748b">both alleles fully</text>
+  <text x="382" y="434" font-size="10.5" fill="#64748b">expressed (e.g. AB blood type)</text>
+
+  <circle cx="372" cy="452" r="3" fill="#3b82f6"/>
+  <text x="382" y="456" font-size="10.5" fill="#334155" font-weight="600">Law of Segregation:</text>
+  <text x="498" y="456" font-size="10.5" fill="#64748b">allele pairs</text>
+  <text x="382" y="469" font-size="10.5" fill="#64748b">separate during gamete formation</text>
+
+  <!-- Bottom label -->
+  <text x="350" y="478" font-size="8" fill="#94a3b8">Mendelian Genetics | Monohybrid Cross | Aa x Aa</text>
+</svg>

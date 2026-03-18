@@ -806,16 +806,21 @@ function removeHighlightMark(mark) {
       if (!expInfo) return;
       try {
         const range = sel.getRangeAt(0);
+        // Use extractContents + wrap to handle cross-element selections
+        const fragment = range.extractContents();
         const mark = document.createElement('mark');
         mark.className = 'user-highlight';
         mark.dataset.hlColor = color;
         mark.style.background = HL_COLORS[color] || HL_COLORS.yellow;
-        range.surroundContents(mark);
+        mark.appendChild(fragment);
+        range.insertNode(mark);
+        // Normalize to merge adjacent text nodes
+        mark.parentNode && mark.parentNode.normalize();
         sel.removeAllRanges();
         popup.style.display = 'none';
         const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
         if (q) saveHighlights(q.id, expInfo.container);
-      } catch (e) { /* cross-element selection */ }
+      } catch (e) { console.warn('Highlight error:', e); }
     });
   });
 

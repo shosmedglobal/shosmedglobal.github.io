@@ -1,0 +1,380 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" font-family="'Segoe UI', Arial, sans-serif" font-size="10">
+  <title>Periodic Table — Key Groups for Entrance Exam</title>
+
+  <defs>
+    <!-- Gradients for element tiles by group -->
+    <linearGradient id="alkaliGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+    <linearGradient id="alkalineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffbe76"/>
+      <stop offset="100%" stop-color="#e67e22"/>
+    </linearGradient>
+    <linearGradient id="carbonGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6bcb77"/>
+      <stop offset="100%" stop-color="#27ae60"/>
+    </linearGradient>
+    <linearGradient id="nitrogenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a29bfe"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+    <linearGradient id="oxygenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#74b9ff"/>
+      <stop offset="100%" stop-color="#2980b9"/>
+    </linearGradient>
+    <linearGradient id="halogenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#55efc4"/>
+      <stop offset="100%" stop-color="#00b894"/>
+    </linearGradient>
+    <linearGradient id="nobleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b2bec3"/>
+      <stop offset="100%" stop-color="#636e72"/>
+    </linearGradient>
+
+    <!-- Badge gradients for group headers -->
+    <linearGradient id="alkaliBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+    <linearGradient id="alkalineBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f39c12"/>
+      <stop offset="100%" stop-color="#e67e22"/>
+    </linearGradient>
+    <linearGradient id="carbonBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2ecc71"/>
+      <stop offset="100%" stop-color="#27ae60"/>
+    </linearGradient>
+    <linearGradient id="nitrogenBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8e44ad"/>
+      <stop offset="100%" stop-color="#6c3483"/>
+    </linearGradient>
+    <linearGradient id="oxygenBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3498db"/>
+      <stop offset="100%" stop-color="#2471a3"/>
+    </linearGradient>
+    <linearGradient id="halogenBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1abc9c"/>
+      <stop offset="100%" stop-color="#16a085"/>
+    </linearGradient>
+    <linearGradient id="nobleBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7f8c8d"/>
+      <stop offset="100%" stop-color="#636e72"/>
+    </linearGradient>
+
+    <!-- Trend arrow gradients -->
+    <linearGradient id="trendUpGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#fdcb6e"/>
+      <stop offset="100%" stop-color="#e74c3c"/>
+    </linearGradient>
+    <linearGradient id="trendRightGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fdcb6e"/>
+      <stop offset="100%" stop-color="#e74c3c"/>
+    </linearGradient>
+    <linearGradient id="trendDownGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#74b9ff"/>
+      <stop offset="100%" stop-color="#0984e3"/>
+    </linearGradient>
+
+    <!-- Drop shadow filter -->
+    <filter id="tileShadow" x="-10%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#00000033"/>
+    </filter>
+    <filter id="boxShadow" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000028"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0984e3"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="430" fill="#f8f9fa" rx="8"/>
+
+  <!-- Title with underline decoration -->
+  <text x="360" y="28" text-anchor="middle" font-size="17" fill="#1a202c" font-weight="bold" letter-spacing="0.5">Periodic Table — Key Groups &amp; Trends</text>
+  <line x1="180" y1="33" x2="540" y2="33" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="220" y1="37" x2="500" y2="37" stroke="#3498db" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- ======= PERIOD LABELS (left side) ======= -->
+  <text x="14" y="82" font-size="8" fill="#7f8c8d" font-weight="600">Period</text>
+  <text x="18" y="100" font-size="9" fill="#2c3e50" font-weight="bold">1</text>
+  <text x="18" y="145" font-size="9" fill="#2c3e50" font-weight="bold">2</text>
+  <text x="18" y="190" font-size="9" fill="#2c3e50" font-weight="bold">3</text>
+  <text x="18" y="235" font-size="9" fill="#2c3e50" font-weight="bold">4</text>
+
+  <!-- ======= GROUP HEADER BADGES ======= -->
+  <!-- IA Alkali Metals -->
+  <rect x="30" y="48" width="72" height="18" rx="9" fill="url(#alkaliBadge)" filter="url(#tileShadow)"/>
+  <text x="66" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">IA - Alkali</text>
+
+  <!-- IIA Alkaline Earth -->
+  <rect x="110" y="48" width="82" height="18" rx="9" fill="url(#alkalineBadge)" filter="url(#tileShadow)"/>
+  <text x="151" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">IIA - Alk. Earth</text>
+
+  <!-- IVA Carbon -->
+  <rect x="200" y="48" width="72" height="18" rx="9" fill="url(#carbonBadge)" filter="url(#tileShadow)"/>
+  <text x="236" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">IVA - Carbon</text>
+
+  <!-- VA Nitrogen -->
+  <rect x="280" y="48" width="78" height="18" rx="9" fill="url(#nitrogenBadge)" filter="url(#tileShadow)"/>
+  <text x="319" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">VA - Nitrogen</text>
+
+  <!-- VIA Oxygen -->
+  <rect x="366" y="48" width="76" height="18" rx="9" fill="url(#oxygenBadge)" filter="url(#tileShadow)"/>
+  <text x="404" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">VIA - Oxygen</text>
+
+  <!-- VIIA Halogens -->
+  <rect x="450" y="48" width="78" height="18" rx="9" fill="url(#halogenBadge)" filter="url(#tileShadow)"/>
+  <text x="489" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">VIIA - Halogen</text>
+
+  <!-- VIIIA Noble Gases -->
+  <rect x="536" y="48" width="82" height="18" rx="9" fill="url(#nobleBadge)" filter="url(#tileShadow)"/>
+  <text x="577" y="60" text-anchor="middle" font-size="8" fill="white" font-weight="bold">VIIIA - Noble</text>
+
+  <!-- ======= ELEMENT TILES ======= -->
+  <!-- Each tile: gradient rect + atomic number badge + symbol + name -->
+
+  <!-- === Group IA: H, Li, Na, K === -->
+  <!-- H (1) -->
+  <g filter="url(#tileShadow)">
+    <rect x="38" y="76" width="52" height="48" rx="6" fill="url(#alkaliGrad)"/>
+    <circle cx="52" cy="83" r="6" fill="white" opacity="0.85"/>
+    <text x="52" y="86" text-anchor="middle" font-size="7" fill="#c0392b" font-weight="bold">1</text>
+    <text x="64" y="102" text-anchor="middle" font-size="18" fill="white" font-weight="bold">H</text>
+    <text x="64" y="118" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Hydrogen</text>
+  </g>
+  <!-- Li (3) -->
+  <g filter="url(#tileShadow)">
+    <rect x="38" y="130" width="52" height="48" rx="6" fill="url(#alkaliGrad)"/>
+    <circle cx="52" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="52" y="140" text-anchor="middle" font-size="7" fill="#c0392b" font-weight="bold">3</text>
+    <text x="64" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Li</text>
+    <text x="64" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Lithium</text>
+  </g>
+  <!-- Na (11) -->
+  <g filter="url(#tileShadow)">
+    <rect x="38" y="184" width="52" height="48" rx="6" fill="url(#alkaliGrad)"/>
+    <circle cx="52" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="52" y="194" text-anchor="middle" font-size="7" fill="#c0392b" font-weight="bold">11</text>
+    <text x="64" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Na</text>
+    <text x="64" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Sodium</text>
+  </g>
+  <!-- K (19) -->
+  <g filter="url(#tileShadow)">
+    <rect x="38" y="238" width="52" height="48" rx="6" fill="url(#alkaliGrad)"/>
+    <circle cx="52" cy="245" r="6" fill="white" opacity="0.85"/>
+    <text x="52" y="248" text-anchor="middle" font-size="7" fill="#c0392b" font-weight="bold">19</text>
+    <text x="64" y="264" text-anchor="middle" font-size="18" fill="white" font-weight="bold">K</text>
+    <text x="64" y="280" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Potassium</text>
+  </g>
+
+  <!-- === Group IIA: Be, Mg, Ca === -->
+  <!-- Be (4) -->
+  <g filter="url(#tileShadow)">
+    <rect x="118" y="130" width="52" height="48" rx="6" fill="url(#alkalineGrad)"/>
+    <circle cx="132" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="132" y="140" text-anchor="middle" font-size="7" fill="#e67e22" font-weight="bold">4</text>
+    <text x="144" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Be</text>
+    <text x="144" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Beryllium</text>
+  </g>
+  <!-- Mg (12) -->
+  <g filter="url(#tileShadow)">
+    <rect x="118" y="184" width="52" height="48" rx="6" fill="url(#alkalineGrad)"/>
+    <circle cx="132" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="132" y="194" text-anchor="middle" font-size="7" fill="#e67e22" font-weight="bold">12</text>
+    <text x="144" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Mg</text>
+    <text x="144" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Magnesium</text>
+  </g>
+  <!-- Ca (20) -->
+  <g filter="url(#tileShadow)">
+    <rect x="118" y="238" width="52" height="48" rx="6" fill="url(#alkalineGrad)"/>
+    <circle cx="132" cy="245" r="6" fill="white" opacity="0.85"/>
+    <text x="132" y="248" text-anchor="middle" font-size="7" fill="#e67e22" font-weight="bold">20</text>
+    <text x="144" y="264" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Ca</text>
+    <text x="144" y="280" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Calcium</text>
+  </g>
+
+  <!-- === Group IVA: C, Si === -->
+  <!-- C (6) -->
+  <g filter="url(#tileShadow)">
+    <rect x="208" y="130" width="52" height="48" rx="6" fill="url(#carbonGrad)"/>
+    <circle cx="222" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="222" y="140" text-anchor="middle" font-size="7" fill="#27ae60" font-weight="bold">6</text>
+    <text x="234" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">C</text>
+    <text x="234" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Carbon</text>
+  </g>
+  <!-- Si (14) -->
+  <g filter="url(#tileShadow)">
+    <rect x="208" y="184" width="52" height="48" rx="6" fill="url(#carbonGrad)"/>
+    <circle cx="222" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="222" y="194" text-anchor="middle" font-size="7" fill="#27ae60" font-weight="bold">14</text>
+    <text x="234" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Si</text>
+    <text x="234" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Silicon</text>
+  </g>
+
+  <!-- === Group VA: N, P === -->
+  <!-- N (7) -->
+  <g filter="url(#tileShadow)">
+    <rect x="290" y="130" width="52" height="48" rx="6" fill="url(#nitrogenGrad)"/>
+    <circle cx="304" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="304" y="140" text-anchor="middle" font-size="7" fill="#6c5ce7" font-weight="bold">7</text>
+    <text x="316" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">N</text>
+    <text x="316" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Nitrogen</text>
+  </g>
+  <!-- P (15) -->
+  <g filter="url(#tileShadow)">
+    <rect x="290" y="184" width="52" height="48" rx="6" fill="url(#nitrogenGrad)"/>
+    <circle cx="304" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="304" y="194" text-anchor="middle" font-size="7" fill="#6c5ce7" font-weight="bold">15</text>
+    <text x="316" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">P</text>
+    <text x="316" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Phosphorus</text>
+  </g>
+
+  <!-- === Group VIA: O, S === -->
+  <!-- O (8) -->
+  <g filter="url(#tileShadow)">
+    <rect x="374" y="130" width="52" height="48" rx="6" fill="url(#oxygenGrad)"/>
+    <circle cx="388" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="388" y="140" text-anchor="middle" font-size="7" fill="#2980b9" font-weight="bold">8</text>
+    <text x="400" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">O</text>
+    <text x="400" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Oxygen</text>
+  </g>
+  <!-- S (16) -->
+  <g filter="url(#tileShadow)">
+    <rect x="374" y="184" width="52" height="48" rx="6" fill="url(#oxygenGrad)"/>
+    <circle cx="388" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="388" y="194" text-anchor="middle" font-size="7" fill="#2980b9" font-weight="bold">16</text>
+    <text x="400" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">S</text>
+    <text x="400" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Sulfur</text>
+  </g>
+
+  <!-- === Group VIIA: F, Cl, Br, I === -->
+  <!-- F (9) -->
+  <g filter="url(#tileShadow)">
+    <rect x="456" y="130" width="52" height="48" rx="6" fill="url(#halogenGrad)"/>
+    <circle cx="470" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="470" y="140" text-anchor="middle" font-size="7" fill="#00b894" font-weight="bold">9</text>
+    <text x="482" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">F</text>
+    <text x="482" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Fluorine</text>
+  </g>
+  <!-- Cl (17) -->
+  <g filter="url(#tileShadow)">
+    <rect x="456" y="184" width="52" height="48" rx="6" fill="url(#halogenGrad)"/>
+    <circle cx="470" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="470" y="194" text-anchor="middle" font-size="7" fill="#00b894" font-weight="bold">17</text>
+    <text x="482" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Cl</text>
+    <text x="482" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Chlorine</text>
+  </g>
+  <!-- Br (35) -->
+  <g filter="url(#tileShadow)">
+    <rect x="456" y="238" width="52" height="48" rx="6" fill="url(#halogenGrad)"/>
+    <circle cx="470" cy="245" r="6" fill="white" opacity="0.85"/>
+    <text x="470" y="248" text-anchor="middle" font-size="7" fill="#00b894" font-weight="bold">35</text>
+    <text x="482" y="264" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Br</text>
+    <text x="482" y="280" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Bromine</text>
+  </g>
+  <!-- I (53) - shown compactly -->
+  <g filter="url(#tileShadow)">
+    <rect x="456" y="292" width="52" height="36" rx="6" fill="url(#halogenGrad)" opacity="0.8"/>
+    <circle cx="470" cy="299" r="6" fill="white" opacity="0.85"/>
+    <text x="470" y="302" text-anchor="middle" font-size="7" fill="#00b894" font-weight="bold">53</text>
+    <text x="482" y="316" text-anchor="middle" font-size="15" fill="white" font-weight="bold">I</text>
+  </g>
+
+  <!-- === Group VIIIA: He, Ne, Ar === -->
+  <!-- He (2) -->
+  <g filter="url(#tileShadow)">
+    <rect x="546" y="76" width="52" height="48" rx="6" fill="url(#nobleGrad)"/>
+    <circle cx="560" cy="83" r="6" fill="white" opacity="0.85"/>
+    <text x="560" y="86" text-anchor="middle" font-size="7" fill="#636e72" font-weight="bold">2</text>
+    <text x="572" y="102" text-anchor="middle" font-size="18" fill="white" font-weight="bold">He</text>
+    <text x="572" y="118" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Helium</text>
+  </g>
+  <!-- Ne (10) -->
+  <g filter="url(#tileShadow)">
+    <rect x="546" y="130" width="52" height="48" rx="6" fill="url(#nobleGrad)"/>
+    <circle cx="560" cy="137" r="6" fill="white" opacity="0.85"/>
+    <text x="560" y="140" text-anchor="middle" font-size="7" fill="#636e72" font-weight="bold">10</text>
+    <text x="572" y="156" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Ne</text>
+    <text x="572" y="172" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Neon</text>
+  </g>
+  <!-- Ar (18) -->
+  <g filter="url(#tileShadow)">
+    <rect x="546" y="184" width="52" height="48" rx="6" fill="url(#nobleGrad)"/>
+    <circle cx="560" cy="191" r="6" fill="white" opacity="0.85"/>
+    <text x="560" y="194" text-anchor="middle" font-size="7" fill="#636e72" font-weight="bold">18</text>
+    <text x="572" y="210" text-anchor="middle" font-size="18" fill="white" font-weight="bold">Ar</text>
+    <text x="572" y="226" text-anchor="middle" font-size="7" fill="#fff8" font-weight="500">Argon</text>
+  </g>
+
+  <!-- ======= METALLIC STAIRCASE (zigzag metals/nonmetals divider) ======= -->
+  <polyline points="198,76 198,130 198,178 280,178 280,232 370,232 370,290 456,290"
+    fill="none" stroke="#2c3e50" stroke-width="2" stroke-dasharray="6,3" opacity="0.4"/>
+  <text x="160" y="300" font-size="7" fill="#2c3e50" opacity="0.6" font-weight="600" font-style="italic">Metals</text>
+  <text x="520" y="300" font-size="7" fill="#2c3e50" opacity="0.6" font-weight="600" font-style="italic">Nonmetals</text>
+
+  <!-- ======= PERIODIC TRENDS SECTION ======= -->
+  <g transform="translate(30, 340)">
+    <rect x="-6" y="-12" width="380" height="90" rx="8" fill="white" stroke="#dfe6e9" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="0" y="2" font-size="11" fill="#2c3e50" font-weight="bold">Periodic Trends</text>
+    <line x1="0" y1="6" x2="100" y2="6" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Electronegativity: increases right and up -->
+    <text x="6" y="24" font-size="9" fill="#2c3e50" font-weight="600">Electronegativity</text>
+    <!-- Horizontal gradient bar -->
+    <rect x="130" y="16" width="100" height="8" rx="4" fill="url(#trendRightGrad)" opacity="0.8"/>
+    <line x="130" y1="20" x2="240" y2="20" stroke="none"/>
+    <text x="235" y="23" font-size="7" fill="#e74c3c" font-weight="bold">Increases &#x2192;</text>
+    <!-- Vertical arrow -->
+    <line x1="330" y1="68" x2="330" y2="22" stroke="url(#trendUpGrad)" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+    <text x="338" y="48" font-size="7" fill="#e74c3c" font-weight="bold">&#x2191; Increases</text>
+
+    <!-- Ionization Energy -->
+    <text x="6" y="42" font-size="9" fill="#2c3e50" font-weight="600">Ionization Energy</text>
+    <rect x="130" y="34" width="100" height="8" rx="4" fill="url(#trendRightGrad)" opacity="0.8"/>
+    <text x="235" y="41" font-size="7" fill="#e74c3c" font-weight="bold">Increases &#x2192;</text>
+
+    <!-- Atomic Radius: increases left and down (opposite) -->
+    <text x="6" y="60" font-size="9" fill="#2c3e50" font-weight="600">Atomic Radius</text>
+    <rect x="130" y="52" width="100" height="8" rx="4" fill="url(#trendRightGrad)" opacity="0.8" transform="rotate(180, 180, 56)"/>
+    <text x="235" y="59" font-size="7" fill="#0984e3" font-weight="bold">&#x2190; Increases</text>
+    <line x1="316" y1="22" x2="316" y2="68" stroke="url(#trendDownGrad)" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+    <text x="296" y="73" font-size="7" fill="#0984e3" font-weight="bold">&#x2193; Increases</text>
+  </g>
+
+  <!-- ======= KEY PROPERTIES BOX ======= -->
+  <g transform="translate(430, 340)">
+    <rect x="-6" y="-12" width="280" height="90" rx="8" fill="white" stroke="#dfe6e9" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="0" y="2" font-size="11" fill="#2c3e50" font-weight="bold">Key Properties for Exam</text>
+    <line x1="0" y1="6" x2="135" y2="6" stroke="#3498db" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Row 1 -->
+    <rect x="-2" y="10" width="268" height="14" rx="3" fill="#ebf5fb"/>
+    <text x="4" y="21" font-size="8" fill="#2c3e50" font-weight="600">Most electronegative:</text>
+    <text x="120" y="21" font-size="8" fill="#e74c3c" font-weight="bold">F (Fluorine, 4.0)</text>
+
+    <!-- Row 2 -->
+    <rect x="-2" y="26" width="268" height="14" rx="3" fill="#fef9e7"/>
+    <text x="4" y="37" font-size="8" fill="#2c3e50" font-weight="600">Smallest atom:</text>
+    <text x="120" y="37" font-size="8" fill="#e67e22" font-weight="bold">He (Helium)</text>
+
+    <!-- Row 3 -->
+    <rect x="-2" y="42" width="268" height="14" rx="3" fill="#ebf5fb"/>
+    <text x="4" y="53" font-size="8" fill="#2c3e50" font-weight="600">Highest IE (1st):</text>
+    <text x="120" y="53" font-size="8" fill="#8e44ad" font-weight="bold">He (2372 kJ/mol)</text>
+
+    <!-- Row 4 -->
+    <rect x="-2" y="58" width="268" height="14" rx="3" fill="#fef9e7"/>
+    <text x="4" y="69" font-size="8" fill="#2c3e50" font-weight="600">Noble gas config:</text>
+    <text x="120" y="69" font-size="8" fill="#636e72" font-weight="bold">Full outer shell = stable</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="360" y="425" text-anchor="middle" font-size="7" fill="#b2bec3" font-style="italic">shos-med-global | Entrance Exam Review</text>
+</svg>
