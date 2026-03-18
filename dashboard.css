@@ -1831,3 +1831,124 @@
   font-size: 0.82rem;
   color: #9ca3af;
 }
+
+/* ===== Student Overview (Residency Path) ===== */
+.student-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.student-overview-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.student-overview-card:hover {
+  border-color: var(--teal, #2d9f8f);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.student-overview-card.student-overview-cta-card {
+  background: linear-gradient(135deg, #1b2137, #2a3352);
+  color: #fff;
+  border-color: transparent;
+}
+
+.student-overview-card.student-overview-cta-card:hover {
+  box-shadow: 0 4px 20px rgba(27, 33, 55, 0.3);
+}
+
+.student-overview-card.student-overview-cta-card p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.student-overview-card.student-overview-cta-card .student-overview-cta {
+  color: #5eead4;
+}
+
+.student-overview-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.student-overview-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.student-overview-card p {
+  font-size: 0.88rem;
+  color: #6b7280;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.student-overview-cta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal, #2d9f8f);
+  margin-top: 16px;
+}
+
+/* Residency Checklist */
+.student-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.student-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+}
+
+.student-checklist-item:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.student-checklist-item:last-child {
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0 0 12px 12px;
+}
+
+.checklist-icon {
+  font-size: 1.2rem;
+  margin-top: 2px;
+  color: #9ca3af;
+}
+
+.student-checklist-item strong {
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.student-checklist-item p {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .student-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}

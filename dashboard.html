@@ -101,64 +101,139 @@
             <p class="dashboard-sub" id="overviewSub">Your preparation overview</p>
           </div>
 
-          <!-- ===== Exam Countdown ===== -->
-          <div class="overview-countdown" id="examCountdown">
-            <div class="countdown-left">
-              <div class="countdown-number" id="countdownDays">—</div>
-              <div class="countdown-label" id="countdownLabel">days until exam</div>
+          <!-- ===== APPLICANT OVERVIEW (med school path) ===== -->
+          <div id="applicantOverview">
+            <!-- Exam Countdown -->
+            <div class="overview-countdown" id="examCountdown">
+              <div class="countdown-left">
+                <div class="countdown-number" id="countdownDays">—</div>
+                <div class="countdown-label" id="countdownLabel">days until exam</div>
+              </div>
+              <div class="countdown-right">
+                <label class="countdown-date-label">Exam date</label>
+                <input type="date" class="countdown-date-input" id="examDateInput">
+                <button class="countdown-save-btn" id="saveExamDate" style="display:none;">Save</button>
+              </div>
             </div>
-            <div class="countdown-right">
-              <label class="countdown-date-label">Exam date</label>
-              <input type="date" class="countdown-date-input" id="examDateInput">
-              <button class="countdown-save-btn" id="saveExamDate" style="display:none;">Save</button>
+
+            <!-- Stats Grid -->
+            <div class="overview-stats-grid">
+              <div class="overview-stat-card">
+                <div class="overview-stat-value" id="statTestsCompleted">0</div>
+                <div class="overview-stat-label">Tests Completed</div>
+              </div>
+              <div class="overview-stat-card">
+                <div class="overview-stat-value" id="statTotalQuestions">0</div>
+                <div class="overview-stat-label">Questions Answered</div>
+              </div>
+              <div class="overview-stat-card">
+                <div class="overview-stat-value overview-stat-score" id="statAvgScore">—</div>
+                <div class="overview-stat-label">Average Score</div>
+              </div>
+              <div class="overview-stat-card">
+                <div class="overview-stat-value" id="statBestScore">—</div>
+                <div class="overview-stat-label">Best Score</div>
+              </div>
+              <div class="overview-stat-card">
+                <div class="overview-stat-value" id="statQuestionsLeft">—</div>
+                <div class="overview-stat-label">Questions Left</div>
+              </div>
+              <div class="overview-stat-card">
+                <div class="overview-stat-value" id="statQuestionsPerDay">—</div>
+                <div class="overview-stat-label">Questions / Day</div>
+              </div>
+            </div>
+
+            <!-- Subject Performance -->
+            <div class="overview-section">
+              <h3 class="overview-section-title">Performance by Subject</h3>
+              <div class="overview-subject-bars" id="subjectBars">
+                <p class="overview-empty-msg">Complete some tests to see your subject breakdown.</p>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="overview-section">
+              <h3 class="overview-section-title">Recent Activity</h3>
+              <div class="overview-recent" id="recentActivity">
+                <p class="overview-empty-msg">No tests yet. <a href="#" onclick="switchView('qbank'); return false;">Start practicing!</a></p>
+              </div>
             </div>
           </div>
 
-          <!-- ===== Stats Grid ===== -->
-          <div class="overview-stats-grid">
-            <div class="overview-stat-card">
-              <div class="overview-stat-value" id="statTestsCompleted">0</div>
-              <div class="overview-stat-label">Tests Completed</div>
+          <!-- ===== STUDENT OVERVIEW (residency path) ===== -->
+          <div id="studentOverview" style="display:none;">
+            <div class="student-overview-grid">
+              <a href="#" onclick="switchView('store'); return false;" class="student-overview-card">
+                <div class="student-overview-icon">📝</div>
+                <h3>Board Review Sessions</h3>
+                <p>1-on-1 high-yield review sessions for USMLE Step 1 and Step 2 CK with physicians who scored competitively on every step.</p>
+                <span class="student-overview-cta">View Packages →</span>
+              </a>
+              <a href="#" onclick="switchView('store'); return false;" class="student-overview-card">
+                <div class="student-overview-icon">🩺</div>
+                <h3>Mentorship Services</h3>
+                <p>CV and personal statement review, residency application strategy, mock interviews, and program list building.</p>
+                <span class="student-overview-cta">View Plans →</span>
+              </a>
+              <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation&body=Hi, I'd like to schedule a free 15-minute consultation about USMLE prep and residency match mentorship.%0A%0AMy name:%0AMedical school:%0AYear of study:%0ASpecialty interest:" class="student-overview-card student-overview-cta-card">
+                <div class="student-overview-icon">📞</div>
+                <h3>Schedule a Consultation</h3>
+                <p>Not sure where to start? Book a free 15-minute call and we'll help you build a plan for your residency application.</p>
+                <span class="student-overview-cta">Book Free Call →</span>
+              </a>
             </div>
-            <div class="overview-stat-card">
-              <div class="overview-stat-value" id="statTotalQuestions">0</div>
-              <div class="overview-stat-label">Questions Answered</div>
-            </div>
-            <div class="overview-stat-card">
-              <div class="overview-stat-value overview-stat-score" id="statAvgScore">—</div>
-              <div class="overview-stat-label">Average Score</div>
-            </div>
-            <div class="overview-stat-card">
-              <div class="overview-stat-value" id="statBestScore">—</div>
-              <div class="overview-stat-label">Best Score</div>
-            </div>
-            <div class="overview-stat-card">
-              <div class="overview-stat-value" id="statQuestionsLeft">—</div>
-              <div class="overview-stat-label">Questions Left</div>
-            </div>
-            <div class="overview-stat-card">
-              <div class="overview-stat-value" id="statQuestionsPerDay">—</div>
-              <div class="overview-stat-label">Questions / Day</div>
+
+            <div class="overview-section" style="margin-top: 32px;">
+              <h3 class="overview-section-title">Your Residency Prep Checklist</h3>
+              <div class="student-checklist">
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>USMLE Step 1</strong>
+                    <p>Pass the foundational science exam (now pass/fail).</p>
+                  </div>
+                </div>
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>USMLE Step 2 CK</strong>
+                    <p>Score competitively — this is the most important score for your application.</p>
+                  </div>
+                </div>
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>ECFMG Certification</strong>
+                    <p>Complete pathways certification for IMG eligibility.</p>
+                  </div>
+                </div>
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>CV and Personal Statement</strong>
+                    <p>Build a competitive application with mentor-reviewed documents.</p>
+                  </div>
+                </div>
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>ERAS Application</strong>
+                    <p>Apply to programs through ERAS with strategic program selection.</p>
+                  </div>
+                </div>
+                <div class="student-checklist-item">
+                  <span class="checklist-icon">☐</span>
+                  <div>
+                    <strong>Interviews and Match</strong>
+                    <p>Prepare with mock interviews and rank list strategy.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- ===== Subject Performance ===== -->
-          <div class="overview-section">
-            <h3 class="overview-section-title">Performance by Subject</h3>
-            <div class="overview-subject-bars" id="subjectBars">
-              <p class="overview-empty-msg">Complete some tests to see your subject breakdown.</p>
-            </div>
-          </div>
-
-          <!-- ===== Recent Activity ===== -->
-          <div class="overview-section">
-            <h3 class="overview-section-title">Recent Activity</h3>
-            <div class="overview-recent" id="recentActivity">
-              <p class="overview-empty-msg">No tests yet. <a href="#" onclick="switchView('qbank'); return false;">Start practicing!</a></p>
-            </div>
-          </div>
-
-          <!-- ===== Quick Links (hidden items moved here) ===== -->
+          <!-- Quick Links (hidden items) -->
           <div style="display:none;">
             <span id="actionApplicant"></span>
             <span id="actionStudent"></span>
@@ -1046,9 +1121,11 @@
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
         document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
 
-        // Hide QBank sidebar link for residency applicants
+        // Hide QBank + Free Resources sidebar links for residency applicants
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        const resourcesSidebarLink = document.getElementById('sidebarResourcesLink');
+        if (resourcesSidebarLink) resourcesSidebarLink.style.display = isApplicant ? 'flex' : 'none';
       }
 
       // ===== QBank access level =====
@@ -1081,11 +1158,17 @@
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
       } else if (sessionStorage.getItem('dashboardVisited')) {
-        // After first visit, default to Question Bank
-        switchView('qbank');
+        // Path-aware default view after first visit
+        switchView(isStudent ? 'overview' : 'qbank');
       }
       // Mark that user has seen the dashboard overview
       sessionStorage.setItem('dashboardVisited', 'true');
+
+      // Toggle overview content based on path
+      const applicantOverview = document.getElementById('applicantOverview');
+      const studentOverview = document.getElementById('studentOverview');
+      if (applicantOverview) applicantOverview.style.display = isStudent ? 'none' : 'block';
+      if (studentOverview) studentOverview.style.display = isStudent ? 'block' : 'none';
     }
 
     // Payment status is now managed through the Store view
