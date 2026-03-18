@@ -1412,12 +1412,10 @@
       if (requestedView) {
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
-      } else if (sessionStorage.getItem('dashboardVisited')) {
-        // Path-aware default view after first visit
-        switchView(isStudent ? 'overview' : 'qbank');
+      } else {
+        // Always default to Overview
+        switchView('overview');
       }
-      // Mark that user has seen the dashboard overview
-      sessionStorage.setItem('dashboardVisited', 'true');
 
       // Toggle overview content based on path
       const applicantOverview = document.getElementById('applicantOverview');
