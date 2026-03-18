@@ -163,73 +163,138 @@
 
           <!-- ===== STUDENT OVERVIEW (residency path) ===== -->
           <div id="studentOverview" style="display:none;">
-            <div class="student-overview-grid">
+
+            <!-- Match Day Countdown -->
+            <div class="overview-countdown match-countdown" id="matchCountdown">
+              <div class="countdown-left">
+                <div class="countdown-number" id="matchCountdownDays">—</div>
+                <div class="countdown-label" id="matchCountdownLabel">days until Match Day</div>
+              </div>
+              <div class="countdown-right">
+                <label class="countdown-date-label">Target Match Day</label>
+                <input type="date" class="countdown-date-input" id="matchDateInput">
+                <button class="countdown-save-btn" id="saveMatchDate" style="display:none;">Save</button>
+              </div>
+            </div>
+
+            <!-- Application Progress Tracker -->
+            <div class="overview-section">
+              <h3 class="overview-section-title">Application Progress</h3>
+              <p style="font-size:0.85rem; color:#6b7280; margin-bottom:16px;">Click to update your status. Your progress is saved automatically.</p>
+              <div class="residency-progress" id="residencyProgress">
+                <div class="progress-item" data-key="step1">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>USMLE Step 1</strong>
+                    <span>Pass/Fail — foundational science exam</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="step2ck">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>USMLE Step 2 CK</strong>
+                    <span>Your most important score for residency applications</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="ecfmg">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>ECFMG Certification</strong>
+                    <span>Pathways certification for IMG eligibility</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="cv">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>CV Draft</strong>
+                    <span>Academic CV tailored for residency programs</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="ps">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>Personal Statement</strong>
+                    <span>Specialty-specific personal statement</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="lors">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>Letters of Recommendation</strong>
+                    <span>3-4 strong letters from clinical supervisors</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="eras">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>ERAS Application</strong>
+                    <span>Submit through ERAS with strategic program selection</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="interviews">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>Interviews</strong>
+                    <span>Schedule and prepare for program interviews</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+                <div class="progress-item" data-key="rankList">
+                  <button class="progress-status" data-status="not_started" title="Click to change status">
+                    <span class="progress-dot"></span>
+                  </button>
+                  <div class="progress-info">
+                    <strong>Rank List</strong>
+                    <span>Finalize and submit your rank order list</span>
+                  </div>
+                  <span class="progress-status-label">Not Started</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="student-overview-grid" style="margin-top:24px;">
               <a href="#" onclick="switchView('store'); return false;" class="student-overview-card">
                 <div class="student-overview-icon">📝</div>
                 <h3>Board Review Sessions</h3>
-                <p>1-on-1 high-yield review sessions for USMLE Step 1 and Step 2 CK with physicians who scored competitively on every step.</p>
+                <p>1-on-1 high-yield USMLE Step 1 and Step 2 CK review with physicians who scored competitively.</p>
                 <span class="student-overview-cta">View Packages →</span>
               </a>
               <a href="#" onclick="switchView('store'); return false;" class="student-overview-card">
                 <div class="student-overview-icon">🩺</div>
                 <h3>Mentorship Services</h3>
-                <p>CV and personal statement review, residency application strategy, mock interviews, and program list building.</p>
+                <p>CV/PS review, residency strategy, mock interviews, and program list building.</p>
                 <span class="student-overview-cta">View Plans →</span>
               </a>
               <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation&body=Hi, I'd like to schedule a free 15-minute consultation about USMLE prep and residency match mentorship.%0A%0AMy name:%0AMedical school:%0AYear of study:%0ASpecialty interest:" class="student-overview-card student-overview-cta-card">
                 <div class="student-overview-icon">📞</div>
-                <h3>Schedule a Consultation</h3>
-                <p>Not sure where to start? Book a free 15-minute call and we'll help you build a plan for your residency application.</p>
+                <h3>Free Consultation</h3>
+                <p>Book a free 15-minute call to build your residency application plan.</p>
                 <span class="student-overview-cta">Book Free Call →</span>
               </a>
-            </div>
-
-            <div class="overview-section" style="margin-top: 32px;">
-              <h3 class="overview-section-title">Your Residency Prep Checklist</h3>
-              <div class="student-checklist">
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>USMLE Step 1</strong>
-                    <p>Pass the foundational science exam (now pass/fail).</p>
-                  </div>
-                </div>
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>USMLE Step 2 CK</strong>
-                    <p>Score competitively — this is the most important score for your application.</p>
-                  </div>
-                </div>
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>ECFMG Certification</strong>
-                    <p>Complete pathways certification for IMG eligibility.</p>
-                  </div>
-                </div>
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>CV and Personal Statement</strong>
-                    <p>Build a competitive application with mentor-reviewed documents.</p>
-                  </div>
-                </div>
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>ERAS Application</strong>
-                    <p>Apply to programs through ERAS with strategic program selection.</p>
-                  </div>
-                </div>
-                <div class="student-checklist-item">
-                  <span class="checklist-icon">☐</span>
-                  <div>
-                    <strong>Interviews and Match</strong>
-                    <p>Prepare with mock interviews and rank list strategy.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -271,15 +336,22 @@
         <div class="view" id="viewResources">
           <div class="dashboard-header">
             <h1>Free Resources</h1>
-            <p class="dashboard-sub">Everything you need to know about applying to Charles University medical faculties.</p>
+            <p class="dashboard-sub" id="resourcesDesc">Everything you need to know about applying to Charles University medical faculties.</p>
           </div>
 
-          <!-- Resource Navigation Tabs -->
-          <div class="resource-tabs">
+          <!-- Applicant Resource Tabs -->
+          <div class="resource-tabs" id="applicantResourceTabs">
             <button class="resource-tab active" data-tab="examGuides">Entrance Exams</button>
             <button class="resource-tab" data-tab="timeline">Deadlines & Timeline</button>
             <button class="resource-tab" data-tab="costs">Costs & Living</button>
             <button class="resource-tab" data-tab="lf3spotlight">LF3 Spotlight</button>
+          </div>
+
+          <!-- Student/Residency Resource Tabs -->
+          <div class="resource-tabs" id="studentResourceTabs" style="display:none;">
+            <button class="resource-tab active" data-tab="usmleTimeline">USMLE Timeline</button>
+            <button class="resource-tab" data-tab="erasChecklist">ERAS Checklist</button>
+            <button class="resource-tab" data-tab="imgTips">IMG Tips</button>
           </div>
 
           <!-- TAB: Entrance Exam Guides -->
@@ -758,6 +830,145 @@
               </div>
             </div>
           </div>
+
+          <!-- ===== Student Resource Panels ===== -->
+          <div class="resource-panel" id="tabUsmleTimeline" style="display:none;">
+            <div class="dash-card" style="margin-bottom: 20px;">
+              <h3 style="margin-bottom: 16px; color: var(--navy);">USMLE Timeline for IMGs</h3>
+              <p style="color: var(--gray-500); margin-bottom: 20px; font-size: 0.9rem;">Recommended timeline for international medical graduates preparing for USMLE and residency match.</p>
+              <div class="timeline-visual">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>Years 1-3: Pre-Clinical</strong>
+                    <p>Focus on medical curriculum. Begin Step 1 study alongside coursework — the overlap with basic sciences is significant.</p>
+                  </div>
+                </div>
+                <div class="timeline-item highlight">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>Year 3-4: USMLE Step 1</strong>
+                    <p>Take Step 1 (now pass/fail). Dedicate 3-6 months of focused prep. Resources: First Aid, UWorld, Pathoma, Sketchy.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>Year 4-5: Step 2 CK + Clinical Experience</strong>
+                    <p>Score competitively on Step 2 CK — this is the most important score. Arrange US clinical rotations/observerships.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>Year 5-6: ECFMG + Applications</strong>
+                    <p>Complete ECFMG certification via Pathways. Build your CV, personal statement. Secure strong LORs.</p>
+                  </div>
+                </div>
+                <div class="timeline-item highlight">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>September: ERAS Opens</strong>
+                    <p>Submit ERAS application. Apply broadly as an IMG — 50-100+ programs depending on specialty.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>October — January: Interview Season</strong>
+                    <p>Schedule and attend interviews. Prepare with mock interviews. Send thank-you notes.</p>
+                  </div>
+                </div>
+                <div class="timeline-item highlight">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <strong>March: Match Day</strong>
+                    <p>Submit rank list in February. Match results announced in March. Begin residency in July.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="resource-panel" id="tabErasChecklist" style="display:none;">
+            <div class="dash-card" style="margin-bottom: 20px;">
+              <h3 style="margin-bottom: 16px; color: var(--navy);">ERAS Application Checklist</h3>
+              <p style="color: var(--gray-500); margin-bottom: 20px; font-size: 0.9rem;">Key dates and requirements for the 2026-2027 ERAS application cycle.</p>
+              <div class="resource-table-wrap">
+                <table class="resource-table">
+                  <thead>
+                    <tr><th>Date</th><th>Milestone</th><th>Action Required</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>Jun 2026</strong></td><td>ERAS opens for registration</td><td>Create MyERAS account, begin application</td></tr>
+                    <tr><td><strong>Jul 2026</strong></td><td>NRMP registration opens</td><td>Register for the Match</td></tr>
+                    <tr class="featured-row"><td><strong>Sep 4, 2026</strong></td><td>Applications transmitted</td><td>Submit ERAS to programs — day one matters</td></tr>
+                    <tr><td><strong>Oct — Jan</strong></td><td>Interview season</td><td>Schedule, prep, and attend interviews</td></tr>
+                    <tr><td><strong>Jan 2027</strong></td><td>Rank list opens</td><td>Build your rank order list</td></tr>
+                    <tr class="featured-row"><td><strong>Mar 2027</strong></td><td>Rank list deadline</td><td>Submit final rank list</td></tr>
+                    <tr class="featured-row"><td><strong>Mar 2027</strong></td><td>Match Day</td><td>Results announced</td></tr>
+                    <tr><td><strong>Jul 2027</strong></td><td>Residency begins</td><td>Start PGY-1</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dash-card">
+              <h3 style="margin-bottom: 16px; color: var(--navy);">Required Documents</h3>
+              <ul class="resource-checklist">
+                <li>USMLE Step 1 score report (pass)</li>
+                <li>USMLE Step 2 CK score report</li>
+                <li>ECFMG certification</li>
+                <li>Medical school transcript and diploma</li>
+                <li>Personal statement (specialty-specific)</li>
+                <li>Curriculum vitae (academic CV format)</li>
+                <li>3-4 letters of recommendation (at least 1 from US clinical experience)</li>
+                <li>MSPE / Dean's letter</li>
+                <li>Photo (passport-style for ERAS)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resource-panel" id="tabImgTips" style="display:none;">
+            <div class="dash-card" style="margin-bottom: 20px;">
+              <h3 style="margin-bottom: 16px; color: var(--navy);">Tips for IMG Applicants</h3>
+              <p style="color: var(--gray-500); margin-bottom: 20px; font-size: 0.9rem;">Practical advice from physicians who matched as IMGs.</p>
+
+              <div class="resource-faculty-card" style="margin-bottom: 16px;">
+                <div class="faculty-header"><h4>🏥 US Clinical Experience</h4></div>
+                <div class="faculty-details">
+                  <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">US clinical experience (observerships, externships, clinical rotations) is crucial for IMGs. It demonstrates familiarity with the US healthcare system and provides opportunities for strong LORs. Aim for 3-6 months of US experience, ideally in your target specialty.</p>
+                </div>
+              </div>
+
+              <div class="resource-faculty-card" style="margin-bottom: 16px;">
+                <div class="faculty-header"><h4>🔬 Research</h4></div>
+                <div class="faculty-details">
+                  <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">Research publications strengthen your application significantly. Even case reports or poster presentations count. Look for research opportunities through your medical school, US hospitals, or online collaborations. Aim for at least 1-3 publications or presentations.</p>
+                </div>
+              </div>
+
+              <div class="resource-faculty-card" style="margin-bottom: 16px;">
+                <div class="faculty-header"><h4>📝 Letters of Recommendation</h4></div>
+                <div class="faculty-details">
+                  <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">Strong LORs from US-based physicians carry the most weight. During your clinical rotations, build genuine relationships with attendings. Ask for letters well in advance (2-3 months). A letter from a department chair or program director in your specialty is especially valuable.</p>
+                </div>
+              </div>
+
+              <div class="resource-faculty-card" style="margin-bottom: 16px;">
+                <div class="faculty-header"><h4>🌍 Visa Considerations</h4></div>
+                <div class="faculty-details">
+                  <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">Most IMG residents train on J-1 or H-1B visas. J-1 is more common and easier to obtain through ECFMG sponsorship but requires a 2-year home country return (with waiver options). H-1B requires employer sponsorship. Filter programs on Residency Explorer by visa sponsorship availability.</p>
+                </div>
+              </div>
+
+              <div class="resource-faculty-card">
+                <div class="faculty-header"><h4>🎯 Application Strategy</h4></div>
+                <div class="faculty-details">
+                  <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">Apply broadly — IMGs should target 50-100+ programs depending on specialty competitiveness. Focus on IMG-friendly programs (check NRMP data for IMG match rates). Apply on day one when ERAS opens — early applications get more interview invitations. Use Residency Explorer and FREIDA to research programs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ========== VIEW: STORE ========== -->
@@ -856,7 +1067,7 @@
           </div>
 
           <div id="storeStudentServices" style="display:none;">
-            <h3 class="view-section-title">Residency Application</h3>
+            <h3 class="view-section-title">Mentorship</h3>
             <div class="dash-card" style="margin-bottom: 24px;">
               <div class="service-row">
                 <div class="service-info">
@@ -876,6 +1087,40 @@
                 </div>
                 <div class="service-status">
                   <a href="students.html#pricing" class="btn btn-primary btn-small">Details</a>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="view-section-title">Board Review Sessions</h3>
+            <div class="dash-card" style="margin-bottom: 24px;">
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Single Session</h4>
+                  <p>45-min focused 1-on-1 USMLE review session</p>
+                  <span class="service-price">$75</span>
+                </div>
+                <div class="service-status">
+                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - Single Session" class="btn btn-secondary btn-small">Inquire</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>5-Session Pack <span style="background:var(--teal,#2d9f8f);color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:10px;margin-left:8px;">Best Value</span></h4>
+                  <p>Structured review plan · Save $76</p>
+                  <span class="service-price">$299</span>
+                </div>
+                <div class="service-status">
+                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - 5 Session Pack" class="btn btn-primary btn-small">Inquire</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>10-Session Pack</h4>
+                  <p>Comprehensive prep · Save $201</p>
+                  <span class="service-price">$549</span>
+                </div>
+                <div class="service-status">
+                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - 10 Session Pack" class="btn btn-secondary btn-small">Inquire</a>
                 </div>
               </div>
             </div>
@@ -1124,8 +1369,26 @@
         // Hide QBank + Free Resources sidebar links for residency applicants
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
-        const resourcesSidebarLink = document.getElementById('sidebarResourcesLink');
-        if (resourcesSidebarLink) resourcesSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        // Resources visible for both paths (content is path-filtered)
+        // Filter resource tabs by path
+        const applicantResourceTabs = document.getElementById('applicantResourceTabs');
+        const studentResourceTabs = document.getElementById('studentResourceTabs');
+        if (applicantResourceTabs) applicantResourceTabs.style.display = isStudent ? 'none' : 'flex';
+        if (studentResourceTabs) studentResourceTabs.style.display = isStudent ? 'flex' : 'none';
+        // Update resources description
+        const resourcesDesc = document.getElementById('resourcesDesc');
+        if (resourcesDesc) resourcesDesc.textContent = isStudent
+          ? 'Guides and resources for USMLE preparation and residency match.'
+          : 'Everything you need to know about applying to Charles University medical faculties.';
+        // Show correct default panel
+        document.querySelectorAll('.resource-panel').forEach(p => p.style.display = 'none');
+        if (isStudent) {
+          const firstStudentPanel = document.getElementById('tabUsmleTimeline');
+          if (firstStudentPanel) firstStudentPanel.style.display = 'block';
+        } else {
+          const firstApplicantPanel = document.getElementById('tabExamGuides');
+          if (firstApplicantPanel) { firstApplicantPanel.style.display = 'block'; firstApplicantPanel.classList.add('active'); }
+        }
       }
 
       // ===== QBank access level =====
@@ -1169,6 +1432,11 @@
       const studentOverview = document.getElementById('studentOverview');
       if (applicantOverview) applicantOverview.style.display = isStudent ? 'none' : 'block';
       if (studentOverview) studentOverview.style.display = isStudent ? 'block' : 'none';
+
+      // Load residency progress for students
+      if (isStudent) {
+        loadResidencyProgress(profile);
+      }
     }
 
     // Payment status is now managed through the Store view
@@ -1372,6 +1640,112 @@
       window._examDaysLeft = diff > 0 ? diff : 0;
     }
 
+    // ===== Match Day Countdown (Student) =====
+    function updateMatchCountdown(dateStr) {
+      const parts = dateStr.split('-');
+      const matchDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const diff = Math.round((matchDate - today) / (1000 * 60 * 60 * 24));
+      const el = document.getElementById('matchCountdownDays');
+      const label = document.getElementById('matchCountdownLabel');
+      if (!el || !label) return;
+      if (diff > 0) {
+        el.textContent = diff;
+        label.textContent = diff === 1 ? 'day until Match Day' : 'days until Match Day';
+        el.style.color = diff <= 30 ? '#ef4444' : diff <= 90 ? '#f59e0b' : '#10b981';
+      } else if (diff === 0) {
+        el.textContent = '🎉';
+        label.textContent = 'Match Day is today!';
+        el.style.color = '#10b981';
+      } else {
+        el.textContent = '✓';
+        label.textContent = 'Matched!';
+        el.style.color = '#10b981';
+      }
+    }
+
+    // Init Match countdown
+    (function initMatchCountdown() {
+      const matchInput = document.getElementById('matchDateInput');
+      const saveBtn = document.getElementById('saveMatchDate');
+      if (!matchInput || !saveBtn) return;
+      // Default to March 2027 Match Day
+      matchInput.addEventListener('change', () => {
+        if (matchInput.value) {
+          saveBtn.style.display = 'inline-block';
+          updateMatchCountdown(matchInput.value);
+        } else {
+          saveBtn.style.display = 'none';
+        }
+      });
+      saveBtn.addEventListener('click', async () => {
+        const date = matchInput.value;
+        if (!date || !currentUser) return;
+        await firebase.firestore().collection('users').doc(currentUser.uid).set(
+          { matchDate: date }, { merge: true }
+        );
+        updateMatchCountdown(date);
+        saveBtn.style.display = 'none';
+      });
+    })();
+
+    // ===== Residency Progress Tracker =====
+    const STATUS_CYCLE = ['not_started', 'in_progress', 'done'];
+    const STATUS_LABELS = { not_started: 'Not Started', in_progress: 'In Progress', done: 'Done' };
+
+    function initProgressTracker() {
+      const container = document.getElementById('residencyProgress');
+      if (!container) return;
+
+      container.querySelectorAll('.progress-item').forEach(item => {
+        const btn = item.querySelector('.progress-status');
+        btn.addEventListener('click', () => {
+          const current = btn.dataset.status;
+          const nextIdx = (STATUS_CYCLE.indexOf(current) + 1) % STATUS_CYCLE.length;
+          const next = STATUS_CYCLE[nextIdx];
+          btn.dataset.status = next;
+          item.querySelector('.progress-status-label').textContent = STATUS_LABELS[next];
+          saveResidencyProgress();
+        });
+      });
+    }
+
+    async function saveResidencyProgress() {
+      if (!currentUser) return;
+      const progress = {};
+      document.querySelectorAll('.progress-item').forEach(item => {
+        const key = item.dataset.key;
+        const status = item.querySelector('.progress-status').dataset.status;
+        progress[key] = status;
+      });
+      try {
+        await firebase.firestore().collection('users').doc(currentUser.uid).set(
+          { residencyProgress: progress }, { merge: true }
+        );
+      } catch (e) { console.error('Failed to save progress:', e); }
+    }
+
+    function loadResidencyProgress(profile) {
+      const progress = profile?.residencyProgress || {};
+      document.querySelectorAll('.progress-item').forEach(item => {
+        const key = item.dataset.key;
+        const status = progress[key] || 'not_started';
+        const btn = item.querySelector('.progress-status');
+        btn.dataset.status = status;
+        item.querySelector('.progress-status-label').textContent = STATUS_LABELS[status];
+      });
+      // Load match date
+      const matchDate = profile?.matchDate || '2027-03-21';
+      const matchInput = document.getElementById('matchDateInput');
+      if (matchInput) {
+        matchInput.value = matchDate;
+        updateMatchCountdown(matchDate);
+      }
+    }
+
+    initProgressTracker();
+
     // ===== Stripe Payment Links =====
     document.querySelectorAll('.stripe-pay').forEach(btn => {
       btn.addEventListener('click', function(e) {
@@ -1385,12 +1759,15 @@
     // ===== Resource Tabs =====
     document.querySelectorAll('.resource-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.resource-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.resource-panel').forEach(p => p.classList.remove('active'));
+        // Only deactivate tabs within the same tab group
+        const tabGroup = tab.closest('.resource-tabs');
+        if (tabGroup) tabGroup.querySelectorAll('.resource-tab').forEach(t => t.classList.remove('active'));
+        // Hide all panels
+        document.querySelectorAll('.resource-panel').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
         tab.classList.add('active');
         const panelId = 'tab' + tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1);
         const panel = document.getElementById(panelId);
-        if (panel) panel.classList.add('active');
+        if (panel) { panel.classList.add('active'); panel.style.display = 'block'; }
       });
     });
 
