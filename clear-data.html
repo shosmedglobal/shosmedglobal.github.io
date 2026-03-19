@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Test Data</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 50px auto; }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; margin: 8px; }
+        #status { margin-top: 20px; padding: 15px; border-radius: 8px; background: #f0f0f0; white-space: pre-line; }
+        .done { background: #d4edda !important; }
+        .error { background: #f8d7da !important; }
+    </style>
+</head>
+<body>
+    <h1>Clear QBank Data</h1>
+    <p>This will delete all test history and progress for <b>elizolotov@gmail.com</b></p>
+    <button onclick="clearAll()">Clear All Test Data</button>
+    <div id="status">Ready</div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDGYSvXADpcZWNHuKXAzOKuRL9FlfJ7-u0",
+            authDomain: "shos-med-global-6eb19.firebaseapp.com",
+            projectId: "shos-med-global-6eb19",
+            storageBucket: "shos-med-global-6eb19.appspot.com",
+            messagingSenderId: "1098765432",
+            appId: "1:1098765432:web:abc123"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        const status = document.getElementById('status');
+
+        async function clearAll() {
+            status.textContent = 'Signing in...';
+            status.className = '';
+
+            try {
+                // Sign in - prompt for password
+                const password = prompt('Enter password for elizolotov@gmail.com:');
+                if (!password) { status.textContent = 'Cancelled'; return; }
+
+                const cred = await auth.signInWithEmailAndPassword('elizolotov@gmail.com', password);
+                const uid = cred.user.uid;
+                status.textContent = `Signed in as ${uid}\nClearing data...`;
+
+                // Delete qbankData/progress
+                try {
+                    await db.collection('users').doc(uid).collection('qbankData').doc('progress').delete();
+                    status.textContent += '\n- Deleted qbankData/progress';
+                } catch(e) { status.textContent += '\n- progress: ' + e.message; }
+
+                // Delete qbankData/history
+                try {
+                    await db.collection('users').doc(uid).collection('qbankData').doc('history').delete();
+                    status.textContent += '\n- Deleted qbankData/history';
+                } catch(e) { status.textContent += '\n- history: ' + e.message; }
+
+                // Delete highlights
+                try {
+                    await db.collection('users').doc(uid).collection('qbankData').doc('highlights').delete();
+                    status.textContent += '\n- Deleted qbankData/highlights';
+                } catch(e) { status.textContent += '\n- highlights: ' + e.message; }
+
+                // Also clear localStorage
+                localStorage.removeItem('highlights');
+                localStorage.removeItem('qbank_progress');
+                localStorage.removeItem('test_history');
+
+                status.textContent += '\n\nAll test data cleared successfully!';
+                status.className = 'done';
+
+            } catch(e) {
+                status.textContent = 'Error: ' + e.message;
+                status.className = 'error';
+            }
+        }
+    </script>
+</body>
+</html>
