@@ -170,7 +170,7 @@ async function resetProgress() {
   if (!currentUserId) return;
   const profile = await getUserProfile(currentUserId);
   const plan = profile?.payments?.['exam-bank-plan'];
-  const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+  const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
   const isAdmin = ADMIN_EMAILS.includes(profile?.email || '');
 
   if (isAdmin) {
@@ -1176,15 +1176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ===== Report Issue =====
-  document.getElementById('reportBtn').addEventListener('click', () => {
-    document.getElementById('reportForm').style.display = 'block';
-    document.getElementById('reportBtnWrap').style.display = 'none';
-    // Reset form
-    document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
-    document.getElementById('reportDetails').value = '';
-  });
-
+  // ===== Report Issue (Cancel & Submit — form elements don't get replaced) =====
   document.getElementById('reportCancel').addEventListener('click', () => {
     document.getElementById('reportForm').style.display = 'none';
     document.getElementById('reportBtnWrap').style.display = 'flex';
