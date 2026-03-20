@@ -83,6 +83,7 @@
 
 .qa-question {
   padding: 28px 32px 20px;
+  padding-right: 50px;
 }
 
 .qa-question h4 {
@@ -100,10 +101,40 @@
   line-height: 1.6;
 }
 
+.qa-question {
+  cursor: pointer;
+  position: relative;
+}
+
+.qa-question::after {
+  content: "\25BC";
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  transition: transform 0.3s;
+}
+
+.qa-card.open .qa-question::after {
+  transform: rotate(180deg);
+}
+
 .qa-answer {
   background: var(--gray-50);
-  border-top: 1px solid var(--gray-200);
+  border-top: 0 solid var(--gray-200);
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 32px;
+  opacity: 0;
+  transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease, border-top 0.1s;
+}
+
+.qa-card.open .qa-answer {
+  max-height: 2000px;
   padding: 24px 32px 28px;
+  border-top: 1px solid var(--gray-200);
+  opacity: 1;
 }
 
 .qa-answer-header {

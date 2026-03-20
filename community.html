@@ -79,10 +79,6 @@
               <p itemprop="text">I'm a pre-med student in the US considering applying to LF3 at Charles University. I've been studying for the MCAT but I'm wondering - what's actually on the Czech entrance exam? Is it harder or easier than the MCAT? How should I prepare?</p>
             </div>
             <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div class="qa-answer-header">
-                <span class="physician-badge">Physician Verified</span>
-                <span class="qa-author">Eli Zolotov, MD - Charles University LF3 Graduate</span>
-              </div>
               <div itemprop="text">
                 <p>The LF3 entrance exam covers <strong>biology and chemistry</strong> at approximately the high school graduation level. There is no physics or math section for the medical program. The format is multiple-choice.</p>
                 <p>Comparing it to the MCAT is tricky because they test very different things. The MCAT tests critical thinking, passage analysis, psychology, and sociology on top of science. The Czech exam is more <strong>straightforward knowledge-based</strong> - it tests whether you actually know the biology and chemistry content. If you know the material, you will pass. There's less "trick question" reasoning than the MCAT.</p>
@@ -99,10 +95,6 @@
               <p itemprop="text">I'm currently a student at a European medical school and want to do my residency in the US. Is it realistic for IMGs from Europe to match into competitive specialties, or should I only aim for primary care? What's the match rate like?</p>
             </div>
             <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div class="qa-answer-header">
-                <span class="physician-badge">Physician Verified</span>
-                <span class="qa-author">Eli Zolotov, MD - Hematology/Oncology Fellow, HUMC</span>
-              </div>
               <div itemprop="text">
                 <p>Yes, absolutely - but it requires planning that starts <strong>early in medical school</strong>, not in your final year. I matched into Internal Medicine and I'm now doing a Hematology/Oncology fellowship. Charles University LF3 has an official match rate of over 85% for graduates who pursue US residency.</p>
                 <p>The key factors for IMGs matching competitively are: <strong>USMLE scores</strong> (Step 1 is pass/fail now, but Step 2 CK score matters a lot), <strong>US clinical experience</strong> (rotations/observerships at US hospitals), <strong>research</strong> (publications help significantly), and <strong>strong letters of recommendation</strong> from US physicians.</p>
@@ -119,10 +111,6 @@
               <p itemprop="text">I got accepted to an English-language medical program in Prague. My family is worried the education won't be as good as a US medical school. Can anyone who went through it share their honest experience?</p>
             </div>
             <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div class="qa-answer-header">
-                <span class="physician-badge">Physician Verified</span>
-                <span class="qa-author">Eli Zolotov, MD - Charles University LF3 Graduate</span>
-              </div>
               <div itemprop="text">
                 <p>I'll give you the honest version. The <strong>preclinical education at Charles University is rigorous</strong> - anatomy is taught with real cadaver dissection, and the depth of physiology and biochemistry is comparable to any US medical school. In some ways, the European approach goes deeper into basic science.</p>
                 <p>Where it differs is in the clinical years. US medical schools have a more structured clerkship system with direct patient responsibility. In Prague, clinical exposure depends more on your own initiative - you need to be proactive about getting hands-on experience, especially if the attendings teach primarily in Czech.</p>
@@ -139,10 +127,6 @@
               <p itemprop="text">I just started my first year at a 6-year European medical program. When is the right time to begin USMLE prep? I don't want to start too late but I also don't want to burn out.</p>
             </div>
             <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div class="qa-answer-header">
-                <span class="physician-badge">Physician Verified</span>
-                <span class="qa-author">Eli Zolotov, MD - Hematology/Oncology Fellow, HUMC</span>
-              </div>
               <div itemprop="text">
                 <p>This is one of the most common questions I get, and the answer depends on your program structure. For a <strong>6-year European program</strong>, here's the timeline I recommend:</p>
                 <p><strong>Years 1-3 (preclinical):</strong> Focus on your school curriculum first. The good news is that European preclinical education overlaps heavily with Step 1 content. As you study physiology, biochemistry, pathology, and pharmacology for your school exams, start cross-referencing with Step 1 resources. First Aid for Step 1 is a great companion - use it to see how your European curriculum maps to USMLE topics. No need to do dedicated Step 1 studying yet.</p>
@@ -160,10 +144,6 @@
               <p itemprop="text">I'm comparing options for medical school and trying to understand the real cost. How does Charles University tuition compare to Caribbean schools and US medical schools? Are there hidden costs?</p>
             </div>
             <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div class="qa-answer-header">
-                <span class="physician-badge">Physician Verified</span>
-                <span class="qa-author">Eli Zolotov, MD - Charles University LF3 Graduate</span>
-              </div>
               <div itemprop="text">
                 <p>This is where European medical schools really stand out. Here's the honest breakdown:</p>
                 <p><strong>Charles University LF3 tuition:</strong> approximately EUR 14,200/year (around $15,000). For the full 6-year program, that's roughly $90,000 total in tuition.</p>
@@ -411,6 +391,13 @@
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('active');
         document.getElementById('navToggle').classList.remove('active');
+      });
+    });
+
+    // Featured Q&A: click question to toggle answer
+    document.querySelectorAll('.qa-card .qa-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.closest('.qa-card').classList.toggle('open');
       });
     });
 
