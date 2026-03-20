@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community &amp; Resources - SHOS Med Global</title>
-  <meta name="description" content="Join the SHOS Med Global community. Free WhatsApp group, success stories, and resources for medical school applicants and residency candidates.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Community Forum &amp; Resources - SHOS Med Global</title>
+  <meta name="description" content="Join the SHOS Med Global community forum. Ask questions about medical school applications, entrance exams, USMLE prep, and the residency match. Read articles and connect with fellow students.">
+  <meta name="keywords" content="medical school forum, USMLE community, IMG Q&A, residency match forum, Charles University students, medical student community">
   <link rel="canonical" href="https://shosmedglobal.github.io/community.html">
+  <meta property="og:title" content="Community Forum & Resources - SHOS Med Global">
+  <meta property="og:description" content="Ask questions, read articles, and connect with med students and physicians in the SHOS Med Global community.">
+  <meta property="og:url" content="https://shosmedglobal.github.io/community.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SHOS Med Global">
+  <meta property="og:image" content="https://shosmedglobal.github.io/logo.svg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="community.css">
 </head>
 <body>
 
@@ -42,83 +51,147 @@
     <div class="container">
       <span class="section-tag">Community</span>
       <h1>Connect. Learn. Succeed.</h1>
-      <p class="hero-sub">Join a growing community of applicants, students, and physicians who support each other through every step.</p>
+      <p class="hero-sub">Ask questions, share experiences, and learn from fellow students and physicians who walked this path.</p>
     </div>
   </header>
 
-  <!-- WhatsApp Community -->
-  <section class="section" id="whatsapp">
+  <!-- Tab Navigation -->
+  <section class="section" id="community-main">
     <div class="container">
-      <div class="community-box">
-        <div class="community-content">
-          <span class="section-tag">Free Community</span>
-          <h2>Join Our WhatsApp Community</h2>
-          <p>Connect with applicants, residency candidates, matched residents, and our mentors. Ask questions, share experiences, and get support from people who understand your journey.</p>
-          <ul class="community-features">
-            <li>Weekly tips and resources shared by mentors</li>
-            <li>Q&A sessions with matched IMGs</li>
-            <li>Peer support from students worldwide</li>
-            <li>Application deadline reminders</li>
-          </ul>
-          <span class="btn btn-primary community-btn" style="opacity:0.6; cursor:default;">Coming Soon</span>
-          <p class="community-count">WhatsApp community launching soon — stay tuned!</p>
-        </div>
-        <div class="community-visual">
-          <div class="chat-bubble bubble-1">Anyone applying to Charles University for 2027?</div>
-          <div class="chat-bubble bubble-2">I'm a current student in Prague - happy to answer questions!</div>
-          <div class="chat-bubble bubble-3">Just matched into IM at a university program! Thanks for all the support!</div>
-          <div class="chat-bubble bubble-4">Congrats! This group was a lifeline during application season.</div>
-        </div>
+      <div class="community-tabs">
+        <button class="community-tab active" data-tab="forum">Forum &amp; Q&A</button>
+        <button class="community-tab" data-tab="blog">Blog &amp; Articles</button>
+        <button class="community-tab" data-tab="groups">Community Groups</button>
       </div>
-    </div>
-  </section>
 
-  <!-- Testimonials -->
-  <section class="section section-alt" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Success Stories</span>
-        <h2>From Mentees to Physicians</h2>
-      </div>
-      <div style="text-align:center; padding:48px 24px; background:var(--gray-50, #f9fafb); border-radius:12px; border:1px solid var(--gray-200, #e5e7eb);">
-        <p style="font-size:2.5rem; margin-bottom:16px;">&#9733;</p>
-        <h3 style="font-size:1.2rem; margin-bottom:8px;">Testimonials Coming Soon</h3>
-        <p style="color:var(--gray-500, #6b7280); max-width:480px; margin:0 auto; line-height:1.6;">We're a new program and our first mentees are currently on their journey. Real, verified testimonials will be posted here as students share their experiences.</p>
-      </div>
-      <div class="trustpilot-box">
-        <p>Review us on <a href="https://www.trustpilot.com" target="_blank" rel="noopener"><strong>Trustpilot</strong></a> - We value your feedback</p>
-      </div>
-    </div>
-  </section>
+      <!-- ========== SECTION A: Forum / Q&A ========== -->
+      <div class="community-panel active" id="panel-forum">
 
-  <!-- Resources -->
-  <section class="section" id="resources">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Resources</span>
-        <h2>Guides and Insights</h2>
-        <p class="section-sub">Free resources for applicants and current students.</p>
+        <!-- Forum List View -->
+        <div id="forum-list-view">
+          <div class="forum-header">
+            <div class="forum-controls">
+              <select class="forum-select" id="forum-category-filter">
+                <option value="all">All Categories</option>
+                <option value="entrance-exams">Entrance Exams</option>
+                <option value="med-school-life">Med School Life</option>
+                <option value="usmle-boards">USMLE &amp; Boards</option>
+                <option value="residency-match">Residency Match</option>
+                <option value="general">General</option>
+              </select>
+              <select class="forum-select" id="forum-sort">
+                <option value="newest">Newest</option>
+                <option value="most-upvoted">Most Upvoted</option>
+                <option value="unanswered">Unanswered</option>
+              </select>
+            </div>
+            <button class="btn-ask" id="btn-ask-question" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Ask a Question
+            </button>
+          </div>
+
+          <div class="forum-posts" id="forum-posts">
+            <!-- Posts loaded dynamically -->
+          </div>
+
+          <div class="forum-empty" id="forum-empty" style="display:none;">
+            <div class="forum-empty-icon">💬</div>
+            <h3>No questions yet</h3>
+            <p>Be the first to ask a question and start the conversation.</p>
+          </div>
+
+          <div class="load-more-container" id="load-more-container" style="display:none;">
+            <button class="btn-load-more" id="btn-load-more">Load More</button>
+          </div>
+        </div>
+
+        <!-- Thread View -->
+        <div class="thread-view" id="thread-view">
+          <button class="thread-back" id="btn-back-to-list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Back to all questions
+          </button>
+
+          <div class="thread-question" id="thread-question-content">
+            <!-- Loaded dynamically -->
+          </div>
+
+          <div class="answers-section" id="answers-section">
+            <h3 id="answers-count-label">Answers</h3>
+            <div id="answers-list">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+
+          <!-- Post Answer -->
+          <div id="post-answer-area">
+            <!-- Shown if logged in, login prompt otherwise -->
+          </div>
+        </div>
       </div>
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-tag">Applying</div>
-          <h4>How to Apply to Charles University: A Complete Guide for US Students</h4>
-          <p>Everything you need to know about the application process, timeline, required documents, and entrance exam.</p>
-          <span class="blog-coming">Coming Soon</span>
+
+      <!-- ========== SECTION B: Blog / Articles ========== -->
+      <div class="community-panel" id="panel-blog">
+        <div class="section-header" style="margin-bottom:40px;">
+          <h2>Guides &amp; Insights</h2>
+          <p class="section-sub">Free resources for applicants and current students.</p>
         </div>
-        <div class="blog-card">
-          <div class="blog-tag">Comparison</div>
-          <h4>Czech Republic vs Caribbean Medical Schools: The Real Comparison</h4>
-          <p>Cost, attrition rates, match rates, and lifestyle - everything you need to know before making this decision.</p>
-          <span class="blog-coming">Coming Soon</span>
-        </div>
-        <div class="blog-card">
-          <div class="blog-tag">USMLE</div>
-          <h4>How to Prepare for USMLE While Studying in Europe</h4>
-          <p>Practical advice on balancing your European curriculum with USMLE preparation from someone who did it.</p>
-          <span class="blog-coming">Coming Soon</span>
+        <div class="blog-article-grid">
+          <a href="blog/applying-to-charles-university.html" class="blog-article-card">
+            <div class="blog-tag">Applying</div>
+            <h4>5 Things I Wish I Knew Before Applying to Charles University Medical School</h4>
+            <p>Practical advice from a Charles University grad who is now a US physician. What I would tell my younger self about the application process.</p>
+            <div class="blog-article-meta">
+              <span>By Eli Zolotov, MD</span>
+              <span>&middot;</span>
+              <span>4 min read</span>
+            </div>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+          <div class="blog-article-card">
+            <div class="blog-tag">Comparison</div>
+            <h4>Czech Republic vs Caribbean Medical Schools: The Real Comparison</h4>
+            <p>Cost, attrition rates, match rates, and lifestyle - everything you need to know before making this decision.</p>
+            <div class="blog-article-meta">
+              <span>Coming Soon</span>
+            </div>
+            <span class="blog-coming">Coming Soon</span>
+          </div>
+          <div class="blog-article-card">
+            <div class="blog-tag">USMLE</div>
+            <h4>How to Prepare for USMLE While Studying in Europe</h4>
+            <p>Practical advice on balancing your European curriculum with USMLE preparation from someone who did it.</p>
+            <div class="blog-article-meta">
+              <span>Coming Soon</span>
+            </div>
+            <span class="blog-coming">Coming Soon</span>
+          </div>
         </div>
       </div>
+
+      <!-- ========== SECTION C: Community Groups ========== -->
+      <div class="community-panel" id="panel-groups">
+        <div class="section-header" style="margin-bottom:40px;">
+          <h2>Join Our Community</h2>
+          <p class="section-sub">Connect with applicants, students, and physicians outside the forum.</p>
+        </div>
+        <div class="groups-grid">
+          <div class="group-card">
+            <div class="group-icon">💬</div>
+            <h4>WhatsApp Community</h4>
+            <p>Connect with applicants, residents, and mentors. Weekly tips, Q&A sessions, peer support, and deadline reminders.</p>
+            <span class="group-badge">Coming Soon</span>
+          </div>
+          <div class="group-card">
+            <div class="group-icon">🎮</div>
+            <h4>Discord Server</h4>
+            <p>Real-time chat with channels for entrance exams, USMLE prep, residency applications, and casual conversation.</p>
+            <span class="group-badge">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -175,10 +248,41 @@
     </div>
   </footer>
 
+  <!-- Ask Question Modal -->
+  <div class="modal-overlay" id="ask-modal">
+    <div class="modal-content">
+      <h2>Ask a Question</h2>
+      <div class="form-group">
+        <label for="question-title">Title</label>
+        <input type="text" class="form-input" id="question-title" placeholder="What's your question?" maxlength="200">
+      </div>
+      <div class="form-group">
+        <label for="question-category">Category</label>
+        <select class="form-select" id="question-category">
+          <option value="entrance-exams">Entrance Exams</option>
+          <option value="med-school-life">Med School Life</option>
+          <option value="usmle-boards">USMLE &amp; Boards</option>
+          <option value="residency-match">Residency Match</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="question-body">Details</label>
+        <textarea class="form-textarea" id="question-body" placeholder="Provide more context or details about your question..." maxlength="5000"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btn-cancel-question">Cancel</button>
+        <button class="btn-submit" id="btn-submit-question">Post Question</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
+  <script src="community.js"></script>
   <script>
     // Mobile menu toggle
     document.getElementById('navToggle').addEventListener('click', () => {
@@ -198,7 +302,7 @@
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.testimonial-card, .blog-card, .contact-card').forEach(el => {
+    document.querySelectorAll('.blog-article-card, .group-card, .contact-card').forEach(el => {
       el.classList.add('animate-in');
       observer.observe(el);
     });
