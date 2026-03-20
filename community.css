@@ -42,6 +42,135 @@
   display: block;
 }
 
+/* ===== Featured Q&A (static, SEO) ===== */
+.featured-qa {
+  margin-bottom: 48px;
+}
+
+.featured-qa-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.featured-qa-sub {
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--gray-500);
+  margin-bottom: 32px;
+}
+
+.featured-qa-sub a {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.qa-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.qa-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.qa-question {
+  padding: 28px 32px 20px;
+}
+
+.qa-question h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 8px 0 10px;
+  line-height: 1.4;
+}
+
+.qa-question > p {
+  font-size: 0.88rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+.qa-answer {
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  padding: 24px 32px 28px;
+}
+
+.qa-answer-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.physician-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #2d8659, #34a065);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.physician-badge::before {
+  content: "\2713";
+  font-weight: 900;
+}
+
+.qa-author {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+
+.qa-answer div[itemprop="text"] p {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.qa-answer div[itemprop="text"] p:last-child {
+  margin-bottom: 0;
+}
+
+/* Forum Divider */
+.forum-divider {
+  text-align: center;
+  padding: 32px 0 24px;
+  border-top: 2px solid var(--gray-200);
+  margin-bottom: 24px;
+}
+
+.forum-divider h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.forum-divider p {
+  font-size: 0.88rem;
+  color: var(--gray-500);
+}
+
 /* ===== Forum ===== */
 .forum-header {
   display: flex;
@@ -925,6 +1054,15 @@
   .post-stats {
     flex-direction: row;
     justify-content: flex-start;
+  }
+
+  .qa-question,
+  .qa-answer {
+    padding: 20px;
+  }
+
+  .qa-question h4 {
+    font-size: 1rem;
   }
 
   .blog-article-grid {
