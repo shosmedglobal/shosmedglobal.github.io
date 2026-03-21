@@ -295,7 +295,7 @@
                 <p>CV/PS review, residency strategy, mock interviews, and program list building.</p>
                 <span class="student-overview-cta">View Plans →</span>
               </a>
-              <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation&body=Hi, I'd like to schedule a free 15-minute consultation about USMLE prep and residency match mentorship.%0A%0AMy name:%0AMedical school:%0AYear of study:%0ASpecialty interest:" class="student-overview-card student-overview-cta-card">
+              <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='free-consultation'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="student-overview-card student-overview-cta-card">
                 <div class="student-overview-icon">📞</div>
                 <h3>Free Consultation</h3>
                 <p>Book a free 15-minute call to build your residency application plan.</p>
@@ -887,7 +887,7 @@
                 <span class="service-price">$79</span>
               </div>
               <div class="service-status">
-                <a href="mailto:shosmedglobal@gmail.com?subject=Book 15-Min Consultation ($79)&body=Hi, I'd like to book a 15-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="btn btn-primary btn-small">Book Now</a>
+                <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='free-consultation'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Book Now</a>
               </div>
             </div>
           </div>
@@ -953,7 +953,7 @@
                   <span class="service-price">$75</span>
                 </div>
                 <div class="service-status">
-                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - Single Session" class="btn btn-secondary btn-small">Inquire</a>
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-single'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
                 </div>
               </div>
               <div class="service-row">
@@ -963,7 +963,7 @@
                   <span class="service-price">$299</span>
                 </div>
                 <div class="service-status">
-                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - 5 Session Pack" class="btn btn-primary btn-small">Inquire</a>
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-5pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Inquire</a>
                 </div>
               </div>
               <div class="service-row">
@@ -973,7 +973,7 @@
                   <span class="service-price">$549</span>
                 </div>
                 <div class="service-status">
-                  <a href="mailto:shosmedglobal@gmail.com?subject=Board Review - 10 Session Pack" class="btn btn-secondary btn-small">Inquire</a>
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-10pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
                 </div>
               </div>
             </div>
@@ -984,39 +984,96 @@
         <div class="view" id="viewContact">
           <div class="dashboard-header">
             <h1>Contact Us</h1>
-            <p class="dashboard-sub">Have a question or need help? We're here for you.</p>
+            <p class="dashboard-sub">Have a question or need help? Send us a message and we'll get back to you within 24 hours.</p>
           </div>
 
-          <div class="action-cards" style="margin-bottom: 24px;">
-            <a href="mailto:shosmedglobal@gmail.com?subject=Question from Dashboard" class="action-card action-consult">
-              <div class="action-icon">📧</div>
-              <div class="action-text">
-                <h3>Email Us</h3>
-                <p>shosmedglobal@gmail.com</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
-            <a href="mailto:shosmedglobal@gmail.com?subject=Book 15-Min Consultation ($79)&body=Hi, I'd like to book a 15-minute consultation.%0A%0AMy name:%0AQuestion/topic I'd like to discuss:" class="action-card action-consult">
-              <div class="action-icon">📞</div>
-              <div class="action-text">
-                <h3>Book a Consultation</h3>
-                <p>15-min Zoom call with a US physician — $79</p>
-              </div>
-              <span class="action-arrow">&rarr;</span>
-            </a>
+          <!-- Success Message -->
+          <div id="contactSuccess" class="dash-card" style="display:none; max-width:640px; text-align:center; padding:40px 24px; margin-bottom:24px;">
+            <div style="font-size:2.5rem; margin-bottom:12px;">&#10003;</div>
+            <h3 style="margin-bottom:8px; color:var(--navy);">Message Sent!</h3>
+            <p style="color:var(--gray-500); margin-bottom:20px;">We'll review your message and get back to you soon. Most inquiries are answered within 24 hours.</p>
+            <button class="btn btn-primary btn-small" onclick="resetContactForm()">Send Another Message</button>
           </div>
 
-          <div class="dash-card" style="max-width: 600px;">
-            <h3 style="margin-bottom: 12px;">Common Questions</h3>
-            <p style="color: var(--gray-500); margin-bottom: 16px;">Most questions are answered within 24 hours. For urgent matters, book a consultation for a live Zoom call.</p>
-            <ul style="color: var(--gray-600); line-height: 2; padding-left: 20px;">
-              <li>Application process and deadlines</li>
-              <li>Entrance exam preparation</li>
-              <li>Question Bank access and subscriptions</li>
-              <li>USMLE guidance and residency match</li>
-              <li>Billing and account issues</li>
-            </ul>
+          <!-- Contact Form -->
+          <div id="contactFormWrap" class="dash-card" style="max-width:640px;">
+            <form id="contactForm" autocomplete="off">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" class="form-input" maxlength="200" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" class="form-input" maxlength="200" required>
+              </div>
+              <div class="form-group">
+                <label for="contactCategory">Category</label>
+                <select id="contactCategory" class="form-select" required>
+                  <option value="">Select a category...</option>
+                  <option value="booking">Book a Service</option>
+                  <option value="content-question">Content / Academic Question</option>
+                  <option value="technical-issue">Technical Issue</option>
+                  <option value="billing">Billing &amp; Payments</option>
+                  <option value="partnership">Partnership Inquiry</option>
+                  <option value="general">General Question</option>
+                </select>
+              </div>
+
+              <!-- Booking-specific fields (shown when category=booking) -->
+              <div id="bookingFields" style="display:none;">
+                <div class="form-group">
+                  <label for="contactService">Service</label>
+                  <select id="contactService" class="form-select">
+                    <option value="">Select a service...</option>
+                    <option value="free-consultation">Free 15-Min Consultation (Free)</option>
+                    <option value="application-guide">Application Guide - $99 (45 min)</option>
+                    <option value="full-application">Full Application Package - $249</option>
+                    <option value="mentorship">Mentorship Session - $199 (45 min)</option>
+                    <option value="match-ready">Match-Ready Package - $499</option>
+                    <option value="board-review-single">Board Review Single - $99 (45 min)</option>
+                    <option value="board-review-5pack">Board Review 5-Pack - $449</option>
+                    <option value="board-review-10pack">Board Review 10-Pack - $799</option>
+                  </select>
+                </div>
+
+                <!-- Dynamic intake questions -->
+                <div id="intakeQuestionsWrap"></div>
+
+                <div class="form-row">
+                  <div class="form-group" style="flex:1;">
+                    <label for="contactPrefDate">Preferred Date</label>
+                    <input type="date" id="contactPrefDate" class="form-input">
+                  </div>
+                  <div class="form-group" style="flex:1;">
+                    <label for="contactPrefTime">Preferred Time</label>
+                    <select id="contactPrefTime" class="form-select">
+                      <option value="">Any time</option>
+                      <option value="morning">Morning (8am - 12pm)</option>
+                      <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                      <option value="evening">Evening (5pm - 9pm)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" id="contactSubjectGroup">
+                <label for="contactSubject">Subject</label>
+                <input type="text" id="contactSubject" class="form-input" maxlength="300" required>
+              </div>
+              <div class="form-group" id="contactBodyGroup">
+                <label for="contactBody">Message</label>
+                <textarea id="contactBody" class="form-textarea" maxlength="5000" rows="5" required placeholder="Tell us how we can help..."></textarea>
+              </div>
+
+              <div id="contactError" style="display:none; color:#ef4444; font-size:0.88rem; margin-bottom:12px;"></div>
+
+              <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width:100%;">Send Message</button>
+            </form>
           </div>
+
+          <p style="text-align:center; margin-top:16px; color:var(--gray-500); font-size:0.85rem;">
+            Or email us directly: <a href="mailto:shosmedglobal@gmail.com" style="color:var(--teal);">shosmedglobal@gmail.com</a>
+          </p>
         </div>
 
         <!-- ========== VIEW: ADMIN ========== -->
@@ -1025,6 +1082,17 @@
             <h1>Admin Panel</h1>
             <p class="dashboard-sub">Platform overview and user management.</p>
           </div>
+
+          <!-- Admin Tabs -->
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-admin-tab="dashboard">Dashboard</button>
+            <button class="admin-tab" data-admin-tab="inbox">Inbox <span class="admin-tab-badge" id="inboxBadge" style="display:none;">0</span></button>
+            <button class="admin-tab" data-admin-tab="bookings">Bookings</button>
+            <button class="admin-tab" data-admin-tab="calendar">Calendar</button>
+          </div>
+
+          <!-- TAB: Dashboard (existing content) -->
+          <div class="admin-tab-panel active" id="adminTabDashboard">
 
           <!-- Quick Stats Cards -->
           <div class="admin-stats-grid" id="adminStatsGrid">
@@ -1122,7 +1190,80 @@
               <div id="adminReportsEmpty" class="admin-empty-msg" style="display:none;">No pending reports.</div>
             </div>
           </div>
-        </div>
+
+          </div><!-- /adminTabDashboard -->
+
+          <!-- TAB: Inbox -->
+          <div class="admin-tab-panel" id="adminTabInbox">
+            <div class="admin-section">
+              <div class="admin-section-header">
+                <h3 class="admin-section-title">Messages</h3>
+                <div class="admin-controls">
+                  <select class="admin-filter" id="inboxStatusFilter">
+                    <option value="all">All Messages</option>
+                    <option value="new">New</option>
+                    <option value="read">Read</option>
+                    <option value="replied">Replied</option>
+                    <option value="resolved">Resolved</option>
+                  </select>
+                  <select class="admin-filter" id="inboxCategoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="booking">Booking</option>
+                    <option value="content-question">Content Question</option>
+                    <option value="technical-issue">Technical Issue</option>
+                    <option value="billing">Billing</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="general">General</option>
+                  </select>
+                </div>
+              </div>
+              <div id="inboxLoading" class="admin-loading">Loading messages...</div>
+              <div id="inboxList"></div>
+              <div id="inboxEmpty" class="admin-empty-msg" style="display:none;">No messages found.</div>
+            </div>
+          </div>
+
+          <!-- TAB: Bookings -->
+          <div class="admin-tab-panel" id="adminTabBookings">
+            <div class="admin-section">
+              <div class="admin-section-header">
+                <h3 class="admin-section-title">Service Bookings</h3>
+                <div class="admin-controls">
+                  <select class="admin-filter" id="bookingStatusFilter">
+                    <option value="all">All Bookings</option>
+                    <option value="inquiry">Inquiry</option>
+                    <option value="pending_payment">Pending Payment</option>
+                    <option value="paid">Paid</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="no_show">No-Show</option>
+                  </select>
+                </div>
+              </div>
+              <div id="bookingsLoading" class="admin-loading">Loading bookings...</div>
+              <div id="bookingsList"></div>
+              <div id="bookingsEmpty" class="admin-empty-msg" style="display:none;">No bookings found.</div>
+            </div>
+          </div>
+
+          <!-- TAB: Calendar -->
+          <div class="admin-tab-panel" id="adminTabCalendar">
+            <div class="admin-section">
+              <div class="calendar-header">
+                <button class="admin-action-btn" id="calPrev">&laquo; Prev</button>
+                <h3 class="admin-section-title" id="calMonthLabel" style="margin:0;"></h3>
+                <button class="admin-action-btn" id="calNext">Next &raquo;</button>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <div id="calDayDetail" style="display:none; margin-top:16px;">
+                <h4 id="calDayLabel" style="margin-bottom:12px; color:var(--navy);"></h4>
+                <div id="calDayBookings"></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /viewAdmin -->
 
         <!-- ========== VIEW: SETTINGS ========== -->
         <div class="view" id="viewSettings">
@@ -1427,6 +1568,320 @@
       color: #9ca3af;
       font-size: 0.88rem;
     }
+
+    /* ===== Admin Tabs ===== */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .admin-tab {
+      padding: 8px 20px;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      background: #fff;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: #6b7280;
+      position: relative;
+    }
+    .admin-tab:hover { background: #f9fafb; border-color: #d1d5db; }
+    .admin-tab.active { background: var(--navy, #1B2137); color: #fff; border-color: var(--navy, #1B2137); }
+    .admin-tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 9px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: 6px;
+      line-height: 1;
+    }
+    .admin-tab.active .admin-tab-badge { background: #ef4444; }
+    .admin-tab-panel { display: none; }
+    .admin-tab-panel.active { display: block; }
+
+    /* ===== Contact Form Styles ===== */
+    .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .form-row .form-group { min-width: 0; }
+    #contactForm .form-group { margin-bottom: 16px; }
+    #contactForm label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      margin-bottom: 6px;
+    }
+    #contactForm .form-input,
+    #contactForm .form-select,
+    #contactForm .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    #contactForm .form-input:focus,
+    #contactForm .form-select:focus,
+    #contactForm .form-textarea:focus {
+      border-color: var(--teal, #2d9f8f);
+    }
+    #contactForm .form-textarea { resize: vertical; min-height: 80px; }
+    .intake-question { margin-bottom: 14px; }
+    .intake-question label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    /* ===== Inbox Message Cards ===== */
+    .inbox-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .inbox-card:hover { border-color: #d1d5db; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .inbox-card.unread { border-left: 3px solid var(--teal, #2d9f8f); }
+    .inbox-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .inbox-sender {
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      font-size: 0.92rem;
+    }
+    .inbox-date {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+    .inbox-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+    .inbox-subject {
+      font-size: 0.88rem;
+      color: #374151;
+      margin-bottom: 2px;
+    }
+    .inbox-preview {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .inbox-expanded {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #f3f4f6;
+      display: none;
+    }
+    .inbox-card.open .inbox-expanded { display: block; }
+    .inbox-body {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 14px;
+      white-space: pre-wrap;
+    }
+    .inbox-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .inbox-notes-input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      font-family: inherit;
+      outline: none;
+    }
+    .inbox-notes-input:focus { border-color: var(--teal, #2d9f8f); }
+
+    /* Status badges */
+    .status-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-transform: capitalize;
+    }
+    .status-new { background: #dbeafe; color: #1d4ed8; }
+    .status-read { background: #f3f4f6; color: #6b7280; }
+    .status-replied { background: #d1fae5; color: #065f46; }
+    .status-resolved { background: #e5e7eb; color: #374151; }
+    .status-inquiry { background: #dbeafe; color: #1d4ed8; }
+    .status-pending_payment { background: #fef3c7; color: #92400e; }
+    .status-paid { background: #d1fae5; color: #065f46; }
+    .status-confirmed { background: #bfdbfe; color: #1e40af; }
+    .status-completed { background: #e5e7eb; color: #374151; }
+    .status-cancelled { background: #fee2e2; color: #991b1b; }
+    .status-no_show { background: #fce7f3; color: #9d174d; }
+    .category-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    /* ===== Booking Cards ===== */
+    .booking-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .booking-card:hover { border-color: #d1d5db; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .booking-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .booking-service {
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      font-size: 0.92rem;
+    }
+    .booking-price {
+      font-weight: 700;
+      color: var(--teal, #2d9f8f);
+      font-size: 0.92rem;
+    }
+    .booking-client {
+      font-size: 0.85rem;
+      color: #374151;
+      margin-top: 4px;
+    }
+    .booking-expanded {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #f3f4f6;
+      display: none;
+    }
+    .booking-card.open .booking-expanded { display: block; }
+    .booking-detail-row {
+      font-size: 0.85rem;
+      color: #374151;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .booking-detail-row strong { color: var(--navy, #1B2137); }
+    .booking-status-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    /* ===== Calendar ===== */
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: #e5e7eb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .cal-header-cell {
+      background: #f9fafb;
+      padding: 8px 4px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+    .cal-cell {
+      background: #fff;
+      padding: 8px 6px;
+      min-height: 60px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.1s;
+      position: relative;
+    }
+    .cal-cell:hover { background: #f9fafb; }
+    .cal-cell.today { background: #eff6ff; }
+    .cal-cell.empty { background: #fafafa; cursor: default; }
+    .cal-cell.selected { background: #dbeafe; }
+    .cal-day-num {
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      margin-bottom: 4px;
+    }
+    .cal-cell.today .cal-day-num { color: #2563eb; }
+    .cal-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin: 1px;
+    }
+    .cal-dot.confirmed { background: #3b82f6; }
+    .cal-dot.paid { background: #10b981; }
+    .cal-dot.completed { background: #9ca3af; }
+    .cal-dot.cancelled { background: #ef4444; }
+    .cal-dot.inquiry { background: #f59e0b; }
+    .cal-booking-mini {
+      font-size: 0.7rem;
+      color: #6b7280;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 600px) {
+      .cal-cell { min-height: 40px; padding: 4px; }
+      .cal-booking-mini { display: none; }
+    }
   </style>
 
   <!-- Firebase SDKs -->
@@ -1434,6 +1889,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
+  <script src="contact-booking.js"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -1616,6 +2072,8 @@
       // Check URL for ?view= parameter to open a specific tab
       const urlParams = new URLSearchParams(window.location.search);
       const requestedView = urlParams.get('view');
+      // Save deep-link params before clearing URL
+      window._deepLinkParams = urlParams;
       if (requestedView) {
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
@@ -2667,6 +3125,519 @@
       div.textContent = str;
       return div.innerHTML;
     }
+
+    // ===== Contact Form Logic =====
+    (function() {
+      const catSelect = document.getElementById('contactCategory');
+      const serviceSelect = document.getElementById('contactService');
+      const bookingFields = document.getElementById('bookingFields');
+      const intakeWrap = document.getElementById('intakeQuestionsWrap');
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+
+      // Show/hide booking fields based on category
+      if (catSelect) catSelect.addEventListener('change', () => {
+        const isBooking = catSelect.value === 'booking';
+        bookingFields.style.display = isBooking ? 'block' : 'none';
+        if (!isBooking) {
+          serviceSelect.value = '';
+          intakeWrap.innerHTML = '';
+        }
+      });
+
+      // Dynamic intake questions
+      if (serviceSelect) serviceSelect.addEventListener('change', () => {
+        const sType = serviceSelect.value;
+        intakeWrap.innerHTML = '';
+        if (!sType || typeof getIntakeQuestions !== 'function') return;
+        const questions = getIntakeQuestions(sType);
+        questions.forEach(q => {
+          const div = document.createElement('div');
+          div.className = 'intake-question';
+          let inputHtml = '';
+          if (q.type === 'textarea') {
+            inputHtml = `<textarea class="form-textarea" id="intake_${q.id}" name="intake_${q.id}" rows="3" maxlength="2000"></textarea>`;
+          } else if (q.type === 'select' && q.options) {
+            inputHtml = `<select class="form-select" id="intake_${q.id}" name="intake_${q.id}"><option value="">Select...</option>${q.options.map(o => `<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join('')}</select>`;
+          } else {
+            inputHtml = `<input type="text" class="form-input" id="intake_${q.id}" name="intake_${q.id}" maxlength="500">`;
+          }
+          div.innerHTML = `<label for="intake_${q.id}">${escapeHtml(q.label)}</label>${inputHtml}`;
+          intakeWrap.appendChild(div);
+        });
+      });
+
+      // Pre-fill from user profile
+      function prefillContactForm() {
+        if (currentUser) {
+          const nameEl = document.getElementById('contactName');
+          const emailEl = document.getElementById('contactEmail');
+          if (nameEl && !nameEl.value) nameEl.value = currentUser.displayName || currentProfile?.name || '';
+          if (emailEl && !emailEl.value) emailEl.value = currentUser.email || '';
+        }
+      }
+
+      // Handle URL params for deep linking
+      function handleContactParams() {
+        const params = window._deepLinkParams || new URLSearchParams(window.location.search);
+        const type = params.get('type');
+        const service = params.get('service');
+        if (type === 'booking' && catSelect) {
+          catSelect.value = 'booking';
+          catSelect.dispatchEvent(new Event('change'));
+          if (service && serviceSelect) {
+            serviceSelect.value = service;
+            serviceSelect.dispatchEvent(new Event('change'));
+          }
+        }
+      }
+
+      // Expose for use after auth
+      window.prefillContactForm = prefillContactForm;
+      window.handleContactParams = handleContactParams;
+
+      // Submit handler
+      if (form) form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorEl = document.getElementById('contactError');
+        errorEl.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const isBooking = catSelect.value === 'booking';
+
+          if (isBooking && serviceSelect.value) {
+            // Collect intake answers
+            const intakeAnswers = {};
+            const questions = typeof getIntakeQuestions === 'function' ? getIntakeQuestions(serviceSelect.value) : [];
+            questions.forEach(q => {
+              const el = document.getElementById('intake_' + q.id);
+              if (el) intakeAnswers[q.id] = el.value;
+            });
+
+            const result = await submitBookingRequest({
+              name: document.getElementById('contactName').value.trim(),
+              email: document.getElementById('contactEmail').value.trim(),
+              serviceType: serviceSelect.value,
+              preferredDate: document.getElementById('contactPrefDate').value || null,
+              preferredTime: document.getElementById('contactPrefTime').value || null,
+              intakeAnswers,
+              sessionGoal: intakeAnswers.sessionGoal || ''
+            });
+
+            if (!result.success) throw new Error(result.error);
+          } else {
+            const result = await submitContactForm({
+              name: document.getElementById('contactName').value.trim(),
+              email: document.getElementById('contactEmail').value.trim(),
+              category: catSelect.value,
+              subject: document.getElementById('contactSubject').value.trim(),
+              body: document.getElementById('contactBody').value.trim()
+            });
+
+            if (!result.success) throw new Error(result.error);
+          }
+
+          // Show success
+          document.getElementById('contactFormWrap').style.display = 'none';
+          document.getElementById('contactSuccess').style.display = 'block';
+        } catch (err) {
+          errorEl.textContent = 'Failed to send: ' + err.message;
+          errorEl.style.display = 'block';
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+    })();
+
+    function resetContactForm() {
+      document.getElementById('contactForm').reset();
+      document.getElementById('contactFormWrap').style.display = 'block';
+      document.getElementById('contactSuccess').style.display = 'none';
+      document.getElementById('bookingFields').style.display = 'none';
+      document.getElementById('intakeQuestionsWrap').innerHTML = '';
+      if (typeof prefillContactForm === 'function') prefillContactForm();
+    }
+
+    // ===== Admin Tab Navigation =====
+    let adminInboxLoaded = false;
+    let adminBookingsLoaded = false;
+    let adminCalendarLoaded = false;
+    let calYear, calMonth;
+
+    document.querySelectorAll('.admin-tab[data-admin-tab]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.admin-tab-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        const panelId = 'adminTab' + tab.dataset.adminTab.charAt(0).toUpperCase() + tab.dataset.adminTab.slice(1);
+        const panel = document.getElementById(panelId);
+        if (panel) panel.classList.add('active');
+
+        // Lazy load
+        if (tab.dataset.adminTab === 'inbox' && !adminInboxLoaded) {
+          adminInboxLoaded = true;
+          renderInbox();
+        }
+        if (tab.dataset.adminTab === 'bookings' && !adminBookingsLoaded) {
+          adminBookingsLoaded = true;
+          renderBookings();
+        }
+        if (tab.dataset.adminTab === 'calendar' && !adminCalendarLoaded) {
+          adminCalendarLoaded = true;
+          const now = new Date();
+          calYear = now.getFullYear();
+          calMonth = now.getMonth();
+          renderCalendar();
+        }
+      });
+    });
+
+    // ===== Admin Inbox =====
+    async function renderInbox() {
+      const loadingEl = document.getElementById('inboxLoading');
+      const listEl = document.getElementById('inboxList');
+      const emptyEl = document.getElementById('inboxEmpty');
+      const statusFilter = document.getElementById('inboxStatusFilter').value;
+      const catFilter = document.getElementById('inboxCategoryFilter').value;
+
+      loadingEl.style.display = 'block';
+      listEl.innerHTML = '';
+      emptyEl.style.display = 'none';
+
+      try {
+        const messages = await loadAdminMessages(statusFilter, catFilter);
+        loadingEl.style.display = 'none';
+
+        if (messages.length === 0) {
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        messages.forEach(msg => {
+          const card = document.createElement('div');
+          card.className = 'inbox-card' + (msg.status === 'new' ? ' unread' : '');
+          card.id = 'msg-' + msg.id;
+
+          let dateStr = '';
+          if (msg.createdAt) {
+            const d = msg.createdAt.toDate ? msg.createdAt.toDate() : new Date(msg.createdAt);
+            dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          }
+
+          const catLabel = CONTACT_CATEGORIES.find(c => c.value === msg.category)?.label || msg.category || '';
+
+          card.innerHTML = `
+            <div class="inbox-card-header">
+              <span class="inbox-sender">${escapeHtml(msg.name || 'Anonymous')}</span>
+              <span class="inbox-date">${dateStr}</span>
+            </div>
+            <div class="inbox-meta">
+              <span class="category-badge">${escapeHtml(catLabel)}</span>
+              <span class="status-badge status-${msg.status}">${msg.status}</span>
+              <span style="font-size:0.8rem; color:#9ca3af;">${escapeHtml(msg.email || '')}</span>
+            </div>
+            <div class="inbox-subject">${escapeHtml(msg.subject || '(no subject)')}</div>
+            <div class="inbox-preview">${escapeHtml((msg.body || '').substring(0, 120))}</div>
+            <div class="inbox-expanded">
+              <div class="inbox-body">${escapeHtml(msg.body || '')}</div>
+              <div class="inbox-actions">
+                <button class="admin-action-btn" onclick="markMessage('${msg.id}','read');event.stopPropagation();">Mark Read</button>
+                <button class="admin-action-btn admin-btn-grant" onclick="replyToMessage('${msg.id}','${escapeHtml(msg.email || '')}','${escapeHtml(msg.subject || '')}');event.stopPropagation();">Reply</button>
+                <button class="admin-action-btn admin-btn-details" onclick="markMessage('${msg.id}','resolved');event.stopPropagation();">Resolve</button>
+              </div>
+              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeHtml(msg.adminNotes || '')}" onchange="saveMessageNotes('${msg.id}', this.value)" onclick="event.stopPropagation();">
+            </div>
+          `;
+
+          card.addEventListener('click', () => card.classList.toggle('open'));
+          listEl.appendChild(card);
+        });
+      } catch (err) {
+        loadingEl.textContent = 'Failed to load: ' + err.message;
+      }
+    }
+
+    // Inbox filter listeners
+    document.getElementById('inboxStatusFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
+    document.getElementById('inboxCategoryFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
+
+    async function markMessage(id, status) {
+      const result = await updateMessageStatus(id, status);
+      if (result.success) renderInbox();
+    }
+
+    function replyToMessage(id, email, subject) {
+      // Open email client and log reply
+      window.open('mailto:' + email + '?subject=Re: ' + encodeURIComponent(subject), '_blank');
+      markMessage(id, 'replied');
+    }
+
+    async function saveMessageNotes(id, notes) {
+      await updateMessageStatus(id, undefined, notes);
+    }
+
+    // Load inbox badge count
+    async function loadInboxBadge() {
+      const count = await getUnreadMessageCount();
+      const badge = document.getElementById('inboxBadge');
+      if (badge) {
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+    }
+
+    // ===== Admin Bookings =====
+    async function renderBookings() {
+      const loadingEl = document.getElementById('bookingsLoading');
+      const listEl = document.getElementById('bookingsList');
+      const emptyEl = document.getElementById('bookingsEmpty');
+      const statusFilter = document.getElementById('bookingStatusFilter').value;
+
+      loadingEl.style.display = 'block';
+      listEl.innerHTML = '';
+      emptyEl.style.display = 'none';
+
+      try {
+        const bookings = await loadAdminBookings(statusFilter);
+        loadingEl.style.display = 'none';
+
+        if (bookings.length === 0) {
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        bookings.forEach(bk => {
+          const card = document.createElement('div');
+          card.className = 'booking-card';
+          card.id = 'bk-' + bk.id;
+
+          let dateStr = '';
+          if (bk.createdAt) {
+            const d = bk.createdAt.toDate ? bk.createdAt.toDate() : new Date(bk.createdAt);
+            dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          }
+
+          const priceStr = bk.price === 0 ? 'Free' : '$' + bk.price;
+
+          // Build intake answers display
+          let intakeHtml = '';
+          if (bk.intakeAnswers && Object.keys(bk.intakeAnswers).length > 0) {
+            intakeHtml = '<div style="margin-top:8px;">';
+            const questions = typeof getIntakeQuestions === 'function' ? getIntakeQuestions(bk.serviceType) : [];
+            Object.entries(bk.intakeAnswers).forEach(([key, val]) => {
+              if (val) {
+                const q = questions.find(q => q.id === key);
+                const label = q ? q.label : key;
+                intakeHtml += `<div class="booking-detail-row"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(val)}</div>`;
+              }
+            });
+            intakeHtml += '</div>';
+          }
+
+          // Status actions based on current status
+          let actionsHtml = '';
+          const statusActions = {
+            'inquiry': ['confirmed', 'pending_payment', 'cancelled'],
+            'pending_payment': ['paid', 'cancelled'],
+            'paid': ['confirmed', 'cancelled'],
+            'confirmed': ['completed', 'no_show', 'cancelled'],
+            'completed': [],
+            'cancelled': ['inquiry'],
+            'no_show': ['inquiry']
+          };
+          const actions = statusActions[bk.status] || [];
+          actions.forEach(s => {
+            const labels = {
+              'confirmed': 'Confirm', 'pending_payment': 'Pending Payment',
+              'paid': 'Mark Paid', 'completed': 'Mark Completed',
+              'cancelled': 'Cancel', 'no_show': 'No-Show', 'inquiry': 'Reopen'
+            };
+            const btnClass = s === 'cancelled' || s === 'no_show' ? 'admin-btn-revoke' :
+              s === 'completed' || s === 'paid' || s === 'confirmed' ? 'admin-btn-grant' : '';
+            actionsHtml += `<button class="admin-action-btn ${btnClass}" onclick="changeBookingStatus('${bk.id}','${s}');event.stopPropagation();">${labels[s] || s}</button>`;
+          });
+
+          card.innerHTML = `
+            <div class="booking-card-header">
+              <div>
+                <span class="booking-service">${escapeHtml(bk.serviceName || bk.serviceType)}</span>
+                <span class="status-badge status-${bk.status}" style="margin-left:8px;">${bk.status.replace('_', ' ')}</span>
+              </div>
+              <span class="booking-price">${priceStr}</span>
+            </div>
+            <div class="booking-client">${escapeHtml(bk.name || 'Unknown')} &middot; ${escapeHtml(bk.email || '')} &middot; ${dateStr}</div>
+            ${bk.preferredDate ? `<div style="font-size:0.82rem; color:#6b7280; margin-top:4px;">Preferred: ${escapeHtml(bk.preferredDate)}${bk.preferredTime ? ' (' + escapeHtml(bk.preferredTime) + ')' : ''}</div>` : ''}
+            <div class="booking-expanded">
+              ${intakeHtml}
+              ${bk.sessionGoal ? `<div class="booking-detail-row" style="margin-top:8px;"><strong>Session Goal:</strong> ${escapeHtml(bk.sessionGoal)}</div>` : ''}
+              ${bk.timezone ? `<div class="booking-detail-row"><strong>Timezone:</strong> ${escapeHtml(bk.timezone)}</div>` : ''}
+              <div class="booking-status-actions">${actionsHtml}</div>
+              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeHtml(bk.adminNotes || '')}" onchange="saveBookingNotes('${bk.id}', this.value)" onclick="event.stopPropagation();">
+            </div>
+          `;
+
+          card.addEventListener('click', () => card.classList.toggle('open'));
+          listEl.appendChild(card);
+        });
+      } catch (err) {
+        loadingEl.textContent = 'Failed to load: ' + err.message;
+      }
+    }
+
+    document.getElementById('bookingStatusFilter')?.addEventListener('change', () => { adminBookingsLoaded = true; renderBookings(); });
+
+    async function changeBookingStatus(id, newStatus) {
+      if (newStatus === 'completed') {
+        const notes = prompt('Session notes (optional):');
+        const result = await updateBookingStatus(id, newStatus, undefined, notes || '');
+        if (result.success) renderBookings();
+      } else if (newStatus === 'cancelled') {
+        if (!confirm('Cancel this booking?')) return;
+        const result = await updateBookingStatus(id, newStatus);
+        if (result.success) renderBookings();
+      } else {
+        const result = await updateBookingStatus(id, newStatus);
+        if (result.success) renderBookings();
+      }
+    }
+
+    async function saveBookingNotes(id, notes) {
+      await updateBookingStatus(id, undefined, notes);
+    }
+
+    // ===== Admin Calendar =====
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      const label = document.getElementById('calMonthLabel');
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+      label.textContent = monthNames[calMonth] + ' ' + calYear;
+
+      const firstDay = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === calYear && today.getMonth() === calMonth;
+
+      let html = dayNames.map(d => `<div class="cal-header-cell">${d}</div>`).join('');
+
+      // Empty cells before first day
+      for (let i = 0; i < firstDay; i++) {
+        html += '<div class="cal-cell empty"></div>';
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = isCurrentMonth && day === today.getDate();
+        const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+        html += `<div class="cal-cell${isToday ? ' today' : ''}" data-date="${dateStr}">
+          <div class="cal-day-num">${day}</div>
+          <div class="cal-dots" id="cal-dots-${dateStr}"></div>
+        </div>`;
+      }
+
+      grid.innerHTML = html;
+
+      // Add click handlers
+      grid.querySelectorAll('.cal-cell[data-date]').forEach(cell => {
+        cell.addEventListener('click', () => {
+          grid.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('selected'));
+          cell.classList.add('selected');
+          showDayBookings(cell.dataset.date);
+        });
+      });
+
+      // Load bookings for this month
+      loadCalendarBookings();
+    }
+
+    async function loadCalendarBookings() {
+      const bookings = await getBookingsForMonth(calYear, calMonth);
+      // Group by date
+      const byDate = {};
+      bookings.forEach(bk => {
+        if (!bk.preferredDate) return;
+        if (!byDate[bk.preferredDate]) byDate[bk.preferredDate] = [];
+        byDate[bk.preferredDate].push(bk);
+      });
+
+      // Render dots
+      Object.entries(byDate).forEach(([date, bks]) => {
+        const dotsEl = document.getElementById('cal-dots-' + date);
+        if (!dotsEl) return;
+        let dotsHtml = '';
+        bks.slice(0, 4).forEach(bk => {
+          dotsHtml += `<span class="cal-dot ${bk.status}"></span>`;
+        });
+        if (bks.length > 4) dotsHtml += `<span style="font-size:0.65rem;color:#9ca3af;">+${bks.length - 4}</span>`;
+        dotsEl.innerHTML = dotsHtml;
+      });
+
+      // Store for day detail view
+      window._calBookingsByDate = byDate;
+    }
+
+    function showDayBookings(date) {
+      const detailEl = document.getElementById('calDayDetail');
+      const labelEl = document.getElementById('calDayLabel');
+      const listEl = document.getElementById('calDayBookings');
+      const byDate = window._calBookingsByDate || {};
+      const dayBookings = byDate[date] || [];
+
+      const d = new Date(date + 'T12:00:00');
+      labelEl.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+      if (dayBookings.length === 0) {
+        listEl.innerHTML = '<p style="color:#9ca3af; font-size:0.88rem;">No bookings on this date.</p>';
+      } else {
+        let html = '';
+        dayBookings.forEach(bk => {
+          const priceStr = bk.price === 0 ? 'Free' : '$' + bk.price;
+          html += `<div style="padding:10px 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;">
+            <strong>${escapeHtml(bk.serviceName || bk.serviceType)}</strong>
+            <span class="status-badge status-${bk.status}" style="margin-left:8px;">${bk.status.replace('_', ' ')}</span><br>
+            <span style="color:#6b7280;">${escapeHtml(bk.name || '')} &middot; ${escapeHtml(bk.email || '')} &middot; ${priceStr}</span>
+            ${bk.preferredTime ? '<br><span style="color:#9ca3af;">' + escapeHtml(bk.preferredTime) + '</span>' : ''}
+          </div>`;
+        });
+        listEl.innerHTML = html;
+      }
+
+      detailEl.style.display = 'block';
+    }
+
+    // Calendar navigation
+    document.getElementById('calPrev')?.addEventListener('click', () => {
+      calMonth--;
+      if (calMonth < 0) { calMonth = 11; calYear--; }
+      renderCalendar();
+    });
+    document.getElementById('calNext')?.addEventListener('click', () => {
+      calMonth++;
+      if (calMonth > 11) { calMonth = 0; calYear++; }
+      renderCalendar();
+    });
+
+    // ===== Augment loadAdminPanel to load inbox badge =====
+    const _origLoadAdminPanel = loadAdminPanel;
+    loadAdminPanel = async function() {
+      await _origLoadAdminPanel();
+      loadInboxBadge();
+    };
+
+    // ===== Augment loadDashboard to prefill contact form and handle params =====
+    const _origLoadDashboard = loadDashboard;
+    loadDashboard = async function(user) {
+      await _origLoadDashboard(user);
+      if (typeof prefillContactForm === 'function') prefillContactForm();
+      if (typeof handleContactParams === 'function') handleContactParams();
+    };
   </script>
 </body>
 </html>
