@@ -60,6 +60,11 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Profile & Settings
         </a>
+        <div class="sidebar-admin-separator" id="sidebarAdminSep" style="display:none; height:1px; background:rgba(255,255,255,0.1); margin:12px 16px 4px;"></div>
+        <a href="#" class="sidebar-link sidebar-admin-link" data-view="admin" id="sidebarAdminLink" style="display:none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Admin Panel
+        </a>
       </nav>
 
       <div class="sidebar-footer">
@@ -1014,6 +1019,111 @@
           </div>
         </div>
 
+        <!-- ========== VIEW: ADMIN ========== -->
+        <div class="view" id="viewAdmin">
+          <div class="dashboard-header">
+            <h1>Admin Panel</h1>
+            <p class="dashboard-sub">Platform overview and user management.</p>
+          </div>
+
+          <!-- Quick Stats Cards -->
+          <div class="admin-stats-grid" id="adminStatsGrid">
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatTotalUsers">—</div>
+              <div class="admin-stat-label">Total Users</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatNewUsers">—</div>
+              <div class="admin-stat-label">New This Month</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatPaidUsers">—</div>
+              <div class="admin-stat-label">Paying Users</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatRevenue">—</div>
+              <div class="admin-stat-label">Total Revenue</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatQbankUsers">—</div>
+              <div class="admin-stat-label">Active QBank Users</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatForumPosts">—</div>
+              <div class="admin-stat-label">Forum Posts</div>
+            </div>
+          </div>
+
+          <!-- User Management -->
+          <div class="admin-section">
+            <div class="admin-section-header">
+              <h3 class="admin-section-title">User Management</h3>
+              <div class="admin-controls">
+                <input type="text" class="admin-search" id="adminUserSearch" placeholder="Search by name or email...">
+                <select class="admin-filter" id="adminUserFilter">
+                  <option value="all">All Users</option>
+                  <option value="applicant">Applicants</option>
+                  <option value="student">Students</option>
+                  <option value="paid">Paid</option>
+                  <option value="free">Free</option>
+                </select>
+              </div>
+            </div>
+            <div class="admin-table-wrap" id="adminUsersTableWrap">
+              <div class="admin-loading" id="adminUsersLoading">Loading users...</div>
+              <table class="admin-table" id="adminUsersTable" style="display:none;">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Path</th>
+                    <th>Signed Up</th>
+                    <th>QBank Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminUsersBody"></tbody>
+              </table>
+              <div class="admin-pagination" id="adminPagination"></div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="admin-section">
+            <h3 class="admin-section-title">Recent Activity</h3>
+            <div class="admin-activity-grid">
+              <div class="admin-activity-col">
+                <h4 class="admin-activity-heading">Recent Signups</h4>
+                <div id="adminRecentSignups" class="admin-activity-list">
+                  <div class="admin-loading">Loading...</div>
+                </div>
+              </div>
+              <div class="admin-activity-col">
+                <h4 class="admin-activity-heading">Recent QBank Tests</h4>
+                <div id="adminRecentTests" class="admin-activity-list">
+                  <div class="admin-loading">Loading...</div>
+                </div>
+              </div>
+              <div class="admin-activity-col">
+                <h4 class="admin-activity-heading">Recent Forum Posts</h4>
+                <div id="adminRecentForum" class="admin-activity-list">
+                  <div class="admin-loading">Loading...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question Reports -->
+          <div class="admin-section">
+            <h3 class="admin-section-title">Question Reports</h3>
+            <div id="adminReportsWrap">
+              <div class="admin-loading" id="adminReportsLoading">Loading reports...</div>
+              <div id="adminReportsList"></div>
+              <div id="adminReportsEmpty" class="admin-empty-msg" style="display:none;">No pending reports.</div>
+            </div>
+          </div>
+        </div>
+
         <!-- ========== VIEW: SETTINGS ========== -->
         <div class="view" id="viewSettings">
           <div class="dashboard-header">
@@ -1080,6 +1190,245 @@
     </main>
   </div>
 
+  <!-- Admin Panel Styles -->
+  <style>
+    /* Admin sidebar link */
+    .sidebar-admin-link { color: #cf5b2e !important; }
+    .sidebar-admin-link:hover, .sidebar-admin-link.active { background: rgba(207,91,46,0.12) !important; color: #cf5b2e !important; }
+
+    /* Admin stats grid */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) { .admin-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .admin-stats-grid { grid-template-columns: 1fr; } }
+
+    .admin-stat-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .admin-stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy, #1B2137);
+      line-height: 1.2;
+    }
+    .admin-stat-label {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    /* Admin sections */
+    .admin-section {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .admin-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .admin-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      margin: 0;
+    }
+    .admin-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .admin-search {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      min-width: 220px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .admin-search:focus { border-color: var(--teal, #2d9f8f); }
+    .admin-filter {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Admin table */
+    .admin-table-wrap { overflow-x: auto; }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .admin-table th {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 2px solid #e5e7eb;
+      color: #6b7280;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .admin-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: middle;
+    }
+    .admin-table tbody tr:hover { background: #f9fafb; }
+
+    .admin-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .admin-badge-applicant { background: #dbeafe; color: #1d4ed8; }
+    .admin-badge-student { background: #d1fae5; color: #065f46; }
+    .admin-badge-paid { background: #d1fae5; color: #065f46; }
+    .admin-badge-free { background: #f3f4f6; color: #6b7280; }
+
+    .admin-action-btn {
+      padding: 4px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .admin-action-btn:hover { background: #f3f4f6; border-color: #9ca3af; }
+    .admin-action-btn.admin-btn-grant { border-color: #10b981; color: #065f46; }
+    .admin-action-btn.admin-btn-grant:hover { background: #d1fae5; }
+    .admin-action-btn.admin-btn-revoke { border-color: #ef4444; color: #991b1b; }
+    .admin-action-btn.admin-btn-revoke:hover { background: #fee2e2; }
+    .admin-action-btn.admin-btn-details { border-color: #6366f1; color: #3730a3; }
+    .admin-action-btn.admin-btn-details:hover { background: #eef2ff; }
+
+    .admin-user-details {
+      background: #f9fafb;
+      padding: 12px 16px;
+      font-size: 0.83rem;
+      color: #374151;
+      line-height: 1.7;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .admin-user-details strong { color: var(--navy, #1B2137); }
+
+    /* Pagination */
+    .admin-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .admin-page-btn {
+      padding: 6px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .admin-page-btn:hover { background: #f3f4f6; }
+    .admin-page-btn.active { background: var(--navy, #1B2137); color: #fff; border-color: var(--navy, #1B2137); }
+    .admin-page-btn:disabled { opacity: 0.4; cursor: default; }
+
+    /* Activity grid */
+    .admin-activity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .admin-activity-grid { grid-template-columns: 1fr; } }
+    .admin-activity-heading {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy, #1B2137);
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .admin-activity-list { min-height: 60px; }
+    .admin-activity-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.83rem;
+      color: #374151;
+    }
+    .admin-activity-item:last-child { border-bottom: none; }
+    .admin-activity-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    /* Reports */
+    .admin-report-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .admin-report-card:last-child { border-bottom: none; }
+    .admin-report-info { flex: 1; font-size: 0.85rem; color: #374151; line-height: 1.6; }
+    .admin-report-info strong { color: var(--navy, #1B2137); }
+    .admin-report-meta { font-size: 0.75rem; color: #9ca3af; }
+    .admin-resolve-btn {
+      padding: 6px 14px;
+      border: 1px solid #10b981;
+      border-radius: 6px;
+      background: #fff;
+      color: #065f46;
+      font-size: 0.78rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .admin-resolve-btn:hover { background: #d1fae5; }
+
+    /* Loading and empty */
+    .admin-loading {
+      text-align: center;
+      padding: 20px;
+      color: #9ca3af;
+      font-size: 0.88rem;
+    }
+    .admin-empty-msg {
+      text-align: center;
+      padding: 20px;
+      color: #9ca3af;
+      font-size: 0.88rem;
+    }
+  </style>
+
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -1098,13 +1447,19 @@
         'resources': 'viewResources',
         'store': 'viewStore',
         'contact': 'viewContact',
-        'settings': 'viewSettings'
+        'settings': 'viewSettings',
+        'admin': 'viewAdmin'
       };
 
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const targetId = viewMap[viewName];
       const target = targetId ? document.getElementById(targetId) : null;
       if (target) target.classList.add('active');
+
+      // Lazy-load admin panel data when switching to admin view
+      if (viewName === 'admin' && typeof loadAdminPanel === 'function') {
+        loadAdminPanel();
+      }
 
       document.querySelectorAll('.sidebar-link[data-view]').forEach(link => {
         link.classList.toggle('active', link.dataset.view === viewName);
@@ -1145,7 +1500,7 @@
       // ===== Admin: Clear QBank data via URL param =====
       const clearParam = new URLSearchParams(window.location.search).get('clearqbank');
       if (clearParam === 'true') {
-        const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+        const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
         if (ADMIN_EMAILS.includes(user.email)) {
           try {
             const uid = user.uid;
@@ -1232,8 +1587,12 @@
       }
 
       // ===== QBank access level =====
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com'];
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(user.email);
+      if (isAdmin) {
+        document.getElementById('sidebarAdminLink').style.display = '';
+        document.getElementById('sidebarAdminSep').style.display = '';
+      }
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
         ? 'Full Access — 860+ questions across Biology and Chemistry.'
@@ -1796,6 +2155,517 @@
           window.location.href = 'qbank.html?review=' + idx;
         });
       });
+    }
+
+    // ===================================================================
+    // ===== ADMIN PANEL =====
+    // ===================================================================
+    let adminDataLoaded = false;
+    let allAdminUsers = [];
+    let filteredAdminUsers = [];
+    let adminCurrentPage = 1;
+    const ADMIN_PAGE_SIZE = 20;
+
+    // Price map for revenue calculation
+    const PLAN_PRICES = {
+      'qbank-1mo': 49,
+      'qbank-3mo': 99,
+      'qbank-6mo': 149
+    };
+
+    async function loadAdminPanel() {
+      if (adminDataLoaded) return;
+      adminDataLoaded = true;
+      await Promise.all([
+        loadAdminStats(),
+        loadAdminUsers(),
+        loadRecentActivity(),
+        loadQuestionReports()
+      ]);
+    }
+
+    // ===== Admin Stats =====
+    async function loadAdminStats() {
+      try {
+        const usersSnap = await db.collection('users').get();
+        const users = [];
+        usersSnap.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
+
+        const now = new Date();
+        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+        let totalUsers = users.length;
+        let newThisMonth = 0;
+        let paidUsers = 0;
+        let totalRevenue = 0;
+
+        users.forEach(u => {
+          // New this month
+          if (u.createdAt) {
+            const created = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
+            if (created >= monthStart) newThisMonth++;
+          }
+          // Paid users and revenue
+          if (u.payments) {
+            const examBank = u.payments['exam-bank'];
+            if (examBank === 'paid') {
+              paidUsers++;
+              const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
+              totalRevenue += PLAN_PRICES[plan] || 49;
+            }
+          }
+        });
+
+        document.getElementById('adminStatTotalUsers').textContent = totalUsers;
+        document.getElementById('adminStatNewUsers').textContent = newThisMonth;
+        document.getElementById('adminStatPaidUsers').textContent = paidUsers;
+        document.getElementById('adminStatRevenue').textContent = '$' + totalRevenue.toLocaleString();
+
+        // Active QBank users - count users with qbankData progress
+        let qbankActiveCount = 0;
+        // Only check a subset to avoid excessive reads
+        const checkPromises = users.slice(0, 200).map(async u => {
+          try {
+            const progDoc = await db.collection('users').doc(u.id)
+              .collection('qbankData').doc('progress').get();
+            if (progDoc.exists) qbankActiveCount++;
+          } catch (e) { /* skip */ }
+        });
+        await Promise.all(checkPromises);
+        document.getElementById('adminStatQbankUsers').textContent = qbankActiveCount;
+
+        // Forum posts count
+        try {
+          const forumSnap = await db.collection('forum_posts').get();
+          document.getElementById('adminStatForumPosts').textContent = forumSnap.size;
+        } catch (e) {
+          document.getElementById('adminStatForumPosts').textContent = '0';
+        }
+
+      } catch (err) {
+        console.error('Failed to load admin stats:', err);
+      }
+    }
+
+    // ===== Admin Users =====
+    async function loadAdminUsers() {
+      const loadingEl = document.getElementById('adminUsersLoading');
+      const tableEl = document.getElementById('adminUsersTable');
+
+      try {
+        const usersSnap = await db.collection('users').orderBy('createdAt', 'desc').get();
+        allAdminUsers = [];
+        usersSnap.forEach(doc => allAdminUsers.push({ id: doc.id, ...doc.data() }));
+        filteredAdminUsers = [...allAdminUsers];
+
+        loadingEl.style.display = 'none';
+        tableEl.style.display = 'table';
+
+        renderAdminUsersPage();
+        setupAdminSearch();
+      } catch (err) {
+        console.error('Failed to load admin users:', err);
+        loadingEl.textContent = 'Failed to load users: ' + err.message;
+      }
+    }
+
+    function renderAdminUsersPage() {
+      const tbody = document.getElementById('adminUsersBody');
+      const start = (adminCurrentPage - 1) * ADMIN_PAGE_SIZE;
+      const pageUsers = filteredAdminUsers.slice(start, start + ADMIN_PAGE_SIZE);
+
+      if (pageUsers.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#9ca3af;padding:24px;">No users found.</td></tr>';
+        document.getElementById('adminPagination').innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      pageUsers.forEach(u => {
+        const name = u.name || '(no name)';
+        const email = u.email || '—';
+        const path = u.path || '—';
+        const pathBadge = path === 'applicant'
+          ? '<span class="admin-badge admin-badge-applicant">Applicant</span>'
+          : path === 'student'
+            ? '<span class="admin-badge admin-badge-student">Student</span>'
+            : '<span class="admin-badge" style="background:#f3f4f6;color:#6b7280;">—</span>';
+
+        let signupDate = '—';
+        if (u.createdAt) {
+          const d = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
+          signupDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        const isPaid = u.payments?.['exam-bank'] === 'paid';
+        const planType = u.payments?.['exam-bank-plan'] || '';
+        const planLabel = planType ? (' (' + planType.replace('qbank-', '') + ')') : '';
+        const statusBadge = isPaid
+          ? '<span class="admin-badge admin-badge-paid">Paid' + planLabel + '</span>'
+          : '<span class="admin-badge admin-badge-free">Free</span>';
+
+        const toggleClass = isPaid ? 'admin-btn-revoke' : 'admin-btn-grant';
+        const toggleLabel = isPaid ? 'Revoke' : 'Grant';
+
+        html += `<tr data-uid="${u.id}">
+          <td>${escapeHtml(name)}</td>
+          <td style="font-size:0.82rem;">${escapeHtml(email)}</td>
+          <td>${pathBadge}</td>
+          <td style="white-space:nowrap;">${signupDate}</td>
+          <td>${statusBadge}</td>
+          <td style="white-space:nowrap;">
+            <button class="admin-action-btn ${toggleClass}" onclick="toggleQBankAccess('${u.id}', ${isPaid})">${toggleLabel}</button>
+            <button class="admin-action-btn admin-btn-details" onclick="toggleUserDetails('${u.id}', this)">Details</button>
+          </td>
+        </tr>`;
+      });
+
+      tbody.innerHTML = html;
+      renderAdminPagination();
+    }
+
+    function renderAdminPagination() {
+      const totalPages = Math.ceil(filteredAdminUsers.length / ADMIN_PAGE_SIZE);
+      const container = document.getElementById('adminPagination');
+      if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+      let html = '';
+      html += `<button class="admin-page-btn" onclick="adminGoToPage(${adminCurrentPage - 1})" ${adminCurrentPage === 1 ? 'disabled' : ''}>&laquo; Prev</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        if (totalPages > 7 && Math.abs(i - adminCurrentPage) > 2 && i !== 1 && i !== totalPages) {
+          if (i === adminCurrentPage - 3 || i === adminCurrentPage + 3) html += '<span style="padding:0 4px;">...</span>';
+          continue;
+        }
+        html += `<button class="admin-page-btn ${i === adminCurrentPage ? 'active' : ''}" onclick="adminGoToPage(${i})">${i}</button>`;
+      }
+      html += `<button class="admin-page-btn" onclick="adminGoToPage(${adminCurrentPage + 1})" ${adminCurrentPage === totalPages ? 'disabled' : ''}>Next &raquo;</button>`;
+      container.innerHTML = html;
+    }
+
+    function adminGoToPage(page) {
+      const totalPages = Math.ceil(filteredAdminUsers.length / ADMIN_PAGE_SIZE);
+      if (page < 1 || page > totalPages) return;
+      adminCurrentPage = page;
+      renderAdminUsersPage();
+    }
+
+    function setupAdminSearch() {
+      const searchInput = document.getElementById('adminUserSearch');
+      const filterSelect = document.getElementById('adminUserFilter');
+      let debounceTimer;
+
+      function applyFilters() {
+        const query = searchInput.value.trim().toLowerCase();
+        const filter = filterSelect.value;
+
+        filteredAdminUsers = allAdminUsers.filter(u => {
+          // Text search
+          if (query) {
+            const name = (u.name || '').toLowerCase();
+            const email = (u.email || '').toLowerCase();
+            if (!name.includes(query) && !email.includes(query)) return false;
+          }
+          // Category filter
+          if (filter === 'applicant' && u.path !== 'applicant') return false;
+          if (filter === 'student' && u.path !== 'student') return false;
+          if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
+          if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
+          return true;
+        });
+
+        adminCurrentPage = 1;
+        renderAdminUsersPage();
+      }
+
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(applyFilters, 250);
+      });
+      filterSelect.addEventListener('change', applyFilters);
+    }
+
+    // ===== Toggle QBank Access =====
+    async function toggleQBankAccess(uid, currentlyPaid) {
+      const action = currentlyPaid ? 'revoke' : 'grant';
+      if (!confirm(`Are you sure you want to ${action} QBank access for this user?`)) return;
+
+      try {
+        if (currentlyPaid) {
+          // Revoke: set exam-bank to null
+          await db.collection('users').doc(uid).update({
+            'payments.exam-bank': firebase.firestore.FieldValue.delete(),
+            'payments.exam-bank-plan': firebase.firestore.FieldValue.delete()
+          });
+        } else {
+          // Grant: set exam-bank to paid (admin-granted)
+          await db.collection('users').doc(uid).update({
+            'payments.exam-bank': 'paid',
+            'payments.exam-bank-plan': 'admin-granted'
+          });
+        }
+
+        // Update local data and re-render
+        const userIdx = allAdminUsers.findIndex(u => u.id === uid);
+        if (userIdx !== -1) {
+          if (!allAdminUsers[userIdx].payments) allAdminUsers[userIdx].payments = {};
+          if (currentlyPaid) {
+            delete allAdminUsers[userIdx].payments['exam-bank'];
+            delete allAdminUsers[userIdx].payments['exam-bank-plan'];
+          } else {
+            allAdminUsers[userIdx].payments['exam-bank'] = 'paid';
+            allAdminUsers[userIdx].payments['exam-bank-plan'] = 'admin-granted';
+          }
+        }
+
+        // Re-apply filters with updated data
+        const searchInput = document.getElementById('adminUserSearch');
+        const filterSelect = document.getElementById('adminUserFilter');
+        const query = searchInput.value.trim().toLowerCase();
+        const filter = filterSelect.value;
+        filteredAdminUsers = allAdminUsers.filter(u => {
+          if (query) {
+            const name = (u.name || '').toLowerCase();
+            const email = (u.email || '').toLowerCase();
+            if (!name.includes(query) && !email.includes(query)) return false;
+          }
+          if (filter === 'applicant' && u.path !== 'applicant') return false;
+          if (filter === 'student' && u.path !== 'student') return false;
+          if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
+          if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
+          return true;
+        });
+        renderAdminUsersPage();
+
+        // Refresh stats
+        adminDataLoaded = false;
+        loadAdminStats();
+        adminDataLoaded = true;
+
+      } catch (err) {
+        console.error('Failed to toggle QBank access:', err);
+        alert('Failed to update access: ' + err.message);
+      }
+    }
+
+    // ===== User Details Expand =====
+    function toggleUserDetails(uid, btn) {
+      const row = btn.closest('tr');
+      const existingDetails = row.nextElementSibling;
+      if (existingDetails && existingDetails.classList.contains('admin-details-row')) {
+        existingDetails.remove();
+        return;
+      }
+
+      const user = allAdminUsers.find(u => u.id === uid);
+      if (!user) return;
+
+      const detailsRow = document.createElement('tr');
+      detailsRow.className = 'admin-details-row';
+      const td = document.createElement('td');
+      td.colSpan = 6;
+      td.className = 'admin-user-details';
+
+      let info = '';
+      info += `<strong>UID:</strong> ${uid}<br>`;
+      info += `<strong>Name:</strong> ${escapeHtml(user.name || '—')}<br>`;
+      info += `<strong>Email:</strong> ${escapeHtml(user.email || '—')}<br>`;
+      info += `<strong>Path:</strong> ${user.path || '—'}<br>`;
+      if (user.createdAt) {
+        const d = user.createdAt.toDate ? user.createdAt.toDate() : new Date(user.createdAt);
+        info += `<strong>Created:</strong> ${d.toLocaleString()}<br>`;
+      }
+      if (user.payments) {
+        info += `<strong>Payments:</strong> ${JSON.stringify(user.payments)}<br>`;
+      }
+      if (user.examDate) info += `<strong>Exam Date:</strong> ${user.examDate}<br>`;
+      if (user.matchDate) info += `<strong>Match Date:</strong> ${user.matchDate}<br>`;
+      if (user.residencyProgress) {
+        const progress = Object.entries(user.residencyProgress)
+          .map(([k, v]) => k + ': ' + v).join(', ');
+        info += `<strong>Residency Progress:</strong> ${progress}<br>`;
+      }
+
+      td.innerHTML = info;
+      detailsRow.appendChild(td);
+      row.after(detailsRow);
+    }
+
+    // ===== Recent Activity =====
+    async function loadRecentActivity() {
+      // Recent signups
+      try {
+        const signupSnap = await db.collection('users')
+          .orderBy('createdAt', 'desc').limit(10).get();
+        const signupsEl = document.getElementById('adminRecentSignups');
+        if (signupSnap.empty) {
+          signupsEl.innerHTML = '<div class="admin-empty-msg">No signups yet.</div>';
+        } else {
+          let html = '';
+          signupSnap.forEach(doc => {
+            const u = doc.data();
+            const name = u.name || '(no name)';
+            let dateStr = '';
+            if (u.createdAt) {
+              const d = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
+              dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' at ' +
+                d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+            }
+            const pathTag = u.path === 'applicant' ? ' (Applicant)' : u.path === 'student' ? ' (Student)' : '';
+            html += `<div class="admin-activity-item">
+              <div>${escapeHtml(name)}${pathTag}</div>
+              <div class="admin-activity-meta">${escapeHtml(u.email || '')} &middot; ${dateStr}</div>
+            </div>`;
+          });
+          signupsEl.innerHTML = html;
+        }
+      } catch (e) {
+        document.getElementById('adminRecentSignups').innerHTML = '<div class="admin-empty-msg">Could not load signups.</div>';
+      }
+
+      // Recent QBank tests - scan recent users for test history
+      try {
+        const testsEl = document.getElementById('adminRecentTests');
+        let allTests = [];
+        // Check users who have qbank data (limit to recent users for performance)
+        const recentUsers = allAdminUsers.slice(0, 50);
+        const testPromises = recentUsers.map(async u => {
+          try {
+            const histDoc = await db.collection('users').doc(u.id)
+              .collection('qbankData').doc('history').get();
+            if (histDoc.exists) {
+              const tests = histDoc.data().tests || [];
+              tests.forEach(t => {
+                allTests.push({ ...t, userName: u.name || u.email || 'Unknown' });
+              });
+            }
+          } catch (e) { /* skip */ }
+        });
+        await Promise.all(testPromises);
+
+        // Sort by date desc and take 10
+        allTests.sort((a, b) => {
+          const da = a.date ? new Date(a.date) : new Date(0);
+          const db2 = b.date ? new Date(b.date) : new Date(0);
+          return db2 - da;
+        });
+        const recentTests = allTests.slice(0, 10);
+
+        if (recentTests.length === 0) {
+          testsEl.innerHTML = '<div class="admin-empty-msg">No tests yet.</div>';
+        } else {
+          let html = '';
+          recentTests.forEach(t => {
+            const pct = t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0;
+            const dateStr = t.date ? new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+            html += `<div class="admin-activity-item">
+              <div>${escapeHtml(t.userName)} — ${pct}% (${t.correct}/${t.total})</div>
+              <div class="admin-activity-meta">${dateStr}</div>
+            </div>`;
+          });
+          testsEl.innerHTML = html;
+        }
+      } catch (e) {
+        document.getElementById('adminRecentTests').innerHTML = '<div class="admin-empty-msg">Could not load tests.</div>';
+      }
+
+      // Recent forum posts
+      try {
+        const forumSnap = await db.collection('forum_posts')
+          .orderBy('createdAt', 'desc').limit(10).get();
+        const forumEl = document.getElementById('adminRecentForum');
+        if (forumSnap.empty) {
+          forumEl.innerHTML = '<div class="admin-empty-msg">No forum posts yet.</div>';
+        } else {
+          let html = '';
+          forumSnap.forEach(doc => {
+            const p = doc.data();
+            const title = p.title || p.content?.substring(0, 50) || '(untitled)';
+            let dateStr = '';
+            if (p.createdAt) {
+              const d = p.createdAt.toDate ? p.createdAt.toDate() : new Date(p.createdAt);
+              dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            }
+            html += `<div class="admin-activity-item">
+              <div>${escapeHtml(title)}</div>
+              <div class="admin-activity-meta">${escapeHtml(p.authorName || p.authorEmail || '')} &middot; ${dateStr}</div>
+            </div>`;
+          });
+          forumEl.innerHTML = html;
+        }
+      } catch (e) {
+        document.getElementById('adminRecentForum').innerHTML = '<div class="admin-empty-msg">Could not load forum posts.</div>';
+      }
+    }
+
+    // ===== Question Reports =====
+    async function loadQuestionReports() {
+      const loadingEl = document.getElementById('adminReportsLoading');
+      const listEl = document.getElementById('adminReportsList');
+      const emptyEl = document.getElementById('adminReportsEmpty');
+
+      try {
+        const reportsSnap = await db.collection('questionReports')
+          .orderBy('createdAt', 'desc').get();
+
+        loadingEl.style.display = 'none';
+
+        if (reportsSnap.empty) {
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        let html = '';
+        reportsSnap.forEach(doc => {
+          const r = doc.data();
+          if (r.resolved) return; // Skip resolved reports
+          let dateStr = '';
+          if (r.createdAt) {
+            const d = r.createdAt.toDate ? r.createdAt.toDate() : new Date(r.createdAt);
+            dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          }
+          html += `<div class="admin-report-card" id="report-${doc.id}">
+            <div class="admin-report-info">
+              <strong>Question:</strong> ${escapeHtml(r.questionId || r.questionText?.substring(0, 80) || '—')}<br>
+              <strong>Reason:</strong> ${escapeHtml(r.reason || r.message || '—')}<br>
+              <div class="admin-report-meta">${escapeHtml(r.reporterEmail || r.email || '—')} &middot; ${dateStr}</div>
+            </div>
+            <button class="admin-resolve-btn" onclick="resolveReport('${doc.id}')">Resolve</button>
+          </div>`;
+        });
+
+        if (!html) {
+          emptyEl.style.display = 'block';
+        } else {
+          listEl.innerHTML = html;
+        }
+      } catch (err) {
+        console.error('Failed to load reports:', err);
+        loadingEl.textContent = 'Failed to load reports: ' + err.message;
+      }
+    }
+
+    async function resolveReport(reportId) {
+      if (!confirm('Mark this report as resolved?')) return;
+      try {
+        await db.collection('questionReports').doc(reportId).update({ resolved: true });
+        const el = document.getElementById('report-' + reportId);
+        if (el) el.remove();
+        // Check if any reports remain
+        const remaining = document.querySelectorAll('.admin-report-card');
+        if (remaining.length === 0) {
+          document.getElementById('adminReportsEmpty').style.display = 'block';
+        }
+      } catch (err) {
+        console.error('Failed to resolve report:', err);
+        alert('Failed to resolve: ' + err.message);
+      }
+    }
+
+    // ===== Utility =====
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
     }
   </script>
 </body>
