@@ -64,7 +64,7 @@
               <span class="subject-count" id="countChemistry">0 questions</span>
             </div>
           </label>
-          <!-- Physics and Mathematics hidden — LF3 entrance exam tests only Biology and Chemistry -->
+          <!-- LF3 entrance exam tests only Biology and Chemistry -->
         </div>
 
         <!-- Progress Overview -->
@@ -399,8 +399,7 @@
             (data.biology?.length || 0) + ' questions';
           document.getElementById('countChemistry').textContent =
             (data.chemistry?.length || 0) + ' questions';
-          // Physics and Mathematics hidden for LF3 — counts not displayed
-          // but data still loaded for any legacy tests that used those subjects
+          // Only Biology and Chemistry in the QBank
 
           // Hide subjects with 0 questions
           document.querySelectorAll('.subject-card').forEach(card => {

@@ -256,7 +256,7 @@ function updateProgressDisplay() {
   }
 
   // Update per-subject counts
-  ['biology', 'chemistry', 'physics', 'mathematics'].forEach(subj => {
+  ['biology', 'chemistry'].forEach(subj => {
     const subjQuestions = allQuestions[subj] || [];
     const done = subjQuestions.filter(q => isQuestionDone(q.id)).length;
     const countEl = document.getElementById('count' + subj.charAt(0).toUpperCase() + subj.slice(1));
@@ -296,7 +296,7 @@ function renderPerformance() {
 
   // Build subject breakdown rows
   let subjectRows = '';
-  const subjectIcons = { biology: '🧬', chemistry: '⚗️', physics: '⚡', mathematics: '📐' };
+  const subjectIcons = { biology: '🧬', chemistry: '⚗️' };
   Object.entries(subjPerf).forEach(([subj, data]) => {
     const pct = data.done > 0 ? Math.round((data.correct / data.done) * 100) : 0;
     const donePct = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
