@@ -1759,6 +1759,27 @@ a {
   color: var(--gray-300);
 }
 
+.pricing-features li.bonus {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.pricing-features li.bonus::before {
+  content: '🎁';
+  color: var(--teal);
+}
+
+.pricing-disclaimer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
 .pricing-note {
   text-align: center;
   margin-top: 32px;
