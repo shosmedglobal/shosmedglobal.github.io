@@ -20,6 +20,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="community.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I sign up and create an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the 'Sign Up' button on any page. You can register with your email address or use Google Sign-In. During signup, choose whether you're on the Med School Application path or the Residency Application path. You can change your path later in Settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in the free QBank sample?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every new account gets 5 free sample questions from our 1,000+ question bank covering Biology and Chemistry for the Charles University entrance exam. The sample gives you a feel for the question format, difficulty level, and detailed explanations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I book a consultation or mentorship session?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Log in to your dashboard and go to Contact Us. Select 'Book a Service' as the category, then choose the service you want. Fill in the intake questions and your preferred date/time. We'll confirm the booking within 24 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept credit and debit cards (Visa, Mastercard, American Express) through Stripe. We also accept PayPal and bank transfers for packages over $200 on a case-by-case basis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get a refund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For QBank subscriptions, we offer a refund within 7 days of purchase if you've completed fewer than 10 questions. For consultation and mentorship services, cancellations made more than 24 hours before the scheduled session are eligible for a full refund."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does QBank access last?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Access depends on your subscription plan: 1 month ($49), 3 months ($99), or 6 months ($149). Your progress is saved throughout your subscription. The 6-month plan includes one progress reset."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens during a mentorship session?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mentorship sessions are 45-minute 1-on-1 Zoom calls with a physician who matched through the IMG pathway. Sessions can cover CV and personal statement review, residency program list building, interview preparation, USMLE study strategy, or general career guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I prepare for the entrance exam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The LF3 entrance exam covers Biology (30 MCQs) and Chemistry (30 MCQs). Start by using our QBank to practice questions in exam format. We recommend 2-3 months of dedicated preparation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I found an error in a QBank question. How do I report it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "During any practice session, click the 'Report' button on the question you want to flag. Select a reason and add any details. Our team reviews all reports and updates questions as needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reset my QBank progress?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you're on the 6-month plan, you get one free progress reset included. Go to your dashboard QBank section and look for the reset option. For 1-month and 3-month plans, progress resets are not included by default."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -50,7 +138,7 @@
   <header class="page-hero page-hero-short">
     <div class="container">
       <span class="section-tag">Community</span>
-      <h1>Connect. Learn. Succeed.</h1>
+      <h1>Medical School &amp; Residency Community</h1>
       <p class="hero-sub">Ask questions, share experiences, and learn from fellow students and physicians who walked this path.</p>
     </div>
   </header>
@@ -502,6 +590,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>We use essential cookies for authentication and site functionality. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn More</a></p>
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieBanner').style.display='flex';}
+      document.getElementById('cookieAccept').addEventListener('click',function(){localStorage.setItem('cookie_consent','accepted');document.getElementById('cookieBanner').style.display='none';});
+    })();
+  </script>
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>

@@ -3027,3 +3027,54 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Cookie Consent Banner ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  color: rgba(255,255,255,0.9);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 9999;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+}
+.cookie-banner p {
+  margin: 0;
+  flex: 1;
+  max-width: 800px;
+}
+.cookie-banner a {
+  color: var(--teal-light);
+  text-decoration: underline;
+}
+.cookie-banner .cookie-accept {
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.cookie-banner .cookie-accept:hover {
+  background: var(--teal-dark);
+}
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+  }
+}

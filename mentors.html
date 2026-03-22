@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meet Your Mentors - SHOS Med Global</title>
   <meta name="description" content="Meet the physicians behind SHOS Med Global. European medical school graduates, now US-practicing physicians who guide you through every step.">
+  <meta property="og:title" content="Meet Your Physician Mentors - SHOS Med Global">
+  <meta property="og:description" content="Charles University alumni, now practicing US physicians. Meet the mentors who guide you through medical school applications, USMLE prep, and residency match.">
+  <meta property="og:url" content="https://shosmedglobal.github.io/mentors.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SHOS Med Global">
+  <meta property="og:image" content="https://shosmedglobal.github.io/logo.svg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://shosmedglobal.github.io/mentors.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +47,7 @@
   <header class="page-hero page-hero-short">
     <div class="container">
       <span class="section-tag">Your Mentors</span>
-      <h1>We Walked This Path.<br>Now We Guide Yours.</h1>
+      <h1>Your Physician Mentors &mdash;<br>Charles University Alumni</h1>
       <p class="hero-sub">European medical school graduates, now practicing physicians in the US. We know this journey because we lived it.</p>
     </div>
   </header>
@@ -168,6 +174,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>We use essential cookies for authentication and site functionality. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn More</a></p>
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieBanner').style.display='flex';}
+      document.getElementById('cookieAccept').addEventListener('click',function(){localStorage.setItem('cookie_consent','accepted');document.getElementById('cookieBanner').style.display='none';});
+    })();
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

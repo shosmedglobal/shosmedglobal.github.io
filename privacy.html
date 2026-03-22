@@ -94,16 +94,44 @@
     </ul>
     <p>To exercise any of these rights, email us at <a href="mailto:shosmedglobal@gmail.com">shosmedglobal@gmail.com</a>.</p>
 
-    <h2>7. Children's Privacy</h2>
+    <h2>7. Legal Basis for Processing (GDPR)</h2>
+    <p>If you are located in the European Economic Area (EEA), we process your personal data under the following legal bases:</p>
+    <ul>
+      <li><strong>Consent:</strong> For marketing communications and optional data collection (e.g., newsletter sign-up). You may withdraw consent at any time.</li>
+      <li><strong>Legitimate interest:</strong> For service delivery, site security, fraud prevention, and improving our Services.</li>
+      <li><strong>Contract performance:</strong> For processing data necessary to provide paid services you have purchased, including mentorship sessions and Question Bank access.</li>
+    </ul>
+
+    <h2>8. International Data Transfers</h2>
+    <p>Your personal data is processed and stored in the United States through our service providers, including Firebase (Google Cloud) and Stripe. If you are located outside the United States, including in the EEA, your data will be transferred to and processed in the US. We rely on standard contractual clauses and our service providers' compliance frameworks to ensure appropriate safeguards for international data transfers in accordance with GDPR Articles 46-49.</p>
+
+    <h2>9. Right to Lodge a Complaint</h2>
+    <p>If you are located in the EEA, you have the right to lodge a complaint with your local data protection supervisory authority if you believe your personal data has been processed in violation of applicable data protection laws. A list of EU data protection authorities is available at <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">https://edpb.europa.eu</a>.</p>
+
+    <h2>10. Data Protection Contact</h2>
+    <p>For any questions or requests regarding your personal data or this privacy policy, including exercising your rights under GDPR, please contact us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:shosmedglobal@gmail.com">shosmedglobal@gmail.com</a></p>
+
+    <h2>11. Children's Privacy</h2>
     <p>Our services are intended for users aged 16 and older. We do not knowingly collect personal data from children under 16. If we discover that we have collected data from a child under 16, we will delete it promptly.</p>
 
-    <h2>8. Data Retention</h2>
+    <h2>12. Data Retention</h2>
     <p>We retain your account data for as long as your account is active. If you request account deletion, we will remove your personal data within 30 days, except where we are required to retain it for legal or regulatory purposes.</p>
 
-    <h2>9. Changes to This Policy</h2>
+    <h2>13. Changes to This Policy</h2>
     <p>We may update this privacy policy from time to time. We will notify registered users of significant changes by email. The "Last updated" date at the top of this page indicates when this policy was last revised.</p>
 
-    <h2>10. Contact Us</h2>
+    <h2>14. California Privacy Rights (CCPA)</h2>
+    <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with specific rights regarding your personal information:</p>
+    <ul>
+      <li><strong>We do not sell personal information.</strong> SHOS Med Global does not sell, rent, or trade your personal information to third parties for monetary or other valuable consideration.</li>
+      <li><strong>Right to know:</strong> You have the right to request information about the categories and specific pieces of personal information we have collected about you, the categories of sources from which it was collected, and the business purpose for collecting it.</li>
+      <li><strong>Right to deletion:</strong> You have the right to request that we delete any personal information we have collected from you, subject to certain exceptions.</li>
+      <li><strong>Right to non-discrimination:</strong> We will not discriminate against you for exercising any of your CCPA rights. We will not deny you services, charge different prices, or provide a different quality of service because you exercised your rights.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="mailto:shosmedglobal@gmail.com">shosmedglobal@gmail.com</a>. We will respond to verifiable consumer requests within 45 days.</p>
+
+    <h2>15. Contact Us</h2>
     <p>If you have questions about this privacy policy or your personal data, contact us at:</p>
     <p><strong>Email:</strong> <a href="mailto:shosmedglobal@gmail.com">shosmedglobal@gmail.com</a></p>
   </div>
@@ -115,6 +143,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>We use essential cookies for authentication and site functionality. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn More</a></p>
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieBanner').style.display='flex';}
+      document.getElementById('cookieAccept').addEventListener('click',function(){localStorage.setItem('cookie_consent','accepted');document.getElementById('cookieBanner').style.display='none';});
+    })();
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
