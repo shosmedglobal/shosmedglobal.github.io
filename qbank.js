@@ -6,6 +6,14 @@ let currentIndex = 0;
 let answers = {}; // { index: selectedOptionIndex }
 let score = { correct: 0, wrong: 0 };
 
+// ===== Test Mode State =====
+let isTestMode = false;
+let testTimerInterval = null;
+let testTimeRemaining = 0; // seconds
+let testStartTime = null;
+let testElapsedSeconds = 0;
+let timerWarningShown = false;
+
 // ===== Progress & History Tracking =====
 let userProgress = {};
 let testHistory = [];
@@ -526,9 +534,32 @@ function startQuiz() {
   answers = {};
   score = { correct: 0, wrong: 0 };
 
+  // Detect quiz mode
+  const modeRadio = document.querySelector('input[name="quizMode"]:checked');
+  isTestMode = modeRadio && modeRadio.value === 'test';
+  timerWarningShown = false;
+
   document.getElementById('totalQuestions').textContent = quizQuestions.length;
   document.getElementById('scoreCorrect').textContent = '0';
   document.getElementById('scoreWrong').textContent = '0';
+
+  // Test Mode setup
+  if (isTestMode) {
+    document.getElementById('quizScoreDisplay').style.display = 'none';
+    document.getElementById('testTimer').style.display = 'flex';
+    document.getElementById('questionNavigator').style.display = 'flex';
+    testTimeRemaining = quizQuestions.length * 2 * 60; // 2 min per question
+    testStartTime = Date.now();
+    testElapsedSeconds = 0;
+    updateTimerDisplay();
+    startTimer();
+    renderQuestionNavigator();
+  } else {
+    document.getElementById('quizScoreDisplay').style.display = '';
+    document.getElementById('testTimer').style.display = 'none';
+    document.getElementById('questionNavigator').style.display = 'none';
+    stopTimer();
+  }
 
   showScreen('quizScreen');
   renderQuestion();
@@ -566,12 +597,21 @@ function renderQuestion() {
     div.appendChild(letterSpan);
     div.appendChild(textSpan);
 
-    if (answers[currentIndex] !== undefined) {
-      div.classList.add('disabled');
-      if (i === q.correct) div.classList.add('correct');
-      if (i === answers[currentIndex] && i !== q.correct) div.classList.add('wrong');
-    } else {
+    if (isTestMode) {
+      // Test Mode: allow selecting/changing answers, no correct/wrong styling
+      if (answers[currentIndex] === i) {
+        div.classList.add('selected');
+      }
       div.addEventListener('click', () => selectAnswer(i));
+    } else {
+      // Review Mode: original behavior
+      if (answers[currentIndex] !== undefined) {
+        div.classList.add('disabled');
+        if (i === q.correct) div.classList.add('correct');
+        if (i === answers[currentIndex] && i !== q.correct) div.classList.add('wrong');
+      } else {
+        div.addEventListener('click', () => selectAnswer(i));
+      }
     }
 
     container.appendChild(div);
@@ -580,33 +620,78 @@ function renderQuestion() {
   const expBox = document.getElementById('explanationBox');
   const reportWrap = document.getElementById('reportBtnWrap');
   const reportForm = document.getElementById('reportForm');
-  if (answers[currentIndex] !== undefined) {
-    showExplanation(q, answers[currentIndex] === q.correct);
-    reportWrap.style.display = 'flex';
-  } else {
+
+  if (isTestMode) {
+    // Test Mode: never show explanation during quiz
     expBox.style.display = 'none';
     reportWrap.style.display = 'none';
+    reportForm.style.display = 'none';
+  } else {
+    // Review Mode: original behavior
+    if (answers[currentIndex] !== undefined) {
+      showExplanation(q, answers[currentIndex] === q.correct);
+      reportWrap.style.display = 'flex';
+    } else {
+      expBox.style.display = 'none';
+      reportWrap.style.display = 'none';
+    }
+    reportForm.style.display = 'none';
+    // Reset report button in case previous question had "submitted" state
+    reportWrap.innerHTML = '<button class="report-btn" id="reportBtn" title="Report a problem with this question">Report an issue</button>';
+    // Re-attach event listener
+    document.getElementById('reportBtn').addEventListener('click', () => {
+      document.getElementById('reportForm').style.display = 'block';
+      document.getElementById('reportBtnWrap').style.display = 'none';
+      document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
+      document.getElementById('reportDetails').value = '';
+    });
   }
-  reportForm.style.display = 'none';
-  // Reset report button in case previous question had "submitted" state
-  reportWrap.innerHTML = '<button class="report-btn" id="reportBtn" title="Report a problem with this question">Report an issue</button>';
-  // Re-attach event listener
-  document.getElementById('reportBtn').addEventListener('click', () => {
-    document.getElementById('reportForm').style.display = 'block';
-    document.getElementById('reportBtnWrap').style.display = 'none';
-    document.querySelectorAll('input[name="reportReason"]').forEach(r => r.checked = false);
-    document.getElementById('reportDetails').value = '';
-  });
 
   document.getElementById('prevBtn').disabled = currentIndex === 0;
-  const isAnswered = answers[currentIndex] !== undefined;
-  const isLast = currentIndex === quizQuestions.length - 1;
-  document.getElementById('nextBtn').style.display = (isAnswered && !isLast) ? 'inline-flex' : 'none';
-  document.getElementById('finishBtn').style.display = (isAnswered && isLast) ? 'inline-flex' : 'none';
+
+  if (isTestMode) {
+    // Test Mode navigation: always show Next (except on last), always show Finish Test
+    const isLast = currentIndex === quizQuestions.length - 1;
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('finishBtn').style.display = 'none';
+    document.getElementById('testNextBtn').style.display = isLast ? 'none' : 'inline-flex';
+    document.getElementById('finishTestBtn').style.display = 'inline-flex';
+    // Update navigator highlight
+    updateNavigatorHighlight();
+  } else {
+    // Review Mode: original behavior
+    document.getElementById('testNextBtn').style.display = 'none';
+    document.getElementById('finishTestBtn').style.display = 'none';
+    const isAnswered = answers[currentIndex] !== undefined;
+    const isLast = currentIndex === quizQuestions.length - 1;
+    document.getElementById('nextBtn').style.display = (isAnswered && !isLast) ? 'inline-flex' : 'none';
+    document.getElementById('finishBtn').style.display = (isAnswered && isLast) ? 'inline-flex' : 'none';
+  }
 }
 
 // Select an answer
 function selectAnswer(index) {
+  if (isTestMode) {
+    // Test Mode: allow changing answers, no grading yet
+    answers[currentIndex] = index;
+
+    // Update option styling
+    const options = document.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      const i = parseInt(opt.dataset.index);
+      opt.classList.remove('selected');
+      if (i === index) opt.classList.add('selected');
+    });
+
+    // Update navigator
+    updateNavigatorHighlight();
+
+    // Auto-save in-progress state
+    saveInProgressTest();
+    return;
+  }
+
+  // Review Mode: original behavior
   if (answers[currentIndex] !== undefined) return;
 
   const q = quizQuestions[currentIndex];
@@ -847,6 +932,12 @@ function goPrev() {
 }
 
 function finishQuiz() {
+  if (isTestMode) {
+    finishTestMode();
+    return;
+  }
+
+  // Review Mode: original behavior
   // Save progress to Firestore
   saveProgress();
 
@@ -873,9 +964,168 @@ function finishQuiz() {
   showResults();
 }
 
+// ===== Test Mode: Finish and Grade =====
+function finishTestMode() {
+  stopTimer();
+  testElapsedSeconds = Math.round((Date.now() - testStartTime) / 1000);
+
+  // Grade all questions now
+  score = { correct: 0, wrong: 0 };
+  quizQuestions.forEach((q, i) => {
+    const userAnswer = answers[i];
+    const isCorrect = userAnswer !== undefined && userAnswer === q.correct;
+    if (isCorrect) {
+      score.correct++;
+    } else {
+      score.wrong++;
+    }
+    // Mark progress (unanswered = wrong)
+    markQuestionCompleted(q.id, isCorrect);
+  });
+
+  // Save progress to Firestore
+  saveProgress();
+
+  // Save test record
+  const meta = window._quizMeta || { subjects: [], mode: 'All' };
+  const now = new Date();
+  const defaultName = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+    ' — ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  saveTestRecord({
+    date: now.toISOString(),
+    name: defaultName,
+    correct: score.correct,
+    wrong: score.wrong,
+    total: quizQuestions.length,
+    subjects: meta.subjects,
+    mode: meta.mode + ' (Test)',
+    questionIds: quizQuestions.map(q => q.id),
+    userAnswers: { ...answers },
+    timeTaken: testElapsedSeconds
+  });
+
+  // Clear in-progress state
+  clearInProgressTest();
+
+  // Show results with time
+  showResults();
+
+  // Show time taken
+  const timeEl = document.getElementById('statTimeTaken');
+  const finalTimeEl = document.getElementById('finalTime');
+  if (timeEl && finalTimeEl) {
+    timeEl.style.display = '';
+    const mins = Math.floor(testElapsedSeconds / 60);
+    const secs = testElapsedSeconds % 60;
+    finalTimeEl.textContent = mins + ':' + String(secs).padStart(2, '0');
+  }
+
+  // Reset test mode state after showing results
+  // (isTestMode stays true so review shows correctly)
+}
+
+// ===== Timer Functions =====
+function startTimer() {
+  stopTimer();
+  testTimerInterval = setInterval(() => {
+    testTimeRemaining--;
+    updateTimerDisplay();
+
+    // 5-minute warning
+    if (testTimeRemaining === 300 && !timerWarningShown) {
+      timerWarningShown = true;
+      document.getElementById('timerWarningModal').style.display = 'flex';
+    }
+
+    // Time's up
+    if (testTimeRemaining <= 0) {
+      testTimeRemaining = 0;
+      updateTimerDisplay();
+      finishTestMode();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  if (testTimerInterval) {
+    clearInterval(testTimerInterval);
+    testTimerInterval = null;
+  }
+}
+
+function updateTimerDisplay() {
+  const display = document.getElementById('timerDisplay');
+  if (!display) return;
+  const mins = Math.floor(testTimeRemaining / 60);
+  const secs = testTimeRemaining % 60;
+  display.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+
+  // Turn red when under 2 minutes
+  const timerEl = document.getElementById('testTimer');
+  if (timerEl) {
+    if (testTimeRemaining < 120) {
+      timerEl.classList.add('timer-danger');
+    } else {
+      timerEl.classList.remove('timer-danger');
+    }
+  }
+}
+
+// ===== Question Navigator =====
+function renderQuestionNavigator() {
+  const nav = document.getElementById('questionNavigator');
+  if (!nav) return;
+  nav.innerHTML = '';
+  quizQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-dot';
+    btn.textContent = i + 1;
+    btn.dataset.index = i;
+    if (i === currentIndex) btn.classList.add('nav-dot-current');
+    if (answers[i] !== undefined) btn.classList.add('nav-dot-answered');
+    btn.addEventListener('click', () => {
+      currentIndex = i;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    nav.appendChild(btn);
+  });
+}
+
+function updateNavigatorHighlight() {
+  const nav = document.getElementById('questionNavigator');
+  if (!nav) return;
+  const dots = nav.querySelectorAll('.nav-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('nav-dot-current', i === currentIndex);
+    dot.classList.toggle('nav-dot-answered', answers[i] !== undefined);
+  });
+}
+
+// ===== Test Time Info (start screen) =====
+function updateTestTimeInfo() {
+  const modeRadio = document.querySelector('input[name="quizMode"]:checked');
+  const infoEl = document.getElementById('testTimeInfo');
+  const textEl = document.getElementById('testTimeText');
+  if (!modeRadio || !infoEl || !textEl) return;
+
+  if (modeRadio.value === 'test') {
+    const count = parseInt(document.getElementById('questionCount').value) || 20;
+    const minutes = count * 2;
+    textEl.textContent = count + ' questions = ' + minutes + ' minutes';
+    infoEl.style.display = 'flex';
+  } else {
+    infoEl.style.display = 'none';
+  }
+}
+
 // Show results
 function showResults() {
   showScreen('resultsScreen');
+
+  // Hide time stat by default (shown by finishTestMode if applicable)
+  const timeEl = document.getElementById('statTimeTaken');
+  if (timeEl && !isTestMode) timeEl.style.display = 'none';
 
   const total = quizQuestions.length;
   const pct = total > 0 ? Math.round((score.correct / total) * 100) : 0;
@@ -926,22 +1176,26 @@ function showReview() {
 
   quizQuestions.forEach((q, i) => {
     const userAnswer = answers[i];
-    const isCorrect = userAnswer === q.correct;
+    const isUnanswered = userAnswer === undefined;
+    const isCorrect = !isUnanswered && userAnswer === q.correct;
 
     let answersHtml = '';
     q.options.forEach((opt, j) => {
       let cls = 'neutral';
       let prefix = letters[j] + '.';
       if (j === q.correct) cls = 'correct-answer';
-      if (j === userAnswer && !isCorrect) cls = 'wrong-answer';
+      if (!isUnanswered && j === userAnswer && !isCorrect) cls = 'wrong-answer';
       answersHtml += `<div class="review-answer ${cls}">${prefix} ${opt}</div>`;
     });
 
+    const statusClass = isUnanswered ? 'wrong' : (isCorrect ? 'correct' : 'wrong');
+    const unansweredBadge = isUnanswered ? '<span class="review-unanswered-badge">Unanswered</span>' : '';
     container.innerHTML += `
       <div class="review-item">
         <div class="review-item-header">
-          <span class="review-number ${isCorrect ? 'correct' : 'wrong'}">${i + 1}</span>
+          <span class="review-number ${statusClass}">${i + 1}</span>
           <span class="review-topic">${q.subject} · ${q.topic}</span>
+          ${unansweredBadge}
         </div>
         <div class="review-question">${q.question}</div>
         <div class="review-answers">${answersHtml}</div>
@@ -1112,6 +1366,9 @@ function showScreen(id) {
   if (id === 'startScreen') {
     updateProgressDisplay();
     renderTestHistoryList();
+    // Reset test mode when going back to start
+    stopTimer();
+    isTestMode = false;
   }
   // Hide navbar during quiz/review to avoid double header
   const navbar = document.querySelector('.navbar');
@@ -1126,8 +1383,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('nextBtn').addEventListener('click', goNext);
   document.getElementById('prevBtn').addEventListener('click', goPrev);
   document.getElementById('finishBtn').addEventListener('click', finishQuiz);
+  document.getElementById('testNextBtn').addEventListener('click', goNext);
+  document.getElementById('finishTestBtn').addEventListener('click', () => {
+    const unanswered = quizQuestions.length - Object.keys(answers).length;
+    if (unanswered > 0) {
+      if (!confirm('You have ' + unanswered + ' unanswered question' + (unanswered > 1 ? 's' : '') + '. Submit anyway?')) return;
+    }
+    finishTestMode();
+  });
+  document.getElementById('timerWarningDismiss').addEventListener('click', () => {
+    document.getElementById('timerWarningModal').style.display = 'none';
+  });
   document.getElementById('retryBtn').addEventListener('click', () => {
     document.getElementById('scoreCircle').style.strokeDashoffset = 339.292;
+    isTestMode = false;
     showScreen('startScreen');
   });
   document.getElementById('reviewBtn').addEventListener('click', showReview);
@@ -1135,6 +1404,23 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('backToQbankBtn').addEventListener('click', () => {
     window.location.href = 'dashboard.html?view=qbank';
   });
+
+  // Mode selector: show/hide time info + visual toggle
+  document.querySelectorAll('input[name="quizMode"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      updateTestTimeInfo();
+      // Update visual state for mode options (fallback for browsers without :has())
+      document.querySelectorAll('.mode-option').forEach(opt => {
+        opt.classList.toggle('mode-option-active', opt.querySelector('input').checked);
+      });
+    });
+  });
+  // Set initial state
+  document.querySelectorAll('.mode-option').forEach(opt => {
+    opt.classList.toggle('mode-option-active', opt.querySelector('input').checked);
+  });
+  const questionCountSel = document.getElementById('questionCount');
+  if (questionCountSel) questionCountSel.addEventListener('change', updateTestTimeInfo);
 
   // Performance button
   const perfBtn = document.getElementById('performanceBtn');
@@ -1162,17 +1448,31 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (document.getElementById('quizScreen').style.display === 'none') return;
 
-    if (e.key === 'ArrowRight' || e.key === 'Enter') {
-      if (answers[currentIndex] !== undefined) {
+    if (isTestMode) {
+      // Test Mode: arrow keys always navigate, number keys select/change answer
+      if (e.key === 'ArrowRight') {
         if (currentIndex < quizQuestions.length - 1) goNext();
-        else finishQuiz();
       }
-    }
-    if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowLeft') goPrev();
 
-    const num = parseInt(e.key);
-    if (num >= 1 && num <= 4 && answers[currentIndex] === undefined) {
-      selectAnswer(num - 1);
+      const num = parseInt(e.key);
+      if (num >= 1 && num <= 4) {
+        selectAnswer(num - 1);
+      }
+    } else {
+      // Review Mode: original behavior
+      if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        if (answers[currentIndex] !== undefined) {
+          if (currentIndex < quizQuestions.length - 1) goNext();
+          else finishQuiz();
+        }
+      }
+      if (e.key === 'ArrowLeft') goPrev();
+
+      const num = parseInt(e.key);
+      if (num >= 1 && num <= 4 && answers[currentIndex] === undefined) {
+        selectAnswer(num - 1);
+      }
     }
   });
 

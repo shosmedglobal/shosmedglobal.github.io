@@ -101,6 +101,25 @@
               Shuffle question order
             </label>
           </div>
+          <div class="option-row mode-selector-row">
+            <label>Test mode:</label>
+            <div class="mode-toggle">
+              <label class="mode-option">
+                <input type="radio" name="quizMode" value="review" checked>
+                <span class="mode-label">Review Mode</span>
+                <span class="mode-desc">See explanations after each question</span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="quizMode" value="test">
+                <span class="mode-label">Test Mode</span>
+                <span class="mode-desc">See all results after completing the test</span>
+              </label>
+            </div>
+          </div>
+          <div class="option-row test-time-info" id="testTimeInfo" style="display:none;">
+            <span class="time-info-icon">&#9201;</span>
+            <span class="time-info-text" id="testTimeText">20 questions = 40 minutes</span>
+          </div>
         </div>
 
         <div class="start-buttons">
@@ -132,13 +151,24 @@
       <!-- ===== QUIZ SCREEN ===== -->
       <div id="quizScreen" class="qbank-quiz" style="display:none;">
 
+        <!-- Countdown Timer (Test Mode only) -->
+        <div class="test-timer" id="testTimer" style="display:none;">
+          <span class="timer-icon">&#9201;</span>
+          <span class="timer-display" id="timerDisplay">00:00</span>
+        </div>
+
+        <!-- Question Navigator (Test Mode only) -->
+        <div class="question-navigator" id="questionNavigator" style="display:none;">
+          <!-- Question number buttons injected by JS -->
+        </div>
+
         <!-- Top Bar -->
         <div class="quiz-topbar">
           <div class="quiz-progress">
             <span id="questionIndex">1</span> / <span id="totalQuestions">0</span>
           </div>
           <div class="quiz-subject-badge" id="currentSubject">Biology</div>
-          <div class="quiz-score">
+          <div class="quiz-score" id="quizScoreDisplay">
             <span class="score-correct" id="scoreCorrect">0</span> ✓
             <span class="score-wrong" id="scoreWrong">0</span> ✗
           </div>
@@ -194,6 +224,18 @@
           <button class="btn btn-secondary" id="prevBtn" disabled>← Previous</button>
           <button class="btn btn-primary" id="nextBtn" style="display:none;">Next →</button>
           <button class="btn btn-primary" id="finishBtn" style="display:none;">Finish Quiz</button>
+          <button class="btn btn-primary" id="testNextBtn" style="display:none;">Next →</button>
+          <button class="btn btn-finish-test" id="finishTestBtn" style="display:none;">Finish Test</button>
+        </div>
+
+        <!-- 5-minute warning modal (Test Mode) -->
+        <div class="timer-warning-modal" id="timerWarningModal" style="display:none;">
+          <div class="timer-warning-content">
+            <span class="timer-warning-icon">&#9888;</span>
+            <h3>5 minutes remaining!</h3>
+            <p>Review your answers before time runs out.</p>
+            <button class="btn btn-primary" id="timerWarningDismiss">Continue</button>
+          </div>
         </div>
       </div>
 
@@ -224,6 +266,10 @@
             <div class="stat-item stat-total">
               <span class="stat-num" id="finalTotal">0</span>
               <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-item stat-time" id="statTimeTaken" style="display:none;">
+              <span class="stat-num" id="finalTime">0:00</span>
+              <span class="stat-label">Time</span>
             </div>
           </div>
 
