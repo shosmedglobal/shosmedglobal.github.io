@@ -4705,34 +4705,77 @@
 
       const range = sel.getRangeAt(0);
       const contentEl = document.getElementById('spReaderContent');
-      if (!contentEl.contains(range.commonAncestorContainer)) return;
+      if (!contentEl || !contentEl.contains(range.commonAncestorContainer)) return;
 
-      // If selection is inside an existing highlight, change its color
-      const parentMark = sel.anchorNode?.parentElement?.closest('mark.sp-highlight');
-      if (parentMark) {
-        parentMark.setAttribute('data-hl-color', color);
+      // If selection is entirely inside an existing highlight, change its color
+      const anchorMark = sel.anchorNode?.parentElement?.closest('mark.sp-highlight');
+      const focusMark = sel.focusNode?.parentElement?.closest('mark.sp-highlight');
+      if (anchorMark && anchorMark === focusMark) {
+        anchorMark.setAttribute('data-hl-color', color);
         sel.removeAllRanges();
         spSaveHighlights();
         return;
       }
 
-      const mark = document.createElement('mark');
-      mark.className = 'sp-highlight';
-      mark.setAttribute('data-hl-color', color);
-      try {
-        range.surroundContents(mark);
-      } catch (e) {
-        // If the selection crosses element boundaries, extract and wrap
-        const fragment = range.extractContents();
-        mark.appendChild(fragment);
-        range.insertNode(mark);
+      // Safe approach: collect all text nodes in the selection range,
+      // then wrap each one individually (never crosses element boundaries)
+      const textNodes = [];
+      const walker = document.createTreeWalker(
+        range.commonAncestorContainer.nodeType === 3 ? range.commonAncestorContainer.parentNode : range.commonAncestorContainer,
+        NodeFilter.SHOW_TEXT,
+        null
+      );
+      let node;
+      let inRange = false;
+      while (node = walker.nextNode()) {
+        if (node === range.startContainer) inRange = true;
+        if (inRange && node.textContent.trim().length > 0) {
+          textNodes.push(node);
+        }
+        if (node === range.endContainer) break;
       }
+      // Handle single text node case
+      if (textNodes.length === 0 && range.startContainer.nodeType === 3) {
+        textNodes.push(range.startContainer);
+      }
+
+      if (textNodes.length === 0) { sel.removeAllRanges(); return; }
+
+      textNodes.forEach((textNode, i) => {
+        // Skip if already inside a highlight mark
+        if (textNode.parentElement?.closest('mark.sp-highlight')) return;
+
+        let startOffset = 0;
+        let endOffset = textNode.textContent.length;
+        if (i === 0 && textNode === range.startContainer) startOffset = range.startOffset;
+        if (i === textNodes.length - 1 && textNode === range.endContainer) endOffset = range.endOffset;
+
+        if (startOffset >= endOffset) return;
+
+        // Split the text node if needed and wrap the selected portion
+        const mark = document.createElement('mark');
+        mark.className = 'sp-highlight';
+        mark.setAttribute('data-hl-color', color);
+
+        if (startOffset > 0) {
+          textNode.splitText(startOffset);
+          const targetNode = textNode.nextSibling;
+          if (endOffset - startOffset < targetNode.textContent.length) {
+            targetNode.splitText(endOffset - startOffset);
+          }
+          mark.textContent = targetNode.textContent;
+          targetNode.parentNode.replaceChild(mark, targetNode);
+        } else if (endOffset < textNode.textContent.length) {
+          textNode.splitText(endOffset);
+          mark.textContent = textNode.textContent;
+          textNode.parentNode.replaceChild(mark, textNode);
+        } else {
+          mark.textContent = textNode.textContent;
+          textNode.parentNode.replaceChild(mark, textNode);
+        }
+      });
+
       sel.removeAllRanges();
-
-      // Attach remove listener
-      mark.addEventListener('click', spRemoveHighlightOnClick);
-
-      // Save
       spSaveHighlights();
     }
 
