@@ -880,43 +880,62 @@ a {
   color: var(--green);
 }
 
-/* ===== Apply Steps Flow (with arrows) ===== */
-.apply-steps-flow {
+/* ===== Apply Stepper ===== */
+.stepper {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  gap: 0;
-  margin-bottom: 32px;
+  position: relative;
+  margin: 0 auto 40px;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
-.apply-flow-step {
-  text-align: center;
-  padding: 24px 20px;
+.stepper-line {
+  position: absolute;
+  top: 22px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: var(--gray-200);
+  z-index: 0;
+}
+
+.stepper-item {
   flex: 1;
-  max-width: 220px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
 }
 
-.apply-flow-step h4 {
+.stepper-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
   font-family: 'Inter', sans-serif;
+  font-weight: 700;
   font-size: 1rem;
-  margin: 12px 0 8px;
-  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  box-shadow: 0 2px 8px rgba(207, 91, 46, 0.25);
 }
 
-.apply-flow-step p {
+.stepper-item h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.stepper-item p {
   font-size: 0.82rem;
   color: var(--gray-500);
   line-height: 1.5;
-}
-
-.apply-flow-arrow {
-  display: flex;
-  align-items: center;
-  padding-top: 28px;
-  font-size: 1.5rem;
-  color: var(--teal);
-  font-weight: 300;
-  flex-shrink: 0;
 }
 
 .apply-highlights {
@@ -1014,20 +1033,36 @@ a {
 }
 
 @media (max-width: 768px) {
-  .apply-steps-flow {
+  .stepper {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 0;
+    padding: 0;
   }
-  .apply-flow-step {
-    max-width: 400px;
-    padding: 16px 20px;
+  .stepper-line {
+    top: 0;
+    bottom: 0;
+    left: 21px;
+    right: auto;
+    width: 2px;
+    height: auto;
   }
-  .apply-flow-arrow {
-    transform: rotate(90deg);
-    padding-top: 0;
-    margin: -12px 0;
-    font-size: 1.2rem;
+  .stepper-item {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+    padding: 12px 0;
+  }
+  .stepper-circle {
+    flex-shrink: 0;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  .stepper-item h4 {
+    margin-bottom: 4px;
   }
   .deadline-row {
     flex-direction: column;
