@@ -1534,49 +1534,51 @@ mark.user-highlight {
   transition: opacity 0.15s;
 }
 
+mark.user-highlight[data-hl-color="yellow"] { background: #fef08a; }
+mark.user-highlight[data-hl-color="green"] { background: #86efac; }
+mark.user-highlight[data-hl-color="blue"] { background: #93c5fd; }
+mark.user-highlight[data-hl-color="pink"] { background: #fda4af; }
+
 mark.user-highlight:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-.highlight-popup {
-  position: absolute;
-  display: flex;
-  gap: 6px;
-  z-index: 10000;
-  background: #1a1a2e;
-  border-radius: 24px;
-  padding: 6px 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  animation: popupFadeIn 0.15s ease;
-}
-
-@keyframes popupFadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hl-color-btn {
-  background: transparent;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  border-radius: 50%;
+/* Highlight color picker toolbar */
+.qbank-hl-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.15s;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  flex-wrap: wrap;
 }
 
-.hl-color-btn:hover {
-  transform: scale(1.25);
+.qbank-hl-bar span.hl-label {
+  font-weight: 600;
+  margin-right: 4px;
 }
 
-.hl-color-btn span {
-  display: block;
+.qbank-hl-swatch {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.qbank-hl-swatch:hover {
+  transform: scale(1.2);
+}
+
+.qbank-hl-swatch.selected {
+  border-color: #1B2A4A;
+  box-shadow: 0 0 0 2px rgba(27,42,74,0.2);
 }
 
 /* ===== Test Mode: Mode Selector on Start Screen ===== */
