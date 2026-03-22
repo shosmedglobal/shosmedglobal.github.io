@@ -1918,6 +1918,18 @@ a {
   color: var(--teal);
 }
 
+.pricing-features li.session-detail {
+  padding-left: 16px;
+  font-size: 0.82rem;
+  color: var(--gray-600);
+  margin-top: -2px;
+}
+
+.pricing-features li.session-detail::before {
+  content: '';
+  display: none;
+}
+
 .pricing-disclaimer {
   text-align: center;
   margin-top: 32px;
