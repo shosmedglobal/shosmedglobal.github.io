@@ -95,6 +95,11 @@ function renderTestHistoryList() {
     const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
     const pctClass = pct >= 70 ? 'score-good' : pct >= 50 ? 'score-mid' : 'score-low';
     const subjects = test.subjects ? test.subjects.join(', ') : '';
+    const isTestModeRecord = test.mode && test.mode.includes('Test');
+    const modeBadge = isTestModeRecord
+      ? '<span class="th-mode th-mode-test">Test</span>'
+      : '<span class="th-mode th-mode-review">Review</span>';
+    const timeStr = test.timeTaken ? ` · ${Math.floor(test.timeTaken / 60)}m ${test.timeTaken % 60}s` : '';
 
     const row = document.createElement('div');
     row.className = 'test-history-row';
@@ -102,11 +107,12 @@ function renderTestHistoryList() {
     row.innerHTML = `
       <div class="th-name-wrap">
         <span class="th-name" id="thName-${i}" title="Click to rename">${displayName}</span>
+        ${modeBadge}
         <button class="th-rename-btn" data-index="${i}" title="Rename">✏️</button>
       </div>
       <div class="th-stats">
         <span class="th-score ${pctClass}">${pct}%</span>
-        <span class="th-detail">${test.correct}/${test.total} correct</span>
+        <span class="th-detail">${test.correct}/${test.total} correct${timeStr}</span>
         <span class="th-subjects">${subjects}</span>
         ${hasReview ? `<button class="th-review-btn" data-index="${i}">Review</button>` : ''}
       </div>

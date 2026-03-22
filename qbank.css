@@ -1333,6 +1333,28 @@
   white-space: nowrap;
 }
 
+.th-mode {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.th-mode-test {
+  background: #1B2A4A;
+  color: #fff;
+}
+
+.th-mode-review {
+  background: #e8f5e9;
+  color: #2d8659;
+}
+
 .th-review-btn {
   background: #CF5B2E;
   color: #fff;
