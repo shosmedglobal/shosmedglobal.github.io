@@ -4790,6 +4790,9 @@
       spSaveHighlights();
     }
 
+    // Flag to prevent mouseup from re-highlighting after removal
+    let spJustRemovedHighlight = false;
+
     // Use event delegation for highlight removal - handles all marks including new ones
     document.getElementById('spReaderContent')?.addEventListener('click', function(e) {
       const mark = e.target.closest('mark.sp-highlight');
@@ -4801,6 +4804,8 @@
 
       e.preventDefault();
       e.stopPropagation();
+      spJustRemovedHighlight = true;
+      setTimeout(() => { spJustRemovedHighlight = false; }, 200);
       const color = mark.getAttribute('data-hl-color');
 
       // Find all contiguous marks of the same color
@@ -4846,6 +4851,9 @@
         parent.removeChild(m);
       });
       parents.forEach(p => p.normalize());
+
+      // Clear any selection left behind
+      window.getSelection()?.removeAllRanges();
 
       spSaveHighlights();
     });
@@ -4923,6 +4931,9 @@
 
     // Apply highlight only when user deliberately dragged to select text
     document.getElementById('spReaderContent').addEventListener('mouseup', (e) => {
+      // Skip if a highlight was just removed by the click handler
+      if (spJustRemovedHighlight) return;
+
       // Skip if clicking on a highlight (that's handled by the removal listener)
       if (e.target.closest('mark.sp-highlight')) return;
 
@@ -4935,13 +4946,7 @@
       const dy = Math.abs(e.clientY - spMouseDownPos.y);
       if (dx < 5 && dy < 5) return; // Mouse barely moved - not a deliberate selection
 
-      // Small delay to let click event fire first (prevents conflict with removal)
-      setTimeout(() => {
-        const sel2 = window.getSelection();
-        if (sel2 && !sel2.isCollapsed && sel2.toString().trim().length >= 2) {
-          spApplyHighlight(spReaderState.hlColor || 'yellow');
-        }
-      }, 50);
+      spApplyHighlight(spReaderState.hlColor || 'yellow');
     });
 
     // ===== Study Reader Content Protection =====
