@@ -4615,23 +4615,9 @@
       // Show loading
       contentEl.innerHTML = '<div class="sp-reader-loading"><div class="sp-spinner"></div><p>Loading chapter content...</p></div>';
 
-      // Check for saved HTML with highlights in Firestore first
+      // Always fetch the original clean chapter HTML first
       const docKey = spGetDocKey(subject, chIdx);
-      let savedHtml = null;
-      try {
-        if (currentUser) {
-          const hlDoc = await firebase.firestore()
-            .collection('users').doc(currentUser.uid)
-            .collection('studyHighlights').doc(docKey).get();
-          if (hlDoc.exists && hlDoc.data().html) {
-            savedHtml = hlDoc.data().html;
-          }
-        }
-      } catch (e) { /* ignore, will fetch fresh */ }
-
-      if (savedHtml) {
-        contentEl.innerHTML = savedHtml;
-      } else {
+      {
         // Fetch chapter content
         try {
           const resp = await fetch(`study/${prefix}-ch${chNum}.html`);
@@ -4643,8 +4629,8 @@
         }
       }
 
-      // Attach highlight click-to-remove listeners
-      spAttachHighlightListeners();
+      // Restore saved highlights (as position data, applied on top of clean HTML)
+      await spRestoreHighlights(subject, chIdx);
 
       // Load notes
       spLoadNotes(subject, chIdx);
@@ -4702,17 +4688,66 @@
     });
 
     // ===== Highlight feature =====
+    // Save highlights as position data (not innerHTML) so original content is never corrupted
     async function spSaveHighlights() {
       if (!currentUser || !spReaderState.isPaid) return;
       const { subject, chIdx } = spReaderState;
       const docKey = spGetDocKey(subject, chIdx);
       const contentEl = document.getElementById('spReaderContent');
+      // Collect all highlight marks with their text and color
+      const highlights = [];
+      contentEl.querySelectorAll('mark.sp-highlight').forEach(mark => {
+        highlights.push({
+          text: mark.textContent,
+          color: mark.getAttribute('data-hl-color') || 'yellow'
+        });
+      });
       try {
         await firebase.firestore()
           .collection('users').doc(currentUser.uid)
           .collection('studyHighlights').doc(docKey)
-          .set({ html: contentEl.innerHTML, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+          .set({ highlights: highlights, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
       } catch (e) { /* ignore */ }
+    }
+
+    // Restore highlights by finding matching text in the clean HTML
+    async function spRestoreHighlights(subject, chIdx) {
+      if (!currentUser) return;
+      const docKey = spGetDocKey(subject, chIdx);
+      try {
+        const hlDoc = await firebase.firestore()
+          .collection('users').doc(currentUser.uid)
+          .collection('studyHighlights').doc(docKey).get();
+        if (!hlDoc.exists) return;
+        const data = hlDoc.data();
+        // Support new format (highlights array)
+        if (data.highlights && Array.isArray(data.highlights)) {
+          const contentEl = document.getElementById('spReaderContent');
+          data.highlights.forEach(hl => {
+            spHighlightTextInContent(contentEl, hl.text, hl.color);
+          });
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    // Find and highlight a specific text string within the content
+    function spHighlightTextInContent(container, searchText, color) {
+      if (!searchText || searchText.length < 2) return;
+      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+      let node;
+      while (node = walker.nextNode()) {
+        const idx = node.textContent.indexOf(searchText);
+        if (idx === -1) continue;
+        // Found - wrap it
+        if (idx > 0) node = node.splitText(idx);
+        if (node.textContent.length > searchText.length) node.splitText(searchText.length);
+        const mark = document.createElement('mark');
+        mark.className = 'sp-highlight';
+        mark.setAttribute('data-hl-color', color);
+        mark.textContent = node.textContent;
+        node.parentNode.replaceChild(mark, node);
+        return; // Only highlight first occurrence
+      }
     }
 
     function spApplyHighlight(color) {
