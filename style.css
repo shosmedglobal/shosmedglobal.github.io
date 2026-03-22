@@ -1918,16 +1918,38 @@ a {
   color: var(--teal);
 }
 
-.pricing-features li.session-detail {
-  padding-left: 16px;
-  font-size: 0.82rem;
-  color: var(--gray-600);
-  margin-top: -2px;
+.session-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 16px;
 }
 
-.pricing-features li.session-detail::before {
-  content: '';
-  display: none;
+.session-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  line-height: 1.4;
+}
+
+.session-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
 .pricing-disclaimer {
