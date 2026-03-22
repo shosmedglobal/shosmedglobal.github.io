@@ -2444,24 +2444,40 @@
       letter-spacing: 0.02em;
     }
 
-    /* Watermark overlay — uses ::before (behind content) so it never blocks interaction */
-    .sp-reader-body::before {
-      content: '';
+    /* Watermark — vertical strip on the left side of the reader, between sidebar and content */
+    .sp-watermark-strip {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none !important;
+      left: -32px;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      overflow: hidden;
+      pointer-events: none;
       z-index: 0;
-      opacity: 0.06;
-      background-repeat: repeat;
-      background-size: 320px 180px;
+      opacity: 0.12;
+    }
+    .sp-watermark-strip-inner {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--gray-400);
+      letter-spacing: 2px;
+      line-height: 28px;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .sp-reader-body {
       position: relative;
+      padding-left: 8px;
     }
-    /* Ensure actual content sits above the watermark */
     .sp-reader-content {
       position: relative;
-      z-index: 1;
     }
 
     /* Blur content when tab loses focus (study reader specific) */
@@ -2502,8 +2518,8 @@
         padding: 80px 20px;
         color: #666;
       }
-      /* Also hide the reader body watermark */
-      .sp-reader-body::before { display: none !important; }
+      /* Also hide the watermark strip */
+      .sp-watermark-strip { display: none !important; }
     }
 
     /* Notes panel */
@@ -4924,23 +4940,25 @@
         }
       });
 
-      // Watermark: set dynamically using user email as SVG data URI background
+      // Watermark: vertical strip on the left side with user email
       function spApplyWatermark(email) {
         if (!email) return;
         const readerBody = document.querySelector('#studyReaderView .sp-reader-body');
         if (!readerBody) return;
-        // Create SVG text watermark
-        const svgText = encodeURIComponent(email);
-        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180'><text transform='rotate(-35 160 90)' x='50%' y='50%' font-family='Arial,sans-serif' font-size='14' fill='%23000' text-anchor='middle' dominant-baseline='middle'>${svgText}</text></svg>`;
-        readerBody.style.setProperty('--sp-watermark', `url("data:image/svg+xml,${svg}")`);
-        // Apply via inline style since ::after can't be set inline — use a style tag
-        let styleEl = document.getElementById('spWatermarkStyle');
-        if (!styleEl) {
-          styleEl = document.createElement('style');
-          styleEl.id = 'spWatermarkStyle';
-          document.head.appendChild(styleEl);
-        }
-        styleEl.textContent = `#studyReaderView .sp-reader-body::before { background-image: url("data:image/svg+xml,${svg}"); }`;
+
+        // Remove old watermark strip if exists
+        const old = readerBody.querySelector('.sp-watermark-strip');
+        if (old) old.remove();
+
+        // Create vertical watermark strip
+        const strip = document.createElement('div');
+        strip.className = 'sp-watermark-strip';
+        const inner = document.createElement('div');
+        inner.className = 'sp-watermark-strip-inner';
+        // Repeat email many times to fill the full height
+        inner.textContent = (email + '  ·  ').repeat(80);
+        strip.appendChild(inner);
+        readerBody.insertBefore(strip, readerBody.firstChild);
 
         // Show protection notice
         document.getElementById('spProtectionNotice').style.display = '';
