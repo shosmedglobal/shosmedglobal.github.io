@@ -4759,8 +4759,10 @@
       if (!contentEl || !contentEl.contains(range.commonAncestorContainer)) return;
 
       // If selection is entirely inside an existing highlight, change its color
-      const anchorMark = sel.anchorNode?.parentElement?.closest('mark.sp-highlight');
-      const focusMark = sel.focusNode?.parentElement?.closest('mark.sp-highlight');
+      const anchorEl = sel.anchorNode?.nodeType === 3 ? sel.anchorNode.parentElement : sel.anchorNode;
+      const focusEl = sel.focusNode?.nodeType === 3 ? sel.focusNode.parentElement : sel.focusNode;
+      const anchorMark = anchorEl?.closest('mark.sp-highlight');
+      const focusMark = focusEl?.closest('mark.sp-highlight');
       if (anchorMark && anchorMark === focusMark) {
         anchorMark.setAttribute('data-hl-color', color);
         sel.removeAllRanges();
@@ -4830,72 +4832,72 @@
       spSaveHighlights();
     }
 
-    function spRemoveHighlightOnClick(e) {
+    // Use event delegation for highlight removal - handles all marks including new ones
+    document.getElementById('spReaderContent')?.addEventListener('click', function(e) {
       const mark = e.target.closest('mark.sp-highlight');
       if (!mark) return;
-      // Don't remove if user is selecting text (drag)
+
+      // Don't remove if user just finished selecting text (drag)
       const sel = window.getSelection();
-      if (sel && !sel.isCollapsed) return;
+      if (sel && sel.toString().trim().length > 0) return;
 
       e.preventDefault();
-      const color = mark.style.backgroundColor;
+      e.stopPropagation();
+      const color = mark.getAttribute('data-hl-color');
 
       // Find all contiguous marks of the same color
-      function getContiguousGroup(startMark) {
-        const group = [startMark];
-        // Walk backward
-        let prev = startMark;
-        while (prev) {
-          let sibling = prev.previousSibling;
-          // Skip empty text nodes (whitespace between marks)
-          while (sibling && sibling.nodeType === 3 && sibling.textContent.trim() === '') {
-            sibling = sibling.previousSibling;
-          }
-          if (sibling && sibling.nodeName === 'MARK' && sibling.classList.contains('sp-highlight') && sibling.style.backgroundColor === color) {
-            group.unshift(sibling);
-            prev = sibling;
-          } else {
-            break;
-          }
+      const group = [mark];
+
+      // Walk backward
+      let prev = mark.previousSibling;
+      while (prev) {
+        // Skip empty text nodes
+        if (prev.nodeType === 3 && prev.textContent.trim() === '') {
+          prev = prev.previousSibling;
+          continue;
         }
-        // Walk forward
-        let next = startMark;
-        while (next) {
-          let sibling = next.nextSibling;
-          while (sibling && sibling.nodeType === 3 && sibling.textContent.trim() === '') {
-            sibling = sibling.nextSibling;
-          }
-          if (sibling && sibling.nodeName === 'MARK' && sibling.classList.contains('sp-highlight') && sibling.style.backgroundColor === color) {
-            group.push(sibling);
-            next = sibling;
-          } else {
-            break;
-          }
+        if (prev.nodeName === 'MARK' && prev.classList.contains('sp-highlight') && prev.getAttribute('data-hl-color') === color) {
+          group.unshift(prev);
+          prev = prev.previousSibling;
+        } else {
+          break;
         }
-        return group;
       }
 
-      const group = getContiguousGroup(mark);
+      // Walk forward
+      let next = mark.nextSibling;
+      while (next) {
+        if (next.nodeType === 3 && next.textContent.trim() === '') {
+          next = next.nextSibling;
+          continue;
+        }
+        if (next.nodeName === 'MARK' && next.classList.contains('sp-highlight') && next.getAttribute('data-hl-color') === color) {
+          group.push(next);
+          next = next.nextSibling;
+        } else {
+          break;
+        }
+      }
+
+      // Remove all marks in group, then normalize once at the end
+      const parents = new Set();
       group.forEach(m => {
         const parent = m.parentNode;
+        parents.add(parent);
         while (m.firstChild) parent.insertBefore(m.firstChild, m);
         parent.removeChild(m);
-        parent.normalize();
       });
+      parents.forEach(p => p.normalize());
 
       spSaveHighlights();
-    }
+    });
 
-    function spAttachHighlightListeners() {
-      document.querySelectorAll('#spReaderContent mark.sp-highlight').forEach(mark => {
-        mark.addEventListener('click', spRemoveHighlightOnClick);
-      });
-    }
+    // No longer needed - using event delegation above
+    function spAttachHighlightListeners() {}
 
     function spClearSelectionHighlight() {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed || !sel.rangeCount) return;
-      // Check if selection is inside a highlight mark
       const anchor = sel.anchorNode?.parentElement?.closest('mark.sp-highlight');
       if (anchor) {
         const parent = anchor.parentNode;
@@ -4950,12 +4952,38 @@
       spClearSelectionHighlight();
     });
 
-    // Apply highlight on any text selection in the reader (always active, default color yellow)
-    document.getElementById('spReaderContent').addEventListener('mouseup', () => {
-      const sel = window.getSelection();
-      if (sel && !sel.isCollapsed && sel.toString().trim().length > 0) {
-        spApplyHighlight(spReaderState.hlColor || 'yellow');
+    // Track whether user is dragging to select text vs just clicking
+    let spMouseDownPos = null;
+    document.getElementById('spReaderContent').addEventListener('mousedown', (e) => {
+      // Don't start selection tracking if clicking on a highlight mark
+      if (e.target.closest('mark.sp-highlight')) {
+        spMouseDownPos = null;
+        return;
       }
+      spMouseDownPos = { x: e.clientX, y: e.clientY };
+    });
+
+    // Apply highlight only when user deliberately dragged to select text
+    document.getElementById('spReaderContent').addEventListener('mouseup', (e) => {
+      // Skip if clicking on a highlight (that's handled by the removal listener)
+      if (e.target.closest('mark.sp-highlight')) return;
+
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed || sel.toString().trim().length < 2) return;
+
+      // Only highlight if mouse actually moved (drag), not a simple click
+      if (!spMouseDownPos) return;
+      const dx = Math.abs(e.clientX - spMouseDownPos.x);
+      const dy = Math.abs(e.clientY - spMouseDownPos.y);
+      if (dx < 5 && dy < 5) return; // Mouse barely moved - not a deliberate selection
+
+      // Small delay to let click event fire first (prevents conflict with removal)
+      setTimeout(() => {
+        const sel2 = window.getSelection();
+        if (sel2 && !sel2.isCollapsed && sel2.toString().trim().length >= 2) {
+          spApplyHighlight(spReaderState.hlColor || 'yellow');
+        }
+      }, 50);
     });
 
     // ===== Study Reader Content Protection =====
