@@ -935,90 +935,48 @@
             <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
           </div>
 
-          <!-- QBank Plans -->
-          <h3 class="view-section-title" id="qbankPricingTitle">Question Bank Plans</h3>
-          <div class="qbank-pricing-grid" id="qbankPricingGrid">
-            <div class="qbank-plan-card">
-              <h4>1 Month</h4>
-              <div class="plan-price">$49</div>
-              <p class="plan-per">$49/month</p>
-              <ul class="plan-features">
-                <li>All 1,000+ questions</li>
-                <li>Biology &amp; Chemistry</li>
-                <li>Detailed explanations</li>
-                <li>Progress tracking</li>
-              </ul>
-              <p class="plan-note">No progress reset included</p>
-              <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-1mo">Purchase</a>
-            </div>
-            <div class="qbank-plan-card featured">
-              <div class="plan-badge">Best Value</div>
-              <h4>3 Months</h4>
-              <div class="plan-price">$99</div>
-              <p class="plan-per">$33/month — Save 33%</p>
-              <ul class="plan-features">
-                <li>All 1,000+ questions</li>
-                <li>Biology &amp; Chemistry</li>
-                <li>Detailed explanations</li>
-                <li>Progress tracking</li>
-              </ul>
-              <p class="plan-note">No progress reset included</p>
-              <a href="#" class="btn btn-primary stripe-pay" data-tier="qbank-3mo">Purchase</a>
-            </div>
-            <div class="qbank-plan-card">
-              <h4>6 Months</h4>
-              <div class="plan-price">$149</div>
-              <p class="plan-per">$25/month — Save 49%</p>
-              <ul class="plan-features">
-                <li>All 1,000+ questions</li>
-                <li>Biology &amp; Chemistry</li>
-                <li>Detailed explanations</li>
-                <li>Progress tracking</li>
-                <li><strong>1 progress reset included</strong></li>
-              </ul>
-              <p class="plan-note">Reset and start fresh once during your subscription</p>
-              <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-6mo">Purchase</a>
-            </div>
-          </div>
-
-          <!-- Consultation -->
-          <h3 class="view-section-title">Consultation</h3>
-          <div class="dash-card" style="margin-bottom: 24px;">
-            <div class="service-row">
-              <div class="service-info">
-                <h4>📞 30-Minute Consultation</h4>
-                <p>1-on-1 Zoom call with a US physician who went through the Czech med school → US residency journey.</p>
-                <span class="service-price">$79</span>
-              </div>
-              <div class="service-status">
-                <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='free-consultation'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Book Now</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Path-specific services -->
+          <!-- Applicant Plans (aligned with applicants.html pricing) -->
           <div id="storeApplicantServices" style="display:none;">
-            <h3 class="view-section-title">Med School Application</h3>
-            <div class="dash-card" style="margin-bottom: 24px;">
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Application Guide</h4>
-                  <p>15-min Zoom meeting, school recommendations, application walkthrough</p>
-                  <span class="service-price">$99</span>
-                </div>
-                <div class="service-status">
-                  <a href="applicants.html#pricing" class="btn btn-secondary btn-small">Details</a>
-                </div>
+            <h3 class="view-section-title" id="qbankPricingTitle">Exam Prep Plans</h3>
+            <div class="qbank-pricing-grid" id="qbankPricingGrid">
+              <div class="qbank-plan-card">
+                <h4>QBank Only</h4>
+                <div class="plan-price">$49</div>
+                <p class="plan-per">1 month access</p>
+                <ul class="plan-features">
+                  <li>1,000+ practice questions</li>
+                  <li>Biology &amp; Chemistry</li>
+                  <li>Detailed explanations</li>
+                  <li>Progress tracking</li>
+                </ul>
+                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-1mo">Purchase</a>
               </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Full Application Package</h4>
-                  <p>Up to 3 Zoom meetings, interview prep, 6 months QBank, Life in Prague session</p>
-                  <span class="service-price">$249</span>
-                </div>
-                <div class="service-status">
-                  <a href="applicants.html#pricing" class="btn btn-primary btn-small">Details</a>
-                </div>
+              <div class="qbank-plan-card featured">
+                <div class="plan-badge">Most Popular</div>
+                <h4>Self-Study</h4>
+                <div class="plan-price">$99</div>
+                <p class="plan-per">3 months access</p>
+                <ul class="plan-features">
+                  <li>1,000+ practice questions</li>
+                  <li>Complete Study Guide (73 chapters)</li>
+                  <li>Biology &amp; Chemistry</li>
+                  <li>Detailed explanations</li>
+                  <li>Progress tracking &amp; analytics</li>
+                </ul>
+                <a href="#" class="btn btn-primary stripe-pay" data-tier="self-study">Purchase</a>
+              </div>
+              <div class="qbank-plan-card">
+                <h4>Full Guidance</h4>
+                <div class="plan-price"><span style="text-decoration:line-through;color:var(--gray-400);font-size:0.7em;">$399</span> $249</div>
+                <p class="plan-per">Launch pricing · 6 months + personal guidance</p>
+                <ul class="plan-features">
+                  <li>Full QBank + Study Guide (6 months)</li>
+                  <li>3 sessions (30 min) with a physician:</li>
+                  <li style="padding-left:12px;font-size:0.82em;">① Exam strategy</li>
+                  <li style="padding-left:12px;font-size:0.82em;">② Interview prep</li>
+                  <li style="padding-left:12px;font-size:0.82em;">③ Life in Prague</li>
+                </ul>
+                <a href="#" class="btn btn-secondary stripe-pay" data-tier="full-guidance">Purchase</a>
               </div>
             </div>
           </div>
@@ -1054,7 +1012,7 @@
                 <div class="service-info">
                   <h4>Single Session</h4>
                   <p>45-min focused 1-on-1 USMLE review session</p>
-                  <span class="service-price">$75</span>
+                  <span class="service-price">$99</span>
                 </div>
                 <div class="service-status">
                   <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-single'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
@@ -1063,8 +1021,8 @@
               <div class="service-row">
                 <div class="service-info">
                   <h4>5-Session Pack <span style="background:var(--teal,#2d9f8f);color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:10px;margin-left:8px;">Best Value</span></h4>
-                  <p>Structured review plan · Save $76</p>
-                  <span class="service-price">$299</span>
+                  <p>Structured review plan · Save $46</p>
+                  <span class="service-price">$449</span>
                 </div>
                 <div class="service-status">
                   <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-5pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Inquire</a>
@@ -1073,8 +1031,8 @@
               <div class="service-row">
                 <div class="service-info">
                   <h4>10-Session Pack</h4>
-                  <p>Comprehensive prep · Save $201</p>
-                  <span class="service-price">$549</span>
+                  <p>Comprehensive prep · Save $191</p>
+                  <span class="service-price">$799</span>
                 </div>
                 <div class="service-status">
                   <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-10pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
@@ -1129,9 +1087,9 @@
                   <label for="contactService">Service</label>
                   <select id="contactService" class="form-select">
                     <option value="">Select a service...</option>
-                    <option value="free-consultation">Free 15-Min Consultation (Free)</option>
-                    <option value="application-guide">Application Guide - $99 (45 min)</option>
-                    <option value="full-application">Full Application Package - $249</option>
+                    <option value="free-consultation">Free 15-Min Consultation</option>
+                    <option value="self-study">Self-Study Plan - $99</option>
+                    <option value="full-guidance">Full Guidance Package - $249</option>
                     <option value="mentorship">Mentorship Session - $199 (45 min)</option>
                     <option value="match-ready">Match-Ready Package - $499</option>
                     <option value="board-review-single">Board Review Single - $99 (45 min)</option>
