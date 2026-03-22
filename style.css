@@ -825,56 +825,104 @@ a {
   }
 }
 
-/* ===== Study Abroad / Comparison ===== */
-.comparison-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 48px;
+/* ===== Comparison Table ===== */
+.comparison-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.comparison-card {
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  min-width: 600px;
+}
+
+.comparison-table thead th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 14px 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+}
+
+.comparison-table thead th:first-child {
+  background: transparent;
+  border-radius: var(--radius) 0 0 0;
+}
+
+.comparison-table thead th.ct-highlight {
+  background: var(--teal);
+  font-size: 0.92rem;
+}
+
+.comparison-table tbody td {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-600);
+  text-align: center;
+}
+
+.comparison-table tbody td.ct-label {
+  text-align: left;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--gray-50);
+}
+
+.comparison-table tbody td.ct-highlight {
+  background: rgba(207, 91, 46, 0.04);
+}
+
+.comparison-table .green {
+  color: var(--green);
+}
+
+/* ===== Apply Overview (simplified) ===== */
+.apply-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.apply-overview-card {
+  text-align: center;
+  padding: 24px 16px;
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow);
   border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow);
 }
 
-.comparison-card h4 {
+.apply-overview-card h4 {
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--gray-100);
+  font-size: 1rem;
+  margin: 12px 0 8px;
+  color: var(--navy);
 }
 
-.compare-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--gray-100);
+.apply-overview-card p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.5;
 }
 
-.compare-row:last-child {
-  border-bottom: none;
+.apply-highlights {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 0.92rem;
+  color: var(--gray-700);
 }
 
-.compare-label {
-  font-size: 0.9rem;
-  color: var(--gray-600);
+@media (max-width: 768px) {
+  .apply-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-
-.compare-value {
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-align: right;
-}
-
-.compare-value.green { color: var(--green); }
-.compare-value.red { color: var(--red); }
-.compare-value.orange { color: var(--orange); }
 
 .cta-box {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
