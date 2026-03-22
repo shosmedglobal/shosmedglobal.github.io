@@ -4807,42 +4807,54 @@
       spJustRemovedHighlight = true;
       setTimeout(() => { spJustRemovedHighlight = false; }, 200);
       const color = mark.getAttribute('data-hl-color');
+      const contentEl = document.getElementById('spReaderContent');
 
-      // Find all contiguous marks of the same color
+      // Get ALL marks of the same color in document order
+      const allMarks = Array.from(contentEl.querySelectorAll('mark.sp-highlight[data-hl-color="' + color + '"]'));
+      const clickedIdx = allMarks.indexOf(mark);
+      if (clickedIdx === -1) {
+        // Fallback: just remove this one mark
+        const p = mark.parentNode;
+        while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+        p.removeChild(mark); p.normalize();
+        window.getSelection()?.removeAllRanges();
+        spSaveHighlights();
+        return;
+      }
+
+      // Find the contiguous group: walk backward and forward from the clicked mark
+      // Two marks are "contiguous" if there's no non-whitespace unhighlighted text between them
+      function isContiguous(markA, markB) {
+        // Check if there's only whitespace/empty nodes between markA and markB in DOM order
+        const range = document.createRange();
+        range.setStartAfter(markA);
+        range.setEndBefore(markB);
+        const fragment = range.cloneContents();
+        const textBetween = fragment.textContent.trim();
+        return textBetween.length === 0;
+      }
+
       const group = [mark];
 
-      // Walk backward
-      let prev = mark.previousSibling;
-      while (prev) {
-        // Skip empty text nodes
-        if (prev.nodeType === 3 && prev.textContent.trim() === '') {
-          prev = prev.previousSibling;
-          continue;
-        }
-        if (prev.nodeName === 'MARK' && prev.classList.contains('sp-highlight') && prev.getAttribute('data-hl-color') === color) {
-          group.unshift(prev);
-          prev = prev.previousSibling;
+      // Walk backward through allMarks
+      for (let i = clickedIdx - 1; i >= 0; i--) {
+        if (isContiguous(allMarks[i], group[0])) {
+          group.unshift(allMarks[i]);
         } else {
           break;
         }
       }
 
-      // Walk forward
-      let next = mark.nextSibling;
-      while (next) {
-        if (next.nodeType === 3 && next.textContent.trim() === '') {
-          next = next.nextSibling;
-          continue;
-        }
-        if (next.nodeName === 'MARK' && next.classList.contains('sp-highlight') && next.getAttribute('data-hl-color') === color) {
-          group.push(next);
-          next = next.nextSibling;
+      // Walk forward through allMarks
+      for (let i = clickedIdx + 1; i < allMarks.length; i++) {
+        if (isContiguous(group[group.length - 1], allMarks[i])) {
+          group.push(allMarks[i]);
         } else {
           break;
         }
       }
 
-      // Remove all marks in group, then normalize once at the end
+      // Remove all marks in group
       const parents = new Set();
       group.forEach(m => {
         const parent = m.parentNode;
