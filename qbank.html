@@ -195,6 +195,7 @@
               <span id="explanationTitle">Correct!</span>
             </div>
             <div class="explanation-content" id="explanationContent"></div>
+            <div class="qb-protection-notice">Content protected. Personal watermark applied.</div>
           </div>
 
           <!-- Report button (shown after answering) -->
@@ -408,6 +409,42 @@
 
       // Disable drag (prevents dragging text/images)
       document.addEventListener('dragstart', e => { e.preventDefault(); return false; });
+
+      // Screenshot flash element
+      const flash = document.createElement('div');
+      flash.className = 'qb-screenshot-flash';
+      flash.id = 'qbScreenshotFlash';
+      document.body.appendChild(flash);
+
+      // PrintScreen key — flash white to obscure content
+      document.addEventListener('keyup', e => {
+        if (e.key === 'PrintScreen') {
+          navigator.clipboard.writeText('').catch(() => {});
+          flash.classList.add('active');
+          setTimeout(() => flash.classList.remove('active'), 600);
+        }
+      });
+
+      // Watermark: apply user email as SVG data URI to explanation areas
+      function qbApplyWatermark(email) {
+        if (!email) return;
+        const svgText = encodeURIComponent(email);
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='160'><text transform='rotate(-35 150 80)' x='50%' y='50%' font-family='Arial,sans-serif' font-size='13' fill='%23000' text-anchor='middle' dominant-baseline='middle'>${svgText}</text></svg>`;
+        let styleEl = document.getElementById('qbWatermarkStyle');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'qbWatermarkStyle';
+          document.head.appendChild(styleEl);
+        }
+        styleEl.textContent = `.quiz-explanation::after, .review-card::after { background-image: url("data:image/svg+xml,${svg}"); }`;
+      }
+
+      // Apply watermark when auth resolves
+      auth.onAuthStateChanged(user => {
+        if (user && user.email) {
+          qbApplyWatermark(user.email);
+        }
+      });
     })();
 
     function loadQuestionsWithAccess() {

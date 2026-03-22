@@ -365,7 +365,10 @@
             <!-- Toolbar -->
             <div class="sp-reader-toolbar">
               <button class="sp-reader-back" id="spReaderBack">&larr; Back to Study Plan</button>
-              <div class="sp-reader-chapter-title" id="spReaderTitle">Chapter</div>
+              <div>
+                <div class="sp-reader-chapter-title" id="spReaderTitle">Chapter</div>
+                <div class="sp-protection-notice" id="spProtectionNotice" style="display:none;">Content protected. Personal watermark applied.</div>
+              </div>
               <div style="position:relative;">
                 <button class="sp-reader-tool-btn" id="spHlBtn">&#128397; Highlight &#9662;</button>
                 <div class="sp-hl-dropdown" id="spHlDropdown">
@@ -406,6 +409,9 @@
               <button class="sp-reader-nav-btn" id="spPrevChapterBottom">&larr; Previous Chapter</button>
               <button class="sp-reader-nav-btn" id="spNextChapterBottom">Next Chapter &rarr;</button>
             </div>
+
+            <!-- Screenshot flash overlay -->
+            <div class="sp-screenshot-flash" id="spScreenshotFlash"></div>
           </div>
         </div>
 
@@ -2409,6 +2415,92 @@
       .sp-reader-content .two-col { grid-template-columns: 1fr; }
     }
 
+    /* ===== Study Reader Content Protection ===== */
+
+    /* Default: no text selection in reader */
+    .sp-reader-content {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      position: relative;
+    }
+
+    /* Enable selection only when highlight mode is active */
+    .sp-reader-content.sp-hl-active {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+      -webkit-touch-callout: default !important;
+    }
+
+    /* Content protection notice */
+    .sp-protection-notice {
+      font-size: 0.72rem;
+      color: #9ca3af;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Watermark overlay — uses ::after on the reader body wrapper for resilience */
+    .sp-reader-body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.07;
+      background-repeat: repeat;
+      background-size: 320px 180px;
+    }
+    .sp-reader-body {
+      position: relative;
+    }
+
+    /* Blur content when tab loses focus (study reader specific) */
+    .content-protected-blur #studyReaderView .sp-reader-content {
+      filter: blur(18px);
+      transition: filter 0.2s;
+    }
+
+    /* Screenshot warning for study reader */
+    .sp-screenshot-flash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      z-index: 99999;
+      display: none;
+      pointer-events: none;
+    }
+    .sp-screenshot-flash.active {
+      display: block;
+    }
+
+    /* Print protection: hide study content when printing */
+    @media print {
+      #studyReaderView .sp-reader-content * {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      #studyReaderView .sp-reader-content {
+        display: block !important;
+        visibility: visible !important;
+      }
+      #studyReaderView .sp-reader-content::before {
+        content: 'This content is protected and cannot be printed.';
+        display: block !important;
+        visibility: visible !important;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 80px 20px;
+        color: #666;
+      }
+      /* Also hide the reader body watermark */
+      .sp-reader-body::after { display: none !important; }
+    }
+
     /* Notes panel */
     .sp-notes-panel {
       display: none;
@@ -2519,6 +2611,27 @@
   <script>
     let currentProfile = null;
     let currentUser = null;
+
+    // ===== Study Reader Visibility Protection =====
+    // Blur study reader content when tab/window loses focus
+    document.addEventListener('visibilitychange', () => {
+      const reader = document.getElementById('studyReaderView');
+      if (!reader || !reader.classList.contains('active')) return;
+      if (document.hidden) {
+        document.body.classList.add('content-protected-blur');
+      } else {
+        document.body.classList.remove('content-protected-blur');
+      }
+    });
+    window.addEventListener('blur', () => {
+      const reader = document.getElementById('studyReaderView');
+      if (reader && reader.classList.contains('active')) {
+        document.body.classList.add('content-protected-blur');
+      }
+    });
+    window.addEventListener('focus', () => {
+      document.body.classList.remove('content-protected-blur');
+    });
 
     // ===== Sidebar Navigation =====
     function switchView(viewName) {
@@ -4416,8 +4529,11 @@
       // Close notes panel
       document.getElementById('spNotesPanel').classList.remove('open');
       document.getElementById('spNotesBtn').classList.remove('active');
-      // Close highlight dropdown
+      // Close highlight dropdown and disable highlight selection mode
       document.getElementById('spHlDropdown').classList.remove('open');
+      document.getElementById('spReaderContent').classList.remove('sp-hl-active');
+      // Remove blur protection if it was on
+      document.body.classList.remove('content-protected-blur');
     }
 
     function spUpdateNavButtons() {
@@ -4587,9 +4703,14 @@
       const contentEl = document.getElementById('spReaderContent');
       if (!contentEl.contains(range.commonAncestorContainer)) return;
 
-      // Don't highlight inside an existing highlight
+      // If selection is inside an existing highlight, change its color
       const parentMark = sel.anchorNode?.parentElement?.closest('mark.sp-highlight');
-      if (parentMark) return;
+      if (parentMark) {
+        parentMark.setAttribute('data-hl-color', color);
+        sel.removeAllRanges();
+        spSaveHighlights();
+        return;
+      }
 
       const mark = document.createElement('mark');
       mark.className = 'sp-highlight';
@@ -4614,6 +4735,10 @@
     function spRemoveHighlightOnClick(e) {
       const mark = e.target.closest('mark.sp-highlight');
       if (!mark) return;
+      // If highlight mode is active (dropdown open), don't remove on click
+      // (user may be selecting text to re-color)
+      const dd = document.getElementById('spHlDropdown');
+      if (dd.classList.contains('open')) return;
       const parent = mark.parentNode;
       while (mark.firstChild) {
         parent.insertBefore(mark.firstChild, mark);
@@ -4657,11 +4782,18 @@
       btn.classList.toggle('active');
     });
 
-    // Highlight button toggle dropdown
+    // Highlight button toggle dropdown + enable/disable text selection
     document.getElementById('spHlBtn').addEventListener('click', (e) => {
       e.stopPropagation();
       const dd = document.getElementById('spHlDropdown');
+      const contentEl = document.getElementById('spReaderContent');
       dd.classList.toggle('open');
+      // Enable text selection when highlight mode is active
+      if (dd.classList.contains('open')) {
+        contentEl.classList.add('sp-hl-active');
+      } else {
+        contentEl.classList.remove('sp-hl-active');
+      }
     });
 
     // Close highlight dropdown on outside click
@@ -4669,6 +4801,7 @@
       const dd = document.getElementById('spHlDropdown');
       if (dd.classList.contains('open') && !e.target.closest('#spHlBtn') && !e.target.closest('#spHlDropdown')) {
         dd.classList.remove('open');
+        document.getElementById('spReaderContent').classList.remove('sp-hl-active');
       }
     });
 
@@ -4698,6 +4831,92 @@
         spApplyHighlight(spReaderState.hlColor);
       }
     });
+
+    // ===== Study Reader Content Protection =====
+    (function() {
+      const readerContent = document.getElementById('spReaderContent');
+      const readerView = document.getElementById('studyReaderView');
+
+      // Disable right-click on reader content
+      readerContent.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+
+      // Disable drag on reader content
+      readerContent.addEventListener('dragstart', e => { e.preventDefault(); return false; });
+
+      // Block copy event on reader content
+      readerContent.addEventListener('copy', e => { e.preventDefault(); return false; });
+
+      // Block keyboard shortcuts on reader content area
+      readerView.addEventListener('keydown', e => {
+        // Only block when reader is visible
+        if (!readerView.classList.contains('active')) return;
+
+        // Ctrl/Cmd + C, A, P, S, U (view source)
+        if ((e.ctrlKey || e.metaKey) && ['c','a','p','s','u'].includes(e.key.toLowerCase())) {
+          e.preventDefault();
+          return false;
+        }
+        // F12 (dev tools)
+        if (e.key === 'F12') { e.preventDefault(); return false; }
+        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) {
+          e.preventDefault();
+          return false;
+        }
+        // PrintScreen key - flash white to obscure content
+        if (e.key === 'PrintScreen') {
+          e.preventDefault();
+          navigator.clipboard.writeText('').catch(() => {});
+          const flash = document.getElementById('spScreenshotFlash');
+          flash.classList.add('active');
+          setTimeout(() => flash.classList.remove('active'), 600);
+          return false;
+        }
+      });
+
+      // Also listen on document level for PrintScreen (it may not fire on element)
+      document.addEventListener('keyup', e => {
+        if (e.key === 'PrintScreen' && readerView.classList.contains('active')) {
+          navigator.clipboard.writeText('').catch(() => {});
+          const flash = document.getElementById('spScreenshotFlash');
+          flash.classList.add('active');
+          setTimeout(() => flash.classList.remove('active'), 600);
+        }
+      });
+
+      // Watermark: set dynamically using user email as SVG data URI background
+      function spApplyWatermark(email) {
+        if (!email) return;
+        const readerBody = document.querySelector('#studyReaderView .sp-reader-body');
+        if (!readerBody) return;
+        // Create SVG text watermark
+        const svgText = encodeURIComponent(email);
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180'><text transform='rotate(-35 160 90)' x='50%' y='50%' font-family='Arial,sans-serif' font-size='14' fill='%23000' text-anchor='middle' dominant-baseline='middle'>${svgText}</text></svg>`;
+        readerBody.style.setProperty('--sp-watermark', `url("data:image/svg+xml,${svg}")`);
+        // Apply via inline style since ::after can't be set inline — use a style tag
+        let styleEl = document.getElementById('spWatermarkStyle');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'spWatermarkStyle';
+          document.head.appendChild(styleEl);
+        }
+        styleEl.textContent = `#studyReaderView .sp-reader-body::after { background-image: url("data:image/svg+xml,${svg}"); }`;
+
+        // Show protection notice
+        document.getElementById('spProtectionNotice').style.display = '';
+      }
+
+      // Apply watermark when auth state resolves
+      firebase.auth().onAuthStateChanged(user => {
+        if (user && user.email) {
+          spApplyWatermark(user.email);
+        }
+      });
+
+      // Visibility API: blur content when tab hidden (already handled by global handler,
+      // but this ensures study reader specifically gets blurred via CSS above)
+      // The global handler on dashboard.html adds/removes 'content-protected-blur' on body
+    })();
 
     // Prev / Next chapter navigation
     function spNavigateChapter(delta) {
