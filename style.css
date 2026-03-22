@@ -1869,7 +1869,7 @@ a {
 }
 
 .pricing-features li.bonus::before {
-  content: '🎁';
+  content: '✓';
   color: var(--teal);
 }
 
