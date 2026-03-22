@@ -28,109 +28,86 @@
   <li><strong>Cytokinesis:</strong> The cytoplasm divides. In animal cells, a <strong>cleavage furrow</strong> (contractile ring of actin and myosin) pinches the cell in two. In plant cells, a <strong>cell plate</strong> forms from the center outward, eventually becoming the new cell wall.</li>
 </ol>
 
-<!-- SVG: Mitosis Phases -->
-<div class="svg-container">
-<svg viewBox="0 0 750 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
-  <rect width="750" height="300" fill="#f8fafc" rx="8"/>
-  <text x="375" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2744">Phases of Mitosis</text>
+<figure style="text-align:center;margin:24px auto;max-width:500px;">
+<svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" style="max-width:100%;height:auto;">
+  <rect width="500" height="220" fill="#F8FAFC" rx="4"/>
 
   <!-- Prophase -->
-  <g transform="translate(20, 50)">
-    <circle cx="55" cy="70" r="50" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5"/>
-    <!-- Condensing chromosomes -->
-    <path d="M35,50 L45,55 L40,70 L50,75" fill="none" stroke="#1a2744" stroke-width="2.5"/>
-    <path d="M55,45 L65,50 L60,65 L70,70" fill="none" stroke="#ef4444" stroke-width="2.5"/>
-    <path d="M45,80 L55,85 L50,95" fill="none" stroke="#1a2744" stroke-width="2.5"/>
-    <!-- Centrosomes at poles -->
-    <circle cx="20" cy="35" r="4" fill="#8b5cf6"/>
-    <circle cx="90" cy="105" r="4" fill="#8b5cf6"/>
-    <text x="55" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Prophase</text>
-    <text x="55" y="155" text-anchor="middle" font-size="8" fill="#64748b">Chromosomes condense</text>
-    <text x="55" y="165" text-anchor="middle" font-size="8" fill="#64748b">Spindle forms</text>
+  <g transform="translate(10, 20)">
+    <circle cx="38" cy="48" r="34" fill="#EBF2FC" stroke="#4A90D9" stroke-width="1.5"/>
+    <path d="M25,35 L32,38 L28,50 L35,52" fill="none" stroke="#1B2A4A" stroke-width="2"/>
+    <path d="M38,32 L45,35 L42,46 L48,48" fill="none" stroke="#CF5B2E" stroke-width="2"/>
+    <circle cx="14" cy="24" r="3" fill="#4A90D9"/>
+    <circle cx="62" cy="72" r="3" fill="#4A90D9"/>
+    <text x="38" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Prophase</text>
+    <text x="38" y="110" text-anchor="middle" font-size="7" fill="#6B7280">Chromosomes condense</text>
   </g>
 
-  <!-- Arrow -->
-  <text x="142" y="125" font-size="18" fill="#0d9488">&rarr;</text>
+  <text x="92" y="72" font-size="14" fill="#2D8659">&#8594;</text>
 
   <!-- Prometaphase -->
-  <g transform="translate(160, 50)">
-    <circle cx="55" cy="70" r="50" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3"/>
-    <!-- Chromosomes with spindle fibers -->
-    <line x1="10" y1="30" x2="45" y2="60" stroke="#c084fc" stroke-width="1"/>
-    <line x1="10" y1="30" x2="40" y2="75" stroke="#c084fc" stroke-width="1"/>
-    <line x1="100" y1="110" x2="65" y2="60" stroke="#c084fc" stroke-width="1"/>
-    <line x1="100" y1="110" x2="70" y2="75" stroke="#c084fc" stroke-width="1"/>
-    <path d="M43,55 L47,55 L47,75 L43,75" fill="#1a2744"/>
-    <path d="M63,55 L67,55 L67,75 L63,75" fill="#ef4444"/>
-    <circle cx="10" cy="30" r="4" fill="#8b5cf6"/>
-    <circle cx="100" cy="110" r="4" fill="#8b5cf6"/>
-    <text x="55" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Prometaphase</text>
-    <text x="55" y="155" text-anchor="middle" font-size="8" fill="#64748b">Envelope breaks</text>
-    <text x="55" y="165" text-anchor="middle" font-size="8" fill="#64748b">Kinetochores attach</text>
+  <g transform="translate(102, 20)">
+    <circle cx="38" cy="48" r="34" fill="#EBF2FC" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <line x1="8" y1="20" x2="30" y2="42" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <line x1="68" y1="76" x2="46" y2="42" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <path d="M30,38 L34,38 L34,54 L30,54" fill="#1B2A4A"/>
+    <path d="M44,38 L48,38 L48,54 L44,54" fill="#CF5B2E"/>
+    <circle cx="8" cy="20" r="3" fill="#4A90D9"/>
+    <circle cx="68" cy="76" r="3" fill="#4A90D9"/>
+    <text x="38" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Prometaphase</text>
+    <text x="38" y="110" text-anchor="middle" font-size="7" fill="#6B7280">Envelope breaks</text>
   </g>
 
-  <text x="282" y="125" font-size="18" fill="#0d9488">&rarr;</text>
+  <text x="184" y="72" font-size="14" fill="#2D8659">&#8594;</text>
 
   <!-- Metaphase -->
-  <g transform="translate(300, 50)">
-    <circle cx="55" cy="70" r="50" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3"/>
-    <!-- Chromosomes aligned at plate -->
-    <rect x="50" y="45" width="10" height="15" fill="#1a2744" rx="1"/>
-    <rect x="50" y="62" width="10" height="15" fill="#ef4444" rx="1"/>
-    <rect x="45" y="78" width="10" height="15" fill="#0d9488" rx="1"/>
-    <!-- Spindle fibers -->
-    <line x1="10" y1="25" x2="52" y2="52" stroke="#c084fc" stroke-width="1"/>
-    <line x1="10" y1="25" x2="48" y2="85" stroke="#c084fc" stroke-width="1"/>
-    <line x1="100" y1="115" x2="58" y2="52" stroke="#c084fc" stroke-width="1"/>
-    <line x1="100" y1="115" x2="53" y2="85" stroke="#c084fc" stroke-width="1"/>
-    <!-- Metaphase plate line (vertical at center) -->
-    <line x1="55" y1="40" x2="55" y2="100" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3 2"/>
-    <circle cx="10" cy="25" r="4" fill="#8b5cf6"/>
-    <circle cx="100" cy="115" r="4" fill="#8b5cf6"/>
-    <text x="55" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Metaphase</text>
-    <text x="55" y="155" text-anchor="middle" font-size="8" fill="#64748b">Chromosomes align</text>
-    <text x="55" y="165" text-anchor="middle" font-size="8" fill="#64748b">at metaphase plate</text>
+  <g transform="translate(194, 20)">
+    <circle cx="38" cy="48" r="34" fill="#EBF2FC" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <rect x="35" y="32" width="6" height="10" fill="#1B2A4A" rx="1"/>
+    <rect x="35" y="44" width="6" height="10" fill="#CF5B2E" rx="1"/>
+    <rect x="32" y="56" width="6" height="10" fill="#2D8659" rx="1"/>
+    <line x1="8" y1="18" x2="36" y2="38" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <line x1="68" y1="78" x2="40" y2="38" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <line x1="38" y1="28" x2="38" y2="68" stroke="#CF5B2E" stroke-width="0.8" stroke-dasharray="2 1"/>
+    <circle cx="8" cy="18" r="3" fill="#4A90D9"/>
+    <circle cx="68" cy="78" r="3" fill="#4A90D9"/>
+    <text x="38" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Metaphase</text>
+    <text x="38" y="110" text-anchor="middle" font-size="7" fill="#6B7280">Align at plate</text>
   </g>
 
-  <text x="422" y="125" font-size="18" fill="#0d9488">&rarr;</text>
+  <text x="276" y="72" font-size="14" fill="#2D8659">&#8594;</text>
 
   <!-- Anaphase -->
-  <g transform="translate(440, 50)">
-    <ellipse cx="55" cy="70" rx="55" ry="50" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3"/>
-    <!-- Chromatids pulling apart -->
-    <rect x="18" y="55" width="5" height="12" fill="#1a2744" rx="1"/>
-    <rect x="18" y="70" width="5" height="12" fill="#ef4444" rx="1"/>
-    <rect x="85" y="55" width="5" height="12" fill="#1a2744" rx="1"/>
-    <rect x="85" y="70" width="5" height="12" fill="#ef4444" rx="1"/>
-    <line x1="5" y1="25" x2="20" y2="60" stroke="#c084fc" stroke-width="1"/>
-    <line x1="105" y1="25" x2="87" y2="60" stroke="#c084fc" stroke-width="1"/>
-    <circle cx="5" cy="25" r="4" fill="#8b5cf6"/>
-    <circle cx="105" cy="25" r="4" fill="#8b5cf6"/>
-    <text x="55" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Anaphase</text>
-    <text x="55" y="155" text-anchor="middle" font-size="8" fill="#64748b">Sisters separate</text>
-    <text x="55" y="165" text-anchor="middle" font-size="8" fill="#64748b">Move to poles</text>
+  <g transform="translate(286, 20)">
+    <ellipse cx="38" cy="48" rx="38" ry="34" fill="#EBF2FC" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <rect x="12" y="40" width="4" height="8" fill="#1B2A4A" rx="1"/>
+    <rect x="12" y="50" width="4" height="8" fill="#CF5B2E" rx="1"/>
+    <rect x="60" y="40" width="4" height="8" fill="#1B2A4A" rx="1"/>
+    <rect x="60" y="50" width="4" height="8" fill="#CF5B2E" rx="1"/>
+    <line x1="4" y1="18" x2="14" y2="42" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <line x1="72" y1="18" x2="62" y2="42" stroke="#4A90D9" stroke-width="0.8" opacity="0.6"/>
+    <circle cx="4" cy="18" r="3" fill="#4A90D9"/>
+    <circle cx="72" cy="18" r="3" fill="#4A90D9"/>
+    <text x="38" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Anaphase</text>
+    <text x="38" y="110" text-anchor="middle" font-size="7" fill="#6B7280">Sisters separate</text>
   </g>
 
-  <text x="562" y="125" font-size="18" fill="#0d9488">&rarr;</text>
+  <text x="370" y="72" font-size="14" fill="#2D8659">&#8594;</text>
 
   <!-- Telophase + Cytokinesis -->
-  <g transform="translate(580, 50)">
-    <!-- Two cells forming -->
-    <circle cx="35" cy="70" r="33" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="95" cy="70" r="33" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
-    <!-- Nuclear envelopes -->
-    <ellipse cx="35" cy="70" rx="15" ry="12" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="1"/>
-    <ellipse cx="95" cy="70" rx="15" ry="12" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="1"/>
-    <!-- Cleavage furrow -->
-    <line x1="65" y1="37" x2="65" y2="103" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 2"/>
-    <text x="65" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Telophase &amp;</text>
-    <text x="65" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Cytokinesis</text>
-    <text x="65" y="168" text-anchor="middle" font-size="8" fill="#64748b">Envelope reforms</text>
-    <text x="65" y="178" text-anchor="middle" font-size="8" fill="#64748b">Two identical cells</text>
+  <g transform="translate(380, 20)">
+    <circle cx="24" cy="48" r="23" fill="#D6EDDF" stroke="#2D8659" stroke-width="1.5"/>
+    <circle cx="68" cy="48" r="23" fill="#D6EDDF" stroke="#2D8659" stroke-width="1.5"/>
+    <ellipse cx="24" cy="48" rx="10" ry="8" fill="#E8E3F3" stroke="#4A90D9" stroke-width="1"/>
+    <ellipse cx="68" cy="48" rx="10" ry="8" fill="#E8E3F3" stroke="#4A90D9" stroke-width="1"/>
+    <line x1="46" y1="25" x2="46" y2="71" stroke="#CF5B2E" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <text x="46" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Telophase &amp;</text>
+    <text x="46" y="110" text-anchor="middle" font-size="9" font-weight="600" fill="#1B2A4A">Cytokinesis</text>
+    <text x="46" y="122" text-anchor="middle" font-size="7" fill="#6B7280">Two identical cells</text>
   </g>
 </svg>
-<div class="svg-caption">Figure 7.1 &mdash; The major phases of mitosis from prophase through cytokinesis.</div>
-</div>
+<figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 7.1 &mdash; The major phases of mitosis from prophase through cytokinesis.</figcaption>
+</figure>
 
 <h3>7.3 Cell Cycle Regulation</h3>
 <p>The cell cycle is tightly regulated by a system of <strong>checkpoints</strong> that ensure each phase is completed correctly before the next begins. The key molecular players are:</p>

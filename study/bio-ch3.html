@@ -122,111 +122,99 @@
 
 <p>Plant cells have <strong>plasmodesmata</strong> &mdash; channels through the cell wall that connect neighboring cells, functionally analogous to gap junctions.</p>
 
-<!-- SVG: Eukaryotic Cell Diagram -->
-<div class="svg-container">
-<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
-  <rect width="700" height="500" fill="#f8fafc" rx="8"/>
-  <text x="350" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2744">Eukaryotic Animal Cell</text>
+<figure style="text-align:center;margin:24px auto;max-width:500px;">
+<svg viewBox="0 0 460 370" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" style="max-width:100%;height:auto;">
+  <rect width="460" height="370" fill="#F8FAFC" rx="4"/>
 
-  <!-- Cell membrane (ellipse) -->
-  <ellipse cx="340" cy="270" rx="310" ry="210" fill="#e0f7f5" stroke="#0d9488" stroke-width="2.5"/>
-  <text x="635" y="160" font-size="10" fill="#0d9488" font-weight="600">Plasma</text>
-  <text x="635" y="172" font-size="10" fill="#0d9488" font-weight="600">Membrane</text>
+  <!-- Cell membrane -->
+  <ellipse cx="225" cy="195" rx="210" ry="155" fill="#EFF7F6" stroke="#2D8659" stroke-width="2"/>
+  <text x="425" y="105" font-size="9" fill="#2D8659" font-weight="600">Plasma</text>
+  <text x="425" y="115" font-size="9" fill="#2D8659" font-weight="600">Membrane</text>
 
   <!-- Nucleus -->
-  <ellipse cx="340" cy="250" rx="90" ry="70" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="340" y="240" text-anchor="middle" font-size="12" font-weight="600" fill="#5b21b6">NUCLEUS</text>
-  <!-- Nucleolus -->
-  <circle cx="360" cy="270" r="18" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
-  <text x="360" y="274" text-anchor="middle" font-size="8" fill="white" font-weight="600">Nucleolus</text>
-  <!-- Nuclear pores -->
-  <circle cx="270" cy="210" r="3" fill="#7c3aed"/>
-  <circle cx="290" cy="195" r="3" fill="#7c3aed"/>
-  <circle cx="400" cy="200" r="3" fill="#7c3aed"/>
-  <text x="268" y="198" font-size="8" fill="#5b21b6">Pores</text>
+  <ellipse cx="225" cy="185" rx="65" ry="52" fill="#E8E3F3" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="225" y="178" text-anchor="middle" font-size="11" font-weight="600" fill="#1B2A4A">NUCLEUS</text>
+  <circle cx="240" cy="200" r="14" fill="#4A90D9" opacity="0.35" stroke="#4A90D9" stroke-width="1"/>
+  <text x="240" y="204" text-anchor="middle" font-size="7" fill="#1B2A4A" font-weight="600">Nucleolus</text>
+  <circle cx="175" cy="152" r="2.5" fill="#4A90D9"/>
+  <circle cx="190" cy="142" r="2.5" fill="#4A90D9"/>
+  <circle cx="268" cy="146" r="2.5" fill="#4A90D9"/>
+  <text x="173" y="142" font-size="7" fill="#4A90D9">Pores</text>
 
   <!-- Rough ER -->
-  <path d="M440 220 Q480 210 470 240 Q460 270 490 260 Q510 250 500 280" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <path d="M448 222 Q488 212 478 242 Q468 272 498 262 Q518 252 508 282" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <!-- Ribosomes on RER -->
-  <circle cx="478" cy="212" r="2" fill="#1e40af"/>
-  <circle cx="470" cy="238" r="2" fill="#1e40af"/>
-  <circle cx="488" cy="257" r="2" fill="#1e40af"/>
-  <circle cx="498" cy="275" r="2" fill="#1e40af"/>
-  <circle cx="462" cy="225" r="2" fill="#1e40af"/>
-  <text x="520" y="250" font-size="9" fill="#1e40af" font-weight="600">Rough ER</text>
+  <path d="M300 165 Q330 158 325 180 Q320 200 340 195" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+  <path d="M306 167 Q336 160 331 182 Q326 202 346 197" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+  <circle cx="328" cy="160" r="1.5" fill="#1B2A4A"/>
+  <circle cx="323" cy="178" r="1.5" fill="#1B2A4A"/>
+  <circle cx="338" cy="193" r="1.5" fill="#1B2A4A"/>
+  <text x="354" y="188" font-size="8" fill="#4A90D9" font-weight="600">Rough ER</text>
 
   <!-- Smooth ER -->
-  <path d="M460 300 Q490 290 485 320 Q480 340 510 335" fill="none" stroke="#60a5fa" stroke-width="2"/>
-  <path d="M468 302 Q498 292 493 322 Q488 342 518 337" fill="none" stroke="#60a5fa" stroke-width="2"/>
-  <text x="525" y="325" font-size="9" fill="#3b82f6" font-weight="600">Smooth ER</text>
+  <path d="M310 220 Q335 212 330 235 Q326 250 348 246" fill="none" stroke="#4A90D9" stroke-width="1.5" opacity="0.6"/>
+  <text x="356" y="242" font-size="8" fill="#4A90D9" font-weight="500">Smooth ER</text>
 
-  <!-- Golgi apparatus -->
-  <g transform="translate(160, 350)">
-    <path d="M0 0 Q50 -10 100 0" fill="none" stroke="#f59e0b" stroke-width="3"/>
-    <path d="M5 12 Q55 2 95 12" fill="none" stroke="#f59e0b" stroke-width="3"/>
-    <path d="M10 24 Q55 14 90 24" fill="none" stroke="#f59e0b" stroke-width="3"/>
-    <path d="M15 36 Q55 26 85 36" fill="none" stroke="#f59e0b" stroke-width="3"/>
-    <!-- Vesicles -->
-    <circle cx="-5" cy="18" r="5" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-    <circle cx="105" cy="8" r="5" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-    <text x="50" y="55" text-anchor="middle" font-size="9" fill="#92400e" font-weight="600">Golgi Apparatus</text>
+  <!-- Golgi -->
+  <g transform="translate(108, 260)">
+    <path d="M0 0 Q35 -8 70 0" fill="none" stroke="#CF5B2E" stroke-width="2"/>
+    <path d="M4 9 Q38 1 66 9" fill="none" stroke="#CF5B2E" stroke-width="2"/>
+    <path d="M8 18 Q38 10 62 18" fill="none" stroke="#CF5B2E" stroke-width="2"/>
+    <circle cx="-3" cy="9" r="3.5" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1"/>
+    <circle cx="73" cy="4" r="3.5" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1"/>
+    <text x="35" y="34" text-anchor="middle" font-size="8" fill="#CF5B2E" font-weight="600">Golgi Apparatus</text>
   </g>
 
   <!-- Mitochondria -->
-  <g transform="translate(100, 170)">
-    <ellipse cx="40" cy="25" rx="40" ry="22" fill="#fecaca" stroke="#ef4444" stroke-width="1.5"/>
-    <!-- Cristae -->
-    <path d="M15 15 Q30 30 15 35" fill="none" stroke="#ef4444" stroke-width="1.2"/>
-    <path d="M30 12 Q45 28 30 38" fill="none" stroke="#ef4444" stroke-width="1.2"/>
-    <path d="M50 14 Q60 25 50 36" fill="none" stroke="#ef4444" stroke-width="1.2"/>
-    <text x="40" y="58" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="600">Mitochondrion</text>
+  <g transform="translate(68, 125)">
+    <ellipse cx="28" cy="18" rx="28" ry="16" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1.5"/>
+    <path d="M10 10 Q22 20 10 26" fill="none" stroke="#CF5B2E" stroke-width="1"/>
+    <path d="M22 8 Q32 18 22 28" fill="none" stroke="#CF5B2E" stroke-width="1"/>
+    <path d="M36 10 Q44 18 36 26" fill="none" stroke="#CF5B2E" stroke-width="1"/>
+    <text x="28" y="44" text-anchor="middle" font-size="8" fill="#CF5B2E" font-weight="600">Mitochondrion</text>
   </g>
 
-  <!-- Another mitochondrion -->
-  <g transform="translate(480, 360)">
-    <ellipse cx="35" cy="20" rx="35" ry="18" fill="#fecaca" stroke="#ef4444" stroke-width="1.5"/>
-    <path d="M12 12 Q25 22 12 28" fill="none" stroke="#ef4444" stroke-width="1.2"/>
-    <path d="M30 10 Q40 20 30 30" fill="none" stroke="#ef4444" stroke-width="1.2"/>
-    <path d="M48 12 Q55 20 48 28" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+  <!-- 2nd mitochondrion -->
+  <g transform="translate(330, 270)">
+    <ellipse cx="24" cy="14" rx="24" ry="13" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1.5"/>
+    <path d="M8 8 Q18 15 8 20" fill="none" stroke="#CF5B2E" stroke-width="1"/>
+    <path d="M22 7 Q30 14 22 21" fill="none" stroke="#CF5B2E" stroke-width="1"/>
   </g>
 
-  <!-- Lysosomes -->
-  <circle cx="550" cy="380" r="16" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="550" y="384" text-anchor="middle" font-size="7" fill="#15803d" font-weight="600">Lysosome</text>
+  <!-- Lysosome -->
+  <circle cx="375" cy="280" r="12" fill="#D6EDDF" stroke="#2D8659" stroke-width="1.5"/>
+  <text x="375" y="283" text-anchor="middle" font-size="7" fill="#2D8659" font-weight="600">Lysosome</text>
 
-  <!-- Centrosome / Centrioles -->
-  <g transform="translate(520, 140)">
-    <rect x="0" y="0" width="12" height="28" rx="2" fill="none" stroke="#6366f1" stroke-width="1.5"/>
-    <rect x="16" y="5" width="12" height="28" rx="2" fill="none" stroke="#6366f1" stroke-width="1.5" transform="rotate(90, 22, 19)"/>
-    <text x="14" y="50" text-anchor="middle" font-size="9" fill="#4f46e5" font-weight="600">Centrosome</text>
+  <!-- Centrosome -->
+  <g transform="translate(355, 100)">
+    <rect x="0" y="0" width="9" height="20" rx="2" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+    <rect x="12" y="3" width="9" height="20" rx="2" fill="none" stroke="#4A90D9" stroke-width="1.5" transform="rotate(90, 16, 13)"/>
+    <text x="10" y="35" text-anchor="middle" font-size="8" fill="#4A90D9" font-weight="600">Centrosome</text>
   </g>
 
-  <!-- Free ribosomes -->
-  <circle cx="440" cy="160" r="3" fill="#475569"/>
-  <circle cx="455" cy="170" r="3" fill="#475569"/>
-  <circle cx="445" cy="180" r="3" fill="#475569"/>
-  <text x="470" y="180" font-size="8" fill="#475569" font-weight="500">Ribosomes</text>
+  <!-- Ribosomes -->
+  <circle cx="300" cy="118" r="2" fill="#6B7280"/>
+  <circle cx="310" cy="126" r="2" fill="#6B7280"/>
+  <circle cx="305" cy="134" r="2" fill="#6B7280"/>
+  <text x="320" y="132" font-size="7" fill="#6B7280">Ribosomes</text>
 
-  <!-- Peroxisomes -->
-  <circle cx="480" cy="310" r="13" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
-  <text x="480" y="314" text-anchor="middle" font-size="7" fill="#854d0e" font-weight="600">Peroxisome</text>
+  <!-- Peroxisome -->
+  <circle cx="330" cy="235" r="10" fill="#FDF4E8" stroke="#CF5B2E" stroke-width="1" opacity="0.7"/>
+  <text x="330" y="238" text-anchor="middle" font-size="6" fill="#CF5B2E" font-weight="600">Peroxisome</text>
 
   <!-- Vesicles -->
-  <circle cx="300" cy="380" r="8" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-  <circle cx="320" cy="395" r="6" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-  <text x="340" y="395" font-size="8" fill="#92400e" font-weight="500">Vesicles</text>
+  <circle cx="200" cy="280" r="5" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1"/>
+  <circle cx="215" cy="290" r="4" fill="#F5DDD5" stroke="#CF5B2E" stroke-width="1"/>
+  <text x="230" y="290" font-size="7" fill="#CF5B2E">Vesicles</text>
 
-  <!-- Cytoskeleton suggestion -->
-  <line x1="100" y1="300" x2="180" y2="350" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
-  <line x1="120" y1="280" x2="200" y2="340" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
-  <line x1="85" y1="350" x2="160" y2="400" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="75" y="420" font-size="9" fill="#64748b" font-weight="500">Cytoskeleton</text>
+  <!-- Cytoskeleton -->
+  <line x1="65" y1="225" x2="120" y2="260" stroke="#6B7280" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+  <line x1="80" y1="210" x2="135" y2="250" stroke="#6B7280" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+  <text x="50" y="310" font-size="8" fill="#6B7280">Cytoskeleton</text>
 
   <!-- Cytoplasm label -->
-  <text x="400" y="430" font-size="10" fill="#64748b" font-style="italic">Cytoplasm</text>
+  <text x="280" y="325" font-size="9" fill="#6B7280" font-style="italic">Cytoplasm</text>
 </svg>
-<div class="svg-caption">Figure 3.1 &mdash; Schematic diagram of a eukaryotic animal cell with major organelles labeled.</div>
+<figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 3.1 &mdash; Schematic diagram of a eukaryotic animal cell with major organelles labeled.</figcaption>
+</figure>
 </div>
 
 <div class="key-points">

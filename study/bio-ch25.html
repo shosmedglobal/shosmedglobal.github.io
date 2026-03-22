@@ -48,25 +48,25 @@
     </ul>
 
     <!-- SVG Diagram: Heart Structure -->
-    <div class="diagram-container">
-      <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" style="max-width:550px;">
+    <figure style="text-align:center;margin:24px auto;max-width:500px;">
+      <svg viewBox="0 0 600 500" font-family="Inter, sans-serif" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
         <!-- Background -->
         <defs>
           <linearGradient id="blueBlood" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#4a6fa5;stop-opacity:1"/>
-            <stop offset="100%" style="stop-color:#6b8fc4;stop-opacity:1"/>
+            <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:#9FC5E8;stop-opacity:1"/>
           </linearGradient>
           <linearGradient id="redBlood" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#d9534f;stop-opacity:1"/>
-            <stop offset="100%" style="stop-color:#e88e8b;stop-opacity:1"/>
+            <stop offset="0%" style="stop-color:#CF5B2E;stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:#F0C4B4;stop-opacity:1"/>
           </linearGradient>
         </defs>
 
         <!-- Heart outline -->
-        <path d="M300,60 C220,60 160,110 160,180 L160,300 C160,390 230,450 300,460 C370,450 440,390 440,300 L440,180 C440,110 380,60 300,60 Z" fill="#fce4e4" stroke="#c0392b" stroke-width="3"/>
+        <path d="M300,60 C220,60 160,110 160,180 L160,300 C160,390 230,450 300,460 C370,450 440,390 440,300 L440,180 C440,110 380,60 300,60 Z" fill="#FDF4F0" stroke="#CF5B2E" stroke-width="3"/>
 
         <!-- Septum -->
-        <line x1="300" y1="80" x2="300" y2="440" stroke="#c0392b" stroke-width="4" stroke-dasharray="8,4"/>
+        <line x1="300" y1="80" x2="300" y2="440" stroke="#CF5B2E" stroke-width="4" stroke-dasharray="8,4"/>
 
         <!-- Right Atrium -->
         <rect x="175" y="90" width="115" height="110" rx="15" fill="url(#blueBlood)" opacity="0.85"/>
@@ -89,57 +89,57 @@
         <text x="367" y="328" text-anchor="middle" fill="white" font-family="Inter" font-size="13" font-weight="700">Ventricle</text>
 
         <!-- Tricuspid Valve -->
-        <line x1="180" y1="210" x2="285" y2="210" stroke="#2c3e50" stroke-width="3"/>
-        <text x="232" y="225" text-anchor="middle" fill="#2c3e50" font-family="Inter" font-size="9" font-weight="600">TRICUSPID</text>
+        <line x1="180" y1="210" x2="285" y2="210" stroke="#1B2A4A" stroke-width="3"/>
+        <text x="232" y="225" text-anchor="middle" fill="#1B2A4A" font-family="Inter" font-size="9" font-weight="600">TRICUSPID</text>
 
         <!-- Mitral (Bicuspid) Valve -->
-        <line x1="315" y1="210" x2="420" y2="210" stroke="#2c3e50" stroke-width="3"/>
-        <text x="367" y="225" text-anchor="middle" fill="#2c3e50" font-family="Inter" font-size="9" font-weight="600">MITRAL (BICUSPID)</text>
+        <line x1="315" y1="210" x2="420" y2="210" stroke="#1B2A4A" stroke-width="3"/>
+        <text x="367" y="225" text-anchor="middle" fill="#1B2A4A" font-family="Inter" font-size="9" font-weight="600">MITRAL (BICUSPID)</text>
 
         <!-- Vessels -->
         <!-- SVC -->
-        <rect x="185" y="30" width="30" height="60" rx="5" fill="#4a6fa5"/>
-        <text x="138" y="55" text-anchor="end" fill="#4a6fa5" font-family="Inter" font-size="10" font-weight="600">SVC</text>
+        <rect x="185" y="30" width="30" height="60" rx="5" fill="#4A90D9"/>
+        <text x="138" y="55" text-anchor="end" fill="#4A90D9" font-family="Inter" font-size="10" font-weight="600">SVC</text>
 
         <!-- IVC -->
-        <rect x="185" y="400" width="30" height="50" rx="5" fill="#4a6fa5"/>
-        <text x="138" y="430" text-anchor="end" fill="#4a6fa5" font-family="Inter" font-size="10" font-weight="600">IVC</text>
+        <rect x="185" y="400" width="30" height="50" rx="5" fill="#4A90D9"/>
+        <text x="138" y="430" text-anchor="end" fill="#4A90D9" font-family="Inter" font-size="10" font-weight="600">IVC</text>
 
         <!-- Pulmonary artery -->
-        <rect x="240" y="30" width="30" height="60" rx="5" fill="#6b8fc4"/>
-        <text x="255" y="22" text-anchor="middle" fill="#4a6fa5" font-family="Inter" font-size="10" font-weight="600">Pulm.</text>
-        <text x="255" y="12" text-anchor="middle" fill="#4a6fa5" font-family="Inter" font-size="10" font-weight="600">Artery</text>
+        <rect x="240" y="30" width="30" height="60" rx="5" fill="#9FC5E8"/>
+        <text x="255" y="22" text-anchor="middle" fill="#4A90D9" font-family="Inter" font-size="10" font-weight="600">Pulm.</text>
+        <text x="255" y="12" text-anchor="middle" fill="#4A90D9" font-family="Inter" font-size="10" font-weight="600">Artery</text>
 
         <!-- Pulmonary Valve (semilunar) -->
-        <line x1="240" y1="88" x2="270" y2="88" stroke="#2c3e50" stroke-width="2.5"/>
-        <text x="218" y="82" text-anchor="end" fill="#2c3e50" font-family="Inter" font-size="8" font-weight="600">PULMONARY VALVE</text>
+        <line x1="240" y1="88" x2="270" y2="88" stroke="#1B2A4A" stroke-width="2.5"/>
+        <text x="218" y="82" text-anchor="end" fill="#1B2A4A" font-family="Inter" font-size="8" font-weight="600">PULMONARY VALVE</text>
 
         <!-- Pulmonary veins -->
-        <rect x="385" y="30" width="30" height="60" rx="5" fill="#e88e8b"/>
-        <text x="400" y="22" text-anchor="middle" fill="#d9534f" font-family="Inter" font-size="10" font-weight="600">Pulm.</text>
-        <text x="400" y="12" text-anchor="middle" fill="#d9534f" font-family="Inter" font-size="10" font-weight="600">Veins</text>
+        <rect x="385" y="30" width="30" height="60" rx="5" fill="#F0C4B4"/>
+        <text x="400" y="22" text-anchor="middle" fill="#CF5B2E" font-family="Inter" font-size="10" font-weight="600">Pulm.</text>
+        <text x="400" y="12" text-anchor="middle" fill="#CF5B2E" font-family="Inter" font-size="10" font-weight="600">Veins</text>
 
         <!-- Aorta -->
-        <rect x="340" y="30" width="35" height="60" rx="5" fill="#d9534f"/>
-        <text x="357" y="22" text-anchor="middle" fill="#d9534f" font-family="Inter" font-size="11" font-weight="700">Aorta</text>
+        <rect x="340" y="30" width="35" height="60" rx="5" fill="#CF5B2E"/>
+        <text x="357" y="22" text-anchor="middle" fill="#CF5B2E" font-family="Inter" font-size="11" font-weight="700">Aorta</text>
 
         <!-- Aortic Valve (semilunar) -->
-        <line x1="340" y1="88" x2="375" y2="88" stroke="#2c3e50" stroke-width="2.5"/>
-        <text x="442" y="82" text-anchor="start" fill="#2c3e50" font-family="Inter" font-size="8" font-weight="600">AORTIC VALVE</text>
+        <line x1="340" y1="88" x2="375" y2="88" stroke="#1B2A4A" stroke-width="2.5"/>
+        <text x="442" y="82" text-anchor="start" fill="#1B2A4A" font-family="Inter" font-size="8" font-weight="600">AORTIC VALVE</text>
 
         <!-- Flow arrows through AV valves (atria to ventricles) -->
-        <polygon points="232,200 225,190 239,190" fill="#2c3e50"/>
-        <polygon points="367,200 360,190 374,190" fill="#2c3e50"/>
+        <polygon points="232,200 225,190 239,190" fill="#1B2A4A"/>
+        <polygon points="367,200 360,190 374,190" fill="#1B2A4A"/>
 
         <!-- Flow arrows out of ventricles (upward to great vessels) -->
-        <polygon points="255,100 248,110 262,110" fill="#2c3e50"/>
-        <polygon points="357,100 350,110 364,110" fill="#2c3e50"/>
+        <polygon points="255,100 248,110 262,110" fill="#1B2A4A"/>
+        <polygon points="357,100 350,110 364,110" fill="#1B2A4A"/>
 
         <!-- Labels -->
-        <text x="300" y="485" text-anchor="middle" fill="#64748b" font-family="Inter" font-size="11" font-style="italic">Blue = deoxygenated blood &nbsp; | &nbsp; Red = oxygenated blood</text>
+        <text x="300" y="485" text-anchor="middle" fill="#6B7280" font-family="Inter" font-size="11" font-style="italic">Blue = deoxygenated blood &nbsp; | &nbsp; Red = oxygenated blood</text>
       </svg>
-      <p class="diagram-caption">Figure 25.1 &mdash; Schematic diagram of the four-chambered human heart showing chambers, valves, and major vessels.</p>
-    </div>
+      <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 25.1 &mdash; Schematic diagram of the four-chambered human heart showing chambers, valves, and major vessels.</figcaption>
+    </figure>
 
     <h3>Blood Circulation: Pulmonary and Systemic Circuits</h3>
     <p>The circulatory system operates as two connected loops:</p>

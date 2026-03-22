@@ -132,120 +132,82 @@
         <li><strong>Positive regulation by CAP:</strong> Even when lactose is present, the lac operon is transcribed at high levels only when glucose is absent. When glucose is low, cyclic AMP (cAMP) levels rise. cAMP binds to the <strong>Catabolite Activator Protein (CAP)</strong>, and this CAP-cAMP complex binds upstream of the promoter, enhancing RNA polymerase binding and boosting transcription. This ensures that bacteria use glucose first (the preferred energy source) before turning to lactose.</li>
     </ol>
 
-    <!-- SVG: Lac Operon Diagram -->
-    <div class="diagram-container">
-        <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" style="max-width:750px;">
-            <!-- Title -->
-            <text x="400" y="28" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#1a2744">The Lac Operon &mdash; Inducible Gene Regulation</text>
+    <figure style="text-align:center;margin:24px auto;max-width:500px;">
+    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif" style="max-width:100%;height:auto;">
+        <defs><marker id="arrB11" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#4A90D9"/></marker></defs>
 
-            <!-- STATE 1: Operon OFF -->
-            <text x="400" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#dc2626">State 1: No Lactose &mdash; Operon OFF</text>
+        <!-- STATE 1: OFF -->
+        <text x="250" y="16" text-anchor="middle" font-size="11" font-weight="600" fill="#CF5B2E">No Lactose &mdash; Operon OFF</text>
 
-            <!-- DNA backbone -->
-            <rect x="50" y="80" width="700" height="14" rx="7" fill="#e2e8f0"/>
+        <!-- DNA backbone -->
+        <rect x="20" y="30" width="460" height="10" rx="5" fill="#E2E8F0"/>
+        <!-- Genes -->
+        <rect x="25" y="27" width="52" height="16" rx="4" fill="#4A90D9" opacity="0.85"/>
+        <text x="51" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacI</text>
+        <rect x="90" y="27" width="46" height="16" rx="4" fill="#4A90D9"/>
+        <text x="113" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">Promoter</text>
+        <rect x="142" y="27" width="46" height="16" rx="4" fill="#CF5B2E" opacity="0.85"/>
+        <text x="165" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">Operator</text>
+        <rect x="196" y="27" width="78" height="16" rx="4" fill="#2D8659"/>
+        <text x="235" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacZ</text>
+        <rect x="280" y="27" width="68" height="16" rx="4" fill="#2D8659"/>
+        <text x="314" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacY</text>
+        <rect x="354" y="27" width="68" height="16" rx="4" fill="#2D8659"/>
+        <text x="388" y="39" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacA</text>
 
-            <!-- Regulatory gene -->
-            <rect x="60" y="75" width="80" height="24" rx="5" fill="#7c3aed" opacity="0.85"/>
-            <text x="100" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacI</text>
+        <!-- Repressor blocking -->
+        <ellipse cx="165" cy="62" rx="22" ry="12" fill="#CF5B2E" opacity="0.6"/>
+        <text x="165" y="65" text-anchor="middle" font-size="7" fill="white" font-weight="600">Repressor</text>
+        <line x1="165" y1="43" x2="165" y2="50" stroke="#CF5B2E" stroke-width="1.5" stroke-dasharray="3"/>
+        <text x="100" y="60" font-size="7" fill="#4A90D9">RNA Pol</text>
+        <text x="140" y="60" font-size="10" fill="#CF5B2E" font-weight="700">&#x2717;</text>
+        <text x="330" y="62" font-size="9" fill="#6B7280" font-style="italic">No transcription</text>
 
-            <!-- Promoter -->
-            <rect x="180" y="75" width="70" height="24" rx="5" fill="#2563eb" opacity="0.85"/>
-            <text x="215" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">Promoter</text>
+        <!-- STATE 2: ON -->
+        <text x="250" y="102" text-anchor="middle" font-size="11" font-weight="600" fill="#2D8659">Lactose Present &mdash; Operon ON</text>
 
-            <!-- Operator -->
-            <rect x="260" y="75" width="70" height="24" rx="5" fill="#dc2626" opacity="0.85"/>
-            <text x="295" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">Operator</text>
+        <!-- DNA backbone -->
+        <rect x="20" y="115" width="460" height="10" rx="5" fill="#E2E8F0"/>
+        <!-- Genes -->
+        <rect x="25" y="112" width="52" height="16" rx="4" fill="#4A90D9" opacity="0.85"/>
+        <text x="51" y="124" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacI</text>
+        <rect x="82" y="112" width="20" height="16" rx="4" fill="#CF5B2E" opacity="0.6"/>
+        <text x="92" y="124" text-anchor="middle" font-size="7" fill="white" font-weight="700">CAP</text>
+        <rect x="106" y="112" width="44" height="16" rx="4" fill="#4A90D9"/>
+        <text x="128" y="124" text-anchor="middle" font-size="8" fill="white" font-weight="600">Promoter</text>
+        <rect x="154" y="112" width="44" height="16" rx="4" fill="#D6EDDF" stroke="#2D8659" stroke-width="1" stroke-dasharray="3"/>
+        <text x="176" y="124" text-anchor="middle" font-size="8" fill="#2D8659" font-weight="600">Operator</text>
+        <rect x="204" y="112" width="78" height="16" rx="4" fill="#2D8659"/>
+        <text x="243" y="124" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacZ</text>
+        <rect x="288" y="112" width="68" height="16" rx="4" fill="#2D8659"/>
+        <text x="322" y="124" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacY</text>
+        <rect x="362" y="112" width="68" height="16" rx="4" fill="#2D8659"/>
+        <text x="396" y="124" text-anchor="middle" font-size="8" fill="white" font-weight="600">lacA</text>
 
-            <!-- Structural genes -->
-            <rect x="345" y="75" width="110" height="24" rx="5" fill="#0d9488"/>
-            <text x="400" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacZ</text>
-            <rect x="465" y="75" width="100" height="24" rx="5" fill="#0d9488"/>
-            <text x="515" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacY</text>
-            <rect x="575" y="75" width="100" height="24" rx="5" fill="#0d9488"/>
-            <text x="625" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacA</text>
+        <!-- RNA Pol active -->
+        <rect x="110" y="135" width="42" height="14" rx="7" fill="#4A90D9"/>
+        <text x="131" y="145" text-anchor="middle" font-size="7" fill="white" font-weight="600">RNA Pol</text>
+        <line x1="155" y1="142" x2="200" y2="142" stroke="#4A90D9" stroke-width="1.5" marker-end="url(#arrB11)"/>
 
-            <!-- Repressor protein blocking operator -->
-            <ellipse cx="295" cy="130" rx="30" ry="18" fill="#dc2626" opacity="0.7"/>
-            <text x="295" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="white" font-weight="600">Repressor</text>
-            <line x1="295" y1="99" x2="295" y2="112" stroke="#dc2626" stroke-width="2" stroke-dasharray="4"/>
+        <!-- Inactivated repressor -->
+        <ellipse cx="176" cy="168" rx="18" ry="10" fill="#CF5B2E" opacity="0.25"/>
+        <text x="176" y="171" text-anchor="middle" font-size="6" fill="#CF5B2E">Repressor</text>
+        <circle cx="198" cy="165" r="7" fill="#CF5B2E" opacity="0.5"/>
+        <text x="198" y="168" text-anchor="middle" font-size="6" fill="white" font-weight="700">Allo</text>
+        <text x="255" y="170" font-size="8" fill="#6B7280">Allolactose inactivates repressor</text>
 
-            <!-- RNA Pol blocked -->
-            <rect x="185" y="115" width="55" height="18" rx="9" fill="#2563eb" opacity="0.5"/>
-            <text x="212" y="128" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="white" font-weight="600">RNA Pol</text>
-            <text x="252" y="128" font-family="Inter, sans-serif" font-size="14" fill="#dc2626" font-weight="700">&#x2717;</text>
+        <text x="310" y="150" font-size="9" fill="#2D8659" font-weight="600">mRNA &#8594; Enzymes produced</text>
 
-            <text x="520" y="130" font-family="Inter, sans-serif" font-size="11" fill="#6b7280" font-style="italic">No transcription</text>
-
-            <!-- STATE 2: Operon ON -->
-            <text x="400" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#16a34a">State 2: Lactose Present &mdash; Operon ON</text>
-
-            <!-- DNA backbone -->
-            <rect x="50" y="205" width="700" height="14" rx="7" fill="#e2e8f0"/>
-
-            <!-- Regulatory gene -->
-            <rect x="60" y="200" width="80" height="24" rx="5" fill="#7c3aed" opacity="0.85"/>
-            <text x="100" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacI</text>
-
-            <!-- CAP binding site -->
-            <rect x="155" y="200" width="30" height="24" rx="5" fill="#f59e0b" opacity="0.85"/>
-            <text x="170" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="white" font-weight="700">CAP</text>
-
-            <!-- Promoter -->
-            <rect x="192" y="200" width="65" height="24" rx="5" fill="#2563eb" opacity="0.85"/>
-            <text x="224" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">Promoter</text>
-
-            <!-- Operator (empty) -->
-            <rect x="265" y="200" width="65" height="24" rx="5" fill="#86efac" opacity="0.6" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-            <text x="297" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#16a34a" font-weight="600">Operator</text>
-
-            <!-- Structural genes -->
-            <rect x="345" y="200" width="110" height="24" rx="5" fill="#0d9488"/>
-            <text x="400" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacZ</text>
-            <rect x="465" y="200" width="100" height="24" rx="5" fill="#0d9488"/>
-            <text x="515" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacY</text>
-            <rect x="575" y="200" width="100" height="24" rx="5" fill="#0d9488"/>
-            <text x="625" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="white" font-weight="600">lacA</text>
-
-            <!-- RNA Pol active -->
-            <rect x="197" y="240" width="60" height="18" rx="9" fill="#2563eb"/>
-            <text x="227" y="253" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="white" font-weight="600">RNA Pol</text>
-            <path d="M260 249 L340 249" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
-
-            <!-- Allolactose binding to repressor (inactivated) -->
-            <ellipse cx="295" cy="280" rx="28" ry="16" fill="#dc2626" opacity="0.3"/>
-            <text x="295" y="284" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#dc2626">Repressor</text>
-            <circle cx="330" cy="275" r="10" fill="#f59e0b" opacity="0.8"/>
-            <text x="330" y="279" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="white" font-weight="700">Allo</text>
-            <text x="380" y="282" font-family="Inter, sans-serif" font-size="9" fill="#6b7280">Allolactose inactivates repressor</text>
-
-            <!-- mRNA arrow -->
-            <text x="500" y="255" font-family="Inter, sans-serif" font-size="11" fill="#16a34a" font-weight="600">mRNA transcribed &#x2192; Enzymes produced</text>
-
-            <!-- Arrowhead definition -->
-            <defs>
-                <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                    <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
-                </marker>
-            </defs>
-
-            <!-- Legend -->
-            <rect x="50" y="310" width="700" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
-            <text x="70" y="332" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1a2744">Legend:</text>
-            <rect x="130" y="322" width="14" height="14" rx="3" fill="#7c3aed" opacity="0.85"/>
-            <text x="150" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">Regulatory gene</text>
-            <rect x="240" y="322" width="14" height="14" rx="3" fill="#2563eb" opacity="0.85"/>
-            <text x="260" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">Promoter</text>
-            <rect x="320" y="322" width="14" height="14" rx="3" fill="#dc2626" opacity="0.85"/>
-            <text x="340" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">Operator</text>
-            <rect x="400" y="322" width="14" height="14" rx="3" fill="#0d9488"/>
-            <text x="420" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">Structural genes</text>
-            <rect x="520" y="322" width="14" height="14" rx="3" fill="#f59e0b" opacity="0.85"/>
-            <text x="540" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">CAP / Inducer</text>
-            <rect x="620" y="322" width="14" height="14" rx="3" fill="#2563eb"/>
-            <text x="640" y="334" font-family="Inter, sans-serif" font-size="9" fill="#475569">RNA Polymerase</text>
-        </svg>
-        <div class="diagram-caption">Figure 11.1 &mdash; The lac operon in two states: repressed (no lactose) and induced (lactose present).</div>
-    </div>
+        <!-- Legend -->
+        <rect x="20" y="195" width="460" height="40" rx="4" fill="white" stroke="#E2E8F0"/>
+        <text x="35" y="212" font-size="8" font-weight="600" fill="#1B2A4A">Legend:</text>
+        <rect x="75" y="204" width="10" height="10" rx="2" fill="#4A90D9"/><text x="90" y="213" font-size="7" fill="#6B7280">Reg. gene / Promoter</text>
+        <rect x="175" y="204" width="10" height="10" rx="2" fill="#CF5B2E"/><text x="190" y="213" font-size="7" fill="#6B7280">Operator / CAP</text>
+        <rect x="260" y="204" width="10" height="10" rx="2" fill="#2D8659"/><text x="275" y="213" font-size="7" fill="#6B7280">Structural genes</text>
+        <rect x="355" y="204" width="10" height="10" rx="2" fill="#4A90D9"/><text x="370" y="213" font-size="7" fill="#6B7280">RNA Polymerase</text>
+    </svg>
+    <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 11.1 &mdash; The lac operon in two states: repressed (no lactose) and induced (lactose present).</figcaption>
+    </figure>
 
     <h4>The Trp Operon (Repressible System)</h4>
 

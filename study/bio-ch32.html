@@ -115,51 +115,51 @@
   <h4>Action Potential</h4>
   <p>An action potential is a rapid, brief reversal of the membrane potential that travels along the axon like a wave. It follows an all-or-nothing principle: either it fires fully or not at all.</p>
 
-  <div class="diagram">
-    <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" style="max-width:650px;">
+  <figure style="text-align:center;margin:24px auto;max-width:500px;">
+    <svg viewBox="0 0 700 420" font-family="Inter, sans-serif" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
       <!-- Axes -->
-      <line x1="80" y1="350" x2="680" y2="350" stroke="#1a2744" stroke-width="2"/>
-      <line x1="80" y1="350" x2="80" y2="30" stroke="#1a2744" stroke-width="2"/>
+      <line x1="80" y1="350" x2="680" y2="350" stroke="#1B2A4A" stroke-width="2"/>
+      <line x1="80" y1="350" x2="80" y2="30" stroke="#1B2A4A" stroke-width="2"/>
       <!-- Axis labels -->
-      <text x="380" y="410" text-anchor="middle" font-family="Inter" font-size="14" fill="#1a2744" font-weight="600">Time (ms)</text>
-      <text x="30" y="190" text-anchor="middle" font-family="Inter" font-size="14" fill="#1a2744" font-weight="600" transform="rotate(-90,30,190)">Membrane Potential (mV)</text>
+      <text x="380" y="410" text-anchor="middle" font-family="Inter" font-size="14" fill="#1B2A4A" font-weight="600">Time (ms)</text>
+      <text x="30" y="190" text-anchor="middle" font-family="Inter" font-size="14" fill="#1B2A4A" font-weight="600" transform="rotate(-90,30,190)">Membrane Potential (mV)</text>
       <!-- Y-axis tick labels -->
-      <text x="72" y="345" text-anchor="end" font-family="Inter" font-size="12" fill="#4a5260">-70</text>
-      <text x="72" y="278" text-anchor="end" font-family="Inter" font-size="12" fill="#4a5260">-55</text>
-      <text x="72" y="200" text-anchor="end" font-family="Inter" font-size="12" fill="#4a5260">0</text>
-      <text x="72" y="100" text-anchor="end" font-family="Inter" font-size="12" fill="#4a5260">+30</text>
+      <text x="72" y="345" text-anchor="end" font-family="Inter" font-size="12" fill="#6B7280">-70</text>
+      <text x="72" y="278" text-anchor="end" font-family="Inter" font-size="12" fill="#6B7280">-55</text>
+      <text x="72" y="200" text-anchor="end" font-family="Inter" font-size="12" fill="#6B7280">0</text>
+      <text x="72" y="100" text-anchor="end" font-family="Inter" font-size="12" fill="#6B7280">+30</text>
       <!-- Threshold dashed line -->
-      <line x1="80" y1="275" x2="680" y2="275" stroke="#c8964e" stroke-width="1.5" stroke-dasharray="6,4"/>
-      <text x="685" y="280" font-family="Inter" font-size="11" fill="#c8964e" font-weight="600">Threshold (-55 mV)</text>
+      <line x1="80" y1="275" x2="680" y2="275" stroke="#CF5B2E" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <text x="685" y="280" font-family="Inter" font-size="11" fill="#CF5B2E" font-weight="600">Threshold (-55 mV)</text>
       <!-- Resting potential dashed line -->
       <line x1="80" y1="340" x2="680" y2="340" stroke="#6b7280" stroke-width="1" stroke-dasharray="4,4"/>
       <!-- Y-axis tick for -80 mV (hyperpolarization) -->
-      <text x="72" y="365" text-anchor="end" font-family="Inter" font-size="12" fill="#4a5260">-80</text>
-      <line x1="76" y1="362" x2="84" y2="362" stroke="#1a2744" stroke-width="1"/>
+      <text x="72" y="365" text-anchor="end" font-family="Inter" font-size="12" fill="#6B7280">-80</text>
+      <line x1="76" y1="362" x2="84" y2="362" stroke="#1B2A4A" stroke-width="1"/>
       <!-- Y-axis ticks for other values -->
-      <line x1="76" y1="340" x2="84" y2="340" stroke="#1a2744" stroke-width="1"/>
-      <line x1="76" y1="275" x2="84" y2="275" stroke="#1a2744" stroke-width="1"/>
-      <line x1="76" y1="200" x2="84" y2="200" stroke="#1a2744" stroke-width="1"/>
-      <line x1="76" y1="95" x2="84" y2="95" stroke="#1a2744" stroke-width="1"/>
+      <line x1="76" y1="340" x2="84" y2="340" stroke="#1B2A4A" stroke-width="1"/>
+      <line x1="76" y1="275" x2="84" y2="275" stroke="#1B2A4A" stroke-width="1"/>
+      <line x1="76" y1="200" x2="84" y2="200" stroke="#1B2A4A" stroke-width="1"/>
+      <line x1="76" y1="95" x2="84" y2="95" stroke="#1B2A4A" stroke-width="1"/>
       <!-- Action potential curve (fixed: hyperpolarization dips to ~-80mV at y=362) -->
-      <path d="M80,340 L180,340 Q200,340 220,275 L260,95 Q270,70 280,95 L340,340 Q355,370 370,362 Q390,358 410,340 L680,340" fill="none" stroke="#0d8a8a" stroke-width="3"/>
+      <path d="M80,340 L180,340 Q200,340 220,275 L260,95 Q270,70 280,95 L340,340 Q355,370 370,362 Q390,358 410,340 L680,340" fill="none" stroke="#2D8659" stroke-width="3"/>
       <!-- Phase labels -->
-      <text x="130" y="330" text-anchor="middle" font-family="Inter" font-size="11" fill="#4a5260" font-weight="600">Resting</text>
-      <text x="130" y="345" text-anchor="middle" font-family="Inter" font-size="10" fill="#4a5260">(-70 mV)</text>
-      <text x="240" y="170" text-anchor="middle" font-family="Inter" font-size="11" fill="#0d8a8a" font-weight="700">Depolarization</text>
-      <text x="230" y="185" text-anchor="middle" font-family="Inter" font-size="10" fill="#0d8a8a">(Na+ rushes in)</text>
-      <text x="270" y="65" text-anchor="middle" font-family="Inter" font-size="10" fill="#0d8a8a" font-weight="600">Peak (+30 mV)</text>
-      <text x="320" y="170" text-anchor="middle" font-family="Inter" font-size="11" fill="#1a2744" font-weight="700">Repolarization</text>
-      <text x="320" y="185" text-anchor="middle" font-family="Inter" font-size="10" fill="#1a2744">(K+ flows out)</text>
-      <text x="385" y="382" text-anchor="middle" font-family="Inter" font-size="10" fill="#7c3aed" font-weight="600">Hyperpolarization</text>
-      <text x="385" y="395" text-anchor="middle" font-family="Inter" font-size="9" fill="#7c3aed">(~-80 mV undershoot)</text>
-      <text x="550" y="330" text-anchor="middle" font-family="Inter" font-size="11" fill="#4a5260" font-weight="600">Resting restored</text>
+      <text x="130" y="330" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280" font-weight="600">Resting</text>
+      <text x="130" y="345" text-anchor="middle" font-family="Inter" font-size="10" fill="#6B7280">(-70 mV)</text>
+      <text x="240" y="170" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D8659" font-weight="700">Depolarization</text>
+      <text x="230" y="185" text-anchor="middle" font-family="Inter" font-size="10" fill="#2D8659">(Na+ rushes in)</text>
+      <text x="270" y="65" text-anchor="middle" font-family="Inter" font-size="10" fill="#2D8659" font-weight="600">Peak (+30 mV)</text>
+      <text x="320" y="170" text-anchor="middle" font-family="Inter" font-size="11" fill="#1B2A4A" font-weight="700">Repolarization</text>
+      <text x="320" y="185" text-anchor="middle" font-family="Inter" font-size="10" fill="#1B2A4A">(K+ flows out)</text>
+      <text x="385" y="382" text-anchor="middle" font-family="Inter" font-size="10" fill="#4A90D9" font-weight="600">Hyperpolarization</text>
+      <text x="385" y="395" text-anchor="middle" font-family="Inter" font-size="9" fill="#4A90D9">(~-80 mV undershoot)</text>
+      <text x="550" y="330" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280" font-weight="600">Resting restored</text>
       <!-- Arrows -->
-      <polygon points="255,120 260,95 265,120" fill="#0d8a8a"/>
-      <polygon points="330,300 335,320 340,300" fill="#1a2744"/>
+      <polygon points="255,120 260,95 265,120" fill="#2D8659"/>
+      <polygon points="330,300 335,320 340,300" fill="#1B2A4A"/>
     </svg>
-    <div class="diagram-caption">Figure 32.1 &mdash; The action potential: a rapid depolarization followed by repolarization of the neuron membrane.</div>
-  </div>
+    <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 32.1 &mdash; The action potential: a rapid depolarization followed by repolarization of the neuron membrane.</figcaption>
+    </figure>
 
   <p>The stages of an action potential:</p>
   <ol>
@@ -210,53 +210,53 @@
   </div>
 
   <!-- Neuron SVG Diagram -->
-  <div class="diagram">
-    <svg viewBox="0 0 750 320" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+  <figure style="text-align:center;margin:24px auto;max-width:500px;">
+    <svg viewBox="0 0 750 320" font-family="Inter, sans-serif" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
       <!-- Dendrites -->
-      <line x1="60" y1="100" x2="130" y2="140" stroke="#0d8a8a" stroke-width="3"/>
-      <line x1="50" y1="140" x2="130" y2="150" stroke="#0d8a8a" stroke-width="3"/>
-      <line x1="60" y1="190" x2="130" y2="165" stroke="#0d8a8a" stroke-width="3"/>
-      <line x1="70" y1="220" x2="130" y2="175" stroke="#0d8a8a" stroke-width="3"/>
-      <line x1="40" y1="160" x2="130" y2="155" stroke="#0d8a8a" stroke-width="2.5"/>
+      <line x1="60" y1="100" x2="130" y2="140" stroke="#2D8659" stroke-width="3"/>
+      <line x1="50" y1="140" x2="130" y2="150" stroke="#2D8659" stroke-width="3"/>
+      <line x1="60" y1="190" x2="130" y2="165" stroke="#2D8659" stroke-width="3"/>
+      <line x1="70" y1="220" x2="130" y2="175" stroke="#2D8659" stroke-width="3"/>
+      <line x1="40" y1="160" x2="130" y2="155" stroke="#2D8659" stroke-width="2.5"/>
       <!-- Cell body -->
-      <ellipse cx="170" cy="155" rx="45" ry="40" fill="#e6f7f7" stroke="#0d8a8a" stroke-width="2.5"/>
-      <ellipse cx="170" cy="155" rx="18" ry="15" fill="#0d8a8a" opacity="0.3"/>
-      <text x="170" y="160" text-anchor="middle" font-family="Inter" font-size="10" fill="#1a2744" font-weight="600">Nucleus</text>
+      <ellipse cx="170" cy="155" rx="45" ry="40" fill="#e6f7f7" stroke="#2D8659" stroke-width="2.5"/>
+      <ellipse cx="170" cy="155" rx="18" ry="15" fill="#2D8659" opacity="0.3"/>
+      <text x="170" y="160" text-anchor="middle" font-family="Inter" font-size="10" fill="#1B2A4A" font-weight="600">Nucleus</text>
       <!-- Axon hillock -->
-      <path d="M215,155 L240,155" stroke="#1a2744" stroke-width="4"/>
+      <path d="M215,155 L240,155" stroke="#1B2A4A" stroke-width="4"/>
       <!-- Axon with myelin -->
-      <line x1="240" y1="155" x2="600" y2="155" stroke="#1a2744" stroke-width="3"/>
+      <line x1="240" y1="155" x2="600" y2="155" stroke="#1B2A4A" stroke-width="3"/>
       <!-- Myelin sheaths -->
-      <rect x="255" y="140" width="50" height="30" rx="12" fill="#c8964e" opacity="0.35" stroke="#c8964e" stroke-width="1.5"/>
-      <rect x="330" y="140" width="50" height="30" rx="12" fill="#c8964e" opacity="0.35" stroke="#c8964e" stroke-width="1.5"/>
-      <rect x="405" y="140" width="50" height="30" rx="12" fill="#c8964e" opacity="0.35" stroke="#c8964e" stroke-width="1.5"/>
-      <rect x="480" y="140" width="50" height="30" rx="12" fill="#c8964e" opacity="0.35" stroke="#c8964e" stroke-width="1.5"/>
+      <rect x="255" y="140" width="50" height="30" rx="12" fill="#CF5B2E" opacity="0.35" stroke="#CF5B2E" stroke-width="1.5"/>
+      <rect x="330" y="140" width="50" height="30" rx="12" fill="#CF5B2E" opacity="0.35" stroke="#CF5B2E" stroke-width="1.5"/>
+      <rect x="405" y="140" width="50" height="30" rx="12" fill="#CF5B2E" opacity="0.35" stroke="#CF5B2E" stroke-width="1.5"/>
+      <rect x="480" y="140" width="50" height="30" rx="12" fill="#CF5B2E" opacity="0.35" stroke="#CF5B2E" stroke-width="1.5"/>
       <!-- Nodes of Ranvier labels -->
       <line x1="317" y1="135" x2="317" y2="118" stroke="#6b7280" stroke-width="1"/>
       <text x="317" y="113" text-anchor="middle" font-family="Inter" font-size="9" fill="#6b7280">Node of Ranvier</text>
       <!-- Axon terminals -->
-      <line x1="600" y1="155" x2="640" y2="130" stroke="#1a2744" stroke-width="2.5"/>
-      <line x1="600" y1="155" x2="640" y2="155" stroke="#1a2744" stroke-width="2.5"/>
-      <line x1="600" y1="155" x2="640" y2="180" stroke="#1a2744" stroke-width="2.5"/>
-      <circle cx="650" cy="125" r="10" fill="#dc2626" opacity="0.4" stroke="#dc2626" stroke-width="1.5"/>
-      <circle cx="650" cy="155" r="10" fill="#dc2626" opacity="0.4" stroke="#dc2626" stroke-width="1.5"/>
-      <circle cx="650" cy="185" r="10" fill="#dc2626" opacity="0.4" stroke="#dc2626" stroke-width="1.5"/>
+      <line x1="600" y1="155" x2="640" y2="130" stroke="#1B2A4A" stroke-width="2.5"/>
+      <line x1="600" y1="155" x2="640" y2="155" stroke="#1B2A4A" stroke-width="2.5"/>
+      <line x1="600" y1="155" x2="640" y2="180" stroke="#1B2A4A" stroke-width="2.5"/>
+      <circle cx="650" cy="125" r="10" fill="#CF5B2E" opacity="0.4" stroke="#CF5B2E" stroke-width="1.5"/>
+      <circle cx="650" cy="155" r="10" fill="#CF5B2E" opacity="0.4" stroke="#CF5B2E" stroke-width="1.5"/>
+      <circle cx="650" cy="185" r="10" fill="#CF5B2E" opacity="0.4" stroke="#CF5B2E" stroke-width="1.5"/>
       <!-- Labels -->
-      <text x="55" y="85" font-family="Inter" font-size="12" fill="#0d8a8a" font-weight="700">Dendrites</text>
-      <text x="150" y="215" text-anchor="middle" font-family="Inter" font-size="12" fill="#0d8a8a" font-weight="700">Cell Body</text>
-      <text x="230" y="190" font-family="Inter" font-size="10" fill="#1a2744" font-weight="600">Axon hillock</text>
-      <text x="380" y="195" text-anchor="middle" font-family="Inter" font-size="12" fill="#1a2744" font-weight="700">Axon</text>
-      <text x="280" y="200" text-anchor="middle" font-family="Inter" font-size="10" fill="#c8964e" font-weight="600">Myelin sheath</text>
-      <text x="280" y="213" text-anchor="middle" font-family="Inter" font-size="9" fill="#c8964e">(Schwann cells)</text>
-      <text x="665" y="155" font-family="Inter" font-size="10" fill="#dc2626" font-weight="600">Synaptic</text>
-      <text x="665" y="167" font-family="Inter" font-size="10" fill="#dc2626" font-weight="600">terminals</text>
+      <text x="55" y="85" font-family="Inter" font-size="12" fill="#2D8659" font-weight="700">Dendrites</text>
+      <text x="150" y="215" text-anchor="middle" font-family="Inter" font-size="12" fill="#2D8659" font-weight="700">Cell Body</text>
+      <text x="230" y="190" font-family="Inter" font-size="10" fill="#1B2A4A" font-weight="600">Axon hillock</text>
+      <text x="380" y="195" text-anchor="middle" font-family="Inter" font-size="12" fill="#1B2A4A" font-weight="700">Axon</text>
+      <text x="280" y="200" text-anchor="middle" font-family="Inter" font-size="10" fill="#CF5B2E" font-weight="600">Myelin sheath</text>
+      <text x="280" y="213" text-anchor="middle" font-family="Inter" font-size="9" fill="#CF5B2E">(Schwann cells)</text>
+      <text x="665" y="155" font-family="Inter" font-size="10" fill="#CF5B2E" font-weight="600">Synaptic</text>
+      <text x="665" y="167" font-family="Inter" font-size="10" fill="#CF5B2E" font-weight="600">terminals</text>
       <!-- Direction arrow -->
-      <defs><marker id="neuronArr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#1a2744"/></marker></defs>
-      <line x1="250" y1="230" x2="570" y2="230" stroke="#1a2744" stroke-width="2" marker-end="url(#neuronArr)"/>
-      <text x="410" y="250" text-anchor="middle" font-family="Inter" font-size="11" fill="#1a2744" font-weight="600">Direction of nerve impulse</text>
+      <defs><marker id="neuronArr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#1B2A4A"/></marker></defs>
+      <line x1="250" y1="230" x2="570" y2="230" stroke="#1B2A4A" stroke-width="2" marker-end="url(#neuronArr)"/>
+      <text x="410" y="250" text-anchor="middle" font-family="Inter" font-size="11" fill="#1B2A4A" font-weight="600">Direction of nerve impulse</text>
     </svg>
-    <div class="diagram-caption">Figure 32.2 &mdash; Structure of a typical motor neuron showing dendrites, cell body, myelinated axon, and axon terminals.</div>
-  </div>
+    <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 32.2 &mdash; Structure of a typical motor neuron showing dendrites, cell body, myelinated axon, and axon terminals.</figcaption>
+    </figure>
 
   <div class="key-points">
     <div class="key-points-title">Key Points &mdash; Nervous System Structure and Function</div>
