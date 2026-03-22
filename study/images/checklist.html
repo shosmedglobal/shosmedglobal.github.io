@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOS Med Global - Study Guide Image Checklist</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1a365d;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .progress-bar-container {
+            background: #e2e8f0;
+            border-radius: 12px;
+            height: 28px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #38a169, #2f855a);
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85em;
+            min-width: 60px;
+        }
+        .stats {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .stats span { font-weight: 700; color: #1a365d; }
+        .section-header {
+            background: #1a365d;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-header .section-count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .checklist {
+            background: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            border-bottom: 1px solid #edf2f7;
+            transition: background 0.2s;
+        }
+        .item:hover { background: #f7fafc; }
+        .item:last-child { border-bottom: none; }
+        .item.done { background: #f0fff4; }
+        .item.done .item-title { text-decoration: line-through; color: #999; }
+        .item.done .item-filename { color: #aaa; }
+        .item.already-have { background: #ebf8ff; }
+        .item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 14px;
+            cursor: pointer;
+            accent-color: #38a169;
+            flex-shrink: 0;
+        }
+        .item-info { flex: 1; }
+        .item-title {
+            font-weight: 600;
+            font-size: 0.95em;
+            color: #2d3748;
+        }
+        .item-filename {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.8em;
+            color: #718096;
+            margin-top: 2px;
+        }
+        .badge {
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        .badge-have {
+            background: #bee3f8;
+            color: #2a69ac;
+        }
+        .badge-todo {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        .badge-done {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .controls {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .controls button {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: #c53030; }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #999;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <h1>SHOS Med Global - Image Checklist</h1>
+    <p class="subtitle">Study Guide Figures &mdash; Track generation progress</p>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar" style="width: 4.3%;">2 / 47</div>
+    </div>
+    <p class="stats">
+        <span id="doneCount">2</span> of <span>47</span> completed
+        &nbsp;|&nbsp;
+        <span id="todoCount">45</span> remaining
+    </p>
+
+    <div class="section-header">
+        Biology Figures
+        <span class="section-count" id="bioCount">2 / 41</span>
+    </div>
+    <div class="checklist" id="bioList"></div>
+
+    <div class="section-header">
+        Chemistry Figures
+        <span class="section-count" id="chemCount">0 / 6</span>
+    </div>
+    <div class="checklist" id="chemList"></div>
+
+    <div class="controls">
+        <button onclick="resetAll()">Reset All Checkboxes</button>
+    </div>
+
+    <footer>SHOS Med Global &copy; 2026 &mdash; Progress saved in your browser (localStorage)</footer>
+
+    <script>
+        const images = [
+            // Biology
+            { id: "bio-ch01", ch: "Ch 1", title: "Cellular Respiration Pathway", file: "bio-ch01-cellular-respiration.png", section: "bio", have: false },
+            { id: "bio-ch02", ch: "Ch 2", title: "Bacterial Cell Structure + Shapes", file: "bio-ch02-bacterial-cell.png", section: "bio", have: false },
+            { id: "bio-ch03", ch: "Ch 3", title: "Eukaryotic Animal Cell", file: "bio-ch03-animal-cell.png", section: "bio", have: false },
+            { id: "bio-ch04", ch: "Ch 4", title: "Three Virus Types", file: "bio-ch04-virus-types.png", section: "bio", have: false },
+            { id: "bio-ch05", ch: "Ch 5", title: "DNA Double Helix + Nucleotide", file: "bio-ch05-dna-structure.png", section: "bio", have: false },
+            { id: "bio-ch06", ch: "Ch 6", title: "Transcription and Translation", file: "bio-ch06-gene-expression.png", section: "bio", have: false },
+            { id: "bio-ch07", ch: "Ch 7", title: "Mitosis Phases", file: "bio-ch07-mitosis.png", section: "bio", have: true },
+            { id: "bio-ch08", ch: "Ch 8", title: "Meiosis I and II", file: "bio-ch08-meiosis.png", section: "bio", have: false },
+            { id: "bio-ch09", ch: "Ch 9", title: "Timeline of Life on Earth", file: "bio-ch09-timeline-of-life.png", section: "bio", have: false },
+            { id: "bio-ch10", ch: "Ch 10", title: "Natural Selection + Speciation", file: "bio-ch10-natural-selection.png", section: "bio", have: false },
+            { id: "bio-ch11", ch: "Ch 11", title: "Lac Operon (ON/OFF)", file: "bio-ch11-lac-operon.png", section: "bio", have: false },
+            { id: "bio-ch12", ch: "Ch 12", title: "Punnett Square (Monohybrid)", file: "bio-ch12-punnett-square.png", section: "bio", have: false },
+            { id: "bio-ch13", ch: "Ch 13", title: "ABO Blood Group Inheritance", file: "bio-ch13-blood-groups.png", section: "bio", have: false },
+            { id: "bio-ch14", ch: "Ch 14", title: "Human Karyotype (46 Chromosomes)", file: "bio-ch14-karyotype.png", section: "bio", have: false },
+            { id: "bio-ch15", ch: "Ch 15", title: "Pedigree Chart (Autosomal Recessive)", file: "bio-ch15-pedigree.png", section: "bio", have: false },
+            { id: "bio-ch16", ch: "Ch 16", title: "Nondisjunction Diagram", file: "bio-ch16-nondisjunction.png", section: "bio", have: false },
+            { id: "bio-ch17", ch: "Ch 17", title: "Amniocentesis vs CVS", file: "bio-ch17-prenatal-diagnosis.png", section: "bio", have: false },
+            { id: "bio-ch18", ch: "Ch 18", title: "PCR Process (3 Steps)", file: "bio-ch18-pcr.png", section: "bio", have: false },
+            { id: "bio-ch19", ch: "Ch 19", title: "Hardy-Weinberg Equilibrium", file: "bio-ch19-hardy-weinberg.png", section: "bio", have: false },
+            { id: "bio-ch20", ch: "Ch 20", title: "Types of Natural Selection", file: "bio-ch20-selection-types.png", section: "bio", have: false },
+            { id: "bio-ch21", ch: "Ch 21", title: "Three Germ Layers + Derivatives", file: "bio-ch21-germ-layers.png", section: "bio", have: false },
+            { id: "bio-ch22", ch: "Ch 22", title: "Four Tissue Types", file: "bio-ch22-tissue-types.png", section: "bio", have: false },
+            { id: "bio-ch23", ch: "Ch 23", title: "Human Skeleton (Labeled)", file: "bio-ch23-skeleton.png", section: "bio", have: false },
+            { id: "bio-ch24", ch: "Ch 24", title: "Skeletal Muscle / Sarcomere", file: "bio-ch24-muscle-sarcomere.png", section: "bio", have: false },
+            { id: "bio-ch25", ch: "Ch 25", title: "Heart Anatomy", file: "bio-ch25-heart.png", section: "bio", have: true },
+            { id: "bio-ch26", ch: "Ch 26", title: "Respiratory System", file: "bio-ch26-respiratory.png", section: "bio", have: false },
+            { id: "bio-ch27", ch: "Ch 27", title: "Digestive System", file: "bio-ch27-digestive.png", section: "bio", have: false },
+            { id: "bio-ch28", ch: "Ch 28", title: "Nephron Structure", file: "bio-ch28-nephron.png", section: "bio", have: false },
+            { id: "bio-ch29", ch: "Ch 29", title: "Skin Layers", file: "bio-ch29-skin-layers.png", section: "bio", have: false },
+            { id: "bio-ch30", ch: "Ch 30", title: "Male + Female Reproductive Systems", file: "bio-ch30-reproductive.png", section: "bio", have: false },
+            { id: "bio-ch31", ch: "Ch 31", title: "Endocrine Glands + Hormones", file: "bio-ch31-endocrine.png", section: "bio", have: false },
+            { id: "bio-ch32", ch: "Ch 32", title: "Neuron + Synapse Detail", file: "bio-ch32-neuron-synapse.png", section: "bio", have: false },
+            { id: "bio-ch33", ch: "Ch 33", title: "Brain Regions (Sagittal)", file: "bio-ch33-brain.png", section: "bio", have: false },
+            { id: "bio-ch34", ch: "Ch 34", title: "Thermoregulation Feedback Loop", file: "bio-ch34-thermoregulation.png", section: "bio", have: false },
+            { id: "bio-ch35a", ch: "Ch 35", title: "Eye Cross-Section", file: "bio-ch35a-eye.png", section: "bio", have: false },
+            { id: "bio-ch35b", ch: "Ch 35", title: "Ear Cross-Section", file: "bio-ch35b-ear.png", section: "bio", have: false },
+            { id: "bio-ch36", ch: "Ch 36", title: "Blood Cells Comparison", file: "bio-ch36-blood-cells.png", section: "bio", have: false },
+            { id: "bio-ch37", ch: "Ch 37", title: "Immune Response (Innate vs Adaptive)", file: "bio-ch37-immune-response.png", section: "bio", have: false },
+            { id: "bio-ch38", ch: "Ch 38", title: "Vitamins + Minerals Infographic", file: "bio-ch38-vitamins-minerals.png", section: "bio", have: false },
+            { id: "bio-ch39", ch: "Ch 39", title: "Human Evolution Timeline", file: "bio-ch39-human-evolution.png", section: "bio", have: false },
+            { id: "bio-ch40", ch: "Ch 40", title: "Ecosystem / Food Web", file: "bio-ch40-ecosystem.png", section: "bio", have: false },
+            // Chemistry
+            { id: "chem-ch01", ch: "Ch 1", title: "Atomic Orbital Shapes (s, p, d)", file: "chem-ch01-atomic-orbitals.png", section: "chem", have: false },
+            { id: "chem-ch05", ch: "Ch 5", title: "Periodic Table (Student-Friendly)", file: "chem-ch05-periodic-table.png", section: "chem", have: false },
+            { id: "chem-ch06", ch: "Ch 6", title: "Molecular Geometry (VSEPR)", file: "chem-ch06-vsepr.png", section: "chem", have: false },
+            { id: "chem-ch17", ch: "Ch 17", title: "Organic Functional Groups", file: "chem-ch17-functional-groups.png", section: "chem", have: false },
+            { id: "chem-ch31", ch: "Ch 31", title: "Amino Acid Structure + Classification", file: "chem-ch31-amino-acids.png", section: "chem", have: false },
+            { id: "chem-ch33", ch: "Ch 33", title: "Glucose Representations", file: "chem-ch33-glucose.png", section: "chem", have: false },
+        ];
+
+        const STORAGE_KEY = "shos-image-checklist";
+
+        function loadState() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+            } catch { return {}; }
+        }
+
+        function saveState(state) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function renderAll() {
+            const state = loadState();
+            const bioList = document.getElementById("bioList");
+            const chemList = document.getElementById("chemList");
+            bioList.innerHTML = "";
+            chemList.innerHTML = "";
+
+            let totalDone = 0;
+            let bioDone = 0;
+            let chemDone = 0;
+
+            images.forEach(img => {
+                const checked = img.have || state[img.id];
+                if (checked) {
+                    totalDone++;
+                    if (img.section === "bio") bioDone++;
+                    if (img.section === "chem") chemDone++;
+                }
+
+                const div = document.createElement("div");
+                div.className = "item" + (checked ? " done" : "") + (img.have ? " already-have" : "");
+
+                let badgeHTML = "";
+                if (img.have) {
+                    badgeHTML = '<span class="badge badge-have">ALREADY HAVE</span>';
+                } else if (checked) {
+                    badgeHTML = '<span class="badge badge-done">DONE</span>';
+                } else {
+                    badgeHTML = '<span class="badge badge-todo">TO DO</span>';
+                }
+
+                div.innerHTML = `
+                    <input type="checkbox" ${checked ? "checked" : ""} ${img.have ? "checked disabled" : ""} data-id="${img.id}">
+                    <div class="item-info">
+                        <div class="item-title">${img.ch}: ${img.title}</div>
+                        <div class="item-filename">${img.file}</div>
+                    </div>
+                    ${badgeHTML}
+                `;
+
+                if (img.section === "bio") bioList.appendChild(div);
+                else chemList.appendChild(div);
+            });
+
+            // Update progress
+            const pct = ((totalDone / images.length) * 100).toFixed(1);
+            const bar = document.getElementById("progressBar");
+            bar.style.width = Math.max(pct, 3) + "%";
+            bar.textContent = `${totalDone} / ${images.length}`;
+            document.getElementById("doneCount").textContent = totalDone;
+            document.getElementById("todoCount").textContent = images.length - totalDone;
+            document.getElementById("bioCount").textContent = `${bioDone} / 41`;
+            document.getElementById("chemCount").textContent = `${chemDone} / 6`;
+        }
+
+        document.addEventListener("change", function(e) {
+            if (e.target.type === "checkbox" && e.target.dataset.id) {
+                const state = loadState();
+                state[e.target.dataset.id] = e.target.checked;
+                saveState(state);
+                renderAll();
+            }
+        });
+
+        function resetAll() {
+            if (confirm("Reset all checkboxes? (Items marked 'ALREADY HAVE' will stay checked.)")) {
+                localStorage.removeItem(STORAGE_KEY);
+                renderAll();
+            }
+        }
+
+        renderAll();
+    </script>
+</body>
+</html>
