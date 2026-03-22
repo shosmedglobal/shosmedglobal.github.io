@@ -880,34 +880,43 @@ a {
   color: var(--green);
 }
 
-/* ===== Apply Overview (simplified) ===== */
-.apply-overview-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* ===== Apply Steps Flow (with arrows) ===== */
+.apply-steps-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
   margin-bottom: 32px;
 }
 
-.apply-overview-card {
+.apply-flow-step {
   text-align: center;
-  padding: 24px 16px;
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  flex: 1;
+  max-width: 220px;
 }
 
-.apply-overview-card h4 {
+.apply-flow-step h4 {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   margin: 12px 0 8px;
   color: var(--navy);
 }
 
-.apply-overview-card p {
-  font-size: 0.85rem;
+.apply-flow-step p {
+  font-size: 0.82rem;
   color: var(--gray-500);
   line-height: 1.5;
+}
+
+.apply-flow-arrow {
+  display: flex;
+  align-items: center;
+  padding-top: 28px;
+  font-size: 1.5rem;
+  color: var(--teal);
+  font-weight: 300;
+  flex-shrink: 0;
 }
 
 .apply-highlights {
@@ -919,8 +928,17 @@ a {
 }
 
 @media (max-width: 768px) {
-  .apply-overview-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .apply-steps-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+  .apply-flow-step {
+    max-width: 100%;
+  }
+  .apply-flow-arrow {
+    transform: rotate(90deg);
+    padding-top: 0;
+    margin: -8px 0;
   }
 }
 
