@@ -4,11 +4,14 @@
 <h3>6.1 The Central Dogma</h3>
 <p>The <strong>central dogma of molecular biology</strong>, formulated by Francis Crick, describes the flow of genetic information in cells: <strong>DNA &rarr; RNA &rarr; Protein</strong>. DNA serves as the permanent archive; it is transcribed into RNA (a temporary working copy), which is then translated into protein (the functional molecule that carries out the work). The one major exception is reverse transcription in retroviruses (RNA &rarr; DNA), but the general principle holds across all domains of life.</p>
 
+<h4>RNA Properties and the RNA World</h4>
+<p>RNA has remarkable properties beyond its role as an information carrier. Some RNA molecules can self-replicate (albeit imperfectly, introducing variability). Others function as enzymes called <strong>ribozymes</strong> &mdash; catalytic RNA molecules. The ribosome itself is fundamentally a ribozyme, with rRNA catalyzing peptide bond formation. The spliceosome similarly contains catalytic RNA (snRNA) components. Several coenzymes (NAD<sup>+</sup>, FAD, CoA) are nucleotide derivatives, suggesting RNA's ancient centrality in metabolism. These properties support the <strong>RNA world hypothesis</strong> for the origin of life.</p>
+
 <h3>6.2 Transcription</h3>
 <p>Transcription is the process of copying a gene's DNA sequence into a complementary RNA molecule. It is carried out by <strong>RNA polymerase</strong>.</p>
 
 <ol>
-  <li><strong>Initiation:</strong> RNA polymerase binds to a specific DNA sequence called the <strong>promoter</strong> (in prokaryotes, the sigma factor of RNA polymerase recognizes the promoter; in eukaryotes, transcription factors help RNA polymerase II bind). The two DNA strands separate locally, and transcription begins.</li>
+  <li><strong>Initiation:</strong> RNA polymerase binds to a specific DNA sequence called the <strong>promoter</strong>. In prokaryotes, the sigma factor of RNA polymerase recognizes the promoter directly. In eukaryotes, the promoter often contains a <strong>TATA box</strong> (consensus sequence TATAAA, located about 25&ndash;30 base pairs upstream of the start site). The general transcription factor <strong>TFIID</strong> (specifically its TBP subunit &mdash; TATA-binding protein) recognizes and binds the TATA box, initiating assembly of the pre-initiation complex that recruits RNA polymerase II. Not all eukaryotic genes have TATA boxes; many housekeeping genes use alternative promoter elements. The two DNA strands separate locally, and transcription begins.</li>
   <li><strong>Elongation:</strong> RNA polymerase moves along the <strong>template strand</strong> (read 3' to 5') and synthesizes the RNA strand in the 5' to 3' direction. The RNA sequence is complementary to the template strand and identical to the <strong>coding strand</strong> (except with uracil instead of thymine).</li>
   <li><strong>Termination:</strong> RNA polymerase reaches a <strong>terminator</strong> sequence. In prokaryotes, this may involve a hairpin loop in the RNA (intrinsic termination) or the rho protein (rho-dependent termination). The RNA is released.</li>
 </ol>
@@ -33,8 +36,11 @@
 <tr><td>rRNA (ribosomal)</td><td>Structural and catalytic component of ribosomes</td></tr>
 <tr><td>snRNA (small nuclear)</td><td>Component of spliceosomes; involved in RNA splicing</td></tr>
 <tr><td>miRNA, siRNA</td><td>Regulatory RNAs that silence gene expression</td></tr>
+<tr><td>SRP RNA</td><td>Component of the signal recognition particle that directs ribosomes to the ER for secretory protein synthesis</td></tr>
 </tbody>
 </table>
+
+<p>The <strong>signal recognition particle (SRP)</strong> is a ribonucleoprotein complex containing SRP RNA. It recognizes the signal peptide emerging from a ribosome translating a secretory or membrane protein, temporarily halts translation, and directs the ribosome-mRNA-nascent peptide complex to the ER membrane for co-translational insertion. This ensures that secretory proteins are correctly routed to the endomembrane system.</p>
 
 <h3>6.4 The Genetic Code</h3>
 <p>The genetic code is a set of rules by which the nucleotide sequence of mRNA is translated into the amino acid sequence of a protein. The code is read in groups of three nucleotides called <strong>codons</strong>. With four bases and three positions, there are 4<sup>3</sup> = 64 possible codons.</p>
@@ -48,9 +54,11 @@
 <p>The genetic code is nearly <strong>universal</strong> &mdash; the same codons specify the same amino acids in almost all organisms, from bacteria to humans, providing powerful evidence that all life shares a common ancestor.</p>
 
 <h3>6.5 Translation</h3>
-<p>Translation occurs on <strong>ribosomes</strong>, which are composed of a large subunit and a small subunit, both made of rRNA and proteins. In eukaryotes, ribosomes have an 80S size (60S large + 40S small); in prokaryotes, 70S (50S + 30S).</p>
+<p>Translation occurs on <strong>ribosomes</strong>, which are composed of a large subunit and a small subunit, both made of rRNA and proteins. Ribosome size is measured in <strong>Svedberg units (S)</strong>, which reflect sedimentation rate during centrifugation rather than simple mass addition. Prokaryotic ribosomes are <strong>70S</strong> (composed of 50S and 30S subunits, containing 23S, 16S, and 5S rRNA). Eukaryotic ribosomes are <strong>80S</strong> (60S and 40S subunits, containing 28S, 18S, 5.8S, and 5S rRNA). This size difference is clinically important because many antibiotics specifically target 70S ribosomes, killing bacteria without harming human cells.</p>
 
 <p><strong>Aminoacyl-tRNA synthetases</strong> are the enzymes that attach the correct amino acid to its corresponding tRNA. There is at least one synthetase for each amino acid, and the accuracy of this "charging" step is crucial for the fidelity of translation.</p>
+
+<p>Although there are 61 sense codons, cells typically contain only about <strong>45 different tRNA species</strong>. This is possible because of <strong>wobble base pairing</strong>: the third position of the codon (3' end) and the first position of the anticodon (5' end) can form non-standard base pairs. For example, inosine (I) in the anticodon wobble position can pair with U, C, or A in the codon. This wobble flexibility explains why many synonymous codons that differ only in their third position are recognized by the same tRNA.</p>
 
 <p>Translation proceeds in three phases:</p>
 <ol>
@@ -58,6 +66,12 @@
   <li><strong>Elongation:</strong> A new aminoacyl-tRNA enters the A site (acceptor site), with its anticodon complementary to the mRNA codon. A peptide bond forms between the amino acid in the P site (peptidyl site) and the one in the A site &mdash; this reaction is catalyzed by the ribosome's rRNA (making the ribosome a <strong>ribozyme</strong>). The ribosome then translocates one codon forward: the tRNA in the P site moves to the E site (exit site) and leaves, the tRNA in the A site shifts to the P site, and the A site is vacant for the next tRNA. This cycle repeats.</li>
   <li><strong>Termination:</strong> When the ribosome encounters a stop codon, no tRNA can bind. Instead, a <strong>release factor</strong> enters the A site, triggering release of the polypeptide chain. The ribosome subunits dissociate.</li>
 </ol>
+
+<h4>Polyribosomes and Open Reading Frames</h4>
+<p>Multiple ribosomes can translate a single mRNA molecule simultaneously, forming a <strong>polyribosome (polysome)</strong>. This allows efficient production of many copies of the same protein from one mRNA. Each ribosome progresses along the mRNA from the 5' cap toward the 3' end, with the ribosome closest to the 5' end carrying the shortest nascent polypeptide. The concept of an <strong>open reading frame (ORF)</strong> &mdash; a stretch of codons from a start to a stop codon without interruption &mdash; is how potential protein-coding genes are identified in DNA sequences.</p>
+
+<h4>Prokaryotic vs Eukaryotic Protein Synthesis</h4>
+<p>A key difference between prokaryotic and eukaryotic gene expression is spatial organization. In prokaryotes, which lack a nuclear envelope, transcription and translation are <strong>coupled</strong> &mdash; ribosomes begin translating the mRNA while it is still being transcribed. In eukaryotes, the nuclear envelope physically separates transcription (in the nucleus) from translation (in the cytoplasm), creating an opportunity for RNA processing (capping, polyadenylation, splicing) between the two steps. This spatial separation enables additional regulatory checkpoints that prokaryotes lack.</p>
 
 <h3>6.6 Protein Structure</h3>
 <table>
@@ -72,17 +86,28 @@
 </tbody>
 </table>
 
+<h4>Posttranslational Modifications</h4>
+<p>Proteins undergo numerous posttranslational modifications that regulate their activity, localization, and lifespan. Key modifications include <strong>phosphorylation</strong> (adding phosphate groups, often on serine, threonine, or tyrosine residues, controlling enzyme activity), <strong>glycosylation</strong> (adding sugar chains, important for secreted proteins and cell-surface recognition), <strong>ubiquitination</strong> (tagging proteins for degradation by proteasomes), <strong>acetylation</strong> (modifying lysine residues, important in histone regulation), <strong>methylation</strong> (of lysine or arginine residues), <strong>hydroxylation</strong> (critical for collagen stability), and <strong>sulfation</strong> (of tyrosine residues, affecting protein-protein interactions).</p>
+
+<h4>Insulin Processing as an Example</h4>
+<p>Insulin biosynthesis illustrates posttranslational processing. The gene encodes <strong>preproinsulin</strong>, which contains a signal peptide (removed during ER translocation), producing proinsulin. Proinsulin folds and forms disulfide bonds between its A and B chains. The connecting <strong>C-peptide</strong> is then excised by proteases in secretory vesicles, yielding mature insulin (two chains linked by disulfide bridges). This multi-step cleavage ensures proper folding before the active hormone is released. C-peptide levels are clinically measured to assess endogenous insulin production.</p>
+
 <h3>6.7 Gene Regulation: Prokaryotes vs Eukaryotes</h3>
 
 <h4>Prokaryotic Regulation: The Operon Model</h4>
-<p>In prokaryotes, genes with related functions are often grouped into <strong>operons</strong> &mdash; clusters of genes under the control of a single promoter. The <strong>lac operon</strong> in <em>E. coli</em> is the classic example: when lactose is absent, a repressor protein binds the operator region and blocks RNA polymerase. When lactose is present, it binds the repressor, causing it to release the operator, allowing transcription of the genes needed to metabolize lactose. This is <strong>negative regulation</strong> (removal of an inhibitor). <strong>Positive regulation</strong> involves an activator protein that enhances transcription (e.g., CAP protein in the presence of cAMP).</p>
+<p>In prokaryotes, genes with related functions are often grouped into <strong>operons</strong> &mdash; clusters of genes under the control of a single promoter. The <strong>lac operon</strong> in <em>E. coli</em> is the classic example: when lactose is absent, a repressor protein binds the operator region and blocks RNA polymerase. When lactose is present, it binds the repressor, causing it to release the operator, allowing transcription of the genes needed to metabolize lactose. This is <strong>negative regulation</strong> (removal of an inhibitor).</p>
+
+<p>The lac operon also has a second layer of regulation through <strong>catabolite repression</strong>. Even when lactose is present (removing the repressor), full transcription requires the positive regulator <strong>CAP</strong> (Catabolite Activator Protein). CAP is only active when bound to cAMP, and cAMP levels are inversely related to glucose levels. When glucose is abundant, cAMP is low, CAP is inactive, and the lac operon is barely transcribed even if lactose is present &mdash; the cell prefers glucose. Only when glucose is scarce (high cAMP) does the CAP-cAMP complex bind near the promoter and facilitate strong RNAP binding, enabling maximal transcription. This ensures <em>E. coli</em> uses glucose before lactose. The lac operon demonstrates the remarkable speed of prokaryotic gene regulation: when induced, enzyme levels can increase approximately 1,000-fold within just 2&ndash;3 minutes.</p>
+
+<h4>The Trp Operon: A Repressible Operon</h4>
+<p>The <strong>tryptophan (trp) operon</strong> is the classic example of a repressible operon controlling an anabolic (biosynthetic) pathway. It contains five structural genes (trpE, D, C, B, A) encoding enzymes for tryptophan synthesis. The regulatory gene produces a repressor that is normally <em>inactive</em>. When tryptophan accumulates, it acts as a <strong>corepressor</strong>, binding to the repressor and activating it. The active repressor-corepressor complex then binds the operator, blocking transcription. This is a negative feedback system: the end product of the pathway shuts down the genes that make it, conserving cellular resources.</p>
 
 <h4>Eukaryotic Regulation</h4>
 <p>Eukaryotic gene regulation is far more complex and occurs at multiple levels:</p>
 <ul>
   <li><strong>Chromatin remodeling:</strong> Histone acetylation loosens chromatin (promotes transcription); methylation can silence genes.</li>
   <li><strong>Transcription factors:</strong> Activators and repressors bind enhancer and silencer regions, which can be thousands of base pairs from the promoter.</li>
-  <li><strong>Post-transcriptional:</strong> Alternative splicing, mRNA stability, miRNA-mediated degradation.</li>
+  <li><strong>Post-transcriptional:</strong> Alternative splicing (one gene producing multiple protein variants by including different exon combinations &mdash; the human genome has roughly 20,000 genes but produces over 100,000 proteins partly through this mechanism), mRNA stability, miRNA-mediated degradation.</li>
   <li><strong>Translational control:</strong> Regulation of when and how efficiently mRNA is translated.</li>
   <li><strong>Post-translational:</strong> Protein modification (phosphorylation, ubiquitination), folding, and degradation.</li>
 </ul>

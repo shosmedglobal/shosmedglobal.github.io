@@ -44,7 +44,44 @@
   <h3>14.3 Acid Ionization Constant (K<sub>a</sub>)</h3>
   <p>For a weak acid HA &#8652; H<sup>+</sup> + A<sup>&minus;</sup>, the equilibrium constant is:</p>
   <div class="formula">K<sub>a</sub> = [H<sup>+</sup>][A<sup>&minus;</sup>] / [HA]</div>
-  <p>A larger K<sub>a</sub> means a stronger weak acid (more dissociation). For polyprotic acids (like H<sub>2</sub>SO<sub>4</sub> or H<sub>3</sub>PO<sub>4</sub>), each proton has its own K<sub>a</sub>, with K<sub>a1</sub> &gt; K<sub>a2</sub> &gt; K<sub>a3</sub>.</p>
+  <p>A larger K<sub>a</sub> means a stronger weak acid (more dissociation). A useful numerical threshold: a <strong>weak acid</strong> has K<sub>a</sub> &lt; 10<sup>&minus;2</sup> (pK<sub>a</sub> &gt; 2), meaning fewer than about 10% of molecules dissociate in dilute solution. The six common strong acids (HCl, HBr, HI, HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>, HClO<sub>4</sub>) all have extremely large K<sub>a</sub> values and dissociate essentially completely. For polyprotic acids (like H<sub>2</sub>SO<sub>4</sub> or H<sub>3</sub>PO<sub>4</sub>), each proton has its own K<sub>a</sub>, with K<sub>a1</sub> &gt; K<sub>a2</sub> &gt; K<sub>a3</sub>.</p>
+
+  <h4>Simplified pH Formulas for Pure Acid or Base Solutions</h4>
+  <p>For a <strong>strong monoprotic acid</strong> at concentration c<sub>a</sub>: pH = &minus;log(c<sub>a</sub>) (assumes complete dissociation).</p>
+  <p>For a <strong>weak acid</strong> at concentration c<sub>a</sub> with dissociation constant K<sub>a</sub>:</p>
+  <div class="formula">pH = &frac12; pK<sub>a</sub> &minus; &frac12; log(c<sub>a</sub>)</div>
+  <p>This simplified formula is valid when c<sub>a</sub> is much larger than K<sub>a</sub>.</p>
+  <p>For a <strong>strong base</strong> at concentration c<sub>b</sub>: pOH = &minus;log(c<sub>b</sub>), then pH = 14 &minus; pOH.</p>
+  <p>For a <strong>weak base</strong> at concentration c<sub>b</sub>: pOH = &frac12; pK<sub>b</sub> &minus; &frac12; log(c<sub>b</sub>).</p>
+
+  <div class="example">
+    <h4>Worked Example: pH of a Weak Acid</h4>
+    <div class="step"><strong>Problem:</strong> Calculate the pH of 0.20 M acetic acid (pK<sub>a</sub> = 4.74).</div>
+    <div class="step"><strong>Step 1:</strong> pH = &frac12;(4.74) &minus; &frac12; log(0.20) = 2.37 &minus; (&minus;0.35) = 2.37 + 0.35 = 2.72</div>
+    <div class="answer">Answer: pH = 2.72.</div>
+  </div>
+
+  <h4>Diprotic Acid pH Calculation</h4>
+  <p>Sulfuric acid (H<sub>2</sub>SO<sub>4</sub>) is diprotic: the first dissociation is strong, while the second (HSO<sub>4</sub><sup>&minus;</sup> &rarr; H<sup>+</sup> + SO<sub>4</sub><sup>2&minus;</sup>) has K<sub>a2</sub> = 1.2 &times; 10<sup>&minus;2</sup>. For dilute solutions, both protons are often assumed to dissociate fully. Thus, 0.05 M H<sub>2</sub>SO<sub>4</sub> gives [H<sup>+</sup>] &asymp; 0.10 M and pH &asymp; 1.0. For diprotic bases like Ba(OH)<sub>2</sub>, 0.005 M yields [OH<sup>&minus;</sup>] = 0.010 M, pOH = 2, and pH = 12.</p>
+
+  <h4>pH Scale Reference Points</h4>
+  <p>Memorizing the approximate pH of common substances helps build chemical intuition:</p>
+  <table>
+    <tr><th>Substance</th><th>Approximate pH</th></tr>
+    <tr><td>Stomach acid (gastric juice)</td><td>1.5&ndash;2.0</td></tr>
+    <tr><td>Lemon juice</td><td>2.0</td></tr>
+    <tr><td>Vinegar</td><td>2.8</td></tr>
+    <tr><td>Orange juice</td><td>3.5</td></tr>
+    <tr><td>Black coffee</td><td>5.0</td></tr>
+    <tr><td>Milk</td><td>6.5</td></tr>
+    <tr><td>Pure water</td><td>7.0</td></tr>
+    <tr><td>Blood</td><td>7.35&ndash;7.45</td></tr>
+    <tr><td>Seawater</td><td>8.0</td></tr>
+    <tr><td>Baking soda solution</td><td>9.0</td></tr>
+    <tr><td>Household ammonia</td><td>11.5</td></tr>
+    <tr><td>Household bleach</td><td>12.5</td></tr>
+  </table>
+  <p>Each whole pH unit represents a tenfold change in hydrogen ion concentration.</p>
 
   <h3>14.4 Buffer Solutions</h3>
   <p>A <strong>buffer</strong> is a solution that resists changes in pH when small amounts of acid or base are added. Buffers are mixtures of:</p>
