@@ -370,7 +370,7 @@
                 <div class="sp-protection-notice" id="spProtectionNotice" style="display:none;">Content protected. Personal watermark applied.</div>
               </div>
               <div style="position:relative;">
-                <button class="sp-reader-tool-btn" id="spHlBtn">&#128397; Highlight &#9662;</button>
+                <button class="sp-reader-tool-btn" id="spHlBtn">&#128397; Color &#9662;</button>
                 <div class="sp-hl-dropdown" id="spHlDropdown">
                   <div class="sp-hl-dropdown-label">Select color</div>
                   <div class="sp-hl-colors">
@@ -2427,8 +2427,8 @@
       position: relative;
     }
 
-    /* Enable selection only when highlight mode is active */
-    .sp-reader-content.sp-hl-active {
+    /* Text selection always enabled in reader for highlighting */
+    .sp-reader-content {
       -webkit-user-select: text !important;
       -moz-user-select: text !important;
       -ms-user-select: text !important;
@@ -4536,7 +4536,6 @@
       document.getElementById('spNotesBtn').classList.remove('active');
       // Close highlight dropdown and disable highlight selection mode
       document.getElementById('spHlDropdown').classList.remove('open');
-      document.getElementById('spReaderContent').classList.remove('sp-hl-active');
       // Remove blur protection if it was on
       document.body.classList.remove('content-protected-blur');
     }
@@ -4740,10 +4739,15 @@
     function spRemoveHighlightOnClick(e) {
       const mark = e.target.closest('mark.sp-highlight');
       if (!mark) return;
-      // If highlight mode is active (dropdown open), don't remove on click
-      // (user may be selecting text to re-color)
-      const dd = document.getElementById('spHlDropdown');
-      if (dd.classList.contains('open')) return;
+      // Only remove on double-click (single click is for selecting text)
+      // This is handled by the dblclick listener below
+    }
+
+    // Double-click on highlighted text removes the highlight
+    document.getElementById('spReaderContent')?.addEventListener('dblclick', (e) => {
+      const mark = e.target.closest('mark.sp-highlight');
+      if (!mark) return;
+      e.preventDefault();
       const parent = mark.parentNode;
       while (mark.firstChild) {
         parent.insertBefore(mark.firstChild, mark);
@@ -4751,7 +4755,7 @@
       parent.removeChild(mark);
       parent.normalize();
       spSaveHighlights();
-    }
+    });
 
     function spAttachHighlightListeners() {
       document.querySelectorAll('#spReaderContent mark.sp-highlight').forEach(mark => {
@@ -4787,18 +4791,10 @@
       btn.classList.toggle('active');
     });
 
-    // Highlight button toggle dropdown + enable/disable text selection
+    // Highlight button toggles color picker dropdown
     document.getElementById('spHlBtn').addEventListener('click', (e) => {
       e.stopPropagation();
-      const dd = document.getElementById('spHlDropdown');
-      const contentEl = document.getElementById('spReaderContent');
-      dd.classList.toggle('open');
-      // Enable text selection when highlight mode is active
-      if (dd.classList.contains('open')) {
-        contentEl.classList.add('sp-hl-active');
-      } else {
-        contentEl.classList.remove('sp-hl-active');
-      }
+      document.getElementById('spHlDropdown').classList.toggle('open');
     });
 
     // Close highlight dropdown on outside click
@@ -4806,7 +4802,6 @@
       const dd = document.getElementById('spHlDropdown');
       if (dd.classList.contains('open') && !e.target.closest('#spHlBtn') && !e.target.closest('#spHlDropdown')) {
         dd.classList.remove('open');
-        document.getElementById('spReaderContent').classList.remove('sp-hl-active');
       }
     });
 
@@ -4826,14 +4821,11 @@
       spClearSelectionHighlight();
     });
 
-    // Apply highlight on text selection when dropdown is open
+    // Apply highlight on any text selection in the reader (always active, default color yellow)
     document.getElementById('spReaderContent').addEventListener('mouseup', () => {
-      const dd = document.getElementById('spHlDropdown');
-      if (!dd.classList.contains('open')) return;
       const sel = window.getSelection();
       if (sel && !sel.isCollapsed && sel.toString().trim().length > 0) {
-        // A color is selected, apply it
-        spApplyHighlight(spReaderState.hlColor);
+        spApplyHighlight(spReaderState.hlColor || 'yellow');
       }
     });
 
