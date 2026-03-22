@@ -1017,14 +1017,24 @@ a {
   .apply-steps-flow {
     flex-direction: column;
     align-items: center;
+    gap: 0;
   }
   .apply-flow-step {
-    max-width: 100%;
+    max-width: 400px;
+    padding: 16px 20px;
   }
   .apply-flow-arrow {
     transform: rotate(90deg);
     padding-top: 0;
-    margin: -8px 0;
+    margin: -12px 0;
+    font-size: 1.2rem;
+  }
+  .deadline-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .deadline-date {
+    margin-right: 0;
   }
 }
 
