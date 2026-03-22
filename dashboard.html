@@ -4833,23 +4833,58 @@
     function spRemoveHighlightOnClick(e) {
       const mark = e.target.closest('mark.sp-highlight');
       if (!mark) return;
-      // Only remove on double-click (single click is for selecting text)
-      // This is handled by the dblclick listener below
-    }
+      // Don't remove if user is selecting text (drag)
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed) return;
 
-    // Double-click on highlighted text removes the highlight
-    document.getElementById('spReaderContent')?.addEventListener('dblclick', (e) => {
-      const mark = e.target.closest('mark.sp-highlight');
-      if (!mark) return;
       e.preventDefault();
-      const parent = mark.parentNode;
-      while (mark.firstChild) {
-        parent.insertBefore(mark.firstChild, mark);
+      const color = mark.style.backgroundColor;
+
+      // Find all contiguous marks of the same color
+      function getContiguousGroup(startMark) {
+        const group = [startMark];
+        // Walk backward
+        let prev = startMark;
+        while (prev) {
+          let sibling = prev.previousSibling;
+          // Skip empty text nodes (whitespace between marks)
+          while (sibling && sibling.nodeType === 3 && sibling.textContent.trim() === '') {
+            sibling = sibling.previousSibling;
+          }
+          if (sibling && sibling.nodeName === 'MARK' && sibling.classList.contains('sp-highlight') && sibling.style.backgroundColor === color) {
+            group.unshift(sibling);
+            prev = sibling;
+          } else {
+            break;
+          }
+        }
+        // Walk forward
+        let next = startMark;
+        while (next) {
+          let sibling = next.nextSibling;
+          while (sibling && sibling.nodeType === 3 && sibling.textContent.trim() === '') {
+            sibling = sibling.nextSibling;
+          }
+          if (sibling && sibling.nodeName === 'MARK' && sibling.classList.contains('sp-highlight') && sibling.style.backgroundColor === color) {
+            group.push(sibling);
+            next = sibling;
+          } else {
+            break;
+          }
+        }
+        return group;
       }
-      parent.removeChild(mark);
-      parent.normalize();
+
+      const group = getContiguousGroup(mark);
+      group.forEach(m => {
+        const parent = m.parentNode;
+        while (m.firstChild) parent.insertBefore(m.firstChild, m);
+        parent.removeChild(m);
+        parent.normalize();
+      });
+
       spSaveHighlights();
-    });
+    }
 
     function spAttachHighlightListeners() {
       document.querySelectorAll('#spReaderContent mark.sp-highlight').forEach(mark => {
