@@ -1,0 +1,170 @@
+<div class="chapter-number">Chapter 5</div>
+<h2>Molecular Bases of Heredity &mdash; DNA</h2>
+
+<h3>5.1 Historical Experiments: Proving DNA Is the Genetic Material</h3>
+
+<h4>Griffith's Experiment (1928)</h4>
+<p>Frederick Griffith worked with two strains of <em>Streptococcus pneumoniae</em>: a virulent Smooth (S) strain with a polysaccharide capsule, and a harmless Rough (R) strain without one. He found that heat-killed S bacteria alone did not cause disease, and live R bacteria alone did not cause disease. But when he mixed heat-killed S bacteria with live R bacteria and injected them into mice, the mice died, and he recovered live S bacteria from them. Something from the dead S cells had "transformed" the R cells into virulent S cells. He called this a "transforming principle" but did not identify what it was.</p>
+
+<h4>Avery, MacLeod, and McCarty (1944)</h4>
+<p>These researchers set out to identify Griffith's transforming principle. They systematically destroyed different components of the heat-killed S extract (proteins, RNA, DNA) and tested which treatment eliminated the transforming ability. Only when they destroyed the DNA (using DNase enzyme) did transformation fail. Their conclusion: <strong>DNA is the transforming principle</strong>.</p>
+
+<h4>Hershey-Chase Experiment (1952)</h4>
+<p>Alfred Hershey and Martha Chase used bacteriophage T2, which injects its genetic material into bacteria. They labeled the phage's DNA with radioactive phosphorus (<sup>32</sup>P) and its protein coat with radioactive sulfur (<sup>35</sup>S) in separate experiments. After infection, they found that <sup>32</sup>P (DNA) entered the bacterial cell, while <sup>35</sup>S (protein) remained outside. This confirmed that <strong>DNA, not protein, is the genetic material</strong>.</p>
+
+<h3>5.2 DNA Structure</h3>
+
+<h4>Nucleotides: The Building Blocks</h4>
+<p>DNA is a polymer built from repeating units called <strong>nucleotides</strong>. Each nucleotide has three components:</p>
+<ol>
+  <li>A <strong>nitrogenous base</strong>: either a purine (adenine [A] or guanine [G], which have a double-ring structure) or a pyrimidine (cytosine [C] or thymine [T], which have a single-ring structure).</li>
+  <li>A <strong>pentose sugar</strong>: deoxyribose in DNA (ribose in RNA).</li>
+  <li>A <strong>phosphate group</strong>.</li>
+</ol>
+
+<div class="definition">
+<strong>Nucleoside vs Nucleotide:</strong> A nucleoside is a base attached to a sugar (no phosphate). A nucleotide is a nucleoside plus one or more phosphate groups. Think: nucleotide = nucleoside + phosphate.
+</div>
+
+<h4>The Double Helix</h4>
+<p>Watson and Crick, building on Rosalind Franklin's X-ray crystallography data, proposed in 1953 that DNA is a <strong>double helix</strong>: two antiparallel strands wound around each other. The sugar-phosphate backbones form the outer rails (connected by <strong>phosphodiester bonds</strong> between the 3' carbon of one sugar and the 5' carbon of the next). The bases point inward and pair through <strong>hydrogen bonds</strong>: A pairs with T via 2 hydrogen bonds; G pairs with C via 3 hydrogen bonds. This is Chargaff's rule: in any DNA molecule, the amount of A equals T, and the amount of G equals C.</p>
+
+<p>The two strands are <strong>antiparallel</strong>: one runs 5' to 3', and the other runs 3' to 5'. This directionality is critical for understanding replication and transcription.</p>
+
+<!-- SVG: DNA Double Helix -->
+<div class="svg-container">
+<svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <rect width="500" height="400" fill="#f8fafc" rx="8"/>
+  <text x="250" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2744">DNA Double Helix Structure</text>
+
+  <!-- Backbone strand 1 (left, going down) -->
+  <path d="M120,50 C180,90 100,130 160,170 C220,210 100,250 160,290 C220,330 100,370 160,390" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Backbone strand 2 (right, going down) -->
+  <path d="M280,50 C220,90 300,130 240,170 C180,210 300,250 240,290 C180,330 300,370 240,390" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Base pairs (horizontal rungs) -->
+  <!-- Pair 1: A-T -->
+  <line x1="138" y1="80" x2="262" y2="80" stroke="#0d9488" stroke-width="3"/>
+  <circle cx="168" cy="80" r="12" fill="#0d9488"/>
+  <text x="168" y="84" text-anchor="middle" font-size="10" fill="white" font-weight="700">A</text>
+  <circle cx="232" cy="80" r="12" fill="#f59e0b"/>
+  <text x="232" y="84" text-anchor="middle" font-size="10" fill="white" font-weight="700">T</text>
+  <text x="200" y="76" text-anchor="middle" font-size="8" fill="#64748b">2 H-bonds</text>
+
+  <!-- Pair 2: G-C -->
+  <line x1="155" y1="130" x2="245" y2="130" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="175" cy="130" r="12" fill="#8b5cf6"/>
+  <text x="175" y="134" text-anchor="middle" font-size="10" fill="white" font-weight="700">G</text>
+  <circle cx="225" cy="130" r="12" fill="#ec4899"/>
+  <text x="225" y="134" text-anchor="middle" font-size="10" fill="white" font-weight="700">C</text>
+  <text x="200" y="126" text-anchor="middle" font-size="8" fill="#64748b">3 H-bonds</text>
+
+  <!-- Pair 3: T-A -->
+  <line x1="162" y1="180" x2="238" y2="180" stroke="#0d9488" stroke-width="3"/>
+  <circle cx="180" cy="180" r="12" fill="#f59e0b"/>
+  <text x="180" y="184" text-anchor="middle" font-size="10" fill="white" font-weight="700">T</text>
+  <circle cx="220" cy="180" r="12" fill="#0d9488"/>
+  <text x="220" y="184" text-anchor="middle" font-size="10" fill="white" font-weight="700">A</text>
+
+  <!-- Pair 4: C-G -->
+  <line x1="145" y1="230" x2="255" y2="230" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="170" cy="230" r="12" fill="#ec4899"/>
+  <text x="170" y="234" text-anchor="middle" font-size="10" fill="white" font-weight="700">C</text>
+  <circle cx="230" cy="230" r="12" fill="#8b5cf6"/>
+  <text x="230" y="234" text-anchor="middle" font-size="10" fill="white" font-weight="700">G</text>
+
+  <!-- Pair 5: A-T -->
+  <line x1="160" y1="280" x2="240" y2="280" stroke="#0d9488" stroke-width="3"/>
+  <circle cx="178" cy="280" r="12" fill="#0d9488"/>
+  <text x="178" y="284" text-anchor="middle" font-size="10" fill="white" font-weight="700">A</text>
+  <circle cx="222" cy="280" r="12" fill="#f59e0b"/>
+  <text x="222" y="284" text-anchor="middle" font-size="10" fill="white" font-weight="700">T</text>
+
+  <!-- Pair 6: G-C -->
+  <line x1="155" y1="330" x2="245" y2="330" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="175" cy="330" r="12" fill="#8b5cf6"/>
+  <text x="175" y="334" text-anchor="middle" font-size="10" fill="white" font-weight="700">G</text>
+  <circle cx="225" cy="330" r="12" fill="#ec4899"/>
+  <text x="225" y="334" text-anchor="middle" font-size="10" fill="white" font-weight="700">C</text>
+
+  <!-- Labels -->
+  <text x="80" y="55" font-size="11" fill="#3b82f6" font-weight="600">5'</text>
+  <text x="80" y="390" font-size="11" fill="#3b82f6" font-weight="600">3'</text>
+  <text x="310" y="55" font-size="11" fill="#ef4444" font-weight="600">3'</text>
+  <text x="310" y="390" font-size="11" fill="#ef4444" font-weight="600">5'</text>
+
+  <!-- Legend -->
+  <rect x="350" y="70" width="140" height="160" rx="6" fill="white" stroke="#e2e8f0"/>
+  <text x="360" y="90" font-size="10" font-weight="600" fill="#1a2744">Legend</text>
+  <circle cx="370" cy="108" r="7" fill="#3b82f6"/><text x="385" y="112" font-size="9" fill="#475569">5' &rarr; 3' strand</text>
+  <circle cx="370" cy="128" r="7" fill="#ef4444"/><text x="385" y="132" font-size="9" fill="#475569">3' &rarr; 5' strand</text>
+  <text x="360" y="150" font-size="9" font-weight="600" fill="#1a2744">Bases:</text>
+  <circle cx="370" cy="164" r="6" fill="#0d9488"/><text x="385" y="168" font-size="9" fill="#475569">A (adenine)</text>
+  <circle cx="370" cy="182" r="6" fill="#f59e0b"/><text x="385" y="186" font-size="9" fill="#475569">T (thymine)</text>
+  <circle cx="370" cy="200" r="6" fill="#8b5cf6"/><text x="385" y="204" font-size="9" fill="#475569">G (guanine)</text>
+  <circle cx="370" cy="218" r="6" fill="#ec4899"/><text x="385" y="222" font-size="9" fill="#475569">C (cytosine)</text>
+
+  <text x="370" y="250" font-size="10" fill="#1a2744" font-weight="600">Antiparallel strands</text>
+  <text x="370" y="264" font-size="9" fill="#475569">A=T: 2 hydrogen bonds</text>
+  <text x="370" y="278" font-size="9" fill="#475569">G&#x2261;C: 3 hydrogen bonds</text>
+</svg>
+<div class="svg-caption">Figure 5.1 &mdash; Schematic of DNA double helix showing antiparallel strands, base pairing, and hydrogen bonds.</div>
+</div>
+
+<h3>5.3 DNA Replication</h3>
+<p>DNA replication is <strong>semiconservative</strong>: each new DNA molecule consists of one original strand and one newly synthesized strand (this was demonstrated by the Meselson-Stahl experiment in 1958).</p>
+
+<p>The process involves many enzymes working together:</p>
+<ol>
+  <li><strong>Helicase</strong> unwinds the double helix at the <strong>origin of replication</strong>, creating a replication fork (a Y-shaped structure).</li>
+  <li><strong>Single-strand binding proteins (SSBPs)</strong> stabilize the separated strands so they do not re-anneal.</li>
+  <li><strong>Topoisomerase</strong> relieves the torsional strain ahead of the replication fork by cutting and rejoining the DNA.</li>
+  <li><strong>Primase</strong> (an RNA polymerase) synthesizes a short RNA primer, providing a free 3'-OH group for DNA polymerase to extend from.</li>
+  <li><strong>DNA polymerase III</strong> (in prokaryotes) synthesizes new DNA in the 5' to 3' direction, reading the template strand 3' to 5'. It can only add nucleotides to an existing 3'-OH end.</li>
+  <li>On the <strong>leading strand</strong>, synthesis is continuous (the fork opens in the direction of synthesis). On the <strong>lagging strand</strong>, synthesis is discontinuous &mdash; DNA is made in short segments called <strong>Okazaki fragments</strong>, each requiring its own RNA primer.</li>
+  <li><strong>DNA polymerase I</strong> removes the RNA primers and replaces them with DNA.</li>
+  <li><strong>DNA ligase</strong> seals the gaps (nicks) between Okazaki fragments, joining them into a continuous strand.</li>
+</ol>
+
+<h3>5.4 Chromatin and Chromosome Structure</h3>
+<p>In eukaryotic cells, DNA does not float free &mdash; it is associated with proteins called <strong>histones</strong>, forming a complex known as <strong>chromatin</strong>. The basic unit of chromatin is the <strong>nucleosome</strong>: approximately 147 base pairs of DNA wrapped about 1.7 times around a core of eight histone proteins (an octamer of H2A, H2B, H3, and H4, two of each). Nucleosomes are connected by linker DNA, and histone H1 helps compact nucleosomes into a more condensed fiber.</p>
+
+<p>Chromatin exists in two forms:</p>
+<ul>
+  <li><strong>Euchromatin:</strong> Loosely packed, transcriptionally active. Genes in euchromatin are being expressed or are accessible for expression.</li>
+  <li><strong>Heterochromatin:</strong> Tightly packed, generally transcriptionally silent. Includes constitutive heterochromatin (always condensed, e.g., near centromeres) and facultative heterochromatin (can switch between condensed and relaxed states).</li>
+</ul>
+
+<h4>Chromosome Ultrastructure</h4>
+<p>During cell division, chromatin condenses dramatically into visible <strong>chromosomes</strong>. The hierarchy of packaging: DNA wraps around nucleosomes &rarr; nucleosomes coil into a 30 nm fiber &rarr; the fiber forms loops attached to a protein scaffold &rarr; further coiling produces the compact metaphase chromosome. A metaphase chromosome has two identical copies (formed during S phase) called <strong>sister chromatids</strong>, joined at the <strong>centromere</strong>. <strong>Nonsister chromatids</strong> belong to the homologous chromosome from the other parent.</p>
+
+<h4>Karyotypes</h4>
+<p>A <strong>karyotype</strong> is an organized display of an individual's chromosomes, arranged by size and shape. Humans have 46 chromosomes: 22 pairs of autosomes plus 2 sex chromosomes (XX in females, XY in males). Karyotyping can reveal chromosomal abnormalities such as trisomy (an extra chromosome, e.g., Down syndrome = trisomy 21) or structural rearrangements.</p>
+
+<div class="key-points">
+  <h4>Key Points &mdash; Chapter 5</h4>
+  <ul>
+    <li>Griffith discovered transformation; Avery identified DNA as the transforming principle; Hershey-Chase confirmed DNA is the genetic material.</li>
+    <li>DNA nucleotides consist of a nitrogenous base (A, T, G, or C), a deoxyribose sugar, and a phosphate group.</li>
+    <li>Purines (A, G) have two rings; pyrimidines (C, T) have one ring. A pairs with T (2 H-bonds); G pairs with C (3 H-bonds).</li>
+    <li>Replication is semiconservative; DNA polymerase synthesizes 5' to 3'; the lagging strand is made in Okazaki fragments.</li>
+    <li>Nucleosomes (DNA + histones) are the basic unit of chromatin packaging.</li>
+    <li>Euchromatin is active and loosely packed; heterochromatin is silent and condensed.</li>
+    <li>A karyotype displays an organism's full chromosome complement; humans have 46 chromosomes (23 pairs).</li>
+  </ul>
+</div>
+
+<div class="mnemonic">
+  <h4>Mnemonic &mdash; Purines vs Pyrimidines</h4>
+  <p><strong>Pu</strong>rines are <strong>Pu</strong>re <strong>A</strong>s <strong>G</strong>old (Adenine, Guanine &mdash; two rings). Pyrimidines: <strong>C</strong>ut the <strong>T</strong>ree &mdash; CUT = C, U (in RNA), T &mdash; one ring (like a small stump).</p>
+</div>
+
+<div class="test-yourself">
+  <h4>Test Yourself</h4>
+  <ol>
+    <li>In the Hershey-Chase experiment, why was <sup>32</sup>P used to label DNA and <sup>35</sup>S to label protein?</li>
+    <li>Why is DNA replication called "semiconservative"?</li>
+    <li>What is the difference between a nucleoside and a nucleotide?</li>
+  </ol>
+</div>

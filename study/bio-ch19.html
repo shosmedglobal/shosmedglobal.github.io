@@ -1,0 +1,113 @@
+<div class="chapter-header">
+        <div class="chapter-number">Chapter 19</div>
+        <h2 class="chapter-title">Population Genetics</h2>
+    </div>
+
+    <p>Population genetics is the study of genetic variation within populations and the forces that change allele frequencies over time. It provides the mathematical framework for understanding evolution at the genetic level.</p>
+
+    <h3>19.1 The Modern Evolutionary Synthesis</h3>
+
+    <p>The <strong>modern evolutionary synthesis</strong> (also called the neo-Darwinian synthesis) merged Darwin's theory of natural selection with Mendelian genetics in the early-to-mid 20th century. It established that:</p>
+    <ul>
+        <li>Populations (not individuals) evolve.</li>
+        <li>Evolution is defined as a <strong>change in allele frequencies</strong> in a population over time.</li>
+        <li>Natural selection, genetic drift, gene flow, and mutation are the main forces driving evolutionary change.</li>
+        <li>Genetic variation is the raw material for evolution.</li>
+    </ul>
+
+    <h3>19.2 Genetic Structure of Populations</h3>
+
+    <p>A <strong>population</strong> in genetics refers to a group of individuals of the same species that live in the same area and interbreed. The <strong>gene pool</strong> is the total collection of all alleles in the population.</p>
+
+    <p>We describe the genetic structure of a population using:</p>
+    <ul>
+        <li><strong>Allele frequency:</strong> The proportion of a specific allele among all alleles for that gene in the population. If there are two alleles (A and a), the frequency of A is called <strong>p</strong> and the frequency of a is called <strong>q</strong>. Since there are only two alleles: <strong>p + q = 1</strong>.</li>
+        <li><strong>Genotype frequency:</strong> The proportion of individuals with a specific genotype (AA, Aa, or aa) in the population.</li>
+    </ul>
+
+    <h3>19.3 Hardy-Weinberg Equilibrium</h3>
+
+    <p>The <strong>Hardy-Weinberg principle</strong> (1908) states that in a large, randomly mating population with no evolution occurring, allele and genotype frequencies will remain constant from generation to generation.</p>
+
+    <p><strong>The Hardy-Weinberg equation for genotype frequencies:</strong></p>
+
+    <div class="definition" style="text-align:center; font-size:1.2rem;">
+        <strong>p&sup2; + 2pq + q&sup2; = 1</strong>
+    </div>
+
+    <p>Where:</p>
+    <ul>
+        <li><strong>p&sup2;</strong> = frequency of homozygous dominant individuals (AA)</li>
+        <li><strong>2pq</strong> = frequency of heterozygous individuals (Aa)</li>
+        <li><strong>q&sup2;</strong> = frequency of homozygous recessive individuals (aa)</li>
+        <li><strong>p</strong> = frequency of the dominant allele</li>
+        <li><strong>q</strong> = frequency of the recessive allele</li>
+        <li><strong>p + q = 1</strong></li>
+    </ul>
+
+    <h4>The Five Conditions for Hardy-Weinberg Equilibrium</h4>
+    <p>For a population to be in Hardy-Weinberg equilibrium, ALL of the following must be true:</p>
+    <ol>
+        <li><strong>No mutation:</strong> No new alleles are being created.</li>
+        <li><strong>Random mating:</strong> Individuals do not choose mates based on genotype.</li>
+        <li><strong>No natural selection:</strong> All genotypes are equally fit.</li>
+        <li><strong>Very large population size:</strong> No genetic drift (random fluctuations are negligible).</li>
+        <li><strong>No gene flow:</strong> No migration of individuals in or out of the population.</li>
+    </ol>
+
+    <p>In reality, no population perfectly meets all five conditions. The Hardy-Weinberg model serves as a <strong>null hypothesis</strong> &mdash; a baseline against which real populations can be compared. If observed genotype frequencies deviate from Hardy-Weinberg predictions, one or more evolutionary forces must be acting.</p>
+
+    <div class="mnemonic">
+        <div class="mnemonic-title">MNEMONIC &mdash; Hardy-Weinberg Conditions</div>
+        <p class="mnemonic-phrase">"No MSDRG" &mdash; No Mutation, No Selection, No Drift, Random mating, No Gene flow</p>
+    </div>
+
+    <h3>19.4 Using Hardy-Weinberg: Worked Examples</h3>
+
+    <div class="note-box success">
+        <div class="note-box-title">Worked Example 1</div>
+        <p><strong>Problem:</strong> In a population, 16% of individuals show the recessive phenotype for a given trait. Calculate the allele frequencies and the frequency of carriers.</p>
+        <p><strong>Solution:</strong></p>
+        <p>Step 1: The recessive phenotype corresponds to genotype aa. So q&sup2; = 0.16.</p>
+        <p>Step 2: q = the square root of 0.16 = <strong>0.4</strong>.</p>
+        <p>Step 3: p = 1 &minus; q = 1 &minus; 0.4 = <strong>0.6</strong>.</p>
+        <p>Step 4: Frequency of carriers (heterozygotes, Aa) = 2pq = 2(0.6)(0.4) = <strong>0.48 (48%)</strong>.</p>
+        <p>Step 5: Frequency of homozygous dominant (AA) = p&sup2; = (0.6)&sup2; = <strong>0.36 (36%)</strong>.</p>
+        <p><strong>Check:</strong> 0.36 + 0.48 + 0.16 = 1.00. Correct!</p>
+    </div>
+
+    <div class="note-box success">
+        <div class="note-box-title">Worked Example 2</div>
+        <p><strong>Problem:</strong> Cystic fibrosis (autosomal recessive) affects approximately 1 in 2,500 newborns in a certain population. What fraction of the population are carriers?</p>
+        <p><strong>Solution:</strong></p>
+        <p>Step 1: q&sup2; = 1/2,500 = 0.0004.</p>
+        <p>Step 2: q = the square root of 0.0004 = <strong>0.02</strong>.</p>
+        <p>Step 3: p = 1 &minus; 0.02 = <strong>0.98</strong>.</p>
+        <p>Step 4: Carrier frequency = 2pq = 2(0.98)(0.02) = <strong>0.0392</strong>, or approximately <strong>1 in 25 people</strong>.</p>
+        <p>This means that roughly 4% of the population carries the CF allele without showing symptoms.</p>
+    </div>
+
+    <div class="note-box info">
+        <div class="note-box-title">Common Exam Strategy</div>
+        <p>On exams, you almost always start with q&sup2; (the frequency of the recessive phenotype), because this is the only genotype you can directly observe from the phenotype. Take the square root to get q, then calculate p, and finally compute 2pq for the carrier frequency.</p>
+    </div>
+
+    <div class="key-points">
+        <div class="key-points-title">KEY POINTS &mdash; Chapter 19</div>
+        <ul>
+            <li>Evolution = change in allele frequencies in a population over time.</li>
+            <li>Hardy-Weinberg equation: p&sup2; + 2pq + q&sup2; = 1 (and p + q = 1).</li>
+            <li>Five conditions for equilibrium: no mutation, random mating, no selection, large population, no gene flow.</li>
+            <li>Hardy-Weinberg serves as a null hypothesis to detect evolutionary forces.</li>
+            <li>Start calculations with q&sup2; (recessive phenotype frequency), take the square root for q, then find p.</li>
+        </ul>
+    </div>
+
+    <div class="test-yourself">
+        <div class="test-yourself-title">TEST YOURSELF &mdash; Chapter 19</div>
+        <ol>
+            <li>In a population of 10,000 individuals, 100 are homozygous recessive (aa). Calculate p, q, and the expected number of heterozygotes assuming Hardy-Weinberg equilibrium.</li>
+            <li>List the five conditions required for Hardy-Weinberg equilibrium. Which condition is most commonly violated in real populations?</li>
+            <li>If the frequency of the recessive allele (q) for a trait is 0.3, what percentage of the population is expected to be heterozygous?</li>
+        </ol>
+    </div>

@@ -1,0 +1,217 @@
+<div class="chapter-header">
+        <div class="chapter-number">Chapter 18</div>
+        <h2 class="chapter-title">DNA Technology</h2>
+    </div>
+
+    <p>Modern DNA technology has revolutionized biology and medicine. From diagnosing genetic diseases to solving crimes to engineering new therapies, these tools are essential knowledge for any medical student.</p>
+
+    <h3>18.1 PCR (Polymerase Chain Reaction)</h3>
+
+    <p><strong>PCR</strong> is a technique that amplifies (makes millions of copies of) a specific DNA segment in vitro (in a test tube). It was developed by <strong>Kary Mullis</strong> in 1983 and earned him the Nobel Prize.</p>
+
+    <p><strong>What you need for PCR:</strong></p>
+    <ul>
+        <li><strong>Template DNA:</strong> The DNA sample containing the target sequence.</li>
+        <li><strong>Two primers:</strong> Short, synthetic, single-stranded DNA sequences (approximately 18-25 nucleotides) that are complementary to the flanking regions of the target. One primer binds to each strand.</li>
+        <li><strong>Taq polymerase:</strong> A heat-stable DNA polymerase isolated from the thermophilic bacterium <em>Thermus aquaticus</em>. It survives the high temperatures used in PCR.</li>
+        <li><strong>Deoxynucleotides (dNTPs):</strong> The building blocks (A, T, G, C) for synthesizing new DNA strands.</li>
+    </ul>
+
+    <p><strong>The three steps of each PCR cycle:</strong></p>
+    <ol>
+        <li><strong>Denaturation (~94-95&deg;C):</strong> The double-stranded DNA is heated to separate (denature) into two single strands.</li>
+        <li><strong>Annealing (~50-65&deg;C):</strong> The temperature is lowered to allow the primers to bind (anneal) to their complementary sequences on the template strands.</li>
+        <li><strong>Extension (~72&deg;C):</strong> Taq polymerase synthesizes new DNA strands by adding nucleotides to the primers, extending them along the template.</li>
+    </ol>
+
+    <p>Each cycle <strong>doubles</strong> the amount of target DNA. After <em>n</em> cycles, there are approximately 2<sup>n</sup> copies. Typically 25-35 cycles are run, yielding billions of copies from a single starting molecule.</p>
+
+    <!-- SVG: PCR Diagram -->
+    <div class="diagram-container">
+        <svg viewBox="0 0 750 420" xmlns="http://www.w3.org/2000/svg" style="max-width:720px;">
+            <text x="375" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1a2744">PCR &mdash; Polymerase Chain Reaction (One Cycle)</text>
+
+            <!-- Step 1: Denaturation -->
+            <rect x="20" y="50" width="210" height="340" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+            <text x="125" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#dc2626">Step 1: Denaturation</text>
+            <text x="125" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#dc2626">~94-95 &deg;C</text>
+
+            <!-- dsDNA before -->
+            <text x="125" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Double-stranded DNA</text>
+            <line x1="55" y1="140" x2="195" y2="140" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+            <line x1="55" y1="155" x2="195" y2="155" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+            <text x="125" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#475569">||||||||||||||||</text>
+
+            <!-- Arrow -->
+            <text x="125" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#dc2626">&#x2193; Heat</text>
+
+            <!-- ssDNA after -->
+            <text x="125" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Strands separate</text>
+            <line x1="55" y1="245" x2="195" y2="245" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+            <text x="125" y="275" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#475569">&#x2195;</text>
+            <line x1="55" y1="295" x2="195" y2="295" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- Step 2: Annealing -->
+            <rect x="260" y="50" width="210" height="340" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+            <text x="365" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#2563eb">Step 2: Annealing</text>
+            <text x="365" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#2563eb">~50-65 &deg;C</text>
+
+            <text x="365" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Primers bind to templates</text>
+
+            <!-- Top strand with forward primer -->
+            <line x1="290" y1="155" x2="435" y2="155" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+            <line x1="290" y1="170" x2="345" y2="170" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+            <text x="317" y="192" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#16a34a" font-weight="600">Primer 1 &#x2192;</text>
+
+            <!-- Arrow -->
+            <text x="365" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#2563eb">&#x2193; Cool</text>
+
+            <!-- Bottom strand with reverse primer -->
+            <line x1="290" y1="268" x2="435" y2="268" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+            <line x1="380" y1="253" x2="435" y2="253" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+            <text x="408" y="245" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#16a34a" font-weight="600">&#x2190; Primer 2</text>
+
+            <!-- Step 3: Extension -->
+            <rect x="500" y="50" width="230" height="340" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+            <text x="615" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#16a34a">Step 3: Extension</text>
+            <text x="615" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#16a34a">~72 &deg;C</text>
+
+            <text x="615" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Taq polymerase extends primers</text>
+
+            <!-- Top copy -->
+            <line x1="530" y1="155" x2="700" y2="155" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+            <line x1="530" y1="170" x2="700" y2="170" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+            <text x="670" y="169" font-family="Inter, sans-serif" font-size="10" fill="#16a34a" font-weight="700">&#x2192;</text>
+
+            <text x="615" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569" font-weight="600">2 copies made!</text>
+
+            <!-- Bottom copy -->
+            <line x1="530" y1="240" x2="700" y2="240" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+            <line x1="530" y1="255" x2="700" y2="255" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+            <text x="540" y="240" font-family="Inter, sans-serif" font-size="10" fill="#16a34a" font-weight="700">&#x2190;</text>
+
+            <!-- Cycle note -->
+            <rect x="530" y="290" width="180" height="50" rx="8" fill="#0d9488" opacity="0.15"/>
+            <text x="620" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#0d9488" font-weight="600">Repeat 25-35 cycles</text>
+            <text x="620" y="330" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#0d9488">2^n copies after n cycles</text>
+
+            <!-- Cycle flow arrow at bottom -->
+            <rect x="20" y="400" width="710" height="15" rx="7" fill="#e2e8f0"/>
+            <text x="375" y="412" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#475569">DENATURE &#x2192; ANNEAL &#x2192; EXTEND &#x2192; REPEAT</text>
+        </svg>
+        <div class="diagram-caption">Figure 18.1 &mdash; The three steps of one PCR cycle: denaturation, annealing, and extension.</div>
+    </div>
+
+    <h3>18.2 DNA Sequencing (Sanger Method Basics)</h3>
+
+    <p>DNA sequencing determines the exact order of nucleotides in a DNA molecule. The <strong>Sanger method</strong> (chain-termination method) was the gold standard for decades:</p>
+
+    <ol>
+        <li>The target DNA is mixed with a primer, DNA polymerase, normal dNTPs, and small amounts of <strong>dideoxyNTPs (ddNTPs)</strong>. Each ddNTP is labeled with a different fluorescent dye (one color per base).</li>
+        <li>ddNTPs lack the 3'-OH group needed for the next nucleotide to be added. When a ddNTP is incorporated, the growing chain <strong>terminates</strong>.</li>
+        <li>This produces DNA fragments of every possible length, each ending with a fluorescently labeled ddNTP.</li>
+        <li>The fragments are separated by size using capillary electrophoresis. A laser reads the fluorescent labels as fragments pass a detector, revealing the sequence.</li>
+    </ol>
+
+    <h3>18.3 Restriction Enzymes and Restriction Digestion</h3>
+
+    <p><strong>Restriction enzymes</strong> (restriction endonucleases) are bacterial enzymes that cut DNA at specific recognition sequences (typically 4-8 base pairs long, palindromic). They are named after the bacteria they were isolated from (e.g., <em>Eco</em>RI from <em>E. coli</em>).</p>
+
+    <p>Restriction enzymes can produce:</p>
+    <ul>
+        <li><strong>Sticky ends:</strong> Staggered cuts that leave short single-stranded overhangs. These can base-pair with complementary sticky ends from another DNA fragment &mdash; extremely useful for cloning.</li>
+        <li><strong>Blunt ends:</strong> Straight cuts that leave no overhangs.</li>
+    </ul>
+
+    <h3>18.4 Reverse Transcription</h3>
+
+    <p><strong>Reverse transcriptase</strong> is an enzyme (originally from retroviruses) that synthesizes DNA from an RNA template. This produces <strong>complementary DNA (cDNA)</strong>, which represents only the expressed genes (since it is made from mRNA, which has already been spliced to remove introns).</p>
+
+    <p>cDNA is useful because it can be cloned or amplified by PCR (using RT-PCR) to study gene expression.</p>
+
+    <h3>18.5 Blotting Techniques</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Technique</th>
+                    <th>Target Molecule</th>
+                    <th>Probe Used</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Southern blot</strong></td>
+                    <td>DNA</td>
+                    <td>Labeled DNA probe</td>
+                    <td>Detect specific DNA sequences (e.g., gene presence, RFLPs)</td>
+                </tr>
+                <tr>
+                    <td><strong>Northern blot</strong></td>
+                    <td>RNA</td>
+                    <td>Labeled DNA or RNA probe</td>
+                    <td>Detect specific mRNA (analyze gene expression)</td>
+                </tr>
+                <tr>
+                    <td><strong>Western blot</strong></td>
+                    <td>Protein</td>
+                    <td>Antibody</td>
+                    <td>Detect specific proteins (e.g., confirm HIV infection)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mnemonic">
+        <div class="mnemonic-title">MNEMONIC &mdash; Blotting Techniques</div>
+        <p class="mnemonic-phrase">"SNoW DRoP"</p>
+        <p><strong>S</strong>outhern = <strong>D</strong>NA, <strong>N</strong>orthern = <strong>R</strong>NA, <strong>W</strong>estern = <strong>P</strong>rotein</p>
+    </div>
+
+    <h3>18.6 Gene Cloning</h3>
+
+    <p><strong>Gene cloning</strong> involves inserting a gene of interest into a <strong>vector</strong> (such as a plasmid) and introducing the recombinant molecule into a host cell (usually bacteria) where it is replicated.</p>
+
+    <p>Steps in gene cloning:</p>
+    <ol>
+        <li>Cut both the gene of interest and the vector with the <strong>same restriction enzyme</strong> to produce compatible sticky ends.</li>
+        <li>Mix the fragments together and use <strong>DNA ligase</strong> to join them, creating <strong>recombinant DNA</strong>.</li>
+        <li>Introduce the recombinant vector into bacteria (transformation).</li>
+        <li>Select for bacteria containing the recombinant vector (using antibiotic resistance markers on the plasmid).</li>
+        <li>Grow the bacteria to produce many copies of the gene (cloning).</li>
+    </ol>
+
+    <h3>18.7 Gene Therapy</h3>
+
+    <p><strong>Gene therapy</strong> aims to treat or cure genetic disorders by introducing functional copies of genes into patient cells to replace defective ones.</p>
+
+    <ul>
+        <li><strong>Somatic gene therapy:</strong> Corrects genes in body (somatic) cells. Changes are not passed to offspring. This is the current focus of clinical gene therapy.</li>
+        <li><strong>Germline gene therapy:</strong> Would correct genes in reproductive cells (eggs or sperm), meaning changes would be inherited. This is technically possible but ethically controversial and not currently permitted in clinical practice.</li>
+    </ul>
+
+    <p>Common delivery methods include viral vectors (modified viruses that deliver therapeutic genes) and non-viral methods (electroporation, lipid nanoparticles).</p>
+
+    <div class="key-points">
+        <div class="key-points-title">KEY POINTS &mdash; Chapter 18</div>
+        <ul>
+            <li>PCR amplifies specific DNA segments using denaturation, annealing, and extension cycles.</li>
+            <li>Sanger sequencing uses ddNTPs that terminate the growing chain at each base position.</li>
+            <li>Restriction enzymes cut DNA at palindromic sequences, producing sticky or blunt ends.</li>
+            <li>Reverse transcriptase converts RNA to cDNA.</li>
+            <li>Southern (DNA), Northern (RNA), Western (Protein) blots detect specific molecules.</li>
+            <li>Gene cloning uses vectors, restriction enzymes, and ligase to produce recombinant DNA.</li>
+            <li>Gene therapy introduces functional genes into patient cells; somatic therapy is the current clinical approach.</li>
+        </ul>
+    </div>
+
+    <div class="test-yourself">
+        <div class="test-yourself-title">TEST YOURSELF &mdash; Chapter 18</div>
+        <ol>
+            <li>After 30 cycles of PCR, approximately how many copies of the target DNA are produced from a single starting molecule? Show the calculation.</li>
+            <li>Why is Taq polymerase used in PCR instead of a standard DNA polymerase from <em>E. coli</em>?</li>
+            <li>You want to detect whether a specific gene is being expressed in liver tissue. Which blotting technique should you use, and why?</li>
+        </ol>
+    </div>

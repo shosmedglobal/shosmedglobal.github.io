@@ -1,0 +1,98 @@
+<span class="chapter-number">Chapter 14</span>
+  <h2>pH and Buffers</h2>
+
+  <h3>14.1 The Ionic Product of Water</h3>
+  <p>Pure water undergoes a very slight self-ionization:</p>
+  <p style="text-align:center;font-weight:500;">H<sub>2</sub>O + H<sub>2</sub>O &#8652; H<sub>3</sub>O<sup>+</sup> + OH<sup>&minus;</sup></p>
+  <p>The equilibrium constant for this process at 25 &deg;C is:</p>
+  <div class="formula">K<sub>w</sub> = [H<sup>+</sup>][OH<sup>&minus;</sup>] = 1.0 &times; 10<sup>&minus;14</sup></div>
+  <p>In pure water, [H<sup>+</sup>] = [OH<sup>&minus;</sup>] = 1.0 &times; 10<sup>&minus;7</sup> M.</p>
+
+  <h3>14.2 The pH Scale</h3>
+  <p>The pH scale expresses hydrogen ion concentration in a compact way:</p>
+  <div class="formula">pH = &minus;log[H<sup>+</sup>]</div>
+  <p>And for hydroxide ion concentration:</p>
+  <div class="formula">pOH = &minus;log[OH<sup>&minus;</sup>]</div>
+  <p>The key relationship at 25 &deg;C:</p>
+  <div class="formula">pH + pOH = 14</div>
+
+  <table>
+    <tr><th>pH Value</th><th>Nature</th><th>[H<sup>+</sup>]</th><th>Example</th></tr>
+    <tr><td>0&ndash;2</td><td>Strongly acidic</td><td>1&ndash;0.01 M</td><td>Stomach acid (~1.5)</td></tr>
+    <tr><td>3&ndash;6</td><td>Weakly acidic</td><td>10<sup>&minus;3</sup>&ndash;10<sup>&minus;6</sup> M</td><td>Vinegar (~3), coffee (~5)</td></tr>
+    <tr><td>7</td><td>Neutral</td><td>10<sup>&minus;7</sup> M</td><td>Pure water</td></tr>
+    <tr><td>8&ndash;11</td><td>Weakly basic</td><td>10<sup>&minus;8</sup>&ndash;10<sup>&minus;11</sup> M</td><td>Blood (~7.4), soap (~10)</td></tr>
+    <tr><td>12&ndash;14</td><td>Strongly basic</td><td>10<sup>&minus;12</sup>&ndash;10<sup>&minus;14</sup> M</td><td>Bleach (~13)</td></tr>
+  </table>
+
+  <div class="example">
+    <h4>Worked Example: pH Calculation</h4>
+    <div class="step"><strong>Problem:</strong> Calculate the pH of 0.001 M HCl.</div>
+    <div class="step"><strong>Step 1:</strong> HCl is a strong acid, so [H<sup>+</sup>] = 0.001 M = 10<sup>&minus;3</sup> M.</div>
+    <div class="step"><strong>Step 2:</strong> pH = &minus;log(10<sup>&minus;3</sup>) = 3</div>
+    <div class="answer">Answer: pH = 3.</div>
+  </div>
+
+  <div class="example">
+    <h4>Worked Example: Finding [OH<sup>&minus;</sup>] from pH</h4>
+    <div class="step"><strong>Problem:</strong> A solution has pH = 10. What is [OH<sup>&minus;</sup>]?</div>
+    <div class="step"><strong>Step 1:</strong> pOH = 14 &minus; 10 = 4</div>
+    <div class="step"><strong>Step 2:</strong> [OH<sup>&minus;</sup>] = 10<sup>&minus;pOH</sup> = 10<sup>&minus;4</sup> M = 0.0001 M</div>
+    <div class="answer">Answer: [OH<sup>&minus;</sup>] = 1.0 &times; 10<sup>&minus;4</sup> M.</div>
+  </div>
+
+  <h3>14.3 Acid Ionization Constant (K<sub>a</sub>)</h3>
+  <p>For a weak acid HA &#8652; H<sup>+</sup> + A<sup>&minus;</sup>, the equilibrium constant is:</p>
+  <div class="formula">K<sub>a</sub> = [H<sup>+</sup>][A<sup>&minus;</sup>] / [HA]</div>
+  <p>A larger K<sub>a</sub> means a stronger weak acid (more dissociation). For polyprotic acids (like H<sub>2</sub>SO<sub>4</sub> or H<sub>3</sub>PO<sub>4</sub>), each proton has its own K<sub>a</sub>, with K<sub>a1</sub> &gt; K<sub>a2</sub> &gt; K<sub>a3</sub>.</p>
+
+  <h3>14.4 Buffer Solutions</h3>
+  <p>A <strong>buffer</strong> is a solution that resists changes in pH when small amounts of acid or base are added. Buffers are mixtures of:</p>
+  <ul>
+    <li>A <strong>weak acid</strong> and its <strong>conjugate base</strong> (e.g., CH<sub>3</sub>COOH / CH<sub>3</sub>COO<sup>&minus;</sup>), or</li>
+    <li>A <strong>weak base</strong> and its <strong>conjugate acid</strong> (e.g., NH<sub>3</sub> / NH<sub>4</sub><sup>+</sup>)</li>
+  </ul>
+  <p>How buffers work: If acid (H<sup>+</sup>) is added, the conjugate base neutralizes it: A<sup>&minus;</sup> + H<sup>+</sup> &rarr; HA. If base (OH<sup>&minus;</sup>) is added, the weak acid neutralizes it: HA + OH<sup>&minus;</sup> &rarr; A<sup>&minus;</sup> + H<sub>2</sub>O.</p>
+
+  <h4>Henderson-Hasselbalch Equation</h4>
+  <div class="formula">pH = pK<sub>a</sub> + log([A<sup>&minus;</sup>] / [HA])</div>
+  <p>where pK<sub>a</sub> = &minus;log(K<sub>a</sub>). When [A<sup>&minus;</sup>] = [HA], then pH = pK<sub>a</sub> (the buffer is most effective at resisting pH changes at this point).</p>
+
+  <div class="example">
+    <h4>Worked Example: Henderson-Hasselbalch</h4>
+    <div class="step"><strong>Problem:</strong> A buffer contains 0.20 M acetic acid (K<sub>a</sub> = 1.8 &times; 10<sup>&minus;5</sup>) and 0.30 M sodium acetate. What is the pH?</div>
+    <div class="step"><strong>Step 1:</strong> pK<sub>a</sub> = &minus;log(1.8 &times; 10<sup>&minus;5</sup>) = 4.74</div>
+    <div class="step"><strong>Step 2:</strong> pH = 4.74 + log(0.30/0.20) = 4.74 + log(1.5) = 4.74 + 0.18 = 4.92</div>
+    <div class="answer">Answer: pH = 4.92.</div>
+  </div>
+
+  <h3>14.5 Acid-Base Titration</h3>
+  <p>In a titration, a solution of known concentration (titrant) is gradually added to a solution of unknown concentration (analyte) until the reaction is complete. The <strong>equivalence point</strong> is when the moles of acid exactly equal the moles of base. An <strong>indicator</strong> is a substance that changes colour near the equivalence point, signalling when to stop.</p>
+  <p>For strong acid + strong base titrations, the equivalence point pH is 7. For weak acid + strong base, it is above 7. For strong acid + weak base, it is below 7.</p>
+
+  <div class="note">
+    <strong>Biological importance:</strong> Blood is buffered at pH 7.35&ndash;7.45 by the carbonic acid/bicarbonate system (H<sub>2</sub>CO<sub>3</sub>/HCO<sub>3</sub><sup>&minus;</sup>). Even small deviations from this range can be life-threatening.
+  </div>
+
+  <div class="key-points">
+    <h4>Key Points &mdash; Chapter 14</h4>
+    <ul>
+      <li>K<sub>w</sub> = [H<sup>+</sup>][OH<sup>&minus;</sup>] = 10<sup>&minus;14</sup> at 25 &deg;C.</li>
+      <li>pH = &minus;log[H<sup>+</sup>]; pOH = &minus;log[OH<sup>&minus;</sup>]; pH + pOH = 14.</li>
+      <li>pH &lt; 7 is acidic; pH = 7 is neutral; pH &gt; 7 is basic.</li>
+      <li>K<sub>a</sub> measures the strength of a weak acid.</li>
+      <li>Buffers = weak acid + conjugate base (or weak base + conjugate acid).</li>
+      <li>Henderson-Hasselbalch: pH = pK<sub>a</sub> + log([A<sup>&minus;</sup>]/[HA]).</li>
+      <li>Titration equivalence point: moles of acid = moles of base.</li>
+    </ul>
+  </div>
+
+  <div class="test-yourself">
+    <h4>Test Yourself &mdash; Chapter 14</h4>
+    <div class="question">1. What is the pH of 0.01 M NaOH?</div>
+    <details><summary>Show Answer</summary><div class="reveal">[OH<sup>&minus;</sup>] = 0.01 M = 10<sup>&minus;2</sup>. pOH = 2. pH = 14 &minus; 2 = 12.</div></details>
+    <div class="question">2. A buffer is made from 0.10 M NH<sub>3</sub> (K<sub>b</sub> = 1.8 &times; 10<sup>&minus;5</sup>) and 0.10 M NH<sub>4</sub>Cl. Estimate the pH.</div>
+    <details><summary>Show Answer</summary><div class="reveal">pK<sub>b</sub> = &minus;log(1.8 &times; 10<sup>&minus;5</sup>) = 4.74. pOH = pK<sub>b</sub> + log([NH<sub>4</sub><sup>+</sup>]/[NH<sub>3</sub>]) = 4.74 + log(1) = 4.74. pH = 14 &minus; 4.74 = 9.26.</div></details>
+    <div class="question">3. During a titration of a weak acid with a strong base, is the pH at the equivalence point equal to 7?</div>
+    <details><summary>Show Answer</summary><div class="reveal">No, the pH at the equivalence point is above 7 (basic). At the equivalence point, only the conjugate base of the weak acid remains in solution, which hydrolyzes water to produce OH<sup>&minus;</sup> ions, raising the pH above 7.</div></details>
+  </div>
