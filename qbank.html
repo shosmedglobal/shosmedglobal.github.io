@@ -21,6 +21,9 @@
       <a href="index.html" class="logo">
         <img src="logo.svg" alt="SHOS Med Global" class="logo-img logo-dark" style="display:block;">
       </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
@@ -305,6 +308,12 @@
   <script src="auth.js"></script>
   <script src="qbank.js"></script>
   <script>
+    // Mobile menu toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('active');
+      document.getElementById('navToggle').classList.toggle('active');
+    });
+
     // ===== Access Control =====
     // Fixed sample question IDs — same 5 every time for free users
     const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-2', 'bio-3', 'chem-1', 'chem-2'];
@@ -468,7 +477,7 @@
             banner.innerHTML = `
               <div class="sample-banner-content">
                 <span>🔒 Free Sample — You're viewing 5 sample questions.</span>
-                <a href="applicants.html#qbank-pricing" class="btn btn-primary btn-small">Unlock Full Question Bank</a>
+                <a href="applicants.html#pricing" class="btn btn-primary btn-small">Unlock Full Question Bank</a>
               </div>
             `;
             document.querySelector('.qbank-section .container').prepend(banner);

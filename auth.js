@@ -97,7 +97,7 @@ async function signInWithGoogle(path, fromSignup) {
 async function signOut() {
   try {
     await auth.signOut();
-    window.location.href = 'index.html';
+    window.location.href = window.location.origin + '/index.html';
   } catch (error) {
     console.error('Sign out error:', error);
   }
