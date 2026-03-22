@@ -40,6 +40,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           Overview
         </a>
+        <a href="#" class="sidebar-link" data-view="studyplan" id="sidebarStudyPlanLink">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="6" x2="12" y2="14"/><line x1="8" y1="10" x2="16" y2="10"/></svg>
+          Study Plan
+        </a>
         <a href="#" class="sidebar-link" data-view="qbank" id="sidebarQbankLink">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           Question Bank
@@ -311,6 +315,49 @@
           </div>
         </div>
 
+        <!-- ========== VIEW: STUDY PLAN ========== -->
+        <div class="view" id="viewStudyplan">
+          <div class="dashboard-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+            <div>
+              <h1>Study Plan</h1>
+              <p class="dashboard-sub">Follow a structured path through Biology and Chemistry chapters.</p>
+            </div>
+            <div class="sp-readiness-ring" id="spReadinessRing">
+              <svg viewBox="0 0 80 80" class="sp-ring-svg">
+                <circle cx="40" cy="40" r="34" class="sp-ring-bg"/>
+                <circle cx="40" cy="40" r="34" class="sp-ring-fill" id="spRingFill" stroke-dasharray="0 213.6"/>
+              </svg>
+              <div class="sp-ring-text">
+                <span class="sp-ring-pct" id="spRingPct">0%</span>
+                <span class="sp-ring-label">Ready</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="resource-tabs sp-tabs">
+            <button class="resource-tab active" data-sp-tab="biology" id="spTabBio">Biology <span class="sp-tab-count">(40)</span></button>
+            <button class="resource-tab" data-sp-tab="chemistry" id="spTabChem">Chemistry <span class="sp-tab-count">(33)</span></button>
+          </div>
+
+          <!-- Biology Chapters -->
+          <div class="sp-chapter-list" id="spBiologyList">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Chemistry Chapters -->
+          <div class="sp-chapter-list" id="spChemistryList" style="display:none;">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Practice Exam -->
+          <div class="dash-card sp-practice-exam" style="margin-top:24px; text-align:center; padding:32px 24px;">
+            <h3 style="margin-bottom:8px; color:var(--navy);">Practice Exam</h3>
+            <p style="color:var(--gray-500); font-size:0.9rem; margin-bottom:16px;">30 Biology + 30 Chemistry questions, 60 minutes — simulates the real entrance exam.</p>
+            <button class="btn btn-primary sp-practice-btn" id="spPracticeExamBtn" disabled>Coming Soon</button>
+          </div>
+        </div>
+
         <!-- ========== VIEW: QUESTION BANK ========== -->
         <div class="view" id="viewQbank">
           <div class="dashboard-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
@@ -323,7 +370,7 @@
 
           <!-- Upgrade prompt for free users -->
           <div id="qbankUpgradePrompt" class="dash-card upgrade-prompt" style="display:none; margin-bottom: 20px;">
-            <p>Want full access to all 860+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
+            <p>Want full access to all 1,000+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
           </div>
 
           <!-- Test History -->
@@ -839,7 +886,7 @@
               <div class="plan-price">$49</div>
               <p class="plan-per">$49/month</p>
               <ul class="plan-features">
-                <li>All 860+ questions</li>
+                <li>All 1,000+ questions</li>
                 <li>Biology &amp; Chemistry</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -853,7 +900,7 @@
               <div class="plan-price">$99</div>
               <p class="plan-per">$33/month — Save 33%</p>
               <ul class="plan-features">
-                <li>All 860+ questions</li>
+                <li>All 1,000+ questions</li>
                 <li>Biology &amp; Chemistry</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -866,7 +913,7 @@
               <div class="plan-price">$149</div>
               <p class="plan-per">$25/month — Save 49%</p>
               <ul class="plan-features">
-                <li>All 860+ questions</li>
+                <li>All 1,000+ questions</li>
                 <li>Biology &amp; Chemistry</li>
                 <li>Detailed explanations</li>
                 <li>Progress tracking</li>
@@ -1882,6 +1929,176 @@
       .cal-cell { min-height: 40px; padding: 4px; }
       .cal-booking-mini { display: none; }
     }
+    /* ===== Study Plan Styles ===== */
+    .sp-readiness-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+    .sp-ring-svg { width: 80px; height: 80px; transform: rotate(-90deg); }
+    .sp-ring-bg { fill: none; stroke: #e5e7eb; stroke-width: 6; }
+    .sp-ring-fill { fill: none; stroke: var(--teal, #2d9f8f); stroke-width: 6; stroke-linecap: round; transition: stroke-dasharray 0.6s ease; }
+    .sp-ring-text {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .sp-ring-pct { font-size: 1.1rem; font-weight: 700; color: var(--navy, #1B2137); line-height: 1.2; }
+    .sp-ring-label { font-size: 0.65rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .sp-tabs { margin-bottom: 20px; }
+    .sp-tab-count { font-weight: 400; opacity: 0.7; font-size: 0.85em; }
+
+    .sp-chapter-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .sp-chapter-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.15s;
+    }
+    .sp-chapter-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .sp-chapter-card.sp-locked { opacity: 0.7; }
+
+    .sp-chapter-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .sp-chapter-num {
+      width: 32px; height: 32px;
+      background: var(--navy, #1B2137);
+      color: #fff;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .sp-locked .sp-chapter-num { background: #9ca3af; }
+    .sp-chapter-info { flex: 1; min-width: 0; }
+    .sp-chapter-title {
+      font-size: 0.92rem; font-weight: 600; color: var(--navy, #1B2137);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sp-chapter-meta {
+      display: flex; align-items: center; gap: 10px; margin-top: 4px;
+    }
+    .sp-chapter-status {
+      font-size: 0.78rem; display: flex; align-items: center; gap: 4px;
+    }
+    .sp-chapter-progress-bar {
+      flex: 1; max-width: 120px; height: 6px;
+      background: #e5e7eb; border-radius: 3px; overflow: hidden;
+    }
+    .sp-chapter-progress-fill {
+      height: 100%; border-radius: 3px; background: var(--teal, #2d9f8f);
+      transition: width 0.3s ease;
+    }
+    .sp-chapter-score { font-size: 0.75rem; color: #6b7280; white-space: nowrap; }
+    .sp-chapter-chevron {
+      width: 20px; height: 20px; color: #9ca3af;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .sp-chapter-card.sp-expanded .sp-chapter-chevron { transform: rotate(180deg); }
+
+    .sp-chapter-body {
+      display: none;
+      padding: 0 18px 16px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .sp-chapter-card.sp-expanded .sp-chapter-body { display: block; }
+
+    .sp-chapter-actions {
+      display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;
+    }
+    .sp-btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sp-btn-read {
+      background: #f3f4f6;
+      color: var(--navy, #1B2137);
+    }
+    .sp-btn-read:hover { background: #e5e7eb; }
+    .sp-btn-quiz {
+      background: var(--teal, #2d9f8f);
+      color: #fff;
+    }
+    .sp-btn-quiz:hover { opacity: 0.9; }
+    .sp-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .sp-last-score { font-size: 0.82rem; color: #6b7280; margin-top: 10px; }
+
+    .sp-upgrade-overlay {
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 40%, #fff 60%);
+      padding: 40px 20px 20px;
+      text-align: center;
+      margin-top: -30px;
+      position: relative;
+    }
+    .sp-upgrade-overlay p { color: #6b7280; font-size: 0.9rem; margin-bottom: 12px; }
+    .sp-upgrade-overlay .sp-btn-quiz { display: inline-flex; }
+
+    .sp-chapter-content-preview {
+      font-size: 0.88rem; color: #374151; line-height: 1.7;
+      padding-top: 12px;
+    }
+    .sp-content-blur {
+      filter: blur(4px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Study Plan modal */
+    .sp-modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .sp-modal {
+      background: #fff; border-radius: 16px;
+      max-width: 700px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      padding: 32px;
+      position: relative;
+    }
+    .sp-modal-close {
+      position: absolute; top: 12px; right: 16px;
+      background: none; border: none; font-size: 1.5rem;
+      color: #6b7280; cursor: pointer; line-height: 1;
+    }
+    .sp-modal-close:hover { color: var(--navy, #1B2137); }
+    .sp-modal h2 { margin: 0 0 16px; color: var(--navy, #1B2137); font-size: 1.3rem; }
+    .sp-modal-body { font-size: 0.92rem; color: #374151; line-height: 1.8; }
+
+    .sp-practice-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+    @media (max-width: 640px) {
+      .sp-readiness-ring { width: 64px; height: 64px; }
+      .sp-ring-svg { width: 64px; height: 64px; }
+      .sp-ring-pct { font-size: 0.95rem; }
+      .sp-chapter-header { padding: 12px 14px; gap: 10px; }
+      .sp-chapter-title { font-size: 0.85rem; }
+      .sp-chapter-actions { flex-direction: column; }
+      .sp-btn { width: 100%; justify-content: center; }
+      .sp-modal { padding: 20px; border-radius: 12px; }
+    }
   </style>
 
   <!-- Firebase SDKs -->
@@ -1899,6 +2116,7 @@
       // Map view names to element IDs
       const viewMap = {
         'overview': 'viewOverview',
+        'studyplan': 'viewStudyplan',
         'qbank': 'viewQbank',
         'resources': 'viewResources',
         'store': 'viewStore',
@@ -2020,6 +2238,8 @@
         // Hide QBank + Free Resources sidebar links for residency applicants
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        const studyPlanSidebarLink = document.getElementById('sidebarStudyPlanLink');
+        if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = isApplicant ? 'flex' : 'none';
         // Resources visible for both paths (content is path-filtered)
         // Filter resource tabs by path
         const applicantResourceTabs = document.getElementById('applicantResourceTabs');
@@ -2051,8 +2271,8 @@
       }
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
-        ? 'Full Access — 860+ questions across Biology and Chemistry.'
-        : 'Free Sample — 5 questions. Upgrade to unlock all 860+ questions.';
+        ? 'Full Access — 1,000+ questions across Biology and Chemistry.'
+        : 'Free Sample — 5 questions. Upgrade to unlock all 1,000+ questions.';
       // Show upgrade prompt for free users, hide pricing grid if paid OR if residency applicant
       const hideQbankStore = qbankPaid || isStudent;
       document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
@@ -2064,6 +2284,9 @@
 
       // Load overview stats
       loadOverviewStats(user.uid, profile);
+
+      // Initialize Study Plan
+      spInit(profile, qbankPaid);
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
@@ -3622,6 +3845,185 @@
       calMonth++;
       if (calMonth > 11) { calMonth = 0; calYear++; }
       renderCalendar();
+    });
+
+    // ===== Study Plan =====
+    const SP_BIO_CHAPTERS = [
+      'Living Systems & Energetics','Prokaryotic Organisms','Eukaryotic Cell','Viruses',
+      'DNA Structure & Replication','Gene Expression','Mitosis & Cell Cycle','Meiosis',
+      'Origin of Life','Evolution','Prokaryotic Genetics','Mendelian Genetics',
+      'Human Genetics','Cytogenetics','Single-Gene Disorders','Chromosome Disorders',
+      'Genetic Counseling','DNA Technology','Population Genetics','Evolution of Populations',
+      'Embryology','Tissues','Skeletal System','Muscular System','Circulatory System',
+      'Respiratory System','Digestive System','Excretory System','Skin','Reproductive System',
+      'Endocrine System','Nervous System Structure','CNS','Internal Environment',
+      'Sense Organs','Blood','Immune System','Nutrition','Human Evolution','Ecology'
+    ];
+    const SP_CHEM_CHAPTERS = [
+      'Atoms','Nomenclature','Physical Quantities','Energy','Periodic Table',
+      'Chemical Bonding','Gases','Liquids','Solids','Solutions & Mixtures',
+      'Stoichiometry','Chemical Equilibrium','Acids & Bases','pH & Buffers',
+      'Reaction Kinetics','Redox','Organic Chemistry Intro','Isomerism',
+      'Nomenclature & Reactions','Hydrocarbons','Aromatic Compounds',
+      'Alcohols & Phenols','Ethers & Thiols','Aldehydes & Ketones',
+      'Carboxylic Acids','Carboxylic Acid Derivatives','Sulfonic & Carbonic Derivatives',
+      'Amines','Heterocyclic Compounds','Nucleic Acids','Proteins','Lipids','Saccharides'
+    ];
+    const SP_FREE_LIMIT = 3; // first N chapters unlocked for free users
+
+    function spGetChapterData(profile, subject, chIdx) {
+      try {
+        return profile?.studyPlan?.[subject]?.['ch' + (chIdx + 1)] || null;
+      } catch { return null; }
+    }
+
+    function spGetStatus(data, isLocked) {
+      if (isLocked) return { icon: '\u{1F512}', label: 'Locked', cls: 'locked' };
+      if (!data || data.score == null) return { icon: '\u2B55', label: 'Not Started', cls: 'not-started' };
+      const pct = data.total > 0 ? (data.score / data.total) * 100 : 0;
+      if (pct >= 80) return { icon: '\u2705', label: 'Mastered', cls: 'mastered' };
+      return { icon: '\u{1F7E1}', label: 'In Progress', cls: 'in-progress' };
+    }
+
+    function spRenderChapterList(containerId, chapters, subject, profile, isPaid) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      chapters.forEach((title, idx) => {
+        const isLocked = !isPaid && idx >= SP_FREE_LIMIT;
+        const data = spGetChapterData(profile, subject, idx);
+        const status = spGetStatus(data, isLocked);
+        const scoreNum = data?.score ?? 0;
+        const totalNum = data?.total ?? 10;
+        const pct = totalNum > 0 ? Math.round((scoreNum / totalNum) * 100) : 0;
+
+        const card = document.createElement('div');
+        card.className = 'sp-chapter-card' + (isLocked ? ' sp-locked' : '');
+        card.innerHTML = `
+          <div class="sp-chapter-header" data-sp-idx="${idx}">
+            <div class="sp-chapter-num">${idx + 1}</div>
+            <div class="sp-chapter-info">
+              <div class="sp-chapter-title">${title}</div>
+              <div class="sp-chapter-meta">
+                <span class="sp-chapter-status">${status.icon} ${status.label}</span>
+                ${!isLocked && data ? `
+                  <div class="sp-chapter-progress-bar"><div class="sp-chapter-progress-fill" style="width:${pct}%"></div></div>
+                  <span class="sp-chapter-score">${scoreNum}/${totalNum}</span>
+                ` : ''}
+              </div>
+            </div>
+            <svg class="sp-chapter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="sp-chapter-body">
+            ${isLocked ? `
+              <div class="sp-chapter-content-preview">
+                <p class="sp-content-blur">This chapter covers the fundamental concepts of ${title.toLowerCase()}. You will learn key principles, mechanisms, and applications relevant to the entrance exam...</p>
+              </div>
+              <div class="sp-upgrade-overlay">
+                <p>Unlock all chapters with full access</p>
+                <button class="sp-btn sp-btn-quiz" onclick="switchView('store');">Upgrade to Unlock</button>
+              </div>
+            ` : `
+              <div class="sp-chapter-content-preview">
+                <p>This chapter covers the essential concepts of <strong>${title}</strong>. Study guide content will be available here soon.</p>
+              </div>
+              <div class="sp-chapter-actions">
+                <button class="sp-btn sp-btn-read" onclick="spOpenReader('${subject}', ${idx}, ${isPaid ? 'true' : 'false'})">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  Read Chapter
+                </button>
+                <a href="qbank.html?subject=${subject}&chapter=${idx + 1}" class="sp-btn sp-btn-quiz">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Take Quiz
+                </a>
+              </div>
+              ${data?.lastAttempt ? `<div class="sp-last-score">Last attempt: ${new Date(data.lastAttempt).toLocaleDateString()} — Score: ${scoreNum}/${totalNum} (${pct}%)</div>` : ''}
+            `}
+          </div>
+        `;
+
+        // Toggle expand
+        card.querySelector('.sp-chapter-header').addEventListener('click', () => {
+          card.classList.toggle('sp-expanded');
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function spCalculateReadiness(profile) {
+      let totalScore = 0, totalPossible = 0;
+      ['biology', 'chemistry'].forEach(subject => {
+        const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+        chapters.forEach((_, idx) => {
+          const data = spGetChapterData(profile, subject, idx);
+          if (data && data.score != null && data.total) {
+            totalScore += data.score;
+            totalPossible += data.total;
+          }
+        });
+      });
+      return totalPossible > 0 ? Math.round((totalScore / totalPossible) * 100) : 0;
+    }
+
+    function spUpdateReadinessRing(pct) {
+      const circumference = 2 * Math.PI * 34; // r=34
+      const fill = document.getElementById('spRingFill');
+      const pctEl = document.getElementById('spRingPct');
+      if (fill) fill.setAttribute('stroke-dasharray', `${(pct / 100) * circumference} ${circumference}`);
+      if (pctEl) pctEl.textContent = pct + '%';
+    }
+
+    function spInit(profile, isPaid) {
+      spRenderChapterList('spBiologyList', SP_BIO_CHAPTERS, 'biology', profile, isPaid);
+      spRenderChapterList('spChemistryList', SP_CHEM_CHAPTERS, 'chemistry', profile, isPaid);
+      const readiness = spCalculateReadiness(profile);
+      spUpdateReadinessRing(readiness);
+    }
+
+    function spOpenReader(subject, chIdx, isPaid) {
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+      const title = chapters[chIdx];
+      // Create modal
+      const overlay = document.createElement('div');
+      overlay.className = 'sp-modal-overlay';
+      overlay.innerHTML = `
+        <div class="sp-modal">
+          <button class="sp-modal-close">&times;</button>
+          <h2>Chapter ${chIdx + 1}: ${title}</h2>
+          <div class="sp-modal-body">
+            <p>This chapter covers the key concepts of <strong>${title}</strong> for the LF3 entrance exam.</p>
+            ${isPaid ? `
+              <p style="margin-top:16px; color:#6b7280;">Full study guide content for this chapter will be loaded here from separate HTML files. Check back soon for the complete material.</p>
+              <div style="margin-top:20px; padding:20px; background:#f9fafb; border-radius:8px; border:1px solid #e5e7eb;">
+                <p style="font-size:0.85rem; color:#9ca3af; text-align:center;">Study guide content coming soon</p>
+              </div>
+            ` : `
+              <p style="margin-top:12px;">The entrance exam tests your understanding of ${title.toLowerCase()} at a university-level depth. Key areas include fundamental definitions, mechanisms, and practical applications.</p>
+              <div class="sp-upgrade-overlay" style="margin-top:20px;">
+                <p>This is a preview. Upgrade to read the full chapter.</p>
+                <button class="sp-btn sp-btn-quiz" onclick="this.closest('.sp-modal-overlay').remove(); switchView('store');">Upgrade to Unlock</button>
+              </div>
+            `}
+          </div>
+        </div>
+      `;
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+      });
+      overlay.querySelector('.sp-modal-close').addEventListener('click', () => overlay.remove());
+      document.body.appendChild(overlay);
+    }
+
+    // Study Plan tab switching
+    document.querySelectorAll('[data-sp-tab]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('[data-sp-tab]').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const isBio = tab.dataset.spTab === 'biology';
+        document.getElementById('spBiologyList').style.display = isBio ? '' : 'none';
+        document.getElementById('spChemistryList').style.display = isBio ? 'none' : '';
+      });
     });
 
     // ===== Augment loadAdminPanel to load inbox badge =====
