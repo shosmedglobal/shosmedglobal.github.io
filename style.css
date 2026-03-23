@@ -103,20 +103,24 @@ a {
 }
 
 .logo-img {
-  height: 52px;
+  height: 48px;
   width: auto;
   transition: var(--transition);
 }
 
-/* On dark backgrounds - white glow so shield pops */
+/* Full logo (shield + text as one image) */
+.logo-full {
+  height: 44px;
+}
+
+/* On dark backgrounds - brighten everything so it's visible */
 .logo-white {
   display: block;
-  filter: brightness(1.5) drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 12px rgba(255,255,255,0.15));
+  filter: brightness(1.8) drop-shadow(0 0 1px rgba(255,255,255,0.5));
 }
 
 .logo-dark {
   display: none;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
 }
 
 /* Logo text - clean two-line layout */
