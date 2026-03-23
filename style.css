@@ -142,9 +142,8 @@ a {
 .logo-text-white {
   display: flex;
 }
-.logo-text-white strong,
-.logo-text-white .logo-text-med { color: #fff; }
-.logo-text-white .logo-text-med { color: var(--teal); }
+.logo-text-white strong { color: #fff; }
+.logo-text-white .logo-text-med { color: #CF5B2E; }
 .logo-text-white .logo-text-global { color: rgba(255,255,255,0.7); }
 
 /* Dark text for light backgrounds */
