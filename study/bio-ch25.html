@@ -47,35 +47,130 @@
       <li><strong>Aortic (semilunar) valve:</strong> Between LV and aorta.</li>
     </ul>
 
-    <!-- SVG Diagram: Heart Structure -->
-    <figure style="text-align:center;margin:24px auto;max-width:600px;">
-      <!-- Labeled heart anatomy using AI-generated image with HTML overlay -->
-      <div style="position:relative;display:inline-block;width:100%;max-width:560px;">
-        <img src="images/bio-ch25-heart.png" alt="Anatomy of the human heart - cross-section showing chambers, valves, and major vessels" style="width:100%;height:auto;display:block;border-radius:8px;">
-        <!-- Left side labels (right heart - viewer's left) -->
-        <div style="position:absolute;top:6%;left:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-left:3px solid #4A90D9;">Superior Vena Cava</div>
-        <div style="position:absolute;top:20%;left:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-left:3px solid #4A90D9;">Right Atrium</div>
-        <div style="position:absolute;top:36%;left:0;font-size:0.65rem;font-weight:600;color:#4A90D9;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-left:3px solid #4A90D9;">Tricuspid Valve</div>
-        <div style="position:absolute;top:52%;left:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-left:3px solid #4A90D9;">Right Ventricle</div>
-        <div style="position:absolute;top:82%;left:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-left:3px solid #4A90D9;">Inferior Vena Cava</div>
-        <!-- Top center labels -->
-        <div style="position:absolute;top:1%;left:50%;transform:translateX(-50%);font-size:0.7rem;font-weight:700;color:#CF5B2E;background:rgba(255,255,255,0.9);padding:2px 8px;border-radius:4px;border-top:3px solid #CF5B2E;">Aorta</div>
-        <div style="position:absolute;top:6%;right:18%;font-size:0.65rem;font-weight:600;color:#9370DB;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;">Pulmonary Trunk</div>
-        <!-- Right side labels (left heart - viewer's right) -->
-        <div style="position:absolute;top:14%;right:0;font-size:0.65rem;font-weight:600;color:#CF5B2E;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-right:3px solid #CF5B2E;">Pulmonary Veins</div>
-        <div style="position:absolute;top:22%;right:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-right:3px solid #CF5B2E;">Left Atrium</div>
-        <div style="position:absolute;top:30%;right:0;font-size:0.65rem;font-weight:600;color:#4A90D9;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-right:3px solid #CF5B2E;">Aortic Valve</div>
-        <div style="position:absolute;top:38%;right:0;font-size:0.65rem;font-weight:600;color:#4A90D9;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-right:3px solid #CF5B2E;">Mitral (Bicuspid) Valve</div>
-        <div style="position:absolute;top:52%;right:0;font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;border-right:3px solid #CF5B2E;">Left Ventricle</div>
-        <div style="position:absolute;top:64%;right:0;font-size:0.65rem;font-weight:600;color:#6B7280;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;">Chordae Tendineae</div>
-        <!-- Center labels -->
-        <div style="position:absolute;top:10%;left:22%;font-size:0.65rem;font-weight:600;color:#4A90D9;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;">Pulmonary Valve</div>
-        <div style="position:absolute;bottom:6%;left:50%;transform:translateX(-50%);font-size:0.7rem;font-weight:700;color:#1B2A4A;background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:4px;">Septum</div>
-        <div style="position:absolute;top:42%;left:50%;transform:translateX(-50%);font-size:0.65rem;font-weight:700;color:#fff;background:rgba(27,42,74,0.7);padding:2px 8px;border-radius:4px;">Myocardium</div>
-        <div style="position:absolute;bottom:1%;left:50%;transform:translateX(-50%);font-size:0.6rem;color:#6B7280;background:rgba(255,255,255,0.9);padding:2px 4px;border-radius:4px;">Blue = deoxygenated | Red = oxygenated</div>
-      </div>
+    <!-- Figure 25.1: Heart Anatomy with SVG leader lines over GPT image -->
+    <figure style="text-align:center;margin:24px auto;max-width:520px;">
+      <div style="position:relative;display:inline-block;width:100%;">
+        <img src="images/bio-ch25-heart.png" alt="Anatomy of the human heart - anterior cross-section" style="width:100%;height:auto;display:block;border-radius:8px;">
+        <svg viewBox="0 0 500 750" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+          <style>
+            .lbl { font-family: Inter, Arial, sans-serif; font-size: 9px; font-weight: 700; fill: #1B2A4A; }
+            .lbl-sm { font-family: Inter, Arial, sans-serif; font-size: 8px; font-weight: 600; fill: #4A90D9; }
+            .lbl-red { font-family: Inter, Arial, sans-serif; font-size: 9px; font-weight: 700; fill: #c0392b; }
+            .lbl-blue { font-family: Inter, Arial, sans-serif; font-size: 9px; font-weight: 700; fill: #2471a3; }
+            .lead { stroke: #333; stroke-width: 0.8; fill: none; }
+            .dot { fill: #333; }
+          </style>
+          <!-- Superior Vena Cava (blue vessel, upper left) -->
+          <circle cx="145" cy="95" r="2" class="dot"/>
+          <line x1="145" y1="95" x2="18" y2="60" class="lead"/>
+          <rect x="2" y="48" width="120" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="60" class="lbl-blue">Superior Vena Cava</text>
 
-      <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 25.1 &mdash; Anatomy of the human heart showing chambers, valves, and major vessels.</figcaption>
+          <!-- Aorta (red arch, top center) -->
+          <circle cx="268" cy="62" r="2" class="dot"/>
+          <line x1="268" y1="62" x2="268" y2="20" class="lead"/>
+          <rect x="240" y="6" width="55" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="247" y="18" class="lbl-red">Aorta</text>
+
+          <!-- Pulmonary Trunk (purple vessels, top right) -->
+          <circle cx="320" cy="80" r="2" class="dot"/>
+          <line x1="320" y1="80" x2="390" y2="50" class="lead"/>
+          <rect x="375" y="38" width="115" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="381" y="50" class="lbl-sm">Pulmonary Trunk</text>
+
+          <!-- Pulmonary Valve (inside, between RV and pulmonary trunk) -->
+          <circle cx="220" cy="125" r="2" class="dot"/>
+          <line x1="220" y1="125" x2="18" y2="120" class="lead"/>
+          <rect x="2" y="110" width="108" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="122" class="lbl-sm">Pulmonary Valve</text>
+
+          <!-- Right Atrium (open chamber, viewer's left upper) -->
+          <circle cx="165" cy="200" r="2" class="dot"/>
+          <line x1="165" y1="200" x2="18" y2="180" class="lead"/>
+          <rect x="2" y="168" width="95" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="180" class="lbl">Right Atrium</text>
+
+          <!-- Aortic Valve (white cusps, center top) -->
+          <circle cx="290" cy="170" r="2" class="dot"/>
+          <line x1="290" y1="170" x2="400" y2="110" class="lead"/>
+          <rect x="385" y="98" width="95" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="391" y="110" class="lbl-sm">Aortic Valve</text>
+
+          <!-- Left Atrium (upper right chamber) -->
+          <circle cx="345" cy="195" r="2" class="dot"/>
+          <line x1="345" y1="195" x2="420" y2="165" class="lead"/>
+          <rect x="405" y="153" width="85" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="411" y="165" class="lbl">Left Atrium</text>
+
+          <!-- Pulmonary Veins (entering left atrium from right) -->
+          <circle cx="395" cy="145" r="2" class="dot"/>
+          <line x1="395" y1="145" x2="420" y2="130" class="lead"/>
+          <rect x="405" y="118" width="93" height="14" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="410" y="129" class="lbl-sm" style="font-size:7.5px;">Pulmonary Veins</text>
+
+          <!-- Tricuspid Valve (between RA and RV) -->
+          <circle cx="200" cy="280" r="2" class="dot"/>
+          <line x1="200" y1="280" x2="18" y2="260" class="lead"/>
+          <rect x="2" y="248" width="108" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="260" class="lbl-sm">Tricuspid Valve</text>
+
+          <!-- Mitral (Bicuspid) Valve (between LA and LV) -->
+          <circle cx="310" cy="275" r="2" class="dot"/>
+          <line x1="310" y1="275" x2="415" y2="235" class="lead"/>
+          <rect x="385" y="222" width="115" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="391" y="234" class="lbl-sm">Mitral (Bicuspid) Valve</text>
+
+          <!-- Right Ventricle (lower left chamber) -->
+          <circle cx="170" cy="400" r="2" class="dot"/>
+          <line x1="170" y1="400" x2="18" y2="370" class="lead"/>
+          <rect x="2" y="358" width="108" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="370" class="lbl">Right Ventricle</text>
+
+          <!-- Left Ventricle (lower right chamber, thicker wall) -->
+          <circle cx="340" cy="420" r="2" class="dot"/>
+          <line x1="340" y1="420" x2="420" y2="390" class="lead"/>
+          <rect x="405" y="378" width="93" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="411" y="390" class="lbl">Left Ventricle</text>
+
+          <!-- Chordae Tendineae (string-like structures) -->
+          <circle cx="350" cy="340" r="2" class="dot"/>
+          <line x1="350" y1="340" x2="420" y2="310" class="lead"/>
+          <rect x="405" y="298" width="95" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="410" y="310" class="lbl-sm" style="font-size:7.5px;fill:#6B7280;">Chordae Tendineae</text>
+
+          <!-- Papillary Muscle (bumpy mass, lower left) -->
+          <circle cx="195" cy="470" r="2" class="dot"/>
+          <line x1="195" y1="470" x2="18" y2="445" class="lead"/>
+          <rect x="2" y="433" width="108" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="445" class="lbl-sm" style="fill:#6B7280;">Papillary Muscle</text>
+
+          <!-- Septum (dividing wall, center bottom) -->
+          <circle cx="255" cy="560" r="2" class="dot"/>
+          <line x1="255" y1="560" x2="255" y2="590" class="lead"/>
+          <rect x="215" y="593" width="80" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="228" y="605" class="lbl">Septum</text>
+
+          <!-- Myocardium (thick muscle wall) -->
+          <circle cx="120" cy="500" r="2" class="dot"/>
+          <line x1="120" y1="500" x2="18" y2="505" class="lead"/>
+          <rect x="2" y="495" width="95" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="507" class="lbl-sm" style="fill:#6B7280;">Myocardium</text>
+
+          <!-- Inferior Vena Cava (blue vessel, bottom left) -->
+          <circle cx="118" cy="600" r="2" class="dot"/>
+          <line x1="118" y1="600" x2="18" y2="570" class="lead"/>
+          <rect x="2" y="558" width="118" height="16" rx="3" fill="rgba(255,255,255,0.92)"/>
+          <text x="8" y="570" class="lbl-blue">Inferior Vena Cava</text>
+
+          <!-- Color legend at bottom -->
+          <rect x="140" y="720" width="220" height="20" rx="4" fill="rgba(255,255,255,0.92)" stroke="#ddd" stroke-width="0.5"/>
+          <circle cx="165" cy="730" r="5" fill="#2471a3"/>
+          <text x="175" y="734" style="font-family:Inter,sans-serif;font-size:8px;fill:#555;">Deoxygenated</text>
+          <circle cx="280" cy="730" r="5" fill="#c0392b"/>
+          <text x="290" y="734" style="font-family:Inter,sans-serif;font-size:8px;fill:#555;">Oxygenated</text>
+        </svg>
+      </div>
+      <figcaption style="font-size:0.85rem;color:#6B7280;margin-top:8px;">Figure 25.1 — Anatomy of the human heart (anterior cross-section) showing chambers, valves, and major vessels.</figcaption>
     </figure>
 
     <h3>Blood Circulation: Pulmonary and Systemic Circuits</h3>
