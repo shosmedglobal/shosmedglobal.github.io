@@ -101,9 +101,10 @@ a {
 }
 
 .logo-img {
-  height: 44px;
+  height: 52px;
   width: auto;
   transition: var(--transition);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
 }
 
 .logo-dark {
@@ -112,6 +113,10 @@ a {
 
 .logo-white {
   display: block;
+}
+
+.navbar.scrolled .logo-img {
+  height: 46px;
 }
 
 .navbar.scrolled .logo-dark {
@@ -1286,6 +1291,10 @@ a {
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
+}
+
+.footer-logo .logo-img {
+  height: 42px;
 }
 
 .footer-brand p {
