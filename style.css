@@ -103,39 +103,55 @@ a {
 }
 
 .logo-img {
-  height: 48px;
+  height: 56px;
   width: auto;
   transition: var(--transition);
+}
+
+/* On dark backgrounds, brighten the shield */
+.logo-white {
+  display: block;
+  filter: brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
+.logo-dark {
+  display: none;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
 }
 
+/* Logo text - professional layout */
 .logo-text {
   display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+  align-items: baseline;
+  gap: 0;
   font-family: 'Inter', sans-serif;
-  letter-spacing: 0.5px;
+  line-height: 1;
 }
 
 .logo-text strong {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
 .logo-text .logo-text-med {
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-left: 4px;
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin-left: 3px;
 }
 
 .logo-text .logo-text-global {
-  display: block;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
-  margin-top: 1px;
+  margin-left: 6px;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  opacity: 0.7;
+  position: relative;
+  top: -1px;
 }
 
 /* White text for dark backgrounds */
@@ -144,7 +160,7 @@ a {
 }
 .logo-text-white strong { color: #fff; }
 .logo-text-white .logo-text-med { color: #CF5B2E; }
-.logo-text-white .logo-text-global { color: rgba(255,255,255,0.7); }
+.logo-text-white .logo-text-global { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.3); }
 
 /* Dark text for light backgrounds */
 .logo-text-dark {
@@ -152,18 +168,10 @@ a {
 }
 .logo-text-dark strong { color: var(--navy); }
 .logo-text-dark .logo-text-med { color: var(--teal); }
-.logo-text-dark .logo-text-global { color: var(--gray-500); }
-
-.logo-dark {
-  display: none;
-}
-
-.logo-white {
-  display: block;
-}
+.logo-text-dark .logo-text-global { color: var(--gray-400); border-color: var(--gray-300); }
 
 .navbar.scrolled .logo-img {
-  height: 42px;
+  height: 46px;
 }
 
 .navbar.scrolled .logo-dark {
