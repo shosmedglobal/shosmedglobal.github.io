@@ -110,21 +110,23 @@ a {
 
 /* Full logo (shield + text as one image) - wider aspect ratio */
 .logo-full {
-  height: 48px;
+  height: 56px;
 }
 
 .navbar.scrolled .logo-full {
-  height: 42px;
+  height: 46px;
 }
 
 /* White logo for dark backgrounds (hero, before scroll) */
 .logo-white {
   display: block;
+  filter: brightness(1.6) drop-shadow(0 0 8px rgba(255,255,255,0.3));
 }
 
 /* Dark logo for light backgrounds (after scroll) */
 .logo-dark {
   display: none;
+  filter: none;
 }
 
 /* Logo text - clean two-line layout */
