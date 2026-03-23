@@ -113,12 +113,12 @@ a {
   height: 44px;
 }
 
-/* On dark backgrounds - brighten everything so it's visible */
+/* White logo for dark backgrounds (hero, before scroll) */
 .logo-white {
   display: block;
-  filter: brightness(1.8) drop-shadow(0 0 1px rgba(255,255,255,0.5));
 }
 
+/* Dark logo for light backgrounds (after scroll) */
 .logo-dark {
   display: none;
 }
