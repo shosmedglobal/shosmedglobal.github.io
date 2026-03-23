@@ -497,7 +497,9 @@
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      const hero = document.querySelector('.hero') || document.querySelector('.page-hero') || document.querySelector('header');
+      const heroBottom = hero ? hero.offsetHeight - 70 : 50;
+      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
     });
 
     // Mobile menu toggle
