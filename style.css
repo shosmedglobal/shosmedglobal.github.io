@@ -108,9 +108,13 @@ a {
   transition: var(--transition);
 }
 
-/* Full logo (shield + text as one image) */
+/* Full logo (shield + text as one image) - wider aspect ratio */
 .logo-full {
-  height: 44px;
+  height: 48px;
+}
+
+.navbar.scrolled .logo-full {
+  height: 42px;
 }
 
 /* White logo for dark backgrounds (hero, before scroll) */
@@ -1371,7 +1375,7 @@ a {
 }
 
 .footer-logo .logo-img {
-  height: 42px;
+  height: 40px;
 }
 
 .footer-brand p {
