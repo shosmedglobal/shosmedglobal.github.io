@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="SHOS Med Global">
   <meta property="og:image" content="https://shosmedglobal.github.io/assets/shos-logo-with-text.png">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -497,9 +497,13 @@
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
-      const hero = document.querySelector('.hero') || document.querySelector('.page-hero') || document.querySelector('header');
-      const heroBottom = hero ? hero.offsetHeight - 70 : 50;
-      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
+      const darkSections = document.querySelectorAll('.hero, .about-strip, .page-hero, .page-hero-short');
+      let lastDarkBottom = 0;
+      darkSections.forEach(el => {
+        const bottom = el.offsetTop + el.offsetHeight;
+        if (bottom > lastDarkBottom) lastDarkBottom = bottom;
+      });
+      navbar.classList.toggle('scrolled', window.scrollY > lastDarkBottom - 70);
     });
 
     // Mobile menu toggle

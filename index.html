@@ -16,7 +16,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="SHOS Med Global - Study Medicine in Czech Republic">
   <meta name="twitter:description" content="Apply to medical school in Czech Republic with alumni guidance. USMLE prep and residency mentorship.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -266,10 +266,15 @@
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
-      // Switch navbar when scrolled past the dark hero section
-      const hero = document.querySelector('.hero') || document.querySelector('header');
-      const heroBottom = hero ? hero.offsetHeight - 70 : 50;
-      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
+      // Switch navbar when background changes from dark to light
+      // Find the first non-dark section after the hero
+      const darkSections = document.querySelectorAll('.hero, .about-strip, .page-hero, .page-hero-short');
+      let lastDarkBottom = 0;
+      darkSections.forEach(el => {
+        const bottom = el.offsetTop + el.offsetHeight;
+        if (bottom > lastDarkBottom) lastDarkBottom = bottom;
+      });
+      navbar.classList.toggle('scrolled', window.scrollY > lastDarkBottom - 70);
     });
 
     // Mobile menu toggle
