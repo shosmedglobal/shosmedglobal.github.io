@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <defs>
+    <linearGradient id="d3Outer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8784A"/>
+      <stop offset="50%" style="stop-color:#CF5B2E"/>
+      <stop offset="100%" style="stop-color:#A84823"/>
+    </linearGradient>
+    <linearGradient id="d3Inner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8F5E"/>
+      <stop offset="100%" style="stop-color:#CF5B2E"/>
+    </linearGradient>
+    <linearGradient id="d3Glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="d3Shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#CF5B2E" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Outer glow ring -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#CF5B2E" stroke-width="1" opacity="0.15"/>
+
+  <!-- Main sphere with shadow -->
+  <circle cx="50" cy="50" r="36" fill="url(#d3Outer)" filter="url(#d3Shadow)"/>
+
+  <!-- Inner highlight sphere (depth effect) -->
+  <circle cx="44" cy="42" r="28" fill="url(#d3Glow)" opacity="0.4"/>
+
+  <!-- Stylized globe arcs -->
+  <ellipse cx="50" cy="50" rx="36" ry="13" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <ellipse cx="50" cy="50" rx="13" ry="36" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- Bright cross with rounded edges -->
+  <rect x="43.5" y="30" width="13" height="40" rx="4" fill="#fff" opacity="0.95"/>
+  <rect x="30" y="43.5" width="40" height="13" rx="4" fill="#fff" opacity="0.95"/>
+
+  <!-- Accent arc (energy/motion) -->
+  <path d="M 78 25 Q 88 35, 88 50" fill="none" stroke="#E8784A" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M 82 30 Q 92 40, 92 50" fill="none" stroke="#E8784A" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- SHOS — bold, dark -->
+  <text x="105" y="43" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="35" fill="#1B2137" letter-spacing="1">SHOS</text>
+  <!-- Med — gradient-matching orange -->
+  <text x="235" y="43" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="600" font-size="35" fill="#CF5B2E" letter-spacing="0.5">Med</text>
+  <!-- GLOBAL -->
+  <text x="105" y="72" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="400" font-size="17" fill="#8B8986" letter-spacing="5">GLOBAL</text>
+
+  <!-- Small energy dots -->
+  <circle cx="93" cy="52" r="1.5" fill="#E8784A" opacity="0.5"/>
+  <circle cx="95" cy="58" r="1" fill="#E8784A" opacity="0.35"/>
+</svg>

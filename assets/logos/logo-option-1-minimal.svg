@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90">
+  <defs>
+    <linearGradient id="m1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CF5B2E"/>
+      <stop offset="100%" style="stop-color:#B84D26"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean circle -->
+  <circle cx="42" cy="45" r="34" fill="url(#m1Grad)"/>
+
+  <!-- Minimal cross — thin, modern -->
+  <rect x="36" y="26" width="12" height="38" rx="3" fill="#fff"/>
+  <rect x="23" y="39" width="38" height="12" rx="3" fill="#fff"/>
+
+  <!-- Subtle ring accent -->
+  <circle cx="42" cy="45" r="38" fill="none" stroke="#CF5B2E" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- SHOS — bold -->
+  <text x="95" y="42" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="34" fill="#1B2137" letter-spacing="1.5">SHOS</text>
+  <!-- Med — accent color, medium weight -->
+  <text x="222" y="42" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="500" font-size="34" fill="#CF5B2E" letter-spacing="0.5">Med</text>
+  <!-- GLOBAL — widely spaced, light -->
+  <text x="95" y="68" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="300" font-size="16" fill="#9CA3AF" letter-spacing="6">GLOBAL</text>
+</svg>

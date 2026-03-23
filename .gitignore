@@ -1,9 +1,8 @@
-# Non-website files (planning docs, dev tools, raw source data)
-docs/
-assets/logos/
-QUESTIONS/
+# Internal work files (not part of the public website)
+_internal/
+
+# Dev tools
 .claude/
-all_phys_math.txt
+
+# Misc
 *.bak
-*.md
-!README.md
