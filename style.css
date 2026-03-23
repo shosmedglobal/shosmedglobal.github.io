@@ -103,55 +103,56 @@ a {
 }
 
 .logo-img {
-  height: 56px;
+  height: 52px;
   width: auto;
   transition: var(--transition);
 }
 
-/* On dark backgrounds, brighten the shield */
+/* On dark backgrounds - white glow so shield pops */
 .logo-white {
   display: block;
-  filter: brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  filter: brightness(1.5) drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 12px rgba(255,255,255,0.15));
 }
 
 .logo-dark {
   display: none;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
 }
 
-/* Logo text - professional layout */
+/* Logo text - clean two-line layout */
 .logo-text {
   display: flex;
-  align-items: baseline;
-  gap: 0;
+  flex-direction: column;
   font-family: 'Inter', sans-serif;
-  line-height: 1;
+  line-height: 1.15;
+  margin-left: 2px;
+}
+
+.logo-text-top {
+  display: flex;
+  align-items: baseline;
 }
 
 .logo-text strong {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
 }
 
 .logo-text .logo-text-med {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 300;
-  margin-left: 3px;
+  margin-left: 5px;
+  font-style: italic;
 }
 
 .logo-text .logo-text-global {
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 3.5px;
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 5.5px;
   text-transform: uppercase;
-  margin-left: 6px;
-  padding: 2px 6px;
-  border: 1px solid currentColor;
-  border-radius: 3px;
-  opacity: 0.7;
-  position: relative;
-  top: -1px;
+  margin-top: 2px;
 }
 
 /* White text for dark backgrounds */
@@ -159,8 +160,8 @@ a {
   display: flex;
 }
 .logo-text-white strong { color: #fff; }
-.logo-text-white .logo-text-med { color: #CF5B2E; }
-.logo-text-white .logo-text-global { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.3); }
+.logo-text-white .logo-text-med { color: #E8A44C; }
+.logo-text-white .logo-text-global { color: rgba(255,255,255,0.55); }
 
 /* Dark text for light backgrounds */
 .logo-text-dark {
@@ -168,7 +169,7 @@ a {
 }
 .logo-text-dark strong { color: var(--navy); }
 .logo-text-dark .logo-text-med { color: var(--teal); }
-.logo-text-dark .logo-text-global { color: var(--gray-400); border-color: var(--gray-300); }
+.logo-text-dark .logo-text-global { color: var(--gray-400); }
 
 .navbar.scrolled .logo-img {
   height: 46px;
