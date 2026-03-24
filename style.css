@@ -80,7 +80,7 @@ a {
   z-index: 1000;
   padding: 16px 0;
   transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
-  background: linear-gradient(135deg, var(--navy) 0%, #1e2845 50%, #2a2530 100%);
+  background: none;
   border-bottom: none;
 }
 
