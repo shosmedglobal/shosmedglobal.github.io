@@ -4581,7 +4581,8 @@
           const resp = await fetch(`study/${prefix}-ch${chNum}.html`);
           if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
           const html = await resp.text();
-          contentEl.innerHTML = html;
+          // Fix relative image paths: images/ -> study/images/ (since dashboard is at root)
+          contentEl.innerHTML = html.replace(/src="images\//g, 'src="study/images/');
         } catch (e) {
           contentEl.innerHTML = '<p style="color:#ef4444; text-align:center; padding:40px 0;">Failed to load chapter content. Please try again later.</p>';
         }
