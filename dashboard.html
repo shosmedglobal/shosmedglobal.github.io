@@ -152,7 +152,7 @@
                 <div class="overview-stat-label">Questions Answered</div>
               </div>
               <div class="overview-stat-card">
-                <div class="overview-stat-value overview-stat-score" id="statAvgScore">—</div>
+                <div class="overview-stat-value" id="statAvgScore">—</div>
                 <div class="overview-stat-label">Average Score</div>
               </div>
               <div class="overview-stat-card">
@@ -394,6 +394,7 @@
                     <div class="sp-hl-swatch" data-color="blue" title="Blue"></div>
                     <div class="sp-hl-swatch" data-color="pink" title="Pink"></div>
                   </div>
+                  <button class="sp-hl-clear" id="spHlClear">Remove Selected Highlight</button>
                 </div>
               </div>
               <button class="sp-reader-tool-btn" id="spNotesBtn">&#128221; Notes</button>
@@ -1414,7 +1415,7 @@
             <div id="editProfileForm" class="edit-form" style="display:none;">
               <div class="form-group">
                 <label for="editName">Name</label>
-                <input type="text" id="editName">
+                <input type="text" id="editName" class="form-input">
               </div>
               <div class="form-group">
                 <label>Path</label>
@@ -2841,6 +2842,9 @@
       // Load overview stats
       loadOverviewStats(user.uid, profile);
 
+      // Show QBank reset section if eligible
+      showResetIfEligible(profile);
+
       // Initialize Study Plan
       spInit(profile, qbankPaid);
 
@@ -3012,16 +3016,24 @@
         document.getElementById('statBestScore').textContent = bestScore + '%';
         document.getElementById('statBestScore').style.color = bestScore >= 70 ? '#10b981' : bestScore >= 50 ? '#f59e0b' : '#ef4444';
 
-        // QBank Progress Bar
-        const totalQBank = 1020; // total questions in the bank
-        const uniqueAnswered = profile?.qbankProgress ? Object.keys(profile.qbankProgress).length : 0;
-        const progressPct = Math.min(Math.round((uniqueAnswered / totalQBank) * 100), 100);
-        const progBar = document.getElementById('overviewProgressBar');
-        const progText = document.getElementById('overviewProgressText');
-        const progPct = document.getElementById('overviewProgressPct');
-        if (progBar) progBar.style.width = progressPct + '%';
-        if (progText) progText.textContent = uniqueAnswered.toLocaleString() + ' / ' + totalQBank.toLocaleString();
-        if (progPct) progPct.textContent = progressPct + '%';
+        // QBank Progress Bar - fetch from qbankData subcollection
+        const totalQBank = 1020;
+        try {
+          const qbankDoc = await db.collection('users').doc(auth.currentUser.uid)
+            .collection('qbankData').doc('progress').get();
+          const qbankData = qbankDoc.exists ? qbankDoc.data() : {};
+          const completed = qbankData.completedQuestions || {};
+          const uniqueAnswered = Object.keys(completed).length;
+          const progressPct = Math.min(Math.round((uniqueAnswered / totalQBank) * 100), 100);
+          const progBar = document.getElementById('overviewProgressBar');
+          const progText = document.getElementById('overviewProgressText');
+          const progPct = document.getElementById('overviewProgressPct');
+          const questionsLeft = document.getElementById('statQuestionsLeft');
+          if (progBar) progBar.style.width = progressPct + '%';
+          if (progText) progText.textContent = uniqueAnswered.toLocaleString() + ' / ' + totalQBank.toLocaleString();
+          if (progPct) progPct.textContent = progressPct + '%';
+          if (questionsLeft) questionsLeft.textContent = (totalQBank - uniqueAnswered).toLocaleString();
+        } catch (e) { console.warn('Could not load QBank progress:', e); }
 
         // Subject breakdown
         const subjectStats = {};
@@ -3443,9 +3455,14 @@
       try {
         const user = auth.currentUser;
         if (!user) return;
-        // Clear progress but keep notes/highlights
+        // Clear progress in subcollection (where qbank.js stores it)
+        await db.collection('users').doc(user.uid)
+          .collection('qbankData').doc('progress').set({
+            completedQuestions: {},
+            resetCount: 1
+          });
+        // Mark reset as used in main profile, clear test history
         await db.collection('users').doc(user.uid).set({
-          qbankProgress: {},
           testHistory: [],
           qbankResetUsed: true,
           qbankResetDate: new Date().toISOString()
@@ -3470,11 +3487,19 @@
     let adminCurrentPage = 1;
     const ADMIN_PAGE_SIZE = 20;
 
-    // Price map for revenue calculation
+    // Price map for revenue calculation (must match Store pricing)
     const PLAN_PRICES = {
       'qbank-1mo': 49,
-      'qbank-3mo': 99,
-      'qbank-6mo': 149
+      'self-study': 99,
+      'full-guidance': 249,
+      'qbank-extend-1mo': 49,
+      'qbank-reset': 99,
+      'admin-granted': 0,
+      'mentorship': 199,
+      'match-ready': 499,
+      'board-review-single': 99,
+      'board-review-5pack': 449,
+      'board-review-10pack': 799
     };
 
     async function loadAdminPanel() {
