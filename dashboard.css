@@ -476,122 +476,6 @@
   font-size: 1rem;
 }
 
-/* ===== Action Cards — Top of Overview ===== */
-.action-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 36px;
-}
-
-.action-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 24px;
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--gray-200);
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-
-.action-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.action-card.action-qbank {
-  border-color: var(--teal);
-  background: linear-gradient(135deg, rgba(207, 91, 46, 0.04), rgba(207, 91, 46, 0.01));
-}
-
-.action-card.action-qbank:hover {
-  border-color: var(--teal);
-  box-shadow: 0 8px 25px rgba(207, 91, 46, 0.15);
-}
-
-.action-card.action-consult {
-  border-color: var(--navy);
-  background: linear-gradient(135deg, rgba(26, 54, 93, 0.04), rgba(26, 54, 93, 0.01));
-}
-
-.action-card.action-consult:hover {
-  border-color: var(--navy);
-  box-shadow: 0 8px 25px rgba(26, 54, 93, 0.15);
-}
-
-.action-card.action-path {
-  border-color: var(--green);
-  background: linear-gradient(135deg, rgba(45, 134, 89, 0.04), rgba(45, 134, 89, 0.01));
-}
-
-.action-card.action-path:hover {
-  border-color: var(--green);
-  box-shadow: 0 8px 25px rgba(45, 134, 89, 0.15);
-}
-
-.action-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.action-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.action-text h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-
-.action-text p {
-  font-size: 0.85rem;
-  color: var(--gray-500);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.action-arrow {
-  font-size: 1.4rem;
-  color: var(--gray-300);
-  flex-shrink: 0;
-  transition: all 0.25s ease;
-}
-
-.action-card:hover .action-arrow {
-  color: var(--teal);
-  transform: translateX(4px);
-}
-
-.overview-section-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--gray-400);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 16px;
-  font-size: 0.8rem;
-}
-
-/* ===== Dashboard Grid ===== */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
 /* ===== Dashboard Cards ===== */
 .dash-card {
   background: var(--white);
@@ -653,11 +537,6 @@
   display: flex;
   gap: 10px;
   margin-top: 16px;
-}
-
-/* ===== Services Card ===== */
-.services-card {
-  grid-column: 1 / -1;
 }
 
 .service-row {
@@ -734,36 +613,6 @@
   font-weight: 600;
 }
 
-/* ===== Quick Links ===== */
-.quick-links {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.quick-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--gray-600);
-  transition: var(--transition);
-  border: 1px solid transparent;
-}
-
-.quick-link:hover {
-  background: var(--gray-50);
-  border-color: var(--gray-200);
-  color: var(--teal);
-}
-
-.quick-link span {
-  font-size: 1.2rem;
-}
-
 /* ===== Loading Spinner ===== */
 .dashboard-loading {
   text-align: center;
@@ -824,15 +673,6 @@
 
 .sidebar-link-inline:hover {
   text-decoration: underline;
-}
-
-/* Plan note */
-.plan-note {
-  font-size: 0.75rem;
-  color: var(--gray-400);
-  margin-top: 8px;
-  margin-bottom: 12px;
-  font-style: italic;
 }
 
 .qbank-pricing-grid {
@@ -971,15 +811,6 @@
 
   .dashboard-main {
     padding: 80px 16px 40px;
-  }
-
-  .action-cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
   }
 
   .service-row {
@@ -1314,11 +1145,6 @@
   color: var(--gray-500);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.partner-badge {
-  background: rgba(207, 91, 46, 0.12);
-  color: var(--teal);
 }
 
 .faculty-details {
