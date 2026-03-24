@@ -439,6 +439,17 @@
             <p style="font-size:1.1rem; margin-bottom:8px;">No tests yet</p>
             <p style="font-size:0.9rem;">Start a practice session and your results will appear here.</p>
           </div>
+
+          <!-- Reset QBank Progress (Full Guidance only) -->
+          <div id="dashQbResetSection" style="display:none; margin-top:24px;">
+            <div class="dash-card" style="padding:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+              <div>
+                <p style="font-weight:600; font-size:0.9rem; color:var(--gray-700); margin-bottom:4px;">Reset QBank Progress</p>
+                <p style="font-size:0.82rem; color:var(--gray-500);">Start fresh with all questions marked as unanswered. Your notes and highlights are preserved. Available once per subscription.</p>
+              </div>
+              <button id="dashQbResetBtn" class="btn btn-outline btn-small" style="white-space:nowrap;">Reset Progress</button>
+            </div>
+          </div>
         </div>
 
         <!-- ========== VIEW: FREE RESOURCES ========== -->
@@ -970,12 +981,41 @@
                 <p class="plan-per">Launch pricing · 6 months + personal guidance</p>
                 <ul class="plan-features">
                   <li>Full QBank + Study Guide (6 months)</li>
+                  <li>One-time QBank progress reset</li>
                   <li>3 sessions (30 min) with a physician:</li>
                   <li style="padding-left:12px;font-size:0.82em;">① Exam strategy</li>
                   <li style="padding-left:12px;font-size:0.82em;">② Interview prep</li>
                   <li style="padding-left:12px;font-size:0.82em;">③ Life in Prague</li>
                 </ul>
                 <a href="#" class="btn btn-secondary stripe-pay" data-tier="full-guidance">Purchase</a>
+              </div>
+            </div>
+
+            <!-- Add-ons -->
+            <h3 class="view-section-title" style="margin-top:28px;">Add-ons</h3>
+            <div class="qbank-plans-grid">
+              <div class="qbank-plan-card" style="border:1px solid var(--gray-200);">
+                <h4>Extend Access</h4>
+                <div class="plan-price">$49</div>
+                <p class="plan-per">Add 1 month to your current plan</p>
+                <ul class="plan-features">
+                  <li>1 additional month of QBank access</li>
+                  <li>Continue where you left off</li>
+                  <li>Keep all progress and notes</li>
+                </ul>
+                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-extend-1mo">Add 1 Month</a>
+              </div>
+              <div class="qbank-plan-card" style="border:1px solid var(--gray-200);">
+                <h4>Reset Progress</h4>
+                <div class="plan-price">$99</div>
+                <p class="plan-per">Fresh start for final review</p>
+                <ul class="plan-features">
+                  <li>All questions marked as unanswered</li>
+                  <li>Test history cleared</li>
+                  <li>Notes and highlights preserved</li>
+                  <li>Available anytime</li>
+                </ul>
+                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-reset">Purchase Reset</a>
               </div>
             </div>
           </div>
@@ -3343,20 +3383,56 @@
       });
     }
 
-    // ===== Dashboard Start Practice Button =====
-    document.getElementById('dashStartQbBtn')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const subject = document.getElementById('dashQbSubject').value;
-      const count = document.getElementById('dashQbCount').value;
-      const filter = document.getElementById('dashQbFilter').value;
-      const mode = document.querySelector('input[name="dashQbMode"]:checked').value;
-      const params = new URLSearchParams({
-        subject: subject,
-        count: count,
-        filter: filter,
-        mode: mode
-      });
-      window.location.href = 'qbank.html?' + params.toString();
+    // ===== QBank Reset Progress =====
+    // Show reset section only for Full Guidance subscribers who haven't used their reset
+    function showResetIfEligible(profile) {
+      const resetSection = document.getElementById('dashQbResetSection');
+      if (!resetSection) return;
+      const plan = profile?.payments?.['exam-bank-plan'];
+      const hasReset = profile?.qbankResetUsed === true;
+      const isAdmin = profile?.role === 'admin';
+      // Show for full-guidance plan or admin, only if reset not yet used
+      if ((plan === 'full-guidance' || isAdmin) && !hasReset) {
+        resetSection.style.display = 'block';
+      } else {
+        resetSection.style.display = 'none';
+      }
+    }
+
+    document.getElementById('dashQbResetBtn')?.addEventListener('click', async () => {
+      const confirmed = confirm(
+        'Are you sure you want to reset your QBank progress?\n\n' +
+        '• All questions will be marked as unanswered\n' +
+        '• Your test history will be cleared\n' +
+        '• Your notes and highlights will be PRESERVED\n' +
+        '• This can only be done ONCE\n\n' +
+        'This action cannot be undone.'
+      );
+      if (!confirmed) return;
+
+      // Double confirmation
+      const doubleConfirm = confirm('This will permanently reset all your QBank progress. Are you absolutely sure?');
+      if (!doubleConfirm) return;
+
+      try {
+        const user = auth.currentUser;
+        if (!user) return;
+        // Clear progress but keep notes/highlights
+        await db.collection('users').doc(user.uid).set({
+          qbankProgress: {},
+          testHistory: [],
+          qbankResetUsed: true,
+          qbankResetDate: new Date().toISOString()
+        }, { merge: true });
+
+        alert('QBank progress has been reset. Your notes and highlights are preserved.');
+        document.getElementById('dashQbResetSection').style.display = 'none';
+        // Refresh the page
+        window.location.reload();
+      } catch (err) {
+        console.error('Reset error:', err);
+        alert('Error resetting progress: ' + err.message);
+      }
     });
 
     // ===================================================================
