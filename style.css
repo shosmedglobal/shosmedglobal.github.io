@@ -80,6 +80,8 @@ a {
   z-index: 1000;
   padding: 20px 0;
   transition: var(--transition);
+  background: linear-gradient(180deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 70%, transparent 100%);
+  backdrop-filter: blur(4px);
 }
 
 .navbar.scrolled {
