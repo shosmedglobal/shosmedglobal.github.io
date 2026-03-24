@@ -2480,21 +2480,25 @@
     }
     .sp-reader-content {
       position: relative;
+      overflow: hidden;
+    }
+    .sp-reader-content > * {
+      position: relative;
       z-index: 1;
     }
-    .sp-reader-content.watermarked::after {
+    .sp-reader-content.watermarked::before {
       content: attr(data-watermark);
       position: absolute;
       top: -50%;
       left: -20%;
-      z-index: 9999;
+      z-index: 0;
       pointer-events: none !important;
       user-select: none !important;
       -webkit-user-select: none !important;
       -moz-user-select: none !important;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
-      color: rgba(120, 120, 140, 0.045);
+      color: rgba(120, 120, 140, 0.035);
       letter-spacing: 2px;
       line-height: 70px;
       word-spacing: 50px;
@@ -2829,8 +2833,8 @@
         link.classList.toggle('active', link.dataset.view === viewName);
       });
 
-      // Save current view so it persists on refresh
-      try { localStorage.setItem('dashboard_current_view', viewName); } catch(e) {}
+      // Save current view so it persists on refresh (sessionStorage resets on tab close)
+      try { sessionStorage.setItem('dashboardView', viewName); } catch(e) {}
 
       closeSidebar();
     }
@@ -3003,8 +3007,8 @@
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
       } else {
-        // Restore last viewed tab, or default to Overview
-        const savedView = localStorage.getItem('dashboard_current_view');
+        // Restore last viewed tab from sessionStorage, or default to Overview
+        const savedView = sessionStorage.getItem('dashboardView');
         switchView(savedView || 'overview');
       }
 
