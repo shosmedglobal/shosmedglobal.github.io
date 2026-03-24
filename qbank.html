@@ -15,24 +15,13 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar scrolled">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="assets/shos-logo-full-dark.png" alt="SHOS Med Global" class="logo-img logo-full logo-dark">
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li id="auth-links">
-          <a href="#" onclick="signOut()" class="nav-cta">Log Out</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Simple back bar -->
+  <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 24px;position:sticky;top:0;z-index:100;">
+    <a href="dashboard.html?view=qbank" style="display:inline-flex;align-items:center;gap:6px;color:#1B2A4A;font-family:Inter,sans-serif;font-size:0.9rem;font-weight:500;text-decoration:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Dashboard
+    </a>
+  </div>
 
   <!-- Question Bank App — hidden until auth check completes -->
   <section class="qbank-section" id="qbankSection" style="display:none;">
@@ -124,9 +113,6 @@
           <button class="btn btn-primary btn-lg" id="startQuizBtn">
             Start Block
           </button>
-          <button class="btn btn-secondary btn-lg" id="performanceBtn">
-            📊 Performance
-          </button>
         </div>
         <!-- Reset Progress (only for 6-month or admin) -->
         <div id="resetSection" class="reset-section" style="display:none;">
@@ -134,14 +120,6 @@
         </div>
       </div>
 
-      <!-- ===== PERFORMANCE SCREEN ===== -->
-      <div id="performanceScreen" class="qbank-performance" style="display:none;">
-        <div class="perf-header">
-          <h2>📊 Performance Dashboard</h2>
-          <button class="btn btn-secondary" id="backFromPerformance">← Back to Questions</button>
-        </div>
-        <div id="performanceContent"></div>
-      </div>
 
       <!-- ===== QUIZ SCREEN ===== -->
       <div id="quizScreen" class="qbank-quiz" style="display:none;">

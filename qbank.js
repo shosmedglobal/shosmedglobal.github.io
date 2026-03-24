@@ -1479,7 +1479,7 @@ function loadHistoricalReview(testRecord) {
 
 // Screen switching
 function showScreen(id) {
-  ['startScreen', 'quizScreen', 'resultsScreen', 'reviewScreen', 'performanceScreen'].forEach(s => {
+  ['startScreen', 'quizScreen', 'resultsScreen', 'reviewScreen'].forEach(s => {
     const el = document.getElementById(s);
     if (el) el.style.display = s === id ? 'block' : 'none';
   });
@@ -1542,12 +1542,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const questionCountSel = document.getElementById('questionCount');
   if (questionCountSel) questionCountSel.addEventListener('change', updateTestTimeInfo);
 
-  // Performance button
-  const perfBtn = document.getElementById('performanceBtn');
-  if (perfBtn) perfBtn.addEventListener('click', showPerformance);
-
-  const backFromPerf = document.getElementById('backFromPerformance');
-  if (backFromPerf) backFromPerf.addEventListener('click', () => showScreen('startScreen'));
+  // Performance button (removed - stats shown in dashboard overview)
 
   // Reset button
   const resetBtn = document.getElementById('resetProgressBtn');
