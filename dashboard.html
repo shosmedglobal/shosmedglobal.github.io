@@ -2495,7 +2495,7 @@
       -webkit-user-select: none;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
-      color: rgba(150, 150, 160, 0.035);
+      color: rgba(150, 150, 160, 0.06);
       letter-spacing: 3px;
       line-height: 80px;
       word-spacing: 60px;
@@ -2830,6 +2830,9 @@
         link.classList.toggle('active', link.dataset.view === viewName);
       });
 
+      // Save current view so it persists on refresh
+      try { localStorage.setItem('dashboard_current_view', viewName); } catch(e) {}
+
       closeSidebar();
     }
 
@@ -3001,8 +3004,9 @@
         switchView(requestedView);
         history.replaceState(null, '', 'dashboard.html');
       } else {
-        // Always default to Overview
-        switchView('overview');
+        // Restore last viewed tab, or default to Overview
+        const savedView = localStorage.getItem('dashboard_current_view');
+        switchView(savedView || 'overview');
       }
 
       // Toggle overview content based on path
@@ -5047,6 +5051,13 @@
 
       // Restore saved highlights (as position data, applied on top of clean HTML)
       await spRestoreHighlights(subject, chIdx);
+
+      // Re-apply watermark (innerHTML replacement removes it)
+      const user = firebase.auth().currentUser;
+      if (user && user.email) {
+        contentEl.classList.add('watermarked');
+        contentEl.setAttribute('data-watermark', (user.email + '   ').repeat(200));
+      }
 
       // Load notes
       spLoadNotes(subject, chIdx);
