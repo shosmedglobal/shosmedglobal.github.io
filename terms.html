@@ -454,6 +454,18 @@
     </div>
   </footer>
 
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>We use essential cookies for authentication and site functionality. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn More</a></p>
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieBanner').style.display='flex';}
+      document.getElementById('cookieAccept').addEventListener('click',function(){localStorage.setItem('cookie_consent','accepted');document.getElementById('cookieBanner').style.display='none';});
+    })();
+  </script>
+
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
