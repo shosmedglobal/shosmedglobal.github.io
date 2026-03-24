@@ -126,6 +126,21 @@
               </div>
             </div>
 
+            <!-- QBank Progress Bar -->
+            <div class="dash-card" style="margin-bottom:20px; padding:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:0;">QBank Progress</h3>
+                <span id="overviewProgressText" style="font-size:0.85rem; font-weight:600; color:var(--teal);">0 / 1,020</span>
+              </div>
+              <div style="background:var(--gray-200); border-radius:8px; height:12px; overflow:hidden;">
+                <div id="overviewProgressBar" style="background:linear-gradient(90deg, var(--teal), #e8a44c); height:100%; border-radius:8px; width:0%; transition:width 0.6s ease;"></div>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-top:6px;">
+                <span style="font-size:0.75rem; color:var(--gray-400);">Answered</span>
+                <span id="overviewProgressPct" style="font-size:0.75rem; font-weight:600; color:var(--gray-500);">0%</span>
+              </div>
+            </div>
+
             <!-- Stats Grid -->
             <div class="overview-stats-grid">
               <div class="overview-stat-card">
@@ -2996,6 +3011,17 @@
         document.getElementById('statAvgScore').style.color = avgScore >= 70 ? '#10b981' : avgScore >= 50 ? '#f59e0b' : '#ef4444';
         document.getElementById('statBestScore').textContent = bestScore + '%';
         document.getElementById('statBestScore').style.color = bestScore >= 70 ? '#10b981' : bestScore >= 50 ? '#f59e0b' : '#ef4444';
+
+        // QBank Progress Bar
+        const totalQBank = 1020; // total questions in the bank
+        const uniqueAnswered = profile?.qbankProgress ? Object.keys(profile.qbankProgress).length : 0;
+        const progressPct = Math.min(Math.round((uniqueAnswered / totalQBank) * 100), 100);
+        const progBar = document.getElementById('overviewProgressBar');
+        const progText = document.getElementById('overviewProgressText');
+        const progPct = document.getElementById('overviewProgressPct');
+        if (progBar) progBar.style.width = progressPct + '%';
+        if (progText) progText.textContent = uniqueAnswered.toLocaleString() + ' / ' + totalQBank.toLocaleString();
+        if (progPct) progPct.textContent = progressPct + '%';
 
         // Subject breakdown
         const subjectStats = {};
