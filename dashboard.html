@@ -1443,14 +1443,14 @@
                   <label class="path-option">
                     <input type="radio" name="editPath" value="applicant">
                     <div class="path-option-content">
-                      <span class="path-option-icon">🎓</span>
+                      
                       <div><strong>Med School Application</strong></div>
                     </div>
                   </label>
                   <label class="path-option">
                     <input type="radio" name="editPath" value="student">
                     <div class="path-option-content">
-                      <span class="path-option-icon">🩺</span>
+                      
                       <div><strong>Residency Application</strong></div>
                     </div>
                   </label>
@@ -2905,7 +2905,7 @@
       // Update settings profile card
       document.getElementById('profileName').textContent = displayName;
       document.getElementById('profileEmail').textContent = user.email || '-';
-      const pathText = profile?.path === 'applicant' ? '🎓 Med School Application' : profile?.path === 'student' ? '🩺 Residency Application' : '-';
+      const pathText = profile?.path === 'applicant' ? 'Med School Application' : profile?.path === 'student' ? 'Residency Application' : '-';
       document.getElementById('profilePath').textContent = pathText;
 
 
@@ -3058,7 +3058,7 @@
         if (result.success) {
           // Immediately update profile display
           document.getElementById('profileName').textContent = name;
-          const pathText = path === 'applicant' ? '🎓 Med School Application' : path === 'student' ? '🩺 Residency Application' : '-';
+          const pathText = path === 'applicant' ? 'Med School Application' : path === 'student' ? 'Residency Application' : '-';
           document.getElementById('profilePath').textContent = pathText;
           document.getElementById('sidebarPath').textContent = path === 'applicant' ? 'Med School Application' : path === 'student' ? 'Residency Application' : '';
           document.getElementById('sidebarName').textContent = name;
