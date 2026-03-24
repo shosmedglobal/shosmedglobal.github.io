@@ -259,6 +259,12 @@
       document.getElementById('navLinks').classList.toggle('active');
       document.getElementById('navToggle').classList.toggle('active');
     });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+        document.getElementById('navToggle').classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
