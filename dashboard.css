@@ -1094,6 +1094,26 @@
   color: #dc2626;
 }
 
+.dash-mode-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dash-mode-test {
+  background: rgba(207, 91, 46, 0.12);
+  color: #CF5B2E;
+}
+
+.dash-mode-review {
+  background: rgba(45, 134, 89, 0.12);
+  color: #2D8659;
+}
+
 .dash-hist-subjects {
   color: var(--gray-500, #6b7280);
   font-size: 0.82rem;
