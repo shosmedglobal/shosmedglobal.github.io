@@ -198,7 +198,7 @@
       const navbar = document.getElementById('navbar');
       const hero = document.querySelector('.page-hero-short') || document.querySelector('header');
       const heroBottom = hero ? hero.offsetHeight - 70 : 50;
-      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
+      const pastHero = window.scrollY > heroBottom; navbar.classList.toggle('scrolled', pastHero); navbar.classList.toggle('scrolling-dark', !pastHero && window.scrollY > 10);
     });
 
     // Mobile menu toggle

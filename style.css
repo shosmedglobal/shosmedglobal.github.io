@@ -79,9 +79,14 @@ a {
   right: 0;
   z-index: 1000;
   padding: 16px 0;
-  transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
   background: none;
   border-bottom: none;
+}
+
+/* Dark opaque background once scrolling starts (content doesn't show through) */
+.navbar.scrolling-dark {
+  background: var(--navy);
 }
 
 .navbar.scrolled {
