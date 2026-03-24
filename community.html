@@ -112,9 +112,10 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar scrolled">
+  <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="index.html" class="logo">
+        <img src="assets/shos-logo-full-white.png" alt="SHOS Med Global" class="logo-img logo-full logo-white">
         <img src="assets/shos-logo-full-dark.png" alt="SHOS Med Global" class="logo-img logo-full logo-dark">
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -610,6 +611,14 @@
   <script src="auth.js"></script>
   <script src="community.js"></script>
   <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const hero = document.querySelector('.page-hero-short') || document.querySelector('header');
+      const heroBottom = hero ? hero.offsetHeight - 70 : 50;
+      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
+    });
+
     // Mobile menu toggle
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('active');

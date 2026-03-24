@@ -193,6 +193,14 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
   <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const hero = document.querySelector('.page-hero-short') || document.querySelector('header');
+      const heroBottom = hero ? hero.offsetHeight - 70 : 50;
+      navbar.classList.toggle('scrolled', window.scrollY > heroBottom);
+    });
+
     // Mobile menu toggle
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('active');
