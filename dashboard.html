@@ -126,6 +126,16 @@
               </div>
             </div>
 
+            <!-- Free Chapter CTA (shown for free users only) -->
+            <div id="freeChapterCta" class="dash-card" style="display:none; margin-bottom:20px; padding:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
+              <h3 style="font-size:1rem; font-weight:700; color:#1a2744; margin:0 0 8px;">Start with your free chapter — Biology: Living Systems &amp; Energetics</h3>
+              <p style="font-size:0.9rem; color:#475569; margin:0 0 16px;">Read the chapter, then practice with 5 sample questions.</p>
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <button class="btn btn-primary btn-small" onclick="switchView('studyplan'); setTimeout(function(){ spOpenReader('biology', 0, true); }, 300);">Read Free Chapter</button>
+                <a href="qbank.html" class="btn btn-outline btn-small">Try Sample Questions</a>
+              </div>
+            </div>
+
             <!-- QBank Progress Bar -->
             <div class="dash-card" style="margin-bottom:20px; padding:20px;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -2463,40 +2473,39 @@
       letter-spacing: 0.02em;
     }
 
-    /* Watermark — vertical strip on the left side of the reader, between sidebar and content */
-    .sp-watermark-strip {
-      position: absolute;
-      left: -32px;
-      top: 0;
-      bottom: 0;
-      width: 28px;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.12;
-    }
-    .sp-watermark-strip-inner {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      white-space: nowrap;
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      color: var(--gray-400);
-      letter-spacing: 2px;
-      line-height: 28px;
-      user-select: none;
-      -webkit-user-select: none;
-    }
+    /* Watermark — behind text, diagonal repeating pattern */
     .sp-reader-body {
       position: relative;
       padding-left: 8px;
     }
     .sp-reader-content {
       position: relative;
+      z-index: 1;
+    }
+    .sp-reader-content.watermarked::before {
+      content: attr(data-watermark);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(150, 150, 160, 0.035);
+      letter-spacing: 3px;
+      line-height: 80px;
+      word-spacing: 60px;
+      transform: rotate(-25deg);
+      transform-origin: top left;
+      overflow: hidden;
+      white-space: normal;
+      word-break: break-all;
+      width: 150%;
+      height: 150%;
     }
 
     /* Blur content when tab loses focus (study reader specific) */
@@ -2537,8 +2546,7 @@
         padding: 80px 20px;
         color: #666;
       }
-      /* Also hide the watermark strip */
-      .sp-watermark-strip { display: none !important; }
+      .sp-reader-content.watermarked::before { display: none !important; }
     }
 
     /* Notes panel */
@@ -2961,6 +2969,12 @@
       document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
       document.getElementById('qbankPricingGrid').style.display = hideQbankStore ? 'none' : '';
       document.getElementById('qbankPricingTitle').style.display = hideQbankStore ? 'none' : '';
+
+      // Show free chapter CTA for free applicant users
+      const freeChapterCta = document.getElementById('freeChapterCta');
+      if (freeChapterCta) {
+        freeChapterCta.style.display = (!qbankPaid && !isStudent) ? '' : 'none';
+      }
 
       // Load test history into dashboard QBank view
       loadDashTestHistory(user.uid);
@@ -4643,7 +4657,11 @@
       'Carboxylic Acids','Carboxylic Acid Derivatives','Sulfonic & Carbonic Derivatives',
       'Amines','Heterocyclic Compounds','Nucleic Acids','Proteins','Lipids','Saccharides'
     ];
-    const SP_FREE_LIMIT = 3; // first N chapters unlocked for free users
+    const SP_FREE_LIMIT = 3; // legacy constant (kept for reference)
+    // Free users get only Biology Chapter 1 ("Living Systems & Energetics")
+    function spIsChapterFree(subject, idx) {
+      return subject === 'biology' && idx === 0;
+    }
 
     function spGetChapterData(profile, subject, chIdx) {
       try {
@@ -4664,7 +4682,7 @@
       if (!container) return;
       container.innerHTML = '';
       chapters.forEach((title, idx) => {
-        const isLocked = !isPaid && idx >= SP_FREE_LIMIT;
+        const isLocked = !isPaid && !spIsChapterFree(subject, idx);
         const data = spGetChapterData(profile, subject, idx);
         const status = spGetStatus(data, isLocked);
         const scoreNum = data?.score ?? 0;
@@ -4995,7 +5013,7 @@
 
       const contentEl = document.getElementById('spReaderContent');
 
-      if (!isPaid) {
+      if (!isPaid && !spIsChapterFree(subject, chIdx)) {
         contentEl.innerHTML = `
           <p>This chapter covers the key concepts of <strong>${title}</strong> for the LF3 entrance exam.</p>
           <p style="margin-top:12px;">The entrance exam tests your understanding of ${title.toLowerCase()} at a university-level depth. Key areas include fundamental definitions, mechanisms, and practical applications.</p>
@@ -5459,19 +5477,13 @@
         const readerBody = document.querySelector('#studyReaderView .sp-reader-body');
         if (!readerBody) return;
 
-        // Remove old watermark strip if exists
-        const old = readerBody.querySelector('.sp-watermark-strip');
-        if (old) old.remove();
-
-        // Create vertical watermark strip
-        const strip = document.createElement('div');
-        strip.className = 'sp-watermark-strip';
-        const inner = document.createElement('div');
-        inner.className = 'sp-watermark-strip-inner';
-        // Repeat email many times to fill the full height
-        inner.textContent = (email + '  ·  ').repeat(80);
-        strip.appendChild(inner);
-        readerBody.insertBefore(strip, readerBody.firstChild);
+        // Apply behind-text watermark using CSS pseudo-element
+        const contentEl = document.getElementById('spReaderContent');
+        if (contentEl) {
+          contentEl.classList.add('watermarked');
+          // Repeat email to fill the diagonal pattern
+          contentEl.setAttribute('data-watermark', (email + '   ').repeat(200));
+        }
 
         // Show protection notice
         document.getElementById('spProtectionNotice').style.display = '';
@@ -5495,7 +5507,7 @@
       const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
       const newIdx = chIdx + delta;
       if (newIdx < 0 || newIdx >= chapters.length) return;
-      const isLocked = !isPaid && newIdx >= SP_FREE_LIMIT;
+      const isLocked = !isPaid && !spIsChapterFree(subject, newIdx);
       if (isLocked) return;
       spOpenReader(subject, newIdx, isPaid);
       // Scroll to top
