@@ -351,6 +351,16 @@
               </div>
             </div>
 
+            <!-- Search -->
+            <div class="sp-search-wrapper" id="spSearchWrapper">
+              <div class="sp-search-bar">
+                <svg class="sp-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="sp-search-input" id="spSearchInput" placeholder="Search chapters... (e.g., Krebs cycle, mitosis, pH)" autocomplete="off">
+                <button class="sp-search-clear" id="spSearchClear" title="Clear search">&times;</button>
+              </div>
+              <div class="sp-search-results" id="spSearchResults"></div>
+            </div>
+
             <!-- Tabs -->
             <div class="resource-tabs sp-tabs">
               <button class="resource-tab active" data-sp-tab="biology" id="spTabBio">Biology <span class="sp-tab-count">(40)</span></button>
@@ -2630,6 +2640,122 @@
       .sp-reader-back { padding: 6px 10px; font-size: 0.8rem; }
       .sp-reader-nav-btn { padding: 8px 12px; font-size: 0.82rem; }
     }
+
+    /* ===== Study Plan Search ===== */
+    .sp-search-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .sp-search-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1.5px solid #d1d5db;
+      border-radius: 10px;
+      padding: 0 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .sp-search-bar:focus-within {
+      border-color: var(--teal, #0d9488);
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+    }
+    .sp-search-icon {
+      flex-shrink: 0;
+      color: #9ca3af;
+      margin-right: 10px;
+    }
+    .sp-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      padding: 12px 0;
+      color: var(--navy, #1e293b);
+    }
+    .sp-search-input::placeholder {
+      color: #9ca3af;
+      font-weight: 400;
+    }
+    .sp-search-clear {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: 1.25rem;
+      padding: 4px 6px;
+      line-height: 1;
+      border-radius: 4px;
+      display: none;
+    }
+    .sp-search-clear:hover {
+      color: #4b5563;
+      background: #f3f4f6;
+    }
+    .sp-search-results {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      max-height: 400px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .sp-search-results.active { display: block; }
+    .sp-search-result-count {
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      color: #6b7280;
+      border-bottom: 1px solid #f3f4f6;
+      font-weight: 500;
+    }
+    .sp-search-result-item {
+      display: block;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .sp-search-result-item:last-child { border-bottom: none; }
+    .sp-search-result-item:hover { background: #f8fafc; }
+    .sp-search-result-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--navy, #1e293b);
+      margin-bottom: 4px;
+    }
+    .sp-search-result-snippet {
+      font-size: 0.82rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+    .sp-search-result-snippet mark {
+      background: #fef08a;
+      color: inherit;
+      padding: 1px 2px;
+      border-radius: 2px;
+    }
+    .sp-search-no-results {
+      padding: 24px 16px;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+    .sp-search-loading {
+      padding: 24px 16px;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
   </style>
 
   <!-- Firebase SDKs -->
@@ -4628,6 +4754,177 @@
       const readiness = spCalculateReadiness(profile);
       spUpdateReadinessRing(readiness);
     }
+
+    // ===== Study Plan Search =====
+    const spSearchCache = {}; // key: "bio-ch1" => plain text
+    let spSearchTimer = null;
+
+    function spStripHtml(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
+    }
+
+    async function spFetchChapterText(subject, chIdx) {
+      const prefix = subject === 'biology' ? 'bio' : 'chem';
+      const key = `${prefix}-ch${chIdx + 1}`;
+      if (spSearchCache[key] !== undefined) return spSearchCache[key];
+      try {
+        const resp = await fetch(`study/${key}.html`);
+        if (!resp.ok) { spSearchCache[key] = ''; return ''; }
+        const html = await resp.text();
+        const text = spStripHtml(html);
+        spSearchCache[key] = text;
+        return text;
+      } catch {
+        spSearchCache[key] = '';
+        return '';
+      }
+    }
+
+    async function spFetchAllChapters() {
+      const promises = [];
+      SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
+      SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
+      await Promise.all(promises);
+    }
+
+    function spGetSnippet(text, query, wordCount) {
+      const lowerText = text.toLowerCase();
+      const lowerQuery = query.toLowerCase();
+      const matchIdx = lowerText.indexOf(lowerQuery);
+      if (matchIdx === -1) return '';
+      // Find word boundaries around the match
+      const before = text.substring(0, matchIdx);
+      const after = text.substring(matchIdx + query.length);
+      const wordsBefore = before.split(/\s+/).filter(Boolean);
+      const wordsAfter = after.split(/\s+/).filter(Boolean);
+      const half = Math.floor(wordCount / 2);
+      const snippetBefore = wordsBefore.slice(-half).join(' ');
+      const snippetAfter = wordsAfter.slice(0, half).join(' ');
+      const matchedText = text.substring(matchIdx, matchIdx + query.length);
+      let snippet = '';
+      if (wordsBefore.length > half) snippet += '...';
+      snippet += (snippetBefore ? snippetBefore + ' ' : '') + matchedText + (snippetAfter ? ' ' + snippetAfter : '');
+      if (wordsAfter.length > half) snippet += '...';
+      return snippet;
+    }
+
+    function spHighlightSnippet(snippet, query) {
+      if (!query) return snippet;
+      const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(`(${escaped})`, 'gi');
+      return snippet.replace(re, '<mark>$1</mark>');
+    }
+
+    let spAllFetched = false;
+
+    async function spPerformSearch(query) {
+      const resultsEl = document.getElementById('spSearchResults');
+      const clearBtn = document.getElementById('spSearchClear');
+      if (!query || query.trim().length < 2) {
+        resultsEl.classList.remove('active');
+        resultsEl.innerHTML = '';
+        clearBtn.style.display = query ? 'block' : 'none';
+        return;
+      }
+      clearBtn.style.display = 'block';
+
+      // Show loading on first search
+      if (!spAllFetched) {
+        resultsEl.innerHTML = '<div class="sp-search-loading">Loading chapters...</div>';
+        resultsEl.classList.add('active');
+        await spFetchAllChapters();
+        spAllFetched = true;
+      }
+
+      const q = query.trim().toLowerCase();
+      const results = [];
+
+      // Search biology chapters
+      SP_BIO_CHAPTERS.forEach((title, idx) => {
+        const key = `bio-ch${idx + 1}`;
+        const text = spSearchCache[key] || '';
+        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+          results.push({ subject: 'biology', idx, title, chNum: idx + 1, snippet });
+        }
+      });
+
+      // Search chemistry chapters
+      SP_CHEM_CHAPTERS.forEach((title, idx) => {
+        const key = `chem-ch${idx + 1}`;
+        const text = spSearchCache[key] || '';
+        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+          results.push({ subject: 'chemistry', idx, title, chNum: idx + 1, snippet });
+        }
+      });
+
+      if (results.length === 0) {
+        resultsEl.innerHTML = '<div class="sp-search-no-results">No results found</div>';
+        resultsEl.classList.add('active');
+        return;
+      }
+
+      let html = `<div class="sp-search-result-count">Found in ${results.length} chapter${results.length !== 1 ? 's' : ''}</div>`;
+      results.forEach(r => {
+        const subjectLabel = r.subject === 'biology' ? 'Biology' : 'Chemistry';
+        const highlightedSnippet = spHighlightSnippet(r.snippet, query.trim());
+        html += `<div class="sp-search-result-item" data-subject="${r.subject}" data-idx="${r.idx}">
+          <div class="sp-search-result-title">${subjectLabel} Ch. ${r.chNum}: ${r.title}</div>
+          <div class="sp-search-result-snippet">${highlightedSnippet}</div>
+        </div>`;
+      });
+
+      resultsEl.innerHTML = html;
+      resultsEl.classList.add('active');
+
+      // Add click handlers
+      resultsEl.querySelectorAll('.sp-search-result-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const subject = item.dataset.subject;
+          const idx = parseInt(item.dataset.idx, 10);
+          // Determine if user is paid (check if the chapter card is locked)
+          const isPaid = !document.querySelector(`.sp-chapter-card.sp-locked[data-sp-subject="${subject}"][data-sp-idx="${idx}"]`);
+          spOpenReader(subject, idx, isPaid);
+          // Clear search
+          document.getElementById('spSearchInput').value = '';
+          document.getElementById('spSearchClear').style.display = 'none';
+          resultsEl.classList.remove('active');
+          resultsEl.innerHTML = '';
+        });
+      });
+    }
+
+    // Wire up search input
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('spSearchInput');
+      const clearBtn = document.getElementById('spSearchClear');
+      if (input) {
+        input.addEventListener('input', () => {
+          clearTimeout(spSearchTimer);
+          spSearchTimer = setTimeout(() => spPerformSearch(input.value), 300);
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          clearBtn.style.display = 'none';
+          const resultsEl = document.getElementById('spSearchResults');
+          resultsEl.classList.remove('active');
+          resultsEl.innerHTML = '';
+          input.focus();
+        });
+      }
+      // Close results when clicking outside
+      document.addEventListener('click', (e) => {
+        const wrapper = document.getElementById('spSearchWrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+          document.getElementById('spSearchResults').classList.remove('active');
+        }
+      });
+    });
 
     // ===== Full-page Study Reader =====
     let spReaderState = { subject: null, chIdx: 0, isPaid: false, hlColor: 'yellow', noteTimer: null };
