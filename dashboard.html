@@ -416,17 +416,60 @@
 
         <!-- ========== VIEW: QUESTION BANK ========== -->
         <div class="view" id="viewQbank">
-          <div class="dashboard-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-            <div>
-              <h1>Question Bank</h1>
-              <p class="dashboard-sub" id="qbankAccessDesc">Practice for the Charles University entrance exam.</p>
-            </div>
-            <a href="qbank.html" class="btn btn-primary">Start Practice</a>
+          <div class="dashboard-header">
+            <h1>Question Bank</h1>
+            <p class="dashboard-sub" id="qbankAccessDesc">Practice for the Charles University entrance exam.</p>
           </div>
 
           <!-- Upgrade prompt for free users -->
           <div id="qbankUpgradePrompt" class="dash-card upgrade-prompt" style="display:none; margin-bottom: 20px;">
             <p>Want full access to all 1,000+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
+          </div>
+
+          <!-- Start Practice Options (embedded in dashboard) -->
+          <div class="dash-card" style="margin-bottom:24px; padding:28px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--gray-700); display:block; margin-bottom:6px;">Subject</label>
+                <select id="dashQbSubject" style="width:100%; padding:10px 14px; border:1px solid var(--gray-200); border-radius:8px; font-family:inherit; font-size:0.9rem;">
+                  <option value="all">All Subjects</option>
+                  <option value="biology">Biology</option>
+                  <option value="chemistry">Chemistry</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--gray-700); display:block; margin-bottom:6px;">Questions</label>
+                <select id="dashQbCount" style="width:100%; padding:10px 14px; border:1px solid var(--gray-200); border-radius:8px; font-family:inherit; font-size:0.9rem;">
+                  <option value="10">10 questions</option>
+                  <option value="20" selected>20 questions</option>
+                  <option value="30">30 questions</option>
+                  <option value="40">40 questions</option>
+                  <option value="60">60 questions (full exam)</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--gray-700); display:block; margin-bottom:6px;">Question Mode</label>
+                <select id="dashQbFilter" style="width:100%; padding:10px 14px; border:1px solid var(--gray-200); border-radius:8px; font-family:inherit; font-size:0.9rem;">
+                  <option value="unanswered" selected>Unanswered only</option>
+                  <option value="all">All questions</option>
+                  <option value="incorrect">Previously incorrect</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--gray-700); display:block; margin-bottom:6px;">Mode</label>
+                <div style="display:flex; gap:12px; margin-top:4px;">
+                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.9rem;">
+                    <input type="radio" name="dashQbMode" value="review" checked style="accent-color:var(--teal);"> Review
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.9rem;">
+                    <input type="radio" name="dashQbMode" value="test"> Test
+                  </label>
+                </div>
+              </div>
+            </div>
+            <a id="dashStartQbBtn" href="#" class="btn btn-primary" style="width:100%; text-align:center;">Start Practice</a>
           </div>
 
           <!-- Test History -->
@@ -3342,6 +3385,22 @@
         });
       });
     }
+
+    // ===== Dashboard Start Practice Button =====
+    document.getElementById('dashStartQbBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const subject = document.getElementById('dashQbSubject').value;
+      const count = document.getElementById('dashQbCount').value;
+      const filter = document.getElementById('dashQbFilter').value;
+      const mode = document.querySelector('input[name="dashQbMode"]:checked').value;
+      const params = new URLSearchParams({
+        subject: subject,
+        count: count,
+        filter: filter,
+        mode: mode
+      });
+      window.location.href = 'qbank.html?' + params.toString();
+    });
 
     // ===================================================================
     // ===== ADMIN PANEL =====
