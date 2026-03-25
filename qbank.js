@@ -767,12 +767,30 @@ function showExplanation(q, isCorrect) {
 // ===== Personal Watermark =====
 function applyQBankWatermark(container) {
   if (!container) return;
+  // Remove any existing watermark overlay
+  const existing = container.querySelector('.qb-watermark-overlay');
+  if (existing) existing.remove();
+
   try {
     const user = typeof auth !== 'undefined' && auth.currentUser;
-    if (user && user.email) {
-      container.classList.add('watermarked');
-      container.setAttribute('data-watermark', (user.email + '   ').repeat(150));
+    if (!user || !user.email) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'qb-watermark-overlay';
+    overlay.textContent = (user.email + '     ').repeat(80);
+    overlay.style.cssText = 'position:absolute;top:-50%;left:-30%;width:250%;height:400%;' +
+      'pointer-events:none;user-select:none;-webkit-user-select:none;' +
+      'font-family:Inter,sans-serif;font-size:14px;color:rgba(100,100,120,0.06);' +
+      'letter-spacing:3px;line-height:55px;word-spacing:35px;' +
+      'transform:rotate(-30deg);transform-origin:center center;' +
+      'overflow:hidden;white-space:normal;word-break:break-all;z-index:0;';
+
+    // Make sure container is positioned
+    if (getComputedStyle(container).position === 'static') {
+      container.style.position = 'relative';
     }
+    container.style.overflow = 'hidden';
+    container.insertBefore(overlay, container.firstChild);
   } catch (e) { /* auth not ready yet */ }
 }
 

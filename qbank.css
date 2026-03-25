@@ -622,68 +622,15 @@
   overflow: hidden;
 }
 
-.explanation-content > * {
+/* Watermark overlay (injected by JS) sits behind content */
+.explanation-content > *:not(.qb-watermark-overlay) {
   position: relative;
   z-index: 1;
 }
 
-.explanation-content.watermarked::before {
-  content: attr(data-watermark);
-  position: absolute;
-  top: -50%;
-  left: -30%;
-  z-index: 0;
-  pointer-events: none !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(100, 100, 120, 0.06);
-  letter-spacing: 3px;
-  line-height: 60px;
-  word-spacing: 40px;
-  transform: rotate(-30deg);
-  transform-origin: center center;
-  overflow: hidden;
-  white-space: normal;
-  word-break: break-all;
-  width: 250%;
-  height: 400%;
-}
-
-/* Also watermark review explanations */
-.review-explanation {
-  position: relative;
-  overflow: hidden;
-}
-
-.review-explanation > * {
+.review-explanation > *:not(.qb-watermark-overlay) {
   position: relative;
   z-index: 1;
-}
-
-.review-explanation.watermarked::before {
-  content: attr(data-watermark);
-  position: absolute;
-  top: -50%;
-  left: -30%;
-  z-index: 0;
-  pointer-events: none !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(100, 100, 120, 0.06);
-  letter-spacing: 3px;
-  line-height: 60px;
-  word-spacing: 40px;
-  transform: rotate(-30deg);
-  transform-origin: center center;
-  overflow: hidden;
-  white-space: normal;
-  word-break: break-all;
-  width: 250%;
-  height: 400%;
 }
 
 .explanation-content h4 {
