@@ -780,17 +780,22 @@ function applyQBankWatermark(container) {
     overlay.textContent = (user.email + '     ').repeat(80);
     overlay.style.cssText = 'position:absolute;top:-50%;left:-30%;width:250%;height:400%;' +
       'pointer-events:none;user-select:none;-webkit-user-select:none;' +
-      'font-family:Inter,sans-serif;font-size:14px;color:rgba(100,100,120,0.06);' +
-      'letter-spacing:3px;line-height:55px;word-spacing:35px;' +
+      'font-family:Inter,sans-serif;font-size:16px;color:rgba(100,100,120,0.08);' +
+      'letter-spacing:4px;line-height:50px;word-spacing:30px;' +
       'transform:rotate(-30deg);transform-origin:center center;' +
       'overflow:hidden;white-space:normal;word-break:break-all;z-index:0;';
 
-    // Make sure container is positioned
-    if (getComputedStyle(container).position === 'static') {
-      container.style.position = 'relative';
-    }
+    container.style.position = 'relative';
     container.style.overflow = 'hidden';
+    // Make sure all direct children sit above the watermark
+    Array.from(container.children).forEach(child => {
+      if (child !== overlay) {
+        child.style.position = 'relative';
+        child.style.zIndex = '1';
+      }
+    });
     container.insertBefore(overlay, container.firstChild);
+    console.log('QBank watermark applied for:', user.email);
   } catch (e) { /* auth not ready yet */ }
 }
 
