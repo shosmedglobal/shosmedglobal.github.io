@@ -771,17 +771,27 @@ function applyQBankWatermark(container) {
     const user = typeof auth !== 'undefined' && auth.currentUser;
     if (!user || !user.email) return;
 
-    // SVG-based watermark as repeating background (reliable cross-browser)
+    // Canvas-based watermark (works with all email characters)
     const email = user.email;
-    const svgContent = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200">' +
-      '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" ' +
-      'font-family="Inter,Arial,sans-serif" font-size="14" fill="rgba(0,0,0,0.04)" ' +
-      'letter-spacing="2" transform="rotate(-30,300,100)">' + email + '     ' + email + '     ' + email + '</text></svg>';
+    const canvas = document.createElement('canvas');
+    canvas.width = 500;
+    canvas.height = 180;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(-25 * Math.PI / 180);
+    ctx.font = '15px Inter, Arial, sans-serif';
+    ctx.fillStyle = 'rgba(120, 120, 140, 0.07)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(email + '     ' + email, 0, 0);
+    ctx.restore();
 
-    const dataUrl = 'data:image/svg+xml;base64,' + btoa(svgContent);
+    const dataUrl = canvas.toDataURL('image/png');
     container.style.backgroundImage = 'url("' + dataUrl + '")';
     container.style.backgroundRepeat = 'repeat';
-    container.style.backgroundSize = '600px 200px';
+    container.style.backgroundSize = '500px 180px';
     console.log('QBank watermark applied for:', email);
   } catch (e) { /* auth not ready yet */ }
 }

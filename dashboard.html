@@ -5486,32 +5486,41 @@
         }
       });
 
-      // Watermark: diagonal repeating email behind content
+      // Watermark: diagonal repeating email behind content using Canvas
       function spApplyWatermark(email) {
         if (!email) return;
-        const readerView = document.getElementById('studyReaderView');
         const contentEl = document.getElementById('spReaderContent');
-        if (!readerView || !contentEl) return;
+        if (!contentEl) return;
 
-        // Remove any existing watermark
-        document.querySelectorAll('.sp-watermark-overlay').forEach(el => el.remove());
+        // Use Canvas to generate watermark pattern (works with all characters)
+        const canvas = document.createElement('canvas');
+        canvas.width = 500;
+        canvas.height = 180;
+        const ctx = canvas.getContext('2d');
 
-        // Create SVG-based watermark (most reliable cross-browser)
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svgText = email + '          ' + email;
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Create SVG pattern as data URL
-        const svgContent = `<svg xmlns="${svgNS}" width="600" height="200">` +
-          `<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" ` +
-          `font-family="Inter,Arial,sans-serif" font-size="14" fill="rgba(0,0,0,0.04)" ` +
-          `letter-spacing="2" transform="rotate(-30,300,100)">${email}     ${email}     ${email}</text></svg>`;
+        // Draw diagonal text
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(-25 * Math.PI / 180);
+        ctx.font = '15px Inter, Arial, sans-serif';
+        ctx.fillStyle = 'rgba(120, 120, 140, 0.07)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(email + '     ' + email, 0, 0);
+        ctx.restore();
 
-        const dataUrl = 'data:image/svg+xml;base64,' + btoa(svgContent);
-
-        // Apply as repeating background on the content area
-        contentEl.style.backgroundImage = `url("${dataUrl}")`;
+        // Convert to data URL and set as repeating background
+        const dataUrl = canvas.toDataURL('image/png');
+        contentEl.style.backgroundImage = 'url("' + dataUrl + '")';
         contentEl.style.backgroundRepeat = 'repeat';
-        contentEl.style.backgroundSize = '600px 200px';
+        contentEl.style.backgroundSize = '500px 180px';
+
+        // Also set the CSS class for the ::before fallback
+        contentEl.classList.add('watermarked');
+        contentEl.setAttribute('data-watermark', (email + '   ').repeat(200));
 
         console.log('Watermark applied for:', email);
         document.getElementById('spProtectionNotice').style.display = '';
