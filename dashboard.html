@@ -5486,40 +5486,34 @@
         }
       });
 
-      // Watermark: vertical strip on the left side with user email
+      // Watermark: diagonal repeating email behind content
       function spApplyWatermark(email) {
         if (!email) return;
+        const readerView = document.getElementById('studyReaderView');
         const contentEl = document.getElementById('spReaderContent');
-        if (!contentEl) return;
+        if (!readerView || !contentEl) return;
 
-        // Remove existing watermark overlay if present
-        const existing = contentEl.querySelector('.sp-watermark-overlay');
-        if (existing) existing.remove();
+        // Remove any existing watermark
+        document.querySelectorAll('.sp-watermark-overlay').forEach(el => el.remove());
 
-        // Create a real DOM element overlay (more reliable than CSS ::before with attr())
-        const overlay = document.createElement('div');
-        overlay.className = 'sp-watermark-overlay';
-        overlay.textContent = (email + '     ').repeat(120);
-        overlay.style.cssText = 'position:absolute;top:-50%;left:-30%;width:250%;height:400%;' +
-          'pointer-events:none;user-select:none;-webkit-user-select:none;' +
-          'font-family:Inter,sans-serif;font-size:16px;color:rgba(100,100,120,0.08);' +
-          'letter-spacing:4px;line-height:50px;word-spacing:30px;' +
-          'transform:rotate(-30deg);transform-origin:center center;' +
-          'overflow:hidden;white-space:normal;word-break:break-all;z-index:0;';
+        // Create SVG-based watermark (most reliable cross-browser)
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svgText = email + '          ' + email;
 
-        contentEl.style.position = 'relative';
-        contentEl.style.overflow = 'hidden';
-        // Make sure all direct children sit above the watermark
-        Array.from(contentEl.children).forEach(child => {
-          if (child !== overlay) {
-            child.style.position = 'relative';
-            child.style.zIndex = '1';
-          }
-        });
-        contentEl.insertBefore(overlay, contentEl.firstChild);
+        // Create SVG pattern as data URL
+        const svgContent = `<svg xmlns="${svgNS}" width="600" height="200">` +
+          `<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" ` +
+          `font-family="Inter,Arial,sans-serif" font-size="14" fill="rgba(0,0,0,0.04)" ` +
+          `letter-spacing="2" transform="rotate(-30,300,100)">${email}     ${email}     ${email}</text></svg>`;
+
+        const dataUrl = 'data:image/svg+xml;base64,' + btoa(svgContent);
+
+        // Apply as repeating background on the content area
+        contentEl.style.backgroundImage = `url("${dataUrl}")`;
+        contentEl.style.backgroundRepeat = 'repeat';
+        contentEl.style.backgroundSize = '600px 200px';
+
         console.log('Watermark applied for:', email);
-
-        // Show protection notice
         document.getElementById('spProtectionNotice').style.display = '';
       }
 
