@@ -116,7 +116,7 @@
 /* Note: user-select:none for .qbank-section is defined above in Content Protection */
 .qbank-section {
   min-height: 100vh;
-  padding: 100px 0 60px;
+  padding: 20px 0 40px;
   background: var(--gray-50);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -130,17 +130,18 @@
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
+  padding-top: 8px;
 }
 
 .qbank-start-header {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .qbank-start-header h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: var(--navy);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .qbank-start-header h1 span {
@@ -158,8 +159,8 @@
 .subject-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .subject-card {
@@ -174,7 +175,7 @@
   background: var(--white);
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-lg);
-  padding: 28px 20px;
+  padding: 20px 16px;
   text-align: center;
   transition: var(--transition);
   position: relative;

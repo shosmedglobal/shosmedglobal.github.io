@@ -1014,7 +1014,7 @@
               <div class="qbank-plan-card">
                 <h4>Full Guidance</h4>
                 <div class="plan-price"><span style="text-decoration:line-through;color:var(--gray-400);font-size:0.7em;">$399</span> $249</div>
-                <p class="plan-per">Launch pricing · 6 months + personal guidance</p>
+                <p class="plan-per">6 months access</p>
                 <ul class="plan-features">
                   <li>Full QBank + Study Guide (6 months)</li>
                   <li>One-time QBank progress reset</li>
@@ -3579,7 +3579,7 @@
       // qbank.js uses plan === '6mo' and resetCount < 1 — match that logic here
       const resetCount = profile?.qbankResetCount || 0;
       // Show for 6-month plan (1 free reset) or admin
-      if (isAdmin || (plan === '6mo' && resetCount < 1)) {
+      if (isAdmin || ((plan === '6mo' || plan === 'full-guidance') && resetCount < 1)) {
         resetSection.style.display = 'block';
       } else {
         resetSection.style.display = 'none';
