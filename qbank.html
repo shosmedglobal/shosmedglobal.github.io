@@ -324,10 +324,7 @@
       await loadProgress();
       await loadTestHistory();
 
-      // Show reset button for admin or 6-month subscribers who haven't used their reset
-      if (isAdmin || (plan === '6mo' && (userProgress.resetCount || 0) < 1)) {
-        document.getElementById('resetSection').style.display = '';
-      }
+      // Reset section moved to dashboard — no longer shown on qbank start screen
 
       // Now load questions with access level applied
       loadQuestionsWithAccess();
