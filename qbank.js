@@ -753,12 +753,27 @@ function showExplanation(q, isCorrect) {
   content.innerHTML = tempDiv.innerHTML;
   box.style.display = 'block';
 
+  // Apply personal watermark
+  applyQBankWatermark(content);
+
   // Restore saved highlights for this question
   restoreHighlights(q.id, content);
 
   setTimeout(() => {
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 100);
+}
+
+// ===== Personal Watermark =====
+function applyQBankWatermark(container) {
+  if (!container) return;
+  try {
+    const user = typeof auth !== 'undefined' && auth.currentUser;
+    if (user && user.email) {
+      container.classList.add('watermarked');
+      container.setAttribute('data-watermark', (user.email + '   ').repeat(150));
+    }
+  } catch (e) { /* auth not ready yet */ }
 }
 
 // ===== Highlighter Feature (same approach as Study Plan) =====
@@ -1337,6 +1352,7 @@ function showReview() {
       tempDiv.innerHTML = q.explanation;
       tempDiv.querySelectorAll('script,iframe,object,embed,form,input').forEach(el => el.remove());
       expEl.innerHTML = tempDiv.innerHTML;
+      applyQBankWatermark(expEl);
       restoreHighlights(q.id, expEl);
     }
   });
