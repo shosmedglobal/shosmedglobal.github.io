@@ -636,7 +636,16 @@
 .explanation-content h4 {
   font-size: 1rem;
   color: var(--navy);
-  margin-bottom: 12px;
+  margin-top: 28px;
+  margin-bottom: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.explanation-content h4:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .explanation-content p {
@@ -703,10 +712,56 @@
   background: rgba(207, 91, 46, 0.06);
   border-left: 4px solid var(--teal);
   padding: 14px 18px;
-  margin-top: 16px;
+  margin-top: 24px;
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: 0.9rem;
   color: var(--gray-700);
+}
+
+/* Key Educational Points list */
+.explanation-content ul {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+.explanation-content li {
+  margin-bottom: 6px;
+}
+
+/* Same spacing for review mode */
+.review-explanation h4 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin-top: 28px;
+  margin-bottom: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.review-explanation h4:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.review-explanation .exp-key {
+  background: rgba(207, 91, 46, 0.06);
+  border-left: 4px solid var(--teal);
+  padding: 14px 18px;
+  margin-top: 24px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.9rem;
+}
+
+.review-explanation ul {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+.review-explanation li {
+  margin-bottom: 6px;
 }
 
 /* Quiz Navigation */
