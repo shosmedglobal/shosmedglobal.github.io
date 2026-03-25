@@ -1319,7 +1319,7 @@ function showReview() {
         </div>
         <div class="review-question">${q.question}</div>
         <div class="review-answers">${answersHtml}</div>
-        <div class="review-explanation">${q.explanation}</div>
+        <div class="review-explanation"></div>
         <div class="report-btn-wrap" style="display:flex;">
           <button class="report-btn review-report-btn" data-qid="${q.id}" data-subject="${q.subject}" data-topic="${q.topic}">Report an issue</button>
         </div>
@@ -1327,11 +1327,18 @@ function showReview() {
     `;
   });
 
-  // Restore saved highlights for each review question
+  // Sanitize explanation HTML and restore saved highlights for each review question
   container.querySelectorAll('.review-item').forEach((item, i) => {
     const q = quizQuestions[i];
     const expEl = item.querySelector('.review-explanation');
-    if (q && expEl) restoreHighlights(q.id, expEl);
+    if (q && expEl) {
+      // Sanitize: strip dangerous tags before inserting
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = q.explanation;
+      tempDiv.querySelectorAll('script,iframe,object,embed,form,input').forEach(el => el.remove());
+      expEl.innerHTML = tempDiv.innerHTML;
+      restoreHighlights(q.id, expEl);
+    }
   });
 
   // Delegated click handler for review report buttons

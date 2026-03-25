@@ -3456,7 +3456,7 @@
         const totalCount = ip.total || ip.questionIds.length;
         const ipSubjects = ip.meta?.subjects?.join(', ') || 'Mixed';
         const ipDate = ip.startedAt ? new Date(ip.startedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
-        const ipMode = ip.meta?.isTestMode ? 'Test' : 'Review';
+        const ipMode = (ip.meta?.mode && ip.meta.mode.includes('Test')) ? 'Test' : 'Review';
         html += `<tr class="dash-ip-row">
           <td>—</td>
           <td class="dash-hist-name"><span class="dash-ip-badge">In Progress</span></td>
@@ -3478,7 +3478,7 @@
         const subjects = test.subjects ? test.subjects.join(', ') : 'All';
         const dateStr = test.date ? new Date(test.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
 
-        const mode = test.isTestMode ? 'Test' : 'Review';
+        const mode = (test.mode && test.mode.includes('Test')) ? 'Test' : 'Review';
         html += `<tr>
           <td>${tests.length - i}</td>
           <td class="dash-hist-name" id="dashHistName-${i}">${name}</td>
@@ -3574,10 +3574,12 @@
       const resetSection = document.getElementById('dashQbResetSection');
       if (!resetSection) return;
       const plan = profile?.payments?.['exam-bank-plan'];
-      const hasReset = profile?.qbankResetUsed === true;
-      const isAdmin = profile?.role === 'admin';
-      // Show for full-guidance plan or admin, only if reset not yet used
-      if ((plan === 'full-guidance' || isAdmin) && !hasReset) {
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
+      // qbank.js uses plan === '6mo' and resetCount < 1 — match that logic here
+      const resetCount = profile?.qbankResetCount || 0;
+      // Show for 6-month plan (1 free reset) or admin
+      if (isAdmin || (plan === '6mo' && resetCount < 1)) {
         resetSection.style.display = 'block';
       } else {
         resetSection.style.display = 'none';
