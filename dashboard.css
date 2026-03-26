@@ -1459,6 +1459,16 @@
     flex-direction: column;
     gap: 4px;
   }
+
+  /* Hide # and Subjects columns on tablets */
+  .dash-history-table th:nth-child(1),
+  .dash-history-table td:nth-child(1) {
+    display: none;
+  }
+  .dash-history-table th:nth-child(6),
+  .dash-history-table td:nth-child(6) {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1563,6 +1573,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 28px;
+}
+
+@media (max-width: 900px) {
+  .overview-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .overview-stat-card {

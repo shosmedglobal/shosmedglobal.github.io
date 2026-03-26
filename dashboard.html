@@ -333,11 +333,6 @@
             </div>
           </div>
 
-          <!-- Quick Links (hidden items) -->
-          <div style="display:none;">
-            <span id="actionApplicant"></span>
-            <span id="actionStudent"></span>
-          </div>
         </div>
 
         <!-- ========== VIEW: STUDY PLAN ========== -->
@@ -468,7 +463,7 @@
           <!-- Test History -->
           <div id="dashTestHistorySection" style="display:none;">
             <h3 class="view-section-title" style="margin-bottom:16px;">Previous Tests</h3>
-            <div id="dashTestHistoryList" class="dash-card" style="padding:0; overflow:hidden;"></div>
+            <div id="dashTestHistoryList" class="dash-card" style="padding:0; overflow-x:auto;"></div>
           </div>
 
           <div id="dashTestHistoryEmpty" class="dash-card" style="text-align:center; padding:40px 24px; color:var(--gray-500); display:none;">
@@ -1163,8 +1158,6 @@
                   <select id="contactService" class="form-select">
                     <option value="">Select a service...</option>
                     <option value="free-consultation">Free 15-Min Consultation</option>
-                    <option value="self-study">Self-Study Plan - $99</option>
-                    <option value="full-guidance">Full Guidance Package - $249</option>
                     <option value="mentorship">Mentorship Session - $199 (45 min)</option>
                     <option value="match-ready">Match-Ready Package - $499</option>
                     <option value="board-review-single">Board Review Single - $99 (45 min)</option>
@@ -2915,6 +2908,14 @@
       document.getElementById('profilePath').textContent = pathText;
 
 
+      // ===== QBank access level =====
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const isAdmin = ADMIN_EMAILS.includes(user.email);
+      if (isAdmin) {
+        document.getElementById('sidebarAdminLink').style.display = '';
+        document.getElementById('sidebarAdminSep').style.display = '';
+      }
+
       // ===== Path-based visibility =====
       // Med School applicants: see QBank + Application Services, NOT Mentorship
       // Residency applicants: see Mentorship, NOT QBank or Application Services
@@ -2959,13 +2960,6 @@
         }
       }
 
-      // ===== QBank access level =====
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
-      const isAdmin = ADMIN_EMAILS.includes(user.email);
-      if (isAdmin) {
-        document.getElementById('sidebarAdminLink').style.display = '';
-        document.getElementById('sidebarAdminSep').style.display = '';
-      }
       const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       document.getElementById('qbankAccessDesc').textContent = qbankPaid
         ? 'Full Access — 1,000+ questions across Biology and Chemistry.'
@@ -3061,8 +3055,6 @@
 
         // Update Firestore profile (this is the critical save)
         const result = await updateUserProfile(currentUser.uid, { name, path });
-        console.log('updateUserProfile result:', result);
-
         if (result.success) {
           // Immediately update profile display
           document.getElementById('profileName').textContent = name;
@@ -3111,11 +3103,15 @@
         saveBtn.addEventListener('click', async () => {
           const date = examInput.value;
           if (!date) return;
-          await firebase.firestore().collection('users').doc(uid).set(
-            { examDate: date }, { merge: true }
-          );
-          updateCountdown(date);
-          saveBtn.style.display = 'none';
+          try {
+            await firebase.firestore().collection('users').doc(uid).set(
+              { examDate: date }, { merge: true }
+            );
+            updateCountdown(date);
+            saveBtn.style.display = 'none';
+          } catch (e) {
+            console.error('Failed to save exam date:', e);
+          }
         });
 
         // Load test history for stats
@@ -3315,11 +3311,15 @@
       saveBtn.addEventListener('click', async () => {
         const date = matchInput.value;
         if (!date || !currentUser) return;
-        await firebase.firestore().collection('users').doc(currentUser.uid).set(
-          { matchDate: date }, { merge: true }
-        );
-        updateMatchCountdown(date);
-        saveBtn.style.display = 'none';
+        try {
+          await firebase.firestore().collection('users').doc(currentUser.uid).set(
+            { matchDate: date }, { merge: true }
+          );
+          updateMatchCountdown(date);
+          saveBtn.style.display = 'none';
+        } catch (e) {
+          console.error('Failed to save match date:', e);
+        }
       });
     })();
 
@@ -3578,9 +3578,9 @@
       const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
       // qbank.js uses plan === '6mo' and resetCount < 1 — match that logic here
-      const resetCount = profile?.qbankResetCount || 0;
+      const resetUsed = profile?.qbankResetUsed || (profile?.qbankResetCount || 0) >= 1;
       // Show for 6-month plan (1 free reset) or admin
-      if (isAdmin || ((plan === '6mo' || plan === 'full-guidance') && resetCount < 1)) {
+      if (isAdmin || ((plan === '6mo' || plan === 'full-guidance') && !resetUsed)) {
         resetSection.style.display = 'block';
       } else {
         resetSection.style.display = 'none';
@@ -3611,10 +3611,17 @@
             completedQuestions: {},
             resetCount: 1
           });
+        // Clear test history in subcollection
+        await db.collection('users').doc(user.uid)
+          .collection('qbankData').doc('history').set({ tests: [] });
+        // Clear in-progress test
+        await db.collection('users').doc(user.uid)
+          .collection('qbankData').doc('inProgress').delete().catch(() => {});
         // Mark reset as used in main profile, clear test history
         await db.collection('users').doc(user.uid).set({
           testHistory: [],
           qbankResetUsed: true,
+          qbankResetCount: 1,
           qbankResetDate: new Date().toISOString()
         }, { merge: true });
 
@@ -4160,6 +4167,16 @@
       if (catSelect) catSelect.addEventListener('change', () => {
         const isBooking = catSelect.value === 'booking';
         bookingFields.style.display = isBooking ? 'block' : 'none';
+        // Hide subject/message for bookings (they have their own intake fields)
+        const subjectGroup = document.getElementById('contactSubjectGroup');
+        const bodyGroup = document.getElementById('contactBodyGroup');
+        if (subjectGroup) subjectGroup.style.display = isBooking ? 'none' : '';
+        if (bodyGroup) bodyGroup.style.display = isBooking ? 'none' : '';
+        // Toggle required attribute so form validation doesn't block booking submissions
+        const subjectInput = document.getElementById('contactSubject');
+        const bodyInput = document.getElementById('contactBody');
+        if (subjectInput) subjectInput.required = !isBooking;
+        if (bodyInput) bodyInput.required = !isBooking;
         if (!isBooking) {
           serviceSelect.value = '';
           intakeWrap.innerHTML = '';
@@ -4278,6 +4295,10 @@
       document.getElementById('contactFormWrap').style.display = 'block';
       document.getElementById('contactSuccess').style.display = 'none';
       document.getElementById('bookingFields').style.display = 'none';
+      document.getElementById('contactSubjectGroup').style.display = '';
+      document.getElementById('contactBodyGroup').style.display = '';
+      document.getElementById('contactSubject').required = true;
+      document.getElementById('contactBody').required = true;
       document.getElementById('intakeQuestionsWrap').innerHTML = '';
       if (typeof prefillContactForm === 'function') prefillContactForm();
     }
@@ -5488,6 +5509,8 @@
       });
 
       // Watermark: diagonal repeating email behind content using Canvas
+      // Exposed globally so spOpenReader can re-apply after chapter load
+      window.spApplyWatermark = spApplyWatermark;
       function spApplyWatermark(email) {
         if (!email) return;
         const contentEl = document.getElementById('spReaderContent');
