@@ -284,8 +284,7 @@
   <script src="qbank.js"></script>
   <script>
     // ===== Access Control =====
-    // Fixed sample question IDs — 5 Biology Chapter 1 questions (Cell Biology, Living Systems, Bioenergetics)
-    const SAMPLE_QUESTION_IDS = ['bio-1', 'bio-31', 'bio-421', 'bio-422', 'bio-423'];
+    // All registered users get full QBank access — no sample limitations
 
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
@@ -301,32 +300,15 @@
       // Auth passed — hide loading, show quiz content
       document.getElementById('authLoading').style.display = 'none';
 
-      // Check user's subscription tier from Firestore
-      const profile = await getUserProfile(user.uid);
-      const qbankAccess = profile?.payments?.['exam-bank'];
-
-      // Admin emails get full access without payment
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
-
-      const isAdmin = ADMIN_EMAILS.includes(user.email);
-      const plan = profile?.payments?.['exam-bank-plan']; // '1mo', '3mo', '6mo'
-
-      if (isAdmin || qbankAccess === 'paid') {
-        // Full access — admin or paid subscriber
-        window.qbankAccessLevel = 'full';
-      } else {
-        // Free sample — filter to only sample questions
-        window.qbankAccessLevel = 'sample';
-      }
+      // All authenticated users get full access
+      window.qbankAccessLevel = 'full';
 
       // Load user progress and test history from Firestore
       currentUserId = user.uid;
       await loadProgress();
       await loadTestHistory();
 
-      // Reset section moved to dashboard — no longer shown on qbank start screen
-
-      // Now load questions with access level applied
+      // Now load questions with full access
       loadQuestionsWithAccess();
     });
 
@@ -423,33 +405,11 @@
     })();
 
     function loadQuestionsWithAccess() {
-      // Override the loadQuestions function to filter based on access
+      // Load all questions — full access for all registered users
       fetch('questions.json')
         .then(res => res.json())
         .then(async (data) => {
-          if (window.qbankAccessLevel === 'sample') {
-            // Filter to only sample questions
-            for (const subject in data) {
-              data[subject] = data[subject].filter(q => SAMPLE_QUESTION_IDS.includes(q.id));
-            }
-            // Remove subjects with 0 questions
-            for (const subject in data) {
-              if (data[subject].length === 0) delete data[subject];
-            }
-
-            // Show sample banner
-            const banner = document.createElement('div');
-            banner.className = 'sample-banner';
-            banner.innerHTML = `
-              <div class="sample-banner-content">
-                <span>🔒 Free Sample — You're viewing 5 sample questions.</span>
-                <a href="applicants.html#pricing" class="btn btn-primary btn-small">Unlock Full Question Bank</a>
-              </div>
-            `;
-            document.querySelector('.qbank-section .container').prepend(banner);
-          }
-
-          // Set the global allQuestions
+          // Set the global allQuestions — no filtering, full access
           allQuestions = data;
 
           // Update counts on start screen

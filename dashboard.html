@@ -126,15 +126,7 @@
               </div>
             </div>
 
-            <!-- Free Chapter CTA (shown for free users only) -->
-            <div id="freeChapterCta" class="dash-card" style="display:none; margin-bottom:20px; padding:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
-              <h3 style="font-size:1rem; font-weight:700; color:#1a2744; margin:0 0 8px;">Start with your free chapter — Biology: Living Systems &amp; Energetics</h3>
-              <p style="font-size:0.9rem; color:#475569; margin:0 0 16px;">Read the chapter, then practice with 5 sample questions.</p>
-              <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <button class="btn btn-primary btn-small" onclick="switchView('studyplan'); setTimeout(function(){ spOpenReader('biology', 0, true); }, 300);">Read Free Chapter</button>
-                <a href="qbank.html" class="btn btn-outline btn-small">Try Sample Questions</a>
-              </div>
-            </div>
+            <!-- Free chapter CTA removed — all content is now free for registered users -->
 
             <!-- QBank Progress Bar -->
             <div class="dash-card" style="margin-bottom:20px; padding:20px;">
@@ -455,10 +447,7 @@
             <a href="qbank.html" class="btn btn-primary">Start Practice</a>
           </div>
 
-          <!-- Upgrade prompt for free users -->
-          <div id="qbankUpgradePrompt" class="dash-card upgrade-prompt" style="display:none; margin-bottom: 20px;">
-            <p>Want full access to all 1,000+ questions? <a href="#" class="sidebar-link-inline" onclick="switchView('store'); return false;">View plans in Store →</a></p>
-          </div>
+          <!-- QBank upgrade prompt removed — full access for all registered users -->
 
           <!-- Test History -->
           <div id="dashTestHistorySection" style="display:none;">
@@ -976,77 +965,28 @@
             <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
           </div>
 
-          <!-- Applicant Plans (aligned with applicants.html pricing) -->
+          <!-- Applicant Services -->
           <div id="storeApplicantServices" style="display:none;">
-            <h3 class="view-section-title" id="qbankPricingTitle">Exam Prep Plans</h3>
-            <div class="qbank-pricing-grid" id="qbankPricingGrid">
-              <div class="qbank-plan-card">
-                <h4>QBank Only</h4>
-                <div class="plan-price">$49</div>
-                <p class="plan-per">1 month access</p>
-                <ul class="plan-features">
-                  <li>1,000+ practice questions</li>
-                  <li>Biology &amp; Chemistry</li>
-                  <li>Detailed explanations</li>
-                  <li>Progress tracking</li>
-                </ul>
-                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-1mo">Purchase</a>
-              </div>
-              <div class="qbank-plan-card featured">
-                <div class="plan-badge">Most Popular</div>
-                <h4>Self-Study</h4>
-                <div class="plan-price">$99</div>
-                <p class="plan-per">3 months access</p>
-                <ul class="plan-features">
-                  <li>1,000+ practice questions</li>
-                  <li>Complete Study Guide (73 chapters)</li>
-                  <li>Biology &amp; Chemistry</li>
-                  <li>Detailed explanations</li>
-                  <li>Progress tracking &amp; analytics</li>
-                </ul>
-                <a href="#" class="btn btn-primary stripe-pay" data-tier="self-study">Purchase</a>
-              </div>
-              <div class="qbank-plan-card">
-                <h4>Full Guidance</h4>
-                <div class="plan-price"><span style="text-decoration:line-through;color:var(--gray-400);font-size:0.7em;">$399</span> $249</div>
-                <p class="plan-per">6 months access</p>
-                <ul class="plan-features">
-                  <li>Full QBank + Study Guide (6 months)</li>
-                  <li>One-time QBank progress reset</li>
-                  <li>3 sessions (30 min) with a physician:</li>
-                  <li style="padding-left:12px;font-size:0.82em;">① Exam strategy</li>
-                  <li style="padding-left:12px;font-size:0.82em;">② Interview prep</li>
-                  <li style="padding-left:12px;font-size:0.82em;">③ Life in Prague</li>
-                </ul>
-                <a href="#" class="btn btn-secondary stripe-pay" data-tier="full-guidance">Purchase</a>
-              </div>
+            <div class="dash-card" style="padding:20px; margin-bottom:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
+              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>QBank &amp; Study Guide — Free for all registered users.</strong> Full access to 1,000+ questions and 73 study guide chapters. No payment required.</p>
             </div>
 
-            <!-- Add-ons -->
-            <h3 class="view-section-title" style="margin-top:28px;">Add-ons</h3>
-            <div class="qbank-pricing-grid" style="grid-template-columns:repeat(2,1fr);">
-              <div class="qbank-plan-card" style="border:1px solid var(--gray-200);">
-                <h4>Extend Access</h4>
-                <div class="plan-price">$49</div>
-                <p class="plan-per">Add 1 month to your current plan</p>
+            <h3 class="view-section-title" id="qbankPricingTitle">Application Services</h3>
+            <div class="qbank-pricing-grid" id="qbankPricingGrid" style="grid-template-columns:1fr;">
+              <div class="qbank-plan-card featured">
+                <div class="plan-badge">Recommended</div>
+                <h4>Application Package</h4>
+                <div class="plan-price"><span style="text-decoration:line-through;color:var(--gray-400);font-size:0.7em;">$399</span> $249</div>
+                <p class="plan-per">Complete application support</p>
                 <ul class="plan-features">
-                  <li>1 additional month of QBank access</li>
-                  <li>Continue where you left off</li>
-                  <li>Keep all progress and notes</li>
+                  <li>3 personal sessions (30 min) with a physician who took this exact route:</li>
+                  <li style="padding-left:12px;font-size:0.82em;">&#9312; Application walkthrough + exam strategy</li>
+                  <li style="padding-left:12px;font-size:0.82em;">&#9313; Interview preparation</li>
+                  <li style="padding-left:12px;font-size:0.82em;">&#9314; Life in Prague — housing, costs, what to expect</li>
+                  <li>One-time QBank progress reset</li>
+                  <li>Priority email support throughout your application</li>
                 </ul>
-                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-extend-1mo">Add 1 Month</a>
-              </div>
-              <div class="qbank-plan-card" style="border:1px solid var(--gray-200);">
-                <h4>Reset Progress</h4>
-                <div class="plan-price">$99</div>
-                <p class="plan-per">Fresh start for final review</p>
-                <ul class="plan-features">
-                  <li>All questions marked as unanswered</li>
-                  <li>Test history cleared</li>
-                  <li>Notes and highlights preserved</li>
-                  <li>Available anytime</li>
-                </ul>
-                <a href="#" class="btn btn-secondary stripe-pay" data-tier="qbank-reset">Purchase Reset</a>
+                <a href="#" class="btn btn-primary stripe-pay" data-tier="full-guidance">Get Application Package</a>
               </div>
             </div>
           </div>
@@ -2960,22 +2900,9 @@
         }
       }
 
-      const qbankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
-      document.getElementById('qbankAccessDesc').textContent = qbankPaid
-        ? 'Full Access — 1,000+ questions across Biology and Chemistry.'
-        : 'Free Sample — 5 questions. Upgrade to unlock all 1,000+ questions.';
-      // Show upgrade prompt for free users, hide pricing grid if paid OR if residency applicant
-      // Admins always see full store for testing
-      const hideQbankStore = (!isAdmin && qbankPaid) || isStudent;
-      document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
-      document.getElementById('qbankPricingGrid').style.display = hideQbankStore ? 'none' : '';
-      document.getElementById('qbankPricingTitle').style.display = hideQbankStore ? 'none' : '';
-
-      // Show free chapter CTA for free applicant users
-      const freeChapterCta = document.getElementById('freeChapterCta');
-      if (freeChapterCta) {
-        freeChapterCta.style.display = (!qbankPaid && !isStudent) ? '' : 'none';
-      }
+      // All registered users get full QBank access — no paywall
+      const qbankPaid = true; // Treat all users as having full access
+      document.getElementById('qbankAccessDesc').textContent = 'Full Access — 1,000+ questions across Biology and Chemistry.';
 
       // Load test history into dashboard QBank view
       loadDashTestHistory(user.uid);
@@ -2986,8 +2913,8 @@
       // Show QBank reset section if eligible
       showResetIfEligible(profile);
 
-      // Initialize Study Plan
-      spInit(profile, qbankPaid);
+      // Initialize Study Plan — all chapters unlocked for registered users
+      spInit(profile, true);
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
@@ -4688,10 +4615,9 @@
       'Carboxylic Acids','Carboxylic Acid Derivatives','Sulfonic & Carbonic Derivatives',
       'Amines','Heterocyclic Compounds','Nucleic Acids','Proteins','Lipids','Saccharides'
     ];
-    const SP_FREE_LIMIT = 3; // legacy constant (kept for reference)
-    // Free users get only Biology Chapter 1 ("Living Systems & Energetics")
+    // All chapters are free for registered users
     function spIsChapterFree(subject, idx) {
-      return subject === 'biology' && idx === 0;
+      return true;
     }
 
     function spGetChapterData(profile, subject, chIdx) {

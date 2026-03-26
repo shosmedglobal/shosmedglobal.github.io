@@ -525,7 +525,7 @@ function startQuiz() {
   };
 
   const shouldShuffle = document.getElementById('shuffleQuestions').checked;
-  if (shouldShuffle && window.qbankAccessLevel !== 'sample') {
+  if (shouldShuffle) {
     pool = topicInterleaveShuffle(pool);
   }
 
@@ -1283,43 +1283,6 @@ function showResults() {
     `;
   });
 
-  // Show upgrade prompt for free/sample users - but only after they review at least one answer
-  let upgradeEl = document.getElementById('resultsUpgradePrompt');
-  if (!upgradeEl) {
-    upgradeEl = document.createElement('div');
-    upgradeEl.id = 'resultsUpgradePrompt';
-    upgradeEl.className = 'results-upgrade-prompt';
-    breakdownEl.parentElement.appendChild(upgradeEl);
-  }
-  if (window.qbankAccessLevel === 'sample') {
-    // Initially hidden - shows after user scrolls through review or clicks "Review Answers"
-    upgradeEl.style.display = 'none';
-    upgradeEl.innerHTML = `
-      <div style="background: linear-gradient(135deg, #f0fdfa, #e0f7f5); border: 1px solid #0d9488; border-radius: 12px; padding: 24px; text-align: center; margin-top: 20px;">
-        <p style="font-size: 1.05rem; font-weight: 600; color: #1a2744; margin-bottom: 8px;">Like what you see?</p>
-        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 16px;">Upgrade to unlock 1,000+ questions and 73 study guide chapters — all with detailed explanations like the ones above.</p>
-        <a href="dashboard.html?view=store" style="display: inline-block; background: #0d9488; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Upgrade Now</a>
-      </div>
-    `;
-    // Show upgrade prompt after user has seen at least one explanation
-    // Triggered when they scroll down to the review section or after 10 seconds
-    let upgradeShown = false;
-    const showUpgrade = () => {
-      if (upgradeShown) return;
-      upgradeShown = true;
-      upgradeEl.style.display = '';
-    };
-    // Show after scrolling past the first review item
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) showUpgrade(); });
-    }, { threshold: 0.5 });
-    const reviewItems = document.querySelectorAll('#reviewContainer .review-item');
-    if (reviewItems.length > 0) observer.observe(reviewItems[0]);
-    // Fallback: show after 15 seconds regardless
-    setTimeout(showUpgrade, 15000);
-  } else {
-    upgradeEl.style.display = 'none';
-  }
 }
 
 // Review answers
