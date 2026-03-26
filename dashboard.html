@@ -2923,12 +2923,12 @@
       const isApplicant = userPath === 'applicant';
       const isStudent = userPath === 'student';
 
-      if (!userPath) {
-        // No path — show everything in store
+      if (!userPath || isAdmin) {
+        // No path or admin — show everything in store
         document.getElementById('storeApplicantServices').style.display = 'block';
         document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        // Store visibility
+        // Store visibility based on path
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
         document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
 
@@ -2971,7 +2971,8 @@
         ? 'Full Access — 1,000+ questions across Biology and Chemistry.'
         : 'Free Sample — 5 questions. Upgrade to unlock all 1,000+ questions.';
       // Show upgrade prompt for free users, hide pricing grid if paid OR if residency applicant
-      const hideQbankStore = qbankPaid || isStudent;
+      // Admins always see full store for testing
+      const hideQbankStore = (!isAdmin && qbankPaid) || isStudent;
       document.getElementById('qbankUpgradePrompt').style.display = (qbankPaid || isStudent) ? 'none' : '';
       document.getElementById('qbankPricingGrid').style.display = hideQbankStore ? 'none' : '';
       document.getElementById('qbankPricingTitle').style.display = hideQbankStore ? 'none' : '';
