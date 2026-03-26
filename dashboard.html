@@ -2153,6 +2153,7 @@
     .sp-modal-body .exam-addition { background: linear-gradient(135deg, #fef3c7, #fff7ed); border: 2px solid #f59e0b; border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
 
     .sp-modal-body table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.88rem; }
+    .sp-modal-body th { background: #1a2744; color: #fff; padding: 0.6rem 0.85rem; text-align: left; font-weight: 600; }
     .sp-modal-body thead th { background: #1a2744; color: #fff; padding: 0.6rem 0.85rem; text-align: left; font-weight: 600; }
     .sp-modal-body tbody td { padding: 0.5rem 0.85rem; border-bottom: 1px solid #e2e8f0; }
     .sp-modal-body tbody tr:nth-child(even) { background: #f0fdfa; }
@@ -2163,8 +2164,14 @@
     .sp-modal-body svg { max-width: 100%; height: auto; }
     .sp-modal-body .svg-caption, .sp-modal-body .diagram-caption, .sp-modal-body .caption { font-size: 0.8rem; color: #475569; margin-top: 0.6rem; font-style: italic; }
 
-    .sp-modal-body .formula { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 0.4rem 0.85rem; border-radius: 6px; margin: 0.6rem 0; font-size: 1rem; text-align: center; }
+    .sp-modal-body .formula { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 0.4rem 0.85rem; border-radius: 6px; margin: 0.6rem 0; font-size: 1rem; text-align: center; display: block; white-space: nowrap; overflow-x: auto; }
+    .sp-modal-body .formula sub { display: inline; font-size: 0.75em; vertical-align: sub; }
+    .sp-modal-body .formula sup { display: inline; font-size: 0.75em; vertical-align: super; }
     .sp-modal-body .example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+    .sp-modal-body .example h4 { color: #1e40af !important; margin: 0 0 0.75rem 0 !important; font-size: 1.05rem; }
+    .sp-modal-body .example .step { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.4rem 0; }
+    .sp-modal-body .example .answer { background: #dcfce7; border: 1px solid #86efac; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.5rem 0 0; font-weight: 600; color: #166534; }
+    .sp-modal-body sub, .sp-modal-body sup { display: inline !important; }
     .sp-modal-body .note { background: #f1f5f9; border-left: 4px solid #cbd5e1; border-radius: 8px; padding: 0.85rem 1.25rem; margin: 0.85rem 0; font-size: 0.9rem; }
     .sp-modal-body .warning { background: #fefce8; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
     .sp-modal-body .named-reaction { background: #f0fdf4; border-left: 4px solid #86efac; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
@@ -2360,6 +2367,7 @@
     .sp-reader-content .important, .sp-reader-content .highlight { background: #fefce8; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; font-weight: 500; }
     .sp-reader-content .exam-addition { background: linear-gradient(135deg, #fef3c7, #fff7ed); border: 2px solid #f59e0b; border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
     .sp-reader-content table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.88rem; }
+    .sp-reader-content th { background: #1a2744; color: #fff; padding: 0.6rem 0.85rem; text-align: left; font-weight: 600; }
     .sp-reader-content thead th { background: #1a2744; color: #fff; padding: 0.6rem 0.85rem; text-align: left; font-weight: 600; }
     .sp-reader-content tbody td { padding: 0.5rem 0.85rem; border-bottom: 1px solid #e2e8f0; }
     .sp-reader-content tbody tr:nth-child(even) { background: #f0fdfa; }
@@ -2368,8 +2376,17 @@
     .sp-reader-content .svg-container, .sp-reader-content .diagram-container, .sp-reader-content .diagram { text-align: center; margin: 1.5rem 0; padding: 0.75rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; }
     .sp-reader-content svg { max-width: 100%; height: auto; }
     .sp-reader-content .svg-caption, .sp-reader-content .diagram-caption, .sp-reader-content .caption { font-size: 0.8rem; color: #475569; margin-top: 0.6rem; font-style: italic; }
-    .sp-reader-content .formula { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 0.4rem 0.85rem; border-radius: 6px; margin: 0.6rem 0; font-size: 1rem; text-align: center; }
+    .sp-reader-content .formula { font-family: 'Courier New', monospace; background: #f1f5f9; padding: 0.4rem 0.85rem; border-radius: 6px; margin: 0.6rem 0; font-size: 1rem; text-align: center; display: block; white-space: nowrap; overflow-x: auto; }
+    .sp-reader-content .formula sub { display: inline; font-size: 0.75em; vertical-align: sub; }
+    .sp-reader-content .formula sup { display: inline; font-size: 0.75em; vertical-align: super; }
     .sp-reader-content .example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+    .sp-reader-content .example h4 { color: #1e40af !important; margin: 0 0 0.75rem 0 !important; font-size: 1.05rem; }
+    .sp-reader-content .example .step { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.4rem 0; }
+    .sp-reader-content .example .step sub, .sp-reader-content .example .step sup,
+    .sp-reader-content .example .answer sub, .sp-reader-content .example .answer sup,
+    .sp-reader-content .step sub, .sp-reader-content .step sup { display: inline; }
+    .sp-reader-content .example .answer { background: #dcfce7; border: 1px solid #86efac; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.5rem 0 0; font-weight: 600; color: #166534; }
+    .sp-reader-content sub, .sp-reader-content sup { display: inline !important; }
     .sp-reader-content .note { background: #f1f5f9; border-left: 4px solid #cbd5e1; border-radius: 8px; padding: 0.85rem 1.25rem; margin: 0.85rem 0; font-size: 0.9rem; }
     .sp-reader-content .warning { background: #fefce8; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
     .sp-reader-content .named-reaction { background: #f0fdf4; border-left: 4px solid #86efac; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
