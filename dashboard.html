@@ -362,7 +362,7 @@
             <div class="resource-tabs sp-tabs">
               <button class="resource-tab active" data-sp-tab="biology" id="spTabBio">Biology <span class="sp-tab-count">(40)</span></button>
               <button class="resource-tab" data-sp-tab="chemistry" id="spTabChem">Chemistry <span class="sp-tab-count">(33)</span></button>
-              <button class="resource-tab" data-sp-tab="research" id="spTabRes" style="display:none;">Research <span class="sp-tab-count">(15)</span></button>
+              <button class="resource-tab" data-sp-tab="research" id="spTabRes" style="display:none;">Research <span class="sp-tab-count">(16)</span></button>
             </div>
 
             <!-- Biology Chapters -->
@@ -2896,11 +2896,11 @@
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
         document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
 
-        // Hide QBank + Free Resources sidebar links for residency applicants
+        // Hide QBank sidebar link for residency students; Study Plan always visible
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
         const studyPlanSidebarLink = document.getElementById('sidebarStudyPlanLink');
-        if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = 'flex';
         // Resources visible for both paths (content is path-filtered)
         // Filter resource tabs by path
         const applicantResourceTabs = document.getElementById('applicantResourceTabs');
@@ -4638,6 +4638,24 @@
       'Carboxylic Acids','Carboxylic Acid Derivatives','Sulfonic & Carbonic Derivatives',
       'Amines','Heterocyclic Compounds','Nucleic Acids','Proteins','Lipids','Saccharides'
     ];
+    const SP_RES_CHAPTERS = [
+      'Why Research Matters for Residency',
+      'Types of Medical Publications',
+      'Finding a Research Mentor',
+      'Formulating Research Questions',
+      'Literature Search & Reference Management',
+      'Writing a Case Report',
+      'Retrospective Studies',
+      'Systematic Reviews',
+      'Meta-Analysis',
+      'Manuscript Writing',
+      'Journal Selection & Submission',
+      'Conference Presentations',
+      'Research Ethics & Integrity',
+      'Building Your Research CV',
+      'Free Research Tools Reference',
+      'US Medical Conferences Guide'
+    ];
     // All chapters are free for registered users
     function spIsChapterFree(subject, idx) {
       return true;
@@ -4725,8 +4743,19 @@
 
     function spCalculateReadiness(profile) {
       let totalScore = 0, totalPossible = 0;
-      ['biology', 'chemistry'].forEach(subject => {
-        const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+      const path = profile?.path;
+      const isAdmin = ADMIN_EMAILS.includes(firebase.auth().currentUser?.email);
+      // Determine which subjects count toward readiness based on path
+      let subjects;
+      if (path === 'student') {
+        subjects = ['research'];
+      } else if (path === 'applicant') {
+        subjects = ['biology', 'chemistry'];
+      } else {
+        subjects = ['biology', 'chemistry', 'research'];
+      }
+      subjects.forEach(subject => {
+        const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
         chapters.forEach((_, idx) => {
           const data = spGetChapterData(profile, subject, idx);
           if (data && data.score != null && data.total) {
@@ -4747,8 +4776,61 @@
     }
 
     function spInit(profile, isPaid) {
+      const path = profile?.path;
+      const isAdmin = ADMIN_EMAILS.includes(firebase.auth().currentUser?.email);
+
+      // Render all chapter lists
       spRenderChapterList('spBiologyList', SP_BIO_CHAPTERS, 'biology', profile, isPaid);
       spRenderChapterList('spChemistryList', SP_CHEM_CHAPTERS, 'chemistry', profile, isPaid);
+      spRenderChapterList('spResearchList', SP_RES_CHAPTERS, 'research', profile, isPaid);
+
+      // Show/hide tabs based on path
+      const bioTab = document.getElementById('spTabBio');
+      const chemTab = document.getElementById('spTabChem');
+      const resTab = document.getElementById('spTabRes');
+      const bioList = document.getElementById('spBiologyList');
+      const chemList = document.getElementById('spChemistryList');
+      const resList = document.getElementById('spResearchList');
+
+      // Update study plan description based on path
+      const spDesc = document.querySelector('#studyPlanContent .dashboard-sub');
+      const spPracticeExam = document.querySelector('.sp-practice-exam');
+
+      if (isAdmin || !path) {
+        // Admin or no path: show all tabs
+        bioTab.style.display = '';
+        chemTab.style.display = '';
+        resTab.style.display = '';
+        if (spDesc) spDesc.textContent = 'Follow a structured path through Biology, Chemistry, and Research chapters.';
+        if (spPracticeExam) spPracticeExam.style.display = '';
+      } else if (path === 'applicant') {
+        bioTab.style.display = '';
+        chemTab.style.display = '';
+        resTab.style.display = 'none';
+        resList.style.display = 'none';
+        if (spDesc) spDesc.textContent = 'Follow a structured path through Biology and Chemistry chapters.';
+        if (spPracticeExam) spPracticeExam.style.display = '';
+        // Ensure bio tab is active if research was previously active
+        if (resTab.classList.contains('active')) {
+          document.querySelectorAll('[data-sp-tab]').forEach(t => t.classList.remove('active'));
+          bioTab.classList.add('active');
+          bioList.style.display = '';
+          chemList.style.display = 'none';
+        }
+      } else if (path === 'student') {
+        bioTab.style.display = 'none';
+        chemTab.style.display = 'none';
+        resTab.style.display = '';
+        bioList.style.display = 'none';
+        chemList.style.display = 'none';
+        resList.style.display = '';
+        if (spDesc) spDesc.textContent = 'Structured research guidance to strengthen your residency application.';
+        if (spPracticeExam) spPracticeExam.style.display = 'none';
+        // Make research tab active
+        document.querySelectorAll('[data-sp-tab]').forEach(t => t.classList.remove('active'));
+        resTab.classList.add('active');
+      }
+
       const readiness = spCalculateReadiness(profile);
       spUpdateReadinessRing(readiness);
     }
@@ -4764,7 +4846,7 @@
     }
 
     async function spFetchChapterText(subject, chIdx) {
-      const prefix = subject === 'biology' ? 'bio' : 'chem';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
       const key = `${prefix}-ch${chIdx + 1}`;
       if (spSearchCache[key] !== undefined) return spSearchCache[key];
       try {
@@ -4784,6 +4866,7 @@
       const promises = [];
       SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
       SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
+      SP_RES_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('research', i)));
       await Promise.all(promises);
     }
 
@@ -4859,6 +4942,16 @@
         }
       });
 
+      // Search research chapters
+      SP_RES_CHAPTERS.forEach((title, idx) => {
+        const key = `res-ch${idx + 1}`;
+        const text = spSearchCache[key] || '';
+        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+          results.push({ subject: 'research', idx, title, chNum: idx + 1, snippet });
+        }
+      });
+
       if (results.length === 0) {
         resultsEl.innerHTML = '<div class="sp-search-no-results">No results found</div>';
         resultsEl.classList.add('active');
@@ -4867,7 +4960,7 @@
 
       let html = `<div class="sp-search-result-count">Found in ${results.length} chapter${results.length !== 1 ? 's' : ''}</div>`;
       results.forEach(r => {
-        const subjectLabel = r.subject === 'biology' ? 'Biology' : 'Chemistry';
+        const subjectLabel = r.subject === 'biology' ? 'Biology' : r.subject === 'chemistry' ? 'Chemistry' : 'Research';
         const highlightedSnippet = spHighlightSnippet(r.snippet, query.trim());
         html += `<div class="sp-search-result-item" data-subject="${r.subject}" data-idx="${r.idx}">
           <div class="sp-search-result-title">${subjectLabel} Ch. ${r.chNum}: ${r.title}</div>
@@ -4928,7 +5021,7 @@
     let spReaderState = { subject: null, chIdx: 0, isPaid: false, hlColor: 'yellow', noteTimer: null };
 
     function spGetDocKey(subject, chIdx) {
-      const prefix = subject === 'biology' ? 'bio' : 'chem';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
       return `${prefix}-ch${chIdx + 1}`;
     }
 
@@ -4953,7 +5046,7 @@
 
     function spUpdateNavButtons() {
       const { subject, chIdx } = spReaderState;
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
       const isFirst = chIdx <= 0;
       const isLast = chIdx >= chapters.length - 1;
       document.getElementById('spPrevChapter').disabled = isFirst;
@@ -4979,9 +5072,9 @@
       spReaderState.chIdx = chIdx;
       spReaderState.isPaid = isPaid;
 
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
       const title = chapters[chIdx];
-      const prefix = subject === 'biology' ? 'bio' : 'chem';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
       const chNum = chIdx + 1;
 
       // Update toolbar title
@@ -5514,7 +5607,7 @@
     // Prev / Next chapter navigation
     function spNavigateChapter(delta) {
       const { subject, chIdx, isPaid } = spReaderState;
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : SP_CHEM_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
       const newIdx = chIdx + delta;
       if (newIdx < 0 || newIdx >= chapters.length) return;
       const isLocked = !isPaid && !spIsChapterFree(subject, newIdx);
@@ -5534,9 +5627,10 @@
       tab.addEventListener('click', () => {
         document.querySelectorAll('[data-sp-tab]').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        const isBio = tab.dataset.spTab === 'biology';
-        document.getElementById('spBiologyList').style.display = isBio ? '' : 'none';
-        document.getElementById('spChemistryList').style.display = isBio ? 'none' : '';
+        const which = tab.dataset.spTab;
+        document.getElementById('spBiologyList').style.display = which === 'biology' ? '' : 'none';
+        document.getElementById('spChemistryList').style.display = which === 'chemistry' ? '' : 'none';
+        document.getElementById('spResearchList').style.display = which === 'research' ? '' : 'none';
       });
     });
 
