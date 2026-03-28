@@ -998,6 +998,40 @@
           </div>
 
           <div id="storeStudentServices" style="display:none;">
+            <h3 class="view-section-title">Research Mentorship</h3>
+            <div class="dash-card" style="margin-bottom: 24px;">
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Research Foundations</h4>
+                  <p>Full access to Research Course (16 modules) + 1-on-1 session (30 min) to plan your research strategy. 6-month access.</p>
+                  <span class="service-price">$149</span>
+                </div>
+                <div class="service-status">
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='research-foundations'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Case Report Package <span style="background:var(--teal,#2d9f8f);color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:10px;margin-left:8px;">Popular</span></h4>
+                  <p>Everything in Foundations + guided case report writing with mentor review, help finding a research mentor, 3 mentoring sessions (30 min each).</p>
+                  <span class="service-price">$499</span>
+                </div>
+                <div class="service-status">
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='research-case-report'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Inquire</a>
+                </div>
+              </div>
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Publication Package</h4>
+                  <p>Everything in Case Report + guided systematic review or retrospective study, co-authorship mentorship, 6 mentoring sessions (30 min each), conference abstract submission guidance.</p>
+                  <span class="service-price">$999</span>
+                </div>
+                <div class="service-status">
+                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='research-publication'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
+                </div>
+              </div>
+            </div>
+
             <h3 class="view-section-title">Mentorship</h3>
             <div class="dash-card" style="margin-bottom: 24px;">
               <div class="service-row">
@@ -1106,6 +1140,9 @@
                     <option value="free-consultation">Free 15-Min Consultation</option>
                     <option value="mentorship">Mentorship Session - $199 (45 min)</option>
                     <option value="match-ready">Match-Ready Package - $499</option>
+                    <option value="research-foundations">Research Foundations - $149</option>
+                    <option value="research-case-report">Case Report Package - $499</option>
+                    <option value="research-publication">Publication Package - $999</option>
                     <option value="board-review-single">Board Review Single - $99 (45 min)</option>
                     <option value="board-review-5pack">Board Review 5-Pack - $449</option>
                     <option value="board-review-10pack">Board Review 10-Pack - $799</option>
@@ -2901,9 +2938,9 @@
 
       // Path-based UI changes (applies to ALL users including admin)
       {
-        // QBank sidebar: hide for residency students
+        // QBank sidebar: visible only for applicant path (hidden for student path, even admin)
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
-        if (qbankSidebarLink) qbankSidebarLink.style.display = (isStudent && !isAdmin) ? 'none' : 'flex';
+        if (qbankSidebarLink) qbankSidebarLink.style.display = isStudent ? 'none' : 'flex';
         // Study Plan always visible
         const studyPlanSidebarLink = document.getElementById('sidebarStudyPlanLink');
         if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = 'flex';
