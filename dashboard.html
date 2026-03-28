@@ -4840,8 +4840,8 @@
       const spDesc = document.querySelector('#studyPlanContent .dashboard-sub');
       const spPracticeExam = document.querySelector('.sp-practice-exam');
 
-      if (isAdmin || !path) {
-        // Admin or no path: show all tabs
+      if (!path) {
+        // No path set: show all tabs
         bioTab.style.display = '';
         chemTab.style.display = '';
         resTab.style.display = '';
