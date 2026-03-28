@@ -145,7 +145,7 @@
 }
 
 .qbank-start-header h1 span {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .qbank-start-header p {
@@ -194,14 +194,14 @@
 }
 
 .subject-card input:checked + .subject-card-inner {
-  border-color: var(--teal);
+  border-color: var(--accent);
   background: rgba(207, 91, 46, 0.03);
   box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.1);
 }
 
 .subject-card input:checked + .subject-card-inner::after {
-  background: var(--teal);
-  border-color: var(--teal);
+  background: var(--accent);
+  border-color: var(--accent);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
   background-size: 14px;
   background-position: center;
@@ -215,7 +215,7 @@
 }
 
 .subject-card input:checked:hover + .subject-card-inner {
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .subject-icon {
@@ -277,7 +277,7 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--teal), #e8774a);
+  background: linear-gradient(90deg, var(--accent), #e8774a);
   border-radius: 8px;
   transition: width 0.6s ease;
 }
@@ -345,14 +345,14 @@
 
 .option-row select:focus {
   outline: none;
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .option-row input[type="checkbox"] {
   width: 18px;
   height: 18px;
   margin-right: 10px;
-  accent-color: var(--teal);
+  accent-color: var(--accent);
   cursor: pointer;
 }
 
@@ -396,7 +396,7 @@
 }
 
 .quiz-progress span:first-child {
-  color: var(--teal);
+  color: var(--accent);
   font-size: 1.1rem;
 }
 
@@ -409,7 +409,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   background: rgba(207, 91, 46, 0.08);
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .quiz-score {
@@ -438,7 +438,7 @@
 
 .quiz-progress-fill {
   height: 100%;
-  background: var(--teal);
+  background: var(--accent);
   border-radius: 4px;
   transition: width 0.4s ease;
   width: 0%;
@@ -518,12 +518,12 @@
 }
 
 .quiz-option.selected {
-  border-color: var(--teal);
+  border-color: var(--accent);
   background: rgba(207, 91, 46, 0.03);
 }
 
 .quiz-option.selected .option-letter {
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
 }
 
@@ -711,7 +711,7 @@
 /* Key Concept Box */
 .explanation-content .exp-key {
   background: rgba(207, 91, 46, 0.06);
-  border-left: 4px solid var(--teal);
+  border-left: 4px solid var(--accent);
   padding: 14px 18px;
   margin-top: 24px;
   border-radius: 0 var(--radius) var(--radius) 0;
@@ -748,7 +748,7 @@
 
 .review-explanation .exp-key {
   background: rgba(207, 91, 46, 0.06);
-  border-left: 4px solid var(--teal);
+  border-left: 4px solid var(--accent);
   padding: 14px 18px;
   margin-top: 24px;
   border-radius: 0 var(--radius) var(--radius) 0;
@@ -820,7 +820,7 @@
 
 .score-fill {
   fill: none;
-  stroke: var(--teal);
+  stroke: var(--accent);
   stroke-width: 8;
   stroke-linecap: round;
   stroke-dasharray: 339.292;
@@ -909,7 +909,7 @@
 
 .breakdown-bar-fill {
   height: 100%;
-  background: var(--teal);
+  background: var(--accent);
   border-radius: 4px;
   transition: width 0.6s ease;
 }
@@ -1517,7 +1517,7 @@
 
 .report-thanks {
   font-size: 0.78rem;
-  color: var(--teal, #2ba89e);
+  color: var(--accent, #2ba89e);
   font-weight: 500;
 }
 
@@ -1693,7 +1693,7 @@ mark.user-highlight:hover {
 }
 
 .mode-option input[type="radio"]:checked ~ .mode-label {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .mode-option input[type="radio"]:checked ~ .mode-desc {
@@ -1702,7 +1702,7 @@ mark.user-highlight:hover {
 
 .mode-option:has(input:checked),
 .mode-option-active {
-  border-color: var(--teal);
+  border-color: var(--accent);
   background: rgba(207, 91, 46, 0.03);
   box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.1);
 }
@@ -1740,7 +1740,7 @@ mark.user-highlight:hover {
 
 .time-info-text {
   font-weight: 600;
-  color: var(--teal);
+  color: var(--accent);
   font-size: 0.9rem;
 }
 
@@ -1824,14 +1824,14 @@ mark.user-highlight:hover {
 }
 
 .nav-dot-current {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
   box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.15);
 }
 
 .nav-dot-answered {
-  background: var(--teal);
-  border-color: var(--teal);
+  background: var(--accent);
+  border-color: var(--accent);
   color: var(--white);
 }
 

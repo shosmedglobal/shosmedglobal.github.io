@@ -113,7 +113,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: var(--teal);
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.1);
 }
 
@@ -147,7 +147,7 @@
 }
 
 .path-option input:checked + .path-option-content {
-  border-color: var(--teal);
+  border-color: var(--accent);
   background: rgba(207, 91, 46, 0.04);
 }
 
@@ -191,8 +191,8 @@
 }
 
 .btn-small:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* ===== Error / Success Messages ===== */
@@ -225,7 +225,7 @@
 }
 
 .auth-footer a {
-  color: var(--teal);
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -241,7 +241,7 @@
 }
 
 .auth-forgot a:hover {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 /* ============================================
@@ -307,7 +307,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
   display: flex;
   align-items: center;
@@ -468,7 +468,7 @@
 }
 
 .dashboard-header h1 span {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .dashboard-sub {
@@ -623,7 +623,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid var(--gray-200);
-  border-top-color: var(--teal);
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin: 0 auto 16px;
@@ -666,7 +666,7 @@
 }
 
 .sidebar-link-inline {
-  color: var(--teal);
+  color: var(--accent);
   font-weight: 700;
   text-decoration: none;
 }
@@ -699,7 +699,7 @@
 }
 
 .qbank-plan-card.featured {
-  border-color: var(--teal);
+  border-color: var(--accent);
   box-shadow: 0 4px 20px rgba(207, 91, 46, 0.15);
 }
 
@@ -708,7 +708,7 @@
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
   padding: 4px 16px;
   border-radius: 50px;
@@ -981,19 +981,19 @@
 }
 
 .dash-action-btn:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
   background: rgba(207, 91, 46, 0.04);
 }
 
 .dash-review-btn {
   background: rgba(207, 91, 46, 0.06);
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .dash-review-btn:hover {
-  background: var(--teal);
+  background: var(--accent);
   color: white;
 }
 
@@ -1001,7 +1001,7 @@
 .dash-inline-rename {
   width: 100%;
   padding: 4px 8px;
-  border: 2px solid var(--teal);
+  border: 2px solid var(--accent);
   border-radius: 6px;
   font-size: 0.85rem;
   font-family: 'Inter', sans-serif;
@@ -1013,7 +1013,7 @@
 }
 
 .dash-inline-rename:focus {
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 /* In-Progress Test Row */
@@ -1023,7 +1023,7 @@
 
 .dash-ip-badge {
   display: inline-block;
-  background: var(--teal);
+  background: var(--accent);
   color: white;
   font-size: 0.7rem;
   font-weight: 700;
@@ -1034,9 +1034,9 @@
 }
 
 .dash-resume-btn {
-  background: var(--teal) !important;
+  background: var(--accent) !important;
   color: white !important;
-  border-color: var(--teal) !important;
+  border-color: var(--accent) !important;
   padding: 6px 14px !important;
   font-size: 0.8rem !important;
   text-decoration: none;
@@ -1108,7 +1108,7 @@
 }
 
 .resource-faculty-card.featured-faculty {
-  border-color: var(--teal);
+  border-color: var(--accent);
   border-width: 2px;
   background: rgba(207, 91, 46, 0.02);
 }
@@ -1240,7 +1240,7 @@
   content: '☐';
   position: absolute;
   left: 0;
-  color: var(--teal);
+  color: var(--accent);
   font-size: 1.1rem;
 }
 
@@ -1281,7 +1281,7 @@
 }
 
 .timeline-item.highlight .timeline-dot {
-  background: var(--teal);
+  background: var(--accent);
   box-shadow: 0 0 0 4px rgba(207, 91, 46, 0.2);
 }
 
@@ -1406,7 +1406,7 @@
 }
 
 .hospital-card:hover {
-  border-color: var(--teal);
+  border-color: var(--accent);
   background: rgba(207, 91, 46, 0.02);
 }
 
@@ -1716,7 +1716,7 @@
 }
 
 .student-overview-card:hover {
-  border-color: var(--teal, #2d9f8f);
+  border-color: var(--accent, #2d9f8f);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
@@ -1761,7 +1761,7 @@
 .student-overview-cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--teal, #2d9f8f);
+  color: var(--accent, #2d9f8f);
   margin-top: 16px;
 }
 

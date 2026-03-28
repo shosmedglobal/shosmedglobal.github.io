@@ -24,14 +24,14 @@
 }
 
 .community-tab:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .community-tab.active {
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .community-panel {
@@ -64,7 +64,7 @@
 }
 
 .featured-qa-sub a {
-  color: var(--teal);
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -233,7 +233,7 @@
 }
 
 .forum-select:focus {
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .btn-ask {
@@ -242,19 +242,19 @@
   gap: 8px;
   padding: 10px 24px;
   border-radius: 50px;
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  border: 2px solid var(--teal);
+  border: 2px solid var(--accent);
   cursor: pointer;
   transition: var(--transition);
 }
 
 .btn-ask:hover {
-  background: var(--teal-dark);
-  border-color: var(--teal-dark);
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
   transform: translateY(-2px);
 }
 
@@ -284,7 +284,7 @@
 }
 
 .forum-post-card:hover {
-  border-color: var(--teal);
+  border-color: var(--accent);
   box-shadow: var(--shadow);
   transform: translateY(-1px);
 }
@@ -308,11 +308,11 @@
 }
 
 .vote-btn:hover {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .vote-btn.voted {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .vote-count {
@@ -365,7 +365,7 @@
 .post-category {
   display: inline-block;
   background: linear-gradient(135deg, rgba(207,91,46,0.08), rgba(207,91,46,0.03));
-  color: var(--teal);
+  color: var(--accent);
   padding: 3px 10px;
   border-radius: 50px;
   font-size: 0.72rem;
@@ -479,7 +479,7 @@
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
-  border-color: var(--teal);
+  border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.1);
 }
 
@@ -516,9 +516,9 @@
 .btn-submit {
   padding: 10px 24px;
   border-radius: 50px;
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
-  border: 2px solid var(--teal);
+  border: 2px solid var(--accent);
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -527,8 +527,8 @@
 }
 
 .btn-submit:hover {
-  background: var(--teal-dark);
-  border-color: var(--teal-dark);
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
 }
 
 .btn-submit:disabled {
@@ -551,7 +551,7 @@
   gap: 8px;
   font-size: 0.88rem;
   font-weight: 500;
-  color: var(--teal);
+  color: var(--accent);
   cursor: pointer;
   margin-bottom: 24px;
   border: none;
@@ -561,7 +561,7 @@
 }
 
 .thread-back:hover {
-  color: var(--teal-dark);
+  color: var(--accent-dark);
 }
 
 .thread-question {
@@ -620,13 +620,13 @@
 }
 
 .thread-vote-btn:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .thread-vote-btn.voted {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent);
+  color: var(--accent);
   background: rgba(207, 91, 46, 0.06);
 }
 
@@ -743,7 +743,7 @@
 }
 
 .login-prompt a {
-  color: var(--teal);
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -757,8 +757,8 @@
   padding: 12px 32px;
   border-radius: 50px;
   background: transparent;
-  color: var(--teal);
-  border: 2px solid var(--teal);
+  color: var(--accent);
+  border: 2px solid var(--accent);
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -767,7 +767,7 @@
 }
 
 .btn-load-more:hover {
-  background: var(--teal);
+  background: var(--accent);
   color: var(--white);
 }
 
@@ -819,13 +819,13 @@
 .blog-article-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 .blog-article-card .blog-tag {
   display: inline-block;
   background: linear-gradient(135deg, rgba(207,91,46,0.08), rgba(207,91,46,0.03));
-  color: var(--teal);
+  color: var(--accent);
   padding: 4px 10px;
   border-radius: 50px;
   font-size: 0.75rem;
@@ -869,7 +869,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: var(--teal);
+  color: var(--accent);
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 8px;
@@ -951,12 +951,12 @@
   gap: 8px;
   font-size: 0.88rem;
   font-weight: 500;
-  color: var(--teal);
+  color: var(--accent);
   margin-bottom: 32px;
 }
 
 .article-back:hover {
-  color: var(--teal-dark);
+  color: var(--accent-dark);
 }
 
 .article-header {
@@ -966,7 +966,7 @@
 .article-header .blog-tag {
   display: inline-block;
   background: linear-gradient(135deg, rgba(207,91,46,0.08), rgba(207,91,46,0.03));
-  color: var(--teal);
+  color: var(--accent);
   padding: 4px 10px;
   border-radius: 50px;
   font-size: 0.75rem;
@@ -1031,7 +1031,7 @@
 }
 
 .article-body blockquote {
-  border-left: 3px solid var(--teal);
+  border-left: 3px solid var(--accent);
   padding: 16px 24px;
   margin: 24px 0;
   background: var(--gray-50);
