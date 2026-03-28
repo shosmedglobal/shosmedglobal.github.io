@@ -2887,21 +2887,26 @@
       const isApplicant = userPath === 'applicant';
       const isStudent = userPath === 'student';
 
-      if (!userPath || isAdmin) {
-        // No path or admin — show everything in store
+      // Store: admins see everything, regular users see path-specific
+      if (isAdmin) {
+        document.getElementById('storeApplicantServices').style.display = 'block';
+        document.getElementById('storeStudentServices').style.display = 'block';
+      } else if (!userPath) {
         document.getElementById('storeApplicantServices').style.display = 'block';
         document.getElementById('storeStudentServices').style.display = 'block';
       } else {
-        // Store visibility based on path
         document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
         document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
+      }
 
-        // Hide QBank sidebar link for residency students; Study Plan always visible
+      // Path-based UI changes (applies to ALL users including admin)
+      {
+        // QBank sidebar: hide for residency students
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
-        if (qbankSidebarLink) qbankSidebarLink.style.display = isApplicant ? 'flex' : 'none';
+        if (qbankSidebarLink) qbankSidebarLink.style.display = (isStudent && !isAdmin) ? 'none' : 'flex';
+        // Study Plan always visible
         const studyPlanSidebarLink = document.getElementById('sidebarStudyPlanLink');
         if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = 'flex';
-        // Resources visible for both paths (content is path-filtered)
         // Filter resource tabs by path
         const applicantResourceTabs = document.getElementById('applicantResourceTabs');
         const studentResourceTabs = document.getElementById('studentResourceTabs');
@@ -2912,7 +2917,7 @@
         if (resourcesDesc) resourcesDesc.textContent = isStudent
           ? 'Guides and resources for USMLE preparation and residency match.'
           : 'Everything you need to know about applying to LF3 at Charles University.';
-        // Show correct default panel
+        // Show correct default resource panel
         document.querySelectorAll('.resource-panel').forEach(p => p.style.display = 'none');
         if (isStudent) {
           const firstStudentPanel = document.getElementById('tabUsmleTimeline');
