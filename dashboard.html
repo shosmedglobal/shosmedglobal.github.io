@@ -3021,8 +3021,16 @@
           document.getElementById('editProfileForm').style.display = 'none';
           document.getElementById('profileDisplay').style.display = 'block';
 
-          // Full reload for path-based visibility changes
-          await loadDashboard(currentUser);
+          // Update local profile cache with new values before reloading
+          if (currentProfile) {
+            currentProfile.name = name;
+            currentProfile.path = path;
+          }
+
+          // Force page reload to apply all path-based changes cleanly
+          // This ensures everything re-initializes with the new path
+          sessionStorage.setItem('dashboardView', 'overview');
+          window.location.reload();
         } else {
           console.error('Firestore save failed:', result.error);
           alert('Failed to save: ' + (result.error || 'Unknown error') + '. Please check browser console for details.');
