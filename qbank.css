@@ -81,36 +81,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ===== Sample Banner ===== */
-.sample-banner {
-  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
-  border: 1px solid #FFB74D;
-  border-radius: 12px;
-  padding: 16px 24px;
-  margin-bottom: 24px;
-}
-.sample-banner-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.sample-banner-content span {
-  font-weight: 600;
-  color: #E65100;
-  font-size: 0.95rem;
-}
-.sample-banner-content .btn {
-  white-space: nowrap;
-}
-
-@media (max-width: 600px) {
-  .sample-banner-content {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+/* Sample Banner removed — QBank is fully free for all registered users */
 
 /* ===== Question Bank Section ===== */
 /* Note: user-select:none for .qbank-section is defined above in Content Protection */

@@ -651,19 +651,7 @@
   margin-top: 8px;
 }
 
-/* Upgrade prompt */
-.upgrade-prompt {
-  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
-  border: 1px solid #FFB74D;
-  padding: 16px 24px;
-}
-
-.upgrade-prompt p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #E65100;
-  font-weight: 500;
-}
+/* Upgrade prompt removed — QBank is fully free for all registered users */
 
 .sidebar-link-inline {
   color: var(--accent);

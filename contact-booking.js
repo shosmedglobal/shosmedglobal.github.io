@@ -12,14 +12,14 @@ const CONTACT_CATEGORIES = [
 ];
 
 const SERVICE_TYPES = {
-  'free-consultation':   { name: 'Free 15-Min Consultation', price: 0,    duration: '15 min',     category: 'consultation' },
-  'application-guide':   { name: 'Application Guide',        price: 99,   duration: '45 min',     category: 'applicant' },
-  'full-application':    { name: 'Full Application Package',  price: 249,  duration: 'Full cycle', category: 'applicant' },
-  'mentorship':          { name: 'Mentorship Session',        price: 199,  duration: '45 min',     category: 'student' },
-  'match-ready':         { name: 'Match-Ready Package',       price: 499,  duration: 'Full cycle', category: 'student' },
-  'board-review-single': { name: 'Board Review - Single',     price: 99,   duration: '45 min',     category: 'student' },
-  'board-review-5pack':  { name: 'Board Review - 5 Pack',     price: 449,  duration: '5 sessions', category: 'student' },
-  'board-review-10pack': { name: 'Board Review - 10 Pack',    price: 799,  duration: '10 sessions',category: 'student' }
+  'free-consultation':    { name: 'Free 15-Min Consultation',    price: 0,    duration: '15 min',      category: 'consultation' },
+  'full-application':     { name: 'Full Application Package',    price: 249,  duration: 'Full cycle',  category: 'applicant' },
+  'research-foundations': { name: 'Research Strategy Package',   price: 149,  duration: '6 months',    category: 'student' },
+  'mentorship':           { name: 'Mentorship Session',          price: 199,  duration: '45 min',      category: 'student' },
+  'match-ready':          { name: 'Match-Ready Package',         price: 499,  duration: 'Full cycle',  category: 'student' },
+  'board-review-single':  { name: 'Board Review - Single',      price: 99,   duration: '45 min',      category: 'student' },
+  'board-review-5pack':   { name: 'Board Review - 5 Pack',      price: 449,  duration: '5 sessions',  category: 'student' },
+  'board-review-10pack':  { name: 'Board Review - 10 Pack',     price: 799,  duration: '10 sessions', category: 'student' }
 };
 
 const MESSAGE_STATUSES = ['new', 'read', 'replied', 'resolved'];
@@ -35,11 +35,6 @@ function getIntakeQuestions(serviceType) {
     'free-consultation': [
       { id: 'helpWith', label: 'What are you looking for help with?', type: 'textarea' },
       { id: 'currentStage', label: 'Current stage', type: 'select', options: ['Pre-med', 'Med student (preclinical)', 'Med student (clinical)', 'Graduate', 'Other'] }
-    ],
-    'application-guide': [
-      { id: 'faculty', label: 'Which faculty are you applying to?', type: 'text' },
-      { id: 'applyDate', label: 'When do you plan to apply?', type: 'text' },
-      { id: 'examStarted', label: 'Have you started studying for the entrance exam?', type: 'select', options: ['Not yet', 'Just started', 'Been studying for a few months', 'Feel prepared'] }
     ],
     'full-application': [
       { id: 'faculty', label: 'Which faculty are you applying to?', type: 'text' },
@@ -71,6 +66,10 @@ function getIntakeQuestions(serviceType) {
       { id: 'whichStep', label: 'Which Step are you preparing for?', type: 'select', options: ['Step 1', 'Step 2 CK', 'Step 3', 'COMLEX'] },
       { id: 'examDate', label: 'When is your exam date?', type: 'text' },
       { id: 'focusSubjects', label: 'What subjects do you want to focus on?', type: 'textarea' }
+    ],
+    'research-foundations': [
+      { id: 'researchExperience', label: 'Do you have any prior research experience?', type: 'select', options: ['None', 'Some coursework', 'Participated in a project', 'Published'] },
+      { id: 'yearOfStudy', label: 'What year are you in?', type: 'text' }
     ]
   };
 
