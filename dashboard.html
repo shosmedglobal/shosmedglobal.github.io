@@ -4744,7 +4744,8 @@
     function spCalculateReadiness(profile) {
       let totalScore = 0, totalPossible = 0;
       const path = profile?.path;
-      const isAdmin = ADMIN_EMAILS.includes(firebase.auth().currentUser?.email);
+      const adminEmails2 = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const isAdmin = adminEmails2.includes(firebase.auth().currentUser?.email || '');
       // Determine which subjects count toward readiness based on path
       let subjects;
       if (path === 'student') {
@@ -4777,7 +4778,8 @@
 
     function spInit(profile, isPaid) {
       const path = profile?.path;
-      const isAdmin = ADMIN_EMAILS.includes(firebase.auth().currentUser?.email);
+      const adminEmails = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const isAdmin = adminEmails.includes(firebase.auth().currentUser?.email || '');
 
       // Render all chapter lists
       spRenderChapterList('spBiologyList', SP_BIO_CHAPTERS, 'biology', profile, isPaid);
