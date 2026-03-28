@@ -1,0 +1,121 @@
+<div class="chapter-number">Chapter 9</div>
+<h2>How to Conduct a Meta-Analysis</h2>
+
+<h3>9.1 From Systematic Review to Quantitative Synthesis</h3>
+<p>A meta-analysis takes the systematic review one step further by statistically combining data from multiple studies to generate a single pooled estimate of effect. While a systematic review synthesizes evidence qualitatively (&ldquo;most studies found X&rdquo;), a meta-analysis provides a precise numerical answer (&ldquo;the pooled odds ratio was 2.3, 95% CI 1.5&ndash;3.5&rdquo;). This quantitative precision is what makes meta-analyses so influential in shaping clinical guidelines and medical decision-making.</p>
+
+<h3>9.2 When Is Statistical Pooling Appropriate?</h3>
+<p>A meta-analysis is justified when you have identified multiple studies examining the same question with sufficiently similar populations, interventions, and outcome definitions that combining their data statistically makes scientific sense.</p>
+
+<p>A meta-analysis is <strong>not appropriate</strong> when the included studies are too dissimilar from each other &mdash; different populations, different interventions, or different outcome definitions &mdash; to the point where pooling them would produce a meaningless number. When studies are too heterogeneous, present a qualitative systematic review without statistical pooling instead.</p>
+
+<h3>9.3 Essential Statistical Concepts</h3>
+
+<h4>Effect Sizes</h4>
+<p>The summary measure you use depends on the type of outcome:</p>
+<table style="width:100%; border-collapse: collapse; margin: 16px 0;">
+  <thead>
+    <tr style="background: #f1f5f9;">
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Outcome Type</th>
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Effect Size Measures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 10px 12px; border-bottom: 1px solid #e2e8f0;">Binary (event vs. no event)</td><td style="padding: 10px 12px; border-bottom: 1px solid #e2e8f0;">Odds ratio (OR), risk ratio (RR), risk difference</td></tr>
+    <tr><td style="padding: 10px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 10px 12px; border-bottom: 1px solid #e2e8f0;">Mean difference (MD), standardized mean difference (SMD)</td></tr>
+    <tr><td style="padding: 10px 12px;">Time-to-event</td><td style="padding: 10px 12px;">Hazard ratio (HR)</td></tr>
+  </tbody>
+</table>
+
+<h4>Heterogeneity</h4>
+<p>Heterogeneity quantifies how much variability exists between study results beyond what would be expected from chance alone. The key metric is the <strong>I-squared (I&sup2;) statistic</strong>:</p>
+<ul>
+  <li><strong>0&ndash;25%:</strong> Low heterogeneity &mdash; studies are fairly consistent</li>
+  <li><strong>25&ndash;50%:</strong> Moderate heterogeneity</li>
+  <li><strong>50&ndash;75%:</strong> Substantial heterogeneity &mdash; interpret pooled results with caution</li>
+  <li><strong>&gt;75%:</strong> Considerable heterogeneity &mdash; pooling may not be appropriate</li>
+</ul>
+<p>The <strong>Q statistic</strong> (Cochran's Q) tests whether heterogeneity is statistically significant. Both I&sup2; and Q should be reported in every meta-analysis.</p>
+
+<h4>Fixed-Effects vs. Random-Effects Models</h4>
+<p>A <strong>fixed-effects model</strong> assumes that all studies share a single true effect size &mdash; any observed variation is due to sampling error. A <strong>random-effects model</strong> assumes the true effect size varies between studies, reflecting genuine clinical or methodological differences.</p>
+
+<p>In practice, most medical meta-analyses use the <strong>random-effects model</strong> because clinical studies are never truly identical in their populations, settings, or methods. When heterogeneity is very low, both models yield similar results, but the random-effects model is the safer default.</p>
+
+<h3>9.4 Subgroup Analysis and Sensitivity Analysis</h3>
+
+<h4>Subgroup Analysis</h4>
+<p>Subgroup analysis tests whether the pooled effect differs across predefined categories &mdash; for example, by patient age group, disease severity, geographic region, or study quality. Critical rules:</p>
+<ul>
+  <li>Plan subgroup analyses <strong>in advance</strong> and document them in your protocol</li>
+  <li>Limit them to a small number of clinically meaningful comparisons</li>
+  <li>Unplanned subgroup analyses generate false positives and undermine credibility</li>
+</ul>
+
+<h4>Sensitivity Analysis</h4>
+<p>Sensitivity analysis tests the robustness of your results by examining whether they change when you:</p>
+<ul>
+  <li>Remove one study at a time (leave-one-out analysis)</li>
+  <li>Restrict to only high-quality studies</li>
+  <li>Switch between fixed-effects and random-effects models</li>
+  <li>Modify inclusion criteria slightly</li>
+</ul>
+<p>If your main finding survives these perturbations, it is considered robust. If it changes substantially, that instability must be reported and discussed.</p>
+
+<h3>9.5 Assessing Publication Bias</h3>
+<p>Studies with positive or statistically significant results are more likely to be published than negative studies, creating a systematic distortion in the available evidence. You must assess and report this potential bias.</p>
+
+<h4>Funnel Plots</h4>
+<p>A funnel plot graphs each study's effect size (x-axis) against its precision, typically the standard error (y-axis). In the absence of bias, studies should scatter symmetrically around the pooled estimate, forming an inverted funnel shape. Visible asymmetry suggests possible publication bias or other small-study effects.</p>
+
+<h4>Egger's Test</h4>
+<p>Egger's regression test provides a statistical evaluation of funnel plot asymmetry. A significant result (p &lt; 0.05) suggests potential publication bias. Note that this test has limited statistical power when fewer than 10 studies are included, so it should be interpreted cautiously in smaller meta-analyses.</p>
+
+<h3>9.6 Free Software for Meta-Analysis</h3>
+
+<h4>RevMan (Review Manager)</h4>
+<p>Free software from the <a href="https://training.cochrane.org/handbook" target="_blank">Cochrane Collaboration</a>, designed specifically for systematic reviews and meta-analyses. It offers a point-and-click interface and automatically generates forest plots and funnel plots. This is the best starting point for beginners.</p>
+
+<h4>R with the meta and metafor Packages</h4>
+<p>More flexible and powerful than RevMan, capable of handling advanced analyses. The <code>meta</code> package is user-friendly for standard analyses; <code>metafor</code> offers greater customization. Both require basic R programming skills but have excellent documentation and tutorials available online.</p>
+
+<h3>9.7 Reading Forest Plots and Funnel Plots</h3>
+
+<h4>Forest Plots</h4>
+<p>The standard visual output of a meta-analysis. Each horizontal row represents one study, showing its individual effect estimate as a square (sized proportionally to its weight in the analysis) with a horizontal line representing the confidence interval. At the bottom, a diamond shows the pooled summary estimate. A vertical line at the null value (1.0 for ratios, 0 for differences) marks &ldquo;no effect.&rdquo; If the diamond does not cross this line, the pooled result is statistically significant.</p>
+
+<h4>Funnel Plots</h4>
+<p>Symmetry around the pooled estimate suggests no publication bias. Asymmetry &mdash; especially missing small studies with null results in the lower corner &mdash; raises concern. Both RevMan and R generate funnel plots readily.</p>
+
+<h3>9.8 Reporting Standards</h3>
+<p>Follow the PRISMA guidelines for meta-analyses, which extend the standard checklist with items specific to quantitative synthesis. Your manuscript should report:</p>
+<ul>
+  <li>The pooled effect size with confidence intervals</li>
+  <li>Heterogeneity measures (I&sup2;, Q statistic, p-value)</li>
+  <li>Results of all subgroup and sensitivity analyses</li>
+  <li>Publication bias assessment (funnel plot and Egger's test)</li>
+</ul>
+
+<div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-left: 4px solid #22c55e; border-radius: 8px; padding: 20px; margin: 24px 0;">
+  <h4 style="color: #15803d; margin-top: 0;">Key Takeaways</h4>
+  <ul style="margin-bottom: 0;">
+    <li>Only pool studies that are sufficiently similar in population, intervention, and outcome measurement</li>
+    <li>Use random-effects models as the default in most medical meta-analyses</li>
+    <li>Always assess and report heterogeneity using I&sup2; and the Q statistic</li>
+    <li>Plan subgroup and sensitivity analyses in advance and limit their number</li>
+    <li>Evaluate publication bias with funnel plots and Egger's test</li>
+    <li>RevMan is the easiest free tool for beginners; R offers greater analytical flexibility</li>
+  </ul>
+</div>
+
+<div style="background: linear-gradient(135deg, #fef2f2, #fecaca); border-left: 4px solid #ef4444; border-radius: 8px; padding: 20px; margin: 24px 0;">
+  <h4 style="color: #dc2626; margin-top: 0;">Common Mistakes</h4>
+  <ul style="margin-bottom: 0;">
+    <li>Pooling studies that are too heterogeneous to combine meaningfully</li>
+    <li>Failing to assess or report heterogeneity</li>
+    <li>Running excessive unplanned subgroup analyses that inflate false-positive rates</li>
+    <li>Ignoring publication bias entirely</li>
+    <li>Using a fixed-effects model when a random-effects model is more appropriate</li>
+    <li>Omitting sensitivity analyses from the manuscript</li>
+  </ul>
+</div>

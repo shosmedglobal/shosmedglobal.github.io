@@ -1,0 +1,133 @@
+<div class="chapter-number">Chapter 7</div>
+<h2>How to Conduct a Retrospective Study</h2>
+
+<h3>7.1 Why Retrospective Studies Are the Sweet Spot for Students</h3>
+<p>Retrospective cohort studies are the workhorses of student research productivity. They use existing patient data to answer clinical questions, making them far more accessible than prospective studies while yielding higher-impact publications than case reports. If you have access to an institutional database or electronic medical records and a mentor willing to guide you, a retrospective study is one of the most efficient paths to a meaningful publication.</p>
+
+<h3>7.2 Writing a Study Protocol Before Touching Any Data</h3>
+<p>Before collecting a single data point, write a brief study protocol. This document should define:</p>
+<ul>
+  <li>Your research question in PICO format</li>
+  <li>The study population (inclusion and exclusion criteria)</li>
+  <li>The data source (which database, which medical records system)</li>
+  <li>Every variable you plan to collect</li>
+  <li>Your primary and secondary outcomes, clearly defined</li>
+  <li>Your planned statistical analysis approach</li>
+</ul>
+<p>A written protocol serves two critical functions: it prevents <strong>scope creep</strong> (the gradual expansion of your project beyond what is manageable) and it guards against <strong>post-hoc analysis fishing</strong> (running dozens of tests until something reaches statistical significance). Both undermine your study's credibility.</p>
+
+<h3>7.3 The IRB Approval Process</h3>
+<p>Every study using patient data requires Institutional Review Board (or equivalent ethics committee) approval. The typical process involves:</p>
+<ol>
+  <li>Completing your institution's IRB application, describing the study purpose, population, data sources, and variables.</li>
+  <li>Explaining how patient privacy will be maintained (de-identification procedures, secure data storage).</li>
+  <li>Requesting a waiver of informed consent (standard for retrospective chart reviews where contacting every patient is impractical).</li>
+  <li>Waiting for approval, which typically takes two to eight weeks.</li>
+</ol>
+<p><strong>Start the IRB process early.</strong> Do not collect any data before approval is granted. This is both an ethical requirement and a practical one &mdash; journals will ask for your IRB approval number.</p>
+
+<h3>7.4 Systematic Data Collection</h3>
+
+<h4>Create a Standardized Collection Form</h4>
+<p>Before reviewing any charts, build a structured spreadsheet with one row per patient and one column per variable. Every patient should have identical data fields collected in the same format. This standardization prevents errors and makes analysis straightforward.</p>
+
+<h4>Use REDCap When Available</h4>
+<p>REDCap (Research Electronic Data Capture) is a free, secure, web-based platform designed for research data collection. It enforces data validation rules, supports multiple users, and generates automatic audit trails. If your institution provides access, use it.</p>
+
+<h4>If REDCap Is Unavailable</h4>
+<p>Google Sheets or Microsoft Excel work acceptably. Create dropdown menus for categorical variables to prevent inconsistent data entry. Lock column headers to avoid accidental modification.</p>
+
+<h4>Data Collection Checklist</h4>
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px 0;">
+  <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+    <li>&#9744; IRB approval obtained before any data collection</li>
+    <li>&#9744; Data collection form finalized and pilot-tested on five cases</li>
+    <li>&#9744; All variables clearly defined (e.g., &ldquo;hypertension&rdquo; = documented diagnosis OR use of antihypertensive medication)</li>
+    <li>&#9744; Dates formatted consistently (YYYY-MM-DD recommended)</li>
+    <li>&#9744; Categorical variables use standardized codes (0 = no, 1 = yes)</li>
+    <li>&#9744; Missing data coded distinctly (use &ldquo;NA&rdquo; or leave blank &mdash; never use zero for missing)</li>
+    <li>&#9744; Patient identifiers stored separately from research data</li>
+    <li>&#9744; Data backed up in at least two locations</li>
+  </ul>
+</div>
+
+<h3>7.5 Statistical Analysis Fundamentals</h3>
+<p>You do not need to become a statistician, but you must understand which test to use and why.</p>
+
+<h4>Descriptive Statistics</h4>
+<p>Begin by characterizing your study population. For continuous variables (age, lab values), report the mean and standard deviation if the data are normally distributed, or the median and interquartile range if they are skewed. For categorical variables (sex, disease stage), report counts and percentages.</p>
+
+<h4>Comparing Two Groups</h4>
+<table style="width:100%; border-collapse: collapse; margin: 16px 0;">
+  <thead>
+    <tr style="background: #f1f5f9;">
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Outcome Type</th>
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Groups</th>
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Distribution</th>
+      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Appropriate Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Categorical</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Chi-square (or Fisher's exact if any expected cell count &lt; 5)</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Categorical</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Chi-square</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Independent t-test</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Non-normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Mann-Whitney U test</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">One-way ANOVA</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Non-normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Kruskal-Wallis test</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Time-to-event</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Log-rank test</td></tr>
+    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Binary (multivariate)</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Logistic regression</td></tr>
+    <tr><td style="padding: 8px 12px;">Time-to-event (multivariate)</td><td style="padding: 8px 12px;">N/A</td><td style="padding: 8px 12px;">N/A</td><td style="padding: 8px 12px;">Cox proportional hazards regression</td></tr>
+  </tbody>
+</table>
+
+<h4>Survival Analysis</h4>
+<p>When your outcome is time-dependent (overall survival, progression-free survival), use <strong>Kaplan-Meier curves</strong> to visualize survival over time, the <strong>log-rank test</strong> to compare survival between groups, and <strong>Cox regression</strong> for multivariate analysis controlling for confounders.</p>
+
+<h4>Checking for Normality</h4>
+<p>Use the Shapiro-Wilk test (available in JASP, R, and most statistical software). If p &gt; 0.05, the data can be treated as approximately normal. Also inspect histograms visually. For samples above 30, the central limit theorem often permits parametric tests even if the distribution is not perfectly normal.</p>
+
+<h4>Reporting Results Correctly</h4>
+<p>Always report the test used, the test statistic, degrees of freedom where applicable, and the p-value. For clinically meaningful comparisons, also include the effect size and 95% confidence interval. Example: &ldquo;Patients in the treatment group had significantly higher response rates (72% vs 48%, p = 0.003, OR 2.8, 95% CI 1.4&ndash;5.6).&rdquo;</p>
+
+<h4>Understanding p-Values</h4>
+<p>A p-value below 0.05 does not automatically mean your finding is clinically important. It means that if no true difference existed, you would observe a result this extreme less than 5% of the time by chance. Always pair statistical significance with clinical significance. A statistically significant 0.1-point hemoglobin difference may be clinically meaningless. Conversely, a clinically meaningful difference may not reach significance if the sample is underpowered.</p>
+
+<h3>7.6 Free Statistical Software</h3>
+<ul>
+  <li><strong>JASP</strong> (recommended for beginners) &mdash; User-friendly, point-and-click interface. Handles most analyses needed for a retrospective study. Available for Windows, Mac, and Linux.</li>
+  <li><strong>jamovi</strong> &mdash; Similar to JASP with a clean, intuitive interface. Also good for beginners.</li>
+  <li><strong>R + RStudio</strong> &mdash; A programming language for statistics with an integrated development environment. Steeper learning curve, but vastly more powerful. Essential for survival analysis and complex multivariate models.</li>
+</ul>
+
+<h3>7.7 Common Pitfalls in Retrospective Research</h3>
+<ul>
+  <li><strong>Selection bias:</strong> Your patient cohort may not represent the broader population. Acknowledge this honestly.</li>
+  <li><strong>Missing data:</strong> Chart reviews always have gaps. Report the proportion of missing data for each variable and explain how you handled it.</li>
+  <li><strong>Confounding:</strong> Differences between groups may stem from unmeasured factors. Multivariate analysis mitigates but cannot eliminate this problem.</li>
+  <li><strong>Post-hoc analysis fishing:</strong> Running dozens of tests until finding significance is not valid science. Your primary outcome must be defined before analysis begins.</li>
+  <li><strong>Immortal time bias:</strong> Incorrectly classifying the time between a starting event and treatment initiation. This is a common and serious error in retrospective oncology studies.</li>
+</ul>
+
+<div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-left: 4px solid #22c55e; border-radius: 8px; padding: 20px; margin: 24px 0;">
+  <h4 style="color: #15803d; margin-top: 0;">Key Takeaways</h4>
+  <ul style="margin-bottom: 0;">
+    <li>Write a study protocol before collecting any data &mdash; it prevents scope creep and post-hoc fishing</li>
+    <li>Obtain IRB approval before accessing patient records</li>
+    <li>Use a standardized data collection form with clearly defined variables</li>
+    <li>Start with descriptive statistics, then proceed to comparative and multivariate analyses</li>
+    <li>Use JASP for initial analyses; transition to R as your skills grow</li>
+    <li>Report methods transparently and discuss all limitations honestly</li>
+  </ul>
+</div>
+
+<div style="background: linear-gradient(135deg, #fef2f2, #fecaca); border-left: 4px solid #ef4444; border-radius: 8px; padding: 20px; margin: 24px 0;">
+  <h4 style="color: #dc2626; margin-top: 0;">Common Mistakes</h4>
+  <ul style="margin-bottom: 0;">
+    <li>Collecting data before receiving IRB approval</li>
+    <li>Failing to standardize variable definitions before starting chart review</li>
+    <li>Applying the wrong statistical test for the data type</li>
+    <li>Not reporting the extent of missing data</li>
+    <li>Running multiple analyses without a pre-specified primary outcome</li>
+    <li>Reporting p-values without accompanying effect sizes and confidence intervals</li>
+  </ul>
+</div>
