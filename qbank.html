@@ -24,7 +24,7 @@
     </a>
   </div>
 
-  <!-- Question Bank App — hidden until auth check completes -->
+  <!-- Question Bank App - hidden until auth check completes -->
   <section class="qbank-section" id="qbankSection" style="display:none;">
     <div class="container">
 
@@ -285,7 +285,7 @@
   <script src="qbank.js"></script>
   <script>
     // ===== Access Control =====
-    // All registered users get full QBank access — no sample limitations
+    // All registered users get full QBank access - no sample limitations
 
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
@@ -293,12 +293,12 @@
     // Require login to access QBank
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
-        // Not logged in — redirect to signup
+        // Not logged in - redirect to signup
         window.location.href = 'signup.html?redirect=qbank';
         return;
       }
 
-      // Auth passed — hide loading, show quiz content
+      // Auth passed - hide loading, show quiz content
       document.getElementById('authLoading').style.display = 'none';
 
       // All authenticated users get full access
@@ -374,7 +374,7 @@
       flash.id = 'qbScreenshotFlash';
       document.body.appendChild(flash);
 
-      // PrintScreen key — flash white to obscure content
+      // PrintScreen key - flash white to obscure content
       document.addEventListener('keyup', e => {
         if (e.key === 'PrintScreen') {
           navigator.clipboard.writeText('').catch(() => {});
@@ -406,11 +406,11 @@
     })();
 
     function loadQuestionsWithAccess() {
-      // Load all questions — full access for all registered users
+      // Load all questions - full access for all registered users
       fetch('questions.json')
         .then(res => res.json())
         .then(async (data) => {
-          // Set the global allQuestions — no filtering, full access
+          // Set the global allQuestions - no filtering, full access
           allQuestions = data;
 
           // Update counts on start screen
@@ -440,7 +440,7 @@
           const resumeFlag = urlParams.get('resume');
 
           if (reviewIdx !== null) {
-            // Coming from dashboard — load historical test for review
+            // Coming from dashboard - load historical test for review
             const idx = parseInt(reviewIdx);
             if (testHistory[idx] && testHistory[idx].questionIds) {
               document.getElementById('backToResultsBtn').style.display = 'none';
@@ -455,7 +455,7 @@
           }
 
           if (resumeFlag === 'true') {
-            // Coming from dashboard — resume in-progress test
+            // Coming from dashboard - resume in-progress test
             const saved = await getInProgressTest();
             if (saved && saved.questionIds) {
               resumeInProgressTest(saved);
