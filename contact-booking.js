@@ -140,16 +140,18 @@ async function submitBookingRequest(bookingData) {
 // ===== Admin: Load Messages =====
 async function loadAdminMessages(filterStatus, filterCategory) {
   try {
+    // Use at most ONE where() with orderBy to avoid composite index requirement
     let query = db.collection('messages').orderBy('createdAt', 'desc');
     if (filterStatus && filterStatus !== 'all') {
       query = query.where('status', '==', filterStatus);
     }
-    if (filterCategory && filterCategory !== 'all') {
-      query = query.where('category', '==', filterCategory);
-    }
     const snap = await query.limit(200).get();
-    const messages = [];
+    let messages = [];
     snap.forEach(doc => messages.push({ id: doc.id, ...doc.data() }));
+    // Apply category filter client-side (avoids Firestore composite index)
+    if (filterCategory && filterCategory !== 'all') {
+      messages = messages.filter(m => m.category === filterCategory);
+    }
     return messages;
   } catch (error) {
     console.error('loadAdminMessages error:', error);
@@ -160,13 +162,17 @@ async function loadAdminMessages(filterStatus, filterCategory) {
 // ===== Admin: Update Message Status =====
 async function updateMessageStatus(messageId, status, adminNotes) {
   try {
-    const updates = { status };
-    if (status === 'replied') {
-      updates.repliedAt = firebase.firestore.FieldValue.serverTimestamp();
+    const updates = {};
+    if (status !== undefined && status !== null) {
+      updates.status = status;
+      if (status === 'replied') {
+        updates.repliedAt = firebase.firestore.FieldValue.serverTimestamp();
+      }
     }
     if (adminNotes !== undefined) {
       updates.adminNotes = adminNotes;
     }
+    if (Object.keys(updates).length === 0) return { success: true };
     await db.collection('messages').doc(messageId).update(updates);
     return { success: true };
   } catch (error) {

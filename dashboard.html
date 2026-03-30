@@ -5696,6 +5696,23 @@
       loadInboxBadge();
     };
 
+    // ===== Periodic inbox badge refresh (every 60 seconds for admins) =====
+    (function() {
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      firebase.auth().onAuthStateChanged(user => {
+        if (user && ADMIN_EMAILS.includes(user.email)) {
+          // Refresh badge every 60 seconds
+          setInterval(() => {
+            if (typeof loadInboxBadge === 'function') loadInboxBadge();
+          }, 60000);
+          // Also refresh on tab focus (user comes back to the tab)
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && typeof loadInboxBadge === 'function') loadInboxBadge();
+          });
+        }
+      });
+    })();
+
     // ===== Augment loadDashboard to prefill contact form and handle params =====
     const _origLoadDashboard = loadDashboard;
     loadDashboard = async function(user) {
