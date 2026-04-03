@@ -983,11 +983,11 @@
                 <div class="plan-badge">Best Value</div>
                 <h4>Full Access</h4>
                 <div class="plan-price">$99</div>
-                <p class="plan-per">One-time payment - unlimited access</p>
+                <p class="plan-per">6 months access</p>
                 <ul class="plan-features">
-                  <li>Unlimited QBank access (1,000+ questions)</li>
+                  <li>Full QBank access (1,000+ questions)</li>
                   <li>Full Study Guide (73 chapters)</li>
-                  <li>No time limit - study at your own pace</li>
+                  <li>6 months of full access</li>
                   <li>Progress tracking &amp; test history</li>
                   <li>QBank progress reset included</li>
                 </ul>
@@ -2805,7 +2805,7 @@
         <div style="text-align:center;max-width:440px;padding:48px 24px;">
           <div style="font-size:2.5rem;margin-bottom:16px;">&#128274;</div>
           <h2 style="font-size:1.4rem;color:var(--navy);margin-bottom:12px;">Your 7-Day Free Trial Has Ended</h2>
-          <p style="color:var(--gray-600);font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying. Unlimited QBank and Study Guide access with no time limit.</p>
+          <p style="color:var(--gray-600);font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying. 6 months of full QBank and Study Guide access.</p>
           <a href="#" onclick="switchView('store'); return false;" class="btn btn-primary" style="font-size:1rem;padding:12px 32px;">Upgrade to Full Access - $99</a>
         </div>
       `;
@@ -3020,9 +3020,9 @@
       } else if (!isTrialExpired(profile)) {
         const created = profile?.createdAt?.toDate ? profile.createdAt.toDate() : new Date(profile?.createdAt || Date.now());
         const daysLeft = Math.max(0, Math.ceil(7 - (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24)));
-        document.getElementById('qbankAccessDesc').textContent = 'Free Trial - ' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + ' remaining. Upgrade for unlimited access.';
+        document.getElementById('qbankAccessDesc').textContent = 'Free Trial - ' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + ' remaining. Upgrade for 6 months of full access.';
       } else {
-        document.getElementById('qbankAccessDesc').textContent = 'Trial expired. Upgrade to Full Access ($99) to continue.';
+        document.getElementById('qbankAccessDesc').textContent = 'Trial expired. Upgrade to Full Access ($99 for 6 months) to continue.';
       }
 
       // Load test history into dashboard QBank view
