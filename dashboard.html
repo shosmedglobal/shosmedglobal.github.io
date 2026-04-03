@@ -974,25 +974,51 @@
           <!-- Applicant Services -->
           <div id="storeApplicantServices" style="display:none;">
             <div class="dash-card" style="padding:20px; margin-bottom:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
-              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>QBank &amp; Study Guide - Free for all registered users.</strong> Full access to 1,000+ questions and 73 study guide chapters. No payment required.</p>
+              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>7-Day Free Trial</strong> - Full access to QBank &amp; Study Guide for 7 days. Upgrade anytime to keep studying.</p>
             </div>
 
-            <h3 class="view-section-title" id="qbankPricingTitle">Application Services</h3>
-            <div class="qbank-pricing-grid" id="qbankPricingGrid" style="grid-template-columns:1fr;">
+            <h3 class="view-section-title" id="qbankPricingTitle">Exam Preparation</h3>
+            <div class="qbank-pricing-grid" id="qbankPricingGrid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
               <div class="qbank-plan-card featured">
-                <div class="plan-badge">Recommended</div>
-                <h4>Application Package</h4>
-                <div class="plan-price"><span style="text-decoration:line-through;color:var(--gray-400);font-size:0.7em;">$399</span> $249</div>
-                <p class="plan-per">Complete application support</p>
+                <div class="plan-badge">Best Value</div>
+                <h4>Full Access</h4>
+                <div class="plan-price">$99</div>
+                <p class="plan-per">One-time payment - unlimited access</p>
                 <ul class="plan-features">
-                  <li>3 personal sessions with a physician who took this exact route:</li>
-                  <li style="padding-left:12px;font-size:0.82em;">&#9312; Application walkthrough + exam strategy</li>
-                  <li style="padding-left:12px;font-size:0.82em;">&#9313; Interview preparation</li>
-                  <li style="padding-left:12px;font-size:0.82em;">&#9314; Life in Prague - housing, costs, what to expect</li>
-                  <li>One-time QBank progress reset</li>
-                  <li>Priority email support throughout your application</li>
+                  <li>Unlimited QBank access (1,000+ questions)</li>
+                  <li>Full Study Guide (73 chapters)</li>
+                  <li>No time limit - study at your own pace</li>
+                  <li>Progress tracking &amp; test history</li>
+                  <li>QBank progress reset included</li>
                 </ul>
-                <a href="#" class="btn btn-primary stripe-pay" data-tier="full-guidance">Get Application Package</a>
+                <a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Get Full Access - $99</a>
+              </div>
+              <div class="qbank-plan-card">
+                <h4>Personal Mentoring Session</h4>
+                <div class="plan-price">$99</div>
+                <p class="plan-per">Per session - optional add-on</p>
+                <ul class="plan-features">
+                  <li>1-on-1 session with a physician mentor</li>
+                  <li>Application walkthrough &amp; exam strategy</li>
+                  <li>Interview preparation</li>
+                  <li>Life in Prague - housing, costs, what to expect</li>
+                  <li>Personalized guidance for your situation</li>
+                </ul>
+                <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary">Book a Session</a>
+              </div>
+            </div>
+
+            <h3 class="view-section-title" style="margin-top:32px;">Entrance Exam Registration</h3>
+            <div class="dash-card" style="margin-bottom:24px;">
+              <div class="service-row">
+                <div class="service-info">
+                  <h4>Entrance Exam Registration (US &amp; Canada)</h4>
+                  <p>Register for the LF3 entrance examination through SHOS Med Global as the official US agent.</p>
+                  <span class="service-price">Contact Us</span>
+                </div>
+                <div class="service-status">
+                  <a href="#" onclick="switchView('contact'); return false;" class="btn btn-secondary btn-small">Contact Us</a>
+                </div>
               </div>
             </div>
           </div>
@@ -2753,6 +2779,47 @@
     let currentProfile = null;
     let currentUser = null;
 
+    // ===== Trial Expiry Check =====
+    function isTrialExpired(profile) {
+      if (!profile || !profile.createdAt) return false;
+      // Admin never expires
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      if (auth.currentUser && ADMIN_EMAILS.includes(auth.currentUser.email)) return false;
+      // Paid users never expire
+      if (profile.payments?.['exam-bank'] === 'paid') return false;
+      // Check 7-day window
+      const created = profile.createdAt.toDate ? profile.createdAt.toDate() : new Date(profile.createdAt);
+      const daysSinceCreation = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24);
+      return daysSinceCreation > 7;
+    }
+
+    function showTrialExpiredOverlay(viewId) {
+      const view = document.getElementById(viewId);
+      if (!view) return;
+      // Don't add twice
+      if (view.querySelector('.trial-expired-overlay')) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'trial-expired-overlay';
+      overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;z-index:50;border-radius:12px;';
+      overlay.innerHTML = `
+        <div style="text-align:center;max-width:440px;padding:48px 24px;">
+          <div style="font-size:2.5rem;margin-bottom:16px;">&#128274;</div>
+          <h2 style="font-size:1.4rem;color:var(--navy);margin-bottom:12px;">Your 7-Day Free Trial Has Ended</h2>
+          <p style="color:var(--gray-600);font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying. Unlimited QBank and Study Guide access with no time limit.</p>
+          <a href="#" onclick="switchView('store'); return false;" class="btn btn-primary" style="font-size:1rem;padding:12px 32px;">Upgrade to Full Access - $99</a>
+        </div>
+      `;
+      view.style.position = 'relative';
+      view.appendChild(overlay);
+    }
+
+    function applyTrialGating(profile) {
+      if (!isTrialExpired(profile)) return;
+      // Gate QBank and Study Plan views
+      showTrialExpiredOverlay('viewQbank');
+      showTrialExpiredOverlay('viewStudyplan');
+    }
+
     // ===== Study Reader Visibility Protection =====
     // Blur study reader content when tab/window loses focus
     document.addEventListener('visibilitychange', () => {
@@ -2946,9 +3013,17 @@
         }
       }
 
-      // All registered users get full QBank access - no paywall
-      const qbankPaid = true; // Treat all users as having full access
-      document.getElementById('qbankAccessDesc').textContent = 'Full Access - 1,000+ questions across Biology and Chemistry.';
+      // QBank access: paid users get unlimited, trial users get 7 days
+      const qbankPaid = profile?.payments?.['exam-bank'] === 'paid' || isAdmin;
+      if (qbankPaid) {
+        document.getElementById('qbankAccessDesc').textContent = 'Full Access - 1,000+ questions across Biology and Chemistry.';
+      } else if (!isTrialExpired(profile)) {
+        const created = profile?.createdAt?.toDate ? profile.createdAt.toDate() : new Date(profile?.createdAt || Date.now());
+        const daysLeft = Math.max(0, Math.ceil(7 - (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24)));
+        document.getElementById('qbankAccessDesc').textContent = 'Free Trial - ' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + ' remaining. Upgrade for unlimited access.';
+      } else {
+        document.getElementById('qbankAccessDesc').textContent = 'Trial expired. Upgrade to Full Access ($99) to continue.';
+      }
 
       // Load test history into dashboard QBank view
       loadDashTestHistory(user.uid);
@@ -2992,6 +3067,9 @@
       if (isStudent) {
         loadResidencyProgress(profile);
       }
+
+      // Apply trial gating on QBank and Study Plan views
+      applyTrialGating(profile);
     }
 
     // Payment status is now managed through the Store view
@@ -3553,17 +3631,16 @@
     }
 
     // ===== QBank Reset Progress =====
-    // Show reset section only for Full Guidance subscribers who haven't used their reset
+    // Show reset section for Full Access paid users who haven't used their reset, or admin
     function showResetIfEligible(profile) {
       const resetSection = document.getElementById('dashQbResetSection');
       if (!resetSection) return;
-      const plan = profile?.payments?.['exam-bank-plan'];
       const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
-      // qbank.js uses plan === '6mo' and resetCount < 1 - match that logic here
+      const isPaid = profile?.payments?.['exam-bank'] === 'paid';
       const resetUsed = profile?.qbankResetUsed || (profile?.qbankResetCount || 0) >= 1;
-      // Show for 6-month plan (1 free reset) or admin
-      if (isAdmin || ((plan === '6mo' || plan === 'full-guidance') && !resetUsed)) {
+      // Show for paid Full Access users (1 free reset included) or admin
+      if (isAdmin || (isPaid && !resetUsed)) {
         resetSection.style.display = 'block';
       } else {
         resetSection.style.display = 'none';
@@ -3629,6 +3706,8 @@
 
     // Price map for revenue calculation (must match Store pricing)
     const PLAN_PRICES = {
+      'full-access': 99,
+      'personal-session': 99,
       'qbank-1mo': 49,
       'self-study': 99,
       'full-guidance': 249,
