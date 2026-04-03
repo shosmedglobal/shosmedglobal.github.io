@@ -974,7 +974,7 @@
           <!-- Applicant Services -->
           <div id="storeApplicantServices" style="display:none;">
             <div class="dash-card" style="padding:20px; margin-bottom:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
-              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>7-Day Free Trial</strong> - Full access to QBank &amp; Exam Review Guide for 7 days. Upgrade anytime to keep studying.</p>
+              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>3-Day Free Trial</strong> - Full access to QBank &amp; Exam Review Guide for 3 days. Upgrade anytime to keep studying.</p>
             </div>
 
             <h3 class="view-section-title" id="qbankPricingTitle">Exam Preparation</h3>
@@ -2787,10 +2787,10 @@
       if (auth.currentUser && ADMIN_EMAILS.includes(auth.currentUser.email)) return false;
       // Paid users never expire
       if (profile.payments?.['exam-bank'] === 'paid') return false;
-      // Check 7-day window
+      // Check 3-day trial window
       const created = profile.createdAt.toDate ? profile.createdAt.toDate() : new Date(profile.createdAt);
       const daysSinceCreation = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24);
-      return daysSinceCreation > 7;
+      return daysSinceCreation > 3;
     }
 
     function showTrialExpiredOverlay(viewId) {
@@ -2804,7 +2804,7 @@
       overlay.innerHTML = `
         <div style="text-align:center;max-width:440px;padding:48px 24px;">
           <div style="font-size:2.5rem;margin-bottom:16px;">&#128274;</div>
-          <h2 style="font-size:1.4rem;color:var(--navy);margin-bottom:12px;">Your 7-Day Free Trial Has Ended</h2>
+          <h2 style="font-size:1.4rem;color:var(--navy);margin-bottom:12px;">Your 3-Day Free Trial Has Ended</h2>
           <p style="color:var(--gray-600);font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying. 6 months of full QBank and Exam Review Guide access.</p>
           <a href="#" onclick="switchView('store'); return false;" class="btn btn-primary" style="font-size:1rem;padding:12px 32px;">Upgrade to Full Access - $99</a>
         </div>
@@ -3013,7 +3013,7 @@
         }
       }
 
-      // QBank access: paid users get unlimited, trial users get 7 days
+      // QBank access: paid users get unlimited, trial users get 3 days
       const qbankPaid = profile?.payments?.['exam-bank'] === 'paid' || isAdmin;
       if (qbankPaid) {
         document.getElementById('qbankAccessDesc').textContent = 'Full Access - 1,000+ questions across Biology and Chemistry.';
