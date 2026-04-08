@@ -352,7 +352,7 @@
             <div class="sp-search-wrapper" id="spSearchWrapper">
               <div class="sp-search-bar">
                 <svg class="sp-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" class="sp-search-input" id="spSearchInput" placeholder="Search chapters... (e.g., Krebs cycle, mitosis, pH)" autocomplete="off">
+                <input type="text" class="sp-search-input" id="spSearchInput" placeholder="Search chapters..." autocomplete="off">
                 <button class="sp-search-clear" id="spSearchClear" title="Clear search">&times;</button>
               </div>
               <div class="sp-search-results" id="spSearchResults"></div>
@@ -974,7 +974,7 @@
           <!-- Applicant Services -->
           <div id="storeApplicantServices" style="display:none;">
             <div class="dash-card" style="padding:20px; margin-bottom:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
-              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>3-Day Free Trial</strong> - Full access to QBank &amp; Exam Review Guide for 3 days. Upgrade anytime to keep studying.</p>
+              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>Free Preview</strong> - Try 40 questions and 3 study chapters for free. Upgrade to unlock everything.</p>
             </div>
 
             <h3 class="view-section-title" id="qbankPricingTitle">Exam Preparation</h3>
@@ -1032,7 +1032,7 @@
               <div class="service-row">
                 <div class="service-info">
                   <h4>Research Strategy Package</h4>
-                  <p>Full Research Course access (16 modules) + 1-on-1 research strategy session (30 min) with a physician mentor. 6-month access.</p>
+                  <p>Research Overview Course (16 modules) + 1-on-1 research strategy session with a physician mentor. 6-month access.</p>
                   <span class="service-price">$149</span>
                 </div>
                 <div class="service-status">
@@ -1070,7 +1070,7 @@
               <div class="service-row">
                 <div class="service-info">
                   <h4>Single Session</h4>
-                  <p>45-min focused 1-on-1 USMLE review session</p>
+                  <p>Focused 1-on-1 USMLE review session</p>
                   <span class="service-price">$99</span>
                 </div>
                 <div class="service-status">
@@ -1147,10 +1147,10 @@
                   <select id="contactService" class="form-select">
                     <option value="">Select a service...</option>
                     <option value="free-consultation">Free 15-Min Consultation</option>
-                    <option value="mentorship">Mentorship Session - $199 (45 min)</option>
+                    <option value="mentorship">Mentorship Session - $199</option>
                     <option value="match-ready">Match-Ready Package - $499</option>
                     <option value="research-foundations">Research Strategy Package - $149</option>
-                    <option value="board-review-single">Board Review Single - $99 (45 min)</option>
+                    <option value="board-review-single">Board Review Single - $99</option>
                     <option value="board-review-5pack">Board Review 5-Pack - $449</option>
                     <option value="board-review-10pack">Board Review 10-Pack - $799</option>
                   </select>
@@ -2780,45 +2780,11 @@
     let currentUser = null;
 
     // ===== Trial Expiry Check =====
-    function isTrialExpired(profile) {
-      if (!profile || !profile.createdAt) return false;
-      // Admin never expires
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
-      if (auth.currentUser && ADMIN_EMAILS.includes(auth.currentUser.email)) return false;
-      // Paid users never expire
-      if (profile.payments?.['exam-bank'] === 'paid') return false;
-      // Check 3-day trial window
-      const created = profile.createdAt.toDate ? profile.createdAt.toDate() : new Date(profile.createdAt);
-      const daysSinceCreation = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24);
-      return daysSinceCreation > 3;
-    }
-
-    function showTrialExpiredOverlay(viewId) {
-      const view = document.getElementById(viewId);
-      if (!view) return;
-      // Don't add twice
-      if (view.querySelector('.trial-expired-overlay')) return;
-      const overlay = document.createElement('div');
-      overlay.className = 'trial-expired-overlay';
-      overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;z-index:50;border-radius:12px;';
-      overlay.innerHTML = `
-        <div style="text-align:center;max-width:440px;padding:48px 24px;">
-          <div style="font-size:2.5rem;margin-bottom:16px;">&#128274;</div>
-          <h2 style="font-size:1.4rem;color:var(--navy);margin-bottom:12px;">Your 3-Day Free Trial Has Ended</h2>
-          <p style="color:var(--gray-600);font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying. 6 months of full QBank and Exam Review Guide access.</p>
-          <a href="#" onclick="switchView('store'); return false;" class="btn btn-primary" style="font-size:1rem;padding:12px 32px;">Upgrade to Full Access - $99</a>
-        </div>
-      `;
-      view.style.position = 'relative';
-      view.appendChild(overlay);
-    }
-
-    function applyTrialGating(profile) {
-      if (!isTrialExpired(profile)) return;
-      // Gate QBank and Study Plan views
-      showTrialExpiredOverlay('viewQbank');
-      showTrialExpiredOverlay('viewStudyplan');
-    }
+    // Trial system removed - replaced with free tier (3 chapters + 40 questions)
+    // Keep function stubs so any remaining calls don't break
+    function isTrialExpired(profile) { return false; }
+    function showTrialExpiredOverlay(viewId) { /* no-op */ }
+    function applyTrialGating(profile) { /* no-op */ }
 
     // ===== Study Reader Visibility Protection =====
     // Blur study reader content when tab/window loses focus
@@ -3013,16 +2979,12 @@
         }
       }
 
-      // QBank access: paid users get unlimited, trial users get 3 days
+      // QBank access description
       const qbankPaid = profile?.payments?.['exam-bank'] === 'paid' || isAdmin;
       if (qbankPaid) {
         document.getElementById('qbankAccessDesc').textContent = 'Full Access - 1,000+ questions across Biology and Chemistry.';
-      } else if (!isTrialExpired(profile)) {
-        const created = profile?.createdAt?.toDate ? profile.createdAt.toDate() : new Date(profile?.createdAt || Date.now());
-        const daysLeft = Math.max(0, Math.ceil(7 - (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24)));
-        document.getElementById('qbankAccessDesc').textContent = 'Free Trial - ' + daysLeft + ' day' + (daysLeft !== 1 ? 's' : '') + ' remaining. Upgrade for 6 months of full access.';
       } else {
-        document.getElementById('qbankAccessDesc').textContent = 'Trial expired. Upgrade to Full Access ($99 for 6 months) to continue.';
+        document.getElementById('qbankAccessDesc').textContent = 'Free Preview - 40 questions. Upgrade to Full Access ($99) for 1,000+ questions.';
       }
 
       // Load test history into dashboard QBank view
@@ -3034,10 +2996,12 @@
       // Show QBank reset section if eligible
       showResetIfEligible(profile);
 
-      // Initialize Study Plan - all chapters unlocked for registered users
-      // Bio/Chem: all free. Research: check if research package purchased
+      // Initialize Study Plan
+      // Bio/Chem: first 3 free, rest require exam-bank payment
+      // Research: all require research-course payment
+      const examBankPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
       const researchPaid = isAdmin || profile?.payments?.['research-course'] === 'paid';
-      spInit(profile, true, researchPaid);
+      spInit(profile, examBankPaid, researchPaid);
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
@@ -4770,10 +4734,10 @@
     ];
     // All chapters are free for registered users
     function spIsChapterFree(subject, idx) {
-      // Bio and Chem: all free for registered users
-      if (subject === 'biology' || subject === 'chemistry') return true;
-      // Research: first 5 chapters free (idx 0-4), rest require purchase
-      if (subject === 'research') return idx < 5;
+      // Bio and Chem: first 3 chapters free (idx 0-2), rest require purchase
+      if (subject === 'biology' || subject === 'chemistry') return idx < 3;
+      // Research: ALL chapters require purchase
+      if (subject === 'research') return false;
       return true;
     }
 
@@ -4825,15 +4789,15 @@
           <div class="sp-chapter-body">
             ${isLocked ? `
               <div class="sp-chapter-content-preview">
-                <p class="sp-content-blur">This chapter covers the fundamental concepts of ${title.toLowerCase()}. You will learn key principles, mechanisms, and applications relevant to the entrance exam...</p>
+                <p class="sp-content-blur">This chapter covers the fundamental concepts of ${title.toLowerCase()}. You will learn key principles, mechanisms, and applications${subject === 'research' ? ' for your residency application' : ' relevant to the entrance exam'}...</p>
               </div>
               <div class="sp-upgrade-overlay">
-                <p>Unlock all chapters with full access</p>
+                <p>${subject === 'research' ? 'Unlock the Research Overview Course' : 'Unlock all chapters with full access'}</p>
                 <button class="sp-btn sp-btn-quiz" onclick="switchView('store');">Upgrade to Unlock</button>
               </div>
             ` : `
               <div class="sp-chapter-content-preview">
-                <p>This chapter covers the essential concepts of <strong>${title}</strong>. Study guide content will be available here soon.</p>
+                <p>Click <strong>Read Chapter</strong> below to study <strong>${title}</strong>.</p>
               </div>
               <div class="sp-chapter-actions">
                 <button class="sp-btn sp-btn-read" onclick="spOpenReader('${subject}', ${idx}, ${isPaid ? 'true' : 'false'})">
@@ -4899,6 +4863,19 @@
       // Store it so spIsChapterFree and reader can access it
       window._researchPaid = researchPaid || false;
       const path = profile?.path;
+      // Store path globally so search can filter by it
+      window._spUserPath = path || null;
+      // Update search placeholder to match user's path
+      const searchInput = document.getElementById('spSearchInput');
+      if (searchInput) {
+        if (path === 'student') {
+          searchInput.placeholder = 'Search research chapters... (e.g., mentor, IRB, impact factor)';
+        } else if (path === 'applicant') {
+          searchInput.placeholder = 'Search chapters... (e.g., Krebs cycle, mitosis, pH)';
+        } else {
+          searchInput.placeholder = 'Search chapters... (e.g., Krebs cycle, mitosis, pH, IRB)';
+        }
+      }
       const adminEmails = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
       const isAdmin = adminEmails.includes(firebase.auth().currentUser?.email || '');
 
@@ -4914,6 +4891,9 @@
       const bioList = document.getElementById('spBiologyList');
       const chemList = document.getElementById('spChemistryList');
       const resList = document.getElementById('spResearchList');
+
+      // Store examBankPaid globally so QBank and reader can check it
+      window._examBankPaid = isPaid || false;
 
       // Update study plan description based on path
       const spDesc = document.querySelector('#studyPlanContent .dashboard-sub');
@@ -4998,9 +4978,15 @@
 
     async function spFetchAllChapters() {
       const promises = [];
-      SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
-      SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
-      SP_RES_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('research', i)));
+      const userPath = window._spUserPath;
+      // Only fetch chapters relevant to the user's path
+      if (userPath !== 'student') {
+        SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
+        SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
+      }
+      if (userPath !== 'applicant') {
+        SP_RES_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('research', i)));
+      }
       await Promise.all(promises);
     }
 
@@ -5055,36 +5041,43 @@
 
       const q = query.trim().toLowerCase();
       const results = [];
+      const userPath = window._spUserPath;
 
-      // Search biology chapters
-      SP_BIO_CHAPTERS.forEach((title, idx) => {
-        const key = `bio-ch${idx + 1}`;
-        const text = spSearchCache[key] || '';
-        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
-          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
-          results.push({ subject: 'biology', idx, title, chNum: idx + 1, snippet });
-        }
-      });
+      // Search biology chapters (applicant path or no path set)
+      if (userPath !== 'student') {
+        SP_BIO_CHAPTERS.forEach((title, idx) => {
+          const key = `bio-ch${idx + 1}`;
+          const text = spSearchCache[key] || '';
+          if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+            const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+            results.push({ subject: 'biology', idx, title, chNum: idx + 1, snippet });
+          }
+        });
+      }
 
-      // Search chemistry chapters
-      SP_CHEM_CHAPTERS.forEach((title, idx) => {
-        const key = `chem-ch${idx + 1}`;
-        const text = spSearchCache[key] || '';
-        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
-          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
-          results.push({ subject: 'chemistry', idx, title, chNum: idx + 1, snippet });
-        }
-      });
+      // Search chemistry chapters (applicant path or no path set)
+      if (userPath !== 'student') {
+        SP_CHEM_CHAPTERS.forEach((title, idx) => {
+          const key = `chem-ch${idx + 1}`;
+          const text = spSearchCache[key] || '';
+          if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+            const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+            results.push({ subject: 'chemistry', idx, title, chNum: idx + 1, snippet });
+          }
+        });
+      }
 
-      // Search research chapters
-      SP_RES_CHAPTERS.forEach((title, idx) => {
-        const key = `res-ch${idx + 1}`;
-        const text = spSearchCache[key] || '';
-        if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
-          const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
-          results.push({ subject: 'research', idx, title, chNum: idx + 1, snippet });
-        }
-      });
+      // Search research chapters (student/residency path or no path set)
+      if (userPath !== 'applicant') {
+        SP_RES_CHAPTERS.forEach((title, idx) => {
+          const key = `res-ch${idx + 1}`;
+          const text = spSearchCache[key] || '';
+          if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+            const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+            results.push({ subject: 'research', idx, title, chNum: idx + 1, snippet });
+          }
+        });
+      }
 
       if (results.length === 0) {
         resultsEl.innerHTML = '<div class="sp-search-no-results">No results found</div>';

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Entrance Exam Question Bank - SHOS Med Global</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=5"><link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=5"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <meta name="description" content="Practice for the Charles University entrance exam with 1,000+ original questions in Biology and Chemistry. 3-day free trial, then $99 for 6 months access.">
+  <meta name="description" content="Practice for the Charles University entrance exam with 1,000+ original questions in Biology and Chemistry. Free preview with 40 questions, then $99 for 6 months full access.">
   <link rel="canonical" href="https://shosmedglobal.github.io/qbank.html">
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -285,18 +285,7 @@
   <script src="qbank.js"></script>
   <script>
     // ===== Access Control =====
-    // 3-day free trial, then $99 Full Access required
-
-    // Trial expiry check (same logic as dashboard)
-    function isTrialExpired(profile) {
-      if (!profile || !profile.createdAt) return false;
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
-      if (auth.currentUser && ADMIN_EMAILS.includes(auth.currentUser.email)) return false;
-      if (profile.payments?.['exam-bank'] === 'paid') return false;
-      const created = profile.createdAt.toDate ? profile.createdAt.toDate() : new Date(profile.createdAt);
-      const daysSinceCreation = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24);
-      return daysSinceCreation > 3;
-    }
+    // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
 
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
@@ -309,36 +298,26 @@
         return;
       }
 
-      // Check trial expiry before granting access
+      // Check payment status
       const db = firebase.firestore();
       const profileDoc = await db.collection('users').doc(user.uid).get();
       const profile = profileDoc.exists ? profileDoc.data() : null;
-
-      if (isTrialExpired(profile)) {
-        // Trial expired - show upgrade prompt instead of questions
-        document.getElementById('authLoading').innerHTML = `
-          <div style="text-align:center;padding:60px 24px;">
-            <div style="font-size:2.5rem;margin-bottom:16px;">&#128274;</div>
-            <h2 style="font-size:1.4rem;color:#1B2A4A;margin-bottom:12px;">Your 3-Day Free Trial Has Ended</h2>
-            <p style="color:#666;font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Upgrade to Full Access for <strong>$99</strong> to continue studying.<br>6 months of full QBank and Exam Review Guide access.</p>
-            <a href="dashboard.html?view=store" class="btn btn-primary" style="font-size:1rem;padding:12px 32px;background:#C8986B;color:#fff;border:none;border-radius:8px;text-decoration:none;display:inline-block;">Upgrade to Full Access - $99</a>
-          </div>
-        `;
-        return;
-      }
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const isAdmin = ADMIN_EMAILS.includes(user.email);
+      const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
 
       // Auth passed - hide loading, show quiz content
       document.getElementById('authLoading').style.display = 'none';
 
-      // All authenticated users within trial or paid get full access
-      window.qbankAccessLevel = 'full';
+      // Store access level globally
+      window.qbankAccessLevel = isPaid ? 'full' : 'free';
 
       // Load user progress and test history from Firestore
       currentUserId = user.uid;
       await loadProgress();
       await loadTestHistory();
 
-      // Now load questions with full access
+      // Now load questions with access filtering
       loadQuestionsWithAccess();
     });
 
@@ -435,19 +414,31 @@
     })();
 
     function loadQuestionsWithAccess() {
-      // Load all questions - full access for all registered users
       fetch('questions.json')
         .then(res => res.json())
         .then(async (data) => {
-          // Set the global allQuestions - no filtering, full access
+          // Filter to free questions only if user is not paid
+          if (window.qbankAccessLevel !== 'full') {
+            if (data.biology) data.biology = data.biology.filter(q => q.free === true);
+            if (data.chemistry) data.chemistry = data.chemistry.filter(q => q.free === true);
+          }
           allQuestions = data;
 
+          const bioCount = data.biology?.length || 0;
+          const chemCount = data.chemistry?.length || 0;
+
           // Update counts on start screen
-          document.getElementById('countBiology').textContent =
-            (data.biology?.length || 0) + ' questions';
-          document.getElementById('countChemistry').textContent =
-            (data.chemistry?.length || 0) + ' questions';
-          // Only Biology and Chemistry in the QBank
+          document.getElementById('countBiology').textContent = bioCount + ' questions';
+          document.getElementById('countChemistry').textContent = chemCount + ' questions';
+
+          // Show free-tier messaging if not paid
+          if (window.qbankAccessLevel !== 'full') {
+            const freeMsg = document.createElement('div');
+            freeMsg.style.cssText = 'background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1px solid #F59E0B;border-radius:12px;padding:16px 20px;margin:0 0 20px;text-align:center;';
+            freeMsg.innerHTML = '<p style="margin:0;color:#92400E;font-size:0.95rem;"><strong>Free Preview:</strong> ' + (bioCount + chemCount) + ' questions available. <a href="dashboard.html?view=store" style="color:#C8986B;font-weight:600;text-decoration:underline;">Upgrade to Full Access</a> for 1,000+ questions.</p>';
+            const startScreen = document.getElementById('startScreen');
+            if (startScreen) startScreen.insertBefore(freeMsg, startScreen.firstChild);
+          }
 
           // Hide subjects with 0 questions
           document.querySelectorAll('.subject-card').forEach(card => {

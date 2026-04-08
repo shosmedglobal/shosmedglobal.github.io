@@ -15,9 +15,9 @@ const SERVICE_TYPES = {
   'free-consultation':    { name: 'Free 15-Min Consultation',    price: 0,    duration: '15 min',      category: 'consultation' },
   'full-application':     { name: 'Full Application Package',    price: 249,  duration: 'Full cycle',  category: 'applicant' },
   'research-foundations': { name: 'Research Strategy Package',   price: 149,  duration: '6 months',    category: 'student' },
-  'mentorship':           { name: 'Mentorship Session',          price: 199,  duration: '45 min',      category: 'student' },
+  'mentorship':           { name: 'Mentorship Session',          price: 199,  duration: '1 session',   category: 'student' },
   'match-ready':          { name: 'Match-Ready Package',         price: 499,  duration: 'Full cycle',  category: 'student' },
-  'board-review-single':  { name: 'Board Review - Single',      price: 99,   duration: '45 min',      category: 'student' },
+  'board-review-single':  { name: 'Board Review - Single',      price: 99,   duration: '1 session',   category: 'student' },
   'board-review-5pack':   { name: 'Board Review - 5 Pack',      price: 449,  duration: '5 sessions',  category: 'student' },
   'board-review-10pack':  { name: 'Board Review - 10 Pack',     price: 799,  duration: '10 sessions', category: 'student' }
 };
