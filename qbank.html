@@ -298,28 +298,56 @@
         return;
       }
 
-      // Check payment status
-      const db = firebase.firestore();
-      const profileDoc = await db.collection('users').doc(user.uid).get();
-      const profile = profileDoc.exists ? profileDoc.data() : null;
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
-      const isAdmin = ADMIN_EMAILS.includes(user.email);
-      const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
+      // Always hide the loading screen, even if profile/progress loading fails
+      const authLoadingEl = document.getElementById('authLoading');
 
-      // Auth passed - hide loading, show quiz content
-      document.getElementById('authLoading').style.display = 'none';
+      try {
+        // Check payment status (best-effort - don't block on failure)
+        const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+        const isAdmin = ADMIN_EMAILS.includes(user.email);
+        let profile = null;
+        try {
+          const db = firebase.firestore();
+          const profileDoc = await db.collection('users').doc(user.uid).get();
+          profile = profileDoc.exists ? profileDoc.data() : null;
+        } catch (profileErr) {
+          console.error('Failed to load profile (continuing anyway):', profileErr);
+        }
+        const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
 
-      // Store access level globally
-      window.qbankAccessLevel = isPaid ? 'full' : 'free';
+        // Store access level globally
+        window.qbankAccessLevel = isPaid ? 'full' : 'free';
 
-      // Load user progress and test history from Firestore
-      currentUserId = user.uid;
-      await loadProgress();
-      await loadTestHistory();
+        // Load user progress and test history from Firestore (best-effort)
+        currentUserId = user.uid;
+        try { await loadProgress(); } catch (e) { console.error('loadProgress failed:', e); }
+        try { await loadTestHistory(); } catch (e) { console.error('loadTestHistory failed:', e); }
 
-      // Now load questions with access filtering
-      loadQuestionsWithAccess();
+        // Hide loading screen before attempting to load questions
+        if (authLoadingEl) authLoadingEl.style.display = 'none';
+
+        // Now load questions with access filtering
+        loadQuestionsWithAccess();
+      } catch (err) {
+        console.error('QBank auth flow error:', err);
+        // Hide loading, show an error message so the user isn't stuck
+        if (authLoadingEl) {
+          authLoadingEl.innerHTML = '<p style="font-size:1.1rem;color:#C8986B;margin-bottom:16px;">Something went wrong loading the QBank.</p>'
+            + '<p style="color:#666;margin-bottom:20px;">Please refresh the page. If this keeps happening, contact support.</p>'
+            + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;">Refresh</button>';
+        }
+      }
     });
+
+    // Safety net: if auth takes longer than 10 seconds, show a helpful message
+    setTimeout(() => {
+      const loader = document.getElementById('authLoading');
+      if (loader && loader.style.display !== 'none' && !loader.dataset.timeoutShown) {
+        loader.dataset.timeoutShown = '1';
+        loader.innerHTML += '<p style="color:#999;font-size:0.9rem;margin-top:16px;">Taking longer than expected. '
+          + '<a href="#" onclick="location.reload();return false;" style="color:#C8986B;">Refresh</a> if this persists.</p>';
+      }
+    }, 10000);
 
     // ===== Content Protection =====
     (function() {
