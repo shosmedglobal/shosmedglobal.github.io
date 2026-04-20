@@ -3244,9 +3244,9 @@
           barsContainer.innerHTML = barsHtml;
         }
 
-        // Recent activity (last 5 tests)
+        // Recent activity (last 10 tests + "View all" link if more)
         const recentContainer = document.getElementById('recentActivity');
-        const recent = tests.slice(0, 5);
+        const recent = tests.slice(0, 10);
         if (recent.length > 0) {
           let recentHtml = '';
           recent.forEach(t => {
@@ -3262,6 +3262,13 @@
               </div>
             `;
           });
+          if (tests.length > 10) {
+            recentHtml += `<div class="overview-recent-item" style="justify-content:center;padding-top:8px;">
+              <a href="#" onclick="switchView('qbank'); return false;" style="color:#C8986B;font-weight:600;text-decoration:none;">
+                View all ${tests.length} tests &rarr;
+              </a>
+            </div>`;
+          }
           recentContainer.innerHTML = recentHtml;
         }
       } catch (err) {
