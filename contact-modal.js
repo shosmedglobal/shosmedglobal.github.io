@@ -6,7 +6,7 @@
 // inbox via Web3Forms if an access key is configured.
 //
 // One-time setup to enable email notifications:
-//   1. Sign up at https://web3forms.com/ with eli@shosmed.com
+//   1. Sign up at https://web3forms.com/ with contact@shosmed.com
 //   2. Verify the email via the link they send
 //   3. Copy your access key and paste it into WEB3FORMS_ACCESS_KEY below
 //
@@ -18,7 +18,7 @@
 
   // ===== Config =====
   const WEB3FORMS_ACCESS_KEY = '';  // <-- Paste your Web3Forms access key here
-  const NOTIFICATION_EMAIL   = 'eli@shosmed.com';
+  const NOTIFICATION_EMAIL   = 'contact@shosmed.com';
   const MESSAGE_MAX_LENGTH   = 500;  // Character limit for message body
 
   // Subject options shown in the modal dropdown.
