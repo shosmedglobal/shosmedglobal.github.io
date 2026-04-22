@@ -1,4 +1,4 @@
-// ===== SHOS Med Global - Contact Modal =====
+// ===== SHOS Med - Contact Modal =====
 // Self-contained modal for "Contact us" / "Schedule a call" / "Apply to LF3" CTAs.
 // Any element with [data-contact-modal="<reason-key>"] opens the modal with that
 // subject preselected. Submissions are (a) saved to Firestore (admin dashboard)
