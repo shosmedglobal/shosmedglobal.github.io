@@ -2,21 +2,21 @@
 <h2>Torque</h2>
 
 <h3>Definition</h3>
-<p><strong>Torque</strong> (tau) is the rotational equivalent of force. It measures the tendency of a force to cause rotation about an axis:</p>
-<p><strong>tau = F <em> r </em> sin(theta)</strong></p>
-<p>Or in vector form: <strong>tau = r x F</strong> (cross product)</p>
+<p><strong>Torque</strong> (τ) is the rotational equivalent of force. It measures the tendency of a force to cause rotation about an axis:</p>
+<p><strong>τ = F · r · sin(θ)</strong></p>
+<p>Or in vector form: <strong>τ = r x F</strong> (cross product)</p>
 <p>Where:</p>
 <ul>
-<li>tau = torque (in N*m)</li>
+<li>τ = torque (in N*m)</li>
 <li>F = applied force (in N)</li>
 <li>r = distance from the axis of rotation to the point where the force is applied (lever arm)</li>
-<li>theta = angle between r and F</li>
+<li>θ = angle between r and F</li>
 </ul>
 <p>Units: Newton-meters (N*m). NOTE: Although N*m has the same dimensions as joules, torque is NOT energy. We write the unit as N*m (not J) for torque.</p>
 <h3>Maximum and Zero Torque</h3>
 <ul>
-<li><strong>Maximum torque</strong> when theta = 90 degrees (force perpendicular to lever arm): tau = F * r</li>
-<li><strong>Zero torque</strong> when theta = 0 or 180 degrees (force parallel to lever arm): tau = 0</li>
+<li><strong>Maximum torque</strong> when θ = 90° (force perpendicular to lever arm): τ = F · r</li>
+<li><strong>Zero torque</strong> when θ = 0 or 180° (force parallel to lever arm): τ = 0</li>
 </ul>
 <h3>Equilibrium Condition</h3>
 <p>For an object in rotational equilibrium (not rotating, or rotating at constant angular velocity):</p>
@@ -24,22 +24,22 @@
 <p>Convention: Choose a pivot point. Torques causing counterclockwise rotation are positive; clockwise torques are negative (or vice versa, as long as you are consistent).</p>
 <h3>Lever and Seesaw Problems</h3>
 <p>For a balanced seesaw (or any lever in equilibrium about a fulcrum):</p>
-<p><strong>F_1 <em> d_1 = F_2 </em> d_2</strong></p>
+<p><strong>F_1 · d_1 = F_2 · d_2</strong></p>
 <p>Where F_1, F_2 are the forces (often weights) and d_1, d_2 are their distances from the fulcrum.</p>
 <p>This is the principle of the lever, known since Archimedes.</p>
 <h3>Moment of Inertia (Basic Concept)</h3>
 <p>Just as mass resists linear acceleration (F = ma), the <strong>moment of inertia</strong> (I) resists angular acceleration:</p>
-<p><strong>tau = I * alpha</strong></p>
-<p>Where alpha is the angular acceleration (rad/s^2).</p>
+<p><strong>τ = I · α</strong></p>
+<p>Where α is the angular acceleration (rad/s<sup>2</sup>).</p>
 <p>The moment of inertia depends on mass AND how that mass is distributed relative to the rotation axis:</p>
 <div class="table-wrapper"><table>
 <thead><tr><th>Object</th><th>Axis</th><th>Moment of Inertia</th></tr></thead>
 <tbody>
-<tr><td>Point mass at distance r</td><td>Through center</td><td>I = m * r^2</td></tr>
-<tr><td>Solid disk/cylinder</td><td>Through center</td><td>I = (1/2) <em> m </em> r^2</td></tr>
-<tr><td>Solid sphere</td><td>Through center</td><td>I = (2/5) <em> m </em> r^2</td></tr>
-<tr><td>Thin rod</td><td>Through center</td><td>I = (1/12) <em> m </em> L^2</td></tr>
-<tr><td>Thin rod</td><td>Through one end</td><td>I = (1/3) <em> m </em> L^2</td></tr>
+<tr><td>Point mass at distance r</td><td>Through center</td><td>I = m · r<sup>2</sup></td></tr>
+<tr><td>Solid disk/cylinder</td><td>Through center</td><td>I = (1/2) · m · r<sup>2</sup></td></tr>
+<tr><td>Solid sphere</td><td>Through center</td><td>I = (2/5) · m · r<sup>2</sup></td></tr>
+<tr><td>Thin rod</td><td>Through center</td><td>I = (1/12) · m · L<sup>2</sup></td></tr>
+<tr><td>Thin rod</td><td>Through one end</td><td>I = (1/3) · m · L<sup>2</sup></td></tr>
 </tbody>
 </table></div>
 <h3>Worked Example</h3>
@@ -48,15 +48,15 @@
 <p>The fulcrum is at the center (1.5 m from either end). The beam's weight acts at the center, so it creates zero torque about the fulcrum.</p>
 <p>The 20 kg weight is at 0.5 m from the left end, which is 1.5 - 0.5 = 1.0 m to the left of the fulcrum.</p>
 <p>For balance: torque_left = torque_right</p>
-<p>20 <em> 10 </em> 1.0 = 30 <em> 10 </em> d (using W = mg and g cancels if we use mass directly)</p>
-<p>20 <em> 1.0 = 30 </em> d</p>
+<p>20 · 10 · 1.0 = 30 · 10 · d (using W = mg and g cancels if we use mass directly)</p>
+<p>20 · 1.0 = 30 · d</p>
 <p>d = 20/30 = <strong>0.667 m to the right of the fulcrum</strong></p>
 <p>This is at position 1.5 + 0.667 = 2.167 m from the left end.</p>
-<p>Check: 200 N <em> 1.0 m = 200 N*m counterclockwise. 300 N </em> 0.667 m = 200 N*m clockwise. Balanced.</p>
+<p>Check: 200 N · 1.0 m = 200 N*m counterclockwise. 300 N · 0.667 m = 200 N*m clockwise. Balanced.</p>
 <blockquote><strong>Exam Tips:</strong></blockquote>
 <blockquote>- Torque depends on BOTH force magnitude AND distance from the pivot.</blockquote>
 <blockquote>- Choose the pivot point wisely -- putting it at the location of an unknown force eliminates that force from the equation.</blockquote>
 <blockquote>- Weight of a uniform beam acts at its center of mass (midpoint for uniform beams).</blockquote>
-<blockquote>- tau = 0 for equilibrium. Sum clockwise torques = sum counterclockwise torques.</blockquote>
+<blockquote>- τ = 0 for equilibrium. Sum clockwise torques = sum counterclockwise torques.</blockquote>
 <blockquote>- Do not confuse torque (N*m) with energy (J), even though they have the same dimensions.</blockquote>
 <p>---</p>

@@ -2,71 +2,71 @@
 <h2>Fluids</h2>
 
 <h3>Density</h3>
-<pre><code>rho = m / V</code></pre>
-<p>Unit: kg/m^3. Water: 1000 kg/m^3.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">ρ = m / V</div>
+<p>Unit: kg/m<sup>3</sup>. Water: 1000 kg/m<sup>3</sup>.</p>
 <h3>Pressure</h3>
-<pre><code>P = F / A</code></pre>
-<p>Unit: pascal (Pa) = N/m^2. Pressure is a scalar -- acts equally in all directions at a point.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P = F / A</div>
+<p>Unit: pascal (Pa) = N/m<sup>2</sup>. Pressure is a scalar -- acts equally in all directions at a point.</p>
 <h3>Pascal's Law</h3>
 <p>A change in pressure applied to an enclosed fluid is transmitted equally throughout:</p>
-<pre><code>F_1 / A_1 = F_2 / A_2</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">F_1 / A_1 = F_2 / A_2</div>
 <p>A small force on a small piston creates a large force on a large piston, but displacement is inversely proportional (work conserved).</p>
 <h3>Hydrostatic Pressure</h3>
-<pre><code>P = P_surface + rho * g * h</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P = P_surface + ρ · g · h</div>
 <ul>
 <li>Pressure depends only on depth, not container shape.</li>
 <li>Pressure increases linearly with depth.</li>
 <li>At the same depth in the same fluid, pressure is equal everywhere.</li>
 </ul>
 <h3>Atmospheric Pressure</h3>
-<pre><code>P_atm = 101,325 Pa = 1 atm = 760 mmHg = 1013.25 hPa</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P_atm = 101,325 Pa = 1 atm = 760 mmHg = 1013.25 hPa</div>
 <h3>Buoyancy (Archimedes' Principle)</h3>
-<pre><code>F_b = rho_fluid * V_displaced * g</code></pre>
-<p><strong>Floating condition:</strong> Object floats when rho_object < rho_fluid.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">F_b = ρ_fluid · V_displaced · g</div>
+<p><strong>Floating condition:</strong> Object floats when ρ_object < ρ_fluid.</p>
 <p>For a floating object:</p>
-<pre><code>rho_object / rho_fluid = V_submerged / V_total</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">ρ_object / ρ_fluid = V_submerged / V_total</div>
 <p><strong>Worked Example 1:</strong> A cube of side 0.1 m and mass 0.5 kg in water.</p>
 <ul>
-<li>V = 0.001 m^3, rho = 500 kg/m^3</li>
+<li>V = 0.001 m<sup>3</sup>, ρ = 500 kg/m<sup>3</sup></li>
 <li>Since 500 < 1000 (water), it floats. Fraction submerged = 500/1000 = 50%.</li>
 </ul>
 <p><strong>Worked Example 2:</strong> Pressure at bottom of a 3 m deep pool?</p>
 <ul>
-<li>P = 10^5 + 1000(10)(3) = 130,000 Pa = 1.3 x 10^5 Pa</li>
+<li>P = 10<sup>5</sup> + 1000(10)(3) = 130,000 Pa = 1.3 x 10<sup>5</sup> Pa</li>
 </ul>
-<p><strong>Worked Example 3:</strong> A hydraulic lift has pistons of area 0.01 m^2 and 0.5 m^2. What force on the small piston lifts a 2000 kg car?</p>
+<p><strong>Worked Example 3:</strong> A hydraulic lift has pistons of area 0.01 m<sup>2</sup> and 0.5 m<sup>2</sup>. What force on the small piston lifts a 2000 kg car?</p>
 <ul>
 <li>F_2 = m*g = 20,000 N</li>
-<li>F_1/A_1 = F_2/A_2 => F_1 = F_2 <em> A_1/A_2 = 20,000 </em> 0.01/0.5 = 400 N</li>
+<li>F_1/A_1 = F_2/A_2 ⇒ F_1 = F_2 · A_1/A_2 = 20,000 · 0.01/0.5 = 400 N</li>
 </ul>
 <h3>Equation of Continuity</h3>
 <p>For an incompressible fluid in a pipe:</p>
-<pre><code>A_1 * v_1 = A_2 * v_2</code></pre>
-<p>Where the pipe narrows, fluid speeds up. The product A*v = Q is the volume flow rate (m^3/s).</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">A_1 · v_1 = A_2 · v_2</div>
+<p>Where the pipe narrows, fluid speeds up. The product A*v = Q is the volume flow rate (m<sup>3</sup>/s).</p>
 <h3>Bernoulli's Equation</h3>
-<pre><code>P + (1/2)*rho*v^2 + rho*g*h = constant</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P + (1/2)*ρ*v<sup>2</sup> + ρ*g*h = constant</div>
 <p>This is conservation of energy per unit volume for fluids. Where speed increases, pressure decreases. Think of it this way: the fluid has a fixed "energy budget" at every point — if it spends more on speed, it has less left for pressure.</p>
 <p><strong>Applications:</strong> airplane lift, Venturi effect, carburetors, perfume atomizers.</p>
-<p><strong>Worked Example 4:</strong> Water flows through a horizontal pipe. At point 1: A_1 = 0.02 m^2, v_1 = 1 m/s, P_1 = 200,000 Pa. At point 2: A_2 = 0.01 m^2. Find v_2 and P_2.</p>
+<p><strong>Worked Example 4:</strong> Water flows through a horizontal pipe. At point 1: A_1 = 0.02 m<sup>2</sup>, v_1 = 1 m/s, P_1 = 200,000 Pa. At point 2: A_2 = 0.01 m<sup>2</sup>. Find v_2 and P_2.</p>
 <ul>
 <li>Continuity: v_2 = A_1*v_1/A_2 = 0.02(1)/0.01 = 2 m/s</li>
-<li>Bernoulli (h_1 = h_2): P_1 + (1/2)*rho*v_1^2 = P_2 + (1/2)*rho*v_2^2</li>
+<li>Bernoulli (h_1 = h_2): P_1 + (1/2)*ρ*v_1<sup>2</sup> = P_2 + (1/2)*ρ*v_2<sup>2</sup></li>
 <li>200,000 + 500(1) = P_2 + 500(4)</li>
 <li>P_2 = 200,500 - 2000 = 198,500 Pa</li>
 </ul>
 <h3>Viscosity</h3>
 <p>Viscosity is internal friction in a fluid. Higher viscosity = thicker fluid = more resistance to flow.</p>
 <p><strong>Poiseuille's Law</strong> (laminar flow in a pipe):</p>
-<pre><code>Q = (pi * r^4 * Delta_P) / (8 * eta * L)</code></pre>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q = (π · r<sup>4</sup> · Δ_P) / (8 · η · L)</div>
 <p>Flow rate depends on the 4th power of radius -- doubling the pipe radius increases flow 16-fold.</p>
 <h3>Surface Tension</h3>
-<p>Surface tension (sigma, in N/m) is the force per unit length along the surface of a liquid. It causes:</p>
+<p>Surface tension (σ, in N/m) is the force per unit length along the surface of a liquid. It causes:</p>
 <ul>
 <li>Droplets to be spherical (minimizing surface area)</li>
 <li>Capillary action (rise/fall in narrow tubes)</li>
 <li>Insects walking on water</li>
 </ul>
-<p>Capillary rise: h = 2*sigma*cos(theta) / (rho*g*r), where theta is the contact angle and r is the tube radius.</p>
+<p>Capillary rise: h = 2*σ*cos(θ) / (ρ*g*r), where θ is the contact angle and r is the tube radius.</p>
 <h3>Laminar vs Turbulent Flow</h3>
 <div class="table-wrapper"><table>
 <thead><tr><th>Property</th><th>Laminar</th><th>Turbulent</th></tr></thead>
@@ -78,7 +78,7 @@
 <tr><td>Pipe surface</td><td>Smooth</td><td>Any</td></tr>
 </tbody>
 </table></div>
-<p>Reynolds number: Re = rho*v*d / eta (where d is pipe diameter, eta is viscosity).</p>
+<p>Reynolds number: Re = ρ*v*d / η (where d is pipe diameter, η is viscosity).</p>
 <blockquote><strong>Exam Tips:</strong></blockquote>
 <blockquote>- Pressure depends on depth, NOT on total volume of fluid above.</blockquote>
 <blockquote>- Buoyant force depends on volume DISPLACED, not total volume of object.</blockquote>
