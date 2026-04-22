@@ -184,7 +184,7 @@ async function resetProgress() {
   if (!currentUserId) return;
   const profile = await getUserProfile(currentUserId);
   const plan = profile?.payments?.['exam-bank-plan'];
-  const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+  const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
   const isAdmin = ADMIN_EMAILS.includes(profile?.email || '');
 
   if (isAdmin) {

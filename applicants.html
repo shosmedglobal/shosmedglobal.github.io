@@ -65,7 +65,7 @@
       <h1>Study Medicine in the<br><span class="highlight">Czech Republic</span></h1>
       <p class="hero-sub">World-class medical education at Charles University - one of Europe's oldest and most respected medical schools. We guide you through every step of the application process.</p>
       <div class="hero-buttons">
-        <a href="#apply" class="btn btn-primary">Apply to LF3</a>
+        <a href="#" data-contact-modal="apply-lf3" class="btn btn-primary">Apply to LF3</a>
         <a href="#how-to-apply" class="btn btn-outline">How to Apply</a>
       </div>
     </div>
@@ -403,7 +403,7 @@
             <li class="included">Full scheduling support</li>
             <li class="included">Results sent to Charles University</li>
           </ul>
-          <a href="mailto:shosmedglobal@gmail.com?subject=Entrance Exam Registration&body=Hi, I'd like to register for the LF3 entrance exam.%0A%0AMy name:%0ACountry:%0APreferred exam date:" class="btn btn-secondary">Register for Exam</a>
+          <a href="#" data-contact-modal="entrance-exam" class="btn btn-secondary">Register for Exam</a>
         </div>
       </div>
     </div>
@@ -415,7 +415,7 @@
       <h2 style="color:#fff; font-family:'Playfair Display',serif; margin-bottom:12px;">Ready to Take the Next Step?</h2>
       <p style="color:rgba(255,255,255,0.75); margin-bottom:28px;">Create an account to start preparing, or email us if you have questions.</p>
       <a href="signup.html" class="btn btn-primary" style="margin:0 8px;">Create Account</a>
-      <a href="mailto:shosmedglobal@gmail.com" class="btn btn-outline" style="margin:0 8px; border-color:rgba(255,255,255,0.3); color:#fff;">Email Us</a>
+      <a href="#" data-contact-modal="apply-lf3" class="btn btn-outline" style="margin:0 8px; border-color:rgba(255,255,255,0.3); color:#fff;">Contact Us</a>
     </div>
   </section>
 
@@ -445,7 +445,7 @@
         </div>
         <div class="footer-links">
           <h5>Connect</h5>
-          <a href="mailto:shosmedglobal@gmail.com">Email Us</a>
+          <a href="mailto:eli@shosmed.com">Email Us</a>
           <a href="community.html">Community</a>
           <a href="mentors.html">Meet Our Mentors</a>
           <a href="terms.html">Terms of Service</a>
@@ -481,6 +481,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js"></script>
+  <script src="contact-booking.js"></script>
+  <script src="contact-modal.js"></script>
   <script>
     // Navbar scroll effect
     window.addEventListener('scroll', () => {

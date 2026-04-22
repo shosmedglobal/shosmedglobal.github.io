@@ -193,7 +193,7 @@
     <div class="article-cta">
       <h3>Need Personalized Guidance?</h3>
       <p>Book a free consultation to discuss your specific situation and pathway.</p>
-      <a href="mailto:shosmedglobal@gmail.com?subject=Free Consultation Request&body=Hi, I'd like to schedule a free consultation.%0A%0AMy name:%0AMy current situation:" class="btn btn-primary" style="margin-right: 8px;">Book Free Consultation</a>
+      <a href="#" data-contact-modal="consultation" class="btn btn-primary" style="margin-right: 8px;">Book Free Consultation</a>
       <a href="../students.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:#fff;">View Residency Services</a>
     </div>
 
@@ -224,7 +224,7 @@
         </div>
         <div class="footer-links">
           <h5>Connect</h5>
-          <a href="mailto:shosmedglobal@gmail.com">Email Us</a>
+          <a href="mailto:eli@shosmed.com">Email Us</a>
           <a href="../community.html">Community</a>
           <a href="../mentors.html">Meet Our Mentors</a>
           <a href="../terms.html">Terms of Service</a>
@@ -254,6 +254,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="../auth.js"></script>
+  <script src="../contact-booking.js"></script>
+  <script src="../contact-modal.js"></script>
   <script>
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('active');

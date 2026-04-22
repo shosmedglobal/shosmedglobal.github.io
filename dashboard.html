@@ -1192,7 +1192,7 @@
           </div>
 
           <p style="text-align:center; margin-top:16px; color:var(--gray-500); font-size:0.85rem;">
-            Or email us directly: <a href="mailto:shosmedglobal@gmail.com" style="color:var(--accent);">shosmedglobal@gmail.com</a>
+            Or email us directly: <a href="mailto:eli@shosmed.com" style="color:var(--accent);">eli@shosmed.com</a>
           </p>
         </div>
 
@@ -2878,7 +2878,7 @@
       // ===== Admin: Clear QBank data via URL param =====
       const clearParam = new URLSearchParams(window.location.search).get('clearqbank');
       if (clearParam === 'true') {
-        const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+        const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
         if (ADMIN_EMAILS.includes(user.email)) {
           try {
             const uid = user.uid;
@@ -2923,7 +2923,7 @@
 
 
       // ===== QBank access level =====
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       if (isAdmin) {
         document.getElementById('sidebarAdminLink').style.display = '';
@@ -3417,7 +3417,7 @@
         e.preventDefault();
         const tier = this.dataset.tier;
         const tierName = tier.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        alert('Payment coming soon! For now, email shosmedglobal@gmail.com to get started with the ' + tierName + ' plan.');
+        alert('Payment coming soon! For now, email eli@shosmed.com to get started with the ' + tierName + ' plan.');
       });
     });
 
@@ -3606,7 +3606,7 @@
     function showResetIfEligible(profile) {
       const resetSection = document.getElementById('dashQbResetSection');
       if (!resetSection) return;
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
       const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
       const isPaid = profile?.payments?.['exam-bank'] === 'paid';
       const resetUsed = profile?.qbankResetUsed || (profile?.qbankResetCount || 0) >= 1;
@@ -4830,7 +4830,7 @@
     function spCalculateReadiness(profile) {
       let totalScore = 0, totalPossible = 0;
       const path = profile?.path;
-      const adminEmails2 = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const adminEmails2 = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
       const isAdmin = adminEmails2.includes(firebase.auth().currentUser?.email || '');
       // Determine which subjects count toward readiness based on path
       let subjects;
@@ -4880,7 +4880,7 @@
           searchInput.placeholder = 'Search chapters... (e.g., Krebs cycle, mitosis, pH, IRB)';
         }
       }
-      const adminEmails = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const adminEmails = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
       const isAdmin = adminEmails.includes(firebase.auth().currentUser?.email || '');
 
       // Render all chapter lists
@@ -5774,7 +5774,7 @@
 
     // ===== Periodic inbox badge refresh (every 60 seconds for admins) =====
     (function() {
-      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com'];
+      const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
       firebase.auth().onAuthStateChanged(user => {
         if (user && ADMIN_EMAILS.includes(user.email)) {
           // Refresh badge every 60 seconds
