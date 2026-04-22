@@ -17,7 +17,7 @@
   'use strict';
 
   // ===== Config =====
-  const WEB3FORMS_ACCESS_KEY = '';  // <-- Paste your Web3Forms access key here
+  const WEB3FORMS_ACCESS_KEY = '7939ec4d-0010-4354-bde0-7388287aa0ed';
   const NOTIFICATION_EMAIL   = 'contact@shosmed.com';
   const MESSAGE_MAX_LENGTH   = 500;  // Character limit for message body
 
