@@ -362,6 +362,7 @@
             <div class="resource-tabs sp-tabs">
               <button class="resource-tab active" data-sp-tab="biology" id="spTabBio">Biology <span class="sp-tab-count">(40)</span></button>
               <button class="resource-tab" data-sp-tab="chemistry" id="spTabChem">Chemistry <span class="sp-tab-count">(33)</span></button>
+              <button class="resource-tab" data-sp-tab="physics" id="spTabPhys" style="display:none;">Physics <span class="sp-tab-count">(23)</span> <span style="font-size:0.65rem; color:#6366F1; font-weight:600; margin-left:2px;">Bonus</span></button>
               <button class="resource-tab" data-sp-tab="research" id="spTabRes" style="display:none;">Research <span class="sp-tab-count">(16)</span></button>
             </div>
 
@@ -373,6 +374,11 @@
             <!-- Chemistry Chapters -->
             <div class="sp-chapter-list" id="spChemistryList" style="display:none;">
               <!-- Populated by JS -->
+            </div>
+
+            <!-- Physics Chapters (bonus — not on LF3; applicant path only. Banner rendered by JS) -->
+            <div class="sp-chapter-list" id="spPhysicsList" style="display:none;">
+              <!-- Populated by JS (intro banner + chapters) -->
             </div>
 
             <!-- Research Chapters (student path only) -->
@@ -4739,12 +4745,24 @@
       'Free Research Tools Reference',
       'US Medical Conferences Guide'
     ];
-    // All chapters are free for registered users
+    // Physics (bonus — NOT on LF3 entrance exam). 23 chapters, all locked for free tier.
+    const SP_PHYS_CHAPTERS = [
+      'SI System and Measurement','Kinematics','Dynamics & Momentum','Work, Energy & Simple Machines',
+      'Fluids','Heat and Thermodynamics','Gravitation','Electricity and DC Circuits',
+      'Magnetism','Electromagnetic Induction and AC','Vibrations, Waves, and Acoustics',
+      'Optics and Electromagnetic Radiation','Atomic and Nuclear Physics','Adiabatic Processes',
+      'Harmonic Oscillation','Surface Tension','Solenoid Magnetic Field','Photoelectric Effect',
+      'Theory of Relativity (Basics)','Torque','Faraday\u2019s Law of Electrolysis',
+      'De Broglie Waves','Compton Scattering and X-ray Production'
+    ];
+    // Chapter gating
     function spIsChapterFree(subject, idx) {
       // Bio and Chem: first 3 chapters free (idx 0-2), rest require purchase
       if (subject === 'biology' || subject === 'chemistry') return idx < 3;
       // Research: ALL chapters require purchase
       if (subject === 'research') return false;
+      // Physics: bonus content, ALL chapters require Full Access (no free preview)
+      if (subject === 'physics') return false;
       return true;
     }
 
@@ -4766,8 +4784,15 @@
       const container = document.getElementById(containerId);
       if (!container) return;
       container.innerHTML = '';
+      // Physics tab intro banner (re-injected on each render so it survives innerHTML clear)
+      if (subject === 'physics') {
+        const banner = document.createElement('div');
+        banner.style.cssText = 'background:linear-gradient(135deg,#EEF2FF,#E0E7FF); border:1px solid #A5B4FC; border-radius:12px; padding:14px 18px; margin-bottom:16px;';
+        banner.innerHTML = '<p style="margin:0; color:#4338CA; font-size:0.85rem; line-height:1.5;"><strong>\u{1F52C} Physics \u2014 Bonus Content.</strong> Not tested on the LF3 entrance exam. Included as bonus for Full Access members. Physics chapters do not count toward your LF3 readiness score.</p>';
+        container.appendChild(banner);
+      }
       chapters.forEach((title, idx) => {
-        // Bio/Chem: isPaid always true (free). Research: check researchPaid
+        // Bio/Chem/Physics: use isPaid (exam-bank). Research: check researchPaid.
         const effectivePaid = subject === 'research' ? (window._researchPaid || false) : isPaid;
         const isLocked = !effectivePaid && !spIsChapterFree(subject, idx);
         const data = spGetChapterData(profile, subject, idx);
@@ -4775,9 +4800,19 @@
         const scoreNum = data?.score ?? 0;
         const totalNum = data?.total ?? 10;
         const pct = totalNum > 0 ? Math.round((scoreNum / totalNum) * 100) : 0;
+        // Physics and Research: chapters aren't keyed to quiz subsets, so no progress bar / quiz link
+        const hideProgressAndQuiz = subject === 'research' || subject === 'physics';
+        const lockedPreviewSuffix = subject === 'research' ? ' for your residency application'
+          : subject === 'physics' ? ' (bonus content - not on LF3 entrance exam)'
+          : ' relevant to the entrance exam';
+        const upgradeMsg = subject === 'research' ? 'Unlock the Research Overview Course'
+          : subject === 'physics' ? 'Unlock Physics bonus content with Full Access'
+          : 'Unlock all chapters with full access';
 
         const card = document.createElement('div');
         card.className = 'sp-chapter-card' + (isLocked ? ' sp-locked' : '');
+        card.setAttribute('data-sp-subject', subject);
+        card.setAttribute('data-sp-idx', idx);
         card.innerHTML = `
           <div class="sp-chapter-header" data-sp-idx="${idx}">
             <div class="sp-chapter-num">${idx + 1}</div>
@@ -4785,7 +4820,7 @@
               <div class="sp-chapter-title">${title}</div>
               <div class="sp-chapter-meta">
                 <span class="sp-chapter-status">${status.icon} ${status.label}</span>
-                ${(!isLocked && data && subject !== 'research') ? `
+                ${(!isLocked && data && !hideProgressAndQuiz) ? `
                   <div class="sp-chapter-progress-bar"><div class="sp-chapter-progress-fill" style="width:${pct}%"></div></div>
                   <span class="sp-chapter-score">${scoreNum}/${totalNum}</span>
                 ` : ''}
@@ -4796,10 +4831,10 @@
           <div class="sp-chapter-body">
             ${isLocked ? `
               <div class="sp-chapter-content-preview">
-                <p class="sp-content-blur">This chapter covers the fundamental concepts of ${title.toLowerCase()}. You will learn key principles, mechanisms, and applications${subject === 'research' ? ' for your residency application' : ' relevant to the entrance exam'}...</p>
+                <p class="sp-content-blur">This chapter covers the fundamental concepts of ${title.toLowerCase()}. You will learn key principles, mechanisms, and applications${lockedPreviewSuffix}...</p>
               </div>
               <div class="sp-upgrade-overlay">
-                <p>${subject === 'research' ? 'Unlock the Research Overview Course' : 'Unlock all chapters with full access'}</p>
+                <p>${upgradeMsg}</p>
                 <button class="sp-btn sp-btn-quiz" onclick="switchView('store');">Upgrade to Unlock</button>
               </div>
             ` : `
@@ -4808,12 +4843,12 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                   Read Chapter
                 </button>
-                ${subject !== 'research' ? `<a href="qbank.html?subject=${subject}&chapter=${idx + 1}" class="sp-btn sp-btn-quiz">
+                ${!hideProgressAndQuiz ? `<a href="qbank.html?subject=${subject}&chapter=${idx + 1}" class="sp-btn sp-btn-quiz">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                   Take Quiz
                 </a>` : ''}
               </div>
-              ${(subject !== 'research' && data?.lastAttempt) ? `<div class="sp-last-score">Last attempt: ${new Date(data.lastAttempt).toLocaleDateString()} - Score: ${scoreNum}/${totalNum} (${pct}%)</div>` : ''}
+              ${(!hideProgressAndQuiz && data?.lastAttempt) ? `<div class="sp-last-score">Last attempt: ${new Date(data.lastAttempt).toLocaleDateString()} - Score: ${scoreNum}/${totalNum} (${pct}%)</div>` : ''}
             `}
           </div>
         `;
@@ -4842,7 +4877,7 @@
         subjects = ['biology', 'chemistry', 'research'];
       }
       subjects.forEach(subject => {
-        const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
+        const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : subject === 'physics' ? SP_PHYS_CHAPTERS : SP_RES_CHAPTERS;
         chapters.forEach((_, idx) => {
           const data = spGetChapterData(profile, subject, idx);
           if (data && data.score != null && data.total) {
@@ -4886,14 +4921,17 @@
       // Render all chapter lists
       spRenderChapterList('spBiologyList', SP_BIO_CHAPTERS, 'biology', profile, isPaid);
       spRenderChapterList('spChemistryList', SP_CHEM_CHAPTERS, 'chemistry', profile, isPaid);
+      spRenderChapterList('spPhysicsList', SP_PHYS_CHAPTERS, 'physics', profile, isPaid);
       spRenderChapterList('spResearchList', SP_RES_CHAPTERS, 'research', profile, isPaid);
 
       // Show/hide tabs based on path
       const bioTab = document.getElementById('spTabBio');
       const chemTab = document.getElementById('spTabChem');
+      const physTab = document.getElementById('spTabPhys');
       const resTab = document.getElementById('spTabRes');
       const bioList = document.getElementById('spBiologyList');
       const chemList = document.getElementById('spChemistryList');
+      const physList = document.getElementById('spPhysicsList');
       const resList = document.getElementById('spResearchList');
 
       // Store examBankPaid globally so QBank and reader can check it
@@ -4903,16 +4941,24 @@
       const spDesc = document.querySelector('#studyPlanContent .dashboard-sub');
       const spPracticeExam = document.querySelector('.sp-practice-exam');
 
+      // Physics tab is shown ONLY if user has Full Access (paid). It is bonus content,
+      // not on LF3, so we don't surface it to free-tier users at all.
+      const showPhysicsTab = !!isPaid;
+
       if (!path) {
         // No path set: show all tabs
         bioTab.style.display = '';
         chemTab.style.display = '';
+        if (physTab) physTab.style.display = showPhysicsTab ? '' : 'none';
+        if (physList && !showPhysicsTab) physList.style.display = 'none';
         resTab.style.display = '';
         if (spDesc) spDesc.textContent = 'Follow a structured path through Biology, Chemistry, and Research chapters.';
         if (spPracticeExam) spPracticeExam.style.display = '';
       } else if (path === 'applicant') {
         bioTab.style.display = '';
         chemTab.style.display = '';
+        if (physTab) physTab.style.display = showPhysicsTab ? '' : 'none';
+        if (physList && !showPhysicsTab) physList.style.display = 'none';
         resTab.style.display = 'none';
         resList.style.display = 'none';
         if (spDesc) spDesc.textContent = 'Follow a structured path through Biology and Chemistry chapters.';
@@ -4923,13 +4969,16 @@
           bioTab.classList.add('active');
           bioList.style.display = '';
           chemList.style.display = 'none';
+          if (physList) physList.style.display = 'none';
         }
       } else if (path === 'student') {
         bioTab.style.display = 'none';
         chemTab.style.display = 'none';
+        if (physTab) physTab.style.display = 'none';
         resTab.style.display = '';
         bioList.style.display = 'none';
         chemList.style.display = 'none';
+        if (physList) physList.style.display = 'none';
         resList.style.display = '';
         if (spDesc) spDesc.textContent = 'Structured research guidance to strengthen your residency application.';
         if (spPracticeExam) spPracticeExam.style.display = 'none';
@@ -4964,7 +5013,7 @@
     }
 
     async function spFetchChapterText(subject, chIdx) {
-      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : subject === 'physics' ? 'phys' : 'res';
       const key = `${prefix}-ch${chIdx + 1}`;
       if (spSearchCache[key] !== undefined) return spSearchCache[key];
       try {
@@ -4987,6 +5036,10 @@
       if (userPath !== 'student') {
         SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
         SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
+        // Physics (bonus) — only fetch for paid users so search doesn't hit missing files for free tier
+        if (window._examBankPaid) {
+          SP_PHYS_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('physics', i)));
+        }
       }
       if (userPath !== 'applicant') {
         SP_RES_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('research', i)));
@@ -5071,6 +5124,18 @@
         });
       }
 
+      // Search physics chapters (applicant path or no path set) — only for paid users
+      if (userPath !== 'student' && window._examBankPaid) {
+        SP_PHYS_CHAPTERS.forEach((title, idx) => {
+          const key = `phys-ch${idx + 1}`;
+          const text = spSearchCache[key] || '';
+          if (text.toLowerCase().includes(q) || title.toLowerCase().includes(q)) {
+            const snippet = text.toLowerCase().includes(q) ? spGetSnippet(text, query.trim(), 30) : title;
+            results.push({ subject: 'physics', idx, title, chNum: idx + 1, snippet });
+          }
+        });
+      }
+
       // Search research chapters (student/residency path or no path set)
       if (userPath !== 'applicant') {
         SP_RES_CHAPTERS.forEach((title, idx) => {
@@ -5091,7 +5156,7 @@
 
       let html = `<div class="sp-search-result-count">Found in ${results.length} chapter${results.length !== 1 ? 's' : ''}</div>`;
       results.forEach(r => {
-        const subjectLabel = r.subject === 'biology' ? 'Biology' : r.subject === 'chemistry' ? 'Chemistry' : 'Research';
+        const subjectLabel = r.subject === 'biology' ? 'Biology' : r.subject === 'chemistry' ? 'Chemistry' : r.subject === 'physics' ? 'Physics' : 'Research';
         const highlightedSnippet = spHighlightSnippet(r.snippet, query.trim());
         html += `<div class="sp-search-result-item" data-subject="${r.subject}" data-idx="${r.idx}">
           <div class="sp-search-result-title">${subjectLabel} Ch. ${r.chNum}: ${r.title}</div>
@@ -5152,7 +5217,7 @@
     let spReaderState = { subject: null, chIdx: 0, isPaid: false, hlColor: 'yellow', noteTimer: null };
 
     function spGetDocKey(subject, chIdx) {
-      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : subject === 'physics' ? 'phys' : 'res';
       return `${prefix}-ch${chIdx + 1}`;
     }
 
@@ -5177,7 +5242,7 @@
 
     function spUpdateNavButtons() {
       const { subject, chIdx } = spReaderState;
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : subject === 'physics' ? SP_PHYS_CHAPTERS : SP_RES_CHAPTERS;
       const isFirst = chIdx <= 0;
       const isLast = chIdx >= chapters.length - 1;
       document.getElementById('spPrevChapter').disabled = isFirst;
@@ -5203,9 +5268,9 @@
       spReaderState.chIdx = chIdx;
       spReaderState.isPaid = isPaid;
 
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : subject === 'physics' ? SP_PHYS_CHAPTERS : SP_RES_CHAPTERS;
       const title = chapters[chIdx];
-      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : 'res';
+      const prefix = subject === 'biology' ? 'bio' : subject === 'chemistry' ? 'chem' : subject === 'physics' ? 'phys' : 'res';
       const chNum = chIdx + 1;
 
       // Update toolbar title
@@ -5218,9 +5283,17 @@
       const contentEl = document.getElementById('spReaderContent');
 
       if (!isPaid && !spIsChapterFree(subject, chIdx)) {
+        const contextNote = subject === 'physics'
+          ? 'This chapter is part of the Physics bonus content (not tested on LF3).'
+          : subject === 'research'
+            ? `This chapter covers <strong>${title}</strong> as part of the Research Overview Course for residency applicants.`
+            : `This chapter covers the key concepts of <strong>${title}</strong> for the LF3 entrance exam.`;
+        const depthNote = subject === 'biology' || subject === 'chemistry'
+          ? `<p style="margin-top:12px;">The entrance exam tests your understanding of ${title.toLowerCase()} at a university-level depth. Key areas include fundamental definitions, mechanisms, and practical applications.</p>`
+          : '';
         contentEl.innerHTML = `
-          <p>This chapter covers the key concepts of <strong>${title}</strong> for the LF3 entrance exam.</p>
-          <p style="margin-top:12px;">The entrance exam tests your understanding of ${title.toLowerCase()} at a university-level depth. Key areas include fundamental definitions, mechanisms, and practical applications.</p>
+          <p>${contextNote}</p>
+          ${depthNote}
           <div class="sp-upgrade-overlay" style="margin-top:20px;">
             <p>This is a preview. Upgrade to read the full chapter.</p>
             <button class="sp-btn sp-btn-quiz" onclick="spHideReader(); switchView('store');">Upgrade to Unlock</button>
@@ -5738,7 +5811,7 @@
     // Prev / Next chapter navigation
     function spNavigateChapter(delta) {
       const { subject, chIdx, isPaid } = spReaderState;
-      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : SP_RES_CHAPTERS;
+      const chapters = subject === 'biology' ? SP_BIO_CHAPTERS : subject === 'chemistry' ? SP_CHEM_CHAPTERS : subject === 'physics' ? SP_PHYS_CHAPTERS : SP_RES_CHAPTERS;
       const newIdx = chIdx + delta;
       if (newIdx < 0 || newIdx >= chapters.length) return;
       const isLocked = !isPaid && !spIsChapterFree(subject, newIdx);
@@ -5761,6 +5834,8 @@
         const which = tab.dataset.spTab;
         document.getElementById('spBiologyList').style.display = which === 'biology' ? '' : 'none';
         document.getElementById('spChemistryList').style.display = which === 'chemistry' ? '' : 'none';
+        const physListEl = document.getElementById('spPhysicsList');
+        if (physListEl) physListEl.style.display = which === 'physics' ? '' : 'none';
         document.getElementById('spResearchList').style.display = which === 'research' ? '' : 'none';
       });
     });

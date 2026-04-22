@@ -1,0 +1,72 @@
+<div class="chapter-number">Chapter 18</div>
+<h2>Photoelectric Effect</h2>
+
+<h3>The Phenomenon</h3>
+<p>When light shines on a metal surface, electrons may be ejected. This is the <strong>photoelectric effect</strong>. However, it only works if the light's frequency is high enough.</p>
+<h3>Einstein's Equation</h3>
+<p><strong>E_photon = W + KE_max</strong></p>
+<p>Or equivalently:</p>
+<p><strong>h <em> f = W + (1/2) </em> m_e * v_max^2</strong></p>
+<p>Where:</p>
+<ul>
+<li>h = Planck's constant = 6.626 * 10^-34 J*s</li>
+<li>f = frequency of incident light</li>
+<li>W = work function of the metal (minimum energy needed to free an electron)</li>
+<li>KE_max = maximum kinetic energy of emitted electrons</li>
+<li>m_e = electron mass = 9.109 * 10^-31 kg</li>
+</ul>
+<h3>Threshold Frequency and Work Function</h3>
+<p>The <strong>threshold frequency</strong> f_0 is the minimum frequency needed to eject electrons:</p>
+<p><strong>f_0 = W / h</strong></p>
+<p>At f = f_0, the electron barely escapes with zero kinetic energy. Below f_0, no electrons are emitted regardless of light intensity.</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Metal</th><th>Work Function W (eV)</th><th>Threshold Wavelength (nm)</th></tr></thead>
+<tbody>
+<tr><td>Cesium</td><td>2.1</td><td>590 (visible, yellow)</td></tr>
+<tr><td>Sodium</td><td>2.3</td><td>540 (visible, green)</td></tr>
+<tr><td>Zinc</td><td>4.3</td><td>289 (UV)</td></tr>
+<tr><td>Platinum</td><td>5.6</td><td>221 (UV)</td></tr>
+</tbody>
+</table></div>
+<p>Conversion: 1 eV = 1.602 * 10^-19 J</p>
+<h3>Stopping Voltage</h3>
+<p>To measure KE_max, a reverse voltage V_s (stopping voltage) is applied to stop the fastest electrons:</p>
+<p><strong>KE_max = e * V_s</strong></p>
+<p>So: <strong>h <em> f = W + e </em> V_s</strong></p>
+<h3>Why Classical Wave Theory Fails</h3>
+<p>Classical physics predicted:</p>
+<ol>
+<li>Any frequency should eject electrons if intensity is high enough -- WRONG</li>
+<li>Higher intensity should give electrons more energy -- WRONG</li>
+<li>There should be a time delay for dim light (energy must accumulate) -- WRONG</li>
+</ol>
+<p>Einstein explained that light comes in discrete packets (photons), each with energy E = hf. A single photon either has enough energy (hf >= W) or it does not. Intensity affects the number of photons (and hence number of electrons), not the energy per photon.</p>
+<h3>Key Experimental Observations</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Observation</th><th>Classical Prediction</th><th>Actual Result</th></tr></thead>
+<tbody>
+<tr><td>Effect of frequency</td><td>Any frequency works</td><td>Must exceed f_0</td></tr>
+<tr><td>Effect of intensity</td><td>More energy per electron</td><td>More electrons, same energy</td></tr>
+<tr><td>Time delay</td><td>Yes, for dim light</td><td>No delay, even for dim light</td></tr>
+<tr><td>KE_max vs frequency</td><td>No dependence</td><td>Linear: KE_max = hf - W</td></tr>
+</tbody>
+</table></div>
+<h3>Worked Example</h3>
+<p><strong>Problem:</strong> Light of wavelength 400 nm strikes a metal with work function W = 2.0 eV. Find: (a) the energy of each photon in eV, (b) the maximum kinetic energy of emitted electrons, (c) the stopping voltage.</p>
+<p><strong>Solution:</strong></p>
+<p>(a) E_photon = h <em> f = h </em> c / lambda</p>
+<p>E = (6.626 <em> 10^-34 </em> 3 <em> 10^8) / (400 </em> 10^-9)</p>
+<p>E = (1.988 <em> 10^-25) / (4 </em> 10^-7)</p>
+<p>E = 4.97 * 10^-19 J</p>
+<p>Converting to eV: E = (4.97 <em> 10^-19) / (1.602 </em> 10^-19) = <strong>3.1 eV</strong></p>
+<p>(Shortcut: E(eV) = 1240 / lambda(nm) = 1240 / 400 = 3.1 eV)</p>
+<p>(b) KE_max = E_photon - W = 3.1 - 2.0 = <strong>1.1 eV</strong></p>
+<p>(c) V_s = KE_max / e = 1.1 eV / e = <strong>1.1 V</strong></p>
+<p>(Since KE is already in eV, the stopping voltage in volts equals the KE in eV.)</p>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Shortcut: E(eV) = 1240 / lambda(nm). Memorize this for fast calculations.</blockquote>
+<blockquote>- Intensity affects the NUMBER of emitted electrons, NOT their energy.</blockquote>
+<blockquote>- Frequency (or wavelength) determines the ENERGY of each electron.</blockquote>
+<blockquote>- Below threshold frequency: zero electrons emitted, no matter how intense the light.</blockquote>
+<blockquote>- Stopping voltage in volts numerically equals KE_max in eV.</blockquote>
+<p>---</p>

@@ -1,0 +1,272 @@
+<div class="chapter-number">Chapter 6</div>
+<h2>Heat and Thermodynamics</h2>
+
+<h3>Temperature Scales</h3>
+<pre><code>K = C + 273
+F = (9/5)*C + 32
+C = (5/9)*(F - 32)</code></pre>
+<p><strong>Key values:</strong></p>
+<ul>
+<li>Water freezes: 0 C = 273 K = 32 F</li>
+<li>Water boils: 100 C = 373 K = 212 F</li>
+<li>Absolute zero: -273 C = 0 K</li>
+<li>Body temperature: 37 C = 310 K = 98.6 F</li>
+</ul>
+<h3>Thermal Expansion</h3>
+<pre><code>Linear:   Delta_L = alpha * L_0 * Delta_T
+Area:     Delta_A = 2*alpha * A_0 * Delta_T
+Volume:   Delta_V = beta * V_0 * Delta_T   (beta = 3*alpha for solids)</code></pre>
+<h3>Heat Transfer Mechanisms</h3>
+<p><strong>Conduction:</strong> Heat through direct contact. Rate: Q/t = k*A*Delta_T/d (Fourier's law). Metals are good conductors.</p>
+<p><strong>Convection:</strong> Heat carried by bulk fluid movement. Warm fluid rises, cool sinks.</p>
+<p><strong>Radiation:</strong> Heat via electromagnetic waves. Works through vacuum. Stefan-Boltzmann law: P = sigma*A*T^4.</p>
+<h3>Calorimetry</h3>
+<p>Heat to change temperature:</p>
+<pre><code>Q = m * c * Delta_T</code></pre>
+<p>Heat during phase change (constant temperature):</p>
+<pre><code>Q = m * L</code></pre>
+<p><strong>Important constants:</strong></p>
+<ul>
+<li>Specific heat of water: c_water = 4200 J/(kg*K)</li>
+<li>Latent heat of fusion (ice): L_f = 334,000 J/kg</li>
+<li>Latent heat of vaporization (water): L_v = 2,260,000 J/kg</li>
+</ul>
+<p><strong>Calorimetric equation</strong> (heat lost = heat gained in an isolated system):</p>
+<pre><code>Q_lost = Q_gained
+m_1 * c_1 * (T_1 - T_f) = m_2 * c_2 * (T_f - T_2)</code></pre>
+<p><strong>Worked Example 1:</strong> How much heat to raise 2 kg of water from 20 C to 80 C?</p>
+<ul>
+<li>Q = 2(4200)(60) = 504,000 J = 504 kJ</li>
+</ul>
+<p><strong>Worked Example 2:</strong> 0.5 kg ice at 0 C mixed with 2 kg water at 50 C. Find T_f.</p>
+<ul>
+<li>Melt ice: Q_melt = 0.5(334,000) = 167,000 J</li>
+<li>Energy balance: 2(4200)(50 - T_f) = 167,000 + 0.5(4200)(T_f)</li>
+<li>420,000 - 8400*T_f = 167,000 + 2100*T_f</li>
+<li>253,000 = 10,500*T_f => T_f = 24.1 C</li>
+</ul>
+<p><strong>Worked Example 3:</strong> How much heat to convert 0.2 kg of ice at -10 C to steam at 100 C?</p>
+<ul>
+<li>Heat ice to 0 C: Q_1 = 0.2(2100)(10) = 4,200 J (c_ice = 2100)</li>
+<li>Melt ice: Q_2 = 0.2(334,000) = 66,800 J</li>
+<li>Heat water to 100 C: Q_3 = 0.2(4200)(100) = 84,000 J</li>
+<li>Boil water: Q_4 = 0.2(2,260,000) = 452,000 J</li>
+<li>Total: Q = 4,200 + 66,800 + 84,000 + 452,000 = 607,000 J = 607 kJ</li>
+</ul>
+<h3>Ideal Gas Law</h3>
+<pre><code>P * V = n * R * T</code></pre>
+<p>Where P = pressure (Pa), V = volume (m^3), n = moles, R = 8.314 J/(mol*K), T = kelvin.</p>
+<p>Alternative form: P*V = N*k_B*T, where N is the number of molecules and k_B = 1.38 x 10^-23 J/K.</p>
+<p><strong>Avogadro's Law:</strong> Equal volumes of gases at the same T and P contain the same number of molecules. N_A = 6.022 x 10^23 mol^-1.</p>
+<h3>Combined Gas Law</h3>
+<p>For a fixed amount of gas:</p>
+<pre><code>P_1 * V_1 / T_1 = P_2 * V_2 / T_2</code></pre>
+<h3>Individual Gas Laws -- Complete Summary</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Law</th><th>Condition</th><th>Formula</th><th>Relationship</th></tr></thead>
+<tbody>
+<tr><td>Boyle</td><td>Constant T (isothermal)</td><td>P_1*V_1 = P_2*V_2</td><td>P inversely proportional to V</td></tr>
+<tr><td>Charles</td><td>Constant P (isobaric)</td><td>V_1/T_1 = V_2/T_2</td><td>V proportional to T</td></tr>
+<tr><td>Gay-Lussac</td><td>Constant V (isochoric)</td><td>P_1/T_1 = P_2/T_2</td><td>P proportional to T</td></tr>
+<tr><td>Avogadro</td><td>Constant T, P</td><td>V_1/n_1 = V_2/n_2</td><td>V proportional to n</td></tr>
+</tbody>
+</table></div>
+<p><strong>Worked Example 4:</strong> A gas at 2 atm and 300 K in 10 L is compressed to 5 L at 600 K. New pressure?</p>
+<ul>
+<li>P_1*V_1/T_1 = P_2*V_2/T_2</li>
+<li>2(10)/300 = P_2(5)/600</li>
+<li>P_2 = 2(10)(600)/(300)(5) = 8 atm</li>
+</ul>
+<p><strong>Worked Example 5:</strong> (Boyle) A gas at 100 kPa occupies 6 L. Volume at 300 kPa (constant T)?</p>
+<ul>
+<li>P_1*V_1 = P_2*V_2 => 100(6) = 300*V_2 => V_2 = 2 L</li>
+</ul>
+<p><strong>Worked Example 6:</strong> (Charles) A gas at 300 K occupies 4 L. Volume at 600 K (constant P)?</p>
+<ul>
+<li>V_1/T_1 = V_2/T_2 => 4/300 = V_2/600 => V_2 = 8 L</li>
+</ul>
+<h3>Thermodynamic Processes -- Detailed Equations</h3>
+<p><strong>Isothermal process (T = const):</strong></p>
+<ul>
+<li>Boyle's law: p_1 <em> V_1 = p_2 </em> V_2</li>
+<li>Work done by gas: W = n <em> R </em> T * ln(V_2 / V_1)</li>
+<li>Internal energy change: Delta_U = 0 (temperature unchanged)</li>
+<li>Heat added: Q = W (all heat converts to work)</li>
+</ul>
+<p><strong>Isobaric process (p = const):</strong></p>
+<ul>
+<li>Charles's law: V_1 / T_1 = V_2 / T_2</li>
+<li>Work done by gas: W = p <em> Delta_V = p </em> (V_2 - V_1)</li>
+<li>Heat added: Q = n <em> C_p </em> Delta_T</li>
+</ul>
+<p><strong>Isochoric process (V = const), also called isosteric:</strong></p>
+<ul>
+<li>Gay-Lussac's law: p_1 / T_1 = p_2 / T_2</li>
+<li>Work done: W = 0 (no volume change)</li>
+<li>Heat added: Q = n <em> C_v </em> Delta_T = Delta_U</li>
+</ul>
+<p><strong>Adiabatic process (Q = 0):</strong></p>
+<ul>
+<li>p <em> V^gamma = const, T </em> V^(gamma - 1) = const</li>
+<li>Work done by gas: W = (p_1 <em> V_1 - p_2 </em> V_2) / (gamma - 1)</li>
+<li>Internal energy change: Delta_U = -W</li>
+</ul>
+<h3>First Law of Thermodynamics</h3>
+<pre><code>Delta_U = Q - W</code></pre>
+<ul>
+<li>Delta_U = change in internal energy</li>
+<li>Q = heat added TO the system (positive = in)</li>
+<li>W = work done BY the system (positive = expansion)</li>
+</ul>
+<p>Think of it like a bank account: your balance (U) goes up when you deposit money (Q, heat in) and goes down when you spend money (W, work out). This is conservation of energy for thermal systems.</p>
+<h3>Second Law of Thermodynamics</h3>
+<p>Heat naturally flows from hot to cold. Total entropy of an isolated system always increases. A perfect heat engine (100% efficiency) is impossible.</p>
+<p><strong>Carnot efficiency</strong> (maximum possible):</p>
+<pre><code>eta_max = 1 - T_cold / T_hot</code></pre>
+<p>(Temperatures in kelvin)</p>
+<p><strong>Worked Example 7:</strong> A heat engine operates between 600 K and 300 K. Maximum efficiency?</p>
+<ul>
+<li>eta_max = 1 - 300/600 = 0.5 = 50%</li>
+</ul>
+<h3>Thermodynamic Processes -- Complete Table</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Process</th><th>Condition</th><th>Work</th><th>Heat</th><th>Delta_U</th></tr></thead>
+<tbody>
+<tr><td>Isothermal</td><td>T constant</td><td>W = nRT*ln(V_2/V_1)</td><td>Q = W</td><td>0</td></tr>
+<tr><td>Adiabatic</td><td>Q = 0</td><td>W = -Delta_U</td><td>0</td><td>Delta_U = -W</td></tr>
+<tr><td>Isobaric</td><td>P constant</td><td>W = P*Delta_V</td><td>Q = nC_p*Delta_T</td><td>Delta_U = Q - W</td></tr>
+<tr><td>Isochoric</td><td>V constant</td><td>0</td><td>Q = nC_v*Delta_T</td><td>Delta_U = Q</td></tr>
+</tbody>
+</table></div>
+<h3>pV-Diagrams</h3>
+<p>A pressure-volume (pV) diagram plots pressure (y-axis) against volume (x-axis). Each thermodynamic process has a characteristic curve:</p>
+<ul>
+<li><strong>Isothermal (T = const):</strong> hyperbola, since pV = nRT = const (Boyle's law)</li>
+<li><strong>Isobaric (p = const):</strong> horizontal line</li>
+<li><strong>Isochoric (V = const):</strong> vertical line</li>
+<li><strong>Adiabatic (Q = 0):</strong> steeper curve than isothermal, since pV^gamma = const and gamma > 1</li>
+</ul>
+<p><strong>Work from a pV diagram:</strong> The area under the curve equals the work done by (or on) the gas during a process.</p>
+<p><strong>Cyclic processes:</strong> A closed loop on a pV diagram represents a thermodynamic cycle. A clockwise cycle corresponds to a heat engine (net positive work output). A counterclockwise cycle corresponds to a refrigerator or heat pump (net work input required). The enclosed area of the loop equals the net work per cycle.</p>
+<h3>Phase Changes</h3>
+<p>During a phase change, temperature remains constant:</p>
+<ul>
+<li>Solid to liquid: melting (absorbs L_f)</li>
+<li>Liquid to gas: boiling (absorbs L_v)</li>
+<li>Solid to gas: sublimation</li>
+<li>Reverse processes release the same latent heat</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Always use KELVIN in gas laws. Celsius gives wrong answers.</blockquote>
+<blockquote>- During a phase change, temperature does NOT change. Do not apply Q = mcDT during melting/boiling.</blockquote>
+<blockquote>- Specific heat capacity is per kilogram. Watch units.</blockquote>
+<blockquote>- Adiabatic is NOT isothermal. Adiabatic = no heat exchange; temperature CAN change.</blockquote>
+<blockquote>- For Carnot efficiency, temperatures MUST be in kelvin.</blockquote>
+<blockquote>- Boyle's law: if you double the pressure, the volume halves (at constant T).</blockquote>
+<h3>Kinetic Theory of Gases</h3>
+<p>The macroscopic properties of an ideal gas (pressure, temperature) arise from the random motion of vast numbers of molecules.</p>
+<p><strong>Average kinetic energy of a single molecule:</strong></p>
+<pre><code>KE_avg = (3/2) * k_B * T</code></pre>
+<p>Where k_B = 1.38 x 10^-23 J/K is Boltzmann's constant and T is in kelvin.</p>
+<p><strong>Root-mean-square speed:</strong></p>
+<pre><code>v_rms = sqrt(3*k_B*T / m) = sqrt(3*R*T / M)</code></pre>
+<p>Where m = mass of one molecule, M = molar mass (kg/mol).</p>
+<p><strong>Key implications:</strong></p>
+<ul>
+<li>At the same temperature, lighter molecules move faster (hydrogen faster than oxygen).</li>
+<li>Temperature is a direct measure of average kinetic energy.</li>
+<li>Internal energy of an ideal monatomic gas: U = (3/2)*n*R*T.</li>
+</ul>
+<p><strong>Worked Example:</strong> Find v_rms of nitrogen molecules (M = 0.028 kg/mol) at 300 K.</p>
+<ul>
+<li>v_rms = sqrt(3 x 8.314 x 300 / 0.028) = sqrt(267,000) = 517 m/s</li>
+</ul>
+<h3>Internal Energy</h3>
+<p>Internal energy (U) is the total kinetic energy of all molecules in a substance. For an ideal gas, internal energy depends ONLY on temperature:</p>
+<ul>
+<li>Monatomic ideal gas: U = (3/2)*n*R*T</li>
+<li>Diatomic ideal gas: U = (5/2)*n*R*T (at moderate temperatures)</li>
+</ul>
+<p>A change in internal energy: Delta_U = n*C_v*Delta_T, where C_v is the molar heat capacity at constant volume.</p>
+<h3>Entropy and the Second Law (Detailed)</h3>
+<p><strong>Entropy</strong> (S) measures the disorder or the number of possible microscopic arrangements of a system. Unit: J/K.</p>
+<pre><code>Delta_S = Q_rev / T    (for a reversible process at constant T)</code></pre>
+<p><strong>The Second Law in terms of entropy:</strong> In any spontaneous process, the total entropy of the universe (system + surroundings) increases. For a reversible process, it stays the same. It never decreases.</p>
+<pre><code>Delta_S_universe >= 0</code></pre>
+<p><strong>Practical meaning:</strong></p>
+<ul>
+<li>Heat flows naturally from hot to cold (never the reverse without work input).</li>
+<li>A perfectly efficient heat engine is impossible because some energy must always be rejected as waste heat.</li>
+<li>All real processes are irreversible and increase total entropy.</li>
+</ul>
+<p><strong>Worked Example:</strong> 1000 J of heat flows from a reservoir at 500 K to one at 250 K.</p>
+<ul>
+<li>Delta_S_hot = -1000/500 = -2 J/K</li>
+<li>Delta_S_cold = +1000/250 = +4 J/K</li>
+<li>Delta_S_total = -2 + 4 = +2 J/K > 0 (confirms spontaneous)</li>
+</ul>
+<h3>Amorphous vs Crystalline Substances</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Property</th><th>Crystalline</th><th>Amorphous</th></tr></thead>
+<tbody>
+<tr><td>Structure</td><td>Regular, repeating lattice</td><td>Disordered, no long-range pattern</td></tr>
+<tr><td>Melting point</td><td>Sharp, well-defined</td><td>Gradual softening over a range</td></tr>
+<tr><td>Examples</td><td>Salt (NaCl), diamond, ice</td><td>Glass, rubber, some plastics</td></tr>
+<tr><td>X-ray diffraction</td><td>Sharp peaks</td><td>Broad, diffuse pattern</td></tr>
+<tr><td>Anisotropy</td><td>Often anisotropic (properties depend on direction)</td><td>Isotropic (same in all directions)</td></tr>
+</tbody>
+</table></div>
+<p>Crystalline solids break along defined planes (cleavage). Amorphous solids shatter irregularly (like glass).</p>
+<h3>Diffusion</h3>
+<p>Diffusion is the spontaneous net movement of particles from a region of higher concentration to a region of lower concentration. It is driven by the random thermal motion of molecules.</p>
+<p><strong>Fick's first law:</strong></p>
+<pre><code>J = -D * (dc/dx)</code></pre>
+<p>Where J is the flux (amount crossing unit area per second), D is the diffusion coefficient (m^2/s), and dc/dx is the concentration gradient. The negative sign means flow goes from high to low concentration.</p>
+<p><strong>Key facts:</strong></p>
+<ul>
+<li>Diffusion is faster at higher temperatures (molecules move faster).</li>
+<li>Diffusion is faster in gases than liquids, and faster in liquids than solids.</li>
+<li>Smaller molecules diffuse faster than larger ones.</li>
+<li>Diffusion is the mechanism by which oxygen and carbon dioxide exchange in the lungs at the alveolar membrane.</li>
+</ul>
+<h3>Sublimation and Other Phase Transitions</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Transition</th><th>From</th><th>To</th><th>Energy</th></tr></thead>
+<tbody>
+<tr><td>Melting (fusion)</td><td>Solid</td><td>Liquid</td><td>Absorbs L_f</td></tr>
+<tr><td>Freezing</td><td>Liquid</td><td>Solid</td><td>Releases L_f</td></tr>
+<tr><td>Evaporation/boiling</td><td>Liquid</td><td>Gas</td><td>Absorbs L_v</td></tr>
+<tr><td>Condensation</td><td>Gas</td><td>Liquid</td><td>Releases L_v</td></tr>
+<tr><td>Sublimation</td><td>Solid</td><td>Gas</td><td>Absorbs L_f + L_v</td></tr>
+<tr><td>Deposition</td><td>Gas</td><td>Solid</td><td>Releases L_f + L_v</td></tr>
+</tbody>
+</table></div>
+<p><strong>Sublimation</strong> occurs when a solid converts directly to gas without passing through the liquid phase. Familiar examples: dry ice (solid CO2) at atmospheric pressure, frost disappearing on a cold dry day, freeze-drying of food and pharmaceuticals.</p>
+<p>Evaporation occurs at any temperature (from the surface only), while boiling occurs at a specific temperature (throughout the liquid) when vapor pressure equals atmospheric pressure.</p>
+<h3>Humidity</h3>
+<p>Air always contains some water vapor. Humidity quantifies how much.</p>
+<p><strong>Absolute humidity</strong> is the mass of water vapor per unit volume of air:</p>
+<pre><code>AH = m_water_vapor / V_air</code></pre>
+<p>Unit: g/m^3 (or kg/m^3). Warm air can hold more water vapor than cold air.</p>
+<p><strong>Relative humidity (RH)</strong> is the ratio of the actual water vapor pressure to the saturation (maximum possible) vapor pressure at the same temperature:</p>
+<pre><code>RH = (p_vapor / p_saturated) x 100%</code></pre>
+<ul>
+<li>RH = 100% means the air is fully saturated; any additional moisture condenses (dew, fog, rain).</li>
+<li>RH = 0% means completely dry air.</li>
+</ul>
+<p><strong>Dew point</strong> is the temperature at which the current water vapor would reach saturation. If air cools below the dew point, condensation occurs (dew on grass, fogging of glasses, clouds forming).</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Condition</th><th>Typical RH</th></tr></thead>
+<tbody>
+<tr><td>Desert air</td><td>10-20%</td></tr>
+<tr><td>Comfortable indoor air</td><td>40-60%</td></tr>
+<tr><td>Tropical outdoor air</td><td>70-90%</td></tr>
+<tr><td>Fog or rain</td><td>~100%</td></tr>
+</tbody>
+</table></div>
+<p><strong>Why it matters in medicine:</strong> Dry air (low RH) irritates airways and dries mucous membranes. High humidity impairs sweat evaporation, making heat dissipation harder and increasing heat stroke risk. Hospital environments are typically maintained at 40-60% RH.</p>
+<p><strong>Worked Example:</strong> At 20 degrees C, saturated vapor pressure is 2.34 kPa. If the actual vapor pressure is 1.40 kPa, what is the relative humidity?</p>
+<ul>
+<li>RH = (1.40 / 2.34) x 100% = 59.8%</li>
+</ul>
+<p>---</p>

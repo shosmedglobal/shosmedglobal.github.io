@@ -1,0 +1,99 @@
+<div class="chapter-number">Chapter 1</div>
+<h2>SI System and Measurement</h2>
+
+<h3>The Seven Base Units</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Quantity</th><th>Unit</th><th>Symbol</th></tr></thead>
+<tbody>
+<tr><td>Length</td><td>meter</td><td>m</td></tr>
+<tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
+<tr><td>Time</td><td>second</td><td>s</td></tr>
+<tr><td>Electric current</td><td>ampere</td><td>A</td></tr>
+<tr><td>Temperature</td><td>kelvin</td><td>K</td></tr>
+<tr><td>Amount of substance</td><td>mole</td><td>mol</td></tr>
+<tr><td>Luminous intensity</td><td>candela</td><td>cd</td></tr>
+</tbody>
+</table></div>
+<h3>Derived Units</h3>
+<p>Derived units are built from combinations of base units:</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Quantity</th><th>Unit</th><th>Symbol</th><th>In base units</th></tr></thead>
+<tbody>
+<tr><td>Force</td><td>newton</td><td>N</td><td>kg-m/s^2</td></tr>
+<tr><td>Pressure</td><td>pascal</td><td>Pa</td><td>N/m^2 = kg/(m-s^2)</td></tr>
+<tr><td>Energy</td><td>joule</td><td>J</td><td>N-m = kg-m^2/s^2</td></tr>
+<tr><td>Power</td><td>watt</td><td>W</td><td>J/s = kg-m^2/s^3</td></tr>
+<tr><td>Voltage</td><td>volt</td><td>V</td><td>J/C = kg-m^2/(A-s^3)</td></tr>
+<tr><td>Resistance</td><td>ohm</td><td>Ohm</td><td>V/A = kg-m^2/(A^2-s^3)</td></tr>
+<tr><td>Frequency</td><td>hertz</td><td>Hz</td><td>1/s</td></tr>
+<tr><td>Charge</td><td>coulomb</td><td>C</td><td>A-s</td></tr>
+<tr><td>Capacitance</td><td>farad</td><td>F</td><td>C/V = A^2-s^4/(kg-m^2)</td></tr>
+<tr><td>Magnetic flux density</td><td>tesla</td><td>T</td><td>kg/(A-s^2)</td></tr>
+<tr><td>Magnetic flux</td><td>weber</td><td>Wb</td><td>V-s = kg-m^2/(A-s^2)</td></tr>
+<tr><td>Inductance</td><td>henry</td><td>H</td><td>V-s/A = kg-m^2/(A^2-s^2)</td></tr>
+</tbody>
+</table></div>
+<h3>SI Prefixes</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Prefix</th><th>Symbol</th><th>Power of 10</th></tr></thead>
+<tbody>
+<tr><td>tera</td><td>T</td><td>10^12</td></tr>
+<tr><td>giga</td><td>G</td><td>10^9</td></tr>
+<tr><td>mega</td><td>M</td><td>10^6</td></tr>
+<tr><td>kilo</td><td>k</td><td>10^3</td></tr>
+<tr><td>hecto</td><td>h</td><td>10^2</td></tr>
+<tr><td>deca</td><td>da</td><td>10^1</td></tr>
+<tr><td>deci</td><td>d</td><td>10^-1</td></tr>
+<tr><td>centi</td><td>c</td><td>10^-2</td></tr>
+<tr><td>milli</td><td>m</td><td>10^-3</td></tr>
+<tr><td>micro</td><td>mu</td><td>10^-6</td></tr>
+<tr><td>nano</td><td>n</td><td>10^-9</td></tr>
+<tr><td>pico</td><td>p</td><td>10^-12</td></tr>
+<tr><td>femto</td><td>f</td><td>10^-15</td></tr>
+</tbody>
+</table></div>
+<p><strong>Memory trick:</strong> "The Great Mega King Has Deca Deci Cents, Milli Micro Nano Pico Femto" (descending order).</p>
+<h3>Unit Systems Comparison</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>System</th><th>Length</th><th>Mass</th><th>Time</th><th>Force unit</th><th>Energy unit</th></tr></thead>
+<tbody>
+<tr><td>SI (MKS)</td><td>meter (m)</td><td>kilogram (kg)</td><td>second (s)</td><td>newton (N)</td><td>joule (J)</td></tr>
+<tr><td>CGS</td><td>centimeter (cm)</td><td>gram (g)</td><td>second (s)</td><td>dyne (dyn)</td><td>erg</td></tr>
+</tbody>
+</table></div>
+<p>Conversion between systems:</p>
+<ul>
+<li>1 N = 10^5 dyn</li>
+<li>1 J = 10^7 erg</li>
+<li>1 Pa = 10 dyn/cm^2</li>
+</ul>
+<h3>Scalars vs Vectors</h3>
+<p><strong>Scalars</strong> have magnitude only: mass, time, energy, temperature, speed, distance, work, power, charge, density, pressure, electric potential.</p>
+<p><strong>Vectors</strong> have both magnitude and direction: force, velocity, acceleration, displacement, momentum, electric field, magnetic field, torque.</p>
+<p><strong>Key distinction:</strong> Speed is scalar, velocity is vector. Distance is scalar, displacement is vector. A car driving 100 km around a track back to the start has distance = 100 km but displacement = 0.</p>
+<h3>Dimensional Analysis</h3>
+<p>Every valid physics equation must have the same dimensions on both sides. This technique lets you check whether a formula is plausible.</p>
+<p><strong>Worked Example:</strong> Verify that KE = (1/2)mv^2 has units of energy.</p>
+<ul>
+<li>[KE] = kg x (m/s)^2 = kg-m^2/s^2</li>
+<li>This equals the joule (J = N-m = kg-m/s^2 x m = kg-m^2/s^2). Confirmed.</li>
+</ul>
+<p><strong>Worked Example:</strong> A student writes the period of a pendulum as T = 2*pi*sqrt(g/L). Check dimensions.</p>
+<ul>
+<li>[g/L] = (m/s^2) / m = 1/s^2</li>
+<li>sqrt(1/s^2) = 1/s, so T would have units of 1/s. But period should be in seconds.</li>
+<li>The correct formula is T = 2*pi*sqrt(L/g), giving sqrt(s^2) = s. The student is wrong.</li>
+</ul>
+<p><strong>Worked Example:</strong> Which formula for drag force is dimensionally correct? (a) F = rho*v*A or (b) F = (1/2)*rho*v^2*A</p>
+<ul>
+<li>(a): [rho*v*A] = (kg/m^3)(m/s)(m^2) = kg/(m*s). NOT force units.</li>
+<li>(b): [rho*v^2*A] = (kg/m^3)(m^2/s^2)(m^2) = kg-m/s^2 = N. This IS force. Answer: (b).</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Confusing mass (kg) with weight (N). Weight = mg, different units.</blockquote>
+<blockquote>- The kilogram is the base unit of mass, not the gram.</blockquote>
+<blockquote>- Kelvin has no degree symbol -- it is just "K", not "degrees K."</blockquote>
+<blockquote>- When converting areas, square the conversion factor: 1 m^2 = 10^4 cm^2, not 10^2 cm^2.</blockquote>
+<blockquote>- Similarly for volume: 1 m^3 = 10^6 cm^3.</blockquote>
+<blockquote>- When a problem gives values in mixed units (e.g., km and m), convert everything to SI before calculating.</blockquote>
+<p>---</p>

@@ -1,0 +1,97 @@
+<div class="chapter-number">Chapter 2</div>
+<h2>Kinematics</h2>
+
+<p>Kinematics describes motion without asking what causes it.</p>
+<h3>Position, Displacement, and Distance</h3>
+<p><strong>Position</strong> is where an object is located relative to an origin.</p>
+<p><strong>Displacement</strong> is the change in position (a vector): Delta_x = x_final - x_initial.</p>
+<p><strong>Distance</strong> is the total path length traveled (a scalar, always positive or zero).</p>
+<h3>Speed and Velocity</h3>
+<p><strong>Average speed</strong> = total distance / total time (scalar, always >= 0).</p>
+<p><strong>Average velocity</strong> = displacement / time (vector, can be negative).</p>
+<p><strong>Instantaneous speed</strong> is speed at a single moment -- what a speedometer reads.</p>
+<h3>Uniform (Constant Velocity) Motion</h3>
+<p>When velocity is constant:</p>
+<pre><code>x = x_0 + v*t</code></pre>
+<h3>Uniformly Accelerated Motion (UAM)</h3>
+<p>When acceleration is constant, use these four equations:</p>
+<pre><code>(1)  v = v_0 + a*t
+(2)  x = x_0 + v_0*t + (1/2)*a*t^2
+(3)  v^2 = v_0^2 + 2*a*(x - x_0)
+(4)  x = x_0 + (1/2)*(v_0 + v)*t</code></pre>
+<p><strong>Strategy:</strong> Each equation involves exactly four of the five unknowns (v_0, v, a, t, x). Identify the three knowns and one unknown, then pick the equation that contains all four.</p>
+<h3>Free Fall</h3>
+<p>An object in free fall near Earth accelerates downward at g = 10 m/s^2. Air resistance is neglected unless stated.</p>
+<p>For an object dropped from rest:</p>
+<pre><code>v = g*t
+h = (1/2)*g*t^2
+v^2 = 2*g*h</code></pre>
+<p><strong>Worked Example 1:</strong> A ball is dropped from a 45 m tall building. How long to hit the ground?</p>
+<ul>
+<li>h = (1/2)*g*t^2 => 45 = 5*t^2 => t^2 = 9 => t = 3 s</li>
+<li>Speed at impact: v = g*t = 10 x 3 = 30 m/s</li>
+</ul>
+<p><strong>Worked Example 2:</strong> A ball is thrown straight up at 20 m/s. Find the maximum height and total time in air.</p>
+<ul>
+<li>At max height, v = 0: 0 = 20^2 - 2(10)*h => h = 20 m</li>
+<li>Time up: 0 = 20 - 10*t => t_up = 2 s</li>
+<li>Total time (symmetric): t_total = 4 s</li>
+</ul>
+<p><strong>Worked Example 3:</strong> An object is thrown downward at 5 m/s from a 60 m cliff. Find the time to reach the ground.</p>
+<ul>
+<li>h = v_0*t + (1/2)*g*t^2 (taking downward as positive)</li>
+<li>60 = 5t + 5t^2</li>
+<li>5t^2 + 5t - 60 = 0 => t^2 + t - 12 = 0</li>
+<li>(t + 4)(t - 3) = 0 => t = 3 s (discard negative)</li>
+</ul>
+<h3>Projectile Motion</h3>
+<p>A projectile moves in two dimensions simultaneously:</p>
+<ul>
+<li><strong>Horizontal:</strong> constant velocity (no acceleration), so x = v_0x * t</li>
+<li><strong>Vertical:</strong> free fall with a = g downward</li>
+</ul>
+<p>For a projectile launched at angle theta with speed v_0:</p>
+<pre><code>v_0x = v_0 * cos(theta)
+v_0y = v_0 * sin(theta)
+
+Time of flight:    T = 2*v_0*sin(theta) / g
+Maximum height:    H = v_0^2 * sin^2(theta) / (2g)
+Range:             R = v_0^2 * sin(2*theta) / g</code></pre>
+<p><strong>Key facts:</strong></p>
+<ul>
+<li>Maximum range occurs at theta = 45 degrees.</li>
+<li>Complementary angles (e.g., 30 and 60 degrees) give equal range.</li>
+<li>At the peak, the vertical velocity is zero but horizontal velocity is unchanged.</li>
+</ul>
+<p><strong>Worked Example 4:</strong> A ball is launched at 20 m/s at 30 degrees above horizontal.</p>
+<ul>
+<li>v_0x = 20 <em> cos(30) = 17.3 m/s, v_0y = 20 </em> sin(30) = 10 m/s</li>
+<li>Time of flight: T = 2(10)/10 = 2 s</li>
+<li>Range: R = 17.3 * 2 = 34.6 m</li>
+<li>Max height: H = 100/20 = 5 m</li>
+</ul>
+<h3>Circular Motion</h3>
+<pre><code>Period:                  T (time for one full revolution)
+Frequency:               f = 1/T (in Hz)
+Angular velocity:         omega = 2*pi/T = 2*pi*f (in rad/s)
+Speed:                   v = omega*r = 2*pi*r/T
+Centripetal acceleration: a_c = v^2/r = omega^2*r
+Centripetal force:        F_c = m*v^2/r = m*omega^2*r</code></pre>
+<p>The centripetal acceleration always points toward the center of the circle.</p>
+<p><strong>Worked Example 5:</strong> A 0.5 kg ball on a 2 m string completes one revolution every 4 s.</p>
+<ul>
+<li>omega = 2*pi/T = 6.28/4 = 1.57 rad/s</li>
+<li>a_c = omega^2 <em> r = (1.57)^2 </em> 2 = 4.93 m/s^2</li>
+<li>F_c = m <em> a_c = 0.5 </em> 4.93 = 2.47 N</li>
+</ul>
+<p><strong>Worked Example 6:</strong> A satellite orbits Earth at radius r with period T. If the radius is doubled, what happens to the period? (Kepler: T^2 is proportional to r^3)</p>
+<ul>
+<li>T^2 proportional to r^3 => T_new^2 / T^2 = (2r)^3 / r^3 = 8</li>
+<li>T_new = T * sqrt(8) = 2*sqrt(2)*T, approximately 2.83*T</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Free-fall acceleration is the same for all objects regardless of mass.</blockquote>
+<blockquote>- At the highest point of a projectile, velocity is NOT zero -- only the vertical component is zero.</blockquote>
+<blockquote>- Centripetal force is not a new type of force. It is provided by tension, gravity, friction, etc.</blockquote>
+<blockquote>- When an object is thrown upward, acceleration is g downward the entire time -- even at the top.</blockquote>
+<p>---</p>

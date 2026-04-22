@@ -1,0 +1,92 @@
+<div class="chapter-number">Chapter 9</div>
+<h2>Magnetism</h2>
+
+<h3>Magnetic Field</h3>
+<p>Magnetic field B, unit: tesla (T). Earth's field is roughly 5 x 10^-5 T.</p>
+<p><strong>Permeability of free space:</strong> mu_0 = 4*pi x 10^-7 T-m/A.</p>
+<h3>Force on a Moving Charge</h3>
+<pre><code>F = q * v * B * sin(theta)</code></pre>
+<p>Direction: right-hand rule. For positive charges, point fingers along v, curl toward B, thumb gives F. For negative charges, reverse direction.</p>
+<p>The magnetic force is always perpendicular to velocity => does NO work => changes direction only, not speed.</p>
+<h3>Radius of Circular Motion in B Field</h3>
+<pre><code>r = m*v / (q*B)</code></pre>
+<p>A charged particle in a uniform B field moves in a circle.</p>
+<h3>Force Between Magnetic Poles</h3>
+<p>Historically, magnetic poles obey a Coulomb-like law. The force between two isolated magnetic poles of strengths p_1 and p_2 separated by distance r is:</p>
+<pre><code>F = (mu_0 / (4*pi)) * (p_1 * p_2) / r^2</code></pre>
+<p>In practice, magnetic poles always come in north-south pairs (no magnetic monopoles have been found). This formula is mostly of historical and theoretical interest. For exam purposes, know that the force between poles follows an inverse-square law, is attractive between unlike poles (N-S) and repulsive between like poles (N-N or S-S), and depends on the permeability of the medium between them.</p>
+<h3>Force on a Current-Carrying Wire</h3>
+<pre><code>F = B * I * L * sin(theta)</code></pre>
+<h3>Force Between Parallel Current-Carrying Conductors</h3>
+<p>Two long parallel wires carrying currents exert a magnetic force on each other. The force per unit length between them is:</p>
+<pre><code>F/L = (mu_0 * I_1 * I_2) / (2 * pi * d)</code></pre>
+<p>Where d is the distance between the wires.</p>
+<ul>
+<li><strong>Same direction currents:</strong> wires attract each other</li>
+<li><strong>Opposite direction currents:</strong> wires repel each other</li>
+</ul>
+<p>Why? Each wire sits in the magnetic field created by the other wire. The force on wire 2 from the field of wire 1 is F = B_1 <em> I_2 </em> L, and B_1 = mu_0 * I_1 / (2*pi*d).</p>
+<p><strong>Worked Example:</strong> Two parallel wires 0.1 m apart each carry 10 A in the same direction. Force per meter?</p>
+<ul>
+<li>F/L = (4*pi*10^-7 <em> 10 </em> 10) / (2 <em> pi </em> 0.1)</li>
+<li>F/L = (4*pi*10^-5) / (0.2*pi) = 2 * 10^-4 N/m = 0.2 mN/m (attractive)</li>
+</ul>
+<h3>The SI Definition of the Ampere</h3>
+<p>The ampere was historically defined using this force: one ampere is the constant current which, if maintained in two straight parallel conductors of infinite length and negligible cross-section placed 1 meter apart in vacuum, produces a force of exactly 2 x 10^-7 newtons per meter of length between them.</p>
+<p>(Since 2019, the ampere is redefined in terms of the elementary charge e = 1.602176634 x 10^-19 C, but the parallel-conductor definition remains important for exam purposes and gives physical intuition for the unit.)</p>
+<h3>Magnetic Field Around a Wire</h3>
+<pre><code>B = mu_0 * I / (2*pi*r)</code></pre>
+<p>Direction: right-hand rule -- thumb along current, fingers curl in B direction.</p>
+<h3>Magnetic Field in a Solenoid</h3>
+<pre><code>B = mu_0 * n * I</code></pre>
+<p>Where n = N/L (turns per unit length).</p>
+<h3>Magnetic Flux</h3>
+<pre><code>Phi = B * A * cos(theta)</code></pre>
+<p>Unit: weber (Wb) = T*m^2. Theta is the angle between B and the normal to the surface.</p>
+<h3>Ampere's Rule (Right-Hand Rule for Solenoid)</h3>
+<p>Curl fingers in the direction of current flow around the solenoid; the thumb points toward the north pole (direction of B inside).</p>
+<h3>Types of Magnetic Materials</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Type</th><th>Behavior</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>Ferromagnetic</td><td>Strongly attracted, can be permanently magnetized</td><td>Iron, nickel, cobalt</td></tr>
+<tr><td>Paramagnetic</td><td>Weakly attracted, effect vanishes when field removed</td><td>Aluminum, platinum</td></tr>
+<tr><td>Diamagnetic</td><td>Very weakly repelled</td><td>Copper, water, bismuth</td></tr>
+</tbody>
+</table></div>
+<h3>The Lorentz Force</h3>
+<p>The total electromagnetic force on a charged particle moving in both an electric field E and a magnetic field B is called the Lorentz force:</p>
+<pre><code>F = q*E + q*v x B</code></pre>
+<p>The electric field component (qE) acts along the field direction regardless of the particle's velocity. The magnetic component (qvB sin(theta)) is always perpendicular to the velocity.</p>
+<p><strong>When only B is present:</strong> The particle moves in a circle (if v is perpendicular to B) or a helix (if v has a component along B).</p>
+<p><strong>Radius of circular motion:</strong></p>
+<pre><code>r = m*v / (q*B)</code></pre>
+<p><strong>Period of circular orbit (cyclotron period):</strong></p>
+<pre><code>T = 2*pi*m / (q*B)</code></pre>
+<p>A remarkable result: the period does NOT depend on the speed or the radius. Faster particles simply travel in larger circles but complete each revolution in the same time.</p>
+<h3>The Cyclotron</h3>
+<p>A cyclotron is a particle accelerator that uses this constant-period property. It consists of two hollow D-shaped electrodes ("dees") in a uniform magnetic field, with an alternating voltage applied across the gap between the dees.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>A charged particle starts near the center.</li>
+<li>The magnetic field bends the particle in a semicircle inside one dee.</li>
+<li>When the particle crosses the gap between dees, the alternating voltage accelerates it.</li>
+<li>The particle enters the other dee at higher speed, traveling a larger semicircle (same period).</li>
+<li>This repeats, with the particle spiraling outward, gaining energy each time it crosses the gap.</li>
+</ol>
+<p><strong>Maximum kinetic energy:</strong></p>
+<pre><code>KE_max = q^2 * B^2 * R^2 / (2*m)</code></pre>
+<p>Where R is the radius of the largest semicircle (the dee radius).</p>
+<p><strong>Worked Example:</strong> A proton (m = 1.67 x 10^-27 kg, q = 1.6 x 10^-19 C) in a cyclotron with B = 1.5 T. Find the cyclotron period.</p>
+<ul>
+<li>T = 2*pi*m/(q*B) = 2(3.14)(1.67 x 10^-27) / (1.6 x 10^-19)(1.5)</li>
+<li>T = 1.05 x 10^-26 / 2.4 x 10^-19 = 4.37 x 10^-8 s = 43.7 ns</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Magnetic force does NO work (perpendicular to velocity). Changes direction, not speed.</blockquote>
+<blockquote>- Right-hand rule for POSITIVE charges. For electrons, reverse.</blockquote>
+<blockquote>- A stationary charge in B experiences NO force. Must be moving.</blockquote>
+<blockquote>- Electric fields accelerate (change speed). Magnetic fields deflect (change direction).</blockquote>
+<blockquote>- In a cyclotron, the period is constant regardless of the particle's speed or orbit radius.</blockquote>
+<blockquote>- The Lorentz force combines electric and magnetic forces. The magnetic part is always perpendicular to v.</blockquote>
+<p>---</p>

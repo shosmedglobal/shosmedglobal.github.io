@@ -1,0 +1,88 @@
+<div class="chapter-number">Chapter 4</div>
+<h2>Work, Energy, and Simple Machines</h2>
+
+<h3>Work</h3>
+<pre><code>W = F * d * cos(theta)</code></pre>
+<p>Where theta is the angle between force and displacement.</p>
+<ul>
+<li>Force parallel to displacement: W = Fd (theta = 0)</li>
+<li>Force perpendicular to displacement: W = 0 (theta = 90)</li>
+<li>Force opposes displacement: W = -Fd (theta = 180)</li>
+</ul>
+<p>Unit: joule (J) = N*m</p>
+<h3>Power</h3>
+<pre><code>P = W / t     (average power)
+P = F * v     (instantaneous power, when F parallel to v)</code></pre>
+<p>Unit: watt (W) = J/s. Also: 1 horsepower = 746 W.</p>
+<h3>Mechanical Efficiency</h3>
+<pre><code>eta = W_useful / W_total = P_output / P_input</code></pre>
+<p>Efficiency is always less than 100% in real machines due to friction and other losses.</p>
+<h3>Kinetic Energy</h3>
+<pre><code>KE = (1/2) * m * v^2</code></pre>
+<p>Always positive or zero. Doubling speed quadruples kinetic energy.</p>
+<h3>Gravitational Potential Energy</h3>
+<pre><code>PE = m * g * h</code></pre>
+<p>Where h is height above a chosen reference level.</p>
+<h3>Elastic Potential Energy (Spring)</h3>
+<pre><code>PE_spring = (1/2) * k * x^2</code></pre>
+<p>Where k is the spring constant and x is the compression/extension from equilibrium.</p>
+<h3>Young's Modulus (Modulus of Elasticity)</h3>
+<p>Young's modulus quantifies the stiffness of a solid material in the elastic (reversible) regime:</p>
+<pre><code>E = stress / strain = (F/A) / (Delta_L / L_0)</code></pre>
+<p>Here F is the applied force, A is the cross-sectional area, Delta_L is the change in length, and L_0 is the original length. The unit is the pascal (Pa), since both stress (F/A) and strain (Delta_L/L_0, dimensionless) combine to give Pa.</p>
+<p><strong>Typical values of Young's modulus:</strong></p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Material</th><th>E (approximate)</th></tr></thead>
+<tbody>
+<tr><td>Steel</td><td>~200 GPa</td></tr>
+<tr><td>Copper</td><td>~120 GPa</td></tr>
+<tr><td>Cortical bone</td><td>~15 GPa</td></tr>
+<tr><td>Wood (along grain)</td><td>~10 GPa</td></tr>
+<tr><td>Rubber</td><td>~0.01 GPa</td></tr>
+</tbody>
+</table></div>
+<p>A higher value means the material is stiffer and resists deformation more strongly. Young's modulus applies only within the <strong>elastic limit</strong> -- beyond that point, permanent (plastic) deformation occurs and Hooke's law no longer holds. The stress-strain curve is linear in the elastic region, with slope equal to E.</p>
+<h3>Conservation of Mechanical Energy</h3>
+<p>When only conservative forces (gravity, springs) do work:</p>
+<pre><code>KE_1 + PE_1 = KE_2 + PE_2</code></pre>
+<p>When friction is present:</p>
+<pre><code>KE_1 + PE_1 = KE_2 + PE_2 + W_friction</code></pre>
+<p><strong>Worked Example 1:</strong> A 2 kg ball dropped from 20 m. Speed at ground?</p>
+<ul>
+<li>mgh = (1/2)mv^2 => v^2 = 2gh = 2(10)(20) = 400 => v = 20 m/s</li>
+</ul>
+<p><strong>Worked Example 2:</strong> A 5 kg block slides down a 10 m ramp from height 6 m. Friction = 8 N. Speed at bottom?</p>
+<ul>
+<li>mgh = (1/2)mv^2 + f*d</li>
+<li>5(10)(6) = 2.5*v^2 + 8(10)</li>
+<li>300 = 2.5*v^2 + 80 => v^2 = 88 => v = 9.38 m/s</li>
+</ul>
+<p><strong>Worked Example 3:</strong> A 60 kg person climbs 5 m of stairs in 10 s. Power?</p>
+<ul>
+<li>W = mgh = 60(10)(5) = 3000 J</li>
+<li>P = 3000/10 = 300 W</li>
+</ul>
+<p><strong>Worked Example 4:</strong> A spring (k = 200 N/m) is compressed 0.1 m. A 0.5 kg ball is launched horizontally from a table 1.2 m high. How far from the table base does it land?</p>
+<ul>
+<li>Spring PE = (1/2)(200)(0.01) = 1 J</li>
+<li>KE = 1 J => (1/2)(0.5)v^2 = 1 => v = 2 m/s (horizontal)</li>
+<li>Time to fall: h = (1/2)g*t^2 => 1.2 = 5t^2 => t = 0.49 s</li>
+<li>Range = v*t = 2(0.49) = 0.98 m</li>
+</ul>
+<h3>Torque and Equilibrium</h3>
+<p><strong>Torque</strong> = F <em> d </em> sin(theta), where d is the distance from the pivot. Unit: N*m.</p>
+<p><strong>Static equilibrium</strong> requires:</p>
+<ol>
+<li>Sum of all forces = 0 (no translational acceleration)</li>
+<li>Sum of all torques = 0 (no rotational acceleration)</li>
+</ol>
+<h3>The Lever</h3>
+<pre><code>F_1 * d_1 = F_2 * d_2</code></pre>
+<p>Mechanical advantage = d_1/d_2 = F_2/F_1.</p>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Work done by gravity on a horizontal surface is zero (perpendicular to displacement).</blockquote>
+<blockquote>- Centripetal force does zero work (always perpendicular to velocity).</blockquote>
+<blockquote>- Doubling speed quadruples KE and stopping distance.</blockquote>
+<blockquote>- Mechanical energy is NOT conserved when friction is present.</blockquote>
+<blockquote>- Efficiency can never exceed 100%.</blockquote>
+<p>---</p>

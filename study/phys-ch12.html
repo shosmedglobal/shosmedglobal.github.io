@@ -1,0 +1,249 @@
+<div class="chapter-number">Chapter 12</div>
+<h2>Optics and Electromagnetic Radiation</h2>
+
+<h3>Electromagnetic Spectrum</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Region</th><th>Wavelength Range</th><th>Frequency Range</th></tr></thead>
+<tbody>
+<tr><td>Radio waves</td><td>> 1 m</td><td>< 3 x 10^8 Hz</td></tr>
+<tr><td>Microwaves</td><td>1 mm - 1 m</td><td>3 x 10^8 - 3 x 10^11 Hz</td></tr>
+<tr><td>Infrared (IR)</td><td>700 nm - 1 mm</td><td>3 x 10^11 - 4.3 x 10^14 Hz</td></tr>
+<tr><td>Visible light</td><td>400 nm - 700 nm</td><td>4.3 x 10^14 - 7.5 x 10^14 Hz</td></tr>
+<tr><td>Ultraviolet (UV)</td><td>10 nm - 400 nm</td><td>7.5 x 10^14 - 3 x 10^16 Hz</td></tr>
+<tr><td>X-rays</td><td>0.01 nm - 10 nm</td><td>3 x 10^16 - 3 x 10^19 Hz</td></tr>
+<tr><td>Gamma rays</td><td>< 0.01 nm</td><td>> 3 x 10^19 Hz</td></tr>
+</tbody>
+</table></div>
+<p>All electromagnetic waves travel at c = 3 x 10^8 m/s in vacuum.</p>
+<p><strong>Memory aid for spectrum order (increasing frequency):</strong> "Raging Martians Invaded Venus Using X-ray Guns" = Radio, Microwave, Infrared, Visible, UV, X-ray, Gamma.</p>
+<p><strong>Visible spectrum (ROY G BIV):</strong> Red (700 nm) - Orange - Yellow - Green - Blue - Indigo - Violet (400 nm). Longest to shortest wavelength.</p>
+<h3>Photon Energy</h3>
+<pre><code>E = h * f = h * c / lambda</code></pre>
+<p>Where h = 6.63 x 10^-34 J-s (Planck's constant).</p>
+<p>Higher frequency = shorter wavelength = more energy per photon.</p>
+<h3>Speed of Light and Index of Refraction</h3>
+<pre><code>c = 3 x 10^8 m/s
+n = c / v</code></pre>
+<p>n is always >= 1. Vacuum/air: n = 1. Water: n = 1.33. Glass: n = 1.5 (approx).</p>
+<p>In a medium, frequency stays the same but wavelength changes: lambda_medium = lambda_vacuum / n.</p>
+<h3>Reflection</h3>
+<pre><code>Angle of incidence = Angle of reflection (theta_i = theta_r)</code></pre>
+<p>Both measured from the normal (perpendicular to surface).</p>
+<h3>Refraction (Snell's Law)</h3>
+<pre><code>n_1 * sin(theta_1) = n_2 * sin(theta_2)</code></pre>
+<p>Light entering denser medium (higher n) bends toward normal. Entering less dense medium, bends away.</p>
+<h3>Total Internal Reflection</h3>
+<p>Occurs when going from denser to less dense medium at angle > critical angle:</p>
+<pre><code>sin(theta_c) = n_2 / n_1    (where n_1 > n_2)</code></pre>
+<p><strong>Worked Example:</strong> Critical angle for glass-air interface (n_glass = 1.5)?</p>
+<ul>
+<li>sin(theta_c) = 1/1.5 = 0.667 => theta_c = 41.8 degrees</li>
+</ul>
+<p>Applications: fiber optics, diamonds (high n = small critical angle = lots of internal reflection).</p>
+<h3>Mirrors and Lenses -- Comparison Table</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Property</th><th>Concave Mirror</th><th>Convex Mirror</th><th>Convex Lens</th><th>Concave Lens</th></tr></thead>
+<tbody>
+<tr><td>Type</td><td>Converging</td><td>Diverging</td><td>Converging</td><td>Diverging</td></tr>
+<tr><td>f sign</td><td>Positive</td><td>Negative</td><td>Positive</td><td>Negative</td></tr>
+<tr><td>Real image?</td><td>Yes (if d_o > f)</td><td>Never</td><td>Yes (if d_o > f)</td><td>Never</td></tr>
+<tr><td>Virtual image?</td><td>Yes (if d_o < f)</td><td>Always</td><td>Yes (if d_o < f)</td><td>Always</td></tr>
+<tr><td>Image orientation</td><td>Real=inverted, Virtual=upright</td><td>Always upright</td><td>Real=inverted, Virtual=upright</td><td>Always upright</td></tr>
+<tr><td>Image size</td><td>Depends on d_o</td><td>Always reduced</td><td>Depends on d_o</td><td>Always reduced</td></tr>
+</tbody>
+</table></div>
+<h3>Mirror/Lens Equation</h3>
+<pre><code>1/f = 1/d_o + 1/d_i</code></pre>
+<p><strong>Magnification:</strong></p>
+<pre><code>M = -d_i / d_o = h_i / h_o</code></pre>
+<p>Sign conventions:</p>
+<ul>
+<li>d_o always positive (real object)</li>
+<li>d_i positive for real images, negative for virtual</li>
+<li>f positive for converging, negative for diverging</li>
+<li>M positive = upright, M negative = inverted</li>
+</ul>
+<h3>Refractive Power (Optical Power)</h3>
+<pre><code>D = 1/f</code></pre>
+<p>Unit: diopter (D) = 1/m. Positive for converging lens, negative for diverging.</p>
+<p>For lenses in contact: D_total = D_1 + D_2</p>
+<h3>The Lens-Maker's Equation</h3>
+<p>The focal length of a lens depends on its material and the curvature of its two surfaces:</p>
+<pre><code>1/f = (n - 1) * (1/R_1 - 1/R_2)</code></pre>
+<p>Here n is the refractive index of the lens material relative to the surrounding medium, and R_1, R_2 are the radii of curvature of the first and second surfaces respectively. The sign convention follows: R is positive when the center of curvature lies on the transmission (exit) side of the surface, and negative when it lies on the incoming side.</p>
+<p><strong>Example:</strong> A biconvex lens made of glass (n = 1.5) with R_1 = +20 cm and R_2 = -20 cm:</p>
+<ul>
+<li>1/f = (1.5 - 1)(1/20 - 1/(-20)) = 0.5 <em> (1/20 + 1/20) = 0.5 </em> 0.1 = 0.05 cm^-1</li>
+<li>f = 20 cm, so D = 1/0.20 = +5.0 diopters</li>
+</ul>
+<p>A plano-convex lens (one flat surface, R_2 = infinity) simplifies to 1/f = (n - 1)/R_1, since 1/infinity = 0. This equation is essential for understanding how lens shape and material together determine optical power.</p>
+<h3>Worked Optics Problems</h3>
+<p><strong>Problem 1:</strong> Object 30 cm from a converging lens, f = 20 cm.</p>
+<ul>
+<li>1/20 = 1/30 + 1/d_i</li>
+<li>1/d_i = 1/20 - 1/30 = 1/60 => d_i = 60 cm (real)</li>
+<li>M = -60/30 = -2 (inverted, magnified 2x)</li>
+</ul>
+<p><strong>Problem 2:</strong> Object 10 cm from a converging lens, f = 20 cm.</p>
+<ul>
+<li>1/20 = 1/10 + 1/d_i</li>
+<li>1/d_i = 1/20 - 1/10 = -1/20 => d_i = -20 cm (virtual)</li>
+<li>M = -(-20)/10 = +2 (upright, magnified 2x)</li>
+</ul>
+<p><strong>Problem 3:</strong> What is the refractive power of a lens with f = 0.25 m?</p>
+<ul>
+<li>D = 1/0.25 = +4 D (converging)</li>
+</ul>
+<h3>The Human Eye</h3>
+<ul>
+<li><strong>Cornea</strong> does most of the refracting</li>
+<li><strong>Lens</strong> provides fine focus (accommodation)</li>
+<li><strong>Retina</strong> is where the image forms</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead><tr><th>Defect</th><th>Problem</th><th>Correction</th></tr></thead>
+<tbody>
+<tr><td>Myopia (nearsighted)</td><td>Image forms in front of retina</td><td>Diverging (concave) lens</td></tr>
+<tr><td>Hyperopia (farsighted)</td><td>Image forms behind retina</td><td>Converging (convex) lens</td></tr>
+<tr><td>Presbyopia</td><td>Loss of accommodation with age</td><td>Converging lens (reading glasses)</td></tr>
+<tr><td>Astigmatism</td><td>Uneven cornea curvature</td><td>Cylindrical lens</td></tr>
+</tbody>
+</table></div>
+<h3>Luminous Quantities</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Quantity</th><th>Symbol</th><th>Unit</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Luminous intensity</td><td>I_v</td><td>candela (cd)</td><td>Light power per solid angle</td></tr>
+<tr><td>Luminous flux</td><td>Phi_v</td><td>lumen (lm)</td><td>Total visible light emitted</td></tr>
+<tr><td>Illuminance</td><td>E_v</td><td>lux (lx) = lm/m^2</td><td>Light falling on a surface</td></tr>
+</tbody>
+</table></div>
+<pre><code>E = I / r^2    (inverse square law for point source)</code></pre>
+<h3>Photometry in Practice</h3>
+<p>Photometry measures visible light as perceived by the human eye, in contrast to radiometry which measures total electromagnetic power regardless of wavelength. The candela (cd) is one of the seven SI base units and is defined by the luminous efficacy of monochromatic radiation at 540 THz (555 nm, green light where the eye is most sensitive).</p>
+<p><strong>Key relationships:</strong></p>
+<ul>
+<li>A source with luminous intensity I (in cd) that radiates uniformly in all directions produces a total luminous flux of Phi = 4*pi*I lumens.</li>
+<li>Illuminance follows the inverse square law: a 100 cd point source produces 100 lux at 1 m, 25 lux at 2 m, and 11.1 lux at 3 m.</li>
+</ul>
+<p><strong>Reference illuminance values for comparison:</strong></p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Condition</th><th>Typical illuminance</th></tr></thead>
+<tbody>
+<tr><td>Direct sunlight</td><td>~100,000 lux</td></tr>
+<tr><td>Overcast daylight</td><td>~1,000 lux</td></tr>
+<tr><td>Well-lit office</td><td>~500 lux</td></tr>
+<tr><td>Full moonlight</td><td>~0.3 lux</td></tr>
+<tr><td>Starlight (no moon)</td><td>~0.001 lux</td></tr>
+</tbody>
+</table></div>
+<p>The eye adapts over roughly 6 orders of magnitude, which is why both logarithmic scales and photometric units are useful in optical design and lighting engineering.</p>
+<h3>Interference and Diffraction</h3>
+<p><strong>Young's double-slit experiment:</strong></p>
+<pre><code>Bright fringes: d*sin(theta) = n*lambda     (n = 0, 1, 2, ...)
+Dark fringes:   d*sin(theta) = (n+1/2)*lambda</code></pre>
+<p>Where d = slit separation.</p>
+<p><strong>Thin film interference:</strong> path difference = 2*n*t, where t is film thickness. Phase changes at reflection from denser medium.</p>
+<h3>Wave-Particle Duality</h3>
+<p>Light behaves as both wave (interference, diffraction) and particle/photon (photoelectric effect). E = hf.</p>
+<h3>Dispersion</h3>
+<p>Dispersion is the separation of white light into its component colors (wavelengths) when passing through a prism or other refracting medium. It occurs because the refractive index of a material depends slightly on wavelength.</p>
+<ul>
+<li>Violet light (short wavelength) has a higher refractive index and bends more.</li>
+<li>Red light (long wavelength) has a lower refractive index and bends less.</li>
+<li>A rainbow is a natural demonstration of dispersion by water droplets.</li>
+</ul>
+<h3>Isotropic and Anisotropic Substances</h3>
+<p><strong>Isotropic substances</strong> have the same optical properties in all directions. Examples: glass, water, most amorphous materials. Light travels at the same speed regardless of the direction it enters.</p>
+<p><strong>Anisotropic (birefringent) substances</strong> have different refractive indices along different crystal axes. A single beam entering such a crystal splits into two polarized beams traveling at different speeds. Example: calcite (Iceland spar), quartz.</p>
+<h3>Optically Active Substances</h3>
+<p>Some substances rotate the plane of polarization of linearly polarized light as it passes through them. This is called <strong>optical activity</strong> or <strong>optical rotation</strong>.</p>
+<ul>
+<li><strong>Dextrorotatory</strong> (d or +): rotates the polarization plane clockwise (as seen looking toward the source).</li>
+<li><strong>Levorotatory</strong> (l or -): rotates counterclockwise.</li>
+<li>The angle of rotation depends on the substance, its concentration (in solutions), and the path length.</li>
+<li>Examples: sugar solutions, many biological molecules (amino acids, sugars).</li>
+<li>This property is used in polarimeters to measure sugar concentration.</li>
+</ul>
+<h3>Microscope Optics</h3>
+<p>A compound microscope uses two converging lenses in series:</p>
+<p><strong>Objective lens:</strong> Short focal length (f_obj), placed close to the specimen. Creates a real, inverted, magnified intermediate image inside the tube.</p>
+<p><strong>Eyepiece (ocular lens):</strong> Longer focal length (f_eye), acts as a magnifying glass to view the intermediate image. Creates a virtual, further magnified final image.</p>
+<p><strong>Optical interval (tube length):</strong> The distance between the back focal point of the objective and the front focal point of the eyepiece, typically denoted by d (or sometimes delta). Standard tube length is 160 mm for many microscopes.</p>
+<p><strong>Total magnification:</strong></p>
+<pre><code>M_total = M_objective x M_eyepiece
+M_objective = d / f_obj    (where d is the optical interval)
+M_eyepiece = D / f_eye     (where D = 25 cm, conventional near point distance)</code></pre>
+<p>So:</p>
+<pre><code>M_total = (d * D) / (f_obj * f_eye)</code></pre>
+<p><strong>Resolving power (resolution):</strong> The ability to distinguish two closely spaced points as separate. Limited by diffraction.</p>
+<pre><code>d_min = 0.61 * lambda / (n * sin(alpha))</code></pre>
+<p>Where d_min is the minimum resolvable distance, lambda is the wavelength of light, n is the refractive index of the medium between specimen and objective, and alpha is the half-angle of the cone of light entering the objective.</p>
+<p>The quantity n*sin(alpha) is called the <strong>numerical aperture (NA)</strong>.</p>
+<p><strong>Key facts about microscope resolution:</strong></p>
+<ul>
+<li>Shorter wavelength gives better resolution (this is why electron microscopes have higher resolution than light microscopes).</li>
+<li>Immersion oil (n = 1.5) between the slide and objective improves resolution by increasing NA.</li>
+<li>The best resolution for a light microscope is about 200 nm (0.2 micrometers).</li>
+</ul>
+<h3>Rods and Cones (Photoreceptors of the Eye)</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Property</th><th>Rods</th><th>Cones</th></tr></thead>
+<tbody>
+<tr><td>Sensitivity</td><td>Very sensitive (dim light)</td><td>Less sensitive (bright light)</td></tr>
+<tr><td>Color vision</td><td>No (monochromatic)</td><td>Yes (three types: red, green, blue)</td></tr>
+<tr><td>Location</td><td>Mostly peripheral retina</td><td>Concentrated at fovea (center)</td></tr>
+<tr><td>Number</td><td>About 120 million</td><td>About 6 million</td></tr>
+<tr><td>Resolution</td><td>Lower (several rods share one nerve fiber)</td><td>Higher (each cone has its own nerve fiber)</td></tr>
+<tr><td>Pigment</td><td>Rhodopsin</td><td>Photopsins (three types)</td></tr>
+<tr><td>Night vision</td><td>Responsible for scotopic vision</td><td>Not active in dim light</td></tr>
+</tbody>
+</table></div>
+<p>Rods are responsible for vision in low-light conditions (scotopic vision). Cones provide detailed color vision in bright light (photopic vision). The fovea, the region of sharpest vision, contains only cones.</p>
+<h3>Lasers and Monochromatic Light</h3>
+<p><strong>Monochromatic light</strong> has a single wavelength (and therefore a single frequency and color). In practice, laser light is the closest approximation to truly monochromatic light.</p>
+<p><strong>LASER</strong> stands for Light Amplification by Stimulated Emission of Radiation.</p>
+<p><strong>How a laser works:</strong></p>
+<ol>
+<li><strong>Population inversion:</strong> More atoms are pumped into an excited state than remain in the ground state (achieved by an external energy source).</li>
+<li><strong>Stimulated emission:</strong> A photon passing an excited atom causes the atom to emit an identical photon (same frequency, phase, direction, and polarization).</li>
+<li><strong>Optical resonator:</strong> Mirrors at each end of the laser medium reflect photons back and forth, amplifying the light with each pass.</li>
+</ol>
+<p><strong>Properties of laser light:</strong></p>
+<ul>
+<li>Monochromatic (single wavelength)</li>
+<li>Coherent (all waves are in phase)</li>
+<li>Collimated (narrow, parallel beam that spreads very little)</li>
+<li>High intensity (energy concentrated in a small area)</li>
+</ul>
+<p><strong>Medical applications:</strong> eye surgery (LASIK, retinal reattachment), cutting/cauterizing tissue, photodynamic therapy, laser lithotripsy (breaking kidney stones).</p>
+<h3>The Electromagnetic Spectrum (Medical Relevance)</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Radiation</th><th>Medical/Biological Use</th></tr></thead>
+<tbody>
+<tr><td>Radio waves</td><td>MRI (nuclear magnetic resonance imaging)</td></tr>
+<tr><td>Microwaves</td><td>Diathermy (deep tissue heating)</td></tr>
+<tr><td>Infrared</td><td>Thermal imaging, physiotherapy</td></tr>
+<tr><td>Visible light</td><td>Endoscopy, phototherapy, laser surgery</td></tr>
+<tr><td>Ultraviolet</td><td>Sterilization, treating skin conditions (psoriasis), vitamin D synthesis</td></tr>
+<tr><td>X-rays</td><td>Diagnostic radiography, CT scans</td></tr>
+<tr><td>Gamma rays</td><td>Radiotherapy (cancer treatment), PET scans, sterilization</td></tr>
+</tbody>
+</table></div>
+<p><strong>Relationship between wavelength, frequency, and energy:</strong></p>
+<pre><code>c = f * lambda
+E = h * f = h * c / lambda</code></pre>
+<p>Higher energy radiation (UV, X-rays, gamma) can ionize atoms and damage DNA. This is why radiation protection is essential in medicine.</p>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Total internal reflection only occurs going from MORE dense to LESS dense medium.</blockquote>
+<blockquote>- Concave mirror and convex lens are BOTH converging.</blockquote>
+<blockquote>- Virtual images cannot be projected on a screen but CAN be seen.</blockquote>
+<blockquote>- Watch sign conventions carefully in lens/mirror equations.</blockquote>
+<blockquote>- Myopia = nearsighted = diverging lens. Hyperopia = farsighted = converging lens.</blockquote>
+<blockquote>- Higher frequency EM radiation = more energy = more dangerous.</blockquote>
+<blockquote>- Microscope magnification = (optical interval / f_obj) x (25 cm / f_eye).</blockquote>
+<blockquote>- Resolution depends on wavelength and numerical aperture. Shorter wavelength = better resolution.</blockquote>
+<blockquote>- Laser light is monochromatic, coherent, and collimated.</blockquote>
+<blockquote>- Rods for dim light (no color), cones for bright light (color vision).</blockquote>
+<blockquote>- Dispersion: violet bends most, red bends least.</blockquote>
+<p>---</p>

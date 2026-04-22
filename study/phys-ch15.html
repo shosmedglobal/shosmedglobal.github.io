@@ -1,0 +1,70 @@
+<div class="chapter-number">Chapter 15</div>
+<h2>Harmonic Oscillation</h2>
+
+<h3>Simple Harmonic Motion (SHM)</h3>
+<p><strong>Simple harmonic motion</strong> is periodic motion where the restoring force is directly proportional to the displacement from equilibrium and directed toward it:</p>
+<p><strong>F = -k * x</strong></p>
+<p>This produces sinusoidal motion. The key equations for SHM:</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Quantity</th><th>Formula</th></tr></thead>
+<tbody>
+<tr><td>Displacement</td><td>y = A <em> sin(omega </em> t)</td></tr>
+<tr><td>Velocity</td><td>v = A <em> omega </em> cos(omega * t)</td></tr>
+<tr><td>Acceleration</td><td>a = -omega^2 * y</td></tr>
+<tr><td>Maximum velocity</td><td>v_max = A * omega</td></tr>
+<tr><td>Maximum acceleration</td><td>a_max = A * omega^2</td></tr>
+</tbody>
+</table></div>
+<p>Where:</p>
+<ul>
+<li><strong>A</strong> = amplitude (maximum displacement from equilibrium)</li>
+<li><strong>omega</strong> = angular frequency (in rad/s)</li>
+<li><strong>T</strong> = period (time for one complete oscillation)</li>
+<li><strong>f</strong> = frequency (oscillations per second, in Hz)</li>
+</ul>
+<p>Relationships: <strong>omega = 2 <em> pi </em> f = 2 * pi / T</strong></p>
+<h3>Spring-Mass System</h3>
+<p>A mass m attached to a spring with spring constant k oscillates with:</p>
+<ul>
+<li><strong>omega = sqrt(k / m)</strong></li>
+<li><strong>T = 2 <em> pi </em> sqrt(m / k)</strong></li>
+<li><strong>f = (1 / (2 <em> pi)) </em> sqrt(k / m)</strong></li>
+</ul>
+<p>Important: The period depends on mass and spring constant only. It does NOT depend on amplitude (for ideal springs).</p>
+<h3>Simple Pendulum</h3>
+<p>A simple pendulum (point mass on a massless string of length L) oscillates with:</p>
+<ul>
+<li><strong>T = 2 <em> pi </em> sqrt(L / g)</strong></li>
+<li><strong>f = (1 / (2 <em> pi)) </em> sqrt(g / L)</strong></li>
+</ul>
+<p>Important: The period depends on length and gravitational acceleration only. It does NOT depend on mass or amplitude (for small angles).</p>
+<h3>Energy in SHM</h3>
+<p>In SHM, energy continuously converts between kinetic and potential forms, but the <strong>total mechanical energy is constant</strong>:</p>
+<p><strong>E_total = KE + PE = (1/2) <em> k </em> A^2 = constant</strong></p>
+<p>At any displacement y:</p>
+<ul>
+<li><strong>KE = (1/2) <em> k </em> (A^2 - y^2)</strong></li>
+<li><strong>PE = (1/2) <em> k </em> y^2</strong></li>
+</ul>
+<div class="table-wrapper"><table>
+<thead><tr><th>Position</th><th>KE</th><th>PE</th><th>Speed</th></tr></thead>
+<tbody>
+<tr><td>Equilibrium (y = 0)</td><td>Maximum</td><td>Zero</td><td>Maximum</td></tr>
+<tr><td>Extremes (y = +/-A)</td><td>Zero</td><td>Maximum</td><td>Zero</td></tr>
+</tbody>
+</table></div>
+<h3>Worked Example</h3>
+<p><strong>Problem:</strong> A 0.5 kg mass is attached to a spring with k = 200 N/m. It is pulled 0.1 m from equilibrium and released. Find: (a) the period, (b) the maximum velocity, (c) the maximum acceleration.</p>
+<p><strong>Solution:</strong></p>
+<p>(a) T = 2 <em> pi </em> sqrt(m / k) = 2 <em> 3.14 </em> sqrt(0.5 / 200) = 6.28 <em> sqrt(0.0025) = 6.28 </em> 0.05 = <strong>0.314 s</strong></p>
+<p>(b) First find omega: omega = 2 * pi / T = 6.28 / 0.314 = 20 rad/s</p>
+<p>v_max = A <em> omega = 0.1 </em> 20 = <strong>2 m/s</strong></p>
+<p>(c) a_max = A <em> omega^2 = 0.1 </em> 400 = <strong>40 m/s^2</strong></p>
+<p>Check: Total energy = (1/2) <em> k </em> A^2 = (1/2) <em> 200 </em> 0.01 = 1 J. Max KE = (1/2) <em> m </em> v_max^2 = (1/2) <em> 0.5 </em> 4 = 1 J. Consistent.</p>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Pendulum period depends on L and g only. Spring period depends on m and k only.</blockquote>
+<blockquote>- Neither period depends on amplitude (for small oscillations).</blockquote>
+<blockquote>- At equilibrium: max speed, zero acceleration. At extremes: zero speed, max acceleration.</blockquote>
+<blockquote>- Doubling the amplitude doubles v_max and a_max, and quadruples the total energy.</blockquote>
+<blockquote>- If you cut a spring in half, k doubles (shorter spring is stiffer).</blockquote>
+<p>---</p>

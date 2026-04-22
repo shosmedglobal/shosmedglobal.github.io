@@ -116,6 +116,38 @@
           </button>
         </div>
         <!-- Reset Progress moved to dashboard overview -->
+
+        <!-- ===== Physics Bonus Section (Full Access only — NOT on LF3) ===== -->
+        <div class="physics-bonus-section" id="physicsBonusSection" style="display:none; margin-top:48px; padding-top:32px; border-top:2px dashed #e5e7eb;">
+          <div style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF); border:1px solid #A5B4FC; border-radius:12px; padding:18px 22px; margin-bottom:20px;">
+            <h2 style="margin:0 0 6px; font-size:1.1rem; color:#3730A3; display:flex; align-items:center; gap:8px; font-family:Inter,sans-serif;">
+              <span aria-hidden="true">🔬</span> Physics — Bonus Content
+            </h2>
+            <p style="margin:0; color:#4338CA; font-size:0.88rem; line-height:1.5;">
+              <strong>Not tested on the LF3 entrance exam.</strong> Physics is included as bonus content for Full Access members who want broader science review. This content will not affect your LF3 readiness score.
+            </p>
+          </div>
+
+          <div class="subject-grid">
+            <label class="subject-card" style="cursor:default;">
+              <div class="subject-card-inner">
+                <span class="subject-icon" aria-hidden="true">🔬</span>
+                <h3>Physics (Bonus)</h3>
+                <span class="subject-count" id="countPhysics">0 questions</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="start-buttons" style="margin-top:18px;">
+            <button class="btn btn-secondary btn-lg" id="startPhysicsBtn" type="button">
+              Start Physics Block
+            </button>
+          </div>
+          <p style="text-align:center; color:#6B7280; font-size:0.78rem; margin-top:10px;">
+            Physics blocks use the block size, shuffle, and mode settings you selected above.
+          </p>
+        </div>
+        <!-- ===== End Physics Bonus Section ===== -->
       </div>
 
 
@@ -514,9 +546,141 @@
 
           // Show the start screen now that questions are loaded
           document.getElementById('startScreen').style.display = 'block';
+
+          // Attempt to load Physics bonus content (paid users only, non-blocking)
+          // If this fails for any reason, Bio/Chem flow is unaffected.
+          loadPhysicsBonus();
         })
         .catch(err => console.error('Failed to load questions:', err));
     }
+
+    // ===== Physics Bonus (isolated, paid-only, fail-safe) =====
+    // Physics is NOT part of the LF3 entrance exam. It lives in its own data file
+    // and its own start button. It does not enter `allQuestions` so Bio/Chem
+    // counts, filters, and progress stats are untouched.
+    function loadPhysicsBonus() {
+      // Free tier does not include Physics — silently skip
+      if (window.qbankAccessLevel !== 'full') return;
+
+      fetch('questions-physics.json')
+        .then(res => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          // Accept either a bare array or a { physics: [...] } wrapper
+          const arr = Array.isArray(data) ? data : (data && data.physics) || [];
+          if (!Array.isArray(arr) || arr.length === 0) {
+            console.warn('Physics bonus: no questions found, hiding section');
+            return;
+          }
+          window._physicsQuestions = arr;
+
+          const section = document.getElementById('physicsBonusSection');
+          const countEl = document.getElementById('countPhysics');
+          if (countEl) countEl.textContent = arr.length + ' questions';
+          if (section) section.style.display = '';
+        })
+        .catch(err => {
+          // Silent fail — Physics is bonus content. Bio/Chem must remain available.
+          console.warn('Physics bonus unavailable (non-blocking):', err);
+        });
+    }
+
+    // Start a Physics-only quiz block. Reuses the existing quiz engine by
+    // populating quizQuestions directly — bio/chem flow is not touched.
+    function startPhysicsQuiz() {
+      const physArr = window._physicsQuestions || [];
+      if (physArr.length === 0) {
+        alert('Physics bonus content is not available right now. Please refresh the page.');
+        return;
+      }
+
+      // Filter by the same "Question mode" selector as Bio/Chem
+      const filterMode = document.getElementById('questionFilter')?.value || 'all';
+      let pool = physArr.slice();
+      if (filterMode === 'unanswered' && typeof getUnansweredQuestions === 'function') {
+        pool = getUnansweredQuestions(pool);
+        if (pool.length === 0) {
+          alert('You have completed all Physics bonus questions. Switch to "All questions" to review them.');
+          return;
+        }
+      } else if (filterMode === 'incorrect') {
+        pool = pool.filter(q => {
+          const p = (typeof userProgress !== 'undefined' && userProgress.completedQuestions) ? userProgress.completedQuestions[q.id] : null;
+          return p && !p.correct;
+        });
+        if (pool.length === 0) {
+          alert('No previously incorrect Physics questions found.');
+          return;
+        }
+      }
+
+      // Shuffle if requested (same helper the main quiz uses)
+      const shouldShuffle = document.getElementById('shuffleQuestions')?.checked;
+      if (shouldShuffle && typeof topicInterleaveShuffle === 'function') {
+        pool = topicInterleaveShuffle(pool);
+      }
+
+      // Apply block size
+      const limit = parseInt(document.getElementById('questionCount')?.value || '20');
+      if (limit > 0 && limit < pool.length) pool = pool.slice(0, limit);
+
+      // Tag meta so history rows show "Physics (Bonus)"
+      window._quizMeta = {
+        subjects: ['Physics (Bonus)'],
+        mode: filterMode === 'unanswered' ? 'Unanswered' : filterMode === 'incorrect' ? 'Incorrect' : 'All'
+      };
+
+      // Reset quiz state (same fields startQuiz() touches)
+      quizQuestions = pool;
+      currentIndex = 0;
+      answers = {};
+      score = { correct: 0, wrong: 0 };
+
+      const modeRadio = document.querySelector('input[name="quizMode"]:checked');
+      isTestMode = !!(modeRadio && modeRadio.value === 'test');
+      timerWarningShown = false;
+
+      document.getElementById('totalQuestions').textContent = quizQuestions.length;
+      document.getElementById('scoreCorrect').textContent = '0';
+      document.getElementById('scoreWrong').textContent = '0';
+
+      if (isTestMode) {
+        document.getElementById('quizScoreDisplay').style.display = 'none';
+        document.getElementById('testTimer').style.display = 'flex';
+        document.getElementById('questionNavigator').style.display = 'flex';
+        testTimeRemaining = quizQuestions.length * 2 * 60;
+        testStartTime = Date.now();
+        testElapsedSeconds = 0;
+        if (typeof updateTimerDisplay === 'function') updateTimerDisplay();
+        if (typeof startTimer === 'function') startTimer();
+        if (typeof renderQuestionNavigator === 'function') renderQuestionNavigator();
+      } else {
+        document.getElementById('quizScoreDisplay').style.display = '';
+        document.getElementById('testTimer').style.display = 'none';
+        document.getElementById('questionNavigator').style.display = 'none';
+        if (typeof stopTimer === 'function') stopTimer();
+      }
+
+      if (typeof showScreen === 'function') showScreen('quizScreen');
+      if (typeof renderQuestion === 'function') renderQuestion();
+      if (typeof saveInProgressTest === 'function') saveInProgressTest();
+    }
+
+    // Wire Physics start button (safe if button is absent/hidden)
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('startPhysicsBtn');
+      if (btn) btn.addEventListener('click', startPhysicsQuiz);
+    });
+    // Also wire immediately if DOM is already loaded (script runs after the button)
+    (function() {
+      const btn = document.getElementById('startPhysicsBtn');
+      if (btn && !btn._physicsWired) {
+        btn._physicsWired = true;
+        btn.addEventListener('click', startPhysicsQuiz);
+      }
+    })();
   </script>
 </body>
 </html>

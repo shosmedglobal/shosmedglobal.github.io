@@ -1,0 +1,200 @@
+<div class="chapter-number">Chapter 8</div>
+<h2>Electricity and DC Circuits</h2>
+
+<h3>Electric Charge</h3>
+<pre><code>e = 1.6 x 10^-19 C</code></pre>
+<p>Proton: +e, Electron: -e. Charge is quantized and conserved.</p>
+<h3>Coulomb's Law</h3>
+<pre><code>F = k * |q_1| * |q_2| / r^2</code></pre>
+<p>Where k = 9 x 10^9 N*m^2/C^2 (also written as 1/(4*pi*epsilon_0)).</p>
+<p>Like charges repel; opposite charges attract.</p>
+<h3>Electric Field</h3>
+<pre><code>E = F / q = k * Q / r^2</code></pre>
+<p>Unit: N/C = V/m. Points away from positive charges, toward negative.</p>
+<p><strong>Superposition:</strong> The total field from multiple charges is the vector sum of individual fields.</p>
+<h3>Electric Potential (Voltage)</h3>
+<pre><code>V = k * Q / r</code></pre>
+<p><strong>Potential difference</strong> (voltage) between two points:</p>
+<pre><code>Delta_V = W / q</code></pre>
+<p>The potential difference determines how much work is done moving a charge. Unit: volt (V) = J/C.</p>
+<p><strong>Relationship between E and V:</strong></p>
+<pre><code>E = -Delta_V / Delta_x   (uniform field)</code></pre>
+<p>In a uniform field between parallel plates separated by d: E = V/d.</p>
+<h3>Capacitors</h3>
+<pre><code>C = Q / V       (unit: farad, F)</code></pre>
+<p><strong>Parallel-plate capacitor:</strong> C = epsilon_0 * A / d</p>
+<p>With dielectric: C = kappa <em> epsilon_0 </em> A / d, where kappa is the dielectric constant.</p>
+<p><strong>Energy stored:</strong> U = (1/2)*C*V^2 = (1/2)*Q^2/C = (1/2)*Q*V</p>
+<h3>Capacitors in Series vs Parallel</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Configuration</th><th>Formula</th><th>Voltage</th><th>Charge</th></tr></thead>
+<tbody>
+<tr><td>Series</td><td>1/C_total = 1/C_1 + 1/C_2 + ...</td><td>Different across each</td><td>Same on each</td></tr>
+<tr><td>Parallel</td><td>C_total = C_1 + C_2 + ...</td><td>Same across each</td><td>Different on each</td></tr>
+</tbody>
+</table></div>
+<p><strong>Note:</strong> This is the OPPOSITE pattern of resistors.</p>
+<p><strong>Worked Example:</strong> Two capacitors, C_1 = 3 muF and C_2 = 6 muF, in series. Total?</p>
+<ul>
+<li>1/C = 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2</li>
+<li>C_total = 2 muF</li>
+</ul>
+<p>Same capacitors in parallel: C_total = 3 + 6 = 9 muF.</p>
+<h3>Ohm's Law</h3>
+<pre><code>V = I * R</code></pre>
+<p>V = voltage (volts), I = current (amperes), R = resistance (ohms).</p>
+<h3>Resistance</h3>
+<pre><code>R = rho * L / A</code></pre>
+<p>rho = resistivity (Ohm-m), L = length, A = cross-sectional area.</p>
+<p><strong>Conductivity</strong> (sigma) is the reciprocal of resistivity: sigma = 1/rho. Unit: S/m (siemens per meter).</p>
+<p><strong>Temperature dependence:</strong> R(T) = R_0 <em> (1 + alpha </em> Delta_T), where alpha is the temperature coefficient of resistance.</p>
+<ul>
+<li>Metals: alpha > 0 (resistance increases with temperature, because lattice vibrations scatter electrons more)</li>
+<li>Semiconductors: alpha < 0 (resistance decreases with temperature, because more carriers are thermally excited)</li>
+</ul>
+<p><strong>Typical resistivities:</strong></p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Material</th><th>Resistivity (Ohm-m)</th><th>Type</th></tr></thead>
+<tbody>
+<tr><td>Copper</td><td>1.7 x 10^-8</td><td>Metal (conductor)</td></tr>
+<tr><td>Aluminum</td><td>2.8 x 10^-8</td><td>Metal (conductor)</td></tr>
+<tr><td>Silicon</td><td>~640</td><td>Semiconductor</td></tr>
+<tr><td>Glass</td><td>~10^12</td><td>Insulator</td></tr>
+</tbody>
+</table></div>
+<h3>Resistors in Series vs Parallel</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Configuration</th><th>R_total</th><th>Current</th><th>Voltage</th></tr></thead>
+<tbody>
+<tr><td>Series</td><td>R_1 + R_2 + R_3 + ...</td><td>Same through each</td><td>Divides (V = IR)</td></tr>
+<tr><td>Parallel</td><td>1/R = 1/R_1 + 1/R_2 + ...</td><td>Divides</td><td>Same across each</td></tr>
+</tbody>
+</table></div>
+<p>For two resistors in parallel: R_total = (R_1 * R_2) / (R_1 + R_2)</p>
+<h3>Kirchhoff's Rules</h3>
+<p><strong>Junction rule (KCL):</strong> Sum of currents entering a junction = sum leaving.</p>
+<p><strong>Loop rule (KVL):</strong> Sum of all voltage changes around any closed loop = 0.</p>
+<h3>Electric Power</h3>
+<pre><code>P = I * V = I^2 * R = V^2 / R</code></pre>
+<p><strong>Electrical energy consumed:</strong> E = P * t. Unit: joule (or kilowatt-hour: 1 kWh = 3.6 x 10^6 J).</p>
+<h3>Worked Circuit Problems</h3>
+<p><strong>Problem 1:</strong> 12 V battery, 4 ohm and 6 ohm in series.</p>
+<ul>
+<li>R_total = 10 ohm, I = 12/10 = 1.2 A</li>
+<li>V_1 = 1.2(4) = 4.8 V, V_2 = 1.2(6) = 7.2 V. Check: 4.8 + 7.2 = 12 V.</li>
+</ul>
+<p><strong>Problem 2:</strong> 12 V battery, 4 ohm and 6 ohm in parallel.</p>
+<ul>
+<li>R_total = (4)(6)/(4+6) = 2.4 ohm, I_total = 12/2.4 = 5 A</li>
+<li>I_1 = 12/4 = 3 A, I_2 = 12/6 = 2 A. Check: 3 + 2 = 5 A.</li>
+</ul>
+<p><strong>Problem 3:</strong> Power dissipated by 100 ohm resistor at 220 V?</p>
+<ul>
+<li>P = V^2/R = 48400/100 = 484 W</li>
+</ul>
+<p><strong>Problem 4:</strong> Three resistors: R_1 = 2 ohm, R_2 = 3 ohm in parallel, then in series with R_3 = 4 ohm. Battery = 24 V. Find total current.</p>
+<ul>
+<li>R_12 = (2)(3)/(2+3) = 1.2 ohm</li>
+<li>R_total = 1.2 + 4 = 5.2 ohm</li>
+<li>I = 24/5.2 = 4.62 A</li>
+</ul>
+<h3>Electrolysis and Faraday's Laws</h3>
+<p><strong>First Law of Electrolysis:</strong> The mass of substance deposited at an electrode is proportional to the total charge passed:</p>
+<pre><code>m = (M * I * t) / (z * F)</code></pre>
+<p>Where M = molar mass, I = current, t = time, z = valence (electrons per ion), F = Faraday constant = 96,485 C/mol.</p>
+<p><strong>Second Law:</strong> When the same charge passes through different electrolytes, the masses deposited are proportional to their equivalent weights (M/z).</p>
+<p><strong>Worked Example:</strong> How much copper (M = 63.5, z = 2) is deposited by 5 A for 2 hours?</p>
+<ul>
+<li>t = 2 * 3600 = 7200 s</li>
+<li>m = (63.5)(5)(7200) / (2)(96,485)</li>
+<li>m = 2,286,000 / 192,970 = 11.85 g</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Resistors in series: add directly. Parallel: add reciprocals. Capacitors: OPPOSITE.</blockquote>
+<blockquote>- Parallel resistors always have total R LESS than the smallest individual.</blockquote>
+<blockquote>- Current is same in series. Voltage is same in parallel.</blockquote>
+<blockquote>- Coulomb's law distance is center to center.</blockquote>
+<blockquote>- In electrolysis, z is the number of electrons transferred per ion (Cu^2+ has z = 2).</blockquote>
+<h3>The Electron-Volt (eV)</h3>
+<p>The electron-volt is an energy unit used in atomic and particle physics. It is the energy gained by a single electron accelerated through a potential difference of 1 volt.</p>
+<pre><code>1 eV = 1.6 x 10^-19 J</code></pre>
+<p>Common multiples: 1 keV = 10^3 eV, 1 MeV = 10^6 eV, 1 GeV = 10^9 eV.</p>
+<p><strong>Worked Example:</strong> An electron is accelerated through 500 V. What kinetic energy does it gain?</p>
+<ul>
+<li>KE = q * V = (1.6 x 10^-19)(500) = 8 x 10^-17 J = 500 eV</li>
+</ul>
+<p>The electron-volt is convenient because atomic-scale energies are tiny in joules. A visible photon has energy of about 2 to 3 eV. The ionization energy of hydrogen is 13.6 eV.</p>
+<h3>Current Conduction in Different Media</h3>
+<div class="table-wrapper"><table>
+<thead><tr><th>Medium</th><th>Charge carriers</th><th>Characteristics</th></tr></thead>
+<tbody>
+<tr><td>Metals</td><td>Free electrons</td><td>Resistance increases with temperature (lattice vibrations scatter electrons)</td></tr>
+<tr><td>Electrolytes</td><td>Positive and negative ions</td><td>Requires dissolved salt/acid/base. Ions migrate to electrodes. Mass is deposited (Faraday's laws)</td></tr>
+<tr><td>Gases</td><td>Electrons and ions</td><td>Normally insulating. Conducts when ionized (spark, discharge, lightning). Requires high voltage or radiation to initiate</td></tr>
+<tr><td>Semiconductors</td><td>Electrons and holes</td><td>Conductivity increases with temperature. Can be tuned by doping</td></tr>
+<tr><td>Vacuum</td><td>Free electrons</td><td>Thermionic emission or field emission provides electrons. Used in cathode ray tubes and X-ray tubes</td></tr>
+</tbody>
+</table></div>
+<p><strong>In metals:</strong> Conductivity is high because each atom contributes roughly one free electron to a shared "electron gas." As temperature rises, atomic vibrations increase, scattering electrons more frequently, so resistance rises.</p>
+<p><strong>In electrolytes:</strong> Current flow is accompanied by chemical changes at the electrodes (electrolysis). Unlike metals, higher temperature usually decreases the resistance of an electrolyte because ions move more freely.</p>
+<p><strong>In gases:</strong> A gas at normal conditions is an insulator. To make it conduct, gas molecules must be ionized (by high voltage, UV light, or high temperature). Once ionization begins, the freed electrons accelerate and ionize more molecules, creating an avalanche. Examples: neon signs, fluorescent tubes, lightning.</p>
+<h3>Semiconductors and Diodes</h3>
+<p><strong>Intrinsic semiconductors</strong> (pure Si or Ge) have a small number of charge carriers at room temperature. At absolute zero, they behave as insulators. As temperature rises, some electrons gain enough energy to jump from the valence band to the conduction band, leaving behind "holes" (positive charge carriers).</p>
+<p><strong>Doping</strong> creates extrinsic semiconductors:</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Type</th><th>Dopant</th><th>Example</th><th>Majority carrier</th><th>Minority carrier</th></tr></thead>
+<tbody>
+<tr><td>N-type</td><td>Element with 5 valence electrons</td><td>Phosphorus in silicon</td><td>Electrons</td><td>Holes</td></tr>
+<tr><td>P-type</td><td>Element with 3 valence electrons</td><td>Boron in silicon</td><td>Holes</td><td>Electrons</td></tr>
+</tbody>
+</table></div>
+<p><strong>The PN Junction (Diode)</strong></p>
+<p>When P-type and N-type materials are joined, electrons from the N side and holes from the P side diffuse across the boundary and recombine, creating a thin <strong>depletion region</strong> with no free charge carriers. This region acts as a barrier.</p>
+<p><strong>Forward bias:</strong> Connect the positive terminal of a battery to the P side and the negative terminal to the N side. This pushes carriers toward the junction, narrows the depletion region, and current flows freely.</p>
+<p><strong>Reverse bias:</strong> Connect the positive terminal to the N side. This pulls carriers away from the junction, widens the depletion region, and virtually no current flows (only a tiny leakage current).</p>
+<p><strong>Key properties of a diode:</strong></p>
+<ul>
+<li>Acts as a one-way valve for current.</li>
+<li>Forward voltage drop is approximately 0.6 V for silicon diodes.</li>
+<li>In reverse bias, if the voltage exceeds the breakdown voltage, current suddenly flows (Zener effect).</li>
+</ul>
+<p><strong>Half-wave rectification:</strong> A single diode in an AC circuit blocks the negative half of each cycle, converting AC to pulsating DC. Only positive half-cycles pass through, so the output is always positive (or zero).</p>
+<p><strong>Worked Example:</strong> A silicon diode is connected in series with a 100 ohm resistor to a 10 V DC supply (forward biased). What current flows?</p>
+<ul>
+<li>Voltage across resistor: V_R = 10 - 0.6 = 9.4 V</li>
+<li>Current: I = 9.4/100 = 0.094 A = 94 mA</li>
+</ul>
+<h3>Polarization of Dielectrics</h3>
+<p>When an insulating material (dielectric) is placed in an external electric field, its molecules respond by aligning. Polar molecules rotate to align with the field. Nonpolar molecules develop an induced dipole (their electron cloud shifts slightly).</p>
+<p>This alignment creates an internal electric field that partially opposes the external field, reducing the net field inside the dielectric.</p>
+<p><strong>Dielectric constant (kappa or epsilon_r):</strong> Measures how much a dielectric reduces the electric field compared to vacuum.</p>
+<pre><code>E_dielectric = E_vacuum / kappa
+C_with_dielectric = kappa * C_vacuum</code></pre>
+<div class="table-wrapper"><table>
+<thead><tr><th>Material</th><th>Dielectric constant (kappa)</th></tr></thead>
+<tbody>
+<tr><td>Vacuum</td><td>1 (by definition)</td></tr>
+<tr><td>Air</td><td>1.0006 (approximately 1)</td></tr>
+<tr><td>Paper</td><td>3-4</td></tr>
+<tr><td>Glass</td><td>5-10</td></tr>
+<tr><td>Water</td><td>80</td></tr>
+</tbody>
+</table></div>
+<p>Water has a very high dielectric constant because water molecules are strongly polar and align readily.</p>
+<p><strong>Practical application:</strong> Inserting a dielectric into a capacitor increases its capacitance by the factor kappa while allowing a higher voltage before breakdown.</p>
+<h3>Thermoelectric Phenomenon (Seebeck Effect)</h3>
+<p>When two different metals (or semiconductors) are joined at two junctions held at different temperatures, a voltage (electromotive force) is generated. This is the <strong>Seebeck effect</strong>, and it is the operating principle of <strong>thermocouples</strong> used to measure temperature.</p>
+<p><strong>Seebeck coefficient:</strong> alpha_S = Delta_V / Delta_T (unit: V/K). It depends on the pair of materials.</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Thermocouple type</th><th>Materials</th><th>Approximate Seebeck coefficient</th></tr></thead>
+<tbody>
+<tr><td>Type T</td><td>Copper-Constantan</td><td>~40 microV/K</td></tr>
+<tr><td>Type K</td><td>Chromel-Alumel</td><td>~41 microV/K</td></tr>
+</tbody>
+</table></div>
+<p><strong>Related thermoelectric effects:</strong></p>
+<ul>
+<li><strong>Peltier effect (reverse of Seebeck):</strong> Passing current through a junction of two different conductors causes one junction to absorb heat and the other to release heat. Used in thermoelectric coolers (e.g., portable mini-fridges, CPU coolers).</li>
+<li><strong>Thomson effect:</strong> A temperature gradient along a single conductor carrying current causes absorption or release of heat.</li>
+</ul>
+<p>---</p>

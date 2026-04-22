@@ -1415,6 +1415,9 @@ function resumeInProgressTest(savedState) {
   Object.values(allQuestions).forEach(arr => {
     arr.forEach(q => { allQMap[q.id] = q; });
   });
+  // Include Physics bonus questions (if loaded) so physics sessions can resume.
+  // No-op if _physicsQuestions was never populated (e.g., free tier, load failed).
+  (window._physicsQuestions || []).forEach(q => { allQMap[q.id] = q; });
 
   quizQuestions = savedState.questionIds
     .map(id => allQMap[id])
@@ -1451,6 +1454,8 @@ function loadHistoricalReview(testRecord) {
   Object.values(allQuestions).forEach(arr => {
     arr.forEach(q => { allQMap[q.id] = q; });
   });
+  // Include Physics bonus questions (if loaded) so past physics sessions can be reviewed.
+  (window._physicsQuestions || []).forEach(q => { allQMap[q.id] = q; });
 
   const ids = testRecord.questionIds || [];
   quizQuestions = ids.map(id => allQMap[id]).filter(q => q);

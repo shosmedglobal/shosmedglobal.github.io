@@ -1,0 +1,115 @@
+<div class="chapter-number">Chapter 11</div>
+<h2>Vibrations, Waves, and Acoustics</h2>
+
+<h3>Simple Harmonic Motion (SHM)</h3>
+<pre><code>x(t) = A * sin(omega * t)    or    x(t) = A * cos(omega * t)</code></pre>
+<ul>
+<li>A = amplitude (maximum displacement)</li>
+<li>omega = 2*pi*f = 2*pi/T (angular frequency)</li>
+<li>T = period, f = frequency = 1/T</li>
+</ul>
+<p>At equilibrium: speed is maximum, acceleration is zero. At maximum displacement: speed is zero, acceleration is maximum.</p>
+<p><strong>Velocity and acceleration in SHM:</strong></p>
+<pre><code>v_max = omega * A
+a_max = omega^2 * A</code></pre>
+<h3>Pendulum</h3>
+<pre><code>T = 2 * pi * sqrt(L / g)</code></pre>
+<p>Period depends ONLY on L and g. Does NOT depend on mass or amplitude (small angles).</p>
+<p><strong>Worked Example:</strong> Length for T = 2 s?</p>
+<ul>
+<li>2 = 2(3.14)*sqrt(L/10)</li>
+<li>sqrt(L/10) = 0.318 => L/10 = 0.101 => L = 1.01 m</li>
+</ul>
+<h3>Mass-Spring System</h3>
+<pre><code>T = 2 * pi * sqrt(m / k)</code></pre>
+<p>Period depends on mass and spring constant, NOT on amplitude.</p>
+<h3>Energy in SHM</h3>
+<pre><code>E_total = (1/2)*k*A^2 = (1/2)*m*omega^2*A^2
+KE + PE = constant throughout oscillation</code></pre>
+<h3>Resonance</h3>
+<p>When driven at natural frequency, amplitude grows dramatically. Examples: pushing a swing, glass breaking from sound, soldiers breaking step on bridges.</p>
+<h3>Wave Equation</h3>
+<pre><code>v = f * lambda</code></pre>
+<p>v = wave speed, f = frequency, lambda = wavelength.</p>
+<h3>Types of Waves</h3>
+<p><strong>Transverse:</strong> Oscillation perpendicular to propagation. Examples: string waves, light, EM waves.</p>
+<p><strong>Longitudinal:</strong> Oscillation parallel to propagation. Examples: sound waves, pressure waves.</p>
+<h3>Wave Phenomena</h3>
+<p><strong>Reflection:</strong> Wave bounces off boundary. Angle of incidence = angle of reflection.</p>
+<p><strong>Refraction:</strong> Wave changes direction entering a medium where speed changes.</p>
+<p><strong>Interference:</strong></p>
+<ul>
+<li>Constructive: waves in phase (crest + crest), amplitudes add.</li>
+<li>Destructive: waves out of phase (crest + trough), amplitudes subtract.</li>
+<li>Path difference for constructive: n*lambda (n = 0, 1, 2, ...)</li>
+<li>Path difference for destructive: (n + 1/2)*lambda</li>
+</ul>
+<p><strong>Interference in detail:</strong> When two coherent waves (same frequency, constant phase relationship) meet at a point, the resulting amplitude depends on the path difference Delta between the two waves. If Delta = n*lambda (integer number of wavelengths), the waves arrive in phase and their amplitudes add, producing a maximum (constructive interference). If Delta = (n + 1/2)*lambda, the waves arrive exactly out of phase and cancel, producing a minimum (destructive interference). For two waves of equal amplitude A, the resultant amplitude is 2A at constructive maxima and zero at destructive minima. Since intensity is proportional to amplitude squared, I_max = 4*I_single and I_min = 0. This principle applies universally to sound waves (noise-canceling headphones), water waves, light (thin films, anti-reflective coatings), and all other wave phenomena.</p>
+<p><strong>Diffraction:</strong> Waves spread through openings. Most noticeable when opening size is comparable to wavelength.</p>
+<p><strong>Polarization:</strong> Restricting transverse wave oscillation to one plane. Only transverse waves can be polarized. Sound (longitudinal) cannot be polarized.</p>
+<h3>Standing Waves</h3>
+<p>Formed by superposition of two identical waves traveling in opposite directions.</p>
+<p><strong>String fixed at both ends:</strong></p>
+<pre><code>lambda_n = 2L/n     (n = 1, 2, 3, ...)
+f_n = n * v/(2L)    (harmonics)</code></pre>
+<p><strong>Pipe open at both ends:</strong> same as above.</p>
+<p><strong>Pipe closed at one end:</strong></p>
+<pre><code>lambda_n = 4L/n     (n = 1, 3, 5, ... odd harmonics only)
+f_n = n * v/(4L)</code></pre>
+<h3>Sound</h3>
+<p>Sound is a longitudinal mechanical wave. Requires a medium. Cannot travel through vacuum.</p>
+<p><strong>Speed of sound:</strong></p>
+<ul>
+<li>Air (20 C): approximately 343 m/s</li>
+<li>Water: approximately 1480 m/s</li>
+<li>Steel: approximately 5000 m/s</li>
+<li>General: solids > liquids > gases</li>
+</ul>
+<p><strong>Sound characteristics:</strong></p>
+<ul>
+<li>Frequency determines pitch (high f = high pitch)</li>
+<li>Amplitude determines loudness</li>
+<li>Waveform/harmonics determine timbre</li>
+</ul>
+<h3>Sound Intensity and Level</h3>
+<pre><code>Intensity: I = P / A     (W/m^2)
+Sound level: L = 10 * log_10(I / I_0)     (in decibels, dB)</code></pre>
+<p>Where I_0 = 10^-12 W/m^2 (threshold of hearing).</p>
+<div class="table-wrapper"><table>
+<thead><tr><th>Sound</th><th>Approximate dB</th></tr></thead>
+<tbody>
+<tr><td>Threshold of hearing</td><td>0</td></tr>
+<tr><td>Whisper</td><td>20</td></tr>
+<tr><td>Normal conversation</td><td>60</td></tr>
+<tr><td>Traffic</td><td>80</td></tr>
+<tr><td>Pain threshold</td><td>120</td></tr>
+</tbody>
+</table></div>
+<p><strong>Key rule:</strong> Every 10 dB increase = 10x intensity. Every 3 dB increase = 2x intensity.</p>
+<h3>Sound Pressure Level</h3>
+<p>Sound pressure is the local pressure deviation from ambient, caused by the sound wave. Sound pressure level (SPL) in dB:</p>
+<pre><code>SPL = 20 * log_10(p / p_0)</code></pre>
+<p>Where p_0 = 20 muPa (reference pressure).</p>
+<h3>Human Hearing Range</h3>
+<ul>
+<li>Frequency: 20 Hz to 20,000 Hz</li>
+<li>Infrasound: below 20 Hz (elephants, earthquakes)</li>
+<li>Ultrasound: above 20,000 Hz (bats, medical imaging, cleaning)</li>
+</ul>
+<h3>Doppler Effect</h3>
+<pre><code>Source approaching:  f_obs = f_source * v_sound / (v_sound - v_source)
+Source receding:     f_obs = f_source * v_sound / (v_sound + v_source)
+Observer approaching: f_obs = f_source * (v_sound + v_obs) / v_sound
+Observer receding:   f_obs = f_source * (v_sound - v_obs) / v_sound</code></pre>
+<p><strong>Worked Example:</strong> Ambulance siren at 500 Hz approaching at 30 m/s (v_sound = 340 m/s):</p>
+<ul>
+<li>f_obs = 500 <em> 340/(340 - 30) = 500 </em> 340/310 = 548 Hz (higher pitch)</li>
+</ul>
+<blockquote><strong>Exam Tips:</strong></blockquote>
+<blockquote>- Pendulum period does NOT depend on mass.</blockquote>
+<blockquote>- Spring-mass period does NOT depend on amplitude.</blockquote>
+<blockquote>- Sound cannot travel through vacuum. Light can.</blockquote>
+<blockquote>- Doppler effect changes observed frequency, not actual frequency emitted.</blockquote>
+<blockquote>- Wave speed depends on the medium, not on frequency or amplitude.</blockquote>
+<blockquote>- Polarization only works for transverse waves.</blockquote>
+<p>---</p>
