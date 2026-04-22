@@ -222,7 +222,7 @@
         "5 m/s<sup>2</sup>"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: 2 m/s<sup>2</sup></h4><div class='exp-diagram'><p>Using v<sup>2</sup> = u<sup>2</sup> + 2as:</p><p>30<sup>2</sup> = 10<sup>2</sup> + 2a(200)</p><p>900 = 100 + 400a</p><p>800 = 400a</p><p>a = <strong>2 m/s<sup>2</sup></strong></p></div><table class='exp-table'><tr><th>Equation</th><th>Variables</th></tr><tr><td>v = u + at</td><td>No distance</td></tr><tr><td>s = ut + &frac12;at<sup>2</sup></td><td>No final velocity</td></tr><tr><td>v<sup>2</sup> = u<sup>2</sup> + 2as</td><td>No time</td></tr></table><p class='exp-key'>Key Concept: Use v<sup>2</sup> = u<sup>2</sup> + 2as when time is not given. The three kinematic equations solve all constant-acceleration problems.</p>"
+      "explanation": "<h4>Correct Answer: 2 m/s<sup>2</sup></h4><div class='exp-diagram'><p>Using v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2as (with v<sub>0</sub> the initial velocity):</p><p>30<sup>2</sup> = 10<sup>2</sup> + 2a(200)</p><p>900 = 100 + 400a</p><p>800 = 400a</p><p>a = <strong>2 m/s<sup>2</sup></strong></p></div><table class='exp-table'><tr><th>Equation</th><th>Variables</th></tr><tr><td>v = v<sub>0</sub> + at</td><td>No distance</td></tr><tr><td>s = v<sub>0</sub>t + &frac12;at<sup>2</sup></td><td>No final velocity</td></tr><tr><td>v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2as</td><td>No time</td></tr></table><p class='exp-key'>Key Concept: Use v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2as when time is not given. The three kinematic equations solve all constant-acceleration problems.</p>"
     },
     {
       "id": "phys-17",
@@ -431,8 +431,8 @@
         "301.6 V",
         "753.9 V"
       ],
-      "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 753.9 V</h4><p>Peak EMF = NBAw, where w = 2pi f. Area = 0.20 x 0.10 = 0.02 m^2. Angular frequency w = 2pi x 60 = 376.99 rad/s. EMF_max = 50 x 0.4 x 0.02 x 376.99 = 753.98 V, approximately 753.9 V.</p><p class='exp-key'>Key Concept: The peak EMF in an AC generator is proportional to the number of turns, magnetic field, area, and angular frequency.</p>"
+      "correct": 1,
+      "explanation": "<h4>Correct Answer: B) 150.8 V</h4><p>The peak EMF of a rotating coil is <strong>EMF<sub>peak</sub> = N·B·A·ω</strong>, where ω = 2πf.</p><p>Given: N = 50 turns, B = 0.4 T, A = 0.20 m × 0.10 m = 0.02 m<sup>2</sup>, f = 60 rev/s.</p><p>ω = 2π × 60 = 377 rad/s</p><p>EMF<sub>peak</sub> = 50 × 0.4 × 0.02 × 377 = <strong>150.8 V</strong></p><p>Step-by-step: 50 × 0.4 = 20 ; 20 × 0.02 = 0.4 ; 0.4 × 377 = 150.8.</p><p>Alternative check: Maximum flux through the coil is Φ<sub>max</sub> = N·B·A = 50 × 0.4 × 0.02 = 0.4 Wb. Peak EMF = ω × Φ<sub>max</sub> = 377 × 0.4 = 150.8 V.</p><p class='exp-key'>Key Concept: In an AC generator the peak EMF is proportional to the number of turns N, the magnetic field B, the coil area A, and the angular frequency ω. Double any of these and the peak EMF doubles.</p>"
     },
     {
       "id": "phys-32",
@@ -1034,7 +1034,7 @@
         "12 m/s²"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: 8 m/s²</h4><p>Distance in the nth second: s<sub>n</sub> = u + a(n − ½). From rest (u = 0): 20 = 0 + a(3 − 0.5) = 2.5a → a = <strong>8 m/s²</strong>.</p><p class='exp-key'>Key Concept: Distance covered in the nth second = u + a(n − ½).</p>"
+      "explanation": "<h4>Correct Answer: 8 m/s²</h4><p>Distance traveled in the n<sup>th</sup> second (for constant acceleration): s<sub>n</sub> = v<sub>0</sub> + a(n − ½).</p><p>From rest (v<sub>0</sub> = 0): 20 = 0 + a(3 − 0.5) = 2.5a → a = <strong>8 m/s²</strong>.</p><p class='exp-key'>Key Concept: Distance covered in the n<sup>th</sup> second = v<sub>0</sub> + a(n − ½). This is the difference between the total distance at time t = n and the total distance at t = n − 1, both from x = v<sub>0</sub>t + ½at<sup>2</sup>.</p>"
     },
     {
       "id": "phys-75",
