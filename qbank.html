@@ -24,17 +24,17 @@
     </a>
   </div>
 
-  <!-- Question Bank App - hidden until auth check completes -->
-  <section class="qbank-section" id="qbankSection" style="display:none;">
+  <!-- Question Bank App - always visible. Loading is a small overlay only. -->
+  <section class="qbank-section" id="qbankSection">
     <div class="container">
 
-      <!-- Loading state while checking auth -->
-      <div id="authLoading" style="text-align:center; padding:80px 20px;">
-        <p style="font-size:1.1rem; color:#666;">Checking access...</p>
+      <!-- Loading indicator — overlays content briefly while auth resolves -->
+      <div id="authLoading" style="text-align:center; padding:40px 20px; background:#F8FAFC; border-radius:12px; margin:20px 0;">
+        <p style="font-size:1rem; color:#666;">Loading your question bank…</p>
       </div>
 
-      <!-- ===== START SCREEN ===== -->
-      <div id="startScreen" class="qbank-start" style="display:none;">
+      <!-- ===== START SCREEN ===== Visible by default so the page ALWAYS renders -->
+      <div id="startScreen" class="qbank-start">
         <div class="qbank-start-header">
           <h1>Entrance Exam <span>Question Bank</span></h1>
           <p>Practice for the Charles University Medical Faculty entrance exam with original questions and detailed explanations.</p>
@@ -313,65 +313,204 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260422c"></script>
-  <script src="qbank.js?v=20260422c"></script>
+  <script src="auth.js?v=20260422d"></script>
+  <script src="qbank.js?v=20260422d"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
 
-    // Defensive: clear any stale blur class that might have been left over
-    // from a previous session's content-protection code path.
-    document.body.classList.remove('content-protected-blur');
+    // Defensive: clear any stale blur class that might linger from an older
+    // cached version of the content-protection code.
+    try { document.body.classList.remove('content-protected-blur'); } catch(_) {}
 
-    // Show the section container (still hidden content until auth resolves)
-    document.getElementById('qbankSection').style.display = '';
+    // ========================================================================
+    // QBank entry flow (rewritten to be crash-proof)
+    //
+    // Philosophy: the page is visible by default. Auth + data loading happens
+    // in the background and ENHANCES the page. Even if Firebase or Firestore
+    // completely fail, the start screen still renders.
+    //
+    // Steps:
+    //   1. Immediately start fetching questions.json + questions-physics.json
+    //      (these are static files, no auth needed).
+    //   2. In parallel, resolve auth. If user is logged in, load their
+    //      progress + test history. If not, redirect to signup.
+    //   3. When both questions and auth resolve, update counts + filter by
+    //      access level (paid sees full; free sees tagged questions).
+    //   4. Hide the loading indicator; the start screen is already rendered.
+    // ========================================================================
 
-    // Require login to access QBank
-    auth.onAuthStateChanged(async (user) => {
-      if (!user) {
-        window.location.href = 'signup.html?redirect=qbank';
-        return;
-      }
-
+    (async function qbankBoot() {
       const authLoadingEl = document.getElementById('authLoading');
+      const hideLoader = () => { if (authLoadingEl) authLoadingEl.style.display = 'none'; };
 
-      try {
+      // ---- Step 1: Start fetching questions immediately (static, no auth) ----
+      const questionsPromise = fetch('questions.json').then(r => r.json()).catch(err => {
+        console.error('questions.json fetch failed:', err);
+        return null;
+      });
+      const physicsPromise = fetch('questions-physics.json').then(r => r.json()).catch(() => null);
+
+      // ---- Step 2: Resolve auth (wait up to 4s) ----
+      const authUser = await new Promise((resolve) => {
+        let settled = false;
+        const timer = setTimeout(() => { if (!settled) { settled = true; resolve(null); } }, 4000);
+        try {
+          auth.onAuthStateChanged((u) => {
+            if (!settled) { settled = true; clearTimeout(timer); resolve(u || null); }
+          });
+        } catch (e) {
+          if (!settled) { settled = true; clearTimeout(timer); resolve(null); }
+        }
+      });
+
+      if (!authUser) {
+        // No auth resolved in 4s — either user isn't logged in or Firebase is unreachable.
+        // Redirect to signup only if we know there's no user; otherwise just degrade gracefully.
+        if (auth && auth.currentUser === null) {
+          window.location.href = 'signup.html?redirect=qbank';
+          return;
+        }
+        // Fall through — try to render page anyway as "free tier"
+        window.qbankAccessLevel = 'free';
+      } else {
+        // We have a user — determine paid/admin and load progress
         const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
-        const isAdmin = ADMIN_EMAILS.includes(user.email);
+        const isAdmin = ADMIN_EMAILS.includes(authUser.email);
         let profile = null;
         try {
           const db = firebase.firestore();
-          const profileDoc = await db.collection('users').doc(user.uid).get();
+          const profileDoc = await Promise.race([
+            db.collection('users').doc(authUser.uid).get(),
+            new Promise((_, rej) => setTimeout(() => rej(new Error('profile timeout')), 3000))
+          ]);
           profile = profileDoc.exists ? profileDoc.data() : null;
-        } catch (profileErr) {
-          console.error('Failed to load profile (continuing anyway):', profileErr);
+        } catch (e) {
+          console.warn('Profile load failed or timed out — continuing anyway:', e.message || e);
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
+        currentUserId = authUser.uid;
+        // Best-effort — capped timeouts so we never hang
+        try {
+          await Promise.race([
+            loadProgress(),
+            new Promise((_, rej) => setTimeout(() => rej(new Error('progress timeout')), 3000))
+          ]);
+        } catch (e) { console.warn('loadProgress skipped:', e.message || e); }
+        try {
+          await Promise.race([
+            loadTestHistory(),
+            new Promise((_, rej) => setTimeout(() => rej(new Error('history timeout')), 3000))
+          ]);
+        } catch (e) { console.warn('loadTestHistory skipped:', e.message || e); }
+      }
 
-        currentUserId = user.uid;
-        try { await loadProgress(); } catch (e) { console.error('loadProgress failed:', e); }
-        try { await loadTestHistory(); } catch (e) { console.error('loadTestHistory failed:', e); }
+      // ---- Step 3: merge questions once they arrive ----
+      const [data, physicsData] = await Promise.all([questionsPromise, physicsPromise]);
+      if (!data) {
+        hideLoader();
+        const startScreen = document.getElementById('startScreen');
+        if (startScreen) {
+          startScreen.insertAdjacentHTML('afterbegin',
+            '<div style="background:#FEE2E2;border:1px solid #F87171;color:#991B1B;padding:16px;border-radius:8px;margin-bottom:20px;">'
+            + '<strong>Couldn\'t load the question bank.</strong><br>'
+            + 'Please check your connection and <a href="#" onclick="location.reload();return false;" style="color:#991B1B;text-decoration:underline;">refresh</a>.</div>'
+          );
+        }
+        return;
+      }
 
-        if (authLoadingEl) authLoadingEl.style.display = 'none';
-        loadQuestionsWithAccess();
-      } catch (err) {
-        console.error('QBank auth flow error:', err);
-        if (authLoadingEl) {
-          authLoadingEl.innerHTML = '<p style="font-size:1.1rem;color:#C8986B;margin-bottom:16px;">Something went wrong loading the QBank.</p>'
-            + '<p style="color:#666;margin-bottom:20px;">Please refresh the page. If this keeps happening, contact support.</p>'
-            + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;">Refresh</button>';
+      // Apply free-tier filter if non-paid
+      if (window.qbankAccessLevel !== 'full') {
+        if (data.biology) data.biology = data.biology.filter(q => q.free === true);
+        if (data.chemistry) data.chemistry = data.chemistry.filter(q => q.free === true);
+      }
+      allQuestions = data;
+
+      const bioCount = data.biology?.length || 0;
+      const chemCount = data.chemistry?.length || 0;
+      const bioEl = document.getElementById('countBiology');
+      const chemEl = document.getElementById('countChemistry');
+      if (bioEl) bioEl.textContent = bioCount + ' questions';
+      if (chemEl) chemEl.textContent = chemCount + ' questions';
+
+      // Show free-tier messaging if not paid
+      if (window.qbankAccessLevel !== 'full') {
+        const freeMsg = document.createElement('div');
+        freeMsg.style.cssText = 'background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1px solid #F59E0B;border-radius:12px;padding:16px 20px;margin:0 0 20px;text-align:center;';
+        freeMsg.innerHTML = '<p style="margin:0;color:#92400E;font-size:0.95rem;"><strong>Free Preview:</strong> ' + (bioCount + chemCount) + ' questions available. <a href="dashboard.html?view=store" style="color:#C8986B;font-weight:600;text-decoration:underline;">Upgrade to Full Access</a> for 1,000+ questions.</p>';
+        const startScreen = document.getElementById('startScreen');
+        if (startScreen) startScreen.insertBefore(freeMsg, startScreen.firstChild);
+      }
+
+      // Hide 0-question subject cards
+      document.querySelectorAll('.subject-card').forEach(card => {
+        const checkbox = card.querySelector('input[name="subject"]');
+        if (!checkbox) return;
+        const subject = checkbox.value;
+        if (!data[subject] || data[subject].length === 0) {
+          card.style.display = 'none';
+          checkbox.checked = false;
+        }
+      });
+
+      // Physics bonus — only for paid users, non-blocking
+      if (window.qbankAccessLevel === 'full' && physicsData) {
+        const physArr = Array.isArray(physicsData) ? physicsData : (physicsData.physics || []);
+        if (physArr.length > 0) {
+          window._physicsQuestions = physArr;
+          const section = document.getElementById('physicsBonusSection');
+          const countEl = document.getElementById('countPhysics');
+          if (countEl) countEl.textContent = physArr.length + ' questions';
+          if (section) section.style.display = '';
         }
       }
-    });
 
-    // Safety net: if auth takes longer than 10 seconds, show a helpful message
+      try { updateProgressDisplay(); } catch(_) {}
+      try { renderTestHistoryList(); } catch(_) {}
+
+      // Check URL parameters for review or resume
+      const urlParams = new URLSearchParams(window.location.search);
+      const reviewIdx = urlParams.get('review');
+      const resumeFlag = urlParams.get('resume');
+
+      if (reviewIdx !== null) {
+        const idx = parseInt(reviewIdx);
+        if (testHistory[idx] && testHistory[idx].questionIds) {
+          const backResBtn = document.getElementById('backToResultsBtn');
+          const backDashBtn = document.getElementById('backToDashboardBtn');
+          if (backResBtn) backResBtn.style.display = 'none';
+          if (backDashBtn) backDashBtn.style.display = '';
+          hideLoader();
+          loadHistoricalReview(testHistory[idx]);
+          history.replaceState(null, '', 'qbank.html');
+          return;
+        } else {
+          alert('This test was taken before review data was saved, so it cannot be reviewed.');
+        }
+      }
+
+      if (resumeFlag === 'true') {
+        const saved = await getInProgressTest();
+        if (saved && saved.questionIds) {
+          hideLoader();
+          resumeInProgressTest(saved);
+          history.replaceState(null, '', 'qbank.html');
+          return;
+        }
+      }
+
+      hideLoader();
+    })();
+
+    // Safety net: if still loading after 10 seconds, show a refresh button
     setTimeout(() => {
       const loader = document.getElementById('authLoading');
       if (loader && loader.style.display !== 'none' && !loader.dataset.timeoutShown) {
         loader.dataset.timeoutShown = '1';
-        loader.innerHTML += '<p style="color:#999;font-size:0.9rem;margin-top:16px;">Taking longer than expected. '
-          + '<a href="#" onclick="location.reload();return false;" style="color:#C8986B;">Refresh</a> if this persists.</p>';
+        loader.innerHTML = '<p style="font-size:1rem;color:#1B2A4A;margin-bottom:12px;">Still loading…</p>'
+          + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Refresh</button>';
       }
     }, 10000);
 
