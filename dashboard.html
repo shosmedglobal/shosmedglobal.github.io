@@ -497,6 +497,7 @@
             <button class="resource-tab" data-tab="timeline">Deadlines & Timeline</button>
             <button class="resource-tab" data-tab="costs">Costs & Living</button>
             <button class="resource-tab" data-tab="lf3spotlight">LF3 Spotlight</button>
+            <button class="resource-tab" data-tab="admitted">After Admission</button>
           </div>
 
           <!-- Student/Residency Resource Tabs -->
@@ -827,6 +828,92 @@
                   <a href="#" onclick="switchView('store'); return false;" class="btn btn-secondary">View Plans</a>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- TAB: After You're Admitted -->
+          <div class="resource-panel" id="tabAdmitted">
+            <div class="dash-card" style="margin-bottom: 20px;">
+              <h3 style="margin-bottom: 12px; color: var(--navy);">After You're Admitted</h3>
+              <p style="color: var(--gray-500); margin-bottom: 24px; font-size: 0.9rem;">Once you receive your LF3 acceptance letter, here is what to expect: tuition logistics, visa planning, required documents, and your first days in Prague.</p>
+
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128181;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Tuition</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">420,000 CZK / year (approximately $18,500 USD). Bank transfer only. Installment plans available.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#127891;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Program</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">6-year General Medicine, MUDr. degree (equivalent to MD). English-taught since 1991. US-accredited.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128483;&#65039;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Language</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Czech proficiency required by end of year 2 for clinical rotations. Basic Czech language coursework included.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#127973;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Health Insurance</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">EU students: EHIC plus Czech health fund (VZP or ZPMV). Non-EU: private insurance or VZP.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128737;&#65039;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Visa</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Start early (by June). Charles University provides the admission letter for your visa application. Process takes 6 to 10 weeks.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128196;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Documents</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Verified high school certificate (with apostille), full transcript, and passport copy.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#9989;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Nostrification</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">High school certificate recognition through Charles University (CZK 990) or directly through the Czech Ministry.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128137;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Vaccinations</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Hepatitis B and measles documentation required before clinical rotations begin.</p>
+                </div>
+
+                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="font-size:1.4rem;" aria-hidden="true">&#128197;</span>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Enrollment</strong>
+                  </div>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Enrollment takes place in September. Final deadline is October 20.</p>
+                </div>
+
+              </div>
+
+              <p style="margin:24px 0 0; text-align:center; font-size:0.85rem; color:var(--gray-500);">Questions about any of these? <a href="mailto:contact@shosmed.com?subject=Question%20about%20admitted-student%20logistics" style="color:var(--accent); font-weight:600;">Email us</a> and we will walk you through it.</p>
             </div>
           </div>
 
