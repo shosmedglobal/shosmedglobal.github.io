@@ -322,16 +322,6 @@
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
 
-    // Utility: race a promise against a hard timeout so nothing can hang forever.
-    // If the promise doesn't settle within `ms` milliseconds, it rejects with a
-    // timeout error and the caller's try/catch handles it.
-    function withTimeout(promise, ms, label) {
-      return Promise.race([
-        promise,
-        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout:' + label)), ms))
-      ]);
-    }
-
     // Require login to access QBank
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
@@ -340,25 +330,8 @@
         return;
       }
 
+      // Always hide the loading screen, even if profile/progress loading fails
       const authLoadingEl = document.getElementById('authLoading');
-
-      // Hard failsafe: no matter what happens below (hung Firestore call,
-      // lost network, offline cache deadlock), force-unblock the UI after 6s
-      // so the user is never trapped staring at "Checking access...".
-      const failsafe = setTimeout(() => {
-        console.warn('[qbank] failsafe: forcing UI unblock after 6s');
-        if (authLoadingEl && authLoadingEl.style.display !== 'none') {
-          authLoadingEl.style.display = 'none';
-        }
-        // Ensure access level is set so the filter code has a value
-        if (typeof window.qbankAccessLevel === 'undefined') {
-          window.qbankAccessLevel = 'free';
-        }
-        // Load questions if we haven't already
-        if (typeof allQuestions === 'object' && Object.keys(allQuestions).length === 0) {
-          try { loadQuestionsWithAccess(); } catch (e) { console.error('failsafe loadQ error', e); }
-        }
-      }, 6000);
 
       try {
         // Check payment status (best-effort - don't block on failure)
@@ -367,39 +340,29 @@
         let profile = null;
         try {
           const db = firebase.firestore();
-          // Hard 4s cap on the profile fetch so we never hang here
-          const profileDoc = await withTimeout(
-            db.collection('users').doc(user.uid).get(),
-            4000,
-            'profile'
-          );
+          const profileDoc = await db.collection('users').doc(user.uid).get();
           profile = profileDoc.exists ? profileDoc.data() : null;
         } catch (profileErr) {
-          console.warn('Profile fetch failed or timed out — continuing:', profileErr?.message || profileErr);
+          console.error('Failed to load profile (continuing anyway):', profileErr);
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
 
-        // Store access level globally (always set, even on profile failure)
+        // Store access level globally
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
 
-        // Load user progress and test history from Firestore (best-effort, capped)
+        // Load user progress and test history from Firestore (best-effort)
         currentUserId = user.uid;
-        try { await withTimeout(loadProgress(), 3000, 'progress'); }
-        catch (e) { console.warn('loadProgress timed out or failed:', e?.message || e); }
-        try { await withTimeout(loadTestHistory(), 3000, 'history'); }
-        catch (e) { console.warn('loadTestHistory timed out or failed:', e?.message || e); }
+        try { await loadProgress(); } catch (e) { console.error('loadProgress failed:', e); }
+        try { await loadTestHistory(); } catch (e) { console.error('loadTestHistory failed:', e); }
 
-        // Clear failsafe — we've completed normally
-        clearTimeout(failsafe);
-
-        // Hide loading screen
+        // Hide loading screen before attempting to load questions
         if (authLoadingEl) authLoadingEl.style.display = 'none';
 
-        // Load questions with access filtering
+        // Now load questions with access filtering
         loadQuestionsWithAccess();
       } catch (err) {
-        clearTimeout(failsafe);
         console.error('QBank auth flow error:', err);
+        // Hide loading, show an error message so the user isn't stuck
         if (authLoadingEl) {
           authLoadingEl.innerHTML = '<p style="font-size:1.1rem;color:#C8986B;margin-bottom:16px;">Something went wrong loading the QBank.</p>'
             + '<p style="color:#666;margin-bottom:20px;">Please refresh the page. If this keeps happening, contact support.</p>'
@@ -408,17 +371,15 @@
       }
     });
 
-    // Secondary safety net: if the auth handler itself never fires at all
-    // (e.g., Firebase SDK blocked), surface a visible recovery option after 8s.
+    // Safety net: if auth takes longer than 10 seconds, show a helpful message
     setTimeout(() => {
       const loader = document.getElementById('authLoading');
       if (loader && loader.style.display !== 'none' && !loader.dataset.timeoutShown) {
         loader.dataset.timeoutShown = '1';
-        loader.innerHTML = '<p style="font-size:1.05rem;color:#1B2A4A;margin-bottom:12px;">Still loading…</p>'
-          + '<p style="color:#666;margin-bottom:16px;">If this screen persists, click below to refresh.</p>'
-          + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Refresh</button>';
+        loader.innerHTML += '<p style="color:#999;font-size:0.9rem;margin-top:16px;">Taking longer than expected. '
+          + '<a href="#" onclick="location.reload();return false;" style="color:#C8986B;">Refresh</a> if this persists.</p>';
       }
-    }, 8000);
+    }, 10000);
 
     // ===== Content Protection =====
     (function() {
