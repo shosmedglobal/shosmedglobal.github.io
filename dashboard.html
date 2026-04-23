@@ -456,7 +456,7 @@
               <h1>Question Bank</h1>
               <p class="dashboard-sub" id="qbankAccessDesc">Practice for the Charles University entrance exam.</p>
             </div>
-            <a href="qbank.html" class="btn btn-primary">Start Practice</a>
+            <a href="qbank.html?v=20260422b" class="btn btn-primary">Start Practice</a>
           </div>
 
           <!-- QBank upgrade prompt removed - full access for all registered users -->
@@ -3505,7 +3505,7 @@
           <td class="dash-hist-subjects">${ipSubjects}</td>
           <td class="dash-hist-date">${ipDate}</td>
           <td class="dash-hist-actions">
-            <a href="qbank.html?resume=true" class="dash-action-btn dash-resume-btn">Resume →</a>
+            <a href="qbank.html?resume=true&v=20260422b" class="dash-action-btn dash-resume-btn">Resume →</a>
           </td>
         </tr>`;
       }
@@ -3602,7 +3602,7 @@
             alert('Review is not available for this test. Tests taken from now on will support review.');
             return;
           }
-          window.location.href = 'qbank.html?review=' + idx;
+          window.location.href = 'qbank.html?review=' + idx + '&v=20260422b';
         });
       });
     }
