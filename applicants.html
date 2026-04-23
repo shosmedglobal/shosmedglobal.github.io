@@ -225,142 +225,175 @@
   </section>
 
 
-  <!-- Your Application - Step by Step
-       Collapsible accordion: each step shows only the numbered header until
-       clicked. Keeps the section compact (6 lines of scanning rather than
-       a long vertical scroll). Uses native <details>/<summary> so it works
-       without JS. "After You're Admitted" reference content moved into the
-       logged-in dashboard as a free resource for applicants. -->
+  <!-- Your Application - Horizontal stepper journey
+       Replaces the tall vertical accordion with a compact horizontal
+       stepper: 6 numbered circles connected by a progression line,
+       plus a single content panel below that swaps with the active
+       step. Pure CSS (radio-based state), no JS. Fits above the fold
+       on most desktops and communicates a "journey" visually through
+       the left-to-right connector. -->
   <section class="section section-alt" id="how-to-apply">
     <style>
-      #how-to-apply .apply-step { border-bottom: 1px solid rgba(0,0,0,0.06); }
-      #how-to-apply .apply-step:last-of-type { border-bottom: none; }
-      #how-to-apply .apply-step > summary { display: flex; align-items: center; gap: 20px; padding: 22px 0; cursor: pointer; list-style: none; outline: none; }
-      #how-to-apply .apply-step > summary::-webkit-details-marker { display: none; }
-      #how-to-apply .apply-step > summary::marker { content: ''; }
-      #how-to-apply .apply-step .apply-chevron { flex-shrink: 0; color: #9CA3AF; transition: transform 0.2s ease, color 0.2s ease; margin-left: auto; }
-      #how-to-apply .apply-step[open] > summary .apply-chevron { transform: rotate(180deg); color: #0d9488; }
-      #how-to-apply .apply-step > summary:hover .apply-title { color: #0d9488; }
-      #how-to-apply .apply-step > summary:hover .apply-chevron { color: #0d9488; }
-      #how-to-apply .apply-step > .apply-body { padding: 0 0 24px 68px; }
-      #how-to-apply .apply-number { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: #0d9488; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem; box-shadow: 0 2px 6px rgba(13,148,136,0.25); }
-      #how-to-apply .apply-label { font-size: 0.72rem; color: #9CA3AF; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 4px; }
-      #how-to-apply .apply-title { margin: 0; font-size: 1.15rem; color: #1B2A4A; font-weight: 700; line-height: 1.3; transition: color 0.2s ease; }
-      #how-to-apply .apply-body p { margin: 0; font-size: 0.95rem; color: #4B5563; line-height: 1.65; }
-      #how-to-apply .apply-body-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
-      #how-to-apply .apply-action-primary { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #0d9488; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
-      #how-to-apply .apply-action-primary:hover { background: #0f766e; }
-      #how-to-apply .apply-action-link { display: inline-flex; align-items: center; gap: 7px; color: #0d9488; text-decoration: none; font-size: 0.88rem; font-weight: 600; }
-      #how-to-apply .apply-action-link:hover { text-decoration: underline; }
+      /* Hidden radios (the state machine) */
+      #how-to-apply .as-radio { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; overflow: hidden; }
+
+      /* Stepper bar (horizontal) */
+      #how-to-apply .stepper-bar { display: grid; grid-template-columns: repeat(6, 1fr); max-width: 780px; margin: 12px auto 44px; position: relative; }
+      #how-to-apply .stepper-bar::before { content: ''; position: absolute; top: 23px; left: 8.33%; right: 8.33%; height: 2px; background: #D1D5DB; z-index: 0; }
+      #how-to-apply .step-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; z-index: 1; transition: transform 0.2s ease; }
+      #how-to-apply .step-item:hover { transform: translateY(-2px); }
+      #how-to-apply .step-dot { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 2px solid #D1D5DB; color: #9CA3AF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem; transition: all 0.25s ease; }
+      #how-to-apply .step-label { font-size: 0.7rem; color: #9CA3AF; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 10px; transition: color 0.2s ease; white-space: nowrap; }
+      #how-to-apply .step-item:hover .step-dot { border-color: #0d9488; color: #0d9488; }
+      #how-to-apply .step-item:hover .step-label { color: #0d9488; }
+
+      /* Active-step styling driven by :checked sibling */
+      #how-to-apply #as-step1:checked ~ .stepper-bar label[for="as-step1"] .step-dot,
+      #how-to-apply #as-step2:checked ~ .stepper-bar label[for="as-step2"] .step-dot,
+      #how-to-apply #as-step3:checked ~ .stepper-bar label[for="as-step3"] .step-dot,
+      #how-to-apply #as-step4:checked ~ .stepper-bar label[for="as-step4"] .step-dot,
+      #how-to-apply #as-step5:checked ~ .stepper-bar label[for="as-step5"] .step-dot,
+      #how-to-apply #as-step6:checked ~ .stepper-bar label[for="as-step6"] .step-dot { background: #0d9488; border-color: #0d9488; color: #fff; box-shadow: 0 4px 14px rgba(13,148,136,0.38); transform: scale(1.12); }
+      #how-to-apply #as-step1:checked ~ .stepper-bar label[for="as-step1"] .step-label,
+      #how-to-apply #as-step2:checked ~ .stepper-bar label[for="as-step2"] .step-label,
+      #how-to-apply #as-step3:checked ~ .stepper-bar label[for="as-step3"] .step-label,
+      #how-to-apply #as-step4:checked ~ .stepper-bar label[for="as-step4"] .step-label,
+      #how-to-apply #as-step5:checked ~ .stepper-bar label[for="as-step5"] .step-label,
+      #how-to-apply #as-step6:checked ~ .stepper-bar label[for="as-step6"] .step-label { color: #0d9488; font-weight: 700; }
+
+      /* Content panels (single swap target) */
+      #how-to-apply .step-content { max-width: 720px; margin: 0 auto; }
+      #how-to-apply .step-panel { display: none; background: #fff; border: 1px solid #E5E7EB; border-radius: 16px; padding: 36px; box-shadow: 0 2px 20px rgba(0,0,0,0.04); }
+      #how-to-apply #as-step1:checked ~ .step-content .step-panel[data-step="1"],
+      #how-to-apply #as-step2:checked ~ .step-content .step-panel[data-step="2"],
+      #how-to-apply #as-step3:checked ~ .step-content .step-panel[data-step="3"],
+      #how-to-apply #as-step4:checked ~ .step-content .step-panel[data-step="4"],
+      #how-to-apply #as-step5:checked ~ .step-content .step-panel[data-step="5"],
+      #how-to-apply #as-step6:checked ~ .step-content .step-panel[data-step="6"] { display: block; animation: stepFadeIn 0.28s ease; }
+      @keyframes stepFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+      #how-to-apply .panel-eyebrow { font-size: 0.72rem; color: #0d9488; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 8px; }
+      #how-to-apply .panel-title { margin: 0 0 16px; font-size: 1.5rem; color: #1B2A4A; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+      #how-to-apply .panel-body { font-size: 0.95rem; color: #4B5563; line-height: 1.65; margin: 0; }
+      #how-to-apply .panel-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 20px; }
+      #how-to-apply .action-primary { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; background: #0d9488; color: #fff; border-radius: 24px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: background 0.2s; }
+      #how-to-apply .action-primary:hover { background: #0f766e; }
+      #how-to-apply .action-link { display: inline-flex; align-items: center; gap: 7px; color: #0d9488; text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 10px 0; }
+      #how-to-apply .action-link:hover { text-decoration: underline; }
+
+      /* Focus visible for keyboard users */
+      #how-to-apply .as-radio:focus-visible + .stepper-bar label .step-dot,
+      #how-to-apply .as-radio:focus ~ .stepper-bar label .step-dot { outline: none; }
+      #how-to-apply .step-item:focus-within .step-dot { box-shadow: 0 0 0 3px rgba(13,148,136,0.25); }
+
+      /* Mobile */
+      @media (max-width: 640px) {
+        #how-to-apply .stepper-bar { margin-bottom: 32px; }
+        #how-to-apply .stepper-bar::before { top: 17px; left: 8.33%; right: 8.33%; }
+        #how-to-apply .step-dot { width: 36px; height: 36px; font-size: 0.85rem; border-width: 1.5px; }
+        #how-to-apply .step-label { font-size: 0.56rem; margin-top: 8px; letter-spacing: 0.05em; }
+        #how-to-apply #as-step1:checked ~ .stepper-bar label[for="as-step1"] .step-dot,
+        #how-to-apply #as-step2:checked ~ .stepper-bar label[for="as-step2"] .step-dot,
+        #how-to-apply #as-step3:checked ~ .stepper-bar label[for="as-step3"] .step-dot,
+        #how-to-apply #as-step4:checked ~ .stepper-bar label[for="as-step4"] .step-dot,
+        #how-to-apply #as-step5:checked ~ .stepper-bar label[for="as-step5"] .step-dot,
+        #how-to-apply #as-step6:checked ~ .stepper-bar label[for="as-step6"] .step-dot { transform: scale(1.1); }
+        #how-to-apply .step-panel { padding: 24px 20px; border-radius: 14px; }
+        #how-to-apply .panel-title { font-size: 1.2rem; }
+      }
     </style>
+
     <div class="container">
+      <!-- Radio state machine (hidden, keyboard-accessible) -->
+      <input type="radio" name="apply-step" id="as-step1" class="as-radio" checked>
+      <input type="radio" name="apply-step" id="as-step2" class="as-radio">
+      <input type="radio" name="apply-step" id="as-step3" class="as-radio">
+      <input type="radio" name="apply-step" id="as-step4" class="as-radio">
+      <input type="radio" name="apply-step" id="as-step5" class="as-radio">
+      <input type="radio" name="apply-step" id="as-step6" class="as-radio">
+
       <div class="section-header">
         <span class="section-tag">Your Application</span>
         <h2>How to Apply and Prepare</h2>
-        <p class="section-sub">From your first study session to your first day in Prague. Click any step to open it.</p>
+        <p class="section-sub">Six steps from your first study session to your first day in Prague. Click any step.</p>
       </div>
 
-      <div style="max-width:820px; margin:0 auto;">
+      <!-- Stepper bar -->
+      <div class="stepper-bar">
+        <label for="as-step1" class="step-item" tabindex="0">
+          <div class="step-dot">1</div>
+          <div class="step-label">Study</div>
+        </label>
+        <label for="as-step2" class="step-item" tabindex="0">
+          <div class="step-dot">2</div>
+          <div class="step-label">Practice</div>
+        </label>
+        <label for="as-step3" class="step-item" tabindex="0">
+          <div class="step-dot">3</div>
+          <div class="step-label">Apply</div>
+        </label>
+        <label for="as-step4" class="step-item" tabindex="0">
+          <div class="step-dot">4</div>
+          <div class="step-label">Exam</div>
+        </label>
+        <label for="as-step5" class="step-item" tabindex="0">
+          <div class="step-dot">5</div>
+          <div class="step-label">Documents</div>
+        </label>
+        <label for="as-step6" class="step-item" tabindex="0">
+          <div class="step-dot">6</div>
+          <div class="step-label">Enroll</div>
+        </label>
+      </div>
 
-        <!-- STEP 1: Study -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">1</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 1 &middot; Study</div>
-              <h3 class="apply-title">Review the study material</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p>Start with the <strong>SHOS Med Review Guide</strong>, built around the exact Biology and Chemistry topics LF3 tests. One focused source. Nothing wasted.</p>
-          </div>
-        </details>
+      <!-- Content panels (one visible at a time) -->
+      <div class="step-content">
 
-        <!-- STEP 2: Practice -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">2</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 2 &middot; Practice</div>
-              <h3 class="apply-title">Practice with <span style="color:#1E40AF;">SHOS</span><span style="color:#CF5B2E;">Med</span> QBank</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p>Exam-style MCQs written by LF3 alumni. <strong>40 free the moment you sign up</strong> (20 Biology + 20 Chemistry) so you can see the format before committing. Full access unlocks 1,100+ questions covering the full LF3 exam scope.</p>
-            <div class="apply-body-actions">
-              <a href="qbank.html?v=20260423a" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();" class="apply-action-primary">Try 40 Free Questions <span style="font-size:0.9em;">&rarr;</span></a>
-              <a href="#pricing" class="apply-action-link">See Pricing &amp; Full Access &rarr;</a>
-            </div>
-          </div>
-        </details>
+        <div class="step-panel" data-step="1">
+          <div class="panel-eyebrow">Step 1 &middot; Study</div>
+          <h3 class="panel-title">Review the study material</h3>
+          <p class="panel-body">Start with the <strong>SHOS Med Review Guide</strong>, built around the exact Biology and Chemistry topics LF3 tests. One focused source. Nothing wasted.</p>
+        </div>
 
-        <!-- STEP 3: Apply -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">3</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 3 &middot; Apply</div>
-              <h3 class="apply-title">Submit your application with us</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p>As the <strong>Official US Representative</strong> of Charles University LF3, SHOS Med submits your application on your behalf. Email us to begin. We handle timing, document checks, and coordination with the university directly.</p>
-            <div class="apply-body-actions">
-              <a href="mailto:contact@shosmed.com?subject=I%20would%20like%20to%20submit%20my%20LF3%20application" class="apply-action-primary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Start My LF3 Application
-              </a>
-            </div>
+        <div class="step-panel" data-step="2">
+          <div class="panel-eyebrow">Step 2 &middot; Practice</div>
+          <h3 class="panel-title">Practice with <span style="color:#1E40AF;">SHOS</span><span style="color:#CF5B2E;">Med</span> QBank</h3>
+          <p class="panel-body">Exam-style MCQs written by LF3 alumni. <strong>40 free the moment you sign up</strong> (20 Biology + 20 Chemistry) so you can see the format before committing. Full access unlocks 1,100+ questions covering the full LF3 exam scope.</p>
+          <div class="panel-actions">
+            <a href="qbank.html?v=20260423a" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();" class="action-primary">Try 40 Free Questions &rarr;</a>
+            <a href="#pricing" class="action-link">See Pricing &amp; Full Access &rarr;</a>
           </div>
-        </details>
+        </div>
 
-        <!-- STEP 4: Exam -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">4</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 4 &middot; Exam</div>
-              <h3 class="apply-title">Take the entrance exam</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p><strong>60 MCQs</strong> (30 Biology + 30 Chemistry), 2 hours, online from your own computer with webcam. No negative marking. A short <strong>10-minute oral interview</strong> follows, worth up to 2 points.</p>
+        <div class="step-panel" data-step="3">
+          <div class="panel-eyebrow">Step 3 &middot; Apply</div>
+          <h3 class="panel-title">Submit your application with us</h3>
+          <p class="panel-body">As the <strong>Official US Representative</strong> of Charles University LF3, SHOS Med submits your application on your behalf. Email us to begin. We handle timing, document checks, and coordination with the university directly.</p>
+          <div class="panel-actions">
+            <a href="mailto:contact@shosmed.com?subject=I%20would%20like%20to%20submit%20my%20LF3%20application" class="action-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Start My LF3 Application
+            </a>
           </div>
-        </details>
+        </div>
 
-        <!-- STEP 5: Documents -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">5</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 5 &middot; Documents</div>
-              <h3 class="apply-title">Send in your documents</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p>Verified high school certificate, transcript, and passport copy. We clarify exactly what is needed and when.</p>
-          </div>
-        </details>
+        <div class="step-panel" data-step="4">
+          <div class="panel-eyebrow">Step 4 &middot; Exam</div>
+          <h3 class="panel-title">Take the entrance exam</h3>
+          <p class="panel-body"><strong>60 MCQs</strong> (30 Biology + 30 Chemistry), 2 hours, online from your own computer with webcam. No negative marking. A short <strong>10-minute oral interview</strong> follows, worth up to 2 points.</p>
+        </div>
 
-        <!-- STEP 6: Enroll -->
-        <details class="apply-step">
-          <summary>
-            <div class="apply-number">6</div>
-            <div style="flex:1; min-width:0;">
-              <div class="apply-label">Step 6 &middot; Enroll</div>
-              <h3 class="apply-title">Enroll and move to Prague</h3>
-            </div>
-            <svg class="apply-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="apply-body">
-            <p><strong>Acceptance letter, certificate recognition, visa setup, and enrollment in September.</strong> We guide you through housing, cost-of-living basics, and your first days in Prague. Full admitted-student reference available inside your dashboard after sign-up.</p>
-          </div>
-        </details>
+        <div class="step-panel" data-step="5">
+          <div class="panel-eyebrow">Step 5 &middot; Documents</div>
+          <h3 class="panel-title">Send in your documents</h3>
+          <p class="panel-body">Verified high school certificate, transcript, and passport copy. We clarify exactly what is needed and when.</p>
+        </div>
+
+        <div class="step-panel" data-step="6">
+          <div class="panel-eyebrow">Step 6 &middot; Enroll</div>
+          <h3 class="panel-title">Enroll and move to Prague</h3>
+          <p class="panel-body"><strong>Acceptance letter, certificate recognition, visa setup, and enrollment in September.</strong> We guide you through housing, cost-of-living basics, and your first days in Prague. Full admitted-student reference available inside your dashboard after sign-up.</p>
+        </div>
 
       </div>
     </div>
