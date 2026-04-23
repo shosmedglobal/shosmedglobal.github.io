@@ -175,7 +175,7 @@
   <script>
     // Get redirect destination (default: dashboard)
     const urlParams = new URLSearchParams(window.location.search);
-    const redirectTo = urlParams.get('redirect') === 'qbank' ? 'qbank.html' : 'dashboard.html';
+    const redirectTo = urlParams.get('redirect') === 'qbank' ? ('qbank.html?v=20260422f&t=' + Date.now()) : 'dashboard.html';
 
     // Redirect if already logged in
     auth.onAuthStateChanged((user) => {
