@@ -1272,10 +1272,9 @@ function showResults() {
   breakdownEl.innerHTML = '';
   Object.entries(breakdown).forEach(([subj, data]) => {
     const subjPct = Math.round((data.correct / data.total) * 100);
-    const subjLabel = subj.charAt(0).toUpperCase() + subj.slice(1);
     breakdownEl.innerHTML += `
       <div class="breakdown-row">
-        <span class="breakdown-subject">${subjLabel}</span>
+        <span class="breakdown-subject">${subj}</span>
         <div class="breakdown-bar">
           <div class="breakdown-bar-fill" style="width: ${subjPct}%"></div>
         </div>
@@ -1309,12 +1308,11 @@ function showReview() {
 
     const statusClass = isUnanswered ? 'wrong' : (isCorrect ? 'correct' : 'wrong');
     const unansweredBadge = isUnanswered ? '<span class="review-unanswered-badge">Unanswered</span>' : '';
-    const subjLabel = q.subject ? (q.subject.charAt(0).toUpperCase() + q.subject.slice(1)) : '';
     container.innerHTML += `
       <div class="review-item">
         <div class="review-item-header">
           <span class="review-number ${statusClass}">${i + 1}</span>
-          <span class="review-topic">${subjLabel} · ${q.topic}</span>
+          <span class="review-topic">${q.subject} · ${q.topic}</span>
           ${unansweredBadge}
         </div>
         <div class="review-question">${q.question}</div>
