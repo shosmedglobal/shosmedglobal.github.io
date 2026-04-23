@@ -65,17 +65,24 @@
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <header class="page-hero page-hero-short">
-    <div class="container">
-      <div style="display:block; margin-bottom:12px;">
-        <span style="display:inline-flex; align-items:center; gap:8px; background:rgba(13,148,136,0.18); border:1px solid rgba(94,234,212,0.45); color:#5EEAD4; font-size:0.78rem; font-weight:700; padding:7px 14px; border-radius:20px; letter-spacing:0.06em;">
+  <!-- Page Header with Prague skyline background.
+       PHOTO: expects assets/prague-hero.jpg. The base layer is the photo at
+       ~55% opacity; a navy-to-warm gradient sits on top to (a) guarantee text
+       legibility and (b) unify the image into the site's existing palette.
+       If the photo file is missing, the gradient alone renders cleanly as a
+       fallback (visually close to the original solid hero). -->
+  <header class="page-hero page-hero-short" style="position:relative; overflow:hidden; background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 40%, #3B2218 100%);">
+    <div aria-hidden="true" style="position:absolute; inset:0; background-image:url('assets/prague-hero.jpg'); background-size:cover; background-position:center 38%; opacity:0.55; z-index:0;"></div>
+    <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(27,42,74,0.86) 0%, rgba(27,42,74,0.72) 45%, rgba(59,34,24,0.82) 100%); z-index:1;"></div>
+    <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%); z-index:1;"></div>
+    <div class="container" style="position:relative; z-index:2;">
+      <div style="display:block; margin-bottom:16px;">
+        <span style="display:inline-flex; align-items:center; gap:8px; background:rgba(13,148,136,0.28); border:1px solid rgba(94,234,212,0.55); color:#5EEAD4; font-size:0.78rem; font-weight:700; padding:7px 14px; border-radius:20px; letter-spacing:0.06em; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
           OFFICIAL US REPRESENTATIVE &middot; CHARLES UNIVERSITY LF3
         </span>
       </div>
-      <h1>Charles University, Prague<br><span class="highlight">Third Faculty of Medicine (LF3).</span></h1>
-      <p class="hero-sub">Founded in <strong style="color:#fff;">1348</strong>. Teaching medicine in <strong style="color:#fff;">English since 1991</strong>. Consistently ranked among the <strong style="color:#fff;">top 2% of universities worldwide</strong>.</p>
+      <h1 style="text-shadow:0 2px 24px rgba(0,0,0,0.4);">Charles University, Prague<br><span class="highlight">Third Faculty of Medicine (LF3).</span></h1>
     </div>
   </header>
 
@@ -96,8 +103,8 @@
           <div style="font-size:0.85rem; color:rgba(255,255,255,0.72);">Direct from high school to MD</div>
         </div>
         <div>
-          <div style="font-size:1.75rem; font-weight:800; color:#E8A44C; line-height:1; margin-bottom:6px;">~$18,500<span style="font-size:0.95rem;">/yr</span></div>
-          <div style="font-size:0.85rem; color:rgba(255,255,255,0.72);">Tuition*</div>
+          <div style="font-size:1.75rem; font-weight:800; color:#E8A44C; line-height:1; margin-bottom:6px;">Top 2%</div>
+          <div style="font-size:0.85rem; color:rgba(255,255,255,0.72);">Universities worldwide (QS)</div>
         </div>
       </div>
     </div>
@@ -405,7 +412,7 @@
         <a href="#" data-contact-modal="consultation" class="btn btn-primary" style="margin:0 8px;">Get My Free Acceptance Plan</a>
         <a href="qbank.html?v=20260423a" class="btn btn-outline" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();" style="margin:0 8px; border-color:rgba(255,255,255,0.3); color:#fff;">Try 40 Free Questions</a>
       </div>
-      <p style="text-align:center; margin:24px 0 0; font-size:0.72rem; color:rgba(255,255,255,0.45);">*Tuition and fees set by Charles University and subject to change. Applicants should verify current figures with the university. Rankings reflect the most recent published editions of QS World University Rankings and U.S. News Best Global Universities.</p>
+      <p style="text-align:center; margin:24px 0 0; font-size:0.72rem; color:rgba(255,255,255,0.45);">Tuition and fees are set by Charles University and subject to change. Applicants should verify current figures with the university. Rankings reflect the most recent published editions of QS World University Rankings and U.S. News Best Global Universities.</p>
     </div>
   </section>
 
