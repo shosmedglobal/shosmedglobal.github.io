@@ -456,7 +456,7 @@
               <h1>Question Bank</h1>
               <p class="dashboard-sub" id="qbankAccessDesc">Practice for the Charles University entrance exam.</p>
             </div>
-            <a href="qbank.html?v=20260422g" class="btn btn-primary" id="startPracticeBtn" onclick="this.href='qbank.html?v=20260422g&amp;t='+Date.now();">Start Practice</a>
+            <a href="qbank.html?v=20260423a" class="btn btn-primary" id="startPracticeBtn" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Start Practice</a>
           </div>
 
           <!-- QBank upgrade prompt removed - full access for all registered users -->
@@ -823,7 +823,7 @@
                 <h3 style="color: var(--navy); margin-bottom: 8px;">Ready to Apply to LF3?</h3>
                 <p style="color: var(--gray-500); margin-bottom: 20px;">Start practicing with our entrance exam question bank - built by LF3 alumni who took the same test.</p>
                 <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                  <a href="qbank.html?v=20260422g" class="btn btn-primary" onclick="this.href='qbank.html?v=20260422g&amp;t='+Date.now();">Try Question Bank</a>
+                  <a href="qbank.html?v=20260423a" class="btn btn-primary" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Try Question Bank</a>
                   <a href="#" onclick="switchView('store'); return false;" class="btn btn-secondary">View Plans</a>
                 </div>
               </div>
@@ -3153,7 +3153,7 @@
 
         // Questions left + questions per day (runs even with 0 tests)
         try {
-          const qRes = await fetch('questions.json');
+          const qRes = await fetch('questions.json?v=20260423a');
           const qBank = await qRes.json();
           let totalInBank = 0;
           Object.values(qBank).forEach(arr => { totalInBank += arr.length; });

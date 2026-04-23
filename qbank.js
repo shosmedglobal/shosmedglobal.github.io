@@ -422,7 +422,7 @@ function renderPerformance() {
 // Load questions from JSON
 async function loadQuestions() {
   try {
-    const res = await fetch('questions.json');
+    const res = await fetch('questions.json?v=20260423a');
     allQuestions = await res.json();
     updateProgressDisplay();
   } catch (err) {

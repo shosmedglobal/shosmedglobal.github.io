@@ -33,8 +33,11 @@
         <p style="font-size:1rem; color:#666;">Loading your question bank…</p>
       </div>
 
-      <!-- ===== START SCREEN ===== Visible by default so the page ALWAYS renders -->
-      <div id="startScreen" class="qbank-start">
+      <!-- ===== START SCREEN ===== Hidden until boot resolves to avoid the
+           "0 questions" placeholder flicker. The boot flow waits for
+           questions.json + questions-physics.json + auth ALL to resolve,
+           populates counts, then reveals the screen in a single paint. -->
+      <div id="startScreen" class="qbank-start" style="display:none;">
         <div class="qbank-start-header">
           <h1>Entrance Exam <span>Question Bank</span></h1>
           <p>Practice for the Charles University Medical Faculty entrance exam with original questions and detailed explanations.</p>
@@ -293,7 +296,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260422g"></script>
-  <script src="qbank.js?v=20260422g"></script>
+  <script src="qbank.js?v=20260423a"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -303,35 +306,54 @@
     try { document.body.classList.remove('content-protected-blur'); } catch(_) {}
 
     // ========================================================================
-    // QBank entry flow (rewritten to be crash-proof)
+    // QBank entry flow (atomic-render rewrite)
     //
-    // Philosophy: the page is visible by default. Auth + data loading happens
-    // in the background and ENHANCES the page. Even if Firebase or Firestore
-    // completely fail, the start screen still renders.
+    // Philosophy: the start screen is HIDDEN until ALL data is ready. This
+    // eliminates the "0 questions" placeholder flicker. The loader sits on
+    // its own and is the only visible element until the boot completes.
     //
     // Steps:
-    //   1. Immediately start fetching questions.json + questions-physics.json
-    //      (these are static files, no auth needed).
-    //   2. In parallel, resolve auth. If user is logged in, load their
-    //      progress + test history. If not, redirect to signup.
-    //   3. When both questions and auth resolve, update counts + filter by
-    //      access level (paid sees full; free sees tagged questions).
-    //   4. Hide the loading indicator; the start screen is already rendered.
+    //   1. Start questions.json + questions-physics.json + auth ALL in
+    //      parallel and gate on Promise.all.
+    //   2. If authed, load profile (paid/admin gating) then progress/history
+    //      in parallel.
+    //   3. Populate DOM (counts, banner, physics card, filtered cards) while
+    //      the screen is still hidden. No user-visible intermediate state.
+    //   4. Reveal start screen + hide loader in a single paint.
+    //   5. Review/resume URL params short-circuit: those don't reveal start
+    //      screen; they transition to their own screen after data is ready.
     // ========================================================================
 
     (async function qbankBoot() {
       const authLoadingEl = document.getElementById('authLoading');
-      const hideLoader = () => { if (authLoadingEl) authLoadingEl.style.display = 'none'; };
+      const startScreen = document.getElementById('startScreen');
 
-      // ---- Step 1: Start fetching questions immediately (static, no auth) ----
-      const questionsPromise = fetch('questions.json').then(r => r.json()).catch(err => {
-        console.error('questions.json fetch failed:', err);
-        return null;
-      });
-      const physicsPromise = fetch('questions-physics.json').then(r => r.json()).catch(() => null);
+      // Single atomic reveal — called ONCE after all DOM updates are complete
+      const revealStartScreen = () => {
+        if (startScreen) startScreen.style.display = '';
+        if (authLoadingEl) authLoadingEl.style.display = 'none';
+      };
+      const hideLoaderOnly = () => {
+        if (authLoadingEl) authLoadingEl.style.display = 'none';
+      };
+      const showError = (html) => {
+        if (authLoadingEl) {
+          authLoadingEl.innerHTML = html;
+          // Mark handled so the 10s "Still loading" safety net doesn't overwrite it
+          authLoadingEl.dataset.timeoutShown = '1';
+        }
+      };
 
-      // ---- Step 2: Resolve auth (wait up to 4s) ----
-      const authUser = await new Promise((resolve) => {
+      // ---- Step 1: All-parallel fetch + auth. Promise.all gates the render. ----
+      const questionsPromise = fetch('questions.json?v=20260423a')
+        .then(r => r.ok ? r.json() : null)
+        .catch(err => { console.error('questions.json fetch failed:', err); return null; });
+
+      const physicsPromise = fetch('questions-physics.json?v=20260423a')
+        .then(r => r.ok ? r.json() : null)
+        .catch(() => null);
+
+      const authPromise = new Promise((resolve) => {
         let settled = false;
         const timer = setTimeout(() => { if (!settled) { settled = true; resolve(null); } }, 4000);
         try {
@@ -343,19 +365,24 @@
         }
       });
 
+      // Gate on ALL three resolving before any DOM mutation
+      const [data, physicsData, authUser] = await Promise.all([
+        questionsPromise, physicsPromise, authPromise
+      ]);
+
+      // ---- Step 2: Determine access level ----
       if (!authUser) {
-        // No auth resolved in 4s — either user isn't logged in or Firebase is unreachable.
-        // Redirect to signup only if we know there's no user; otherwise just degrade gracefully.
+        // Not signed in (or Firebase unreachable).
         if (auth && auth.currentUser === null) {
           window.location.href = 'signup.html?redirect=qbank';
           return;
         }
-        // Fall through — try to render page anyway as "free tier"
         window.qbankAccessLevel = 'free';
       } else {
-        // We have a user — determine paid/admin and load progress
         const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
         const isAdmin = ADMIN_EMAILS.includes(authUser.email);
+        currentUserId = authUser.uid;
+
         let profile = null;
         try {
           const db = firebase.firestore();
@@ -369,58 +396,64 @@
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
-        currentUserId = authUser.uid;
-        // Best-effort — capped timeouts so we never hang
-        try {
-          await Promise.race([
+
+        // Progress + history run in parallel (capped at 3s each)
+        await Promise.all([
+          Promise.race([
             loadProgress(),
             new Promise((_, rej) => setTimeout(() => rej(new Error('progress timeout')), 3000))
-          ]);
-        } catch (e) { console.warn('loadProgress skipped:', e.message || e); }
-        try {
-          await Promise.race([
+          ]).catch(e => console.warn('loadProgress skipped:', e.message || e)),
+          Promise.race([
             loadTestHistory(),
             new Promise((_, rej) => setTimeout(() => rej(new Error('history timeout')), 3000))
-          ]);
-        } catch (e) { console.warn('loadTestHistory skipped:', e.message || e); }
+          ]).catch(e => console.warn('loadTestHistory skipped:', e.message || e))
+        ]);
       }
 
-      // ---- Step 3: merge questions once they arrive ----
-      const [data, physicsData] = await Promise.all([questionsPromise, physicsPromise]);
+      // ---- Step 3: Data must be present to proceed ----
       if (!data) {
-        hideLoader();
-        const startScreen = document.getElementById('startScreen');
-        if (startScreen) {
-          startScreen.insertAdjacentHTML('afterbegin',
-            '<div style="background:#FEE2E2;border:1px solid #F87171;color:#991B1B;padding:16px;border-radius:8px;margin-bottom:20px;">'
-            + '<strong>Couldn\'t load the question bank.</strong><br>'
-            + 'Please check your connection and <a href="#" onclick="location.reload();return false;" style="color:#991B1B;text-decoration:underline;">refresh</a>.</div>'
-          );
-        }
+        showError(
+          '<div style="background:#FEE2E2;border:1px solid #F87171;color:#991B1B;padding:16px;border-radius:8px;max-width:520px;margin:20px auto;">'
+          + '<strong>Couldn\'t load the question bank.</strong><br>'
+          + 'Please check your connection and <a href="#" onclick="location.reload();return false;" style="color:#991B1B;text-decoration:underline;">refresh</a>.</div>'
+        );
         return;
       }
 
-      // Apply free-tier filter if non-paid
+      // Apply free-tier filter BEFORE any DOM write so counts reflect final pool
       if (window.qbankAccessLevel !== 'full') {
         if (data.biology) data.biology = data.biology.filter(q => q.free === true);
         if (data.chemistry) data.chemistry = data.chemistry.filter(q => q.free === true);
       }
       allQuestions = data;
 
+      // Merge Physics into allQuestions BEFORE count/progress rendering so
+      // updateProgressDisplay sees the final pool in a single pass
+      if (window.qbankAccessLevel === 'full' && physicsData) {
+        const physArr = Array.isArray(physicsData) ? physicsData : (physicsData.physics || []);
+        if (physArr.length > 0) {
+          allQuestions.physics = physArr;
+          window._physicsQuestions = physArr;
+        }
+      }
+
+      // ---- Step 4: Populate DOM (screen still hidden) ----
       const bioCount = data.biology?.length || 0;
       const chemCount = data.chemistry?.length || 0;
+      const physCount = allQuestions.physics?.length || 0;
+
+      // Pre-seed counts so updateProgressDisplay — if it fails — leaves sane text
       const bioEl = document.getElementById('countBiology');
       const chemEl = document.getElementById('countChemistry');
+      const physEl = document.getElementById('countPhysics');
       if (bioEl) bioEl.textContent = bioCount + ' questions';
       if (chemEl) chemEl.textContent = chemCount + ' questions';
+      if (physEl && physCount > 0) physEl.textContent = physCount + ' questions';
 
-      // Show free-tier messaging if not paid
-      if (window.qbankAccessLevel !== 'full') {
-        const freeMsg = document.createElement('div');
-        freeMsg.style.cssText = 'background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1px solid #F59E0B;border-radius:12px;padding:16px 20px;margin:0 0 20px;text-align:center;';
-        freeMsg.innerHTML = '<p style="margin:0;color:#92400E;font-size:0.95rem;"><strong>Free Preview:</strong> ' + (bioCount + chemCount) + ' questions available. <a href="dashboard.html?view=store" style="color:#C8986B;font-weight:600;text-decoration:underline;">Upgrade to Full Access</a> for 1,000+ questions.</p>';
-        const startScreen = document.getElementById('startScreen');
-        if (startScreen) startScreen.insertBefore(freeMsg, startScreen.firstChild);
+      // Reveal physics card BEFORE reveal so it appears in the first frame
+      if (physCount > 0) {
+        const physCard = document.getElementById('physicsCardWrapper');
+        if (physCard) physCard.style.display = '';
       }
 
       // Hide 0-question subject cards
@@ -428,32 +461,25 @@
         const checkbox = card.querySelector('input[name="subject"]');
         if (!checkbox) return;
         const subject = checkbox.value;
-        if (!data[subject] || data[subject].length === 0) {
+        if (!allQuestions[subject] || allQuestions[subject].length === 0) {
           card.style.display = 'none';
           checkbox.checked = false;
         }
       });
 
-      // Physics bonus — only for paid users. Merge into allQuestions so the
-      // existing startQuiz() logic handles the physics checkbox naturally
-      // (subject-name lookup from allQuestions). Also keep window._physicsQuestions
-      // populated for the resume / historical-review ID lookup path.
-      if (window.qbankAccessLevel === 'full' && physicsData) {
-        const physArr = Array.isArray(physicsData) ? physicsData : (physicsData.physics || []);
-        if (physArr.length > 0) {
-          allQuestions.physics = physArr;
-          window._physicsQuestions = physArr;
-          const countEl = document.getElementById('countPhysics');
-          if (countEl) countEl.textContent = physArr.length + ' questions';
-          const card = document.getElementById('physicsCardWrapper');
-          if (card) card.style.display = '';
-        }
+      // Free-tier upgrade banner
+      if (window.qbankAccessLevel !== 'full') {
+        const freeMsg = document.createElement('div');
+        freeMsg.style.cssText = 'background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1px solid #F59E0B;border-radius:12px;padding:16px 20px;margin:0 0 20px;text-align:center;';
+        freeMsg.innerHTML = '<p style="margin:0;color:#92400E;font-size:0.95rem;"><strong>Free Preview:</strong> ' + (bioCount + chemCount) + ' questions available. <a href="dashboard.html?view=store" style="color:#C8986B;font-weight:600;text-decoration:underline;">Upgrade to Full Access</a> for 1,000+ questions.</p>';
+        if (startScreen) startScreen.insertBefore(freeMsg, startScreen.firstChild);
       }
 
+      // Final count update ("X/Y done" format) + history — all before reveal
       try { updateProgressDisplay(); } catch(_) {}
       try { renderTestHistoryList(); } catch(_) {}
 
-      // Check URL parameters for review or resume
+      // ---- Step 5: Review / resume short-circuits to their own screens ----
       const urlParams = new URLSearchParams(window.location.search);
       const reviewIdx = urlParams.get('review');
       const resumeFlag = urlParams.get('resume');
@@ -465,7 +491,7 @@
           const backDashBtn = document.getElementById('backToDashboardBtn');
           if (backResBtn) backResBtn.style.display = 'none';
           if (backDashBtn) backDashBtn.style.display = '';
-          hideLoader();
+          hideLoaderOnly();
           loadHistoricalReview(testHistory[idx]);
           history.replaceState(null, '', 'qbank.html');
           return;
@@ -477,14 +503,15 @@
       if (resumeFlag === 'true') {
         const saved = await getInProgressTest();
         if (saved && saved.questionIds) {
-          hideLoader();
+          hideLoaderOnly();
           resumeInProgressTest(saved);
           history.replaceState(null, '', 'qbank.html');
           return;
         }
       }
 
-      hideLoader();
+      // ---- Step 6: Atomic reveal — single paint, final state ----
+      revealStartScreen();
     })();
 
     // Safety net: if still loading after 10 seconds, show a refresh button
@@ -537,7 +564,7 @@
     })();
 
     function loadQuestionsWithAccess() {
-      fetch('questions.json')
+      fetch('questions.json?v=20260423a')
         .then(res => res.json())
         .then(async (data) => {
           // Filter to free questions only if user is not paid
