@@ -139,21 +139,58 @@
         log(`FAIL: progress read error — ${err.code || ''} ${err.message}`, 'err');
       }
 
-      // --- Step 6: test history read ---
-      step('Step 6: Firestore — read users/{uid}/qbankData/testHistory');
+      // --- Step 6a: test history read (CORRECT doc name used by qbank.js) ---
+      step('Step 6a: Firestore — read users/{uid}/qbankData/history (the REAL doc qbank.js uses)');
+      let historyTimedOut = false;
+      const historyDeadline = setTimeout(() => {
+        historyTimedOut = true;
+        log('TIMEOUT: users/{uid}/qbankData/history read did NOT return in 10s. THIS IS LIKELY YOUR BUG.', 'err');
+        log('The testHistory/history document may be very large, corrupted, or the collection name differs from expected.', 'info');
+      }, 10000);
       try {
         const db = firebase.firestore();
         const t0 = performance.now();
-        const doc = await db.collection('users').doc(user.uid).collection('qbankData').doc('testHistory').get();
+        const doc = await db.collection('users').doc(user.uid).collection('qbankData').doc('history').get();
         const dt = Math.round(performance.now() - t0);
-        if (doc.exists) {
-          const n = (doc.data().tests || []).length;
-          log(`OK (${dt}ms): testHistory doc found, ${n} tests recorded`, 'ok');
+        clearTimeout(historyDeadline);
+        if (historyTimedOut) {
+          log(`LATE: history doc finally returned after timeout, dt=${dt}ms`, 'warn');
+        } else if (doc.exists) {
+          const tests = doc.data().tests || [];
+          const dataSize = JSON.stringify(doc.data()).length;
+          log(`OK (${dt}ms): history doc exists, ${tests.length} tests recorded, payload size = ${dataSize} chars`, 'ok');
+          if (dataSize > 500000) {
+            log(`⚠ payload size > 500KB — this could slow down qbank.html load`, 'warn');
+          }
         } else {
-          log(`OK (${dt}ms): testHistory doc does not exist yet`, 'info');
+          log(`OK (${dt}ms): history doc does not exist yet`, 'info');
         }
       } catch (err) {
-        log(`FAIL: testHistory read error — ${err.code || ''} ${err.message}`, 'err');
+        clearTimeout(historyDeadline);
+        log(`FAIL: history read error — ${err.code || ''} ${err.message}`, 'err');
+      }
+
+      // --- Step 6b: in-progress test doc ---
+      step('Step 6b: Firestore — read users/{uid}/qbankData/inProgress');
+      try {
+        const db = firebase.firestore();
+        const t0 = performance.now();
+        const doc = await db.collection('users').doc(user.uid).collection('qbankData').doc('inProgress').get();
+        const dt = Math.round(performance.now() - t0);
+        if (doc.exists) {
+          const qCount = (doc.data().questionIds || []).length;
+          const meta = doc.data().meta || {};
+          log(`OK (${dt}ms): inProgress exists with ${qCount} question IDs, subjects=${JSON.stringify(meta.subjects || [])}`, 'ok');
+          // Check if any of the stored IDs reference bio-583 (the deleted one)
+          const ids = doc.data().questionIds || [];
+          if (ids.includes('bio-583')) {
+            log(`⚠ inProgress references DELETED question bio-583 — if qbank.html tries to resume this, it may fail`, 'warn');
+          }
+        } else {
+          log(`OK (${dt}ms): no in-progress test`, 'info');
+        }
+      } catch (err) {
+        log(`FAIL: inProgress read error — ${err.code || ''} ${err.message}`, 'err');
       }
 
       // --- Step 7: questions.json fetch ---
