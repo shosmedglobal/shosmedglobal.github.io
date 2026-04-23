@@ -313,90 +313,56 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260422b"></script>
-  <script src="qbank.js?v=20260422b"></script>
+  <script src="auth.js?v=20260422c"></script>
+  <script src="qbank.js?v=20260422c"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
 
+    // Defensive: clear any stale blur class that might have been left over
+    // from a previous session's content-protection code path.
+    document.body.classList.remove('content-protected-blur');
+
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
 
-    // On-screen trace — if loading hangs, user sees exactly which step is stuck.
-    // Safe: just updates text of the existing authLoading div.
-    function qbDiag(msg) {
-      try {
-        const el = document.getElementById('authLoading');
-        if (!el) return;
-        const line = document.createElement('div');
-        line.style.cssText = 'font-size:0.85rem;color:#666;margin-top:6px;font-family:Consolas,monospace;';
-        line.textContent = msg;
-        el.appendChild(line);
-      } catch (_) { /* noop */ }
-    }
-    qbDiag('[1] script start');
-
     // Require login to access QBank
     auth.onAuthStateChanged(async (user) => {
-      qbDiag('[2] onAuthStateChanged fired');
       if (!user) {
-        qbDiag('[3] no user — redirecting to signup');
         window.location.href = 'signup.html?redirect=qbank';
         return;
       }
-      qbDiag('[3] user ok: ' + (user.email || user.uid));
 
       const authLoadingEl = document.getElementById('authLoading');
 
       try {
         const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
         const isAdmin = ADMIN_EMAILS.includes(user.email);
-        qbDiag('[4] isAdmin=' + isAdmin);
         let profile = null;
         try {
-          qbDiag('[5] reading profile…');
           const db = firebase.firestore();
           const profileDoc = await db.collection('users').doc(user.uid).get();
           profile = profileDoc.exists ? profileDoc.data() : null;
-          qbDiag('[5] profile read OK (' + (profile ? 'exists' : 'not found') + ')');
         } catch (profileErr) {
-          qbDiag('[5] profile read FAILED: ' + (profileErr.message || profileErr));
+          console.error('Failed to load profile (continuing anyway):', profileErr);
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
-        qbDiag('[6] accessLevel=' + window.qbankAccessLevel);
 
         currentUserId = user.uid;
-        qbDiag('[7] calling loadProgress()…');
-        try { await loadProgress(); qbDiag('[7] loadProgress OK'); }
-        catch (e) { qbDiag('[7] loadProgress FAILED: ' + (e.message || e)); }
+        try { await loadProgress(); } catch (e) { console.error('loadProgress failed:', e); }
+        try { await loadTestHistory(); } catch (e) { console.error('loadTestHistory failed:', e); }
 
-        qbDiag('[8] calling loadTestHistory()…');
-        try { await loadTestHistory(); qbDiag('[8] loadTestHistory OK'); }
-        catch (e) { qbDiag('[8] loadTestHistory FAILED: ' + (e.message || e)); }
-
-        qbDiag('[9] hiding auth loading overlay…');
         if (authLoadingEl) authLoadingEl.style.display = 'none';
-
-        qbDiag('[10] calling loadQuestionsWithAccess()…');
         loadQuestionsWithAccess();
-        qbDiag('[10] loadQuestionsWithAccess() returned (fetch runs async)');
       } catch (err) {
-        qbDiag('[X] auth flow error: ' + (err.message || err));
+        console.error('QBank auth flow error:', err);
         if (authLoadingEl) {
           authLoadingEl.innerHTML = '<p style="font-size:1.1rem;color:#C8986B;margin-bottom:16px;">Something went wrong loading the QBank.</p>'
             + '<p style="color:#666;margin-bottom:20px;">Please refresh the page. If this keeps happening, contact support.</p>'
             + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;">Refresh</button>';
         }
       }
-    });
-
-    // Surface global errors visibly so we see them even if the auth callback never fires
-    window.addEventListener('error', (ev) => {
-      qbDiag('[!] window.error: ' + (ev.message || ev));
-    });
-    window.addEventListener('unhandledrejection', (ev) => {
-      qbDiag('[!] unhandledrejection: ' + (ev.reason?.message || ev.reason));
     });
 
     // Safety net: if auth takes longer than 10 seconds, show a helpful message
@@ -445,21 +411,17 @@
         }
       });
 
-      // Blur content when window loses focus (screenshot deterrent)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          document.body.classList.add('content-protected-blur');
-        } else {
-          document.body.classList.remove('content-protected-blur');
-        }
-      });
-
-      window.addEventListener('blur', () => {
-        document.body.classList.add('content-protected-blur');
-      });
-      window.addEventListener('focus', () => {
-        document.body.classList.remove('content-protected-blur');
-      });
+      // NOTE: previously toggled a `.content-protected-blur` class on
+      // window blur / visibilitychange as a screenshot deterrent. That was
+      // too aggressive — any transient focus loss (password manager auto-fill,
+      // notification popup, alt-tab, devtools open) would blur the entire
+      // page and never un-blur cleanly, trapping the user on a dark overlay.
+      // Disabled. Screenshot protection is still covered by PrintScreen flash
+      // and watermarking on explanation content.
+      //
+      // document.addEventListener('visibilitychange', ...);
+      // window.addEventListener('blur',  ...);
+      // window.addEventListener('focus', ...);
 
       // Disable drag (prevents dragging text/images)
       document.addEventListener('dragstart', e => { e.preventDefault(); return false; });

@@ -18,29 +18,20 @@
   }
 }
 
-/* Blur overlay when window loses focus (screenshot deterrent) */
+/* NOTE: blur-on-focus-loss deterrent was disabled — it was too aggressive
+   and left users trapped on a dark overlay after any transient focus loss.
+   Keeping the .screenshot-warning element hidden (display:none) so any
+   remnant JS can't surface it. */
 .content-protected-blur .qbank-section {
-  filter: blur(20px);
-  pointer-events: none;
+  /* intentionally no-op */
 }
 
 .screenshot-warning {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(10, 25, 49, 0.95);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 600;
-  padding: 40px;
+  display: none !important;
 }
 
 .content-protected-blur .screenshot-warning {
-  display: flex;
+  display: none !important;
 }
 
 /* Watermark overlay for explanation content */
