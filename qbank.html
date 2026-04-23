@@ -322,53 +322,81 @@
     // Show the section container (still hidden content until auth resolves)
     document.getElementById('qbankSection').style.display = '';
 
+    // On-screen trace — if loading hangs, user sees exactly which step is stuck.
+    // Safe: just updates text of the existing authLoading div.
+    function qbDiag(msg) {
+      try {
+        const el = document.getElementById('authLoading');
+        if (!el) return;
+        const line = document.createElement('div');
+        line.style.cssText = 'font-size:0.85rem;color:#666;margin-top:6px;font-family:Consolas,monospace;';
+        line.textContent = msg;
+        el.appendChild(line);
+      } catch (_) { /* noop */ }
+    }
+    qbDiag('[1] script start');
+
     // Require login to access QBank
     auth.onAuthStateChanged(async (user) => {
+      qbDiag('[2] onAuthStateChanged fired');
       if (!user) {
-        // Not logged in - redirect to signup
+        qbDiag('[3] no user — redirecting to signup');
         window.location.href = 'signup.html?redirect=qbank';
         return;
       }
+      qbDiag('[3] user ok: ' + (user.email || user.uid));
 
-      // Always hide the loading screen, even if profile/progress loading fails
       const authLoadingEl = document.getElementById('authLoading');
 
       try {
-        // Check payment status (best-effort - don't block on failure)
         const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
         const isAdmin = ADMIN_EMAILS.includes(user.email);
+        qbDiag('[4] isAdmin=' + isAdmin);
         let profile = null;
         try {
+          qbDiag('[5] reading profile…');
           const db = firebase.firestore();
           const profileDoc = await db.collection('users').doc(user.uid).get();
           profile = profileDoc.exists ? profileDoc.data() : null;
+          qbDiag('[5] profile read OK (' + (profile ? 'exists' : 'not found') + ')');
         } catch (profileErr) {
-          console.error('Failed to load profile (continuing anyway):', profileErr);
+          qbDiag('[5] profile read FAILED: ' + (profileErr.message || profileErr));
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
-
-        // Store access level globally
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
+        qbDiag('[6] accessLevel=' + window.qbankAccessLevel);
 
-        // Load user progress and test history from Firestore (best-effort)
         currentUserId = user.uid;
-        try { await loadProgress(); } catch (e) { console.error('loadProgress failed:', e); }
-        try { await loadTestHistory(); } catch (e) { console.error('loadTestHistory failed:', e); }
+        qbDiag('[7] calling loadProgress()…');
+        try { await loadProgress(); qbDiag('[7] loadProgress OK'); }
+        catch (e) { qbDiag('[7] loadProgress FAILED: ' + (e.message || e)); }
 
-        // Hide loading screen before attempting to load questions
+        qbDiag('[8] calling loadTestHistory()…');
+        try { await loadTestHistory(); qbDiag('[8] loadTestHistory OK'); }
+        catch (e) { qbDiag('[8] loadTestHistory FAILED: ' + (e.message || e)); }
+
+        qbDiag('[9] hiding auth loading overlay…');
         if (authLoadingEl) authLoadingEl.style.display = 'none';
 
-        // Now load questions with access filtering
+        qbDiag('[10] calling loadQuestionsWithAccess()…');
         loadQuestionsWithAccess();
+        qbDiag('[10] loadQuestionsWithAccess() returned (fetch runs async)');
       } catch (err) {
-        console.error('QBank auth flow error:', err);
-        // Hide loading, show an error message so the user isn't stuck
+        qbDiag('[X] auth flow error: ' + (err.message || err));
         if (authLoadingEl) {
           authLoadingEl.innerHTML = '<p style="font-size:1.1rem;color:#C8986B;margin-bottom:16px;">Something went wrong loading the QBank.</p>'
             + '<p style="color:#666;margin-bottom:20px;">Please refresh the page. If this keeps happening, contact support.</p>'
             + '<button onclick="location.reload()" style="padding:10px 24px;background:#C8986B;color:#fff;border:none;border-radius:8px;cursor:pointer;">Refresh</button>';
         }
       }
+    });
+
+    // Surface global errors visibly so we see them even if the auth callback never fires
+    window.addEventListener('error', (ev) => {
+      qbDiag('[!] window.error: ' + (ev.message || ev));
+    });
+    window.addEventListener('unhandledrejection', (ev) => {
+      qbDiag('[!] unhandledrejection: ' + (ev.reason?.message || ev.reason));
     });
 
     // Safety net: if auth takes longer than 10 seconds, show a helpful message
