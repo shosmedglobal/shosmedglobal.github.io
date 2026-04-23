@@ -22,81 +22,81 @@
 <h3>Fleming's Left-Hand Rule (Motor)</h3>
 <p>For force on a current in a magnetic field: index = field (B), middle = current (I), thumb = force/motion.</p>
 <h3>Alternating Current</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V(t) = V_peak · sin(ω · t)
-I(t) = I_peak · sin(ω · t + φ)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V(t) = V<sub>peak</sub> · sin(ω · t)
+I(t) = I<sub>peak</sub> · sin(ω · t + φ)</div>
 <h3>RMS (Effective) Values</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V_rms = V_peak / √(2) = V_peak · 0.707
-I_rms = I_peak / √(2)</div>
-<p>When someone says "220 V mains," they mean V_rms. Peak voltage = 220 · 1.414 = 311 V.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V<sub>rms</sub> = V<sub>peak</sub> / √(2) = V<sub>peak</sub> · 0.707
+I<sub>rms</sub> = I<sub>peak</sub> / √(2)</div>
+<p>When someone says "220 V mains," they mean V<sub>rms</sub>. Peak voltage = 220 · 1.414 = 311 V.</p>
 <h3>AC Power</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P = V_rms · I_rms · cos(φ)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P = V<sub>rms</sub> · I<sub>rms</sub> · cos(φ)</div>
 <p>Where cos(φ) is the power factor. For purely resistive loads, cos(φ) = 1.</p>
 <h3>Reactance and Impedance</h3>
 <div class="table-wrapper"><table>
 <thead><tr><th>Component</th><th>Reactance</th><th>Phase</th></tr></thead>
 <tbody>
 <tr><td>Resistor</td><td>R</td><td>V and I in phase</td></tr>
-<tr><td>Capacitor</td><td>X_C = 1/(ω*C) = 1/(2*π*f*C)</td><td>I leads V by 90°</td></tr>
-<tr><td>Inductor</td><td>X_L = ω*L = 2*π*f*L</td><td>V leads I by 90°</td></tr>
+<tr><td>Capacitor</td><td>X<sub>C</sub> = 1/(ω·C) = 1/(2·π·f·C)</td><td>I leads V by 90°</td></tr>
+<tr><td>Inductor</td><td>X<sub>L</sub> = ω·L = 2·π·f·L</td><td>V leads I by 90°</td></tr>
 </tbody>
 </table></div>
 <p><strong>Impedance (RLC series):</strong></p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Z = √(R<sup>2</sup> + (X_L - X_C)<sup>2</sup>)
-V_rms = I_rms · Z</div>
-<p><strong>Resonance:</strong> When X_L = X_C, impedance is minimum (= R), current is maximum.</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">f_resonance = 1 / (2*π*√(L*C))</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Z = √(R<sup>2</sup> + (X<sub>L</sub> - X<sub>C</sub>)<sup>2</sup>)
+V<sub>rms</sub> = I<sub>rms</sub> · Z</div>
+<p><strong>Resonance:</strong> When X<sub>L</sub> = X<sub>C</sub>, impedance is minimum (= R), current is maximum.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">f_resonance = 1 / (2·π·√(L·C))</div>
 <h3>Transformers</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V_s / V_p = N_s / N_p = I_p / I_s</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V<sub>s</sub> / V<sub>p</sub> = N<sub>s</sub> / N<sub>p</sub> = I<sub>p</sub> / I<sub>s</sub></div>
 <ul>
-<li>V_s, V_p = secondary and primary voltages</li>
-<li>N_s, N_p = number of turns</li>
-<li>Step-up: N_s > N_p (increases voltage, decreases current)</li>
-<li>Step-down: N_s < N_p (decreases voltage, increases current)</li>
-<li>Power is conserved: P_p = P_s (ideal transformer)</li>
+<li>V<sub>s</sub>, V<sub>p</sub> = secondary and primary voltages</li>
+<li>N<sub>s</sub>, N<sub>p</sub> = number of turns</li>
+<li>Step-up: N<sub>s</sub> > N<sub>p</sub> (increases voltage, decreases current)</li>
+<li>Step-down: N<sub>s</sub> < N<sub>p</sub> (decreases voltage, increases current)</li>
+<li>Power is conserved: P<sub>p</sub> = P<sub>s</sub> (ideal transformer)</li>
 </ul>
 <p><strong>Worked Example:</strong> A transformer with 100 primary turns and 500 secondary turns. Input: 220 V, 2 A. Find output voltage and current.</p>
 <ul>
-<li>V_s = V_p · (N_s/N_p) = 220 · (500/100) = 1100 V</li>
-<li>I_s = I_p · (N_p/N_s) = 2 · (100/500) = 0.4 A</li>
-<li>Check: P_p = 220(2) = 440 W, P_s = 1100(0.4) = 440 W. Confirmed.</li>
+<li>V<sub>s</sub> = V<sub>p</sub> · (N<sub>s</sub>/N<sub>p</sub>) = 220 · (500/100) = 1100 V</li>
+<li>I<sub>s</sub> = I<sub>p</sub> · (N<sub>p</sub>/N<sub>s</sub>) = 2 · (100/500) = 0.4 A</li>
+<li>Check: P<sub>p</sub> = 220(2) = 440 W, P<sub>s</sub> = 1100(0.4) = 440 W. Confirmed.</li>
 </ul>
 <h3>Ohm's Law for AC Circuits</h3>
 <p>In a DC circuit, V = IR. In an AC circuit, the relationship is generalized using impedance:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V_rms = I_rms · Z</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V<sub>rms</sub> = I<sub>rms</sub> · Z</div>
 <p>Where Z is the impedance, which accounts for resistance and reactance.</p>
 <p>For individual components:</p>
 <ul>
-<li><strong>Resistor:</strong> V_R = I · R (voltage and current are in phase)</li>
-<li><strong>Inductor:</strong> V_L = I · X_L = I · ω · L (voltage leads current by 90°)</li>
-<li><strong>Capacitor:</strong> V_C = I · X_C = I / (ω · C) (current leads voltage by 90°)</li>
+<li><strong>Resistor:</strong> V<sub>R</sub> = I · R (voltage and current are in phase)</li>
+<li><strong>Inductor:</strong> V<sub>L</sub> = I · X<sub>L</sub> = I · ω · L (voltage leads current by 90°)</li>
+<li><strong>Capacitor:</strong> V<sub>C</sub> = I · X<sub>C</sub> = I / (ω · C) (current leads voltage by 90°)</li>
 </ul>
 <h3>Phase Relationships in AC (Detailed)</h3>
 <p>The phase angle φ between voltage and current in a series RLC circuit:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">tan(φ) = (X_L - X_C) / R</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">tan(φ) = (X<sub>L</sub> - X<sub>C</sub>) / R</div>
 <ul>
-<li>If X_L > X_C: circuit is inductive, voltage leads current (φ > 0)</li>
-<li>If X_C > X_L: circuit is capacitive, current leads voltage (φ < 0)</li>
-<li>If X_L = X_C: resonance, φ = 0, circuit behaves as purely resistive</li>
+<li>If X<sub>L</sub> > X<sub>C</sub>: circuit is inductive, voltage leads current (φ > 0)</li>
+<li>If X<sub>C</sub> > X<sub>L</sub>: circuit is capacitive, current leads voltage (φ < 0)</li>
+<li>If X<sub>L</sub> = X<sub>C</sub>: resonance, φ = 0, circuit behaves as purely resistive</li>
 </ul>
 <p><strong>Memory aid:</strong> "ELI the ICE man" -- in an inductor (L), EMF (E) leads current (I). In a capacitor (C), current (I) leads EMF (E).</p>
 <h3>Series RLC Circuit (Detailed)</h3>
 <p>In a series RLC circuit, the same current flows through all components, but the voltages across each component have different phases:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V_total = √(V_R<sup>2</sup> + (V_L - V_C)<sup>2</sup>)
-Z = √(R<sup>2</sup> + (X_L - X_C)<sup>2</sup>)</div>
-<p><strong>At resonance (X_L = X_C):</strong></p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">V<sub>total</sub> = √(V<sub>R</sub><sup>2</sup> + (V<sub>L</sub> - V<sub>C</sub>)<sup>2</sup>)
+Z = √(R<sup>2</sup> + (X<sub>L</sub> - X<sub>C</sub>)<sup>2</sup>)</div>
+<p><strong>At resonance (X<sub>L</sub> = X<sub>C</sub>):</strong></p>
 <ul>
-<li>ω_0 = 1/√(L*C), or f_0 = 1/(2*π*√(L*C))</li>
+<li>ω<sub>0</sub> = 1/√(L·C), or f<sub>0</sub> = 1/(2·π·√(L·C))</li>
 <li>Impedance reaches minimum: Z = R</li>
-<li>Current reaches maximum: I_max = V/R</li>
-<li>V_L and V_C can each be much larger than the source voltage (voltage magnification)</li>
+<li>Current reaches maximum: I<sub>max</sub> = V/R</li>
+<li>V<sub>L</sub> and V<sub>C</sub> can each be much larger than the source voltage (voltage magnification)</li>
 </ul>
 <p><strong>Worked Example:</strong> A series RLC circuit has R = 100 ohm, L = 0.2 H, C = 50 muF, connected to 220 V (rms) at 50 Hz.</p>
 <ul>
-<li>ω = 2*π*50 = 314 rad/s</li>
-<li>X_L = 314 x 0.2 = 62.8 ohm</li>
-<li>X_C = 1/(314 x 50 x 10<sup>-6</sup>) = 1/0.0157 = 63.7 ohm</li>
+<li>ω = 2·π·50 = 314 rad/s</li>
+<li>X<sub>L</sub> = 314 x 0.2 = 62.8 ohm</li>
+<li>X<sub>C</sub> = 1/(314 x 50 x 10<sup>-6</sup>) = 1/0.0157 = 63.7 ohm</li>
 <li>Z = √(100<sup>2</sup> + (62.8 - 63.7)<sup>2</sup>) = √(10000 + 0.81) = 100.004 ohm (nearly resonance!)</li>
-<li>I_rms = 220/100.004 = 2.2 A</li>
+<li>I<sub>rms</sub> = 220/100.004 = 2.2 A</li>
 <li>Power = I<sup>2</sup> · R = (2.2)<sup>2</sup> · 100 = 484 W</li>
 </ul>
 <h3>Half-Wave and Full-Wave Rectification</h3>
@@ -105,15 +105,15 @@ Z = √(R<sup>2</sup> + (X_L - X_C)<sup>2</sup>)</div>
 <li>The diode conducts only during the positive half-cycle of the AC input.</li>
 <li>During the negative half-cycle, the diode blocks current.</li>
 <li>Output: a series of positive pulses with gaps (zero voltage during blocked half-cycles).</li>
-<li>Average output voltage: V_avg = V_peak / π (approximately 0.318 x V_peak).</li>
+<li>Average output voltage: V<sub>avg</sub> = V<sub>peak</sub> / π (approximately 0.318 x V<sub>peak</sub>).</li>
 </ul>
-<p><strong>Full-wave rectification</strong> (using four diodes in a bridge arrangement) allows current during both half-cycles, providing smoother DC output with V_avg = 2*V_peak/π.</p>
+<p><strong>Full-wave rectification</strong> (using four diodes in a bridge arrangement) allows current during both half-cycles, providing smoother DC output with V<sub>avg</sub> = 2·V<sub>peak</sub>/π.</p>
 <p>A <strong>smoothing capacitor</strong> is typically added in parallel with the output to fill in the gaps and produce a steadier DC voltage.</p>
 <h3>The Transistor Principle</h3>
-<p>A transistor contains two PN junctions arranged as either NPN or PNP. In an NPN transistor, a thin, lightly doped p-type base region sits between the n-type emitter and n-type collector. A small current injected into the base (I_b) allows a much larger current to flow from collector to emitter (I_c).</p>
+<p>A transistor contains two PN junctions arranged as either NPN or PNP. In an NPN transistor, a thin, lightly doped p-type base region sits between the n-type emitter and n-type collector. A small current injected into the base (I<sub>b</sub>) allows a much larger current to flow from collector to emitter (I<sub>c</sub>).</p>
 <p>The <strong>current gain</strong> (β) is defined as:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">β = I_c / I_b     (typically 50-300)
-I_e = I_c + I_b      (emitter current is the sum)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">β = I<sub>c</sub> / I<sub>b</sub>     (typically 50-300)
+I<sub>e</sub> = I<sub>c</sub> + I<sub>b</sub>      (emitter current is the sum)</div>
 <p>In a <strong>common-emitter configuration</strong>, the input signal is applied to the base-emitter junction and the amplified output is taken from the collector. A small variation in base current produces a large variation in collector current, enabling signal amplification.</p>
 <p>Transistors operate in three regions: cutoff (both junctions reverse-biased, no current flows -- acts as open switch), saturation (both junctions forward-biased, maximum current -- acts as closed switch), and active region (base-emitter forward, base-collector reverse -- used for amplification).</p>
 <p>This ability to act as both a switch and an amplifier makes the transistor the fundamental building block of all modern digital and analog electronics.</p>
@@ -123,13 +123,13 @@ I_e = I_c + I_b      (emitter current is the sum)</div>
 <p>Where L is the inductance in henrys (H).</p>
 <p><strong>Energy stored in an inductor:</strong></p>
 <div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">E = (1/2) · L · I<sup>2</sup></div>
-<p>This is analogous to the energy in a capacitor: E = (1/2)*C*V<sup>2</sup>. In an LC circuit, energy oscillates between the inductor (magnetic) and capacitor (electric).</p>
+<p>This is analogous to the energy in a capacitor: E = (1/2)·C·V<sup>2</sup>. In an LC circuit, energy oscillates between the inductor (magnetic) and capacitor (electric).</p>
 <blockquote><strong>Exam Tips:</strong></blockquote>
 <blockquote>- RMS values, not peak values, are used in power calculations.</blockquote>
 <blockquote>- A capacitor blocks DC but passes AC. An inductor passes DC but resists high-frequency AC.</blockquote>
 <blockquote>- The minus sign in Faraday's law = Lenz's law (opposes the change).</blockquote>
 <blockquote>- Transformers only work with AC, not DC (need changing flux).</blockquote>
-<blockquote>- Ideal transformer conserves power: V*I is constant between primary and secondary.</blockquote>
+<blockquote>- Ideal transformer conserves power: V·I is constant between primary and secondary.</blockquote>
 <blockquote>- At resonance in RLC, impedance = R and current is maximum. This is the principle behind radio tuning.</blockquote>
 <blockquote>- "ELI the ICE man" for phase relationships: E leads I in inductors, I leads E in capacitors.</blockquote>
 <blockquote>- Half-wave rectification wastes half the AC cycle. Full-wave is more efficient.</blockquote>

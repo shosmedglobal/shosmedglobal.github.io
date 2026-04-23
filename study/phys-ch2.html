@@ -4,7 +4,7 @@
 <p>Kinematics describes motion without asking what causes it.</p>
 <h3>Position, Displacement, and Distance</h3>
 <p><strong>Position</strong> is where an object is located relative to an origin.</p>
-<p><strong>Displacement</strong> is the change in position (a vector): Δ_x = x_final - x_initial.</p>
+<p><strong>Displacement</strong> is the change in position (a vector): Δ<sub>x</sub> = x<sub>final</sub> - x<sub>initial</sub>.</p>
 <p><strong>Distance</strong> is the total path length traveled (a scalar, always positive or zero).</p>
 <h3>Speed and Velocity</h3>
 <p><strong>Average speed</strong> = total distance / total time (scalar, always ≥ 0).</p>
@@ -12,34 +12,34 @@
 <p><strong>Instantaneous speed</strong> is speed at a single moment -- what a speedometer reads.</p>
 <h3>Uniform (Constant Velocity) Motion</h3>
 <p>When velocity is constant:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">x = x_0 + v*t</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">x = x<sub>0</sub> + v·t</div>
 <h3>Uniformly Accelerated Motion (UAM)</h3>
 <p>When acceleration is constant, use these four equations:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">(1)  v = v_0 + a*t
-(2)  x = x_0 + v_0*t + (1/2)*a*t<sup>2</sup>
-(3)  v<sup>2</sup> = v_0<sup>2</sup> + 2*a*(x - x_0)
-(4)  x = x_0 + (1/2)*(v_0 + v)*t</div>
-<p><strong>Strategy:</strong> Each equation involves exactly four of the five unknowns (v_0, v, a, t, x). Identify the three knowns and one unknown, then pick the equation that contains all four.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">(1)  v = v<sub>0</sub> + a·t
+(2)  x = x<sub>0</sub> + v<sub>0</sub>·t + (1/2)·a·t<sup>2</sup>
+(3)  v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2·a·(x - x<sub>0</sub>)
+(4)  x = x<sub>0</sub> + (1/2)·(v<sub>0</sub> + v)·t</div>
+<p><strong>Strategy:</strong> Each equation involves exactly four of the five unknowns (v<sub>0</sub>, v, a, t, x). Identify the three knowns and one unknown, then pick the equation that contains all four.</p>
 <h3>Free Fall</h3>
 <p>An object in free fall near Earth accelerates downward at g = 10 m/s<sup>2</sup>. Air resistance is neglected unless stated.</p>
 <p>For an object dropped from rest:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v = g*t
-h = (1/2)*g*t<sup>2</sup>
-v<sup>2</sup> = 2*g*h</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v = g·t
+h = (1/2)·g·t<sup>2</sup>
+v<sup>2</sup> = 2·g·h</div>
 <p><strong>Worked Example 1:</strong> A ball is dropped from a 45 m tall building. How long to hit the ground?</p>
 <ul>
-<li>h = (1/2)*g*t<sup>2</sup> ⇒ 45 = 5*t<sup>2</sup> ⇒ t<sup>2</sup> = 9 ⇒ t = 3 s</li>
-<li>Speed at impact: v = g*t = 10 x 3 = 30 m/s</li>
+<li>h = (1/2)·g·t<sup>2</sup> ⇒ 45 = 5·t<sup>2</sup> ⇒ t<sup>2</sup> = 9 ⇒ t = 3 s</li>
+<li>Speed at impact: v = g·t = 10 x 3 = 30 m/s</li>
 </ul>
 <p><strong>Worked Example 2:</strong> A ball is thrown straight up at 20 m/s. Find the maximum height and total time in air.</p>
 <ul>
-<li>At max height, v = 0: 0 = 20<sup>2</sup> - 2(10)*h ⇒ h = 20 m</li>
-<li>Time up: 0 = 20 - 10*t ⇒ t_up = 2 s</li>
-<li>Total time (symmetric): t_total = 4 s</li>
+<li>At max height, v = 0: 0 = 20<sup>2</sup> - 2(10)·h ⇒ h = 20 m</li>
+<li>Time up: 0 = 20 - 10·t ⇒ t<sub>up</sub> = 2 s</li>
+<li>Total time (symmetric): t<sub>total</sub> = 4 s</li>
 </ul>
 <p><strong>Worked Example 3:</strong> An object is thrown downward at 5 m/s from a 60 m cliff. Find the time to reach the ground.</p>
 <ul>
-<li>h = v_0*t + (1/2)*g*t<sup>2</sup> (taking downward as positive)</li>
+<li>h = v<sub>0</sub>·t + (1/2)·g·t<sup>2</sup> (taking downward as positive)</li>
 <li>60 = 5t + 5t<sup>2</sup></li>
 <li>5t<sup>2</sup> + 5t - 60 = 0 ⇒ t<sup>2</sup> + t - 12 = 0</li>
 <li>(t + 4)(t - 3) = 0 ⇒ t = 3 s (discard negative)</li>
@@ -47,16 +47,16 @@ v<sup>2</sup> = 2*g*h</div>
 <h3>Projectile Motion</h3>
 <p>A projectile moves in two dimensions simultaneously:</p>
 <ul>
-<li><strong>Horizontal:</strong> constant velocity (no acceleration), so x = v_0x · t</li>
+<li><strong>Horizontal:</strong> constant velocity (no acceleration), so x = v<sub>0x</sub> · t</li>
 <li><strong>Vertical:</strong> free fall with a = g downward</li>
 </ul>
-<p>For a projectile launched at angle θ with speed v_0:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v_0x = v_0 · cos(θ)
-v_0y = v_0 · sin(θ)
+<p>For a projectile launched at angle θ with speed v<sub>0</sub>:</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v<sub>0x</sub> = v<sub>0</sub> · cos(θ)
+v<sub>0y</sub> = v<sub>0</sub> · sin(θ)
 
-Time of flight:    T = 2*v_0*sin(θ) / g
-Maximum height:    H = v_0<sup>2</sup> · sin<sup>2</sup>(θ) / (2g)
-Range:             R = v_0<sup>2</sup> · sin(2*θ) / g</div>
+Time of flight:    T = 2·v<sub>0</sub>·sin(θ) / g
+Maximum height:    H = v<sub>0</sub><sup>2</sup> · sin<sup>2</sup>(θ) / (2g)
+Range:             R = v<sub>0</sub><sup>2</sup> · sin(2·θ) / g</div>
 <p><strong>Key facts:</strong></p>
 <ul>
 <li>Maximum range occurs at θ = 45°.</li>
@@ -65,7 +65,7 @@ Range:             R = v_0<sup>2</sup> · sin(2*θ) / g</div>
 </ul>
 <p><strong>Worked Example 4:</strong> A ball is launched at 20 m/s at 30° above horizontal.</p>
 <ul>
-<li>v_0x = 20 · cos(30) = 17.3 m/s, v_0y = 20 · sin(30) = 10 m/s</li>
+<li>v<sub>0x</sub> = 20 · cos(30) = 17.3 m/s, v<sub>0y</sub> = 20 · sin(30) = 10 m/s</li>
 <li>Time of flight: T = 2(10)/10 = 2 s</li>
 <li>Range: R = 17.3 · 2 = 34.6 m</li>
 <li>Max height: H = 100/20 = 5 m</li>
@@ -73,21 +73,21 @@ Range:             R = v_0<sup>2</sup> · sin(2*θ) / g</div>
 <h3>Circular Motion</h3>
 <div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Period:                  T (time for one full revolution)
 Frequency:               f = 1/T (in Hz)
-Angular velocity:         ω = 2*π/T = 2*π*f (in rad/s)
-Speed:                   v = ω*r = 2*π*r/T
-Centripetal acceleration: a_c = v<sup>2</sup>/r = ω<sup>2</sup>*r
-Centripetal force:        F_c = m*v<sup>2</sup>/r = m*ω<sup>2</sup>*r</div>
+Angular velocity:         ω = 2·π/T = 2·π·f (in rad/s)
+Speed:                   v = ω·r = 2·π·r/T
+Centripetal acceleration: a<sub>c</sub> = v<sup>2</sup>/r = ω<sup>2</sup>·r
+Centripetal force:        F<sub>c</sub> = m·v<sup>2</sup>/r = m·ω<sup>2</sup>·r</div>
 <p>The centripetal acceleration always points toward the center of the circle.</p>
 <p><strong>Worked Example 5:</strong> A 0.5 kg ball on a 2 m string completes one revolution every 4 s.</p>
 <ul>
-<li>ω = 2*π/T = 6.28/4 = 1.57 rad/s</li>
-<li>a_c = ω<sup>2</sup> · r = (1.57)<sup>2</sup> · 2 = 4.93 m/s<sup>2</sup></li>
-<li>F_c = m · a_c = 0.5 · 4.93 = 2.47 N</li>
+<li>ω = 2·π/T = 6.28/4 = 1.57 rad/s</li>
+<li>a<sub>c</sub> = ω<sup>2</sup> · r = (1.57)<sup>2</sup> · 2 = 4.93 m/s<sup>2</sup></li>
+<li>F<sub>c</sub> = m · a<sub>c</sub> = 0.5 · 4.93 = 2.47 N</li>
 </ul>
 <p><strong>Worked Example 6:</strong> A satellite orbits Earth at radius r with period T. If the radius is doubled, what happens to the period? (Kepler: T<sup>2</sup> is proportional to r<sup>3</sup>)</p>
 <ul>
-<li>T<sup>2</sup> proportional to r<sup>3</sup> ⇒ T_new<sup>2</sup> / T<sup>2</sup> = (2r)<sup>3</sup> / r<sup>3</sup> = 8</li>
-<li>T_new = T · √(8) = 2*√(2)*T, approximately 2.83*T</li>
+<li>T<sup>2</sup> proportional to r<sup>3</sup> ⇒ T<sub>new</sub><sup>2</sup> / T<sup>2</sup> = (2r)<sup>3</sup> / r<sup>3</sup> = 8</li>
+<li>T<sub>new</sub> = T · √(8) = 2·√(2)·T, approximately 2.83·T</li>
 </ul>
 <blockquote><strong>Exam Tips:</strong></blockquote>
 <blockquote>- Free-fall acceleration is the same for all objects regardless of mass.</blockquote>

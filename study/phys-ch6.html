@@ -3,8 +3,8 @@
 
 <h3>Temperature Scales</h3>
 <div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">K = C + 273
-F = (9/5)*C + 32
-C = (5/9)*(F - 32)</div>
+F = (9/5)·C + 32
+C = (5/9)·(F - 32)</div>
 <p><strong>Key values:</strong></p>
 <ul>
 <li>Water freezes: 0 C = 273 K = 32 F</li>
@@ -13,108 +13,108 @@ C = (5/9)*(F - 32)</div>
 <li>Body temperature: 37 C = 310 K = 98.6 F</li>
 </ul>
 <h3>Thermal Expansion</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Linear:   Δ_L = α · L_0 · Δ_T
-Area:     Δ_A = 2*α · A_0 · Δ_T
-Volume:   Δ_V = β · V_0 · Δ_T   (β = 3*α for solids)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Linear:   Δ<sub>L</sub> = α · L<sub>0</sub> · Δ<sub>T</sub>
+Area:     Δ<sub>A</sub> = 2·α · A<sub>0</sub> · Δ<sub>T</sub>
+Volume:   Δ<sub>V</sub> = β · V<sub>0</sub> · Δ<sub>T</sub>   (β = 3·α for solids)</div>
 <h3>Heat Transfer Mechanisms</h3>
-<p><strong>Conduction:</strong> Heat through direct contact. Rate: Q/t = k*A*Δ_T/d (Fourier's law). Metals are good conductors.</p>
+<p><strong>Conduction:</strong> Heat through direct contact. Rate: Q/t = k·A·Δ<sub>T</sub>/d (Fourier's law). Metals are good conductors.</p>
 <p><strong>Convection:</strong> Heat carried by bulk fluid movement. Warm fluid rises, cool sinks.</p>
-<p><strong>Radiation:</strong> Heat via electromagnetic waves. Works through vacuum. Stefan-Boltzmann law: P = σ*A*T<sup>4</sup>.</p>
+<p><strong>Radiation:</strong> Heat via electromagnetic waves. Works through vacuum. Stefan-Boltzmann law: P = σ·A·T<sup>4</sup>.</p>
 <h3>Calorimetry</h3>
 <p>Heat to change temperature:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q = m · c · Δ_T</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q = m · c · Δ<sub>T</sub></div>
 <p>Heat during phase change (constant temperature):</p>
 <div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q = m · L</div>
 <p><strong>Important constants:</strong></p>
 <ul>
-<li>Specific heat of water: c_water = 4200 J/(kg*K)</li>
-<li>Latent heat of fusion (ice): L_f = 334,000 J/kg</li>
-<li>Latent heat of vaporization (water): L_v = 2,260,000 J/kg</li>
+<li>Specific heat of water: c<sub>water</sub> = 4200 J/(kg·K)</li>
+<li>Latent heat of fusion (ice): L<sub>f</sub> = 334,000 J/kg</li>
+<li>Latent heat of vaporization (water): L<sub>v</sub> = 2,260,000 J/kg</li>
 </ul>
 <p><strong>Calorimetric equation</strong> (heat lost = heat gained in an isolated system):</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q_lost = Q_gained
-m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Q<sub>lost</sub> = Q<sub>gained</sub>
+m<sub>1</sub> · c<sub>1</sub> · (T<sub>1</sub> - T<sub>f</sub>) = m<sub>2</sub> · c<sub>2</sub> · (T<sub>f</sub> - T<sub>2</sub>)</div>
 <p><strong>Worked Example 1:</strong> How much heat to raise 2 kg of water from 20 C to 80 C?</p>
 <ul>
 <li>Q = 2(4200)(60) = 504,000 J = 504 kJ</li>
 </ul>
-<p><strong>Worked Example 2:</strong> 0.5 kg ice at 0 C mixed with 2 kg water at 50 C. Find T_f.</p>
+<p><strong>Worked Example 2:</strong> 0.5 kg ice at 0 C mixed with 2 kg water at 50 C. Find T<sub>f</sub>.</p>
 <ul>
-<li>Melt ice: Q_melt = 0.5(334,000) = 167,000 J</li>
-<li>Energy balance: 2(4200)(50 - T_f) = 167,000 + 0.5(4200)(T_f)</li>
-<li>420,000 - 8400*T_f = 167,000 + 2100*T_f</li>
-<li>253,000 = 10,500*T_f ⇒ T_f = 24.1 C</li>
+<li>Melt ice: Q<sub>melt</sub> = 0.5(334,000) = 167,000 J</li>
+<li>Energy balance: 2(4200)(50 - T<sub>f</sub>) = 167,000 + 0.5(4200)(T<sub>f</sub>)</li>
+<li>420,000 - 8400·T<sub>f</sub> = 167,000 + 2100·T<sub>f</sub></li>
+<li>253,000 = 10,500·T<sub>f</sub> ⇒ T<sub>f</sub> = 24.1 C</li>
 </ul>
 <p><strong>Worked Example 3:</strong> How much heat to convert 0.2 kg of ice at -10 C to steam at 100 C?</p>
 <ul>
-<li>Heat ice to 0 C: Q_1 = 0.2(2100)(10) = 4,200 J (c_ice = 2100)</li>
-<li>Melt ice: Q_2 = 0.2(334,000) = 66,800 J</li>
-<li>Heat water to 100 C: Q_3 = 0.2(4200)(100) = 84,000 J</li>
-<li>Boil water: Q_4 = 0.2(2,260,000) = 452,000 J</li>
+<li>Heat ice to 0 C: Q<sub>1</sub> = 0.2(2100)(10) = 4,200 J (c<sub>ice</sub> = 2100)</li>
+<li>Melt ice: Q<sub>2</sub> = 0.2(334,000) = 66,800 J</li>
+<li>Heat water to 100 C: Q<sub>3</sub> = 0.2(4200)(100) = 84,000 J</li>
+<li>Boil water: Q<sub>4</sub> = 0.2(2,260,000) = 452,000 J</li>
 <li>Total: Q = 4,200 + 66,800 + 84,000 + 452,000 = 607,000 J = 607 kJ</li>
 </ul>
 <h3>Ideal Gas Law</h3>
 <div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P · V = n · R · T</div>
-<p>Where P = pressure (Pa), V = volume (m<sup>3</sup>), n = moles, R = 8.314 J/(mol*K), T = kelvin.</p>
-<p>Alternative form: P*V = N*k_B*T, where N is the number of molecules and k_B = 1.38 x 10<sup>-23</sup> J/K.</p>
-<p><strong>Avogadro's Law:</strong> Equal volumes of gases at the same T and P contain the same number of molecules. N_A = 6.022 x 10<sup>23</sup> mol<sup>-1</sup>.</p>
+<p>Where P = pressure (Pa), V = volume (m<sup>3</sup>), n = moles, R = 8.314 J/(mol·K), T = kelvin.</p>
+<p>Alternative form: P·V = N·k<sub>B</sub>·T, where N is the number of molecules and k<sub>B</sub> = 1.38 x 10<sup>-23</sup> J/K.</p>
+<p><strong>Avogadro's Law:</strong> Equal volumes of gases at the same T and P contain the same number of molecules. N<sub>A</sub> = 6.022 x 10<sup>23</sup> mol<sup>-1</sup>.</p>
 <h3>Combined Gas Law</h3>
 <p>For a fixed amount of gas:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P_1 · V_1 / T_1 = P_2 · V_2 / T_2</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">P<sub>1</sub> · V<sub>1</sub> / T<sub>1</sub> = P<sub>2</sub> · V<sub>2</sub> / T<sub>2</sub></div>
 <h3>Individual Gas Laws -- Complete Summary</h3>
 <div class="table-wrapper"><table>
 <thead><tr><th>Law</th><th>Condition</th><th>Formula</th><th>Relationship</th></tr></thead>
 <tbody>
-<tr><td>Boyle</td><td>Constant T (isothermal)</td><td>P_1*V_1 = P_2*V_2</td><td>P inversely proportional to V</td></tr>
-<tr><td>Charles</td><td>Constant P (isobaric)</td><td>V_1/T_1 = V_2/T_2</td><td>V proportional to T</td></tr>
-<tr><td>Gay-Lussac</td><td>Constant V (isochoric)</td><td>P_1/T_1 = P_2/T_2</td><td>P proportional to T</td></tr>
-<tr><td>Avogadro</td><td>Constant T, P</td><td>V_1/n_1 = V_2/n_2</td><td>V proportional to n</td></tr>
+<tr><td>Boyle</td><td>Constant T (isothermal)</td><td>P<sub>1</sub>·V<sub>1</sub> = P<sub>2</sub>·V<sub>2</sub></td><td>P inversely proportional to V</td></tr>
+<tr><td>Charles</td><td>Constant P (isobaric)</td><td>V<sub>1</sub>/T<sub>1</sub> = V<sub>2</sub>/T<sub>2</sub></td><td>V proportional to T</td></tr>
+<tr><td>Gay-Lussac</td><td>Constant V (isochoric)</td><td>P<sub>1</sub>/T<sub>1</sub> = P<sub>2</sub>/T<sub>2</sub></td><td>P proportional to T</td></tr>
+<tr><td>Avogadro</td><td>Constant T, P</td><td>V<sub>1</sub>/n<sub>1</sub> = V<sub>2</sub>/n<sub>2</sub></td><td>V proportional to n</td></tr>
 </tbody>
 </table></div>
 <p><strong>Worked Example 4:</strong> A gas at 2 atm and 300 K in 10 L is compressed to 5 L at 600 K. New pressure?</p>
 <ul>
-<li>P_1*V_1/T_1 = P_2*V_2/T_2</li>
-<li>2(10)/300 = P_2(5)/600</li>
-<li>P_2 = 2(10)(600)/(300)(5) = 8 atm</li>
+<li>P<sub>1</sub>·V<sub>1</sub>/T<sub>1</sub> = P<sub>2</sub>·V<sub>2</sub>/T<sub>2</sub></li>
+<li>2(10)/300 = P<sub>2</sub>(5)/600</li>
+<li>P<sub>2</sub> = 2(10)(600)/(300)(5) = 8 atm</li>
 </ul>
 <p><strong>Worked Example 5:</strong> (Boyle) A gas at 100 kPa occupies 6 L. Volume at 300 kPa (constant T)?</p>
 <ul>
-<li>P_1*V_1 = P_2*V_2 ⇒ 100(6) = 300*V_2 ⇒ V_2 = 2 L</li>
+<li>P<sub>1</sub>·V<sub>1</sub> = P<sub>2</sub>·V<sub>2</sub> ⇒ 100(6) = 300·V<sub>2</sub> ⇒ V<sub>2</sub> = 2 L</li>
 </ul>
 <p><strong>Worked Example 6:</strong> (Charles) A gas at 300 K occupies 4 L. Volume at 600 K (constant P)?</p>
 <ul>
-<li>V_1/T_1 = V_2/T_2 ⇒ 4/300 = V_2/600 ⇒ V_2 = 8 L</li>
+<li>V<sub>1</sub>/T<sub>1</sub> = V<sub>2</sub>/T<sub>2</sub> ⇒ 4/300 = V<sub>2</sub>/600 ⇒ V<sub>2</sub> = 8 L</li>
 </ul>
 <h3>Thermodynamic Processes -- Detailed Equations</h3>
 <p><strong>Isothermal process (T = const):</strong></p>
 <ul>
-<li>Boyle's law: p_1 · V_1 = p_2 · V_2</li>
-<li>Work done by gas: W = n · R · T · ln(V_2 / V_1)</li>
-<li>Internal energy change: Δ_U = 0 (temperature unchanged)</li>
+<li>Boyle's law: p<sub>1</sub> · V<sub>1</sub> = p<sub>2</sub> · V<sub>2</sub></li>
+<li>Work done by gas: W = n · R · T · ln(V<sub>2</sub> / V<sub>1</sub>)</li>
+<li>Internal energy change: Δ<sub>U</sub> = 0 (temperature unchanged)</li>
 <li>Heat added: Q = W (all heat converts to work)</li>
 </ul>
 <p><strong>Isobaric process (p = const):</strong></p>
 <ul>
-<li>Charles's law: V_1 / T_1 = V_2 / T_2</li>
-<li>Work done by gas: W = p · Δ_V = p · (V_2 - V_1)</li>
-<li>Heat added: Q = n · C_p · Δ_T</li>
+<li>Charles's law: V<sub>1</sub> / T<sub>1</sub> = V<sub>2</sub> / T<sub>2</sub></li>
+<li>Work done by gas: W = p · Δ<sub>V</sub> = p · (V<sub>2</sub> - V<sub>1</sub>)</li>
+<li>Heat added: Q = n · C<sub>p</sub> · Δ<sub>T</sub></li>
 </ul>
 <p><strong>Isochoric process (V = const), also called isosteric:</strong></p>
 <ul>
-<li>Gay-Lussac's law: p_1 / T_1 = p_2 / T_2</li>
+<li>Gay-Lussac's law: p<sub>1</sub> / T<sub>1</sub> = p<sub>2</sub> / T<sub>2</sub></li>
 <li>Work done: W = 0 (no volume change)</li>
-<li>Heat added: Q = n · C_v · Δ_T = Δ_U</li>
+<li>Heat added: Q = n · C<sub>v</sub> · Δ<sub>T</sub> = Δ<sub>U</sub></li>
 </ul>
 <p><strong>Adiabatic process (Q = 0):</strong></p>
 <ul>
 <li>p · V^γ = const, T · V^(γ - 1) = const</li>
-<li>Work done by gas: W = (p_1 · V_1 - p_2 · V_2) / (γ - 1)</li>
-<li>Internal energy change: Δ_U = -W</li>
+<li>Work done by gas: W = (p<sub>1</sub> · V<sub>1</sub> - p<sub>2</sub> · V<sub>2</sub>) / (γ - 1)</li>
+<li>Internal energy change: Δ<sub>U</sub> = -W</li>
 </ul>
 <h3>First Law of Thermodynamics</h3>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ_U = Q - W</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ<sub>U</sub> = Q - W</div>
 <ul>
-<li>Δ_U = change in internal energy</li>
+<li>Δ<sub>U</sub> = change in internal energy</li>
 <li>Q = heat added TO the system (positive = in)</li>
 <li>W = work done BY the system (positive = expansion)</li>
 </ul>
@@ -122,20 +122,20 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 <h3>Second Law of Thermodynamics</h3>
 <p>Heat naturally flows from hot to cold. Total entropy of an isolated system always increases. A perfect heat engine (100% efficiency) is impossible.</p>
 <p><strong>Carnot efficiency</strong> (maximum possible):</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">η_max = 1 - T_cold / T_hot</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">η<sub>max</sub> = 1 - T<sub>cold</sub> / T<sub>hot</sub></div>
 <p>(Temperatures in kelvin)</p>
 <p><strong>Worked Example 7:</strong> A heat engine operates between 600 K and 300 K. Maximum efficiency?</p>
 <ul>
-<li>η_max = 1 - 300/600 = 0.5 = 50%</li>
+<li>η<sub>max</sub> = 1 - 300/600 = 0.5 = 50%</li>
 </ul>
 <h3>Thermodynamic Processes -- Complete Table</h3>
 <div class="table-wrapper"><table>
-<thead><tr><th>Process</th><th>Condition</th><th>Work</th><th>Heat</th><th>Δ_U</th></tr></thead>
+<thead><tr><th>Process</th><th>Condition</th><th>Work</th><th>Heat</th><th>Δ<sub>U</sub></th></tr></thead>
 <tbody>
-<tr><td>Isothermal</td><td>T constant</td><td>W = nRT*ln(V_2/V_1)</td><td>Q = W</td><td>0</td></tr>
-<tr><td>Adiabatic</td><td>Q = 0</td><td>W = -Δ_U</td><td>0</td><td>Δ_U = -W</td></tr>
-<tr><td>Isobaric</td><td>P constant</td><td>W = P*Δ_V</td><td>Q = nC_p*Δ_T</td><td>Δ_U = Q - W</td></tr>
-<tr><td>Isochoric</td><td>V constant</td><td>0</td><td>Q = nC_v*Δ_T</td><td>Δ_U = Q</td></tr>
+<tr><td>Isothermal</td><td>T constant</td><td>W = nRT·ln(V<sub>2</sub>/V<sub>1</sub>)</td><td>Q = W</td><td>0</td></tr>
+<tr><td>Adiabatic</td><td>Q = 0</td><td>W = -Δ<sub>U</sub></td><td>0</td><td>Δ<sub>U</sub> = -W</td></tr>
+<tr><td>Isobaric</td><td>P constant</td><td>W = P·Δ<sub>V</sub></td><td>Q = nC_p·Δ<sub>T</sub></td><td>Δ<sub>U</sub> = Q - W</td></tr>
+<tr><td>Isochoric</td><td>V constant</td><td>0</td><td>Q = nC_v·Δ<sub>T</sub></td><td>Δ<sub>U</sub> = Q</td></tr>
 </tbody>
 </table></div>
 <h3>pV-Diagrams</h3>
@@ -151,8 +151,8 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 <h3>Phase Changes</h3>
 <p>During a phase change, temperature remains constant:</p>
 <ul>
-<li>Solid to liquid: melting (absorbs L_f)</li>
-<li>Liquid to gas: boiling (absorbs L_v)</li>
+<li>Solid to liquid: melting (absorbs L<sub>f</sub>)</li>
+<li>Liquid to gas: boiling (absorbs L<sub>v</sub>)</li>
 <li>Solid to gas: sublimation</li>
 <li>Reverse processes release the same latent heat</li>
 </ul>
@@ -166,33 +166,33 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 <h3>Kinetic Theory of Gases</h3>
 <p>The macroscopic properties of an ideal gas (pressure, temperature) arise from the random motion of vast numbers of molecules.</p>
 <p><strong>Average kinetic energy of a single molecule:</strong></p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">KE_avg = (3/2) · k_B · T</div>
-<p>Where k_B = 1.38 x 10<sup>-23</sup> J/K is Boltzmann's constant and T is in kelvin.</p>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">KE_avg = (3/2) · k<sub>B</sub> · T</div>
+<p>Where k<sub>B</sub> = 1.38 x 10<sup>-23</sup> J/K is Boltzmann's constant and T is in kelvin.</p>
 <p><strong>Root-mean-square speed:</strong></p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v_rms = √(3*k_B*T / m) = √(3*R*T / M)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">v<sub>rms</sub> = √(3·k<sub>B</sub>·T / m) = √(3·R·T / M)</div>
 <p>Where m = mass of one molecule, M = molar mass (kg/mol).</p>
 <p><strong>Key implications:</strong></p>
 <ul>
 <li>At the same temperature, lighter molecules move faster (hydrogen faster than oxygen).</li>
 <li>Temperature is a direct measure of average kinetic energy.</li>
-<li>Internal energy of an ideal monatomic gas: U = (3/2)*n*R*T.</li>
+<li>Internal energy of an ideal monatomic gas: U = (3/2)·n·R·T.</li>
 </ul>
-<p><strong>Worked Example:</strong> Find v_rms of nitrogen molecules (M = 0.028 kg/mol) at 300 K.</p>
+<p><strong>Worked Example:</strong> Find v<sub>rms</sub> of nitrogen molecules (M = 0.028 kg/mol) at 300 K.</p>
 <ul>
-<li>v_rms = √(3 x 8.314 x 300 / 0.028) = √(267,000) = 517 m/s</li>
+<li>v<sub>rms</sub> = √(3 x 8.314 x 300 / 0.028) = √(267,000) = 517 m/s</li>
 </ul>
 <h3>Internal Energy</h3>
 <p>Internal energy (U) is the total kinetic energy of all molecules in a substance. For an ideal gas, internal energy depends ONLY on temperature:</p>
 <ul>
-<li>Monatomic ideal gas: U = (3/2)*n*R*T</li>
-<li>Diatomic ideal gas: U = (5/2)*n*R*T (at moderate temperatures)</li>
+<li>Monatomic ideal gas: U = (3/2)·n·R·T</li>
+<li>Diatomic ideal gas: U = (5/2)·n·R·T (at moderate temperatures)</li>
 </ul>
-<p>A change in internal energy: Δ_U = n*C_v*Δ_T, where C_v is the molar heat capacity at constant volume.</p>
+<p>A change in internal energy: Δ<sub>U</sub> = n·C<sub>v</sub>·Δ<sub>T</sub>, where C<sub>v</sub> is the molar heat capacity at constant volume.</p>
 <h3>Entropy and the Second Law (Detailed)</h3>
 <p><strong>Entropy</strong> (S) measures the disorder or the number of possible microscopic arrangements of a system. Unit: J/K.</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ_S = Q_rev / T    (for a reversible process at constant T)</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ<sub>S</sub> = Q<sub>rev</sub> / T    (for a reversible process at constant T)</div>
 <p><strong>The Second Law in terms of entropy:</strong> In any spontaneous process, the total entropy of the universe (system + surroundings) increases. For a reversible process, it stays the same. It never decreases.</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ_S_universe ≥ 0</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">Δ<sub>S</sub><sub>universe</sub> ≥ 0</div>
 <p><strong>Practical meaning:</strong></p>
 <ul>
 <li>Heat flows naturally from hot to cold (never the reverse without work input).</li>
@@ -201,9 +201,9 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 </ul>
 <p><strong>Worked Example:</strong> 1000 J of heat flows from a reservoir at 500 K to one at 250 K.</p>
 <ul>
-<li>Δ_S_hot = -1000/500 = -2 J/K</li>
-<li>Δ_S_cold = +1000/250 = +4 J/K</li>
-<li>Δ_S_total = -2 + 4 = +2 J/K > 0 (confirms spontaneous)</li>
+<li>Δ<sub>S</sub><sub>hot</sub> = -1000/500 = -2 J/K</li>
+<li>Δ<sub>S</sub><sub>cold</sub> = +1000/250 = +4 J/K</li>
+<li>Δ<sub>S</sub><sub>total</sub> = -2 + 4 = +2 J/K > 0 (confirms spontaneous)</li>
 </ul>
 <h3>Amorphous vs Crystalline Substances</h3>
 <div class="table-wrapper"><table>
@@ -233,12 +233,12 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 <div class="table-wrapper"><table>
 <thead><tr><th>Transition</th><th>From</th><th>To</th><th>Energy</th></tr></thead>
 <tbody>
-<tr><td>Melting (fusion)</td><td>Solid</td><td>Liquid</td><td>Absorbs L_f</td></tr>
-<tr><td>Freezing</td><td>Liquid</td><td>Solid</td><td>Releases L_f</td></tr>
-<tr><td>Evaporation/boiling</td><td>Liquid</td><td>Gas</td><td>Absorbs L_v</td></tr>
-<tr><td>Condensation</td><td>Gas</td><td>Liquid</td><td>Releases L_v</td></tr>
-<tr><td>Sublimation</td><td>Solid</td><td>Gas</td><td>Absorbs L_f + L_v</td></tr>
-<tr><td>Deposition</td><td>Gas</td><td>Solid</td><td>Releases L_f + L_v</td></tr>
+<tr><td>Melting (fusion)</td><td>Solid</td><td>Liquid</td><td>Absorbs L<sub>f</sub></td></tr>
+<tr><td>Freezing</td><td>Liquid</td><td>Solid</td><td>Releases L<sub>f</sub></td></tr>
+<tr><td>Evaporation/boiling</td><td>Liquid</td><td>Gas</td><td>Absorbs L<sub>v</sub></td></tr>
+<tr><td>Condensation</td><td>Gas</td><td>Liquid</td><td>Releases L<sub>v</sub></td></tr>
+<tr><td>Sublimation</td><td>Solid</td><td>Gas</td><td>Absorbs L<sub>f</sub> + L<sub>v</sub></td></tr>
+<tr><td>Deposition</td><td>Gas</td><td>Solid</td><td>Releases L<sub>f</sub> + L<sub>v</sub></td></tr>
 </tbody>
 </table></div>
 <p><strong>Sublimation</strong> occurs when a solid converts directly to gas without passing through the liquid phase. Familiar examples: dry ice (solid CO2) at atmospheric pressure, frost disappearing on a cold dry day, freeze-drying of food and pharmaceuticals.</p>
@@ -246,10 +246,10 @@ m_1 · c_1 · (T_1 - T_f) = m_2 · c_2 · (T_f - T_2)</div>
 <h3>Humidity</h3>
 <p>Air always contains some water vapor. Humidity quantifies how much.</p>
 <p><strong>Absolute humidity</strong> is the mass of water vapor per unit volume of air:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">AH = m_water_vapor / V_air</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">AH = m_water_vapor / V<sub>air</sub></div>
 <p>Unit: g/m<sup>3</sup> (or kg/m<sup>3</sup>). Warm air can hold more water vapor than cold air.</p>
 <p><strong>Relative humidity (RH)</strong> is the ratio of the actual water vapor pressure to the saturation (maximum possible) vapor pressure at the same temperature:</p>
-<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">RH = (p_vapor / p_saturated) x 100%</div>
+<div class="sp-formulas" style="font-family:'Consolas','Courier New',monospace; background:#F8FAFC; border-left:3px solid #6366F1; padding:12px 16px; margin:14px 0; white-space:pre; overflow-x:auto; line-height:1.7;">RH = (p<sub>vapor</sub> / p_saturated) x 100%</div>
 <ul>
 <li>RH = 100% means the air is fully saturated; any additional moisture condenses (dew, fog, rain).</li>
 <li>RH = 0% means completely dry air.</li>

@@ -19,18 +19,18 @@
 <div class="table-wrapper"><table>
 <thead><tr><th>Quantity</th><th>Unit</th><th>Symbol</th><th>In base units</th></tr></thead>
 <tbody>
-<tr><td>Force</td><td>newton</td><td>N</td><td>kg-m/s<sup>2</sup></td></tr>
-<tr><td>Pressure</td><td>pascal</td><td>Pa</td><td>N/m<sup>2</sup> = kg/(m-s<sup>2</sup>)</td></tr>
-<tr><td>Energy</td><td>joule</td><td>J</td><td>N-m = kg-m<sup>2</sup>/s<sup>2</sup></td></tr>
-<tr><td>Power</td><td>watt</td><td>W</td><td>J/s = kg-m<sup>2</sup>/s<sup>3</sup></td></tr>
-<tr><td>Voltage</td><td>volt</td><td>V</td><td>J/C = kg-m<sup>2</sup>/(A-s<sup>3</sup>)</td></tr>
-<tr><td>Resistance</td><td>ohm</td><td>Ohm</td><td>V/A = kg-m<sup>2</sup>/(A<sup>2</sup>-s<sup>3</sup>)</td></tr>
+<tr><td>Force</td><td>newton</td><td>N</td><td>kg·m/s<sup>2</sup></td></tr>
+<tr><td>Pressure</td><td>pascal</td><td>Pa</td><td>N/m<sup>2</sup> = kg/(m·s<sup>2</sup>)</td></tr>
+<tr><td>Energy</td><td>joule</td><td>J</td><td>N·m = kg·m<sup>2</sup>/s<sup>2</sup></td></tr>
+<tr><td>Power</td><td>watt</td><td>W</td><td>J/s = kg·m<sup>2</sup>/s<sup>3</sup></td></tr>
+<tr><td>Voltage</td><td>volt</td><td>V</td><td>J/C = kg·m<sup>2</sup>/(A·s<sup>3</sup>)</td></tr>
+<tr><td>Resistance</td><td>ohm</td><td>Ohm</td><td>V/A = kg·m<sup>2</sup>/(A<sup>2</sup>-s<sup>3</sup>)</td></tr>
 <tr><td>Frequency</td><td>hertz</td><td>Hz</td><td>1/s</td></tr>
-<tr><td>Charge</td><td>coulomb</td><td>C</td><td>A-s</td></tr>
-<tr><td>Capacitance</td><td>farad</td><td>F</td><td>C/V = A<sup>2</sup>-s<sup>4</sup>/(kg-m<sup>2</sup>)</td></tr>
-<tr><td>Magnetic flux density</td><td>tesla</td><td>T</td><td>kg/(A-s<sup>2</sup>)</td></tr>
-<tr><td>Magnetic flux</td><td>weber</td><td>Wb</td><td>V-s = kg-m<sup>2</sup>/(A-s<sup>2</sup>)</td></tr>
-<tr><td>Inductance</td><td>henry</td><td>H</td><td>V-s/A = kg-m<sup>2</sup>/(A<sup>2</sup>-s<sup>2</sup>)</td></tr>
+<tr><td>Charge</td><td>coulomb</td><td>C</td><td>A·s</td></tr>
+<tr><td>Capacitance</td><td>farad</td><td>F</td><td>C/V = A<sup>2</sup>-s<sup>4</sup>/(kg·m<sup>2</sup>)</td></tr>
+<tr><td>Magnetic flux density</td><td>tesla</td><td>T</td><td>kg/(A·s<sup>2</sup>)</td></tr>
+<tr><td>Magnetic flux</td><td>weber</td><td>Wb</td><td>V·s = kg·m<sup>2</sup>/(A·s<sup>2</sup>)</td></tr>
+<tr><td>Inductance</td><td>henry</td><td>H</td><td>V·s/A = kg·m<sup>2</sup>/(A<sup>2</sup>-s<sup>2</sup>)</td></tr>
 </tbody>
 </table></div>
 <h3>SI Prefixes</h3>
@@ -75,19 +75,19 @@
 <p>Every valid physics equation must have the same dimensions on both sides. This technique lets you check whether a formula is plausible.</p>
 <p><strong>Worked Example:</strong> Verify that KE = (1/2)mv<sup>2</sup> has units of energy.</p>
 <ul>
-<li>[KE] = kg x (m/s)<sup>2</sup> = kg-m<sup>2</sup>/s<sup>2</sup></li>
-<li>This equals the joule (J = N-m = kg-m/s<sup>2</sup> x m = kg-m<sup>2</sup>/s<sup>2</sup>). Confirmed.</li>
+<li>[KE] = kg x (m/s)<sup>2</sup> = kg·m<sup>2</sup>/s<sup>2</sup></li>
+<li>This equals the joule (J = N·m = kg·m/s<sup>2</sup> x m = kg·m<sup>2</sup>/s<sup>2</sup>). Confirmed.</li>
 </ul>
-<p><strong>Worked Example:</strong> A student writes the period of a pendulum as T = 2*π*√(g/L). Check dimensions.</p>
+<p><strong>Worked Example:</strong> A student writes the period of a pendulum as T = 2·π·√(g/L). Check dimensions.</p>
 <ul>
 <li>[g/L] = (m/s<sup>2</sup>) / m = 1/s<sup>2</sup></li>
 <li>√(1/s<sup>2</sup>) = 1/s, so T would have units of 1/s. But period should be in seconds.</li>
-<li>The correct formula is T = 2*π*√(L/g), giving √(s<sup>2</sup>) = s. The student is wrong.</li>
+<li>The correct formula is T = 2·π·√(L/g), giving √(s<sup>2</sup>) = s. The student is wrong.</li>
 </ul>
-<p><strong>Worked Example:</strong> Which formula for drag force is dimensionally correct? (a) F = ρ*v*A or (b) F = (1/2)*ρ*v<sup>2</sup>*A</p>
+<p><strong>Worked Example:</strong> Which formula for drag force is dimensionally correct? (a) F = ρ·v·A or (b) F = (1/2)·ρ·v<sup>2</sup>·A</p>
 <ul>
-<li>(a): [ρ*v*A] = (kg/m<sup>3</sup>)(m/s)(m<sup>2</sup>) = kg/(m*s). NOT force units.</li>
-<li>(b): [ρ*v<sup>2</sup>*A] = (kg/m<sup>3</sup>)(m<sup>2</sup>/s<sup>2</sup>)(m<sup>2</sup>) = kg-m/s<sup>2</sup> = N. This IS force. Answer: (b).</li>
+<li>(a): [ρ·v·A] = (kg/m<sup>3</sup>)(m/s)(m<sup>2</sup>) = kg/(m·s). NOT force units.</li>
+<li>(b): [ρ·v<sup>2</sup>·A] = (kg/m<sup>3</sup>)(m<sup>2</sup>/s<sup>2</sup>)(m<sup>2</sup>) = kg·m/s<sup>2</sup> = N. This IS force. Answer: (b).</li>
 </ul>
 <blockquote><strong>Exam Tips:</strong></blockquote>
 <blockquote>- Confusing mass (kg) with weight (N). Weight = mg, different units.</blockquote>
