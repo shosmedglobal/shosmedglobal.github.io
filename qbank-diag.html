@@ -227,8 +227,70 @@
         log(`FAIL: fetch error — ${err.message}`, 'warn');
       }
 
+      // --- Step 9: LOAD qbank.js dynamically + call its loadProgress/loadTestHistory ---
+      step('Step 9: dynamically load qbank.js and call its functions');
+      log('Loading qbank.js…', 'info');
+      try {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'qbank.js?diag=1&ts=' + Date.now();
+          s.onload = resolve;
+          s.onerror = () => reject(new Error('qbank.js failed to load (network or parse error)'));
+          document.head.appendChild(s);
+        });
+        log('OK: qbank.js loaded. Checking globals…', 'ok');
+        const checks = [
+          ['db',                typeof db],
+          ['allQuestions',      typeof allQuestions],
+          ['loadProgress',      typeof loadProgress],
+          ['loadTestHistory',   typeof loadTestHistory],
+          ['loadQuestionsWithAccess', typeof loadQuestionsWithAccess],
+          ['showScreen',        typeof showScreen],
+        ];
+        for (const [name, t] of checks) {
+          const ok = (t !== 'undefined');
+          log(`   ${ok ? '✓' : '✗'} ${name}: ${t}`, ok ? 'ok' : 'err');
+        }
+      } catch (err) {
+        log(`FAIL: ${err.message}`, 'err');
+        log('This is a CRITICAL bug — qbank.js cannot load, so qbank.html will hang.', 'err');
+        step('Diagnostic complete (with failures)');
+        return;
+      }
+
+      // --- Step 10: call loadProgress() exactly like qbank.html does ---
+      step('Step 10: call qbank.js loadProgress() (set currentUserId first)');
+      try {
+        currentUserId = user.uid;  // qbank.js global
+        const t0 = performance.now();
+        const deadline = setTimeout(() => {
+          log('TIMEOUT: loadProgress() has NOT returned after 10s. THIS IS THE BUG.', 'err');
+        }, 10000);
+        await loadProgress();
+        clearTimeout(deadline);
+        const dt = Math.round(performance.now() - t0);
+        log(`OK (${dt}ms): qbank.js loadProgress() completed`, 'ok');
+      } catch (err) {
+        log(`FAIL: loadProgress threw — ${err.message}`, 'err');
+      }
+
+      // --- Step 11: call loadTestHistory() exactly like qbank.html does ---
+      step('Step 11: call qbank.js loadTestHistory()');
+      try {
+        const t0 = performance.now();
+        const deadline = setTimeout(() => {
+          log('TIMEOUT: loadTestHistory() has NOT returned after 10s. THIS IS THE BUG.', 'err');
+        }, 10000);
+        await loadTestHistory();
+        clearTimeout(deadline);
+        const dt = Math.round(performance.now() - t0);
+        log(`OK (${dt}ms): qbank.js loadTestHistory() completed`, 'ok');
+      } catch (err) {
+        log(`FAIL: loadTestHistory threw — ${err.message}`, 'err');
+      }
+
       step('Diagnostic complete');
-      log('If all 8 steps say OK and QBank still hangs, send me this entire log.', 'info');
+      log('If Step 10 or 11 timed out, qbank.js is the bug. If all OK, the bug is elsewhere in qbank.html.', 'info');
     });
   })();
   </script>
