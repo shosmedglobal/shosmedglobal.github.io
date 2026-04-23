@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QBank Diagnostic - SHOS Med</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; padding: 24px; max-width: 900px; margin: 0 auto; }
+    h1 { color: #1B2A4A; font-size: 1.5rem; margin-bottom: 24px; }
+    .log {
+      background: #0F172A; color: #E2E8F0; font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.85rem; padding: 20px; border-radius: 8px; min-height: 400px;
+      white-space: pre-wrap; word-break: break-word; line-height: 1.5;
+    }
+    .ok { color: #4ADE80; }
+    .warn { color: #FBBF24; }
+    .err { color: #F87171; }
+    .info { color: #93C5FD; }
+    .label { color: #A78BFA; font-weight: bold; }
+    .summary { background: #1E293B; padding: 16px; border-radius: 8px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>QBank Loading Diagnostic</h1>
+  <p style="color: #666; margin-bottom: 16px;">
+    This page replicates exactly what <code>qbank.html</code> does on load, and shows every step.
+    If one step hangs or errors, you'll see it here. Share the output to identify the real issue.
+  </p>
+  <div id="log" class="log">Starting diagnostic…\n</div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js"></script>
+  <script>
+  (function() {
+    const logEl = document.getElementById('log');
+    function log(msg, cls) {
+      const t = new Date().toISOString().slice(11, 23);
+      const line = document.createElement('span');
+      line.className = cls || '';
+      line.textContent = `[${t}] ${msg}\n`;
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    function step(label) {
+      const el = document.createElement('span');
+      el.className = 'label';
+      el.textContent = `\n── ${label} ──\n`;
+      logEl.appendChild(el);
+    }
+
+    window.addEventListener('error', e => {
+      log(`UNCAUGHT ERROR: ${e.message} at ${e.filename}:${e.lineno}`, 'err');
+    });
+    window.addEventListener('unhandledrejection', e => {
+      log(`UNHANDLED PROMISE REJECTION: ${e.reason?.message || e.reason}`, 'err');
+    });
+
+    // --- Step 1: Firebase SDK loaded? ---
+    step('Step 1: Firebase SDK');
+    if (typeof firebase === 'undefined') {
+      log('FAIL: firebase object not defined. SDK script did not load.', 'err');
+      return;
+    }
+    log(`OK: firebase SDK loaded (apps: ${firebase.apps.length})`, 'ok');
+
+    // --- Step 2: auth.js loaded? ---
+    step('Step 2: auth.js');
+    if (typeof auth === 'undefined') {
+      log('FAIL: `auth` global not defined. auth.js did not load or failed.', 'err');
+      return;
+    }
+    log('OK: auth object available', 'ok');
+
+    // --- Step 3: auth state fires? ---
+    step('Step 3: auth.onAuthStateChanged');
+    let authFired = false;
+    const authTimeout = setTimeout(() => {
+      if (!authFired) {
+        log('TIMEOUT: auth.onAuthStateChanged did not fire within 5s. Firebase auth is BLOCKED or not initialized.', 'err');
+      }
+    }, 5000);
+
+    auth.onAuthStateChanged(async (user) => {
+      authFired = true;
+      clearTimeout(authTimeout);
+      if (!user) {
+        log('Result: NO USER — you are NOT logged in. QBank would redirect to signup.', 'warn');
+        log('Fix: log in via dashboard first, then come back to this diagnostic.', 'info');
+        return;
+      }
+      log(`OK: user present. uid=${user.uid} email=${user.email}`, 'ok');
+
+      // --- Step 4: profile read ---
+      step('Step 4: Firestore — read users/{uid} (profile)');
+      const profileTimer = setTimeout(() => {
+        log('TIMEOUT: profile read has NOT returned after 8s. Firestore is hanging.', 'err');
+        log('This is the bug. Likely causes: Firestore offline cache deadlock, rules preventing read, or network.', 'info');
+      }, 8000);
+      try {
+        const db = firebase.firestore();
+        const t0 = performance.now();
+        const doc = await db.collection('users').doc(user.uid).get();
+        const dt = Math.round(performance.now() - t0);
+        clearTimeout(profileTimer);
+        if (doc.exists) {
+          const d = doc.data();
+          log(`OK (${dt}ms): profile exists. payments=${JSON.stringify(d.payments || {})}`, 'ok');
+          log(`   path=${d.path || '(none)'} role-like admin? ${(d.email || user.email) === 'eli@shosmed.com' || (d.email || user.email) === 'elizolotov@gmail.com' || (d.email || user.email) === 'shosmedglobal@gmail.com'}`, 'info');
+        } else {
+          log(`OK (${dt}ms): profile DOES NOT EXIST in Firestore. (First login?)`, 'warn');
+        }
+      } catch (err) {
+        clearTimeout(profileTimer);
+        log(`FAIL: profile read error — ${err.code || ''} ${err.message}`, 'err');
+        if (err.code === 'permission-denied') {
+          log('Cause: Firestore rules denied read of your own /users/{uid} doc. Check rules.', 'info');
+        } else if (err.code === 'unavailable') {
+          log('Cause: Firestore is offline. Check network + status.firebase.google.com', 'info');
+        }
+      }
+
+      // --- Step 5: progress read ---
+      step('Step 5: Firestore — read users/{uid}/qbankData/progress');
+      try {
+        const db = firebase.firestore();
+        const t0 = performance.now();
+        const doc = await db.collection('users').doc(user.uid).collection('qbankData').doc('progress').get();
+        const dt = Math.round(performance.now() - t0);
+        if (doc.exists) {
+          const keys = Object.keys(doc.data().completedQuestions || {}).length;
+          log(`OK (${dt}ms): progress doc found, ${keys} completed questions tracked`, 'ok');
+        } else {
+          log(`OK (${dt}ms): progress doc does not exist yet (normal if new user)`, 'info');
+        }
+      } catch (err) {
+        log(`FAIL: progress read error — ${err.code || ''} ${err.message}`, 'err');
+      }
+
+      // --- Step 6: test history read ---
+      step('Step 6: Firestore — read users/{uid}/qbankData/testHistory');
+      try {
+        const db = firebase.firestore();
+        const t0 = performance.now();
+        const doc = await db.collection('users').doc(user.uid).collection('qbankData').doc('testHistory').get();
+        const dt = Math.round(performance.now() - t0);
+        if (doc.exists) {
+          const n = (doc.data().tests || []).length;
+          log(`OK (${dt}ms): testHistory doc found, ${n} tests recorded`, 'ok');
+        } else {
+          log(`OK (${dt}ms): testHistory doc does not exist yet`, 'info');
+        }
+      } catch (err) {
+        log(`FAIL: testHistory read error — ${err.code || ''} ${err.message}`, 'err');
+      }
+
+      // --- Step 7: questions.json fetch ---
+      step('Step 7: fetch questions.json');
+      try {
+        const t0 = performance.now();
+        const r = await fetch('questions.json');
+        const dt = Math.round(performance.now() - t0);
+        if (!r.ok) {
+          log(`FAIL (${dt}ms): HTTP ${r.status} ${r.statusText}`, 'err');
+        } else {
+          const d = await r.json();
+          const bio = d.biology?.length || 0;
+          const chem = d.chemistry?.length || 0;
+          log(`OK (${dt}ms): loaded bio=${bio}, chem=${chem}`, 'ok');
+        }
+      } catch (err) {
+        log(`FAIL: fetch error — ${err.message}`, 'err');
+      }
+
+      // --- Step 8: questions-physics.json ---
+      step('Step 8: fetch questions-physics.json (bonus)');
+      try {
+        const t0 = performance.now();
+        const r = await fetch('questions-physics.json');
+        const dt = Math.round(performance.now() - t0);
+        if (!r.ok) {
+          log(`FAIL (${dt}ms): HTTP ${r.status}`, 'warn');
+        } else {
+          const d = await r.json();
+          log(`OK (${dt}ms): physics count=${d.physics?.length || 0}`, 'ok');
+        }
+      } catch (err) {
+        log(`FAIL: fetch error — ${err.message}`, 'warn');
+      }
+
+      step('Diagnostic complete');
+      log('If all 8 steps say OK and QBank still hangs, send me this entire log.', 'info');
+    });
+  })();
+  </script>
+</body>
+</html>
