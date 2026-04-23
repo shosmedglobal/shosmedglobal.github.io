@@ -120,13 +120,120 @@
 /* Subject Selection Grid */
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-bottom: 20px;
 }
 
 .subject-card {
   cursor: pointer;
+}
+
+/* Physics (Bonus) — lives in the same grid but is launched via its own
+   button. Visually consistent with Bio/Chem cards but with an indigo accent
+   and a small "Bonus" pill to make the distinction clear. */
+.subject-card.subject-card-bonus {
+  cursor: pointer;
+}
+.subject-card.subject-card-bonus .subject-card-inner {
+  border-color: #C7D2FE;
+  background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 60%);
+}
+.subject-card.subject-card-bonus:hover .subject-card-inner {
+  border-color: #818CF8;
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
+  transform: translateY(-2px);
+}
+/* Suppress the checkbox-style circle that other cards use (physics has no checkbox) */
+.subject-card.subject-card-bonus .subject-card-inner::after {
+  display: none;
+}
+/* Small "Bonus" pill in the top-right corner */
+.subject-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #4F46E5;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+/* Compact, subtle info strip explaining Physics is bonus.
+   Replaces the large blue banner that previously took up a full row. */
+.bonus-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  border-left: 3px solid #4F46E5;
+  color: #3730A3;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: -6px 0 22px;
+}
+.bonus-note strong {
+  color: #312E81;
+  font-weight: 600;
+}
+.bonus-note-dot {
+  width: 6px;
+  height: 6px;
+  background: #4F46E5;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Physics Start button — styled as a secondary bonus-tinted button that
+   sits alongside the primary "Start Block" button in the same row.
+   Smaller/subtler than primary to reinforce the LF3-first hierarchy. */
+.btn-bonus-physics {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #4338CA;
+  border: 1.5px solid #C7D2FE;
+  padding: 12px 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-bonus-physics:hover {
+  border-color: #818CF8;
+  background: #EEF2FF;
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
+  transform: translateY(-1px);
+}
+.btn-bonus-physics .btn-chip {
+  background: #4F46E5;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 4px;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .btn-bonus-physics {
+    width: 100%;
+    justify-content: center;
+  }
+  .start-buttons { flex-direction: column; align-items: stretch; }
 }
 
 .subject-card input[type="checkbox"] {

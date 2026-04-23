@@ -57,7 +57,25 @@
               <span class="subject-count" id="countChemistry">0 questions</span>
             </div>
           </label>
-          <!-- LF3 entrance exam tests only Biology and Chemistry -->
+          <!-- Physics (Bonus) — shares the grid for visual parity but is launched via its own button
+               below. Only shown to Full Access users. -->
+          <div class="subject-card subject-card-bonus" id="physicsCardWrapper"
+               style="display:none;" role="button" tabindex="0"
+               onclick="var b=document.getElementById('startPhysicsBtn'); if(b) b.click();"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); var b=document.getElementById('startPhysicsBtn'); if(b) b.click();}">
+            <div class="subject-card-inner">
+              <span class="subject-card-badge">Bonus</span>
+              <span class="subject-icon" aria-hidden="true">🔬</span>
+              <h3>Physics</h3>
+              <span class="subject-count" id="countPhysics">0 questions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact, subtle note explaining Physics is bonus (shown only for paid users) -->
+        <div class="bonus-note" id="physicsBonusNote" style="display:none;" role="note">
+          <span class="bonus-note-dot" aria-hidden="true"></span>
+          <span><strong>Physics is bonus content</strong> — not tested on LF3. Use the Physics Block button below to practice it separately.</span>
         </div>
 
         <!-- Progress Overview moved to dashboard overview -->
@@ -114,40 +132,14 @@
           <button class="btn btn-primary btn-lg" id="startQuizBtn">
             Start Block
           </button>
+          <!-- Physics bonus button — only shown for Full Access users with physics data loaded. -->
+          <button class="btn btn-bonus-physics" id="startPhysicsBtn" type="button" style="display:none;">
+            <span aria-hidden="true">🔬</span>
+            Start Physics Block
+            <span class="btn-chip">Bonus</span>
+          </button>
         </div>
         <!-- Reset Progress moved to dashboard overview -->
-
-        <!-- ===== Physics Bonus Section (Full Access only — NOT on LF3) ===== -->
-        <div class="physics-bonus-section" id="physicsBonusSection" style="display:none; margin-top:48px; padding-top:32px; border-top:2px dashed #e5e7eb;">
-          <div style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF); border:1px solid #A5B4FC; border-radius:12px; padding:18px 22px; margin-bottom:20px;">
-            <h2 style="margin:0 0 6px; font-size:1.1rem; color:#3730A3; display:flex; align-items:center; gap:8px; font-family:Inter,sans-serif;">
-              <span aria-hidden="true">🔬</span> Physics — Bonus Content
-            </h2>
-            <p style="margin:0; color:#4338CA; font-size:0.88rem; line-height:1.5;">
-              <strong>Not tested on the LF3 entrance exam.</strong> Physics is included as bonus content for Full Access members who want broader science review. This content will not affect your LF3 readiness score.
-            </p>
-          </div>
-
-          <div class="subject-grid">
-            <label class="subject-card" style="cursor:default;">
-              <div class="subject-card-inner">
-                <span class="subject-icon" aria-hidden="true">🔬</span>
-                <h3>Physics (Bonus)</h3>
-                <span class="subject-count" id="countPhysics">0 questions</span>
-              </div>
-            </label>
-          </div>
-
-          <div class="start-buttons" style="margin-top:18px;">
-            <button class="btn btn-secondary btn-lg" id="startPhysicsBtn" type="button">
-              Start Physics Block
-            </button>
-          </div>
-          <p style="text-align:center; color:#6B7280; font-size:0.78rem; margin-top:10px;">
-            Physics blocks use the block size, shuffle, and mode settings you selected above.
-          </p>
-        </div>
-        <!-- ===== End Physics Bonus Section ===== -->
       </div>
 
 
@@ -313,8 +305,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260422d"></script>
-  <script src="qbank.js?v=20260422d"></script>
+  <script src="auth.js?v=20260422e"></script>
+  <script src="qbank.js?v=20260422e"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -455,15 +447,20 @@
         }
       });
 
-      // Physics bonus — only for paid users, non-blocking
+      // Physics bonus — only for paid users. Show the Physics card in the main
+      // subject grid, the compact info note below it, and the Physics start button.
       if (window.qbankAccessLevel === 'full' && physicsData) {
         const physArr = Array.isArray(physicsData) ? physicsData : (physicsData.physics || []);
         if (physArr.length > 0) {
           window._physicsQuestions = physArr;
-          const section = document.getElementById('physicsBonusSection');
           const countEl = document.getElementById('countPhysics');
           if (countEl) countEl.textContent = physArr.length + ' questions';
-          if (section) section.style.display = '';
+          const card = document.getElementById('physicsCardWrapper');
+          const note = document.getElementById('physicsBonusNote');
+          const btn = document.getElementById('startPhysicsBtn');
+          if (card) card.style.display = '';
+          if (note) note.style.display = '';
+          if (btn) btn.style.display = '';
         }
       }
 
@@ -705,10 +702,14 @@
           }
           window._physicsQuestions = arr;
 
-          const section = document.getElementById('physicsBonusSection');
           const countEl = document.getElementById('countPhysics');
           if (countEl) countEl.textContent = arr.length + ' questions';
-          if (section) section.style.display = '';
+          const card = document.getElementById('physicsCardWrapper');
+          const note = document.getElementById('physicsBonusNote');
+          const btn = document.getElementById('startPhysicsBtn');
+          if (card) card.style.display = '';
+          if (note) note.style.display = '';
+          if (btn) btn.style.display = '';
         })
         .catch(err => {
           // Silent fail — Physics is bonus content. Bio/Chem must remain available.
