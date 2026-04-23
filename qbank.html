@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="qbank.css?v=20260422f">
+  <link rel="stylesheet" href="qbank.css?v=20260422g">
 </head>
 <body>
 
@@ -292,8 +292,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260422f"></script>
-  <script src="qbank.js?v=20260422f"></script>
+  <script src="auth.js?v=20260422g"></script>
+  <script src="qbank.js?v=20260422g"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -499,69 +499,20 @@
 
     // ===== Content Protection =====
     (function() {
-      // Add screenshot warning overlay
-      const warning = document.createElement('div');
-      warning.className = 'screenshot-warning';
-      warning.innerHTML = '🔒 Content protected<br><small>Return to this window to continue</small>';
-      document.body.appendChild(warning);
-
-      // Disable right-click context menu
-      document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
-
-      // Disable copy, cut, paste
-      document.addEventListener('copy', e => { e.preventDefault(); return false; });
-      document.addEventListener('cut', e => { e.preventDefault(); return false; });
-
-      // Block keyboard shortcuts for copy, print, save, select all, print screen
-      document.addEventListener('keydown', e => {
-        // Ctrl/Cmd + C, P, S, A, U (view source)
-        if ((e.ctrlKey || e.metaKey) && ['c','p','s','a','u'].includes(e.key.toLowerCase())) {
-          e.preventDefault();
-          return false;
-        }
-        // PrintScreen key
-        if (e.key === 'PrintScreen') {
-          e.preventDefault();
-          navigator.clipboard.writeText('').catch(() => {});
-          return false;
-        }
-        // F12 (dev tools), Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-        if (e.key === 'F12') { e.preventDefault(); return false; }
-        if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) {
-          e.preventDefault();
-          return false;
-        }
-      });
-
-      // NOTE: previously toggled a `.content-protected-blur` class on
-      // window blur / visibilitychange as a screenshot deterrent. That was
-      // too aggressive — any transient focus loss (password manager auto-fill,
-      // notification popup, alt-tab, devtools open) would blur the entire
-      // page and never un-blur cleanly, trapping the user on a dark overlay.
-      // Disabled. Screenshot protection is still covered by PrintScreen flash
-      // and watermarking on explanation content.
+      // ========================================================================
+      // Content Protection — simplified.
       //
-      // document.addEventListener('visibilitychange', ...);
-      // window.addEventListener('blur',  ...);
-      // window.addEventListener('focus', ...);
-
-      // Disable drag (prevents dragging text/images)
-      document.addEventListener('dragstart', e => { e.preventDefault(); return false; });
-
-      // Screenshot flash element
-      const flash = document.createElement('div');
-      flash.className = 'qb-screenshot-flash';
-      flash.id = 'qbScreenshotFlash';
-      document.body.appendChild(flash);
-
-      // PrintScreen key - flash white to obscure content
-      document.addEventListener('keyup', e => {
-        if (e.key === 'PrintScreen') {
-          navigator.clipboard.writeText('').catch(() => {});
-          flash.classList.add('active');
-          setTimeout(() => flash.classList.remove('active'), 600);
-        }
-      });
+      // Previously this block blocked F12, right-click, copy/cut, Ctrl+C/P/S/A/U,
+      // Ctrl+Shift+I/J/C, PrintScreen, and window-focus-loss. Those restrictions
+      // also broke normal user actions (password managers, accessibility tools,
+      // legitimate copy-a-term-to-Google behavior) AND made troubleshooting
+      // impossible because the site owner couldn't use devtools on their own site.
+      //
+      // Removed: everything that interferes with browser tooling and standard
+      // keyboard/mouse input. A determined pirate can bypass all of these
+      // anyway. We keep only the watermark, which provides real deterrence
+      // without blocking legitimate use.
+      // ========================================================================
 
       // Watermark: apply user email as SVG data URI to explanation areas
       function qbApplyWatermark(email) {
