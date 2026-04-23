@@ -57,25 +57,18 @@
               <span class="subject-count" id="countChemistry">0 questions</span>
             </div>
           </label>
-          <!-- Physics (Bonus) — shares the grid for visual parity but is launched via its own button
-               below. Only shown to Full Access users. -->
-          <div class="subject-card subject-card-bonus" id="physicsCardWrapper"
-               style="display:none;" role="button" tabindex="0"
-               onclick="var b=document.getElementById('startPhysicsBtn'); if(b) b.click();"
-               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); var b=document.getElementById('startPhysicsBtn'); if(b) b.click();}">
+          <!-- Physics (Bonus) — normal checkbox card. Users can include/exclude it
+               from a mixed block via the same Start Block button. Unchecked by
+               default because it is not part of the LF3 exam; users opt in. -->
+          <label class="subject-card subject-card-bonus" id="physicsCardWrapper" style="display:none;">
+            <input type="checkbox" name="subject" value="physics">
             <div class="subject-card-inner">
               <span class="subject-card-badge">Bonus</span>
               <span class="subject-icon" aria-hidden="true">🔬</span>
               <h3>Physics</h3>
               <span class="subject-count" id="countPhysics">0 questions</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Compact, subtle note explaining Physics is bonus (shown only for paid users) -->
-        <div class="bonus-note" id="physicsBonusNote" style="display:none;" role="note">
-          <span class="bonus-note-dot" aria-hidden="true"></span>
-          <span><strong>Physics is bonus content</strong> — not tested on LF3. Use the Physics Block button below to practice it separately.</span>
+          </label>
         </div>
 
         <!-- Progress Overview moved to dashboard overview -->
@@ -131,12 +124,6 @@
         <div class="start-buttons">
           <button class="btn btn-primary btn-lg" id="startQuizBtn">
             Start Block
-          </button>
-          <!-- Physics bonus button — only shown for Full Access users with physics data loaded. -->
-          <button class="btn btn-bonus-physics" id="startPhysicsBtn" type="button" style="display:none;">
-            <span aria-hidden="true">🔬</span>
-            Start Physics Block
-            <span class="btn-chip">Bonus</span>
           </button>
         </div>
         <!-- Reset Progress moved to dashboard overview -->
@@ -305,8 +292,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260422e"></script>
-  <script src="qbank.js?v=20260422e"></script>
+  <script src="auth.js?v=20260422f"></script>
+  <script src="qbank.js?v=20260422f"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -447,20 +434,19 @@
         }
       });
 
-      // Physics bonus — only for paid users. Show the Physics card in the main
-      // subject grid, the compact info note below it, and the Physics start button.
+      // Physics bonus — only for paid users. Merge into allQuestions so the
+      // existing startQuiz() logic handles the physics checkbox naturally
+      // (subject-name lookup from allQuestions). Also keep window._physicsQuestions
+      // populated for the resume / historical-review ID lookup path.
       if (window.qbankAccessLevel === 'full' && physicsData) {
         const physArr = Array.isArray(physicsData) ? physicsData : (physicsData.physics || []);
         if (physArr.length > 0) {
+          allQuestions.physics = physArr;
           window._physicsQuestions = physArr;
           const countEl = document.getElementById('countPhysics');
           if (countEl) countEl.textContent = physArr.length + ' questions';
           const card = document.getElementById('physicsCardWrapper');
-          const note = document.getElementById('physicsBonusNote');
-          const btn = document.getElementById('startPhysicsBtn');
           if (card) card.style.display = '';
-          if (note) note.style.display = '';
-          if (btn) btn.style.display = '';
         }
       }
 

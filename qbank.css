@@ -129,12 +129,9 @@
   cursor: pointer;
 }
 
-/* Physics (Bonus) — lives in the same grid but is launched via its own
-   button. Visually consistent with Bio/Chem cards but with an indigo accent
-   and a small "Bonus" pill to make the distinction clear. */
-.subject-card.subject-card-bonus {
-  cursor: pointer;
-}
+/* Physics (Bonus) — behaves exactly like Biology/Chemistry (checkbox +
+   mixes into the Start Block), with a subtle indigo accent + top-left
+   "Bonus" pill to visually flag it as not-tested-on-LF3. */
 .subject-card.subject-card-bonus .subject-card-inner {
   border-color: #C7D2FE;
   background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 60%);
@@ -142,17 +139,20 @@
 .subject-card.subject-card-bonus:hover .subject-card-inner {
   border-color: #818CF8;
   box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
-  transform: translateY(-2px);
 }
-/* Suppress the checkbox-style circle that other cards use (physics has no checkbox) */
-.subject-card.subject-card-bonus .subject-card-inner::after {
-  display: none;
+.subject-card.subject-card-bonus input:checked + .subject-card-inner {
+  /* Preserve the accent color when checked, but keep the indigo tint so the
+     "Bonus" identity is still visible even when included in the block. */
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(207, 91, 46, 0.04) 0%, #EEF2FF 100%);
+  box-shadow: 0 0 0 3px rgba(207, 91, 46, 0.1);
 }
-/* Small "Bonus" pill in the top-right corner */
+/* Small "Bonus" pill. Placed top-left so it doesn't overlap the
+   checkbox-state circle that other cards display in the top-right. */
 .subject-card-badge {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   background: #4F46E5;
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
@@ -165,76 +165,6 @@
   line-height: 1;
 }
 
-/* Compact, subtle info strip explaining Physics is bonus.
-   Replaces the large blue banner that previously took up a full row. */
-.bonus-note {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #EEF2FF;
-  border: 1px solid #C7D2FE;
-  border-left: 3px solid #4F46E5;
-  color: #3730A3;
-  font-size: 0.82rem;
-  line-height: 1.45;
-  padding: 10px 14px;
-  border-radius: 8px;
-  margin: -6px 0 22px;
-}
-.bonus-note strong {
-  color: #312E81;
-  font-weight: 600;
-}
-.bonus-note-dot {
-  width: 6px;
-  height: 6px;
-  background: #4F46E5;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Physics Start button — styled as a secondary bonus-tinted button that
-   sits alongside the primary "Start Block" button in the same row.
-   Smaller/subtler than primary to reinforce the LF3-first hierarchy. */
-.btn-bonus-physics {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #FFFFFF;
-  color: #4338CA;
-  border: 1.5px solid #C7D2FE;
-  padding: 12px 22px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.btn-bonus-physics:hover {
-  border-color: #818CF8;
-  background: #EEF2FF;
-  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
-  transform: translateY(-1px);
-}
-.btn-bonus-physics .btn-chip {
-  background: #4F46E5;
-  color: #FFFFFF;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-left: 4px;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .btn-bonus-physics {
-    width: 100%;
-    justify-content: center;
-  }
-  .start-buttons { flex-direction: column; align-items: stretch; }
-}
 
 .subject-card input[type="checkbox"] {
   display: none;
