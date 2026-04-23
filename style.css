@@ -290,6 +290,38 @@ a {
   transform: translateY(-1px);
 }
 
+/* ===== Persistent Contact Button in Navbar ===== */
+.nav-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #0d9488;
+  color: var(--white) !important;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 600 !important;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.nav-contact:hover {
+  background: #0f766e;
+  transform: translateY(-1px);
+}
+
+.nav-contact svg {
+  flex-shrink: 0;
+}
+
+.navbar.scrolled .nav-contact {
+  color: var(--white) !important;
+  background: #0d9488;
+}
+
+.navbar.scrolled .nav-contact:hover {
+  background: #0f766e;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
