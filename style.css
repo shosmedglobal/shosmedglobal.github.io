@@ -2671,6 +2671,24 @@ a {
   font-weight: 600;
   color: var(--navy);
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Small "Optional" pill next to Physics heading in the exam-subjects list */
+.exam-subject-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4338CA;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  padding: 2px 8px;
+  border-radius: 999px;
+  line-height: 1.4;
 }
 
 .exam-subject p {
