@@ -30,13 +30,15 @@
     'entrance-exam':  { subject: 'Entrance Exam Registration',             category: 'booking' },
     'mentorship':     { subject: 'Residency Mentorship Inquiry',           category: 'booking' },
     'board-review':   { subject: 'USMLE Board Review Inquiry',             category: 'booking' },
+    'submit-match':   { subject: 'Add Me to Recent Match Outcomes',        category: 'general',
+                        placeholder: "Tell us: medical school + grad year, residency program + match year, fellowship if any, and where to send your photo. We'll reply within 48 hours." },
     'partnership':    { subject: 'Partnership Inquiry',                    category: 'partnership' },
     'general':        { subject: 'General Question',                       category: 'general' }
   };
 
   const REASON_ORDER = [
     'consultation', 'apply-lf3', 'entrance-exam', 'mentorship',
-    'board-review', 'partnership', 'general'
+    'board-review', 'submit-match', 'partnership', 'general'
   ];
 
   // ===== Styles (scoped with .shos-cm- prefix) =====
@@ -329,6 +331,14 @@
       select.value = reasonKey;
     } else {
       select.selectedIndex = 0;
+    }
+
+    // Per-reason placeholder hint in the message field
+    const bodyField = document.getElementById('shosCmBody');
+    if (bodyField) {
+      const reason = REASONS[reasonKey];
+      bodyField.placeholder = (reason && reason.placeholder) ||
+        "A sentence or two about what you'd like to discuss.";
     }
 
     status.textContent = '';
