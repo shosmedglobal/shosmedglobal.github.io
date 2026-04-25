@@ -129,8 +129,9 @@
   <!-- Recent Match Outcomes (horizontal moving track) -->
   <section class="section section-alt" id="match-outcomes">
     <style>
-      /* Track wrap with edge fade mask */
-      #match-outcomes .mo-track-wrap { overflow: hidden; position: relative; padding: 12px 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+      /* Track wrap with edge fade mask. Capped so ~3 cards are visible at a time
+         (3 × 300px card + 2 × 18px gap = 936px, plus edge fade zones). */
+      #match-outcomes .mo-track-wrap { max-width: 1020px; margin: 0 auto; overflow: hidden; position: relative; padding: 12px 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
       #match-outcomes .mo-track { display: flex; width: max-content; animation: moTrackScroll 56s linear infinite; will-change: transform; }
       #match-outcomes .mo-track-wrap:hover .mo-track,
       #match-outcomes .mo-track:focus-within { animation-play-state: paused; }
