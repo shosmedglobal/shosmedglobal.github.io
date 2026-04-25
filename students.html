@@ -126,6 +126,232 @@
     </div>
   </section>
 
+  <!-- Recent Match Outcomes -->
+  <section class="section section-alt" id="match-outcomes">
+    <style>
+      #match-outcomes .mo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1140px; margin: 0 auto; }
+      #match-outcomes .mo-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; padding: 22px; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; }
+      #match-outcomes .mo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,23,42,0.08); border-color: #CBD5E1; }
+      #match-outcomes .mo-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+      #match-outcomes .mo-avatar { position: relative; width: 56px; height: 56px; min-width: 56px; border-radius: 50%; background: linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      #match-outcomes .mo-initials { color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: 0.02em; }
+      #match-outcomes .mo-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+      #match-outcomes .mo-name-block { flex: 1; min-width: 0; }
+      #match-outcomes .mo-name { margin: 0; font-size: 1rem; font-weight: 700; color: #0F172A; line-height: 1.25; }
+      #match-outcomes .mo-school { margin: 4px 0 0; font-size: 0.78rem; color: #6B7280; line-height: 1.4; }
+      #match-outcomes .mo-mentor-tag { display: inline-block; background: rgba(207,91,46,0.10); color: #CF5B2E; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px; }
+      #match-outcomes .mo-block { padding-top: 14px; border-top: 1px solid #F1F5F9; margin-top: auto; }
+      #match-outcomes .mo-block + .mo-block { margin-top: 12px; padding-top: 12px; }
+      #match-outcomes .mo-eyebrow { font-size: 0.65rem; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 4px; }
+      #match-outcomes .mo-eyebrow.fellowship { color: #CF5B2E; }
+      #match-outcomes .mo-specialty { font-size: 0.92rem; font-weight: 600; color: #0F172A; margin: 0; line-height: 1.35; }
+      #match-outcomes .mo-hospital { font-size: 0.85rem; color: #475569; margin: 2px 0 0; line-height: 1.4; }
+
+      /* "More graduates" terminal card */
+      #match-outcomes .mo-card-more { background: linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%); color: #fff; border-color: transparent; justify-content: center; align-items: center; text-align: center; text-decoration: none; min-height: 200px; }
+      #match-outcomes .mo-card-more h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 700; }
+      #match-outcomes .mo-card-more p { margin: 0 0 14px; font-size: 0.85rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
+      #match-outcomes .mo-card-more .mo-more-cta { font-size: 0.85rem; font-weight: 600; color: #E8A44C; }
+
+      /* Hospital ticker (subtle motion strip) */
+      #match-outcomes .mo-ticker { max-width: 1140px; margin: 0 auto 32px; overflow: hidden; position: relative; padding: 12px 0; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); }
+      #match-outcomes .mo-ticker-track { display: inline-flex; white-space: nowrap; animation: moTickerScroll 38s linear infinite; will-change: transform; }
+      #match-outcomes .mo-ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 22px; font-size: 0.85rem; font-weight: 600; color: #475569; }
+      #match-outcomes .mo-ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: #CF5B2E; }
+      @keyframes moTickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { #match-outcomes .mo-ticker-track { animation: none; } }
+
+      /* Responsive */
+      @media (max-width: 1100px) { #match-outcomes .mo-grid { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 820px)  { #match-outcomes .mo-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 520px)  { #match-outcomes .mo-grid { grid-template-columns: 1fr; max-width: 380px; } #match-outcomes .mo-ticker-item { padding: 0 16px; font-size: 0.78rem; } }
+    </style>
+
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who Matched</span>
+        <h2>Recent Match Outcomes</h2>
+        <p class="section-sub">Real graduates of European medical schools, now training in US programs.</p>
+      </div>
+
+      <!-- Hospital ticker (subtle continuous motion) -->
+      <div class="mo-ticker" aria-hidden="true">
+        <div class="mo-ticker-track">
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Geisinger Medical Center</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Jacobi Medical Center</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>UCLA</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>NYU Langone</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Mount Sinai, Chicago</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Carle Health</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>MedStar Georgetown</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Hackensack University Medical Center</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Geisinger Medical Center</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Jacobi Medical Center</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>UCLA</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>NYU Langone</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Mount Sinai, Chicago</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Carle Health</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>MedStar Georgetown</span>
+          <span class="mo-ticker-item"><span class="mo-ticker-dot"></span>Hackensack University Medical Center</span>
+        </div>
+      </div>
+
+      <!-- Match cards grid -->
+      <div class="mo-grid">
+
+        <!-- Neira (has photo) -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar">
+              <span class="mo-initials">N</span>
+              <img src="assets/match/neira.jpg" alt="Neira, MD" class="mo-photo" onerror="this.style.display='none'">
+            </div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Neira, MD</h3>
+              <p class="mo-school">Palacky University, Czech Republic</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2022</div>
+            <p class="mo-specialty">Internal Medicine</p>
+            <p class="mo-hospital">Geisinger Medical Center</p>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+            <p class="mo-specialty">Cardiology</p>
+          </div>
+        </div>
+
+        <!-- Matias -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar"><span class="mo-initials">M</span></div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Matias, MD</h3>
+              <p class="mo-school">Charles University LF3, Prague</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2026</div>
+            <p class="mo-specialty">Internal Medicine</p>
+            <p class="mo-hospital">Jacobi Medical Center</p>
+          </div>
+        </div>
+
+        <!-- Zuzana -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar"><span class="mo-initials">Z</span></div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Zuzana, MD</h3>
+              <p class="mo-school">Charles University LF3, Prague</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2023</div>
+            <p class="mo-specialty">Psychiatry</p>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+            <p class="mo-specialty">Geriatric Psychiatry</p>
+            <p class="mo-hospital">UCLA</p>
+          </div>
+        </div>
+
+        <!-- Anat (Co-Founder badge) -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar">
+              <span class="mo-initials">AS</span>
+              <img src="anat.jpg" alt="Anat Sigal, MD" class="mo-photo" onerror="this.style.display='none'">
+            </div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Anat Sigal, MD</h3>
+              <p class="mo-school">Charles University LF3, Prague</p>
+              <span class="mo-mentor-tag">Co-Founder</span>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2023</div>
+            <p class="mo-specialty">Pediatrics</p>
+            <p class="mo-hospital">Hackensack University Medical Center</p>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+            <p class="mo-specialty">Pediatric Gastroenterology</p>
+            <p class="mo-hospital">NYU Langone</p>
+          </div>
+        </div>
+
+        <!-- Adir -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar"><span class="mo-initials">A</span></div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Adir, MD</h3>
+              <p class="mo-school">Charles University LF3 &amp; Bar-Ilan University</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2025</div>
+            <p class="mo-specialty">Internal Medicine</p>
+            <p class="mo-hospital">Jacobi Medical Center</p>
+          </div>
+        </div>
+
+        <!-- Jurgen -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar"><span class="mo-initials">J</span></div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Jurgen, MD</h3>
+              <p class="mo-school">Charles University LF3, Prague</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2021</div>
+            <p class="mo-specialty">Internal Medicine</p>
+            <p class="mo-hospital">Mount Sinai, Chicago</p>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow fellowship">Fellowship &middot; 2024</div>
+            <p class="mo-specialty">Cardiology</p>
+            <p class="mo-hospital">Carle Health</p>
+          </div>
+        </div>
+
+        <!-- Gal -->
+        <div class="mo-card">
+          <div class="mo-head">
+            <div class="mo-avatar"><span class="mo-initials">G</span></div>
+            <div class="mo-name-block">
+              <h3 class="mo-name">Gal, MD</h3>
+              <p class="mo-school">Charles University LF3, Prague</p>
+            </div>
+          </div>
+          <div class="mo-block">
+            <div class="mo-eyebrow">Residency &middot; 2024</div>
+            <p class="mo-specialty">Internal Medicine</p>
+            <p class="mo-hospital">MedStar Georgetown / Washington Hospital Center</p>
+          </div>
+        </div>
+
+        <!-- More graduates terminal card -->
+        <a href="community.html" class="mo-card mo-card-more">
+          <h3>More graduates inside</h3>
+          <p>Browse Q&amp;As, match advice, and program lists from the wider community.</p>
+          <span class="mo-more-cta">Open the Community &rarr;</span>
+        </a>
+
+      </div>
+
+      <p style="text-align:center; max-width:680px; margin:32px auto 0; font-size:0.88rem; color:#6B7280; line-height:1.6;">
+        First names are shown with permission. Some graduates are working US physicians who prefer to keep last names off public pages.
+      </p>
+    </div>
+  </section>
+
   <!-- Match Pathway (horizontal stepper, same pattern as applicants.html#how-to-apply) -->
   <section class="section section-alt" id="match-pathway">
     <style>
@@ -514,7 +740,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.mentorship-service, .pathway-step, .specialty-card, .pricing-card').forEach(el => {
+    document.querySelectorAll('.mentorship-service, .pathway-step, .specialty-card, .pricing-card, .mo-card').forEach(el => {
       el.classList.add('animate-in');
       observer.observe(el);
     });
