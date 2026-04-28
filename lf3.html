@@ -217,7 +217,7 @@
           <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">2</div>
           <div style="flex:1; min-width:0;">
             <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Take the USMLE</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Step 1 (pass/fail), Step 2 CK (scored), and Step 3. Same exams every US medical graduate takes. Most LF3 students start prep during years 3 and 4.</p>
+            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Step 1 (pass/fail), Step 2 CK (scored), and Step 3. Same exams every US medical graduate takes.</p>
           </div>
         </div>
         <div style="display:flex; gap:22px; padding:22px 0; border-bottom:1px solid rgba(0,0,0,0.08);">
@@ -231,73 +231,228 @@
           <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">4</div>
           <div style="flex:1; min-width:0;">
             <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Match into US residency</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Apply through ERAS, interview at programs, match through NRMP. The same system US graduates use. Thousands of European medical graduates match into US residencies every year.</p>
+            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Apply through ERAS, interview at programs, match through NRMP. The same system US graduates use. Thousands of European medical graduates match into US residencies.</p>
           </div>
         </div>
       </div>
 
-      <p style="text-align:center; margin:32px auto 0; max-width:680px; font-size:0.95rem; color:#4B5563;">Two of SHOS Med's co-founders walked exactly this path from LF3 to US residency. <a href="students.html#match-outcomes" style="color:#0d9488; font-weight:700; text-decoration:underline;">See more LF3 grads who matched &rarr;</a></p>
     </div>
   </section>
 
-  <!-- Match Outcomes (LF3 graduates now in US programs) -->
+  <!-- Match Outcomes (LF3 graduates now in US programs).
+       Marquee track mirrors the one on students.html so the visual language
+       matches across the site. CSS scoped under #match-outcomes; cards are
+       duplicated so the -50% translateX animation loops seamlessly. -->
   <section class="section section-alt" id="match-outcomes">
+    <style>
+      #match-outcomes .mo-track-wrap { max-width:1020px; margin:0 auto; overflow:hidden; position:relative; padding:12px 0; -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+      #match-outcomes .mo-track { display:flex; width:max-content; animation:moTrackScroll 56s linear infinite; will-change:transform; }
+      #match-outcomes .mo-track-wrap:hover .mo-track,
+      #match-outcomes .mo-track:focus-within { animation-play-state:paused; }
+      @keyframes moTrackScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+      @media (prefers-reduced-motion:reduce) { #match-outcomes .mo-track { animation:none; } #match-outcomes .mo-track-wrap { overflow-x:auto; } }
+      #match-outcomes .mo-card { flex:0 0 300px; margin-right:18px; background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:26px 22px 22px; display:flex; flex-direction:column; transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+      #match-outcomes .mo-card:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(15,23,42,0.10); border-color:#CBD5E1; }
+      #match-outcomes .mo-photo-wrap { position:relative; width:96px; height:96px; margin:0 auto 14px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(15,23,42,0.10); }
+      #match-outcomes .mo-initials { color:#fff; font-weight:700; font-size:1.7rem; letter-spacing:0.02em; }
+      #match-outcomes .mo-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 18%; }
+      #match-outcomes .mo-name { margin:0; font-size:1.05rem; font-weight:700; color:#0F172A; line-height:1.25; text-align:center; }
+      #match-outcomes .mo-school { margin:4px 0 0; font-size:0.78rem; color:#6B7280; line-height:1.45; text-align:center; }
+      #match-outcomes .mo-blocks { margin-top:16px; display:flex; flex-direction:column; gap:10px; flex:1; }
+      #match-outcomes .mo-block { padding-top:12px; border-top:1px solid #F1F5F9; }
+      #match-outcomes .mo-block:first-child { border-top:2px solid #E5E7EB; }
+      #match-outcomes .mo-eyebrow { font-size:0.65rem; font-weight:700; color:#0d9488; text-transform:uppercase; letter-spacing:0.09em; margin-bottom:4px; }
+      #match-outcomes .mo-eyebrow.fellowship { color:#CF5B2E; }
+      #match-outcomes .mo-specialty { font-size:0.92rem; font-weight:600; color:#0F172A; margin:0; line-height:1.35; }
+      #match-outcomes .mo-hospital { font-size:0.82rem; color:#475569; margin:2px 0 0; line-height:1.4; }
+      @media (max-width:768px) {
+        #match-outcomes .mo-card { flex:0 0 280px; padding:22px 18px 18px; }
+        #match-outcomes .mo-photo-wrap { width:84px; height:84px; }
+        #match-outcomes .mo-initials { font-size:1.5rem; }
+      }
+    </style>
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Match Outcomes</span>
-        <h2>From LF3 to US Residency</h2>
-        <p class="section-sub">Real LF3 graduates now training in US teaching hospitals. The path on this page is the path they walked.</p>
+        <h2>From LF3 to US Residency<sup style="font-size:0.45em; font-weight:700; margin-left:2px; vertical-align:super; color:#9CA3AF;">*</sup></h2>
+        <p class="section-sub">All LF3 graduates. Each one walked the exact IMG pathway shown above: LF3 MD, USMLE, ECFMG, then the US residency match.</p>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:18px; max-width:1100px; margin:0 auto;">
+    </div>
+
+    <!-- Track lives outside .container so the edge mask can extend full-bleed -->
+    <div class="mo-track-wrap" aria-label="LF3 match outcomes" role="region">
+      <div class="mo-track">
+
+        <!-- ============== SET 1 ============== -->
 
         <!-- Eli -->
-        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px 18px; text-align:center;">
-          <div style="width:84px; height:84px; margin:0 auto 12px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%);">
-            <img src="assets/match/eli.jpg" alt="Eli Z., MD" style="width:100%; height:100%; object-fit:cover;">
+        <article class="mo-card">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">EZ</span>
+            <img src="assets/match/eli.jpg" alt="Eli Z., MD" class="mo-photo" onerror="this.style.display='none'">
           </div>
-          <h3 style="margin:0 0 4px; font-size:1rem; color:#0F172A; font-weight:700;">Eli Z., MD</h3>
-          <p style="margin:0 0 10px; font-size:0.78rem; color:#9CA3AF;">Charles University LF3</p>
-          <div style="font-size:0.72rem; color:#0d9488; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Matched 2022</div>
-          <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.45;"><strong style="color:#0F172A;">Internal Medicine</strong><br>Hackensack Univ. Med Ctr</p>
-          <p style="margin:8px 0 0; font-size:0.78rem; color:#6B7280;">Hem/Onc Fellowship 2025 &middot; HUMC</p>
-        </div>
+          <h3 class="mo-name">Eli Z., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2022</div>
+              <p class="mo-specialty">Internal Medicine</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2025</div>
+              <p class="mo-specialty">Hematology / Oncology</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+          </div>
+        </article>
 
         <!-- Anat -->
-        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px 18px; text-align:center;">
-          <div style="width:84px; height:84px; margin:0 auto 12px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%);">
-            <img src="assets/match/anat.jpg" alt="Anat S., MD" style="width:100%; height:100%; object-fit:cover; object-position:center 10%;">
+        <article class="mo-card">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">AS</span>
+            <img src="assets/match/anat.jpg" alt="Anat S., MD" class="mo-photo" style="object-position:center 10%;" onerror="this.style.display='none'">
           </div>
-          <h3 style="margin:0 0 4px; font-size:1rem; color:#0F172A; font-weight:700;">Anat S., MD</h3>
-          <p style="margin:0 0 10px; font-size:0.78rem; color:#9CA3AF;">Charles University LF3</p>
-          <div style="font-size:0.72rem; color:#0d9488; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Matched 2023</div>
-          <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.45;"><strong style="color:#0F172A;">Pediatrics</strong><br>Hackensack Univ. Med Ctr</p>
-          <p style="margin:8px 0 0; font-size:0.78rem; color:#6B7280;">Peds GI Fellowship 2026 &middot; NYU Langone</p>
-        </div>
+          <h3 class="mo-name">Anat S., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2023</div>
+              <p class="mo-specialty">Pediatrics</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+              <p class="mo-specialty">Pediatric Gastroenterology</p>
+              <p class="mo-hospital">NYU Langone</p>
+            </div>
+          </div>
+        </article>
 
         <!-- Zuzana -->
-        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px 18px; text-align:center;">
-          <div style="width:84px; height:84px; margin:0 auto 12px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%);">
-            <img src="assets/match/zuzana.jpg" alt="Zuzana S., MD" style="width:100%; height:100%; object-fit:cover;">
+        <article class="mo-card">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">ZS</span>
+            <img src="assets/match/zuzana.jpg" alt="Zuzana S., MD" class="mo-photo" onerror="this.style.display='none'">
           </div>
-          <h3 style="margin:0 0 4px; font-size:1rem; color:#0F172A; font-weight:700;">Zuzana S., MD</h3>
-          <p style="margin:0 0 10px; font-size:0.78rem; color:#9CA3AF;">Charles University LF3</p>
-          <div style="font-size:0.72rem; color:#0d9488; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Matched 2023</div>
-          <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.45;"><strong style="color:#0F172A;">Psychiatry</strong><br>Wayne State University</p>
-          <p style="margin:8px 0 0; font-size:0.78rem; color:#6B7280;">Geriatric Psych Fellowship 2026 &middot; UCLA</p>
-        </div>
+          <h3 class="mo-name">Zuzana S., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2023</div>
+              <p class="mo-specialty">Psychiatry</p>
+              <p class="mo-hospital">Wayne State University</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+              <p class="mo-specialty">Geriatric Psychiatry</p>
+              <p class="mo-hospital">UCLA</p>
+            </div>
+          </div>
+        </article>
 
         <!-- Matias -->
-        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px 18px; text-align:center;">
-          <div style="width:84px; height:84px; margin:0 auto 12px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%);">
-            <img src="assets/match/matias.jpg" alt="Matias L., MD" style="width:100%; height:100%; object-fit:cover;">
+        <article class="mo-card">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">ML</span>
+            <img src="assets/match/matias.jpg" alt="Matias L., MD" class="mo-photo" onerror="this.style.display='none'">
           </div>
-          <h3 style="margin:0 0 4px; font-size:1rem; color:#0F172A; font-weight:700;">Matias L., MD</h3>
-          <p style="margin:0 0 10px; font-size:0.78rem; color:#9CA3AF;">Charles University LF3</p>
-          <div style="font-size:0.72rem; color:#0d9488; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Matched 2026</div>
-          <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.45;"><strong style="color:#0F172A;">Internal Medicine</strong><br>Jacobi Medical Center</p>
-        </div>
+          <h3 class="mo-name">Matias L., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2026</div>
+              <p class="mo-specialty">Internal Medicine</p>
+              <p class="mo-hospital">Jacobi Medical Center</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============== SET 2 (duplicate for seamless marquee) ============== -->
+
+        <article class="mo-card" aria-hidden="true">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">EZ</span>
+            <img src="assets/match/eli.jpg" alt="" class="mo-photo" onerror="this.style.display='none'">
+          </div>
+          <h3 class="mo-name">Eli Z., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2022</div>
+              <p class="mo-specialty">Internal Medicine</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2025</div>
+              <p class="mo-specialty">Hematology / Oncology</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="mo-card" aria-hidden="true">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">AS</span>
+            <img src="assets/match/anat.jpg" alt="" class="mo-photo" style="object-position:center 10%;" onerror="this.style.display='none'">
+          </div>
+          <h3 class="mo-name">Anat S., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2023</div>
+              <p class="mo-specialty">Pediatrics</p>
+              <p class="mo-hospital">Hackensack University Medical Center</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+              <p class="mo-specialty">Pediatric Gastroenterology</p>
+              <p class="mo-hospital">NYU Langone</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="mo-card" aria-hidden="true">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">ZS</span>
+            <img src="assets/match/zuzana.jpg" alt="" class="mo-photo" onerror="this.style.display='none'">
+          </div>
+          <h3 class="mo-name">Zuzana S., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2023</div>
+              <p class="mo-specialty">Psychiatry</p>
+              <p class="mo-hospital">Wayne State University</p>
+            </div>
+            <div class="mo-block">
+              <div class="mo-eyebrow fellowship">Fellowship &middot; 2026</div>
+              <p class="mo-specialty">Geriatric Psychiatry</p>
+              <p class="mo-hospital">UCLA</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="mo-card" aria-hidden="true">
+          <div class="mo-photo-wrap">
+            <span class="mo-initials">ML</span>
+            <img src="assets/match/matias.jpg" alt="" class="mo-photo" onerror="this.style.display='none'">
+          </div>
+          <h3 class="mo-name">Matias L., MD</h3>
+          <p class="mo-school">Charles University LF3, Prague</p>
+          <div class="mo-blocks">
+            <div class="mo-block">
+              <div class="mo-eyebrow">Matched &middot; 2026</div>
+              <p class="mo-specialty">Internal Medicine</p>
+              <p class="mo-hospital">Jacobi Medical Center</p>
+            </div>
+          </div>
+        </article>
 
       </div>
+    </div>
+
+    <div class="container">
       <p style="text-align:center; margin:28px 0 0;">
         <a href="students.html#match-outcomes" style="color:#0d9488; font-weight:700; text-decoration:underline; font-size:0.95rem;">See all match outcomes &rarr;</a>
       </p>
@@ -498,6 +653,7 @@
         <p>&copy; 2026 SHOS Med LLC. All rights reserved.</p>
       </div>
       <div style="max-width:800px; margin:16px auto 0; padding:16px 24px 0; border-top:1px solid rgba(255,255,255,0.08); font-size:0.68rem; color:rgba(255,255,255,0.35); line-height:1.7; text-align:center;">
+        <p>* All graduates featured in the Match Outcomes section are Charles University LF3 alumni who consented to share their names, photographs, and match information for educational and outreach purposes on this site.</p>
         <p>&dagger; Charles University is ranked <strong style="color:rgba(255,255,255,0.5);">#265 globally</strong> in the <a href="https://www.topuniversities.com/universities/charles-university" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.5);">QS World University Rankings 2025</a>. QS ranks approximately 1,500 universities; UNESCO recognizes more than 30,000 universities worldwide. A global rank of #265 places Charles University in the top ~2% of recognized universities worldwide.</p>
         <p>&Dagger; The "Top 10%" claim refers to U.S. News &amp; World Report Best Global Universities 2025&ndash;2026 subject rankings: <strong style="color:rgba(255,255,255,0.5);">#113 Cardiac &amp; Cardiovascular Systems, #129 Clinical Medicine, and #159 Immunology</strong>. Against approximately 2,000 globally ranked institutions in each discipline, these positions fall within the top ~6&ndash;8%, placing Charles University's medical programs within the top 10% worldwide for all three clinical fields.</p>
       </div>
