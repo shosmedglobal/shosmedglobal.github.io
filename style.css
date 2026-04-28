@@ -109,6 +109,8 @@ a {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  flex-shrink: 0;
+  min-width: 200px; /* reserve logo space; prevents CLS on image load */
 }
 
 .logo-img {
@@ -213,8 +215,14 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   list-style: none;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.nav-links li {
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -222,6 +230,7 @@ a {
   font-weight: 500;
   color: rgba(255,255,255,0.85);
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -249,7 +258,8 @@ a {
 #auth-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .nav-login {
@@ -1526,7 +1536,10 @@ a {
   }
 }
 
-@media (max-width: 768px) {
+/* ===== Navbar collapse to hamburger BEFORE the desktop layout
+        becomes too tight. With 6 menu links + Book Free Call pill +
+        Log In + Sign Up, natural content width is ~1180-1220px. */
+@media (max-width: 1200px) {
   .nav-toggle {
     display: flex;
   }
@@ -1543,6 +1556,7 @@ a {
     gap: 24px;
     box-shadow: var(--shadow-xl);
     transition: var(--transition);
+    align-items: stretch;
   }
 
   .nav-links.active {
@@ -1552,6 +1566,14 @@ a {
   .nav-links a {
     color: var(--gray-700) !important;
     font-size: 1rem;
+  }
+
+  /* Inside the mobile sidebar, let the auth-links li stack its two
+     pills vertically rather than squashing them side-by-side. */
+  #auth-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
   }
 
   .nav-toggle.active span:nth-child(1) {
@@ -1565,7 +1587,9 @@ a {
   .nav-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
+}
 
+@media (max-width: 768px) {
   .hero-content {
     padding: 100px 0 60px;
   }
