@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Entrance Exam &middot; LF3 &middot; SHOS Med</title>
+  <meta name="description" content="Full-length 2-hour mock entrance exam for LF3 (Charles University) admissions: 30 Biology and 30 Chemistry questions with detailed explanations.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body { background: #FAFBFC; }
+
+    /* page wrapper */
+    .exam-app {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 24px 60px;
+    }
+
+    /* simple top bar */
+    .exam-top {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      z-index: 100;
+      padding: 14px 0;
+    }
+    .exam-top-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .exam-top a.back {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0d9488;
+      text-decoration: none;
+    }
+    .exam-top a.back:hover { color: #0f766e; }
+    .exam-top .logo-img { height: 34px; }
+
+    /* welcome view */
+    .exam-start {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 44px 36px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .exam-start h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #0F172A;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .exam-start .lead {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .exam-rules {
+      background: #FFFBF5;
+      border: 1px solid #E8D5B7;
+      border-radius: 12px;
+      padding: 20px 24px;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      text-align: left;
+    }
+    .exam-rules h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #CF5B2E;
+      margin: 0 0 12px;
+    }
+    .exam-rules ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #475569;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    .exam-rules li {
+      padding-left: 22px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .exam-rules li::before {
+      content: '\2022';
+      color: #CF5B2E;
+      position: absolute;
+      left: 6px;
+      font-weight: 700;
+    }
+    .exam-rules li strong { color: #1B2A4A; }
+
+    /* exam view */
+    .exam-header {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .exam-section-tag {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d9488;
+      padding: 6px 12px;
+      background: rgba(13,148,136,0.1);
+      border-radius: 20px;
+    }
+    .exam-timer-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .exam-timer-label {
+      font-size: 0.72rem;
+      color: #6B7280;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .exam-timer {
+      font-family: 'Inter', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0F172A;
+      padding: 8px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .exam-timer.warn { color: #CF5B2E; border-color: #E8D5B7; background: #FFFBF5; }
+    .exam-timer.danger { color: #B91C1C; border-color: #FCA5A5; background: #FEF2F2; animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* nav grid */
+    .exam-nav-grid {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .exam-nav-grid h4 {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6B7280;
+      margin: 0 0 12px;
+    }
+    .exam-nav-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(34px, 1fr));
+      gap: 6px;
+    }
+    .exam-nav-tile {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #6B7280;
+      cursor: pointer;
+      padding: 8px 4px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      font-family: inherit;
+      min-height: 38px;
+    }
+    .exam-nav-tile:hover { border-color: #0d9488; }
+    .exam-nav-tile.answered {
+      background: rgba(13,148,136,0.12);
+      border-color: rgba(13,148,136,0.4);
+      color: #0d9488;
+    }
+    .exam-nav-tile.current {
+      background: #CF5B2E;
+      border-color: #CF5B2E;
+      color: #fff;
+    }
+    .exam-nav-tile.current.answered { background: #CF5B2E; color: #fff; }
+
+    /* question */
+    .exam-question {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 30px 36px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .exam-question .q-meta {
+      font-size: 0.78rem;
+      color: #6B7280;
+      margin-bottom: 10px;
+    }
+    .exam-question .q-text {
+      font-size: 1.18rem;
+      color: #0F172A;
+      line-height: 1.55;
+      margin: 0 0 22px;
+      font-weight: 600;
+    }
+    .q-options-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .q-option {
+      padding: 13px 18px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #1B2A4A;
+      line-height: 1.5;
+    }
+    .q-option:hover { border-color: #0d9488; background: #F0FDFA; }
+    .q-option input { margin: 0; margin-top: 4px; cursor: pointer; flex-shrink: 0; }
+    .q-option.selected {
+      border-color: #0d9488;
+      background: rgba(13,148,136,0.06);
+    }
+    .q-option label { cursor: pointer; flex: 1; }
+    .q-option-letter {
+      display: inline-block;
+      min-width: 24px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    /* prev/next controls */
+    .exam-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .exam-controls button {
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      font-family: inherit;
+    }
+    .btn-nav-prev {
+      background: #fff;
+      color: #475569;
+      border-color: #E5E7EB;
+    }
+    .btn-nav-prev:hover:not(:disabled) { border-color: #0d9488; color: #0d9488; }
+    .btn-nav-prev:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-nav-next {
+      background: #0d9488;
+      color: #fff;
+      border-color: #0d9488;
+    }
+    .btn-nav-next:hover:not(:disabled) { background: #0f766e; border-color: #0f766e; }
+    .btn-nav-next:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-finish {
+      background: #CF5B2E;
+      color: #fff;
+      border: 2px solid #CF5B2E;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-finish:hover { background: #A04420; border-color: #A04420; }
+
+    /* modal */
+    .exam-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .exam-modal-backdrop.open { display: flex; }
+    .exam-modal {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 32px;
+      max-width: 480px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .exam-modal h3 {
+      font-size: 1.3rem;
+      color: #0F172A;
+      margin: 0 0 12px;
+    }
+    .exam-modal p {
+      color: #475569;
+      line-height: 1.55;
+      margin: 0 0 20px;
+      font-size: 0.95rem;
+    }
+    .exam-modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .exam-modal-buttons button {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 2px solid transparent;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+    }
+    .modal-cancel {
+      background: #fff;
+      color: #475569;
+      border-color: #E5E7EB;
+    }
+    .modal-cancel:hover { border-color: #0d9488; color: #0d9488; }
+    .modal-confirm {
+      background: #CF5B2E;
+      color: #fff;
+      border-color: #CF5B2E;
+    }
+    .modal-confirm:hover { background: #A04420; border-color: #A04420; }
+
+    /* results */
+    .exam-results {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 32px 36px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .exam-results h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #0F172A;
+      margin: 0 0 6px;
+    }
+    .exam-results .results-sub {
+      color: #475569;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .score-summary {
+      background: linear-gradient(135deg, #F0FDFA 0%, #FFFBF5 100%);
+      border: 1px solid rgba(13,148,136,0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 26px 0 6px;
+      text-align: center;
+    }
+    .score-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0d9488;
+      line-height: 1;
+    }
+    .score-label {
+      font-size: 0.92rem;
+      color: #475569;
+      margin-top: 6px;
+    }
+    .score-bd {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .score-bd-item {
+      font-size: 0.92rem;
+      color: #475569;
+    }
+    .score-bd-item strong {
+      color: #0F172A;
+      font-size: 1.15rem;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .review-question {
+      border-top: 1px solid #E5E7EB;
+      padding: 24px 0 4px;
+    }
+    .review-question .q-section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6B7280;
+      margin-right: 8px;
+      padding: 3px 8px;
+      background: #F1F5F9;
+      border-radius: 4px;
+    }
+    .review-question .q-text-rev {
+      font-size: 1rem;
+      color: #0F172A;
+      margin: 8px 0 14px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+    .review-options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .review-option {
+      padding: 10px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.45;
+    }
+    .review-option.correct {
+      background: #F0FDF4;
+      border-color: #86EFAC;
+      color: #14532D;
+    }
+    .review-option.wrong {
+      background: #FEF2F2;
+      border-color: #FCA5A5;
+      color: #7F1D1D;
+    }
+    .review-option .opt-content { flex: 1; }
+    .review-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .review-badge.correct { background: #86EFAC; color: #14532D; }
+    .review-badge.wrong { background: #FCA5A5; color: #7F1D1D; }
+    .review-badge.yours { background: #BFDBFE; color: #1E3A8A; }
+    .review-explanation {
+      background: #F8FAFC;
+      border-left: 3px solid #0d9488;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .review-explanation strong { color: #0F172A; }
+    .no-answer-tag {
+      color: #9CA3AF;
+      font-size: 0.82rem;
+      font-style: italic;
+      margin: 0 0 10px;
+    }
+
+    .results-actions {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .results-actions button, .results-actions a {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-decoration: none;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-restart {
+      background: #0d9488;
+      color: #fff;
+      border-color: #0d9488;
+    }
+    .btn-restart:hover { background: #0f766e; border-color: #0f766e; }
+    .btn-back-dash {
+      background: #fff;
+      color: #475569;
+      border-color: #E5E7EB;
+    }
+    .btn-back-dash:hover { border-color: #0d9488; color: #0d9488; }
+
+    /* mobile */
+    @media (max-width: 768px) {
+      .exam-app { padding: 80px 14px 30px; }
+      .exam-top-inner { padding: 0 14px; }
+      .exam-question { padding: 22px 18px; }
+      .exam-question .q-text { font-size: 1.05rem; }
+      .exam-results { padding: 22px 18px; }
+      .exam-header { padding: 12px 14px; }
+      .exam-timer { font-size: 1.1rem; padding: 6px 12px; }
+      .exam-timer-label { display: none; }
+      .exam-start { padding: 28px 20px; }
+      .exam-start h1 { font-size: 1.8rem; }
+      .exam-nav-tile { font-size: 0.72rem; min-height: 34px; }
+      .score-big { font-size: 2.4rem; }
+      .exam-modal { padding: 22px 20px; }
+    }
+
+    sub, sup { font-size: 0.75em; line-height: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="exam-top">
+    <div class="exam-top-inner">
+      <a href="dashboard.html" class="logo" style="display:flex; align-items:center; gap:8px; text-decoration:none;">
+        <img src="assets/shos-logo-full-dark.png" alt="SHOS Med" class="logo-img">
+      </a>
+      <a href="dashboard.html" class="back">&larr; Back to Dashboard</a>
+    </div>
+  </div>
+
+  <main class="exam-app">
+
+    <!-- ============ START VIEW ============ -->
+    <div id="examStartView">
+      <div class="exam-start">
+        <h1>Mock Entrance Exam</h1>
+        <p class="lead">A full-length practice run of the LF3 entrance exam: 30 Biology and 30 Chemistry multiple-choice questions, completed in 2 hours.</p>
+
+        <div class="exam-rules">
+          <h3>Before you start</h3>
+          <ul>
+            <li><strong>Time:</strong> 2 hours total. The clock starts when you click Start.</li>
+            <li><strong>Format:</strong> 60 questions, 4 options each. Exactly one correct answer per question.</li>
+            <li><strong>Navigation:</strong> Move between questions with Previous and Next, or jump using the question grid.</li>
+            <li><strong>Submitting:</strong> Click Finish Exam when ready. The exam auto-submits when the timer hits 0:00.</li>
+            <li><strong>Review:</strong> After you submit, you will see your score, the correct answers, and a detailed explanation for every question.</li>
+            <li><strong>Real time:</strong> The timer runs in real time. Closing the tab does not pause it.</li>
+          </ul>
+        </div>
+
+        <button id="startExamBtn" class="btn btn-primary" style="font-size:1.05rem; padding:16px 38px;">Start Exam</button>
+        <p style="font-size:0.82rem; color:#6B7280; margin-top:14px;">Progress is saved automatically. You can refresh the page without losing answers.</p>
+      </div>
+    </div>
+
+    <!-- ============ EXAM VIEW ============ -->
+    <div id="examMainView" style="display:none;">
+      <div class="exam-header">
+        <span class="exam-section-tag" id="examSectionTag">Biology</span>
+        <div class="exam-timer-wrap">
+          <span class="exam-timer-label">Time left</span>
+          <span class="exam-timer" id="examTimer" aria-live="polite">02:00:00</span>
+        </div>
+        <button id="finishEarlyBtn" class="btn-finish">Finish Exam</button>
+      </div>
+
+      <div class="exam-nav-grid">
+        <h4>Jump to question</h4>
+        <div class="exam-nav-tiles" id="examNavTiles"></div>
+      </div>
+
+      <div class="exam-question">
+        <div class="q-meta">Question <span id="qNum">1</span> of 60 &middot; <span id="qSectionLabel">Biology</span></div>
+        <div class="q-text" id="qText"></div>
+        <ul class="q-options-list" id="qOptionsList"></ul>
+      </div>
+
+      <div class="exam-controls">
+        <button id="prevQBtn" class="btn-nav-prev">&larr; Previous</button>
+        <button id="nextQBtn" class="btn-nav-next">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- ============ RESULTS VIEW ============ -->
+    <div id="examResultsView" style="display:none;">
+      <div class="exam-results">
+        <h2>Your Results</h2>
+        <p class="results-sub">Detailed review with explanations below. Take the exam again any time.</p>
+
+        <div class="score-summary">
+          <div class="score-big" id="scoreBig">0 / 60</div>
+          <div class="score-label" id="scoreLabel">Total score</div>
+          <div class="score-bd" id="scoreBreakdown"></div>
+        </div>
+
+        <div id="reviewList"></div>
+
+        <div class="results-actions">
+          <button id="restartExamBtn" class="btn-restart">Take Exam Again</button>
+          <a href="dashboard.html" class="btn-back-dash">Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Submit confirmation modal -->
+  <div class="exam-modal-backdrop" id="submitModal">
+    <div class="exam-modal" role="dialog" aria-labelledby="submitModalTitle" aria-modal="true">
+      <h3 id="submitModalTitle">Finish exam?</h3>
+      <p id="submitModalBody">All questions answered. Submitting locks your answers and shows your results with explanations.</p>
+      <div class="exam-modal-buttons">
+        <button id="modalCancelBtn" class="modal-cancel">Keep going</button>
+        <button id="modalConfirmBtn" class="modal-confirm">Submit exam</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* ===========================================================================
+   *  MOCK ENTRANCE EXAM
+   *  60 questions (30 Biology + 30 Chemistry) drawn from the LF3 entrance-exam
+   *  question set. Each question carries a PhD-level explanation that addresses
+   *  why the correct option is right and why the distractors are wrong.
+   * =========================================================================== */
+
+  const examQuestions = [
+    /* ============== BIOLOGY (1-30) ============== */
+    {
+      id: 1, section: 'Biology',
+      question: 'Conjugation is:',
+      options: {
+        A: 'asexual reproduction of bacteria',
+        B: 'exchange of genetic material in bacteria',
+        C: 'reproduction of viruses',
+        D: 'exchange of genetic material mediated by viruses'
+      },
+      correct: 'B',
+      explanation: 'Bacterial conjugation is the contact-dependent, unidirectional transfer of DNA from a donor cell to a recipient cell through a sex pilus, mediated by a conjugative plasmid such as the F factor in <em>E. coli</em>. It is a horizontal gene transfer mechanism, not bacterial reproduction itself: bacteria reproduce by binary fission (so option A is wrong). Option C describes viral replication, and option D describes <strong>transduction</strong>, which is phage-mediated DNA transfer, a separate mechanism.'
+    },
+    {
+      id: 2, section: 'Biology',
+      question: 'Latent viruses:',
+      options: {
+        A: 'their RNA is incorporated in cellular genome',
+        B: 'are symbiotic',
+        C: 'their DNA is incorporated in cellular genome',
+        D: 'can not carry oncogenes'
+      },
+      correct: 'C',
+      explanation: 'In a latent (lysogenic) infection the viral genome integrates into the host chromosome and replicates passively with host DNA. Even retroviruses, whose mature virions carry RNA, integrate as DNA after reverse transcription, so the integrated provirus is always a DNA copy. Option A is therefore incorrect. Option B is wrong because latent infection is parasitic, not symbiotic. Option D is wrong as well: many latent viruses do carry oncogenes (for example HPV E6/E7, EBV LMP1).'
+    },
+    {
+      id: 3, section: 'Biology',
+      question: 'Prions are:',
+      options: {
+        A: 'products of brain degeneration',
+        B: 'protein particles',
+        C: 'cause of genetic mutation',
+        D: 'glycolipid particles'
+      },
+      correct: 'B',
+      explanation: 'Prions (proteinaceous infectious particles) are misfolded conformers of a normal cellular protein (PrP<sup>C</sup>) that propagate by templating the same misfold onto other PrP<sup>C</sup> molecules. They contain no nucleic acid. They <em>cause</em> neurodegeneration (Creutzfeldt-Jakob, kuru, scrapie, BSE), but they are not a <em>product</em> of degeneration, so option A reverses cause and effect. Prions act post-translationally on protein structure, not on DNA, so option C is wrong, and they are proteins, not glycolipids (option D).'
+    },
+    {
+      id: 4, section: 'Biology',
+      question: 'The structure of bacteriophage contains:',
+      options: {
+        A: 'head, tail, envelope',
+        B: 'head, base plate, flagellum',
+        C: 'head, flagellum, fibers',
+        D: 'head, tail, base plate, fibers'
+      },
+      correct: 'D',
+      explanation: 'A typical tailed bacteriophage (for example T4 of <em>Myoviridae</em>) is built from an icosahedral head (capsid containing the dsDNA genome), a contractile tail, a base plate at the distal end of the tail, and tail fibers that recognize the host receptor. Bacteriophages do not have flagella (a motility organelle of bacteria and some eukaryotes), which rules out B and C. Phages may have outer envelopes only in unusual cases; the canonical components are head, tail, base plate, and fibers.'
+    },
+    {
+      id: 5, section: 'Biology',
+      question: 'Cell wall of Gram positive bacteria contains thick layer of:',
+      options: {
+        A: 'peptidoglycan',
+        B: 'lipopolysaccharides',
+        C: 'carbohydrates',
+        D: 'lipoproteins'
+      },
+      correct: 'A',
+      explanation: 'Gram-positive bacteria have a thick (20-80 nm) layer of peptidoglycan external to the plasma membrane, embedded with teichoic and lipoteichoic acids. This thick peptidoglycan retains the crystal violet-iodine complex during the Gram stain, which is why these cells appear purple. Lipopolysaccharide (LPS) is the hallmark of the <strong>outer membrane of Gram-negative</strong> bacteria, not Gram-positives, so option B is wrong. Carbohydrates and lipoproteins are not the principal structural component of the Gram-positive wall.'
+    },
+    {
+      id: 6, section: 'Biology',
+      question: 'Function of lysosomes is:',
+      options: {
+        A: 'synthesis of enzymes',
+        B: 'intracellular digestion',
+        C: 'storage of proteins',
+        D: 'phagocytosis'
+      },
+      correct: 'B',
+      explanation: 'Lysosomes are membrane-bound acidic organelles (lumenal pH ~4.5-5) that contain ~60 hydrolytic enzymes (acid hydrolases) for the intracellular degradation of macromolecules delivered by endocytosis, phagocytosis, and autophagy. The enzymes are <em>synthesized</em> in the rough endoplasmic reticulum and modified in the Golgi (so option A is wrong). Lysosomes are not bulk protein storage organelles (option C), and phagocytosis is the engulfment process at the plasma membrane carried out by phagocytes; lysosomes <em>digest</em> the resulting phagosome contents but do not perform phagocytosis themselves (option D is wrong).'
+    },
+    {
+      id: 7, section: 'Biology',
+      question: 'Euchromatin contains:',
+      options: {
+        A: 'Barr bodies',
+        B: 'inactive genes',
+        C: 'repetitive sequences',
+        D: 'structural genes'
+      },
+      correct: 'D',
+      explanation: 'Euchromatin is the loosely packed, transcriptionally accessible form of chromatin where actively expressed structural and housekeeping genes reside. Heterochromatin, by contrast, is densely compacted and largely transcriptionally silent: Barr bodies (the inactivated X chromosome) and the bulk of repetitive DNA (centromeric and telomeric satellite repeats) are heterochromatic, not euchromatic, so options A, B, and C describe heterochromatin features.'
+    },
+    {
+      id: 8, section: 'Biology',
+      question: 'RNA processing of the primary transcript (pre-mRNA) includes:',
+      options: {
+        A: 'polyadenylation of 3&prime; end',
+        B: 'excision of exons',
+        C: 'methylation of introns',
+        D: 'spinalization'
+      },
+      correct: 'A',
+      explanation: 'Eukaryotic pre-mRNA processing includes three covalent modifications: a 7-methylguanosine cap added to the 5&prime; end, splicing (which excises <em>introns</em> and ligates <em>exons</em>), and addition of a poly(A) tail to the 3&prime; end. Option B inverts splicing (introns are excised, exons are kept). Option C describes methylation of introns, which is not a standard processing step (the cap is methylated, not introns). Option D, &ldquo;spinalization,&rdquo; is not a recognized molecular biology term.'
+    },
+    {
+      id: 9, section: 'Biology',
+      question: 'Gregor Mendel <strong>did not</strong> observe inheritance pattern in one of these characters of peas:',
+      options: {
+        A: 'flower color',
+        B: 'seed shape',
+        C: 'root length',
+        D: 'pod shape'
+      },
+      correct: 'C',
+      explanation: 'Mendel studied seven discrete characters of <em>Pisum sativum</em> in his classic 1866 experiments: seed shape (round/wrinkled), seed color (yellow/green), pod shape (inflated/constricted), pod color (green/yellow), flower color (purple/white), flower position (axial/terminal), and stem (plant) height (tall/dwarf). Root length was not among them, so option C is the character Mendel did not study.'
+    },
+    {
+      id: 10, section: 'Biology',
+      question: 'Assign the alignment of genes on the chromosome, if AB <em>p</em> = 5%, BC <em>p</em> = 3%, and AC <em>p</em> = 2% (<em>p</em> = recombination frequency in centimorgans):',
+      options: {
+        A: 'ABC',
+        B: 'ACB',
+        C: 'BAC',
+        D: 'CAB'
+      },
+      correct: 'B',
+      explanation: 'In a linear three-point linkage map the recombination frequency between the two outer markers equals (approximately) the sum of the two interior intervals. Test each order: ABC predicts AC = AB + BC = 5 + 3 = 8 cM (observed 2, fails). ACB predicts AB = AC + CB = 2 + 3 = 5 cM (observed 5, fits). The middle gene is therefore C, with order A&ndash;C&ndash;B (= ACB). Orders BAC and CAB are equivalent to ABC and ACB by symmetry but written in the wrong direction; B is the answer that places the middle gene correctly.'
+    },
+    {
+      id: 11, section: 'Biology',
+      question: 'Match the statement &ldquo;Determines phenotype in a heterozygote&rdquo; with the term:',
+      options: {
+        A: 'codominant allele',
+        B: 'recessive allele',
+        C: 'incomplete dominant allele',
+        D: 'complete dominant allele'
+      },
+      correct: 'D',
+      explanation: 'A complete dominant allele is one that, when paired with a recessive allele in a heterozygote, fully determines the phenotype (the recessive allele is masked). With codominant alleles (option A) <em>both</em> alleles are expressed simultaneously (e.g., AB blood type). With incomplete dominance (option C) the heterozygote shows an intermediate, blended phenotype (e.g., red &times; white snapdragon &rarr; pink). A recessive allele (option B) is by definition <em>not</em> expressed in the heterozygote.'
+    },
+    {
+      id: 12, section: 'Biology',
+      question: 'What is the physical basis of Mendel&prime;s laws?',
+      options: {
+        A: 'the behavior of chromosomes during meiosis',
+        B: 'the behavior of chromosomes during mitosis',
+        C: 'the behavior of chromosomes during interphase',
+        D: 'the behavior of chromosomes during S phase'
+      },
+      correct: 'A',
+      explanation: 'Mendel&prime;s laws of segregation and independent assortment are explained by chromosome behavior during <strong>meiosis</strong>: segregation reflects the separation of homologous chromosomes during anaphase I, and independent assortment reflects the random orientation of each homologous pair at metaphase I. Mitosis (option B) preserves chromosome identity in somatic cells and does not generate gametes. Interphase (C) and S phase (D) involve DNA replication and cell growth, not allele segregation.'
+    },
+    {
+      id: 13, section: 'Biology',
+      question: 'How many chromatids are in the somatic cell during G2 phase?',
+      options: {
+        A: '23',
+        B: '46',
+        C: '92',
+        D: 'impossible to define'
+      },
+      correct: 'C',
+      explanation: 'After DNA replication in S phase, each of the 46 chromosomes of a human somatic cell consists of two identical sister chromatids joined at the centromere. By G2, every chromosome is therefore double-stranded, giving 46 &times; 2 = 92 chromatids. Twenty-three (option A) is the haploid chromosome number; 46 (option B) is the number of chromosomes in G1, before replication.'
+    },
+    {
+      id: 14, section: 'Biology',
+      question: 'How many Barr bodies do you find in cells of an individual with karyotype 47, XXX?',
+      options: {
+        A: '0',
+        B: '1',
+        C: '2',
+        D: '3'
+      },
+      correct: 'C',
+      explanation: 'Lyonization (random X-inactivation) silences all but one X chromosome in each somatic cell. The number of Barr bodies (condensed inactive X) therefore equals (number of X chromosomes) &minus; 1. For 47, XXX (triple X, or trisomy X), this is 3 &minus; 1 = 2 Barr bodies. A normal female (46, XX) has 1; a normal male (46, XY) has 0.'
+    },
+    {
+      id: 15, section: 'Biology',
+      question: 'If a man with AB blood group marries a woman with O blood group, which blood groups would you expect in their children?',
+      options: {
+        A: 'blood group A or blood group B',
+        B: 'blood group A or blood group O',
+        C: 'blood group B or blood group O',
+        D: 'blood group A or blood group B or blood group O'
+      },
+      correct: 'A',
+      explanation: 'Father is genotype I<sup>A</sup>I<sup>B</sup> (group AB); mother is ii (group O). Each child inherits one allele from each parent: I<sup>A</sup>i (phenotype A) or I<sup>B</sup>i (phenotype B), each with 50% probability. Group O (genotype ii) is impossible because the father has no <em>i</em> allele to contribute, ruling out options B, C, and D.'
+    },
+    {
+      id: 16, section: 'Biology',
+      question: 'Synthesis of extracellular matrix in bones is done by:',
+      options: {
+        A: 'osteoblasts',
+        B: 'osteocytes',
+        C: 'osteoclasts',
+        D: 'osteopores'
+      },
+      correct: 'A',
+      explanation: 'Osteoblasts are the bone-forming cells that secrete the organic matrix (osteoid: type I collagen, osteocalcin, osteonectin) and direct its mineralization with hydroxyapatite. Osteocytes (B) are mature osteoblasts trapped within the matrix that they previously secreted; their main role is mechanosensing and matrix maintenance, not new matrix synthesis. Osteoclasts (C) are multinucleated cells of monocyte/macrophage lineage that <em>resorb</em> bone. &ldquo;Osteopores&rdquo; (D) is not a recognized cell type.'
+    },
+    {
+      id: 17, section: 'Biology',
+      question: 'Functions of epithelia include:',
+      options: {
+        A: 'conduction, contraction',
+        B: 'absorption, secretion',
+        C: 'sensation, photosynthesis',
+        D: 'will control, respiration'
+      },
+      correct: 'B',
+      explanation: 'Epithelial tissue covers body surfaces and lines cavities. Its core functions are protection, absorption (e.g., intestinal enterocytes), secretion (glandular epithelium), and selective transport. Conduction is a property of nerve tissue, contraction is a property of muscle (so option A is wrong). Photosynthesis (C) does not occur in animals. &ldquo;Will control&rdquo; (D) is a function of the central nervous system, not epithelium.'
+    },
+    {
+      id: 18, section: 'Biology',
+      question: 'Nervous system develops from:',
+      options: {
+        A: 'mesoderm',
+        B: 'endoderm',
+        C: 'ectoderm',
+        D: 'mesenchyme'
+      },
+      correct: 'C',
+      explanation: 'The nervous system arises from the <strong>ectoderm</strong> via neurulation: the neural plate folds into the neural tube (which becomes brain and spinal cord) and pinches off neural-crest cells (which give rise to peripheral neurons, Schwann cells, and many other derivatives). Mesoderm (A) gives rise to muscle, bone, kidney, and connective tissue; endoderm (B) lines the gut and forms its derivatives (liver, pancreas, lungs). Mesenchyme (D) is loose embryonic connective tissue derived mostly from mesoderm and is not the source of CNS neurons.'
+    },
+    {
+      id: 19, section: 'Biology',
+      question: 'Aorta originates in:',
+      options: {
+        A: 'right atrium',
+        B: 'right ventricle',
+        C: 'left ventricle',
+        D: 'left atrium'
+      },
+      correct: 'C',
+      explanation: 'The aorta carries oxygenated blood from the systemic circulation and exits the heart from the <strong>left ventricle</strong> through the aortic semilunar valve. The right ventricle (B) gives rise to the pulmonary trunk (deoxygenated blood to the lungs). Atria (A and D) are receiving chambers and do not directly give rise to the great arteries.'
+    },
+    {
+      id: 20, section: 'Biology',
+      question: 'Which process occurs in the small intestine?',
+      options: {
+        A: 'absorption of nutrients',
+        B: 'production of bile',
+        C: 'taste sensation',
+        D: 'mixing of the chyme with hydrochloric acid'
+      },
+      correct: 'A',
+      explanation: 'The small intestine (duodenum, jejunum, ileum) is the principal site of nutrient absorption: villi and microvilli expand surface area enormously, and specific transporters absorb sugars, amino acids, fatty acids, vitamins, and electrolytes. Bile is produced by hepatocytes in the liver (option B). Taste is mediated by lingual taste buds (C). Mixing of chyme with HCl is gastric, not intestinal (D); in the duodenum chyme is neutralized by pancreatic bicarbonate.'
+    },
+    {
+      id: 21, section: 'Biology',
+      question: 'Function of renal duct system is:',
+      options: {
+        A: 'secretion of amino acids',
+        B: 'excretion of amino acids',
+        C: 'reabsorption of amino acids',
+        D: 'degradation of amino acids'
+      },
+      correct: 'C',
+      explanation: 'Amino acids are freely filtered at the glomerulus and are then almost completely reabsorbed by Na<sup>+</sup>-coupled transporters in the proximal tubule (the &ldquo;renal duct system&rdquo;). Healthy individuals therefore excrete only trace amino acids in urine. Aminoaciduria results when these transporters are deficient (e.g., Hartnup disease, cystinuria). The kidney does not normally secrete or degrade amino acids in this segment, ruling out A, B, and D.'
+    },
+    {
+      id: 22, section: 'Biology',
+      question: 'Oxytocin secretion, controlling milk release by the mammary glands, is regulated by:',
+      options: {
+        A: 'negative feedback',
+        B: 'hypothalamus feedback',
+        C: 'pituitary feedback',
+        D: 'positive feedback'
+      },
+      correct: 'D',
+      explanation: 'Suckling at the nipple stimulates afferent neurons that signal the hypothalamus to release oxytocin from the posterior pituitary; oxytocin contracts myoepithelial cells around the alveoli of the mammary gland, causing milk ejection. Continued suckling leads to <em>more</em> oxytocin release, which leads to <em>more</em> milk letdown: this is a textbook example of <strong>positive feedback</strong>. Negative feedback (A) would dampen the response, not amplify it.'
+    },
+    {
+      id: 23, section: 'Biology',
+      question: 'A cell&prime;s membrane potential shifts from &minus;70 mV to &minus;50 mV. What change in the cell&prime;s permeability could cause such a shift?',
+      options: {
+        A: 'an increase in permeability to Ca<sup>+</sup>',
+        B: 'an increase in permeability to Li<sup>+</sup>',
+        C: 'an increase in permeability to Mn<sup>+</sup>',
+        D: 'an increase in permeability to Na<sup>+</sup>'
+      },
+      correct: 'D',
+      explanation: 'A shift from &minus;70 to &minus;50 mV is a depolarization, produced by inward movement of positive charge. Sodium ions (Na<sup>+</sup>) are abundant outside the cell and have a strongly positive equilibrium potential (~+60 mV), so opening Na<sup>+</sup> channels drives the membrane potential toward that value, causing depolarization. Lithium and manganese are not the physiological ions that mediate excitable-cell depolarization. Calcium (the actual species is Ca<sup>2+</sup>) also depolarizes when admitted, but the option as written is the only Na<sup>+</sup>-based answer and matches the textbook depolarization mechanism.'
+    },
+    {
+      id: 24, section: 'Biology',
+      question: 'Supporting cells of CNS (glia) lining the central canal and ventricles are called:',
+      options: {
+        A: 'astrocytes',
+        B: 'ependyma',
+        C: 'oligodendrocytes',
+        D: 'Schwann cells'
+      },
+      correct: 'B',
+      explanation: 'Ependymal cells form a single ciliated epithelial layer that lines the four ventricles of the brain and the central canal of the spinal cord, where they help propel cerebrospinal fluid. Astrocytes (A) are the most abundant CNS glia and provide metabolic and structural support. Oligodendrocytes (C) myelinate CNS axons. Schwann cells (D) myelinate <em>peripheral</em> nerves; they are not CNS glia at all.'
+    },
+    {
+      id: 25, section: 'Biology',
+      question: 'In CNS, primary motor cortex is located:',
+      options: {
+        A: 'in frontal lobe',
+        B: 'in parietal lobe',
+        C: 'in temporal lobe',
+        D: 'in occipital lobe'
+      },
+      correct: 'A',
+      explanation: 'The primary motor cortex (Brodmann area 4) sits along the precentral gyrus of the <strong>frontal lobe</strong>, immediately anterior to the central sulcus. It contains the upper motor neurons of the corticospinal tract and is somatotopically organized as the motor homunculus. The parietal lobe houses the primary somatosensory cortex (postcentral gyrus); the temporal lobe processes audition and memory; the occipital lobe is dedicated to vision.'
+    },
+    {
+      id: 26, section: 'Biology',
+      question: 'Focusing in the mammalian eye on nearby objects:',
+      options: {
+        A: 'lens does not change',
+        B: 'lens becomes flatter',
+        C: 'lens becomes thicker and rounder',
+        D: 'lens becomes contracted and smooth'
+      },
+      correct: 'C',
+      explanation: 'Accommodation for near vision involves contraction of the ciliary muscle, which slackens the suspensory zonular fibers and allows the elastic lens to assume its naturally rounder, thicker shape. The increased curvature shortens the focal length so close objects focus on the retina. Distance vision is the opposite: the ciliary muscle relaxes, zonules pull the lens taut, and the lens flattens (B). Option A and D do not describe physiological accommodation.'
+    },
+    {
+      id: 27, section: 'Biology',
+      question: 'Which statement is <strong>not</strong> correct?',
+      options: {
+        A: 'Undernourished persons have diets deficient in calories.',
+        B: 'Malnourished persons are missing one or more essential nutrients.',
+        C: 'Undernourished persons have diets deficient in dietary minerals.',
+        D: 'Malnourished persons have diets deficient in proteins.'
+      },
+      correct: 'C',
+      explanation: 'Undernutrition (option A) refers specifically to inadequate <em>caloric</em> (energy) intake. Malnutrition (B and D) is the broader term for any inadequate or imbalanced supply of nutrients, including specific essential nutrients such as proteins, minerals, or vitamins. Mineral deficiency is a form of malnutrition, not undernutrition, so option C misuses the terminology and is the incorrect statement.'
+    },
+    {
+      id: 28, section: 'Biology',
+      question: 'In a population at Hardy-Weinberg equilibrium, with two alleles at one locus: the frequency of the dominant allele is 70%, the frequency of the recessive allele is 30%. What is the frequency of the dominant phenotype?',
+      options: {
+        A: '0.70',
+        B: '0.49',
+        C: '0.91',
+        D: '0.42'
+      },
+      correct: 'C',
+      explanation: 'For a fully dominant trait, the dominant phenotype encompasses both homozygous-dominant and heterozygous individuals: <em>p</em><sup>2</sup> + 2<em>pq</em>. With <em>p</em> = 0.7 and <em>q</em> = 0.3 this equals 0.49 + 2(0.7)(0.3) = 0.49 + 0.42 = 0.91. Option B (0.49) is only the homozygous-dominant fraction, option D (0.42) is only the heterozygote fraction, and option A (0.70) is the allele frequency, not a phenotype frequency.'
+    },
+    {
+      id: 29, section: 'Biology',
+      question: 'In the atmosphere there is approximately ___ of oxygen:',
+      options: {
+        A: '21%',
+        B: '78%',
+        C: '2%',
+        D: '36%'
+      },
+      correct: 'A',
+      explanation: 'Earth&prime;s atmosphere is by volume approximately 78% N<sub>2</sub>, 21% O<sub>2</sub>, ~1% argon, plus trace gases (CO<sub>2</sub>, water vapor, methane, etc.). The 78% in option B is nitrogen, not oxygen. Two percent (C) and 36% (D) are not the partial composition of any major atmospheric component.'
+    },
+    {
+      id: 30, section: 'Biology',
+      question: 'Which sequence of the pyramid of life in an ecosystem is correct?',
+      options: {
+        A: 'solar energy &rarr; herbivores &rarr; plants &rarr; carnivores',
+        B: 'solar energy &rarr; carnivores &rarr; herbivores &rarr; plants',
+        C: 'solar energy &rarr; plants &rarr; carnivores &rarr; herbivores',
+        D: 'solar energy &rarr; plants &rarr; herbivores &rarr; carnivores'
+      },
+      correct: 'D',
+      explanation: 'Energy flows in a single direction through trophic levels: solar radiation is captured by autotrophs (plants/producers) via photosynthesis, then transferred to primary consumers (herbivores), then to secondary consumers (carnivores), and so on. The other orderings violate the producer-first, consumer-after structure that defines food chains and energy pyramids.'
+    },
+
+    /* ============== CHEMISTRY (31-60) ============== */
+    {
+      id: 31, section: 'Chemistry',
+      question: 'The second most abundant cation of the intracellular fluid is magnesium. There are various forms of nutritional supplements that can bring magnesium to the human body: which of the following is a correct formula of such a supplement?',
+      options: {
+        A: 'MgO<sub>2</sub>',
+        B: '(H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COO)<sub>2</sub>Mg',
+        C: 'Mg<sub>2</sub>O',
+        D: 'H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COOMg'
+      },
+      correct: 'B',
+      explanation: 'Option B is magnesium bisglycinate (also called magnesium glycinate), in which two glycinate anions (H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COO<sup>&minus;</sup>) coordinate to one Mg<sup>2+</sup> cation. Charge balance is satisfied: 2&times;(&minus;1) + (+2) = 0. It is a widely used, well-tolerated oral magnesium supplement. MgO<sub>2</sub> (A) implies a Mg<sup>4+</sup> oxidation state, which does not exist; Mg<sub>2</sub>O (C) is not a real compound; H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COOMg (D) is not charge-balanced (one anion paired with a divalent cation).'
+    },
+    {
+      id: 32, section: 'Chemistry',
+      question: 'What is the correct formula of calcium phosphate?',
+      options: {
+        A: 'CaPO<sub>4</sub>',
+        B: 'Ca<sub>2</sub>(PO<sub>4</sub>)<sub>3</sub>',
+        C: 'Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>',
+        D: 'Ca(PO<sub>4</sub>)<sub>2</sub>'
+      },
+      correct: 'C',
+      explanation: 'Calcium is Ca<sup>2+</sup>; phosphate is PO<sub>4</sub><sup>3&minus;</sup>. Charge balance requires 3 Ca<sup>2+</sup> &times; (+2) = +6 and 2 PO<sub>4</sub><sup>3&minus;</sup> &times; (&minus;3) = &minus;6, giving the neutral formula <strong>Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></strong>. This is the principal mineral phase of bones and teeth. The other formulas are not charge-balanced.'
+    },
+    {
+      id: 33, section: 'Chemistry',
+      question: 'What is the correct name of HBrO?',
+      options: {
+        A: 'hypobromous acid',
+        B: 'hydrobromic acid',
+        C: 'bromous acid',
+        D: 'bromic acid'
+      },
+      correct: 'A',
+      explanation: 'Oxoacids of bromine follow a regular naming pattern based on the oxidation state of bromine: HBrO is hypobromous (Br is +1), HBrO<sub>2</sub> is bromous (+3), HBrO<sub>3</sub> is bromic (+5), HBrO<sub>4</sub> is perbromic (+7). Hydrobromic acid (option B) is HBr (no oxygen), the binary halogen acid.'
+    },
+    {
+      id: 34, section: 'Chemistry',
+      question: 'Iron occurs in the human body mainly in two forms: as ferrous or ferric cations. Only the ferrous ion can be transported through the plasma membrane, and it is the same form of iron found in the structure of hemoglobin. The ferrous ion is:',
+      options: {
+        A: 'Fe(II)',
+        B: 'Fe(III)',
+        C: 'Fe(VI)',
+        D: 'Fe(I)'
+      },
+      correct: 'A',
+      explanation: 'In Stock nomenclature, Roman numerals indicate oxidation state. Ferrous = Fe<sup>2+</sup> = Fe(II); ferric = Fe<sup>3+</sup> = Fe(III). Hemoglobin binds O<sub>2</sub> only when its heme iron is in the ferrous (Fe<sup>2+</sup>) state; oxidation to Fe<sup>3+</sup> yields methemoglobin, which cannot bind oxygen. The Fe(I) and Fe(VI) oxidation states (D and C) are unstable in biology.'
+    },
+    {
+      id: 35, section: 'Chemistry',
+      question: 'What happens to the pH of a solution when CO<sub>2</sub> is dissolved in water?',
+      options: {
+        A: 'increases',
+        B: 'decreases',
+        C: 'remains the same',
+        D: 'becomes neutral'
+      },
+      correct: 'B',
+      explanation: 'CO<sub>2</sub> + H<sub>2</sub>O &rlhar; H<sub>2</sub>CO<sub>3</sub> &rlhar; H<sup>+</sup> + HCO<sub>3</sub><sup>&minus;</sup>. Carbonic acid is a weak acid; its dissociation increases [H<sup>+</sup>], so the pH falls (becomes more acidic). This is the principle behind the carbonic acid-bicarbonate buffer in blood and explains why exhaling CO<sub>2</sub> raises blood pH (respiratory alkalosis) while CO<sub>2</sub> retention lowers it (respiratory acidosis).'
+    },
+    {
+      id: 36, section: 'Chemistry',
+      question: 'Which of the following compounds is a strong acid?',
+      options: {
+        A: 'CH<sub>3</sub>COOH',
+        B: 'H<sub>2</sub>CO<sub>3</sub>',
+        C: 'HCl',
+        D: 'NH<sub>3</sub>'
+      },
+      correct: 'C',
+      explanation: 'A strong acid is one that dissociates essentially completely in water (K<sub>a</sub> &gt;&gt; 1). HCl ionizes &gt;99% to H<sup>+</sup> + Cl<sup>&minus;</sup> at physiological concentrations and is the canonical strong mineral acid. Acetic acid CH<sub>3</sub>COOH (A, K<sub>a</sub> ~ 1.8&times;10<sup>&minus;5</sup>) and carbonic acid H<sub>2</sub>CO<sub>3</sub> (B) are weak acids. NH<sub>3</sub> (D) is a weak <em>base</em>, not an acid.'
+    },
+    {
+      id: 37, section: 'Chemistry',
+      question: 'In the reaction Zn + CuSO<sub>4</sub> &rarr; ZnSO<sub>4</sub> + Cu, which species is reduced?',
+      options: {
+        A: 'Zn',
+        B: 'Cu',
+        C: 'SO<sub>4</sub>',
+        D: 'ZnSO<sub>4</sub>'
+      },
+      correct: 'B',
+      explanation: 'Reduction is gain of electrons (decrease in oxidation number). Cu<sup>2+</sup> in CuSO<sub>4</sub> picks up two electrons from Zn and is reduced to Cu<sup>0</sup>. Simultaneously, Zn<sup>0</sup> is <em>oxidized</em> to Zn<sup>2+</sup> (option A is wrong: Zn loses electrons, so it is oxidized). Sulfate is a spectator ion: its oxidation state is unchanged. A useful mnemonic: <strong>OIL RIG</strong>. Oxidation Is Loss, Reduction Is Gain (of electrons).'
+    },
+    {
+      id: 38, section: 'Chemistry',
+      question: 'A catalyst in a reaction:',
+      options: {
+        A: 'raises the activation energy of a reaction',
+        B: 'lowers the activation energy of a reaction',
+        C: 'increases the equilibrium constant',
+        D: 'decreases the equilibrium constant'
+      },
+      correct: 'B',
+      explanation: 'A catalyst lowers the activation energy (E<sub>a</sub>) by providing an alternative reaction pathway with a lower-energy transition state. It speeds up forward and reverse reactions equally and is regenerated unchanged. Because it accelerates both directions, it does <em>not</em> shift the equilibrium constant K<sub>eq</sub> (C and D are wrong); it only changes how quickly equilibrium is reached.'
+    },
+    {
+      id: 39, section: 'Chemistry',
+      question: 'Choose the correct description of this chemical reaction: NH<sub>3</sub> + H<sub>2</sub>O &rlhar; NH<sub>4</sub><sup>+</sup> + OH<sup>&minus;</sup>',
+      options: {
+        A: 'ammonia acts as an acid',
+        B: 'water acts as an acid',
+        C: 'ammonium acts as a conjugate base',
+        D: 'hydroxide acts as a conjugate acid'
+      },
+      correct: 'B',
+      explanation: 'In the Br&oslash;nsted-Lowry sense, an acid donates a proton and a base accepts one. Here water donates H<sup>+</sup> to ammonia, so <strong>H<sub>2</sub>O is the acid</strong> and NH<sub>3</sub> is the base. The conjugate acid-base pairs are H<sub>2</sub>O / OH<sup>&minus;</sup> and NH<sub>3</sub> / NH<sub>4</sub><sup>+</sup>: NH<sub>4</sub><sup>+</sup> is the conjugate <em>acid</em> (not base, ruling out C), and OH<sup>&minus;</sup> is the conjugate <em>base</em> (not acid, ruling out D).'
+    },
+    {
+      id: 40, section: 'Chemistry',
+      question: 'Which of the following acids has been used for a neutralization of KOH if K<sub>2</sub>HPO<sub>4</sub> is the product?',
+      options: {
+        A: 'H<sub>2</sub>PO<sub>4</sub>',
+        B: 'HPO<sub>4</sub>',
+        C: 'H<sub>4</sub>PO<sub>4</sub>',
+        D: 'H<sub>3</sub>PO<sub>4</sub>'
+      },
+      correct: 'D',
+      explanation: 'Phosphoric acid is triprotic: H<sub>3</sub>PO<sub>4</sub>. Stepwise neutralization with KOH yields KH<sub>2</sub>PO<sub>4</sub> (one H replaced), then K<sub>2</sub>HPO<sub>4</sub> (two H replaced), then K<sub>3</sub>PO<sub>4</sub> (all three replaced). Producing K<sub>2</sub>HPO<sub>4</sub> requires starting from H<sub>3</sub>PO<sub>4</sub> (the parent acid) and adding 2 equivalents of KOH. H<sub>2</sub>PO<sub>4</sub> and HPO<sub>4</sub> as written are not neutral molecules; H<sub>4</sub>PO<sub>4</sub> is not a real species.'
+    },
+    {
+      id: 41, section: 'Chemistry',
+      question: 'What will be the pH of a 0.001 M HCl solution after diluting it 100 times?',
+      options: {
+        A: '3',
+        B: '4',
+        C: '5',
+        D: '6'
+      },
+      correct: 'C',
+      explanation: 'Starting concentration is 10<sup>&minus;3</sup> M. Dividing by 100 gives 10<sup>&minus;3</sup> / 10<sup>2</sup> = 10<sup>&minus;5</sup> M. HCl is a strong acid that dissociates completely, so [H<sup>+</sup>] = 10<sup>&minus;5</sup> M and pH = &minus;log[H<sup>+</sup>] = 5. (At dilutions below ~10<sup>&minus;6</sup> M one must also account for water autoionization, but at 10<sup>&minus;5</sup> M the contribution of water is negligible.)'
+    },
+    {
+      id: 42, section: 'Chemistry',
+      question: 'How many grams of NaOH are needed to prepare 1 liter of 0.5 M NaOH solution? Molar mass of NaOH = 40 g/mol.',
+      options: {
+        A: '10 g',
+        B: '20 g',
+        C: '40 g',
+        D: '50 g'
+      },
+      correct: 'B',
+      explanation: 'Mass = (concentration) &times; (volume) &times; (molar mass) = 0.5 mol/L &times; 1 L &times; 40 g/mol = <strong>20 g</strong>. Always check the units cancel cleanly: mol/L &times; L &times; g/mol = g.'
+    },
+    {
+      id: 43, section: 'Chemistry',
+      question: 'The pH of the intracellular fluid is 7.0, which means that the concentrations of hydroxonium and hydroxide ions in the cytosol of cells are the following:',
+      options: {
+        A: 'hydroxonium: 0 mol/L, hydroxide: 0 mol/L',
+        B: 'hydroxonium: 7 mol/L, hydroxide: 14 mol/L',
+        C: 'hydroxonium: 10<sup>&minus;7</sup> mol/L, hydroxide: 10<sup>&minus;7</sup> mol/L',
+        D: 'hydroxonium: 10<sup>&minus;7</sup> mol/L, hydroxide: 0 mol/L'
+      },
+      correct: 'C',
+      explanation: 'pH = &minus;log[H<sub>3</sub>O<sup>+</sup>], so pH 7.0 corresponds to [H<sub>3</sub>O<sup>+</sup>] = 10<sup>&minus;7</sup> M. The water ionization product K<sub>w</sub> = [H<sub>3</sub>O<sup>+</sup>][OH<sup>&minus;</sup>] = 10<sup>&minus;14</sup> at 25 &deg;C, so [OH<sup>&minus;</sup>] is also 10<sup>&minus;7</sup> M. pH 7 is the neutral point where the two are equal. Options A and D wrongly imply zero concentration; B is dimensionally and physically impossible.'
+    },
+    {
+      id: 44, section: 'Chemistry',
+      question: '100 mL of a solution contains 2 g of sodium hydroxide. What is the molar concentration of sodium ions in the solution? Relative atomic masses: A<sub>r</sub>(Na) = 23, A<sub>r</sub>(O) = 16, A<sub>r</sub>(H) = 1.',
+      options: {
+        A: '0.5 mol/L',
+        B: '0.23 mol/L',
+        C: '0.16 mol/L',
+        D: '0.05 mol/L'
+      },
+      correct: 'A',
+      explanation: 'Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol. Moles of NaOH = 2 g &divide; 40 g/mol = 0.05 mol. Concentration = 0.05 mol &divide; 0.100 L = <strong>0.5 mol/L</strong>. NaOH dissociates fully into Na<sup>+</sup> and OH<sup>&minus;</sup> in a 1:1 ratio, so [Na<sup>+</sup>] = 0.5 mol/L. Option D (0.05) is the moles, not the molar concentration.'
+    },
+    {
+      id: 45, section: 'Chemistry',
+      question: 'The concentration of uric acid in a patient&prime;s blood sample is 430 micromoles in one liter. This value is the same as:',
+      options: {
+        A: '43.0 mmol/L',
+        B: '0.430 nmol/L',
+        C: '0.430 mmol/L',
+        D: '43.0 nmol/L'
+      },
+      correct: 'C',
+      explanation: 'Unit prefixes: 1 mmol = 10<sup>&minus;3</sup> mol = 1000 &micro;mol. Therefore 430 &micro;mol/L = 430 &divide; 1000 = <strong>0.430 mmol/L</strong>. Option A is off by a factor of 100; nmol options (B, D) are off by a factor of 1000 in the wrong direction (1 &micro;mol = 1000 nmol, not 0.001 nmol).'
+    },
+    {
+      id: 46, section: 'Chemistry',
+      question: 'Esterification is a reaction between:',
+      options: {
+        A: 'alcohol and acid',
+        B: 'alcohol and base',
+        C: 'acid and base',
+        D: 'alcohol and aldehyde'
+      },
+      correct: 'A',
+      explanation: 'Fischer esterification couples a carboxylic acid (R&ndash;COOH) with an alcohol (R&prime;&ndash;OH) to form an ester (R&ndash;COOR&prime;) plus water, typically catalyzed by a strong acid such as H<sub>2</sub>SO<sub>4</sub>. Alcohol + base (B) gives an alkoxide; acid + base (C) gives a salt; alcohol + aldehyde (D) gives a hemiacetal or acetal.'
+    },
+    {
+      id: 47, section: 'Chemistry',
+      question: 'Which of the following bonds is the most polar?',
+      options: {
+        A: 'C&minus;H',
+        B: 'O&minus;H',
+        C: 'N&minus;H',
+        D: 'C&minus;C'
+      },
+      correct: 'B',
+      explanation: 'Bond polarity scales with the difference in electronegativity (Pauling scale): O = 3.44, N = 3.04, C = 2.55, H = 2.20. Differences: O&ndash;H &Delta; = 1.24; N&ndash;H &Delta; = 0.84; C&ndash;H &Delta; = 0.35; C&ndash;C &Delta; = 0. The O&ndash;H bond is the most polar of these four, which is also why water has its high boiling point and excellent hydrogen-bonding capacity.'
+    },
+    {
+      id: 48, section: 'Chemistry',
+      question: 'Which of the following molecules can form cis-trans isomers?',
+      options: {
+        A: 'propene',
+        B: 'butenedioic acid',
+        C: '2-methylpropane',
+        D: 'benzene'
+      },
+      correct: 'B',
+      explanation: 'Cis-trans isomerism requires a double bond (or a ring) where each of the two doubly bonded carbons carries two different substituents. Butenedioic acid (HOOC&ndash;CH&equals;CH&ndash;COOH) satisfies this: cis is maleic acid, trans is fumaric acid. Propene (CH<sub>3</sub>&ndash;CH&equals;CH<sub>2</sub>) has two H atoms on the terminal carbon, so cis/trans cannot be defined. 2-methylpropane has no double bond. Benzene&prime;s aromatic ring is planar with no inequivalent substituents to set cis/trans.'
+    },
+    {
+      id: 49, section: 'Chemistry',
+      question: 'Which of the following statements is correct in the context of organic chemistry?',
+      options: {
+        A: 'the most oxidized form of a carbon chain is the one that contains only single C&minus;C bonds',
+        B: 'a carbon chain is more oxidized if it contains fewer hydrogen atoms',
+        C: 'hydrocarbons are in a higher oxidation state than hydrocarbon derivatives such as alcohols',
+        D: 'alkenes are more oxidized than alkynes of the same chain length'
+      },
+      correct: 'B',
+      explanation: 'For organic carbon, oxidation state increases as bonds to H decrease and bonds to more electronegative atoms (O, N, halogens) or additional &pi; bonds increase. So the carbon chain with fewer H atoms (more C&equals;C, C&equals;O, or C&minus;O bonds) is more oxidized. Single-bonded saturated hydrocarbons (option A) are the <em>most reduced</em>, not the most oxidized. Hydrocarbons (C) are less oxidized than alcohols, not more. Alkynes (with a triple bond) are more oxidized than alkenes of equal chain length, so option D is the wrong direction.'
+    },
+    {
+      id: 50, section: 'Chemistry',
+      question: 'Which of the following molecules is the least water soluble?',
+      options: {
+        A: 'hexanedioic acid',
+        B: 'hexanoic acid',
+        C: 'hexyl alcohol',
+        D: 'cyclohexadiene'
+      },
+      correct: 'D',
+      explanation: 'Water solubility scales with the number and strength of hydrogen-bonding groups. Hexanedioic acid (adipic acid) has two &ndash;COOH groups; hexanoic acid has one &ndash;COOH; hexyl alcohol has one &ndash;OH. All three can hydrogen-bond with water. Cyclohexadiene is a pure hydrocarbon with no polar functional group; it can only interact with water by weak London dispersion forces and is therefore the least water soluble.'
+    },
+    {
+      id: 51, section: 'Chemistry',
+      question: 'Choose the pair of molecules in which <strong>both</strong> are classified as &ldquo;secondary&rdquo; (one secondary amine and one secondary alcohol):',
+      options: {
+        A: 'CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;N(CH<sub>3</sub>)<sub>2</sub> and CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;OH',
+        B: 'CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;NH&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH(OH)&minus;CH<sub>3</sub>',
+        C: 'CH<sub>3</sub>&minus;NH&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;OH',
+        D: 'CH<sub>3</sub>&minus;CH(NH<sub>2</sub>)&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH(OH)&minus;CH<sub>3</sub>'
+      },
+      correct: 'B',
+      explanation: 'Amines are classified by how many alkyl groups are bonded to nitrogen: 1 = primary (R&ndash;NH<sub>2</sub>), 2 = secondary (R<sub>2</sub>NH), 3 = tertiary (R<sub>3</sub>N). Alcohols are classified by how many alkyl groups are bonded to the carbon bearing the &ndash;OH. In option B, ethyl methyl amine has two alkyl groups on N (secondary amine), and propan-2-ol (isopropanol) has two alkyl groups on the &ndash;OH-bearing carbon (secondary alcohol). Option A has a tertiary amine and a primary alcohol; option C has a secondary amine but a primary alcohol; option D has a primary amine and a secondary alcohol.'
+    },
+    {
+      id: 52, section: 'Chemistry',
+      question: 'Which of the following molecules can form a disulfide bond if oxidized?',
+      options: {
+        A: 'HOOC&minus;CH(NH<sub>2</sub>)&minus;CH<sub>2</sub>&minus;SH',
+        B: 'H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;SO<sub>3</sub>H',
+        C: 'CH<sub>3</sub>&minus;S&minus;CH<sub>2</sub>&minus;CH<sub>3</sub>',
+        D: 'HOOC&minus;CH(NH<sub>2</sub>)&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;S&minus;CH<sub>3</sub>'
+      },
+      correct: 'A',
+      explanation: 'A disulfide bond (R&ndash;S&ndash;S&ndash;R&prime;) forms by oxidation of two free thiol groups (&ndash;SH). Only option A, which is the amino acid <strong>cysteine</strong>, carries a free thiol. Option B is the sulfonic acid taurine (already fully oxidized at sulfur). Options C and D are thioethers (sulfide linkages); they have no S&ndash;H bond and cannot form a disulfide. Disulfide bridges between cysteine residues stabilize tertiary and quaternary protein structure (e.g., insulin, antibodies).'
+    },
+    {
+      id: 53, section: 'Chemistry',
+      question: 'Choose the molecule with the lowest molar mass:',
+      options: {
+        A: 'propanol',
+        B: 'propanone',
+        C: 'ethyl methyl ether',
+        D: 'propanoic acid'
+      },
+      correct: 'B',
+      explanation: 'Compute molar masses (g/mol) using A<sub>r</sub>: C = 12, H = 1, O = 16. Propanol C<sub>3</sub>H<sub>8</sub>O = 36 + 8 + 16 = 60. Propanone (acetone) C<sub>3</sub>H<sub>6</sub>O = 36 + 6 + 16 = 58. Ethyl methyl ether C<sub>3</sub>H<sub>8</sub>O = 60 (constitutional isomer of propanol). Propanoic acid C<sub>3</sub>H<sub>6</sub>O<sub>2</sub> = 36 + 6 + 32 = 74. Propanone has the lowest mass at 58 g/mol because the C&equals;O bond replaces two C&ndash;H bonds present in propanol/ether.'
+    },
+    {
+      id: 54, section: 'Chemistry',
+      question: 'Which of the following statements is <strong>not</strong> true about hydrocarbons called arenes? Arenes:',
+      options: {
+        A: 'contain one or more planar ring',
+        B: 'have delocalized pi-electrons',
+        C: 'differ in chemical reactivity from alkenes',
+        D: 'have either chair or boat conformation'
+      },
+      correct: 'D',
+      explanation: 'Chair and boat conformations describe non-planar saturated rings such as <em>cyclohexane</em>, not arenes. Arenes (e.g., benzene) are aromatic: they contain one or more planar rings (A) of sp<sup>2</sup> carbons with a continuous, fully conjugated cycle of p-orbitals holding (4n+2) delocalized &pi;-electrons (B). Aromatic stabilization makes their reactivity sharply different from that of alkenes: arenes prefer electrophilic aromatic substitution over addition (C). Option D is therefore the false statement.'
+    },
+    {
+      id: 55, section: 'Chemistry',
+      question: 'Choose the correct pair of a molecule and its name:',
+      options: {
+        A: 'methanal is CH<sub>3</sub>CHO',
+        B: 'hexadecanoic acid is CH<sub>3</sub>&minus;(CH<sub>2</sub>)<sub>14</sub>&minus;COOH',
+        C: 'ethyl propyl ether is CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;C(O)&minus;CH<sub>2</sub>&minus;CH<sub>3</sub>',
+        D: 'butane-1,4-diamine is H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;NH&minus;CH<sub>3</sub>'
+      },
+      correct: 'B',
+      explanation: 'Hexadecanoic acid (palmitic acid) has a 16-carbon chain: 1 carboxyl carbon + 15 chain carbons = CH<sub>3</sub>&ndash;(CH<sub>2</sub>)<sub>14</sub>&ndash;COOH. Option A is wrong: methanal is HCHO (formaldehyde); CH<sub>3</sub>CHO is ethanal (acetaldehyde). Option C describes pentan-3-one (a ketone), not an ether: ethyl propyl ether is CH<sub>3</sub>CH<sub>2</sub>&ndash;O&ndash;CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>. Option D shows a chain of 4 carbons with an N-methylated amine on one end, not a 1,4-diamine; correct butane-1,4-diamine (putrescine) is H<sub>2</sub>N&ndash;(CH<sub>2</sub>)<sub>4</sub>&ndash;NH<sub>2</sub>.'
+    },
+    {
+      id: 56, section: 'Chemistry',
+      question: 'A molecule with a limited water solubility might require a protein carrier in the blood. Which of the following is most likely to be such a molecule?',
+      options: {
+        A: 'pyruvic acid',
+        B: 'glucose',
+        C: 'cholesterol',
+        D: 'acetone'
+      },
+      correct: 'C',
+      explanation: 'Cholesterol is a hydrophobic steroid (one polar &ndash;OH group on a large, mostly nonpolar four-ring skeleton) and is essentially insoluble in plasma. It is transported in lipoprotein particles (LDL, HDL, VLDL) whose protein and phospholipid shells solubilize the lipid core. Pyruvic acid (a small carboxylic acid), glucose (highly hydroxylated), and acetone (a small polar ketone) are all freely water-soluble and dissolve in plasma without a carrier.'
+    },
+    {
+      id: 57, section: 'Chemistry',
+      question: 'Which type of chemical bond is broken during the hydrolysis of ATP to ADP and phosphate?',
+      options: {
+        A: 'ether bond',
+        B: 'ester bond',
+        C: 'glycosidic bond',
+        D: 'anhydride bond'
+      },
+      correct: 'D',
+      explanation: 'ATP contains three phosphate groups linked by two phosphoanhydride bonds (between &alpha;-&beta; and &beta;-&gamma; phosphates). Hydrolysis of the terminal phosphoanhydride bond yields ADP + P<sub>i</sub> and releases ~30.5 kJ/mol under standard biological conditions, the energy currency of the cell. The bond between the &alpha;-phosphate and the ribose 5&prime;-OH is a phosphoester bond and is <em>not</em> the bond cleaved in routine ATP hydrolysis to ADP. Glycosidic and ether bonds are not present in this region of ATP.'
+    },
+    {
+      id: 58, section: 'Chemistry',
+      question: 'Which of the following molecules contains the highest number of oxygen atoms?',
+      options: {
+        A: 'sucrose',
+        B: 'fructose',
+        C: 'glucose',
+        D: 'ribose'
+      },
+      correct: 'A',
+      explanation: 'Counting oxygens: ribose C<sub>5</sub>H<sub>10</sub>O<sub>5</sub> has 5; glucose and fructose, both C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, have 6 each; sucrose (a disaccharide of glucose + fructose joined with loss of one water) is C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, with <strong>11 oxygens</strong>. The disaccharide therefore has the most oxygen atoms.'
+    },
+    {
+      id: 59, section: 'Chemistry',
+      question: 'Which of the following molecules contains a chiral carbon and only two functional groups?',
+      options: {
+        A: 'glycine',
+        B: 'serine',
+        C: 'lysine',
+        D: 'alanine'
+      },
+      correct: 'D',
+      explanation: 'A chiral carbon has four <em>different</em> substituents. Glycine (H<sub>2</sub>N&ndash;CH<sub>2</sub>&ndash;COOH) has two H atoms on the &alpha;-carbon, so it is achiral (option A wrong). Serine has a chiral &alpha;-carbon but carries three functional groups (&ndash;NH<sub>2</sub>, &ndash;COOH, and &ndash;OH on the side chain). Lysine has a chiral &alpha;-carbon but two amino groups plus a carboxyl (three functional groups). Alanine (CH<sub>3</sub>&ndash;CH(NH<sub>2</sub>)&ndash;COOH) has a chiral &alpha;-carbon (four different substituents: &ndash;CH<sub>3</sub>, &ndash;NH<sub>2</sub>, &ndash;COOH, &ndash;H) and exactly two functional groups (&ndash;NH<sub>2</sub>, &ndash;COOH).'
+    },
+    {
+      id: 60, section: 'Chemistry',
+      question: 'The arrangement of heteroatoms &minus;CO&minus;NH&minus; (i.e. an amide / peptide-type linkage) occurs in all of the following molecules <strong>except</strong>:',
+      options: {
+        A: 'lactose',
+        B: 'uracil',
+        C: 'albumin',
+        D: 'insulin'
+      },
+      correct: 'A',
+      explanation: 'The &ndash;CO&ndash;NH&ndash; arrangement is an amide (also called a peptide bond when joining amino acids). Uracil contains two cyclic amide groups (&ndash;CO&ndash;NH&ndash;) within its pyrimidine ring. Albumin and insulin are proteins built from amino acids joined by peptide (&ndash;CO&ndash;NH&ndash;) bonds. Lactose, however, is the disaccharide galactose-(&beta;1&rarr;4)-glucose: its monosaccharides are linked by a <strong>glycosidic</strong> (C&ndash;O&ndash;C) bond, not an amide, so it lacks the &ndash;CO&ndash;NH&ndash; linkage.'
+    }
+  ];
+
+  /* =======================================================================
+   *  STATE
+   * ======================================================================= */
+
+  const STORAGE_KEY = 'shos-mock-exam-state-v1';
+  const EXAM_DURATION_SEC = 2 * 60 * 60; // 7200 seconds
+
+  let state = {
+    started: false,
+    finished: false,
+    answers: {},
+    currentIndex: 0,
+    startedAt: null
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) state = Object.assign(state, JSON.parse(raw));
+    } catch (e) { /* corrupt state -- ignore */ }
+  }
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function clearState() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    state = { started: false, finished: false, answers: {}, currentIndex: 0, startedAt: null };
+  }
+
+  function elapsedSec() {
+    if (!state.startedAt) return 0;
+    return Math.floor((Date.now() - state.startedAt) / 1000);
+  }
+  function remainingSec() {
+    return Math.max(0, EXAM_DURATION_SEC - elapsedSec());
+  }
+
+  /* =======================================================================
+   *  DOM HELPERS
+   * ======================================================================= */
+
+  const $ = (id) => document.getElementById(id);
+  const startView = () => $('examStartView');
+  const examView = () => $('examMainView');
+  const resultsView = () => $('examResultsView');
+
+  function showView(name) {
+    startView().style.display = name === 'start' ? '' : 'none';
+    examView().style.display = name === 'exam' ? '' : 'none';
+    resultsView().style.display = name === 'results' ? '' : 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* =======================================================================
+   *  TIMER
+   * ======================================================================= */
+
+  let timerInterval = null;
+
+  function fmtTime(sec) {
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+    return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  }
+  function updateTimer() {
+    const r = remainingSec();
+    const el = $('examTimer');
+    if (!el) return;
+    el.textContent = fmtTime(r);
+    el.classList.toggle('warn', r > 60 && r <= 600);
+    el.classList.toggle('danger', r > 0 && r <= 60);
+    if (r === 0 && !state.finished) {
+      finishExam(true);
+    }
+  }
+  function startTimer() {
+    updateTimer();
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+  function stopTimer() {
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  }
+
+  /* =======================================================================
+   *  RENDER
+   * ======================================================================= */
+
+  function renderQuestion() {
+    const q = examQuestions[state.currentIndex];
+    if (!q) return;
+
+    $('qNum').textContent = state.currentIndex + 1;
+    $('qSectionLabel').textContent = q.section;
+    $('examSectionTag').textContent = q.section;
+    $('qText').innerHTML = q.question;
+
+    const list = $('qOptionsList');
+    list.innerHTML = '';
+    ['A', 'B', 'C', 'D'].forEach(letter => {
+      const li = document.createElement('li');
+      const isSelected = state.answers[q.id] === letter;
+      li.className = 'q-option' + (isSelected ? ' selected' : '');
+      li.innerHTML =
+        '<input type="radio" name="q-' + q.id + '" value="' + letter + '" id="opt-' + q.id + '-' + letter + '"' + (isSelected ? ' checked' : '') + '>' +
+        '<label for="opt-' + q.id + '-' + letter + '">' +
+          '<span class="q-option-letter">' + letter + ')</span> ' + q.options[letter] +
+        '</label>';
+      li.addEventListener('click', () => {
+        state.answers[q.id] = letter;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      });
+      list.appendChild(li);
+    });
+
+    $('prevQBtn').disabled = state.currentIndex === 0;
+    $('nextQBtn').disabled = state.currentIndex === examQuestions.length - 1;
+  }
+
+  function renderNavGrid() {
+    const grid = $('examNavTiles');
+    if (!grid) return;
+    grid.innerHTML = '';
+    examQuestions.forEach((q, i) => {
+      const tile = document.createElement('button');
+      tile.type = 'button';
+      tile.className = 'exam-nav-tile';
+      if (state.answers[q.id]) tile.classList.add('answered');
+      if (i === state.currentIndex) tile.classList.add('current');
+      tile.textContent = String(i + 1);
+      tile.setAttribute('aria-label', 'Go to question ' + (i + 1));
+      tile.addEventListener('click', () => {
+        state.currentIndex = i;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      });
+      grid.appendChild(tile);
+    });
+  }
+
+  /* =======================================================================
+   *  START / FINISH
+   * ======================================================================= */
+
+  function startExam() {
+    state.started = true;
+    state.finished = false;
+    state.startedAt = Date.now();
+    state.currentIndex = 0;
+    state.answers = {};
+    saveState();
+    showView('exam');
+    renderQuestion();
+    renderNavGrid();
+    startTimer();
+  }
+
+  function tryFinish() {
+    const unanswered = examQuestions.filter(q => !state.answers[q.id]).length;
+    const titleEl = $('submitModalTitle');
+    const bodyEl = $('submitModalBody');
+    if (unanswered > 0) {
+      titleEl.textContent = 'Finish exam early?';
+      bodyEl.innerHTML = 'You have <strong>' + unanswered + '</strong> unanswered question' + (unanswered === 1 ? '' : 's') + '. Submitting locks your answers and shows your results with explanations.';
+    } else {
+      titleEl.textContent = 'Submit your exam?';
+      bodyEl.innerHTML = 'All <strong>60 questions</strong> answered. Submitting locks your answers and shows your results with explanations.';
+    }
+    $('submitModal').classList.add('open');
+  }
+
+  function finishExam(timeUp) {
+    state.finished = true;
+    saveState();
+    stopTimer();
+    $('submitModal').classList.remove('open');
+    renderResults(!!timeUp);
+    showView('results');
+  }
+
+  function restartExam() {
+    if (!confirm('Start a new exam? This will clear your current answers and timer.')) return;
+    clearState();
+    showView('start');
+  }
+
+  /* =======================================================================
+   *  RESULTS
+   * ======================================================================= */
+
+  function renderResults(timeUp) {
+    let total = 0, bioTotal = 0, chemTotal = 0;
+    let totalCorrect = 0, bioCorrect = 0, chemCorrect = 0;
+
+    examQuestions.forEach(q => {
+      total++;
+      if (q.section === 'Biology') bioTotal++; else chemTotal++;
+      if (state.answers[q.id] === q.correct) {
+        totalCorrect++;
+        if (q.section === 'Biology') bioCorrect++; else chemCorrect++;
+      }
+    });
+
+    $('scoreBig').textContent = totalCorrect + ' / ' + total;
+    $('scoreLabel').innerHTML = timeUp
+      ? '<span style="color:#CF5B2E; font-weight:600;">Time expired.</span> Total score (' + Math.round(100 * totalCorrect / total) + '%)'
+      : 'Total score (' + Math.round(100 * totalCorrect / total) + '%)';
+    $('scoreBreakdown').innerHTML =
+      '<div class="score-bd-item">Biology<strong>' + bioCorrect + ' / ' + bioTotal + '</strong></div>' +
+      '<div class="score-bd-item">Chemistry<strong>' + chemCorrect + ' / ' + chemTotal + '</strong></div>';
+
+    const reviewList = $('reviewList');
+    reviewList.innerHTML = '';
+
+    examQuestions.forEach((q, idx) => {
+      const userAns = state.answers[q.id] || null;
+
+      const optsHtml = ['A', 'B', 'C', 'D'].map(letter => {
+        const isUserAns = userAns === letter;
+        const isRightAns = q.correct === letter;
+        let cls = '';
+        if (isRightAns) cls = ' correct';
+        else if (isUserAns && !isRightAns) cls = ' wrong';
+
+        let badge = '';
+        if (isRightAns && isUserAns) {
+          badge = '<span class="review-badge correct">Your correct answer</span>';
+        } else if (isRightAns) {
+          badge = '<span class="review-badge correct">Correct answer</span>';
+        } else if (isUserAns) {
+          badge = '<span class="review-badge wrong">Your answer</span>';
+        }
+
+        return '<li class="review-option' + cls + '">' +
+                 '<span class="opt-content"><span class="q-option-letter">' + letter + ')</span> ' + q.options[letter] + '</span>' +
+                 badge +
+               '</li>';
+      }).join('');
+
+      const noAns = !userAns
+        ? '<div class="no-answer-tag">You did not answer this question.</div>'
+        : '';
+
+      const block = document.createElement('div');
+      block.className = 'review-question';
+      block.innerHTML =
+        '<span class="q-section-tag">Q' + (idx + 1) + ' &middot; ' + q.section + '</span>' +
+        '<div class="q-text-rev">' + q.question + '</div>' +
+        noAns +
+        '<ul class="review-options">' + optsHtml + '</ul>' +
+        '<div class="review-explanation"><strong>Explanation:</strong> ' + q.explanation + '</div>';
+
+      reviewList.appendChild(block);
+    });
+  }
+
+  /* =======================================================================
+   *  INIT
+   * ======================================================================= */
+
+  function bindAllListeners() {
+    const startBtn = $('startExamBtn');
+    if (startBtn) startBtn.addEventListener('click', startExam);
+
+    const prev = $('prevQBtn');
+    if (prev) prev.addEventListener('click', () => {
+      if (state.currentIndex > 0) {
+        state.currentIndex--;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      }
+    });
+
+    const next = $('nextQBtn');
+    if (next) next.addEventListener('click', () => {
+      if (state.currentIndex < examQuestions.length - 1) {
+        state.currentIndex++;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      }
+    });
+
+    const finish = $('finishEarlyBtn');
+    if (finish) finish.addEventListener('click', tryFinish);
+
+    const cancel = $('modalCancelBtn');
+    if (cancel) cancel.addEventListener('click', () => $('submitModal').classList.remove('open'));
+
+    const confirm = $('modalConfirmBtn');
+    if (confirm) confirm.addEventListener('click', () => finishExam(false));
+
+    const restart = $('restartExamBtn');
+    if (restart) restart.addEventListener('click', restartExam);
+
+    // keyboard shortcuts during exam: ArrowLeft/Right for navigation
+    document.addEventListener('keydown', (e) => {
+      if (examView().style.display === 'none') return;
+      // skip if focus is in an input/textarea (none here, but safe)
+      const tag = (e.target && e.target.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight' && state.currentIndex < examQuestions.length - 1) {
+        state.currentIndex++;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      } else if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
+        state.currentIndex--;
+        saveState();
+        renderQuestion();
+        renderNavGrid();
+      }
+    });
+  }
+
+  function init() {
+    loadState();
+    bindAllListeners();
+
+    // already finished -> show results from saved state
+    if (state.finished && state.startedAt) {
+      renderResults(remainingSec() === 0);
+      showView('results');
+      return;
+    }
+
+    // started but not finished -> resume mid-exam
+    if (state.started && state.startedAt) {
+      if (remainingSec() === 0) {
+        finishExam(true);
+        return;
+      }
+      showView('exam');
+      renderQuestion();
+      renderNavGrid();
+      startTimer();
+      return;
+    }
+
+    // fresh visit
+    showView('start');
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
