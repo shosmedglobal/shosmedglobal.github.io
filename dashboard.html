@@ -386,12 +386,10 @@
               <!-- Populated by JS -->
             </div>
 
-            <!-- Practice Exam -->
-            <div class="dash-card sp-practice-exam" style="margin-top:24px; text-align:center; padding:32px 24px;">
-              <h3 style="margin-bottom:8px; color:var(--navy);">Practice Exam</h3>
-              <p style="color:var(--gray-500); font-size:0.9rem; margin-bottom:16px;">30 Biology + 30 Chemistry questions, 2 hours. Simulates the real LF3 entrance exam.</p>
-              <a class="btn btn-primary sp-practice-btn" id="spPracticeExamBtn" href="practice-exam.html">Start Practice Exam</a>
-            </div>
+            <!-- Practice Exam: relocated to the Question Bank tab header next to "Start Practice".
+                 The .sp-practice-exam container is preserved (empty, hidden) so the existing
+                 spInit() lookup in dashboard JS does not break. -->
+            <div class="sp-practice-exam" style="display:none;" aria-hidden="true"></div>
           </div>
 
           <!-- Full-page Study Reader (hidden by default) -->
@@ -456,7 +454,10 @@
               <h1>Question Bank</h1>
               <p class="dashboard-sub" id="qbankAccessDesc">Practice for the Charles University entrance exam.</p>
             </div>
-            <a href="qbank.html?v=20260423a" class="btn btn-primary" id="startPracticeBtn" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Start Practice</a>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="qbank.html?v=20260423a" class="btn btn-primary" id="startPracticeBtn" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Start Practice</a>
+              <a href="practice-exam.html" class="btn btn-secondary" id="dashMockExamBtn" title="Full-length 60-question, 2-hour timed simulation">Take Mock Exam</a>
+            </div>
           </div>
 
           <!-- QBank upgrade prompt removed - full access for all registered users -->
@@ -5019,6 +5020,27 @@
 
       // Store examBankPaid globally so QBank and reader can check it
       window._examBankPaid = isPaid || false;
+
+      // Gate the QBank-tab "Take Mock Exam" button by paid status.
+      // Free users see a disabled-looking pill with an upgrade hint; paid users get the live link.
+      const mockBtn = document.getElementById('dashMockExamBtn');
+      if (mockBtn) {
+        if (isPaid) {
+          mockBtn.removeAttribute('disabled');
+          mockBtn.style.opacity = '';
+          mockBtn.style.pointerEvents = '';
+          mockBtn.style.cursor = '';
+          mockBtn.textContent = 'Take Mock Exam';
+          mockBtn.setAttribute('href', 'practice-exam.html');
+          mockBtn.title = 'Full-length 60-question, 2-hour timed simulation';
+        } else {
+          mockBtn.setAttribute('href', 'applicants.html#pricing');
+          mockBtn.style.opacity = '0.55';
+          mockBtn.style.cursor = 'not-allowed';
+          mockBtn.textContent = 'Mock Exam (Full Access)';
+          mockBtn.title = 'Mock entrance exam is included with QBank Full Access ($99). Click to upgrade.';
+        }
+      }
 
       // Update study plan description based on path
       const spDesc = document.querySelector('#studyPlanContent .dashboard-sub');

@@ -583,8 +583,42 @@
 
   <main class="exam-app">
 
+    <!-- ============ AUTH / PAYWALL VIEW ============ -->
+    <div id="examAuthView" style="display:none;">
+      <div class="exam-start">
+        <h1>Mock Entrance Exam</h1>
+        <p class="lead" id="authMessage">Please sign in to access the mock exam.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:24px;">
+          <a href="login.html" class="btn btn-primary" id="authSignInBtn" style="padding:14px 28px;">Sign In</a>
+          <a href="signup.html" class="btn btn-secondary" id="authSignUpBtn" style="padding:14px 28px;">Create an Account</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PAYWALL VIEW ============ -->
+    <div id="examPaywallView" style="display:none;">
+      <div class="exam-start">
+        <h1>Mock Exam &middot; Full Access required</h1>
+        <p class="lead">The Mock Entrance Exam is part of <strong>QBank Full Access ($99)</strong>. Unlock all 1,000+ practice questions, the 73-chapter Exam Review Guide, the full mock exam, and 6 months of access.</p>
+        <div class="exam-rules">
+          <h3>What you get with Full Access</h3>
+          <ul>
+            <li>1,000+ practice questions across Biology and Chemistry</li>
+            <li>73-chapter Exam Review Guide</li>
+            <li><strong>Mock entrance exam:</strong> 60 questions, 2 hours, with detailed explanations</li>
+            <li>Progress tracking and timed exam simulation</li>
+            <li>6 months of unlimited access</li>
+          </ul>
+        </div>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px;">
+          <a href="applicants.html#pricing" class="btn btn-primary" style="padding:14px 28px;">Upgrade to Full Access</a>
+          <a href="dashboard.html" class="btn btn-secondary" style="padding:14px 28px;">Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+
     <!-- ============ START VIEW ============ -->
-    <div id="examStartView">
+    <div id="examStartView" style="display:none;">
       <div class="exam-start">
         <h1>Mock Entrance Exam</h1>
         <p class="lead">A full-length practice run of the LF3 entrance exam: 30 Biology and 30 Chemistry multiple-choice questions, completed in 2 hours.</p>
@@ -656,6 +690,27 @@
     </div>
 
   </main>
+
+  <!-- One-time warning modal (shown before exam actually starts) -->
+  <div class="exam-modal-backdrop" id="startWarnModal">
+    <div class="exam-modal" role="dialog" aria-labelledby="startWarnTitle" aria-modal="true">
+      <h3 id="startWarnTitle" style="display:flex; align-items:center; gap:10px;">
+        <span aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#FEF3C7; color:#92400E; font-weight:700;">!</span>
+        Before you start
+      </h3>
+      <p>This is a <strong>one-time mock exam simulation</strong>. Once you click Start:</p>
+      <ul style="color:#475569; line-height:1.6; margin:0 0 18px 20px; padding:0; font-size:0.92rem;">
+        <li>The 2-hour timer begins immediately and runs in real time.</li>
+        <li>Closing the tab will not pause the clock.</li>
+        <li>For an accurate read on your level, treat this as your one real attempt and take it under exam-like conditions: quiet room, no notes, no breaks.</li>
+      </ul>
+      <p style="font-size:0.92rem; color:#475569;">Ready to begin?</p>
+      <div class="exam-modal-buttons">
+        <button id="startWarnCancelBtn" class="modal-cancel">Not yet</button>
+        <button id="startWarnConfirmBtn" class="modal-confirm">Start the exam</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Submit confirmation modal -->
   <div class="exam-modal-backdrop" id="submitModal">
@@ -1450,6 +1505,10 @@
   const resultsView = () => $('examResultsView');
 
   function showView(name) {
+    const auth = document.getElementById('examAuthView');
+    const paywall = document.getElementById('examPaywallView');
+    if (auth) auth.style.display = name === 'auth' ? '' : 'none';
+    if (paywall) paywall.style.display = name === 'paywall' ? '' : 'none';
     startView().style.display = name === 'start' ? '' : 'none';
     examView().style.display = name === 'exam' ? '' : 'none';
     resultsView().style.display = name === 'results' ? '' : 'none';
@@ -1669,7 +1728,24 @@
 
   function bindAllListeners() {
     const startBtn = $('startExamBtn');
-    if (startBtn) startBtn.addEventListener('click', startExam);
+    // Start button now opens the one-time warning modal first.
+    if (startBtn) startBtn.addEventListener('click', () => {
+      const warn = document.getElementById('startWarnModal');
+      if (warn) warn.classList.add('open');
+    });
+
+    const warnCancel = document.getElementById('startWarnCancelBtn');
+    if (warnCancel) warnCancel.addEventListener('click', () => {
+      const warn = document.getElementById('startWarnModal');
+      if (warn) warn.classList.remove('open');
+    });
+
+    const warnConfirm = document.getElementById('startWarnConfirmBtn');
+    if (warnConfirm) warnConfirm.addEventListener('click', () => {
+      const warn = document.getElementById('startWarnModal');
+      if (warn) warn.classList.remove('open');
+      startExam();
+    });
 
     const prev = $('prevQBtn');
     if (prev) prev.addEventListener('click', () => {
@@ -1723,18 +1799,24 @@
     });
   }
 
-  function init() {
-    loadState();
-    bindAllListeners();
+  /* =======================================================================
+   *  ACCESS CONTROL
+   *
+   *  The mock exam is a paid feature (bundled with QBank Full Access $99).
+   *  We gate access via Firebase auth + Firestore profile lookup, mirroring
+   *  the same "exam-bank" payment field the rest of the dashboard uses.
+   *  Admin emails bypass the paywall.
+   * ======================================================================= */
 
-    // already finished -> show results from saved state
+  const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
+
+  function showStartFlow() {
+    // Decide which view to show based on saved exam state.
     if (state.finished && state.startedAt) {
       renderResults(remainingSec() === 0);
       showView('results');
       return;
     }
-
-    // started but not finished -> resume mid-exam
     if (state.started && state.startedAt) {
       if (remainingSec() === 0) {
         finishExam(true);
@@ -1746,12 +1828,60 @@
       startTimer();
       return;
     }
-
-    // fresh visit
     showView('start');
+  }
+
+  function checkAccessThenStart() {
+    // Wait for Firebase to load (auth.js loads firebase-app-compat first).
+    if (typeof firebase === 'undefined' || !firebase.auth) {
+      // Firebase failed to load (offline / blocked). Fall back to start screen
+      // since the dashboard already gated entry, but log for visibility.
+      console.warn('[practice-exam] Firebase not available; skipping paywall check.');
+      showStartFlow();
+      return;
+    }
+
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) {
+        showView('auth');
+        return;
+      }
+      try {
+        const isAdmin = ADMIN_EMAILS.includes((user.email || '').toLowerCase());
+        if (isAdmin) {
+          showStartFlow();
+          return;
+        }
+        const snap = await firebase.firestore().collection('users').doc(user.uid).get();
+        const profile = snap.exists ? snap.data() : null;
+        const isPaid = profile && profile.payments && profile.payments['exam-bank'] === 'paid';
+        if (isPaid) {
+          showStartFlow();
+        } else {
+          showView('paywall');
+        }
+      } catch (err) {
+        console.error('[practice-exam] Access check failed:', err);
+        showView('paywall');
+      }
+    });
+  }
+
+  function init() {
+    loadState();
+    bindAllListeners();
+    checkAccessThenStart();
   }
 
   document.addEventListener('DOMContentLoaded', init);
   </script>
+
+  <!-- Firebase SDKs + auth.js (initializes firebase + exposes auth/db globals).
+       Loaded after the exam app script so DOMContentLoaded init() runs first
+       and binds listeners; Firebase access check is invoked from init(). -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js?v=20260422g"></script>
 </body>
 </html>
