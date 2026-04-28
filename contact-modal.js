@@ -35,9 +35,6 @@
     'mentorship-mock-interview': { subject: 'Match Mentorship: Mock Interview Session',    category: 'booking' },
     'mentorship-eras':           { subject: 'Match Mentorship: ERAS Application Strategy', category: 'booking' },
     'applicant-mentor':          { subject: 'Applicant 1-on-1 Mentor Session',              category: 'booking' },
-    'exam-logistics':            { subject: 'Entrance Exam Logistics',                      category: 'booking' },
-    'mock-exam':                 { subject: 'Mock Entrance Exam + Interview',               category: 'booking' },
-    'visa-documents':            { subject: 'Visa & Documents (Post-Acceptance)',           category: 'booking' },
     'life-in-prague':            { subject: 'Life in Prague Onboarding',                    category: 'booking' },
     'board-review':              { subject: 'USMLE Board Review Inquiry',                  category: 'booking' },
     'submit-match':              { subject: 'Add Me to Recent Match Outcomes',             category: 'general',
@@ -50,8 +47,7 @@
     'consultation', 'apply-lf3', 'entrance-exam', 'mentorship',
     'mentorship-lor', 'mentorship-program-list', 'mentorship-cv',
     'mentorship-mock-interview', 'mentorship-eras',
-    'applicant-mentor', 'exam-logistics', 'mock-exam',
-    'visa-documents', 'life-in-prague',
+    'applicant-mentor', 'life-in-prague',
     'board-review', 'submit-match', 'partnership', 'general'
   ];
 
