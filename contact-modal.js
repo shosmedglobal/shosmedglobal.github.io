@@ -25,20 +25,27 @@
   // `category` maps to CONTACT_CATEGORIES in contact-booking.js so the admin
   // dashboard can filter these messages correctly.
   const REASONS = {
-    'consultation':   { subject: 'Schedule a Free Consultation',           category: 'booking' },
-    'apply-lf3':      { subject: 'Apply to LF3 (Charles University)',      category: 'booking' },
-    'entrance-exam':  { subject: 'Entrance Exam Registration',             category: 'booking' },
-    'mentorship':     { subject: 'Residency Mentorship Inquiry',           category: 'booking' },
-    'board-review':   { subject: 'USMLE Board Review Inquiry',             category: 'booking' },
-    'submit-match':   { subject: 'Add Me to Recent Match Outcomes',        category: 'general',
-                        placeholder: "Tell us: medical school + grad year, residency program + match year, fellowship if any, and where to send your photo. We'll reply within 48 hours." },
-    'partnership':    { subject: 'Partnership Inquiry',                    category: 'partnership' },
-    'general':        { subject: 'General Question',                       category: 'general' }
+    'consultation':              { subject: 'Schedule a Free Consultation',                category: 'booking' },
+    'apply-lf3':                 { subject: 'Apply to LF3 (Charles University)',           category: 'booking' },
+    'entrance-exam':             { subject: 'Entrance Exam Registration',                  category: 'booking' },
+    'mentorship':                { subject: 'Residency Mentorship Inquiry',                category: 'booking' },
+    'mentorship-lor':            { subject: 'Match Mentorship: Letter of Rec Coaching',    category: 'booking' },
+    'mentorship-program-list':   { subject: 'Match Mentorship: Program List Guidance',     category: 'booking' },
+    'mentorship-cv':             { subject: 'Match Mentorship: CV & Personal Statement',   category: 'booking' },
+    'mentorship-mock-interview': { subject: 'Match Mentorship: Mock Interview Session',    category: 'booking' },
+    'mentorship-eras':           { subject: 'Match Mentorship: ERAS Application Strategy', category: 'booking' },
+    'board-review':              { subject: 'USMLE Board Review Inquiry',                  category: 'booking' },
+    'submit-match':              { subject: 'Add Me to Recent Match Outcomes',             category: 'general',
+                                   placeholder: "Tell us: medical school + grad year, residency program + match year, fellowship if any, and where to send your photo. We'll reply within 48 hours." },
+    'partnership':               { subject: 'Partnership Inquiry',                         category: 'partnership' },
+    'general':                   { subject: 'General Question',                            category: 'general' }
   };
 
   const REASON_ORDER = [
     'consultation', 'apply-lf3', 'entrance-exam', 'mentorship',
-    'board-review', 'submit-match', 'partnership', 'general'
+    'mentorship-lor', 'mentorship-program-list', 'mentorship-cv',
+    'mentorship-mock-interview', 'mentorship-eras', 'board-review',
+    'submit-match', 'partnership', 'general'
   ];
 
   // ===== Styles (scoped with .shos-cm- prefix) =====
@@ -486,7 +493,7 @@
       const deliveredToSomeone = firestoreSaved || emailSent === true;
 
       if (deliveredToSomeone) {
-        status.textContent = 'Thanks, ' + name.split(' ')[0] + ' — we received your message and will reply within 48 hours.';
+        status.textContent = 'Thanks, ' + name.split(' ')[0] + '. We received your message and will reply within 48 hours.';
         status.className   = 'shos-cm-status ok';
         form.reset();
         setTimeout(closeModal, 2400);
