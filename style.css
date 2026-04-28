@@ -2170,6 +2170,79 @@ a {
   color: var(--accent);
 }
 
+/* ===== Add-on hover-reveal list (used inside pricing-card "add-ons" tier
+        on students.html and applicants.html). Each .addon-item shows a
+        service name; on hover/focus the .addon-detail panel expands inline
+        below to reveal price + description. Tap-to-reveal works on touch
+        via tabindex + :focus-within. ===== */
+.addon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  flex-grow: 1;
+}
+.addon-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: help;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  outline: none;
+  border: 1px solid transparent;
+}
+.addon-item + .addon-item { margin-top: 2px; }
+.addon-item:hover,
+.addon-item:focus,
+.addon-item:focus-within {
+  background: #FFFBF5;
+  border-color: #E8D5B7;
+}
+.addon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1B2A4A;
+}
+.addon-icon {
+  color: #9CA3AF;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+.addon-item:hover .addon-icon,
+.addon-item:focus .addon-icon,
+.addon-item:focus-within .addon-icon { color: #CF5B2E; }
+.addon-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.18s ease, margin 0.2s ease, padding 0.2s ease;
+}
+.addon-item:hover .addon-detail,
+.addon-item:focus .addon-detail,
+.addon-item:focus-within .addon-detail {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #F3E7D5;
+}
+.addon-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #CF5B2E;
+  display: block;
+  margin-bottom: 4px;
+}
+.addon-desc {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .session-cards {
   display: flex;
   flex-direction: column;
