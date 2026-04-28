@@ -772,8 +772,72 @@
         <p class="section-sub">Start with a free call. Take a Strategy Session for a clear plan. Add specific services &agrave; la carte as your cycle progresses.</p>
       </div>
 
-      <!-- Step 1 + Step 2 (2-card row) -->
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; max-width:880px; margin:0 auto;">
+      <!-- Hover-reveal styles for Step 3 add-on items -->
+      <style>
+        .addon-list { list-style:none; padding:0; margin:0 0 24px; flex-grow:1; }
+        .addon-item {
+          padding:10px 12px;
+          border-radius:8px;
+          cursor:help;
+          transition: background 0.15s ease;
+          outline:none;
+          border:1px solid transparent;
+        }
+        .addon-item + .addon-item { margin-top:2px; }
+        .addon-item:hover, .addon-item:focus, .addon-item:focus-within {
+          background:#FFFBF5;
+          border-color:#E8D5B7;
+        }
+        .addon-row {
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:10px;
+          font-size:0.9rem;
+          font-weight:600;
+          color:#1B2A4A;
+        }
+        .addon-icon {
+          color:#9CA3AF;
+          font-size:0.95rem;
+          flex-shrink:0;
+          transition: color 0.15s ease;
+        }
+        .addon-item:hover .addon-icon,
+        .addon-item:focus .addon-icon,
+        .addon-item:focus-within .addon-icon { color:#CF5B2E; }
+        .addon-detail {
+          max-height:0;
+          overflow:hidden;
+          opacity:0;
+          transition: max-height 0.25s ease, opacity 0.18s ease, margin 0.2s ease, padding 0.2s ease;
+        }
+        .addon-item:hover .addon-detail,
+        .addon-item:focus .addon-detail,
+        .addon-item:focus-within .addon-detail {
+          max-height:200px;
+          opacity:1;
+          margin-top:8px;
+          padding-top:8px;
+          border-top:1px solid #F3E7D5;
+        }
+        .addon-price {
+          font-size:1rem;
+          font-weight:700;
+          color:#CF5B2E;
+          display:block;
+          margin-bottom:4px;
+        }
+        .addon-desc {
+          font-size:0.82rem;
+          color:#475569;
+          line-height:1.5;
+          margin:0;
+        }
+      </style>
+
+      <!-- Step 1 + Step 2 + Step 3 (3-card row) -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; max-width:1180px; margin:0 auto; align-items:start;">
 
         <!-- STEP 1: Free Strategy Call -->
         <div class="pricing-card">
@@ -809,84 +873,86 @@
           <a href="#" class="btn btn-primary stripe-link" data-tier="strategy-session">Get Your Strategy Session</a>
         </div>
 
-      </div>
+        <!-- STEP 3: Match Mentorship (a la carte, hover to reveal price + description) -->
+        <div class="pricing-card">
+          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 3 of 3</div>
+          <div class="pricing-header-card">
+            <h3>Match Mentorship</h3>
+            <div class="price" style="font-size:2rem;">From $69</div>
+            <p class="price-sub">Pick exactly what you need. Hover or tap any service for price and details.</p>
+          </div>
 
-      <!-- STEP 3: Match Mentorship a la carte -->
-      <div style="max-width:1100px; margin:64px auto 0;">
-        <div style="text-align:center; margin-bottom:32px;">
-          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#CF5B2E; margin-bottom:8px;">Step 3 of 3</div>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.85rem; line-height:1.2; margin:0 0 10px; color:#0F172A;">Match Mentorship &middot; &Agrave; la carte</h3>
-          <p style="color:#475569; font-size:1rem; line-height:1.6; margin:0 auto; max-width:640px;">Pay only for the specific services you need, when you need them. Each is a 1-on-1 session with a US-matched physician.</p>
+          <ul class="addon-list">
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>Letter of Rec Coaching</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$69</span>
+                <p class="addon-desc">Where to look, how to ask, and how to convert a hands-on rotation into a strong US letter.</p>
+              </div>
+            </li>
+
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>Program List Guidance</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$79</span>
+                <p class="addon-desc">Build a balanced, realistic, signaling-aware list of programs to apply to.</p>
+              </div>
+            </li>
+
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>CV &amp; Personal Statement Review</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$99</span>
+                <p class="addon-desc">Line-by-line revisions and detailed comments on your application drafts.</p>
+              </div>
+            </li>
+
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>Mock Interview Session</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$99</span>
+                <p class="addon-desc">Live, recorded, with a structured debrief and written notes you can review.</p>
+              </div>
+            </li>
+
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>ERAS Application Strategy</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$129</span>
+                <p class="addon-desc">Timing, program signaling, supplemental questions, and decision frameworks.</p>
+              </div>
+            </li>
+
+            <li class="addon-item" tabindex="0">
+              <div class="addon-row">
+                <span>USMLE Step Review</span>
+                <span class="addon-icon" aria-hidden="true">&#9432;</span>
+              </div>
+              <div class="addon-detail">
+                <span class="addon-price">$99 <span style="font-size:0.78rem; color:#9CA3AF; font-weight:500;">/ session</span></span>
+                <p class="addon-desc">High-yield 1-on-1 review for Step 1 or Step 2 CK. Volume packs available: 5-pack $449, 10-pack $799.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#" data-contact-modal="mentorship" class="btn btn-secondary">Ask About Add-Ons</a>
         </div>
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
-
-          <!-- Letter of Rec Coaching -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">Letter of Rec Coaching</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">Where to look, how to ask, and how to convert a hands-on rotation into a strong US letter.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$69</div>
-              <a href="#" data-contact-modal="mentorship-lor" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-          <!-- Program List Guidance -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">Program List Guidance</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">Build a balanced, realistic, signaling-aware list of programs to apply to.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$79</div>
-              <a href="#" data-contact-modal="mentorship-program-list" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-          <!-- CV & Personal Statement -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">CV &amp; Personal Statement Review</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">Line-by-line revisions and detailed comments on your application drafts.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$99</div>
-              <a href="#" data-contact-modal="mentorship-cv" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-          <!-- Mock Interview -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">Mock Interview Session</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">Live, recorded, with a structured debrief and written notes you can review.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$99</div>
-              <a href="#" data-contact-modal="mentorship-mock-interview" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-          <!-- ERAS Strategy -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">ERAS Application Strategy</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">Timing, program signaling, supplemental questions, and decision frameworks.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$129</div>
-              <a href="#" data-contact-modal="mentorship-eras" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-          <!-- USMLE Step Review -->
-          <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:22px; display:flex; flex-direction:column;">
-            <h4 style="margin:0 0 6px; font-size:1.05rem; color:#0F172A; font-weight:700;">USMLE Step Review</h4>
-            <p style="margin:0 0 18px; color:#6B7280; font-size:0.88rem; line-height:1.55; flex-grow:1;">High-yield 1-on-1 review for Step 1 or Step 2 CK. Focused, targeted, scaled to what you need.</p>
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <div style="font-size:1.4rem; font-weight:700; color:#0F172A;">$99 <span style="font-size:0.78rem; color:#9CA3AF; font-weight:500;">/ session</span></div>
-              <a href="#" data-contact-modal="board-review" class="btn btn-secondary" style="padding:9px 16px; font-size:0.85rem;">Add to plan</a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- USMLE volume packs note -->
-        <p style="text-align:center; margin:24px auto 0; max-width:680px; font-size:0.86rem; color:#6B7280;">
-          Going deeper on USMLE? Save with volume packs: <strong style="color:#0F172A;">5-pack $449</strong> (save $46) &middot; <strong style="color:#0F172A;">10-pack $799</strong> (save $191). <a href="#" data-contact-modal="board-review" style="color:#0d9488; text-decoration:underline;">Ask about packs</a>.
-        </p>
       </div>
 
     </div>
