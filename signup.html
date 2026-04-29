@@ -16,6 +16,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+  /* Auth pre-render for signup page — if user is cached as authed, redirect
+     immediately (honoring ?redirect=qbank) so they don't see the signup
+     form flash. Firebase verifies on the destination side. */
+  (function() {
+    try {
+      var cached = localStorage.getItem('shos_authed');
+      if (cached === '1') {
+        var params = new URLSearchParams(window.location.search);
+        var dest = params.get('redirect') === 'qbank'
+          ? ('qbank.html?v=20260423a&t=' + Date.now())
+          : 'dashboard.html';
+        window.location.replace(dest);
+        return;
+      }
+      document.documentElement.setAttribute('data-auth', 'anon');
+    } catch (e) {
+      document.documentElement.setAttribute('data-auth', 'anon');
+    }
+  })();
+  </script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="dashboard.css">
   <style>

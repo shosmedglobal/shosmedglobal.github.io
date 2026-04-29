@@ -10,6 +10,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+  /* Auth pre-render — prevents flash of unauthenticated nav.
+     See auth.js for the source-of-truth update on Firebase resolve. */
+  (function() {
+    try {
+      var cached = localStorage.getItem('shos_authed');
+      var state = cached === '1' ? 'authed' : 'anon';
+      document.documentElement.setAttribute('data-auth', state);
+      if (state === 'authed') {
+        document.addEventListener('DOMContentLoaded', function() {
+          var el = document.getElementById('auth-links');
+          if (el) el.innerHTML = '<a href="dashboard.html" class="nav-cta">Dashboard</a>';
+        });
+      }
+    } catch (e) {
+      document.documentElement.setAttribute('data-auth', 'anon');
+    }
+  })();
+  </script>
   <link rel="stylesheet" href="style.css">
   <style>
     .terms-section {

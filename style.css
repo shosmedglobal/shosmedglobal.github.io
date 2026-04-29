@@ -1,3 +1,11 @@
+/* ===== Auth State Flicker Prevention =====
+   #auth-links is hidden until <html> has data-auth set (either by the
+   inline pre-render script in <head> or by auth.js after Firebase resolves).
+   This prevents the flash of "Log In / Sign Up" buttons on logged-in users
+   before the JS swaps in the "Dashboard" link. */
+#auth-links { visibility: hidden; }
+html[data-auth] #auth-links { visibility: visible; }
+
 /* ===== CSS Variables ===== */
 :root {
   --navy: #1B2137;

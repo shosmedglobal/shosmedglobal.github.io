@@ -97,6 +97,8 @@ async function signInWithGoogle(path, fromSignup) {
 async function signOut() {
   try {
     await auth.signOut();
+    // Clear cached auth state so next page load pre-renders the anon nav
+    try { localStorage.setItem('shos_authed', '0'); } catch (e) {}
     window.location.href = window.location.origin + '/index.html';
   } catch (error) {
     console.error('Sign out error:', error);
@@ -153,7 +155,17 @@ function initAuthNavbar() {
   if (!authLinks) return;
 
   auth.onAuthStateChanged((user) => {
-    if (user) {
+    const isAuthed = !!user;
+
+    // Cache auth state so the next page load can pre-render the correct nav
+    // synchronously (prevents flash of unauthenticated content). See the
+    // inline <script> in each page's <head> that reads this value.
+    try { localStorage.setItem('shos_authed', isAuthed ? '1' : '0'); } catch (e) {}
+
+    // Mirror the state on <html> so CSS can reveal #auth-links once known
+    document.documentElement.setAttribute('data-auth', isAuthed ? 'authed' : 'anon');
+
+    if (isAuthed) {
       // Logged in
       authLinks.innerHTML = `
         <a href="dashboard.html" class="nav-cta">Dashboard</a>
