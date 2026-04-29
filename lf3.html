@@ -106,8 +106,8 @@
           OFFICIAL US &amp; CANADA REPRESENTATIVE &middot; CHARLES UNIVERSITY LF3
         </span>
       </div>
-      <h1 style="text-shadow:0 2px 24px rgba(0,0,0,0.4); font-size:clamp(2.1rem, 4.6vw, 3.4rem); line-height:1.15; max-width:980px; margin-bottom:18px;">Charles University, Prague<br><span class="highlight">Third Faculty of Medicine (LF3)</span></h1>
-      <p style="max-width:720px; margin:0; font-size:clamp(1rem, 1.6vw, 1.15rem); line-height:1.55; color:rgba(255,255,255,0.85); text-shadow:0 1px 12px rgba(0,0,0,0.4);">A medical faculty embedded inside a Prague teaching hospital. English-taught since 1991, EU-accredited, and eligible for US residency.</p>
+      <div style="font-size:0.82rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.72); margin-bottom:14px;">Charles University &middot; Prague</div>
+      <h1 style="text-shadow:0 2px 24px rgba(0,0,0,0.4); font-size:clamp(2.4rem, 5.2vw, 4rem); line-height:1.1; max-width:1000px; margin:0;">Third Faculty of Medicine <span class="highlight">(LF3)</span></h1>
     </div>
   </header>
 
@@ -183,7 +183,144 @@
     </div>
   </section>
 
-  <!-- US Eligibility / IMG Pathway -->
+  <!-- Is LF3 right for you? (horizontal numbered tabs, click to reveal detail).
+       Sits before US Pathway so visitors first qualify themselves, then see the
+       process. Both sections use horizontal numbered visualizations for cohesion. -->
+  <section class="section section-alt" id="is-lf3-for-you">
+    <style>
+      .lf3-stepper { max-width:920px; margin:0 auto; }
+      .lf3-stepper-nums {
+        display:flex;
+        gap:10px;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin-bottom:30px;
+        padding:0 8px;
+      }
+      .lf3-stepper-num {
+        width:56px;
+        height:56px;
+        border-radius:50%;
+        border:2px solid #E5E7EB;
+        background:#fff;
+        color:#6B7280;
+        font-family:'Playfair Display', serif;
+        font-size:1.05rem;
+        font-weight:700;
+        cursor:pointer;
+        transition:transform 0.18s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        flex-shrink:0;
+        font-variant-numeric:tabular-nums;
+        outline:none;
+      }
+      .lf3-stepper-num:hover { border-color:#0d9488; color:#0d9488; }
+      .lf3-stepper-num:focus-visible { box-shadow:0 0 0 3px rgba(13,148,136,0.25); }
+      .lf3-stepper-num.active {
+        background:#0d9488;
+        border-color:#0d9488;
+        color:#fff;
+        transform:scale(1.06);
+        box-shadow:0 8px 20px rgba(13,148,136,0.25);
+      }
+      .lf3-stepper-panel {
+        background:#fff;
+        border:1px solid #E5E7EB;
+        border-radius:14px;
+        padding:34px 40px;
+        box-shadow:0 4px 18px rgba(15,23,42,0.04);
+        min-height:170px;
+      }
+      .lf3-stepper-panel-title {
+        font-family:'Playfair Display', serif;
+        font-size:1.55rem;
+        color:#0F172A;
+        margin:0 0 12px;
+        line-height:1.25;
+        font-weight:700;
+      }
+      .lf3-stepper-panel-body {
+        color:#475569;
+        font-size:1rem;
+        line-height:1.7;
+        margin:0;
+      }
+      .lf3-stepper-panel-body strong { color:#0F172A; }
+      @media (max-width:600px) {
+        .lf3-stepper-num { width:48px; height:48px; font-size:0.95rem; }
+        .lf3-stepper-panel { padding:24px 22px; }
+        .lf3-stepper-panel-title { font-size:1.25rem; }
+        .lf3-stepper-panel-body { font-size:0.95rem; }
+      }
+    </style>
+
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Is LF3 right for you?</span>
+        <h2>Six things that make this path different</h2>
+        <p class="section-sub">Click a number to see what it means.</p>
+      </div>
+
+      <div class="lf3-stepper" id="lf3Stepper">
+        <div class="lf3-stepper-nums" role="tablist" aria-label="Six reasons LF3 may be right for you">
+          <button type="button" class="lf3-stepper-num active" role="tab" aria-selected="true" aria-controls="lf3StepperPanel" data-tab="0">01</button>
+          <button type="button" class="lf3-stepper-num" role="tab" aria-selected="false" aria-controls="lf3StepperPanel" data-tab="1">02</button>
+          <button type="button" class="lf3-stepper-num" role="tab" aria-selected="false" aria-controls="lf3StepperPanel" data-tab="2">03</button>
+          <button type="button" class="lf3-stepper-num" role="tab" aria-selected="false" aria-controls="lf3StepperPanel" data-tab="3">04</button>
+          <button type="button" class="lf3-stepper-num" role="tab" aria-selected="false" aria-controls="lf3StepperPanel" data-tab="4">05</button>
+          <button type="button" class="lf3-stepper-num" role="tab" aria-selected="false" aria-controls="lf3StepperPanel" data-tab="5">06</button>
+        </div>
+
+        <div class="lf3-stepper-panel" id="lf3StepperPanel" role="tabpanel" aria-live="polite">
+          <h3 class="lf3-stepper-panel-title" id="lf3StepperTitle">Start at 18, not 22.</h3>
+          <p class="lf3-stepper-panel-body" id="lf3StepperBody">Direct entry from high school into a 6-year MD program. No four-year pre-med detour, <strong>no GPA race, no MCAT</strong>. You graduate ready for residency by your mid-twenties instead of your late twenties.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        const items = [
+          { title: 'Start at 18, not 22.', body: 'Direct entry from high school into a 6-year MD program. No four-year pre-med detour, <strong>no GPA race, no MCAT</strong>. You graduate ready for residency by your mid-twenties instead of your late twenties.' },
+          { title: 'A real path to US residency.', body: '<strong>ECFMG-recognized and USMLE-eligible.</strong> The same NRMP match every US graduate uses. Both SHOS Med co-founders walked this exact path: LF3 to US residency to subspecialty fellowship.' },
+          { title: 'EU and US, both doors open.', body: 'Your diploma is <strong>automatically recognized in all 27 EU countries</strong> with no equivalency exams. Add USMLE and you can practice in the US too. Very few programs keep both options open.' },
+          { title: 'Real patients from Year 2.', body: 'The faculty sits <strong>inside Fakultni Nemocnice Kralovske Vinohrady</strong>, a working teaching hospital. Anatomy, pathology, and clinical medicine are taught where patients are treated. Graduates feel ready for real clinical work by Year 5.' },
+          { title: 'A serious, ranked institution.', body: 'Charles University was founded in 1348 and is ranked in the <strong>top 2% of universities globally</strong> (QS World Rankings). Seventeen faculties span medicine, sciences, and law. This is a real research university, not an offshore school.' },
+          { title: 'A proven program with faculty access.', body: '<strong>English-taught MD since 1991.</strong> The administrative track for international students is mature. The English-track cohort is small enough that faculty actually know your name, and you have direct access to mentors and research projects.' }
+        ];
+        const titleEl = document.getElementById('lf3StepperTitle');
+        const bodyEl = document.getElementById('lf3StepperBody');
+        const nums = document.querySelectorAll('#lf3Stepper .lf3-stepper-num');
+        function selectTab(idx) {
+          nums.forEach((n, i) => {
+            const isActive = i === idx;
+            n.classList.toggle('active', isActive);
+            n.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+          const item = items[idx];
+          if (titleEl) titleEl.textContent = item.title;
+          if (bodyEl) bodyEl.innerHTML = item.body;
+        }
+        nums.forEach((n, i) => {
+          n.addEventListener('click', () => selectTab(i));
+          n.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+              e.preventDefault();
+              const next = (i + 1) % nums.length;
+              selectTab(next);
+              nums[next].focus();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+              e.preventDefault();
+              const prev = (i - 1 + nums.length) % nums.length;
+              selectTab(prev);
+              nums[prev].focus();
+            }
+          });
+        });
+      })();
+    </script>
+  </section>
+
+  <!-- US Eligibility / IMG Pathway: horizontal 4-card stepper. -->
   <section class="section" id="us-pathway">
     <div class="container">
       <div class="section-header">
@@ -192,35 +329,32 @@
         <p class="section-sub" style="font-size:1.05rem; color:#0F172A; font-weight:600;">Yes. Same residency match. Same MD license. Here is exactly how the IMG pathway works.</p>
       </div>
 
-      <div style="max-width:780px; margin:0 auto;">
-        <div style="display:flex; gap:22px; padding:22px 0; border-bottom:1px solid rgba(0,0,0,0.08);">
-          <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">1</div>
-          <div style="flex:1; min-width:0;">
-            <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Earn your MD at LF3</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">A 6-year MUDr. degree (equivalent to MD), English-taught, recognized by ECFMG.</p>
-          </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:18px; max-width:1100px; margin:0 auto;">
+
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:26px 22px; text-align:center;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; margin:0 auto 14px; box-shadow:0 4px 12px rgba(13,148,136,0.22); font-variant-numeric:tabular-nums;">1</div>
+          <h3 style="margin:0 0 8px; font-size:1.05rem; color:#0F172A; font-weight:700;">Earn your MD at LF3</h3>
+          <p style="margin:0; color:#4B5563; font-size:0.88rem; line-height:1.55;">A 6-year MUDr. degree (equivalent to MD), English-taught, recognized by ECFMG.</p>
         </div>
-        <div style="display:flex; gap:22px; padding:22px 0; border-bottom:1px solid rgba(0,0,0,0.08);">
-          <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">2</div>
-          <div style="flex:1; min-width:0;">
-            <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Take the USMLE</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Step 1 (pass/fail), Step 2 CK (scored), and Step 3. Same exams every US medical graduate takes.</p>
-          </div>
+
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:26px 22px; text-align:center;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; margin:0 auto 14px; box-shadow:0 4px 12px rgba(13,148,136,0.22); font-variant-numeric:tabular-nums;">2</div>
+          <h3 style="margin:0 0 8px; font-size:1.05rem; color:#0F172A; font-weight:700;">Take the USMLE</h3>
+          <p style="margin:0; color:#4B5563; font-size:0.88rem; line-height:1.55;">Step 1 (pass/fail), Step 2 CK (scored), and Step 3. The same exams every US medical graduate takes.</p>
         </div>
-        <div style="display:flex; gap:22px; padding:22px 0; border-bottom:1px solid rgba(0,0,0,0.08);">
-          <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">3</div>
-          <div style="flex:1; min-width:0;">
-            <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Get ECFMG-certified</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">The Educational Commission for Foreign Medical Graduates verifies your credentials and clears you for US residency. ECFMG certification is the gateway every IMG goes through.</p>
-          </div>
+
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:26px 22px; text-align:center;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; margin:0 auto 14px; box-shadow:0 4px 12px rgba(13,148,136,0.22); font-variant-numeric:tabular-nums;">3</div>
+          <h3 style="margin:0 0 8px; font-size:1.05rem; color:#0F172A; font-weight:700;">Get ECFMG-certified</h3>
+          <p style="margin:0; color:#4B5563; font-size:0.88rem; line-height:1.55;">The Educational Commission for Foreign Medical Graduates verifies your credentials and clears you for US residency.</p>
         </div>
-        <div style="display:flex; gap:22px; padding:22px 0;">
-          <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.15rem;">4</div>
-          <div style="flex:1; min-width:0;">
-            <h3 style="margin:0 0 6px; font-size:1.1rem; color:#0F172A; font-weight:700;">Match into US residency</h3>
-            <p style="margin:0; color:#4B5563; font-size:0.93rem; line-height:1.6;">Apply through ERAS, interview at programs, match through NRMP. The same system US graduates use. Thousands of European medical graduates match into US residencies.</p>
-          </div>
+
+        <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:26px 22px; text-align:center;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#0d9488; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; margin:0 auto 14px; box-shadow:0 4px 12px rgba(13,148,136,0.22); font-variant-numeric:tabular-nums;">4</div>
+          <h3 style="margin:0 0 8px; font-size:1.05rem; color:#0F172A; font-weight:700;">Match into US residency</h3>
+          <p style="margin:0; color:#4B5563; font-size:0.88rem; line-height:1.55;">Apply through ERAS, interview, match through NRMP. The same system US graduates use.</p>
         </div>
+
       </div>
 
     </div>
@@ -498,161 +632,19 @@
     </div>
   </section>
 
-  <!-- Why LF3 + Campus (merged: persona-led accordion + experiential + lifestyle).
-       Replaces the previous "Who This Is For" + "Why LF3" twin sections with a
-       single accordion that combines the qualifying questions ('this is you if...')
-       with the proof points behind each, revealed on click. Less space, more info. -->
+  <!-- Inside LF3: Experience block + Life in Prague block.
+       The qualifying "Is LF3 right for you?" content was moved into its own
+       horizontal-tabs section above (before US Pathway). What stays here is the
+       experiential / lifestyle content: hospital-based learning + city living. -->
   <section class="section section-alt" id="why-lf3">
-    <style>
-      .lf3-faq {
-        background: #fff;
-        border: 1px solid #E5E7EB;
-        border-radius: 12px;
-        margin-bottom: 8px;
-        overflow: hidden;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      }
-      .lf3-faq[open] {
-        border-color: rgba(13,148,136,0.55);
-        box-shadow: 0 4px 18px rgba(13,148,136,0.08);
-      }
-      .lf3-faq summary {
-        list-style: none;
-        cursor: pointer;
-        padding: 18px 22px;
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        user-select: none;
-        -webkit-user-select: none;
-        outline: none;
-      }
-      .lf3-faq summary::-webkit-details-marker { display: none; }
-      .lf3-faq summary::marker { content: ''; }
-      .lf3-faq summary:hover { background: #FFFBF5; }
-      .lf3-faq summary:focus-visible { box-shadow: inset 0 0 0 2px rgba(13,148,136,0.4); }
-      .lf3-faq[open] summary { background: #F8FAFC; }
-      .lf3-faq-num {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.05rem;
-        color: #CF5B2E;
-        font-weight: 700;
-        flex-shrink: 0;
-        min-width: 28px;
-        font-variant-numeric: tabular-nums;
-      }
-      .lf3-faq-title {
-        flex: 1;
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: #0F172A;
-        line-height: 1.4;
-      }
-      .lf3-faq-chevron {
-        color: #9CA3AF;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-        transition: transform 0.25s ease, color 0.2s ease;
-        display: inline-block;
-      }
-      .lf3-faq[open] .lf3-faq-chevron {
-        transform: rotate(180deg);
-        color: #0d9488;
-      }
-      .lf3-faq-body {
-        padding: 0 22px 18px 68px;
-        color: #475569;
-        line-height: 1.65;
-        font-size: 0.94rem;
-      }
-      .lf3-faq-body strong { color: #0F172A; }
-      @media (max-width: 600px) {
-        .lf3-faq summary { padding: 14px 16px; gap: 12px; }
-        .lf3-faq-body { padding: 0 16px 14px 50px; font-size: 0.9rem; }
-        .lf3-faq-num { min-width: 22px; font-size: 0.95rem; }
-        .lf3-faq-title { font-size: 0.95rem; }
-      }
-    </style>
-
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Is LF3 right for you?</span>
-        <h2>Six things that make this path different</h2>
-        <p class="section-sub">Click any to see the details.</p>
+        <span class="section-tag">Inside LF3</span>
+        <h2>What it's actually like to study there</h2>
+        <p class="section-sub">An honest look at the hospital, the city, and the day-to-day.</p>
       </div>
 
-      <!-- Block 1: combined persona + proof accordion -->
-      <div style="max-width:840px; margin:0 auto 64px;">
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">01</span>
-            <span class="lf3-faq-title">Start at 18, not 22.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            Direct entry from high school into a 6-year MD program. No four-year pre-med detour, <strong>no GPA race, no MCAT</strong>. You graduate ready for residency by your mid-twenties instead of your late twenties.
-          </div>
-        </details>
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">02</span>
-            <span class="lf3-faq-title">A real path to US residency.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            <strong>ECFMG-recognized and USMLE-eligible.</strong> The same NRMP match every US graduate uses. Both SHOS Med co-founders walked this exact path: LF3 to US residency to subspecialty fellowship.
-          </div>
-        </details>
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">03</span>
-            <span class="lf3-faq-title">EU and US, both doors open.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            Your diploma is <strong>automatically recognized in all 27 EU countries</strong> with no equivalency exams. Add USMLE and you can practice in the US too. Very few programs keep both options open.
-          </div>
-        </details>
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">04</span>
-            <span class="lf3-faq-title">Real patients from Year 2.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            The faculty sits <strong>inside Fakultni Nemocnice Kralovske Vinohrady</strong>, a working teaching hospital. Anatomy, pathology, and clinical medicine are taught where patients are treated. Graduates feel ready for real clinical work by Year 5.
-          </div>
-        </details>
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">05</span>
-            <span class="lf3-faq-title">A serious, ranked institution.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            Charles University was founded in 1348 and is ranked in the <strong>top 2% of universities globally</strong> (QS World Rankings). Seventeen faculties span medicine, sciences, and law. This is a real research university, not an offshore school.
-          </div>
-        </details>
-
-        <details class="lf3-faq">
-          <summary>
-            <span class="lf3-faq-num">06</span>
-            <span class="lf3-faq-title">A proven program with faculty access.</span>
-            <span class="lf3-faq-chevron" aria-hidden="true">&#9662;</span>
-          </summary>
-          <div class="lf3-faq-body">
-            <strong>English-taught MD since 1991.</strong> The administrative track for international students is mature. The English-track cohort is small enough that faculty actually know your name, and you have direct access to mentors and research projects.
-          </div>
-        </details>
-
-      </div>
-
-      <!-- Block 2: Experience split (image / video / carousel slot left, copy right) -->
+      <!-- Block: Experience split (image / video / carousel slot left, copy right) -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:36px; align-items:center; max-width:1100px; margin:0 auto 64px;">
 
         <!-- Media slot.
