@@ -73,6 +73,12 @@
             </div>
           </label>
         </div>
+        <!-- Clarification under the subject cards: Physics is bonus content for
+             other European medical schools and is NOT part of the LF3 entrance exam. -->
+        <p id="physicsScopeNote" style="display:none; margin:14px auto 0; max-width:640px; text-align:center; font-size:0.82rem; color:#6B7280; line-height:1.5;">
+          <span aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%; background:#FEF3C7; color:#92400E; font-weight:700; font-size:0.72rem; vertical-align:middle; margin-right:6px;">i</span>
+          <strong style="color:#1B2A4A;">Physics is not part of the LF3 entrance exam.</strong> It is included as bonus content for applicants targeting other European medical schools that test physics. Leave it unchecked if you are only preparing for Charles University LF3.
+        </p>
 
         <!-- Progress Overview moved to dashboard overview -->
 
@@ -454,6 +460,10 @@
       if (physCount > 0) {
         const physCard = document.getElementById('physicsCardWrapper');
         if (physCard) physCard.style.display = '';
+        // Reveal the scope-clarification note alongside the Physics card so users
+        // immediately understand Physics is bonus and not on the LF3 exam.
+        const physNote = document.getElementById('physicsScopeNote');
+        if (physNote) physNote.style.display = '';
       }
 
       // Hide 0-question subject cards
