@@ -84,12 +84,55 @@
   <section class="section" id="community-main">
     <div class="container">
       <div class="community-tabs">
-        <button class="community-tab active" data-tab="forum">Forum &amp; Q&A</button>
-        <button class="community-tab" data-tab="blog">Blog &amp; Articles</button>
+        <button class="community-tab active" data-tab="blog">Blog &amp; Articles</button>
+        <button class="community-tab" data-tab="forum">Forum &amp; Q&A</button>
       </div>
 
-      <!-- ========== SECTION A: Forum / Q&A ========== -->
-      <div class="community-panel active" id="panel-forum">
+      <!-- ========== SECTION A: Blog / Articles (default visible, owned editorial content,
+                       primary topic signal for SEO since search engines weight first content blocks) ========== -->
+      <div class="community-panel active" id="panel-blog">
+        <div class="section-header" style="margin-bottom:40px;">
+          <h2>Guides &amp; Insights</h2>
+          <p class="section-sub">Free resources for applicants and current students.</p>
+        </div>
+        <div class="blog-article-grid">
+          <a href="blog/applying-to-charles-university.html" class="blog-article-card">
+            <div class="blog-tag">Applying</div>
+            <h4>5 Things I Wish I Knew Before Applying to Charles University Medical School</h4>
+            <p>Practical advice from a Charles University grad who is now a US physician. What I would tell my younger self about the application process.</p>
+            <div class="blog-article-meta">
+              <span>By Eli Zolotov, MD</span>
+              <span>&middot;</span>
+              <span>4 min read</span>
+            </div>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+          <a href="blog/from-acceptance-to-residency.html" class="blog-article-card">
+            <div class="blog-tag">Residency</div>
+            <h4>From Acceptance to Residency: Planning Your US Pathway from Day One</h4>
+            <p>A year-by-year roadmap for European medical students who want to practice in the United States. USMLE timing, clinical rotations, and match strategy.</p>
+            <div class="blog-article-meta">
+              <span>By Eli Zolotov, MD</span>
+              <span>&middot;</span>
+              <span>5 min read</span>
+            </div>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+          <div class="blog-article-card">
+            <div class="blog-tag">USMLE</div>
+            <h4>How to Prepare for USMLE While Studying in Europe</h4>
+            <p>Practical advice on balancing your European curriculum with USMLE preparation from someone who did it.</p>
+            <div class="blog-article-meta">
+              <span>Coming Soon</span>
+            </div>
+            <span class="blog-coming">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SECTION B: Forum / Q&A (community discussion, supplements blog
+                       articles with long-tail Q&A; FAQPage schema markup intact) ========== -->
+      <div class="community-panel" id="panel-forum">
 
         <!-- Featured Q&A (static, SEO-indexable) -->
         <div class="featured-qa">
@@ -246,47 +289,6 @@
           <!-- Post Answer -->
           <div id="post-answer-area">
             <!-- Shown if logged in, login prompt otherwise -->
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION B: Blog / Articles ========== -->
-      <div class="community-panel" id="panel-blog">
-        <div class="section-header" style="margin-bottom:40px;">
-          <h2>Guides &amp; Insights</h2>
-          <p class="section-sub">Free resources for applicants and current students.</p>
-        </div>
-        <div class="blog-article-grid">
-          <a href="blog/applying-to-charles-university.html" class="blog-article-card">
-            <div class="blog-tag">Applying</div>
-            <h4>5 Things I Wish I Knew Before Applying to Charles University Medical School</h4>
-            <p>Practical advice from a Charles University grad who is now a US physician. What I would tell my younger self about the application process.</p>
-            <div class="blog-article-meta">
-              <span>By Eli Zolotov, MD</span>
-              <span>&middot;</span>
-              <span>4 min read</span>
-            </div>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
-          <a href="blog/from-acceptance-to-residency.html" class="blog-article-card">
-            <div class="blog-tag">Residency</div>
-            <h4>From Acceptance to Residency: Planning Your US Pathway from Day One</h4>
-            <p>A year-by-year roadmap for European medical students who want to practice in the United States. USMLE timing, clinical rotations, and match strategy.</p>
-            <div class="blog-article-meta">
-              <span>By Eli Zolotov, MD</span>
-              <span>&middot;</span>
-              <span>5 min read</span>
-            </div>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
-          <div class="blog-article-card">
-            <div class="blog-tag">USMLE</div>
-            <h4>How to Prepare for USMLE While Studying in Europe</h4>
-            <p>Practical advice on balancing your European curriculum with USMLE preparation from someone who did it.</p>
-            <div class="blog-article-meta">
-              <span>Coming Soon</span>
-            </div>
-            <span class="blog-coming">Coming Soon</span>
           </div>
         </div>
       </div>
