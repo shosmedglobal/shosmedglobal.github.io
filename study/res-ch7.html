@@ -58,25 +58,25 @@
 <p>Begin by characterizing your study population. For continuous variables (age, lab values), report the mean and standard deviation if the data are normally distributed, or the median and interquartile range if they are skewed. For categorical variables (sex, disease stage), report counts and percentages.</p>
 
 <h4>Comparing Two Groups</h4>
-<table style="width:100%; border-collapse: collapse; margin: 16px 0;">
+<table>
   <thead>
-    <tr style="background: #f1f5f9;">
-      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Outcome Type</th>
-      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Groups</th>
-      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Distribution</th>
-      <th style="padding: 10px 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Appropriate Test</th>
+    <tr>
+      <th>Outcome Type</th>
+      <th>Groups</th>
+      <th>Distribution</th>
+      <th>Appropriate Test</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Categorical</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Chi-square (or Fisher's exact if any expected cell count &lt; 5)</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Categorical</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Chi-square</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Independent t-test</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Non-normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Mann-Whitney U test</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">One-way ANOVA</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Continuous</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">3+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Non-normal</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Kruskal-Wallis test</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Time-to-event</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">2+</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Log-rank test</td></tr>
-    <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Binary (multivariate)</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">N/A</td><td style="padding: 8px 12px; border-bottom: 1px solid #e2e8f0;">Logistic regression</td></tr>
-    <tr><td style="padding: 8px 12px;">Time-to-event (multivariate)</td><td style="padding: 8px 12px;">N/A</td><td style="padding: 8px 12px;">N/A</td><td style="padding: 8px 12px;">Cox proportional hazards regression</td></tr>
+    <tr><td>Categorical</td><td>2</td><td>N/A</td><td>Chi-square (or Fisher's exact if any expected cell count &lt; 5)</td></tr>
+    <tr><td>Categorical</td><td>3+</td><td>N/A</td><td>Chi-square</td></tr>
+    <tr><td>Continuous</td><td>2</td><td>Normal</td><td>Independent t-test</td></tr>
+    <tr><td>Continuous</td><td>2</td><td>Non-normal</td><td>Mann-Whitney U test</td></tr>
+    <tr><td>Continuous</td><td>3+</td><td>Normal</td><td>One-way ANOVA</td></tr>
+    <tr><td>Continuous</td><td>3+</td><td>Non-normal</td><td>Kruskal-Wallis test</td></tr>
+    <tr><td>Time-to-event</td><td>2+</td><td>N/A</td><td>Log-rank test</td></tr>
+    <tr><td>Binary (multivariate)</td><td>N/A</td><td>N/A</td><td>Logistic regression</td></tr>
+    <tr><td>Time-to-event (multivariate)</td><td>N/A</td><td>N/A</td><td>Cox proportional hazards regression</td></tr>
   </tbody>
 </table>
 
