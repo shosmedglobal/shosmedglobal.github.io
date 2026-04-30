@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHOS Med - Study Medicine in Czech Republic | IMG Mentorship</title>
-  <meta name="description" content="Apply to medical school in the Czech Republic with guidance from Charles University alumni. Plus USMLE prep and residency match mentorship for medical graduates applying to US residency.">
-  <meta name="keywords" content="study medicine Czech Republic, Charles University application, medical school Europe, entrance exam prep, USMLE prep, IMG mentorship, residency match, international medical graduate, study medicine Prague">
+  <title>Study Medicine in Europe & Match in the US | SHOS Med</title>
+  <meta name="description" content="Apply to Charles University in Prague (English-taught MD, no MCAT) and match into US residency. Mentorship from physicians who walked this exact path.">
+  <meta name="keywords" content="study medicine in Europe, English medical school Europe, Charles University application, medical school without MCAT, IMG residency match, USMLE prep, Prague medical school, study medicine Czech Republic">
+  <meta name="author" content="SHOS Med">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://shosmed.com/">
-  <meta property="og:title" content="SHOS Med - Study Medicine in Czech Republic | IMG Mentorship">
-  <meta property="og:description" content="Apply to medical school in the Czech Republic with guidance from Charles University alumni. Plus USMLE prep and residency match mentorship.">
+  <meta property="og:title" content="Study Medicine in Europe & Match in the US | SHOS Med">
+  <meta property="og:description" content="English-taught MD program at Charles University (Prague, founded 1348). No MCAT. Plus USMLE & residency match mentorship from physicians who lived it.">
   <meta property="og:url" content="https://shosmed.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SHOS Med">
+  <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://shosmed.com/assets/shos-logo-full-dark.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SHOS Med - Study Medicine in Czech Republic">
-  <meta name="twitter:description" content="Apply to medical school in Czech Republic with alumni guidance. USMLE prep and residency mentorship.">
+  <meta property="og:image:alt" content="SHOS Med - Study medicine in Europe, match in the US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Study Medicine in Europe & Match in the US">
+  <meta name="twitter:description" content="English-taught MD at Charles University (no MCAT) plus USMLE and residency match mentorship from physicians who walked the same path.">
+  <meta name="twitter:image" content="https://shosmed.com/assets/shos-logo-full-dark.png">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=5"><link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=5"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,13 +50,78 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "SHOS Med",
-    "url": "https://shosmed.com",
-    "description": "Medical school application guidance for Charles University and residency match mentorship for international medical graduates.",
-    "sameAs": [],
-    "areaServed": ["US", "CZ"],
-    "serviceType": ["Medical School Application Guidance", "USMLE Preparation", "Residency Match Mentorship"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://shosmed.com/#organization",
+        "name": "SHOS Med",
+        "alternateName": "SHOS Med Global",
+        "url": "https://shosmed.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://shosmed.com/assets/shos-logo-full-dark.png",
+          "width": 600,
+          "height": 200
+        },
+        "description": "Medical school application guidance for Charles University LF3 (Prague) and US residency match mentorship for international medical graduates.",
+        "founder": {
+          "@type": "Person",
+          "name": "Eli Zolotov, MD"
+        },
+        "areaServed": [
+          {"@type": "Country", "name": "United States"},
+          {"@type": "Country", "name": "Canada"},
+          {"@type": "Country", "name": "Czech Republic"}
+        ],
+        "knowsAbout": [
+          "Charles University LF3",
+          "Third Faculty of Medicine Prague",
+          "Medical school admissions",
+          "USMLE Step 1",
+          "USMLE Step 2 CK",
+          "OET Medicine",
+          "ECFMG certification",
+          "ERAS application",
+          "International medical graduate residency match"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://shosmed.com/#website",
+        "url": "https://shosmed.com",
+        "name": "SHOS Med",
+        "description": "Study medicine in Europe and match into US residency.",
+        "publisher": {"@id": "https://shosmed.com/#organization"},
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://shosmed.com/community.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://shosmed.com/#edorg",
+        "name": "SHOS Med",
+        "url": "https://shosmed.com",
+        "parentOrganization": {"@id": "https://shosmed.com/#organization"},
+        "description": "Mentorship and exam prep for students applying to Charles University and for IMGs pursuing US residency.",
+        "areaServed": ["US", "CA", "CZ"],
+        "serviceType": [
+          "Medical School Application Guidance",
+          "Entrance Exam Preparation",
+          "USMLE Step 1 Preparation",
+          "USMLE Step 2 CK Preparation",
+          "OET Medicine Preparation",
+          "Residency Match Mentorship",
+          "ERAS Application Strategy",
+          "Research Strategy for IMGs"
+        ]
+      }
+    ]
   }
   </script>
 </head>
