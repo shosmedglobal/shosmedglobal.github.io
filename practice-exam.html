@@ -1802,13 +1802,11 @@
   /* =======================================================================
    *  ACCESS CONTROL
    *
-   *  The mock exam is a paid feature (bundled with QBank Full Access $99).
-   *  We gate access via Firebase auth + Firestore profile lookup, mirroring
-   *  the same "exam-bank" payment field the rest of the dashboard uses.
-   *  Admin emails bypass the paywall.
+   *  The mock exam simulation is now part of the free tier (per product
+   *  decision). We require a logged-in account so progress can be saved,
+   *  but no payment check is performed - both free and paid users get the
+   *  same exam experience.
    * ======================================================================= */
-
-  const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
 
   function showStartFlow() {
     // Decide which view to show based on saved exam state.
@@ -1835,35 +1833,19 @@
     // Wait for Firebase to load (auth.js loads firebase-app-compat first).
     if (typeof firebase === 'undefined' || !firebase.auth) {
       // Firebase failed to load (offline / blocked). Fall back to start screen
-      // since the dashboard already gated entry, but log for visibility.
-      console.warn('[practice-exam] Firebase not available; skipping paywall check.');
+      // so the page still works for offline-mode visitors.
+      console.warn('[practice-exam] Firebase not available; skipping auth check.');
       showStartFlow();
       return;
     }
 
-    firebase.auth().onAuthStateChanged(async (user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         showView('auth');
         return;
       }
-      try {
-        const isAdmin = ADMIN_EMAILS.includes((user.email || '').toLowerCase());
-        if (isAdmin) {
-          showStartFlow();
-          return;
-        }
-        const snap = await firebase.firestore().collection('users').doc(user.uid).get();
-        const profile = snap.exists ? snap.data() : null;
-        const isPaid = profile && profile.payments && profile.payments['exam-bank'] === 'paid';
-        if (isPaid) {
-          showStartFlow();
-        } else {
-          showView('paywall');
-        }
-      } catch (err) {
-        console.error('[practice-exam] Access check failed:', err);
-        showView('paywall');
-      }
+      // Logged in - free or paid, both get full mock exam access.
+      showStartFlow();
     });
   }
 

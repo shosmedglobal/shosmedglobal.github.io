@@ -990,7 +990,7 @@
                 <ul class="pricing-features">
                   <li class="included">40 practice questions</li>
                   <li class="included">3 study guide chapters</li>
-                  <li class="not-included">Timed exam simulation</li>
+                  <li class="included">Mock entrance exam simulation</li>
                   <li class="included">Progress tracking</li>
                 </ul>
                 <div style="text-align:center; padding:10px 0; font-size:0.85rem; color:var(--gray-500); font-weight:600;">Already on this plan</div>
@@ -5019,25 +5019,17 @@
       // Store examBankPaid globally so QBank and reader can check it
       window._examBankPaid = isPaid || false;
 
-      // Gate the QBank-tab "Take Mock Exam" button by paid status.
-      // Free users see a disabled-looking pill with an upgrade hint; paid users get the live link.
+      // The QBank-tab "Take Mock Exam" button is open to all logged-in users
+      // (mock entrance exam simulation is part of the free tier).
       const mockBtn = document.getElementById('dashMockExamBtn');
       if (mockBtn) {
-        if (isPaid) {
-          mockBtn.removeAttribute('disabled');
-          mockBtn.style.opacity = '';
-          mockBtn.style.pointerEvents = '';
-          mockBtn.style.cursor = '';
-          mockBtn.textContent = 'Take Mock Exam';
-          mockBtn.setAttribute('href', 'practice-exam.html');
-          mockBtn.title = 'Full-length 60-question, 2-hour timed simulation';
-        } else {
-          mockBtn.setAttribute('href', 'applicants.html#pricing');
-          mockBtn.style.opacity = '0.55';
-          mockBtn.style.cursor = 'not-allowed';
-          mockBtn.textContent = 'Mock Exam (Full Access)';
-          mockBtn.title = 'Mock entrance exam is included with QBank Full Access ($99). Click to upgrade.';
-        }
+        mockBtn.removeAttribute('disabled');
+        mockBtn.style.opacity = '';
+        mockBtn.style.pointerEvents = '';
+        mockBtn.style.cursor = '';
+        mockBtn.textContent = 'Take Mock Exam';
+        mockBtn.setAttribute('href', 'practice-exam.html');
+        mockBtn.title = 'Full-length 60-question, 2-hour mock entrance exam simulation';
       }
 
       // Update study plan description based on path
