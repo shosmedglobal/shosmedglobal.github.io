@@ -1262,19 +1262,37 @@
                 </select>
               </div>
 
-              <!-- Booking-specific fields (shown when category=booking) -->
+              <!-- Booking-specific fields (shown when category=booking).
+                   Service options mirror the current 3-step pricing on
+                   applicants.html (Med School) and students.html (Residency). -->
               <div id="bookingFields" style="display:none;">
                 <div class="form-group">
                   <label for="contactService">Service</label>
                   <select id="contactService" class="form-select">
                     <option value="">Select a service...</option>
-                    <option value="free-consultation">Free 15-Min Consultation</option>
-                    <option value="mentorship">Mentorship Session - $199</option>
-                    <option value="match-ready">Match-Ready Package - $499</option>
-                    <option value="research-foundations">Research Strategy Package - $149</option>
-                    <option value="board-review-single">Board Review Single - $99</option>
-                    <option value="board-review-5pack">Board Review 5-Pack - $449</option>
-                    <option value="board-review-10pack">Board Review 10-Pack - $799</option>
+                    <optgroup label="Free">
+                      <option value="free-consultation">Free Strategy Call (Free)</option>
+                    </optgroup>
+                    <optgroup label="Med School Application">
+                      <option value="full-qbank">Full QBank Access &middot; $99</option>
+                      <option value="apply-lf3-service">Apply for LF3 &middot; $199</option>
+                      <option value="mock-exam-interview">Mock Exam + Interview &middot; $199</option>
+                      <option value="life-in-prague">Life in Prague &middot; $99</option>
+                      <option value="applicant-mentor">1-on-1 Mentor Session (applicant) &middot; $99</option>
+                    </optgroup>
+                    <optgroup label="Residency Application">
+                      <option value="strategy-session">Strategy Session &middot; $99</option>
+                      <option value="mentorship-lor">Letter of Rec Coaching &middot; $99</option>
+                      <option value="mentorship-program-list">Program List Guidance &middot; $99</option>
+                      <option value="mentorship-research">Research Strategy &middot; $99</option>
+                      <option value="mentorship-cv">CV &amp; Personal Statement Review &middot; $99</option>
+                      <option value="mentorship-mock-interview">Mock Interview Session &middot; $99</option>
+                      <option value="mentorship-eras">ERAS Application Strategy &middot; $199</option>
+                      <option value="usmle-step-review">USMLE Step Review &middot; $99/session</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                      <option value="entrance-exam-registration">Entrance Exam Registration (US &amp; Canada)</option>
+                    </optgroup>
                   </select>
                 </div>
 
@@ -1310,12 +1328,19 @@
               <div id="contactError" style="display:none; color:#ef4444; font-size:0.88rem; margin-bottom:12px;"></div>
 
               <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width:100%;">Send Message</button>
-            </form>
-          </div>
 
-          <p style="text-align:center; margin-top:16px; color:var(--gray-500); font-size:0.85rem;">
-            Or email us directly: <a href="mailto:contact@shosmed.com" style="color:var(--accent);">contact@shosmed.com</a>
-          </p>
+              <p style="text-align:center; margin:12px 0 0; font-size:0.78rem; color:var(--gray-500);">
+                We typically reply within 24 hours.
+              </p>
+            </form>
+
+            <!-- Direct email fallback - kept inside the form card so it stays
+                 visually attached to the form rather than floating to the right -->
+            <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; gap:8px; font-size:0.85rem; color:var(--gray-500);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Prefer email? <a href="mailto:contact@shosmed.com" style="color:var(--accent); font-weight:600; text-decoration:none;">contact@shosmed.com</a></span>
+            </div>
+          </div>
         </div>
 
         <!-- ========== VIEW: ADMIN ========== -->
