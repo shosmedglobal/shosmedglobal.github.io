@@ -1085,80 +1085,140 @@
             </div>
           </div>
 
+          <!-- Residency Services: mirrors the 3-step pricing on students.html
+               so dashboard pricing stays in sync with the public residency page. -->
           <div id="storeStudentServices" style="display:none;">
-            <h3 class="view-section-title">Research Course</h3>
-            <div class="dash-card" style="margin-bottom: 16px; padding: 20px 24px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 12px;">
-              <p style="color:var(--gray-600); font-size:0.9rem; margin-bottom:0;">The first 5 chapters of our Intro to Research course are <strong>free</strong> for all residency applicants. To unlock the full course (16 modules + conference guide), purchase the Research Strategy package below.</p>
-            </div>
-            <div class="dash-card" style="margin-bottom: 24px;">
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Research Strategy Package</h4>
-                  <p>Research Overview Course (16 modules) + 1-on-1 research strategy session with a physician mentor. 6-month access.</p>
-                  <span class="service-price">$149</span>
-                </div>
-                <div class="service-status">
-                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='research-foundations'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Get Started</a>
-                </div>
-              </div>
-            </div>
 
-            <h3 class="view-section-title">Mentorship</h3>
-            <div class="dash-card" style="margin-bottom: 24px;">
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Mentorship</h4>
-                  <p>1-on-1 strategy session, CV and personal statement review, program list</p>
-                  <span class="service-price">$199</span>
-                </div>
-                <div class="service-status">
-                  <a href="students.html#pricing" class="btn btn-secondary btn-small">Details</a>
-                </div>
-              </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Match Ready</h4>
-                  <p>3 mentoring sessions, CV/PS edits, mock interview, ERAS strategy</p>
-                  <span class="service-price">$499</span>
-                </div>
-                <div class="service-status">
-                  <a href="students.html#pricing" class="btn btn-primary btn-small">Details</a>
-                </div>
-              </div>
-            </div>
+            <h3 class="view-section-title">Residency Application Plans</h3>
+            <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with a free call. Take a Strategy Session for a clear plan. Add specific services as your cycle progresses.</p>
 
-            <h3 class="view-section-title">Board Review Sessions</h3>
-            <div class="dash-card" style="margin-bottom: 24px;">
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>Single Session</h4>
-                  <p>Focused 1-on-1 USMLE review session</p>
-                  <span class="service-price">$99</span>
+            <!-- 3-step pricing grid (matches students.html) -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
+
+              <!-- STEP 1: Free Strategy Call -->
+              <div class="pricing-card">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 1 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Free Strategy Call</h3>
+                  <div class="price">Free</div>
+                  <p class="price-sub">Start here if you're not sure where you stand.</p>
                 </div>
-                <div class="service-status">
-                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-single'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
-                </div>
+                <ul class="pricing-features">
+                  <li class="included">1-on-1 call with a US-matched physician</li>
+                  <li class="included">Honest read on whether your timeline is realistic</li>
+                  <li class="included">Concrete next step you can take this week</li>
+                </ul>
+                <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Book a Free Strategy Call</a>
               </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>5-Session Pack <span style="background:var(--accent,#2d9f8f);color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:10px;margin-left:8px;">Best Value</span></h4>
-                  <p>Structured review plan · Save $46</p>
-                  <span class="service-price">$449</span>
+
+              <!-- STEP 2: Strategy Session $99 (featured) -->
+              <div class="pricing-card featured-pricing">
+                <div class="pricing-badge">Most Popular</div>
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#CF5B2E; margin-bottom:6px;">Step 2 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Strategy Session</h3>
+                  <div class="price">$99</div>
+                  <p class="price-sub">Your match cycle, mapped out.</p>
                 </div>
-                <div class="service-status">
-                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-5pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-primary btn-small">Inquire</a>
-                </div>
+                <ul class="pricing-features">
+                  <li class="included">Personalized USMLE + residency roadmap</li>
+                  <li class="included">Intro to Research course (16 modules)</li>
+                  <li class="included">Step-by-step planning session</li>
+                  <li class="included">Written deliverable you keep</li>
+                </ul>
+                <a href="#" class="btn btn-primary stripe-pay" data-tier="strategy-session">Get Your Strategy Session</a>
               </div>
-              <div class="service-row">
-                <div class="service-info">
-                  <h4>10-Session Pack</h4>
-                  <p>Comprehensive prep · Save $191</p>
-                  <span class="service-price">$799</span>
+
+              <!-- STEP 3: Match Mentorship (a la carte add-ons, hover to reveal) -->
+              <div class="pricing-card">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 3 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Match Mentorship</h3>
+                  <p class="price-sub">Pick exactly what you need.</p>
                 </div>
-                <div class="service-status">
-                  <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='board-review-10pack'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary btn-small">Inquire</a>
-                </div>
+
+                <ul class="addon-list">
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Letter of Rec Coaching</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Where to look, how to ask, and how to convert a hands-on rotation into a strong US letter.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Program List Guidance</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Build a balanced, realistic, signaling-aware list of programs to apply to.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Research Strategy</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Where to find IMG-friendly research, how to position yourself for projects, and how to translate work into publications, posters, and a stronger CV.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>CV &amp; Personal Statement Review</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Line-by-line revisions and detailed comments on your application drafts.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Mock Interview Session</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Live, recorded, with a structured debrief and written notes you can review.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>ERAS Application Strategy</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$199</span>
+                      <p class="addon-desc">Timing, program signaling, supplemental questions, and decision frameworks.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>USMLE Step Review</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99 <span style="font-size:0.78rem; color:#9CA3AF; font-weight:500;">/ session</span></span>
+                      <p class="addon-desc">High-yield 1-on-1 review for Step 1 or Step 2 CK. Focused, targeted, scaled to what you need.</p>
+                    </div>
+                  </li>
+                </ul>
+
+                <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Ask About Add-Ons</a>
               </div>
+
             </div>
           </div>
         </div>
