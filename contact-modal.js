@@ -34,6 +34,7 @@
     'mentorship-cv':             { subject: 'Match Mentorship: CV & Personal Statement',   category: 'booking' },
     'mentorship-mock-interview': { subject: 'Match Mentorship: Mock Interview Session',    category: 'booking' },
     'mentorship-eras':           { subject: 'Match Mentorship: ERAS Application Strategy', category: 'booking' },
+    'mentorship-research':       { subject: 'Match Mentorship: Research Strategy',          category: 'booking' },
     'applicant-mentor':          { subject: 'Applicant 1-on-1 Mentor Session',              category: 'booking' },
     'mock-exam':                 { subject: 'Mock Entrance Exam + Interview',               category: 'booking' },
     'life-in-prague':            { subject: 'Life in Prague Onboarding',                    category: 'booking' },
@@ -47,7 +48,7 @@
   const REASON_ORDER = [
     'consultation', 'apply-lf3', 'entrance-exam', 'mentorship',
     'mentorship-lor', 'mentorship-program-list', 'mentorship-cv',
-    'mentorship-mock-interview', 'mentorship-eras',
+    'mentorship-mock-interview', 'mentorship-eras', 'mentorship-research',
     'applicant-mentor', 'mock-exam', 'life-in-prague',
     'board-review', 'submit-match', 'partnership', 'general'
   ];
