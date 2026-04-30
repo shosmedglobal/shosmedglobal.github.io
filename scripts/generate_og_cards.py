@@ -205,6 +205,18 @@ CARDS = [
         "title": "Charles University Tuition & Total Cost in 2026",
         "subtitle": "Honest 6-year breakdown: tuition, housing, food, transit, books, fees. No marketing math.",
     },
+    {
+        "slug": "blog-entrance-exam",
+        "eyebrow": "Applying  ·  8 min read",
+        "title": "LF3 Entrance Exam: What's Actually On It",
+        "subtitle": "Topic-by-topic breakdown of the Charles University LF3 entrance exam: format, biology and chemistry topics tested, sample question types.",
+    },
+    {
+        "slug": "blog-mcat-vs",
+        "eyebrow": "Applying  ·  7 min read",
+        "title": "MCAT vs. Charles University Entrance Exam",
+        "subtitle": "Direct side-by-side comparison: length, scope, cost, timing, difficulty. Which path suits which student.",
+    },
 ]
 
 
