@@ -963,49 +963,118 @@
             <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
           </div>
 
-          <!-- Applicant Services -->
+          <!-- Applicant Services: mirrors the 3-step pricing on applicants.html
+               so dashboard pricing stays in sync with the public site. -->
           <div id="storeApplicantServices" style="display:none;">
-            <div class="dash-card" style="padding:20px; margin-bottom:24px; background:linear-gradient(135deg, #f0fdfa, #e0f7f5); border:1px solid #0d9488;">
-              <p style="font-size:0.95rem; color:#1a2744; margin:0;"><strong>Free Preview</strong> - Try 40 questions and 3 study chapters for free. Upgrade to unlock everything.</p>
+
+            <h3 class="view-section-title" id="qbankPricingTitle">Med School Application Plans</h3>
+            <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with the free preview. Upgrade to Full QBank Access for the entrance exam. Add specific services as you progress through the application.</p>
+
+            <!-- 3-step pricing grid (matches applicants.html) -->
+            <div id="qbankPricingGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:1180px; margin:0 auto 32px; align-items:start;">
+
+              <!-- STEP 1: Start Exploring (Free) -->
+              <div class="pricing-card">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 1 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Start Exploring</h3>
+                  <div class="price">Free</div>
+                  <p class="price-sub">Included with your account</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="included">40 practice questions</li>
+                  <li class="included">3 study guide chapters</li>
+                  <li class="not-included">Timed exam simulation</li>
+                  <li class="included">Progress tracking</li>
+                </ul>
+                <div style="text-align:center; padding:10px 0; font-size:0.85rem; color:var(--gray-500); font-weight:600;">Already on this plan</div>
+              </div>
+
+              <!-- STEP 2: Full QBank Access $99 (featured) -->
+              <div class="pricing-card featured-pricing">
+                <div class="pricing-badge">Most Popular</div>
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#CF5B2E; margin-bottom:6px;">Step 2 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Full QBank Access</h3>
+                  <div class="price">$99</div>
+                  <p class="price-sub">total &middot; 6 months access</p>
+                  <p style="margin:8px 0 0; font-size:0.78rem; color:#6B7280; font-style:italic;">Less than one hour with a typical private tutor.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="included">1,000+ practice questions</li>
+                  <li class="included">73-chapter Exam Review Guide</li>
+                  <li class="included">Mock entrance exam (60 Q &middot; 2 hr, with explanations)</li>
+                  <li class="included">6 months of full access</li>
+                </ul>
+                <a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock Full QBank</a>
+              </div>
+
+              <!-- STEP 3: Full Application Support (a la carte add-ons) -->
+              <div class="pricing-card">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 3 of 3</div>
+                <div class="pricing-header-card">
+                  <h3>Full Application Support</h3>
+                  <p class="price-sub">Pick exactly what you need.</p>
+                </div>
+
+                <ul class="addon-list">
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Apply for LF3</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$199</span>
+                      <p class="addon-desc">We submit your application, manage deadlines, and coordinate documents with the university. Includes entrance exam logistics walkthrough.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Mock Exam + Interview</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$199</span>
+                      <p class="addon-desc">Full timed entrance exam simulation plus a mock interview with structured debrief and notes.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>Life in Prague</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Housing leads, bank account setup, SIM card, transit pass, and orientation to your neighborhood.</p>
+                    </div>
+                  </li>
+
+                  <li class="addon-item" tabindex="0">
+                    <div class="addon-row">
+                      <span>1-on-1 Mentor Session</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">1-on-1 call with a US-matched physician who graduated from LF3. Application strategy, exam prep, or general guidance.</p>
+                    </div>
+                  </li>
+                </ul>
+
+                <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Ask About Add-Ons</a>
+              </div>
+
             </div>
 
-            <h3 class="view-section-title" id="qbankPricingTitle">Exam Preparation</h3>
-            <div class="qbank-pricing-grid" id="qbankPricingGrid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-              <div class="qbank-plan-card featured">
-                <div class="plan-badge">Best Value</div>
-                <h4>Full Access</h4>
-                <div class="plan-price">$99</div>
-                <p class="plan-per">6 months access</p>
-                <ul class="plan-features">
-                  <li>Full QBank access (1,000+ questions)</li>
-                  <li>Full Exam Review Guide (73 chapters)</li>
-                  <li>6 months of full access</li>
-                  <li>Progress tracking &amp; test history</li>
-                  <li>QBank progress reset included</li>
-                </ul>
-                <a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Get Full Access - $99</a>
-              </div>
-              <div class="qbank-plan-card">
-                <h4>Personal Mentoring Session</h4>
-                <div class="plan-price">$99</div>
-                <p class="plan-per">Per session - optional add-on</p>
-                <ul class="plan-features">
-                  <li>1-on-1 session with a physician mentor</li>
-                  <li>Application walkthrough &amp; exam strategy</li>
-                  <li>Interview preparation</li>
-                  <li>Life in Prague - housing, costs, what to expect</li>
-                  <li>Personalized guidance for your situation</li>
-                </ul>
-                <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); return false;" class="btn btn-secondary">Book a Session</a>
-              </div>
-            </div>
-
+            <!-- Entrance Exam Registration (kept as separate service block) -->
             <h3 class="view-section-title" style="margin-top:32px;">Entrance Exam Registration</h3>
             <div class="dash-card" style="margin-bottom:24px;">
               <div class="service-row">
                 <div class="service-info">
                   <h4>Entrance Exam Registration (US &amp; Canada)</h4>
-                  <p>Register for the LF3 entrance examination through SHOS Med as the official US agent.</p>
+                  <p>Register for the LF3 entrance examination through SHOS Med as the official US &amp; Canada representative.</p>
                   <span class="service-price">Contact Us</span>
                 </div>
                 <div class="service-status">
