@@ -961,6 +961,12 @@
           <div class="dashboard-header">
             <h1>Store</h1>
             <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
+            <!-- Admin-only path toggle (Med School / Residency). Hidden for regular users. -->
+            <div id="storePathToggle" style="display:none; margin-top:14px; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="store-path-btn active" data-store-path="applicant" style="background:var(--accent); color:#fff; border:1.5px solid var(--accent); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Med School Application</button>
+              <button type="button" class="store-path-btn" data-store-path="student" style="background:#fff; color:var(--gray-600); border:1.5px solid var(--gray-300); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Residency Application</button>
+              <span style="font-size:0.78rem; color:var(--gray-500); align-self:center; margin-left:6px;">Admin preview</span>
+            </div>
           </div>
 
           <!-- Applicant Services: mirrors the 3-step pricing on applicants.html
@@ -2999,16 +3005,41 @@
       const isApplicant = userPath === 'applicant';
       const isStudent = userPath === 'student';
 
-      // Store: admins see everything, regular users see path-specific
-      if (isAdmin) {
-        document.getElementById('storeApplicantServices').style.display = 'block';
-        document.getElementById('storeStudentServices').style.display = 'block';
-      } else if (!userPath) {
-        document.getElementById('storeApplicantServices').style.display = 'block';
-        document.getElementById('storeStudentServices').style.display = 'block';
+      // Store: ONE section at a time. Med School applicants see the applicant
+      // pricing; residency students see the residency pricing. Admins (and the
+      // rare no-path account) default to the applicant view but get a toggle
+      // to preview the residency view.
+      const applicantStore = document.getElementById('storeApplicantServices');
+      const studentStore = document.getElementById('storeStudentServices');
+      const storeToggle = document.getElementById('storePathToggle');
+
+      function showStorePath(path) {
+        if (applicantStore) applicantStore.style.display = path === 'student' ? 'none' : 'block';
+        if (studentStore) studentStore.style.display = path === 'student' ? 'block' : 'none';
+        // sync toggle button visual state
+        document.querySelectorAll('.store-path-btn').forEach(btn => {
+          const isActive = btn.dataset.storePath === path;
+          btn.classList.toggle('active', isActive);
+          btn.style.background = isActive ? 'var(--accent)' : '#fff';
+          btn.style.color = isActive ? '#fff' : 'var(--gray-600)';
+          btn.style.borderColor = isActive ? 'var(--accent)' : 'var(--gray-300)';
+        });
+      }
+
+      if (isStudent) {
+        showStorePath('student');
       } else {
-        document.getElementById('storeApplicantServices').style.display = isApplicant ? 'block' : 'none';
-        document.getElementById('storeStudentServices').style.display = isStudent ? 'block' : 'none';
+        // applicant, admin, or no-path -> default to applicant view
+        showStorePath('applicant');
+      }
+
+      // Admin-only path toggle: lets you preview both store layouts without
+      // having to switch user accounts.
+      if (isAdmin && storeToggle) {
+        storeToggle.style.display = 'flex';
+        document.querySelectorAll('.store-path-btn').forEach(btn => {
+          btn.addEventListener('click', () => showStorePath(btn.dataset.storePath));
+        });
       }
 
       // Path-based UI changes (applies to ALL users including admin)
