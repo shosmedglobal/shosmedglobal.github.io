@@ -54,7 +54,7 @@
         "Speed increases, wavelength decreases"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Speed decreases, wavelength decreases</h4><p>When light enters a denser medium (higher refractive index), it slows down. Since the frequency stays constant, the wavelength must also decrease:</p><table class='exp-table'><tr><th>Property</th><th>In Air</th><th>In Water (n=1.33)</th><th>Change</th></tr><tr><td>Speed</td><td>c = 3x10<sup>8</sup> m/s</td><td>v = c/n = 2.26x10<sup>8</sup> m/s</td><td>Decreases</td></tr><tr><td>Frequency</td><td>f</td><td>f (unchanged)</td><td>No change</td></tr><tr><td>Wavelength</td><td>lambda</td><td>lambda/n</td><td>Decreases</td></tr></table><p>The relationship: v = f x lambda. Since v decreases and f stays constant, lambda must decrease proportionally.</p><p class='exp-key'>Key Concept: When light enters a denser medium: speed decreases, wavelength decreases, frequency stays the same. The refractive index n = c/v = lambda<sub>air</sub>/lambda<sub>medium</sub>. This bending of light (refraction) is described by Snell's law: n<sub>1</sub>sin(theta<sub>1</sub>) = n<sub>2</sub>sin(theta<sub>2</sub>).</p>"
+      "explanation": "<h4>Correct Answer: Speed decreases, wavelength decreases</h4><p>When light enters a denser medium (higher refractive index), it slows down. Since the frequency stays constant, the wavelength must also decrease:</p><table class='exp-table'><tr><th>Property</th><th>In Air</th><th>In Water (n=1.33)</th><th>Change</th></tr><tr><td>Speed</td><td>c = 3x10<sup>8</sup> m/s</td><td>v = c/n = 2.26x10<sup>8</sup> m/s</td><td>Decreases</td></tr><tr><td>Frequency</td><td>f</td><td>f (unchanged)</td><td>No change</td></tr><tr><td>Wavelength</td><td>λ</td><td>λ/n</td><td>Decreases</td></tr></table><p>The relationship: v = f x λ. Since v decreases and f stays constant, λ must decrease proportionally.</p><p class='exp-key'>Key Concept: When light enters a denser medium: speed decreases, wavelength decreases, frequency stays the same. The refractive index n = c/v = λ<sub>air</sub>/lambda<sub>medium</sub>. This bending of light (refraction) is described by Snell's law: n<sub>1</sub>sin(θ<sub>1</sub>) = n<sub>2</sub>sin(θ<sub>2</sub>).</p>"
     },
     {
       "id": "phys-5",
@@ -96,7 +96,7 @@
         "340 m"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: 0.77 m</h4><p>The wave equation relates velocity, frequency, and wavelength:</p><div class='exp-diagram'><p>v = f x lambda</p><p>lambda = v / f</p><p>lambda = 340 / 440</p><p>lambda = <strong>0.77 m</strong> (approximately)</p></div><p>This is the wavelength of the note A4 (the standard tuning pitch for musical instruments).</p><table class='exp-table'><tr><th>Sound Property</th><th>Human Range</th></tr><tr><td>Frequency (hearing)</td><td>20 Hz - 20,000 Hz</td></tr><tr><td>Speed in air (20 C)</td><td>~340 m/s</td></tr><tr><td>Speed in water</td><td>~1500 m/s</td></tr><tr><td>Speed in steel</td><td>~5000 m/s</td></tr></table><p class='exp-key'>Key Concept: v = f x lambda works for all waves (sound, light, water). Sound is a longitudinal (compression) wave. Sound travels faster in denser media (solids > liquids > gases), which is opposite to light.</p>"
+      "explanation": "<h4>Correct Answer: 0.77 m</h4><p>The wave equation relates velocity, frequency, and wavelength:</p><div class='exp-diagram'><p>v = f x λ</p><p>λ = v / f</p><p>λ = 340 / 440</p><p>λ = <strong>0.77 m</strong> (approximately)</p></div><p>This is the wavelength of the note A4 (the standard tuning pitch for musical instruments).</p><table class='exp-table'><tr><th>Sound Property</th><th>Human Range</th></tr><tr><td>Frequency (hearing)</td><td>20 Hz - 20,000 Hz</td></tr><tr><td>Speed in air (20 C)</td><td>~340 m/s</td></tr><tr><td>Speed in water</td><td>~1500 m/s</td></tr><tr><td>Speed in steel</td><td>~5000 m/s</td></tr></table><p class='exp-key'>Key Concept: v = f x λ works for all waves (sound, light, water). Sound is a longitudinal (compression) wave. Sound travels faster in denser media (solids > liquids > gases), which is opposite to light.</p>"
     },
     {
       "id": "phys-8",
@@ -110,7 +110,7 @@
         "1400 kg/m<sup>3</sup>"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: 700 kg/m<sup>3</sup></h4><p>When an object floats, the buoyant force equals its weight (Archimedes' principle). The fraction submerged equals the ratio of the object's density to the fluid's density:</p><div class='exp-diagram'><p>Fraction submerged = rho<sub>object</sub> / rho<sub>fluid</sub></p><p>0.70 = rho<sub>object</sub> / 1000</p><p>rho<sub>object</sub> = 0.70 x 1000 = <strong>700 kg/m<sup>3</sup></strong></p></div><table class='exp-table'><tr><th>Material</th><th>Density (kg/m<sup>3</sup>)</th><th>Floats in Water?</th></tr><tr><td>Cork</td><td>~120</td><td>Yes (88% above)</td></tr><tr><td>Wood (oak)</td><td>~700</td><td>Yes (30% above)</td></tr><tr><td>Ice</td><td>~917</td><td>Yes (8.3% above)</td></tr><tr><td>Iron</td><td>~7,870</td><td>No (sinks)</td></tr></table><p class='exp-key'>Key Concept: Fraction submerged = object density / fluid density. If density < fluid: floats. If density > fluid: sinks. If density = fluid: neutrally buoyant (fully submerged but doesn't sink).</p>"
+      "explanation": "<h4>Correct Answer: 700 kg/m<sup>3</sup></h4><p>When an object floats, the buoyant force equals its weight (Archimedes' principle). The fraction submerged equals the ratio of the object's density to the fluid's density:</p><div class='exp-diagram'><p>Fraction submerged = ρ<sub>object</sub> / ρ<sub>fluid</sub></p><p>0.70 = ρ<sub>object</sub> / 1000</p><p>ρ<sub>object</sub> = 0.70 x 1000 = <strong>700 kg/m<sup>3</sup></strong></p></div><table class='exp-table'><tr><th>Material</th><th>Density (kg/m<sup>3</sup>)</th><th>Floats in Water?</th></tr><tr><td>Cork</td><td>~120</td><td>Yes (88% above)</td></tr><tr><td>Wood (oak)</td><td>~700</td><td>Yes (30% above)</td></tr><tr><td>Ice</td><td>~917</td><td>Yes (8.3% above)</td></tr><tr><td>Iron</td><td>~7,870</td><td>No (sinks)</td></tr></table><p class='exp-key'>Key Concept: Fraction submerged = object density / fluid density. If density < fluid: floats. If density > fluid: sinks. If density = fluid: neutrally buoyant (fully submerged but doesn't sink).</p>"
     },
     {
       "id": "phys-9",
@@ -149,24 +149,24 @@
         "Radio waves",
         "Visible light",
         "Ultraviolet radiation",
-        "Gamma rays"
+        "Γ rays"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: Gamma rays</h4><p>Electromagnetic radiation ranges from very long wavelength (radio waves) to very short wavelength (gamma rays). Shorter wavelength means higher frequency and higher energy.</p><table class='exp-table'><tr><th>EM Radiation Type</th><th>Wavelength Range</th><th>Energy</th></tr><tr><td>Radio waves</td><td>> 1 m</td><td>Lowest</td></tr><tr><td>Microwaves</td><td>1 mm - 1 m</td><td>Low</td></tr><tr><td>Infrared</td><td>700 nm - 1 mm</td><td>Medium-low</td></tr><tr><td>Visible light</td><td>400-700 nm</td><td>Medium</td></tr><tr><td>Ultraviolet</td><td>10-400 nm</td><td>Medium-high</td></tr><tr><td>X-rays</td><td>0.01-10 nm</td><td>High</td></tr><tr><td><strong>Gamma rays</strong></td><td><strong>< 0.01 nm</strong></td><td><strong>Highest</strong></td></tr></table><div class='exp-diagram'><p><strong>Key Relationships:</strong></p><p>c = f x lambda (c = 3 x 10<sup>8</sup> m/s for all EM waves in vacuum)</p><p>E = hf = hc/lambda (energy is inversely proportional to wavelength)</p></div><p class='exp-key'>Key Concept: All electromagnetic waves travel at the speed of light in vacuum. The energy of a photon is E = hf, where h is Planck's constant (6.626 x 10<sup>-34</sup> J.s). Higher frequency = higher energy = shorter wavelength.</p>"
+      "explanation": "<h4>Correct Answer: Γ rays</h4><p>Electromagnetic radiation ranges from very long wavelength (radio waves) to very short wavelength (γ rays). Shorter wavelength means higher frequency and higher energy.</p><table class='exp-table'><tr><th>EM Radiation Type</th><th>Wavelength Range</th><th>Energy</th></tr><tr><td>Radio waves</td><td>> 1 m</td><td>Lowest</td></tr><tr><td>Microwaves</td><td>1 mm - 1 m</td><td>Low</td></tr><tr><td>Infrared</td><td>700 nm - 1 mm</td><td>Medium-low</td></tr><tr><td>Visible light</td><td>400-700 nm</td><td>Medium</td></tr><tr><td>Ultraviolet</td><td>10-400 nm</td><td>Medium-high</td></tr><tr><td>X-rays</td><td>0.01-10 nm</td><td>High</td></tr><tr><td><strong>Γ rays</strong></td><td><strong>< 0.01 nm</strong></td><td><strong>Highest</strong></td></tr></table><div class='exp-diagram'><p><strong>Key Relationships:</strong></p><p>c = f x λ (c = 3 x 10<sup>8</sup> m/s for all EM waves in vacuum)</p><p>E = hf = hc/lambda (energy is inversely proportional to wavelength)</p></div><p class='exp-key'>Key Concept: All electromagnetic waves travel at the speed of light in vacuum. The energy of a photon is E = hf, where h is Planck's constant (6.626 x 10<sup>-34</sup> J.s). Higher frequency = higher energy = shorter wavelength.</p>"
     },
     {
       "id": "phys-12",
       "subject": "physics",
       "topic": "Nuclear Physics",
-      "question": "During beta-minus decay, a neutron in the nucleus is converted into a proton and emits:",
+      "question": "During β-minus decay, a neutron in the nucleus is converted into a proton and emits:",
       "options": [
-        "An alpha particle and a gamma ray",
+        "An α particle and a γ ray",
         "An electron and an antineutrino",
         "A positron and a neutrino",
         "Two protons and a neutron"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: An electron and an antineutrino</h4><p>In beta-minus (beta<sup>-</sup>) decay, a neutron transforms into a proton, emitting a high-energy electron (beta particle) and an electron antineutrino to conserve lepton number.</p><table class='exp-table'><tr><th>Decay Type</th><th>Process</th><th>Emitted Particle(s)</th><th>Change in Nucleus</th></tr><tr><td>Alpha (alpha)</td><td>Nucleus ejects He-4 nucleus</td><td>Alpha particle (<sup>4</sup>He)</td><td>Z-2, A-4</td></tr><tr><td><strong>Beta-minus (beta<sup>-</sup>)</strong></td><td><strong>n -> p</strong></td><td><strong>Electron + antineutrino</strong></td><td><strong>Z+1, A unchanged</strong></td></tr><tr><td>Beta-plus (beta<sup>+</sup>)</td><td>p -> n</td><td>Positron + neutrino</td><td>Z-1, A unchanged</td></tr><tr><td>Gamma (gamma)</td><td>Excited nucleus relaxes</td><td>Gamma photon</td><td>No change in Z or A</td></tr></table><div class='exp-diagram'><p><strong>Beta-minus decay equation:</strong></p><p><sup>A</sup><sub>Z</sub>X -> <sup>A</sup><sub>Z+1</sub>Y + e<sup>-</sup> + antineutrino</p><p>Example: <sup>14</sup><sub>6</sub>C -> <sup>14</sup><sub>7</sub>N + e<sup>-</sup> + antineutrino (carbon-14 dating)</p></div><p class='exp-key'>Key Concept: In all nuclear decays, mass number (A), charge (Z), and lepton number are conserved. Beta decay is mediated by the weak nuclear force. The continuous energy spectrum of beta particles led to the prediction of the neutrino by Pauli.</p>"
+      "explanation": "<h4>Correct Answer: An electron and an antineutrino</h4><p>In β-minus (β<sup>-</sup>) decay, a neutron transforms into a proton, emitting a high-energy electron (β particle) and an electron antineutrino to conserve lepton number.</p><table class='exp-table'><tr><th>Decay Type</th><th>Process</th><th>Emitted Particle(s)</th><th>Change in Nucleus</th></tr><tr><td>Α (α)</td><td>Nucleus ejects He-4 nucleus</td><td>Α particle (<sup>4</sup>He)</td><td>Z-2, A-4</td></tr><tr><td><strong>Β-minus (β<sup>-</sup>)</strong></td><td><strong>n -> p</strong></td><td><strong>Electron + antineutrino</strong></td><td><strong>Z+1, A unchanged</strong></td></tr><tr><td>Β-plus (β<sup>+</sup>)</td><td>p -> n</td><td>Positron + neutrino</td><td>Z-1, A unchanged</td></tr><tr><td>Γ (γ)</td><td>Excited nucleus relaxes</td><td>Γ photon</td><td>No change in Z or A</td></tr></table><div class='exp-diagram'><p><strong>Β-minus decay equation:</strong></p><p><sup>A</sup><sub>Z</sub>X -> <sup>A</sup><sub>Z+1</sub>Y + e<sup>-</sup> + antineutrino</p><p>Example: <sup>14</sup><sub>6</sub>C -> <sup>14</sup><sub>7</sub>N + e<sup>-</sup> + antineutrino (carbon-14 dating)</p></div><p class='exp-key'>Key Concept: In all nuclear decays, mass number (A), charge (Z), and lepton number are conserved. Β decay is mediated by the weak nuclear force. The continuous energy spectrum of β particles led to the prediction of the neutrino by Pauli.</p>"
     },
     {
       "id": "phys-13",
@@ -180,7 +180,7 @@
         "5000 W"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: 2000 W</h4><p>Power is the rate of doing work. First calculate the work done, then divide by time:</p><div class='exp-diagram'><p>Work = Force x distance = mgh = 500 x 10 x 10 = 50,000 J</p><p>Power = Work / time = 50,000 / 25 = <strong>2000 W = 2 kW</strong></p></div><table class='exp-table'><tr><th>Quantity</th><th>Formula</th><th>SI Unit</th></tr><tr><td>Work</td><td>W = F x d x cos(theta)</td><td>Joule (J)</td></tr><tr><td>Power</td><td>P = W/t = F x v</td><td>Watt (W = J/s)</td></tr><tr><td>Kinetic energy</td><td>KE = 1/2 mv<sup>2</sup></td><td>Joule (J)</td></tr><tr><td>Potential energy</td><td>PE = mgh</td><td>Joule (J)</td></tr></table><p>Alternative approach: P = Fv = mg x (h/t) = 500 x 10 x (10/25) = 5000 x 0.4 = 2000 W.</p><p class='exp-key'>Key Concept: Power = Work/Time. 1 Watt = 1 Joule per second. 1 horsepower (hp) = 746 W. Work requires both force and displacement in the direction of the force; holding a heavy object stationary requires zero work (but does require energy expenditure by muscles).</p>"
+      "explanation": "<h4>Correct Answer: 2000 W</h4><p>Power is the rate of doing work. First calculate the work done, then divide by time:</p><div class='exp-diagram'><p>Work = Force x distance = mgh = 500 x 10 x 10 = 50,000 J</p><p>Power = Work / time = 50,000 / 25 = <strong>2000 W = 2 kW</strong></p></div><table class='exp-table'><tr><th>Quantity</th><th>Formula</th><th>SI Unit</th></tr><tr><td>Work</td><td>W = F x d x cos(θ)</td><td>Joule (J)</td></tr><tr><td>Power</td><td>P = W/t = F x v</td><td>Watt (W = J/s)</td></tr><tr><td>Kinetic energy</td><td>KE = 1/2 mv<sup>2</sup></td><td>Joule (J)</td></tr><tr><td>Potential energy</td><td>PE = mgh</td><td>Joule (J)</td></tr></table><p>Alternative approach: P = Fv = mg x (h/t) = 500 x 10 x (10/25) = 5000 x 0.4 = 2000 W.</p><p class='exp-key'>Key Concept: Power = Work/Time. 1 Watt = 1 Joule per second. 1 horsepower (hp) = 746 W. Work requires both force and displacement in the direction of the force; holding a heavy object stationary requires zero work (but does require energy expenditure by muscles).</p>"
     },
     {
       "id": "phys-14",
@@ -208,7 +208,7 @@
         "At a 45-degree angle to the velocity"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Perpendicular to both the velocity and the magnetic field</h4><p>The magnetic force on a moving charge is given by the Lorentz force law: F = qv x B. The cross product means the force is always perpendicular to both the velocity and the magnetic field direction.</p><table class='exp-table'><tr><th>Property</th><th>Electric Force</th><th>Magnetic Force</th></tr><tr><td>Direction</td><td>Along field lines</td><td>Perpendicular to v and B</td></tr><tr><td>Acts on stationary charges?</td><td>Yes</td><td>No (v=0 means F=0)</td></tr><tr><td>Does work on charge?</td><td>Yes</td><td>No (force perpendicular to motion)</td></tr><tr><td>Changes speed?</td><td>Yes</td><td>No (only changes direction)</td></tr></table><div class='exp-diagram'><p><strong>Magnetic Force: F = qvB sin(theta)</strong></p><p>where theta is the angle between v and B</p><p>Maximum force when v is perpendicular to B (theta = 90 degrees)</p><p>Zero force when v is parallel to B (theta = 0 degrees)</p></div><p>Because the force is always perpendicular to velocity, it acts as a centripetal force, causing the charged particle to move in a circular or helical path.</p><p class='exp-key'>Key Concept: The magnetic force never does work on a charged particle because it is always perpendicular to displacement. It changes the direction of motion but not the speed. Use the right-hand rule to determine the direction: point fingers along v, curl toward B; the thumb gives the force direction (for positive charges).</p>"
+      "explanation": "<h4>Correct Answer: Perpendicular to both the velocity and the magnetic field</h4><p>The magnetic force on a moving charge is given by the Lorentz force law: F = qv x B. The cross product means the force is always perpendicular to both the velocity and the magnetic field direction.</p><table class='exp-table'><tr><th>Property</th><th>Electric Force</th><th>Magnetic Force</th></tr><tr><td>Direction</td><td>Along field lines</td><td>Perpendicular to v and B</td></tr><tr><td>Acts on stationary charges?</td><td>Yes</td><td>No (v=0 means F=0)</td></tr><tr><td>Does work on charge?</td><td>Yes</td><td>No (force perpendicular to motion)</td></tr><tr><td>Changes speed?</td><td>Yes</td><td>No (only changes direction)</td></tr></table><div class='exp-diagram'><p><strong>Magnetic Force: F = qvB sin(θ)</strong></p><p>where θ is the angle between v and B</p><p>Maximum force when v is perpendicular to B (θ = 90 degrees)</p><p>Zero force when v is parallel to B (θ = 0 degrees)</p></div><p>Because the force is always perpendicular to velocity, it acts as a centripetal force, causing the charged particle to move in a circular or helical path.</p><p class='exp-key'>Key Concept: The magnetic force never does work on a charged particle because it is always perpendicular to displacement. It changes the direction of motion but not the speed. Use the right-hand rule to determine the direction: point fingers along v, curl toward B; the thumb gives the force direction (for positive charges).</p>"
     },
     {
       "id": "phys-16",
@@ -306,7 +306,7 @@
         "127.74 MHz"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 127.74 MHz</h4><p>The Larmor frequency is calculated as f = gamma x B, where gamma is the gyromagnetic ratio and B is the magnetic field strength. f = 42.58 MHz/T x 3.0 T = 127.74 MHz.</p><p class='exp-key'>Key Concept: The Larmor frequency determines the radiofrequency pulse needed to excite hydrogen protons in MRI imaging.</p>"
+      "explanation": "<h4>Correct Answer: D) 127.74 MHz</h4><p>The Larmor frequency is calculated as f = γ x B, where γ is the gyromagnetic ratio and B is the magnetic field strength. f = 42.58 MHz/T x 3.0 T = 127.74 MHz.</p><p class='exp-key'>Key Concept: The Larmor frequency determines the radiofrequency pulse needed to excite hydrogen protons in MRI imaging.</p>"
     },
     {
       "id": "phys-23",
@@ -320,7 +320,7 @@
         "8.0 cm"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 2.0 cm</h4><p>The total distance traveled by the sound is d_total = v x t = 1540 m/s x 26 x 10^-6 s = 0.04004 m = 4.0 cm. Since the ultrasound pulse travels to the structure and back, the actual depth is half this distance: depth = 4.0 cm / 2 = 2.0 cm.</p><p class='exp-key'>Key Concept: In pulse-echo ultrasound, the round-trip time must be halved to determine the actual depth of a reflector.</p>"
+      "explanation": "<h4>Correct Answer: A) 2.0 cm</h4><p>The total distance traveled by the sound is d<sub>total</sub> = v x t = 1540 m/s x 26 x 10<sup>-6</sup> s = 0.04004 m = 4.0 cm. Since the ultrasound pulse travels to the structure and back, the actual depth is half this distance: depth = 4.0 cm / 2 = 2.0 cm.</p><p class='exp-key'>Key Concept: In pulse-echo ultrasound, the round-trip time must be halved to determine the actual depth of a reflector.</p>"
     },
     {
       "id": "phys-24",
@@ -340,7 +340,7 @@
       "id": "phys-25",
       "subject": "physics",
       "topic": "Medical Physics Applications",
-      "question": "An X-ray tube operates at a potential difference of 80 kV. What is the minimum wavelength (cutoff wavelength) of the X-rays produced? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, e = 1.6 x 10^-19 C)",
+      "question": "An X-ray tube operates at a potential difference of 80 kV. What is the minimum wavelength (cutoff wavelength) of the X-rays produced? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, e = 1.6 x 10<sup>-19</sup> C)",
       "options": [
         "0.0155 nm",
         "0.0311 nm",
@@ -348,7 +348,7 @@
         "0.311 nm"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 0.0155 nm</h4><p>The minimum wavelength corresponds to maximum photon energy, where all kinetic energy of the electron converts to a single photon: eV = hc/lambda_min. Thus lambda_min = hc/(eV) = (6.63 x 10^-34 x 3 x 10^8) / (1.6 x 10^-19 x 80000) = 1.989 x 10^-25 / 1.28 x 10^-14 = 1.554 x 10^-11 m = 0.0155 nm.</p><p class='exp-key'>Key Concept: The Duane-Hunt law gives the minimum wavelength of X-rays, determined by the accelerating voltage of the X-ray tube.</p>"
+      "explanation": "<h4>Correct Answer: A) 0.0155 nm</h4><p>The minimum wavelength corresponds to maximum photon energy, where all kinetic energy of the electron converts to a single photon: eV = hc/λ<sub>min</sub>. Thus λ<sub>min</sub> = hc/(eV) = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (1.6 x 10<sup>-19</sup> x 80000) = 1.989 x 10<sup>-25</sup> / 1.28 x 10<sup>-14</sup> = 1.554 x 10<sup>-11</sup> m = 0.0155 nm.</p><p class='exp-key'>Key Concept: The Duane-Hunt law gives the minimum wavelength of X-rays, determined by the accelerating voltage of the X-ray tube.</p>"
     },
     {
       "id": "phys-26",
@@ -362,7 +362,7 @@
         "0.308 mm"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 0.308 mm</h4><p>Wavelength = v/f = 1540 m/s / (5 x 10^6 Hz) = 3.08 x 10^-4 m = 0.308 mm.</p><p class='exp-key'>Key Concept: Higher frequency ultrasound gives better resolution (shorter wavelength) but less tissue penetration depth.</p>"
+      "explanation": "<h4>Correct Answer: D) 0.308 mm</h4><p>Wavelength = v/f = 1540 m/s / (5 x 10<sup>6</sup> Hz) = 3.08 x 10<sup>-4</sup> m = 0.308 mm.</p><p class='exp-key'>Key Concept: Higher frequency ultrasound gives better resolution (shorter wavelength) but less tissue penetration depth.</p>"
     },
     {
       "id": "phys-27",
@@ -376,7 +376,7 @@
         "98%"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 86%</h4><p>T1 recovery follows M(t) = M_0(1 - e^(-t/T1)). At t = 1600 ms = 2 x T1: M/M_0 = 1 - e^(-2) = 1 - 0.135 = 0.865, approximately 86%.</p><p class='exp-key'>Key Concept: After two T1 time constants, approximately 86% of the longitudinal magnetization recovers in MRI.</p>"
+      "explanation": "<h4>Correct Answer: A) 86%</h4><p>T1 recovery follows M(t) = M<sub>0</sub>(1 - e^(-t/T1)). At t = 1600 ms = 2 x T1: M/M<sub>0</sub> = 1 - e^(-2) = 1 - 0.135 = 0.865, approximately 86%.</p><p class='exp-key'>Key Concept: After two T1 time constants, approximately 86% of the longitudinal magnetization recovers in MRI.</p>"
     },
     {
       "id": "phys-28",
@@ -390,27 +390,27 @@
         "25 TBq"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 100 TBq</h4><p>After 10.54 years = 2 half-lives, the activity reduces by a factor of 2^2 = 4. A = 400 / 4 = 100 TBq.</p><p class='exp-key'>Key Concept: Radioactive decay follows an exponential pattern where the activity halves with each half-life period.</p>"
+      "explanation": "<h4>Correct Answer: A) 100 TBq</h4><p>After 10.54 years = 2 half-lives, the activity reduces by a factor of 2<sup>2</sup> = 4. A = 400 / 4 = 100 TBq.</p><p class='exp-key'>Key Concept: Radioactive decay follows an exponential pattern where the activity halves with each half-life period.</p>"
     },
     {
       "id": "phys-29",
       "subject": "physics",
       "topic": "Electromagnetism",
-      "question": "A straight wire carries a current of 10 A. What is the magnitude of the magnetic field at a distance of 5 cm from the wire? (mu_0 = 4pi x 10^-7 T-m/A)",
+      "question": "A straight wire carries a current of 10 A. What is the magnitude of the magnetic field at a distance of 5 cm from the wire? (μ<sub>0</sub> = 4π x 10<sup>-7</sup> T-m/A)",
       "options": [
-        "4 x 10^-5 T",
-        "2 x 10^-5 T",
-        "8 x 10^-5 T",
-        "2 x 10^-4 T"
+        "4 x 10<sup>-5</sup> T",
+        "2 x 10<sup>-5</sup> T",
+        "8 x 10<sup>-5</sup> T",
+        "2 x 10<sup>-4</sup> T"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 4 x 10^-5 T</h4><p>Using Ampere's law for an infinite straight wire: B = mu_0 I / (2pi r) = (4pi x 10^-7 x 10) / (2pi x 0.05) = (4 x 10^-6) / (0.1) = 4 x 10^-5 T.</p><p class='exp-key'>Key Concept: The magnetic field around a long straight conductor decreases inversely with distance from the wire.</p>"
+      "explanation": "<h4>Correct Answer: A) 4 x 10<sup>-5</sup> T</h4><p>Using Ampere's law for an infinite straight wire: B = μ<sub>0</sub> I / (2π r) = (4π x 10<sup>-7</sup> x 10) / (2π x 0.05) = (4 x 10<sup>-6</sup>) / (0.1) = 4 x 10<sup>-5</sup> T.</p><p class='exp-key'>Key Concept: The magnetic field around a long straight conductor decreases inversely with distance from the wire.</p>"
     },
     {
       "id": "phys-30",
       "subject": "physics",
       "topic": "Electromagnetism",
-      "question": "A proton (mass = 1.67 x 10^-27 kg, charge = 1.6 x 10^-19 C) moves at 2 x 10^6 m/s perpendicular to a uniform magnetic field of 0.5 T. What is the radius of its circular path?",
+      "question": "A proton (mass = 1.67 x 10<sup>-27</sup> kg, charge = 1.6 x 10<sup>-19</sup> C) moves at 2 x 10<sup>6</sup> m/s perpendicular to a uniform magnetic field of 0.5 T. What is the radius of its circular path?",
       "options": [
         "4.18 cm",
         "2.09 cm",
@@ -418,7 +418,7 @@
         "16.7 cm"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 4.18 cm</h4><p>The Lorentz force provides the centripetal force: qvB = mv^2/r, so r = mv/(qB) = (1.67 x 10^-27 x 2 x 10^6) / (1.6 x 10^-19 x 0.5) = 3.34 x 10^-21 / 8 x 10^-20 = 0.04175 m = 4.18 cm.</p><p class='exp-key'>Key Concept: A charged particle in a uniform magnetic field follows a circular path with radius proportional to its momentum and inversely proportional to the field strength.</p>"
+      "explanation": "<h4>Correct Answer: A) 4.18 cm</h4><p>The Lorentz force provides the centripetal force: qvB = mv<sup>2</sup>/r, so r = mv/(qB) = (1.67 x 10<sup>-27</sup> x 2 x 10<sup>6</sup>) / (1.6 x 10<sup>-19</sup> x 0.5) = 3.34 x 10<sup>-21</sup> / 8 x 10<sup>-20</sup> = 0.04175 m = 4.18 cm.</p><p class='exp-key'>Key Concept: A charged particle in a uniform magnetic field follows a circular path with radius proportional to its momentum and inversely proportional to the field strength.</p>"
     },
     {
       "id": "phys-31",
@@ -432,7 +432,7 @@
         "753.9 V"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 753.9 V</h4><p>Peak EMF = NBAw, where w = 2pi f. Area = 0.20 x 0.10 = 0.02 m^2. Angular frequency w = 2pi x 60 = 376.99 rad/s. EMF_max = 50 x 0.4 x 0.02 x 376.99 = 753.98 V, approximately 753.9 V.</p><p class='exp-key'>Key Concept: The peak EMF in an AC generator is proportional to the number of turns, magnetic field, area, and angular frequency.</p>"
+      "explanation": "<h4>Correct Answer: D) 753.9 V</h4><p>Peak EMF = NBAw, where w = 2π f. Area = 0.20 x 0.10 = 0.02 m<sup>2</sup>. Angular frequency w = 2π x 60 = 376.99 rad/s. EMF<sub>max</sub> = 50 x 0.4 x 0.02 x 376.99 = 753.98 V, approximately 753.9 V.</p><p class='exp-key'>Key Concept: The peak EMF in an AC generator is proportional to the number of turns, magnetic field, area, and angular frequency.</p>"
     },
     {
       "id": "phys-32",
@@ -440,27 +440,27 @@
       "topic": "Electromagnetism",
       "question": "An electron enters a region where both an electric field E = 3000 V/m and a magnetic field B = 0.01 T are perpendicular to each other and to the electron's velocity. For the electron to pass through undeflected, what must its velocity be?",
       "options": [
-        "3 x 10^5 m/s",
-        "3 x 10^4 m/s",
-        "3 x 10^6 m/s",
-        "3 x 10^7 m/s"
+        "3 x 10<sup>5</sup> m/s",
+        "3 x 10<sup>4</sup> m/s",
+        "3 x 10<sup>6</sup> m/s",
+        "3 x 10<sup>7</sup> m/s"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 3 x 10^5 m/s</h4><p>For the electron to be undeflected, the electric and magnetic forces must balance: qE = qvB, so v = E/B = 3000 / 0.01 = 3 x 10^5 m/s. This is the principle of a velocity selector.</p><p class='exp-key'>Key Concept: A velocity selector uses perpendicular electric and magnetic fields to filter charged particles by speed, with v = E/B.</p>"
+      "explanation": "<h4>Correct Answer: A) 3 x 10<sup>5</sup> m/s</h4><p>For the electron to be undeflected, the electric and magnetic forces must balance: qE = qvB, so v = E/B = 3000 / 0.01 = 3 x 10<sup>5</sup> m/s. This is the principle of a velocity selector.</p><p class='exp-key'>Key Concept: A velocity selector uses perpendicular electric and magnetic fields to filter charged particles by speed, with v = E/B.</p>"
     },
     {
       "id": "phys-33",
       "subject": "physics",
       "topic": "Electromagnetism",
-      "question": "A solenoid has 2000 turns per meter and carries a current of 3 A. What is the magnetic field inside the solenoid? (mu_0 = 4pi x 10^-7 T-m/A)",
+      "question": "A solenoid has 2000 turns per meter and carries a current of 3 A. What is the magnetic field inside the solenoid? (μ<sub>0</sub> = 4π x 10<sup>-7</sup> T-m/A)",
       "options": [
-        "1.88 x 10^-3 T",
-        "3.77 x 10^-3 T",
-        "1.51 x 10^-2 T",
-        "7.54 x 10^-3 T"
+        "1.88 x 10<sup>-3</sup> T",
+        "3.77 x 10<sup>-3</sup> T",
+        "1.51 x 10<sup>-2</sup> T",
+        "7.54 x 10<sup>-3</sup> T"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 7.54 x 10^-3 T</h4><p>The magnetic field inside a solenoid is B = mu_0 x n x I = 4pi x 10^-7 x 2000 x 3 = 4pi x 6 x 10^-4 = 24pi x 10^-4 = 7.54 x 10^-3 T.</p><p class='exp-key'>Key Concept: The magnetic field inside a solenoid is uniform and depends on the turn density and current, not the solenoid's length or radius.</p>"
+      "explanation": "<h4>Correct Answer: D) 7.54 x 10<sup>-3</sup> T</h4><p>The magnetic field inside a solenoid is B = μ<sub>0</sub> x n x I = 4π x 10<sup>-7</sup> x 2000 x 3 = 4π x 6 x 10<sup>-4</sup> = 24π x 10<sup>-4</sup> = 7.54 x 10<sup>-3</sup> T.</p><p class='exp-key'>Key Concept: The magnetic field inside a solenoid is uniform and depends on the turn density and current, not the solenoid's length or radius.</p>"
     },
     {
       "id": "phys-34",
@@ -474,7 +474,7 @@
         "0.040 V"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 0.040 V</h4><p>By Faraday's law, EMF = -dPhi/dt = -A x dB/dt. Area A = pi r^2 = pi x (0.08)^2 = 0.02011 m^2. Rate of change dB/dt = (0.8 - 0.2)/0.3 = 2.0 T/s. EMF = 0.02011 x 2.0 = 0.04022 V, approximately 0.040 V.</p><p class='exp-key'>Key Concept: Faraday's law states that the induced EMF equals the rate of change of magnetic flux through the loop.</p>"
+      "explanation": "<h4>Correct Answer: D) 0.040 V</h4><p>By Faraday's law, EMF = -dPhi/dt = -A x dB/dt. Area A = π r<sup>2</sup> = π x (0.08)<sup>2</sup> = 0.02011 m<sup>2</sup>. Rate of change dB/dt = (0.8 - 0.2)/0.3 = 2.0 T/s. EMF = 0.02011 x 2.0 = 0.04022 V, approximately 0.040 V.</p><p class='exp-key'>Key Concept: Faraday's law states that the induced EMF equals the rate of change of magnetic flux through the loop.</p>"
     },
     {
       "id": "phys-35",
@@ -482,13 +482,13 @@
       "topic": "Electromagnetism",
       "question": "Two parallel wires separated by 10 cm each carry a current of 5 A in opposite directions. What is the force per meter between the wires, and is it attractive or repulsive?",
       "options": [
-        "5 x 10^-5 N/m, attractive",
-        "1 x 10^-4 N/m, repulsive",
-        "1 x 10^-4 N/m, attractive",
-        "5 x 10^-5 N/m, repulsive"
+        "5 x 10<sup>-5</sup> N/m, attractive",
+        "1 x 10<sup>-4</sup> N/m, repulsive",
+        "1 x 10<sup>-4</sup> N/m, attractive",
+        "5 x 10<sup>-5</sup> N/m, repulsive"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 5 x 10^-5 N/m, repulsive</h4><p>F/L = mu_0 I_1 I_2 / (2pi d) = (4pi x 10^-7 x 5 x 5) / (2pi x 0.1) = (100pi x 10^-7) / (0.2pi) = 5 x 10^-5 N/m. Currents in opposite directions produce a repulsive force.</p><p class='exp-key'>Key Concept: Parallel wires with currents in the same direction attract each other, while opposite currents repel.</p>"
+      "explanation": "<h4>Correct Answer: D) 5 x 10<sup>-5</sup> N/m, repulsive</h4><p>F/L = μ<sub>0</sub> I<sub>1</sub> I<sub>2</sub> / (2π d) = (4π x 10<sup>-7</sup> x 5 x 5) / (2π x 0.1) = (100π x 10<sup>-7</sup>) / (0.2π) = 5 x 10<sup>-5</sup> N/m. Currents in opposite directions produce a repulsive force.</p><p class='exp-key'>Key Concept: Parallel wires with currents in the same direction attract each other, while opposite currents repel.</p>"
     },
     {
       "id": "phys-36",
@@ -502,13 +502,13 @@
         "22 V"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 22 V</h4><p>Using the transformer equation: V_s/V_p = N_s/N_p. Therefore V_s = V_p x (N_s/N_p) = 220 x (50/500) = 220 x 0.1 = 22 V. This is a step-down transformer.</p><p class='exp-key'>Key Concept: The voltage ratio in an ideal transformer equals the turns ratio, allowing voltage to be stepped up or down.</p>"
+      "explanation": "<h4>Correct Answer: D) 22 V</h4><p>Using the transformer equation: V<sub>s</sub>/V<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub>. Therefore V<sub>s</sub> = V<sub>p</sub> x (N<sub>s</sub>/N<sub>p</sub>) = 220 x (50/500) = 220 x 0.1 = 22 V. This is a step-down transformer.</p><p class='exp-key'>Key Concept: The voltage ratio in an ideal transformer equals the turns ratio, allowing voltage to be stepped up or down.</p>"
     },
     {
       "id": "phys-37",
       "subject": "physics",
       "topic": "Modern Physics",
-      "question": "Light with a wavelength of 400 nm strikes a metal surface with a work function of 2.0 eV. What is the maximum kinetic energy of the emitted photoelectrons? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, 1 eV = 1.6 x 10^-19 J)",
+      "question": "Light with a wavelength of 400 nm strikes a metal surface with a work function of 2.0 eV. What is the maximum kinetic energy of the emitted photoelectrons? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
       "options": [
         "0.5 eV",
         "3.1 eV",
@@ -516,13 +516,13 @@
         "1.1 eV"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 1.1 eV</h4><p>Photon energy E = hc/lambda = (6.63 x 10^-34 x 3 x 10^8) / (400 x 10^-9) = 4.97 x 10^-19 J = 3.1 eV. Maximum KE = E - work function = 3.1 - 2.0 = 1.1 eV.</p><p class='exp-key'>Key Concept: The photoelectric equation KE_max = hf - phi shows that kinetic energy of emitted electrons depends on photon energy minus the work function.</p>"
+      "explanation": "<h4>Correct Answer: D) 1.1 eV</h4><p>Photon energy E = hc/lambda = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (400 x 10<sup>-9</sup>) = 4.97 x 10<sup>-19</sup> J = 3.1 eV. Maximum KE = E - work function = 3.1 - 2.0 = 1.1 eV.</p><p class='exp-key'>Key Concept: The photoelectric equation KE<sub>max</sub> = hf - φ shows that kinetic energy of emitted electrons depends on photon energy minus the work function.</p>"
     },
     {
       "id": "phys-38",
       "subject": "physics",
       "topic": "Modern Physics",
-      "question": "What is the de Broglie wavelength of an electron (mass = 9.11 x 10^-31 kg) accelerated through a potential difference of 100 V? (h = 6.63 x 10^-34 J-s, e = 1.6 x 10^-19 C)",
+      "question": "What is the de Broglie wavelength of an electron (mass = 9.11 x 10<sup>-31</sup> kg) accelerated through a potential difference of 100 V? (h = 6.63 x 10<sup>-34</sup> J-s, e = 1.6 x 10<sup>-19</sup> C)",
       "options": [
         "0.0123 nm",
         "0.0388 nm",
@@ -530,7 +530,7 @@
         "0.123 nm"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 0.123 nm</h4><p>KE = eV = 1.6 x 10^-19 x 100 = 1.6 x 10^-17 J. Speed: v = sqrt(2KE/m) = sqrt(2 x 1.6 x 10^-17 / 9.11 x 10^-31) = sqrt(3.513 x 10^13) = 5.93 x 10^6 m/s. Lambda = h/(mv) = 6.63 x 10^-34 / (9.11 x 10^-31 x 5.93 x 10^6) = 1.23 x 10^-10 m = 0.123 nm.</p><p class='exp-key'>Key Concept: The de Broglie wavelength demonstrates wave-particle duality, showing that accelerated electrons have wavelengths comparable to atomic spacings.</p>"
+      "explanation": "<h4>Correct Answer: D) 0.123 nm</h4><p>KE = eV = 1.6 x 10<sup>-19</sup> x 100 = 1.6 x 10<sup>-17</sup> J. Speed: v = sqrt(2KE/m) = sqrt(2 x 1.6 x 10<sup>-17</sup> / 9.11 x 10<sup>-31</sup>) = sqrt(3.513 x 10<sup>13</sup>) = 5.93 x 10<sup>6</sup> m/s. Λ = h/(mv) = 6.63 x 10<sup>-34</sup> / (9.11 x 10<sup>-31</sup> x 5.93 x 10<sup>6</sup>) = 1.23 x 10<sup>-10</sup> m = 0.123 nm.</p><p class='exp-key'>Key Concept: The de Broglie wavelength demonstrates wave-particle duality, showing that accelerated electrons have wavelengths comparable to atomic spacings.</p>"
     },
     {
       "id": "phys-39",
@@ -544,13 +544,13 @@
         "0.00243 nm"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 0.00243 nm</h4><p>The Compton wavelength shift is delta_lambda = (h/m_e c)(1 - cos theta) = 0.00243 nm x (1 - cos 90) = 0.00243 nm x (1 - 0) = 0.00243 nm.</p><p class='exp-key'>Key Concept: The Compton shift is maximum at 180 degrees (backscattering) and equals the Compton wavelength at 90 degrees.</p>"
+      "explanation": "<h4>Correct Answer: D) 0.00243 nm</h4><p>The Compton wavelength shift is δ<sub>λ</sub> = (h/m<sub>e</sub> c)(1 - cos θ) = 0.00243 nm x (1 - cos 90) = 0.00243 nm x (1 - 0) = 0.00243 nm.</p><p class='exp-key'>Key Concept: The Compton shift is maximum at 180 degrees (backscattering) and equals the Compton wavelength at 90 degrees.</p>"
     },
     {
       "id": "phys-40",
       "subject": "physics",
       "topic": "Modern Physics",
-      "question": "An atom makes a transition from an energy level at -1.5 eV to one at -3.4 eV. What is the wavelength of the emitted photon? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, 1 eV = 1.6 x 10^-19 J)",
+      "question": "An atom makes a transition from an energy level at -1.5 eV to one at -3.4 eV. What is the wavelength of the emitted photon? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
       "options": [
         "328 nm",
         "490 nm",
@@ -558,27 +558,27 @@
         "654 nm"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 654 nm</h4><p>Energy of the photon = |-1.5 - (-3.4)| = 1.9 eV = 1.9 x 1.6 x 10^-19 = 3.04 x 10^-19 J. Wavelength = hc/E = (6.63 x 10^-34 x 3 x 10^8) / (3.04 x 10^-19) = 6.54 x 10^-7 m = 654 nm (red light).</p><p class='exp-key'>Key Concept: The energy of an emitted photon equals the difference between the initial and final energy levels of the atomic transition.</p>"
+      "explanation": "<h4>Correct Answer: D) 654 nm</h4><p>Energy of the photon = |-1.5 - (-3.4)| = 1.9 eV = 1.9 x 1.6 x 10<sup>-19</sup> = 3.04 x 10<sup>-19</sup> J. Wavelength = hc/E = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (3.04 x 10<sup>-19</sup>) = 6.54 x 10<sup>-7</sup> m = 654 nm (red light).</p><p class='exp-key'>Key Concept: The energy of an emitted photon equals the difference between the initial and final energy levels of the atomic transition.</p>"
     },
     {
       "id": "phys-41",
       "subject": "physics",
       "topic": "Modern Physics",
-      "question": "According to the Heisenberg uncertainty principle, if the position of an electron is measured with an uncertainty of 0.1 nm, what is the minimum uncertainty in its momentum? (h-bar = 1.055 x 10^-34 J-s)",
+      "question": "According to the Heisenberg uncertainty principle, if the position of an electron is measured with an uncertainty of 0.1 nm, what is the minimum uncertainty in its momentum? (h-bar = 1.055 x 10<sup>-34</sup> J-s)",
       "options": [
-        "5.28 x 10^-25 kg-m/s",
-        "1.055 x 10^-24 kg-m/s",
-        "5.28 x 10^-24 kg-m/s",
-        "1.055 x 10^-23 kg-m/s"
+        "5.28 x 10<sup>-25</sup> kg-m/s",
+        "1.055 x 10<sup>-24</sup> kg-m/s",
+        "5.28 x 10<sup>-24</sup> kg-m/s",
+        "1.055 x 10<sup>-23</sup> kg-m/s"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 5.28 x 10^-25 kg-m/s</h4><p>From the uncertainty principle: delta_x x delta_p >= h-bar/2. Therefore delta_p >= h-bar/(2 x delta_x) = 1.055 x 10^-34 / (2 x 0.1 x 10^-9) = 1.055 x 10^-34 / (2 x 10^-10) = 5.275 x 10^-25 kg-m/s.</p><p class='exp-key'>Key Concept: The Heisenberg uncertainty principle sets a fundamental limit on the precision of simultaneous measurements of position and momentum.</p>"
+      "explanation": "<h4>Correct Answer: A) 5.28 x 10<sup>-25</sup> kg-m/s</h4><p>From the uncertainty principle: δ<sub>x</sub> x δ<sub>p</sub> >= h-bar/2. Therefore δ<sub>p</sub> >= h-bar/(2 x δ<sub>x</sub>) = 1.055 x 10<sup>-34</sup> / (2 x 0.1 x 10<sup>-9</sup>) = 1.055 x 10<sup>-34</sup> / (2 x 10<sup>-10</sup>) = 5.275 x 10<sup>-25</sup> kg-m/s.</p><p class='exp-key'>Key Concept: The Heisenberg uncertainty principle sets a fundamental limit on the precision of simultaneous measurements of position and momentum.</p>"
     },
     {
       "id": "phys-42",
       "subject": "physics",
       "topic": "Modern Physics",
-      "question": "The threshold frequency for a photoemissive surface is 5.0 x 10^14 Hz. What is the work function of the material in electron volts? (h = 6.63 x 10^-34 J-s, 1 eV = 1.6 x 10^-19 J)",
+      "question": "The threshold frequency for a photoemissive surface is 5.0 x 10<sup>14</sup> Hz. What is the work function of the material in electron volts? (h = 6.63 x 10<sup>-34</sup> J-s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
       "options": [
         "1.04 eV",
         "2.07 eV",
@@ -586,7 +586,7 @@
         "4.14 eV"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) 2.07 eV</h4><p>The work function phi = h x f_0 = 6.63 x 10^-34 x 5.0 x 10^14 = 3.315 x 10^-19 J. Converting to eV: 3.315 x 10^-19 / 1.6 x 10^-19 = 2.07 eV.</p><p class='exp-key'>Key Concept: The threshold frequency is the minimum frequency needed for photoemission, directly related to the work function by phi = hf_0.</p>"
+      "explanation": "<h4>Correct Answer: B) 2.07 eV</h4><p>The work function φ = h x f<sub>0</sub> = 6.63 x 10<sup>-34</sup> x 5.0 x 10<sup>14</sup> = 3.315 x 10<sup>-19</sup> J. Converting to eV: 3.315 x 10<sup>-19</sup> / 1.6 x 10<sup>-19</sup> = 2.07 eV.</p><p class='exp-key'>Key Concept: The threshold frequency is the minimum frequency needed for photoemission, directly related to the work function by φ = hf_0.</p>"
     },
     {
       "id": "phys-43",
@@ -600,13 +600,13 @@
         "1.2 m/s"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 1.2 m/s</h4><p>By the continuity equation: A_1 v_1 = A_2 v_2. Since A = pi r^2: pi(4)^2 x 0.3 = pi(2)^2 x v_2. Therefore v_2 = (16/4) x 0.3 = 4 x 0.3 = 1.2 m/s.</p><p class='exp-key'>Key Concept: The continuity equation for incompressible fluids shows that velocity increases when the cross-sectional area decreases, which is clinically relevant in arterial stenosis.</p>"
+      "explanation": "<h4>Correct Answer: D) 1.2 m/s</h4><p>By the continuity equation: A<sub>1</sub> v<sub>1</sub> = A<sub>2</sub> v<sub>2</sub>. Since A = π r<sup>2</sup>: π(4)<sup>2</sup> x 0.3 = π(2)<sup>2</sup> x v<sub>2</sub>. Therefore v<sub>2</sub> = (16/4) x 0.3 = 4 x 0.3 = 1.2 m/s.</p><p class='exp-key'>Key Concept: The continuity equation for incompressible fluids shows that velocity increases when the cross-sectional area decreases, which is clinically relevant in arterial stenosis.</p>"
     },
     {
       "id": "phys-44",
       "subject": "physics",
       "topic": "Fluid Dynamics Advanced",
-      "question": "Water flows through a horizontal pipe that narrows from a cross-section of 40 cm^2 to 10 cm^2. If the pressure in the wider section is 200 kPa and the flow speed there is 2 m/s, what is the pressure in the narrow section? (Density of water = 1000 kg/m^3)",
+      "question": "Water flows through a horizontal pipe that narrows from a cross-section of 40 cm<sup>2</sup> to 10 cm<sup>2</sup>. If the pressure in the wider section is 200 kPa and the flow speed there is 2 m/s, what is the pressure in the narrow section? (Density of water = 1000 kg/m<sup>3</sup>)",
       "options": [
         "170 kPa",
         "176 kPa",
@@ -614,7 +614,7 @@
         "188 kPa"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: A) 170 kPa</h4><p>By continuity: v_2 = (A_1/A_2) x v_1 = (40/10) x 2 = 8 m/s. Applying Bernoulli's equation (horizontal pipe): P_1 + 0.5 rho v_1^2 = P_2 + 0.5 rho v_2^2. P_2 = P_1 + 0.5 rho (v_1^2 - v_2^2) = 200000 + 0.5 x 1000 x (4 - 64) = 200000 - 30000 = 170000 Pa = 170 kPa.</p><p class='exp-key'>Key Concept: Bernoulli's principle states that in a flowing fluid, an increase in velocity leads to a decrease in pressure.</p>"
+      "explanation": "<h4>Correct Answer: A) 170 kPa</h4><p>By continuity: v<sub>2</sub> = (A<sub>1</sub>/A<sub>2</sub>) x v<sub>1</sub> = (40/10) x 2 = 8 m/s. Applying Bernoulli's equation (horizontal pipe): P<sub>1</sub> + 0.5 ρ v<sub>1</sub>^2 = P<sub>2</sub> + 0.5 ρ v<sub>2</sub>^2. P<sub>2</sub> = P<sub>1</sub> + 0.5 ρ (v<sub>1</sub>^2 - v<sub>2</sub>^2) = 200000 + 0.5 x 1000 x (4 - 64) = 200000 - 30000 = 170000 Pa = 170 kPa.</p><p class='exp-key'>Key Concept: Bernoulli's principle states that in a flowing fluid, an increase in velocity leads to a decrease in pressure.</p>"
     },
     {
       "id": "phys-45",
@@ -622,19 +622,19 @@
       "topic": "Fluid Dynamics Advanced",
       "question": "A fluid with viscosity 0.004 Pa-s flows through a tube of radius 3 mm and length 0.5 m under a pressure difference of 800 Pa. What is the volume flow rate according to Poiseuille's law?",
       "options": [
-        "1.27 x 10^-6 m^3/s",
-        "5.09 x 10^-6 m^3/s",
-        "1.27 x 10^-5 m^3/s",
-        "5.09 x 10^-5 m^3/s"
+        "1.27 x 10<sup>-6</sup> m<sup>3</sup>/s",
+        "5.09 x 10<sup>-6</sup> m<sup>3</sup>/s",
+        "1.27 x 10<sup>-5</sup> m<sup>3</sup>/s",
+        "5.09 x 10<sup>-5</sup> m<sup>3</sup>/s"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 1.27 x 10^-5 m^3/s</h4><p>Using Poiseuille's law: Q = π r⁴ ΔP / (8 η L)</p><p>Q = π × (3 × 10⁻³)⁴ × 800 / (8 × 0.004 × 0.5)</p><p>r⁴ = 8.1 × 10⁻¹¹</p><p>Numerator: π × 8.1 × 10⁻¹¹ × 800 = π × 6.48 × 10⁻⁸</p><p>Denominator: 0.016</p><p>Q = π × 4.05 × 10⁻⁶ = 1.27 × 10⁻⁵ m³/s</p><p class='exp-key'>Key Concept: Poiseuille's law shows that flow rate depends on the fourth power of radius, making small changes in vessel diameter critically important in blood circulation.</p>"
+      "explanation": "<h4>Correct Answer: C) 1.27 x 10<sup>-5</sup> m<sup>3</sup>/s</h4><p>Using Poiseuille's law: Q = π r⁴ ΔP / (8 η L)</p><p>Q = π × (3 × 10⁻³)⁴ × 800 / (8 × 0.004 × 0.5)</p><p>r⁴ = 8.1 × 10⁻¹¹</p><p>Numerator: π × 8.1 × 10⁻¹¹ × 800 = π × 6.48 × 10⁻⁸</p><p>Denominator: 0.016</p><p>Q = π × 4.05 × 10⁻⁶ = 1.27 × 10⁻⁵ m³/s</p><p class='exp-key'>Key Concept: Poiseuille's law shows that flow rate depends on the fourth power of radius, making small changes in vessel diameter critically important in blood circulation.</p>"
     },
     {
       "id": "phys-46",
       "subject": "physics",
       "topic": "Fluid Dynamics Advanced",
-      "question": "A steel ball of density 7800 kg/m^3 and radius 1 mm falls through glycerin (density 1260 kg/m^3, viscosity 1.5 Pa-s). What is the terminal velocity of the ball? (g = 10 m/s^2)",
+      "question": "A steel ball of density 7800 kg/m<sup>3</sup> and radius 1 mm falls through glycerin (density 1260 kg/m<sup>3</sup>, viscosity 1.5 Pa-s). What is the terminal velocity of the ball? (g = 10 m/s<sup>2</sup>)",
       "options": [
         "0.97 mm/s",
         "4.84 mm/s",
@@ -642,13 +642,13 @@
         "9.69 mm/s"
       ],
       "correct": 3,
-      "explanation": "<h4>Correct Answer: D) 9.69 mm/s</h4><p>At terminal velocity, gravity equals buoyancy plus drag (Stokes' law): v_t = 2r^2(rho_s - rho_f)g / (9 eta) = 2 x (10^-3)^2 x (7800 - 1260) x 10 / (9 x 1.5) = 2 x 10^-6 x 65400 / 13.5 = 0.1308 / 13.5 = 9.69 x 10^-3 m/s = 9.69 mm/s.</p><p class='exp-key'>Key Concept: Terminal velocity in a viscous fluid is reached when the net downward force (gravity minus buoyancy) equals the viscous drag described by Stokes' law.</p>"
+      "explanation": "<h4>Correct Answer: D) 9.69 mm/s</h4><p>At terminal velocity, gravity equals buoyancy plus drag (Stokes' law): v<sub>t</sub> = 2r<sup>2</sup>(ρ<sub>s</sub> - ρ<sub>f</sub>)g / (9 η) = 2 x (10<sup>-3</sup>)<sup>2</sup> x (7800 - 1260) x 10 / (9 x 1.5) = 2 x 10<sup>-6</sup> x 65400 / 13.5 = 0.1308 / 13.5 = 9.69 x 10<sup>-3</sup> m/s = 9.69 mm/s.</p><p class='exp-key'>Key Concept: Terminal velocity in a viscous fluid is reached when the net downward force (gravity minus buoyancy) equals the viscous drag described by Stokes' law.</p>"
     },
     {
       "id": "phys-47",
       "subject": "physics",
       "topic": "Fluid Dynamics Advanced",
-      "question": "The Reynolds number for blood flow in the aorta is approximately 2000. If the aorta has a diameter of 2.5 cm, blood density is 1060 kg/m^3 and viscosity is 3.5 x 10^-3 Pa-s, what is the average flow velocity?",
+      "question": "The Reynolds number for blood flow in the aorta is approximately 2000. If the aorta has a diameter of 2.5 cm, blood density is 1060 kg/m<sup>3</sup> and viscosity is 3.5 x 10<sup>-3</sup> Pa-s, what is the average flow velocity?",
       "options": [
         "0.13 m/s",
         "0.26 m/s",
@@ -656,13 +656,13 @@
         "1.06 m/s"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) 0.26 m/s</h4><p>Re = rho v D / eta, so v = Re x eta / (rho x D) = 2000 x 3.5 x 10^-3 / (1060 x 0.025) = 7.0 / 26.5 = 0.264 m/s, approximately 0.26 m/s.</p><p class='exp-key'>Key Concept: The Reynolds number predicts whether flow is laminar (Re < 2000) or turbulent (Re > 4000), with transitional flow in between. Blood flow in the aorta is near the critical transition point.</p>"
+      "explanation": "<h4>Correct Answer: B) 0.26 m/s</h4><p>Re = ρ v D / η, so v = Re x η / (ρ x D) = 2000 x 3.5 x 10<sup>-3</sup> / (1060 x 0.025) = 7.0 / 26.5 = 0.264 m/s, approximately 0.26 m/s.</p><p class='exp-key'>Key Concept: The Reynolds number predicts whether flow is laminar (Re < 2000) or turbulent (Re > 4000), with transitional flow in between. Blood flow in the aorta is near the critical transition point.</p>"
     },
     {
       "id": "phys-48",
       "subject": "physics",
       "topic": "Fluid Dynamics Advanced",
-      "question": "A manometer connected to a patient's artery reads a gauge pressure of 120 mmHg. What is this pressure in pascals? (Density of mercury = 13600 kg/m^3, g = 10 m/s^2)",
+      "question": "A manometer connected to a patient's artery reads a gauge pressure of 120 mmHg. What is this pressure in pascals? (Density of mercury = 13600 kg/m<sup>3</sup>, g = 10 m/s<sup>2</sup>)",
       "options": [
         "8160 Pa",
         "12000 Pa",
@@ -670,7 +670,7 @@
         "24000 Pa"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 16320 Pa</h4><p>P = rho g h = 13600 x 10 x 0.120 = 16320 Pa. (Note: 120 mmHg = 0.120 m of mercury.)</p><p class='exp-key'>Key Concept: Blood pressure is traditionally measured in mmHg, which can be converted to SI units using the hydrostatic pressure formula P = rho g h.</p>"
+      "explanation": "<h4>Correct Answer: C) 16320 Pa</h4><p>P = ρ g h = 13600 x 10 x 0.120 = 16320 Pa. (Note: 120 mmHg = 0.120 m of mercury.)</p><p class='exp-key'>Key Concept: Blood pressure is traditionally measured in mmHg, which can be converted to SI units using the hydrostatic pressure formula P = ρ g h.</p>"
     },
     {
       "id": "phys-49",
@@ -684,7 +684,7 @@
         "67%"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 50%</h4><p>Carnot efficiency = 1 - T_cold/T_hot = 1 - 300/600 = 1 - 0.5 = 0.5 = 50%.</p><p class='exp-key'>Key Concept: The Carnot efficiency represents the maximum possible efficiency for any heat engine operating between two temperature reservoirs.</p>"
+      "explanation": "<h4>Correct Answer: C) 50%</h4><p>Carnot efficiency = 1 - T<sub>cold</sub>/T<sub>hot</sub> = 1 - 300/600 = 1 - 0.5 = 0.5 = 50%.</p><p class='exp-key'>Key Concept: The Carnot efficiency represents the maximum possible efficiency for any heat engine operating between two temperature reservoirs.</p>"
     },
     {
       "id": "phys-50",
@@ -698,13 +698,13 @@
         "9240 J"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) 4610 J</h4><p>For isothermal expansion: W = nRT ln(V_2/V_1) = 2 x 8.314 x 400 x ln(2) = 2 x 8.314 x 400 x 0.693 = 4610 J.</p><p class='exp-key'>Key Concept: In an isothermal process for an ideal gas, the work done equals nRT ln(V_2/V_1), and the internal energy remains constant.</p>"
+      "explanation": "<h4>Correct Answer: B) 4610 J</h4><p>For isothermal expansion: W = nRT ln(V<sub>2</sub>/V<sub>1</sub>) = 2 x 8.314 x 400 x ln(2) = 2 x 8.314 x 400 x 0.693 = 4610 J.</p><p class='exp-key'>Key Concept: In an isothermal process for an ideal gas, the work done equals nRT ln(V<sub>2</sub>/V<sub>1</sub>), and the internal energy remains constant.</p>"
     },
     {
       "id": "phys-51",
       "subject": "physics",
       "topic": "Thermodynamics Advanced",
-      "question": "The entropy change when 1 kg of water at 100 degrees C is converted entirely to steam at 100 degrees C and 1 atm is closest to which value? (L_v = 2260 kJ/kg)",
+      "question": "The entropy change when 1 kg of water at 100 degrees C is converted entirely to steam at 100 degrees C and 1 atm is closest to which value? (L<sub>v</sub> = 2260 kJ/kg)",
       "options": [
         "3050 J/K",
         "6060 J/K",
@@ -712,13 +712,13 @@
         "22600 J/K"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) 6060 J/K</h4><p>For a phase change at constant temperature: delta_S = Q/T = mL_v/T = 1 x 2260000 / 373 = 6057 J/K, approximately 6060 J/K. (T must be in Kelvin: 100 + 273 = 373 K.)</p><p class='exp-key'>Key Concept: Entropy increases significantly during vaporization because the disorder of the system greatly increases as molecules transition from liquid to gas phase.</p>"
+      "explanation": "<h4>Correct Answer: B) 6060 J/K</h4><p>For a phase change at constant temperature: δ<sub>S</sub> = Q/T = mL_v/T = 1 x 2260000 / 373 = 6057 J/K, approximately 6060 J/K. (T must be in Kelvin: 100 + 273 = 373 K.)</p><p class='exp-key'>Key Concept: Entropy increases significantly during vaporization because the disorder of the system greatly increases as molecules transition from liquid to gas phase.</p>"
     },
     {
       "id": "phys-52",
       "subject": "physics",
       "topic": "Thermodynamics Advanced",
-      "question": "An ideal gas undergoes an adiabatic process where the volume is compressed to 1/8 of its original volume. If the initial temperature is 300 K and gamma = 5/3 (monatomic gas), what is the final temperature?",
+      "question": "An ideal gas undergoes an adiabatic process where the volume is compressed to 1/8 of its original volume. If the initial temperature is 300 K and γ = 5/3 (monatomic gas), what is the final temperature?",
       "options": [
         "600 K",
         "900 K",
@@ -726,7 +726,7 @@
         "2400 K"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 1200 K</h4><p>For an adiabatic process: T_1 V_1^(gamma-1) = T_2 V_2^(gamma-1). T_2 = T_1 x (V_1/V_2)^(gamma-1) = 300 x 8^(2/3) = 300 x (2^3)^(2/3) = 300 x 2^2 = 300 x 4 = 1200 K.</p><p class='exp-key'>Key Concept: In an adiabatic compression, the temperature rises because work is done on the gas with no heat exchange with the surroundings.</p>"
+      "explanation": "<h4>Correct Answer: C) 1200 K</h4><p>For an adiabatic process: T<sub>1</sub> V<sub>1</sub>^(γ-1) = T<sub>2</sub> V<sub>2</sub>^(γ-1). T<sub>2</sub> = T<sub>1</sub> x (V<sub>1</sub>/V<sub>2</sub>)^(γ-1) = 300 x 8^(2/3) = 300 x (2<sup>3</sup>)^(2/3) = 300 x 2<sup>2</sup> = 300 x 4 = 1200 K.</p><p class='exp-key'>Key Concept: In an adiabatic compression, the temperature rises because work is done on the gas with no heat exchange with the surroundings.</p>"
     },
     {
       "id": "phys-53",
@@ -782,7 +782,7 @@
         "-6 cm"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) +30 cm</h4><p>For thin lenses in contact: 1/f = 1/f_1 + 1/f_2 = 1/10 + 1/(-15) = 3/30 - 2/30 = 1/30. Therefore f = +30 cm (converging combination).</p><p class='exp-key'>Key Concept: The combined power of thin lenses in contact is the sum of their individual powers, and the effective focal length is the reciprocal of this sum.</p>"
+      "explanation": "<h4>Correct Answer: B) +30 cm</h4><p>For thin lenses in contact: 1/f = 1/f<sub>1</sub> + 1/f<sub>2</sub> = 1/10 + 1/(-15) = 3/30 - 2/30 = 1/30. Therefore f = +30 cm (converging combination).</p><p class='exp-key'>Key Concept: The combined power of thin lenses in contact is the sum of their individual powers, and the effective focal length is the reciprocal of this sum.</p>"
     },
     {
       "id": "phys-57",
@@ -796,7 +796,7 @@
         "640x"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 320x</h4><p>The magnification of a compound microscope: M = (L/f_o) x (D/f_e), where L is the tube length, D is the near point distance. M = (160/5) x (250/25) = 32 x 10 = 320x.</p><p class='exp-key'>Key Concept: A compound microscope achieves high magnification through two stages: the objective creates a magnified real image, and the eyepiece further magnifies it as a virtual image.</p>"
+      "explanation": "<h4>Correct Answer: C) 320x</h4><p>The magnification of a compound microscope: M = (L/f<sub>o</sub>) x (D/f<sub>e</sub>), where L is the tube length, D is the near point distance. M = (160/5) x (250/25) = 32 x 10 = 320x.</p><p class='exp-key'>Key Concept: A compound microscope achieves high magnification through two stages: the objective creates a magnified real image, and the eyepiece further magnifies it as a virtual image.</p>"
     },
     {
       "id": "phys-58",
@@ -810,7 +810,7 @@
         "33.3 degrees"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: B) 19.5 degrees</h4><p>By Snell's law: n_1 sin theta_1 = n_2 sin theta_2. 1.0 x sin 30 = 1.5 x sin theta_2. sin theta_2 = 0.5 / 1.5 = 0.333. theta_2 = arcsin(0.333) = 19.47 degrees, approximately 19.5 degrees.</p><p class='exp-key'>Key Concept: Snell's law governs refraction at interfaces, with light bending toward the normal when entering a denser medium.</p>"
+      "explanation": "<h4>Correct Answer: B) 19.5 degrees</h4><p>By Snell's law: n<sub>1</sub> sin θ<sub>1</sub> = n<sub>2</sub> sin θ<sub>2</sub>. 1.0 x sin 30 = 1.5 x sin θ<sub>2</sub>. sin θ<sub>2</sub> = 0.5 / 1.5 = 0.333. θ<sub>2</sub> = arcsin(0.333) = 19.47 degrees, approximately 19.5 degrees.</p><p class='exp-key'>Key Concept: Snell's law governs refraction at interfaces, with light bending toward the normal when entering a denser medium.</p>"
     },
     {
       "id": "phys-59",
@@ -824,7 +824,7 @@
         "1.62"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: C) 1.49</h4><p>At the critical angle: sin theta_c = n_air / n_glass. Therefore n_glass = n_air / sin theta_c = 1.0 / sin 42 = 1.0 / 0.6691 = 1.494, approximately 1.49.</p><p class='exp-key'>Key Concept: Total internal reflection occurs when light travels from a denser to a rarer medium at angles exceeding the critical angle, which is used in fiber optics and endoscopy.</p>"
+      "explanation": "<h4>Correct Answer: C) 1.49</h4><p>At the critical angle: sin θ<sub>c</sub> = n<sub>air</sub> / n<sub>glass</sub>. Therefore n<sub>glass</sub> = n<sub>air</sub> / sin θ<sub>c</sub> = 1.0 / sin 42 = 1.0 / 0.6691 = 1.494, approximately 1.49.</p><p class='exp-key'>Key Concept: Total internal reflection occurs when light travels from a denser to a rarer medium at angles exceeding the critical angle, which is used in fiber optics and endoscopy.</p>"
     },
     {
       "id": "phys-60",
@@ -2314,7 +2314,7 @@
       "id": "phys-166",
       "subject": "physics",
       "topic": "Nuclear Physics",
-      "question": "In alpha (α) decay, the parent nucleus emits:",
+      "question": "In α (α) decay, the parent nucleus emits:",
       "options": [
         "An electron",
         "A helium-4 nucleus",
@@ -2322,7 +2322,7 @@
         "A neutron"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: A helium-4 nucleus</h4><p>An <strong>alpha particle</strong> consists of 2 protons and 2 neutrons (a helium-4 nucleus). After alpha decay, the atomic number decreases by 2 and mass number decreases by 4.</p><p class='exp-key'>Key Concept: α decay: Z → Z−2, A → A−4.</p>"
+      "explanation": "<h4>Correct Answer: A helium-4 nucleus</h4><p>An <strong>α particle</strong> consists of 2 protons and 2 neutrons (a helium-4 nucleus). After α decay, the atomic number decreases by 2 and mass number decreases by 4.</p><p class='exp-key'>Key Concept: α decay: Z → Z−2, A → A−4.</p>"
     },
     {
       "id": "phys-167",
@@ -2344,19 +2344,19 @@
       "topic": "Nuclear Physics",
       "question": "Which type of radiation has the highest penetrating power?",
       "options": [
-        "Alpha particles",
-        "Beta particles",
-        "Gamma rays",
+        "Α particles",
+        "Β particles",
+        "Γ rays",
         "Protons"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Gamma rays</h4><p><strong>Gamma rays</strong> are electromagnetic radiation with no charge and high energy, giving them the greatest penetrating power. They can pass through several cm of lead. Alpha is stopped by paper; beta by aluminum.</p><p class='exp-key'>Key Concept: Penetrating power: γ > β > α. Ionizing power: α > β > γ.</p>"
+      "explanation": "<h4>Correct Answer: Γ rays</h4><p><strong>Γ rays</strong> are electromagnetic radiation with no charge and high energy, giving them the greatest penetrating power. They can pass through several cm of lead. Α is stopped by paper; β by aluminum.</p><p class='exp-key'>Key Concept: Penetrating power: γ > β > α. Ionizing power: α > β > γ.</p>"
     },
     {
       "id": "phys-169",
       "subject": "physics",
       "topic": "Nuclear Physics",
-      "question": "In beta-minus (β<sup>−</sup>) decay, a neutron transforms into:",
+      "question": "In β-minus (β<sup>−</sup>) decay, a neutron transforms into:",
       "options": [
         "A proton, an electron, and an antineutrino",
         "A proton and a positron",
@@ -3000,7 +3000,7 @@
       "id": "phys-215",
       "subject": "physics",
       "topic": "Lorentz Force",
-      "question": "A proton and an alpha particle (charge 2e, mass 4m<sub>p</sub>) enter the same magnetic field with the same speed. The ratio of the radius of the alpha particle's path to the proton's path is:",
+      "question": "A proton and an α particle (charge 2e, mass 4m<sub>p</sub>) enter the same magnetic field with the same speed. The ratio of the radius of the α particle's path to the proton's path is:",
       "options": [
         "1:1",
         "2:1",
@@ -3008,7 +3008,7 @@
         "1:2"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: 2:1</h4><p>The radius formula is r = mv/(qB):</p><div class='exp-diagram'><p>r<sub>proton</sub> = m<sub>p</sub> v / (eB)</p><p>r<sub>alpha</sub> = 4m<sub>p</sub> v / (2eB) = 2m<sub>p</sub> v / (eB)</p><p>r<sub>alpha</sub> / r<sub>proton</sub> = 2m<sub>p</sub>v/(eB) &divide; m<sub>p</sub>v/(eB) = <strong>2</strong></p></div><p>The alpha particle has 4 times the mass but 2 times the charge, so its radius is 4/2 = 2 times larger.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>1:1: This would require the same m/q ratio, but 4m/2e = 2m/e, not m/e.</li><li>4:1: This would be the ratio if only mass mattered and charge were equal.</li><li>1:2: This reverses the ratio. The heavier particle has the larger radius.</li></ul><p class='exp-key'>Key Concept: The radius depends on the mass-to-charge ratio (m/q). A particle with a larger m/q follows a larger circle at the same speed and field strength. This principle is used in mass spectrometry to separate isotopes and ions by their m/q ratios.</p>"
+      "explanation": "<h4>Correct Answer: 2:1</h4><p>The radius formula is r = mv/(qB):</p><div class='exp-diagram'><p>r<sub>proton</sub> = m<sub>p</sub> v / (eB)</p><p>r<sub>α</sub> = 4m<sub>p</sub> v / (2eB) = 2m<sub>p</sub> v / (eB)</p><p>r<sub>α</sub> / r<sub>proton</sub> = 2m<sub>p</sub>v/(eB) &divide; m<sub>p</sub>v/(eB) = <strong>2</strong></p></div><p>The α particle has 4 times the mass but 2 times the charge, so its radius is 4/2 = 2 times larger.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>1:1: This would require the same m/q ratio, but 4m/2e = 2m/e, not m/e.</li><li>4:1: This would be the ratio if only mass mattered and charge were equal.</li><li>1:2: This reverses the ratio. The heavier particle has the larger radius.</li></ul><p class='exp-key'>Key Concept: The radius depends on the mass-to-charge ratio (m/q). A particle with a larger m/q follows a larger circle at the same speed and field strength. This principle is used in mass spectrometry to separate isotopes and ions by their m/q ratios.</p>"
     },
     {
       "id": "phys-216",
@@ -3084,7 +3084,7 @@
       "id": "phys-221",
       "subject": "physics",
       "topic": "Radioactive Decay",
-      "question": "In alpha decay, a nucleus emits an alpha particle (helium-4 nucleus). If uranium-238 undergoes alpha decay, what is the resulting daughter nucleus?",
+      "question": "In α decay, a nucleus emits an α particle (helium-4 nucleus). If uranium-238 undergoes α decay, what is the resulting daughter nucleus?",
       "options": [
         "Thorium-234 (Z=90, A=234)",
         "Radium-234 (Z=88, A=234)",
@@ -3092,7 +3092,7 @@
         "Thorium-236 (Z=90, A=236)"
       ],
       "correct": 0,
-      "explanation": "<h4>Correct Answer: Thorium-234 (Z=90, A=234)</h4><p>In alpha decay, the parent nucleus loses 2 protons and 2 neutrons (an alpha particle = He-4):</p><div class='exp-diagram'><p><sup>238</sup><sub>92</sub>U &rarr; <sup>234</sup><sub>90</sub>Th + <sup>4</sup><sub>2</sub>He</p><p>Mass number: 238 - 4 = 234</p><p>Atomic number: 92 - 2 = 90 (thorium)</p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>Radium-234 (Z=88): This would mean losing 4 protons instead of 2, which does not happen in alpha decay.</li><li>Protactinium-234 (Z=91): Z=91 means losing only 1 proton, which is beta-plus decay, not alpha.</li><li>Thorium-236 (Z=90, A=236): The mass number should decrease by 4 (from 238), giving 234, not 236.</li></ul><p class='exp-key'>Key Concept: Alpha decay: Z decreases by 2, A decreases by 4. Beta-minus: Z increases by 1, A unchanged. Beta-plus: Z decreases by 1, A unchanged. Gamma: no change in Z or A. Always check that both Z and A balance in nuclear equations.</p>"
+      "explanation": "<h4>Correct Answer: Thorium-234 (Z=90, A=234)</h4><p>In α decay, the parent nucleus loses 2 protons and 2 neutrons (an α particle = He-4):</p><div class='exp-diagram'><p><sup>238</sup><sub>92</sub>U &rarr; <sup>234</sup><sub>90</sub>Th + <sup>4</sup><sub>2</sub>He</p><p>Mass number: 238 - 4 = 234</p><p>Atomic number: 92 - 2 = 90 (thorium)</p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>Radium-234 (Z=88): This would mean losing 4 protons instead of 2, which does not happen in α decay.</li><li>Protactinium-234 (Z=91): Z=91 means losing only 1 proton, which is β-plus decay, not α.</li><li>Thorium-236 (Z=90, A=236): The mass number should decrease by 4 (from 238), giving 234, not 236.</li></ul><p class='exp-key'>Key Concept: Α decay: Z decreases by 2, A decreases by 4. Β-minus: Z increases by 1, A unchanged. Β-plus: Z decreases by 1, A unchanged. Γ: no change in Z or A. Always check that both Z and A balance in nuclear equations.</p>"
     },
     {
       "id": "phys-222",
@@ -3158,11 +3158,11 @@
       "options": [
         "XL = 1/(wL)",
         "XL = wL",
-        "XL = w^2 L",
+        "XL = w<sup>2</sup> L",
         "XL = L/w"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: XL = wL</h4><p>Inductive reactance is the opposition to current flow offered by an inductor in an AC circuit. It is directly proportional to both the <strong>angular frequency (w = 2 pi f)</strong> and the <strong>inductance (L)</strong>:</p><p style='text-align:center'><strong>XL = wL = 2 pi f L</strong></p><p>The unit of inductive reactance is the <strong>ohm (Omega)</strong>, the same as resistance. As frequency increases, the inductor opposes current more strongly because the changing current produces a larger back-EMF.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XL = 1/(wL):</strong> This is the formula for <strong>capacitive reactance</strong> (XC = 1/(wC)), not inductive reactance. If you see an inverse relationship with frequency, think capacitor. If you see a direct relationship, think inductor.</p><p><strong>C. XL = w^2 L:</strong> This has the wrong power dependence on frequency. Reactance depends on the first power of w, not w squared. There is no standard circuit element with w^2 dependence in its reactance formula.</p><p><strong>D. XL = L/w:</strong> This inverts the frequency dependence. It would imply that higher frequencies lead to lower reactance, which is the opposite of how inductors behave. Inductors resist rapid changes in current, so higher frequencies mean greater opposition.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XL = 0, meaning an ideal inductor behaves like a short circuit (zero resistance to steady current).</li><li>At very high frequencies, XL becomes very large, and the inductor effectively blocks AC current (acts like an open circuit).</li><li>An inductor stores energy in its <strong>magnetic field</strong>: E = (1/2)LI^2.</li></ul><p class='exp-key'>Bottom Line: XL = wL. Inductive reactance increases linearly with both frequency and inductance. Inductors pass DC freely but increasingly block higher-frequency AC signals.</p>"
+      "explanation": "<h4>Correct Answer: XL = wL</h4><p>Inductive reactance is the opposition to current flow offered by an inductor in an AC circuit. It is directly proportional to both the <strong>angular frequency (w = 2 π f)</strong> and the <strong>inductance (L)</strong>:</p><p style='text-align:center'><strong>XL = wL = 2 π f L</strong></p><p>The unit of inductive reactance is the <strong>ohm (Ω)</strong>, the same as resistance. As frequency increases, the inductor opposes current more strongly because the changing current produces a larger back-EMF.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XL = 1/(wL):</strong> This is the formula for <strong>capacitive reactance</strong> (XC = 1/(wC)), not inductive reactance. If you see an inverse relationship with frequency, think capacitor. If you see a direct relationship, think inductor.</p><p><strong>C. XL = w<sup>2</sup> L:</strong> This has the wrong power dependence on frequency. Reactance depends on the first power of w, not w squared. There is no standard circuit element with w<sup>2</sup> dependence in its reactance formula.</p><p><strong>D. XL = L/w:</strong> This inverts the frequency dependence. It would imply that higher frequencies lead to lower reactance, which is the opposite of how inductors behave. Inductors resist rapid changes in current, so higher frequencies mean greater opposition.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XL = 0, meaning an ideal inductor behaves like a short circuit (zero resistance to steady current).</li><li>At very high frequencies, XL becomes very large, and the inductor effectively blocks AC current (acts like an open circuit).</li><li>An inductor stores energy in its <strong>magnetic field</strong>: E = (1/2)LI<sup>2</sup>.</li></ul><p class='exp-key'>Bottom Line: XL = wL. Inductive reactance increases linearly with both frequency and inductance. Inductors pass DC freely but increasingly block higher-frequency AC signals.</p>"
     },
     {
       "id": "phys-227",
@@ -3176,7 +3176,7 @@
         "XC = C/w"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: XC = 1/(wC)</h4><p>Capacitive reactance is the opposition to current flow offered by a capacitor in an AC circuit. It is <strong>inversely proportional</strong> to both the angular frequency and the capacitance:</p><p style='text-align:center'><strong>XC = 1/(wC) = 1/(2 pi f C)</strong></p><p>The unit is the <strong>ohm</strong>. Unlike inductive reactance, capacitive reactance <strong>decreases</strong> as frequency increases, because a rapidly alternating voltage can charge and discharge the capacitor more effectively.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XC = wC:</strong> This incorrectly shows a direct proportionality between reactance and frequency. That relationship (XL = wL) applies to <strong>inductors</strong>, not capacitors. Capacitors behave oppositely: they pass high frequencies easily.</p><p><strong>B. XC = w/C:</strong> This shows reactance increasing with frequency, which is wrong for a capacitor. Additionally, the dimensional analysis fails: (rad/s)/F does not yield ohms.</p><p><strong>D. XC = C/w:</strong> This has the correct inverse relationship with w but incorrectly places C in the numerator. Larger capacitance should mean <strong>lower</strong> reactance (easier for current to flow), so C must be in the denominator.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XC approaches infinity, meaning a capacitor blocks DC completely (acts as an open circuit after fully charging).</li><li>At very high frequencies, XC approaches zero, and the capacitor behaves like a short circuit (passes high-frequency signals freely).</li><li>A capacitor stores energy in its <strong>electric field</strong>: E = (1/2)CV^2.</li><li>The contrasting behavior of inductors (block high f) and capacitors (block low f) is the basis for electronic filters.</li></ul><p class='exp-key'>Bottom Line: XC = 1/(wC). Capacitive reactance decreases with increasing frequency and capacitance. Capacitors block DC but pass high-frequency AC -- the opposite behavior of inductors.</p>"
+      "explanation": "<h4>Correct Answer: XC = 1/(wC)</h4><p>Capacitive reactance is the opposition to current flow offered by a capacitor in an AC circuit. It is <strong>inversely proportional</strong> to both the angular frequency and the capacitance:</p><p style='text-align:center'><strong>XC = 1/(wC) = 1/(2 π f C)</strong></p><p>The unit is the <strong>ohm</strong>. Unlike inductive reactance, capacitive reactance <strong>decreases</strong> as frequency increases, because a rapidly alternating voltage can charge and discharge the capacitor more effectively.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XC = wC:</strong> This incorrectly shows a direct proportionality between reactance and frequency. That relationship (XL = wL) applies to <strong>inductors</strong>, not capacitors. Capacitors behave oppositely: they pass high frequencies easily.</p><p><strong>B. XC = w/C:</strong> This shows reactance increasing with frequency, which is wrong for a capacitor. Additionally, the dimensional analysis fails: (rad/s)/F does not yield ohms.</p><p><strong>D. XC = C/w:</strong> This has the correct inverse relationship with w but incorrectly places C in the numerator. Larger capacitance should mean <strong>lower</strong> reactance (easier for current to flow), so C must be in the denominator.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XC approaches infinity, meaning a capacitor blocks DC completely (acts as an open circuit after fully charging).</li><li>At very high frequencies, XC approaches zero, and the capacitor behaves like a short circuit (passes high-frequency signals freely).</li><li>A capacitor stores energy in its <strong>electric field</strong>: E = (1/2)CV<sup>2</sup>.</li><li>The contrasting behavior of inductors (block high f) and capacitors (block low f) is the basis for electronic filters.</li></ul><p class='exp-key'>Bottom Line: XC = 1/(wC). Capacitive reactance decreases with increasing frequency and capacitance. Capacitors block DC but pass high-frequency AC -- the opposite behavior of inductors.</p>"
     },
     {
       "id": "phys-228",
@@ -3185,12 +3185,12 @@
       "question": "The total impedance Z of a series RLC circuit is given by:",
       "options": [
         "Z = R + XL + XC",
-        "Z = sqrt(R^2 + (XL - XC)^2)",
-        "Z = sqrt(R^2 + (XL + XC)^2)",
+        "Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)",
+        "Z = sqrt(R<sup>2</sup> + (XL + XC)<sup>2</sup>)",
         "Z = R + (XL - XC)"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Z = sqrt(R^2 + (XL - XC)^2)</h4><p>In a series RLC circuit, the impedance combines resistance and net reactance using <strong>vector (phasor) addition</strong>. The resistance R is along the real axis, while the net reactance (XL - XC) is along the imaginary axis. The magnitude of impedance is:</p><p style='text-align:center'><strong>Z = sqrt(R^2 + (XL - XC)^2)</strong></p><p>This is because the voltage across the resistor is in phase with the current, while the voltages across L and C are 90 degrees out of phase (and opposite to each other).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Z = R + XL + XC:</strong> Simple arithmetic addition is incorrect because R, XL, and XC are not in phase with each other. The voltage across the inductor leads the current by 90 degrees, the voltage across the capacitor lags by 90 degrees, and the voltage across the resistor is in phase. They must be combined as <strong>phasors</strong>, not scalars.</p><p><strong>C. Z = sqrt(R^2 + (XL + XC)^2):</strong> The reactances of L and C should be <strong>subtracted</strong>, not added. Since the inductor voltage leads by +90 degrees and the capacitor voltage lags by -90 degrees, they are 180 degrees apart and partially cancel each other. The net reactance is their difference.</p><p><strong>D. Z = R + (XL - XC):</strong> While (XL - XC) correctly represents the net reactance, you cannot simply add it arithmetically to R because they are perpendicular in the impedance phasor diagram. The Pythagorean theorem (vector addition) must be used.</p><h4>Key Educational Points:</h4><ul><li>The phase angle between voltage and current: tan(phi) = (XL - XC)/R. If XL > XC, the circuit is inductive (voltage leads current). If XC > XL, the circuit is capacitive (current leads voltage).</li><li>At resonance, XL = XC, and Z = R (minimum impedance, maximum current).</li><li>Impedance is measured in ohms and can be represented as a complex number: Z = R + j(XL - XC).</li></ul><p class='exp-key'>Bottom Line: Z = sqrt(R^2 + (XL - XC)^2). The reactances subtract (they oppose each other), and the net reactance combines with resistance by the Pythagorean theorem because they are 90 degrees out of phase.</p>"
+      "explanation": "<h4>Correct Answer: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)</h4><p>In a series RLC circuit, the impedance combines resistance and net reactance using <strong>vector (phasor) addition</strong>. The resistance R is along the real axis, while the net reactance (XL - XC) is along the imaginary axis. The magnitude of impedance is:</p><p style='text-align:center'><strong>Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)</strong></p><p>This is because the voltage across the resistor is in phase with the current, while the voltages across L and C are 90 degrees out of phase (and opposite to each other).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Z = R + XL + XC:</strong> Simple arithmetic addition is incorrect because R, XL, and XC are not in phase with each other. The voltage across the inductor leads the current by 90 degrees, the voltage across the capacitor lags by 90 degrees, and the voltage across the resistor is in phase. They must be combined as <strong>phasors</strong>, not scalars.</p><p><strong>C. Z = sqrt(R<sup>2</sup> + (XL + XC)<sup>2</sup>):</strong> The reactances of L and C should be <strong>subtracted</strong>, not added. Since the inductor voltage leads by +90 degrees and the capacitor voltage lags by -90 degrees, they are 180 degrees apart and partially cancel each other. The net reactance is their difference.</p><p><strong>D. Z = R + (XL - XC):</strong> While (XL - XC) correctly represents the net reactance, you cannot simply add it arithmetically to R because they are perpendicular in the impedance phasor diagram. The Pythagorean theorem (vector addition) must be used.</p><h4>Key Educational Points:</h4><ul><li>The phase angle between voltage and current: tan(φ) = (XL - XC)/R. If XL > XC, the circuit is inductive (voltage leads current). If XC > XL, the circuit is capacitive (current leads voltage).</li><li>At resonance, XL = XC, and Z = R (minimum impedance, maximum current).</li><li>Impedance is measured in ohms and can be represented as a complex number: Z = R + j(XL - XC).</li></ul><p class='exp-key'>Bottom Line: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>). The reactances subtract (they oppose each other), and the net reactance combines with resistance by the Pythagorean theorem because they are 90 degrees out of phase.</p>"
     },
     {
       "id": "phys-229",
@@ -3204,7 +3204,7 @@
         "The impedance reaches its maximum value"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: The inductive reactance equals the capacitive reactance (XL = XC)</h4><p>Resonance in a series RLC circuit occurs at the angular frequency w0 where <strong>XL = XC</strong>. At this condition:</p><p style='text-align:center'><strong>w0 L = 1/(w0 C)</strong><br/>Solving: <strong>w0 = 1/sqrt(LC)</strong></p><p>At resonance, the net reactance is zero (XL - XC = 0), so the impedance equals <strong>Z = R</strong> (its minimum value). This means the current reaches its <strong>maximum amplitude</strong> and is exactly in phase with the applied voltage.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The resistance equals the total reactance (R = XL + XC):</strong> This condition has no special physical significance in RLC circuit theory. Resonance is defined by the cancellation of inductive and capacitive reactances, not by any relationship between R and the sum of reactances.</p><p><strong>C. The current and voltage are 90 degrees out of phase:</strong> At resonance, current and voltage are <strong>in phase</strong> (phase angle = 0), not 90 degrees out of phase. A 90-degree phase difference occurs in purely reactive circuits (containing only an inductor or only a capacitor), not at resonance.</p><p><strong>D. The impedance reaches its maximum value:</strong> This is the opposite of what happens. At resonance in a series RLC circuit, impedance is at its <strong>minimum</strong> (Z = R), and current is at its maximum. Note: in a parallel RLC circuit, resonance does produce maximum impedance, which may cause confusion.</p><h4>Key Educational Points:</h4><ul><li>The resonant frequency f0 = 1/(2 pi sqrt(LC)) depends only on L and C, <strong>not on R</strong>.</li><li>The quality factor Q = w0L/R = 1/(w0CR) measures the sharpness of the resonance peak. Higher Q means a narrower, taller peak.</li><li>At resonance, the voltages across L and C can individually be much larger than the source voltage (voltage magnification), but they are equal and opposite and cancel each other.</li><li>Resonance is exploited in radio tuning circuits to select specific frequencies.</li></ul><p class='exp-key'>Bottom Line: Series RLC resonance occurs when XL = XC (at w0 = 1/sqrt(LC)). At resonance: impedance is minimum (Z = R), current is maximum, and voltage and current are in phase.</p>"
+      "explanation": "<h4>Correct Answer: The inductive reactance equals the capacitive reactance (XL = XC)</h4><p>Resonance in a series RLC circuit occurs at the angular frequency w0 where <strong>XL = XC</strong>. At this condition:</p><p style='text-align:center'><strong>w0 L = 1/(w0 C)</strong><br/>Solving: <strong>w0 = 1/sqrt(LC)</strong></p><p>At resonance, the net reactance is zero (XL - XC = 0), so the impedance equals <strong>Z = R</strong> (its minimum value). This means the current reaches its <strong>maximum amplitude</strong> and is exactly in phase with the applied voltage.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The resistance equals the total reactance (R = XL + XC):</strong> This condition has no special physical significance in RLC circuit theory. Resonance is defined by the cancellation of inductive and capacitive reactances, not by any relationship between R and the sum of reactances.</p><p><strong>C. The current and voltage are 90 degrees out of phase:</strong> At resonance, current and voltage are <strong>in phase</strong> (phase angle = 0), not 90 degrees out of phase. A 90-degree phase difference occurs in purely reactive circuits (containing only an inductor or only a capacitor), not at resonance.</p><p><strong>D. The impedance reaches its maximum value:</strong> This is the opposite of what happens. At resonance in a series RLC circuit, impedance is at its <strong>minimum</strong> (Z = R), and current is at its maximum. Note: in a parallel RLC circuit, resonance does produce maximum impedance, which may cause confusion.</p><h4>Key Educational Points:</h4><ul><li>The resonant frequency f0 = 1/(2 π sqrt(LC)) depends only on L and C, <strong>not on R</strong>.</li><li>The quality factor Q = w0L/R = 1/(w0CR) measures the sharpness of the resonance peak. Higher Q means a narrower, taller peak.</li><li>At resonance, the voltages across L and C can individually be much larger than the source voltage (voltage magnification), but they are equal and opposite and cancel each other.</li><li>Resonance is exploited in radio tuning circuits to select specific frequencies.</li></ul><p class='exp-key'>Bottom Line: Series RLC resonance occurs when XL = XC (at w0 = 1/sqrt(LC)). At resonance: impedance is minimum (Z = R), current is maximum, and voltage and current are in phase.</p>"
     },
     {
       "id": "phys-230",
@@ -3218,7 +3218,7 @@
         "Voltage leads current by 180 degrees"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Voltage leads current by 90 degrees</h4><p>In a purely inductive circuit, the voltage across the inductor <strong>leads the current by 90 degrees</strong> (pi/2 radians). This is because the voltage across an inductor is proportional to the rate of change of current (V = L di/dt). The current must change before the voltage responds, meaning the voltage waveform peaks one-quarter cycle (90 degrees) before the current waveform.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Voltage and current are in phase:</strong> This describes a <strong>purely resistive</strong> circuit. In a resistor, V = IR at every instant, so voltage and current rise and fall together with zero phase difference.</p><p><strong>C. Current leads voltage by 90 degrees:</strong> This describes a <strong>purely capacitive</strong> circuit, not an inductive one. In a capacitor, current flows in response to voltage changes (I = C dV/dt), so current peaks before voltage. The mnemonic is \"ELI the ICE man\": E (voltage) Leads I (current) in an Inductor; I (current) leads E (voltage) in a Capacitor.</p><p><strong>D. Voltage leads current by 180 degrees:</strong> A 180-degree phase difference would mean voltage and current are exactly opposite (when one is maximum positive, the other is maximum negative). This does not occur in any single ideal circuit element; it would require a negative resistance, which is not physically standard.</p><h4>Key Educational Points:</h4><ul><li>Mnemonic: <strong>\"ELI the ICE man\"</strong> -- In an inductor (L), E leads I. In a capacitor (C), I leads E.</li><li>The 90-degree phase difference means that in a pure inductor, the average power dissipated is <strong>zero</strong> (reactive power only). Energy oscillates between the circuit and the inductor's magnetic field.</li><li>In real circuits, inductors have some resistance (wire resistance), so the phase angle is less than 90 degrees.</li></ul><p class='exp-key'>Bottom Line: In an inductor, voltage leads current by 90 degrees (ELI). In a capacitor, current leads voltage by 90 degrees (ICE). In a resistor, they are in phase. Remember: ELI the ICE man.</p>"
+      "explanation": "<h4>Correct Answer: Voltage leads current by 90 degrees</h4><p>In a purely inductive circuit, the voltage across the inductor <strong>leads the current by 90 degrees</strong> (π/2 radians). This is because the voltage across an inductor is proportional to the rate of change of current (V = L di/dt). The current must change before the voltage responds, meaning the voltage waveform peaks one-quarter cycle (90 degrees) before the current waveform.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Voltage and current are in phase:</strong> This describes a <strong>purely resistive</strong> circuit. In a resistor, V = IR at every instant, so voltage and current rise and fall together with zero phase difference.</p><p><strong>C. Current leads voltage by 90 degrees:</strong> This describes a <strong>purely capacitive</strong> circuit, not an inductive one. In a capacitor, current flows in response to voltage changes (I = C dV/dt), so current peaks before voltage. The mnemonic is \"ELI the ICE man\": E (voltage) Leads I (current) in an Inductor; I (current) leads E (voltage) in a Capacitor.</p><p><strong>D. Voltage leads current by 180 degrees:</strong> A 180-degree phase difference would mean voltage and current are exactly opposite (when one is maximum positive, the other is maximum negative). This does not occur in any single ideal circuit element; it would require a negative resistance, which is not physically standard.</p><h4>Key Educational Points:</h4><ul><li>Mnemonic: <strong>\"ELI the ICE man\"</strong> -- In an inductor (L), E leads I. In a capacitor (C), I leads E.</li><li>The 90-degree phase difference means that in a pure inductor, the average power dissipated is <strong>zero</strong> (reactive power only). Energy oscillates between the circuit and the inductor's magnetic field.</li><li>In real circuits, inductors have some resistance (wire resistance), so the phase angle is less than 90 degrees.</li></ul><p class='exp-key'>Bottom Line: In an inductor, voltage leads current by 90 degrees (ELI). In a capacitor, current leads voltage by 90 degrees (ICE). In a resistor, they are in phase. Remember: ELI the ICE man.</p>"
     },
     {
       "id": "phys-231",
@@ -3246,7 +3246,7 @@
         "V = I/(XL - XC), where the reactances determine the current"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: V = IZ, where Z is the total impedance of the circuit</h4><p>The generalized Ohm's law for AC circuits replaces resistance (R) with <strong>impedance (Z)</strong>:</p><p style='text-align:center'><strong>V = IZ</strong></p><p>where V and I are either both peak values or both RMS values. Impedance Z accounts for <strong>all opposition to current flow</strong>: resistance (energy dissipation), inductive reactance (magnetic field energy storage), and capacitive reactance (electric field energy storage).</p><h4>Why the other choices are wrong:</h4><p><strong>A. V = IR, where R is the resistance only:</strong> This is the DC form of Ohm's law and applies only to the <strong>resistive component</strong> of an AC circuit. It gives the voltage across the resistor but not the total source voltage, which must also account for the voltages across inductors and capacitors.</p><p><strong>B. V = I x XL, where XL is the inductive reactance only:</strong> This gives only the voltage across the <strong>inductor</strong>. It ignores the resistor and capacitor contributions. While VL = I x XL is correct for the inductor alone, it does not represent the total circuit relationship.</p><p><strong>D. V = I/(XL - XC):</strong> This expression is dimensionally incorrect. V/I should equal impedance (ohms), but I/(XL-XC) has units of amperes/ohms = siemens, which is the unit of conductance, not voltage. The correct relationship involving reactance difference is Z = sqrt(R^2 + (XL-XC)^2).</p><h4>Key Educational Points:</h4><ul><li>The RMS (root mean square) values are used for practical AC measurements: VRMS = Vpeak/sqrt(2) and IRMS = Ipeak/sqrt(2).</li><li>Average power in AC: P = VRMS x IRMS x cos(phi), where cos(phi) is the power factor. Only the resistive component dissipates power.</li><li>V = IZ is valid for the entire circuit; for individual components: VR = IR, VL = IXL, VC = IXC.</li></ul><p class='exp-key'>Bottom Line: The AC generalization of Ohm's law is V = IZ, where Z (impedance) replaces R. Impedance combines resistance and reactance: Z = sqrt(R^2 + (XL - XC)^2). Use RMS values for practical calculations.</p>"
+      "explanation": "<h4>Correct Answer: V = IZ, where Z is the total impedance of the circuit</h4><p>The generalized Ohm's law for AC circuits replaces resistance (R) with <strong>impedance (Z)</strong>:</p><p style='text-align:center'><strong>V = IZ</strong></p><p>where V and I are either both peak values or both RMS values. Impedance Z accounts for <strong>all opposition to current flow</strong>: resistance (energy dissipation), inductive reactance (magnetic field energy storage), and capacitive reactance (electric field energy storage).</p><h4>Why the other choices are wrong:</h4><p><strong>A. V = IR, where R is the resistance only:</strong> This is the DC form of Ohm's law and applies only to the <strong>resistive component</strong> of an AC circuit. It gives the voltage across the resistor but not the total source voltage, which must also account for the voltages across inductors and capacitors.</p><p><strong>B. V = I x XL, where XL is the inductive reactance only:</strong> This gives only the voltage across the <strong>inductor</strong>. It ignores the resistor and capacitor contributions. While VL = I x XL is correct for the inductor alone, it does not represent the total circuit relationship.</p><p><strong>D. V = I/(XL - XC):</strong> This expression is dimensionally incorrect. V/I should equal impedance (ohms), but I/(XL-XC) has units of amperes/ohms = siemens, which is the unit of conductance, not voltage. The correct relationship involving reactance difference is Z = sqrt(R<sup>2</sup> + (XL-XC)<sup>2</sup>).</p><h4>Key Educational Points:</h4><ul><li>The RMS (root mean square) values are used for practical AC measurements: VRMS = Vpeak/sqrt(2) and IRMS = Ipeak/sqrt(2).</li><li>Average power in AC: P = VRMS x IRMS x cos(φ), where cos(φ) is the power factor. Only the resistive component dissipates power.</li><li>V = IZ is valid for the entire circuit; for individual components: VR = IR, VL = IXL, VC = IXC.</li></ul><p class='exp-key'>Bottom Line: The AC generalization of Ohm's law is V = IZ, where Z (impedance) replaces R. Impedance combines resistance and reactance: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>). Use RMS values for practical calculations.</p>"
     },
     {
       "id": "phys-233",
@@ -3260,7 +3260,7 @@
         "160 dB"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: 120 dB</h4><p>The <strong>threshold of hearing</strong> (the quietest sound a healthy young ear can detect at 1 kHz) is defined as <strong>0 dB</strong>, corresponding to a sound intensity of <strong>I0 = 10^-12 W/m^2</strong>. The <strong>threshold of pain</strong>, where sound becomes physically painful, is approximately <strong>120 dB</strong>, corresponding to an intensity of <strong>1 W/m^2</strong>.</p><p>Since the decibel scale is logarithmic (dB = 10 log10(I/I0)), the range from threshold of hearing to threshold of pain spans <strong>12 orders of magnitude</strong> in intensity (10^-12 to 10^0 W/m^2).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 60 dB:</strong> This corresponds to normal conversational speech at about 1 meter distance. While clearly audible, it is far from painful. 60 dB represents an intensity of 10^-6 W/m^2, one million times the hearing threshold but one million times below the pain threshold.</p><p><strong>B. 90 dB:</strong> This is the approximate level of a lawnmower or heavy traffic. Prolonged exposure at 90 dB can cause hearing damage (OSHA limits occupational exposure to 8 hours at this level), but it is not the threshold of pain. There is a 30 dB (1000-fold intensity) difference between 90 dB and the pain threshold.</p><p><strong>D. 160 dB:</strong> This level (10^4 W/m^2) is well beyond the pain threshold and approaches levels that can cause immediate, permanent hearing damage or even eardrum rupture. Levels around 160-180 dB are produced near jet engines or explosions.</p><h4>Key Educational Points:</h4><ul><li>Each 10 dB increase represents a <strong>10-fold increase</strong> in sound intensity. Each 20 dB increase represents a <strong>10-fold increase</strong> in sound pressure.</li><li>The human ear can perceive sounds across an enormous dynamic range: 12 orders of magnitude in intensity (0 to 120 dB).</li><li>Common reference levels: whisper ~20 dB, conversation ~60 dB, vacuum cleaner ~70 dB, rock concert ~110 dB, jet engine ~140 dB.</li></ul><p class='exp-key'>Bottom Line: Threshold of hearing = 0 dB (10^-12 W/m^2). Threshold of pain = 120 dB (1 W/m^2). The 120 dB range spans 12 orders of magnitude in intensity, demonstrating the extraordinary sensitivity range of human hearing.</p>"
+      "explanation": "<h4>Correct Answer: 120 dB</h4><p>The <strong>threshold of hearing</strong> (the quietest sound a healthy young ear can detect at 1 kHz) is defined as <strong>0 dB</strong>, corresponding to a sound intensity of <strong>I0 = 10<sup>-12</sup> W/m<sup>2</sup></strong>. The <strong>threshold of pain</strong>, where sound becomes physically painful, is approximately <strong>120 dB</strong>, corresponding to an intensity of <strong>1 W/m<sup>2</sup></strong>.</p><p>Since the decibel scale is logarithmic (dB = 10 log10(I/I0)), the range from threshold of hearing to threshold of pain spans <strong>12 orders of magnitude</strong> in intensity (10<sup>-12</sup> to 10<sup>0</sup> W/m<sup>2</sup>).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 60 dB:</strong> This corresponds to normal conversational speech at about 1 meter distance. While clearly audible, it is far from painful. 60 dB represents an intensity of 10<sup>-6</sup> W/m<sup>2</sup>, one million times the hearing threshold but one million times below the pain threshold.</p><p><strong>B. 90 dB:</strong> This is the approximate level of a lawnmower or heavy traffic. Prolonged exposure at 90 dB can cause hearing damage (OSHA limits occupational exposure to 8 hours at this level), but it is not the threshold of pain. There is a 30 dB (1000-fold intensity) difference between 90 dB and the pain threshold.</p><p><strong>D. 160 dB:</strong> This level (10<sup>4</sup> W/m<sup>2</sup>) is well beyond the pain threshold and approaches levels that can cause immediate, permanent hearing damage or even eardrum rupture. Levels around 160-180 dB are produced near jet engines or explosions.</p><h4>Key Educational Points:</h4><ul><li>Each 10 dB increase represents a <strong>10-fold increase</strong> in sound intensity. Each 20 dB increase represents a <strong>10-fold increase</strong> in sound pressure.</li><li>The human ear can perceive sounds across an enormous dynamic range: 12 orders of magnitude in intensity (0 to 120 dB).</li><li>Common reference levels: whisper ~20 dB, conversation ~60 dB, vacuum cleaner ~70 dB, rock concert ~110 dB, jet engine ~140 dB.</li></ul><p class='exp-key'>Bottom Line: Threshold of hearing = 0 dB (10<sup>-12</sup> W/m<sup>2</sup>). Threshold of pain = 120 dB (1 W/m<sup>2</sup>). The 120 dB range spans 12 orders of magnitude in intensity, demonstrating the extraordinary sensitivity range of human hearing.</p>"
     },
     {
       "id": "phys-234",
@@ -3302,7 +3302,7 @@
         "Alternating between higher and lower than the actual frequency"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Higher than the actual frequency emitted by the siren</h4><p>The <strong>Doppler effect</strong> states that when a sound source moves <strong>toward</strong> an observer, the observed frequency is <strong>higher</strong> than the emitted frequency. This occurs because each successive wavefront is emitted from a position closer to the observer, effectively compressing the wavelength and increasing the frequency perceived.</p><p style='text-align:center'><strong>f_observed = f_source x (v_sound)/(v_sound - v_source)</strong></p><p>Since v_source is subtracted in the denominator (source approaching), the denominator is smaller than the numerator, making f_observed > f_source.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Lower than the actual frequency:</strong> A lower perceived frequency (redshift in sound) occurs when the source is moving <strong>away</strong> from the observer. As the ambulance passes and recedes, the observer would then perceive a drop in frequency. This explains the familiar pitch change as an ambulance drives by.</p><p><strong>B. Equal to the actual frequency:</strong> The perceived frequency equals the emitted frequency only when there is <strong>no relative motion</strong> between source and observer along the line connecting them (or when the source moves perpendicular to that line at the closest approach).</p><p><strong>D. Alternating between higher and lower:</strong> The frequency does not alternate. It is consistently higher while approaching and consistently lower while receding. The abrupt apparent change in pitch occurs at the moment the ambulance passes the observer, but at any given instant, the frequency is either higher or lower than the true value -- never oscillating.</p><h4>Key Educational Points:</h4><ul><li>The Doppler effect applies to all waves, not just sound. In light, approaching sources appear <strong>blueshifted</strong> (higher frequency) and receding sources appear <strong>redshifted</strong> (lower frequency).</li><li>In medicine, Doppler ultrasound uses this principle to measure blood flow velocity: blood flowing toward the transducer reflects higher-frequency echoes.</li><li>The Doppler shift does not change the speed of the wave in the medium, only the perceived frequency and wavelength.</li></ul><p class='exp-key'>Bottom Line: Approaching source = higher perceived frequency (wavefronts compressed). Receding source = lower perceived frequency (wavefronts stretched). This is the Doppler effect, used in medical ultrasound, radar, and astronomy.</p>"
+      "explanation": "<h4>Correct Answer: Higher than the actual frequency emitted by the siren</h4><p>The <strong>Doppler effect</strong> states that when a sound source moves <strong>toward</strong> an observer, the observed frequency is <strong>higher</strong> than the emitted frequency. This occurs because each successive wavefront is emitted from a position closer to the observer, effectively compressing the wavelength and increasing the frequency perceived.</p><p style='text-align:center'><strong>f<sub>observed</sub> = f<sub>source</sub> x (v<sub>sound</sub>)/(v<sub>sound</sub> - v<sub>source</sub>)</strong></p><p>Since v<sub>source</sub> is subtracted in the denominator (source approaching), the denominator is smaller than the numerator, making f<sub>observed</sub> > f<sub>source</sub>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Lower than the actual frequency:</strong> A lower perceived frequency (redshift in sound) occurs when the source is moving <strong>away</strong> from the observer. As the ambulance passes and recedes, the observer would then perceive a drop in frequency. This explains the familiar pitch change as an ambulance drives by.</p><p><strong>B. Equal to the actual frequency:</strong> The perceived frequency equals the emitted frequency only when there is <strong>no relative motion</strong> between source and observer along the line connecting them (or when the source moves perpendicular to that line at the closest approach).</p><p><strong>D. Alternating between higher and lower:</strong> The frequency does not alternate. It is consistently higher while approaching and consistently lower while receding. The abrupt apparent change in pitch occurs at the moment the ambulance passes the observer, but at any given instant, the frequency is either higher or lower than the true value -- never oscillating.</p><h4>Key Educational Points:</h4><ul><li>The Doppler effect applies to all waves, not just sound. In light, approaching sources appear <strong>blueshifted</strong> (higher frequency) and receding sources appear <strong>redshifted</strong> (lower frequency).</li><li>In medicine, Doppler ultrasound uses this principle to measure blood flow velocity: blood flowing toward the transducer reflects higher-frequency echoes.</li><li>The Doppler shift does not change the speed of the wave in the medium, only the perceived frequency and wavelength.</li></ul><p class='exp-key'>Bottom Line: Approaching source = higher perceived frequency (wavefronts compressed). Receding source = lower perceived frequency (wavefronts stretched). This is the Doppler effect, used in medical ultrasound, radar, and astronomy.</p>"
     },
     {
       "id": "phys-237",
@@ -3316,7 +3316,7 @@
         "The period is quadrupled"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: The period is halved</h4><p>Frequency (f) and period (T) are <strong>inversely related</strong>:</p><p style='text-align:center'><strong>T = 1/f</strong> &nbsp; or equivalently &nbsp; <strong>f = 1/T</strong></p><p>If frequency doubles (f → 2f), the period becomes: T' = 1/(2f) = T/2. The period is <strong>halved</strong>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The period doubles:</strong> This would require a <strong>direct</strong> proportionality between frequency and period, which contradicts their inverse relationship. If frequency increases, period must decrease. Doubling the period would actually require <strong>halving</strong> the frequency.</p><p><strong>C. The period remains unchanged:</strong> Period and frequency are fundamentally linked; changing one necessarily changes the other. They can only remain unchanged simultaneously. This answer might be confused with the behavior of wavelength in a different context (e.g., standing waves in a fixed medium).</p><p><strong>D. The period is quadrupled:</strong> This would imply T is proportional to f^2, which is not the case. The inverse relationship means if f is multiplied by any factor n, T is divided by the same factor n.</p><h4>Key Educational Points:</h4><ul><li>Period is the time for one complete oscillation (measured in seconds). Frequency is the number of complete oscillations per second (measured in hertz, Hz).</li><li>The wave equation connects frequency, wavelength, and speed: <strong>v = f x lambda</strong>. If frequency doubles in the same medium (constant v), the wavelength is halved.</li><li>This inverse relationship applies to all periodic phenomena: sound waves, electromagnetic waves, pendulums, and any oscillatory motion.</li></ul><p class='exp-key'>Bottom Line: T = 1/f. Doubling frequency halves the period. Tripling frequency gives one-third the period. Frequency and period are always inversely proportional -- they are reciprocals of each other.</p>"
+      "explanation": "<h4>Correct Answer: The period is halved</h4><p>Frequency (f) and period (T) are <strong>inversely related</strong>:</p><p style='text-align:center'><strong>T = 1/f</strong> &nbsp; or equivalently &nbsp; <strong>f = 1/T</strong></p><p>If frequency doubles (f → 2f), the period becomes: T' = 1/(2f) = T/2. The period is <strong>halved</strong>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The period doubles:</strong> This would require a <strong>direct</strong> proportionality between frequency and period, which contradicts their inverse relationship. If frequency increases, period must decrease. Doubling the period would actually require <strong>halving</strong> the frequency.</p><p><strong>C. The period remains unchanged:</strong> Period and frequency are fundamentally linked; changing one necessarily changes the other. They can only remain unchanged simultaneously. This answer might be confused with the behavior of wavelength in a different context (e.g., standing waves in a fixed medium).</p><p><strong>D. The period is quadrupled:</strong> This would imply T is proportional to f<sup>2</sup>, which is not the case. The inverse relationship means if f is multiplied by any factor n, T is divided by the same factor n.</p><h4>Key Educational Points:</h4><ul><li>Period is the time for one complete oscillation (measured in seconds). Frequency is the number of complete oscillations per second (measured in hertz, Hz).</li><li>The wave equation connects frequency, wavelength, and speed: <strong>v = f x λ</strong>. If frequency doubles in the same medium (constant v), the wavelength is halved.</li><li>This inverse relationship applies to all periodic phenomena: sound waves, electromagnetic waves, pendulums, and any oscillatory motion.</li></ul><p class='exp-key'>Bottom Line: T = 1/f. Doubling frequency halves the period. Tripling frequency gives one-third the period. Frequency and period are always inversely proportional -- they are reciprocals of each other.</p>"
     },
     {
       "id": "phys-238",
@@ -3330,7 +3330,7 @@
         "Group VIIA (e.g., chlorine, bromine)"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Group VA (e.g., phosphorus, arsenic)</h4><p>N-type semiconductors are produced by doping silicon (Group IVA, 4 valence electrons) with elements from <strong>Group VA</strong> (5 valence electrons), such as phosphorus, arsenic, or antimony. These <strong>donor</strong> atoms contribute four electrons to covalent bonds with silicon and have one <strong>extra electron</strong> that is loosely bound and easily freed to become a conduction electron. The \"N\" stands for <strong>negative</strong>, referring to the excess negative charge carriers (electrons).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Group IIIA (e.g., boron, gallium):</strong> Group IIIA elements have only 3 valence electrons. When they substitute for silicon, they create an electron <strong>deficiency</strong> (a \"hole\") in the crystal lattice. This produces a <strong>P-type</strong> semiconductor, where the majority charge carriers are positive holes. These dopants are called <strong>acceptors</strong> because they accept electrons from neighboring bonds.</p><p><strong>C. Group IA (e.g., sodium, potassium):</strong> Alkali metals with 1 valence electron are not used as semiconductor dopants. They do not substitute properly into the silicon crystal lattice (wrong size and bonding characteristics) and would disrupt the tetrahedral crystal structure rather than creating controlled n-type or p-type regions.</p><p><strong>D. Group VIIA (e.g., chlorine, bromine):</strong> Halogens with 7 valence electrons are not standard semiconductor dopants. They are highly electronegative and reactive, and they do not integrate into the silicon lattice in the controlled manner needed for semiconductor doping.</p><h4>Key Educational Points:</h4><ul><li><strong>N-type:</strong> Group VA dopant (donor) → extra electron → majority carriers are electrons.</li><li><strong>P-type:</strong> Group IIIA dopant (acceptor) → electron hole → majority carriers are holes.</li><li>The dopant concentrations are extremely small (about 1 dopant per 10^6 to 10^8 silicon atoms), yet they dramatically change the conductivity.</li><li>Combining N-type and P-type regions creates a <strong>PN junction</strong>, the basis for diodes, transistors, and all modern electronics.</li></ul><p class='exp-key'>Bottom Line: N-type = Group VA dopant (5 valence electrons, 1 extra → donor → excess electrons). P-type = Group IIIA dopant (3 valence electrons, 1 missing → acceptor → excess holes). Silicon is Group IVA with 4 valence electrons.</p>"
+      "explanation": "<h4>Correct Answer: Group VA (e.g., phosphorus, arsenic)</h4><p>N-type semiconductors are produced by doping silicon (Group IVA, 4 valence electrons) with elements from <strong>Group VA</strong> (5 valence electrons), such as phosphorus, arsenic, or antimony. These <strong>donor</strong> atoms contribute four electrons to covalent bonds with silicon and have one <strong>extra electron</strong> that is loosely bound and easily freed to become a conduction electron. The \"N\" stands for <strong>negative</strong>, referring to the excess negative charge carriers (electrons).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Group IIIA (e.g., boron, gallium):</strong> Group IIIA elements have only 3 valence electrons. When they substitute for silicon, they create an electron <strong>deficiency</strong> (a \"hole\") in the crystal lattice. This produces a <strong>P-type</strong> semiconductor, where the majority charge carriers are positive holes. These dopants are called <strong>acceptors</strong> because they accept electrons from neighboring bonds.</p><p><strong>C. Group IA (e.g., sodium, potassium):</strong> Alkali metals with 1 valence electron are not used as semiconductor dopants. They do not substitute properly into the silicon crystal lattice (wrong size and bonding characteristics) and would disrupt the tetrahedral crystal structure rather than creating controlled n-type or p-type regions.</p><p><strong>D. Group VIIA (e.g., chlorine, bromine):</strong> Halogens with 7 valence electrons are not standard semiconductor dopants. They are highly electronegative and reactive, and they do not integrate into the silicon lattice in the controlled manner needed for semiconductor doping.</p><h4>Key Educational Points:</h4><ul><li><strong>N-type:</strong> Group VA dopant (donor) → extra electron → majority carriers are electrons.</li><li><strong>P-type:</strong> Group IIIA dopant (acceptor) → electron hole → majority carriers are holes.</li><li>The dopant concentrations are extremely small (about 1 dopant per 10<sup>6</sup> to 10<sup>8</sup> silicon atoms), yet they dramatically change the conductivity.</li><li>Combining N-type and P-type regions creates a <strong>PN junction</strong>, the basis for diodes, transistors, and all modern electronics.</li></ul><p class='exp-key'>Bottom Line: N-type = Group VA dopant (5 valence electrons, 1 extra → donor → excess electrons). P-type = Group IIIA dopant (3 valence electrons, 1 missing → acceptor → excess holes). Silicon is Group IVA with 4 valence electrons.</p>"
     },
     {
       "id": "phys-239",
@@ -3372,7 +3372,7 @@
         "Inverting the negative half-cycle to produce a smooth constant voltage"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Allowing only one half-cycle (positive or negative) to pass while blocking the other</h4><p>A half-wave rectifier uses a single diode to convert AC to pulsating DC. During the <strong>forward-biased half-cycle</strong>, the diode conducts and current flows through the load. During the <strong>reverse-biased half-cycle</strong>, the diode blocks current and the output is zero. The result is a pulsating waveform that contains only positive (or only negative) half-cycles.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Allowing both positive and negative half-cycles to pass through:</strong> If both half-cycles passed, the output would still be AC, not DC. Allowing both half-cycles (by inverting one) describes a <strong>full-wave rectifier</strong>, which uses either a center-tapped transformer with two diodes or a bridge of four diodes to utilize both halves of the AC cycle.</p><p><strong>C. Doubling the frequency of the input signal:</strong> A half-wave rectifier does not change the frequency. The output pulses have the <strong>same frequency</strong> as the input AC. It is the <strong>full-wave rectifier</strong> whose output pulses at twice the input frequency (because it converts both half-cycles into positive pulses).</p><p><strong>D. Inverting the negative half-cycle to produce a smooth constant voltage:</strong> A half-wave rectifier does not invert the blocked half-cycle; it simply eliminates it (output = 0 during that time). Producing a smooth constant voltage requires additional <strong>filtering</strong> (typically a capacitor) after rectification. Even then, some ripple remains.</p><h4>Key Educational Points:</h4><ul><li>Half-wave rectifier efficiency is lower than full-wave because it uses only 50% of the input waveform. The output has higher ripple and lower average voltage.</li><li>The average DC output voltage of an ideal half-wave rectifier: V_DC = V_peak / pi ≈ 0.318 x V_peak.</li><li>A smoothing capacitor placed in parallel with the load reduces ripple by charging during the pulse and discharging during the blocked half-cycle.</li></ul><p class='exp-key'>Bottom Line: A half-wave rectifier passes one half of the AC cycle and blocks the other using a single diode. The output is pulsating DC (not smooth). Full-wave rectifiers are more efficient because they use both halves of the AC cycle.</p>"
+      "explanation": "<h4>Correct Answer: Allowing only one half-cycle (positive or negative) to pass while blocking the other</h4><p>A half-wave rectifier uses a single diode to convert AC to pulsating DC. During the <strong>forward-biased half-cycle</strong>, the diode conducts and current flows through the load. During the <strong>reverse-biased half-cycle</strong>, the diode blocks current and the output is zero. The result is a pulsating waveform that contains only positive (or only negative) half-cycles.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Allowing both positive and negative half-cycles to pass through:</strong> If both half-cycles passed, the output would still be AC, not DC. Allowing both half-cycles (by inverting one) describes a <strong>full-wave rectifier</strong>, which uses either a center-tapped transformer with two diodes or a bridge of four diodes to utilize both halves of the AC cycle.</p><p><strong>C. Doubling the frequency of the input signal:</strong> A half-wave rectifier does not change the frequency. The output pulses have the <strong>same frequency</strong> as the input AC. It is the <strong>full-wave rectifier</strong> whose output pulses at twice the input frequency (because it converts both half-cycles into positive pulses).</p><p><strong>D. Inverting the negative half-cycle to produce a smooth constant voltage:</strong> A half-wave rectifier does not invert the blocked half-cycle; it simply eliminates it (output = 0 during that time). Producing a smooth constant voltage requires additional <strong>filtering</strong> (typically a capacitor) after rectification. Even then, some ripple remains.</p><h4>Key Educational Points:</h4><ul><li>Half-wave rectifier efficiency is lower than full-wave because it uses only 50% of the input waveform. The output has higher ripple and lower average voltage.</li><li>The average DC output voltage of an ideal half-wave rectifier: V<sub>DC</sub> = V<sub>peak</sub> / π ≈ 0.318 x V<sub>peak</sub>.</li><li>A smoothing capacitor placed in parallel with the load reduces ripple by charging during the pulse and discharging during the blocked half-cycle.</li></ul><p class='exp-key'>Bottom Line: A half-wave rectifier passes one half of the AC cycle and blocks the other using a single diode. The output is pulsating DC (not smooth). Full-wave rectifiers are more efficient because they use both halves of the AC cycle.</p>"
     },
     {
       "id": "phys-242",
@@ -3395,12 +3395,12 @@
       "question": "The Bernoulli equation for an ideal fluid flowing in a horizontal pipe states that the sum of which quantities remains constant along a streamline?",
       "options": [
         "Pressure energy, kinetic energy, and thermal energy",
-        "Static pressure, dynamic pressure (1/2 rho v^2), and hydrostatic pressure (rho g h)",
+        "Static pressure, dynamic pressure (1/2 ρ v<sup>2</sup>), and hydrostatic pressure (ρ g h)",
         "Pressure, velocity, and viscous shear stress",
         "Gravitational potential energy, surface tension energy, and kinetic energy"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Static pressure, dynamic pressure (1/2 rho v^2), and hydrostatic pressure (rho g h)</h4><p>The Bernoulli equation expresses conservation of energy per unit volume along a streamline for an ideal (inviscid, incompressible) fluid:</p><p style='text-align:center'><strong>P + (1/2) rho v^2 + rho g h = constant</strong></p><p>where:</p><ul><li><strong>P</strong> = static pressure (pressure energy per unit volume)</li><li><strong>(1/2) rho v^2</strong> = dynamic pressure (kinetic energy per unit volume)</li><li><strong>rho g h</strong> = hydrostatic pressure (gravitational potential energy per unit volume)</li></ul><h4>Why the other choices are wrong:</h4><p><strong>A. Pressure energy, kinetic energy, and thermal energy:</strong> Bernoulli's equation applies to <strong>ideal fluids</strong> with no viscosity. Thermal energy (internal energy) is not included because there is no friction converting mechanical energy to heat. The equation is a statement of mechanical energy conservation only.</p><p><strong>C. Pressure, velocity, and viscous shear stress:</strong> Bernoulli's equation explicitly assumes <strong>zero viscosity</strong> (ideal fluid). Viscous shear stress is not a term in the Bernoulli equation. When viscosity is important, the Navier-Stokes equations must be used instead.</p><p><strong>D. Gravitational potential energy, surface tension energy, and kinetic energy:</strong> Surface tension is not a term in the Bernoulli equation. Surface tension effects are relevant at free surfaces and interfaces (capillarity, droplet formation) but are not part of the energy balance expressed by Bernoulli's principle.</p><h4>Key Educational Points:</h4><ul><li>The Bernoulli equation explains why fluid velocity increases through a constriction (and pressure decreases) -- this is the <strong>Venturi effect</strong>, used in medical nebulizers and Venturi masks.</li><li>Assumptions required: incompressible fluid, steady (non-turbulent) flow, no viscosity, flow along a streamline.</li><li>Clinical applications: arterial stenosis increases blood velocity and decreases lateral pressure (contributing to vessel collapse in severe stenosis); airplane wing lift; Pitot tubes for measuring fluid velocity.</li></ul><p class='exp-key'>Bottom Line: Bernoulli equation: P + (1/2)rho v^2 + rho g h = constant. The three terms are static pressure, dynamic pressure, and hydrostatic pressure. Higher velocity means lower pressure -- this is the core of Bernoulli's principle.</p>"
+      "explanation": "<h4>Correct Answer: Static pressure, dynamic pressure (1/2 ρ v<sup>2</sup>), and hydrostatic pressure (ρ g h)</h4><p>The Bernoulli equation expresses conservation of energy per unit volume along a streamline for an ideal (inviscid, incompressible) fluid:</p><p style='text-align:center'><strong>P + (1/2) ρ v<sup>2</sup> + ρ g h = constant</strong></p><p>where:</p><ul><li><strong>P</strong> = static pressure (pressure energy per unit volume)</li><li><strong>(1/2) ρ v<sup>2</sup></strong> = dynamic pressure (kinetic energy per unit volume)</li><li><strong>ρ g h</strong> = hydrostatic pressure (gravitational potential energy per unit volume)</li></ul><h4>Why the other choices are wrong:</h4><p><strong>A. Pressure energy, kinetic energy, and thermal energy:</strong> Bernoulli's equation applies to <strong>ideal fluids</strong> with no viscosity. Thermal energy (internal energy) is not included because there is no friction converting mechanical energy to heat. The equation is a statement of mechanical energy conservation only.</p><p><strong>C. Pressure, velocity, and viscous shear stress:</strong> Bernoulli's equation explicitly assumes <strong>zero viscosity</strong> (ideal fluid). Viscous shear stress is not a term in the Bernoulli equation. When viscosity is important, the Navier-Stokes equations must be used instead.</p><p><strong>D. Gravitational potential energy, surface tension energy, and kinetic energy:</strong> Surface tension is not a term in the Bernoulli equation. Surface tension effects are relevant at free surfaces and interfaces (capillarity, droplet formation) but are not part of the energy balance expressed by Bernoulli's principle.</p><h4>Key Educational Points:</h4><ul><li>The Bernoulli equation explains why fluid velocity increases through a constriction (and pressure decreases) -- this is the <strong>Venturi effect</strong>, used in medical nebulizers and Venturi masks.</li><li>Assumptions required: incompressible fluid, steady (non-turbulent) flow, no viscosity, flow along a streamline.</li><li>Clinical applications: arterial stenosis increases blood velocity and decreases lateral pressure (contributing to vessel collapse in severe stenosis); airplane wing lift; Pitot tubes for measuring fluid velocity.</li></ul><p class='exp-key'>Bottom Line: Bernoulli equation: P + (1/2)ρ v<sup>2</sup> + ρ g h = constant. The three terms are static pressure, dynamic pressure, and hydrostatic pressure. Higher velocity means lower pressure -- this is the core of Bernoulli's principle.</p>"
     },
     {
       "id": "phys-244",
@@ -3414,7 +3414,7 @@
         "The magnetic field of a cyclotron repels neutral particles"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Neutrons have no electric charge and cannot be deflected by magnetic or accelerated by electric fields</h4><p>A cyclotron operates by using a <strong>magnetic field</strong> to bend charged particles into circular paths and an <strong>oscillating electric field</strong> between two D-shaped electrodes (\"dees\") to accelerate them at each half-revolution. Both mechanisms require the particle to carry an <strong>electric charge</strong>:</p><ul><li>The <strong>magnetic Lorentz force</strong> (F = qvB) depends on charge q; if q = 0, there is no force.</li><li>The <strong>electric force</strong> (F = qE) in the accelerating gap also depends on charge q.</li></ul><p>Since neutrons are electrically neutral (q = 0), neither force acts on them, making cyclotron acceleration impossible.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Neutrons are too heavy to reach relativistic speeds:</strong> The neutron mass (1.675 x 10^-27 kg) is very similar to the proton mass (1.673 x 10^-27 kg), and protons are routinely accelerated in cyclotrons. Mass is not the limiting factor; the absence of charge is.</p><p><strong>C. Neutrons decay too quickly to complete a full revolution:</strong> Free neutrons do undergo beta decay, but their half-life is approximately <strong>10 minutes</strong>, which is vastly longer than the microseconds needed for cyclotron revolutions. Decay is not the reason cyclotrons cannot accelerate neutrons.</p><p><strong>D. The magnetic field of a cyclotron repels neutral particles:</strong> Magnetic fields exert <strong>no force</strong> on neutral particles, neither attraction nor repulsion. The Lorentz force is F = qv x B; with q = 0, there is zero force. Magnetic fields do not repel neutral particles.</p><h4>Key Educational Points:</h4><ul><li>Cyclotrons can accelerate protons, deuterons, alpha particles, and other charged ions.</li><li>The cyclotron frequency (f = qB/(2 pi m)) is independent of the particle's speed and radius (in the non-relativistic limit), which is what makes the cyclotron work with a fixed-frequency oscillator.</li><li>Neutrons are accelerated indirectly: protons are accelerated and then directed at a target to produce neutron beams via nuclear reactions.</li></ul><p class='exp-key'>Bottom Line: Cyclotrons require charged particles because both the magnetic force (for circular motion) and the electric force (for acceleration) are proportional to charge. Neutrons (q = 0) experience neither force and cannot be accelerated or steered.</p>"
+      "explanation": "<h4>Correct Answer: Neutrons have no electric charge and cannot be deflected by magnetic or accelerated by electric fields</h4><p>A cyclotron operates by using a <strong>magnetic field</strong> to bend charged particles into circular paths and an <strong>oscillating electric field</strong> between two D-shaped electrodes (\"dees\") to accelerate them at each half-revolution. Both mechanisms require the particle to carry an <strong>electric charge</strong>:</p><ul><li>The <strong>magnetic Lorentz force</strong> (F = qvB) depends on charge q; if q = 0, there is no force.</li><li>The <strong>electric force</strong> (F = qE) in the accelerating gap also depends on charge q.</li></ul><p>Since neutrons are electrically neutral (q = 0), neither force acts on them, making cyclotron acceleration impossible.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Neutrons are too heavy to reach relativistic speeds:</strong> The neutron mass (1.675 x 10<sup>-27</sup> kg) is very similar to the proton mass (1.673 x 10<sup>-27</sup> kg), and protons are routinely accelerated in cyclotrons. Mass is not the limiting factor; the absence of charge is.</p><p><strong>C. Neutrons decay too quickly to complete a full revolution:</strong> Free neutrons do undergo β decay, but their half-life is approximately <strong>10 minutes</strong>, which is vastly longer than the microseconds needed for cyclotron revolutions. Decay is not the reason cyclotrons cannot accelerate neutrons.</p><p><strong>D. The magnetic field of a cyclotron repels neutral particles:</strong> Magnetic fields exert <strong>no force</strong> on neutral particles, neither attraction nor repulsion. The Lorentz force is F = qv x B; with q = 0, there is zero force. Magnetic fields do not repel neutral particles.</p><h4>Key Educational Points:</h4><ul><li>Cyclotrons can accelerate protons, deuterons, α particles, and other charged ions.</li><li>The cyclotron frequency (f = qB/(2 π m)) is independent of the particle's speed and radius (in the non-relativistic limit), which is what makes the cyclotron work with a fixed-frequency oscillator.</li><li>Neutrons are accelerated indirectly: protons are accelerated and then directed at a target to produce neutron beams via nuclear reactions.</li></ul><p class='exp-key'>Bottom Line: Cyclotrons require charged particles because both the magnetic force (for circular motion) and the electric force (for acceleration) are proportional to charge. Neutrons (q = 0) experience neither force and cannot be accelerated or steered.</p>"
     },
     {
       "id": "phys-245",
@@ -3442,7 +3442,7 @@
         "Emits radiation only at a single specific wavelength"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: Absorbs all incident radiation and is also the most efficient emitter of thermal radiation</h4><p>A perfect black body has two equally important properties: it <strong>absorbs all electromagnetic radiation</strong> that falls on it (no reflection, no transmission) AND it is the <strong>most efficient possible emitter</strong> of thermal radiation at every wavelength for its given temperature. These properties are linked by <strong>Kirchhoff's law of thermal radiation</strong>, which states that at thermal equilibrium, the emissivity of a body equals its absorptivity.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Absorbs all incident radiation but emits none:</strong> This is the most common misconception about black bodies. A perfect absorber that emitted nothing would violate thermodynamics -- its temperature would increase without limit. In fact, a black body at temperature T radiates energy at a rate given by the <strong>Stefan-Boltzmann law</strong>: P = sigma A T^4. A black body is both the perfect absorber AND the most powerful emitter at any given temperature.</p><p><strong>C. Reflects all incident radiation perfectly:</strong> This describes a <strong>perfect mirror</strong> (or perfect reflector), which is the exact opposite of a black body. A perfect reflector has zero absorptivity and zero emissivity, while a black body has maximum absorptivity and maximum emissivity.</p><p><strong>D. Emits radiation only at a single specific wavelength:</strong> A black body emits a <strong>continuous spectrum</strong> of radiation across all wavelengths, with the intensity distribution described by <strong>Planck's law</strong>. The peak wavelength depends on temperature (Wien's law), but emission occurs at all wavelengths. A single-wavelength emitter would be a laser or a spectral line source.</p><h4>Key Educational Points:</h4><ul><li>The black body spectrum (Planck curve) resolved the \"ultraviolet catastrophe\" of classical physics and was one of the foundations of quantum mechanics.</li><li>Total radiated power: P = sigma A T^4 (Stefan-Boltzmann law), where sigma = 5.67 x 10^-8 W/(m^2 K^4).</li><li>Real objects approximate black bodies to varying degrees. Stars, ovens, and the cosmic microwave background are good approximations.</li></ul><p class='exp-key'>Bottom Line: A black body absorbs ALL incident radiation AND radiates more energy than any other object at the same temperature. Good absorbers are good emitters -- this is Kirchhoff's law. The common misconception that black bodies only absorb is wrong.</p>"
+      "explanation": "<h4>Correct Answer: Absorbs all incident radiation and is also the most efficient emitter of thermal radiation</h4><p>A perfect black body has two equally important properties: it <strong>absorbs all electromagnetic radiation</strong> that falls on it (no reflection, no transmission) AND it is the <strong>most efficient possible emitter</strong> of thermal radiation at every wavelength for its given temperature. These properties are linked by <strong>Kirchhoff's law of thermal radiation</strong>, which states that at thermal equilibrium, the emissivity of a body equals its absorptivity.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Absorbs all incident radiation but emits none:</strong> This is the most common misconception about black bodies. A perfect absorber that emitted nothing would violate thermodynamics -- its temperature would increase without limit. In fact, a black body at temperature T radiates energy at a rate given by the <strong>Stefan-Boltzmann law</strong>: P = σ A T<sup>4</sup>. A black body is both the perfect absorber AND the most powerful emitter at any given temperature.</p><p><strong>C. Reflects all incident radiation perfectly:</strong> This describes a <strong>perfect mirror</strong> (or perfect reflector), which is the exact opposite of a black body. A perfect reflector has zero absorptivity and zero emissivity, while a black body has maximum absorptivity and maximum emissivity.</p><p><strong>D. Emits radiation only at a single specific wavelength:</strong> A black body emits a <strong>continuous spectrum</strong> of radiation across all wavelengths, with the intensity distribution described by <strong>Planck's law</strong>. The peak wavelength depends on temperature (Wien's law), but emission occurs at all wavelengths. A single-wavelength emitter would be a laser or a spectral line source.</p><h4>Key Educational Points:</h4><ul><li>The black body spectrum (Planck curve) resolved the \"ultraviolet catastrophe\" of classical physics and was one of the foundations of quantum mechanics.</li><li>Total radiated power: P = σ A T<sup>4</sup> (Stefan-Boltzmann law), where σ = 5.67 x 10<sup>-8</sup> W/(m<sup>2</sup> K<sup>4</sup>).</li><li>Real objects approximate black bodies to varying degrees. Stars, ovens, and the cosmic microwave background are good approximations.</li></ul><p class='exp-key'>Bottom Line: A black body absorbs ALL incident radiation AND radiates more energy than any other object at the same temperature. Good absorbers are good emitters -- this is Kirchhoff's law. The common misconception that black bodies only absorb is wrong.</p>"
     },
     {
       "id": "phys-247",
@@ -3456,7 +3456,7 @@
         "First increases then decreases as temperature rises"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Decreases (shifts toward shorter wavelengths / blue shift)</h4><p>Wien's displacement law states that the peak emission wavelength of a black body is <strong>inversely proportional</strong> to its absolute temperature:</p><p style='text-align:center'><strong>lambda_max = b / T</strong></p><p>where b = 2.898 x 10^-3 m K (Wien's displacement constant) and T is the absolute temperature in kelvin. As temperature increases, lambda_max <strong>decreases</strong> (shifts to shorter wavelengths).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Increases (shifts toward longer wavelengths):</strong> This is backwards. Cooler objects emit predominantly at longer wavelengths (infrared), while hotter objects emit at shorter wavelengths (visible, ultraviolet). A red-hot iron bar (shorter peak wavelength) is hotter than a warm radiator (infrared peak).</p><p><strong>B. Remains constant regardless of temperature:</strong> The peak wavelength is strongly temperature-dependent. This would violate Wien's law and our everyday observation that heated objects change color (dark red → orange → yellow → white → blue-white) as they get hotter.</p><p><strong>D. First increases then decreases:</strong> The relationship is strictly monotonic (always decreasing with increasing temperature). There is no turning point or non-monotonic behavior in Wien's law.</p><h4>Key Educational Points:</h4><ul><li>Examples: The Sun (T ≈ 5,800 K) has lambda_max ≈ 500 nm (green/yellow visible light). The human body (T ≈ 310 K) has lambda_max ≈ 9,400 nm (infrared). A very hot blue star (T ≈ 30,000 K) peaks at ~97 nm (ultraviolet).</li><li>This law explains why hotter stars appear blue-white and cooler stars appear red-orange.</li><li>Infrared thermometry (fever scanners, thermal cameras) works because body temperature determines the peak infrared emission wavelength.</li></ul><p class='exp-key'>Bottom Line: Wien's law: lambda_max = b/T. Hotter objects emit at shorter (bluer) wavelengths; cooler objects emit at longer (redder) wavelengths. This is why heating metal makes it glow from red to orange to yellow to white.</p>"
+      "explanation": "<h4>Correct Answer: Decreases (shifts toward shorter wavelengths / blue shift)</h4><p>Wien's displacement law states that the peak emission wavelength of a black body is <strong>inversely proportional</strong> to its absolute temperature:</p><p style='text-align:center'><strong>λ<sub>max</sub> = b / T</strong></p><p>where b = 2.898 x 10<sup>-3</sup> m K (Wien's displacement constant) and T is the absolute temperature in kelvin. As temperature increases, λ<sub>max</sub> <strong>decreases</strong> (shifts to shorter wavelengths).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Increases (shifts toward longer wavelengths):</strong> This is backwards. Cooler objects emit predominantly at longer wavelengths (infrared), while hotter objects emit at shorter wavelengths (visible, ultraviolet). A red-hot iron bar (shorter peak wavelength) is hotter than a warm radiator (infrared peak).</p><p><strong>B. Remains constant regardless of temperature:</strong> The peak wavelength is strongly temperature-dependent. This would violate Wien's law and our everyday observation that heated objects change color (dark red → orange → yellow → white → blue-white) as they get hotter.</p><p><strong>D. First increases then decreases:</strong> The relationship is strictly monotonic (always decreasing with increasing temperature). There is no turning point or non-monotonic behavior in Wien's law.</p><h4>Key Educational Points:</h4><ul><li>Examples: The Sun (T ≈ 5,800 K) has λ<sub>max</sub> ≈ 500 nm (green/yellow visible light). The human body (T ≈ 310 K) has λ<sub>max</sub> ≈ 9,400 nm (infrared). A very hot blue star (T ≈ 30,000 K) peaks at ~97 nm (ultraviolet).</li><li>This law explains why hotter stars appear blue-white and cooler stars appear red-orange.</li><li>Infrared thermometry (fever scanners, thermal cameras) works because body temperature determines the peak infrared emission wavelength.</li></ul><p class='exp-key'>Bottom Line: Wien's law: λ<sub>max</sub> = b/T. Hotter objects emit at shorter (bluer) wavelengths; cooler objects emit at longer (redder) wavelengths. This is why heating metal makes it glow from red to orange to yellow to white.</p>"
     },
     {
       "id": "phys-248",
@@ -3465,18 +3465,18 @@
       "question": "The activity of a radioactive sample as a function of time follows which mathematical relationship?",
       "options": [
         "Linear decrease: A(t) = A0 - kt",
-        "Quadratic decrease: A(t) = A0 - kt^2",
-        "Exponential decrease: A(t) = A0 e^(-lambda t)",
+        "Quadratic decrease: A(t) = A0 - kt<sup>2</sup>",
+        "Exponential decrease: A(t) = A0 e^(-λ t)",
         "Logarithmic decrease: A(t) = A0 ln(t)"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Exponential decrease: A(t) = A0 e^(-lambda t)</h4><p>Radioactive decay is a <strong>first-order process</strong> where the rate of decay is proportional to the number of undecayed nuclei present. This gives rise to an <strong>exponential decay</strong> function:</p><p style='text-align:center'><strong>A(t) = A0 e^(-lambda t)</strong></p><p>where A0 is the initial activity, lambda is the decay constant, and t is time. Equivalently: N(t) = N0 e^(-lambda t) for the number of remaining nuclei.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Linear decrease: A(t) = A0 - kt:</strong> A linear decrease would mean the activity drops by a constant amount per unit time, eventually reaching exactly zero and potentially going negative. In reality, each half-life reduces the activity by half of its current value (not a fixed amount), so the decline slows as fewer nuclei remain. Radioactive decay never follows a straight line.</p><p><strong>B. Quadratic decrease: A(t) = A0 - kt^2:</strong> A quadratic decrease would initially be slow, then accelerate -- the opposite of what actually occurs. In radioactive decay, the rate of decrease is fastest at the beginning (when there are the most undecayed nuclei) and progressively slows.</p><p><strong>D. Logarithmic decrease: A(t) = A0 ln(t):</strong> This expression is mathematically problematic (it is undefined at t = 0 and increases with time for A0 > 0). Logarithmic functions do not describe the temporal behavior of radioactive decay.</p><h4>Key Educational Points:</h4><ul><li>The <strong>half-life</strong> (t1/2) is related to the decay constant: t1/2 = ln(2)/lambda ≈ 0.693/lambda.</li><li>After n half-lives, the remaining activity is: A = A0 x (1/2)^n.</li><li>The exponential nature means radioactive material theoretically never fully decays to zero; it asymptotically approaches zero.</li><li>Common medical isotopes: Tc-99m (t1/2 = 6 hours), I-131 (t1/2 = 8 days), Co-60 (t1/2 = 5.27 years).</li></ul><p class='exp-key'>Bottom Line: Radioactive decay is exponential, not linear. A(t) = A0 e^(-lambda t). Each half-life halves the remaining activity. The exponential nature is a direct consequence of the decay rate being proportional to the number of undecayed nuclei present.</p>"
+      "explanation": "<h4>Correct Answer: Exponential decrease: A(t) = A0 e^(-λ t)</h4><p>Radioactive decay is a <strong>first-order process</strong> where the rate of decay is proportional to the number of undecayed nuclei present. This gives rise to an <strong>exponential decay</strong> function:</p><p style='text-align:center'><strong>A(t) = A0 e^(-λ t)</strong></p><p>where A0 is the initial activity, λ is the decay constant, and t is time. Equivalently: N(t) = N0 e^(-λ t) for the number of remaining nuclei.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Linear decrease: A(t) = A0 - kt:</strong> A linear decrease would mean the activity drops by a constant amount per unit time, eventually reaching exactly zero and potentially going negative. In reality, each half-life reduces the activity by half of its current value (not a fixed amount), so the decline slows as fewer nuclei remain. Radioactive decay never follows a straight line.</p><p><strong>B. Quadratic decrease: A(t) = A0 - kt<sup>2</sup>:</strong> A quadratic decrease would initially be slow, then accelerate -- the opposite of what actually occurs. In radioactive decay, the rate of decrease is fastest at the beginning (when there are the most undecayed nuclei) and progressively slows.</p><p><strong>D. Logarithmic decrease: A(t) = A0 ln(t):</strong> This expression is mathematically problematic (it is undefined at t = 0 and increases with time for A0 > 0). Logarithmic functions do not describe the temporal behavior of radioactive decay.</p><h4>Key Educational Points:</h4><ul><li>The <strong>half-life</strong> (t1/2) is related to the decay constant: t1/2 = ln(2)/lambda ≈ 0.693/lambda.</li><li>After n half-lives, the remaining activity is: A = A0 x (1/2)<sup>n</sup>.</li><li>The exponential nature means radioactive material theoretically never fully decays to zero; it asymptotically approaches zero.</li><li>Common medical isotopes: Tc-99m (t1/2 = 6 hours), I-131 (t1/2 = 8 days), Co-60 (t1/2 = 5.27 years).</li></ul><p class='exp-key'>Bottom Line: Radioactive decay is exponential, not linear. A(t) = A0 e^(-λ t). Each half-life halves the remaining activity. The exponential nature is a direct consequence of the decay rate being proportional to the number of undecayed nuclei present.</p>"
     },
     {
       "id": "phys-249",
       "subject": "physics",
       "topic": "Nuclear Physics - Half-Life Calculation",
-      "question": "A radioactive isotope has a decay constant of lambda = 0.0693 per day. Its half-life is approximately:",
+      "question": "A radioactive isotope has a decay constant of λ = 0.0693 per day. Its half-life is approximately:",
       "options": [
         "5 days",
         "10 days",
@@ -3484,7 +3484,7 @@
         "69.3 days"
       ],
       "correct": 1,
-      "explanation": "<h4>Correct Answer: 10 days</h4><p>The half-life is calculated from the decay constant using:</p><p style='text-align:center'><strong>t1/2 = ln(2) / lambda = 0.693 / lambda</strong></p><p>Substituting lambda = 0.0693 per day:</p><p style='text-align:center'>t1/2 = 0.693 / 0.0693 = <strong>10 days</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. 5 days:</strong> This would require lambda = 0.693/5 = 0.1386 per day, which is twice the given value. You might get this if you mistakenly used t1/2 = 0.5/lambda or confused the formula.</p><p><strong>C. 14.4 days:</strong> This would correspond to lambda = 0.693/14.4 ≈ 0.0481 per day. This error might arise from using 1/lambda instead of ln(2)/lambda. The <strong>mean lifetime</strong> (tau) = 1/lambda = 1/0.0693 = 14.4 days. Mean lifetime and half-life are related but not equal: tau = t1/2/ln(2) ≈ 1.443 x t1/2.</p><p><strong>D. 69.3 days:</strong> This results from incorrectly using t1/2 = ln(2) x (1/lambda) x 100 or simply confusing the formula. This value has no physical meaning in this context.</p><h4>Key Educational Points:</h4><ul><li>Key relationships: t1/2 = ln(2)/lambda = 0.693/lambda. Mean lifetime: tau = 1/lambda = t1/2/0.693.</li><li>Do not confuse half-life and mean lifetime. The mean lifetime is always longer than the half-life by a factor of 1/ln(2) ≈ 1.443.</li><li>Quick check: after one half-life (10 days), 50% of the original sample remains. After two half-lives (20 days), 25% remains. After three (30 days), 12.5% remains.</li></ul><p class='exp-key'>Bottom Line: t1/2 = 0.693/lambda. For lambda = 0.0693/day: t1/2 = 0.693/0.0693 = 10 days. Remember the distinction between half-life (0.693/lambda) and mean lifetime (1/lambda) -- they are different quantities.</p>"
+      "explanation": "<h4>Correct Answer: 10 days</h4><p>The half-life is calculated from the decay constant using:</p><p style='text-align:center'><strong>t1/2 = ln(2) / λ = 0.693 / λ</strong></p><p>Substituting λ = 0.0693 per day:</p><p style='text-align:center'>t1/2 = 0.693 / 0.0693 = <strong>10 days</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. 5 days:</strong> This would require λ = 0.693/5 = 0.1386 per day, which is twice the given value. You might get this if you mistakenly used t1/2 = 0.5/lambda or confused the formula.</p><p><strong>C. 14.4 days:</strong> This would correspond to λ = 0.693/14.4 ≈ 0.0481 per day. This error might arise from using 1/lambda instead of ln(2)/lambda. The <strong>mean lifetime</strong> (τ) = 1/lambda = 1/0.0693 = 14.4 days. Mean lifetime and half-life are related but not equal: τ = t1/2/ln(2) ≈ 1.443 x t1/2.</p><p><strong>D. 69.3 days:</strong> This results from incorrectly using t1/2 = ln(2) x (1/lambda) x 100 or simply confusing the formula. This value has no physical meaning in this context.</p><h4>Key Educational Points:</h4><ul><li>Key relationships: t1/2 = ln(2)/lambda = 0.693/lambda. Mean lifetime: τ = 1/lambda = t1/2/0.693.</li><li>Do not confuse half-life and mean lifetime. The mean lifetime is always longer than the half-life by a factor of 1/ln(2) ≈ 1.443.</li><li>Quick check: after one half-life (10 days), 50% of the original sample remains. After two half-lives (20 days), 25% remains. After three (30 days), 12.5% remains.</li></ul><p class='exp-key'>Bottom Line: t1/2 = 0.693/lambda. For λ = 0.0693/day: t1/2 = 0.693/0.0693 = 10 days. Remember the distinction between half-life (0.693/lambda) and mean lifetime (1/lambda) -- they are different quantities.</p>"
     },
     {
       "id": "phys-250",
@@ -3504,7 +3504,7 @@
       "id": "phys-251",
       "subject": "physics",
       "topic": "Adiabatic Processes",
-      "question": "An ideal gas with adiabatic index gamma = 5/3 is compressed adiabatically from volume 8 L to 1 L. If the initial pressure is 100 kPa, what is the final pressure?",
+      "question": "An ideal gas with adiabatic index γ = 5/3 is compressed adiabatically from volume 8 L to 1 L. If the initial pressure is 100 kPa, what is the final pressure?",
       "options": [
         "800 kPa",
         "1600 kPa",
@@ -3792,7 +3792,7 @@
         "80%"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: 60%</h4><p>Relative humidity (RH) is the ratio of the actual vapor pressure to the saturation vapor pressure at the same temperature:</p><p><strong>RH = (p_vapor / p_saturated) x 100%</strong></p><p>RH = (1.90 / 3.17) x 100% = 59.9%, rounding to <strong>60%</strong>.</p><p>At 100% RH the air is fully saturated and condensation begins (dew, fog). Comfortable indoor humidity is typically 40-60%.</p><p class='exp-key'>Key Concept: Relative humidity compares actual water vapor content to the maximum the air can hold at that temperature. Warm air can hold more moisture than cold air.</p>"
+      "explanation": "<h4>Correct Answer: 60%</h4><p>Relative humidity (RH) is the ratio of the actual vapor pressure to the saturation vapor pressure at the same temperature:</p><p><strong>RH = (p<sub>vapor</sub> / p<sub>saturated</sub>) x 100%</strong></p><p>RH = (1.90 / 3.17) x 100% = 59.9%, rounding to <strong>60%</strong>.</p><p>At 100% RH the air is fully saturated and condensation begins (dew, fog). Comfortable indoor humidity is typically 40-60%.</p><p class='exp-key'>Key Concept: Relative humidity compares actual water vapor content to the maximum the air can hold at that temperature. Warm air can hold more moisture than cold air.</p>"
     },
     {
       "id": "phys-272",
@@ -3886,7 +3886,7 @@
       "options": [
         "To absorb excess neutrons and prevent supercriticality",
         "To slow fast neutrons to thermal speeds so they can trigger further fission",
-        "To shield workers from gamma radiation",
+        "To shield workers from γ radiation",
         "To cool the reactor core and prevent overheating"
       ],
       "correct": 1,
@@ -3904,7 +3904,7 @@
         "Aluminum"
       ],
       "correct": 2,
-      "explanation": "<h4>Correct Answer: Water or paraffin</h4><p><strong>Neutrons</strong> are uncharged, so they pass easily through dense materials like lead. Neutrons are best slowed and absorbed by materials containing <strong>hydrogen</strong> (water, paraffin, concrete).</p><p>This is because energy transfer in a collision is maximized when the target has the same mass as the projectile. A hydrogen nucleus (proton) has nearly the same mass as a neutron.</p><p class='exp-key'>Key Concept: Lead stops gamma rays. Hydrogen-rich materials stop neutrons. Different radiation types require different shielding strategies.</p>"
+      "explanation": "<h4>Correct Answer: Water or paraffin</h4><p><strong>Neutrons</strong> are uncharged, so they pass easily through dense materials like lead. Neutrons are best slowed and absorbed by materials containing <strong>hydrogen</strong> (water, paraffin, concrete).</p><p>This is because energy transfer in a collision is maximized when the target has the same mass as the projectile. A hydrogen nucleus (proton) has nearly the same mass as a neutron.</p><p class='exp-key'>Key Concept: Lead stops γ rays. Hydrogen-rich materials stop neutrons. Different radiation types require different shielding strategies.</p>"
     },
     {
       "id": "phys-280",
