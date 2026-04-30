@@ -492,6 +492,16 @@
             <p class="dashboard-sub" id="resourcesDesc">Everything you need to know about applying to LF3 at Charles University.</p>
           </div>
 
+          <!-- Source-of-truth callout: applies to all resources below.
+               Sets the right expectation up front so applicants know to verify
+               specifics with LF3 / the Czech authorities. -->
+          <div style="margin:0 0 22px; padding:12px 16px; background:rgba(13,148,136,0.06); border:1px solid rgba(13,148,136,0.25); border-radius:8px; font-size:0.86rem; color:#475569; line-height:1.55; display:flex; gap:10px; align-items:flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              <strong style="color:#0F172A;">Always verify with the official source.</strong> The figures and dates here reflect publicly available LF3 / Charles University data. Specific deadlines, tuition, fees, and document requirements can change between admission cycles. Confirm the current details on the official portal at <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color:var(--accent); font-weight:600;">is.cuni.cz</a>.
+            </div>
+          </div>
+
           <!-- Applicant Resource Tabs -->
           <div class="resource-tabs" id="applicantResourceTabs">
             <button class="resource-tab active" data-tab="examGuides">Entrance Exam &amp; Application</button>
@@ -535,13 +545,13 @@
               </div>
             </div>
 
-            <!-- Section 2: Required Documents with high school diploma callout -->
+            <!-- Section 2: Required Documents (split into application stage + enrollment stage) -->
             <div class="dash-card" style="margin-bottom: 20px;">
               <h3 style="margin-bottom: 12px; color: var(--navy);">Required Documents</h3>
-              <p style="color: var(--gray-500); margin-bottom: 16px; font-size: 0.9rem;">What you submit when applying through the Charles University portal at <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color: var(--accent);">is.cuni.cz</a>.</p>
+              <p style="color: var(--gray-500); margin-bottom: 16px; font-size: 0.9rem;">What LF3 needs from you, organized by stage. Apply through the Charles University portal at <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color: var(--accent);">is.cuni.cz</a>.</p>
 
               <!-- High school diploma requirement callout -->
-              <div style="background:#FFFBF5; border:1px solid #E8D5B7; border-left:4px solid #CF5B2E; border-radius:8px; padding:14px 18px; margin-bottom:18px; display:flex; gap:12px; align-items:flex-start;">
+              <div style="background:#FFFBF5; border:1px solid #E8D5B7; border-left:4px solid #CF5B2E; border-radius:8px; padding:14px 18px; margin-bottom:22px; display:flex; gap:12px; align-items:flex-start;">
                 <span aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#CF5B2E; color:#fff; font-weight:700; font-size:0.85rem; flex-shrink:0; margin-top:1px;">!</span>
                 <div>
                   <strong style="display:block; color:#1B2A4A; font-size:0.95rem; margin-bottom:4px;">A high school diploma is required to begin studying at LF3.</strong>
@@ -549,22 +559,46 @@
                 </div>
               </div>
 
-              <ul class="resource-checklist">
-                <li><strong>Completed online application</strong> via is.cuni.cz</li>
-                <li><strong>High school diploma</strong> (certified copy, translated into English or Czech if needed)</li>
-                <li><strong>Official high school transcript</strong> of grades</li>
-                <li><strong>Valid passport copy</strong></li>
-                <li><strong>Application fee payment confirmation</strong> (940 CZK / approximately $40)</li>
-                <li><strong>Nostrification of the high school diploma</strong> (Czech recognition of foreign education) - can be completed after admission</li>
-                <li><strong>Health certificate</strong> (required at enrollment)</li>
-                <li><strong>Proof of health insurance</strong> (required for the student visa)</li>
-              </ul>
+              <!-- Stage 1: Application -->
+              <div style="margin-bottom:22px;">
+                <h4 style="margin:0 0 10px; font-size:0.95rem; color:#1B2A4A; font-weight:700; display:flex; align-items:center; gap:8px;">
+                  <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#0d9488; color:#fff; font-weight:700; font-size:0.78rem; flex-shrink:0;">1</span>
+                  When you apply (online, before the deadline)
+                </h4>
+                <ul class="resource-checklist">
+                  <li><strong>Completed online application form</strong> via is.cuni.cz</li>
+                  <li><strong>High school diploma</strong> (certified copy with English or Czech translation if originally issued in another language)</li>
+                  <li><strong>Official high school transcript of grades</strong></li>
+                  <li><strong>Valid passport copy</strong></li>
+                  <li><strong>Application fee payment confirmation</strong> (set by Charles University each year; recently around 940 CZK / approximately $40)</li>
+                </ul>
+              </div>
+
+              <!-- Stage 2: Enrollment -->
+              <div>
+                <h4 style="margin:0 0 10px; font-size:0.95rem; color:#1B2A4A; font-weight:700; display:flex; align-items:center; gap:8px;">
+                  <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#0d9488; color:#fff; font-weight:700; font-size:0.78rem; flex-shrink:0;">2</span>
+                  Before you enroll (after you receive your acceptance)
+                </h4>
+                <ul class="resource-checklist">
+                  <li><strong>Nostrification of the high school diploma</strong> (Czech recognition of foreign education; can be done through Charles University or directly through the Czech Ministry of Education)</li>
+                  <li><strong>Student visa</strong> (non-EU applicants only) - submitted to the Czech embassy with admission letter, proof of accommodation, and health insurance</li>
+                  <li><strong>Health insurance valid in the Czech Republic</strong> (EU students: EHIC plus Czech health fund. Non-EU: comprehensive private plan or VZP)</li>
+                  <li><strong>Health certificate</strong> from a physician (required for enrollment)</li>
+                  <li><strong>Hepatitis B and measles vaccination records</strong> (required before clinical rotations begin in Year 2; arrange early)</li>
+                </ul>
+              </div>
+
+              <!-- Section disclaimer -->
+              <p style="margin:20px 0 0; padding:12px 14px; background:#F8FAFC; border-radius:8px; font-size:0.82rem; color:#6B7280; line-height:1.55;">
+                <strong style="color:#475569;">Note:</strong> Document requirements are set by LF3, Charles University, and the Czech Ministry of the Interior, and may be updated between admission cycles. Always confirm the current list on the <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color:var(--accent);">official portal</a> before submitting.
+              </p>
             </div>
 
-            <!-- Section 3: After You're Admitted -->
+            <!-- Section 3: After You're Admitted (logistics only - documents are consolidated above) -->
             <div class="dash-card">
               <h3 style="margin-bottom: 12px; color: var(--navy);">After You're Admitted</h3>
-              <p style="color: var(--gray-500); margin-bottom: 24px; font-size: 0.9rem;">Once you receive your LF3 acceptance letter, here is what to expect: tuition logistics, visa planning, and your first days in Prague.</p>
+              <p style="color: var(--gray-500); margin-bottom: 24px; font-size: 0.9rem;">Once you receive your LF3 acceptance letter, here are the logistics for your first months. (For the documents you need during this stage, see <strong>Required Documents</strong> above.)</p>
 
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
 
@@ -573,7 +607,7 @@
                     <span style="font-size:1.4rem;" aria-hidden="true">&#128181;</span>
                     <strong style="color:#1B2A4A; font-size:0.95rem;">Tuition</strong>
                   </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">420,000 CZK / year (approximately $18,500 USD). Bank transfer only. Installment plans available.</p>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Approximately 420,000 CZK / year (~$18,500 USD). Bank transfer to Charles University; installment plans usually available. Tuition is set annually by LF3, so verify the current rate at admission.</p>
                 </div>
 
                 <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
@@ -581,7 +615,7 @@
                     <span style="font-size:1.4rem;" aria-hidden="true">&#127891;</span>
                     <strong style="color:#1B2A4A; font-size:0.95rem;">Program</strong>
                   </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">6-year General Medicine, MUDr. degree (equivalent to MD). English-taught since 1991. US-accredited.</p>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">6-year General Medicine, MUDr. degree (equivalent to MD). English-taught since 1991. ECFMG-recognized for US residency.</p>
                 </div>
 
                 <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
@@ -589,39 +623,15 @@
                     <span style="font-size:1.4rem;" aria-hidden="true">&#128483;&#65039;</span>
                     <strong style="color:#1B2A4A; font-size:0.95rem;">Language</strong>
                   </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Czech proficiency required by end of year 2 for clinical rotations. Basic Czech language coursework included.</p>
-                </div>
-
-                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
-                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-                    <span style="font-size:1.4rem;" aria-hidden="true">&#127973;</span>
-                    <strong style="color:#1B2A4A; font-size:0.95rem;">Health Insurance</strong>
-                  </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">EU students: EHIC plus Czech health fund (VZP or ZPMV). Non-EU: private insurance or VZP.</p>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Czech proficiency required by end of Year 2 for clinical rotations. Basic Czech language coursework is included in the curriculum.</p>
                 </div>
 
                 <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
                   <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
                     <span style="font-size:1.4rem;" aria-hidden="true">&#128737;&#65039;</span>
-                    <strong style="color:#1B2A4A; font-size:0.95rem;">Visa</strong>
+                    <strong style="color:#1B2A4A; font-size:0.95rem;">Visa (non-EU)</strong>
                   </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Start early (by June). Charles University provides the admission letter for your visa application. Process takes 6 to 10 weeks.</p>
-                </div>
-
-                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
-                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-                    <span style="font-size:1.4rem;" aria-hidden="true">&#9989;</span>
-                    <strong style="color:#1B2A4A; font-size:0.95rem;">Nostrification</strong>
-                  </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">High school diploma recognition through Charles University (CZK 990) or directly through the Czech Ministry. Required before enrollment.</p>
-                </div>
-
-                <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
-                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-                    <span style="font-size:1.4rem;" aria-hidden="true">&#128137;</span>
-                    <strong style="color:#1B2A4A; font-size:0.95rem;">Vaccinations</strong>
-                  </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Hepatitis B and measles documentation required before clinical rotations begin.</p>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Apply at the Czech embassy or consulate as soon as you have your admission letter. The process typically takes 6 to 10 weeks, so start early (by June for an October start).</p>
                 </div>
 
                 <div style="background:#F8FAFC; border:1px solid #E5E7EB; border-radius:12px; padding:18px;">
@@ -629,12 +639,16 @@
                     <span style="font-size:1.4rem;" aria-hidden="true">&#128197;</span>
                     <strong style="color:#1B2A4A; font-size:0.95rem;">Enrollment</strong>
                   </div>
-                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">Enrollment takes place in September. Studies begin October 1.</p>
+                  <p style="margin:0; font-size:0.85rem; color:#4B5563; line-height:1.55;">In-person enrollment takes place at LF3 in September. Studies begin October 1 (the start of the Czech academic year).</p>
                 </div>
 
               </div>
 
-              <p style="margin:24px 0 0; text-align:center; font-size:0.85rem; color:var(--gray-500);">Questions about any of these? <a href="mailto:contact@shosmed.com?subject=Question%20about%20admitted-student%20logistics" style="color:var(--accent); font-weight:600;">Email us</a> and we will walk you through it.</p>
+              <p style="margin:20px 0 0; padding:12px 14px; background:#F8FAFC; border-radius:8px; font-size:0.82rem; color:#6B7280; line-height:1.55;">
+                <strong style="color:#475569;">Note:</strong> Procedures and fees are set by LF3 and Czech authorities; details may change. Confirm current logistics with LF3 directly after admission.
+              </p>
+
+              <p style="margin:18px 0 0; text-align:center; font-size:0.85rem; color:var(--gray-500);">Questions about any of these? <a href="mailto:contact@shosmed.com?subject=Question%20about%20admitted-student%20logistics" style="color:var(--accent); font-weight:600;">Email us</a> and we will walk you through it.</p>
             </div>
           </div>
 
@@ -693,70 +707,106 @@
 
           <!-- TAB: Costs & Living -->
           <div class="resource-panel" id="tabCosts">
+
+            <!-- Disclaimer at the top of the tab -->
+            <div style="margin-bottom:20px; padding:12px 16px; background:#FFFBF5; border:1px solid #E8D5B7; border-radius:8px; font-size:0.86rem; color:#475569; line-height:1.55; display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CF5B2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div>
+                <strong style="color:#0F172A;">Costs are 2026 estimates and vary.</strong> Tuition is set annually by LF3. Living costs depend on neighborhood, lifestyle, and exchange rate. USD figures are converted from CZK at recent rates and will shift. Treat the ranges below as planning numbers, not guarantees, and verify with LF3 closer to enrollment.
+              </div>
+            </div>
+
+            <!-- Year 1 Total Estimate (conversion anchor) -->
+            <div class="dash-card" style="margin-bottom:20px; background:linear-gradient(135deg, rgba(13,148,136,0.06) 0%, rgba(232,164,76,0.06) 100%); border:1px solid rgba(13,148,136,0.25);">
+              <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;">
+                <div style="min-width:200px;">
+                  <div style="font-size:0.74rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#0d9488; margin-bottom:6px;">Year 1 Total Estimate</div>
+                  <div style="font-family:'Playfair Display', serif; font-size:2rem; line-height:1.1; color:#0F172A; font-weight:700;">~$24,000 &ndash; $30,000</div>
+                  <div style="font-size:0.85rem; color:#6B7280; margin-top:4px;">Tuition + 10 months of living + one-time setup costs</div>
+                </div>
+                <div style="font-size:0.86rem; color:#475569; line-height:1.55; max-width:380px;">
+                  Compared with US medical schools at <strong style="color:#0F172A;">$60,000 to $90,000+ per year</strong>, the LF3 path is roughly a third of the annual cost. Specific figures break down below.
+                </div>
+              </div>
+            </div>
+
+            <!-- Tuition card -->
             <div class="dash-card" style="margin-bottom: 20px;">
-              <h3 style="margin-bottom: 16px; color: var(--navy);">LF3 Tuition (2026/2027)</h3>
+              <h3 style="margin-bottom: 16px; color: var(--navy);">LF3 Tuition</h3>
               <div class="resource-faculty-card featured-faculty" style="margin-bottom: 0;">
                 <div class="faculty-details">
                   <div class="faculty-detail-row">
-                    <span class="detail-label">Annual Tuition</span>
-                    <span class="detail-value"><strong>420,000 CZK (~$18,500)</strong></span>
+                    <span class="detail-label">Annual Tuition (recent)</span>
+                    <span class="detail-value"><strong>~420,000 CZK (~$18,500 USD)</strong></span>
                   </div>
                   <div class="faculty-detail-row">
-                    <span class="detail-label">6-Year Total</span>
-                    <span class="detail-value"><strong>~$111,000</strong></span>
+                    <span class="detail-label">6-Year Total (estimate)</span>
+                    <span class="detail-value"><strong>~$110,000 &ndash; $120,000</strong></span>
                   </div>
                   <div class="faculty-detail-row">
                     <span class="detail-label">Currency</span>
-                    <span class="detail-value">Set in CZK - tuition is not affected by EUR/USD fluctuations</span>
+                    <span class="detail-value">Tuition is set in CZK; the USD-equivalent moves with the exchange rate</span>
                   </div>
                   <div class="faculty-detail-row">
-                    <span class="detail-label">Comparison</span>
-                    <span class="detail-value">Less than 2 years at most US medical schools</span>
+                    <span class="detail-label">Annual update</span>
+                    <span class="detail-value">LF3 sets the year's tuition each spring. Verify the current figure on the official site.</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Monthly living costs (Budget vs Comfortable) -->
             <div class="dash-card" style="margin-bottom: 20px;">
-              <h3 style="margin-bottom: 16px; color: var(--navy);">Monthly Living Costs in Prague</h3>
+              <h3 style="margin-bottom: 16px; color: var(--navy);">Monthly Living Costs in Prague (2026 estimate)</h3>
               <div class="cost-comparison-grid">
                 <div class="cost-column">
                   <h4 class="cost-header budget">Budget</h4>
-                  <div class="cost-item"><span>Dormitory</span><span>$100 - $230</span></div>
-                  <div class="cost-item"><span>Food</span><span>$160 - $200</span></div>
-                  <div class="cost-item"><span>Transport (student ISIC)</span><span>~$5</span></div>
-                  <div class="cost-item"><span>Health insurance</span><span>~$25/mo</span></div>
-                  <div class="cost-item"><span>Entertainment</span><span>~$40</span></div>
-                  <div class="cost-item total"><span>Total</span><span>$330 - $500/mo</span></div>
+                  <div class="cost-item"><span>University dormitory</span><span>$130 - $260</span></div>
+                  <div class="cost-item"><span>Food (cooking + canteen)</span><span>$180 - $260</span></div>
+                  <div class="cost-item"><span>Transport (student ISIC)</span><span>~$7</span></div>
+                  <div class="cost-item"><span>Health insurance</span><span>~$30 - $50</span></div>
+                  <div class="cost-item"><span>Phone, basics, leisure</span><span>~$60</span></div>
+                  <div class="cost-item total"><span>Total</span><span>~$405 - $635/mo</span></div>
                 </div>
                 <div class="cost-column">
                   <h4 class="cost-header comfortable">Comfortable</h4>
-                  <div class="cost-item"><span>Private room/flat</span><span>$280 - $560</span></div>
-                  <div class="cost-item"><span>Food</span><span>$250 - $320</span></div>
-                  <div class="cost-item"><span>Transport (student ISIC)</span><span>~$5</span></div>
-                  <div class="cost-item"><span>Health insurance</span><span>~$50/mo</span></div>
-                  <div class="cost-item"><span>Entertainment</span><span>~$100</span></div>
-                  <div class="cost-item total"><span>Total</span><span>$685 - $1,035/mo</span></div>
+                  <div class="cost-item"><span>Private room or studio</span><span>$450 - $800</span></div>
+                  <div class="cost-item"><span>Food (cafes + groceries)</span><span>$280 - $400</span></div>
+                  <div class="cost-item"><span>Transport (student ISIC)</span><span>~$7</span></div>
+                  <div class="cost-item"><span>Health insurance</span><span>~$50 - $90</span></div>
+                  <div class="cost-item"><span>Travel, social, hobbies</span><span>~$150</span></div>
+                  <div class="cost-item total"><span>Total</span><span>~$935 - $1,445/mo</span></div>
                 </div>
               </div>
+              <p style="margin:14px 0 0; font-size:0.82rem; color:#6B7280;">
+                Prague rents have risen meaningfully in recent years; private flats vary widely by neighborhood. Vinohrady (where LF3 is) and Praha 2-3 sit on the higher end. Outer districts and dormitories sit at the lower end.
+              </p>
             </div>
 
+            <!-- Other costs table -->
             <div class="dash-card">
-              <h3 style="margin-bottom: 16px; color: var(--navy);">Other Costs to Budget For</h3>
+              <h3 style="margin-bottom: 16px; color: var(--navy);">One-Time and Periodic Costs</h3>
               <div class="resource-table-wrap">
                 <table class="resource-table">
                   <thead>
-                    <tr><th>Item</th><th>Cost</th><th>Notes</th></tr>
+                    <tr><th>Item</th><th>Estimated Cost</th><th>Notes</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Student visa (non-EU)</td><td>~$120</td><td>Residence permit fee + embassy fee</td></tr>
-                    <tr><td>Health insurance (annual)</td><td>$290 - $800</td><td>Required for visa; comprehensive plans recommended</td></tr>
-                    <tr><td>Diploma nostrification</td><td>~$40</td><td>Czech recognition of foreign diploma</td></tr>
-                    <tr><td>Textbooks (per year)</td><td>$100 - $300</td><td>Many resources available digitally</td></tr>
-                    <tr><td>Czech language course</td><td>Varies</td><td>Required by end of Year 2 for clinical communication</td></tr>
+                    <tr><td>Application fee</td><td>~940 CZK (~$40)</td><td>Set by Charles University each cycle. Paid online when applying.</td></tr>
+                    <tr><td>Student visa (non-EU)</td><td>~$120 - $150</td><td>Residence-permit fee plus embassy processing fee. Renewed annually.</td></tr>
+                    <tr><td>Health insurance (annual)</td><td>$400 - $1,200</td><td>Required for the visa. Non-EU comprehensive plans cost more than basic Czech-fund coverage.</td></tr>
+                    <tr><td>Diploma nostrification</td><td>~990 CZK (~$45)</td><td>Through Charles University. Plus translation costs (~$50 - $200) if your diploma is not in English or Czech.</td></tr>
+                    <tr><td>Apostille / certified translations</td><td>$50 - $250</td><td>Depending on country of origin and number of documents.</td></tr>
+                    <tr><td>Flights to Prague (one-way, year 1)</td><td>$400 - $900</td><td>From the US. Less from Europe.</td></tr>
+                    <tr><td>Initial setup (deposits, basics)</td><td>$300 - $800</td><td>Apartment deposit, sheets, kitchen, etc., for the first weeks.</td></tr>
+                    <tr><td>Textbooks (per year)</td><td>$100 - $300</td><td>Many resources are available digitally or through the library.</td></tr>
+                    <tr><td>Czech language course</td><td>Varies</td><td>Required by end of Year 2 for clinical communication. Often free or subsidized through Charles University.</td></tr>
                   </tbody>
                 </table>
               </div>
+              <p style="margin:14px 0 0; font-size:0.82rem; color:#6B7280;">
+                <strong style="color:#475569;">Reminder:</strong> All figures here are estimates based on publicly available data. The Czech Republic, LF3, and the embassy network update fees periodically. Verify current rates before you budget.
+              </p>
             </div>
           </div>
 
