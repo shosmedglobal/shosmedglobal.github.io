@@ -18,7 +18,7 @@
   }
 }
 
-/* NOTE: blur-on-focus-loss deterrent was disabled — it was too aggressive
+/* NOTE: blur-on-focus-loss deterrent was disabled - it was too aggressive
    and left users trapped on a dark overlay after any transient focus loss.
    Keeping the .screenshot-warning element hidden (display:none) so any
    remnant JS can't surface it. */
@@ -72,7 +72,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Sample Banner removed — QBank is fully free for all registered users */
+/* Sample Banner removed - QBank is fully free for all registered users */
 
 /* ===== Question Bank Section ===== */
 /* Note: user-select:none for .qbank-section is defined above in Content Protection */
@@ -129,7 +129,7 @@
   cursor: pointer;
 }
 
-/* Physics (Bonus) — behaves exactly like Biology/Chemistry (checkbox +
+/* Physics (Bonus) - behaves exactly like Biology/Chemistry (checkbox +
    mixes into the Start Block), with a subtle indigo accent + top-left
    "Bonus" pill to visually flag it as not-tested-on-LF3. */
 .subject-card.subject-card-bonus .subject-card-inner {

@@ -90,7 +90,7 @@ function renderTestHistoryList() {
   testHistory.forEach((test, i) => {
     const date = new Date(test.date);
     const defaultName = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
-      ' — ' + date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      ' - ' + date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
     const displayName = test.name || defaultName;
     const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
     const pctClass = pct >= 70 ? 'score-good' : pct >= 50 ? 'score-mid' : 'score-low';
@@ -325,7 +325,7 @@ function renderPerformance() {
           <div class="perf-mini-bar">
             <div class="perf-mini-fill" style="width: ${pct}%; background: ${barColor};"></div>
           </div>
-          <span class="perf-subject-pct">${data.done > 0 ? pct + '%' : '—'}</span>
+          <span class="perf-subject-pct">${data.done > 0 ? pct + '%' : '-'}</span>
           <span class="perf-subject-detail">${data.correct}/${data.done} correct · ${data.done}/${data.total} done (${donePct}%)</span>
         </div>
       </div>
@@ -343,7 +343,7 @@ function renderPerformance() {
       const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
       const pctClass = pct >= 70 ? 'perf-score-good' : pct >= 50 ? 'perf-score-mid' : 'perf-score-low';
-      const subjects = test.subjects ? test.subjects.join(', ') : '—';
+      const subjects = test.subjects ? test.subjects.join(', ') : '-';
       historyRows += `
         <tr>
           <td>${testHistory.length - i}</td>
@@ -371,7 +371,7 @@ function renderPerformance() {
         <div class="perf-stat-sub">${stats.totalDone} / ${totalAvailable} questions</div>
       </div>
       <div class="perf-stat-card">
-        <div class="perf-stat-number ${overallPct >= 70 ? 'perf-score-good' : overallPct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${stats.totalDone > 0 ? overallPct + '%' : '—'}</div>
+        <div class="perf-stat-number ${overallPct >= 70 ? 'perf-score-good' : overallPct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${stats.totalDone > 0 ? overallPct + '%' : '-'}</div>
         <div class="perf-stat-label">Overall Accuracy</div>
         <div class="perf-stat-sub">${stats.totalCorrect} correct / ${stats.totalDone} answered</div>
       </div>
@@ -381,7 +381,7 @@ function renderPerformance() {
         <div class="perf-stat-sub">${totalTestQuestions} total questions attempted</div>
       </div>
       <div class="perf-stat-card">
-        <div class="perf-stat-number ${cumulativePct >= 70 ? 'perf-score-good' : cumulativePct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${totalTestQuestions > 0 ? cumulativePct + '%' : '—'}</div>
+        <div class="perf-stat-number ${cumulativePct >= 70 ? 'perf-score-good' : cumulativePct >= 50 ? 'perf-score-mid' : 'perf-score-low'}">${totalTestQuestions > 0 ? cumulativePct + '%' : '-'}</div>
         <div class="perf-stat-label">Cumulative Test Score</div>
         <div class="perf-stat-sub">${totalTestCorrect} / ${totalTestQuestions} across all tests</div>
       </div>
@@ -1062,7 +1062,7 @@ function finishQuiz() {
   const meta = window._quizMeta || { subjects: [], mode: 'All' };
   const now = new Date();
   const defaultName = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
-    ' — ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    ' - ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   saveTestRecord({
     date: now.toISOString(),
     name: defaultName,
@@ -1107,7 +1107,7 @@ function finishTestMode() {
   const meta = window._quizMeta || { subjects: [], mode: 'All' };
   const now = new Date();
   const defaultName = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
-    ' — ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    ' - ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   saveTestRecord({
     date: now.toISOString(),
     name: defaultName,
@@ -1428,7 +1428,7 @@ function resumeInProgressTest(savedState) {
     return;
   }
 
-  // Restore state — convert string keys back to numbers
+  // Restore state - convert string keys back to numbers
   answers = {};
   if (savedState.answers) {
     Object.keys(savedState.answers).forEach(k => {
@@ -1470,7 +1470,7 @@ function loadHistoricalReview(testRecord) {
     return;
   }
 
-  // Restore answers — convert string keys back to numbers
+  // Restore answers - convert string keys back to numbers
   answers = {};
   if (testRecord.userAnswers) {
     Object.keys(testRecord.userAnswers).forEach(k => {
@@ -1602,7 +1602,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ===== Report Issue (Cancel & Submit — form elements don't get replaced) =====
+  // ===== Report Issue (Cancel & Submit - form elements don't get replaced) =====
   document.getElementById('reportCancel').addEventListener('click', () => {
     document.getElementById('reportForm').style.display = 'none';
     document.getElementById('reportBtnWrap').style.display = 'flex';

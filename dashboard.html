@@ -376,7 +376,7 @@
               <!-- Populated by JS -->
             </div>
 
-            <!-- Physics Chapters (bonus — not on LF3; applicant path only. Banner rendered by JS) -->
+            <!-- Physics Chapters (bonus - not on LF3; applicant path only. Banner rendered by JS) -->
             <div class="sp-chapter-list" id="spPhysicsList" style="display:none;">
               <!-- Populated by JS (intro banner + chapters) -->
             </div>
@@ -4907,7 +4907,7 @@
       'Free Research Tools Reference',
       'US Medical Conferences Guide'
     ];
-    // Physics (bonus — NOT on LF3 entrance exam). 23 chapters, all locked for free tier.
+    // Physics (bonus - NOT on LF3 entrance exam). 23 chapters, all locked for free tier.
     const SP_PHYS_CHAPTERS = [
       'SI System and Measurement','Kinematics','Dynamics & Momentum','Work, Energy & Simple Machines',
       'Fluids','Heat and Thermodynamics','Gravitation','Electricity and DC Circuits',
@@ -5207,7 +5207,7 @@
       if (userPath !== 'student') {
         SP_BIO_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('biology', i)));
         SP_CHEM_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('chemistry', i)));
-        // Physics (bonus) — only fetch for paid users so search doesn't hit missing files for free tier
+        // Physics (bonus) - only fetch for paid users so search doesn't hit missing files for free tier
         if (window._examBankPaid) {
           SP_PHYS_CHAPTERS.forEach((_, i) => promises.push(spFetchChapterText('physics', i)));
         }
@@ -5295,7 +5295,7 @@
         });
       }
 
-      // Search physics chapters (applicant path or no path set) — only for paid users
+      // Search physics chapters (applicant path or no path set) - only for paid users
       if (userPath !== 'student' && window._examBankPaid) {
         SP_PHYS_CHAPTERS.forEach((title, idx) => {
           const key = `phys-ch${idx + 1}`;

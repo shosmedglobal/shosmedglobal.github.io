@@ -28,7 +28,7 @@
   <section class="qbank-section" id="qbankSection">
     <div class="container">
 
-      <!-- Loading indicator — overlays content briefly while auth resolves -->
+      <!-- Loading indicator - overlays content briefly while auth resolves -->
       <div id="authLoading" style="text-align:center; padding:40px 20px; background:#F8FAFC; border-radius:12px; margin:20px 0;">
         <p style="font-size:1rem; color:#666;">Loading your question bank…</p>
       </div>
@@ -60,7 +60,7 @@
               <span class="subject-count" id="countChemistry">0 questions</span>
             </div>
           </label>
-          <!-- Physics (Bonus) — normal checkbox card. Users can include/exclude it
+          <!-- Physics (Bonus) - normal checkbox card. Users can include/exclude it
                from a mixed block via the same Start Block button. Unchecked by
                default because it is not part of the LF3 exam; users opt in. -->
           <label class="subject-card subject-card-bonus" id="physicsCardWrapper" style="display:none;">
@@ -334,7 +334,7 @@
       const authLoadingEl = document.getElementById('authLoading');
       const startScreen = document.getElementById('startScreen');
 
-      // Single atomic reveal — called ONCE after all DOM updates are complete
+      // Single atomic reveal - called ONCE after all DOM updates are complete
       const revealStartScreen = () => {
         if (startScreen) startScreen.style.display = '';
         if (authLoadingEl) authLoadingEl.style.display = 'none';
@@ -398,7 +398,7 @@
           ]);
           profile = profileDoc.exists ? profileDoc.data() : null;
         } catch (e) {
-          console.warn('Profile load failed or timed out — continuing anyway:', e.message || e);
+          console.warn('Profile load failed or timed out - continuing anyway:', e.message || e);
         }
         const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
@@ -448,7 +448,7 @@
       const chemCount = data.chemistry?.length || 0;
       const physCount = allQuestions.physics?.length || 0;
 
-      // Pre-seed counts so updateProgressDisplay — if it fails — leaves sane text
+      // Pre-seed counts so updateProgressDisplay - if it fails - leaves sane text
       const bioEl = document.getElementById('countBiology');
       const chemEl = document.getElementById('countChemistry');
       const physEl = document.getElementById('countPhysics');
@@ -485,7 +485,7 @@
         if (startScreen) startScreen.insertBefore(freeMsg, startScreen.firstChild);
       }
 
-      // Final count update ("X/Y done" format) + history — all before reveal
+      // Final count update ("X/Y done" format) + history - all before reveal
       try { updateProgressDisplay(); } catch(_) {}
       try { renderTestHistoryList(); } catch(_) {}
 
@@ -520,7 +520,7 @@
         }
       }
 
-      // ---- Step 6: Atomic reveal — single paint, final state ----
+      // ---- Step 6: Atomic reveal - single paint, final state ----
       revealStartScreen();
     })();
 
@@ -537,7 +537,7 @@
     // ===== Content Protection =====
     (function() {
       // ========================================================================
-      // Content Protection — simplified.
+      // Content Protection - simplified.
       //
       // Previously this block blocked F12, right-click, copy/cut, Ctrl+C/P/S/A/U,
       // Ctrl+Shift+I/J/C, PrintScreen, and window-focus-loss. Those restrictions
@@ -659,7 +659,7 @@
     // and its own start button. It does not enter `allQuestions` so Bio/Chem
     // counts, filters, and progress stats are untouched.
     function loadPhysicsBonus() {
-      // Free tier does not include Physics — silently skip
+      // Free tier does not include Physics - silently skip
       if (window.qbankAccessLevel !== 'full') return;
 
       fetch('questions-physics.json')
@@ -686,13 +686,13 @@
           if (btn) btn.style.display = '';
         })
         .catch(err => {
-          // Silent fail — Physics is bonus content. Bio/Chem must remain available.
+          // Silent fail - Physics is bonus content. Bio/Chem must remain available.
           console.warn('Physics bonus unavailable (non-blocking):', err);
         });
     }
 
     // Start a Physics-only quiz block. Reuses the existing quiz engine by
-    // populating quizQuestions directly — bio/chem flow is not touched.
+    // populating quizQuestions directly - bio/chem flow is not touched.
     function startPhysicsQuiz() {
       const physArr = window._physicsQuestions || [];
       if (physArr.length === 0) {

@@ -2161,7 +2161,7 @@ a {
 }
 
 .pricing-features li.not-included::before {
-  content: '—';
+  content: '-';
   position: absolute;
   left: 6px;
   top: 10px;

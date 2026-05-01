@@ -87,14 +87,14 @@
       authFired = true;
       clearTimeout(authTimeout);
       if (!user) {
-        log('Result: NO USER — you are NOT logged in. QBank would redirect to signup.', 'warn');
+        log('Result: NO USER - you are NOT logged in. QBank would redirect to signup.', 'warn');
         log('Fix: log in via dashboard first, then come back to this diagnostic.', 'info');
         return;
       }
       log(`OK: user present. uid=${user.uid} email=${user.email}`, 'ok');
 
       // --- Step 4: profile read ---
-      step('Step 4: Firestore — read users/{uid} (profile)');
+      step('Step 4: Firestore - read users/{uid} (profile)');
       const profileTimer = setTimeout(() => {
         log('TIMEOUT: profile read has NOT returned after 8s. Firestore is hanging.', 'err');
         log('This is the bug. Likely causes: Firestore offline cache deadlock, rules preventing read, or network.', 'info');
@@ -114,7 +114,7 @@
         }
       } catch (err) {
         clearTimeout(profileTimer);
-        log(`FAIL: profile read error — ${err.code || ''} ${err.message}`, 'err');
+        log(`FAIL: profile read error - ${err.code || ''} ${err.message}`, 'err');
         if (err.code === 'permission-denied') {
           log('Cause: Firestore rules denied read of your own /users/{uid} doc. Check rules.', 'info');
         } else if (err.code === 'unavailable') {
@@ -123,7 +123,7 @@
       }
 
       // --- Step 5: progress read ---
-      step('Step 5: Firestore — read users/{uid}/qbankData/progress');
+      step('Step 5: Firestore - read users/{uid}/qbankData/progress');
       try {
         const db = firebase.firestore();
         const t0 = performance.now();
@@ -136,11 +136,11 @@
           log(`OK (${dt}ms): progress doc does not exist yet (normal if new user)`, 'info');
         }
       } catch (err) {
-        log(`FAIL: progress read error — ${err.code || ''} ${err.message}`, 'err');
+        log(`FAIL: progress read error - ${err.code || ''} ${err.message}`, 'err');
       }
 
       // --- Step 6a: test history read (CORRECT doc name used by qbank.js) ---
-      step('Step 6a: Firestore — read users/{uid}/qbankData/history (the REAL doc qbank.js uses)');
+      step('Step 6a: Firestore - read users/{uid}/qbankData/history (the REAL doc qbank.js uses)');
       let historyTimedOut = false;
       const historyDeadline = setTimeout(() => {
         historyTimedOut = true;
@@ -160,18 +160,18 @@
           const dataSize = JSON.stringify(doc.data()).length;
           log(`OK (${dt}ms): history doc exists, ${tests.length} tests recorded, payload size = ${dataSize} chars`, 'ok');
           if (dataSize > 500000) {
-            log(`⚠ payload size > 500KB — this could slow down qbank.html load`, 'warn');
+            log(`⚠ payload size > 500KB - this could slow down qbank.html load`, 'warn');
           }
         } else {
           log(`OK (${dt}ms): history doc does not exist yet`, 'info');
         }
       } catch (err) {
         clearTimeout(historyDeadline);
-        log(`FAIL: history read error — ${err.code || ''} ${err.message}`, 'err');
+        log(`FAIL: history read error - ${err.code || ''} ${err.message}`, 'err');
       }
 
       // --- Step 6b: in-progress test doc ---
-      step('Step 6b: Firestore — read users/{uid}/qbankData/inProgress');
+      step('Step 6b: Firestore - read users/{uid}/qbankData/inProgress');
       try {
         const db = firebase.firestore();
         const t0 = performance.now();
@@ -184,13 +184,13 @@
           // Check if any of the stored IDs reference bio-583 (the deleted one)
           const ids = doc.data().questionIds || [];
           if (ids.includes('bio-583')) {
-            log(`⚠ inProgress references DELETED question bio-583 — if qbank.html tries to resume this, it may fail`, 'warn');
+            log(`⚠ inProgress references DELETED question bio-583 - if qbank.html tries to resume this, it may fail`, 'warn');
           }
         } else {
           log(`OK (${dt}ms): no in-progress test`, 'info');
         }
       } catch (err) {
-        log(`FAIL: inProgress read error — ${err.code || ''} ${err.message}`, 'err');
+        log(`FAIL: inProgress read error - ${err.code || ''} ${err.message}`, 'err');
       }
 
       // --- Step 7: questions.json fetch ---
@@ -208,7 +208,7 @@
           log(`OK (${dt}ms): loaded bio=${bio}, chem=${chem}`, 'ok');
         }
       } catch (err) {
-        log(`FAIL: fetch error — ${err.message}`, 'err');
+        log(`FAIL: fetch error - ${err.message}`, 'err');
       }
 
       // --- Step 8: questions-physics.json ---
@@ -224,7 +224,7 @@
           log(`OK (${dt}ms): physics count=${d.physics?.length || 0}`, 'ok');
         }
       } catch (err) {
-        log(`FAIL: fetch error — ${err.message}`, 'warn');
+        log(`FAIL: fetch error - ${err.message}`, 'warn');
       }
 
       // --- Step 9: LOAD qbank.js dynamically + call its loadProgress/loadTestHistory ---
@@ -253,7 +253,7 @@
         }
       } catch (err) {
         log(`FAIL: ${err.message}`, 'err');
-        log('This is a CRITICAL bug — qbank.js cannot load, so qbank.html will hang.', 'err');
+        log('This is a CRITICAL bug - qbank.js cannot load, so qbank.html will hang.', 'err');
         step('Diagnostic complete (with failures)');
         return;
       }
@@ -271,7 +271,7 @@
         const dt = Math.round(performance.now() - t0);
         log(`OK (${dt}ms): qbank.js loadProgress() completed`, 'ok');
       } catch (err) {
-        log(`FAIL: loadProgress threw — ${err.message}`, 'err');
+        log(`FAIL: loadProgress threw - ${err.message}`, 'err');
       }
 
       // --- Step 11: call loadTestHistory() exactly like qbank.html does ---
@@ -286,7 +286,7 @@
         const dt = Math.round(performance.now() - t0);
         log(`OK (${dt}ms): qbank.js loadTestHistory() completed`, 'ok');
       } catch (err) {
-        log(`FAIL: loadTestHistory threw — ${err.message}`, 'err');
+        log(`FAIL: loadTestHistory threw - ${err.message}`, 'err');
       }
 
       step('Diagnostic complete');
