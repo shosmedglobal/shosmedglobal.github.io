@@ -864,12 +864,30 @@
           #life-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; }
           #life-cards .lf-card { background:#fff; border:1px solid #E5E7EB; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
           #life-cards .lf-card:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(0,0,0,0.09); border-color:#D1D5DB; }
-          #life-cards .lf-card-media { aspect-ratio:16/9; overflow:hidden; background:#F3F4F6; }
-          #life-cards .lf-card-media img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.55s ease, filter 0.55s ease; }
-          #life-cards .lf-card:hover .lf-card-media img { transform:scale(1.04); filter:brightness(1.04); }
+          #life-cards .lf-card-media { aspect-ratio:16/9; position:relative; overflow:hidden; background:#F3F4F6; }
+          #life-cards .lf-card-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; animation:lfRotate 15s infinite ease-in-out; }
+          #life-cards .lf-card-media img:nth-child(1) { animation-delay: 0s; }
+          #life-cards .lf-card-media img:nth-child(2) { animation-delay: -10s; }
+          #life-cards .lf-card-media img:nth-child(3) { animation-delay: -5s; }
+          #life-cards .lf-card:hover .lf-card-media img { animation-play-state:paused; }
+          #life-cards .lf-card-media::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.3s ease; pointer-events:none; }
+          #life-cards .lf-card:hover .lf-card-media::after { background:rgba(0,0,0,0.04); }
           #life-cards .lf-card-body { padding:20px 22px 22px; }
           #life-cards .lf-card-body h4 { margin:0 0 6px; font-size:1rem; color:#0F172A; line-height:1.3; }
           #life-cards .lf-card-body p { margin:0; color:#4B5563; font-size:0.9rem; line-height:1.6; }
+          @keyframes lfRotate {
+            0%      { opacity:1; }
+            30%     { opacity:1; }
+            36%     { opacity:0; }
+            96%     { opacity:0; }
+            100%    { opacity:1; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            #life-cards .lf-card-media img { animation:none; }
+            #life-cards .lf-card-media img:nth-child(1) { opacity:1; }
+            #life-cards .lf-card-media img:nth-child(2),
+            #life-cards .lf-card-media img:nth-child(3) { opacity:0; }
+          }
           @media (max-width: 540px) {
             #life-cards { gap:16px; }
             #life-cards .lf-card-body { padding:18px 18px 20px; }
@@ -880,8 +898,10 @@
 
           <!-- Vinohrady district -->
           <article class="lf-card">
-            <div class="lf-card-media">
-              <img src="assets/lf3/vinohrady.jpg" alt="Vinohrady district, Prague" loading="lazy">
+            <div class="lf-card-media" aria-label="Vinohrady district photo carousel">
+              <img src="assets/lf3/vinohrady-1.jpg" alt="Tree-lined park in Vinohrady, Prague in autumn" loading="lazy">
+              <img src="assets/lf3/vinohrady-2.jpg" alt="Aerial view of red-roofed Vinohrady residential street" loading="lazy">
+              <img src="assets/lf3/vinohrady-3.jpg" alt="Prague Castle silhouette at sunset, view from Vinohrady" loading="lazy">
             </div>
             <div class="lf-card-body">
               <h4>Vinohrady district</h4>
@@ -891,8 +911,10 @@
 
           <!-- 20-minute commute -->
           <article class="lf-card">
-            <div class="lf-card-media">
-              <img src="assets/lf3/commute-tram.jpg" alt="Prague tram and public transit" loading="lazy">
+            <div class="lf-card-media" aria-label="Prague public transit photo carousel">
+              <img src="assets/lf3/commute-1.jpg" alt="Classic red Prague tram on a historic city street" loading="lazy">
+              <img src="assets/lf3/commute-2.jpg" alt="Prague metro station with iconic dome-pattern walls" loading="lazy">
+              <img src="assets/lf3/commute-3.jpg" alt="Two red Prague trams passing on a downtown street" loading="lazy">
             </div>
             <div class="lf-card-body">
               <h4>20-minute commute, end-to-end</h4>
@@ -902,8 +924,10 @@
 
           <!-- A real student city -->
           <article class="lf-card">
-            <div class="lf-card-media">
-              <img src="assets/lf3/student-life.jpg" alt="International student life in Prague" loading="lazy">
+            <div class="lf-card-media" aria-label="Student life in Prague photo carousel">
+              <img src="assets/lf3/student-1.jpg" alt="Group of international students walking through a Prague square" loading="lazy">
+              <img src="assets/lf3/student-2.jpg" alt="Old Town Square in Prague at evening with people gathered" loading="lazy">
+              <img src="assets/lf3/student-3.jpg" alt="Prague city skyline lit up at night" loading="lazy">
             </div>
             <div class="lf-card-body">
               <h4>A real student city</h4>
