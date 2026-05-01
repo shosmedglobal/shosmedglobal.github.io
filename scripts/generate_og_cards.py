@@ -217,6 +217,12 @@ CARDS = [
         "title": "MCAT vs. Charles University Entrance Exam",
         "subtitle": "Direct side-by-side comparison: length, scope, cost, timing, difficulty. Which path suits which student.",
     },
+    {
+        "slug": "blog-czech-visa",
+        "eyebrow": "Applying  ·  9 min read",
+        "title": "Czech Student Visa for US & Canadian Medical Students",
+        "subtitle": "Step-by-step long-term student visa guide for medical students starting at Charles University: timing, documents, OAMP registration.",
+    },
 ]
 
 
