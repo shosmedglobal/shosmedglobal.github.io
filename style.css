@@ -557,26 +557,33 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 64px;
+  /* Text column wider, carousel slightly slimmer, so the eyebrow and each
+     H1 line fit on a single line at the new centered alignment. */
+  grid-template-columns: 1.55fr 1fr;
+  gap: 56px;
   align-items: center;
 }
 
-.hero-text { max-width: 560px; }
+.hero-text {
+  max-width: 760px;
+  text-align: center;
+  margin: 0 auto;
+}
 
 .hero-text .hero-buttons {
-  justify-content: flex-start;
+  justify-content: center;
   margin-bottom: 0;
   align-items: center;
   gap: 24px;
 }
 
 .hero-content-split .hero-sub {
-  margin: 0 0 32px;
-  max-width: 540px;
+  margin: 0 auto 32px;
+  max-width: 600px;
   font-size: 1.12rem;
   line-height: 1.65;
   color: rgba(255,255,255,0.82);
+  text-align: center;
 }
 
 .hero-content-split .hero-sub a {
@@ -586,10 +593,13 @@ a {
 }
 
 .hero-content-split h1 {
-  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
-  line-height: 1.05;
+  /* Slightly tighter sizing so each line ("Match into US residency.") fits
+     on a single line at the new centered alignment in the wider text column. */
+  font-size: clamp(2.05rem, 3.6vw, 3.1rem);
+  line-height: 1.08;
   letter-spacing: -0.015em;
-  margin: 18px 0 22px;
+  margin: 18px auto 22px;
+  text-align: center;
 }
 
 .hero-content-split .highlight {
@@ -603,23 +613,27 @@ a {
    a typographic system: small uppercase eyebrow line, stacked serif H1,
    credential strip below the CTAs. Reads as institution, not storefront. */
 
-/* Eyebrow: tracked uppercase, small, with a 1px gold rule + dot before it. */
+/* Eyebrow: tracked uppercase, small, centered with a small gold rule
+   + dot ornament on the LEFT side of the line. nowrap so it stays on
+   a single line; falls back to wrap on narrow viewports. */
 .hero-eyebrow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-size: 0.72rem;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.62);
-  margin: 0 0 24px;
+  margin: 0 0 22px;
   font-feature-settings: "tnum" 1;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .hero-eyebrow-rule {
   flex: 0 0 auto;
-  width: 32px;
+  width: 28px;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(232,164,76,0.7) 100%);
   position: relative;
@@ -634,6 +648,9 @@ a {
   height: 5px;
   border-radius: 50%;
   background: var(--gold, #E8A44C);
+}
+@media (max-width: 900px) {
+  .hero-eyebrow { flex-wrap: wrap; white-space: normal; }
 }
 .hero-eyebrow-sep {
   display: inline-block;
@@ -660,20 +677,22 @@ a {
   letter-spacing: -0.01em;
 }
 
-/* Credential line beneath CTAs: tabular caps, restrained. */
+/* Credential line beneath CTAs: tabular caps, restrained, centered. */
 .hero-credentials {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  margin: 32px 0 0;
-  font-size: 0.74rem;
+  margin: 32px auto 0;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
   font-feature-settings: "tnum" 1;
   line-height: 1.5;
+  text-align: center;
 }
 .hero-credentials-sep {
   color: rgba(255, 255, 255, 0.28);
