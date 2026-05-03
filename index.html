@@ -48,7 +48,7 @@
     }
   })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260503-hero2">
+  <link rel="stylesheet" href="style.css?v=20260503-hero3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -171,30 +171,31 @@
             Official US &amp; Canada Representative &middot; Charles University LF3
           </span>
           <h1>Become a doctor.<br><span class="highlight">Skip the MCAT.</span></h1>
-          <!-- Institutional logo strip: monochrome, low-emphasis, sits just under the headline.
-               Two variants (EN + CS) cross-fade on an 8s loop so both marks get airtime.
-               Logo files must be transparent-background PNGs — the brightness(0)/invert filter
-               turns visible content into a white silhouette on the navy hero. -->
+          <!-- Institutional partner mark: single English logo so it reads cleanly
+               for the US/Canada audience. Monochrome white silhouette via the
+               brightness(0)/invert filter on a transparent PNG. -->
           <div class="hero-logos" aria-label="Academic partner: Third Faculty of Medicine, Charles University in Prague">
             <span class="hero-logos-label">In partnership with</span>
-            <div class="hero-logos-marks">
-              <img src="assets/lf3/charles-uni-lf3-en.png" alt="Third Faculty of Medicine, Charles University" class="hero-logo hero-logo-en" loading="eager">
-              <img src="assets/lf3/charles-uni-lf3-cs.png" alt="Univerzita Karlova, 3. lékařská fakulta" class="hero-logo hero-logo-cs" loading="eager">
-            </div>
+            <img src="assets/lf3/charles-uni-lf3-en.png" alt="Third Faculty of Medicine, Charles University" class="hero-logo" loading="eager">
           </div>
           <p class="hero-sub">English-taught, 6-year MD at <a href="lf3.html">Charles University in Prague</a> — direct from high school, no MCAT required. EU-accredited and US-residency eligible. Built by physicians who walked this exact path.</p>
           <div class="hero-buttons">
             <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free Call &rarr;</a>
-            <a href="lf3.html#match-outcomes" class="btn-text-link">Or see where our graduates matched &rarr;</a>
+            <a href="#home-match" class="btn-text-link">Or see where our graduates matched &rarr;</a>
           </div>
         </div>
         <div class="hero-image">
-          <picture>
-            <source srcset="assets/lf3/clinical-hero.webp" type="image/webp">
+          <!-- Three-image rotation in the same hero slot. Mirrors the lf3.html
+               life-cards pattern: 15s cycle, 5s per image, phase-shifted so each
+               appears in turn. Order tells a deliberate trust story:
+               clinical training -> teaching hospital -> faculty building. -->
+          <div class="hero-image-rotate" aria-label="Charles University LF3: clinical training, FNKV teaching hospital, and faculty building">
             <img src="assets/lf3/clinical-hero.jpg" alt="Charles University LF3 medical students practicing bag-valve-mask resuscitation in a clinical skills lab" loading="eager" fetchpriority="high">
-          </picture>
+            <img src="assets/lf3/fnkv-summer.jpg" alt="Fakultní Nemocnice Královské Vinohrady (FNKV), the teaching hospital of Charles University LF3" loading="lazy">
+            <img src="assets/lf3/lf3-campus-opt.jpg" alt="Charles University Third Faculty of Medicine, Královské Vinohrady campus, Prague" loading="lazy">
+          </div>
           <div class="hero-image-vignette" aria-hidden="true"></div>
-          <span class="hero-image-caption">Clinical skills training, Charles University LF3</span>
+          <span class="hero-image-caption">Charles University LF3, Prague</span>
           <div class="proof-card" aria-label="Match outcomes summary">
             <div class="proof-avatars">
               <img src="assets/match/eli.jpg" alt="" loading="lazy">
@@ -244,26 +245,6 @@
         <div class="stat-cell">
           <div class="stat-num">~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></div>
           <div class="stat-label">EU public-university tuition</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FNKV credibility band: bridges stats ("what") to founders ("why") with
-       a concrete "where you'll train" answer. Single visual + tight copy —
-       deliberately short so it doesn't compete with the founders block below. -->
-  <section class="section" style="padding:72px 0 64px;" aria-label="Where you'll train">
-    <div class="container">
-      <div class="hospital-band">
-        <div class="hospital-band-img">
-          <img src="assets/lf3/fnkv-summer.jpg" alt="Fakultní Nemocnice Královské Vinohrady (FNKV), the teaching hospital of Charles University Third Faculty of Medicine" loading="lazy">
-          <span class="hospital-band-caption">FNKV teaching hospital · Královské Vinohrady, Prague</span>
-        </div>
-        <div class="hospital-band-text">
-          <span class="section-tag">Hospital-based from day one</span>
-          <h2>You'll train inside the teaching hospital — not just hear about it.</h2>
-          <p>Charles University LF3 is built on the campus of Fakultní Nemocnice Královské Vinohrady (FNKV), Prague's largest teaching hospital. Lectures, anatomy, and clinical rotations all happen on the same site — so you're around real patients and real attendings from year one, not year four.</p>
-          <a href="lf3.html" class="btn-text-link hospital-band-link">See how the clinical track is structured &rarr;</a>
         </div>
       </div>
     </div>
@@ -437,7 +418,7 @@
 
           </div>
         </div>
-        <p class="hm-cta"><a href="students.html#match-outcomes">See all match outcomes &rarr;</a></p>
+        <p class="hm-cta"><a href="lf3.html#match-outcomes">See all LF3 match outcomes &rarr;</a></p>
       </div>
     </div>
   </section>

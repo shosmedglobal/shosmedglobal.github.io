@@ -598,10 +598,10 @@ a {
   font-weight: 600;
 }
 
-/* Institutional logo strip (under H1, above sub-head).
-   Two logo variants (EN + CS) cross-fade on an 8s loop. The brightness(0)/invert
-   filter forces both to a clean white silhouette so they sit subtly on the navy hero
-   without competing with the headline. Hover/focus boosts opacity for a richer read. */
+/* Institutional partner mark (under H1, above sub-head).
+   Single English logo for the US/Canada audience. Monochrome white silhouette
+   via brightness(0)/invert on a transparent PNG. No animation — keeps the
+   headline area calm and avoids the cross-fade overlap from the prior version. */
 .hero-logos {
   display: flex;
   align-items: center;
@@ -614,49 +614,28 @@ a {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.5);
   white-space: nowrap;
 }
-.hero-logos-marks {
-  position: relative;
-  display: inline-block;
-  height: 56px;
-  min-width: 240px;
-}
 .hero-logo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 56px;
+  height: 64px;
   width: auto;
-  max-width: 360px;
+  max-width: 320px;
   object-fit: contain;
   object-position: left center;
-  filter: brightness(0) invert(1) opacity(0.72);
-  transition: filter 0.3s ease;
-  animation: heroLogoSwap 8s ease-in-out infinite;
+  filter: brightness(0) invert(1) opacity(0.82);
+  transition: filter 0.25s ease;
 }
-.hero-logo-cs { animation-delay: 4s; }
 .hero-logos:hover .hero-logo,
 .hero-logos:focus-within .hero-logo {
-  filter: brightness(0) invert(1) opacity(0.95);
-}
-@keyframes heroLogoSwap {
-  0%, 45% { opacity: 1; }
-  50%, 95% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-logo { animation: none; }
-  .hero-logo-cs { opacity: 0; }      /* show only EN when motion is reduced */
+  filter: brightness(0) invert(1) opacity(1);
 }
 @media (max-width: 1024px) {
   .hero-logos { justify-content: center; }
 }
 @media (max-width: 520px) {
   .hero-logos { gap: 12px; margin: 18px 0 22px; }
-  .hero-logos-marks { height: 44px; min-width: 200px; }
-  .hero-logo { height: 44px; }
+  .hero-logo { height: 50px; }
 }
 
 /* Single trust ribbon (replaces stacked badges) */
@@ -714,14 +693,41 @@ a {
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   background: #0F172A;
 }
-.hero-image img {
+/* Three-image rotation. Mirrors the lf3.html life-cards pattern.
+   15s cycle, ~5s visible per image, phase-shifted via negative animation-delay
+   so each image takes a turn. Cool grade kept as a single --editorial-grade
+   token for cross-section consistency. */
+.hero-image-rotate {
+  position: absolute;
+  inset: 0;
+}
+.hero-image-rotate img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Cool, professional grade — kept as a single token via --editorial-grade
-     so credibility/testimonial/academic sections can opt into the same tone. */
   filter: var(--editorial-grade, contrast(1.06) saturate(0.9) brightness(0.97) hue-rotate(-3deg));
   display: block;
+  opacity: 0;
+  animation: heroImageRotate 15s infinite ease-in-out;
+}
+.hero-image-rotate img:nth-child(1) { animation-delay: 0s; }
+.hero-image-rotate img:nth-child(2) { animation-delay: -10s; }
+.hero-image-rotate img:nth-child(3) { animation-delay: -5s; }
+.hero-image:hover .hero-image-rotate img { animation-play-state: paused; }
+@keyframes heroImageRotate {
+  0%   { opacity: 1; }
+  30%  { opacity: 1; }
+  38%  { opacity: 0; }
+  92%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-rotate img { animation: none; }
+  .hero-image-rotate img:nth-child(1) { opacity: 1; }
+  .hero-image-rotate img:nth-child(2),
+  .hero-image-rotate img:nth-child(3) { opacity: 0; }
 }
 .hero-image-vignette {
   position: absolute;
@@ -817,78 +823,6 @@ a {
   background: rgba(255,255,255,0.25);
   border-radius: 50%;
   transform: translateY(-50%);
-}
-
-/* ===== Hospital credibility band (FNKV) =====
-   2-col image + text. Sits between stat-band and founders. Uses the same
-   --editorial-grade filter as the hero so all editorial photography reads
-   as one consistent visual system. */
-.hospital-band {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-.hospital-band-img {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.18);
-  background: #0F172A;
-}
-.hospital-band-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: var(--editorial-grade, contrast(1.06) saturate(0.9) brightness(0.97) hue-rotate(-3deg));
-  display: block;
-}
-.hospital-band-caption {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(6px);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 0.7rem;
-  font-weight: 500;
-  padding: 6px 11px;
-  border-radius: 6px;
-  letter-spacing: 0.02em;
-}
-.hospital-band-text h2 {
-  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
-  line-height: 1.22;
-  letter-spacing: -0.012em;
-  margin: 14px 0 18px;
-  color: var(--navy);
-}
-.hospital-band-text p {
-  color: #475569;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  margin: 0 0 22px;
-}
-.hospital-band-link {
-  color: var(--navy);
-  text-decoration-color: rgba(15, 23, 42, 0.35);
-}
-.hospital-band-link:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-@media (max-width: 1024px) {
-  .hospital-band {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .hospital-band-img { max-width: 580px; margin: 0 auto; width: 100%; }
-  .hospital-band-text { text-align: center; max-width: 620px; margin: 0 auto; }
-}
-@media (max-width: 520px) {
-  .hospital-band-img { aspect-ratio: 4 / 3; border-radius: 14px; }
-  .hospital-band-text h2 { font-size: 1.4rem; }
 }
 
 /* ===== Stat Band (4 facts under brand strip) ===== */
