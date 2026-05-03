@@ -15,7 +15,16 @@ OUT = Path(__file__).resolve().parent.parent / "assets" / "lf3"
 OUT.mkdir(parents=True, exist_ok=True)
 
 
+def _skip_if_missing(src: Path) -> bool:
+    if not src.exists():
+        print(f"skip: {src.name} (not on Desktop)")
+        return True
+    return False
+
+
 def remove_white_bg(src: Path, dst: Path, hi: int = 248, lo: int = 215, max_w: int = 720) -> None:
+    if _skip_if_missing(src):
+        return
     """Pixels with min(R,G,B) >= hi -> alpha 0; below lo -> alpha 255; soft ramp between.
     Logos render at 44-88px height, so cap width at 720px (retina-safe) to keep PNGs small."""
     img = Image.open(src).convert("RGBA")
@@ -38,7 +47,9 @@ def remove_white_bg(src: Path, dst: Path, hi: int = 248, lo: int = 215, max_w: i
     img.save(dst, "PNG", optimize=True)
 
 
-def resize_jpg(src: Path, dst: Path, max_w: int = 1600, quality: int = 84) -> Image.Image:
+def resize_jpg(src: Path, dst: Path, max_w: int = 1600, quality: int = 84) -> Image.Image | None:
+    if _skip_if_missing(src):
+        return None
     img = Image.open(src).convert("RGB")
     if img.width > max_w:
         ratio = max_w / img.width
@@ -58,7 +69,8 @@ def main() -> None:
 
     # 2) Clinical hero (Students.jpg) -> jpg + webp
     hero = resize_jpg(DESKTOP / "Students.jpg", OUT / "clinical-hero.jpg", max_w=1600)
-    emit_webp(hero, OUT / "clinical-hero.webp")
+    if hero is not None:
+        emit_webp(hero, OUT / "clinical-hero.webp")
 
     # 3) FNKV credibility photos
     resize_jpg(DESKTOP / "FNKV.jpg", OUT / "fnkv-summer.jpg", max_w=1400)
@@ -66,6 +78,15 @@ def main() -> None:
 
     # 4) Trimed-style group photo (testimonials / community)
     resize_jpg(DESKTOP / "Students 2.jpg", OUT / "students-group.jpg", max_w=1800, quality=82)
+
+    # 5) Hero rotation set (replaces prior clinical/fnkv/campus rotation).
+    #    Karolina.png is an AI-enhanced (not generated) photo of the aula —
+    #    user confirmed it's OK to include.
+    resize_jpg(DESKTOP / "Entrance.png",            OUT / "hero-lf3-entrance.jpg", max_w=1600)
+    resize_jpg(DESKTOP / "Universita carolina.png", OUT / "hero-carolinum.jpg",    max_w=1600)
+    resize_jpg(DESKTOP / "Karolina.png",            OUT / "hero-aula.jpg",         max_w=1600)
+    resize_jpg(DESKTOP / "Prague.png",              OUT / "hero-prague-summer.jpg", max_w=1600)
+    resize_jpg(DESKTOP / "Night.jpg",               OUT / "hero-prague-night.jpg",  max_w=1600)
 
     print("done -> assets/lf3/")
     for p in sorted(OUT.glob("*")):

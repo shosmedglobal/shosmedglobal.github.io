@@ -693,9 +693,10 @@ a {
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   background: #0F172A;
 }
-/* Three-image rotation. Mirrors the lf3.html life-cards pattern.
-   15s cycle, ~5s visible per image, phase-shifted via negative animation-delay
-   so each image takes a turn. Cool grade kept as a single --editorial-grade
+/* Six-image rotation. Mirrors the lf3.html life-cards pattern.
+   30s cycle, ~5s visible per image, phase-shifted via negative animation-delay
+   so each image takes a turn. Each image is visible ~14% of the cycle (4s
+   peak) with ~3% fade in/out. Cool grade kept as a single --editorial-grade
    token for cross-section consistency. */
 .hero-image-rotate {
   position: absolute;
@@ -710,24 +711,26 @@ a {
   filter: var(--editorial-grade, contrast(1.06) saturate(0.9) brightness(0.97) hue-rotate(-3deg));
   display: block;
   opacity: 0;
-  animation: heroImageRotate 15s infinite ease-in-out;
+  animation: heroImageRotate 30s infinite ease-in-out;
 }
 .hero-image-rotate img:nth-child(1) { animation-delay: 0s; }
-.hero-image-rotate img:nth-child(2) { animation-delay: -10s; }
-.hero-image-rotate img:nth-child(3) { animation-delay: -5s; }
+.hero-image-rotate img:nth-child(2) { animation-delay: -5s; }
+.hero-image-rotate img:nth-child(3) { animation-delay: -10s; }
+.hero-image-rotate img:nth-child(4) { animation-delay: -15s; }
+.hero-image-rotate img:nth-child(5) { animation-delay: -20s; }
+.hero-image-rotate img:nth-child(6) { animation-delay: -25s; }
 .hero-image:hover .hero-image-rotate img { animation-play-state: paused; }
 @keyframes heroImageRotate {
   0%   { opacity: 1; }
-  30%  { opacity: 1; }
-  38%  { opacity: 0; }
-  92%  { opacity: 0; }
+  14%  { opacity: 1; }
+  18%  { opacity: 0; }
+  96%  { opacity: 0; }
   100% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-image-rotate img { animation: none; }
   .hero-image-rotate img:nth-child(1) { opacity: 1; }
-  .hero-image-rotate img:nth-child(2),
-  .hero-image-rotate img:nth-child(3) { opacity: 0; }
+  .hero-image-rotate img:nth-child(n+2) { opacity: 0; }
 }
 .hero-image-vignette {
   position: absolute;
