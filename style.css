@@ -545,14 +545,15 @@ a {
    Used on the homepage hero only. Overrides default centered hero
    layout to give a left-aligned text column + right image column.
    Stacks vertically below 1024px. */
-.hero-split { min-height: auto; }
+/* Restore full-viewport hero so the next section ("Why we built SHOS Med")
+   is below the fold on initial load. Inherits min-height: 100vh from .hero. */
+.hero-split { min-height: 100vh; }
 
 .hero-content-split {
   text-align: left;
-  /* Trimmed top/bottom so brand-strip + stat-band land above the fold
-     on a typical 800-900px viewport. Top kept at 104 to clear the fixed nav. */
-  padding: 104px 0 36px;
+  padding: 104px 0 64px;
   max-width: 1240px;
+  width: 100%;
 }
 
 .hero-grid {
