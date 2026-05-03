@@ -598,11 +598,101 @@ a {
   font-weight: 600;
 }
 
-/* Institutional partner mark (under H1, above sub-head).
-   Logo sits on a white "card" so the colored seal + dark text remain
-   readable against the navy hero. Sized for presence (88-96px tall) — the
-   prior 52px lost the seal detail and read as a sticker rather than a
-   partnership signal. */
+/* ===== Refined hero — institutional voice =====
+   Replaces the prior white-chip partner logo + colored ribbon pill with
+   a typographic system: small uppercase eyebrow line, stacked serif H1,
+   credential strip below the CTAs. Reads as institution, not storefront. */
+
+/* Eyebrow: tracked uppercase, small, with a 1px gold rule + dot before it. */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 24px;
+  font-feature-settings: "tnum" 1;
+  flex-wrap: wrap;
+}
+.hero-eyebrow-rule {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232,164,76,0.7) 100%);
+  position: relative;
+}
+.hero-eyebrow-rule::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold, #E8A44C);
+}
+.hero-eyebrow-sep {
+  display: inline-block;
+  margin: 0 2px;
+  color: rgba(255, 255, 255, 0.32);
+  font-weight: 400;
+}
+
+/* Stacked serif H1: three short declarative lines. The middle line uses
+   the existing `.highlight` italic gradient treatment to anchor the eye. */
+.hero-h1-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 22px;
+}
+.hero-h1-stacked > span {
+  display: block;
+}
+.hero-h1-trail {
+  font-size: 0.78em;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Credential line beneath CTAs: tabular caps, restrained. */
+.hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-feature-settings: "tnum" 1;
+  line-height: 1.5;
+}
+.hero-credentials-sep {
+  color: rgba(255, 255, 255, 0.28);
+  font-weight: 400;
+}
+
+/* Single hero image: replaces the rotating carousel. Uses the same frame
+   styling as the previous .hero-image-rotate so layout is unchanged. */
+.hero-image-single {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Legacy chip-and-ribbon styles below are no longer rendered on the homepage,
+   but kept defined to avoid breaking other pages that may still use them. */
 .hero-logos {
   display: flex;
   align-items: center;
