@@ -617,25 +617,35 @@ a {
   color: rgba(255, 255, 255, 0.5);
   white-space: nowrap;
 }
-.hero-logo {
-  height: 64px;
-  width: auto;
-  max-width: 320px;
-  object-fit: contain;
-  object-position: left center;
-  filter: brightness(0) invert(1) opacity(0.82);
-  transition: filter 0.25s ease;
+/* White chip lets the full-color logo stay readable on the navy hero. */
+.hero-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-.hero-logos:hover .hero-logo,
-.hero-logos:focus-within .hero-logo {
-  filter: brightness(0) invert(1) opacity(1);
+.hero-logos:hover .hero-logo-chip,
+.hero-logos:focus-within .hero-logo-chip {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  transform: translateY(-1px);
+}
+.hero-logo {
+  height: 52px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+  display: block;
 }
 @media (max-width: 1024px) {
   .hero-logos { justify-content: center; }
 }
 @media (max-width: 520px) {
   .hero-logos { gap: 12px; margin: 18px 0 22px; }
-  .hero-logo { height: 50px; }
+  .hero-logo-chip { padding: 6px 11px; }
+  .hero-logo { height: 42px; }
 }
 
 /* Single trust ribbon (replaces stacked badges) */
@@ -752,45 +762,6 @@ a {
   letter-spacing: 0.02em;
 }
 
-/* Floating proof card (bottom-right of hero image) */
-.proof-card {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(10px);
-  padding: 12px 16px 12px 14px;
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.28);
-  max-width: 290px;
-}
-.proof-avatars { display: flex; flex-shrink: 0; }
-.proof-avatars img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin-left: -9px;
-  object-fit: cover;
-  object-position: center 25%;
-  background: #E5E7EB;
-}
-.proof-avatars img:first-child { margin-left: 0; }
-.proof-text { display: flex; flex-direction: column; line-height: 1.25; }
-.proof-text strong {
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--navy);
-}
-.proof-text span {
-  font-size: 0.74rem;
-  color: var(--gray-600);
-  margin-top: 2px;
-}
-
 /* ===== Brand / Credentials Strip (under hero) ===== */
 .brand-strip {
   background: #161B30;            /* opaque, slightly darker than hero navy */
@@ -890,9 +861,6 @@ a {
 
 @media (max-width: 520px) {
   .hero-image { aspect-ratio: 4/5; max-width: 100%; }
-  .proof-card { bottom: 12px; right: 12px; max-width: 240px; padding: 10px 14px; }
-  .proof-text strong { font-size: 0.78rem; }
-  .proof-text span { font-size: 0.7rem; }
   .hero-text .hero-buttons { flex-direction: column; gap: 18px; }
   .btn-hero-cta { width: 100%; text-align: center; }
 }
