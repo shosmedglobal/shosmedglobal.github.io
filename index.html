@@ -212,18 +212,152 @@
           We took the path from Charles University to US residency ourselves, and we started by helping friends and classmates do the same. What began as one-on-one guidance grew quickly through word of mouth. SHOS Med was built to support students at every stage of that journey: from getting into medical school, to succeeding during their studies, to navigating the path to US residency. Clear, structured, and affordable.
         </p>
 
-        <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin:34px 0 6px; flex-wrap:wrap;">
-          <div style="display:flex; align-items:center;">
-            <img src="assets/match/eli-suit.jpg" alt="Eli Zolotov, MD" style="width:56px; height:56px; border-radius:50%; object-fit:cover; object-position:center top; border:3px solid #0d9488; position:relative; z-index:2; background:#fff;">
-            <img src="assets/match/anat-portrait.jpg" alt="Anat Sigal, MD" style="width:56px; height:56px; border-radius:50%; object-fit:cover; object-position:center top; border:3px solid #0d9488; margin-left:-14px; background:#fff;">
-          </div>
-          <div style="text-align:left; font-size:0.94rem; line-height:1.45; color:#1B2A4A;">
-            <div style="font-weight:700;">Eli Zolotov, MD &amp; Anat Sigal, MD</div>
-            <div style="font-size:0.82rem; color:#6B7280;">Co-founders &middot; Charles University LF3 graduates</div>
+      </div>
+
+      <!-- Mini match-outcomes marquee. Compact homepage version of the
+           students.html #match-outcomes track. Same edge-fade + hover-pause
+           + reduced-motion handling, but smaller cards and a single-line
+           specialty tag instead of full residency/fellowship blocks. -->
+      <style>
+        #home-match { margin-top: 40px; }
+        #home-match .hm-track-wrap { max-width: 980px; margin: 0 auto; overflow: hidden; position: relative; padding: 8px 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+        #home-match .hm-track { display: flex; width: max-content; animation: hmTrackScroll 44s linear infinite; will-change: transform; }
+        #home-match .hm-track-wrap:hover .hm-track,
+        #home-match .hm-track:focus-within { animation-play-state: paused; }
+        @keyframes hmTrackScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { #home-match .hm-track { animation: none; } #home-match .hm-track-wrap { overflow-x: auto; } }
+
+        #home-match .hm-card { flex: 0 0 210px; margin-right: 14px; background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; padding: 18px 16px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+        #home-match .hm-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(15,23,42,0.08); border-color: #CBD5E1; }
+
+        #home-match .hm-photo-wrap { position: relative; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #1B2A4A 0%, #0d9488 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(15,23,42,0.10); margin-bottom: 12px; }
+        #home-match .hm-initials { color: #fff; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.02em; }
+        #home-match .hm-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+
+        #home-match .hm-name { margin: 0; font-size: 0.95rem; font-weight: 700; color: #0F172A; line-height: 1.25; }
+        #home-match .hm-tag { margin: 6px 0 0; font-size: 0.78rem; color: #475569; line-height: 1.45; }
+        #home-match .hm-tag .hm-spec { display: block; font-weight: 600; color: #0F172A; }
+
+        #home-match .hm-cta { text-align: center; margin: 22px 0 0; font-size: 0.9rem; }
+        #home-match .hm-cta a { color: #0d9488; font-weight: 600; text-decoration: underline; }
+
+        @media (max-width: 480px) {
+          #home-match .hm-card { flex: 0 0 190px; padding: 16px 14px 14px; }
+          #home-match .hm-photo-wrap { width: 56px; height: 56px; }
+        }
+      </style>
+
+      <div id="home-match" aria-label="Charles University graduates now in US residency and fellowship">
+        <div class="hm-track-wrap" role="region">
+          <div class="hm-track">
+
+            <!-- ================= SET 1 ================= -->
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">EZ</span><img src="assets/match/eli.jpg" alt="Eli Z. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Eli Z. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Hematology / Oncology Fellow</span>Hackensack UMC</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">AS</span><img src="assets/match/anat.jpg" alt="Anat S. MD" class="hm-photo" style="object-position:center 10%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Anat S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Pediatric GI Fellow</span>NYU Langone</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">JS</span><img src="assets/match/jurgen.jpg" alt="Jurgen S. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Jurgen S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>Carle Health</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">NB</span><img src="assets/match/neria.jpg" alt="Neria B. MD" class="hm-photo" style="object-position:center 25%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Neria B. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>Geisinger Medical Center</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">ZS</span><img src="assets/match/zuzana.jpg" alt="Zuzana S. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Zuzana S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Geriatric Psych Fellow</span>UCLA</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">JZ</span><img src="assets/match/jan.jpg" alt="Jan Z. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Jan Z. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>UConn</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">ML</span><img src="assets/match/matias.jpg" alt="Matias L. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Matias L. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Jacobi Medical Center</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">AA</span><img src="assets/match/adir.jpg" alt="Adir A. MD" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Adir A. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Jacobi Medical Center</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">EM</span><img src="assets/match/elijah.jpg" alt="Elijah M. MD" class="hm-photo" style="object-position:center 22%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Elijah M. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Boston Medical Center</p>
+            </article>
+            <article class="hm-card">
+              <div class="hm-photo-wrap"><span class="hm-initials">GP</span><img src="assets/match/gal.jpg" alt="Gal P. MD" class="hm-photo" style="object-position:center 20%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Gal P. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>MedStar Georgetown</p>
+            </article>
+
+            <!-- ================= SET 2 (duplicate for seamless loop) ================= -->
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">EZ</span><img src="assets/match/eli.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Eli Z. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Hematology / Oncology Fellow</span>Hackensack UMC</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">AS</span><img src="assets/match/anat.jpg" alt="" class="hm-photo" style="object-position:center 10%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Anat S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Pediatric GI Fellow</span>NYU Langone</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">JS</span><img src="assets/match/jurgen.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Jurgen S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>Carle Health</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">NB</span><img src="assets/match/neria.jpg" alt="" class="hm-photo" style="object-position:center 25%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Neria B. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>Geisinger Medical Center</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">ZS</span><img src="assets/match/zuzana.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Zuzana S. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Geriatric Psych Fellow</span>UCLA</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">JZ</span><img src="assets/match/jan.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Jan Z. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Cardiology Fellow</span>UConn</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">ML</span><img src="assets/match/matias.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Matias L. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Jacobi Medical Center</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">AA</span><img src="assets/match/adir.jpg" alt="" class="hm-photo" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Adir A. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Jacobi Medical Center</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">EM</span><img src="assets/match/elijah.jpg" alt="" class="hm-photo" style="object-position:center 22%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Elijah M. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>Boston Medical Center</p>
+            </article>
+            <article class="hm-card" aria-hidden="true">
+              <div class="hm-photo-wrap"><span class="hm-initials">GP</span><img src="assets/match/gal.jpg" alt="" class="hm-photo" style="object-position:center 20%;" onerror="this.style.display='none'"></div>
+              <h4 class="hm-name">Gal P. MD</h4>
+              <p class="hm-tag"><span class="hm-spec">Internal Medicine</span>MedStar Georgetown</p>
+            </article>
+
           </div>
         </div>
-
-        <p style="margin:14px 0 0; font-size:0.92rem;"><a href="mentors.html" style="color:#0d9488; font-weight:600; text-decoration:underline;">See full mentor bios &rarr;</a></p>
+        <p class="hm-cta"><a href="students.html#match-outcomes">See all match outcomes &rarr;</a></p>
       </div>
     </div>
   </section>
