@@ -87,6 +87,7 @@ def main() -> None:
     resize_jpg(DESKTOP / "Karolina.png",            OUT / "hero-aula.jpg",         max_w=1600)
     resize_jpg(DESKTOP / "Prague.png",              OUT / "hero-prague-summer.jpg", max_w=1600)
     resize_jpg(DESKTOP / "Night.jpg",               OUT / "hero-prague-night.jpg",  max_w=1600)
+    resize_jpg(DESKTOP / "Library.jpg",             OUT / "hero-library.jpg",       max_w=1600)
 
     print("done -> assets/lf3/")
     for p in sorted(OUT.glob("*")):

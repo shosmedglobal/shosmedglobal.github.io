@@ -599,53 +599,69 @@ a {
 }
 
 /* Institutional partner mark (under H1, above sub-head).
-   Single English logo for the US/Canada audience. Monochrome white silhouette
-   via brightness(0)/invert on a transparent PNG. No animation — keeps the
-   headline area calm and avoids the cross-fade overlap from the prior version. */
+   Logo sits on a white "card" so the colored seal + dark text remain
+   readable against the navy hero. Sized for presence (88-96px tall) — the
+   prior 52px lost the seal detail and read as a sticker rather than a
+   partnership signal. */
 .hero-logos {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin: 22px 0 26px;
+  gap: 22px;
+  margin: 28px 0 32px;
   flex-wrap: wrap;
 }
 .hero-logos-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.62);
   white-space: nowrap;
+  line-height: 1.4;
 }
-/* White chip lets the full-color logo stay readable on the navy hero. */
 .hero-logo-chip {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   background: #fff;
-  padding: 8px 14px;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  padding: 14px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 8px 24px rgba(0, 0, 0, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.18);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 .hero-logos:hover .hero-logo-chip,
 .hero-logos:focus-within .hero-logo-chip {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
-  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 32px rgba(0, 0, 0, 0.34),
+    0 3px 8px rgba(0, 0, 0, 0.22);
+  transform: translateY(-2px);
 }
 .hero-logo {
-  height: 52px;
+  height: 88px;
   width: auto;
-  max-width: 280px;
+  max-width: 320px;
   object-fit: contain;
   display: block;
 }
 @media (max-width: 1024px) {
   .hero-logos { justify-content: center; }
 }
+@media (max-width: 768px) {
+  .hero-logos { gap: 16px; margin: 24px 0 28px; }
+  .hero-logo-chip { padding: 10px 16px; }
+  .hero-logo { height: 64px; max-width: 240px; }
+  .hero-logos-label { font-size: 0.66rem; letter-spacing: 0.14em; }
+}
 @media (max-width: 520px) {
-  .hero-logos { gap: 12px; margin: 18px 0 22px; }
-  .hero-logo-chip { padding: 6px 11px; }
-  .hero-logo { height: 42px; }
+  .hero-logo-chip { padding: 9px 14px; }
+  .hero-logo { height: 54px; }
 }
 
 /* Single trust ribbon (replaces stacked badges) */
@@ -703,11 +719,12 @@ a {
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   background: #0F172A;
 }
-/* Six-image rotation. Mirrors the lf3.html life-cards pattern.
-   30s cycle, ~5s visible per image, phase-shifted via negative animation-delay
-   so each image takes a turn. Each image is visible ~14% of the cycle (4s
-   peak) with ~3% fade in/out. Cool grade kept as a single --editorial-grade
-   token for cross-section consistency. */
+/* Seven-image rotation. Mirrors the lf3.html life-cards pattern.
+   35s cycle, ~5s visible per image, phase-shifted via negative animation-delay
+   so each image takes its turn. Each image is visible ~12% of the cycle
+   (~4.2s peak) with ~3% fade in/out. The negative-delay convention lets all
+   images animate from t=0 (no waiting until first appearance).
+   Cool grade kept as a single --editorial-grade token for consistency. */
 .hero-image-rotate {
   position: absolute;
   inset: 0;
@@ -721,20 +738,21 @@ a {
   filter: var(--editorial-grade, contrast(1.06) saturate(0.9) brightness(0.97) hue-rotate(-3deg));
   display: block;
   opacity: 0;
-  animation: heroImageRotate 30s infinite ease-in-out;
+  animation: heroImageRotate 35s infinite ease-in-out;
 }
-.hero-image-rotate img:nth-child(1) { animation-delay: 0s; }
-.hero-image-rotate img:nth-child(2) { animation-delay: -5s; }
-.hero-image-rotate img:nth-child(3) { animation-delay: -10s; }
-.hero-image-rotate img:nth-child(4) { animation-delay: -15s; }
-.hero-image-rotate img:nth-child(5) { animation-delay: -20s; }
-.hero-image-rotate img:nth-child(6) { animation-delay: -25s; }
+.hero-image-rotate img:nth-child(1) { animation-delay:   0s; }
+.hero-image-rotate img:nth-child(2) { animation-delay: -30s; }
+.hero-image-rotate img:nth-child(3) { animation-delay: -25s; }
+.hero-image-rotate img:nth-child(4) { animation-delay: -20s; }
+.hero-image-rotate img:nth-child(5) { animation-delay: -15s; }
+.hero-image-rotate img:nth-child(6) { animation-delay: -10s; }
+.hero-image-rotate img:nth-child(7) { animation-delay:  -5s; }
 .hero-image:hover .hero-image-rotate img { animation-play-state: paused; }
 @keyframes heroImageRotate {
   0%   { opacity: 1; }
-  14%  { opacity: 1; }
-  18%  { opacity: 0; }
-  96%  { opacity: 0; }
+  12%  { opacity: 1; }
+  15%  { opacity: 0; }
+  97%  { opacity: 0; }
   100% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
