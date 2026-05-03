@@ -541,6 +541,285 @@ a {
   margin-bottom: 60px;
 }
 
+/* ===== Split Hero (homepage 2-column) =====
+   Used on the homepage hero only. Overrides default centered hero
+   layout to give a left-aligned text column + right image column.
+   Stacks vertically below 1024px. */
+.hero-split { min-height: auto; }
+
+.hero-content-split {
+  text-align: left;
+  padding: 132px 0 72px;
+  max-width: 1240px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text { max-width: 560px; }
+
+.hero-text .hero-buttons {
+  justify-content: flex-start;
+  margin-bottom: 0;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-content-split .hero-sub {
+  margin: 0 0 32px;
+  max-width: 540px;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.82);
+}
+
+.hero-content-split .hero-sub a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-content-split h1 {
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 18px 0 22px;
+}
+
+.hero-content-split .highlight {
+  display: block;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Single trust ribbon (replaces stacked badges) */
+.hero-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13,148,136,0.18);
+  border: 1px solid rgba(94,234,212,0.45);
+  color: #5EEAD4;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Primary CTA in hero — slightly punchier than default */
+.btn-hero-cta {
+  font-size: 1.02rem;
+  padding: 16px 28px;
+  box-shadow: 0 10px 28px rgba(207,91,46,0.38);
+}
+
+/* Secondary text-link CTA (de-prioritizes vs the primary button) */
+.btn-text-link {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255,255,255,0.35);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.btn-text-link:hover {
+  color: #fff;
+  text-decoration-color: #fff;
+}
+
+/* Hero image column */
+.hero-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  background: #0F172A;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04) saturate(0.96);
+  display: block;
+}
+.hero-image-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 45%, rgba(15,23,42,0.55) 100%);
+  pointer-events: none;
+}
+.hero-image-caption {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.92);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 6px 11px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Floating proof card (bottom-right of hero image) */
+.proof-card {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+  padding: 12px 16px 12px 14px;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+  max-width: 290px;
+}
+.proof-avatars { display: flex; flex-shrink: 0; }
+.proof-avatars img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -9px;
+  object-fit: cover;
+  object-position: center 25%;
+  background: #E5E7EB;
+}
+.proof-avatars img:first-child { margin-left: 0; }
+.proof-text { display: flex; flex-direction: column; line-height: 1.25; }
+.proof-text strong {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.proof-text span {
+  font-size: 0.74rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+/* ===== Brand / Credentials Strip (under hero) ===== */
+.brand-strip {
+  background: #161B30;            /* opaque, slightly darker than hero navy */
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 18px 0;
+  position: relative;
+  margin-top: -1px;
+}
+.brand-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.brand-credential {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: relative;
+}
+.brand-credential + .brand-credential::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== Stat Band (4 facts under brand strip) ===== */
+.stat-band {
+  background: linear-gradient(180deg, #11162A 0%, #0E1324 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 36px 0;
+}
+.stat-band-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  text-align: center;
+}
+.stat-cell { padding: 4px 8px; }
+.stat-num {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.stat-num-unit {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-left: 2px;
+}
+.stat-sup {
+  font-size: 0.5em;
+  font-weight: 600;
+  margin-left: 2px;
+  color: rgba(255,255,255,0.45);
+  vertical-align: super;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* ===== Responsive: stack split hero, collapse stat band ===== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .hero-text { max-width: 640px; margin: 0 auto; text-align: center; }
+  .hero-text .hero-buttons { justify-content: center; }
+  .hero-content-split .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-image { max-width: 520px; margin: 0 auto; aspect-ratio: 5/4; }
+}
+
+@media (max-width: 768px) {
+  .hero-content-split { padding: 110px 0 56px; }
+  .stat-band-inner { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  .stat-num { font-size: 1.35rem; }
+  .brand-strip-inner { gap: 24px 28px; }
+  .brand-credential { font-size: 0.72rem; }
+}
+
+@media (max-width: 520px) {
+  .hero-image { aspect-ratio: 4/5; max-width: 100%; }
+  .proof-card { bottom: 12px; right: 12px; max-width: 240px; padding: 10px 14px; }
+  .proof-text strong { font-size: 0.78rem; }
+  .proof-text span { font-size: 0.7rem; }
+  .hero-text .hero-buttons { flex-direction: column; gap: 18px; }
+  .btn-hero-cta { width: 100%; text-align: center; }
+}
+
 /* ===== Stats Strip ===== */
 /* ===== About Strip ===== */
 .about-strip {

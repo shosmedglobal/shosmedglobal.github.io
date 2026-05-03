@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/lf3/lf3-campus.webp" type="image/webp" fetchpriority="high">
   <script>
   /* Auth pre-render - prevents flash of unauthenticated nav.
      Reads cached auth state synchronously and pre-renders the correct
@@ -157,46 +158,85 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
+  <!-- Hero Section: 2-col on desktop, stacked on mobile.
+       Left: ribbon + headline + subhead + CTAs.
+       Right: campus photo with floating proof card. -->
+  <header class="hero hero-split">
     <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <!-- Trust ribbon: Official Charles University representative -->
-      <div style="display:block; margin-bottom:12px;">
-        <span style="display:inline-flex; align-items:center; gap:8px; background:rgba(13,148,136,0.18); border:1px solid rgba(94,234,212,0.45); color:#5EEAD4; font-size:0.78rem; font-weight:700; padding:7px 14px; border-radius:20px; letter-spacing:0.06em;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
-          OFFICIAL US &amp; CANADA REPRESENTATIVE &middot; CHARLES UNIVERSITY LF3
-        </span>
-      </div>
-      <div style="display:block; margin-bottom:18px;">
-        <span class="hero-badge">Built by US physicians who studied at Charles University and matched into US residency</span>
-      </div>
-      <h1>Become a doctor<br><span class="highlight">without the MCAT</span></h1>
-      <p class="hero-sub">Go directly into a <strong style="color:#fff;">6-year</strong> <strong style="color:#fff;">English-taught</strong> MD program at <a href="lf3.html" style="color:#fff; text-decoration:underline;">Charles University in Prague</a>, ranked in the <strong style="color:#fff;">top 2% of universities worldwide</strong><sup style="font-size:0.65em; color:rgba(255,255,255,0.45); font-weight:400;">&dagger;</sup>. <strong style="color:#fff;">Start at 18</strong>. About $18,500<sup style="font-size:0.65em; color:rgba(255,255,255,0.45); font-weight:400;">*</sup> per year. EU-accredited and eligible for US residency. We took this exact path, and now we guide you through it.</p>
-      <div class="hero-buttons">
-        <a href="#" data-contact-modal="consultation" class="btn btn-primary">Book a Free Call About LF3</a>
-        <a href="qbank.html?v=20260423a" class="btn btn-outline" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Try 40 Free Entrance Exam Questions</a>
-      </div>
-      <!-- Trust numbers: moved into the hero so the four concrete facts
-           (No MCAT, tuition, duration, English) sit above the fold. -->
-      <div style="margin-top:40px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.12); max-width:860px; margin-left:auto; margin-right:auto;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:24px; text-align:center;">
-          <div>
-            <div style="font-size:1.5rem; font-weight:800; color:#E8A44C; line-height:1;">No MCAT</div>
-            <div style="font-size:0.78rem; color:rgba(255,255,255,0.72); margin-top:6px;">Direct entry after high school</div>
+    <div class="container hero-content hero-content-split">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="hero-ribbon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            Official US &amp; Canada Representative &middot; Charles University LF3
+          </span>
+          <h1>Become a doctor.<br><span class="highlight">Skip the MCAT.</span></h1>
+          <p class="hero-sub">English-taught, 6-year MD at <a href="lf3.html">Charles University in Prague</a> — direct from high school, no MCAT required. EU-accredited and US-residency eligible. Built by physicians who walked this exact path.</p>
+          <div class="hero-buttons">
+            <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free 20-Min Call &rarr;</a>
+            <a href="#home-match" class="btn-text-link">Or see where our graduates matched &rarr;</a>
           </div>
-          <div>
-            <div style="font-size:1.5rem; font-weight:800; color:#E8A44C; line-height:1;">Top 2%<sup style="font-size:0.55em; font-weight:700; margin-left:2px;">&dagger;</sup></div>
-            <div style="font-size:0.78rem; color:rgba(255,255,255,0.72); margin-top:6px;">Universities worldwide (QS)</div>
-          </div>
-          <div>
-            <div style="font-size:1.5rem; font-weight:800; color:#E8A44C; line-height:1;">English-taught</div>
-            <div style="font-size:0.78rem; color:rgba(255,255,255,0.72); margin-top:6px;">MD program since 1991</div>
+        </div>
+        <div class="hero-image">
+          <picture>
+            <source srcset="assets/lf3/lf3-campus.webp" type="image/webp">
+            <img src="assets/lf3/lf3-campus-opt.jpg" alt="Charles University Third Faculty of Medicine (LF3) campus, Prague" loading="eager" fetchpriority="high">
+          </picture>
+          <div class="hero-image-vignette" aria-hidden="true"></div>
+          <span class="hero-image-caption">Královské Vinohrady campus, Prague</span>
+          <div class="proof-card" aria-label="Match outcomes summary">
+            <div class="proof-avatars">
+              <img src="assets/match/eli.jpg" alt="" loading="lazy">
+              <img src="assets/match/anat.jpg" alt="" loading="lazy">
+              <img src="assets/match/neria.jpg" alt="" loading="lazy">
+            </div>
+            <div class="proof-text">
+              <strong>10+ Charles University MDs</strong>
+              <span>now in US residency</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Credentials strip: text-based credibility markers under hero.
+       (Swap to co-branded logos once Charles/LF3 mark licensing is confirmed.) -->
+  <section class="brand-strip" aria-label="Program credentials">
+    <div class="container">
+      <div class="brand-strip-inner">
+        <span class="brand-credential">EU-Accredited MD</span>
+        <span class="brand-credential">ECFMG-Recognized</span>
+        <span class="brand-credential">WFME-Compliant</span>
+        <span class="brand-credential">English MD since 1991</span>
+        <span class="brand-credential">Charles Univ. founded 1348</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat band: four headline facts on dark navy, full-bleed below the hero. -->
+  <section class="stat-band" aria-label="Program at a glance">
+    <div class="container">
+      <div class="stat-band-inner">
+        <div class="stat-cell">
+          <div class="stat-num">No MCAT</div>
+          <div class="stat-label">Direct entry from high school</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">English-taught</div>
+          <div class="stat-label">6-year MD program</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">Top 2%<sup class="stat-sup">&dagger;</sup></div>
+          <div class="stat-label">Universities worldwide (QS)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></div>
+          <div class="stat-label">EU public-university tuition</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Founders / Mission. section-alt gives a soft gray-50 background so this
        block is visually distinct from the white Pathways section that follows. -->
