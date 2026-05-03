@@ -2916,6 +2916,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
   <script src="auth.js?v=20260422g"></script>
   <script src="contact-booking.js"></script>
   <script>
@@ -3579,13 +3580,38 @@
 
     initProgressTracker();
 
-    // ===== Stripe Payment Links =====
+    // ===== Stripe Checkout =====
+    // Calls the createCheckoutSession Cloud Function and redirects to the
+    // Stripe-hosted checkout page. On success Stripe redirects to success.html;
+    // the stripeWebhook Cloud Function flips the user's payments fields.
     document.querySelectorAll('.stripe-pay').forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      btn.addEventListener('click', async function(e) {
         e.preventDefault();
         const tier = this.dataset.tier;
-        const tierName = tier.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        alert('Payment coming soon! For now, email contact@shosmed.com to get started with the ' + tierName + ' plan.');
+        const user = firebase.auth().currentUser;
+        if (!user) {
+          window.location.href = 'login.html';
+          return;
+        }
+
+        const originalText = this.textContent;
+        this.textContent = 'Loading…';
+        this.style.pointerEvents = 'none';
+
+        try {
+          const fn = firebase.functions().httpsCallable('createCheckoutSession');
+          const result = await fn({ tier, origin: window.location.origin });
+          if (result.data && result.data.url) {
+            window.location.href = result.data.url;
+          } else {
+            throw new Error('No checkout URL returned');
+          }
+        } catch (err) {
+          console.error('Checkout failed:', err);
+          alert('Sorry — we couldn\'t start checkout. Please try again, or email contact@shosmed.com.');
+          this.textContent = originalText;
+          this.style.pointerEvents = '';
+        }
       });
     });
 
