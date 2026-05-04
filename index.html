@@ -48,7 +48,7 @@
     }
   })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260503-hero15">
+  <link rel="stylesheet" href="style.css?v=20260503-hero17">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -186,34 +186,33 @@
           <p class="hero-sub">An English-taught, 6-year, EU-accredited MD at <a href="lf3.html">Charles University in Prague</a>, founded 1348. Mentored by physicians who walked this exact path.</p>
           <div class="hero-buttons">
             <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free Call &rarr;</a>
-            <a href="lf3.html#match-outcomes" class="btn-text-link">See where our graduates matched &rarr;</a>
+            <a href="lf3.html#match-outcomes" class="btn btn-outline">See where our graduates matched &rarr;</a>
           </div>
         </div>
         <div class="hero-image">
-          <!-- Seven-image rotation. 35s cycle, 5s per image, phase-shifted so
-               each appears in turn. Prague day and Prague night sit 4 slots
-               apart so they don't appear consecutively. -->
-          <div class="hero-image-rotate" aria-label="Charles University LF3 program: faculty building, Carolinum, Prague, clinical training, aula, library, and Prague at night">
-            <img src="assets/lf3/hero-lf3-entrance.jpg" alt="Univerzita Karlova 3. lékařská fakulta, Building A entrance, Královské Vinohrady, Prague" loading="eager" fetchpriority="high">
-            <img src="assets/lf3/hero-carolinum.jpg" alt="Universitas Carolina, Charles University main building, Prague" loading="lazy">
-            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="lazy">
-            <img src="assets/lf3/clinical-hero.jpg?v=2" alt="Charles University LF3 medical students in white coats on a pediatric ward at FNKV teaching hospital, observing an infant warmer" loading="lazy">
-            <img src="assets/lf3/hero-aula.jpg" alt="Charles University assembly hall (aula) with the statue of Charles IV" loading="lazy">
+          <!-- Four-image rotation. 20s cycle, 5s per image, phase-shifted.
+               Order: Prague day -> Library -> Aula -> Prague night. Library
+               and aula sit between the two Prague photos so day/night don't
+               appear back-to-back. -->
+          <div class="hero-image-rotate" aria-label="Charles University LF3 program: Prague summer panorama, Klementinum library, aula, and Prague at night">
+            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="eager" fetchpriority="high">
             <img src="assets/lf3/hero-library.jpg" alt="Klementinum Baroque Library Hall, Prague" loading="lazy">
+            <img src="assets/lf3/hero-aula.jpg" alt="Charles University assembly hall (aula) with the statue of Charles IV" loading="lazy">
             <img src="assets/lf3/hero-prague-night.jpg" alt="Prague Castle and St. Vitus Cathedral lit at night, reflected in the Vltava river" loading="lazy">
           </div>
           <div class="hero-image-vignette" aria-hidden="true"></div>
         </div>
       </div>
 
-      <!-- Bottom: merged trust grid (credentials + stats in one block) -->
+      <!-- Bottom trust grid. 7 items: row 1 = 3 credentials (single line),
+           row 2 = 4 stats with sub-labels. 12-col grid on desktop so row 1
+           items span 4 cols and row 2 items span 3 cols (cleanly balanced). -->
       <div class="hero-trust" aria-label="Program at a glance">
         <div class="hero-trust-item"><strong>EU-Accredited MD</strong></div>
         <div class="hero-trust-item"><strong>ECFMG-Recognized</strong></div>
-        <div class="hero-trust-item"><strong>English MD since 1991</strong></div>
-        <div class="hero-trust-item"><strong>Charles Univ. founded 1348</strong></div>
+        <div class="hero-trust-item"><strong>Founded in 1348</strong></div>
         <div class="hero-trust-item"><strong>No MCAT</strong><span>Direct entry from high school</span></div>
-        <div class="hero-trust-item"><strong>English-taught</strong><span>6-year MD program</span></div>
+        <div class="hero-trust-item"><strong>English-taught since 1991</strong><span>6-year MD program</span></div>
         <div class="hero-trust-item"><strong>Top 2%<sup class="stat-sup">&dagger;</sup></strong><span>Universities worldwide (QS)</span></div>
         <div class="hero-trust-item"><strong>~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></strong><span>EU public-university tuition</span></div>
       </div>
