@@ -587,9 +587,9 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;     /* equal-width buttons */
-  max-width: 360px;          /* fits "See where our graduates matched →" on one line */
+  max-width: 360px;          /* fits the longer secondary CTA on one line */
   margin-bottom: 0;
-  gap: 14px;
+  gap: 16px;                 /* a touch more space between the two buttons */
 }
 .hero-text .hero-buttons > .btn {
   padding: 16px 24px;       /* match primary height + give secondary text room */
@@ -598,10 +598,10 @@ a {
 }
 
 .hero-content-split .hero-sub {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   max-width: 540px;
   font-size: 1.13rem;
-  line-height: 1.6;
+  line-height: 1.7;             /* easier to read across 2-3 lines */
   color: rgba(255,255,255,0.82);
   text-align: left;
 }
@@ -614,12 +614,12 @@ a {
 
 .hero-content-split h1 {
   font-size: clamp(2.3rem, 4.5vw, 3.6rem);
-  line-height: 1.08;
+  line-height: 1.18;            /* was 1.08 — easier to read, less "stuck" */
   letter-spacing: -0.025em;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.98);
-  margin: 14px auto 0;
-  text-align: center;
+  margin: 0 0 14px;             /* left-align with the rest of the column */
+  text-align: left;
 }
 
 .hero-content-split .highlight {
@@ -968,8 +968,8 @@ a {
 .hero-trust-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 10px;
-  margin: 0 0 26px;
+  gap: 10px 10px;
+  margin: 0 0 32px;             /* more breathing before the subhead */
 }
 .hero-trust-badge {
   display: inline-flex;
@@ -999,10 +999,10 @@ a {
 
 /* ===== Microcopy line under CTAs ===== */
 .hero-microcopy {
-  margin: 14px 0 0;
+  margin: 18px 0 0;
   font-size: 0.78rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
   letter-spacing: 0.02em;
 }
 
