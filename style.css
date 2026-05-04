@@ -1087,6 +1087,23 @@ a {
   margin-top: 6px;
   line-height: 1.5;
 }
+.hero-proof-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5EEAD4;                               /* teal — matches trust-bar accent */
+  margin-top: 6px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(94, 234, 212, 0.4);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+.hero-proof-link:hover {
+  color: #99F6E4;
+  text-decoration-color: #99F6E4;
+}
 
 /* ===== Legacy: bottom hero trust grid (kept for any other page that uses it) =====
    (No longer applied on the homepage hero; replaced by .hero-proof above.) */
