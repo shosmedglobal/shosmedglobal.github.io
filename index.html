@@ -48,7 +48,7 @@
     }
   })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260503-hero24">
+  <link rel="stylesheet" href="style.css?v=20260503-hero25">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -165,22 +165,32 @@
     <div class="hero-overlay"></div>
     <div class="container hero-content hero-content-split">
 
-      <!-- Single 2-col layout: ribbon + H1 + subhead + CTAs all in left
-           column, rotating image in right. Trust grid below as a full-width
-           band. This is the canonical SaaS-grade hero structure (Stripe,
-           Linear, Notion) — one visual axis, no centered/2-col split. -->
+      <!-- Premium hero: institutional tone, outcome-driven H1, trust bar of
+           accreditations directly under H1, glassmorphism badges, refined
+           CTA system with microcopy. -->
       <div class="hero-grid">
         <div class="hero-text">
-          <span class="hero-ribbon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
-            Official US &amp; Canada Representative &middot; Charles University LF3
-          </span>
-          <h1>Become a doctor.<br><span class="highlight">Skip the MCAT.</span></h1>
-          <p class="hero-sub">A 6-year, English-taught MD at <a href="lf3.html">Charles University in Prague</a>, founded 1348 — and a clear path into US residency. Mentored by physicians who walked the same path.</p>
-          <div class="hero-buttons">
-            <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free Call &rarr;</a>
-            <a href="lf3.html#match-outcomes" class="btn btn-outline">See where graduates matched &rarr;</a>
+          <h1>A direct MD pathway<br>to <span class="hero-h1-emphasis">US residency.</span></h1>
+          <div class="hero-trust-bar" aria-label="Program credentials">
+            <span class="hero-trust-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+              ECFMG Recognized
+            </span>
+            <span class="hero-trust-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              WFME Accredited
+            </span>
+            <span class="hero-trust-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Charles University &middot; 1348
+            </span>
           </div>
+          <p class="hero-sub">A six-year, English-taught medical degree leading to US residency eligibility. Mentored by <a href="lf3.html">Charles University LF3</a> physicians who walked the same path.</p>
+          <div class="hero-buttons">
+            <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">See If You Qualify for EU MD &rarr;</a>
+            <a href="lf3.html#match-outcomes" class="btn btn-outline">View US Residency Match Outcomes</a>
+          </div>
+          <p class="hero-microcopy">Takes 60 seconds &middot; No commitment</p>
         </div>
         <div class="hero-image">
           <!-- Five-image rotation. 25s cycle, 5s per image, phase-shifted.
@@ -198,18 +208,37 @@
         </div>
       </div>
 
-      <!-- Bottom trust grid. 8 items in 4x2 — both rows equal width and
-           weight. Row 1 = 4 credentials (single line). Row 2 = 4 stats with
-           sub-labels. Labels in white (not gold) so accent stays scarce. -->
-      <div class="hero-trust" aria-label="Program at a glance">
-        <div class="hero-trust-item"><strong>EU-Accredited MD</strong></div>
-        <div class="hero-trust-item"><strong>ECFMG-Recognized</strong></div>
-        <div class="hero-trust-item"><strong>WFME-Recognized</strong></div>
-        <div class="hero-trust-item"><strong>Founded in 1348</strong></div>
-        <div class="hero-trust-item"><strong>No MCAT</strong><span>Direct entry from high school</span></div>
-        <div class="hero-trust-item"><strong>English-taught since 1991</strong><span>6-year MD program</span></div>
-        <div class="hero-trust-item"><strong>Top 2%<sup class="stat-sup">&dagger;</sup></strong><span>Universities worldwide (QS)</span></div>
-        <div class="hero-trust-item"><strong>~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></strong><span>EU public-university tuition</span></div>
+      <!-- Bottom proof section: 3 high-impact points (replaces the 8-item
+           trust grid). Each item has an icon in a glassmorphism container
+           and tighter title + sub-label grouping. -->
+      <div class="hero-proof" aria-label="Program proof points">
+        <div class="hero-proof-item">
+          <span class="hero-proof-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <span class="hero-proof-text">
+            <span class="hero-proof-title">ECFMG Eligible</span>
+            <span class="hero-proof-sub">Sit USMLE, qualify for the US residency match</span>
+          </span>
+        </div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </span>
+          <span class="hero-proof-text">
+            <span class="hero-proof-title">6-Year MD (English)</span>
+            <span class="hero-proof-sub">Direct from high school, no MCAT required</span>
+          </span>
+        </div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+          <span class="hero-proof-text">
+            <span class="hero-proof-title">Direct Path to US Residency</span>
+            <span class="hero-proof-sub">10+ Charles University MDs now in US programs</span>
+          </span>
+        </div>
       </div>
 
     </div>

@@ -613,9 +613,11 @@ a {
 }
 
 .hero-content-split h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  line-height: 1.08;
   letter-spacing: -0.025em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.98);
   margin: 14px auto 0;
   text-align: center;
 }
@@ -624,6 +626,17 @@ a {
   display: block;
   font-style: italic;
   font-weight: 600;
+}
+
+/* New emphasis style — gold gradient color, NO italic. Replaces .highlight
+   for the new H1 to feel institutional rather than marketing-y. */
+.hero-content-split .hero-h1-emphasis {
+  background: linear-gradient(135deg, var(--accent-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+  font-weight: 700;
 }
 
 /* ===== Refined hero — institutional voice =====
@@ -949,9 +962,104 @@ a {
   letter-spacing: 0.02em;
 }
 
-/* ===== Bottom hero trust grid (merged credentials + stats) =====
-   8 items in 4x2: row 1 = 4 credentials (single line), row 2 = 4 stats
-   with sub-label. Equal weight across both rows — no asymmetric spans. */
+/* ===== Trust bar (under H1, in left column) =====
+   Horizontal strip of accreditation badges. Glassmorphism style for premium
+   institutional feel. Wraps on narrow viewports. */
+.hero-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0 0 26px;
+}
+.hero-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 7px 13px 7px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.hero-trust-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.hero-trust-badge svg {
+  stroke: rgba(94, 234, 212, 0.95);
+  flex-shrink: 0;
+}
+
+/* ===== Microcopy line under CTAs ===== */
+.hero-microcopy {
+  margin: 14px 0 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.02em;
+}
+
+/* ===== Bottom proof section (3 high-impact points, replaces 8-grid) =====
+   Each item: glassmorphism icon container + title + sub-label, side-by-side.
+   Premium, scannable, under 100px tall on desktop. */
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 28px;
+  padding: 28px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 4px;
+}
+.hero-proof-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.hero-proof-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+}
+.hero-proof-icon svg {
+  stroke: rgba(94, 234, 212, 0.95);
+  fill: none;
+}
+.hero-proof-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;          /* allow text to wrap inside flex */
+}
+.hero-proof-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+}
+.hero-proof-sub {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 5px;
+  line-height: 1.45;
+}
+
+/* ===== Legacy: bottom hero trust grid (kept for any other page that uses it) =====
+   (No longer applied on the homepage hero; replaced by .hero-proof above.) */
 .hero-trust {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1091,6 +1199,8 @@ a {
 @media (max-width: 768px) {
   .hero-content.hero-content-split { padding: 88px 24px 24px; gap: 22px; }
   .hero-trust { grid-template-columns: repeat(2, 1fr); gap: 14px 12px; padding-top: 16px; }
+  .hero-proof { grid-template-columns: 1fr; gap: 14px; padding-top: 22px; }
+  .hero-trust-bar { justify-content: center; }
   .hero-trust-item strong { font-size: 0.86rem; }
   .hero-trust-item span { font-size: 0.7rem; }
   .hero-image { max-height: 260px; }
@@ -1100,7 +1210,12 @@ a {
   .hero-content.hero-content-split { padding: 80px 20px 20px; gap: 18px; }
   .hero-image { aspect-ratio: 16/10; max-width: 100%; max-height: 220px; }
   .hero-text .hero-buttons { flex-direction: column; gap: 14px; max-width: none; }
-  .hero-text .hero-buttons > .btn { width: 100%; text-align: center; }
+  .hero-text .hero-buttons > .btn {
+    width: 100%; text-align: center;
+    font-size: 0.94rem; padding: 14px 18px;   /* fits "View US Residency Match Outcomes" 1-line */
+  }
+  /* Trust badges: smaller so 2 fit per row instead of stacking 3 deep */
+  .hero-trust-badge { font-size: 0.72rem; padding: 6px 11px 6px 9px; gap: 5px; }
   /* Ribbon: shrink padding + letter-spacing so it stays a pill, not a banner */
   .hero-ribbon { font-size: 0.66rem; padding: 6px 12px; letter-spacing: 0.04em; }
   .hero-trust { gap: 12px 10px; padding-top: 14px; }
