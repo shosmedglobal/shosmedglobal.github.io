@@ -551,10 +551,10 @@ a {
 
 .hero-content-split {
   text-align: left;
-  /* 24px horizontal restores the .container padding this rule otherwise
-     wipes out — without it, hero content stretches to viewport edges. */
-  padding: 92px 24px 32px;
-  max-width: 1240px;
+  /* Wider container + bigger vertical padding for premium hero scale.
+     24px horizontal restores .container padding this rule wipes out. */
+  padding: 110px 24px 48px;
+  max-width: 1320px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -571,10 +571,10 @@ a {
 
 .hero-grid {
   display: grid;
-  /* Text col slightly wider so subhead has room to breathe; image column
-     stays compact via aspect-ratio + max-height. */
-  grid-template-columns: 1.1fr 1fr;
-  gap: 48px;
+  /* Text col gets a bit more weight so the bigger H1 has room for one
+     phrase per line. Image col still gets a substantial 5/4 panel. */
+  grid-template-columns: 1.18fr 1fr;
+  gap: 56px;
   align-items: center;
 }
 
@@ -586,23 +586,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;     /* equal-width buttons */
-  max-width: 360px;          /* fits the longer secondary CTA on one line */
+  align-items: stretch;
+  max-width: 380px;          /* slightly wider for stronger button presence */
   margin-bottom: 0;
-  gap: 16px;                 /* a touch more space between the two buttons */
+  gap: 18px;
 }
 .hero-text .hero-buttons > .btn {
-  padding: 16px 24px;       /* match primary height + give secondary text room */
-  font-size: 1.02rem;        /* match primary's slightly larger size */
+  padding: 18px 28px;        /* taller, more "button-like" */
+  font-size: 1.06rem;
+  font-weight: 700;          /* heavier label */
   text-align: center;
 }
 
 .hero-content-split .hero-sub {
-  margin: 0 0 32px;
-  max-width: 540px;
-  font-size: 1.13rem;
-  line-height: 1.7;             /* easier to read across 2-3 lines */
-  color: rgba(255,255,255,0.82);
+  margin: 0 0 56px;             /* +24px before the CTAs */
+  max-width: 580px;             /* +40px text container */
+  font-size: 1.24rem;           /* +10% from 1.13rem */
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
   text-align: left;
 }
 
@@ -613,13 +614,28 @@ a {
 }
 
 .hero-content-split h1 {
-  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
-  line-height: 1.18;            /* was 1.08 — easier to read, less "stuck" */
-  letter-spacing: -0.025em;
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);     /* +17% scale */
+  line-height: 1.18;
+  letter-spacing: -0.02em;                       /* slightly looser tracking */
   font-weight: 700;
   color: rgba(255, 255, 255, 0.98);
-  margin: 0 0 14px;             /* left-align with the rest of the column */
+  margin: 0 0 28px;                              /* +14px before the trust bar */
   text-align: left;
+}
+
+/* Tertiary H1 line ("MCAT not required for admission.") — supportive
+   clarifier, smaller than the headline, lighter weight + color so it
+   reads as a flourish rather than a third equal-weight line. */
+.hero-content-split .hero-h1-tail {
+  display: block;
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  line-height: 1.35;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 14px;
+  -webkit-text-fill-color: initial;             /* override any inherited gradient fill */
 }
 
 .hero-content-split .highlight {
@@ -870,7 +886,17 @@ a {
 .btn-hero-cta {
   font-size: 1.02rem;
   padding: 16px 28px;
-  box-shadow: 0 10px 28px rgba(207,91,46,0.38);
+  /* Layered glow + drop shadow for premium "button-like" depth */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 14px 36px rgba(207, 91, 46, 0.45),
+    0 4px 12px rgba(207, 91, 46, 0.30);
+}
+.btn-hero-cta:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 18px 44px rgba(207, 91, 46, 0.55),
+    0 6px 14px rgba(207, 91, 46, 0.35);
 }
 
 /* Secondary text-link CTA (de-prioritizes vs the primary button) */
@@ -898,12 +924,15 @@ a {
    short enough that the trust grid below stays in the same viewport. */
 .hero-image {
   position: relative;
-  border-radius: 18px;
+  border-radius: 14px;            /* slightly tighter — more professional */
   overflow: hidden;
   aspect-ratio: 5/4;
-  max-height: 440px;
+  max-height: 500px;              /* +14% taller */
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.40);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 30px 70px rgba(0, 0, 0, 0.50),
+    0 10px 24px rgba(0, 0, 0, 0.30);
   background: #0F172A;
 }
 /* Five-image rotation. 25s cycle, ~5s visible per image, phase-shifted
@@ -968,29 +997,30 @@ a {
 .hero-trust-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px;
-  margin: 0 0 32px;             /* more breathing before the subhead */
+  gap: 12px 14px;               /* more separation between badges */
+  margin: 0 0 48px;             /* +16px before the subhead */
 }
 .hero-trust-badge {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;                      /* more icon→text breathing */
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.85rem;            /* bigger — feels like credentials */
   font-weight: 600;
   letter-spacing: 0.01em;
-  padding: 7px 13px 7px 11px;
+  padding: 10px 18px 10px 15px;  /* more padding inside */
   border-radius: 999px;
   white-space: nowrap;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .hero-trust-badge:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
 }
 .hero-trust-badge svg {
   stroke: rgba(94, 234, 212, 0.95);
@@ -999,10 +1029,10 @@ a {
 
 /* ===== Microcopy line under CTAs ===== */
 .hero-microcopy {
-  margin: 18px 0 0;
-  font-size: 0.78rem;
+  margin: 26px 0 0;             /* +8px after CTAs */
+  font-size: 0.82rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.02em;
 }
 
@@ -1012,28 +1042,28 @@ a {
 .hero-proof {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px 28px;
-  padding: 28px 0 0;
+  gap: 24px 40px;                /* +12px horizontal between items */
+  padding: 36px 0 0;             /* +8px top */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 4px;
+  margin-top: 8px;
 }
 .hero-proof-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 18px;                     /* +4px icon→text */
 }
 .hero-proof-icon {
   flex-shrink: 0;
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
 }
 .hero-proof-icon svg {
   stroke: rgba(94, 234, 212, 0.95);
@@ -1042,20 +1072,20 @@ a {
 .hero-proof-text {
   display: flex;
   flex-direction: column;
-  min-width: 0;          /* allow text to wrap inside flex */
+  min-width: 0;
 }
 .hero-proof-title {
-  font-size: 1.05rem;
+  font-size: 1.18rem;            /* +12% — bigger title */
   font-weight: 700;
   color: rgba(255, 255, 255, 0.96);
-  letter-spacing: -0.012em;
-  line-height: 1.25;
+  letter-spacing: -0.014em;
+  line-height: 1.28;
 }
 .hero-proof-sub {
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 5px;
-  line-height: 1.45;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 6px;
+  line-height: 1.5;
 }
 
 /* ===== Legacy: bottom hero trust grid (kept for any other page that uses it) =====
