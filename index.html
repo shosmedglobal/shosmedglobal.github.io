@@ -48,7 +48,7 @@
     }
   })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260503-hero11">
+  <link rel="stylesheet" href="style.css?v=20260503-hero12">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -158,23 +158,29 @@
     </div>
   </nav>
 
-  <!-- Hero Section: 2-col on desktop, stacked on mobile.
-       Left: eyebrow + headline + subhead + CTAs + credential line.
-       Right: single institutional photo. No carousel, no white-chip logo. -->
+  <!-- Hero: ribbon + headline at top center, then 2-col (text/CTAs left, image
+       right), then merged trust grid at the bottom — all credentials + stats in
+       one viewport on desktop. brand-strip and stat-band below were folded in. -->
   <header class="hero hero-split">
     <div class="hero-overlay"></div>
     <div class="container hero-content hero-content-split">
+
+      <!-- Top center: partnership eyebrow + 3-line stacked H1 -->
+      <div class="hero-top">
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-rule" aria-hidden="true"></span>
+          Academic partnership <span class="hero-eyebrow-sep" aria-hidden="true">·</span> Charles University <span class="hero-eyebrow-sep" aria-hidden="true">·</span> Third Faculty of Medicine
+        </p>
+        <h1 class="hero-h1-stacked">
+          <span>Study medicine in Europe.</span>
+          <span class="highlight">Match into US residency.</span>
+          <span class="hero-h1-trail">Without the MCAT.</span>
+        </h1>
+      </div>
+
+      <!-- Mid 2-col: subhead + CTAs (left) | rotating image (right) -->
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="hero-eyebrow">
-            <span class="hero-eyebrow-rule" aria-hidden="true"></span>
-            Academic partnership <span class="hero-eyebrow-sep" aria-hidden="true">·</span> Charles University <span class="hero-eyebrow-sep" aria-hidden="true">·</span> Third Faculty of Medicine
-          </p>
-          <h1 class="hero-h1-stacked">
-            <span>Study medicine in Europe.</span>
-            <span class="highlight">Match into US residency.</span>
-            <span class="hero-h1-trail">Without the MCAT.</span>
-          </h1>
           <p class="hero-sub">An English-taught, 6-year, EU-accredited MD at <a href="lf3.html">Charles University in Prague</a>, founded 1348. Mentored by physicians who walked this exact path.</p>
           <div class="hero-buttons">
             <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free Call &rarr;</a>
@@ -182,10 +188,9 @@
           </div>
         </div>
         <div class="hero-image">
-          <!-- Seven-image rotation in the same hero slot. 35s cycle, 5s per
-               image, phase-shifted so each appears in turn. Order separates
-               the two Prague photos by 4 slots so day and night don't sit
-               next to each other. -->
+          <!-- Seven-image rotation. 35s cycle, 5s per image, phase-shifted so
+               each appears in turn. Prague day and Prague night sit 4 slots
+               apart so they don't appear consecutively. -->
           <div class="hero-image-rotate" aria-label="Charles University LF3 program: faculty building, Carolinum, Prague, clinical training, aula, library, and Prague at night">
             <img src="assets/lf3/hero-lf3-entrance.jpg" alt="Univerzita Karlova 3. lékařská fakulta, Building A entrance, Královské Vinohrady, Prague" loading="eager" fetchpriority="high">
             <img src="assets/lf3/hero-carolinum.jpg" alt="Universitas Carolina, Charles University main building, Prague" loading="lazy">
@@ -198,46 +203,21 @@
           <div class="hero-image-vignette" aria-hidden="true"></div>
         </div>
       </div>
+
+      <!-- Bottom: merged trust grid (credentials + stats in one block) -->
+      <div class="hero-trust" aria-label="Program at a glance">
+        <div class="hero-trust-item"><strong>EU-Accredited MD</strong></div>
+        <div class="hero-trust-item"><strong>ECFMG-Recognized</strong></div>
+        <div class="hero-trust-item"><strong>English MD since 1991</strong></div>
+        <div class="hero-trust-item"><strong>Charles Univ. founded 1348</strong></div>
+        <div class="hero-trust-item"><strong>No MCAT</strong><span>Direct entry from high school</span></div>
+        <div class="hero-trust-item"><strong>English-taught</strong><span>6-year MD program</span></div>
+        <div class="hero-trust-item"><strong>Top 2%<sup class="stat-sup">&dagger;</sup></strong><span>Universities worldwide (QS)</span></div>
+        <div class="hero-trust-item"><strong>~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></strong><span>EU public-university tuition</span></div>
+      </div>
+
     </div>
   </header>
-
-  <!-- Credentials strip: text-based credibility markers under hero.
-       (Swap to co-branded logos once Charles/LF3 mark licensing is confirmed.) -->
-  <section class="brand-strip" aria-label="Program credentials">
-    <div class="container">
-      <div class="brand-strip-inner">
-        <span class="brand-credential">EU-Accredited MD</span>
-        <span class="brand-credential">ECFMG-Recognized</span>
-        <span class="brand-credential">Founded 1348</span>
-        <span class="brand-credential">English MD since 1991</span>
-        <span class="brand-credential">Charles Univ. founded 1348</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stat band: four headline facts on dark navy, full-bleed below the hero. -->
-  <section class="stat-band" aria-label="Program at a glance">
-    <div class="container">
-      <div class="stat-band-inner">
-        <div class="stat-cell">
-          <div class="stat-num">No MCAT</div>
-          <div class="stat-label">Direct entry from high school</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">English-taught</div>
-          <div class="stat-label">6-year MD program</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">Top 2%<sup class="stat-sup">&dagger;</sup></div>
-          <div class="stat-label">Universities worldwide (QS)</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">~$18,500<span class="stat-num-unit">/yr</span><sup class="stat-sup">*</sup></div>
-          <div class="stat-label">EU public-university tuition</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Founders / Mission. section-alt gives a soft gray-50 background so this
        block is visually distinct from the white Pathways section that follows. -->
