@@ -584,10 +584,12 @@ a {
 }
 
 .hero-text .hero-buttons {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 0;
-  align-items: center;
-  gap: 24px;
+  gap: 14px;
 }
 
 .hero-content-split .hero-sub {
@@ -1081,7 +1083,7 @@ a {
     gap: 28px;
   }
   .hero-text { max-width: 640px; margin: 0 auto; text-align: center; }
-  .hero-text .hero-buttons { justify-content: center; }
+  .hero-text .hero-buttons { justify-content: center; align-items: center; }
   .hero-content-split .hero-sub { margin-left: auto; margin-right: auto; text-align: center; max-width: 600px; }
   .hero-image { max-width: 560px; margin: 0 auto; aspect-ratio: 16/10; max-height: 340px; }
   .hero-trust { grid-template-columns: repeat(4, 1fr); gap: 14px 16px; padding-top: 18px; }
