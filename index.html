@@ -48,7 +48,7 @@
     }
   })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260503-hero17">
+  <link rel="stylesheet" href="style.css?v=20260503-hero22">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -165,37 +165,31 @@
     <div class="hero-overlay"></div>
     <div class="container hero-content hero-content-split">
 
-      <!-- Top center: teal ribbon as the partnership signal + 3-line stacked H1.
-           The frosted logo chip read poorly at small sizes; reverted to the
-           ribbon pill which is high-contrast and unambiguous on the navy hero. -->
-      <div class="hero-top">
-        <span class="hero-ribbon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
-          Official US &amp; Canada Representative &middot; Charles University LF3
-        </span>
-        <h1 class="hero-h1-stacked">
-          <span>Study medicine in Europe.</span>
-          <span class="highlight">Match into US residency.</span>
-          <span class="hero-h1-trail">Without the MCAT.</span>
-        </h1>
-      </div>
-
-      <!-- Mid 2-col: subhead + CTAs (left) | rotating image (right) -->
+      <!-- Single 2-col layout: ribbon + H1 + subhead + CTAs all in left
+           column, rotating image in right. Trust grid below as a full-width
+           band. This is the canonical SaaS-grade hero structure (Stripe,
+           Linear, Notion) — one visual axis, no centered/2-col split. -->
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="hero-sub">An English-taught, 6-year, EU-accredited MD at <a href="lf3.html">Charles University in Prague</a>, founded 1348. Mentored by physicians who walked this exact path.</p>
+          <span class="hero-ribbon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            Official US &amp; Canada Representative &middot; Charles University LF3
+          </span>
+          <h1>Study medicine in Europe.<br><span class="highlight">Match into US residency.</span></h1>
+          <p class="hero-sub">An English-taught, 6-year, EU-accredited MD at <a href="lf3.html">Charles University in Prague</a>, founded 1348. <strong>No MCAT.</strong> Mentored by physicians who walked this exact path.</p>
           <div class="hero-buttons">
             <a href="#" data-contact-modal="consultation" class="btn btn-primary btn-hero-cta">Book a Free Call &rarr;</a>
-            <a href="lf3.html#match-outcomes" class="btn btn-outline">See where our graduates matched &rarr;</a>
+            <a href="lf3.html#match-outcomes" class="btn btn-outline">See where graduates matched &rarr;</a>
           </div>
         </div>
         <div class="hero-image">
-          <!-- Four-image rotation. 20s cycle, 5s per image, phase-shifted.
-               Order: Prague day -> Library -> Aula -> Prague night. Library
-               and aula sit between the two Prague photos so day/night don't
-               appear back-to-back. -->
-          <div class="hero-image-rotate" aria-label="Charles University LF3 program: Prague summer panorama, Klementinum library, aula, and Prague at night">
-            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="eager" fetchpriority="high">
+          <!-- Five-image rotation. 25s cycle, 5s per image, phase-shifted.
+               Leads with the clinical photo (most directly relevant to "become
+               a doctor"), then alternates institutional / cultural images so
+               the two Prague photos don't sit back-to-back. -->
+          <div class="hero-image-rotate" aria-label="Charles University LF3: clinical training, Prague day, Klementinum library, aula, Prague at night">
+            <img src="assets/lf3/clinical-hero.jpg?v=2" alt="Charles University LF3 medical students in white coats on a pediatric ward at FNKV teaching hospital" loading="eager" fetchpriority="high">
+            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="lazy">
             <img src="assets/lf3/hero-library.jpg" alt="Klementinum Baroque Library Hall, Prague" loading="lazy">
             <img src="assets/lf3/hero-aula.jpg" alt="Charles University assembly hall (aula) with the statue of Charles IV" loading="lazy">
             <img src="assets/lf3/hero-prague-night.jpg" alt="Prague Castle and St. Vitus Cathedral lit at night, reflected in the Vltava river" loading="lazy">
@@ -204,12 +198,13 @@
         </div>
       </div>
 
-      <!-- Bottom trust grid. 7 items: row 1 = 3 credentials (single line),
-           row 2 = 4 stats with sub-labels. 12-col grid on desktop so row 1
-           items span 4 cols and row 2 items span 3 cols (cleanly balanced). -->
+      <!-- Bottom trust grid. 8 items in 4x2 — both rows equal width and
+           weight. Row 1 = 4 credentials (single line). Row 2 = 4 stats with
+           sub-labels. Labels in white (not gold) so accent stays scarce. -->
       <div class="hero-trust" aria-label="Program at a glance">
         <div class="hero-trust-item"><strong>EU-Accredited MD</strong></div>
         <div class="hero-trust-item"><strong>ECFMG-Recognized</strong></div>
+        <div class="hero-trust-item"><strong>WFME-Recognized</strong></div>
         <div class="hero-trust-item"><strong>Founded in 1348</strong></div>
         <div class="hero-trust-item"><strong>No MCAT</strong><span>Direct entry from high school</span></div>
         <div class="hero-trust-item"><strong>English-taught since 1991</strong><span>6-year MD program</span></div>
