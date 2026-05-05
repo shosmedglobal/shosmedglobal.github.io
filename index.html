@@ -192,15 +192,15 @@
         </div>
         <div class="hero-image">
           <!-- Five-image rotation. 25s cycle, 5s per image, phase-shifted.
-               Leads with the clinical photo (most directly relevant to "become
-               a doctor"), then alternates institutional / cultural images so
-               the two Prague photos don't sit back-to-back. -->
-          <div class="hero-image-rotate" aria-label="Charles University LF3: clinical training, Prague day, Klementinum library, aula, Prague at night">
-            <img src="assets/lf3/clinical-hero.jpg?v=2" alt="Charles University LF3 medical students in white coats on a pediatric ward at FNKV teaching hospital" loading="eager" fetchpriority="high">
-            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="lazy">
+               Order: Prague day -> Library -> Aula -> Prague night -> Clinical.
+               Prague day and Prague night sit 3 slots apart (1 and 4) so they
+               don't appear back-to-back. -->
+          <div class="hero-image-rotate" aria-label="Charles University LF3: Prague day, Klementinum library, aula, Prague at night, clinical training">
+            <img src="assets/lf3/hero-prague-summer.jpg" alt="Prague Castle and the Vltava river from Charles Bridge in summer" loading="eager" fetchpriority="high">
             <img src="assets/lf3/hero-library.jpg" alt="Klementinum Baroque Library Hall, Prague" loading="lazy">
             <img src="assets/lf3/hero-aula.jpg" alt="Charles University assembly hall (aula) with the statue of Charles IV" loading="lazy">
             <img src="assets/lf3/hero-prague-night.jpg" alt="Prague Castle and St. Vitus Cathedral lit at night, reflected in the Vltava river" loading="lazy">
+            <img src="assets/lf3/clinical-hero.jpg?v=2" alt="Charles University LF3 medical students in white coats on a pediatric ward at FNKV teaching hospital" loading="lazy">
           </div>
           <div class="hero-image-vignette" aria-hidden="true"></div>
         </div>
