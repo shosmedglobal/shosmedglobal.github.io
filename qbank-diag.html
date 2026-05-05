@@ -108,7 +108,7 @@
         if (doc.exists) {
           const d = doc.data();
           log(`OK (${dt}ms): profile exists. payments=${JSON.stringify(d.payments || {})}`, 'ok');
-          log(`   path=${d.path || '(none)'} role-like admin? ${(d.email || user.email) === 'eli@shosmed.com' || (d.email || user.email) === 'elizolotov@gmail.com' || (d.email || user.email) === 'shosmedglobal@gmail.com'}`, 'info');
+          log(`   path=${d.path || '(none)'} role-like admin? ${['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'].includes(d.email || user.email)}`, 'info');
         } else {
           log(`OK (${dt}ms): profile DOES NOT EXIST in Firestore. (First login?)`, 'warn');
         }

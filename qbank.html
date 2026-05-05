@@ -385,8 +385,10 @@
         }
         window.qbankAccessLevel = 'free';
       } else {
-        const ADMIN_EMAILS = ['shosmedglobal@gmail.com', 'elizolotov@gmail.com', 'eli@shosmed.com'];
+        const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+        const REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
         const isAdmin = ADMIN_EMAILS.includes(authUser.email);
+        const isReviewer = REVIEWER_EMAILS.includes(authUser.email);
         currentUserId = authUser.uid;
 
         let profile = null;
@@ -400,7 +402,7 @@
         } catch (e) {
           console.warn('Profile load failed or timed out - continuing anyway:', e.message || e);
         }
-        const isPaid = isAdmin || profile?.payments?.['exam-bank'] === 'paid';
+        const isPaid = isAdmin || isReviewer || profile?.payments?.['exam-bank'] === 'paid';
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
 
         // Progress + history run in parallel (capped at 3s each)
