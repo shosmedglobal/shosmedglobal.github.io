@@ -1,105 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core program pages -->
   <url>
     <loc>https://shosmed.com/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://shosmed.com/applicants.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shosmed.com/students.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shosmed.com/lf3.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shosmed.com/mentors.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shosmed.com/community.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- Blog / content pages (highest SEO value for medical-education long-tail) -->
   <url>
     <loc>https://shosmed.com/blog/applying-to-charles-university.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/from-acceptance-to-residency.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/usmle-step-1-pass-fail-img-2026.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/charles-university-tuition-2026-cost-breakdown.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/lf3-entrance-exam-what-is-on-it.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/mcat-vs-charles-university-entrance-exam.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://shosmed.com/blog/czech-student-visa-us-canada-medical-students-2026.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://shosmed.com/login.html</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://shosmed.com/signup.html</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
+  <!-- Legal / footer pages -->
   <url>
     <loc>https://shosmed.com/privacy.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.2</priority>
   </url>
   <url>
     <loc>https://shosmed.com/terms.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.2</priority>
   </url>
+
+  <!--
+    Intentionally excluded from sitemap:
+      /login.html, /signup.html       — low SEO value (auth gates)
+      /dashboard.html, /qbank.html,
+      /qbank-diag.html, /practice-exam.html,
+      /success.html                    — noindex (app/internal pages)
+      /study/*.html                    — HTML fragments (no <head>),
+                                         not standalone indexable pages
+  -->
 </urlset>

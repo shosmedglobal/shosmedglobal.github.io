@@ -1,4 +1,32 @@
+# SHOS Med - robots.txt
+# Last updated: 2026-05-06
+
 User-agent: *
 Allow: /
+
+# Internal app pages (already noindex via meta tag, but blocking crawl is cleaner)
+Disallow: /dashboard.html
+Disallow: /qbank.html
+Disallow: /qbank-diag.html
+Disallow: /practice-exam.html
+Disallow: /success.html
+
+# Paid study chapters — these are HTML fragments without <head>, loaded into
+# the dashboard via JS. They can't be indexed independently and don't have
+# canonical/meta tags. Block to prevent orphan-page indexing attempts.
+Disallow: /study/
+
+# Auth-gated pages — low SEO value; block to keep crawl budget on content
+Disallow: /login.html
+Disallow: /signup.html
+
+# Don't crawl Firebase Functions paths or any preview/staging URLs
+Disallow: /functions/
+Disallow: /__/
+
+# Allow explicitly: assets and OG cards (so they appear in image search)
+Allow: /assets/
+Allow: /favicon.ico
+Allow: /favicon.png
 
 Sitemap: https://shosmed.com/sitemap.xml
