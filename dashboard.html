@@ -1402,6 +1402,7 @@
                   <option value="paid">Paid</option>
                   <option value="free">Free</option>
                 </select>
+                <button class="admin-action-btn admin-btn-grant" onclick="exportUsersCsv()">Export CSV</button>
               </div>
             </div>
             <div class="admin-table-wrap" id="adminUsersTableWrap">
@@ -1484,6 +1485,15 @@
                   </select>
                 </div>
               </div>
+              <!-- Bulk action toolbar (visible when 1+ messages are selected) -->
+              <div id="inboxBulkBar" class="admin-bulk-bar" style="display:none;">
+                <label style="display:inline-flex; align-items:center; gap:6px; font-size:0.85rem;">
+                  <input type="checkbox" id="inboxSelectAll"> Select all
+                </label>
+                <span id="inboxSelectedCount" style="font-size:0.85rem; color:#6b7280;">0 selected</span>
+                <button class="admin-action-btn admin-btn-revoke" onclick="bulkDeleteSelectedMessages()">Delete Selected</button>
+                <button class="admin-action-btn" onclick="clearInboxSelection()">Clear</button>
+              </div>
               <div id="inboxLoading" class="admin-loading">Loading messages...</div>
               <div id="inboxList"></div>
               <div id="inboxEmpty" class="admin-empty-msg" style="display:none;">No messages found.</div>
@@ -1524,9 +1534,67 @@
               </div>
               <div class="calendar-grid" id="calendarGrid"></div>
               <div id="calDayDetail" style="display:none; margin-top:16px;">
-                <h4 id="calDayLabel" style="margin-bottom:12px; color:var(--navy);"></h4>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                  <h4 id="calDayLabel" style="margin:0; color:var(--navy);"></h4>
+                  <button class="admin-action-btn admin-btn-grant" onclick="openAddBookingModal()">+ Add Booking</button>
+                </div>
                 <div id="calDayBookings"></div>
               </div>
+            </div>
+          </div>
+
+          <!-- Modal: Manually add a booking (used from Calendar) -->
+          <div class="admin-modal-overlay" id="addBookingOverlay" style="display:none;" onclick="if(event.target===this)closeAddBookingModal()">
+            <div class="admin-modal">
+              <div class="admin-modal-header">
+                <h3 style="margin:0;">Add Booking</h3>
+                <button class="admin-modal-close" onclick="closeAddBookingModal()" aria-label="Close">&times;</button>
+              </div>
+              <form id="addBookingForm" onsubmit="submitAddBooking(event)">
+                <div class="admin-modal-body">
+                  <div class="admin-modal-row">
+                    <label>Service</label>
+                    <select name="serviceType" required id="addBookingServiceType"></select>
+                  </div>
+                  <div class="admin-modal-row admin-modal-grid-2">
+                    <div>
+                      <label>Client name</label>
+                      <input type="text" name="name" required maxlength="200">
+                    </div>
+                    <div>
+                      <label>Email</label>
+                      <input type="email" name="email" required maxlength="200">
+                    </div>
+                  </div>
+                  <div class="admin-modal-row admin-modal-grid-2">
+                    <div>
+                      <label>Date</label>
+                      <input type="date" name="preferredDate" required id="addBookingDate">
+                    </div>
+                    <div>
+                      <label>Time</label>
+                      <input type="text" name="preferredTime" placeholder="e.g. 3:00 PM EST">
+                    </div>
+                  </div>
+                  <div class="admin-modal-row">
+                    <label>Initial status</label>
+                    <select name="status">
+                      <option value="confirmed">Confirmed</option>
+                      <option value="inquiry">Inquiry</option>
+                      <option value="pending_payment">Pending Payment</option>
+                      <option value="paid">Paid</option>
+                    </select>
+                  </div>
+                  <div class="admin-modal-row">
+                    <label>Notes (admin only)</label>
+                    <textarea name="adminNotes" rows="3" maxlength="2000"></textarea>
+                  </div>
+                </div>
+                <div class="admin-modal-footer">
+                  <button type="button" class="admin-action-btn" onclick="closeAddBookingModal()">Cancel</button>
+                  <button type="submit" class="admin-action-btn admin-btn-grant">Create Booking</button>
+                </div>
+              </form>
             </div>
           </div>
 
@@ -1927,6 +1995,63 @@
     }
     .inbox-card:hover { border-color: #d1d5db; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
     .inbox-card.unread { border-left: 3px solid var(--accent, #2d9f8f); }
+    .inbox-select { display: inline-flex; align-items: center; margin-right: 6px; cursor: pointer; }
+    .inbox-select-checkbox { cursor: pointer; width: 16px; height: 16px; }
+    .admin-bulk-bar {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 10px 14px; margin: 0 0 12px;
+      background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 8px;
+    }
+    /* ===== Admin modal (used by Add Booking from Calendar) ===== */
+    .admin-modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(15, 23, 42, 0.55);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; overflow-y: auto;
+    }
+    .admin-modal {
+      background: #fff; border-radius: 12px; width: 100%; max-width: 520px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      display: flex; flex-direction: column; max-height: 90vh;
+    }
+    .admin-modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; border-bottom: 1px solid #f3f4f6;
+    }
+    .admin-modal-close {
+      background: none; border: none; font-size: 1.6rem; line-height: 1;
+      color: #6b7280; cursor: pointer; padding: 0 4px;
+    }
+    .admin-modal-close:hover { color: #1B2137; }
+    .admin-modal-body { padding: 18px 22px; overflow-y: auto; }
+    .admin-modal-footer {
+      display: flex; justify-content: flex-end; gap: 10px;
+      padding: 14px 22px; border-top: 1px solid #f3f4f6;
+    }
+    .admin-modal-row { margin-bottom: 14px; }
+    .admin-modal-row label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: #374151; margin-bottom: 6px;
+    }
+    .admin-modal-row input,
+    .admin-modal-row select,
+    .admin-modal-row textarea {
+      width: 100%; padding: 9px 11px; font-size: 0.92rem;
+      border: 1px solid #d1d5db; border-radius: 6px;
+      font-family: inherit; background: #fff;
+    }
+    .admin-modal-row input:focus,
+    .admin-modal-row select:focus,
+    .admin-modal-row textarea:focus {
+      outline: none; border-color: var(--accent, #2d9f8f);
+      box-shadow: 0 0 0 3px rgba(45,159,143,0.15);
+    }
+    .admin-modal-grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .admin-modal-grid-2 { grid-template-columns: 1fr; }
+    }
     .inbox-card-header {
       display: flex;
       align-items: center;
@@ -2921,8 +3046,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
-  <script src="auth.js?v=20260506-visits"></script>
-  <script src="contact-booking.js?v=20260506-visits"></script>
+  <script src="auth.js?v=20260506-admin2"></script>
+  <script src="contact-booking.js?v=20260506-admin2"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -4618,6 +4743,9 @@
 
           card.innerHTML = `
             <div class="inbox-card-header">
+              <label class="inbox-select" onclick="event.stopPropagation();">
+                <input type="checkbox" class="inbox-select-checkbox" data-msg-id="${msg.id}" onchange="onInboxRowSelect()" onclick="event.stopPropagation();">
+              </label>
               <span class="inbox-sender">${escapeHtml(msg.name || 'Anonymous')}</span>
               <span class="inbox-date">${dateStr}</span>
             </div>
@@ -4669,6 +4797,100 @@
         alert('Failed to delete: ' + (result.error || 'unknown error'));
       }
       // onSnapshot listener will repaint the inbox automatically.
+    }
+
+    // ===== Inbox: bulk-select + bulk-delete =====
+    function getSelectedMessageIds() {
+      return Array.from(document.querySelectorAll('.inbox-select-checkbox:checked')).map(cb => cb.dataset.msgId);
+    }
+    function onInboxRowSelect() {
+      const ids = getSelectedMessageIds();
+      const bar = document.getElementById('inboxBulkBar');
+      const counter = document.getElementById('inboxSelectedCount');
+      if (!bar || !counter) return;
+      bar.style.display = ids.length > 0 ? 'flex' : 'none';
+      counter.textContent = ids.length + (ids.length === 1 ? ' selected' : ' selected');
+
+      // Sync the "Select all" checkbox state
+      const all = document.querySelectorAll('.inbox-select-checkbox');
+      const selectAll = document.getElementById('inboxSelectAll');
+      if (selectAll) selectAll.checked = (all.length > 0 && ids.length === all.length);
+    }
+    function clearInboxSelection() {
+      document.querySelectorAll('.inbox-select-checkbox').forEach(cb => { cb.checked = false; });
+      const selectAll = document.getElementById('inboxSelectAll');
+      if (selectAll) selectAll.checked = false;
+      onInboxRowSelect();
+    }
+    document.getElementById('inboxSelectAll')?.addEventListener('change', (e) => {
+      const checked = e.target.checked;
+      document.querySelectorAll('.inbox-select-checkbox').forEach(cb => { cb.checked = checked; });
+      onInboxRowSelect();
+    });
+    async function bulkDeleteSelectedMessages() {
+      const ids = getSelectedMessageIds();
+      if (ids.length === 0) return;
+      if (!confirm(`Permanently delete ${ids.length} message${ids.length === 1 ? '' : 's'}? This cannot be undone.`)) return;
+      // Run deletes in parallel; collect any failures
+      const results = await Promise.all(ids.map(id => deleteMessage(id)));
+      const failed = results.filter(r => !r.success).length;
+      if (failed > 0) {
+        alert(`${ids.length - failed} deleted, ${failed} failed. Check console for details.`);
+      }
+      clearInboxSelection();
+      // onSnapshot listener will repaint the inbox automatically.
+    }
+
+    // ===== Export users to CSV =====
+    function exportUsersCsv() {
+      if (!Array.isArray(allAdminUsers) || allAdminUsers.length === 0) {
+        alert('No users to export yet. Wait for the user list to load.');
+        return;
+      }
+
+      // CSV escape: wrap in double-quotes, double-up internal quotes,
+      // strip newlines so a single user row stays on one line.
+      function csv(v) {
+        if (v === null || v === undefined) return '';
+        const s = String(v).replace(/"/g, '""').replace(/\r?\n/g, ' ');
+        return '"' + s + '"';
+      }
+
+      function formatDate(d) {
+        if (!d) return '';
+        const date = d.toDate ? d.toDate() : new Date(d);
+        if (isNaN(date.getTime())) return '';
+        return date.toISOString().split('T')[0];   // YYYY-MM-DD
+      }
+
+      const headers = [
+        'Name', 'Email', 'Path', 'Country', 'Phone',
+        'Signed Up', 'QBank Plan', 'Last Active', 'User ID'
+      ];
+
+      const rows = allAdminUsers.map(u => [
+        u.displayName || u.name || '',
+        u.email || '',
+        u.path || u.userType || '',
+        u.country || '',
+        u.phone || '',
+        formatDate(u.createdAt),
+        (u.payments && u.payments['exam-bank']) ? (u.payments['exam-bank-plan'] || 'paid') : 'free',
+        formatDate(u.lastActiveAt || u.lastLoginAt),
+        u.id || ''
+      ].map(csv).join(','));
+
+      const csvContent = '﻿' + [headers.map(csv).join(','), ...rows].join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const stamp = new Date().toISOString().split('T')[0];
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `shos-med-users-${stamp}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
 
     async function saveMessageNotes(id, notes) {
@@ -4936,6 +5158,92 @@
       calMonth++;
       if (calMonth > 11) { calMonth = 0; calYear++; }
       renderCalendar();
+    });
+
+    // ===== Add Booking modal (manual booking creation from calendar) =====
+    function openAddBookingModal() {
+      const overlay = document.getElementById('addBookingOverlay');
+      const form = document.getElementById('addBookingForm');
+      const dateInput = document.getElementById('addBookingDate');
+      const serviceSelect = document.getElementById('addBookingServiceType');
+      if (!overlay || !form || !dateInput || !serviceSelect) return;
+
+      // Reset form to defaults
+      form.reset();
+
+      // Pre-fill date with the currently-selected calendar day, fallback today
+      const selectedCell = document.querySelector('.cal-cell.selected');
+      const defaultDate = selectedCell?.dataset.date || new Date().toISOString().split('T')[0];
+      dateInput.value = defaultDate;
+
+      // Populate service options from SERVICE_TYPES (defined in contact-booking.js)
+      if (serviceSelect.options.length === 0 && typeof SERVICE_TYPES === 'object') {
+        Object.entries(SERVICE_TYPES).forEach(([key, svc]) => {
+          const opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = svc.name + (svc.price > 0 ? ` ($${svc.price})` : ' (Free)');
+          serviceSelect.appendChild(opt);
+        });
+      }
+
+      overlay.style.display = 'flex';
+      // Focus first field for quick entry
+      setTimeout(() => form.querySelector('input[name="name"]')?.focus(), 50);
+    }
+    function closeAddBookingModal() {
+      const overlay = document.getElementById('addBookingOverlay');
+      if (overlay) overlay.style.display = 'none';
+    }
+    async function submitAddBooking(event) {
+      event.preventDefault();
+      const form = event.target;
+      const fd = new FormData(form);
+      const serviceType = fd.get('serviceType');
+      const service = (typeof SERVICE_TYPES === 'object') ? SERVICE_TYPES[serviceType] : null;
+      if (!service) {
+        alert('Pick a service first.');
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const origLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating…';
+
+      try {
+        const doc = {
+          userId: null,                      // admin-created, no user account required
+          name: (fd.get('name') || '').toString().substring(0, 200),
+          email: (fd.get('email') || '').toString().substring(0, 200),
+          serviceType: serviceType,
+          serviceName: service.name,
+          price: service.price,
+          status: fd.get('status') || 'confirmed',
+          preferredDate: fd.get('preferredDate') || null,
+          preferredTime: (fd.get('preferredTime') || '').toString() || null,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          intakeAnswers: {},
+          sessionGoal: '',
+          adminNotes: (fd.get('adminNotes') || '').toString().substring(0, 2000),
+          source: 'admin-manual',            // distinguishes admin-created bookings
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+          completedAt: null
+        };
+        await db.collection('bookings').add(doc);
+        closeAddBookingModal();
+        // Calendar onSnapshot will paint the new dot automatically.
+      } catch (err) {
+        console.error('Create booking failed:', err);
+        alert('Failed to create booking: ' + err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = origLabel;
+      }
+    }
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAddBookingModal();
     });
 
     // ===== Study Plan =====
