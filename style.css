@@ -571,10 +571,9 @@ a {
 
 .hero-grid {
   display: grid;
-  /* Text col proportion bumped further so the H1 can stay big while
-     "Become a doctor in the U.S." fits one line. Image col is smaller
-     (per user "make picture slightly smaller") but still substantial. */
-  grid-template-columns: 1.7fr 1fr;
+  /* Text col gets the room a near-original-size H1 needs for the
+     shorter "Become a U.S. Doctor." headline. Image still substantial. */
+  grid-template-columns: 1.85fr 1fr;
   gap: 56px;
   align-items: center;
 }
@@ -615,10 +614,11 @@ a {
 }
 
 .hero-content-split h1 {
-  /* Sized for the 1.7fr/1fr text column (~745px on 1280 viewport).
-     "Become a doctor in the U.S." (27 chars) fits one line at 3.3rem max. */
-  font-size: clamp(2.3rem, 4.1vw, 3.3rem);
-  line-height: 1.16;
+  /* Sized for the 1.85fr/1fr text column (~768px on 1280 viewport).
+     "Become a U.S. Doctor." and "Study Medicine in Europe." fit one
+     line each at 3.7rem max. */
+  font-size: clamp(2.4rem, 4.6vw, 3.7rem);
+  line-height: 1.14;
   letter-spacing: -0.022em;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.98);
