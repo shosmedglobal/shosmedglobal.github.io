@@ -1,0 +1,104 @@
+rules_version = '2';
+
+// SHOS Med Global — Firestore security rules
+//
+// Deploy:  firebase deploy --only firestore:rules
+//
+// Design intent:
+//   • Anyone can submit a contact message or booking request (no auth required)
+//   • Authenticated users can read/write their own user record + sub-data
+//   • Admin emails (see isAdmin() below) can read/write everything
+//   • A public visits counter at _meta/siteStats accepts increment writes from
+//     any visitor so the admin Total Visits card stays live.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ====== Helpers ======
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email in [
+        'eli@shosmed.com',
+        'contact@shosmed.com',
+        'privacy@shosmed.com',
+        'elizolotov@gmail.com'
+      ];
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // ====== Users ======
+    match /users/{uid} {
+      allow read:   if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) || isAdmin();
+      allow delete: if isAdmin();
+
+      // QBank progress + tests live as user sub-docs
+      match /qbankData/{doc} {
+        allow read, write: if isOwner(uid) || isAdmin();
+      }
+      match /qbankTests/{doc} {
+        allow read:        if isOwner(uid) || isAdmin();
+        allow create:      if isOwner(uid);
+        allow update, delete: if isAdmin();
+      }
+      // Any other subcollection → owner + admin only
+      match /{sub=**} {
+        allow read, write: if isOwner(uid) || isAdmin();
+      }
+    }
+
+    // ====== Messages (contact form) ======
+    // Submission is open (visitors don't need to log in).
+    // Reads + status updates are admin-only — fixes the bug where messages
+    // submitted by anonymous visitors weren't visible to the admin.
+    match /messages/{id} {
+      allow read:   if isAdmin();
+      allow create: if true;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ====== Bookings ======
+    // Same submission rule. Authenticated users can read their own bookings;
+    // admin reads all.
+    match /bookings/{id} {
+      allow read:   if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if true;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ====== Community Forum ======
+    match /forum_posts/{id} {
+      allow read:   if true;
+      allow create: if isSignedIn();
+      allow update: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
+      allow delete: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
+
+      match /{sub=**} {
+        allow read: if true;
+        allow write: if isSignedIn();
+      }
+    }
+
+    // ====== Question Reports (QBank) ======
+    match /question_reports/{id} {
+      allow read:           if isAdmin();
+      allow create:         if isSignedIn();
+      allow update, delete: if isAdmin();
+    }
+
+    // ====== Site stats (public increment, admin read) ======
+    // Only the single siteStats document is publicly writable so the
+    // visits counter can increment from any browser. Admin reads only.
+    match /_meta/{doc} {
+      allow read:  if isAdmin();
+      allow write: if doc == 'siteStats';
+    }
+  }
+}

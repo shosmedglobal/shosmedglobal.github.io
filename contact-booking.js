@@ -326,3 +326,65 @@ function subscribeBookingsForMonth(year, month, callback) {
     return () => {};
   }
 }
+
+// Live "all users" stream — drives the admin Dashboard stat cards
+// (Total Users, New This Month, Paying Users, Revenue) and the user
+// management table.
+function subscribeAllUsers(callback) {
+  try {
+    return db.collection('users').onSnapshot(snap => {
+      const users = [];
+      snap.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
+      callback(users);
+    }, err => console.error('subscribeAllUsers error:', err));
+  } catch (error) {
+    console.error('subscribeAllUsers setup error:', error);
+    return () => {};
+  }
+}
+
+// Live forum-post count.
+function subscribeForumPostCount(callback) {
+  try {
+    return db.collection('forum_posts').onSnapshot(snap => {
+      callback(snap.size);
+    }, err => {
+      // forum_posts may not exist on smaller deployments; surface 0
+      console.error('subscribeForumPostCount error:', err);
+      callback(0);
+    });
+  } catch (error) {
+    console.error('subscribeForumPostCount setup error:', error);
+    return () => {};
+  }
+}
+
+// Delete a message from the inbox. Used by the admin Inbox panel.
+async function deleteMessage(messageId) {
+  try {
+    await db.collection('messages').doc(messageId).delete();
+    return { success: true };
+  } catch (error) {
+    console.error('deleteMessage error:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+// recordSiteVisit() lives in auth.js so every page can call it; this
+// admin-only file only needs the read-side subscription below.
+
+// Live total-visits stream for the admin dashboard.
+function subscribeSiteVisits(callback) {
+  try {
+    return db.collection('_meta').doc('siteStats').onSnapshot(doc => {
+      const data = doc.data() || {};
+      callback(data.visits || 0);
+    }, err => {
+      console.error('subscribeSiteVisits error:', err);
+      callback(0);
+    });
+  } catch (error) {
+    console.error('subscribeSiteVisits setup error:', error);
+    return () => {};
+  }
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1382,6 +1382,10 @@
             <div class="admin-stat-card">
               <div class="admin-stat-value" id="adminStatForumPosts">-</div>
               <div class="admin-stat-label">Forum Posts</div>
+            </div>
+            <div class="admin-stat-card">
+              <div class="admin-stat-value" id="adminStatVisits">-</div>
+              <div class="admin-stat-label">Total Site Visits</div>
             </div>
           </div>
 
@@ -2917,8 +2921,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
-  <script src="auth.js?v=20260422g"></script>
-  <script src="contact-booking.js?v=20260506-realtime"></script>
+  <script src="auth.js?v=20260506-visits"></script>
+  <script src="contact-booking.js?v=20260506-visits"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -3022,7 +3026,8 @@
       // ===== Admin: Clear QBank data via URL param =====
       const clearParam = new URLSearchParams(window.location.search).get('clearqbank');
       if (clearParam === 'true') {
-        const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+        // Keep this list in sync with firestore.rules → isAdmin()
+      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
         if (ADMIN_EMAILS.includes(user.email)) {
           try {
             const uid = user.uid;
@@ -3067,7 +3072,8 @@
 
 
       // ===== QBank access level =====
-      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+      // Keep this list in sync with firestore.rules → isAdmin()
+      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
       const REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const isReviewer = REVIEWER_EMAILS.includes(user.email);
@@ -3802,7 +3808,8 @@
     function showResetIfEligible(profile) {
       const resetSection = document.getElementById('dashQbResetSection');
       if (!resetSection) return;
-      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+      // Keep this list in sync with firestore.rules → isAdmin()
+      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
       const isPaid = profile?.payments?.['exam-bank'] === 'paid';
       const resetUsed = profile?.qbankResetUsed || (profile?.qbankResetCount || 0) >= 1;
@@ -3899,67 +3906,70 @@
       ]);
     }
 
-    // ===== Admin Stats =====
-    async function loadAdminStats() {
-      try {
-        const usersSnap = await db.collection('users').get();
-        const users = [];
-        usersSnap.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
+    // ===== Admin Stats (real-time via onSnapshot) =====
+    let adminUsersStreamUnsub = null;
+    let adminForumStreamUnsub = null;
+    let adminVisitsStreamUnsub = null;
+    function loadAdminStats() {
+      // Tear down prior listeners (idempotent)
+      if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; }
+      if (typeof adminForumStreamUnsub === 'function') { adminForumStreamUnsub(); adminForumStreamUnsub = null; }
+      if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; }
 
+      // Users → drives Total / New This Month / Paying / Revenue / QBank Active
+      adminUsersStreamUnsub = subscribeAllUsers(users => {
         const now = new Date();
         const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
-        let totalUsers = users.length;
         let newThisMonth = 0;
         let paidUsers = 0;
         let totalRevenue = 0;
+        let qbankActiveCount = 0;
 
         users.forEach(u => {
-          // New this month
           if (u.createdAt) {
             const created = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
             if (created >= monthStart) newThisMonth++;
           }
-          // Paid users and revenue
-          if (u.payments) {
-            const examBank = u.payments['exam-bank'];
-            if (examBank === 'paid') {
-              paidUsers++;
-              const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
-              totalRevenue += PLAN_PRICES[plan] || 49;
-            }
+          if (u.payments && u.payments['exam-bank'] === 'paid') {
+            paidUsers++;
+            const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
+            totalRevenue += PLAN_PRICES[plan] || 49;
+          }
+          // qbankActive proxy: any user who has interacted with QBank.
+          // (Subcollection check is too read-heavy for a live stream — we
+          // approximate via a `qbankActive` field if present, or fall back
+          // to anyone with a payments.exam-bank entry at all.)
+          if (u.qbankActive === true || (u.payments && u.payments['exam-bank'])) {
+            qbankActiveCount++;
           }
         });
 
-        document.getElementById('adminStatTotalUsers').textContent = totalUsers;
+        document.getElementById('adminStatTotalUsers').textContent = users.length;
         document.getElementById('adminStatNewUsers').textContent = newThisMonth;
         document.getElementById('adminStatPaidUsers').textContent = paidUsers;
         document.getElementById('adminStatRevenue').textContent = '$' + totalRevenue.toLocaleString();
-
-        // Active QBank users - count users with qbankData progress
-        let qbankActiveCount = 0;
-        // Only check a subset to avoid excessive reads
-        const checkPromises = users.slice(0, 200).map(async u => {
-          try {
-            const progDoc = await db.collection('users').doc(u.id)
-              .collection('qbankData').doc('progress').get();
-            if (progDoc.exists) qbankActiveCount++;
-          } catch (e) { /* skip */ }
-        });
-        await Promise.all(checkPromises);
         document.getElementById('adminStatQbankUsers').textContent = qbankActiveCount;
 
-        // Forum posts count
-        try {
-          const forumSnap = await db.collection('forum_posts').get();
-          document.getElementById('adminStatForumPosts').textContent = forumSnap.size;
-        } catch (e) {
-          document.getElementById('adminStatForumPosts').textContent = '0';
+        // Keep the local user table cache fresh too so Revoke/Grant clicks
+        // reflect immediately and new signups appear without manual refresh.
+        if (typeof allAdminUsers !== 'undefined') {
+          allAdminUsers = users;
+          if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
         }
+      });
 
-      } catch (err) {
-        console.error('Failed to load admin stats:', err);
-      }
+      // Forum posts → live count
+      adminForumStreamUnsub = subscribeForumPostCount(count => {
+        const el = document.getElementById('adminStatForumPosts');
+        if (el) el.textContent = count;
+      });
+
+      // Total site visits → live count (if tracked)
+      adminVisitsStreamUnsub = subscribeSiteVisits(count => {
+        const el = document.getElementById('adminStatVisits');
+        if (el) el.textContent = count.toLocaleString();
+      });
     }
 
     // ===== Admin Users =====
@@ -4624,6 +4634,7 @@
                 <button class="admin-action-btn" onclick="markMessage('${msg.id}','read');event.stopPropagation();">Mark Read</button>
                 <button class="admin-action-btn admin-btn-grant" onclick="replyToMessage('${msg.id}','${escapeHtml(msg.email || '')}','${escapeHtml(msg.subject || '')}');event.stopPropagation();">Reply</button>
                 <button class="admin-action-btn admin-btn-details" onclick="markMessage('${msg.id}','resolved');event.stopPropagation();">Resolve</button>
+                <button class="admin-action-btn admin-btn-revoke" onclick="confirmDeleteMessage('${msg.id}');event.stopPropagation();">Delete</button>
               </div>
               <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeHtml(msg.adminNotes || '')}" onchange="saveMessageNotes('${msg.id}', this.value)" onclick="event.stopPropagation();">
             </div>
@@ -4649,6 +4660,15 @@
       // Open email client and log reply
       window.open('mailto:' + email + '?subject=Re: ' + encodeURIComponent(subject), '_blank');
       markMessage(id, 'replied');
+    }
+
+    async function confirmDeleteMessage(id) {
+      if (!confirm('Permanently delete this message? This cannot be undone.')) return;
+      const result = await deleteMessage(id);
+      if (!result.success) {
+        alert('Failed to delete: ' + (result.error || 'unknown error'));
+      }
+      // onSnapshot listener will repaint the inbox automatically.
     }
 
     async function saveMessageNotes(id, notes) {
@@ -6074,7 +6094,8 @@
     // the count whenever any message changes status — no setInterval required.
     // We just (re)open the listener whenever an admin signs in.
     (function() {
-      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+      // Keep this list in sync with firestore.rules → isAdmin()
+      const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
       firebase.auth().onAuthStateChanged(user => {
         if (user && ADMIN_EMAILS.includes(user.email)) {
           if (typeof loadInboxBadge === 'function') loadInboxBadge();

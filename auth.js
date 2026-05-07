@@ -183,4 +183,25 @@ function initAuthNavbar() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   initAuthNavbar();
+  recordSiteVisit();
 });
+
+// ===== Site-visits counter =====
+// Increments a single counter document on every fresh browser session.
+// sessionStorage dedupe means refreshes / multi-page visits in one tab
+// only count once. Silent-fails if security rules block the write — visit
+// tracking must never break the page.
+async function recordSiteVisit() {
+  try {
+    if (typeof sessionStorage === 'undefined') return;
+    if (sessionStorage.getItem('shos_visit_recorded') === '1') return;
+    sessionStorage.setItem('shos_visit_recorded', '1');
+    if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
+    await db.collection('_meta').doc('siteStats').set({
+      visits: firebase.firestore.FieldValue.increment(1),
+      lastVisitAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch (error) {
+    console.warn('recordSiteVisit blocked:', error.message);
+  }
+}
