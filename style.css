@@ -571,9 +571,10 @@ a {
 
 .hero-grid {
   display: grid;
-  /* Text col gets a bit more weight so the bigger H1 has room for one
-     phrase per line. Image col still gets a substantial 5/4 panel. */
-  grid-template-columns: 1.18fr 1fr;
+  /* Text col proportion bumped further so the H1 can stay big while
+     "Become a doctor in the U.S." fits one line. Image col is smaller
+     (per user "make picture slightly smaller") but still substantial. */
+  grid-template-columns: 1.7fr 1fr;
   gap: 56px;
   align-items: center;
 }
@@ -614,11 +615,11 @@ a {
 }
 
 .hero-content-split h1 {
-  /* Scaled to fit "Become a doctor in the U.S." on a single line in the
-     ~636px text column. Bumping above ~3rem causes the longer phrase to wrap. */
-  font-size: clamp(2.1rem, 4vw, 2.95rem);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  /* Sized for the 1.7fr/1fr text column (~745px on 1280 viewport).
+     "Become a doctor in the U.S." (27 chars) fits one line at 3.3rem max. */
+  font-size: clamp(2.3rem, 4.1vw, 3.3rem);
+  line-height: 1.16;
+  letter-spacing: -0.022em;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.98);
   margin: 0 0 28px;
