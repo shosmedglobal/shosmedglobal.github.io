@@ -254,3 +254,75 @@ async function getBookingsForMonth(year, month) {
     return [];
   }
 }
+
+// ===== Real-time admin subscriptions =====
+// Each function returns an unsubscribe handle; call it to detach the listener.
+// These power the auto-updating admin Inbox, Bookings, Calendar, and badge.
+
+function subscribeAdminMessages(filterStatus, filterCategory, callback) {
+  try {
+    let query = db.collection('messages').orderBy('createdAt', 'desc');
+    if (filterStatus && filterStatus !== 'all') {
+      query = query.where('status', '==', filterStatus);
+    }
+    return query.limit(200).onSnapshot(snap => {
+      let messages = [];
+      snap.forEach(doc => messages.push({ id: doc.id, ...doc.data() }));
+      if (filterCategory && filterCategory !== 'all') {
+        messages = messages.filter(m => m.category === filterCategory);
+      }
+      callback(messages);
+    }, err => console.error('subscribeAdminMessages error:', err));
+  } catch (error) {
+    console.error('subscribeAdminMessages setup error:', error);
+    return () => {};
+  }
+}
+
+function subscribeAdminBookings(filterStatus, callback) {
+  try {
+    let query = db.collection('bookings').orderBy('createdAt', 'desc');
+    if (filterStatus && filterStatus !== 'all') {
+      query = query.where('status', '==', filterStatus);
+    }
+    return query.limit(200).onSnapshot(snap => {
+      const bookings = [];
+      snap.forEach(doc => bookings.push({ id: doc.id, ...doc.data() }));
+      callback(bookings);
+    }, err => console.error('subscribeAdminBookings error:', err));
+  } catch (error) {
+    console.error('subscribeAdminBookings setup error:', error);
+    return () => {};
+  }
+}
+
+function subscribeUnreadMessageCount(callback) {
+  try {
+    return db.collection('messages').where('status', '==', 'new').onSnapshot(snap => {
+      callback(snap.size);
+    }, err => console.error('subscribeUnreadMessageCount error:', err));
+  } catch (error) {
+    console.error('subscribeUnreadMessageCount setup error:', error);
+    return () => {};
+  }
+}
+
+function subscribeBookingsForMonth(year, month, callback) {
+  try {
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0, 23, 59, 59);
+    const startStr = startDate.toISOString().split('T')[0];
+    const endStr = endDate.toISOString().split('T')[0];
+    return db.collection('bookings')
+      .where('preferredDate', '>=', startStr)
+      .where('preferredDate', '<=', endStr)
+      .onSnapshot(snap => {
+        const bookings = [];
+        snap.forEach(doc => bookings.push({ id: doc.id, ...doc.data() }));
+        callback(bookings);
+      }, err => console.error('subscribeBookingsForMonth error:', err));
+  } catch (error) {
+    console.error('subscribeBookingsForMonth setup error:', error);
+    return () => {};
+  }
+}

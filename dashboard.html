@@ -2918,7 +2918,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
   <script src="auth.js?v=20260422g"></script>
-  <script src="contact-booking.js"></script>
+  <script src="contact-booking.js?v=20260506-realtime"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -4566,8 +4566,12 @@
       });
     });
 
-    // ===== Admin Inbox =====
-    async function renderInbox() {
+    // ===== Admin Inbox (real-time) =====
+    let inboxUnsubscribe = null;
+    function renderInbox() {
+      // Tear down any prior subscription before opening a new one
+      if (typeof inboxUnsubscribe === 'function') { inboxUnsubscribe(); inboxUnsubscribe = null; }
+
       const loadingEl = document.getElementById('inboxLoading');
       const listEl = document.getElementById('inboxList');
       const emptyEl = document.getElementById('inboxEmpty');
@@ -4578,14 +4582,16 @@
       listEl.innerHTML = '';
       emptyEl.style.display = 'none';
 
-      try {
-        const messages = await loadAdminMessages(statusFilter, catFilter);
+      // Live subscription — fires once immediately, then again on every change
+      inboxUnsubscribe = subscribeAdminMessages(statusFilter, catFilter, messages => {
         loadingEl.style.display = 'none';
+        listEl.innerHTML = '';
 
         if (messages.length === 0) {
           emptyEl.style.display = 'block';
           return;
         }
+        emptyEl.style.display = 'none';
 
         messages.forEach(msg => {
           const card = document.createElement('div');
@@ -4626,18 +4632,17 @@
           card.addEventListener('click', () => card.classList.toggle('open'));
           listEl.appendChild(card);
         });
-      } catch (err) {
-        loadingEl.textContent = 'Failed to load: ' + err.message;
-      }
+      });   // close subscribeAdminMessages callback
     }
 
-    // Inbox filter listeners
+    // Inbox filter listeners — re-open subscription with the new filter
     document.getElementById('inboxStatusFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
     document.getElementById('inboxCategoryFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
 
     async function markMessage(id, status) {
-      const result = await updateMessageStatus(id, status);
-      if (result.success) renderInbox();
+      // The onSnapshot listener will repaint automatically — no explicit
+      // renderInbox() call needed after the write resolves.
+      await updateMessageStatus(id, status);
     }
 
     function replyToMessage(id, email, subject) {
@@ -4650,22 +4655,30 @@
       await updateMessageStatus(id, undefined, notes);
     }
 
-    // Load inbox badge count
-    async function loadInboxBadge() {
-      const count = await getUnreadMessageCount();
+    // Inbox badge — opens a real-time listener once and updates on every
+    // new/changed message. No polling required. The setup is idempotent;
+    // calling loadInboxBadge() repeatedly is safe (it tears down + re-opens).
+    let inboxBadgeUnsubscribe = null;
+    function applyInboxBadge(count) {
       const badge = document.getElementById('inboxBadge');
-      if (badge) {
-        if (count > 0) {
-          badge.textContent = count;
-          badge.style.display = 'inline-flex';
-        } else {
-          badge.style.display = 'none';
-        }
+      if (!badge) return;
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'inline-flex';
+      } else {
+        badge.style.display = 'none';
       }
     }
+    function loadInboxBadge() {
+      if (typeof inboxBadgeUnsubscribe === 'function') { inboxBadgeUnsubscribe(); inboxBadgeUnsubscribe = null; }
+      inboxBadgeUnsubscribe = subscribeUnreadMessageCount(applyInboxBadge);
+    }
 
-    // ===== Admin Bookings =====
-    async function renderBookings() {
+    // ===== Admin Bookings (real-time) =====
+    let bookingsUnsubscribe = null;
+    function renderBookings() {
+      if (typeof bookingsUnsubscribe === 'function') { bookingsUnsubscribe(); bookingsUnsubscribe = null; }
+
       const loadingEl = document.getElementById('bookingsLoading');
       const listEl = document.getElementById('bookingsList');
       const emptyEl = document.getElementById('bookingsEmpty');
@@ -4675,14 +4688,15 @@
       listEl.innerHTML = '';
       emptyEl.style.display = 'none';
 
-      try {
-        const bookings = await loadAdminBookings(statusFilter);
+      bookingsUnsubscribe = subscribeAdminBookings(statusFilter, bookings => {
         loadingEl.style.display = 'none';
+        listEl.innerHTML = '';
 
         if (bookings.length === 0) {
           emptyEl.style.display = 'block';
           return;
         }
+        emptyEl.style.display = 'none';
 
         bookings.forEach(bk => {
           const card = document.createElement('div');
@@ -4757,25 +4771,21 @@
           card.addEventListener('click', () => card.classList.toggle('open'));
           listEl.appendChild(card);
         });
-      } catch (err) {
-        loadingEl.textContent = 'Failed to load: ' + err.message;
-      }
+      });   // close subscribeAdminBookings callback
     }
 
     document.getElementById('bookingStatusFilter')?.addEventListener('change', () => { adminBookingsLoaded = true; renderBookings(); });
 
     async function changeBookingStatus(id, newStatus) {
+      // onSnapshot will repaint automatically — explicit re-render unneeded.
       if (newStatus === 'completed') {
         const notes = prompt('Session notes (optional):');
-        const result = await updateBookingStatus(id, newStatus, undefined, notes || '');
-        if (result.success) renderBookings();
+        await updateBookingStatus(id, newStatus, undefined, notes || '');
       } else if (newStatus === 'cancelled') {
         if (!confirm('Cancel this booking?')) return;
-        const result = await updateBookingStatus(id, newStatus);
-        if (result.success) renderBookings();
+        await updateBookingStatus(id, newStatus);
       } else {
-        const result = await updateBookingStatus(id, newStatus);
-        if (result.success) renderBookings();
+        await updateBookingStatus(id, newStatus);
       }
     }
 
@@ -4824,34 +4834,47 @@
         });
       });
 
-      // Load bookings for this month
+      // Open the live subscription for this month's bookings
       loadCalendarBookings();
     }
 
-    async function loadCalendarBookings() {
-      const bookings = await getBookingsForMonth(calYear, calMonth);
-      // Group by date
-      const byDate = {};
-      bookings.forEach(bk => {
-        if (!bk.preferredDate) return;
-        if (!byDate[bk.preferredDate]) byDate[bk.preferredDate] = [];
-        byDate[bk.preferredDate].push(bk);
-      });
+    // Calendar holds a single live subscription. Re-opens whenever the
+    // displayed month changes (Prev/Next).
+    let calendarUnsubscribe = null;
+    function loadCalendarBookings() {
+      if (typeof calendarUnsubscribe === 'function') { calendarUnsubscribe(); calendarUnsubscribe = null; }
 
-      // Render dots
-      Object.entries(byDate).forEach(([date, bks]) => {
-        const dotsEl = document.getElementById('cal-dots-' + date);
-        if (!dotsEl) return;
-        let dotsHtml = '';
-        bks.slice(0, 4).forEach(bk => {
-          dotsHtml += `<span class="cal-dot ${bk.status}"></span>`;
+      calendarUnsubscribe = subscribeBookingsForMonth(calYear, calMonth, bookings => {
+        // Group by date
+        const byDate = {};
+        bookings.forEach(bk => {
+          if (!bk.preferredDate) return;
+          if (!byDate[bk.preferredDate]) byDate[bk.preferredDate] = [];
+          byDate[bk.preferredDate].push(bk);
         });
-        if (bks.length > 4) dotsHtml += `<span style="font-size:0.65rem;color:#9ca3af;">+${bks.length - 4}</span>`;
-        dotsEl.innerHTML = dotsHtml;
-      });
 
-      // Store for day detail view
-      window._calBookingsByDate = byDate;
+        // Reset all dot containers in the current grid (handles deletions)
+        document.querySelectorAll('[id^="cal-dots-"]').forEach(el => { el.innerHTML = ''; });
+
+        // Render dots for dates that have bookings
+        Object.entries(byDate).forEach(([date, bks]) => {
+          const dotsEl = document.getElementById('cal-dots-' + date);
+          if (!dotsEl) return;
+          let dotsHtml = '';
+          bks.slice(0, 4).forEach(bk => {
+            dotsHtml += `<span class="cal-dot ${bk.status}"></span>`;
+          });
+          if (bks.length > 4) dotsHtml += `<span style="font-size:0.65rem;color:#9ca3af;">+${bks.length - 4}</span>`;
+          dotsEl.innerHTML = dotsHtml;
+        });
+
+        // Store for day detail view + refresh detail if a day is selected
+        window._calBookingsByDate = byDate;
+        const selectedCell = document.querySelector('.cal-cell.selected');
+        if (selectedCell && selectedCell.dataset.date) {
+          showDayBookings(selectedCell.dataset.date);
+        }
+      });
     }
 
     function showDayBookings(date) {
@@ -6046,19 +6069,19 @@
       loadInboxBadge();
     };
 
-    // ===== Periodic inbox badge refresh (every 60 seconds for admins) =====
+    // ===== Inbox badge: real-time listener (no polling needed) =====
+    // The Firestore onSnapshot subscription opened by loadInboxBadge() pushes
+    // the count whenever any message changes status — no setInterval required.
+    // We just (re)open the listener whenever an admin signs in.
     (function() {
       const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
       firebase.auth().onAuthStateChanged(user => {
         if (user && ADMIN_EMAILS.includes(user.email)) {
-          // Refresh badge every 60 seconds
-          setInterval(() => {
-            if (typeof loadInboxBadge === 'function') loadInboxBadge();
-          }, 60000);
-          // Also refresh on tab focus (user comes back to the tab)
-          document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && typeof loadInboxBadge === 'function') loadInboxBadge();
-          });
+          if (typeof loadInboxBadge === 'function') loadInboxBadge();
+        } else {
+          // Detach the badge listener if the user is no longer an admin
+          if (typeof inboxBadgeUnsubscribe === 'function') { inboxBadgeUnsubscribe(); inboxBadgeUnsubscribe = null; }
+          applyInboxBadge(0);
         }
       });
     })();
