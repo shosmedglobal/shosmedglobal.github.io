@@ -148,8 +148,8 @@ CARDS = [
     {
         "slug": "home",
         "eyebrow": "SHOS Med",
-        "title": "Study Medicine in Europe & Match in the US",
-        "subtitle": "English-taught MD at Charles University in Prague (no MCAT). Plus USMLE and residency mentorship from physicians who walked this path.",
+        "title": "Become a U.S. Doctor. Study Medicine in Europe.",
+        "subtitle": "A 6-year, English-taught MD at Charles University in Prague. ECFMG-recognized. WFME-accredited. No MCAT. Match into U.S. residency.",
     },
     {
         "slug": "applicants",
