@@ -56,20 +56,27 @@ def make_gradient(width, height, top, bottom):
 
 
 def wrap_text(text, font, max_width, draw):
-    """Break `text` into lines that each fit within `max_width` pixels in `font`."""
-    words = text.split()
-    lines, line = [], []
-    for w in words:
-        candidate = (" ".join(line + [w])).strip()
-        bbox = draw.textbbox((0, 0), candidate, font=font)
-        if (bbox[2] - bbox[0]) > max_width and line:
+    """Break `text` into lines that each fit within `max_width` pixels in `font`.
+    Honors explicit line breaks (``\\n``) — each \\n forces a new line, then
+    each resulting segment is also word-wrapped if too long."""
+    out = []
+    for segment in text.split("\n"):
+        words = segment.split()
+        lines, line = [], []
+        for w in words:
+            candidate = (" ".join(line + [w])).strip()
+            bbox = draw.textbbox((0, 0), candidate, font=font)
+            if (bbox[2] - bbox[0]) > max_width and line:
+                lines.append(" ".join(line))
+                line = [w]
+            else:
+                line.append(w)
+        if line:
             lines.append(" ".join(line))
-            line = [w]
-        else:
-            line.append(w)
-    if line:
-        lines.append(" ".join(line))
-    return lines
+        if not lines:                  # preserve empty lines from a bare \n
+            lines.append("")
+        out.extend(lines)
+    return out
 
 
 def render_card(slug, title, subtitle, eyebrow, out_path):
@@ -148,7 +155,9 @@ CARDS = [
     {
         "slug": "home",
         "eyebrow": "SHOS Med",
-        "title": "Become a U.S. Doctor. Study Medicine in Europe.",
+        # Explicit \n forces "Study Medicine in Europe." onto its own line so
+        # the title reads as two parallel sentences, not a wrapped run-on.
+        "title": "Become a U.S. Doctor.\nStudy Medicine in Europe.",
         "subtitle": "A 6-year, English-taught MD at Charles University in Prague. ECFMG-recognized. WFME-accredited. No MCAT. Match into U.S. residency.",
     },
     {
