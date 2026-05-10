@@ -1976,27 +1976,35 @@ mark.user-highlight:hover {
     timer in toolbar, sidebar hugs content)
    ============================================================ */
 
+/* The whole quiz (sidebar + mainbox) is ONE rounded card. The sidebar
+   and main column share a border, shadow, and rounded corners — the
+   internal divider between them is just a right-border on the sidebar.
+   This is the desktop-app pattern used by UWorld, Linear, Notion. */
 .quiz-layout {
   display: grid;
   grid-template-columns: 200px 1fr;
-  gap: 22px;
-  align-items: start;
-}
-
-/* ----- Left Sidebar (vertical question list — height hugs content) ----- */
-.quiz-sidebar {
-  position: sticky;
-  top: 16px;
-  /* Hug content; cap so a 40-question list still scrolls inside the viewport. */
-  max-height: calc(100vh - 32px);
-  display: flex;
-  flex-direction: column;
+  gap: 0;
+  align-items: stretch;          /* sidebar fills full row height */
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06),
+              0 2px 4px  rgba(15, 23, 42, 0.04);
+  overflow: hidden;              /* clip child corners to outer radius */
+}
+
+/* ----- Left Sidebar (now flush against the main column) ----- */
+.quiz-sidebar {
+  position: static;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: none;
+  border-right: 1px solid var(--gray-200);   /* internal divider */
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
-  align-self: start;
 }
 
 .quiz-sidebar-head {
@@ -2030,7 +2038,7 @@ mark.user-highlight:hover {
 .quiz-sidebar-collapse:hover { opacity: 1; background: rgba(255,255,255,0.1); }
 
 .quiz-sidebar-list {
-  flex: 0 1 auto;     /* hugs content height — no empty space below questions */
+  flex: 1 1 auto;     /* take remaining height; legend gets pushed to bottom */
   overflow-y: auto;
   padding: 8px;
 }
@@ -2139,15 +2147,18 @@ mark.user-highlight:hover {
 .quiz-layout.sidebar-collapsed ~ * .quiz-tool-sidebar-show,
 .quiz-layout.sidebar-collapsed .quiz-tool-sidebar-show { display: inline-flex; }
 
-/* ----- Unified mainbox: one rounded card holds everything ----- */
+/* The main column lives inside the unified outer card (.quiz-layout).
+   It no longer has its own border/shadow/radius — those are provided
+   by the layout so sidebar + main share one rounded surface. */
 .quiz-mainbox {
   background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
-  overflow: hidden;          /* keeps child borders flush with rounded corners */
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;             /* fill the grid row so dividers reach the bottom */
 }
 
 /* ----- Toolbar (top of mainbox; timer floats to the right) ----- */
@@ -2446,7 +2457,9 @@ mark.user-highlight:hover {
   .quiz-sidebar {
     position: static;
     max-height: 200px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);  /* divider flips orientation */
   }
   .quiz-sidebar-list {
     display: grid;
