@@ -1993,18 +1993,29 @@ mark.user-highlight:hover {
   overflow: hidden;              /* clip child corners to outer radius */
 }
 
-/* ----- Left Sidebar (now flush against the main column) ----- */
+/* ----- Left Sidebar (flush against the main column) -----
+   The trick: the sidebar's children are wrapped in an absolutely-
+   positioned `.quiz-sidebar-inner`. Because absolute children are
+   out of flow, the .quiz-sidebar element has zero in-flow content
+   height, so the grid row is sized purely by the main column.
+   Then align-items:stretch (default) stretches the sidebar to match
+   the row height. Inside, the inner uses flex column with an
+   internally-scrolling list — so 60 questions scroll, 5 don't. */
 .quiz-sidebar {
-  position: static;
-  max-height: none;
-  display: flex;
-  flex-direction: column;
+  position: relative;
   background: var(--white);
   border: none;
   border-right: 1px solid var(--gray-200);   /* internal divider */
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
+  min-width: 0;
+}
+.quiz-sidebar-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .quiz-sidebar-head {
@@ -2038,9 +2049,23 @@ mark.user-highlight:hover {
 .quiz-sidebar-collapse:hover { opacity: 1; background: rgba(255,255,255,0.1); }
 
 .quiz-sidebar-list {
-  flex: 1 1 auto;     /* take remaining height; legend gets pushed to bottom */
+  flex: 1 1 0;        /* take remaining height; legend pinned to bottom */
+  min-height: 0;      /* required for overflow-y: auto inside a flex item */
   overflow-y: auto;
   padding: 8px;
+  /* Subtle scrollbar — feels native, not jarring */
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) transparent;
+}
+.quiz-sidebar-list::-webkit-scrollbar { width: 8px; }
+.quiz-sidebar-list::-webkit-scrollbar-track { background: transparent; }
+.quiz-sidebar-list::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 4px;
+  border: 2px solid var(--white);     /* gutter look */
+}
+.quiz-sidebar-list::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
 }
 
 .quiz-sidebar-item {
@@ -2460,6 +2485,16 @@ mark.user-highlight:hover {
     margin-bottom: 0;
     border-right: none;
     border-bottom: 1px solid var(--gray-200);  /* divider flips orientation */
+    overflow: hidden;
+  }
+  /* On mobile, undo the absolute trick — the wrapper just becomes a
+     plain block flow so the sidebar stacks above the main column. */
+  .quiz-sidebar-inner {
+    position: static;
+    inset: auto;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
   }
   .quiz-sidebar-list {
     display: grid;

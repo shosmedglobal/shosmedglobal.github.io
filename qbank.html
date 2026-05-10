@@ -150,19 +150,25 @@
         <!-- ===== Two-column quiz layout (sidebar + main) ===== -->
         <div class="quiz-layout">
 
-          <!-- LEFT: vertical question list (hugs content height) -->
+          <!-- LEFT: vertical question list. The .quiz-sidebar-inner wrapper
+               is position:absolute so the sidebar's natural content height
+               doesn't force the grid row to grow with a 60-question list.
+               Result: sidebar height matches the main column; the inner
+               list scrolls when there are more questions than fit. -->
           <aside class="quiz-sidebar" id="quizSidebar" aria-label="Question navigator">
-            <div class="quiz-sidebar-head">
-              <span class="quiz-sidebar-title">Questions</span>
-              <button class="quiz-sidebar-collapse" id="quizSidebarCollapse" aria-label="Collapse">&#10094;</button>
-            </div>
-            <div class="quiz-sidebar-list" id="quizSidebarList" role="listbox">
-              <!-- Rows injected by JS -->
-            </div>
-            <div class="quiz-sidebar-legend">
-              <span><i class="qs-ind qs-ind-done"></i>Answered</span>
-              <span><i class="qs-ind qs-ind-flag">&#9873;</i>Flagged</span>
-              <span><i class="qs-ind qs-ind-current"></i>Current</span>
+            <div class="quiz-sidebar-inner">
+              <div class="quiz-sidebar-head">
+                <span class="quiz-sidebar-title">Questions</span>
+                <button class="quiz-sidebar-collapse" id="quizSidebarCollapse" aria-label="Collapse">&#10094;</button>
+              </div>
+              <div class="quiz-sidebar-list" id="quizSidebarList" role="listbox">
+                <!-- Rows injected by JS -->
+              </div>
+              <div class="quiz-sidebar-legend">
+                <span><i class="qs-ind qs-ind-done"></i>Answered</span>
+                <span><i class="qs-ind qs-ind-flag">&#9873;</i>Flagged</span>
+                <span><i class="qs-ind qs-ind-current"></i>Current</span>
+              </div>
             </div>
           </aside>
 
@@ -377,8 +383,8 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260506-visits"></script>
-  <script src="qbank-sanitizer.js?v=20260510-sanitize1"></script>
-  <script src="qbank.js?v=20260510-sanitize1"></script>
+  <script src="qbank-sanitizer.js?v=20260510-sidebarfix"></script>
+  <script src="qbank.js?v=20260510-sidebarfix"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.

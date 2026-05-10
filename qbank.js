@@ -1352,12 +1352,13 @@ function renderQuizSidebar() {
   const list = document.getElementById('quizSidebarList');
   if (!list) return;
   list.innerHTML = '';
+  let currentRow = null;
   quizQuestions.forEach((q, i) => {
     const row = document.createElement('div');
     row.className = 'quiz-sidebar-item';
     row.setAttribute('role', 'option');
     row.dataset.index = i;
-    if (i === currentIndex) row.classList.add('is-current');
+    if (i === currentIndex) { row.classList.add('is-current'); currentRow = row; }
     if (answers[i] !== undefined) row.classList.add('is-answered');
     if (flaggedQuestions.has(i)) row.classList.add('is-flagged');
 
@@ -1384,6 +1385,26 @@ function renderQuizSidebar() {
     });
     list.appendChild(row);
   });
+
+  // Auto-scroll the current row into view if it's outside the visible
+  // area of the list. Critical for 60-question tests where the user
+  // might be on Q40 — without this, the sidebar would still show
+  // questions 1-20 and the highlight would be invisible. Uses block:
+  // 'nearest' so we don't aggressively re-center when only mildly off.
+  if (currentRow) {
+    // Defer to next frame so layout has settled and offsetTop is accurate.
+    requestAnimationFrame(() => {
+      const rowTop = currentRow.offsetTop;
+      const rowBot = rowTop + currentRow.offsetHeight;
+      const viewTop = list.scrollTop;
+      const viewBot = viewTop + list.clientHeight;
+      if (rowTop < viewTop) {
+        list.scrollTop = Math.max(0, rowTop - 8);
+      } else if (rowBot > viewBot) {
+        list.scrollTop = rowBot - list.clientHeight + 8;
+      }
+    });
+  }
 }
 
 function syncFlagButton() {
