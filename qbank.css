@@ -384,8 +384,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 0 4px;
+  margin-bottom: 0;
+  padding: 14px 24px 8px;
 }
 
 .quiz-progress {
@@ -426,12 +426,12 @@
   color: var(--red);
 }
 
-/* Progress Bar */
+/* Progress Bar (inside mainbox, sits under the topbar) */
 .quiz-progress-bar {
-  height: 4px;
-  background: var(--gray-200);
-  border-radius: 4px;
-  margin-bottom: 24px;
+  height: 3px;
+  background: var(--gray-100);
+  border-radius: 0;
+  margin: 0 0 0;
   overflow: hidden;
 }
 
@@ -443,14 +443,15 @@
   width: 0%;
 }
 
-/* Question Card */
+/* Question Body (inside mainbox — no own shadow/border/radius;
+   the mainbox provides those). */
 .quiz-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--gray-200);
-  margin-bottom: 24px;
+  background: transparent;
+  border-radius: 0;
+  padding: 26px 30px 28px;
+  box-shadow: none;
+  border: none;
+  margin-bottom: 0;
 }
 
 .quiz-topic {
@@ -769,6 +770,10 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  padding: 14px 22px;
+  border-top: 1px solid var(--gray-100);
+  background: var(--gray-50);
+  margin-top: 0;
 }
 
 .quiz-nav .btn {
@@ -1966,20 +1971,23 @@ mark.user-highlight:hover {
 }
 
 /* ============================================================
-   UWorld-style quiz layout: sidebar + main + toolbar + tools
+   UWorld-style quiz layout: sidebar + unified mainbox
+   (iter 2 — single-card design, click letter to eliminate,
+    timer in toolbar, sidebar hugs content)
    ============================================================ */
 
 .quiz-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
+  grid-template-columns: 200px 1fr;
+  gap: 22px;
   align-items: start;
 }
 
-/* ----- Left Sidebar (vertical question list) ----- */
+/* ----- Left Sidebar (vertical question list — height hugs content) ----- */
 .quiz-sidebar {
   position: sticky;
   top: 16px;
+  /* Hug content; cap so a 40-question list still scrolls inside the viewport. */
   max-height: calc(100vh - 32px);
   display: flex;
   flex-direction: column;
@@ -1988,6 +1996,7 @@ mark.user-highlight:hover {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   overflow: hidden;
+  align-self: start;
 }
 
 .quiz-sidebar-head {
@@ -2021,7 +2030,7 @@ mark.user-highlight:hover {
 .quiz-sidebar-collapse:hover { opacity: 1; background: rgba(255,255,255,0.1); }
 
 .quiz-sidebar-list {
-  flex: 1;
+  flex: 0 1 auto;     /* hugs content height — no empty space below questions */
   overflow-y: auto;
   padding: 8px;
 }
@@ -2130,19 +2139,49 @@ mark.user-highlight:hover {
 .quiz-layout.sidebar-collapsed ~ * .quiz-tool-sidebar-show,
 .quiz-layout.sidebar-collapsed .quiz-tool-sidebar-show { display: inline-flex; }
 
-/* ----- Toolbar (above topbar) ----- */
+/* ----- Unified mainbox: one rounded card holds everything ----- */
+.quiz-mainbox {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+  overflow: hidden;          /* keeps child borders flush with rounded corners */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- Toolbar (top of mainbox; timer floats to the right) ----- */
 .quiz-toolbar {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
-  padding: 10px 14px;
+  padding: 10px 16px;
+  background: linear-gradient(to bottom, #FCFCFD, var(--white));
+  border-bottom: 1px solid var(--gray-200);
+  /* Note: NO own shadow/border-radius — the mainbox wraps it. */
+}
+
+.quiz-toolbar-spacer { flex: 1 1 auto; min-width: 12px; }
+
+/* Timer styles when it lives inside the toolbar */
+.quiz-toolbar-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--navy);
   background: var(--white);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 14px;
+  border-radius: 999px;
+  margin: 0;            /* override legacy .test-timer margin-bottom */
 }
+.quiz-toolbar-timer .timer-icon { font-size: 1.05rem; line-height: 1; }
+.quiz-toolbar-timer.timer-warning { color: var(--gold); border-color: var(--gold); }
+.quiz-toolbar-timer.timer-danger  { color: var(--red);  border-color: var(--red); }
 
 .quiz-tool-btn {
   display: inline-flex;
@@ -2187,51 +2226,50 @@ mark.user-highlight:hover {
   font-size: 1rem;
 }
 
-/* ----- Highlight-mode active: cursor cue on the question text ----- */
-.quiz-card.highlight-mode .quiz-question {
+/* Question stem is always selectable for highlighting (drag to paint,
+   click a mark to remove — same behavior as chapter pages). */
+.quiz-card .quiz-question {
   cursor: text;
-  background: linear-gradient(180deg, transparent 0%, rgba(254, 240, 138, 0.08) 100%);
-  padding: 8px 10px;
-  margin: -8px -10px 28px;
-  border-radius: 6px;
 }
 
-/* ----- Per-option eliminate button (X) ----- */
-.quiz-option {
-  position: relative;
-  padding-right: 50px; /* room for the ✕ button on the right */
-}
-.quiz-option .option-eliminate {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid var(--gray-200);
-  background: var(--white);
-  color: var(--gray-400);
-  font-size: 0.95rem;
-  line-height: 1;
+/* ----- Click letter circle (A/B/C/D) to eliminate / un-eliminate -----
+   Letter is rendered with data-letter="A" (empty textContent). CSS handles
+   the swap between the letter and a red × via ::before / ::after. */
+.quiz-option { position: relative; }
+
+.quiz-option .option-letter {
   cursor: pointer;
-  display: none;
+  position: relative;
+  transition: background 0.14s ease, color 0.14s ease, transform 0.12s ease;
+  /* override default text-content from outside; we render via ::before */
+}
+.quiz-option .option-letter::before {
+  content: attr(data-letter);
+  display: inline-block;
+  transition: opacity 0.12s ease;
+}
+.quiz-option .option-letter::after {
+  content: "\00d7";  /* × */
+  position: absolute;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  transition: color 0.12s, background 0.12s, border-color 0.12s, transform 0.12s;
-}
-.quiz-option:hover .option-eliminate,
-.qbank-quiz.eliminate-mode .quiz-option .option-eliminate {
-  display: inline-flex;
-}
-.quiz-option .option-eliminate:hover {
-  background: rgba(220, 38, 38, 0.10);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #DC2626;
-  border-color: rgba(220, 38, 38, 0.40);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
 }
+.quiz-option .option-letter:hover {
+  background: rgba(220, 38, 38, 0.10);
+  transform: scale(1.05);
+}
+.quiz-option .option-letter:hover::before { opacity: 0; }
+.quiz-option .option-letter:hover::after  { opacity: 1; }
 
-/* Eliminated visual: strike-through text + dimmed + don't allow re-selection */
+/* Eliminated visual: strike-through text + dimmed + can't re-select */
 .quiz-option.is-eliminated {
   opacity: 0.55;
   text-decoration: line-through;
@@ -2242,9 +2280,39 @@ mark.user-highlight:hover {
   background: var(--gray-200);
   color: var(--gray-500);
 }
+/* Eliminated: × stays on the letter permanently */
+.quiz-option.is-eliminated .option-letter::before { opacity: 0; }
+.quiz-option.is-eliminated .option-letter::after  { opacity: 1; }
 .quiz-option.is-eliminated:hover {
   background: var(--white);
   border-color: var(--gray-200);
+}
+
+/* When option is selected/correct/wrong, lock the letter back to the letter
+   (don't let the hover X interfere on graded review options) */
+.quiz-option.selected .option-letter::after,
+.quiz-option.correct  .option-letter::after,
+.quiz-option.wrong    .option-letter::after { opacity: 0; }
+.quiz-option.selected .option-letter::before,
+.quiz-option.correct  .option-letter::before,
+.quiz-option.wrong    .option-letter::before { opacity: 1; }
+.quiz-option.disabled .option-letter { cursor: default; transform: none; }
+.quiz-option.disabled .option-letter:hover { background: inherit; transform: none; }
+.quiz-option.disabled .option-letter:hover::before { opacity: 1; }
+.quiz-option.disabled .option-letter:hover::after  { opacity: 0; }
+
+/* Subtle press feedback on letter */
+.quiz-option .option-letter:active { transform: scale(0.95); }
+
+/* Smooth fade when the question changes */
+.quiz-card .quiz-question,
+.quiz-card .quiz-options,
+.quiz-card .quiz-topic {
+  animation: quiz-fade 0.18s ease;
+}
+@keyframes quiz-fade {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ----- Floating calculator ----- */
@@ -2329,6 +2397,47 @@ mark.user-highlight:hover {
 .qcalc-eq { background: var(--accent); color: var(--white); }
 .qcalc-eq:hover { background: #B84F26; }
 
+/* ----- Senior polish: focus rings, smooth motion, prefers-reduced-motion ----- */
+.quiz-tool-btn:focus-visible,
+.quiz-sidebar-item:focus-visible,
+.quiz-sidebar-collapse:focus-visible,
+.qcalc-key:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.quiz-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.quiz-option .option-letter:focus-visible {
+  outline: 2px solid #DC2626;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-card .quiz-question,
+  .quiz-card .quiz-options,
+  .quiz-card .quiz-topic {
+    animation: none;
+  }
+  .quiz-option .option-letter,
+  .quiz-tool-btn,
+  .qcalc-key { transition: none; }
+}
+
+/* Hover state on sidebar rows feels nicer with subtle inner-glow */
+.quiz-sidebar-item:hover .qs-num { color: var(--navy); }
+.quiz-sidebar-item.is-current:hover .qs-num { color: var(--accent); }
+
+/* Tighter spacing for the unified box on smaller laptops */
+@media (max-width: 1100px) {
+  .quiz-layout { grid-template-columns: 180px 1fr; gap: 16px; }
+  .quiz-card { padding: 22px 22px 24px; }
+  .quiz-topbar { padding: 12px 20px 6px; }
+  .quiz-nav { padding: 12px 18px; }
+  .quiz-toolbar { padding: 8px 12px; }
+}
+
 /* ----- Responsive: stack sidebar on mobile ----- */
 @media (max-width: 900px) {
   .quiz-layout {
@@ -2336,12 +2445,12 @@ mark.user-highlight:hover {
   }
   .quiz-sidebar {
     position: static;
-    max-height: 220px;
+    max-height: 200px;
     margin-bottom: 12px;
   }
   .quiz-sidebar-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
     gap: 4px;
   }
   .quiz-sidebar-item {
@@ -2351,11 +2460,17 @@ mark.user-highlight:hover {
   }
   .quiz-sidebar-item .qs-num { flex: 0 1 auto; }
   .quiz-sidebar-item .qs-state { width: 10px; height: 10px; font-size: 0.7rem; }
-  .quiz-sidebar-legend { flex-direction: row; flex-wrap: wrap; }
+  .quiz-sidebar-legend { flex-direction: row; flex-wrap: wrap; gap: 12px; }
 
-  .quiz-toolbar { padding: 8px 10px; gap: 4px; }
+  .quiz-toolbar { padding: 8px 12px; gap: 4px; }
   .quiz-tool-btn .quiz-tool-label { display: none; }
   .quiz-tool-btn { padding: 7px 9px; }
+  .quiz-toolbar-timer { padding: 4px 10px; font-size: 0.88rem; }
+
+  .quiz-card { padding: 18px 18px 22px; }
+  .quiz-topbar { padding: 10px 16px 4px; }
+  .quiz-nav { padding: 12px 16px; gap: 8px; }
+  .quiz-nav .btn { min-width: 0; padding: 10px 14px; font-size: 0.9rem; }
 
   .quiz-calculator {
     right: 12px;

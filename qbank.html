@@ -142,12 +142,6 @@
       <!-- ===== QUIZ SCREEN ===== -->
       <div id="quizScreen" class="qbank-quiz" style="display:none;">
 
-        <!-- Countdown Timer (Test Mode only) -->
-        <div class="test-timer" id="testTimer" style="display:none;">
-          <span class="timer-icon">&#9201;</span>
-          <span class="timer-display" id="timerDisplay">00:00</span>
-        </div>
-
         <!-- Legacy horizontal Question Navigator (kept hidden — replaced by sidebar) -->
         <div class="question-navigator" id="questionNavigator" style="display:none;">
           <!-- Question number buttons injected by JS (legacy, unused) -->
@@ -156,7 +150,7 @@
         <!-- ===== Two-column quiz layout (sidebar + main) ===== -->
         <div class="quiz-layout">
 
-          <!-- LEFT: vertical question list -->
+          <!-- LEFT: vertical question list (hugs content height) -->
           <aside class="quiz-sidebar" id="quizSidebar" aria-label="Question navigator">
             <div class="quiz-sidebar-head">
               <span class="quiz-sidebar-title">Questions</span>
@@ -172,53 +166,52 @@
             </div>
           </aside>
 
-          <!-- RIGHT: main column -->
+          <!-- RIGHT: unified main box (toolbar + content + nav all in one card) -->
           <div class="quiz-main">
+            <div class="quiz-mainbox" id="quizMainbox">
 
-            <!-- Toolbar (Mark / Highlight / Eliminate / Calculator) -->
-            <div class="quiz-toolbar">
-              <button class="quiz-tool-btn quiz-tool-sidebar-show" id="sidebarShowBtn" aria-label="Show questions" title="Show questions">&#9776;</button>
+              <!-- Toolbar: Mark · Calculator · (timer on right in test mode) -->
+              <div class="quiz-toolbar">
+                <button class="quiz-tool-btn quiz-tool-sidebar-show" id="sidebarShowBtn" aria-label="Show questions" title="Show questions">&#9776;</button>
 
-              <button class="quiz-tool-btn" id="flagBtn" title="Flag this question (shortcut: M)" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
-                <span class="quiz-tool-label">Mark</span>
-              </button>
+                <button class="quiz-tool-btn" id="flagBtn" title="Flag this question (M)" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+                  <span class="quiz-tool-label">Mark</span>
+                </button>
 
-              <button class="quiz-tool-btn" id="highlightToggleBtn" title="Highlight question text (drag to highlight)" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l3 3v5h6v-5l3-3V9H6zm5-12h2v3h-2zM3.5 5.88l1.41-1.41 2.12 2.12L5.62 8zm13.46 0L19.07 4l1.41 1.41-2.12 2.12-1.41-1.41z"/></svg>
-                <span class="quiz-tool-label">Highlight</span>
-              </button>
+                <button class="quiz-tool-btn" id="calculatorBtn" title="Calculator (C)" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm0 4v4h10V6zM7 12v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zM7 16v2h2v-2zm4 0v2h2v-2zm4 0v6h2v-6z"/></svg>
+                  <span class="quiz-tool-label">Calculator</span>
+                </button>
 
-              <button class="quiz-tool-btn" id="strikeModeBtn" title="Eliminate answer choices (click the &times; that appears on each option)" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18v2H3z"/></svg>
-                <span class="quiz-tool-label">Eliminate</span>
-              </button>
+                <div class="quiz-toolbar-spacer"></div>
 
-              <button class="quiz-tool-btn" id="calculatorBtn" title="Calculator (shortcut: C)" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm0 4v4h10V6zM7 12v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zM7 16v2h2v-2zm4 0v2h2v-2zm4 0v6h2v-6z"/></svg>
-                <span class="quiz-tool-label">Calculator</span>
-              </button>
-            </div>
+                <!-- Countdown Timer (Test Mode only) — lives in the toolbar -->
+                <div class="quiz-toolbar-timer test-timer" id="testTimer" style="display:none;">
+                  <span class="timer-icon">&#9201;</span>
+                  <span class="timer-display" id="timerDisplay">00:00</span>
+                </div>
+              </div>
 
-        <!-- Top Bar -->
-        <div class="quiz-topbar">
-          <div class="quiz-progress">
-            <span id="questionIndex">1</span> / <span id="totalQuestions">0</span>
-          </div>
-          <div class="quiz-subject-badge" id="currentSubject">Biology</div>
-          <div class="quiz-score" id="quizScoreDisplay">
-            <span class="score-correct" id="scoreCorrect">0</span> ✓
-            <span class="score-wrong" id="scoreWrong">0</span> ✗
-          </div>
-        </div>
+              <!-- Header row: Q index / subject / running score -->
+              <div class="quiz-topbar">
+                <div class="quiz-progress">
+                  <span id="questionIndex">1</span> / <span id="totalQuestions">0</span>
+                </div>
+                <div class="quiz-subject-badge" id="currentSubject">Biology</div>
+                <div class="quiz-score" id="quizScoreDisplay">
+                  <span class="score-correct" id="scoreCorrect">0</span> &check;
+                  <span class="score-wrong" id="scoreWrong">0</span> &times;
+                </div>
+              </div>
 
-        <!-- Progress Bar -->
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="progressFill"></div>
-        </div>
+              <!-- Progress Bar -->
+              <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" id="progressFill"></div>
+              </div>
 
-        <!-- Question Card -->
-        <div class="quiz-card">
+              <!-- Question Body -->
+              <div class="quiz-card">
           <div class="quiz-topic" id="questionTopic">Cell Biology</div>
           <div class="quiz-question" id="questionText"></div>
 
@@ -268,13 +261,14 @@
 
         <!-- Navigation -->
         <div class="quiz-nav">
-          <button class="btn btn-secondary" id="prevBtn" disabled>← Previous</button>
-          <button class="btn btn-primary" id="nextBtn" style="display:none;">Next →</button>
+          <button class="btn btn-secondary" id="prevBtn" disabled>&larr; Previous</button>
+          <button class="btn btn-primary" id="nextBtn" style="display:none;">Next &rarr;</button>
           <button class="btn btn-primary" id="finishBtn" style="display:none;">Finish Quiz</button>
-          <button class="btn btn-primary" id="testNextBtn" style="display:none;">Next →</button>
+          <button class="btn btn-primary" id="testNextBtn" style="display:none;">Next &rarr;</button>
           <button class="btn btn-finish-test" id="finishTestBtn" style="display:none;">Finish Test</button>
         </div>
 
+            </div><!-- /.quiz-mainbox -->
           </div><!-- /.quiz-main -->
         </div><!-- /.quiz-layout -->
 

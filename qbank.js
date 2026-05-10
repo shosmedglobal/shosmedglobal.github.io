@@ -9,7 +9,6 @@ let score = { correct: 0, wrong: 0 };
 // ===== UWorld-style quiz tools =====
 let flaggedQuestions = new Set();          // indices the user marked / flagged
 let eliminatedOptions = {};                // { qIndex: Set([optionIndex]) }
-let highlightModeOn = false;               // toggle from toolbar Highlight button
 
 // ===== Test Mode State =====
 let isTestMode = false;
@@ -547,8 +546,6 @@ function startQuiz() {
   // Reset UWorld-style tool state for a fresh session
   flaggedQuestions = new Set();
   eliminatedOptions = {};
-  highlightModeOn = false;
-
   // Detect quiz mode
   const modeRadio = document.querySelector('input[name="quizMode"]:checked');
   isTestMode = modeRadio && modeRadio.value === 'test';
@@ -610,8 +607,6 @@ function startChapterQuiz(pool, chapterTitle) {
   // Reset UWorld-style tool state for a fresh session
   flaggedQuestions = new Set();
   eliminatedOptions = {};
-  highlightModeOn = false;
-
   // Default to study mode for chapter quizzes (no timer pressure while learning).
   // The user can switch to test mode from the regular start screen if they want.
   isTestMode = false;
@@ -670,31 +665,41 @@ function renderQuestion() {
     const div = document.createElement('div');
     div.className = 'quiz-option';
     div.dataset.index = i;
+
+    // Letter circle — clickable target for ELIMINATION (UWorld behavior).
+    // CSS renders the letter via data-letter -> ::before, swaps to × on hover
+    // and when .is-eliminated is set.
     const letterSpan = document.createElement('span');
     letterSpan.className = 'option-letter';
-    letterSpan.textContent = letters[i];
+    letterSpan.dataset.letter = letters[i];
+    letterSpan.setAttribute('role', 'button');
+    letterSpan.setAttribute('tabindex', '0');
+    letterSpan.setAttribute('aria-label', 'Eliminate option ' + letters[i]);
+    letterSpan.title = 'Click to eliminate · click again to restore';
+
     const textSpan = document.createElement('span');
+    textSpan.className = 'option-text';
     textSpan.textContent = opt;
+
     div.appendChild(letterSpan);
     div.appendChild(textSpan);
 
-    // Elimination toggle (✕) — UWorld-style; visible on hover or when
-    // "Eliminate" mode is on. Stops click propagation so toggling doesn't
-    // accidentally select the option.
-    const elimBtn = document.createElement('button');
-    elimBtn.className = 'option-eliminate';
-    elimBtn.type = 'button';
-    elimBtn.setAttribute('aria-label', 'Eliminate option ' + letters[i]);
-    elimBtn.title = 'Eliminate (mark as wrong)';
-    elimBtn.innerHTML = '&times;';
-    elimBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleEliminate(currentIndex, i);
-    });
-    div.appendChild(elimBtn);
-
     const isEliminated = eliminatedForQ.has(i);
     if (isEliminated) div.classList.add('is-eliminated');
+
+    // Letter circle: toggle elimination, never select. Stop propagation so
+    // the parent option click handler doesn't accidentally pick the answer.
+    const onLetterToggle = (e) => {
+      e.stopPropagation();
+      // Don't allow toggling once the question is graded (review mode after
+      // answering — the div will have .disabled).
+      if (div.classList.contains('disabled')) return;
+      toggleEliminate(currentIndex, i);
+    };
+    letterSpan.addEventListener('click', onLetterToggle);
+    letterSpan.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onLetterToggle(e); }
+    });
 
     if (isTestMode) {
       // Test Mode: allow selecting/changing answers, no correct/wrong styling
@@ -959,7 +964,7 @@ function getExpContainer(node) {
   // Question stem — always considered a valid container so existing
   // highlights can be clicked to remove. Whether NEW highlights are
   // created on drag is gated separately by the mousedown handler
-  // (which checks highlightModeOn).
+  // (drag inside any highlightable container).
   const quizStem = document.getElementById('questionText');
   if (quizStem && quizStem.contains(node)) {
     return { container: quizStem, qIndex: currentIndex, scope: 'stem' };
@@ -1111,19 +1116,13 @@ function qbApplyHighlight(color) {
     if (q) saveHighlights(q.id, expInfo.container, expInfo.scope);
   });
 
-  // Auto-highlight on text selection (drag) inside explanation
+  // Auto-highlight on text selection (drag) inside any highlightable
+  // container — explanation, review, OR question stem. Behaves identically
+  // to the chapter-page highlighter: drag to paint, click to remove.
   let qbMouseDownPos = null;
   document.addEventListener('mousedown', (e) => {
     if (e.target.closest('mark.user-highlight')) { qbMouseDownPos = null; return; }
     const expInfo = getExpContainer(e.target);
-    // For the question stem, only ARM drag-to-highlight when the user has
-    // explicitly toggled Highlight mode on (so casual text-selection on the
-    // question doesn't accidentally splatter yellow). Explanation/review
-    // containers stay always-on (legacy behavior).
-    if (expInfo && expInfo.scope === 'stem' && !highlightModeOn) {
-      qbMouseDownPos = null;
-      return;
-    }
     if (expInfo) {
       qbMouseDownPos = { x: e.clientX, y: e.clientY };
     } else {
@@ -1432,56 +1431,58 @@ function toggleEliminate(qi, oi) {
   });
 })();
 
-// ===== Toolbar wiring (flag / highlight / eliminate / calculator) =====
+// ===== Toolbar wiring (flag / calculator) + global keyboard shortcuts =====
 (function initQuizToolbar() {
   document.addEventListener('click', (e) => {
-    if (e.target.closest('#flagBtn')) {
-      toggleFlag();
-      return;
-    }
-    if (e.target.closest('#highlightToggleBtn')) {
-      highlightModeOn = !highlightModeOn;
-      const btn = document.getElementById('highlightToggleBtn');
-      btn.classList.toggle('is-active', highlightModeOn);
-      btn.setAttribute('aria-pressed', highlightModeOn ? 'true' : 'false');
-      const card = document.querySelector('.quiz-card');
-      if (card) card.classList.toggle('highlight-mode', highlightModeOn);
-      return;
-    }
-    if (e.target.closest('#strikeModeBtn')) {
-      const btn = document.getElementById('strikeModeBtn');
-      const on = !btn.classList.contains('is-active');
-      btn.classList.toggle('is-active', on);
-      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      const quizRoot = document.querySelector('#quizScreen');
-      if (quizRoot) quizRoot.classList.toggle('eliminate-mode', on);
-      return;
-    }
-    if (e.target.closest('#calculatorBtn')) {
-      openCalculator();
-      return;
-    }
-    if (e.target.closest('#quizCalcClose')) {
-      closeCalculator();
-      return;
-    }
+    if (e.target.closest('#flagBtn')) { toggleFlag(); return; }
+    if (e.target.closest('#calculatorBtn')) { toggleCalculator(); return; }
+    if (e.target.closest('#quizCalcClose')) { closeCalculator(); return; }
   });
 
-  // Keyboard shortcuts (M = mark, C = calculator, H = highlight)
+  // Keyboard shortcuts (only when quiz screen is visible and not typing).
+  //   M / F      – flag (mark) the current question
+  //   C          – open/close calculator
+  //   A / B / C  – select option (note: C is also calculator — only acts as
+  //   D            option when calc isn't currently focused)
+  //   ← / →      – previous / next question
+  //   Esc        – close calculator
   document.addEventListener('keydown', (e) => {
-    // Only when quiz screen is the visible one and not typing in an input
     const quizScreen = document.getElementById('quizScreen');
     if (!quizScreen || quizScreen.style.display === 'none') return;
     if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || '').toUpperCase())) return;
     if (e.ctrlKey || e.metaKey || e.altKey) return;
 
     const k = e.key.toLowerCase();
-    if (k === 'm') { e.preventDefault(); toggleFlag(); }
-    else if (k === 'c') { e.preventDefault(); toggleCalculator(); }
-    else if (k === 'h') {
+
+    if (k === 'escape') {
+      const calc = document.getElementById('quizCalculator');
+      if (calc && calc.style.display === 'block') { e.preventDefault(); closeCalculator(); }
+      return;
+    }
+
+    if (k === 'arrowleft')  { e.preventDefault(); goPrev(); return; }
+    if (k === 'arrowright') { e.preventDefault(); goNext(); return; }
+
+    if (k === 'm' || k === 'f') { e.preventDefault(); toggleFlag(); return; }
+
+    if (k === 'c') {
+      // 'C' is overloaded between Calculator toggle and option C.
+      // If calc is closed, treat as calculator open; if calc is open, also
+      // close it. Use Shift+C or option-button-3 directly to disambiguate.
       e.preventDefault();
-      const btn = document.getElementById('highlightToggleBtn');
-      if (btn) btn.click();
+      toggleCalculator();
+      return;
+    }
+
+    // Option selection by letter: a/b/d (c is calculator — see above)
+    const letterMap = { a: 0, b: 1, d: 3 };
+    if (k in letterMap) {
+      e.preventDefault();
+      const opts = document.querySelectorAll('#optionsContainer .quiz-option');
+      const target = opts[letterMap[k]];
+      if (target && !target.classList.contains('is-eliminated') && !target.classList.contains('disabled')) {
+        target.click();
+      }
     }
   });
 })();
@@ -1859,8 +1860,6 @@ function resumeInProgressTest(savedState) {
   Object.keys(elim).forEach(k => {
     eliminatedOptions[parseInt(k)] = new Set((elim[k] || []).map(n => parseInt(n)));
   });
-  highlightModeOn = false;
-
   document.getElementById('totalQuestions').textContent = quizQuestions.length;
   document.getElementById('scoreCorrect').textContent = score.correct;
   document.getElementById('scoreWrong').textContent = score.wrong;
@@ -1916,19 +1915,10 @@ function showScreen(id) {
     const el = document.getElementById(s);
     if (el) el.style.display = s === id ? 'block' : 'none';
   });
-  // Leaving the quiz screen: tear down floating tools so they don't bleed
-  // into other screens (calculator popup, highlight mode, eliminate mode).
+  // Leaving the quiz screen: close the floating calculator so it doesn't
+  // bleed into other screens.
   if (id !== 'quizScreen') {
     if (typeof closeCalculator === 'function') closeCalculator();
-    highlightModeOn = false;
-    const hlBtn = document.getElementById('highlightToggleBtn');
-    if (hlBtn) { hlBtn.classList.remove('is-active'); hlBtn.setAttribute('aria-pressed', 'false'); }
-    const card = document.querySelector('.quiz-card');
-    if (card) card.classList.remove('highlight-mode');
-    const stBtn = document.getElementById('strikeModeBtn');
-    if (stBtn) { stBtn.classList.remove('is-active'); stBtn.setAttribute('aria-pressed', 'false'); }
-    const qRoot = document.getElementById('quizScreen');
-    if (qRoot) qRoot.classList.remove('eliminate-mode');
   }
   if (id === 'startScreen') {
     updateProgressDisplay();
