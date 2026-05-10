@@ -6,6 +6,11 @@ let currentIndex = 0;
 let answers = {}; // { index: selectedOptionIndex }
 let score = { correct: 0, wrong: 0 };
 
+// ===== UWorld-style quiz tools =====
+let flaggedQuestions = new Set();          // indices the user marked / flagged
+let eliminatedOptions = {};                // { qIndex: Set([optionIndex]) }
+let highlightModeOn = false;               // toggle from toolbar Highlight button
+
 // ===== Test Mode State =====
 let isTestMode = false;
 let testTimerInterval = null;
@@ -539,6 +544,10 @@ function startQuiz() {
   currentIndex = 0;
   answers = {};
   score = { correct: 0, wrong: 0 };
+  // Reset UWorld-style tool state for a fresh session
+  flaggedQuestions = new Set();
+  eliminatedOptions = {};
+  highlightModeOn = false;
 
   // Detect quiz mode
   const modeRadio = document.querySelector('input[name="quizMode"]:checked');
@@ -553,13 +562,15 @@ function startQuiz() {
   if (isTestMode) {
     document.getElementById('quizScoreDisplay').style.display = 'none';
     document.getElementById('testTimer').style.display = 'flex';
-    document.getElementById('questionNavigator').style.display = 'flex';
+    // Legacy horizontal navigator stays hidden — the new vertical sidebar
+    // (#quizSidebar) is rendered by renderQuestion() and is the source of
+    // truth for navigation.
+    document.getElementById('questionNavigator').style.display = 'none';
     testTimeRemaining = quizQuestions.length * 2 * 60; // 2 min per question
     testStartTime = Date.now();
     testElapsedSeconds = 0;
     updateTimerDisplay();
     startTimer();
-    renderQuestionNavigator();
   } else {
     document.getElementById('quizScoreDisplay').style.display = '';
     document.getElementById('testTimer').style.display = 'none';
@@ -596,6 +607,10 @@ function startChapterQuiz(pool, chapterTitle) {
   currentIndex = 0;
   answers = {};
   score = { correct: 0, wrong: 0 };
+  // Reset UWorld-style tool state for a fresh session
+  flaggedQuestions = new Set();
+  eliminatedOptions = {};
+  highlightModeOn = false;
 
   // Default to study mode for chapter quizzes (no timer pressure while learning).
   // The user can switch to test mode from the regular start screen if they want.
@@ -631,15 +646,25 @@ function renderQuestion() {
   document.getElementById('currentSubject').textContent =
     q.subject.charAt(0).toUpperCase() + q.subject.slice(1);
 
+  // Re-render the vertical question sidebar + flag button (always — used in
+  // both Test and Practice modes; this is the UWorld-style navigator).
+  renderQuizSidebar();
+  syncFlagButton();
+
   const pct = ((currentIndex + 1) / quizQuestions.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
 
   document.getElementById('questionTopic').textContent = q.topic;
-  document.getElementById('questionText').innerHTML = q.question;
+  const stemEl = document.getElementById('questionText');
+  stemEl.innerHTML = q.question;
+  // Re-apply any saved highlights the user made on the question stem.
+  restoreHighlights(q.id, stemEl, 'stem');
 
   const container = document.getElementById('optionsContainer');
   const letters = ['A', 'B', 'C', 'D'];
   container.innerHTML = '';
+
+  const eliminatedForQ = eliminatedOptions[currentIndex] || new Set();
 
   q.options.forEach((opt, i) => {
     const div = document.createElement('div');
@@ -653,12 +678,33 @@ function renderQuestion() {
     div.appendChild(letterSpan);
     div.appendChild(textSpan);
 
+    // Elimination toggle (✕) — UWorld-style; visible on hover or when
+    // "Eliminate" mode is on. Stops click propagation so toggling doesn't
+    // accidentally select the option.
+    const elimBtn = document.createElement('button');
+    elimBtn.className = 'option-eliminate';
+    elimBtn.type = 'button';
+    elimBtn.setAttribute('aria-label', 'Eliminate option ' + letters[i]);
+    elimBtn.title = 'Eliminate (mark as wrong)';
+    elimBtn.innerHTML = '&times;';
+    elimBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleEliminate(currentIndex, i);
+    });
+    div.appendChild(elimBtn);
+
+    const isEliminated = eliminatedForQ.has(i);
+    if (isEliminated) div.classList.add('is-eliminated');
+
     if (isTestMode) {
       // Test Mode: allow selecting/changing answers, no correct/wrong styling
       if (answers[currentIndex] === i) {
         div.classList.add('selected');
       }
-      div.addEventListener('click', () => selectAnswer(i));
+      div.addEventListener('click', () => {
+        if (div.classList.contains('is-eliminated')) return; // ignore eliminated
+        selectAnswer(i);
+      });
     } else {
       // Review Mode: original behavior
       if (answers[currentIndex] !== undefined) {
@@ -666,7 +712,10 @@ function renderQuestion() {
         if (i === q.correct) div.classList.add('correct');
         if (i === answers[currentIndex] && i !== q.correct) div.classList.add('wrong');
       } else {
-        div.addEventListener('click', () => selectAnswer(i));
+        div.addEventListener('click', () => {
+          if (div.classList.contains('is-eliminated')) return;
+          selectAnswer(i);
+        });
       }
     }
 
@@ -780,6 +829,9 @@ function selectAnswer(index) {
   document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-flex';
   document.getElementById('finishBtn').style.display = isLast ? 'inline-flex' : 'none';
 
+  // Update the sidebar so the row gets the "answered" checkmark.
+  renderQuizSidebar();
+
   // Auto-save in-progress state
   saveInProgressTest();
 }
@@ -850,20 +902,22 @@ function applyQBankWatermark(container) {
 let qbHlColor = 'yellow';
 let qbJustRemovedHighlight = false;
 
-function getHighlightKey(qId) { return 'qbank_highlights_' + qId; }
+function getHighlightKey(qId, scope) {
+  return 'qbank_highlights_' + (scope && scope !== 'exp' ? scope + '_' : '') + qId;
+}
 
-function saveHighlights(qId, container) {
+function saveHighlights(qId, container, scope) {
   const marks = container.querySelectorAll('mark.user-highlight');
   const data = Array.from(marks).map(m => ({ text: m.textContent, color: m.getAttribute('data-hl-color') || 'yellow' }));
   if (data.length > 0) {
-    localStorage.setItem(getHighlightKey(qId), JSON.stringify(data));
+    localStorage.setItem(getHighlightKey(qId, scope), JSON.stringify(data));
   } else {
-    localStorage.removeItem(getHighlightKey(qId));
+    localStorage.removeItem(getHighlightKey(qId, scope));
   }
 }
 
-function restoreHighlights(qId, container) {
-  const stored = localStorage.getItem(getHighlightKey(qId));
+function restoreHighlights(qId, container, scope) {
+  const stored = localStorage.getItem(getHighlightKey(qId, scope));
   if (!stored) return;
   try {
     const data = JSON.parse(stored);
@@ -892,18 +946,30 @@ function qbHighlightTextInNode(root, searchText, color) {
   }
 }
 
-// Find the explanation container the selection is inside
+// Find the explanation/question container the selection is inside.
+// Returns { container, qIndex, scope } where scope is 'exp' | 'stem' | 'review'
+// so the highlighter can save into separate localStorage buckets per scope.
 function getExpContainer(node) {
   if (!node || !node.parentElement) return null;
   const el = node.nodeType === 3 ? node.parentElement : node;
   const quizExp = document.getElementById('explanationContent');
-  if (quizExp && quizExp.contains(node)) return { container: quizExp, qIndex: currentIndex };
+  if (quizExp && quizExp.contains(node)) {
+    return { container: quizExp, qIndex: currentIndex, scope: 'exp' };
+  }
+  // Question stem — always considered a valid container so existing
+  // highlights can be clicked to remove. Whether NEW highlights are
+  // created on drag is gated separately by the mousedown handler
+  // (which checks highlightModeOn).
+  const quizStem = document.getElementById('questionText');
+  if (quizStem && quizStem.contains(node)) {
+    return { container: quizStem, qIndex: currentIndex, scope: 'stem' };
+  }
   const reviewExp = el.closest ? el.closest('.review-explanation') : null;
   if (reviewExp) {
     const reviewItem = reviewExp.closest('.review-item');
     const allItems = Array.from(document.querySelectorAll('#reviewContainer .review-item'));
     const idx = allItems.indexOf(reviewItem);
-    return { container: reviewExp, qIndex: idx >= 0 ? idx : null };
+    return { container: reviewExp, qIndex: idx >= 0 ? idx : null, scope: 'review' };
   }
   return null;
 }
@@ -926,7 +992,7 @@ function qbApplyHighlight(color) {
     anchorMark.setAttribute('data-hl-color', color);
     sel.removeAllRanges();
     const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
-    if (q) saveHighlights(q.id, expInfo.container);
+    if (q) saveHighlights(q.id, expInfo.container, expInfo.scope);
     return;
   }
 
@@ -981,7 +1047,7 @@ function qbApplyHighlight(color) {
 
   sel.removeAllRanges();
   const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
-  if (q) saveHighlights(q.id, expInfo.container);
+  if (q) saveHighlights(q.id, expInfo.container, expInfo.scope);
 }
 
 // Click on highlight → remove entire contiguous group of same color
@@ -1009,7 +1075,7 @@ function qbApplyHighlight(color) {
       while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
       p.removeChild(mark); p.normalize();
       const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
-      if (q) saveHighlights(q.id, expInfo.container);
+      if (q) saveHighlights(q.id, expInfo.container, expInfo.scope);
       return;
     }
 
@@ -1042,7 +1108,7 @@ function qbApplyHighlight(color) {
     window.getSelection()?.removeAllRanges();
 
     const q = expInfo.qIndex != null ? quizQuestions[expInfo.qIndex] : null;
-    if (q) saveHighlights(q.id, expInfo.container);
+    if (q) saveHighlights(q.id, expInfo.container, expInfo.scope);
   });
 
   // Auto-highlight on text selection (drag) inside explanation
@@ -1050,6 +1116,14 @@ function qbApplyHighlight(color) {
   document.addEventListener('mousedown', (e) => {
     if (e.target.closest('mark.user-highlight')) { qbMouseDownPos = null; return; }
     const expInfo = getExpContainer(e.target);
+    // For the question stem, only ARM drag-to-highlight when the user has
+    // explicitly toggled Highlight mode on (so casual text-selection on the
+    // question doesn't accidentally splatter yellow). Explanation/review
+    // containers stay always-on (legacy behavior).
+    if (expInfo && expInfo.scope === 'stem' && !highlightModeOn) {
+      qbMouseDownPos = null;
+      return;
+    }
     if (expInfo) {
       qbMouseDownPos = { x: e.clientX, y: e.clientY };
     } else {
@@ -1267,7 +1341,288 @@ function updateNavigatorHighlight() {
     dot.classList.toggle('nav-dot-current', i === currentIndex);
     dot.classList.toggle('nav-dot-answered', answers[i] !== undefined);
   });
+  // Keep the new vertical sidebar in sync too.
+  renderQuizSidebar();
+  syncFlagButton();
 }
+
+// ===== UWorld-style left sidebar =====
+function renderQuizSidebar() {
+  const list = document.getElementById('quizSidebarList');
+  if (!list) return;
+  list.innerHTML = '';
+  quizQuestions.forEach((q, i) => {
+    const row = document.createElement('div');
+    row.className = 'quiz-sidebar-item';
+    row.setAttribute('role', 'option');
+    row.dataset.index = i;
+    if (i === currentIndex) row.classList.add('is-current');
+    if (answers[i] !== undefined) row.classList.add('is-answered');
+    if (flaggedQuestions.has(i)) row.classList.add('is-flagged');
+
+    // Number
+    const numSpan = document.createElement('span');
+    numSpan.className = 'qs-num';
+    numSpan.textContent = i + 1;
+
+    // Right-side state icons
+    const flag = document.createElement('span');
+    flag.className = 'qs-state qs-state-flag';
+    flag.innerHTML = flaggedQuestions.has(i) ? '&#9873;' : '';
+
+    const done = document.createElement('span');
+    done.className = 'qs-state qs-state-answered';
+
+    row.appendChild(numSpan);
+    row.appendChild(flag);
+    row.appendChild(done);
+
+    row.addEventListener('click', () => {
+      currentIndex = i;
+      renderQuestion();
+    });
+    list.appendChild(row);
+  });
+}
+
+function syncFlagButton() {
+  const btn = document.getElementById('flagBtn');
+  if (!btn) return;
+  const isOn = flaggedQuestions.has(currentIndex);
+  btn.classList.toggle('is-active', isOn);
+  btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+  const label = btn.querySelector('.quiz-tool-label');
+  if (label) label.textContent = isOn ? 'Marked' : 'Mark';
+}
+
+function toggleFlag() {
+  if (flaggedQuestions.has(currentIndex)) flaggedQuestions.delete(currentIndex);
+  else flaggedQuestions.add(currentIndex);
+  syncFlagButton();
+  renderQuizSidebar();
+  if (typeof saveInProgressTest === 'function') saveInProgressTest();
+}
+
+function toggleEliminate(qi, oi) {
+  if (!eliminatedOptions[qi]) eliminatedOptions[qi] = new Set();
+  const set = eliminatedOptions[qi];
+  if (set.has(oi)) set.delete(oi);
+  else set.add(oi);
+  // If the user just eliminated the currently-selected answer, unselect it
+  // (so the eliminated option doesn't remain the chosen one).
+  if (set.has(oi) && answers[qi] === oi) {
+    delete answers[qi];
+  }
+  if (set.size === 0) delete eliminatedOptions[qi];
+  // Re-render just the options for the current question
+  if (qi === currentIndex) renderQuestion();
+  if (typeof saveInProgressTest === 'function') saveInProgressTest();
+}
+
+// ===== Sidebar collapse / re-show =====
+(function initSidebarCollapse() {
+  document.addEventListener('click', (e) => {
+    const layout = document.querySelector('.quiz-layout');
+    if (!layout) return;
+    if (e.target.closest('#quizSidebarCollapse')) {
+      layout.classList.add('sidebar-collapsed');
+    } else if (e.target.closest('#sidebarShowBtn')) {
+      layout.classList.remove('sidebar-collapsed');
+    }
+  });
+})();
+
+// ===== Toolbar wiring (flag / highlight / eliminate / calculator) =====
+(function initQuizToolbar() {
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#flagBtn')) {
+      toggleFlag();
+      return;
+    }
+    if (e.target.closest('#highlightToggleBtn')) {
+      highlightModeOn = !highlightModeOn;
+      const btn = document.getElementById('highlightToggleBtn');
+      btn.classList.toggle('is-active', highlightModeOn);
+      btn.setAttribute('aria-pressed', highlightModeOn ? 'true' : 'false');
+      const card = document.querySelector('.quiz-card');
+      if (card) card.classList.toggle('highlight-mode', highlightModeOn);
+      return;
+    }
+    if (e.target.closest('#strikeModeBtn')) {
+      const btn = document.getElementById('strikeModeBtn');
+      const on = !btn.classList.contains('is-active');
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      const quizRoot = document.querySelector('#quizScreen');
+      if (quizRoot) quizRoot.classList.toggle('eliminate-mode', on);
+      return;
+    }
+    if (e.target.closest('#calculatorBtn')) {
+      openCalculator();
+      return;
+    }
+    if (e.target.closest('#quizCalcClose')) {
+      closeCalculator();
+      return;
+    }
+  });
+
+  // Keyboard shortcuts (M = mark, C = calculator, H = highlight)
+  document.addEventListener('keydown', (e) => {
+    // Only when quiz screen is the visible one and not typing in an input
+    const quizScreen = document.getElementById('quizScreen');
+    if (!quizScreen || quizScreen.style.display === 'none') return;
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || '').toUpperCase())) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    const k = e.key.toLowerCase();
+    if (k === 'm') { e.preventDefault(); toggleFlag(); }
+    else if (k === 'c') { e.preventDefault(); toggleCalculator(); }
+    else if (k === 'h') {
+      e.preventDefault();
+      const btn = document.getElementById('highlightToggleBtn');
+      if (btn) btn.click();
+    }
+  });
+})();
+
+// ===== Calculator (4-function + sqrt + sign) =====
+let _calcBuf = '';
+let _calcHasResult = false;
+
+function openCalculator() {
+  const c = document.getElementById('quizCalculator');
+  if (!c) return;
+  c.style.display = 'block';
+  const btn = document.getElementById('calculatorBtn');
+  if (btn) { btn.classList.add('is-active'); btn.setAttribute('aria-pressed', 'true'); }
+}
+function closeCalculator() {
+  const c = document.getElementById('quizCalculator');
+  if (!c) return;
+  c.style.display = 'none';
+  const btn = document.getElementById('calculatorBtn');
+  if (btn) { btn.classList.remove('is-active'); btn.setAttribute('aria-pressed', 'false'); }
+}
+function toggleCalculator() {
+  const c = document.getElementById('quizCalculator');
+  if (!c) return;
+  if (c.style.display === 'none' || !c.style.display) openCalculator();
+  else closeCalculator();
+}
+
+function calcRender() {
+  const disp = document.getElementById('quizCalcDisplay');
+  if (!disp) return;
+  disp.textContent = _calcBuf === '' ? '0' : _calcBuf;
+}
+
+function calcInput(act, val) {
+  if (act === 'clear') {
+    _calcBuf = ''; _calcHasResult = false;
+  } else if (act === 'back') {
+    if (_calcHasResult) { _calcBuf = ''; _calcHasResult = false; }
+    else _calcBuf = _calcBuf.slice(0, -1);
+  } else if (act === 'num') {
+    if (_calcHasResult && /[0-9.]/.test(val)) { _calcBuf = ''; _calcHasResult = false; }
+    // Prevent multiple decimals in the current number
+    if (val === '.') {
+      const tail = _calcBuf.split(/[+\-*/]/).pop();
+      if (tail && tail.includes('.')) return;
+      if (!tail) { _calcBuf += '0'; }
+    }
+    _calcBuf += val;
+  } else if (act === 'op') {
+    _calcHasResult = false;
+    if (!_calcBuf) {
+      if (val === '-') _calcBuf = '-'; // allow leading negative
+      return calcRender();
+    }
+    // Replace trailing operator if user hits another
+    if (/[+\-*/]$/.test(_calcBuf)) _calcBuf = _calcBuf.slice(0, -1);
+    _calcBuf += val;
+  } else if (act === 'sign') {
+    // Toggle sign of the trailing number
+    const m = _calcBuf.match(/(-?\d+\.?\d*)$/);
+    if (m) {
+      const num = m[1];
+      const start = _calcBuf.length - num.length;
+      const before = _calcBuf.slice(0, start);
+      const flipped = num.startsWith('-') ? num.slice(1) : '-' + num;
+      _calcBuf = before + flipped;
+    }
+  } else if (act === 'fn' && val === 'sqrt') {
+    const r = safeEvalCalc(_calcBuf);
+    if (r === null || r < 0) { _calcBuf = 'Error'; _calcHasResult = true; }
+    else { _calcBuf = String(Math.sqrt(r)); _calcHasResult = true; }
+  } else if (act === 'eq') {
+    const r = safeEvalCalc(_calcBuf);
+    if (r === null) { _calcBuf = 'Error'; }
+    else { _calcBuf = formatCalcResult(r); }
+    _calcHasResult = true;
+  }
+  calcRender();
+}
+
+function formatCalcResult(n) {
+  if (!isFinite(n)) return 'Error';
+  // Up to 12 significant digits, trim trailing zeros
+  const s = parseFloat(n.toPrecision(12)).toString();
+  return s;
+}
+
+// Safe arithmetic evaluator — only digits, operators, parens. No `eval`.
+function safeEvalCalc(expr) {
+  if (!expr) return 0;
+  const e = String(expr).replace(/\s+/g, '');
+  if (!/^[-+*/.\d()]+$/.test(e)) return null;
+  try {
+    // Use Function but with a strict character whitelist already enforced.
+    // No external identifiers can appear because we banned letters.
+    // eslint-disable-next-line no-new-func
+    const r = Function('"use strict"; return (' + e + ');')();
+    if (typeof r !== 'number' || !isFinite(r)) return null;
+    return r;
+  } catch (_) {
+    return null;
+  }
+}
+
+(function initCalcKeys() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.qcalc-key');
+    if (!btn) return;
+    calcInput(btn.dataset.act, btn.dataset.val);
+  });
+
+  // Drag calculator by its header
+  let dragging = false, dx = 0, dy = 0;
+  document.addEventListener('mousedown', (e) => {
+    const head = e.target.closest('#quizCalcHead');
+    if (!head) return;
+    if (e.target.closest('#quizCalcClose')) return;
+    const calc = document.getElementById('quizCalculator');
+    if (!calc) return;
+    const r = calc.getBoundingClientRect();
+    dx = e.clientX - r.left;
+    dy = e.clientY - r.top;
+    dragging = true;
+    document.body.style.userSelect = 'none';
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const calc = document.getElementById('quizCalculator');
+    if (!calc) return;
+    const x = Math.max(0, Math.min(window.innerWidth - calc.offsetWidth, e.clientX - dx));
+    const y = Math.max(0, Math.min(window.innerHeight - calc.offsetHeight, e.clientY - dy));
+    calc.style.left = x + 'px';
+    calc.style.top = y + 'px';
+    calc.style.right = 'auto';
+  });
+  document.addEventListener('mouseup', () => {
+    if (dragging) { dragging = false; document.body.style.userSelect = ''; }
+  });
+})();
 
 // ===== Test Time Info (start screen) =====
 function updateTestTimeInfo() {
@@ -1421,6 +1776,12 @@ async function saveInProgressTest() {
   if (!currentUserId || quizQuestions.length === 0) return;
   try {
     const meta = window._quizMeta || { subjects: [], mode: 'All' };
+    // Serialize Set-based state into plain JSON Firestore can store.
+    const flagged = Array.from(flaggedQuestions);
+    const eliminated = {};
+    Object.keys(eliminatedOptions).forEach(k => {
+      eliminated[k] = Array.from(eliminatedOptions[k]);
+    });
     await db.collection('users').doc(currentUserId)
       .collection('qbankData').doc('inProgress').set({
         questionIds: quizQuestions.map(q => q.id),
@@ -1429,6 +1790,8 @@ async function saveInProgressTest() {
         score: { ...score },
         meta,
         total: quizQuestions.length,
+        flagged,
+        eliminated,
         startedAt: new Date().toISOString()
       });
   } catch (err) {
@@ -1489,6 +1852,15 @@ function resumeInProgressTest(savedState) {
   score = savedState.score || { correct: 0, wrong: 0 };
   window._quizMeta = savedState.meta || { subjects: [], mode: 'All' };
 
+  // Restore UWorld-style tool state (flags + eliminated answers)
+  flaggedQuestions = new Set((savedState.flagged || []).map(n => parseInt(n)));
+  eliminatedOptions = {};
+  const elim = savedState.eliminated || {};
+  Object.keys(elim).forEach(k => {
+    eliminatedOptions[parseInt(k)] = new Set((elim[k] || []).map(n => parseInt(n)));
+  });
+  highlightModeOn = false;
+
   document.getElementById('totalQuestions').textContent = quizQuestions.length;
   document.getElementById('scoreCorrect').textContent = score.correct;
   document.getElementById('scoreWrong').textContent = score.wrong;
@@ -1544,6 +1916,20 @@ function showScreen(id) {
     const el = document.getElementById(s);
     if (el) el.style.display = s === id ? 'block' : 'none';
   });
+  // Leaving the quiz screen: tear down floating tools so they don't bleed
+  // into other screens (calculator popup, highlight mode, eliminate mode).
+  if (id !== 'quizScreen') {
+    if (typeof closeCalculator === 'function') closeCalculator();
+    highlightModeOn = false;
+    const hlBtn = document.getElementById('highlightToggleBtn');
+    if (hlBtn) { hlBtn.classList.remove('is-active'); hlBtn.setAttribute('aria-pressed', 'false'); }
+    const card = document.querySelector('.quiz-card');
+    if (card) card.classList.remove('highlight-mode');
+    const stBtn = document.getElementById('strikeModeBtn');
+    if (stBtn) { stBtn.classList.remove('is-active'); stBtn.setAttribute('aria-pressed', 'false'); }
+    const qRoot = document.getElementById('quizScreen');
+    if (qRoot) qRoot.classList.remove('eliminate-mode');
+  }
   if (id === 'startScreen') {
     updateProgressDisplay();
     renderTestHistoryList();
