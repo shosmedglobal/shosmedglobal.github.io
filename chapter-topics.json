@@ -1,84 +1,108 @@
 {
   "bio-ch1": {
     "title": "General Features and Energetics of Living Systems",
-    "topics": [],
-    "questionCount": 0
+    "topics": [
+      "Bioenergetics",
+      "Cellular respiration",
+      "Fermentation and ATP",
+      "Photosynthesis",
+      "Photosynthesis and Respiration",
+      "Enzymes",
+      "Cell Signaling",
+      "Biochemistry",
+      "Scientific Method",
+      "Milestones in Biology"
+    ],
+    "questionCount": 59
   },
   "bio-ch2": {
     "title": "Cellular Biology - Prokaryotic Organisms",
     "topics": [
       "Prokaryotic Organisms",
-      "Prokaryotic Genetics",
-      "Plant Biology",
-      "Molecular Biology",
-      "Milestones in Biology",
-      "Developmental Biology"
+      "Bacterial structure",
+      "Bacterial classification",
+      "Bacterial reproduction",
+      "Bacterial genetics",
+      "Antibiotics",
+      "Microbiology",
+      "Cyanobacteria"
     ],
-    "questionCount": 43
+    "questionCount": 24
   },
   "bio-ch3": {
     "title": "Cellular Biology - Eukaryotic Organisms",
     "topics": [
-      "Prokaryotic Organisms",
-      "Plant Biology",
-      "Molecular Biology",
-      "Milestones in Biology",
       "Eukaryotic Cell",
-      "Developmental Biology"
+      "Cell organelles",
+      "Cell membrane and transport",
+      "Cell Biology",
+      "Endosymbiotic theory",
+      "Prokaryotic vs eukaryotic cells"
     ],
-    "questionCount": 35
+    "questionCount": 14
   },
   "bio-ch4": {
     "title": "Cellular Biology - Non-Cell Organisms (Viruses)",
     "topics": [
-      "Cell Biology",
-      "Prokaryotic Organisms",
-      "Plant Biology",
-      "Molecular Biology",
-      "Milestones in Biology",
-      "Eukaryotic Cell"
+      "Virology",
+      "Viral cycles",
+      "Virus structure",
+      "HIV"
     ],
-    "questionCount": 26
+    "questionCount": 17
   },
   "bio-ch5": {
     "title": "Molecular Bases of Heredity - DNA",
     "topics": [
-      "Molecular Biology",
-      "DNA structure",
+      "Nucleic Acids",
       "DNA replication",
-      "DNA Technology"
+      "DNA structure",
+      "Molecular Biology"
     ],
-    "questionCount": 10
+    "questionCount": 22
   },
   "bio-ch6": {
     "title": "Molecular Bases of Gene Expression - RNA and Proteins",
     "topics": [
       "Gene Expression",
+      "Transcription",
+      "Translation",
+      "Genetic code",
       "RNA types",
-      "Molecular Biology",
+      "Protein structure",
       "Gene regulation",
-      "Gene linkage"
+      "Molecular Genetics Advanced",
+      "Mutagenicity Testing",
+      "Oncogenes",
+      "Tumor suppressors"
     ],
-    "questionCount": 8
+    "questionCount": 24
   },
   "bio-ch7": {
     "title": "Mitosis",
     "topics": [
+      "Mitosis",
       "Mitosis and Cell Cycle",
-      "Mitosis"
+      "Cell Division",
+      "Cell cycle",
+      "Cell cycle regulation"
     ],
-    "questionCount": 4
+    "questionCount": 7
   },
   "bio-ch8": {
     "title": "Meiosis",
     "topics": [
-      "Meiosis"
+      "Meiosis",
+      "Gametogenesis",
+      "Oogenesis",
+      "Karyotype and sex determination"
     ],
-    "questionCount": 10
+    "questionCount": 14
   },
   "bio-ch9": {
     "title": "Origin of Life on Earth",
     "topics": [
+      "Origin of Life",
       "Origin of life"
     ],
     "questionCount": 11
@@ -87,69 +111,67 @@
     "title": "Biological Evolution",
     "topics": [
       "Evolution",
-      "Human Evolution",
-      "Evolution of Populations"
+      "Lamarck vs Darwin",
+      "Natural selection",
+      "Classification and Taxonomy",
+      "Taxonomy",
+      "Zoological Classification",
+      "Arthropod Classification",
+      "Plant Biology"
     ],
     "questionCount": 36
   },
   "bio-ch11": {
     "title": "Genetics of the Prokaryotic Cell",
     "topics": [
-      "Genetics",
       "Prokaryotic Genetics",
-      "Prokaryotic Organisms",
-      "Population Genetics",
-      "Mendelian Genetics",
-      "Human Genetics"
+      "Bacterial genetics"
     ],
-    "questionCount": 46
+    "questionCount": 12
   },
   "bio-ch12": {
     "title": "Genetics of the Eukaryotic Cell: Mendelian Genetics",
     "topics": [
       "Mendelian Genetics",
-      "Genetics",
-      "Eukaryotic Cell",
-      "Prokaryotic Genetics",
-      "Population Genetics",
-      "Human Genetics"
+      "Mendelian genetics",
+      "Dihybrid cross",
+      "Codominance",
+      "Incomplete dominance",
+      "Gene linkage"
     ],
-    "questionCount": 46
+    "questionCount": 19
   },
   "bio-ch13": {
     "title": "Genetics in Humans",
     "topics": [
-      "Genetics",
-      "Prokaryotic Genetics",
-      "Population Genetics",
-      "Mendelian Genetics",
       "Human Genetics",
-      "Genetics of Disease"
+      "X-linked inheritance",
+      "Autosomal inheritance",
+      "Genetics"
     ],
-    "questionCount": 55
+    "questionCount": 13
   },
   "bio-ch14": {
     "title": "Cytogenetics in Humans",
     "topics": [
-      "Genetics",
-      "Cytogenetics"
+      "Cytogenetics",
+      "Barr bodies"
     ],
-    "questionCount": 4
+    "questionCount": 3
   },
   "bio-ch15": {
     "title": "Single-Gene Disorders",
     "topics": [
       "Single-gene disorders",
-      "Gene regulation",
-      "Gene linkage",
-      "Gene Expression",
-      "Chromosome disorders"
+      "Single-Gene Disorders",
+      "Genetics of Disease"
     ],
-    "questionCount": 17
+    "questionCount": 12
   },
   "bio-ch16": {
     "title": "Chromosome Disorders",
     "topics": [
+      "Chromosome Disorders",
       "Chromosome disorders"
     ],
     "questionCount": 12
@@ -157,56 +179,58 @@
   "bio-ch17": {
     "title": "Genetic Disorders: Testing and Counseling",
     "topics": [
-      "Genetic Counseling",
-      "Mutagenicity Testing",
-      "Genetic drift",
-      "Genetic code",
-      "Chromosome disorders"
+      "Genetic Counseling"
     ],
-    "questionCount": 25
+    "questionCount": 10
   },
   "bio-ch18": {
     "title": "DNA Technology",
     "topics": [
-      "DNA Technology",
       "Biotechnology and DNA Technology",
-      "DNA structure",
-      "DNA replication"
+      "DNA Technology",
+      "DNA technology"
     ],
-    "questionCount": 19
+    "questionCount": 15
   },
   "bio-ch19": {
     "title": "Population Genetics",
     "topics": [
       "Population Genetics",
-      "Genetics",
-      "Prokaryotic Genetics",
-      "Mendelian Genetics",
-      "Human Genetics",
-      "Genetics of Disease"
+      "Hardy-Weinberg",
+      "Genetic drift"
     ],
-    "questionCount": 55
+    "questionCount": 13
   },
   "bio-ch20": {
     "title": "Evolution of Populations",
     "topics": [
-      "Evolution of Populations",
-      "Evolution",
-      "Human Evolution"
+      "Evolution of Populations"
     ],
-    "questionCount": 36
+    "questionCount": 10
   },
   "bio-ch21": {
     "title": "Individual Development in Humans (Embryology)",
-    "topics": [],
-    "questionCount": 0
+    "topics": [
+      "Developmental Biology",
+      "Germ layers",
+      "Morphogenesis",
+      "Differentiation",
+      "Stem Cells"
+    ],
+    "questionCount": 19
   },
   "bio-ch22": {
     "title": "Tissues",
     "topics": [
-      "Tissues"
+      "Tissues",
+      "Histology",
+      "Connective tissue",
+      "Connective tissue subtypes",
+      "Epithelial tissue",
+      "Muscle tissue",
+      "Nervous tissue"
     ],
-    "questionCount": 2
+    "questionCount": 17
   },
   "bio-ch23": {
     "title": "Skeletal System",
@@ -226,9 +250,10 @@
   "bio-ch25": {
     "title": "Circulatory System",
     "topics": [
-      "Circulatory System"
+      "Circulatory System",
+      "Cardiovascular System"
     ],
-    "questionCount": 2
+    "questionCount": 15
   },
   "bio-ch26": {
     "title": "Respiratory System",
@@ -240,17 +265,20 @@
   "bio-ch27": {
     "title": "Digestive System",
     "topics": [
-      "Digestive System"
+      "Digestive System",
+      "Digestion"
     ],
-    "questionCount": 12
+    "questionCount": 13
   },
   "bio-ch28": {
     "title": "Excretory System",
     "topics": [
+      "Excretory System",
       "Excretory System (Kidney/Nephron)",
-      "Excretory System"
+      "Renal Physiology",
+      "Nitrogen Waste Products"
     ],
-    "questionCount": 13
+    "questionCount": 14
   },
   "bio-ch29": {
     "title": "Skin System (Integumentary)",
@@ -262,9 +290,10 @@
   "bio-ch30": {
     "title": "Reproductive System",
     "topics": [
-      "Reproductive System"
+      "Reproductive System",
+      "Cnidarian Reproduction"
     ],
-    "questionCount": 16
+    "questionCount": 17
   },
   "bio-ch31": {
     "title": "Endocrine System (Hormonal Control)",
@@ -277,32 +306,34 @@
     "title": "Nervous System - Structure and Function",
     "topics": [
       "Nervous System",
-      "Nervous tissue"
+      "Nervous System (CNS + PNS + Autonomic)"
     ],
-    "questionCount": 5
+    "questionCount": 16
   },
   "bio-ch33": {
     "title": "Nervous System - The Central Nervous System",
     "topics": [
-      "Nervous System",
-      "Nervous tissue"
+      "Nervous System (CNS + PNS + Autonomic)"
     ],
-    "questionCount": 5
+    "questionCount": 12
   },
   "bio-ch34": {
     "title": "Controlling the Internal Environment",
     "topics": [
-      "Internal Environment"
+      "Internal Environment",
+      "Human Physiology",
+      "Human Anatomy"
     ],
-    "questionCount": 10
+    "questionCount": 22
   },
   "bio-ch35": {
     "title": "Sense Organs",
     "topics": [
       "Sense Organs",
-      "Sensory Organs"
+      "Sensory Organs",
+      "Sensory Organs (Eye, Ear)"
     ],
-    "questionCount": 7
+    "questionCount": 15
   },
   "bio-ch36": {
     "title": "Blood",
@@ -321,6 +352,7 @@
   "bio-ch38": {
     "title": "Nutrition",
     "topics": [
+      "Nutrition",
       "Nutrition and Metabolism",
       "Integumentary/Skin + Nutrition/Vitamins"
     ],
@@ -329,139 +361,147 @@
   "bio-ch39": {
     "title": "Evolution of Humans",
     "topics": [
-      "Evolution",
       "Human Evolution",
-      "Evolution of Populations"
+      "Human evolution"
     ],
-    "questionCount": 36
+    "questionCount": 12
   },
   "bio-ch40": {
     "title": "Man and Environment (Ecology)",
     "topics": [
       "Ecology",
-      "Internal Environment",
+      "Ecology and Sustainability",
       "Ecosystem ecology",
-      "Ecology and Sustainability"
+      "Eutrophication",
+      "Greenhouse effect",
+      "Ozone depletion",
+      "Ethology",
+      "Medical Mycology",
+      "Medical Parasitology - Helminths",
+      "Medical Parasitology - Protozoa",
+      "Parasitology",
+      "Arthropod Vectors"
     ],
-    "questionCount": 29
+    "questionCount": 53
   },
   "chem-ch1": {
     "title": "Atoms",
-    "topics": [],
-    "questionCount": 0
+    "topics": [
+      "Atomic Structure",
+      "Electron Configuration",
+      "Nuclear Chemistry & Radioactivity"
+    ],
+    "questionCount": 32
   },
   "chem-ch2": {
     "title": "Nomenclature of Inorganic Compounds",
     "topics": [
-      "Nomenclature",
       "Inorganic Nomenclature",
-      "Nitrogen Compounds",
       "Naming and Nomenclature",
-      "Heterocyclic Compounds",
-      "Carbonyl Compounds"
+      "Nomenclature",
+      "Biochemistry Nomenclature",
+      "Descriptive Inorganic Chemistry",
+      "Ionic Hydrides",
+      "Carbide Chemistry"
     ],
-    "questionCount": 41
+    "questionCount": 29
   },
   "chem-ch3": {
     "title": "Physical Quantities",
     "topics": [
-      "Physical Quantities"
+      "Physical Quantities",
+      "Calculation Problems"
     ],
-    "questionCount": 1
+    "questionCount": 6
   },
   "chem-ch4": {
     "title": "Energy",
     "topics": [
-      "Energy"
+      "Energy",
+      "Thermochemistry"
     ],
-    "questionCount": 1
+    "questionCount": 17
   },
   "chem-ch5": {
     "title": "The Periodic Table",
     "topics": [
-      "Periodic Table"
+      "Periodic Table",
+      "Noble Gases"
     ],
-    "questionCount": 19
+    "questionCount": 20
   },
   "chem-ch6": {
     "title": "Chemical Bonding",
     "topics": [
       "Chemical Bonding",
-      "Chemical Equilibrium",
       "Chemical Bonds"
     ],
-    "questionCount": 16
+    "questionCount": 14
   },
   "chem-ch7": {
     "title": "States of Matter – Gases",
     "topics": [
-      "States of Matter",
+      "Gas Laws",
       "States of Matter & Gas Laws",
-      "Noble Gases"
+      "States of Matter"
     ],
     "questionCount": 17
   },
   "chem-ch8": {
     "title": "States of Matter – Liquids",
     "topics": [
-      "States of Matter",
-      "States of Matter & Gas Laws"
+      "Liquid State"
     ],
-    "questionCount": 16
+    "questionCount": 1
   },
   "chem-ch9": {
     "title": "States of Matter – Solids",
-    "topics": [
-      "States of Matter",
-      "States of Matter & Gas Laws"
-    ],
-    "questionCount": 16
+    "topics": [],
+    "questionCount": 0
   },
   "chem-ch10": {
     "title": "Mixtures and Solutions",
     "topics": [
       "Solutions",
-      "Solutions and pH",
-      "Solutions & Concentration"
+      "Solutions & Concentration",
+      "Concentration",
+      "Concentration Calculations"
     ],
-    "questionCount": 19
+    "questionCount": 20
   },
   "chem-ch11": {
     "title": "Quantitative Relationships in Chemical Reactions",
     "topics": [
-      "Redox Reactions",
-      "Chemical Equilibrium",
-      "Chemical Bonds",
-      "Chemical Bonding"
+      "Stoichiometry",
+      "Stoichiometry & Moles"
     ],
-    "questionCount": 18
+    "questionCount": 20
   },
   "chem-ch12": {
     "title": "Chemical Equilibrium",
     "topics": [
-      "Chemical Equilibrium & Kinetics",
       "Chemical Equilibrium",
-      "Chemical Bonds",
-      "Chemical Bonding"
+      "Chemical Equilibrium & Kinetics"
     ],
-    "questionCount": 37
+    "questionCount": 23
   },
   "chem-ch13": {
     "title": "Acids and Bases",
     "topics": [
       "Acids and Bases",
-      "Acids, Bases & pH",
-      "Nucleic Acids",
-      "Carboxylic Acids"
+      "Acids, Bases & pH"
     ],
-    "questionCount": 34
+    "questionCount": 22
   },
   "chem-ch14": {
     "title": "pH and Buffers",
     "topics": [
-      "Buffers and Titration"
+      "Buffers and Titration",
+      "Salt Hydrolysis",
+      "Salt Hydrolysis Calculation",
+      "Solutions and pH"
     ],
-    "questionCount": 2
+    "questionCount": 5
   },
   "chem-ch15": {
     "title": "Reaction Kinetics",
@@ -473,17 +513,18 @@
   "chem-ch16": {
     "title": "Oxidation-Reduction (Redox)",
     "topics": [
-      "Redox Reactions"
+      "Redox Reactions",
+      "Redox Reactions & Electrochemistry"
     ],
-    "questionCount": 2
+    "questionCount": 17
   },
   "chem-ch17": {
     "title": "Introduction to Organic Chemistry",
     "topics": [
       "Organic Chemistry",
-      "Carbide Chemistry"
+      "Functional Group Reactions"
     ],
-    "questionCount": 3
+    "questionCount": 12
   },
   "chem-ch18": {
     "title": "Isomerism",
@@ -495,13 +536,9 @@
   "chem-ch19": {
     "title": "Reaction Types and Nomenclature",
     "topics": [
-      "Nomenclature",
-      "Reaction Kinetics",
-      "Naming and Nomenclature",
-      "Inorganic Nomenclature",
-      "Biochemistry Nomenclature"
+      "Polymers & Reaction Mechanisms"
     ],
-    "questionCount": 19
+    "questionCount": 11
   },
   "chem-ch20": {
     "title": "Alkanes, Alkenes, and Alkynes",
@@ -515,12 +552,9 @@
     "title": "Aromatic Compounds (Arenes)",
     "topics": [
       "Aromatic Compounds",
-      "Arenes",
-      "Nitrogen Compounds",
-      "Heterocyclic Compounds",
-      "Carbonyl Compounds"
+      "Arenes"
     ],
-    "questionCount": 37
+    "questionCount": 12
   },
   "chem-ch22": {
     "title": "Alcohols and Phenols",
@@ -532,118 +566,107 @@
   },
   "chem-ch23": {
     "title": "Ethers, Epoxides, Thiols, Sulfides, and Disulfides",
-    "topics": [],
-    "questionCount": 0
+    "topics": [
+      "Alcohols, Phenols & Ethers"
+    ],
+    "questionCount": 11
   },
   "chem-ch24": {
     "title": "Carbonyl Compounds: Aldehydes and Ketones",
     "topics": [
-      "Carbonyl Compounds",
       "Aldehydes & Ketones",
-      "Nitrogen Compounds",
-      "Heterocyclic Compounds",
-      "Aromatic Compounds"
+      "Carbonyl Compounds"
     ],
-    "questionCount": 45
+    "questionCount": 12
   },
   "chem-ch25": {
     "title": "Carboxylic Acids",
     "topics": [
-      "Carboxylic Acids & Derivatives",
       "Carboxylic Acids",
-      "Nucleic Acids",
-      "Acids, Bases & pH",
-      "Acids and Bases"
+      "Carboxylic Acids & Derivatives"
     ],
-    "questionCount": 44
+    "questionCount": 12
   },
   "chem-ch26": {
     "title": "Derivatives of Carboxylic Acids",
     "topics": [
-      "Carboxylic Acids",
-      "Carboxylic Acids & Derivatives",
-      "Sulfonic Acids and Carbonic Derivatives",
-      "Nucleic Acids",
-      "Acids, Bases & pH",
-      "Acids and Bases"
+      "Carboxylic Acids & Derivatives"
     ],
-    "questionCount": 52
+    "questionCount": 10
   },
   "chem-ch27": {
     "title": "Sulfonic Acids and Carbonic Acid Derivatives",
     "topics": [
-      "Sulfonic Acids and Carbonic Derivatives",
-      "Carboxylic Acids & Derivatives",
-      "Nucleic Acids",
-      "Carboxylic Acids",
-      "Acids, Bases & pH",
-      "Acids and Bases"
+      "Sulfonic Acids and Carbonic Derivatives"
     ],
-    "questionCount": 52
+    "questionCount": 8
   },
   "chem-ch28": {
     "title": "Amines and Nitrocompounds",
     "topics": [
-      "Amines"
+      "Amines",
+      "Nitrogen Compounds"
     ],
-    "questionCount": 2
+    "questionCount": 12
   },
   "chem-ch29": {
     "title": "Heterocyclic Compounds",
     "topics": [
-      "Heterocyclic Compounds",
-      "Nitrogen Compounds",
-      "Carbonyl Compounds",
-      "Aromatic Compounds"
+      "Heterocyclic Compounds"
     ],
-    "questionCount": 35
+    "questionCount": 13
   },
   "chem-ch30": {
     "title": "Nucleic Acids",
     "topics": [
-      "Nucleic Acids",
-      "Carboxylic Acids",
-      "Acids, Bases & pH",
-      "Acids and Bases"
+      "Nucleic Acids"
     ],
-    "questionCount": 34
+    "questionCount": 10
   },
   "chem-ch31": {
     "title": "Proteins: Amino Acids and Protein Structure",
     "topics": [
       "Amino Acids and Proteins",
-      "Nucleic Acids",
-      "Carboxylic Acids",
-      "Acids, Bases & pH",
-      "Acids and Bases"
+      "Enzyme Classification",
+      "Enzymes"
     ],
-    "questionCount": 57
+    "questionCount": 31
   },
   "chem-ch32": {
     "title": "Lipids",
     "topics": [
-      "Lipids"
+      "Lipids",
+      "Porphin, Steroids, Vitamins",
+      "Vitamins"
     ],
-    "questionCount": 13
+    "questionCount": 18
   },
   "chem-ch33": {
     "title": "Saccharides (Carbohydrates)",
     "topics": [
-      "Saccharides"
+      "Saccharides",
+      "Metabolic Biochemistry",
+      "Biochemistry",
+      "Nitrogen Waste Products"
     ],
-    "questionCount": 15
+    "questionCount": 32
   },
   "phys-ch1": {
     "title": "SI System and Measurement",
-    "topics": [],
-    "questionCount": 0
+    "topics": [
+      "SI System & Units",
+      "Units and Measurements",
+      "Material Properties - Isotropy"
+    ],
+    "questionCount": 8
   },
   "phys-ch2": {
     "title": "Kinematics",
     "topics": [
-      "Kinematics"
+      "Kinematics",
+      "Mechanics"
     ],
-    "questionCount": 12
+    "questionCount": 14
   },
   "phys-ch3": {
     "title": "Dynamics (Newton's Laws) and Momentum",
@@ -656,28 +679,31 @@
   "phys-ch4": {
     "title": "Work, Energy, and Simple Machines",
     "topics": [
-      "Energy",
       "Work, Energy & Power",
       "Work and Power"
     ],
-    "questionCount": 12
+    "questionCount": 11
   },
   "phys-ch5": {
     "title": "Fluids",
     "topics": [
-      "Fluids"
+      "Fluids",
+      "Fluid Mechanics",
+      "Fluid Dynamics Advanced",
+      "Bernoulli's Equation",
+      "Fluid Dynamics - Bernoulli Equation",
+      "Pressure"
     ],
-    "questionCount": 9
+    "questionCount": 23
   },
   "phys-ch6": {
     "title": "Heat and Thermodynamics",
     "topics": [
-      "Thermodynamics",
-      "Dynamics",
       "Heat & Thermodynamics",
+      "Thermodynamics",
       "Thermodynamics Advanced"
     ],
-    "questionCount": 30
+    "questionCount": 20
   },
   "phys-ch7": {
     "title": "Gravitation",
@@ -689,62 +715,87 @@
   "phys-ch8": {
     "title": "Electricity and DC Circuits",
     "topics": [
-      "Electricity",
       "Electricity & DC Circuits",
-      "AC Electricity & Magnetism",
-      "AC Circuits - Resonance",
-      "AC Circuits - Capacitor",
-      "AC Circuits"
+      "Electricity"
     ],
-    "questionCount": 34
+    "questionCount": 15
   },
   "phys-ch9": {
     "title": "Magnetism",
     "topics": [
       "Magnetism",
-      "Electromagnetism - Lorentz Force",
+      "Magnetic Fields",
+      "Lorentz Force",
       "Electromagnetism",
-      "AC Electricity & Magnetism"
+      "Electromagnetism - Lorentz Force"
     ],
-    "questionCount": 21
+    "questionCount": 17
   },
   "phys-ch10": {
     "title": "Electromagnetic Induction and AC",
     "topics": [
-      "Electromagnetic Induction",
-      "Electromagnetic Radiation"
+      "AC Electricity & Magnetism",
+      "AC Circuits",
+      "AC Circuits - Capacitive Reactance",
+      "AC Circuits - Capacitor",
+      "AC Circuits - Capacitor Phase",
+      "AC Circuits - Inductive Reactance",
+      "AC Circuits - Inductor Phase",
+      "AC Circuits - Ohm's Law",
+      "AC Circuits - Resonance",
+      "AC Circuits - Series RLC Impedance",
+      "Electromagnetic Induction"
     ],
-    "questionCount": 7
+    "questionCount": 31
   },
   "phys-ch11": {
     "title": "Vibrations, Waves, and Acoustics",
     "topics": [
-      "Acoustics",
       "Vibrations, Waves & Sound",
       "Waves and Sound",
-      "De Broglie Waves"
+      "Acoustics",
+      "Acoustics - Doppler Effect",
+      "Acoustics - Frequency and Period",
+      "Acoustics - Frequency Ranges",
+      "Acoustics - Hearing Thresholds",
+      "Acoustics - Sound Velocity",
+      "Doppler Effect"
     ],
-    "questionCount": 19
+    "questionCount": 25
   },
   "phys-ch12": {
     "title": "Optics and Electromagnetic Radiation",
     "topics": [
-      "Optics",
-      "Electromagnetic Radiation",
-      "Microscope Optics",
       "Light & Optics",
-      "Electromagnetic Induction"
+      "Optics",
+      "Geometric Optics Advanced",
+      "Microscope Optics",
+      "Polarization of Dielectrics",
+      "Electromagnetic Radiation",
+      "Medical Physics Applications",
+      "Black Body Radiation",
+      "Thermal Radiation - Black Body",
+      "Thermal Radiation - Wien's Law"
     ],
-    "questionCount": 24
+    "questionCount": 40
   },
   "phys-ch13": {
     "title": "Atomic and Nuclear Physics",
     "topics": [
       "Nuclear Physics",
+      "Nuclear Physics - Half-Life Calculation",
       "Nuclear Physics - Radioactive Decay",
-      "Modern Physics"
+      "Radioactive Decay",
+      "Modern Physics",
+      "Particle Accelerators - Cyclotron",
+      "Semiconductor Diodes",
+      "Semiconductors - Depletion Region",
+      "Semiconductors - Doping",
+      "Semiconductors - Forward Bias",
+      "Semiconductors - Half-Wave Rectifier",
+      "Semiconductors - Reverse Bias"
     ],
-    "questionCount": 25
+    "questionCount": 41
   },
   "phys-ch14": {
     "title": "Adiabatic Processes",
@@ -770,18 +821,16 @@
   "phys-ch17": {
     "title": "Solenoid Magnetic Field",
     "topics": [
-      "Solenoid Magnetic Field",
-      "Magnetic Fields"
+      "Solenoid Magnetic Field"
     ],
-    "questionCount": 3
+    "questionCount": 2
   },
   "phys-ch18": {
     "title": "Photoelectric Effect",
     "topics": [
-      "Photoelectric Effect",
-      "Doppler Effect"
+      "Photoelectric Effect"
     ],
-    "questionCount": 4
+    "questionCount": 2
   },
   "phys-ch19": {
     "title": "Theory of Relativity (Basics)",
@@ -807,10 +856,9 @@
   "phys-ch22": {
     "title": "De Broglie Waves",
     "topics": [
-      "De Broglie Waves",
-      "Waves and Sound"
+      "De Broglie Waves"
     ],
-    "questionCount": 3
+    "questionCount": 1
   },
   "phys-ch23": {
     "title": "Compton Scattering and X-ray Production",
