@@ -572,6 +572,56 @@ function startQuiz() {
   saveInProgressTest();
 }
 
+// ===== Chapter quiz launcher =====
+// Launch a chapter-specific quiz from a pre-built question pool.
+// Bypasses the subject-checkbox UI entirely; called by the ?chapter=
+// URL handler in qbank.html when a user clicks the "Practice this
+// chapter" CTA at the top/bottom of a study chapter.
+function startChapterQuiz(pool, chapterTitle) {
+  if (!pool || pool.length === 0) {
+    alert('No questions available for this chapter yet.');
+    return;
+  }
+
+  // Quiz-history metadata: shows "Chapter Quiz · <title>" in past results
+  window._quizMeta = {
+    subjects: ['Chapter Quiz'],
+    mode: chapterTitle ? ('Chapter: ' + chapterTitle) : 'Chapter Quiz'
+  };
+
+  // Always topic-interleaved shuffle so similar-topic questions don't bunch up
+  pool = topicInterleaveShuffle(pool);
+
+  quizQuestions = pool;
+  currentIndex = 0;
+  answers = {};
+  score = { correct: 0, wrong: 0 };
+
+  // Default to study mode for chapter quizzes (no timer pressure while learning).
+  // The user can switch to test mode from the regular start screen if they want.
+  isTestMode = false;
+  timerWarningShown = false;
+
+  const totalEl = document.getElementById('totalQuestions');
+  const corrEl  = document.getElementById('scoreCorrect');
+  const wrongEl = document.getElementById('scoreWrong');
+  if (totalEl) totalEl.textContent = quizQuestions.length;
+  if (corrEl)  corrEl.textContent = '0';
+  if (wrongEl) wrongEl.textContent = '0';
+
+  const scoreDisplay = document.getElementById('quizScoreDisplay');
+  const timer        = document.getElementById('testTimer');
+  const navigator    = document.getElementById('questionNavigator');
+  if (scoreDisplay) scoreDisplay.style.display = '';
+  if (timer)        timer.style.display = 'none';
+  if (navigator)    navigator.style.display = 'none';
+  if (typeof stopTimer === 'function') stopTimer();
+
+  showScreen('quizScreen');
+  renderQuestion();
+  if (typeof saveInProgressTest === 'function') saveInProgressTest();
+}
+
 // Render current question
 function renderQuestion() {
   const q = quizQuestions[currentIndex];

@@ -302,7 +302,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260506-visits"></script>
-  <script src="qbank.js?v=20260423a"></script>
+  <script src="qbank.js?v=20260509-chapterquiz"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -518,6 +518,66 @@
           hideLoaderOnly();
           resumeInProgressTest(saved);
           history.replaceState(null, '', 'qbank.html');
+          return;
+        }
+      }
+
+      // ---- Step 5b: Chapter-quiz short-circuit (?chapter=bio-ch1 etc.) ----
+      // Triggered when a user clicks "Practice this chapter" inside a study
+      // chapter. Loads the chapter -> topics mapping, builds a question pool
+      // that matches those topics, applies the free-tier filter, then auto
+      // launches the chapter quiz (no checkbox UI step).
+      const chapterParam = urlParams.get('chapter');
+      if (chapterParam) {
+        try {
+          const mapRes = await fetch('chapter-topics.json?v=20260509a');
+          const mapping = mapRes.ok ? await mapRes.json() : null;
+          const chapter = mapping ? mapping[chapterParam] : null;
+
+          if (!chapter || !chapter.topics || chapter.topics.length === 0) {
+            // Chapter exists in the catalog but no topic mapping yet
+            revealStartScreen();
+            alert('Chapter quiz coming soon — questions are still being indexed for this chapter.');
+            history.replaceState(null, '', 'qbank.html');
+            return;
+          }
+
+          // Case-insensitive topic set so question.topic ("Genetics") matches
+          // mapping entries ("genetics") regardless of source casing.
+          const topicSet = new Set(chapter.topics.map(t => (t || '').toLowerCase()));
+          let pool = [];
+          ['biology', 'chemistry', 'physics'].forEach(subj => {
+            const subjQs = allQuestions[subj];
+            if (!Array.isArray(subjQs)) return;
+            pool = pool.concat(subjQs.filter(q => topicSet.has((q.topic || '').toLowerCase())));
+          });
+          // Free-tier gate: free users only see free:true questions for this
+          // chapter (allQuestions was already free-filtered up in Step 3, so
+          // this is a belt-and-suspenders check + the free filter for any
+          // physics questions that bypassed Step 3's filter).
+          if (window.qbankAccessLevel !== 'full') {
+            pool = pool.filter(q => q.free === true);
+          }
+
+          if (pool.length === 0) {
+            revealStartScreen();
+            if (window.qbankAccessLevel !== 'full') {
+              alert('Chapter questions are part of Full Access. Upgrade to practice this chapter.');
+            } else {
+              alert('No questions found for this chapter yet.');
+            }
+            history.replaceState(null, '', 'qbank.html');
+            return;
+          }
+
+          hideLoaderOnly();
+          startChapterQuiz(pool, chapter.title);
+          history.replaceState(null, '', 'qbank.html');
+          return;
+        } catch (err) {
+          console.error('Chapter quiz launch failed:', err);
+          revealStartScreen();
+          alert('Failed to load chapter quiz: ' + err.message);
           return;
         }
       }
