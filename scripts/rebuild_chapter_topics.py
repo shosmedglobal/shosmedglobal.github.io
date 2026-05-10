@@ -31,8 +31,11 @@ BIO = {
                  'Cell Signaling', 'Biochemistry', 'Scientific Method',
                  'Milestones in Biology'],
     'bio-ch2':  ['Prokaryotic Organisms', 'Bacterial structure', 'Bacterial classification',
-                 'Bacterial reproduction', 'Bacterial genetics', 'Antibiotics',
+                 'Bacterial reproduction', 'Antibiotics',
                  'Microbiology', 'Cyanobacteria'],
+                 # 'Bacterial genetics' belongs primarily in bio-ch11 (Genetics
+                 # of the Prokaryotic Cell). Removed from ch2 to enforce
+                 # 1-question-1-chapter.
     'bio-ch3':  ['Eukaryotic Cell', 'Cell organelles', 'Cell membrane and transport',
                  'Cell Biology', 'Endosymbiotic theory', 'Prokaryotic vs eukaryotic cells'],
     'bio-ch4':  ['Virology', 'Viral cycles', 'Virus structure', 'HIV'],
@@ -63,23 +66,32 @@ BIO = {
                  'Differentiation', 'Stem Cells'],
     'bio-ch22': ['Tissues', 'Histology', 'Connective tissue', 'Connective tissue subtypes',
                  'Epithelial tissue', 'Muscle tissue', 'Nervous tissue'],
-    'bio-ch23': ['Skeletal System', 'Skeletal and Muscular System'],
+    'bio-ch23': ['Skeletal System'],
+    # 'Skeletal and Muscular System' (combined topic) lives only in bio-ch24
+    # so questions don't appear in two chapters. ch23 has its own dedicated
+    # 'Skeletal System' topic for skeleton-only questions.
     'bio-ch24': ['Skeletal and Muscular System'],
     'bio-ch25': ['Circulatory System', 'Cardiovascular System'],
     'bio-ch26': ['Respiratory System'],
     'bio-ch27': ['Digestive System', 'Digestion'],
     'bio-ch28': ['Excretory System', 'Excretory System (Kidney/Nephron)',
                  'Renal Physiology', 'Nitrogen Waste Products'],
+    # 'Integumentary/Skin + Nutrition/Vitamins' is a combined topic; lives
+    # only in bio-ch29 (Skin) since bio-ch38 has its own 'Nutrition' topic.
     'bio-ch29': ['Integumentary/Skin + Nutrition/Vitamins'],
     'bio-ch30': ['Reproductive System', 'Cnidarian Reproduction'],
     'bio-ch31': ['Endocrine System'],
+    # 'Nervous System (CNS + PNS + Autonomic)' (broad) sits only in bio-ch32
+    # (Nervous System Structure & Function). bio-ch33 (Central Nervous System)
+    # is for CNS-specific topics if/when they get tagged.
     'bio-ch32': ['Nervous System', 'Nervous System (CNS + PNS + Autonomic)'],
-    'bio-ch33': ['Nervous System (CNS + PNS + Autonomic)'],
+    'bio-ch33': [],
     'bio-ch34': ['Internal Environment', 'Human Physiology', 'Human Anatomy'],
     'bio-ch35': ['Sense Organs', 'Sensory Organs', 'Sensory Organs (Eye, Ear)'],
     'bio-ch36': ['Blood'],
     'bio-ch37': ['Immune System'],
-    'bio-ch38': ['Nutrition', 'Nutrition and Metabolism', 'Integumentary/Skin + Nutrition/Vitamins'],
+    # 'Integumentary/Skin + Nutrition/Vitamins' moved to bio-ch29 only.
+    'bio-ch38': ['Nutrition', 'Nutrition and Metabolism'],
     'bio-ch39': ['Human Evolution', 'Human evolution'],
     'bio-ch40': ['Ecology', 'Ecology and Sustainability', 'Ecosystem ecology',
                  'Eutrophication', 'Greenhouse effect', 'Ozone depletion', 'Ethology',
@@ -102,7 +114,10 @@ CHEM = {
     'chem-ch6':  ['Chemical Bonding', 'Chemical Bonds'],
     'chem-ch7':  ['Gas Laws', 'States of Matter & Gas Laws', 'States of Matter'],
     'chem-ch8':  ['Liquid State'],
-    'chem-ch9':  [],
+    # New 'Solid State' topic added below; 10 questions written for chem-ch9
+    # and inserted into questions.json by scripts/add_solids_questions.py.
+    'chem-ch9':  ['Solid State'],
+    # 'Solutions and pH' moved to chem-ch14 (pH and Buffers) only.
     'chem-ch10': ['Solutions', 'Solutions & Concentration', 'Concentration',
                   'Concentration Calculations'],
     'chem-ch11': ['Stoichiometry', 'Stoichiometry & Moles'],
@@ -117,10 +132,14 @@ CHEM = {
     'chem-ch19': ['Polymers & Reaction Mechanisms'],
     'chem-ch20': ['Hydrocarbons (Alkanes, Alkenes, Alkynes)', 'Alkanes, Alkenes, Alkynes'],
     'chem-ch21': ['Aromatic Compounds', 'Arenes'],
+    # 'Alcohols, Phenols & Ethers' (combined topic) lives only in chem-ch22.
+    # chem-ch23 (Ethers etc.) currently has no dedicated topic.
     'chem-ch22': ['Alcohols and Phenols', 'Alcohols, Phenols & Ethers'],
-    'chem-ch23': ['Alcohols, Phenols & Ethers'],
+    'chem-ch23': [],
     'chem-ch24': ['Aldehydes & Ketones', 'Carbonyl Compounds'],
-    'chem-ch25': ['Carboxylic Acids', 'Carboxylic Acids & Derivatives'],
+    # 'Carboxylic Acids & Derivatives' (combined topic) lives only in
+    # chem-ch26 (Derivatives chapter, which has no dedicated topic of its own).
+    'chem-ch25': ['Carboxylic Acids'],
     'chem-ch26': ['Carboxylic Acids & Derivatives'],
     'chem-ch27': ['Sulfonic Acids and Carbonic Derivatives'],
     'chem-ch28': ['Amines', 'Nitrogen Compounds'],
@@ -128,8 +147,8 @@ CHEM = {
     'chem-ch30': ['Nucleic Acids'],
     'chem-ch31': ['Amino Acids and Proteins', 'Enzyme Classification', 'Enzymes'],
     'chem-ch32': ['Lipids', 'Porphin, Steroids, Vitamins', 'Vitamins'],
-    'chem-ch33': ['Saccharides', 'Metabolic Biochemistry', 'Biochemistry',
-                  'Nitrogen Waste Products'],
+    # 'Nitrogen Waste Products' belongs in bio-ch28 (Excretory) only.
+    'chem-ch33': ['Saccharides', 'Metabolic Biochemistry', 'Biochemistry'],
 }
 
 # ============================================================================

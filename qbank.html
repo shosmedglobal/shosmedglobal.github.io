@@ -302,7 +302,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260506-visits"></script>
-  <script src="qbank.js?v=20260509-chapterquiz"></script>
+  <script src="qbank.js?v=20260509-chapterquiz2"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -545,12 +545,18 @@
           // Case-insensitive topic set so question.topic ("Genetics") matches
           // mapping entries ("genetics") regardless of source casing.
           const topicSet = new Set(chapter.topics.map(t => (t || '').toLowerCase()));
-          let pool = [];
-          ['biology', 'chemistry', 'physics'].forEach(subj => {
-            const subjQs = allQuestions[subj];
-            if (!Array.isArray(subjQs)) return;
-            pool = pool.concat(subjQs.filter(q => topicSet.has((q.topic || '').toLowerCase())));
-          });
+          // SUBJECT FILTER: a chapter ID's prefix tells us which subject pool
+          // to pull from. Without this, a topic like "Enzymes" or "Nucleic
+          // Acids" that exists in BOTH biology and chemistry would leak
+          // questions across subjects (e.g. bio-ch5 DNA pulling chem
+          // chemistry-of-nucleic-acids questions). Each subject has its
+          // own pool of questions for that topic.
+          const SUBJECT_BY_PREFIX = { bio: 'biology', chem: 'chemistry', phys: 'physics' };
+          const chapterSubject = SUBJECT_BY_PREFIX[chapterParam.split('-')[0]];
+          const subjQs = allQuestions[chapterSubject];
+          let pool = Array.isArray(subjQs)
+            ? subjQs.filter(q => topicSet.has((q.topic || '').toLowerCase()))
+            : [];
           // Free-tier gate: free users only see free:true questions for this
           // chapter (allQuestions was already free-filtered up in Step 3, so
           // this is a belt-and-suspenders check + the free filter for any
