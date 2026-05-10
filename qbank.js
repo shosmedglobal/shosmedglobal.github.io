@@ -1,4 +1,8 @@
 // ===== Question Bank Logic =====
+// `qbSanitizeHtml` is provided by qbank-sanitizer.js (loaded earlier in
+// qbank.html). It's split into a separate file so the Node test runner
+// in scripts/test_qb_sanitizer.js can require() it without pulling in
+// any DOM dependencies.
 
 let allQuestions = {};
 let quizQuestions = [];
@@ -651,7 +655,7 @@ function renderQuestion() {
 
   document.getElementById('questionTopic').textContent = q.topic;
   const stemEl = document.getElementById('questionText');
-  stemEl.innerHTML = q.question;
+  stemEl.innerHTML = qbSanitizeHtml(q.question);
   // Re-apply any saved highlights the user made on the question stem.
   restoreHighlights(q.id, stemEl, 'stem');
 
@@ -679,7 +683,9 @@ function renderQuestion() {
 
     const textSpan = document.createElement('span');
     textSpan.className = 'option-text';
-    textSpan.textContent = opt;
+    // innerHTML + allowlist sanitizer so chemical-formula tags
+    // (<sub>, <sup>, etc.) render correctly. textContent printed them raw.
+    textSpan.innerHTML = qbSanitizeHtml(opt);
 
     div.appendChild(letterSpan);
     div.appendChild(textSpan);
@@ -852,12 +858,8 @@ function showExplanation(q, isCorrect) {
   header.className = 'explanation-header ' + (isCorrect ? 'correct-header' : 'wrong-header');
   icon.textContent = isCorrect ? '✓' : '✗';
   title.textContent = isCorrect ? 'Correct!' : 'Incorrect';
-  // Sanitize: only allow safe HTML tags from questions.json
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = q.explanation;
-  // Remove any script tags
-  tempDiv.querySelectorAll('script,iframe,object,embed,form,input').forEach(el => el.remove());
-  content.innerHTML = tempDiv.innerHTML;
+  // Allowlist-sanitized HTML (was: denylist tempDiv approach).
+  content.innerHTML = qbSanitizeHtml(q.explanation);
   box.style.display = 'block';
 
   // Apply personal watermark
@@ -1709,7 +1711,9 @@ function showReview() {
       let prefix = letters[j] + '.';
       if (j === q.correct) cls = 'correct-answer';
       if (!isUnanswered && j === userAnswer && !isCorrect) cls = 'wrong-answer';
-      answersHtml += `<div class="review-answer ${cls}">${prefix} ${opt}</div>`;
+      // Allowlist-sanitize each option so <sub>/<sup>/<b>/etc. render
+      // and nothing else (no raw tags shown, no XSS).
+      answersHtml += `<div class="review-answer ${cls}">${prefix} ${qbSanitizeHtml(opt)}</div>`;
     });
 
     const statusClass = isUnanswered ? 'wrong' : (isCorrect ? 'correct' : 'wrong');
@@ -1718,10 +1722,10 @@ function showReview() {
       <div class="review-item">
         <div class="review-item-header">
           <span class="review-number ${statusClass}">${i + 1}</span>
-          <span class="review-topic">${q.subject} · ${q.topic}</span>
+          <span class="review-topic">${qbSanitizeHtml(q.subject)} · ${qbSanitizeHtml(q.topic)}</span>
           ${unansweredBadge}
         </div>
-        <div class="review-question">${q.question}</div>
+        <div class="review-question">${qbSanitizeHtml(q.question)}</div>
         <div class="review-answers">${answersHtml}</div>
         <div class="review-explanation"></div>
         <div class="report-btn-wrap" style="display:flex;">
@@ -1731,16 +1735,12 @@ function showReview() {
     `;
   });
 
-  // Sanitize explanation HTML and restore saved highlights for each review question
+  // Render explanations + restore saved highlights for each review question.
   container.querySelectorAll('.review-item').forEach((item, i) => {
     const q = quizQuestions[i];
     const expEl = item.querySelector('.review-explanation');
     if (q && expEl) {
-      // Sanitize: strip dangerous tags before inserting
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = q.explanation;
-      tempDiv.querySelectorAll('script,iframe,object,embed,form,input').forEach(el => el.remove());
-      expEl.innerHTML = tempDiv.innerHTML;
+      expEl.innerHTML = qbSanitizeHtml(q.explanation);
       applyQBankWatermark(expEl);
       restoreHighlights(q.id, expEl);
     }
