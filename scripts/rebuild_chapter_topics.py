@@ -26,10 +26,14 @@ def chapter_title(path):
 # EXPERT MAPPING - biology (40 chapters)
 # ============================================================================
 BIO = {
+    # 'Plant Biology' moved here from bio-ch10 (Evolution): plant photosynthesis,
+    # hormones, transport, etc. don't belong in an evolution chapter. bio-ch1
+    # (General Features and Energetics of Living Systems) is the closest fit
+    # since it already covers photosynthesis broadly.
     'bio-ch1':  ['Bioenergetics', 'Cellular respiration', 'Fermentation and ATP',
                  'Photosynthesis', 'Photosynthesis and Respiration', 'Enzymes',
                  'Cell Signaling', 'Biochemistry', 'Scientific Method',
-                 'Milestones in Biology'],
+                 'Milestones in Biology', 'Plant Biology'],
     'bio-ch2':  ['Prokaryotic Organisms', 'Bacterial structure', 'Bacterial classification',
                  'Bacterial reproduction', 'Antibiotics',
                  'Microbiology', 'Cyanobacteria'],
@@ -48,9 +52,11 @@ BIO = {
                  'Cell cycle', 'Cell cycle regulation'],
     'bio-ch8':  ['Meiosis', 'Gametogenesis', 'Oogenesis', 'Karyotype and sex determination'],
     'bio-ch9':  ['Origin of Life', 'Origin of life'],
+    # 'Plant Biology' moved to bio-ch1 — plant physiology questions had no
+    # answer in this evolution chapter.
     'bio-ch10': ['Evolution', 'Lamarck vs Darwin', 'Natural selection',
                  'Classification and Taxonomy', 'Taxonomy', 'Zoological Classification',
-                 'Arthropod Classification', 'Plant Biology'],
+                 'Arthropod Classification'],
     'bio-ch11': ['Prokaryotic Genetics', 'Bacterial genetics'],
     'bio-ch12': ['Mendelian Genetics', 'Mendelian genetics', 'Dihybrid cross',
                  'Codominance', 'Incomplete dominance', 'Gene linkage'],
@@ -133,9 +139,10 @@ CHEM = {
     'chem-ch20': ['Hydrocarbons (Alkanes, Alkenes, Alkynes)', 'Alkanes, Alkenes, Alkynes'],
     'chem-ch21': ['Aromatic Compounds', 'Arenes'],
     # 'Alcohols, Phenols & Ethers' (combined topic) lives only in chem-ch22.
-    # chem-ch23 (Ethers etc.) currently has no dedicated topic.
+    # Pure ether/epoxide questions get re-tagged to 'Ethers and Epoxides' so
+    # they land in chem-ch23 instead.
     'chem-ch22': ['Alcohols and Phenols', 'Alcohols, Phenols & Ethers'],
-    'chem-ch23': [],
+    'chem-ch23': ['Ethers and Epoxides'],
     'chem-ch24': ['Aldehydes & Ketones', 'Carbonyl Compounds'],
     # 'Carboxylic Acids & Derivatives' (combined topic) lives only in
     # chem-ch26 (Derivatives chapter, which has no dedicated topic of its own).
@@ -146,7 +153,11 @@ CHEM = {
     'chem-ch29': ['Heterocyclic Compounds'],
     'chem-ch30': ['Nucleic Acids'],
     'chem-ch31': ['Amino Acids and Proteins', 'Enzyme Classification', 'Enzymes'],
-    'chem-ch32': ['Lipids', 'Porphin, Steroids, Vitamins', 'Vitamins'],
+    # 'Lipid Metabolism' added so β-oxidation / ketone-body / fatty-acid
+    # metabolism questions land in lipids (their actual subject) and not in
+    # chem-ch33 (Saccharides) where they had no answer.
+    'chem-ch32': ['Lipids', 'Porphin, Steroids, Vitamins', 'Vitamins',
+                  'Lipid Metabolism'],
     # 'Nitrogen Waste Products' belongs in bio-ch28 (Excretory) only.
     'chem-ch33': ['Saccharides', 'Metabolic Biochemistry', 'Biochemistry'],
 }

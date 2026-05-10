@@ -99,6 +99,96 @@ RULES = [
         'new_topic': 'Magnetism',
         'reason': 'force-on-current-wire content -> phys-ch9 (Magnetism)',
     },
+
+    # ---- ITERATION 2 (post-deep-audit) ----
+
+    # ---- bio: 'Cell Division' is broad. A meiosis question (bio-4) was
+    # placed in bio-ch7 (Mitosis) because of its tag. Move to bio-ch8.
+    {
+        'subject': 'biology',
+        'old_topic_lc': 'cell division',
+        'content_re': re.compile(r'meiosis', re.I),
+        'new_topic': 'Meiosis',
+        'reason': 'meiosis content -> bio-ch8 (Meiosis)',
+    },
+
+    # ---- bio: endosymbiotic theory questions tagged 'Evolution' belong in
+    # bio-ch3 (Eukaryotic Cell, which has 'Endosymbiotic theory' topic).
+    {
+        'subject': 'biology',
+        'old_topic_lc': 'evolution',
+        'content_re': re.compile(r'endosymbiotic theory|mitochondria.{0,40}originate', re.I),
+        'new_topic': 'Endosymbiotic theory',
+        'reason': 'endosymbiotic-theory content -> bio-ch3 (Eukaryotic Cell)',
+    },
+
+    # ---- bio: photosynthesis-specific questions tagged 'Plant Biology'
+    # belong in bio-ch1 (which has the Photosynthesis topic). The remaining
+    # plant biology questions (hormones, transport, etc.) stay tagged
+    # 'Plant Biology' but that topic itself was moved from bio-ch10 to bio-ch1
+    # so they all now live in bio-ch1.
+    {
+        'subject': 'biology',
+        'old_topic_lc': 'plant biology',
+        'content_re': re.compile(r'photosynthesis|Calvin cycle|RuBisCO|light[- ]dependent reaction|light reactions of photosynthesis|Photosystem|photorespirat|C4 plant|C3 plant|CAM plant', re.I),
+        'new_topic': 'Photosynthesis',
+        'reason': 'photosynthesis content -> bio-ch1 (Photosynthesis)',
+    },
+
+    # ---- chem: kinetics questions tagged 'Chemical Equilibrium & Kinetics'
+    # belong in chem-ch15 (Reaction Kinetics), not chem-ch12 (Equilibrium).
+    # Identifying signatures: half-life, rate law, activation energy, Arrhenius,
+    # mechanism, reaction order, intermediate, Ea comparison.
+    {
+        'subject': 'chemistry',
+        'old_topic_lc': 'chemical equilibrium & kinetics',
+        'content_re': re.compile(r'half[- ]?life|rate law|rate constant|activation energy|Arrhenius|reaction mechanism|first[- ]?order|second[- ]?order|zero[- ]?order|order .{0,20}with respect|overall order|intermediate|catalyst .{0,30}lowers? Ea|Ea\s*=|order of (the )?reaction|rate of (a )?reaction|the rate of', re.I),
+        'new_topic': 'Reaction Kinetics',
+        'reason': 'kinetics content -> chem-ch15 (Reaction Kinetics)',
+    },
+
+    # ---- chem: ether / epoxide questions tagged 'Alcohols, Phenols & Ethers'
+    # actually belong in chem-ch23 (Ethers, Epoxides, Thiols, Sulfides).
+    {
+        'subject': 'chemistry',
+        'old_topic_lc': 'alcohols, phenols & ethers',
+        'content_re': re.compile(r'Williamson ether|epoxide|ring opening of an epoxide', re.I),
+        'new_topic': 'Ethers and Epoxides',
+        'reason': 'ether/epoxide content -> chem-ch23 (Ethers, Epoxides)',
+    },
+
+    # ---- chem: amino-acid-specific questions tagged 'Nitrogen Compounds'
+    # in chem-ch28 (Amines) belong in chem-ch31 (Proteins/Amino Acids).
+    {
+        'subject': 'chemistry',
+        'old_topic_lc': 'nitrogen compounds',
+        'content_re': re.compile(r'amino acid|isoelectric point|peptide bond|amino acids? (contains?|has)', re.I),
+        'new_topic': 'Amino Acids and Proteins',
+        'reason': 'amino-acid content -> chem-ch31 (Amino Acids and Proteins)',
+    },
+
+    # ---- chem: lipid-metabolism questions (β-oxidation, ketone bodies, fatty
+    # acid catabolism) tagged 'Metabolic Biochemistry' currently live in
+    # chem-ch33 (Saccharides). Move to chem-ch32 (Lipids) where the actual
+    # answer lives.
+    {
+        'subject': 'chemistry',
+        'old_topic_lc': 'metabolic biochemistry',
+        'content_re': re.compile(r'β[- ]?oxidation|beta[- ]?oxidation|ketone bod(y|ies)|fatty acid', re.I),
+        'new_topic': 'Lipid Metabolism',
+        'reason': 'lipid-metabolism content -> chem-ch32 (Lipids)',
+    },
+
+    # ---- phys: Newton's-law / dynamics questions tagged broad 'Mechanics'
+    # currently fall in phys-ch2 (Kinematics). Re-tag to 'Dynamics' so they
+    # land in phys-ch3 (Dynamics & Momentum).
+    {
+        'subject': 'physics',
+        'old_topic_lc': 'mechanics',
+        'content_re': re.compile(r"Newton's third law|Newton's second law|Newton's first law|push(es|ed)? against a wall.{0,30}force", re.I),
+        'new_topic': 'Dynamics',
+        'reason': "Newton's-law content -> phys-ch3 (Dynamics)",
+    },
 ]
 
 
