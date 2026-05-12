@@ -2527,3 +2527,231 @@ mark.user-highlight:hover {
     top: 70px;
   }
 }
+
+/* ============================================================
+   Explanation rendering — mobile-safe HTML pipeline
+   (iter 3 — fixes Android Chrome / Samsung Internet / iOS Safari
+    overflow + raw-tag bugs)
+   ============================================================ */
+
+/* Word-wrap protections for narrow viewports — without these, long
+   chemical formulas / URLs / SMILES strings push the card off-screen. */
+.explanation-content,
+.review-explanation {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+/* Headings inside explanations — UWorld-style hierarchy */
+.explanation-content h1, .review-explanation h1 { font-size: 1.25rem; }
+.explanation-content h2, .review-explanation h2 { font-size: 1.15rem; }
+.explanation-content h3, .review-explanation h3 { font-size: 1.08rem; }
+.explanation-content h4, .review-explanation h4,
+.explanation-content h5, .review-explanation h5,
+.explanation-content h6, .review-explanation h6 { font-size: 1rem; }
+
+.explanation-content h1, .explanation-content h2,
+.explanation-content h3, .explanation-content h5,
+.explanation-content h6,
+.review-explanation h1, .review-explanation h2,
+.review-explanation h3, .review-explanation h5,
+.review-explanation h6 {
+  font-weight: 700;
+  color: var(--navy);
+  margin: 18px 0 8px;
+  line-height: 1.35;
+}
+
+/* Paragraphs */
+.explanation-content p,
+.review-explanation p {
+  margin: 0 0 12px;
+}
+.explanation-content p:last-child,
+.review-explanation p:last-child { margin-bottom: 0; }
+
+/* Lists already styled above for ul; mirror for ol/dl */
+.explanation-content ol,
+.review-explanation ol {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 22px;
+}
+.explanation-content dl,
+.review-explanation dl { margin: 8px 0 16px; }
+.explanation-content dt,
+.review-explanation dt { font-weight: 600; color: var(--navy); margin-top: 6px; }
+.explanation-content dd,
+.review-explanation dd { margin: 2px 0 0 16px; color: var(--gray-700); }
+
+/* Inline code / kbd / samp */
+.explanation-content code, .explanation-content kbd, .explanation-content samp,
+.review-explanation code, .review-explanation kbd, .review-explanation samp {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.86em;
+  background: var(--gray-100);
+  border-radius: 4px;
+  padding: 1px 6px;
+  border: 1px solid var(--gray-200);
+  white-space: nowrap;
+}
+
+/* Blockquote — clean callout style */
+.explanation-content blockquote,
+.review-explanation blockquote {
+  margin: 12px 0;
+  padding: 10px 16px;
+  border-left: 4px solid var(--accent);
+  background: rgba(207, 91, 46, 0.05);
+  color: var(--gray-700);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.explanation-content blockquote p:last-child,
+.review-explanation blockquote p:last-child { margin-bottom: 0; }
+
+/* Pre — code block */
+.explanation-content pre,
+.review-explanation pre {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  margin: 12px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------- Responsive tables ----------
+   wrapTablesForResponsive() (qbank.js) wraps every <table> inside an
+   explanation in a .qb-table-wrap div. The wrap is what scrolls; the
+   table itself keeps its standard table-layout semantics so columns
+   align correctly. -webkit-overflow-scrolling: touch gives iOS Safari
+   momentum scrolling. */
+.qb-table-wrap {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0;
+  border-radius: var(--radius);
+  /* Subtle visual cue that horizontal content exists */
+  background:
+    linear-gradient(to right, var(--white), var(--white)) 0 0 / 30px 100% no-repeat,
+    linear-gradient(to right, rgba(15,23,42,0.08), rgba(255,255,255,0)) 0 0 / 12px 100% no-repeat,
+    linear-gradient(to left,  var(--white), var(--white)) 100% 0 / 30px 100% no-repeat,
+    linear-gradient(to left,  rgba(15,23,42,0.08), rgba(255,255,255,0)) 100% 0 / 12px 100% no-repeat;
+  background-attachment: local, scroll, local, scroll;
+}
+.qb-table-wrap table {
+  min-width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+/* Generic table styling so explanations with <table> (no class) look good.
+   The existing .exp-table styles still apply when the class survives. */
+.explanation-content table,
+.review-explanation table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.explanation-content table th,
+.review-explanation table th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.explanation-content table td,
+.review-explanation table td {
+  padding: 9px 12px;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-700);
+  vertical-align: top;
+}
+.explanation-content table tr:nth-child(even) td,
+.review-explanation table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02);
+}
+.explanation-content table caption,
+.review-explanation table caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  color: var(--gray-600);
+  padding: 4px 0;
+  font-size: 0.85rem;
+}
+
+/* Long content protections inside tables */
+.explanation-content table td, .explanation-content table th,
+.review-explanation table td,    .review-explanation table th {
+  word-break: break-word;
+  max-width: 320px;     /* prevents one long cell from blowing out width */
+}
+
+/* Images (if any explanation ever embeds them via a future sanitizer
+   extension) — never overflow the container */
+.explanation-content img,
+.review-explanation img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 8px 0;
+}
+
+/* ---------- Mobile breakpoints ---------- */
+@media (max-width: 640px) {
+  .quiz-explanation {
+    padding: 18px 16px;
+    margin-top: 22px;
+  }
+  .explanation-content,
+  .review-explanation {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .explanation-content h1, .review-explanation h1 { font-size: 1.15rem; }
+  .explanation-content h2, .review-explanation h2 { font-size: 1.08rem; }
+  .explanation-content h3, .review-explanation h3 { font-size: 1.02rem; }
+  .explanation-content h4, .review-explanation h4 { font-size: 0.98rem; margin-top: 14px; }
+
+  .explanation-content table,
+  .review-explanation table { font-size: 0.82rem; }
+  .explanation-content table th,
+  .review-explanation table th,
+  .explanation-content table td,
+  .review-explanation table td {
+    padding: 6px 8px;
+    max-width: 260px;
+  }
+
+  .qb-table-wrap { margin: 12px -4px; }   /* edge-bleed for more usable width */
+
+  .explanation-content blockquote,
+  .review-explanation blockquote { padding: 8px 12px; }
+
+  .explanation-content pre,
+  .review-explanation pre { font-size: 0.78rem; padding: 10px 12px; }
+
+  .explanation-content code,
+  .review-explanation code { font-size: 0.84em; }
+}
+
+@media (max-width: 400px) {
+  .qb-table-wrap table { font-size: 0.78rem; }
+  .explanation-content table th,
+  .review-explanation table th,
+  .explanation-content table td,
+  .review-explanation table td {
+    padding: 5px 6px;
+  }
+}

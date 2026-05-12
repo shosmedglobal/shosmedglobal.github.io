@@ -144,9 +144,9 @@ notContains('<img onerror=...> stripped',
    '<img src=x onerror="alert(1)">',
    '<img');
 
-notContains('attribute-bearing allowlisted tag stripped (no <sub class>)',
-   '<sub class="x" onclick="alert(1)">2</sub>',
-   '<sub class');
+// (Removed: an obsolete `notContains '<sub class'` test. `class` is now
+// in the attribute allowlist — its safety is covered by the value
+// character whitelist, plus the executable-attr checks below.)
 
 // These check that the output contains no *executable* attribute — i.e.
 // no real HTML tag with the dangerous attr. The literal characters can
@@ -202,9 +202,80 @@ eq('text-with-> stays literal (escaped to entity)',
    'pipe: a > b > c',
    'pipe: a &gt; b &gt; c');
 
-eq('disallowed <span> stripped to text content',
+eq('<span> is allowed, but style attribute dropped',
    '<span style="color:red">hello</span>',
-   '&lt;span style="color:red"&gt;hello&lt;/span&gt;');
+   '<span>hello</span>');
+
+eq('class attribute preserved (sanitized)',
+   '<p class="exp-stem">hello</p>',
+   '<p class="exp-stem">hello</p>');
+
+eq('class with multiple values preserved',
+   '<div class="exp-key highlight">important</div>',
+   '<div class="exp-key highlight">important</div>');
+
+eq('class value sanitized (strips quote-breakout chars + collapses whitespace)',
+   '<div class=\'" onclick="alert(1)\'>x</div>',
+   '<div class="onclickalert1">x</div>');
+
+eq('non-class attrs dropped, class kept',
+   '<table class="exp-table" border="1" onclick="bad()">x</table>',
+   '<table class="exp-table">x</table>');
+
+
+// =========================================================================
+// 3b. Educational HTML round-trips (the major bug fix iter)
+// =========================================================================
+console.log('\n[3b] Educational HTML — headings, tables, divs\n');
+
+for (const tag of ['h1','h2','h3','h4','h5','h6']) {
+  eq(tag + ' heading round-trips',
+     'a<' + tag + '>Title</' + tag + '>b',
+     'a<' + tag + '>Title</' + tag + '>b');
+  eq(tag + ' with class attribute preserved',
+     '<' + tag + ' class="exp-heading">Title</' + tag + '>',
+     '<' + tag + ' class="exp-heading">Title</' + tag + '>');
+}
+
+eq('<table> with <tr><td> structure round-trips',
+   '<table><tr><td>A</td><td>B</td></tr></table>',
+   '<table><tr><td>A</td><td>B</td></tr></table>');
+
+eq('full table with <thead>/<tbody>/<th>/<caption> round-trips',
+   '<table><caption>Cap</caption><thead><tr><th>K</th></tr></thead><tbody><tr><td>V</td></tr></tbody></table>',
+   '<table><caption>Cap</caption><thead><tr><th>K</th></tr></thead><tbody><tr><td>V</td></tr></tbody></table>');
+
+eq('<table class="exp-table"> preserves class, drops other attrs',
+   '<table class="exp-table" border="1"><tr><td>A</td></tr></table>',
+   '<table class="exp-table"><tr><td>A</td></tr></table>');
+
+eq('<div class="exp-key"> preserves class',
+   '<div class="exp-key"><p>Key point</p></div>',
+   '<div class="exp-key"><p>Key point</p></div>');
+
+eq('nested <p><strong>...</strong></p> round-trips',
+   '<p>Hello <strong>world</strong></p>',
+   '<p>Hello <strong>world</strong></p>');
+
+eq('<dl>/<dt>/<dd> definition list round-trips',
+   '<dl><dt>Term</dt><dd>Def</dd></dl>',
+   '<dl><dt>Term</dt><dd>Def</dd></dl>');
+
+eq('<details>/<summary> round-trips',
+   '<details><summary>More</summary>hidden</details>',
+   '<details><summary>More</summary>hidden</details>');
+
+eq('<hr> void element preserved',
+   'a<hr>b',
+   'a<hr>b');
+
+eq('<blockquote> round-trips',
+   '<blockquote>important</blockquote>',
+   '<blockquote>important</blockquote>');
+
+eq('<pre><code> nested round-trips',
+   '<pre><code>x = 1</code></pre>',
+   '<pre><code>x = 1</code></pre>');
 
 
 // =========================================================================

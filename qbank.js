@@ -4,6 +4,27 @@
 // in scripts/test_qb_sanitizer.js can require() it without pulling in
 // any DOM dependencies.
 
+/**
+ * Wrap every <table> in a container that scrolls horizontally so wide
+ * tables (think comparison grids of pKa values, reaction conditions, etc.)
+ * don't break the mobile layout on Android Chrome / Samsung Internet /
+ * iPhone Safari. Idempotent — re-wrapping is a no-op.
+ *
+ * Call this right after assigning sanitized HTML into a container.
+ */
+function wrapTablesForResponsive(container) {
+  if (!container || !container.querySelectorAll) return;
+  const tables = container.querySelectorAll('table');
+  tables.forEach(function (table) {
+    const parent = table.parentElement;
+    if (parent && parent.classList && parent.classList.contains('qb-table-wrap')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'qb-table-wrap';
+    parent.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  });
+}
+
 let allQuestions = {};
 let quizQuestions = [];
 let currentIndex = 0;
@@ -860,6 +881,7 @@ function showExplanation(q, isCorrect) {
   title.textContent = isCorrect ? 'Correct!' : 'Incorrect';
   // Allowlist-sanitized HTML (was: denylist tempDiv approach).
   content.innerHTML = qbSanitizeHtml(q.explanation);
+  wrapTablesForResponsive(content);
   box.style.display = 'block';
 
   // Apply personal watermark
@@ -1756,12 +1778,13 @@ function showReview() {
     `;
   });
 
-  // Render explanations + restore saved highlights for each review question.
+  // Render explanations + wrap tables responsively + restore saved highlights.
   container.querySelectorAll('.review-item').forEach((item, i) => {
     const q = quizQuestions[i];
     const expEl = item.querySelector('.review-explanation');
     if (q && expEl) {
       expEl.innerHTML = qbSanitizeHtml(q.explanation);
+      wrapTablesForResponsive(expEl);
       applyQBankWatermark(expEl);
       restoreHighlights(q.id, expEl);
     }
