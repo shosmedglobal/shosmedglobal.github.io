@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const Stripe = require('stripe');
+const emails = require('./emails');
 
 admin.initializeApp();
 const db = admin.firestore();
@@ -194,6 +195,159 @@ exports.stripeWebhook = functions
     } catch (err) {
       console.error('Failed to update user:', err);
       return res.status(500).send('database update failed');
+    }
+  });
+
+
+// ============================================================================
+// Transactional email — Resend
+// ----------------------------------------------------------------------------
+// Sends branded HTML email via the Resend API
+// (https://resend.com — 3000 emails/month free).
+//
+// Requires a Firebase secret named RESEND_API_KEY:
+//   firebase functions:secrets:set RESEND_API_KEY
+// Domain shosmed.com must be verified in the Resend dashboard with SPF +
+// DKIM DNS records so emails ship from welcome@shosmed.com.
+//
+// If the secret isn't set, sendEmail() returns gracefully (logs and skips)
+// so signups never fail because of email infrastructure issues.
+// ============================================================================
+const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
+const EMAIL_REPLY_TO = 'contact@shosmed.com';
+
+async function sendEmail({ to, subject, html, text }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn('[email] RESEND_API_KEY not configured — skipping send to', to);
+    return { skipped: true };
+  }
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: EMAIL_FROM,
+        to: [to],
+        subject,
+        html,
+        text,
+        reply_to: EMAIL_REPLY_TO,
+      }),
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error('[email] Resend API error', res.status, errText);
+      return { ok: false, status: res.status, error: errText };
+    }
+    const body = await res.json();
+    console.log('[email] sent to', to, 'id=', body.id);
+    return { ok: true, id: body.id };
+  } catch (err) {
+    console.error('[email] send failed:', err);
+    return { ok: false, error: err.message };
+  }
+}
+
+// Helper: load the Firestore profile (if any) so we can personalize.
+async function loadProfile(uid) {
+  try {
+    const snap = await db.collection('users').doc(uid).get();
+    return snap.exists ? snap.data() : {};
+  } catch (_) {
+    return {};
+  }
+}
+
+// ----------------------------------------------------------------------------
+// onUserCreated: Auth trigger — fires automatically when a new user signs up
+// via email/password, Google, or any other Firebase Auth method. Sends the
+// combined welcome + verification email. Wraps everything in try/catch so a
+// transient Resend outage never breaks the signup flow.
+// ----------------------------------------------------------------------------
+exports.onUserCreated = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .auth.user()
+  .onCreate(async (user) => {
+    if (!user.email) {
+      console.log('[onUserCreated] no email on user', user.uid, '— skipping');
+      return;
+    }
+    try {
+      const verifyLink = await admin.auth().generateEmailVerificationLink(user.email, {
+        url: 'https://shosmed.com/dashboard.html',
+      });
+      const profile = await loadProfile(user.uid);
+      const name = profile.name || user.displayName || '';
+      const path = profile.path || 'applicant';
+
+      const result = await sendEmail({
+        to: user.email,
+        subject: 'Welcome to SHOS Med — verify your email',
+        html: emails.welcomeEmailHtml({ name, path, verifyLink }),
+        text: emails.welcomeEmailText({ name, path, verifyLink }),
+      });
+
+      if (result.ok) {
+        await db.collection('users').doc(user.uid).set(
+          { welcomeEmailSentAt: admin.firestore.FieldValue.serverTimestamp() },
+          { merge: true }
+        );
+      }
+    } catch (err) {
+      // CRITICAL: never throw here — signup must succeed even if email fails.
+      console.error('[onUserCreated] email send failed for', user.uid, err);
+    }
+  });
+
+// ----------------------------------------------------------------------------
+// resendVerification: callable from the dashboard's "Resend email" button.
+// Generates a fresh verification link and sends the streamlined verify-only
+// template. Returns { alreadyVerified: true } if the user already verified.
+// ----------------------------------------------------------------------------
+exports.resendVerification = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .https.onCall(async (data, context) => {
+    if (!context.auth) {
+      throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+    }
+    let authUser;
+    try {
+      authUser = await admin.auth().getUser(context.auth.uid);
+    } catch (err) {
+      throw new functions.https.HttpsError('not-found', 'User not found.');
+    }
+    if (!authUser.email) {
+      throw new functions.https.HttpsError('failed-precondition', 'No email on file.');
+    }
+    if (authUser.emailVerified) {
+      return { success: true, alreadyVerified: true };
+    }
+
+    try {
+      const verifyLink = await admin.auth().generateEmailVerificationLink(authUser.email, {
+        url: 'https://shosmed.com/dashboard.html',
+      });
+      const profile = await loadProfile(authUser.uid);
+      const name = profile.name || authUser.displayName || '';
+
+      const result = await sendEmail({
+        to: authUser.email,
+        subject: 'Verify your email — SHOS Med',
+        html: emails.verificationEmailHtml({ name, verifyLink }),
+        text: emails.verificationEmailText({ name, verifyLink }),
+      });
+      if (!result.ok && !result.skipped) {
+        throw new functions.https.HttpsError('internal', result.error || 'Email send failed.');
+      }
+      return { success: true };
+    } catch (err) {
+      console.error('[resendVerification] failed:', err);
+      if (err instanceof functions.https.HttpsError) throw err;
+      throw new functions.https.HttpsError('internal', err.message);
     }
   });
 

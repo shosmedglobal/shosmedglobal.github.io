@@ -104,6 +104,25 @@
       <!-- Dashboard content (hidden until loaded) -->
       <div id="dashboardContent" style="display:none;">
 
+        <!-- Email verification banner — shown when emailVerified === false.
+             Auth state is checked in JS; element stays hidden by default
+             so verified users never see a flash of the warning. -->
+        <!-- display:none until JS sets it to flex for unverified users. -->
+        <div id="verifyEmailBanner" style="display:none; background:linear-gradient(135deg,#FEF3C7,#FFF7ED); border:1px solid #F59E0B; border-radius:10px; padding:14px 18px; margin:0 0 22px; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:12px; min-width:0; flex:1 1 280px;">
+            <span style="font-size:1.4rem; flex-shrink:0; line-height:1;">&#9993;</span>
+            <div style="min-width:0;">
+              <strong style="display:block; font-size:0.95rem; color:#92400E;">Please verify your email</strong>
+              <span style="display:block; font-size:0.82rem; color:#78350F; line-height:1.45;">We sent a verification link to <span id="verifyEmailAddress" style="font-weight:600;"></span>. Check your inbox (and spam folder).</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
+            <button id="verifyResendBtn" style="background:#92400E; color:#fff; border:none; padding:8px 16px; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:background 0.15s;">Resend email</button>
+            <button id="verifyRefreshBtn" title="I already verified — refresh status" style="background:transparent; color:#92400E; border:1px solid #F59E0B; padding:8px 14px; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer;">I verified</button>
+          </div>
+          <span id="verifyBannerMsg" style="flex-basis:100%; font-size:0.82rem; color:#78350F; margin:6px 0 0; display:none;"></span>
+        </div>
+
         <!-- ========== VIEW: OVERVIEW ========== -->
         <div class="view active" id="viewOverview">
           <div class="dashboard-header">
@@ -3169,7 +3188,80 @@
         }
       }
 
+      // Email-verification banner: show for unverified users, hide for verified.
+      // Runs in parallel with loadDashboard so the banner appears as soon as
+      // auth resolves rather than waiting for the full Firestore profile load.
+      updateEmailVerifyBanner(user);
+
       await loadDashboard(user);
+    });
+
+    // ===== Email verification banner =====
+    function updateEmailVerifyBanner(user) {
+      const banner = document.getElementById('verifyEmailBanner');
+      if (!banner) return;
+      // Reload-aware: emailVerified can be stale after the user clicks the
+      // verify link in another tab. The "I verified" button calls reload()
+      // to refresh it. For initial check we trust the auth state as-is.
+      if (!user || user.emailVerified) {
+        banner.style.display = 'none';
+        return;
+      }
+      banner.style.display = 'flex';
+      const emailEl = document.getElementById('verifyEmailAddress');
+      if (emailEl) emailEl.textContent = user.email || '';
+    }
+
+    // Resend button — calls the Cloud Function `resendVerification`.
+    document.addEventListener('click', async function (e) {
+      const btn = e.target.closest('#verifyResendBtn');
+      if (!btn) return;
+      const msg = document.getElementById('verifyBannerMsg');
+      btn.disabled = true;
+      const originalLabel = btn.textContent;
+      btn.textContent = 'Sending...';
+      if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+      try {
+        const fn = firebase.functions().httpsCallable('resendVerification');
+        const result = await fn({});
+        if (result?.data?.alreadyVerified) {
+          // Auth state may not have refreshed yet — force it.
+          await firebase.auth().currentUser?.reload();
+          updateEmailVerifyBanner(firebase.auth().currentUser);
+          if (msg) { msg.textContent = 'Your email is already verified — banner will close on next reload.'; msg.style.display = 'block'; }
+        } else {
+          btn.textContent = 'Sent ✓';
+          if (msg) { msg.textContent = 'Verification email sent. Check your inbox (and the spam folder).'; msg.style.display = 'block'; }
+          // Brief lockout on the button so users don't spam-click and burn
+          // through the Resend quota.
+          setTimeout(() => { btn.disabled = false; btn.textContent = originalLabel; }, 30000);
+          return;
+        }
+      } catch (err) {
+        console.error('resendVerification failed:', err);
+        if (msg) { msg.textContent = 'Could not resend right now. Please try again in a moment.'; msg.style.display = 'block'; }
+      }
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    });
+
+    // "I verified" button — force-reload Auth state in case the user
+    // verified in another tab; banner closes automatically if true.
+    document.addEventListener('click', async function (e) {
+      const btn = e.target.closest('#verifyRefreshBtn');
+      if (!btn) return;
+      const msg = document.getElementById('verifyBannerMsg');
+      btn.disabled = true;
+      try {
+        await firebase.auth().currentUser?.reload();
+        updateEmailVerifyBanner(firebase.auth().currentUser);
+        if (firebase.auth().currentUser && !firebase.auth().currentUser.emailVerified) {
+          if (msg) { msg.textContent = "Still not verified — check the link in the email we sent."; msg.style.display = 'block'; }
+        }
+      } catch (err) {
+        console.error('reload failed:', err);
+      }
+      btn.disabled = false;
     });
 
     // ===== Load Dashboard =====
