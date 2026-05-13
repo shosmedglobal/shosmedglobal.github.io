@@ -207,13 +207,20 @@ exports.stripeWebhook = functions
 //
 // Requires a Firebase secret named RESEND_API_KEY:
 //   firebase functions:secrets:set RESEND_API_KEY
-// Domain shosmed.com must be verified in the Resend dashboard with SPF +
-// DKIM DNS records so emails ship from welcome@shosmed.com.
 //
-// If the secret isn't set, sendEmail() returns gracefully (logs and skips)
-// so signups never fail because of email infrastructure issues.
+// Sender domain: send.shosmed.com (Resend subdomain setup).
+// Using a subdomain isolates transactional-email reputation from the root
+// domain and — critically — avoids conflicting with the existing Google
+// Workspace MX records at @. SPF + DKIM + MX records all live at the
+// `send` subdomain (see Resend dashboard / DNS audit).
+//
+// Reply-To still points to contact@shosmed.com so user replies land in
+// the Google Workspace inbox.
+//
+// If the API key isn't set, sendEmail() returns gracefully (logs + skips)
+// so signups never break because of email infrastructure issues.
 // ============================================================================
-const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
+const EMAIL_FROM = 'SHOS Med <welcome@send.shosmed.com>';
 const EMAIL_REPLY_TO = 'contact@shosmed.com';
 
 async function sendEmail({ to, subject, html, text }) {
