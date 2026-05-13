@@ -1399,12 +1399,9 @@
               <div class="admin-stat-label">Active QBank Users</div>
             </div>
             <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatForumPosts">-</div>
-              <div class="admin-stat-label">Forum Posts</div>
-            </div>
-            <div class="admin-stat-card">
               <div class="admin-stat-value" id="adminStatVisits">-</div>
               <div class="admin-stat-label">Total Site Visits</div>
+              <div class="admin-stat-sub" style="font-size:0.72rem; color:#94a3b8; margin-top:4px;">Anonymous visitors only</div>
             </div>
           </div>
 
@@ -1491,12 +1488,6 @@
               <div class="admin-activity-col">
                 <h4 class="admin-activity-heading">Recent QBank Tests</h4>
                 <div id="adminRecentTests" class="admin-activity-list">
-                  <div class="admin-loading">Loading...</div>
-                </div>
-              </div>
-              <div class="admin-activity-col">
-                <h4 class="admin-activity-heading">Recent Forum Posts</h4>
-                <div id="adminRecentForum" class="admin-activity-list">
                   <div class="admin-loading">Loading...</div>
                 </div>
               </div>
@@ -4163,7 +4154,6 @@
 
     // ===== Admin Stats (real-time via onSnapshot) =====
     let adminUsersStreamUnsub = null;
-    let adminForumStreamUnsub = null;
     let adminVisitsStreamUnsub = null;
     let adminVisitsByDayUnsub = null;
     let adminVisitsByCountryUnsub = null;
@@ -4174,12 +4164,19 @@
     function loadAdminStats() {
       // Tear down prior listeners (idempotent)
       if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; }
-      if (typeof adminForumStreamUnsub === 'function') { adminForumStreamUnsub(); adminForumStreamUnsub = null; }
       if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; }
       if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; }
       if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; }
 
       // Users → drives Total / New This Month / Paying / Revenue / QBank Active
+      // Admin email allowlist — keep in sync with firestore.rules → isAdmin().
+      // These accounts are excluded from Paying Users + Total Revenue so
+      // internal/test grants ($99 trial, etc.) don't pollute real metrics.
+      const ADMIN_EMAILS_SET = new Set([
+        'eli@shosmed.com', 'contact@shosmed.com',
+        'privacy@shosmed.com', 'elizolotov@gmail.com'
+      ]);
+
       adminUsersStreamUnsub = subscribeAllUsers(users => {
         const now = new Date();
         const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -4194,7 +4191,10 @@
             const created = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
             if (created >= monthStart) newThisMonth++;
           }
-          if (u.payments && u.payments['exam-bank'] === 'paid') {
+          const isAdminUser = ADMIN_EMAILS_SET.has((u.email || '').toLowerCase());
+          // Paying users + revenue: exclude admin/test accounts so the
+          // numbers reflect ACTUAL customer payments only.
+          if (!isAdminUser && u.payments && u.payments['exam-bank'] === 'paid') {
             paidUsers++;
             const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
             totalRevenue += PLAN_PRICES[plan] || 49;
@@ -4222,13 +4222,9 @@
         }
       });
 
-      // Forum posts → live count
-      adminForumStreamUnsub = subscribeForumPostCount(count => {
-        const el = document.getElementById('adminStatForumPosts');
-        if (el) el.textContent = count;
-      });
+      // (Forum Posts tile removed — wasn't a useful KPI at current scale.)
 
-      // Total site visits → live count (if tracked)
+      // Total site visits → live count (anonymous-visitor counter only)
       adminVisitsStreamUnsub = subscribeSiteVisits(count => {
         const el = document.getElementById('adminStatVisits');
         if (el) el.textContent = count.toLocaleString();
@@ -4783,33 +4779,7 @@
         document.getElementById('adminRecentTests').innerHTML = '<div class="admin-empty-msg">Could not load tests.</div>';
       }
 
-      // Recent forum posts
-      try {
-        const forumSnap = await db.collection('forum_posts')
-          .orderBy('createdAt', 'desc').limit(10).get();
-        const forumEl = document.getElementById('adminRecentForum');
-        if (forumSnap.empty) {
-          forumEl.innerHTML = '<div class="admin-empty-msg">No forum posts yet.</div>';
-        } else {
-          let html = '';
-          forumSnap.forEach(doc => {
-            const p = doc.data();
-            const title = p.title || p.content?.substring(0, 50) || '(untitled)';
-            let dateStr = '';
-            if (p.createdAt) {
-              const d = p.createdAt.toDate ? p.createdAt.toDate() : new Date(p.createdAt);
-              dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            }
-            html += `<div class="admin-activity-item">
-              <div>${escapeHtml(title)}</div>
-              <div class="admin-activity-meta">${escapeHtml(p.authorName || p.authorEmail || '')} &middot; ${dateStr}</div>
-            </div>`;
-          });
-          forumEl.innerHTML = html;
-        }
-      } catch (e) {
-        document.getElementById('adminRecentForum').innerHTML = '<div class="admin-empty-msg">Could not load forum posts.</div>';
-      }
+      // (Recent forum posts loader removed — KPI dropped from dashboard.)
     }
 
     // ===== Question Reports =====

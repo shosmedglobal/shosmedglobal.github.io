@@ -226,10 +226,21 @@ function initAuthNavbar() {
   });
 }
 
-// Initialize on page load
+// Initialize on page load.
+// recordSiteVisit() is gated by the auth state — we only count visits
+// from anonymous (not signed-in) users so the metric reflects real
+// advertising / discovery traffic, not the admin's own testing sessions.
 document.addEventListener('DOMContentLoaded', () => {
   initAuthNavbar();
-  recordSiteVisit();
+  // Wait for Firebase Auth to resolve before deciding whether to record.
+  // If a user is signed in, skip; otherwise count the anonymous visit.
+  if (typeof firebase !== 'undefined' && firebase.auth) {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (!user) recordSiteVisit();
+    });
+  } else {
+    recordSiteVisit();
+  }
 });
 
 // ===== Site-visits tracking =====
@@ -258,13 +269,16 @@ async function recordSiteVisit() {
     const countryPromise = resolveVisitorCountry();
 
     // Always-do writes: total + daily.
+    // NOTE: Firestore `set({merge:true})` does NOT interpret dot-notation
+    // keys as nested paths — only `update()` does that. So we have to
+    // build the actual nested object literal: `{ days: { 'YYYY-MM-DD': n }}`.
     const baseWrites = db.collection('_meta').doc('siteStats').set({
       visits: firebase.firestore.FieldValue.increment(1),
       lastVisitAt: firebase.firestore.FieldValue.serverTimestamp()
     }, { merge: true });
 
     const dayWrite = db.collection('_meta').doc('visitsByDay').set({
-      ['days.' + today]: firebase.firestore.FieldValue.increment(1),
+      days: { [today]: firebase.firestore.FieldValue.increment(1) },
     }, { merge: true });
 
     // Country write: only if we can resolve it; never blocks the others.
@@ -272,7 +286,7 @@ async function recordSiteVisit() {
     const tasks = [baseWrites, dayWrite];
     if (country) {
       tasks.push(db.collection('_meta').doc('visitsByCountry').set({
-        ['countries.' + country]: firebase.firestore.FieldValue.increment(1),
+        countries: { [country]: firebase.firestore.FieldValue.increment(1) },
       }, { merge: true }));
     }
     await Promise.all(tasks);
