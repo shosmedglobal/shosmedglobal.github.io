@@ -490,6 +490,55 @@
     </div>
   </section>
 
+  <!-- Latest articles (SEO hub: home page surfaces blog content for internal linking) -->
+  <section class="home-blog-section" style="padding:80px 24px; background:#FAFAF9;">
+    <div class="container" style="max-width:1100px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:48px;">
+        <p style="text-transform:uppercase; letter-spacing:1.5px; font-size:0.78rem; color:#94A3B8; margin:0 0 10px; font-weight:600;">From the Blog</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:#0F172A; margin:0 0 12px;">In-depth guides for the European &rarr; US pathway</h2>
+        <p style="color:#475569; font-size:1.02rem; max-width:620px; margin:0 auto;">Written by Charles University graduates and US physicians who walked the path.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px;">
+
+        <a href="blog/lf3-entrance-exam-what-is-on-it.html" class="home-blog-card" style="display:block; padding:24px 22px; background:#fff; border:1px solid #E5E7EB; border-radius:14px; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;">
+          <span style="display:inline-block; padding:3px 10px; background:#FEF3C7; color:#92400E; border-radius:50px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;">Entrance Exam</span>
+          <h3 style="font-size:1.08rem; line-height:1.4; margin:12px 0 8px; color:#0F172A; font-weight:700;">Charles University LF3 Entrance Exam: What's Actually On It</h3>
+          <p style="font-size:0.88rem; line-height:1.55; color:#475569; margin:0;">Topic-by-topic breakdown of biology + chemistry tested, with sample questions and prep strategy.</p>
+        </a>
+
+        <a href="blog/charles-university-tuition-2026-cost-breakdown.html" class="home-blog-card" style="display:block; padding:24px 22px; background:#fff; border:1px solid #E5E7EB; border-radius:14px; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;">
+          <span style="display:inline-block; padding:3px 10px; background:#DCFCE7; color:#166534; border-radius:50px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;">Cost &amp; Logistics</span>
+          <h3 style="font-size:1.08rem; line-height:1.4; margin:12px 0 8px; color:#0F172A; font-weight:700;">Charles University Tuition &amp; Total Cost in 2026</h3>
+          <p style="font-size:0.88rem; line-height:1.55; color:#475569; margin:0;">Honest breakdown of tuition, rent, food, transit, and the 6-year total. No marketing math.</p>
+        </a>
+
+        <a href="blog/usmle-step-1-pass-fail-img-2026.html" class="home-blog-card" style="display:block; padding:24px 22px; background:#fff; border:1px solid #E5E7EB; border-radius:14px; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;">
+          <span style="display:inline-block; padding:3px 10px; background:#FEE2E2; color:#991B1B; border-radius:50px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;">USMLE &amp; Match</span>
+          <h3 style="font-size:1.08rem; line-height:1.4; margin:12px 0 8px; color:#0F172A; font-weight:700;">USMLE Step 1 Pass/Fail: What It Means for IMGs in 2026</h3>
+          <p style="font-size:0.88rem; line-height:1.55; color:#475569; margin:0;">How residency programs filter applicants now — and what to do about it.</p>
+        </a>
+
+      </div>
+      <div style="text-align:center; margin-top:36px;">
+        <a href="blog/" style="display:inline-block; padding:12px 28px; border:2px solid #CF5B2E; color:#CF5B2E; border-radius:50px; text-decoration:none; font-weight:600; transition:background 0.2s, color 0.2s;" onmouseover="this.style.background='#CF5B2E';this.style.color='#fff';" onmouseout="this.style.background='';this.style.color='#CF5B2E';">Browse all articles &rarr;</a>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.home-blog-card').forEach(function (c) {
+        c.addEventListener('mouseenter', function () {
+          c.style.transform = 'translateY(-3px)';
+          c.style.boxShadow = '0 10px 24px rgba(15,23,42,0.08)';
+          c.style.borderColor = '#CF5B2E';
+        });
+        c.addEventListener('mouseleave', function () {
+          c.style.transform = '';
+          c.style.boxShadow = '';
+          c.style.borderColor = '#E5E7EB';
+        });
+      });
+    </script>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
