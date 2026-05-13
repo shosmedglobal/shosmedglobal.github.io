@@ -1408,6 +1408,41 @@
             </div>
           </div>
 
+          <!-- Site Activity (visit charts: daily timeline + country breakdown) -->
+          <div class="admin-section">
+            <div class="admin-section-header">
+              <h3 class="admin-section-title">Site Activity</h3>
+              <div class="admin-controls">
+                <select class="admin-filter" id="visitsRangeSelect" style="min-width:120px;">
+                  <option value="7">Last 7 days</option>
+                  <option value="30" selected>Last 30 days</option>
+                  <option value="90">Last 90 days</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:20px;">
+              <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+                  <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Daily visits</h4>
+                  <span id="visitsDailyTotal" style="font-size:0.78rem; color:#64748b;">—</span>
+                </div>
+                <div style="position:relative; height:240px;">
+                  <canvas id="visitsDailyChart"></canvas>
+                </div>
+              </div>
+              <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+                  <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Top countries</h4>
+                  <span id="visitsCountryTotal" style="font-size:0.78rem; color:#64748b;">—</span>
+                </div>
+                <div style="position:relative; height:240px;">
+                  <canvas id="visitsCountryChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <p id="visitsEmpty" style="display:none; text-align:center; color:#9ca3af; padding:24px;">No visit data yet — visits will start appearing here as soon as someone visits the site (cleared sessionStorage required).</p>
+          </div>
+
           <!-- User Management -->
           <div class="admin-section">
             <div class="admin-section-header">
@@ -3065,8 +3100,11 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
-  <script src="auth.js?v=20260506-admin2"></script>
-  <script src="contact-booking.js?v=20260506-admin2"></script>
+  <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
+       block other dashboard rendering for non-admin users. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="auth.js?v=20260511-charts"></script>
+  <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -4127,11 +4165,19 @@
     let adminUsersStreamUnsub = null;
     let adminForumStreamUnsub = null;
     let adminVisitsStreamUnsub = null;
+    let adminVisitsByDayUnsub = null;
+    let adminVisitsByCountryUnsub = null;
+    let visitsDailyChartInstance = null;
+    let visitsCountryChartInstance = null;
+    let visitsByDayCache = {};      // { 'YYYY-MM-DD': N }
+    let visitsByCountryCache = {};  // { 'US': N, 'CZ': N, ... }
     function loadAdminStats() {
       // Tear down prior listeners (idempotent)
       if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; }
       if (typeof adminForumStreamUnsub === 'function') { adminForumStreamUnsub(); adminForumStreamUnsub = null; }
       if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; }
+      if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; }
+      if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; }
 
       // Users → drives Total / New This Month / Paying / Revenue / QBank Active
       adminUsersStreamUnsub = subscribeAllUsers(users => {
@@ -4186,6 +4232,168 @@
       adminVisitsStreamUnsub = subscribeSiteVisits(count => {
         const el = document.getElementById('adminStatVisits');
         if (el) el.textContent = count.toLocaleString();
+      });
+
+      // Daily visits → live map of YYYY-MM-DD → count
+      adminVisitsByDayUnsub = db.collection('_meta').doc('visitsByDay')
+        .onSnapshot(doc => {
+          const data = doc.data() || {};
+          visitsByDayCache = data.days || {};
+          renderVisitsDailyChart();
+        }, err => console.warn('visitsByDay listener:', err.message));
+
+      // Per-country visits → live map of CC → count
+      adminVisitsByCountryUnsub = db.collection('_meta').doc('visitsByCountry')
+        .onSnapshot(doc => {
+          const data = doc.data() || {};
+          visitsByCountryCache = data.countries || {};
+          renderVisitsCountryChart();
+        }, err => console.warn('visitsByCountry listener:', err.message));
+
+      // Range selector → re-render daily chart on change
+      const rangeSel = document.getElementById('visitsRangeSelect');
+      if (rangeSel && !rangeSel.dataset.bound) {
+        rangeSel.dataset.bound = '1';
+        rangeSel.addEventListener('change', renderVisitsDailyChart);
+      }
+    }
+
+    // ===== Site Activity charts =====
+
+    // Map ISO-2 codes → human-readable country names for the chart labels.
+    // Fall back to the code itself for any we don't have a name for.
+    const COUNTRY_NAMES = {
+      US:'United States', CA:'Canada', GB:'United Kingdom', IE:'Ireland',
+      CZ:'Czech Republic', SK:'Slovakia', DE:'Germany', AT:'Austria',
+      PL:'Poland', HU:'Hungary', FR:'France', ES:'Spain', PT:'Portugal',
+      IT:'Italy', NL:'Netherlands', BE:'Belgium', SE:'Sweden', NO:'Norway',
+      DK:'Denmark', FI:'Finland', CH:'Switzerland', RO:'Romania',
+      IL:'Israel', RU:'Russia', UA:'Ukraine', TR:'Turkey', GR:'Greece',
+      IN:'India', PK:'Pakistan', CN:'China', JP:'Japan', KR:'South Korea',
+      SG:'Singapore', AU:'Australia', NZ:'New Zealand', MX:'Mexico',
+      BR:'Brazil', AR:'Argentina', CL:'Chile', CO:'Colombia',
+      EG:'Egypt', ZA:'South Africa', NG:'Nigeria', KE:'Kenya',
+      AE:'UAE', SA:'Saudi Arabia', IR:'Iran', IQ:'Iraq', JO:'Jordan',
+    };
+
+    function ccToName(cc) {
+      return COUNTRY_NAMES[cc] || cc;
+    }
+
+    function renderVisitsDailyChart() {
+      const canvas = document.getElementById('visitsDailyChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+
+      const rangeSel = document.getElementById('visitsRangeSelect');
+      const days = rangeSel ? parseInt(rangeSel.value, 10) || 30 : 30;
+
+      // Build the labels (oldest → newest) and values arrays. Days with no
+      // recorded visits show as 0 so the line is continuous.
+      const today = new Date();
+      const labels = [];
+      const values = [];
+      let total = 0;
+      for (let i = days - 1; i >= 0; i--) {
+        const d = new Date(today);
+        d.setUTCDate(today.getUTCDate() - i);
+        const key = d.toISOString().slice(0, 10);
+        labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        const n = visitsByDayCache[key] || 0;
+        values.push(n);
+        total += n;
+      }
+
+      const totalEl = document.getElementById('visitsDailyTotal');
+      if (totalEl) totalEl.textContent = total.toLocaleString() + ' visits in the last ' + days + ' days';
+
+      if (visitsDailyChartInstance) { visitsDailyChartInstance.destroy(); }
+      const ctx = canvas.getContext('2d');
+      visitsDailyChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Visits',
+            data: values,
+            borderColor: '#CF5B2E',
+            backgroundColor: 'rgba(207,91,46,0.10)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 2,
+            pointHoverRadius: 5,
+            pointBackgroundColor: '#CF5B2E',
+            borderWidth: 2,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { mode: 'index', intersect: false },
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8, font: { size: 11 } } },
+            y: { beginAtZero: true, ticks: { precision: 0, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+          },
+          interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        },
+      });
+    }
+
+    function renderVisitsCountryChart() {
+      const canvas = document.getElementById('visitsCountryChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+
+      // Sort countries by visit count descending; show top 10.
+      const entries = Object.entries(visitsByCountryCache)
+        .filter(([, n]) => typeof n === 'number' && n > 0)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+
+      const labels = entries.map(([cc]) => ccToName(cc));
+      const values = entries.map(([, n]) => n);
+      const total = values.reduce((a, b) => a + b, 0);
+
+      const totalEl = document.getElementById('visitsCountryTotal');
+      if (totalEl) {
+        totalEl.textContent = entries.length === 0
+          ? '—'
+          : entries.length + ' countries · ' + total.toLocaleString() + ' visits';
+      }
+
+      const emptyEl = document.getElementById('visitsEmpty');
+      if (emptyEl) {
+        // Only show "no data yet" when BOTH charts are empty
+        const dailyHasData = Object.keys(visitsByDayCache).length > 0;
+        emptyEl.style.display = (entries.length === 0 && !dailyHasData) ? 'block' : 'none';
+      }
+
+      if (visitsCountryChartInstance) { visitsCountryChartInstance.destroy(); }
+      const ctx = canvas.getContext('2d');
+      visitsCountryChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Visits',
+            data: values,
+            backgroundColor: '#CF5B2E',
+            borderRadius: 4,
+            barThickness: 'flex',
+            maxBarThickness: 22,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { beginAtZero: true, ticks: { precision: 0, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+            y: { grid: { display: false }, ticks: { font: { size: 11 } } },
+          },
+        },
       });
     }
 

@@ -94,11 +94,16 @@ service cloud.firestore {
     }
 
     // ====== Site stats (public increment, admin read) ======
-    // Only the single siteStats document is publicly writable so the
-    // visits counter can increment from any browser. Admin reads only.
+    // Three documents are publicly writable so visit counters can
+    // increment from any browser without auth:
+    //   - siteStats         (total visits + lastVisitAt)
+    //   - visitsByDay       (per-day counts for the admin chart)
+    //   - visitsByCountry   (per-country counts for the admin chart)
+    // All other _meta docs stay admin-only. Reads are admin-only across
+    // the board (visit data is internal analytics, not user-visible).
     match /_meta/{doc} {
       allow read:  if isAdmin();
-      allow write: if doc == 'siteStats';
+      allow write: if doc in ['siteStats', 'visitsByDay', 'visitsByCountry'];
     }
   }
 }

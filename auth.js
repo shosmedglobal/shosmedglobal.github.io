@@ -232,22 +232,83 @@ document.addEventListener('DOMContentLoaded', () => {
   recordSiteVisit();
 });
 
-// ===== Site-visits counter =====
-// Increments a single counter document on every fresh browser session.
-// sessionStorage dedupe means refreshes / multi-page visits in one tab
-// only count once. Silent-fails if security rules block the write — visit
-// tracking must never break the page.
+// ===== Site-visits tracking =====
+// Records every fresh browser session as a single visit. Each session
+// increments three Firestore documents (atomically):
+//
+//   _meta/siteStats          { visits: N, lastVisitAt: timestamp }
+//   _meta/visitsByDay        { days: { "YYYY-MM-DD": N } }       — for the daily chart
+//   _meta/visitsByCountry    { countries: { "US": N, "CZ": N } } — for the country chart
+//
+// All increments use FieldValue.increment so concurrent visitors don't race.
+// Country code is resolved via ipapi.co (free, no API key, 1k/day per source IP
+// — effectively unlimited at our scale because each visitor only queries their
+// own IP once per session). Visit recording NEVER throws — failures are
+// silent so the visitor's experience isn't impacted.
 async function recordSiteVisit() {
   try {
     if (typeof sessionStorage === 'undefined') return;
     if (sessionStorage.getItem('shos_visit_recorded') === '1') return;
     sessionStorage.setItem('shos_visit_recorded', '1');
     if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
-    await db.collection('_meta').doc('siteStats').set({
+
+    // Resolve country in parallel with the base write so a slow geo API
+    // doesn't delay the visit increment. Failure → skip the country update.
+    const today = new Date().toISOString().slice(0, 10);   // YYYY-MM-DD (UTC)
+    const countryPromise = resolveVisitorCountry();
+
+    // Always-do writes: total + daily.
+    const baseWrites = db.collection('_meta').doc('siteStats').set({
       visits: firebase.firestore.FieldValue.increment(1),
       lastVisitAt: firebase.firestore.FieldValue.serverTimestamp()
     }, { merge: true });
+
+    const dayWrite = db.collection('_meta').doc('visitsByDay').set({
+      ['days.' + today]: firebase.firestore.FieldValue.increment(1),
+    }, { merge: true });
+
+    // Country write: only if we can resolve it; never blocks the others.
+    const country = await countryPromise;
+    const tasks = [baseWrites, dayWrite];
+    if (country) {
+      tasks.push(db.collection('_meta').doc('visitsByCountry').set({
+        ['countries.' + country]: firebase.firestore.FieldValue.increment(1),
+      }, { merge: true }));
+    }
+    await Promise.all(tasks);
   } catch (error) {
     console.warn('recordSiteVisit blocked:', error.message);
+  }
+}
+
+// Resolve the visitor's country code (ISO 3166-1 alpha-2, e.g. "US", "CZ").
+// Cached in sessionStorage so multi-page sessions don't re-query the API.
+// Returns null on failure — the rest of the visit pipeline still works.
+async function resolveVisitorCountry() {
+  try {
+    const cached = sessionStorage.getItem('shos_visitor_country');
+    if (cached) return cached === '__none__' ? null : cached;
+
+    // Race a 1.5s timeout — the geolocation isn't worth holding up the
+    // write for slow networks.
+    const ctrl = new AbortController();
+    const timeoutId = setTimeout(() => ctrl.abort(), 1500);
+    let cc = null;
+    try {
+      const res = await fetch('https://ipapi.co/json/', { signal: ctrl.signal });
+      clearTimeout(timeoutId);
+      if (res.ok) {
+        const j = await res.json();
+        cc = (j && j.country_code) ? String(j.country_code).toUpperCase() : null;
+        // Sanity: ISO-2 only
+        if (cc && !/^[A-Z]{2}$/.test(cc)) cc = null;
+      }
+    } catch (_) {
+      clearTimeout(timeoutId);
+    }
+    sessionStorage.setItem('shos_visitor_country', cc || '__none__');
+    return cc;
+  } catch (_) {
+    return null;
   }
 }
