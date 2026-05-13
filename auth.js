@@ -227,16 +227,19 @@ function initAuthNavbar() {
 }
 
 // Initialize on page load.
-// recordSiteVisit() is gated by the auth state — we only count visits
-// from anonymous (not signed-in) users so the metric reflects real
-// advertising / discovery traffic, not the admin's own testing sessions.
+// Visit tracking is split into two paths based on auth state:
+//   - Signed-in user  →  recordUserVisit(user)  → users/{uid}.visitCount++
+//                        (so admin can see per-user engagement)
+//   - Anonymous user  →  recordSiteVisit()      → _meta/siteStats.visits++
+//                        (the public "advertising / discovery" funnel metric)
+// Both are session-deduped via sessionStorage so multi-page visits in
+// one tab count as a single visit, not N.
 document.addEventListener('DOMContentLoaded', () => {
   initAuthNavbar();
-  // Wait for Firebase Auth to resolve before deciding whether to record.
-  // If a user is signed in, skip; otherwise count the anonymous visit.
   if (typeof firebase !== 'undefined' && firebase.auth) {
     firebase.auth().onAuthStateChanged(function (user) {
-      if (!user) recordSiteVisit();
+      if (user) recordUserVisit(user);
+      else      recordSiteVisit();
     });
   } else {
     recordSiteVisit();
@@ -292,6 +295,26 @@ async function recordSiteVisit() {
     await Promise.all(tasks);
   } catch (error) {
     console.warn('recordSiteVisit blocked:', error.message);
+  }
+}
+
+// Per-user visit counter. Bumps users/{uid}.visitCount once per browser
+// session (sessionStorage-deduped). Surfaces in the admin "User Management"
+// table so the admin can see who's actively returning. Silent failures —
+// never block the page on analytics writes.
+async function recordUserVisit(user) {
+  try {
+    if (!user || !user.uid) return;
+    if (typeof sessionStorage === 'undefined') return;
+    if (sessionStorage.getItem('shos_user_visit_recorded') === '1') return;
+    sessionStorage.setItem('shos_user_visit_recorded', '1');
+    if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
+    await db.collection('users').doc(user.uid).set({
+      visitCount: firebase.firestore.FieldValue.increment(1),
+      lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }, { merge: true });
+  } catch (error) {
+    console.warn('recordUserVisit blocked:', error.message);
   }
 }
 

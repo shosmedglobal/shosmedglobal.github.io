@@ -1465,6 +1465,7 @@
                     <th>Email</th>
                     <th>Path</th>
                     <th>Signed Up</th>
+                    <th title="Total sessions on the site since visit tracking was added">Visits</th>
                     <th>QBank Status</th>
                     <th>Actions</th>
                   </tr>
@@ -4478,7 +4479,7 @@
       const pageUsers = filteredAdminUsers.slice(start, start + ADMIN_PAGE_SIZE);
 
       if (pageUsers.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#9ca3af;padding:24px;">No users found.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#9ca3af;padding:24px;">No users found.</td></tr>';
         document.getElementById('adminPagination').innerHTML = '';
         return;
       }
@@ -4514,11 +4515,19 @@
         const toggleClass = isPaid ? 'admin-btn-revoke' : 'admin-btn-grant';
         const toggleLabel = isPaid ? 'Revoke' : 'Grant';
 
+        const visitCount = (typeof u.visitCount === 'number' && u.visitCount > 0)
+          ? u.visitCount
+          : 0;
+        const visitCell = visitCount > 0
+          ? `<span style="font-weight:600; color:#0f172a;">${visitCount}</span>`
+          : `<span style="color:#cbd5e1;">0</span>`;
+
         html += `<tr data-uid="${u.id}">
           <td>${escapeHtml(name)}</td>
           <td style="font-size:0.82rem;">${escapeHtml(email)}</td>
           <td>${pathBadge}</td>
           <td style="white-space:nowrap;">${signupDate}</td>
+          <td style="text-align:center;">${visitCell}</td>
           <td>${statusBadge}</td>
           <td style="white-space:nowrap;">
             <button class="admin-action-btn ${toggleClass}" onclick="toggleQBankAccess('${u.id}', ${isPaid})">${toggleLabel}</button>
@@ -4684,6 +4693,11 @@
             : user.createdAt ? new Date(user.createdAt).getTime() : null);
       if (userMs) {
         info += `<strong>Created:</strong> ${new Date(userMs).toLocaleString()}<br>`;
+      }
+      info += `<strong>Site visits (sessions):</strong> ${typeof user.visitCount === 'number' ? user.visitCount : 0}<br>`;
+      if (user.lastVisitAt) {
+        const lv = user.lastVisitAt.toDate ? user.lastVisitAt.toDate() : new Date(user.lastVisitAt);
+        info += `<strong>Last visit:</strong> ${lv.toLocaleString()}<br>`;
       }
       if (user.hasFirestoreDoc === false) {
         info += `<strong style="color:#dc2626;">⚠ Auth-only user (no Firestore profile yet — will self-heal on next sign-in)</strong><br>`;
@@ -5207,7 +5221,7 @@
 
       const headers = [
         'Name', 'Email', 'Path', 'Country', 'Phone',
-        'Signed Up', 'QBank Plan', 'Last Active', 'User ID'
+        'Signed Up', 'Visits', 'Last Visit', 'QBank Plan', 'Last Active', 'User ID'
       ];
 
       const rows = allAdminUsers.map(u => [
@@ -5217,6 +5231,8 @@
         u.country || '',
         u.phone || '',
         formatDate(u.createdAtMs ?? u.createdAt),
+        (typeof u.visitCount === 'number' ? u.visitCount : 0),
+        formatDate(u.lastVisitAt),
         (u.payments && u.payments['exam-bank']) ? (u.payments['exam-bank-plan'] || 'paid') : 'free',
         formatDate(u.lastActiveAt || u.lastLoginAt),
         u.id || ''

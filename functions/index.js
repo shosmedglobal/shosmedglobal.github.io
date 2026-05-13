@@ -437,6 +437,10 @@ exports.listAllUsers = functions.https.onCall(async (data, context) => {
       const lastSignInMs =
         (u.metadata && u.metadata.lastSignInTime && Date.parse(u.metadata.lastSignInTime)) ||
         null;
+      // Pass through visit-tracking fields the admin table displays.
+      const lastVisitMs =
+        (profile.lastVisitAt && profile.lastVisitAt.toMillis && profile.lastVisitAt.toMillis()) ||
+        null;
       return {
         id: u.uid,
         email: profile.email || u.email || '',
@@ -445,6 +449,8 @@ exports.listAllUsers = functions.https.onCall(async (data, context) => {
         payments: profile.payments || {},
         createdAtMs,                              // ms since epoch (always set)
         lastSignInMs,                             // for debug / future use
+        visitCount: profile.visitCount || 0,     // sessions on the site
+        lastVisitAt: lastVisitMs,                 // ms since epoch; null if never tracked
         emailVerified: !!u.emailVerified,
         disabled: !!u.disabled,
         providers: (u.providerData || []).map((p) => p.providerId),
