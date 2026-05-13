@@ -1410,6 +1410,7 @@
             <div class="admin-section-header">
               <h3 class="admin-section-title">Site Activity</h3>
               <div class="admin-controls">
+                <button id="migrateLegacyVisitsBtn" class="admin-action-btn admin-btn-grant" title="One-time recovery of pre-fix visit data stored in the old (flat-key) format">Recover legacy data</button>
                 <select class="admin-filter" id="visitsRangeSelect" style="min-width:120px;">
                   <option value="7">Last 7 days</option>
                   <option value="30" selected>Last 30 days</option>
@@ -1417,6 +1418,7 @@
                 </select>
               </div>
             </div>
+            <div id="migrateLegacyResult" style="display:none; padding:10px 14px; margin-bottom:14px; border-radius:8px; font-size:0.86rem;"></div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:20px;">
               <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
                 <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
@@ -4396,6 +4398,107 @@
         },
       });
     }
+
+    // ===== One-time migration: recover legacy flat-keyed visit data =====
+    // The pre-fix recordSiteVisit() wrote keys like `"days.2026-05-13": 5`
+    // at the TOP LEVEL of the doc instead of nested under `days: { ... }`,
+    // because Firestore's set+merge doesn't interpret dot-notation as
+    // field paths (only update() does). Result: the data was written
+    // correctly per-visit but stored in a shape the chart can't read.
+    //
+    // This migration reads each doc, detects flat keys like "days.XXX" /
+    // "countries.XX", aggregates them into the new nested shape, writes
+    // back, and removes the flat keys via FieldValue.delete(). Idempotent:
+    // re-running once everything is migrated is a no-op.
+    async function migrateLegacyVisits() {
+      const resultEl = document.getElementById('migrateLegacyResult');
+      const btn = document.getElementById('migrateLegacyVisitsBtn');
+      if (!resultEl || !btn) return;
+
+      const show = (msg, isError) => {
+        resultEl.style.display = 'block';
+        resultEl.style.background = isError ? '#fee2e2' : '#dcfce7';
+        resultEl.style.color = isError ? '#991b1b' : '#166534';
+        resultEl.style.border = '1px solid ' + (isError ? '#fca5a5' : '#86efac');
+        resultEl.textContent = msg;
+      };
+
+      btn.disabled = true;
+      const originalLabel = btn.textContent;
+      btn.textContent = 'Migrating...';
+
+      try {
+        const summary = [];
+
+        // ---- visitsByDay: flat "days.YYYY-MM-DD" → nested days: { 'YYYY-MM-DD': N } ----
+        const dayRef = db.collection('_meta').doc('visitsByDay');
+        const daySnap = await dayRef.get();
+        const dayData = daySnap.exists ? (daySnap.data() || {}) : {};
+        const flatDays = {};
+        const dayDelete = {};
+        let dayMigrated = 0;
+        Object.keys(dayData).forEach(k => {
+          if (k.startsWith('days.')) {
+            const date = k.slice('days.'.length);
+            const n = typeof dayData[k] === 'number' ? dayData[k] : 0;
+            if (n > 0) { flatDays[date] = n; dayMigrated += n; }
+            dayDelete[k] = firebase.firestore.FieldValue.delete();
+          }
+        });
+        if (Object.keys(flatDays).length > 0) {
+          // Merge flat-keyed counts into existing nested days map (additive,
+          // in case some new visits already wrote to the correct shape).
+          const existingDays = (dayData.days && typeof dayData.days === 'object') ? dayData.days : {};
+          const merged = { ...existingDays };
+          Object.keys(flatDays).forEach(date => {
+            merged[date] = (merged[date] || 0) + flatDays[date];
+          });
+          await dayRef.set({ days: merged, ...dayDelete }, { merge: true });
+          summary.push(`Daily: recovered ${dayMigrated} visits across ${Object.keys(flatDays).length} days`);
+        } else {
+          summary.push('Daily: nothing to migrate');
+        }
+
+        // ---- visitsByCountry: flat "countries.XX" → nested countries: { XX: N } ----
+        const ctyRef = db.collection('_meta').doc('visitsByCountry');
+        const ctySnap = await ctyRef.get();
+        const ctyData = ctySnap.exists ? (ctySnap.data() || {}) : {};
+        const flatCountries = {};
+        const ctyDelete = {};
+        let ctyMigrated = 0;
+        Object.keys(ctyData).forEach(k => {
+          if (k.startsWith('countries.')) {
+            const cc = k.slice('countries.'.length);
+            const n = typeof ctyData[k] === 'number' ? ctyData[k] : 0;
+            if (n > 0) { flatCountries[cc] = n; ctyMigrated += n; }
+            ctyDelete[k] = firebase.firestore.FieldValue.delete();
+          }
+        });
+        if (Object.keys(flatCountries).length > 0) {
+          const existingCtys = (ctyData.countries && typeof ctyData.countries === 'object') ? ctyData.countries : {};
+          const merged = { ...existingCtys };
+          Object.keys(flatCountries).forEach(cc => {
+            merged[cc] = (merged[cc] || 0) + flatCountries[cc];
+          });
+          await ctyRef.set({ countries: merged, ...ctyDelete }, { merge: true });
+          summary.push(`Country: recovered ${ctyMigrated} visits across ${Object.keys(flatCountries).length} countries`);
+        } else {
+          summary.push('Country: nothing to migrate');
+        }
+
+        show('✓ ' + summary.join(' · ') + '. Charts will refresh momentarily.', false);
+      } catch (err) {
+        console.error('migrateLegacyVisits failed:', err);
+        show('✗ Migration failed: ' + err.message, true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('#migrateLegacyVisitsBtn')) migrateLegacyVisits();
+    });
 
     // ===== Admin Users =====
     // Loads every user who has ever signed in. Strategy:
