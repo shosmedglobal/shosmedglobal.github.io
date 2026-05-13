@@ -52,13 +52,38 @@ exports.createCheckoutSession = functions
       );
     }
 
-    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+    // Diagnostic: confirm a secret is loaded and report its prefix (never log
+    // the full value). Helps spot empty/wrong-mode/wrong-type keys.
+    const secret = process.env.STRIPE_SECRET_KEY || '';
+    const keyPrefix = secret.slice(0, 8);
+    const keyLen = secret.length;
+    console.log(`createCheckoutSession invoked: tier=${tier}, uid=${context.auth.uid}, keyPrefix=${keyPrefix}, keyLen=${keyLen}`);
+    if (!secret || !secret.startsWith('sk_')) {
+      console.error('STRIPE_SECRET_KEY is missing or malformed');
+      throw new functions.https.HttpsError(
+        'failed-precondition',
+        'Stripe secret key is not configured correctly on the server.'
+      );
+    }
 
-    const prices = await stripe.prices.list({
-      lookup_keys: [tier],
-      active: true,
-      limit: 1,
-    });
+    const stripe = Stripe(secret);
+
+    let prices;
+    try {
+      prices = await stripe.prices.list({
+        lookup_keys: [tier],
+        active: true,
+        limit: 1,
+      });
+    } catch (err) {
+      console.error('Stripe prices.list failed:', err.type, err.code, err.message);
+      throw new functions.https.HttpsError(
+        'internal',
+        `Stripe API error during price lookup: ${err.message}`
+      );
+    }
+
+    console.log(`Found ${prices.data.length} prices for lookup_key "${tier}"`);
     if (!prices.data.length) {
       throw new functions.https.HttpsError(
         'failed-precondition',
@@ -71,21 +96,31 @@ exports.createCheckoutSession = functions
       ? requestedOrigin
       : 'https://shosmed.com';
 
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      payment_method_types: ['card'],
-      line_items: [{ price: prices.data[0].id, quantity: 1 }],
-      customer_email: context.auth.token.email,
-      client_reference_id: context.auth.uid,
-      metadata: {
-        firebase_uid: context.auth.uid,
-        tier,
-      },
-      success_url: `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/dashboard.html?cancelled=1`,
-      allow_promotion_codes: true,
-    });
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create({
+        mode: 'payment',
+        payment_method_types: ['card'],
+        line_items: [{ price: prices.data[0].id, quantity: 1 }],
+        customer_email: context.auth.token.email,
+        client_reference_id: context.auth.uid,
+        metadata: {
+          firebase_uid: context.auth.uid,
+          tier,
+        },
+        success_url: `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/dashboard.html?cancelled=1`,
+        allow_promotion_codes: true,
+      });
+    } catch (err) {
+      console.error('Stripe checkout.sessions.create failed:', err.type, err.code, err.message);
+      throw new functions.https.HttpsError(
+        'internal',
+        `Stripe API error creating checkout session: ${err.message}`
+      );
+    }
 
+    console.log(`Created checkout session ${session.id} for uid=${context.auth.uid}, tier=${tier}`);
     return { url: session.url };
   });
 
@@ -161,3 +196,96 @@ exports.stripeWebhook = functions
       return res.status(500).send('database update failed');
     }
   });
+
+
+// ============================================================================
+// Admin user listing
+// ----------------------------------------------------------------------------
+// Returns every Firebase Auth user (which is the source of truth for "who
+// signed in") joined with their Firestore profile if one exists. Required
+// because the admin dashboard's previous direct Firestore query
+//   db.collection('users').orderBy('createdAt', 'desc').get()
+// silently excluded:
+//   (a) Auth users with no Firestore doc (mid-flow signup failures, console-
+//       added accounts, accounts created before the Firestore-write step
+//       existed),
+//   (b) Firestore docs missing the `createdAt` field (Firestore .orderBy
+//       excludes documents that don't have the order-by field).
+//
+// Auth-listed users now appear in the admin even before they re-sign-in to
+// trigger the backfill in auth.js.
+// ============================================================================
+const ADMIN_EMAILS = new Set([
+  'eli@shosmed.com',
+  'contact@shosmed.com',
+  'privacy@shosmed.com',
+  'elizolotov@gmail.com',
+]);
+
+exports.listAllUsers = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+  }
+  const callerEmail = (context.auth.token && context.auth.token.email) || '';
+  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
+    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
+  }
+
+  try {
+    // Pull every Auth user (paginated, max 1000 per page).
+    const allAuthUsers = [];
+    let pageToken = undefined;
+    do {
+      const result = await admin.auth().listUsers(1000, pageToken);
+      allAuthUsers.push(...result.users);
+      pageToken = result.pageToken;
+    } while (pageToken);
+
+    // Batch-fetch matching Firestore profiles (10 per `in` query — Firestore limit).
+    const profilesByUid = {};
+    for (let i = 0; i < allAuthUsers.length; i += 10) {
+      const slice = allAuthUsers.slice(i, i + 10).map((u) => u.uid);
+      const snap = await db
+        .collection('users')
+        .where(admin.firestore.FieldPath.documentId(), 'in', slice)
+        .get();
+      snap.forEach((doc) => {
+        profilesByUid[doc.id] = doc.data();
+      });
+    }
+
+    // Merge: Auth is the source of truth for existence + email + signup time;
+    // Firestore enriches with name, path, payments, etc.
+    const users = allAuthUsers.map((u) => {
+      const profile = profilesByUid[u.uid] || {};
+      // Prefer explicit profile fields; fall back to Auth metadata.
+      const createdAtMs =
+        (profile.createdAt && profile.createdAt.toMillis && profile.createdAt.toMillis()) ||
+        (u.metadata && u.metadata.creationTime && Date.parse(u.metadata.creationTime)) ||
+        null;
+      const lastSignInMs =
+        (u.metadata && u.metadata.lastSignInTime && Date.parse(u.metadata.lastSignInTime)) ||
+        null;
+      return {
+        id: u.uid,
+        email: profile.email || u.email || '',
+        name: profile.name || u.displayName || '',
+        path: profile.path || null,
+        payments: profile.payments || {},
+        createdAtMs,                              // ms since epoch (always set)
+        lastSignInMs,                             // for debug / future use
+        emailVerified: !!u.emailVerified,
+        disabled: !!u.disabled,
+        providers: (u.providerData || []).map((p) => p.providerId),
+        hasFirestoreDoc: !!profilesByUid[u.uid],  // surfaces orphans in the UI
+      };
+    });
+
+    // Newest first by default — UI may re-sort.
+    users.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
+    return { users };
+  } catch (err) {
+    console.error('listAllUsers failed:', err);
+    throw new functions.https.HttpsError('internal', err.message);
+  }
+});

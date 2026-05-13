@@ -4098,25 +4098,79 @@
     }
 
     // ===== Admin Users =====
+    // Loads every user who has ever signed in. Strategy:
+    //   1. PRIMARY: Cloud Function `listAllUsers` (server-side admin SDK).
+    //      Returns Firebase Auth users merged with their Firestore profile.
+    //      Sees Auth-only users that have no Firestore doc yet.
+    //   2. FALLBACK: direct Firestore query, but WITHOUT `.orderBy('createdAt')`
+    //      because that silently drops docs missing the field. We fetch
+    //      everything and sort client-side.
+    //
+    // Either path produces user objects normalized to:
+    //   { id, name, email, path, createdAtMs, payments, hasFirestoreDoc? }
     async function loadAdminUsers() {
       const loadingEl = document.getElementById('adminUsersLoading');
       const tableEl = document.getElementById('adminUsersTable');
 
+      let users = null;
+      let source = null;
+
+      // ---------- 1) PRIMARY: callable Cloud Function ----------
       try {
-        const usersSnap = await db.collection('users').orderBy('createdAt', 'desc').get();
-        allAdminUsers = [];
-        usersSnap.forEach(doc => allAdminUsers.push({ id: doc.id, ...doc.data() }));
-        filteredAdminUsers = [...allAdminUsers];
-
-        loadingEl.style.display = 'none';
-        tableEl.style.display = 'table';
-
-        renderAdminUsersPage();
-        setupAdminSearch();
+        // Use the same factory the rest of the app uses (default region)
+        // so deployment-region quirks don't bite us with a CORS error.
+        const fn = firebase.functions().httpsCallable('listAllUsers');
+        const result = await fn({});
+        if (result && result.data && Array.isArray(result.data.users)) {
+          users = result.data.users;
+          source = 'cloud-function';
+        }
       } catch (err) {
-        console.error('Failed to load admin users:', err);
-        loadingEl.textContent = 'Failed to load users: ' + err.message;
+        // Function not deployed yet OR caller isn't admin per the function's
+        // own check. Either way fall through to the Firestore-only path —
+        // it'll still show every user that has a Firestore doc.
+        console.warn('listAllUsers function unavailable, falling back to direct Firestore query:', err && err.message);
       }
+
+      // ---------- 2) FALLBACK: direct Firestore (no orderBy) ----------
+      if (!users) {
+        try {
+          // No .orderBy — sort client-side so docs missing `createdAt` still appear.
+          const snap = await db.collection('users').get();
+          users = [];
+          snap.forEach(doc => {
+            const d = doc.data() || {};
+            let createdAtMs = null;
+            if (d.createdAt && d.createdAt.toMillis) createdAtMs = d.createdAt.toMillis();
+            else if (d.createdAt) createdAtMs = new Date(d.createdAt).getTime();
+            users.push({
+              id: doc.id,
+              email: d.email || '',
+              name: d.name || '',
+              path: d.path || null,
+              payments: d.payments || {},
+              createdAtMs: createdAtMs,
+              hasFirestoreDoc: true,
+            });
+          });
+          users.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
+          source = 'firestore-only';
+        } catch (err) {
+          console.error('Failed to load admin users:', err);
+          loadingEl.textContent = 'Failed to load users: ' + err.message;
+          return;
+        }
+      }
+
+      console.log('[admin] loaded', users.length, 'users via', source);
+      allAdminUsers = users;
+      filteredAdminUsers = [...allAdminUsers];
+
+      loadingEl.style.display = 'none';
+      tableEl.style.display = 'table';
+
+      renderAdminUsersPage();
+      setupAdminSearch();
     }
 
     function renderAdminUsersPage() {
@@ -4141,10 +4195,14 @@
             ? '<span class="admin-badge admin-badge-student">Student</span>'
             : '<span class="admin-badge" style="background:#f3f4f6;color:#6b7280;">-</span>';
 
+        // Resolve signup date from either the Cloud-Function `createdAtMs`
+        // (number) or the legacy Firestore `createdAt` (Timestamp / string).
         let signupDate = '-';
-        if (u.createdAt) {
-          const d = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
-          signupDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const ms = u.createdAtMs
+          ?? (u.createdAt && u.createdAt.toMillis ? u.createdAt.toMillis()
+              : u.createdAt ? new Date(u.createdAt).getTime() : null);
+        if (ms) {
+          signupDate = new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
         const isPaid = u.payments?.['exam-bank'] === 'paid';
@@ -4320,9 +4378,16 @@
       info += `<strong>Name:</strong> ${escapeHtml(user.name || '-')}<br>`;
       info += `<strong>Email:</strong> ${escapeHtml(user.email || '-')}<br>`;
       info += `<strong>Path:</strong> ${user.path || '-'}<br>`;
-      if (user.createdAt) {
-        const d = user.createdAt.toDate ? user.createdAt.toDate() : new Date(user.createdAt);
-        info += `<strong>Created:</strong> ${d.toLocaleString()}<br>`;
+      // Created date — handle both the new Cloud-Function `createdAtMs`
+      // (number) and the legacy Firestore `createdAt` (Timestamp / string).
+      const userMs = user.createdAtMs
+        ?? (user.createdAt && user.createdAt.toMillis ? user.createdAt.toMillis()
+            : user.createdAt ? new Date(user.createdAt).getTime() : null);
+      if (userMs) {
+        info += `<strong>Created:</strong> ${new Date(userMs).toLocaleString()}<br>`;
+      }
+      if (user.hasFirestoreDoc === false) {
+        info += `<strong style="color:#dc2626;">⚠ Auth-only user (no Firestore profile yet — will self-heal on next sign-in)</strong><br>`;
       }
       if (user.payments) {
         info += `<strong>Payments:</strong> ${JSON.stringify(user.payments)}<br>`;
@@ -4856,9 +4921,13 @@
         return '"' + s + '"';
       }
 
+      // Accept Firestore Timestamp, ms-since-epoch number, Date, ISO string.
       function formatDate(d) {
-        if (!d) return '';
-        const date = d.toDate ? d.toDate() : new Date(d);
+        if (!d && d !== 0) return '';
+        let date;
+        if (typeof d === 'number') date = new Date(d);
+        else if (d.toDate) date = d.toDate();
+        else date = new Date(d);
         if (isNaN(date.getTime())) return '';
         return date.toISOString().split('T')[0];   // YYYY-MM-DD
       }
@@ -4874,7 +4943,7 @@
         u.path || u.userType || '',
         u.country || '',
         u.phone || '',
-        formatDate(u.createdAt),
+        formatDate(u.createdAtMs ?? u.createdAt),
         (u.payments && u.payments['exam-bank']) ? (u.payments['exam-bank-plan'] || 'paid') : 'free',
         formatDate(u.lastActiveAt || u.lastLoginAt),
         u.id || ''

@@ -56,10 +56,52 @@ async function signUpWithEmail(name, email, password, path) {
 async function signInWithEmail(email, password) {
   try {
     const result = await auth.signInWithEmailAndPassword(email, password);
+    // Self-heal: ensure a Firestore profile exists. Older accounts (or
+    // accounts whose signup Firestore write failed mid-flow) may exist in
+    // Firebase Auth but have no users/{uid} doc, which makes them invisible
+    // to the admin dashboard. Backfill a minimal doc on every sign-in so
+    // they show up next time the admin loads the list.
+    try { await ensureUserProfile(result.user); } catch (_) { /* non-fatal */ }
     return { success: true, user: result.user };
   } catch (error) {
     return { success: false, error: friendlyError(error) };
   }
+}
+
+// Ensure users/{uid} exists with at least the bare-minimum fields.
+// Uses `merge:true` so we never overwrite existing data — only fills in gaps
+// (createdAt, email, etc.) for accounts that lack them.
+async function ensureUserProfile(user) {
+  if (!user || !user.uid) return;
+  const ref = db.collection('users').doc(user.uid);
+  const snap = await ref.get();
+  if (snap.exists) {
+    // Doc exists. Only backfill `createdAt` if it's somehow missing —
+    // otherwise leave the doc untouched (don't clobber path, payments, etc.).
+    const data = snap.data() || {};
+    const patch = {};
+    if (!data.createdAt) {
+      patch.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+    }
+    if (!data.email && user.email) patch.email = user.email;
+    if (!data.name && user.displayName) patch.name = user.displayName;
+    if (Object.keys(patch).length > 0) {
+      await ref.set(patch, { merge: true });
+    }
+    return;
+  }
+  // Doc missing entirely — create a minimal record so the admin can see them.
+  // `path` is intentionally null (we don't know if they're applicant/student
+  // without asking) — the admin can categorize later.
+  await ref.set({
+    name: (user.displayName || '').substring(0, 200),
+    email: user.email || '',
+    path: null,
+    agreedToTerms: true,   // they accepted ToS at original signup
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    payments: {},
+    backfilled: true,      // diagnostic flag so we know this was healed
+  }, { merge: true });
 }
 
 // Sign in/up with Google
@@ -86,6 +128,10 @@ async function signInWithGoogle(path, fromSignup) {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         payments: {}
       });
+    } else {
+      // Existing Google user — self-heal any missing fields (createdAt,
+      // email, name) so the admin dashboard sees them. Non-fatal on error.
+      try { await ensureUserProfile(result.user); } catch (_) {}
     }
     return { success: true, user: result.user, isNewUser: !doc.exists };
   } catch (error) {
