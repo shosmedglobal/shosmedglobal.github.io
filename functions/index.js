@@ -220,7 +220,9 @@ exports.stripeWebhook = functions
 // If the API key isn't set, sendEmail() returns gracefully (logs + skips)
 // so signups never break because of email infrastructure issues.
 // ============================================================================
-const EMAIL_FROM = 'SHOS Med <welcome@send.shosmed.com>';
+// Verified domain in Resend is shosmed.com (root). The `send` subdomain
+// only hosts the bounce/SPF infrastructure — sending happens from the root.
+const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
 const EMAIL_REPLY_TO = 'contact@shosmed.com';
 
 async function sendEmail({ to, subject, html, text }) {
