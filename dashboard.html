@@ -4193,11 +4193,15 @@
           }
           const isAdminUser = ADMIN_EMAILS_SET.has((u.email || '').toLowerCase());
           // Paying users + revenue: exclude admin/test accounts so the
-          // numbers reflect ACTUAL customer payments only.
+          // numbers reflect ACTUAL customer payments only — i.e. paid
+          // through Stripe, not admin-granted trials.
           if (!isAdminUser && u.payments && u.payments['exam-bank'] === 'paid') {
-            paidUsers++;
             const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
-            totalRevenue += PLAN_PRICES[plan] || 49;
+            // Skip admin-granted (free trial) — not real revenue.
+            if (plan !== 'admin-granted') {
+              paidUsers++;
+              totalRevenue += PLAN_PRICES[plan] || 49;
+            }
           }
           // qbankActive proxy: any user who has interacted with QBank.
           // (Subcollection check is too read-heavy for a live stream — we
