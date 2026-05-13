@@ -4124,21 +4124,20 @@
     let adminCurrentPage = 1;
     const ADMIN_PAGE_SIZE = 20;
 
-    // Price map for revenue calculation (must match Store pricing)
+    // Price map for revenue calculation.
+    // Source of truth for what's actually sellable lives in
+    // functions/index.js → TIERS. The dashboard mirrors those prices
+    // here so revenue can be summed client-side. Keep these two in sync
+    // whenever pricing changes.
+    //
+    // Real Stripe-active tiers (matched against u.payments['exam-bank-plan']):
+    //   full-access      — QBank, $99, 6 months (180 days)
+    //   strategy-session — 1-on-1 USMLE/match call, $99, no expiry
+    //   admin-granted    — free trial granted by admin, $0 (excluded from revenue)
     const PLAN_PRICES = {
-      'full-access': 99,
-      'personal-session': 99,
-      'qbank-1mo': 49,
-      'self-study': 99,
-      'full-guidance': 249,
-      'qbank-extend-1mo': 49,
-      'qbank-reset': 99,
-      'admin-granted': 0,
-      'mentorship': 199,
-      'match-ready': 499,
-      'board-review-single': 99,
-      'board-review-5pack': 449,
-      'board-review-10pack': 799
+      'full-access':      99,   // QBank — 6 months
+      'strategy-session': 99,   // 1-on-1 call
+      'admin-granted':    0,    // free trial, not real revenue
     };
 
     async function loadAdminPanel() {
@@ -4196,11 +4195,11 @@
           // numbers reflect ACTUAL customer payments only — i.e. paid
           // through Stripe, not admin-granted trials.
           if (!isAdminUser && u.payments && u.payments['exam-bank'] === 'paid') {
-            const plan = u.payments['exam-bank-plan'] || 'qbank-1mo';
+            const plan = u.payments['exam-bank-plan'] || 'full-access';
             // Skip admin-granted (free trial) — not real revenue.
             if (plan !== 'admin-granted') {
               paidUsers++;
-              totalRevenue += PLAN_PRICES[plan] || 49;
+              totalRevenue += PLAN_PRICES[plan] || 99;
             }
           }
           // qbankActive proxy: any user who has interacted with QBank.

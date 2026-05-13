@@ -8,21 +8,29 @@ const db = admin.firestore();
 
 // Tier → Firestore field mapping. Keep in sync with the existing
 // users/{uid}.payments schema used by qbank.js and dashboard admin tools.
+//
+// QBank "full-access" tier:
+//   - Price: $99 (set in Stripe Dashboard, not here)
+//   - Duration: 180 days = 6 months from purchase date.
+//     The Stripe webhook below computes expiry as
+//     `Date.now() + 180 * 24 * 60 * 60 * 1000` and writes
+//     payments['exam-bank-expires-at'] to Firestore. qbank.html
+//     auto-locks access when that timestamp passes.
 const TIERS = {
   'full-access': {
     field: 'exam-bank',
     plan: 'full-access',
-    expiryDays: 180,
+    expiryDays: 180,             // ← 6 months exactly
   },
   'strategy-session': {
     field: 'strategy-session',
     plan: null,
-    expiryDays: null,
+    expiryDays: null,            // one-time purchase, no expiry
   },
   'apply-lf3': {
     field: 'apply-lf3',
     plan: null,
-    expiryDays: null,
+    expiryDays: null,            // contact-modal CTA, not actually Stripe-billed
   },
 };
 
