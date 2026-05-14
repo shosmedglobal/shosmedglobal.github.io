@@ -3117,7 +3117,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260514-visitfix2"></script>
+  <script src="auth.js?v=20260514-visitfix3"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -4259,12 +4259,15 @@
     async function loadAdminPanel() {
       if (adminDataLoaded) return;
       adminDataLoaded = true;
-      await Promise.all([
-        loadAdminStats(),
-        loadAdminUsers(),
-        loadRecentActivity(),
-        loadQuestionReports()
-      ]);
+      // loadAdminUsers must finish BEFORE loadQuestionReports starts so the
+      // reports panel can look up reporter emails from the merged user cache
+      // (allAdminUsers includes Auth emails, not just Firestore profile
+      // emails — older accounts often lack the latter). The other two
+      // panels are independent and run in parallel.
+      const usersPromise = loadAdminUsers();
+      const otherPromise = Promise.all([loadAdminStats(), loadRecentActivity()]);
+      await usersPromise;
+      await Promise.all([loadQuestionReports(), otherPromise]);
     }
 
     // ===== Admin Stats (real-time via onSnapshot) =====
@@ -4981,22 +4984,56 @@
 
     // ===== Question Reports =====
     // Resolves a reporter's email even for legacy reports that were written
-    // before reporterEmail was being snapshotted at submit time. Tries
-    // `reporterEmail` / `email` on the doc first, then falls back to
-    // looking up the user's `userId` in /users/{uid}. Results cached
-    // per render so we don't fan-out to Firestore for repeat reporters.
+    // before reporterEmail was being snapshotted at submit time.
+    //
+    // Lookup order (first hit wins):
+    //   1. report.reporterEmail  — set by qbank.js at submit time (new path)
+    //   2. report.email          — legacy field name some old reports used
+    //   3. allAdminUsers cache   — merged Auth+Firestore data from the
+    //                              listAllUsers Cloud Function. This is the
+    //                              most reliable source because it falls
+    //                              back to Auth's email when the Firestore
+    //                              profile doc lacks one (a common state
+    //                              for accounts created via Google sign-in
+    //                              before we started backfilling).
+    //   4. Direct Firestore /users/{uid} read — last resort, only useful
+    //                              if the user signed up AFTER allAdminUsers
+    //                              was loaded (rare).
+    //
+    // Logs the lookup outcome at info level so the admin can diagnose
+    // "(no email on file)" by opening DevTools and seeing which path
+    // failed.
     async function resolveReporterEmail(report, userEmailCache) {
       if (report.reporterEmail) return report.reporterEmail;
       if (report.email)         return report.email;
       const uid = report.userId;
-      if (!uid) return '';
+      if (!uid) {
+        console.warn('[reports] report has no userId, cannot resolve email');
+        return '';
+      }
       if (userEmailCache.has(uid)) return userEmailCache.get(uid);
+
+      // Primary fallback: the listAllUsers cache. Has Auth email merged in.
+      if (typeof allAdminUsers !== 'undefined' && Array.isArray(allAdminUsers)) {
+        const hit = allAdminUsers.find(u => u.id === uid);
+        if (hit && hit.email) {
+          userEmailCache.set(uid, hit.email);
+          return hit.email;
+        }
+      }
+
+      // Last-resort fallback: read /users/{uid} directly.
       try {
         const userDoc = await db.collection('users').doc(uid).get();
         const email = (userDoc.exists && userDoc.data().email) || '';
+        if (!email) {
+          console.warn('[reports] /users/' + uid + ' exists?', userDoc.exists,
+                       'but has no email field. Report cannot show contact.');
+        }
         userEmailCache.set(uid, email);
         return email;
-      } catch (_) {
+      } catch (err) {
+        console.error('[reports] /users/' + uid + ' lookup failed:', err && err.code, err && err.message);
         userEmailCache.set(uid, '');
         return '';
       }
