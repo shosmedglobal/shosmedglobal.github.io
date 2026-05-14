@@ -142,11 +142,6 @@
       <!-- ===== QUIZ SCREEN ===== -->
       <div id="quizScreen" class="qbank-quiz" style="display:none;">
 
-        <!-- Legacy horizontal Question Navigator (kept hidden — replaced by sidebar) -->
-        <div class="question-navigator" id="questionNavigator" style="display:none;">
-          <!-- Question number buttons injected by JS (legacy, unused) -->
-        </div>
-
         <!-- ===== Two-column quiz layout (sidebar + main) ===== -->
         <div class="quiz-layout">
 
@@ -903,17 +898,14 @@
       if (isTestMode) {
         document.getElementById('quizScoreDisplay').style.display = 'none';
         document.getElementById('testTimer').style.display = 'flex';
-        document.getElementById('questionNavigator').style.display = 'flex';
         testTimeRemaining = quizQuestions.length * 2 * 60;
         testStartTime = Date.now();
         testElapsedSeconds = 0;
         if (typeof updateTimerDisplay === 'function') updateTimerDisplay();
         if (typeof startTimer === 'function') startTimer();
-        if (typeof renderQuestionNavigator === 'function') renderQuestionNavigator();
       } else {
         document.getElementById('quizScoreDisplay').style.display = '';
         document.getElementById('testTimer').style.display = 'none';
-        document.getElementById('questionNavigator').style.display = 'none';
         if (typeof stopTimer === 'function') stopTimer();
       }
 

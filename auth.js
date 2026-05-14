@@ -226,6 +226,27 @@ function initAuthNavbar() {
   });
 }
 
+// Fill `<span data-academic-year>` placeholders with the current Czech
+// academic year (Sep -> Aug). Rolls over each September 1 automatically
+// so tuition / disclaimer footnotes don't go stale every year.
+(function () {
+  function currentAcademicYear() {
+    const now = new Date();
+    // Academic year for CU runs Sep -> Aug. Before Sep, we're still in
+    // the previous AY; after, we're in the new one.
+    const y = now.getFullYear();
+    return now.getMonth() < 8 /* 0-indexed: 8 = September */
+      ? (y - 1) + '/' + y
+      : y + '/' + (y + 1);
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const text = currentAcademicYear();
+    document.querySelectorAll('[data-academic-year]').forEach(function (el) {
+      el.textContent = text;
+    });
+  });
+})();
+
 // Initialize on page load.
 // Visit tracking is split into two paths based on auth state:
 //   - Signed-in user  →  recordUserVisit(user)  → users/{uid}.visitCount++

@@ -163,9 +163,8 @@
           const payments = (snap.data() && snap.data().payments) || {};
           const hasQbank = payments['exam-bank'] === 'paid';
           const hasStrategy = payments['strategy-session'] === 'paid';
-          const hasLf3 = payments['apply-lf3'] === 'paid';
 
-          if (hasQbank || hasStrategy || hasLf3) {
+          if (hasQbank || hasStrategy) {
             heading.textContent = 'You\'re all set';
             if (hasQbank) {
               lead.textContent = 'Your QBank access is unlocked. Start whenever you\'re ready.';
@@ -174,10 +173,6 @@
                 '<a href="dashboard.html" class="btn btn-secondary">Go to Dashboard</a>';
             } else if (hasStrategy) {
               lead.textContent = 'Your Strategy Session is booked. We\'ll email you within 24 hours to schedule.';
-              ctaContainer.innerHTML =
-                '<a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>';
-            } else if (hasLf3) {
-              lead.textContent = 'Your LF3 application support is active. We\'ll be in touch within 24 hours to begin.';
               ctaContainer.innerHTML =
                 '<a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>';
             }

@@ -11,15 +11,33 @@ const CONTACT_CATEGORIES = [
   { value: 'general', label: 'General Question' }
 ];
 
+// Keep keys + names + prices in sync with the booking dropdown in
+// dashboard.html (#contactService <option>s). When the dropdown changes,
+// this table changes — both sides MUST agree or submitBookingRequest()
+// rejects with "Invalid service type."
 const SERVICE_TYPES = {
-  'free-consultation':    { name: 'Free 15-Min Consultation',    price: 0,    duration: '15 min',      category: 'consultation' },
-  'full-application':     { name: 'Full Application Package',    price: 249,  duration: 'Full cycle',  category: 'applicant' },
-  'research-foundations': { name: 'Research Strategy Package',   price: 149,  duration: '6 months',    category: 'student' },
-  'mentorship':           { name: 'Mentorship Session',          price: 199,  duration: '1 session',   category: 'student' },
-  'match-ready':          { name: 'Match-Ready Package',         price: 499,  duration: 'Full cycle',  category: 'student' },
-  'board-review-single':  { name: 'Board Review - Single',      price: 99,   duration: '1 session',   category: 'student' },
-  'board-review-5pack':   { name: 'Board Review - 5 Pack',      price: 449,  duration: '5 sessions',  category: 'student' },
-  'board-review-10pack':  { name: 'Board Review - 10 Pack',     price: 799,  duration: '10 sessions', category: 'student' }
+  // ----- Free -----
+  'free-consultation':         { name: 'Free Strategy Call',                price: 0,   duration: '15-30 min',   category: 'consultation' },
+
+  // ----- Med School Application -----
+  'full-qbank':                { name: 'Full QBank Access',                 price: 99,  duration: '6 months',    category: 'applicant' },
+  'apply-lf3-service':         { name: 'Apply for LF3',                     price: 199, duration: 'Full cycle',  category: 'applicant' },
+  'mock-exam-interview':       { name: 'Mock Exam + Interview',             price: 199, duration: '2 sessions',  category: 'applicant' },
+  'life-in-prague':            { name: 'Life in Prague',                    price: 99,  duration: '1 session',   category: 'applicant' },
+  'applicant-mentor':          { name: '1-on-1 Mentor Session (applicant)', price: 99,  duration: '1 session',   category: 'applicant' },
+
+  // ----- Residency Application -----
+  'strategy-session':          { name: 'Strategy Session',                  price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-lor':            { name: 'Letter of Rec Coaching',            price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-program-list':   { name: 'Program List Guidance',             price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-research':       { name: 'Research Strategy',                 price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-cv':             { name: 'CV & Personal Statement Review',    price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-mock-interview': { name: 'Mock Interview Session',            price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-eras':           { name: 'ERAS Application Strategy',         price: 199, duration: 'Full cycle',  category: 'student' },
+  'usmle-step-review':         { name: 'USMLE Step Review',                 price: 99,  duration: '1 session',   category: 'student' },
+
+  // ----- Other -----
+  'entrance-exam-registration':{ name: 'Entrance Exam Registration (US & Canada)', price: 0, duration: '-', category: 'other' },
 };
 
 const MESSAGE_STATUSES = ['new', 'read', 'replied', 'resolved'];
@@ -31,46 +49,62 @@ function getIntakeQuestions(serviceType) {
     { id: 'sessionGoal', label: "What's your main goal for this session?", type: 'textarea' }
   ];
 
+  // Shared intake question groups — keeps the per-service tables short
+  // and ensures consistent wording for similar services.
+  const APPLICANT_INTAKE = [
+    { id: 'faculty', label: 'Which Charles University faculty (or other) are you applying to?', type: 'text' },
+    { id: 'applyDate', label: 'When do you plan to apply?', type: 'text' },
+    { id: 'examStarted', label: 'Have you started studying for the entrance exam?', type: 'select', options: ['Not yet', 'Just started', 'Been studying for a few months', 'Feel prepared'] },
+  ];
+  const RESIDENCY_INTAKE = [
+    { id: 'specialty', label: 'What specialty are you interested in?', type: 'text' },
+    { id: 'usmleSteps', label: 'Have you taken any USMLE steps?', type: 'select', options: ['Not yet', 'Step 1 only', 'Step 1 + Step 2 CK', 'All steps completed'] },
+    { id: 'yearOfStudy', label: 'What year of med school are you in?', type: 'text' },
+    { id: 'matchYear', label: 'Which Match cycle are you targeting?', type: 'text' },
+  ];
+
   const typeQuestions = {
+    // ----- Free -----
     'free-consultation': [
       { id: 'helpWith', label: 'What are you looking for help with?', type: 'textarea' },
-      { id: 'currentStage', label: 'Current stage', type: 'select', options: ['Pre-med', 'Med student (preclinical)', 'Med student (clinical)', 'Graduate', 'Other'] }
+      { id: 'currentStage', label: 'Current stage', type: 'select', options: ['Pre-med', 'Med student (preclinical)', 'Med student (clinical)', 'Graduate', 'Other'] },
     ],
-    'full-application': [
-      { id: 'faculty', label: 'Which faculty are you applying to?', type: 'text' },
-      { id: 'applyDate', label: 'When do you plan to apply?', type: 'text' },
-      { id: 'examStarted', label: 'Have you started studying for the entrance exam?', type: 'select', options: ['Not yet', 'Just started', 'Been studying for a few months', 'Feel prepared'] }
+
+    // ----- Med School Application -----
+    'full-qbank': [
+      { id: 'examDate', label: 'When do you plan to sit the entrance exam?', type: 'text' },
     ],
-    'mentorship': [
-      { id: 'specialty', label: 'What specialty are you interested in?', type: 'text' },
-      { id: 'usmleSteps', label: 'Have you taken any USMLE steps?', type: 'select', options: ['Not yet', 'Step 1 only', 'Step 1 + Step 2 CK', 'All steps completed'] },
-      { id: 'yearOfStudy', label: 'What year are you in?', type: 'text' }
+    'apply-lf3-service':   APPLICANT_INTAKE,
+    'mock-exam-interview': APPLICANT_INTAKE,
+    'life-in-prague': [
+      { id: 'startDate', label: 'When do you plan to arrive in Prague?', type: 'text' },
+      { id: 'topConcerns', label: 'What are your top concerns about life in Prague?', type: 'textarea' },
     ],
-    'match-ready': [
-      { id: 'specialty', label: 'What specialty are you interested in?', type: 'text' },
-      { id: 'usmleSteps', label: 'Have you taken any USMLE steps?', type: 'select', options: ['Not yet', 'Step 1 only', 'Step 1 + Step 2 CK', 'All steps completed'] },
-      { id: 'yearOfStudy', label: 'What year are you in?', type: 'text' },
-      { id: 'matchYear', label: 'Which Match cycle are you targeting?', type: 'text' }
-    ],
-    'board-review-single': [
-      { id: 'whichStep', label: 'Which Step are you preparing for?', type: 'select', options: ['Step 1', 'Step 2 CK', 'Step 3', 'COMLEX'] },
-      { id: 'examDate', label: 'When is your exam date?', type: 'text' },
-      { id: 'focusSubjects', label: 'What subjects do you want to focus on?', type: 'textarea' }
-    ],
-    'board-review-5pack': [
-      { id: 'whichStep', label: 'Which Step are you preparing for?', type: 'select', options: ['Step 1', 'Step 2 CK', 'Step 3', 'COMLEX'] },
-      { id: 'examDate', label: 'When is your exam date?', type: 'text' },
-      { id: 'focusSubjects', label: 'What subjects do you want to focus on?', type: 'textarea' }
-    ],
-    'board-review-10pack': [
-      { id: 'whichStep', label: 'Which Step are you preparing for?', type: 'select', options: ['Step 1', 'Step 2 CK', 'Step 3', 'COMLEX'] },
-      { id: 'examDate', label: 'When is your exam date?', type: 'text' },
-      { id: 'focusSubjects', label: 'What subjects do you want to focus on?', type: 'textarea' }
-    ],
-    'research-foundations': [
+    'applicant-mentor':    APPLICANT_INTAKE,
+
+    // ----- Residency Application -----
+    'strategy-session':          RESIDENCY_INTAKE,
+    'mentorship-lor':            RESIDENCY_INTAKE,
+    'mentorship-program-list':   RESIDENCY_INTAKE,
+    'mentorship-research': [
       { id: 'researchExperience', label: 'Do you have any prior research experience?', type: 'select', options: ['None', 'Some coursework', 'Participated in a project', 'Published'] },
-      { id: 'yearOfStudy', label: 'What year are you in?', type: 'text' }
-    ]
+      { id: 'yearOfStudy', label: 'What year of med school are you in?', type: 'text' },
+      { id: 'specialty', label: 'What specialty are you targeting?', type: 'text' },
+    ],
+    'mentorship-cv':             RESIDENCY_INTAKE,
+    'mentorship-mock-interview': RESIDENCY_INTAKE,
+    'mentorship-eras':           RESIDENCY_INTAKE,
+    'usmle-step-review': [
+      { id: 'whichStep', label: 'Which Step are you preparing for?', type: 'select', options: ['Step 1', 'Step 2 CK', 'Step 3'] },
+      { id: 'examDate', label: 'When is your exam date?', type: 'text' },
+      { id: 'focusSubjects', label: 'What subjects do you want to focus on?', type: 'textarea' },
+    ],
+
+    // ----- Other -----
+    'entrance-exam-registration': [
+      { id: 'examDate', label: 'When do you want to sit the exam?', type: 'text' },
+      { id: 'country', label: 'Country you\'re registering from (US / Canada / other)?', type: 'text' },
+    ],
   };
 
   return [...(typeQuestions[serviceType] || []), ...common];
@@ -343,21 +377,8 @@ function subscribeAllUsers(callback) {
   }
 }
 
-// Live forum-post count.
-function subscribeForumPostCount(callback) {
-  try {
-    return db.collection('forum_posts').onSnapshot(snap => {
-      callback(snap.size);
-    }, err => {
-      // forum_posts may not exist on smaller deployments; surface 0
-      console.error('subscribeForumPostCount error:', err);
-      callback(0);
-    });
-  } catch (error) {
-    console.error('subscribeForumPostCount setup error:', error);
-    return () => {};
-  }
-}
+// (subscribeForumPostCount removed — admin "Forum Posts" tile was dropped.
+// The public forum on community.html is unaffected and uses its own queries.)
 
 // Delete a message from the inbox. Used by the admin Inbox panel.
 async function deleteMessage(messageId) {

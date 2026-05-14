@@ -584,10 +584,8 @@ function startQuiz() {
   if (isTestMode) {
     document.getElementById('quizScoreDisplay').style.display = 'none';
     document.getElementById('testTimer').style.display = 'flex';
-    // Legacy horizontal navigator stays hidden — the new vertical sidebar
-    // (#quizSidebar) is rendered by renderQuestion() and is the source of
-    // truth for navigation.
-    document.getElementById('questionNavigator').style.display = 'none';
+    // Navigation source of truth is the vertical sidebar (#quizSidebar),
+    // rendered by renderQuestion() / renderQuizSidebar().
     testTimeRemaining = quizQuestions.length * 2 * 60; // 2 min per question
     testStartTime = Date.now();
     testElapsedSeconds = 0;
@@ -596,7 +594,6 @@ function startQuiz() {
   } else {
     document.getElementById('quizScoreDisplay').style.display = '';
     document.getElementById('testTimer').style.display = 'none';
-    document.getElementById('questionNavigator').style.display = 'none';
     stopTimer();
   }
 
@@ -646,10 +643,8 @@ function startChapterQuiz(pool, chapterTitle) {
 
   const scoreDisplay = document.getElementById('quizScoreDisplay');
   const timer        = document.getElementById('testTimer');
-  const navigator    = document.getElementById('questionNavigator');
   if (scoreDisplay) scoreDisplay.style.display = '';
   if (timer)        timer.style.display = 'none';
-  if (navigator)    navigator.style.display = 'none';
   if (typeof stopTimer === 'function') stopTimer();
 
   showScreen('quizScreen');
@@ -794,7 +789,7 @@ function renderQuestion() {
     document.getElementById('testNextBtn').style.display = isLast ? 'none' : 'inline-flex';
     document.getElementById('finishTestBtn').style.display = 'inline-flex';
     // Update navigator highlight
-    updateNavigatorHighlight();
+    renderQuizSidebar(); syncFlagButton();
   } else {
     // Review Mode: original behavior
     document.getElementById('testNextBtn').style.display = 'none';
@@ -821,7 +816,7 @@ function selectAnswer(index) {
     });
 
     // Update navigator
-    updateNavigatorHighlight();
+    renderQuizSidebar(); syncFlagButton();
 
     // Auto-save in-progress state
     saveInProgressTest();
@@ -1335,39 +1330,10 @@ function updateTimerDisplay() {
   }
 }
 
-// ===== Question Navigator =====
-function renderQuestionNavigator() {
-  const nav = document.getElementById('questionNavigator');
-  if (!nav) return;
-  nav.innerHTML = '';
-  quizQuestions.forEach((q, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'nav-dot';
-    btn.textContent = i + 1;
-    btn.dataset.index = i;
-    if (i === currentIndex) btn.classList.add('nav-dot-current');
-    if (answers[i] !== undefined) btn.classList.add('nav-dot-answered');
-    btn.addEventListener('click', () => {
-      currentIndex = i;
-      renderQuestion();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    nav.appendChild(btn);
-  });
-}
-
-function updateNavigatorHighlight() {
-  const nav = document.getElementById('questionNavigator');
-  if (!nav) return;
-  const dots = nav.querySelectorAll('.nav-dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('nav-dot-current', i === currentIndex);
-    dot.classList.toggle('nav-dot-answered', answers[i] !== undefined);
-  });
-  // Keep the new vertical sidebar in sync too.
-  renderQuizSidebar();
-  syncFlagButton();
-}
+// (Legacy horizontal #questionNavigator + renderQuestionNavigator() +
+// updateNavigatorHighlight() removed. The vertical #quizSidebar is the
+// sole source of truth for in-quiz navigation; call renderQuizSidebar()
+// + syncFlagButton() directly.)
 
 // ===== UWorld-style left sidebar =====
 function renderQuizSidebar() {

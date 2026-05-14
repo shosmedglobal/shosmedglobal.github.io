@@ -27,11 +27,11 @@ const TIERS = {
     plan: null,
     expiryDays: null,            // one-time purchase, no expiry
   },
-  'apply-lf3': {
-    field: 'apply-lf3',
-    plan: null,
-    expiryDays: null,            // contact-modal CTA, not actually Stripe-billed
-  },
+  // Note: an 'apply-lf3' tier used to live here as a placeholder, but it
+  // was never wired to a real Stripe button — the "Apply for LF3" CTA on
+  // the site is a contact-form modal (data-contact-modal="apply-lf3"),
+  // not Stripe checkout. If/when that becomes a paid product, add the
+  // tier back here AND add a `data-tier="apply-lf3"` button.
 };
 
 const ALLOWED_ORIGINS = new Set([
