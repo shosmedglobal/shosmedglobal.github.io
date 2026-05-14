@@ -1762,6 +1762,10 @@ function showReview() {
     if (!btn) return;
     const reason = prompt('What is the issue? (e.g., incorrect answer, unclear question, wrong explanation)');
     if (!reason) return;
+    // Snapshot reporter identity at submit-time so admin can reply.
+    const authUser = (firebase.auth && firebase.auth().currentUser) || null;
+    const reporterEmail = authUser ? (authUser.email || '') : '';
+    const reporterName  = authUser ? (authUser.displayName || '') : '';
     try {
       await db.collection('questionReports').add({
         questionId: btn.dataset.qid,
@@ -1770,6 +1774,8 @@ function showReview() {
         reason: 'review_report',
         details: reason,
         userId: currentUserId,
+        reporterEmail: reporterEmail,
+        reporterName: reporterName,
         // `createdAt` is a server timestamp — used by the admin Reports
         // panel for chronological sorting. `reportedAt` (ISO string) is
         // retained for backward compatibility with old records.
@@ -2057,6 +2063,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const q = quizQuestions[currentIndex];
     const details = document.getElementById('reportDetails').value.trim();
+    // Snapshot the reporter's identity at submit-time so the admin can
+    // reply directly without joining against /users. Without these fields
+    // the admin panel showed "-" for the reporter and the only way to
+    // contact them was to look up the UID in Firestore by hand.
+    const authUser = (firebase.auth && firebase.auth().currentUser) || null;
+    const reporterEmail = authUser ? (authUser.email || '') : '';
+    const reporterName  = authUser ? (authUser.displayName || '') : '';
     try {
       await db.collection('questionReports').add({
         questionId: q.id,
@@ -2065,6 +2078,8 @@ document.addEventListener('DOMContentLoaded', () => {
         reason: reason.value,
         details: details,
         userId: currentUserId,
+        reporterEmail: reporterEmail,
+        reporterName: reporterName,
         // `createdAt` is a server timestamp — used by the admin Reports
         // panel for chronological sorting. `reportedAt` (ISO string) is
         // retained for backward compatibility with old records.

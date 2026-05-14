@@ -3117,7 +3117,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260514-visitfix"></script>
+  <script src="auth.js?v=20260514-visitfix2"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -4980,6 +4980,28 @@
     }
 
     // ===== Question Reports =====
+    // Resolves a reporter's email even for legacy reports that were written
+    // before reporterEmail was being snapshotted at submit time. Tries
+    // `reporterEmail` / `email` on the doc first, then falls back to
+    // looking up the user's `userId` in /users/{uid}. Results cached
+    // per render so we don't fan-out to Firestore for repeat reporters.
+    async function resolveReporterEmail(report, userEmailCache) {
+      if (report.reporterEmail) return report.reporterEmail;
+      if (report.email)         return report.email;
+      const uid = report.userId;
+      if (!uid) return '';
+      if (userEmailCache.has(uid)) return userEmailCache.get(uid);
+      try {
+        const userDoc = await db.collection('users').doc(uid).get();
+        const email = (userDoc.exists && userDoc.data().email) || '';
+        userEmailCache.set(uid, email);
+        return email;
+      } catch (_) {
+        userEmailCache.set(uid, '');
+        return '';
+      }
+    }
+
     async function loadQuestionReports() {
       const loadingEl = document.getElementById('adminReportsLoading');
       const listEl = document.getElementById('adminReportsList');
@@ -4996,30 +5018,54 @@
           return;
         }
 
-        let html = '';
+        // Build an array of unresolved reports first so we can resolve
+        // reporter emails in parallel — keeps the panel snappy even when
+        // legacy reports need a Firestore lookup per UID.
+        const unresolved = [];
         reportsSnap.forEach(doc => {
           const r = doc.data();
-          if (r.resolved) return; // Skip resolved reports
+          if (r.resolved) return;
+          unresolved.push({ id: doc.id, data: r });
+        });
+
+        if (unresolved.length === 0) {
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        const userEmailCache = new Map();
+        const resolved = await Promise.all(unresolved.map(async ({ id, data: r }) => {
           let dateStr = '';
           if (r.createdAt) {
             const d = r.createdAt.toDate ? r.createdAt.toDate() : new Date(r.createdAt);
             dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
           }
-          html += `<div class="admin-report-card" id="report-${doc.id}">
+          const reporterEmail = await resolveReporterEmail(r, userEmailCache);
+          const reporterName = r.reporterName || '';
+          // mailto subject pre-fills with the question ID so the admin's
+          // reply is automatically threaded by question.
+          const mailtoSubject = encodeURIComponent('Re: your question report (' + (r.questionId || 'QBank') + ')');
+          const emailHtml = reporterEmail
+            ? `<a href="mailto:${escapeHtml(reporterEmail)}?subject=${mailtoSubject}" style="color:#2563eb; text-decoration:none;">${escapeHtml(reporterEmail)}</a>`
+            : '<span style="color:#9ca3af;">(no email on file)</span>';
+          // The free-text message the reporter wrote — this is the part
+          // that was completely missing from the old display.
+          const detailsHtml = r.details
+            ? `<div style="margin-top:8px; padding:8px 10px; background:#f9fafb; border-left:3px solid #2dd4bf; border-radius:4px; font-size:0.9rem; color:#374151; white-space:pre-wrap;">${escapeHtml(r.details)}</div>`
+            : '';
+          return `<div class="admin-report-card" id="report-${id}">
             <div class="admin-report-info">
-              <strong>Question:</strong> ${escapeHtml(r.questionId || r.questionText?.substring(0, 80) || '-')}<br>
-              <strong>Reason:</strong> ${escapeHtml(r.reason || r.message || '-')}<br>
-              <div class="admin-report-meta">${escapeHtml(r.reporterEmail || r.email || '-')} &middot; ${dateStr}</div>
+              <strong>Question:</strong> ${escapeHtml(r.questionId || '-')}<br>
+              <strong>Reason:</strong> ${escapeHtml(r.reason || '-')}<br>
+              <strong>From:</strong> ${reporterName ? escapeHtml(reporterName) + ' &lt;' : ''}${emailHtml}${reporterName ? '&gt;' : ''}
+              ${detailsHtml}
+              <div class="admin-report-meta" style="margin-top:8px;">${dateStr}</div>
             </div>
-            <button class="admin-resolve-btn" onclick="resolveReport('${doc.id}')">Resolve</button>
+            <button class="admin-resolve-btn" onclick="resolveReport('${id}')">Resolve</button>
           </div>`;
-        });
+        }));
 
-        if (!html) {
-          emptyEl.style.display = 'block';
-        } else {
-          listEl.innerHTML = html;
-        }
+        listEl.innerHTML = resolved.join('');
       } catch (err) {
         console.error('Failed to load reports:', err);
         loadingEl.textContent = 'Failed to load reports: ' + err.message;

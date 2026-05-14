@@ -337,6 +337,22 @@ async function recordSiteVisit() {
 // This function is idempotent within a single browser session (per-tab
 // sessionStorage). Cross-session, cross-tab, and after-reload counts work
 // because sessionStorage is scoped to the tab's lifetime.
+// Clear any pre-v2 stale dedupe flags on script load. The v1 flag was set
+// BEFORE the write, so users who hit a transient failure ended up with a
+// permanent flag and no recorded visit — which is exactly the bug this
+// version fixes. Wiping the old key makes the fix retroactive.
+try {
+  if (typeof sessionStorage !== 'undefined') {
+    sessionStorage.removeItem('shos_user_visit_recorded');
+  }
+} catch (_) {}
+
+// SESSION_KEY is intentionally v2 — see comment above. Renaming the key
+// invalidates any flag set by the old buggy code. If you ever need to
+// fix this code again, BUMP THIS to v3, v4, etc. so the next deploy
+// auto-recovers users stuck with a stale flag.
+const SHOS_VISIT_SESSION_KEY = 'shos_user_visit_recorded_v2';
+
 window.__shosVisitPromise = null;
 async function recordUserVisit(user) {
   // Coalesce concurrent calls (e.g. multiple onAuthStateChanged listeners
@@ -347,7 +363,8 @@ async function recordUserVisit(user) {
     try {
       if (!user || !user.uid) return;
       if (typeof sessionStorage !== 'undefined' &&
-          sessionStorage.getItem('shos_user_visit_recorded') === '1') {
+          sessionStorage.getItem(SHOS_VISIT_SESSION_KEY) === '1') {
+        console.info('[visit] already recorded this session, skipping');
         return;
       }
       if (typeof db === 'undefined' || typeof firebase === 'undefined') {
@@ -359,7 +376,7 @@ async function recordUserVisit(user) {
         visitCount: firebase.firestore.FieldValue.increment(1),
         lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
       }, { merge: true });
-      try { sessionStorage.setItem('shos_user_visit_recorded', '1'); } catch (_) {}
+      try { sessionStorage.setItem(SHOS_VISIT_SESSION_KEY, '1'); } catch (_) {}
       console.info('[visit] user visit recorded for', user.email || user.uid);
     } catch (error) {
       // Surface real errors so we can diagnose silent failures. Errors here
