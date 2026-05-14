@@ -303,7 +303,7 @@ exports.onUserCreated = functions
 
       const result = await sendEmail({
         to: user.email,
-        subject: 'Welcome to SHOS Med — verify your email',
+        subject: 'Welcome to SHOS Med (please verify your email)',
         html: emails.welcomeEmailHtml({ name, path, verifyLink }),
         text: emails.welcomeEmailText({ name, path, verifyLink }),
       });
@@ -353,7 +353,7 @@ exports.resendVerification = functions
 
       const result = await sendEmail({
         to: authUser.email,
-        subject: 'Verify your email — SHOS Med',
+        subject: 'Verify your email | SHOS Med',
         html: emails.verificationEmailHtml({ name, verifyLink }),
         text: emails.verificationEmailText({ name, verifyLink }),
       });

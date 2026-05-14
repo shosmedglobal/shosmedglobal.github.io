@@ -96,8 +96,8 @@ function welcomeEmailHtml({ name, path, verifyLink }) {
     </td></tr>`).join('');
 
   const intro = isStudent
-    ? 'You signed up looking ahead to your US residency match — we built SHOS Med specifically for IMGs walking this exact path.'
-    : "You signed up to learn about Charles University and the European medical school path — exactly what we built SHOS Med for.";
+    ? "You signed up looking ahead to your US residency match. That's exactly the path we built SHOS Med for."
+    : "You signed up to learn about Charles University and the European medical school path. That's exactly the path we built SHOS Med for.";
 
   const body = `
     <h1 style="font-size:24px; line-height:1.3; margin:0 0 8px; color:${BRAND.navy}; font-weight:700;">Welcome to SHOS Med, ${escapeHtml(firstName)}.</h1>
@@ -109,7 +109,6 @@ function welcomeEmailHtml({ name, path, verifyLink }) {
         <p style="margin:0 0 4px; font-size:13px; font-weight:700; color:#92400E; text-transform:uppercase; letter-spacing:0.6px;">First, verify your email</p>
         <p style="margin:0 0 16px; font-size:14px; color:${BRAND.gray700}; line-height:1.55;">Click below to confirm this is really your address. Takes one tap.</p>
         <a href="${escapeHtml(verifyLink)}" style="display:inline-block; background:${BRAND.accent}; color:#FFFFFF; text-decoration:none; padding:12px 28px; border-radius:50px; font-weight:600; font-size:15px;">Verify my email</a>
-        <p style="margin:14px 0 0; font-size:12px; color:${BRAND.gray500};">Or paste this link into your browser:<br><span style="word-break:break-all; color:${BRAND.gray500};">${escapeHtml(verifyLink)}</span></p>
       </td></tr>
     </table>
 
@@ -118,12 +117,13 @@ function welcomeEmailHtml({ name, path, verifyLink }) {
       ${stepsHtml}
     </table>
 
-    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:24px 0 6px;">Questions? Just reply to this email — it goes straight to me.</p>
-    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:0;">&mdash; Eli, SHOS Med</p>`;
+    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:24px 0 6px;">Questions? Just reply to this email. It goes straight to me.</p>
+    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:0;">Cheers,<br>Eli</p>
+    <p style="font-size:13px; line-height:1.5; color:${BRAND.gray500}; margin:2px 0 0;">SHOS Med</p>`;
 
   return shell({
     title: 'Welcome to SHOS Med',
-    preheader: `Hi ${firstName}, welcome to SHOS Med — verify your email and we'll get you started.`,
+    preheader: `Hi ${firstName}, welcome to SHOS Med. Verify your email and let's get you started.`,
     bodyHtml: body,
   });
 }
@@ -154,12 +154,15 @@ FIRST, VERIFY YOUR EMAIL:
 ${verifyLink}
 
 WHAT TO DO NEXT:
-${steps.map(s => '• ' + s).join('\n')}
+${steps.map(s => '* ' + s).join('\n')}
 
-Questions? Just reply to this email — it goes straight to me.
+Questions? Just reply to this email. It goes straight to me.
 
-— Eli, SHOS Med
-shosmed.com · contact@shosmed.com`;
+Cheers,
+Eli
+SHOS Med
+
+shosmed.com  ·  contact@shosmed.com`;
 }
 
 // ---------- 2. Verification-only resend ----------
@@ -167,20 +170,17 @@ function verificationEmailHtml({ name, verifyLink }) {
   const firstName = (name || '').split(' ')[0] || 'there';
   const body = `
     <h1 style="font-size:22px; line-height:1.3; margin:0 0 8px; color:${BRAND.navy}; font-weight:700;">Verify your email</h1>
-    <p style="font-size:15px; line-height:1.65; color:${BRAND.gray700}; margin:0 0 22px;">Hi ${escapeHtml(firstName)} — click below to confirm this is really your address. The link is good for 24 hours.</p>
+    <p style="font-size:15px; line-height:1.65; color:${BRAND.gray700}; margin:0 0 22px;">Hi ${escapeHtml(firstName)}, click below to confirm this is really your address. The link is good for 24 hours.</p>
 
     <p style="margin:0 0 14px;">
       <a href="${escapeHtml(verifyLink)}" style="display:inline-block; background:${BRAND.accent}; color:#FFFFFF; text-decoration:none; padding:12px 28px; border-radius:50px; font-weight:600; font-size:15px;">Verify my email</a>
     </p>
 
-    <p style="margin:18px 0 6px; font-size:12px; color:${BRAND.gray500};">Or paste this link into your browser:</p>
-    <p style="margin:0; font-size:12px; color:${BRAND.gray500}; word-break:break-all;">${escapeHtml(verifyLink)}</p>
-
     <p style="font-size:13px; color:${BRAND.gray500}; line-height:1.6; margin:24px 0 0;">If you didn't try to sign up for SHOS Med, you can safely ignore this email.</p>`;
 
   return shell({
-    title: 'Verify your email — SHOS Med',
-    preheader: 'Click to confirm your email address — link is good for 24 hours.',
+    title: 'Verify your email | SHOS Med',
+    preheader: 'Click to confirm your email address. The link is good for 24 hours.',
     bodyHtml: body,
   });
 }
@@ -194,7 +194,7 @@ ${verifyLink}
 
 If you didn't try to sign up for SHOS Med, you can safely ignore this email.
 
-— SHOS Med
+SHOS Med
 shosmed.com`;
 }
 
