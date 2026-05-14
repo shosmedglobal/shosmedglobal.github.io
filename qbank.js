@@ -1770,7 +1770,12 @@ function showReview() {
         reason: 'review_report',
         details: reason,
         userId: currentUserId,
-        reportedAt: new Date().toISOString()
+        // `createdAt` is a server timestamp — used by the admin Reports
+        // panel for chronological sorting. `reportedAt` (ISO string) is
+        // retained for backward compatibility with old records.
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        reportedAt: new Date().toISOString(),
+        resolved: false,
       });
       btn.textContent = 'Report submitted!';
       btn.disabled = true;
@@ -2060,7 +2065,12 @@ document.addEventListener('DOMContentLoaded', () => {
         reason: reason.value,
         details: details,
         userId: currentUserId,
-        reportedAt: new Date().toISOString()
+        // `createdAt` is a server timestamp — used by the admin Reports
+        // panel for chronological sorting. `reportedAt` (ISO string) is
+        // retained for backward compatibility with old records.
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        reportedAt: new Date().toISOString(),
+        resolved: false,
       });
       document.getElementById('reportForm').style.display = 'none';
       document.getElementById('reportBtnWrap').innerHTML =
@@ -2068,7 +2078,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('reportBtnWrap').style.display = 'flex';
     } catch (err) {
       console.error('Failed to submit report:', err);
-      alert('Failed to submit report. Please try again.');
+      // Surface a more useful error message — silent "try again" was
+      // hiding the actual permission-denied root cause for weeks.
+      const reason = (err && err.code) ? `(${err.code})` : '';
+      alert('Failed to submit report ' + reason + '. Please try again, or email contact@shosmed.com if this keeps happening.');
     }
   });
 });

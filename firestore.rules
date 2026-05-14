@@ -90,10 +90,45 @@ service cloud.firestore {
     }
 
     // ====== Question Reports (QBank) ======
-    match /question_reports/{id} {
+    // NOTE: the collection name is `questionReports` (camelCase) — that's
+    // what qbank.js + dashboard.html both write/read. The previous rule
+    // used `question_reports` (snake_case) which silently denied every
+    // submission for the duration of that mismatch. Keep this name
+    // EXACTLY as written; if you rename in code, rename here too.
+    match /questionReports/{id} {
       allow read:           if isAdmin();
       allow create:         if isSignedIn();
       allow update, delete: if isAdmin();
+    }
+
+    // ====== Community Forum: post votes ======
+    // Composite doc ID is `{userId}_{postId}` so each user has at most
+    // one vote per post. The user owns their own vote doc; admin reads
+    // all for moderation / sanity checks.
+    match /post_votes/{voteId} {
+      allow read:   if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow delete: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    // ====== Community Forum: answer votes ======
+    // Same shape as post_votes, scoped to answer documents under forum_posts.
+    match /answer_votes/{voteId} {
+      allow read:   if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow delete: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    // ====== Application Inquiries (LF3 apply-page form) ======
+    // Public submit (no login required to express interest in applying);
+    // admin-only read so the inbox isn't world-readable.
+    match /application_inquiries/{id} {
+      allow read:   if isAdmin();
+      allow create: if true;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
     }
 
     // ====== Site stats (public increment, admin read) ======
