@@ -4635,6 +4635,7 @@
           <td style="white-space:nowrap;">
             <button class="admin-action-btn ${toggleClass}" onclick="toggleQBankAccess('${u.id}', ${isPaid})">${toggleLabel}</button>
             <button class="admin-action-btn admin-btn-details" onclick="toggleUserDetails('${u.id}', this)">Details</button>
+            <button class="admin-action-btn admin-btn-revoke" style="background:#dc2626; color:#fff; border-color:#dc2626;" onclick="deleteUserAccount('${u.id}', ${JSON.stringify(name).replace(/"/g, '&quot;')}, ${JSON.stringify(email).replace(/"/g, '&quot;')})">Delete</button>
           </td>
         </tr>`;
       });
@@ -4704,6 +4705,45 @@
     }
 
     // ===== Toggle QBank Access =====
+    // Delete a user — calls the deleteUser Cloud Function (admin SDK
+    // deletes both Firebase Auth + Firestore profile + qbank sub-collections).
+    // Two-step confirm because this is irreversible.
+    async function deleteUserAccount(uid, name, email) {
+      const label = (name && name !== '(no name)') ? name : (email || uid);
+      // Hard confirm: must literally type 'delete' to proceed.
+      const typed = prompt(
+        `⚠ Delete user "${label}" PERMANENTLY?\n\n` +
+        `This removes:\n` +
+        `  • Their Firebase Auth account (they lose all access)\n` +
+        `  • Their Firestore profile\n` +
+        `  • Their QBank progress, tests, and history\n\n` +
+        `This CANNOT be undone. Type "delete" (lowercase) to confirm:`
+      );
+      if (typed !== 'delete') return;
+
+      try {
+        const fn = firebase.functions().httpsCallable('deleteUser');
+        const result = await fn({ uid });
+        const r = result?.data || {};
+        const parts = [];
+        if (r.authDeleted) parts.push('Auth removed');
+        if (r.firestoreDocDeleted) parts.push('profile removed');
+        if (r.subcolsDeleted > 0) parts.push(`${r.subcolsDeleted} QBank docs removed`);
+        alert(`✓ User deleted${parts.length ? ': ' + parts.join(', ') : ''}.`);
+
+        // Remove from local cache + re-render so the row disappears immediately.
+        if (typeof allAdminUsers !== 'undefined') {
+          allAdminUsers = allAdminUsers.filter(u => u.id !== uid);
+          filteredAdminUsers = filteredAdminUsers.filter(u => u.id !== uid);
+          if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+        }
+      } catch (err) {
+        console.error('deleteUser failed:', err);
+        const msg = err?.message || String(err);
+        alert('✗ Could not delete user: ' + msg);
+      }
+    }
+
     async function toggleQBankAccess(uid, currentlyPaid) {
       const action = currentlyPaid ? 'revoke' : 'grant';
       if (!confirm(`Are you sure you want to ${action} QBank access for this user?`)) return;

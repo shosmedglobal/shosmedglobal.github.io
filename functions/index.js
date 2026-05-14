@@ -393,6 +393,98 @@ const ADMIN_EMAILS = new Set([
   'elizolotov@gmail.com',
 ]);
 
+// ----------------------------------------------------------------------------
+// deleteUser: admin-only. Deletes a user from both Firebase Auth AND their
+// Firestore profile (plus all sub-collections) so admins can clean up
+// orphans / test accounts / mistaken signups from the dashboard.
+//
+// Safety guards:
+//   - Caller must be admin (email in ADMIN_EMAILS).
+//   - Cannot delete another admin account (would be an irreversible foot-gun).
+//   - Cannot delete self (separate flow — sign-out + Firebase console).
+// ----------------------------------------------------------------------------
+exports.deleteUser = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+  }
+  const callerEmail = (context.auth.token && context.auth.token.email) || '';
+  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
+    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
+  }
+  const targetUid = data && data.uid;
+  if (!targetUid || typeof targetUid !== 'string') {
+    throw new functions.https.HttpsError('invalid-argument', 'Missing target uid.');
+  }
+  if (targetUid === context.auth.uid) {
+    throw new functions.https.HttpsError('failed-precondition', 'Cannot delete your own account from here.');
+  }
+
+  // Verify target isn't another admin (we never want one admin to be
+  // able to delete another via a UI mis-click).
+  try {
+    const target = await admin.auth().getUser(targetUid);
+    const targetEmail = (target.email || '').toLowerCase();
+    if (targetEmail && ADMIN_EMAILS.has(targetEmail)) {
+      throw new functions.https.HttpsError('failed-precondition', 'Cannot delete an admin account.');
+    }
+  } catch (err) {
+    // If the user doesn't exist in Auth, we still try the Firestore cleanup
+    // below — but we don't fail loudly because cleanup-of-the-missing is OK.
+    if (err.code !== 'auth/user-not-found' && !(err instanceof functions.https.HttpsError)) {
+      console.warn('[deleteUser] getUser check skipped:', err.message);
+    } else if (err instanceof functions.https.HttpsError) {
+      throw err;
+    }
+  }
+
+  const summary = { authDeleted: false, firestoreDocDeleted: false, subcolsDeleted: 0 };
+
+  // 1) Delete Auth user (no-op-tolerant: ignore "not found")
+  try {
+    await admin.auth().deleteUser(targetUid);
+    summary.authDeleted = true;
+  } catch (err) {
+    if (err.code !== 'auth/user-not-found') {
+      console.error('[deleteUser] auth.deleteUser failed:', err);
+      throw new functions.https.HttpsError('internal', err.message);
+    }
+  }
+
+  // 2) Delete known sub-collections under users/{uid}/...
+  //    We don't need a recursive-delete tool here — the well-known
+  //    sub-collections are qbankData and qbankTests.
+  const userRef = db.collection('users').doc(targetUid);
+  for (const sub of ['qbankData', 'qbankTests']) {
+    try {
+      const snap = await userRef.collection(sub).get();
+      if (!snap.empty) {
+        const batch = db.batch();
+        snap.docs.forEach((d) => batch.delete(d.ref));
+        await batch.commit();
+        summary.subcolsDeleted += snap.size;
+      }
+    } catch (err) {
+      console.warn('[deleteUser] sub-collection delete failed for', sub, err.message);
+    }
+  }
+
+  // 3) Delete the user doc itself
+  try {
+    const doc = await userRef.get();
+    if (doc.exists) {
+      await userRef.delete();
+      summary.firestoreDocDeleted = true;
+    }
+  } catch (err) {
+    console.error('[deleteUser] firestore doc delete failed:', err);
+    // Non-fatal: Auth was already deleted, user can't log in regardless.
+  }
+
+  console.log('[deleteUser]', targetUid, summary);
+  return { success: true, ...summary };
+});
+
+
 exports.listAllUsers = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
