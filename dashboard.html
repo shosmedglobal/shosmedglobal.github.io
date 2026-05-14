@@ -149,16 +149,26 @@
 
             <!-- QBank Progress Bar -->
             <div class="dash-card" style="margin-bottom:20px; padding:20px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
                 <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:0;">QBank Progress</h3>
-                <span id="overviewProgressText" style="font-size:0.85rem; font-weight:600; color:var(--accent);">0 / 1,020</span>
+                <span id="overviewProgressText" style="font-size:0.85rem; font-weight:600; color:var(--accent);">0 / 0</span>
               </div>
               <div style="background:var(--gray-200); border-radius:8px; height:12px; overflow:hidden;">
                 <div id="overviewProgressBar" style="background:linear-gradient(90deg, var(--accent), #e8a44c); height:100%; border-radius:8px; width:0%; transition:width 0.6s ease;"></div>
               </div>
-              <div style="display:flex; justify-content:space-between; margin-top:6px;">
-                <span style="font-size:0.75rem; color:var(--gray-400);">Answered</span>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:wrap; gap:8px;">
+                <span id="qbankScopeLabel" style="font-size:0.75rem; color:var(--gray-500);">Bio + Chem (LF3 syllabus)</span>
                 <span id="overviewProgressPct" style="font-size:0.75rem; font-weight:600; color:var(--gray-500);">0%</span>
+              </div>
+              <!-- Physics inclusion toggle. Default state follows the user's
+                   path (applicants study for LF3 = bio+chem only; students
+                   may want physics for USMLE prep / general review). User
+                   preference (`qbankIncludePhysics` on users/{uid}) overrides. -->
+              <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--gray-200); display:flex; align-items:center; gap:10px; font-size:0.82rem; color:var(--gray-600);">
+                <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" id="includePhysicsToggle" style="width:16px; height:16px; cursor:pointer; accent-color:var(--accent);">
+                  <span>Include Physics (bonus, not on LF3 entrance exam)</span>
+                </label>
               </div>
             </div>
 
@@ -3559,28 +3569,29 @@
           .collection('qbankData').doc('history').get();
         const tests = snapshot.exists ? (snapshot.data().tests || []) : [];
 
-        // Questions left + questions per day (runs even with 0 tests)
+        // ===== Total QBank size — single source of truth =====
+        // Both the progress bar and the "Questions Left" stat read from
+        // the same numbers. The total is the sum of the loaded question
+        // pools, scoped by the user's "Include Physics" preference.
+        //
+        // We cache the raw counts on window so the toggle handler can
+        // recompute without re-fetching.
         try {
-          const qRes = await fetch('questions.json?v=20260423a');
-          const qBank = await qRes.json();
-          let totalInBank = 0;
-          Object.values(qBank).forEach(arr => { totalInBank += arr.length; });
-          const answeredIds = new Set();
-          tests.forEach(t => {
-            if (t.questionIds) t.questionIds.forEach(id => answeredIds.add(id));
-          });
-          const questionsLeft = Math.max(0, totalInBank - answeredIds.size);
-          document.getElementById('statQuestionsLeft').textContent = questionsLeft;
-          const daysLeft = window._examDaysLeft || 0;
-          if (daysLeft > 0 && questionsLeft > 0) {
-            document.getElementById('statQuestionsPerDay').textContent = Math.ceil(questionsLeft / daysLeft);
-          } else if (questionsLeft === 0) {
-            document.getElementById('statQuestionsPerDay').textContent = '0';
-          } else {
-            document.getElementById('statQuestionsPerDay').textContent = '-';
+          if (!window._qbankCounts) {
+            const [qRes, pRes] = await Promise.all([
+              fetch('questions.json?v=20260423a').then(r => r.json()),
+              fetch('questions-physics.json?v=20260423a').then(r => r.json()).catch(() => ({ physics: [] })),
+            ]);
+            window._qbankCounts = {
+              biology:   (qRes.biology   || []).length,
+              chemistry: (qRes.chemistry || []).length,
+              physics:   (pRes.physics   || []).length,
+            };
           }
+          window._lastTests = tests;   // stash so the toggle handler can re-render without re-fetching
+          await renderQbankTotals(tests);
         } catch (e) {
-          console.log('Could not load question bank for stats', e);
+          console.warn('Could not compute QBank totals:', e);
         }
 
         if (tests.length === 0) return;
@@ -3599,24 +3610,8 @@
         document.getElementById('statBestScore').textContent = bestScore + '%';
         document.getElementById('statBestScore').style.color = bestScore >= 70 ? '#10b981' : bestScore >= 50 ? '#f59e0b' : '#ef4444';
 
-        // QBank Progress Bar - fetch from qbankData subcollection
-        const totalQBank = 1020;
-        try {
-          const qbankDoc = await db.collection('users').doc(auth.currentUser.uid)
-            .collection('qbankData').doc('progress').get();
-          const qbankData = qbankDoc.exists ? qbankDoc.data() : {};
-          const completed = qbankData.completedQuestions || {};
-          const uniqueAnswered = Object.keys(completed).length;
-          const progressPct = Math.min(Math.round((uniqueAnswered / totalQBank) * 100), 100);
-          const progBar = document.getElementById('overviewProgressBar');
-          const progText = document.getElementById('overviewProgressText');
-          const progPct = document.getElementById('overviewProgressPct');
-          const questionsLeft = document.getElementById('statQuestionsLeft');
-          if (progBar) progBar.style.width = progressPct + '%';
-          if (progText) progText.textContent = uniqueAnswered.toLocaleString() + ' / ' + totalQBank.toLocaleString();
-          if (progPct) progPct.textContent = progressPct + '%';
-          if (questionsLeft) questionsLeft.textContent = (totalQBank - uniqueAnswered).toLocaleString();
-        } catch (e) { console.warn('Could not load QBank progress:', e); }
+        // (Progress bar + Questions-Left are now both rendered by
+        // renderQbankTotals() above — see definition below.)
 
         // Subject breakdown
         const subjectStats = {};
@@ -3689,6 +3684,115 @@
         console.error('Failed to load overview stats:', err);
       }
     }
+
+    // ============================================================
+    // QBank Progress + Questions Left renderer
+    // ------------------------------------------------------------
+    // Single source of truth for ALL "how many questions" UI on the
+    // Overview tab. Reads:
+    //   - window._qbankCounts   { biology, chemistry, physics }   (cached)
+    //   - users/{uid}.qbankIncludePhysics (boolean, user preference)
+    //   - users/{uid}.path (default = 'applicant' → bio+chem only)
+    //   - users/{uid}/qbankData/progress.completedQuestions (answered set)
+    // Updates:
+    //   #overviewProgressText, #overviewProgressBar, #overviewProgressPct,
+    //   #qbankScopeLabel, #statQuestionsLeft, #statQuestionsPerDay
+    //   plus #includePhysicsToggle (checkbox state)
+    // ============================================================
+    async function renderQbankTotals(tests) {
+      if (!window._qbankCounts || !auth.currentUser) return;
+      const counts = window._qbankCounts;
+      const uid = auth.currentUser.uid;
+
+      // Resolve preference: explicit pref wins, else default by path.
+      let profile = {};
+      try {
+        const psnap = await db.collection('users').doc(uid).get();
+        if (psnap.exists) profile = psnap.data();
+      } catch (_) {}
+      const explicit = typeof profile.qbankIncludePhysics === 'boolean'
+        ? profile.qbankIncludePhysics
+        : null;
+      const includePhysics = (explicit !== null)
+        ? explicit
+        : (profile.path === 'student');   // applicants default to bio+chem (LF3 syllabus)
+
+      // Update toggle UI to match resolved preference.
+      const toggle = document.getElementById('includePhysicsToggle');
+      if (toggle && toggle.checked !== includePhysics) {
+        toggle.checked = includePhysics;
+      }
+
+      // Total pool size for the user's scope.
+      const total = counts.biology + counts.chemistry
+                  + (includePhysics ? counts.physics : 0);
+
+      // Update the scope label so it's self-documenting.
+      const label = document.getElementById('qbankScopeLabel');
+      if (label) {
+        label.textContent = includePhysics
+          ? 'Bio + Chem + Physics · ' + total.toLocaleString() + ' questions'
+          : 'Bio + Chem (LF3 syllabus) · ' + total.toLocaleString() + ' questions';
+      }
+
+      // Canonical "answered" source: the qbankData/progress doc.
+      // Falls back to the union of test questionIds if the doc is empty
+      // (older accounts before per-question tracking).
+      let uniqueAnswered = 0;
+      try {
+        const qbankDoc = await db.collection('users').doc(uid)
+          .collection('qbankData').doc('progress').get();
+        const completed = qbankDoc.exists ? (qbankDoc.data().completedQuestions || {}) : {};
+        uniqueAnswered = Object.keys(completed).length;
+      } catch (_) {}
+      if (uniqueAnswered === 0 && Array.isArray(tests)) {
+        const ids = new Set();
+        tests.forEach(t => { (t.questionIds || []).forEach(id => ids.add(id)); });
+        uniqueAnswered = ids.size;
+      }
+
+      const left = Math.max(0, total - uniqueAnswered);
+      const pct  = total > 0 ? Math.min(100, Math.round((uniqueAnswered / total) * 100)) : 0;
+
+      const elProgText = document.getElementById('overviewProgressText');
+      const elProgBar  = document.getElementById('overviewProgressBar');
+      const elProgPct  = document.getElementById('overviewProgressPct');
+      const elLeft     = document.getElementById('statQuestionsLeft');
+      const elPerDay   = document.getElementById('statQuestionsPerDay');
+      if (elProgText) elProgText.textContent = uniqueAnswered.toLocaleString() + ' / ' + total.toLocaleString();
+      if (elProgBar)  elProgBar.style.width  = pct + '%';
+      if (elProgPct)  elProgPct.textContent  = pct + '%';
+      if (elLeft)     elLeft.textContent     = left.toLocaleString();
+
+      // Questions/day pacing — based on exam countdown if set.
+      const daysLeft = window._examDaysLeft || 0;
+      if (elPerDay) {
+        if (daysLeft > 0 && left > 0)       elPerDay.textContent = Math.ceil(left / daysLeft);
+        else if (left === 0)                elPerDay.textContent = '0';
+        else                                elPerDay.textContent = '-';
+      }
+    }
+
+    // Wire the Include-Physics toggle once (idempotent: re-binding is OK
+    // because of the dataset.bound guard). Persists the preference to
+    // users/{uid} and re-renders the totals.
+    (function bindIncludePhysicsToggle() {
+      document.addEventListener('change', async function (e) {
+        const t = e.target.closest('#includePhysicsToggle');
+        if (!t || !auth.currentUser) return;
+        const desired = !!t.checked;
+        // Optimistic UI: re-render with the new value immediately so
+        // numbers update before the network round-trip completes.
+        try {
+          await db.collection('users').doc(auth.currentUser.uid)
+            .set({ qbankIncludePhysics: desired }, { merge: true });
+        } catch (err) {
+          console.error('Failed to save qbankIncludePhysics:', err);
+        }
+        // Re-render (pass last-known tests if available, else empty array)
+        await renderQbankTotals(window._lastTests || []);
+      });
+    })();
 
     function updateCountdown(dateStr) {
       const parts = dateStr.split('-');
