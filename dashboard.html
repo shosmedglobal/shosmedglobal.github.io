@@ -1411,7 +1411,18 @@
             <div class="admin-stat-card">
               <div class="admin-stat-value" id="adminStatVisits">-</div>
               <div class="admin-stat-label">Total Site Visits</div>
-              <div class="admin-stat-sub" style="font-size:0.72rem; color:#94a3b8; margin-top:4px;">Anonymous visitors only</div>
+              <div class="admin-stat-sub">Anonymous only</div>
+            </div>
+          </div>
+
+          <!-- Question Reports — promoted to top of admin dashboard so
+               new user-submitted issues are immediately visible. -->
+          <div class="admin-section">
+            <h3 class="admin-section-title">Question Reports</h3>
+            <div id="adminReportsWrap">
+              <div class="admin-loading" id="adminReportsLoading">Loading reports...</div>
+              <div id="adminReportsList"></div>
+              <div id="adminReportsEmpty" class="admin-empty-msg" style="display:none;">No pending reports.</div>
             </div>
           </div>
 
@@ -1502,16 +1513,6 @@
                   <div class="admin-loading">Loading...</div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- Question Reports -->
-          <div class="admin-section">
-            <h3 class="admin-section-title">Question Reports</h3>
-            <div id="adminReportsWrap">
-              <div class="admin-loading" id="adminReportsLoading">Loading reports...</div>
-              <div id="adminReportsList"></div>
-              <div id="adminReportsEmpty" class="admin-empty-msg" style="display:none;">No pending reports.</div>
             </div>
           </div>
 
@@ -1728,33 +1729,44 @@
     .sidebar-admin-link { color: #cf5b2e !important; }
     .sidebar-admin-link:hover, .sidebar-admin-link.active { background: rgba(207,91,46,0.12) !important; color: #cf5b2e !important; }
 
-    /* Admin stats grid */
+    /* Admin stats grid — single horizontal row of compact tiles
+       on wide screens; degrades gracefully on narrower viewports. */
     .admin-stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
     }
-    @media (max-width: 900px) { .admin-stats-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .admin-stats-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1400px) { .admin-stats-grid { grid-template-columns: repeat(6, 1fr); gap: 10px; } }
+    @media (max-width: 1200px) { .admin-stats-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 720px)  { .admin-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px)  { .admin-stats-grid { grid-template-columns: 1fr; } }
 
     .admin-stat-card {
       background: #fff;
       border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 24px 20px;
+      border-radius: 10px;
+      padding: 14px 12px;
       text-align: center;
+      min-width: 0;            /* allow shrinking inside the 1fr track */
     }
     .admin-stat-value {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy, #1B2137);
       line-height: 1.2;
     }
     .admin-stat-label {
-      font-size: 0.82rem;
+      font-size: 0.72rem;
       color: #6b7280;
-      margin-top: 4px;
+      margin-top: 3px;
+      line-height: 1.25;
+    }
+    .admin-stat-sub {
+      font-size: 0.65rem;
+      color: #94a3b8;
+      margin-top: 3px;
+      line-height: 1.2;
     }
 
     /* Admin sections */
