@@ -321,22 +321,59 @@ async function recordSiteVisit() {
 
 // Per-user visit counter. Bumps users/{uid}.visitCount once per browser
 // session (sessionStorage-deduped). Surfaces in the admin "User Management"
-// table so the admin can see who's actively returning. Silent failures —
-// never block the page on analytics writes.
+// table so the admin can see who's actively returning.
+//
+// Important sequencing details (learned the hard way):
+//   1. The sessionStorage dedupe flag is set AFTER a successful write, not
+//      before. The previous version set it first — so if the write threw
+//      (permissions race, offline, IndexedDB hiccup), the session was
+//      permanently locked out and the counter silently stayed at 0.
+//      Symptom: admin sees "0 visits" for users who clearly logged in.
+//   2. We log success/failure to console at info level (not warn) so the
+//      admin can verify the pipeline is firing by opening DevTools — this
+//      is the only externally observable signal that it ran.
+//   3. We never throw — analytics must not break the page.
+//
+// This function is idempotent within a single browser session (per-tab
+// sessionStorage). Cross-session, cross-tab, and after-reload counts work
+// because sessionStorage is scoped to the tab's lifetime.
+window.__shosVisitPromise = null;
 async function recordUserVisit(user) {
-  try {
-    if (!user || !user.uid) return;
-    if (typeof sessionStorage === 'undefined') return;
-    if (sessionStorage.getItem('shos_user_visit_recorded') === '1') return;
-    sessionStorage.setItem('shos_user_visit_recorded', '1');
-    if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
-    await db.collection('users').doc(user.uid).set({
-      visitCount: firebase.firestore.FieldValue.increment(1),
-      lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
-    }, { merge: true });
-  } catch (error) {
-    console.warn('recordUserVisit blocked:', error.message);
-  }
+  // Coalesce concurrent calls (e.g. multiple onAuthStateChanged listeners
+  // racing) into a single in-flight write. Without this, defense-in-depth
+  // triggers from auth.js + dashboard.html could double-count one session.
+  if (window.__shosVisitPromise) return window.__shosVisitPromise;
+  window.__shosVisitPromise = (async () => {
+    try {
+      if (!user || !user.uid) return;
+      if (typeof sessionStorage !== 'undefined' &&
+          sessionStorage.getItem('shos_user_visit_recorded') === '1') {
+        return;
+      }
+      if (typeof db === 'undefined' || typeof firebase === 'undefined') {
+        console.warn('[visit] firebase/db not ready, skipping user visit');
+        return;
+      }
+      // Write FIRST. Only set the dedupe flag if the write actually lands.
+      await db.collection('users').doc(user.uid).set({
+        visitCount: firebase.firestore.FieldValue.increment(1),
+        lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
+      }, { merge: true });
+      try { sessionStorage.setItem('shos_user_visit_recorded', '1'); } catch (_) {}
+      console.info('[visit] user visit recorded for', user.email || user.uid);
+    } catch (error) {
+      // Surface real errors so we can diagnose silent failures. Errors here
+      // explain why the admin's "Visits" column shows 0 — most likely a
+      // Firestore-rules permission denial.
+      console.error('[visit] user visit FAILED:', error && error.code, error && error.message);
+    } finally {
+      // Release the lock so the next page load (which creates a new
+      // module-scope) can fire again. (This is mostly belt-and-suspenders;
+      // a new page navigation wipes window.__shosVisitPromise anyway.)
+      window.__shosVisitPromise = null;
+    }
+  })();
+  return window.__shosVisitPromise;
 }
 
 // Resolve the visitor's country code (ISO 3166-1 alpha-2, e.g. "US", "CZ").

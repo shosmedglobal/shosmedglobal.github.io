@@ -3117,7 +3117,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260511-charts"></script>
+  <script src="auth.js?v=20260514-visitfix"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -3211,6 +3211,15 @@
         return;
       }
       currentUser = user;
+
+      // Belt-and-suspenders visit-count trigger. auth.js already calls
+      // recordUserVisit() from its DOMContentLoaded handler, but registering
+      // a second trigger here means the increment fires reliably regardless
+      // of listener ordering or load timing. recordUserVisit() coalesces
+      // concurrent calls so double-firing is harmless.
+      if (typeof recordUserVisit === 'function') {
+        try { recordUserVisit(user); } catch (_) { /* never blocks dashboard */ }
+      }
 
       // ===== Admin: Clear QBank data via URL param =====
       const clearParam = new URLSearchParams(window.location.search).get('clearqbank');
