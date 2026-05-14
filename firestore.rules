@@ -33,7 +33,10 @@ service cloud.firestore {
     // ====== Users ======
     match /users/{uid} {
       allow read:   if isOwner(uid) || isAdmin();
-      allow create: if isOwner(uid);
+      // Admin can create user docs so the "Grant QBank access" flow works
+      // for Auth-only users (e.g. invited reviewers who haven't signed in
+      // yet) — their Firestore profile gets created on demand.
+      allow create: if isOwner(uid) || isAdmin();
       allow update: if isOwner(uid) || isAdmin();
       allow delete: if isAdmin();
 

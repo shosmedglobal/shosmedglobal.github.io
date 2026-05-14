@@ -4708,19 +4708,41 @@
       const action = currentlyPaid ? 'revoke' : 'grant';
       if (!confirm(`Are you sure you want to ${action} QBank access for this user?`)) return;
 
+      // Find the row in our local cache so we can attach name/email
+      // when the Firestore doc is being created for the first time
+      // (Auth-only users hitting Grant for the first time).
+      const cached = (typeof allAdminUsers !== 'undefined')
+        ? allAdminUsers.find(u => u.id === uid) : null;
+
       try {
         if (currentlyPaid) {
-          // Revoke: set exam-bank to null
-          await db.collection('users').doc(uid).update({
-            'payments.exam-bank': firebase.firestore.FieldValue.delete(),
-            'payments.exam-bank-plan': firebase.firestore.FieldValue.delete()
-          });
+          // Revoke: delete the two payment fields. set+merge with nested
+          // FieldValue.delete() works whether or not the doc exists.
+          await db.collection('users').doc(uid).set({
+            payments: {
+              'exam-bank': firebase.firestore.FieldValue.delete(),
+              'exam-bank-plan': firebase.firestore.FieldValue.delete()
+            }
+          }, { merge: true });
         } else {
-          // Grant: set exam-bank to paid (admin-granted)
-          await db.collection('users').doc(uid).update({
-            'payments.exam-bank': 'paid',
-            'payments.exam-bank-plan': 'admin-granted'
-          });
+          // Grant: paid + admin-granted plan tag.
+          // Use set+merge so this also CREATES the Firestore doc for
+          // Auth-only users (Jana etc.) — backfilling name/email from
+          // the cached Auth profile so the doc isn't empty.
+          const payload = {
+            payments: {
+              'exam-bank': 'paid',
+              'exam-bank-plan': 'admin-granted'
+            }
+          };
+          if (cached && !cached.hasFirestoreDoc) {
+            if (cached.name)  payload.name  = cached.name;
+            if (cached.email) payload.email = cached.email;
+            if (cached.path)  payload.path  = cached.path;
+            payload.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+            payload.backfilled = true;
+          }
+          await db.collection('users').doc(uid).set(payload, { merge: true });
         }
 
         // Update local data and re-render
