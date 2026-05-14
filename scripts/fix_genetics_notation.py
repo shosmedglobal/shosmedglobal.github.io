@@ -58,36 +58,44 @@ def fix_busted_geno_sub(text):
 
 
 # ===== Pattern B: genetics wildcard underscores (bio only) ===================
-# These are matched in a single sweep that recognizes "genotype tokens".
-# A genotype token is 1-4 letters where:
-#   - each letter is A-Z or a-z (case-sensitive matters in genetics)
-#   - terminated by an underscore (the wildcard)
-# Examples that should match: A_, aaB_, eeB_, E_, EE_, AaBb_ ...
-# Examples that should NOT match (these are math vars in chem/phys):
-#   rate_He   ← "rate" is >4 letters AND followed by [A-Z][a-z]+ which is
-#               a chemical-element-style subscript, not a wildcard
-#   DeltaT_b  ← starts with Greek name
-#   H_2       ← followed by a digit
-# We require the token to be ≤4 chars and NOT followed by a letter or digit
-# (i.e. the `_` is terminal in this token — a wildcard, not a subscript).
-GENO_TOKEN_RE = re.compile(
+# Two passes: COMPOUND first (e.g. `A_B_`, `E_B_`, `aaB_C_`), then SINGLE
+# (e.g. `A_`, `aaB_`, `eeB_`).
+#
+# Why two passes: the single-token regex requires the wildcard underscore
+# to be terminal (not followed by another alnum) so it doesn't false-positive
+# on chem patterns like `rate_He` / `DeltaT_b`. But that excludes legit
+# compound genotypes like `A_B_` where the first `A_` is followed by `B`.
+# So we match compounds first (when one wildcard is followed by another
+# wildcard-token), then mop up singles.
+COMPOUND_GENO_RE = re.compile(
     r'(?<![A-Za-z0-9_])'           # left boundary: not preceded by alnum/underscore
-    r'([A-Za-z]{1,4})_'            # the genotype letters + the wildcard underscore
-    r'(?![A-Za-z0-9])'             # right boundary: NOT followed by alnum (so `rate_He` is excluded)
+    r'([A-Za-z]{1,4})_'            # first genotype + wildcard
+    r'([A-Za-z]{1,4})_'            # second genotype + wildcard
+    r'(?![A-Za-z0-9])'             # right boundary: terminal
+)
+
+SINGLE_GENO_RE = re.compile(
+    r'(?<![A-Za-z0-9_])'           # left boundary
+    r'([A-Za-z]{1,4})_'            # genotype + wildcard
+    r'(?![A-Za-z0-9])'             # right boundary: terminal (no following alnum)
 )
 
 def fix_geno_wildcards(text):
-    def repl(m):
-        letters = m.group(1)
-        # Only convert if it looks plausibly like a genotype (mix of cases
-        # OR a real Mendelian pattern). Reject single uppercase letters
-        # that could be variables (E_ in `E_total = ...`) by demanding the
-        # surrounding text mentions genetics OR the pattern has at least
-        # 2 letters. Single-letter wildcards (E_, A_, B_) are common in
-        # Mendelian text so we keep them; the outer caller restricts this
-        # function to biology questions only.
-        return f'<i>{letters}</i>{NBHY}'
-    return GENO_TOKEN_RE.sub(repl, text)
+    # Pass 1: compound (A_B_, E_B_, etc.)
+    text = COMPOUND_GENO_RE.sub(
+        lambda m: f'<i>{m.group(1)}</i>{NBHY}<i>{m.group(2)}</i>{NBHY}',
+        text,
+    )
+    # Pass 2: single (A_, aaB_, etc.) — anything not already converted.
+    # Run iteratively until stable (handles edge cases like X_Y_Z_).
+    prev = None
+    while prev != text:
+        prev = text
+        text = SINGLE_GENO_RE.sub(
+            lambda m: f'<i>{m.group(1)}</i>{NBHY}',
+            text,
+        )
+    return text
 
 
 # ===== Pattern C: LaTeX-style subscripts in chem / physics ==================
