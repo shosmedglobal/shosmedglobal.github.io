@@ -558,3 +558,90 @@ exports.listAllUsers = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError('internal', err.message);
   }
 });
+
+
+// Cleanup orphan Firestore profile docs — /users/{uid} documents whose
+// matching Firebase Auth account no longer exists (deleted manually, or
+// via the dashboard's Delete button before the multi-step deleteUser
+// flow existed).
+//
+// Why this is safe:
+//   - Admin-only (same allowlist as deleteUser / listAllUsers).
+//   - Touches ONLY Firestore (Auth users are untouched).
+//   - Only deletes docs whose UID is verifiably absent from Auth.
+//     Auth is enumerated FIRST and compared in-memory; we never delete
+//     a doc whose Auth status we failed to confirm.
+//   - Returns a summary with the deleted UIDs so the caller can audit.
+//
+// Idempotent — running twice with no new orphans is a no-op.
+exports.cleanupOrphanUsers = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+  }
+  const callerEmail = (context.auth.token && context.auth.token.email) || '';
+  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
+    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
+  }
+
+  try {
+    // 1) Enumerate every Auth UID (paginated).
+    const authUidSet = new Set();
+    let pageToken = undefined;
+    do {
+      const result = await admin.auth().listUsers(1000, pageToken);
+      result.users.forEach(u => authUidSet.add(u.uid));
+      pageToken = result.pageToken;
+    } while (pageToken);
+
+    // 2) Scan /users and identify orphans.
+    const snap = await db.collection('users').get();
+    const orphanRefs = [];
+    snap.forEach(doc => {
+      if (!authUidSet.has(doc.id)) {
+        orphanRefs.push({ ref: doc.ref, uid: doc.id, email: (doc.data() || {}).email || '' });
+      }
+    });
+
+    if (orphanRefs.length === 0) {
+      return { success: true, deletedCount: 0, orphans: [] };
+    }
+
+    // 3) Delete known sub-collections first (qbankData, qbankTests) so we
+    //    don't leave dangling sub-docs.
+    let subDocsDeleted = 0;
+    for (const o of orphanRefs) {
+      for (const sub of ['qbankData', 'qbankTests']) {
+        try {
+          const subSnap = await o.ref.collection(sub).get();
+          if (!subSnap.empty) {
+            const batch = db.batch();
+            subSnap.docs.forEach(d => batch.delete(d.ref));
+            await batch.commit();
+            subDocsDeleted += subSnap.size;
+          }
+        } catch (err) {
+          console.warn('[cleanupOrphanUsers] sub-collection delete failed for', sub, 'of', o.uid, err.message);
+        }
+      }
+    }
+
+    // 4) Delete the orphan user docs (batched, 500 max per batch).
+    for (let i = 0; i < orphanRefs.length; i += 500) {
+      const batch = db.batch();
+      orphanRefs.slice(i, i + 500).forEach(o => batch.delete(o.ref));
+      await batch.commit();
+    }
+
+    const summary = {
+      success: true,
+      deletedCount: orphanRefs.length,
+      subDocsDeleted,
+      orphans: orphanRefs.map(o => ({ uid: o.uid, email: o.email })),
+    };
+    console.log('[cleanupOrphanUsers]', summary);
+    return summary;
+  } catch (err) {
+    console.error('cleanupOrphanUsers failed:', err);
+    throw new functions.https.HttpsError('internal', err.message);
+  }
+});

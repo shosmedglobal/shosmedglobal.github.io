@@ -1475,6 +1475,7 @@
                   <option value="free">Free</option>
                 </select>
                 <button class="admin-action-btn admin-btn-grant" onclick="exportUsersCsv()">Export CSV</button>
+                <button class="admin-action-btn" style="background:#fef3c7; color:#92400e; border-color:#fde68a;" onclick="cleanupOrphanProfiles()" title="Delete Firestore /users/{uid} docs whose Firebase Auth account no longer exists">Clean Orphans</button>
               </div>
             </div>
             <div class="admin-table-wrap" id="adminUsersTableWrap">
@@ -5768,6 +5769,47 @@
       }
       clearInboxSelection();
       // onSnapshot listener will repaint the inbox automatically.
+    }
+
+    // ===== Clean up orphan Firestore profile docs =====
+    // Calls the cleanupOrphanUsers Cloud Function. Confirms before
+    // deleting so an accidental click can't drop user data.
+    async function cleanupOrphanProfiles() {
+      const confirmed = confirm(
+        'Delete every /users/{uid} Firestore doc whose Firebase Auth account no longer exists?\n\n' +
+        'This is safe — those profiles correspond to accounts that can no longer log in.\n' +
+        'Their data is dead weight and inflates "Total Users" counts.\n\n' +
+        'Sub-collections (qbankData, qbankTests) under the orphans are also removed.'
+      );
+      if (!confirmed) return;
+      try {
+        const fn = firebase.functions().httpsCallable('cleanupOrphanUsers');
+        const result = await fn({});
+        const data = (result && result.data) || {};
+        if (!data.success) {
+          alert('Cleanup did not report success. Check console.');
+          console.warn('[cleanupOrphans] no success flag:', data);
+          return;
+        }
+        if (data.deletedCount === 0) {
+          alert('No orphans found — your database is already clean.');
+          return;
+        }
+        const list = (data.orphans || []).map(o => '• ' + (o.email || '(no email)') + ' [' + o.uid + ']').join('\n');
+        alert('Deleted ' + data.deletedCount + ' orphan profile(s):\n\n' + list +
+              (data.subDocsDeleted ? '\n\nPlus ' + data.subDocsDeleted + ' sub-collection doc(s).' : '') +
+              '\n\nThe table and stats will refresh now.');
+        // Refresh the table + stats so the change is visible immediately.
+        if (typeof loadAdminUsers === 'function') {
+          await loadAdminUsers();
+        }
+        if (typeof window.recomputeAdminStats === 'function') {
+          window.recomputeAdminStats();
+        }
+      } catch (err) {
+        console.error('[cleanupOrphans] failed:', err);
+        alert('Cleanup failed: ' + (err.message || err));
+      }
     }
 
     // ===== Export users to CSV =====
