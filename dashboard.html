@@ -4380,7 +4380,36 @@
         'privacy@shosmed.com', 'elizolotov@gmail.com'
       ]);
 
-      adminUsersStreamUnsub = subscribeAllUsers(users => {
+      // Cache the latest Firestore-stream payload so we can recompute
+      // stats whenever the Auth-backed user list (loaded separately by
+      // loadAdminUsers via listAllUsers) becomes available. Without this
+      // cache, stats reflected raw Firestore (which can include orphan
+      // docs — accounts whose Firebase Auth record was deleted while
+      // their /users/{uid} doc stuck around) and didn't match the table.
+      window._latestFirestoreUsers = window._latestFirestoreUsers || [];
+
+      function recomputeAdminStats() {
+        const rawUsers = window._latestFirestoreUsers || [];
+
+        // Filter Firestore docs to ONLY those that exist in Firebase Auth.
+        // The Cloud Function listAllUsers returns the canonical Auth set
+        // in allAdminUsers — we intersect the two so stats match the
+        // table exactly. If allAdminUsers hasn't populated yet (Cloud
+        // Function still in flight), fall back to the raw list so the
+        // tiles aren't blank on first paint.
+        let users;
+        if (typeof allAdminUsers !== 'undefined' && Array.isArray(allAdminUsers) && allAdminUsers.length > 0) {
+          const authIds = new Set(allAdminUsers.map(u => u.id));
+          users = rawUsers.filter(u => authIds.has(u.id));
+          const orphanCount = rawUsers.length - users.length;
+          if (orphanCount > 0) {
+            console.warn('[admin] ' + orphanCount + ' orphan Firestore user doc(s) (no matching Auth account) excluded from stats. UIDs:',
+              rawUsers.filter(u => !authIds.has(u.id)).map(u => u.id));
+          }
+        } else {
+          users = rawUsers;
+        }
+
         const now = new Date();
         const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
@@ -4420,12 +4449,34 @@
         document.getElementById('adminStatPaidUsers').textContent = paidUsers;
         document.getElementById('adminStatRevenue').textContent = '$' + totalRevenue.toLocaleString();
         document.getElementById('adminStatQbankUsers').textContent = qbankActiveCount;
+      }
+      // Expose so loadAdminUsers can trigger a recompute as soon as it
+      // has the Auth-backed user set ready.
+      window.recomputeAdminStats = recomputeAdminStats;
 
-        // Keep the local user table cache fresh too so Revoke/Grant clicks
-        // reflect immediately and new signups appear without manual refresh.
-        if (typeof allAdminUsers !== 'undefined') {
-          allAdminUsers = users;
-          if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+      // Debounced re-fetch of loadAdminUsers when the Firestore stream
+      // detects a user-count change (new signup, deletion). Keeps the
+      // table fresh without us needing to manually re-render from raw
+      // Firestore data — listAllUsers stays the canonical source.
+      let _userListRefreshTimer = null;
+      function scheduleUserListRefresh() {
+        if (_userListRefreshTimer) clearTimeout(_userListRefreshTimer);
+        _userListRefreshTimer = setTimeout(() => {
+          if (typeof loadAdminUsers === 'function') {
+            loadAdminUsers().catch(e => console.warn('[admin] refresh failed:', e));
+          }
+        }, 800);
+      }
+
+      adminUsersStreamUnsub = subscribeAllUsers(users => {
+        const prevCount = (window._latestFirestoreUsers || []).length;
+        window._latestFirestoreUsers = users;
+        recomputeAdminStats();
+        // If the user count changed (new signup / deletion), re-fetch
+        // the table data via the Cloud Function so the table stays in
+        // sync with the new state.
+        if (users.length !== prevCount && prevCount > 0) {
+          scheduleUserListRefresh();
         }
       });
 
@@ -4709,6 +4760,15 @@
       console.log('[admin] loaded', users.length, 'users via', source);
       allAdminUsers = users;
       filteredAdminUsers = [...allAdminUsers];
+
+      // Trigger an immediate stat-tile recompute now that the canonical
+      // Auth-backed user list is available. Without this, the tiles
+      // remained at the unfiltered Firestore count (which included
+      // orphan docs) until the next Firestore-stream tick — leading to
+      // a permanent mismatch between "Total Users" and the table.
+      if (typeof window.recomputeAdminStats === 'function') {
+        window.recomputeAdminStats();
+      }
 
       loadingEl.style.display = 'none';
       tableEl.style.display = 'table';
