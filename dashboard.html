@@ -4561,6 +4561,22 @@
         if (result && result.data && Array.isArray(result.data.users)) {
           users = result.data.users;
           source = 'cloud-function';
+          // Diagnostic: log the raw visitCount values returned by the
+          // Cloud Function so we can tell whether a "0" in the column
+          // means (a) the function returned 0 (stale read / write
+          // never landed) or (b) the function returned N>0 but the
+          // client rendered it as 0 (UI bug). Logs once per load.
+          try {
+            const me = firebase.auth().currentUser;
+            const myRow = me && users.find(u => u.id === me.uid);
+            console.info('[admin] visitCount values:',
+              users.map(u => u.email + '=' + u.visitCount).join(', '));
+            if (myRow) {
+              console.info('[admin] my row from cloud-function:',
+                'visitCount=' + myRow.visitCount,
+                'lastVisitAt=' + myRow.lastVisitAt);
+            }
+          } catch (_) {}
         }
       } catch (err) {
         // Function not deployed yet OR caller isn't admin per the function's
@@ -4580,6 +4596,10 @@
             let createdAtMs = null;
             if (d.createdAt && d.createdAt.toMillis) createdAtMs = d.createdAt.toMillis();
             else if (d.createdAt) createdAtMs = new Date(d.createdAt).getTime();
+            // Pass through visit fields so the Visits column still works
+            // on this fallback path. (Cloud Function path also does this.)
+            let lastVisitMs = null;
+            if (d.lastVisitAt && d.lastVisitAt.toMillis) lastVisitMs = d.lastVisitAt.toMillis();
             users.push({
               id: doc.id,
               email: d.email || '',
@@ -4587,6 +4607,8 @@
               path: d.path || null,
               payments: d.payments || {},
               createdAtMs: createdAtMs,
+              visitCount: d.visitCount || 0,
+              lastVisitAt: lastVisitMs,
               hasFirestoreDoc: true,
             });
           });
