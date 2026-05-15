@@ -4533,6 +4533,22 @@
       const loadingEl = document.getElementById('adminUsersLoading');
       const tableEl = document.getElementById('adminUsersTable');
 
+      // Race fix: the per-user visit increment from auth.js fires roughly
+      // at the same time as this function. If the Cloud Function's
+      // server-side read of /users/{uid} happens BEFORE the write commits,
+      // the admin's own row shows visitCount = (old value), making it
+      // look like the visit wasn't recorded. Awaiting the in-flight visit
+      // promise (with a short timeout so a slow write doesn't block the
+      // table forever) guarantees the read sees the post-increment value.
+      if (window.__shosVisitPromise) {
+        try {
+          await Promise.race([
+            window.__shosVisitPromise,
+            new Promise(res => setTimeout(res, 2500)),
+          ]);
+        } catch (_) { /* visit promise rejected — already logged in [visit] */ }
+      }
+
       let users = null;
       let source = null;
 
