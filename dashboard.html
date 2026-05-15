@@ -1853,6 +1853,13 @@
     .admin-badge-student { background: #d1fae5; color: #065f46; }
     .admin-badge-paid { background: #d1fae5; color: #065f46; }
     .admin-badge-free { background: #f3f4f6; color: #6b7280; }
+    /* Admin gets a warm gold so it's visually distinct from the
+       applicant/student blues/greens — admins effectively have both
+       paths, so a separate color signals "not a regular learner". */
+    .admin-badge-admin { background: #fef3c7; color: #92400e; }
+    /* Reviewer (e.g. LF3 faculty) gets a violet so it reads as
+       "trusted contributor" without being mistaken for staff. */
+    .admin-badge-reviewer { background: #ede9fe; color: #5b21b6; }
 
     .admin-action-btn {
       padding: 4px 12px;
@@ -4643,16 +4650,38 @@
         return;
       }
 
+      // Keep these lists in sync with isAdmin() in firestore.rules and
+      // the equivalent lists elsewhere in this file (search ADMIN_EMAILS).
+      // Admins implicitly access both Applicant + Student content, so the
+      // Path column shows a distinct "Admin" badge instead of "-".
+      const PATH_ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
+      const PATH_REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
+
       let html = '';
       pageUsers.forEach(u => {
         const name = u.name || '(no name)';
         const email = u.email || '-';
+        // Admin/reviewer status overrides the `path` field. Admins
+        // effectively have both paths; reviewers are trusted
+        // contributors (e.g. LF3 faculty grading questions) and
+        // aren't really "students" or "applicants" in the QBank
+        // funnel sense.
+        const emailLc = (u.email || '').toLowerCase();
+        const isAdminUser = PATH_ADMIN_EMAILS.includes(emailLc);
+        const isReviewerUser = PATH_REVIEWER_EMAILS.includes(emailLc);
         const path = u.path || '-';
-        const pathBadge = path === 'applicant'
-          ? '<span class="admin-badge admin-badge-applicant">Applicant</span>'
-          : path === 'student'
-            ? '<span class="admin-badge admin-badge-student">Student</span>'
-            : '<span class="admin-badge" style="background:#f3f4f6;color:#6b7280;">-</span>';
+        let pathBadge;
+        if (isAdminUser) {
+          pathBadge = '<span class="admin-badge admin-badge-admin" title="Admin (access to both paths)">Admin</span>';
+        } else if (isReviewerUser) {
+          pathBadge = '<span class="admin-badge admin-badge-reviewer" title="QBank reviewer">Reviewer</span>';
+        } else if (path === 'applicant') {
+          pathBadge = '<span class="admin-badge admin-badge-applicant">Applicant</span>';
+        } else if (path === 'student') {
+          pathBadge = '<span class="admin-badge admin-badge-student">Student</span>';
+        } else {
+          pathBadge = '<span class="admin-badge" style="background:#f3f4f6;color:#6b7280;">-</span>';
+        }
 
         // Resolve signup date from either the Cloud-Function `createdAtMs`
         // (number) or the legacy Firestore `createdAt` (Timestamp / string).
@@ -4902,11 +4931,23 @@
       td.colSpan = 6;
       td.className = 'admin-user-details';
 
+      // Resolve a human-readable path label, accounting for admin /
+      // reviewer roles that override the on-record `path` field.
+      const detailsEmailLc = (user.email || '').toLowerCase();
+      const PATH_ADMIN_EMAILS_D = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
+      const PATH_REVIEWER_EMAILS_D = ['jana.fauknerova@lf3.cuni.cz'];
+      let pathDisplay;
+      if (PATH_ADMIN_EMAILS_D.includes(detailsEmailLc))         pathDisplay = 'Admin (full access — both paths)';
+      else if (PATH_REVIEWER_EMAILS_D.includes(detailsEmailLc)) pathDisplay = 'Reviewer';
+      else if (user.path === 'applicant')                        pathDisplay = 'Applicant';
+      else if (user.path === 'student')                          pathDisplay = 'Student';
+      else                                                       pathDisplay = '-';
+
       let info = '';
       info += `<strong>UID:</strong> ${uid}<br>`;
       info += `<strong>Name:</strong> ${escapeHtml(user.name || '-')}<br>`;
       info += `<strong>Email:</strong> ${escapeHtml(user.email || '-')}<br>`;
-      info += `<strong>Path:</strong> ${user.path || '-'}<br>`;
+      info += `<strong>Path:</strong> ${pathDisplay}<br>`;
       // Created date — handle both the new Cloud-Function `createdAtMs`
       // (number) and the legacy Firestore `createdAt` (Timestamp / string).
       const userMs = user.createdAtMs
@@ -5525,10 +5566,22 @@
         'Signed Up', 'Visits', 'Last Visit', 'QBank Plan', 'Last Active', 'User ID'
       ];
 
+      // Path column in the CSV matches the table: admin / reviewer
+      // overrides take precedence over the raw `path` field so the
+      // exported file reads like the on-screen view.
+      const PATH_ADMIN_EMAILS_C = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
+      const PATH_REVIEWER_EMAILS_C = ['jana.fauknerova@lf3.cuni.cz'];
+      function csvPathLabel(u) {
+        const e = (u.email || '').toLowerCase();
+        if (PATH_ADMIN_EMAILS_C.includes(e))    return 'admin';
+        if (PATH_REVIEWER_EMAILS_C.includes(e)) return 'reviewer';
+        return u.path || u.userType || '';
+      }
+
       const rows = allAdminUsers.map(u => [
         u.displayName || u.name || '',
         u.email || '',
-        u.path || u.userType || '',
+        csvPathLabel(u),
         u.country || '',
         u.phone || '',
         formatDate(u.createdAtMs ?? u.createdAt),
