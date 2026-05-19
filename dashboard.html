@@ -4395,20 +4395,41 @@
         // Filter Firestore docs to ONLY those that exist in Firebase Auth.
         // The Cloud Function listAllUsers returns the canonical Auth set
         // in allAdminUsers — we intersect the two so stats match the
-        // table exactly. If allAdminUsers hasn't populated yet (Cloud
-        // Function still in flight), fall back to the raw list so the
-        // tiles aren't blank on first paint.
-        let users;
-        if (typeof allAdminUsers !== 'undefined' && Array.isArray(allAdminUsers) && allAdminUsers.length > 0) {
-          const authIds = new Set(allAdminUsers.map(u => u.id));
-          users = rawUsers.filter(u => authIds.has(u.id));
-          const orphanCount = rawUsers.length - users.length;
-          if (orphanCount > 0) {
-            console.warn('[admin] ' + orphanCount + ' orphan Firestore user doc(s) (no matching Auth account) excluded from stats. UIDs:',
-              rawUsers.filter(u => !authIds.has(u.id)).map(u => u.id));
-          }
-        } else {
-          users = rawUsers;
+        // table exactly.
+        //
+        // Previous behavior: if allAdminUsers wasn't ready yet, we'd
+        // render raw counts as a placeholder. That produced a visible
+        // "flash" — the tiles briefly showed wrong numbers (Firestore
+        // total including orphans) before the Cloud Function landed
+        // and corrected them. We now hold the render until the
+        // canonical set is in hand. The tiles stay at "-" (their
+        // initial HTML state) for the first paint, then update once
+        // to the correct values. No flicker.
+        const authReady = (typeof allAdminUsers !== 'undefined'
+                           && Array.isArray(allAdminUsers)
+                           && allAdminUsers.length > 0);
+        // window._latestFirestoreUsers is only assigned by the
+        // subscribeAllUsers callback — until that fires at least
+        // once, we have no Firestore data and can't compute the
+        // payments / new-this-month stats. Track readiness with a
+        // distinct flag (not just length > 0) so an empty Firestore
+        // collection still counts as "loaded" rather than blocking
+        // the render forever.
+        const firestoreReady = (window._firestoreUsersLoaded === true);
+        if (!authReady || !firestoreReady) {
+          // Don't render — tiles stay at "-" (their HTML default)
+          // until BOTH sources land. The other callsite that drives
+          // us (subscribeAllUsers callback OR loadAdminUsers finally
+          // populating allAdminUsers) will trigger this function
+          // again. No-op on missing data is the right shape.
+          return;
+        }
+        const authIds = new Set(allAdminUsers.map(u => u.id));
+        const users = rawUsers.filter(u => authIds.has(u.id));
+        const orphanCount = rawUsers.length - users.length;
+        if (orphanCount > 0) {
+          console.warn('[admin] ' + orphanCount + ' orphan Firestore user doc(s) (no matching Auth account) excluded from stats. UIDs:',
+            rawUsers.filter(u => !authIds.has(u.id)).map(u => u.id));
         }
 
         const now = new Date();
@@ -4472,6 +4493,11 @@
       adminUsersStreamUnsub = subscribeAllUsers(users => {
         const prevCount = (window._latestFirestoreUsers || []).length;
         window._latestFirestoreUsers = users;
+        // Mark Firestore-side data as having arrived at least once.
+        // recomputeAdminStats() needs this flag to know it's safe to
+        // render (vs. the initial "both data sources unloaded" state
+        // where the tiles must stay at their "-" placeholder).
+        window._firestoreUsersLoaded = true;
         recomputeAdminStats();
         // If the user count changed (new signup / deletion), re-fetch
         // the table data via the Cloud Function so the table stays in
