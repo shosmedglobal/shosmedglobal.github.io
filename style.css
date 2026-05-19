@@ -2204,6 +2204,22 @@ a {
   font-weight: 600;
 }
 
+/* "Doing your own research first?" row beneath the contact CTA.
+   Links read as quiet/muted by default (same brightness as their
+   container copy) and only turn teal on hover. Underline color
+   transitions with the text so the affordance stays coherent. */
+.research-link-row a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+.research-link-row a:hover {
+  color: #5EEAD4;
+  text-decoration-color: #5EEAD4;
+}
+
 /* ===== Footer ===== */
 .footer {
   background: var(--gray-900);
