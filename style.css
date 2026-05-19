@@ -608,10 +608,16 @@ a {
   text-align: left;
 }
 
+/* Hero subtitle link (e.g. "Charles University LF3") — kept clickable
+   but without an underline. The visual emphasis comes from the
+   slightly brighter white text vs. the surrounding 85%-opacity copy. */
 .hero-content-split .hero-sub a {
   color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.hero-content-split .hero-sub a:hover {
+  color: #5EEAD4;
 }
 
 .hero-content-split h1 {
@@ -1091,22 +1097,26 @@ a {
   margin-top: 6px;
   line-height: 1.5;
 }
+/* Proof-row link inherits the same color as .hero-proof-sub so all three
+   columns read with the same visual hierarchy (title bright, sub muted).
+   Still clearly clickable thanks to the subtle underline + hover that
+   brightens to teal. */
 .hero-proof-link {
   display: inline-flex;
   align-items: center;
   font-size: 0.88rem;
-  font-weight: 600;
-  color: #5EEAD4;                               /* teal — matches trust-bar accent */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
   margin-top: 6px;
   line-height: 1.5;
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(94, 234, 212, 0.4);
+  text-decoration-color: rgba(255, 255, 255, 0.25);
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 .hero-proof-link:hover {
-  color: #99F6E4;
-  text-decoration-color: #99F6E4;
+  color: #5EEAD4;
+  text-decoration-color: #5EEAD4;
 }
 
 /* ===== Legacy: bottom hero trust grid (kept for any other page that uses it) =====
