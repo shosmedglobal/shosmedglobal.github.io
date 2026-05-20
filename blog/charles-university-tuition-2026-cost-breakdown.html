@@ -401,29 +401,100 @@
 
         <h2>FAQ</h2>
 
-        <h3>Is Charles University cheaper than Caribbean medical schools?</h3>
-        <p>Yes, when both paths are costed the same way. Charles University LF3 comes in at $185K&ndash;$240K all-in over 6 years. The Caribbean path totals $357K&ndash;$636K across 8 years when you include the four-year U.S. undergraduate degree those schools require. The gap is real and primarily driven by the two extra years plus U.S. undergraduate tuition.</p>
+        <!-- Interactive FAQ accordion. Uses native <details>/<summary> so it
+             is accessible (screen-reader friendly, keyboard-toggleable with
+             Enter/Space) and works without JavaScript. The matching FAQPage
+             JSON-LD in <head> is the SEO source-of-truth — keep these
+             questions and answers in sync with that block. -->
+        <style>
+          .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #fff;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+          }
+          .faq-item[open] {
+            border-color: #0d9488;
+            box-shadow: 0 1px 3px rgba(13, 148, 136, 0.08);
+          }
+          .faq-item summary {
+            list-style: none;       /* hides default triangle in most browsers */
+            cursor: pointer;
+            padding: 16px 20px;
+            font-weight: 600;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 1.02rem;
+            line-height: 1.4;
+          }
+          /* Hide the default disclosure triangle in WebKit/Blink. */
+          .faq-item summary::-webkit-details-marker { display: none; }
+          .faq-item summary::after {
+            content: '';
+            flex-shrink: 0;
+            width: 12px; height: 12px;
+            border-right: 2px solid #64748B;
+            border-bottom: 2px solid #64748B;
+            transform: rotate(45deg);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+          }
+          .faq-item[open] summary::after {
+            transform: rotate(-135deg);
+            border-color: #0d9488;
+          }
+          .faq-item summary:hover { color: #0d9488; }
+          .faq-item .faq-answer {
+            padding: 0 20px 18px;
+            color: #475569;
+            line-height: 1.7;
+            font-size: 0.98rem;
+          }
+          .faq-item .faq-answer p { margin: 0; }
+        </style>
 
-        <h3>Can U.S. students use federal student loans at Charles University?</h3>
-        <p>No. Charles University is not currently on the U.S. Department of Education's Title IV approved-foreign-schools list. Most U.S. and Canadian families fund the program through savings, family contributions, and/or private international student loans. Confirm current eligibility with the Charles University Foreign Department and your loan officer.</p>
+        <details class="faq-item">
+          <summary>Is Charles University cheaper than Caribbean medical schools?</summary>
+          <div class="faq-answer"><p>Yes, when both paths are costed the same way. Charles University LF3 comes in at $185K&ndash;$240K all-in over 6 years. The Caribbean path totals $357K&ndash;$636K across 8 years when you include the four-year U.S. undergraduate degree those schools require. The gap is real and primarily driven by the two extra years plus U.S. undergraduate tuition.</p></div>
+        </details>
 
-        <h3>How much debt do Charles University graduates owe at graduation?</h3>
-        <p>Because U.S. federal loans aren't available, most graduates owe substantially less than the U.S. MD median of ~$200K (AAMC 2024). Students who finance the full program with private loans typically owe $150K&ndash;$220K; many graduate with far less because the lower total cost is more often family-funded.</p>
+        <details class="faq-item">
+          <summary>Can U.S. students use federal student loans at Charles University?</summary>
+          <div class="faq-answer"><p>No. Charles University is not currently on the U.S. Department of Education's Title IV approved-foreign-schools list. Most U.S. and Canadian families fund the program through savings, family contributions, and/or private international student loans. Confirm current eligibility with the Charles University Foreign Department and your loan officer.</p></div>
+        </details>
 
-        <h3>Is Prague affordable for medical students?</h3>
-        <p>Yes, relative to major U.S. cities and most Western European capitals. Realistic all-in monthly budget: $900&ndash;$1,400/month. Public transit is $150/year for unlimited use; university canteens serve subsidized $3&ndash;$5 lunches.</p>
+        <details class="faq-item">
+          <summary>How much debt do Charles University graduates owe at graduation?</summary>
+          <div class="faq-answer"><p>Because U.S. federal loans aren't available, most graduates owe substantially less than the U.S. MD median of ~$200K (AAMC 2024). Students who finance the full program with private loans typically owe $150K&ndash;$220K; many graduate with far less because the lower total cost is more often family-funded.</p></div>
+        </details>
 
-        <h3>Does Charles University tuition change year to year?</h3>
-        <p>Adjustments have historically been modest. Tuition for the 2025/26 academic year is approximately $18,500. Verify with the Foreign Department before budgeting.</p>
+        <details class="faq-item">
+          <summary>Is Prague affordable for medical students?</summary>
+          <div class="faq-answer"><p>Yes, relative to major U.S. cities and most Western European capitals. Realistic all-in monthly budget: $900&ndash;$1,400/month. Public transit is $150/year for unlimited use; university canteens serve subsidized $3&ndash;$5 lunches.</p></div>
+        </details>
 
-        <h3>Can I work part-time during the program?</h3>
-        <p>Czech long-term student visa rules permit limited part-time work, but the medical curriculum's intensity makes meaningful part-time income unlikely after year 2. Most students who work do tutoring or remote work for home-country employers.</p>
+        <details class="faq-item">
+          <summary>Does Charles University tuition change year to year?</summary>
+          <div class="faq-answer"><p>Adjustments have historically been modest. Tuition for the 2025/26 academic year is approximately $18,500. Verify with the Foreign Department before budgeting.</p></div>
+        </details>
 
-        <h3>Are scholarships available?</h3>
-        <p>Limited. Charles University occasionally offers small reductions or research-based stipends. Most U.S. and Canadian students do not receive institutional aid. Ask the Foreign Department directly for the current cycle's options.</p>
+        <details class="faq-item">
+          <summary>Can I work part-time during the program?</summary>
+          <div class="faq-answer"><p>Czech long-term student visa rules permit limited part-time work, but the medical curriculum's intensity makes meaningful part-time income unlikely after year 2. Most students who work do tutoring or remote work for home-country employers.</p></div>
+        </details>
 
-        <h3>How does the 2-year head-start translate financially?</h3>
-        <p>Roughly $300K&ndash;$500K in additional lifetime earnings depending on specialty, plus avoided debt-service costs. Combined with the lower direct cost, the typical net difference vs. a U.S. private medical school is $400K&ndash;$1 million by year 10 post-high-school.</p>
+        <details class="faq-item">
+          <summary>Are scholarships available?</summary>
+          <div class="faq-answer"><p>Limited. Charles University occasionally offers small reductions or research-based stipends. Most U.S. and Canadian students do not receive institutional aid. Ask the Foreign Department directly for the current cycle's options.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the 2-year head-start translate financially?</summary>
+          <div class="faq-answer"><p>Roughly $300K&ndash;$500K in additional lifetime earnings depending on specialty, plus avoided debt-service costs. Combined with the lower direct cost, the typical net difference vs. a U.S. private medical school is $400K&ndash;$1 million by year 10 post-high-school.</p></div>
+        </details>
 
       </div>
 
