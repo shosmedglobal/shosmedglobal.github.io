@@ -2234,13 +2234,13 @@ mark.user-highlight:hover {
 }
 .quiz-toolbar-brand:hover { opacity: 1; }
 .quiz-toolbar-brand img {
-  height: 42px;
+  height: 60px;
   width: auto;
   display: block;
 }
 @media (max-width: 720px) {
   .quiz-toolbar-brand { margin-left: 8px; }
-  .quiz-toolbar-brand img { height: 32px; }
+  .quiz-toolbar-brand img { height: 44px; }
 }
 /* On very narrow screens the toolbar wraps; in that case let the
    brand land on its own line at the far right so it doesn't squeeze
