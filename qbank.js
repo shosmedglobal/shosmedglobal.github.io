@@ -791,12 +791,17 @@ function renderQuestion() {
     // Update navigator highlight
     renderQuizSidebar(); syncFlagButton();
   } else {
-    // Review Mode: original behavior
+    // Review Mode navigation. Next is always visible (unless on the last
+    // question) so users can skip a question and come back via the
+    // sidebar — the previous behavior hid Next until an answer was
+    // committed, which left the bottom bar with only a Previous button
+    // and no visible way forward. Finish still requires answering the
+    // last question so users don't accidentally end a session early.
     document.getElementById('testNextBtn').style.display = 'none';
     document.getElementById('finishTestBtn').style.display = 'none';
     const isAnswered = answers[currentIndex] !== undefined;
     const isLast = currentIndex === quizQuestions.length - 1;
-    document.getElementById('nextBtn').style.display = (isAnswered && !isLast) ? 'inline-flex' : 'none';
+    document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-flex';
     document.getElementById('finishBtn').style.display = (isAnswered && isLast) ? 'inline-flex' : 'none';
   }
 }
