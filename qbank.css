@@ -2220,26 +2220,27 @@ mark.user-highlight:hover {
 .quiz-toolbar-timer.timer-danger  { color: var(--red);  border-color: var(--red); }
 
 /* ----- Brand watermark in the right corner of the toolbar -----
-   Capped at 28px tall on desktop / 22px on mobile so it reads as a
-   subtle anchor rather than a hero element. Slight left margin so it
-   doesn't crowd the timer when both are visible (test mode). */
+   Sized so the "SHOS Med" wordmark is legible at a glance: 42px
+   tall on desktop / 32px on mobile. Uses the no-"GLOBAL" logo
+   variant since the GLOBAL sub-tag was illegible at any reasonable
+   in-card size and just made the whole mark feel cramped. */
 .quiz-toolbar-brand {
   display: inline-flex;
   align-items: center;
   margin-left: 14px;
-  opacity: 0.92;
+  opacity: 0.95;
   transition: opacity 0.18s ease;
   flex-shrink: 0;
 }
 .quiz-toolbar-brand:hover { opacity: 1; }
 .quiz-toolbar-brand img {
-  height: 28px;
+  height: 42px;
   width: auto;
   display: block;
 }
 @media (max-width: 720px) {
   .quiz-toolbar-brand { margin-left: 8px; }
-  .quiz-toolbar-brand img { height: 22px; }
+  .quiz-toolbar-brand img { height: 32px; }
 }
 /* On very narrow screens the toolbar wraps; in that case let the
    brand land on its own line at the far right so it doesn't squeeze
