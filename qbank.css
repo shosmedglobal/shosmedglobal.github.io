@@ -2193,9 +2193,16 @@ mark.user-highlight:hover {
   gap: 4px;
   flex-wrap: wrap;
   padding: 10px 16px;
+  /* Right padding leaves room for the absolutely-positioned brand
+     watermark so the spacer/timer don't slide under it. */
+  padding-right: 200px;
+  position: relative;     /* anchor for the absolutely-positioned brand */
   background: linear-gradient(to bottom, #FCFCFD, var(--white));
   border-bottom: 1px solid var(--gray-200);
   /* Note: NO own shadow/border-radius — the mainbox wraps it. */
+}
+@media (max-width: 720px) {
+  .quiz-toolbar { padding-right: 140px; }
 }
 
 .quiz-toolbar-spacer { flex: 1 1 auto; min-width: 12px; }
@@ -2220,33 +2227,33 @@ mark.user-highlight:hover {
 .quiz-toolbar-timer.timer-danger  { color: var(--red);  border-color: var(--red); }
 
 /* ----- Brand watermark in the right corner of the toolbar -----
-   Sized so the "SHOS Med" wordmark is legible at a glance: 42px
-   tall on desktop / 32px on mobile. Uses the no-"GLOBAL" logo
-   variant since the GLOBAL sub-tag was illegible at any reasonable
-   in-card size and just made the whole mark feel cramped. */
+   Absolutely positioned so the logo can be visually prominent
+   (the "SHOS Med" wordmark reads at a glance) WITHOUT stretching
+   the toolbar's natural button-row height. The toolbar reserves
+   horizontal space via padding-right; the brand sits centered
+   vertically over it. Uses the no-"GLOBAL" logo variant since the
+   GLOBAL sub-tag was illegible at any reasonable in-card size. */
 .quiz-toolbar-brand {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
-  margin-left: 14px;
-  opacity: 0.95;
+  opacity: 0.98;
   transition: opacity 0.18s ease;
   flex-shrink: 0;
+  z-index: 2;             /* sit above the toolbar's gradient bg */
 }
 .quiz-toolbar-brand:hover { opacity: 1; }
 .quiz-toolbar-brand img {
-  height: 60px;
+  height: 64px;
   width: auto;
   display: block;
 }
 @media (max-width: 720px) {
-  .quiz-toolbar-brand { margin-left: 8px; }
+  .quiz-toolbar-brand { right: 10px; }
   .quiz-toolbar-brand img { height: 44px; }
-}
-/* On very narrow screens the toolbar wraps; in that case let the
-   brand land on its own line at the far right so it doesn't squeeze
-   the buttons together. */
-@media (max-width: 480px) {
-  .quiz-toolbar-brand { margin-left: auto; }
 }
 
 .quiz-tool-btn {
