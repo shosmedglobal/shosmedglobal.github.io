@@ -765,13 +765,20 @@
   margin-bottom: 6px;
 }
 
-/* Quiz Navigation */
+/* Quiz Navigation.
+   min-height + identical border color/background match the
+   sidebar-legend on the left column so the two top-borders form
+   a single continuous horizontal rule across both columns. If you
+   change the height here, mirror it in .quiz-sidebar-legend. */
 .quiz-nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 14px 22px;
-  border-top: 1px solid var(--gray-100);
+  min-height: 76px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--gray-200);
   background: var(--gray-50);
   margin-top: 0;
 }
@@ -2130,12 +2137,19 @@ mark.user-highlight:hover {
 }
 .quiz-sidebar-item.is-current .qs-num { color: var(--accent); }
 
-/* Legend */
+/* Legend.
+   min-height matches .quiz-nav on the right column so the two
+   top-borders sit at the same Y and visually form one continuous
+   rule across both columns. Centered with justify-content so the
+   3-line legend doesn't sit awkwardly inside the taller box. */
 .quiz-sidebar-legend {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   padding: 10px 16px;
+  min-height: 76px;
+  box-sizing: border-box;
   border-top: 1px solid var(--gray-200);
   background: var(--gray-50);
   font-size: 0.72rem;
