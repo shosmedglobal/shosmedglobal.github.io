@@ -2219,6 +2219,35 @@ mark.user-highlight:hover {
 .quiz-toolbar-timer.timer-warning { color: var(--gold); border-color: var(--gold); }
 .quiz-toolbar-timer.timer-danger  { color: var(--red);  border-color: var(--red); }
 
+/* ----- Brand watermark in the right corner of the toolbar -----
+   Capped at 28px tall on desktop / 22px on mobile so it reads as a
+   subtle anchor rather than a hero element. Slight left margin so it
+   doesn't crowd the timer when both are visible (test mode). */
+.quiz-toolbar-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 14px;
+  opacity: 0.92;
+  transition: opacity 0.18s ease;
+  flex-shrink: 0;
+}
+.quiz-toolbar-brand:hover { opacity: 1; }
+.quiz-toolbar-brand img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 720px) {
+  .quiz-toolbar-brand { margin-left: 8px; }
+  .quiz-toolbar-brand img { height: 22px; }
+}
+/* On very narrow screens the toolbar wraps; in that case let the
+   brand land on its own line at the far right so it doesn't squeeze
+   the buttons together. */
+@media (max-width: 480px) {
+  .quiz-toolbar-brand { margin-left: auto; }
+}
+
 .quiz-tool-btn {
   display: inline-flex;
   align-items: center;
