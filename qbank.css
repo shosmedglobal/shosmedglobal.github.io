@@ -773,19 +773,20 @@
 }
 
 /* Quiz Navigation.
-   min-height + identical border color/background match the
-   sidebar-legend on the left column so the two top-borders form
-   a single continuous horizontal rule across both columns. If you
-   change the height here, mirror it in .quiz-sidebar-legend.
-   flex-shrink: 0 prevents the flex-column mainbox from compressing
-   this footer below 76px when the question content is tall. */
+   FIXED height matches .quiz-sidebar-legend on the left column
+   so the two top-borders form a single continuous horizontal rule
+   across both columns. Was previously min-height: 76px, but the
+   .btn inside renders at ~56px tall and the 14px vertical padding
+   pushed natural nav height to ~84px — past the min and out of
+   sync with the legend. Using a fixed height locks both to the
+   same Y. If you change height here, mirror in .quiz-sidebar-legend. */
 .quiz-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px 22px;
-  min-height: 76px;
+  padding: 0 22px;
+  height: 88px;
   box-sizing: border-box;
   flex-shrink: 0;
   border-top: 1px solid var(--gray-200);
@@ -2148,19 +2149,19 @@ mark.user-highlight:hover {
 .quiz-sidebar-item.is-current .qs-num { color: var(--accent); }
 
 /* Legend.
-   min-height matches .quiz-nav on the right column so the two
+   FIXED height matches .quiz-nav on the right column so the two
    top-borders sit at the same Y and visually form one continuous
    rule across both columns. Centered with justify-content so the
-   3-line legend doesn't sit awkwardly inside the taller box.
+   3 stacked lines don't sit at the top of the now-taller box.
    flex-shrink: 0 prevents the flex-column sidebar-inner from
-   compressing the legend below 76px when the question list is long. */
+   compressing the legend below this height. */
 .quiz-sidebar-legend {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 4px;
-  padding: 10px 16px;
-  min-height: 76px;
+  padding: 0 16px;
+  height: 88px;
   box-sizing: border-box;
   flex-shrink: 0;
   border-top: 1px solid var(--gray-200);
