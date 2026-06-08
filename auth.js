@@ -195,22 +195,19 @@ async function updateUserProfile(uid, data) {
 }
 
 // ===== Mobile navigation drawer (Hamburger menu) =====
-// Centralised handler for the slide-in mobile nav. Lives in auth.js so
-// every page gets the upgrade without touching 15+ HTML files. Adds
-// the expert-website behaviors the per-page inline scripts were missing:
+// Adds expert-website close behaviors to the existing per-page nav:
 //
-//   - Tap anywhere OUTSIDE the drawer → close it
 //   - Tap the dimmed backdrop → close it
+//   - Tap anywhere OUTSIDE the drawer → close it
 //   - Press Escape → close it
-//   - Body scroll is locked while the drawer is open (the page behind
-//     stays put instead of scrolling under the fingers)
-//   - aria-expanded / aria-hidden / aria-controls kept in sync for
-//     screen readers + keyboard users
+//   - Body scroll locked while the drawer is open
 //
-// Idempotent: marks the navbar with data-mobile-nav-bound="1" so the
-// per-page inline script's own toggle binding can coexist without
-// double-firing. The per-page link-tap handlers continue to work as
-// before; we just add the outside-tap, backdrop, and Escape paths.
+// Key design choice: this module does NOT touch the hamburger's click
+// handler, does NOT add per-link click handlers, and does NOT toggle
+// the .active class itself. The per-page inline script owns those.
+// Instead, we WATCH the .nav-links `.active` class via MutationObserver
+// and react to changes (sync backdrop + body scroll). That keeps the
+// existing navigation flow intact and only adds the new close paths.
 function initMobileNav() {
   const toggle  = document.getElementById('navToggle');
   const links   = document.getElementById('navLinks');
@@ -218,7 +215,8 @@ function initMobileNav() {
   if (toggle.dataset.mobileNavBound === '1') return;   // idempotent
   toggle.dataset.mobileNavBound = '1';
 
-  // Create the dim backdrop the first time we need it. One per document.
+  // Create the dim backdrop once. Lives at body root; CSS keeps it
+  // inert (pointer-events: none, opacity 0) until .active is added.
   let backdrop = document.getElementById('shos-nav-backdrop');
   if (!backdrop) {
     backdrop = document.createElement('div');
@@ -227,62 +225,55 @@ function initMobileNav() {
     document.body.appendChild(backdrop);
   }
 
-  // ARIA wiring so screen readers announce the drawer correctly.
-  toggle.setAttribute('aria-controls', 'navLinks');
-  toggle.setAttribute('aria-expanded', 'false');
-  links.setAttribute('aria-hidden', 'true');
-
-  function setOpen(open) {
-    links.classList.toggle('active', open);
-    toggle.classList.toggle('active', open);
-    backdrop.classList.toggle('active', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    links.setAttribute('aria-hidden', open ? 'false' : 'true');
-    // Body scroll lock keeps the underlying page from sliding around
-    // while the drawer is open. Restored on close.
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-
   function isOpen() {
     return links.classList.contains('active');
   }
 
-  // Toggle on hamburger click. The per-page inline script also calls
-  // classList.toggle('active') on these same elements; that's fine —
-  // our setOpen() handler is invoked on the same event, both arrive
-  // at the same final state.
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    // Defer one tick so the inline handler (if any) toggles first;
-    // we then read the resulting state and sync ARIA + backdrop + body.
-    setTimeout(() => setOpen(isOpen()), 0);
+  // Close the drawer by removing the same class the inline script uses.
+  // We DON'T touch aria-hidden on .nav-links (Chrome treats aria-hidden
+  // on the desktop nav as a hint that links shouldn't take focus, which
+  // broke keyboard navigation in some cases). The drawer's open/closed
+  // state is communicated via the visible CSS transform.
+  function close() {
+    links.classList.remove('active');
+    toggle.classList.remove('active');
+    // sync — the MutationObserver below will also run, but explicit
+    // sync here is faster than waiting for the next microtask.
+    syncFromState();
+  }
+
+  function syncFromState() {
+    const open = isOpen();
+    backdrop.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  // Watch the inline script's toggle. Anytime .nav-links' class list
+  // changes, mirror the state to backdrop + body. This is the SAFE
+  // way to intercept the existing toggle without touching its
+  // handler chain.
+  new MutationObserver(syncFromState).observe(links, {
+    attributes: true,
+    attributeFilter: ['class'],
   });
 
-  // Tap the backdrop → close. Explicit because backdrop isn't a child
-  // of the nav and wouldn't be caught by the outside-click listener
-  // below in some browsers' tap-event ordering.
-  backdrop.addEventListener('click', () => setOpen(false));
+  // Tap the backdrop → close.
+  backdrop.addEventListener('click', close);
 
-  // Tap ANYWHERE outside the drawer → close. Uses capture so we get
-  // the event before any link-handler stopPropagation might swallow it.
+  // Tap ANYWHERE outside the drawer → close. NOT capture phase — we
+  // want links and buttons inside the drawer (and the hamburger itself)
+  // to handle their click first, then if the drawer is still open,
+  // we close it on the bubble.
   document.addEventListener('click', (e) => {
     if (!isOpen()) return;
     if (links.contains(e.target)) return;     // tap inside the drawer
     if (toggle.contains(e.target)) return;    // hamburger handles itself
-    setOpen(false);
-  }, true);
+    close();
+  });
 
   // Escape key → close (keyboard a11y).
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen()) setOpen(false);
-  });
-
-  // Belt-and-suspenders: also close on link click. The per-page inline
-  // script does this too; our handler is harmless duplication that
-  // guarantees the backdrop + body-scroll get cleaned up even if a
-  // future page forgets to add the inline handler.
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => setOpen(false));
+    if (e.key === 'Escape' && isOpen()) close();
   });
 }
 

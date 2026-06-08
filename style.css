@@ -92,6 +92,26 @@ a {
   border-bottom: none;
 }
 
+/* ===== Dim backdrop behind the open mobile drawer (#shos-nav-backdrop)
+   Defined globally (NOT inside a media query) so that pointer-events:
+   none always applies — without that, the desktop view ends up with
+   an invisible position:fixed overlay that swallows every click on
+   the underlying page links. The .active toggle only fires when the
+   drawer is open (mobile only, via initMobileNav in auth.js). */
+#shos-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  z-index: 999;            /* below .navbar (1000) so it doesn't cover the bar */
+}
+#shos-nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Dark opaque background once scrolling starts (content doesn't show through) */
 .navbar.scrolling-dark {
   background: var(--navy);
@@ -2368,24 +2388,6 @@ a {
 
   .nav-links.active {
     right: 0;
-  }
-
-  /* Dim backdrop behind the open mobile drawer. Created by initMobileNav()
-     in auth.js, so every page gets it without HTML changes. Tap to close.
-     Pointer-events handled by the .active toggle so the layer is fully
-     inert when the drawer is closed. */
-  #shos-nav-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.42);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.22s ease;
-    z-index: 1000;
-  }
-  #shos-nav-backdrop.active {
-    opacity: 1;
-    pointer-events: auto;
   }
 
   .nav-links a {
