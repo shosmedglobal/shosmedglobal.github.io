@@ -194,6 +194,98 @@ async function updateUserProfile(uid, data) {
   }
 }
 
+// ===== Mobile navigation drawer (Hamburger menu) =====
+// Centralised handler for the slide-in mobile nav. Lives in auth.js so
+// every page gets the upgrade without touching 15+ HTML files. Adds
+// the expert-website behaviors the per-page inline scripts were missing:
+//
+//   - Tap anywhere OUTSIDE the drawer → close it
+//   - Tap the dimmed backdrop → close it
+//   - Press Escape → close it
+//   - Body scroll is locked while the drawer is open (the page behind
+//     stays put instead of scrolling under the fingers)
+//   - aria-expanded / aria-hidden / aria-controls kept in sync for
+//     screen readers + keyboard users
+//
+// Idempotent: marks the navbar with data-mobile-nav-bound="1" so the
+// per-page inline script's own toggle binding can coexist without
+// double-firing. The per-page link-tap handlers continue to work as
+// before; we just add the outside-tap, backdrop, and Escape paths.
+function initMobileNav() {
+  const toggle  = document.getElementById('navToggle');
+  const links   = document.getElementById('navLinks');
+  if (!toggle || !links) return;
+  if (toggle.dataset.mobileNavBound === '1') return;   // idempotent
+  toggle.dataset.mobileNavBound = '1';
+
+  // Create the dim backdrop the first time we need it. One per document.
+  let backdrop = document.getElementById('shos-nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'shos-nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+  }
+
+  // ARIA wiring so screen readers announce the drawer correctly.
+  toggle.setAttribute('aria-controls', 'navLinks');
+  toggle.setAttribute('aria-expanded', 'false');
+  links.setAttribute('aria-hidden', 'true');
+
+  function setOpen(open) {
+    links.classList.toggle('active', open);
+    toggle.classList.toggle('active', open);
+    backdrop.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    links.setAttribute('aria-hidden', open ? 'false' : 'true');
+    // Body scroll lock keeps the underlying page from sliding around
+    // while the drawer is open. Restored on close.
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function isOpen() {
+    return links.classList.contains('active');
+  }
+
+  // Toggle on hamburger click. The per-page inline script also calls
+  // classList.toggle('active') on these same elements; that's fine —
+  // our setOpen() handler is invoked on the same event, both arrive
+  // at the same final state.
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // Defer one tick so the inline handler (if any) toggles first;
+    // we then read the resulting state and sync ARIA + backdrop + body.
+    setTimeout(() => setOpen(isOpen()), 0);
+  });
+
+  // Tap the backdrop → close. Explicit because backdrop isn't a child
+  // of the nav and wouldn't be caught by the outside-click listener
+  // below in some browsers' tap-event ordering.
+  backdrop.addEventListener('click', () => setOpen(false));
+
+  // Tap ANYWHERE outside the drawer → close. Uses capture so we get
+  // the event before any link-handler stopPropagation might swallow it.
+  document.addEventListener('click', (e) => {
+    if (!isOpen()) return;
+    if (links.contains(e.target)) return;     // tap inside the drawer
+    if (toggle.contains(e.target)) return;    // hamburger handles itself
+    setOpen(false);
+  }, true);
+
+  // Escape key → close (keyboard a11y).
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) setOpen(false);
+  });
+
+  // Belt-and-suspenders: also close on link click. The per-page inline
+  // script does this too; our handler is harmless duplication that
+  // guarantees the backdrop + body-scroll get cleaned up even if a
+  // future page forgets to add the inline handler.
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => setOpen(false));
+  });
+}
+
 // ===== Navbar Auth State =====
 // Call this on every page to update navbar based on login status
 function initAuthNavbar() {
@@ -257,6 +349,7 @@ function initAuthNavbar() {
 // one tab count as a single visit, not N.
 document.addEventListener('DOMContentLoaded', () => {
   initAuthNavbar();
+  initMobileNav();    // Upgrade the hamburger menu UX site-wide.
   if (typeof firebase !== 'undefined' && firebase.auth) {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) recordUserVisit(user);

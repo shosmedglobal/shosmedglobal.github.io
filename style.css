@@ -2363,10 +2363,29 @@ a {
     box-shadow: var(--shadow-xl);
     transition: var(--transition);
     align-items: stretch;
+    z-index: 1001;             /* sit above the backdrop (1000) */
   }
 
   .nav-links.active {
     right: 0;
+  }
+
+  /* Dim backdrop behind the open mobile drawer. Created by initMobileNav()
+     in auth.js, so every page gets it without HTML changes. Tap to close.
+     Pointer-events handled by the .active toggle so the layer is fully
+     inert when the drawer is closed. */
+  #shos-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.42);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+    z-index: 1000;
+  }
+  #shos-nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-links a {
