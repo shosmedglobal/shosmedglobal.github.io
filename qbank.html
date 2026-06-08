@@ -472,7 +472,9 @@
         }
         window.qbankAccessLevel = 'free';
       } else {
-        const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+        // Keep in sync with firestore.rules → isAdmin() and qbank.js's
+        // resetProgress(). Drift here = paid users mis-classified as free.
+        const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
         const REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
         const isAdmin = ADMIN_EMAILS.includes(authUser.email);
         const isReviewer = REVIEWER_EMAILS.includes(authUser.email);

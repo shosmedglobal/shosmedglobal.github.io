@@ -139,9 +139,25 @@ service cloud.firestore {
     //   - visitsByCountry   (per-country counts for the admin chart)
     // All other _meta docs stay admin-only. Reads are admin-only across
     // the board (visit data is internal analytics, not user-visible).
+    //
+    // Writes are restricted to a known field allowlist per doc so a
+    // hostile visitor can't drop an arbitrary payload that overwrites
+    // the counters (e.g. replace `visits` with 99999999, or sneak in
+    // unrelated fields). hasOnly() guards reject any extra keys.
     match /_meta/{doc} {
-      allow read:  if isAdmin();
-      allow write: if doc in ['siteStats', 'visitsByDay', 'visitsByCountry'];
+      allow read: if isAdmin();
+      // Admin can do anything (manual migrations, hand-edits).
+      allow write: if isAdmin();
+      // Public increment paths — strict allowlist on the incoming keys.
+      allow create, update:
+        if doc == 'siteStats'
+           && request.resource.data.keys().hasOnly(['visits', 'lastVisitAt']);
+      allow create, update:
+        if doc == 'visitsByDay'
+           && request.resource.data.keys().hasOnly(['days']);
+      allow create, update:
+        if doc == 'visitsByCountry'
+           && request.resource.data.keys().hasOnly(['countries']);
     }
   }
 }

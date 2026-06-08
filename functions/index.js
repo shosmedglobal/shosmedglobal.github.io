@@ -85,10 +85,14 @@ exports.createCheckoutSession = functions
         limit: 1,
       });
     } catch (err) {
+      // Log the full Stripe error server-side for debugging, but never
+      // return raw Stripe error strings to the client — they can contain
+      // price IDs, account IDs, and integration hints that don't belong
+      // in an unauthenticated browser-visible error message.
       console.error('Stripe prices.list failed:', err.type, err.code, err.message);
       throw new functions.https.HttpsError(
         'internal',
-        `Stripe API error during price lookup: ${err.message}`
+        'Could not look up the price for this product. Please try again or contact support.'
       );
     }
 
@@ -122,10 +126,12 @@ exports.createCheckoutSession = functions
         allow_promotion_codes: true,
       });
     } catch (err) {
+      // Same reasoning as the price-lookup branch above — full error
+      // server-side, generic message client-side.
       console.error('Stripe checkout.sessions.create failed:', err.type, err.code, err.message);
       throw new functions.https.HttpsError(
         'internal',
-        `Stripe API error creating checkout session: ${err.message}`
+        'Could not start the checkout session. Please try again or contact support.'
       );
     }
 
@@ -171,11 +177,22 @@ exports.stripeWebhook = functions
     // Idempotency — if we've already recorded this exact session for this user,
     // skip. Stripe occasionally replays events; this prevents expiry from being
     // pushed forward repeatedly.
+    //
+    // The read is inside its own try/catch so a transient Firestore failure
+    // here doesn't throw and trigger a Stripe-side webhook retry storm. We
+    // log and treat the read failure as "not seen before" so the write
+    // attempt below will still happen (which has its own try/catch). Worst
+    // case: a single duplicate write that the set+merge tolerates.
     const userRef = db.collection('users').doc(uid);
-    const userDoc = await userRef.get();
-    const existing = userDoc.exists
-      && userDoc.data().payments
-      && userDoc.data().payments[`${tierConfig.field}-stripe-session`];
+    let existing = null;
+    try {
+      const userDoc = await userRef.get();
+      existing = userDoc.exists
+        && userDoc.data().payments
+        && userDoc.data().payments[`${tierConfig.field}-stripe-session`];
+    } catch (readErr) {
+      console.error('Idempotency read failed (will proceed to write):', readErr.message);
+    }
     if (existing === session.id) {
       console.log('Already processed:', session.id);
       return res.status(200).send('already processed');

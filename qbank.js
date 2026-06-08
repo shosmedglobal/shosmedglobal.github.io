@@ -212,8 +212,15 @@ async function saveProgress() {
 async function resetProgress() {
   if (!currentUserId) return;
   const profile = await getUserProfile(currentUserId);
-  const plan = profile?.payments?.['exam-bank-plan'];
-  const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com'];
+  // Paid status is the canonical signal. Previously this checked
+  // `plan === '6mo'`, but the Stripe webhook actually writes
+  // `plan === 'full-access'` (see functions/index.js TIERS) — so
+  // every legitimate paying customer was silently denied a reset.
+  // Use the unambiguous payment flag instead of the human label.
+  const isPaid = profile?.payments?.['exam-bank'] === 'paid';
+  // Keep this list in sync with firestore.rules → isAdmin() and the
+  // matching list in qbank.html (search ADMIN_EMAILS to find both).
+  const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
   const isAdmin = ADMIN_EMAILS.includes(profile?.email || '');
 
   if (isAdmin) {
@@ -223,7 +230,7 @@ async function resetProgress() {
     return true;
   }
 
-  if (plan === '6mo' && (userProgress.resetCount || 0) < 1) {
+  if (isPaid && (userProgress.resetCount || 0) < 1) {
     userProgress = { completedQuestions: {}, resetCount: 1 };
     await saveProgress();
     updateProgressDisplay();
