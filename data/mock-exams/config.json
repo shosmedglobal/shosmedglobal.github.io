@@ -1,23 +1,32 @@
 {
   "_comment": "Mock-exam library configuration. Change `freeYear` to designate which year is accessible to free-tier users. All other years are locked behind paid access (users['exam-bank'] === 'paid'), except admins and reviewers who always see everything.",
-  "freeYear": "2025",
+  "freeYear": "2023",
   "years": [
     {
-      "year": "2023",
-      "status": "coming-soon",
+      "year": "2022",
+      "status": "available",
       "questionCount": 60,
       "durationMinutes": 120,
       "sections": ["Biology", "Chemistry"],
-      "tagline": "Solid baseline, classic format",
+      "tagline": "Classic format, foundational topics — great warm-up",
+      "difficulty": "moderate"
+    },
+    {
+      "year": "2023",
+      "status": "available",
+      "questionCount": 60,
+      "durationMinutes": 120,
+      "sections": ["Biology", "Chemistry"],
+      "tagline": "Free full-length simulation — try before you buy",
       "difficulty": "moderate"
     },
     {
       "year": "2024",
-      "status": "coming-soon",
+      "status": "available",
       "questionCount": 60,
       "durationMinutes": 120,
       "sections": ["Biology", "Chemistry"],
-      "tagline": "Genetics-heavy year, tighter timing",
+      "tagline": "Metabolism-heavy year, tighter timing",
       "difficulty": "hard"
     },
     {

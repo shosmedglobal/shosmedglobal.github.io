@@ -1,1 +1,482 @@
-[]
+[
+  {
+    "id": 1,
+    "section": "Biology",
+    "question": "Essential elements of virus particles (the structure of virus) are:",
+    "options": {"A": "capsid and envelope", "B": "nucleic acid and capsid", "C": "capsid and capsomere", "D": "nucleic acid and envelope"},
+    "correct": "B",
+    "explanation": "Every virion, by definition, contains a <strong>nucleic acid</strong> genome (DNA or RNA) enclosed in a protein coat called the <strong>capsid</strong> &mdash; together they form the nucleocapsid, the minimal viral particle. The <strong>envelope</strong> is a lipid bilayer derived from host membranes and is present only in a subset of viruses (e.g., influenza, HIV, herpesviruses), so it cannot be an essential element (eliminating A and D). <strong>Capsomeres</strong> are the individual protein subunits that assemble to build the capsid; they are components of the capsid rather than a separate essential structure (eliminating C)."
+  },
+  {
+    "id": 2,
+    "section": "Biology",
+    "question": "Peptidoglycan is:",
+    "options": {"A": "polymer of peptides cross-linked by sugars", "B": "polymer of sugars cross-linked by peptides", "C": "polymer of sugars cross-linked by lipids", "D": "polymer of peptides cross-linked by lipids"},
+    "correct": "B",
+    "explanation": "Peptidoglycan (murein) is a mesh-like macromolecule built from alternating N-acetylglucosamine (NAG) and N-acetylmuramic acid (NAM) units joined by &beta;-1,4 glycosidic bonds, producing a <strong>polysaccharide (sugar) backbone</strong>. Adjacent glycan strands are linked by short <strong>peptide cross-bridges</strong> (typically L-Ala&ndash;D-Glu&ndash;m-DAP/L-Lys&ndash;D-Ala) that anchor the sheet into a rigid sacculus. Option A inverts the correct roles of the backbone and the cross-links. Options C and D are wrong because lipids do not form the cross-links; lipid-anchored teichoic acids and lipopolysaccharides are separate cell-wall components."
+  },
+  {
+    "id": 3,
+    "section": "Biology",
+    "question": "Danish physician Hans Christian Gram classified bacterial species into two groups (Gram stain) based on differences in:",
+    "options": {"A": "DNA composition", "B": "ribosome composition", "C": "cell wall composition", "D": "plasma membrane composition"},
+    "correct": "C",
+    "explanation": "The Gram stain differentiates bacteria by the structure of the <strong>cell wall</strong>: Gram-positive bacteria have a thick peptidoglycan layer that retains the crystal violet&ndash;iodine complex after decolorization, while Gram-negative bacteria have only a thin peptidoglycan layer sandwiched between an inner and outer membrane, releasing the dye and taking up the safranin counterstain. DNA (A) and ribosomes (B) are broadly similar between the two groups and are not visualized by the stain. The plasma membrane (D) is a phospholipid bilayer in both groups; it is the peptidoglycan wall, not the membrane, that governs stain retention."
+  },
+  {
+    "id": 4,
+    "section": "Biology",
+    "question": "Nucleolus contains:",
+    "options": {"A": "genes for synthesis of ribosomal components", "B": "genes for synthesis of tRNA", "C": "genes for the enzyme telomerase", "D": "undefined DNA molecules"},
+    "correct": "A",
+    "explanation": "The <strong>nucleolus</strong> assembles around the nucleolar organizer regions (NORs) that house tandem repeats of <strong>rDNA</strong> encoding 18S, 5.8S, and 28S rRNA, and is the site where RNA polymerase I transcribes these genes and where pre-ribosomal subunits are assembled with imported ribosomal proteins. <strong>tRNA</strong> genes (B) are transcribed by RNA polymerase III elsewhere in the nucleus, not in the nucleolus. The <strong>telomerase</strong> gene (C) is a single-copy gene located on a chromosome, unrelated to the nucleolus. The nucleolar DNA is well defined, not \"undefined\" (D)."
+  },
+  {
+    "id": 5,
+    "section": "Biology",
+    "question": "Which intercellular junction is NOT present in animal cells, but only in plant ones:",
+    "options": {"A": "tight junction", "B": "desmosome", "C": "plasmodesma", "D": "gap junction"},
+    "correct": "C",
+    "explanation": "<strong>Plasmodesmata</strong> are cytoplasmic channels that traverse the cellulose cell walls of adjacent plant cells, allowing direct movement of water, ions, and small molecules (and even RNA) between them; they are the plant equivalent of gap junctions but are structurally unique to plants because they require a cell wall to bridge. <strong>Tight junctions</strong> (A) seal epithelial cells in animals. <strong>Desmosomes</strong> (B) are cadherin-based anchoring junctions in animal tissues subjected to mechanical stress. <strong>Gap junctions</strong> (D) are connexin channels in animal cells (invertebrates use innexins) and are absent from plants."
+  },
+  {
+    "id": 6,
+    "section": "Biology",
+    "question": "Synthesis (replication) of nuclear DNA runs in:",
+    "options": {"A": "G2 phase of cell cycle", "B": "G1 phase of cell cycle", "C": "M phase of cell cycle", "D": "S phase of cell cycle"},
+    "correct": "D",
+    "explanation": "Nuclear DNA is replicated during the <strong>S (synthesis) phase</strong> of interphase, when licensed replication origins fire and semiconservative synthesis doubles the genome from 2C to 4C. <strong>G1</strong> (B) is the growth phase before replication, characterized by cell enlargement and preparation of nucleotides and enzymes. <strong>G2</strong> (A) follows S phase and is used for error-checking and preparation for mitosis. <strong>M phase</strong> (C) is when the already-duplicated chromosomes segregate; no DNA replication occurs then."
+  },
+  {
+    "id": 7,
+    "section": "Biology",
+    "question": "Reverse transcriptase (enzyme) is:",
+    "options": {"A": "DNA-dependent DNA polymerase", "B": "DNA-dependent RNA polymerase", "C": "RNA-dependent RNA polymerase", "D": "RNA-dependent DNA polymerase"},
+    "correct": "D",
+    "explanation": "<strong>Reverse transcriptase</strong>, encoded by retroviruses such as HIV and by cellular telomerase, uses an <strong>RNA template to synthesize complementary DNA (cDNA)</strong>, hence the descriptor RNA-dependent DNA polymerase. <strong>DNA-dependent DNA polymerases</strong> (A) are the standard replicative and repair polymerases that copy DNA to DNA. <strong>DNA-dependent RNA polymerases</strong> (B) are the transcriptases (RNA pol I, II, III) that produce RNA from DNA. <strong>RNA-dependent RNA polymerases</strong> (C) are used by many RNA viruses (e.g., influenza, SARS-CoV-2) to replicate their RNA genomes directly, but they do not make DNA."
+  },
+  {
+    "id": 8,
+    "section": "Biology",
+    "question": "Nucleotide is:",
+    "options": {"A": "nitrogenous base joined to a pentose and a phosphate group", "B": "nitrogenous base joined to a pentose", "C": "nitrogenous base joined to a hexose and a phosphate group", "D": "nitrogenous base joined to a hexose"},
+    "correct": "A",
+    "explanation": "A <strong>nucleotide</strong> has three covalently linked parts: a nitrogenous base (purine or pyrimidine), a <strong>pentose sugar</strong> (ribose in RNA, 2&prime;-deoxyribose in DNA), and one or more <strong>phosphate</strong> groups esterified to the 5&prime;-carbon of the sugar. Option B describes a <strong>nucleoside</strong> (base + sugar without phosphate). Options C and D are wrong because the sugar in nucleic acids is a pentose (5-carbon sugar), not a hexose."
+  },
+  {
+    "id": 9,
+    "section": "Biology",
+    "question": "In Mendel's experiments the genotype of the first filial generation:",
+    "options": {"A": "AA", "B": "aa", "C": "Aa", "D": "AA x aa"},
+    "correct": "C",
+    "explanation": "Mendel's classical monohybrid cross paired homozygous dominant parents (AA) with homozygous recessive parents (aa); each gamete carried only one allele, so every F<sub>1</sub> offspring inherited one A from one parent and one a from the other, giving the uniform heterozygous genotype <strong>Aa</strong>. AA (A) and aa (B) are the parental (P) genotypes, not F<sub>1</sub>. \"AA x aa\" (D) is a cross, not a genotype."
+  },
+  {
+    "id": 10,
+    "section": "Biology",
+    "question": "Sex determination by the haplo-diploid system:",
+    "options": {"A": "exists in humans", "B": "exists in birds", "C": "exists in bees and ants", "D": "does not exist"},
+    "correct": "C",
+    "explanation": "In the <strong>haplodiploid</strong> system, characteristic of order Hymenoptera (<em>bees, ants, wasps</em>), unfertilized haploid eggs develop into <strong>males (drones)</strong> via arrhenotokous parthenogenesis, while fertilized diploid eggs develop into <strong>females (workers or queens)</strong>. Humans (A) use XX/XY chromosomal sex determination. Birds (B) use the ZW system, in which females are ZW and males ZZ. Option D is contradicted by the reality of Hymenoptera."
+  },
+  {
+    "id": 11,
+    "section": "Biology",
+    "question": "Fetal testing (prenatal screening) includes:",
+    "options": {"A": "biopsy and arteriography", "B": "amniocentesis and chorionic villus sampling", "C": "amniocentesis and biopsy", "D": "arteriography and chorionic villus sampling"},
+    "correct": "B",
+    "explanation": "The two standard invasive prenatal diagnostic procedures are <strong>amniocentesis</strong> (aspiration of amniotic fluid, usually at 15&ndash;20 weeks, sampling desquamated fetal cells for karyotyping and molecular analysis) and <strong>chorionic villus sampling (CVS)</strong> (transabdominal or transcervical sampling of placental trophoblast at 10&ndash;13 weeks). Generic \"biopsy\" (A, C) is not a defined obstetric screening modality &mdash; fetal tissue biopsies exist but are highly specialized third-line procedures. <strong>Arteriography</strong> (A, D) is a contrast angiographic technique used to visualize arteries in adults and is not employed for routine fetal testing."
+  },
+  {
+    "id": 12,
+    "section": "Biology",
+    "question": "A special human cell, gamete, has:",
+    "options": {"A": "23 chromosomes", "B": "22 chromosomes", "C": "44 chromosomes", "D": "46 chromosomes"},
+    "correct": "A",
+    "explanation": "Human gametes (sperm and oocyte) are produced by <strong>meiosis</strong>, which halves the chromosome number, so they are <strong>haploid</strong> with n = <strong>23 chromosomes</strong> (22 autosomes plus one sex chromosome, X or Y). 22 (B) omits the sex chromosome. 44 (C) is the autosome count of a somatic diploid cell. 46 (D) is the full diploid somatic complement (2n = 22 autosome pairs + XX/XY)."
+  },
+  {
+    "id": 13,
+    "section": "Biology",
+    "question": "Huntington's chorea is an autosomal dominant disease manifested by dementia. Calculate the risk for a child of a healthy mother and a sick father.",
+    "options": {"A": "0%", "B": "25%", "C": "50%", "D": "100%"},
+    "correct": "C",
+    "explanation": "In Huntington disease, a single copy of the mutant allele (expanded CAG repeat in <em>HTT</em>) is sufficient to cause disease. Because the disease is rare, an affected father is almost always <strong>heterozygous (Hh)</strong>; the healthy mother is homozygous unaffected (hh). The Punnett square (Hh &times; hh) yields &frac12; Hh (affected) and &frac12; hh (unaffected), giving a <strong>50% recurrence risk</strong> for each child. 0% (A) would apply only if the father were homozygous unaffected. 25% (B) is the risk pattern for autosomal recessive disease with two carrier parents. 100% (D) would require the father to be homozygous dominant (HH), which is essentially never seen because homozygous HD is embryonic-lethal or extremely rare."
+  },
+  {
+    "id": 14,
+    "section": "Biology",
+    "question": "Karyotype 45,0Y:",
+    "options": {"A": "is manifested as Turner syndrome", "B": "is manifested as Klinefelter syndrome", "C": "is manifested as missing X syndrome", "D": "is not viable"},
+    "correct": "D",
+    "explanation": "A 45,0Y karyotype has <strong>no X chromosome</strong>. Since the X carries hundreds of essential housekeeping genes (including <em>DMD</em>, <em>ATP7A</em>, and X-linked ribosomal and metabolic genes) whose function is required in every cell, a zygote lacking an X chromosome is <strong>incompatible with life</strong> and dies in early embryogenesis. <strong>Turner syndrome</strong> (A) is 45,X0 &mdash; it is viable precisely because one X is present. <strong>Klinefelter syndrome</strong> (B) is 47,XXY. There is no clinical entity called \"missing X syndrome\" (C); the accepted name for absent X in a live individual is Turner syndrome."
+  },
+  {
+    "id": 15,
+    "section": "Biology",
+    "question": "The most frequent disorders in population:",
+    "options": {"A": "single-gene disorders", "B": "chromosome disorders", "C": "multifactorial disorders", "D": "mitochondrial disorders"},
+    "correct": "C",
+    "explanation": "<strong>Multifactorial (polygenic) disorders</strong> &mdash; hypertension, type 2 diabetes, atherosclerotic cardiovascular disease, obesity, asthma, most cancers, schizophrenia, cleft lip/palate &mdash; arise from the combined effect of many low-penetrance variants and environmental exposures and collectively affect a large fraction of the population. <strong>Single-gene (Mendelian) disorders</strong> (A) are individually rare, with a combined incidence of ~1% at birth. <strong>Chromosome disorders</strong> (B) occur in roughly 0.5&ndash;1% of live births. <strong>Mitochondrial disorders</strong> (D) are rarer still, on the order of 1 in 5,000."
+  },
+  {
+    "id": 16,
+    "section": "Biology",
+    "question": "The dominant allele R results in Rh-positive individuals, whereas the homozygous recessive condition (rr) results in Rh-negative individuals. Consider a population at equilibrium in which 84% of the people are Rh-positive, what is the frequency of R allele?",
+    "options": {"A": "0.6", "B": "0.4", "C": "0.36", "D": "0.16"},
+    "correct": "A",
+    "explanation": "Under Hardy-Weinberg equilibrium, Rh-negative individuals (genotype rr) have frequency q<sup>2</sup>. If 84% are Rh-positive, then 16% are Rh-negative, so q<sup>2</sup> = 0.16 &rarr; q = &radic;0.16 = <strong>0.4</strong>. Because p + q = 1, the frequency of the dominant R allele is <strong>p = 1 &minus; 0.4 = 0.6</strong>. Option B (0.4) is the recessive allele frequency q, not R. Option C (0.36) is p<sup>2</sup> (frequency of homozygous RR). Option D (0.16) is q<sup>2</sup> (frequency of rr genotype)."
+  },
+  {
+    "id": 17,
+    "section": "Biology",
+    "question": "pH level in human body is:",
+    "options": {"A": "range of 7.30 to 7.34", "B": "range of 7.24 to 7.30", "C": "range of 7.36 to 7.44", "D": "range of 7.44 to 7.48"},
+    "correct": "C",
+    "explanation": "Arterial blood pH is tightly regulated within the narrow range of <strong>7.36&ndash;7.44</strong> by the bicarbonate buffer system (H<sub>2</sub>CO<sub>3</sub>/HCO<sub>3</sub><sup>&minus;</sup>), respiratory adjustment of PaCO<sub>2</sub>, and renal excretion of H<sup>+</sup>/reabsorption of HCO<sub>3</sub><sup>&minus;</sup>. Ranges A (7.30&ndash;7.34) and B (7.24&ndash;7.30) fall into <strong>acidemia</strong> and would indicate significant metabolic or respiratory acidosis. Range D (7.44&ndash;7.48) is in the <strong>alkalotic</strong> zone. Only 7.36&ndash;7.44 is compatible with normal physiology."
+  },
+  {
+    "id": 18,
+    "section": "Biology",
+    "question": "Skin is formed by multiple layers of:",
+    "options": {"A": "endodermal tissue", "B": "mesodermal tissue", "C": "entodermal tissue", "D": "ectodermal tissue"},
+    "correct": "D",
+    "explanation": "The skin's outer layer, the <strong>epidermis</strong> (a keratinized stratified squamous epithelium organized in multiple layers &mdash; stratum basale, spinosum, granulosum, lucidum, corneum) derives from surface <strong>ectoderm</strong>, as do the hair, nails, sebaceous and sweat glands, and neural crest-derived melanocytes. <strong>Endoderm</strong> (A, and the misspelled variant C \"entoderm\") gives rise to the epithelial lining of the gut and respiratory tract, along with liver and pancreatic parenchyma. <strong>Mesoderm</strong> (B) forms the dermis, skeletal muscle, bone, and vascular tissues but is not what is meant by the layered structure of skin epithelium described in the question."
+  },
+  {
+    "id": 19,
+    "section": "Biology",
+    "question": "The Eustachian (auditory) tube opens in:",
+    "options": {"A": "larynx", "B": "pharynx", "C": "nasal cavity", "D": "mouth cavity"},
+    "correct": "B",
+    "explanation": "The <strong>auditory (Eustachian) tube</strong> connects the middle ear cavity to the <strong>nasopharynx</strong> (the upper part of the pharynx), where it opens behind the inferior nasal concha; this connection equalizes middle-ear pressure with atmospheric pressure. It does not open into the <strong>larynx</strong> (A), which is caudal and part of the airway. It does not open directly into the <strong>nasal cavity</strong> (C) &mdash; the opening is behind the nasal cavity, in the pharynx. The <strong>mouth cavity</strong> (D) is anatomically separated by the soft palate."
+  },
+  {
+    "id": 20,
+    "section": "Biology",
+    "question": "Hepatopancreatic ampulla (common duct) drains into:",
+    "options": {"A": "duodenum", "B": "jejunum", "C": "stomach", "D": "ileum"},
+    "correct": "A",
+    "explanation": "The <strong>hepatopancreatic ampulla (of Vater)</strong> is the confluence of the common bile duct and the main pancreatic duct; it opens through the <strong>major duodenal papilla</strong> into the second (descending) part of the <strong>duodenum</strong>, with outflow regulated by the sphincter of Oddi. The <strong>jejunum</strong> (B) and <strong>ileum</strong> (D) are distal segments of the small intestine and receive no direct biliopancreatic drainage. The <strong>stomach</strong> (C) empties into the duodenum through the pylorus but does not receive the ampulla."
+  },
+  {
+    "id": 21,
+    "section": "Biology",
+    "question": "Detoxification (drug metabolism) takes place primarily in:",
+    "options": {"A": "kidneys", "B": "stomach", "C": "intestines", "D": "liver"},
+    "correct": "D",
+    "explanation": "The <strong>liver</strong> is the principal organ of drug and xenobiotic metabolism. Hepatocytes carry out <strong>phase I</strong> reactions (oxidation, reduction, hydrolysis dominated by the cytochrome P450 system) and <strong>phase II</strong> conjugations (glucuronidation, sulfation, glutathione conjugation, acetylation, methylation) that convert lipophilic drugs into water-soluble metabolites for biliary or renal excretion. <strong>Kidneys</strong> (A) excrete metabolites but perform only limited biotransformation. The <strong>stomach</strong> (B) contributes minor first-pass alcohol dehydrogenase activity but is not a detoxification center. <strong>Intestines</strong> (C) host some CYP3A4 and gut-microbial metabolism, yet their contribution is dwarfed by hepatic metabolism."
+  },
+  {
+    "id": 22,
+    "section": "Biology",
+    "question": "Secretion of foreign substances (e.g. antibiotics) in kidney takes place in:",
+    "options": {"A": "loop of Henle", "B": "collecting duct system", "C": "distal tubule", "D": "proximal tubule"},
+    "correct": "D",
+    "explanation": "Tubular <strong>secretion</strong> of organic anions (penicillin, probenecid, methotrexate, urate) and organic cations (cimetidine, morphine, creatinine) is carried out by transporter families OAT1/OAT3 and OCT2 expressed on the basolateral membrane of the <strong>proximal tubule</strong>, with MRP/MATE transporters on the luminal side extruding substrates into the urine. The <strong>loop of Henle</strong> (A) primarily concentrates urine via countercurrent multiplication. The <strong>distal tubule</strong> (C) fine-tunes Na<sup>+</sup>/Ca<sup>2+</sup> reabsorption. The <strong>collecting duct</strong> (B) is the site of ADH-regulated water reabsorption and aldosterone-driven Na<sup>+</sup>/K<sup>+</sup> exchange."
+  },
+  {
+    "id": 23,
+    "section": "Biology",
+    "question": "Cells producing testosterone in testes are:",
+    "options": {"A": "Sertoli cells", "B": "Cowper's cells", "C": "Follicular cells", "D": "Leydig cells"},
+    "correct": "D",
+    "explanation": "<strong>Leydig (interstitial) cells</strong>, located between the seminiferous tubules, synthesize <strong>testosterone</strong> from cholesterol under stimulation by pituitary LH (steroidogenic pathway: cholesterol &rarr; pregnenolone &rarr; progesterone &rarr; androstenedione &rarr; testosterone). <strong>Sertoli cells</strong> (A) reside inside the seminiferous tubules, support spermatogenesis, and secrete inhibin and androgen-binding protein but not testosterone. <strong>Cowper's (bulbourethral) cells/glands</strong> (B) secrete pre-ejaculate mucus. \"<strong>Follicular cells</strong>\" (C) refers to ovarian granulosa cells that make estrogens, or thyroid follicular cells that make thyroid hormone &mdash; neither exists in the testis."
+  },
+  {
+    "id": 24,
+    "section": "Biology",
+    "question": "Hormones released from the posterior pituitary gland that are made in hypothalamus (neurohormones):",
+    "options": {"A": "antidiuretic hormone and oxytocin", "B": "adrenalin (epinephrine) and noradrenalin (norepinephrine)", "C": "growth hormone and prolactin", "D": "catechol and dopamine"},
+    "correct": "A",
+    "explanation": "<strong>ADH (vasopressin)</strong> is synthesized in the supraoptic nucleus and <strong>oxytocin</strong> in the paraventricular nucleus of the hypothalamus; both are transported down axons of the hypothalamo-hypophyseal tract and released from the <strong>posterior pituitary (neurohypophysis)</strong> directly into the systemic circulation. <strong>Epinephrine and norepinephrine</strong> (B) are catecholamines produced by the adrenal medulla. <strong>Growth hormone and prolactin</strong> (C) are peptide hormones synthesized by somatotroph and lactotroph cells of the <strong>anterior</strong> pituitary. <strong>Dopamine</strong> (D) is a hypothalamic factor that inhibits prolactin release but is not a posterior-pituitary hormone; \"catechol\" is not a hormone."
+  },
+  {
+    "id": 25,
+    "section": "Biology",
+    "question": "In the central nervous system, bodies of neurons form:",
+    "options": {"A": "gray matter", "B": "pink matter", "C": "yellow matter", "D": "white matter"},
+    "correct": "A",
+    "explanation": "<strong>Gray matter</strong> is composed of neuronal cell bodies, dendrites, and unmyelinated fibers; it appears grayish because it lacks the lipid-rich myelin of axons. In the CNS it forms the cerebral and cerebellar cortex, deep nuclei (basal ganglia, thalamus), and the H-shaped core of the spinal cord. <strong>White matter</strong> (D) is made of myelinated axon tracts that appear white due to the myelin sheaths of oligodendrocytes. \"<strong>Pink matter</strong>\" (B) and \"<strong>yellow matter</strong>\" (C) are not accepted anatomical categories of nervous tissue."
+  },
+  {
+    "id": 26,
+    "section": "Biology",
+    "question": "Action potentials are:",
+    "options": {"A": "signal conducted inside each cell", "B": "signal conducted by axons of neurons", "C": "signal conducted in blood", "D": "signal conducted in cerebrospinal fluid"},
+    "correct": "B",
+    "explanation": "An <strong>action potential</strong> is a transient, all-or-none depolarization of the neuronal membrane driven by sequential opening of voltage-gated Na<sup>+</sup> and K<sup>+</sup> channels; it propagates along the <strong>axon</strong> away from the axon hillock toward the presynaptic terminal, either continuously (unmyelinated) or by saltatory conduction between nodes of Ranvier (myelinated). Option A is imprecise &mdash; only excitable cells (neurons, muscle) generate action potentials, and propagation is along the axon, not \"inside each cell.\" The <strong>blood</strong> (C) and <strong>CSF</strong> (D) carry chemical signals such as hormones and neurotransmitters, but action potentials are strictly a membrane phenomenon of excitable cells."
+  },
+  {
+    "id": 27,
+    "section": "Biology",
+    "question": "Sweat glands are located in:",
+    "options": {"A": "lower dermis of the skin", "B": "hypodermis of the skin", "C": "dermis of the skin", "D": "epidermis of the skin"},
+    "correct": "C",
+    "explanation": "Both eccrine and apocrine <strong>sweat glands</strong> are coiled tubular structures embedded in the <strong>dermis</strong>, from which their ducts ascend through the epidermis (eccrine) or empty into hair follicles (apocrine). Option A specifies only the lower dermis, but the coiled secretory portions can lie at various depths of the dermis and even the dermal&ndash;hypodermal junction &mdash; the general answer required by the question is simply \"dermis.\" The <strong>hypodermis</strong> (B) is a subcutaneous fat layer that contains only the deepest tips of some coils. The <strong>epidermis</strong> (D) is avascular and lacks glands; only the ducts pass through it."
+  },
+  {
+    "id": 28,
+    "section": "Biology",
+    "question": "The visual pigments consisting of retinal and the protein opsin are part of:",
+    "options": {"A": "ganglion cells", "B": "bipolar cells", "C": "rods and cones", "D": "pigmented epithelium"},
+    "correct": "C",
+    "explanation": "The visual pigments &mdash; <strong>rhodopsin</strong> in rods and the three <strong>photopsins</strong> (red, green, blue cone opsins) &mdash; are integral membrane G-protein-coupled receptors in which 11-<em>cis</em>-<strong>retinal</strong> is covalently bound as a Schiff base to a lysine in the <strong>opsin</strong> apoprotein. They reside in the disc membranes of the outer segments of <strong>rods and cones</strong>. <strong>Ganglion cells</strong> (A) transmit encoded signals via the optic nerve and contain melanopsin only in a small intrinsically photosensitive subset. <strong>Bipolar cells</strong> (B) relay signals from photoreceptors to ganglion cells but are not themselves photoreceptors. The <strong>retinal pigment epithelium</strong> (D) recycles retinoids and absorbs stray light but does not contain rhodopsin."
+  },
+  {
+    "id": 29,
+    "section": "Biology",
+    "question": "Connective tissue does NOT include:",
+    "options": {"A": "bone", "B": "muscle tissue", "C": "adipose tissue", "D": "blood"},
+    "correct": "B",
+    "explanation": "<strong>Muscle tissue</strong> is one of the four primary tissue types (epithelial, connective, muscle, nervous) and is classified separately from connective tissue by virtue of its contractile actin&ndash;myosin apparatus and its embryonic derivation from myoblasts. <strong>Bone</strong> (A) and <strong>adipose tissue</strong> (C) are specialized connective tissues with mineralized and lipid-rich extracellular matrices, respectively. <strong>Blood</strong> (D) is also formally a connective tissue &mdash; it has cellular elements (erythrocytes, leukocytes, platelets) suspended in a fluid extracellular matrix (plasma). Only muscle falls outside the connective-tissue category."
+  },
+  {
+    "id": 30,
+    "section": "Biology",
+    "question": "The main cells of the immune defense of the organism:",
+    "options": {"A": "erythrocytes", "B": "leucocytes", "C": "fibrocytes", "D": "immunocytes"},
+    "correct": "B",
+    "explanation": "<strong>Leukocytes (white blood cells)</strong> are the principal immune effectors and include neutrophils, eosinophils, basophils, monocytes/macrophages, dendritic cells, and lymphocytes (B, T, NK), coordinating both innate and adaptive responses. <strong>Erythrocytes</strong> (A) are enucleated cells specialized for oxygen and carbon dioxide transport and have no immune function. <strong>Fibrocytes</strong> (C) are quiescent fibroblasts that maintain connective tissue matrix. \"<strong>Immunocytes</strong>\" (D) is a colloquial umbrella term without a defined cell lineage and is not an accepted classification &mdash; the recognized immune cells are the leukocytes."
+  },
+  {
+    "id": 31,
+    "section": "Chemistry",
+    "question": "Propanal and acetone are",
+    "options": {"A": "two names for the same molecule", "B": "structural isomers", "C": "water insoluble molecules", "D": "both formed by reduction of propanoic acid"},
+    "correct": "B",
+    "explanation": "Propanal (CH<sub>3</sub>&ndash;CH<sub>2</sub>&ndash;CHO) and acetone (propan-2-one, CH<sub>3</sub>&ndash;CO&ndash;CH<sub>3</sub>) share the molecular formula <strong>C<sub>3</sub>H<sub>6</sub>O</strong> but differ in connectivity &mdash; propanal has a terminal aldehyde while acetone has an internal ketone &mdash; making them <strong>structural (constitutional) isomers</strong>. Option A is wrong because the functional groups differ (aldehyde vs. ketone). Option C is wrong because both are small polar carbonyl compounds fully <strong>miscible with water</strong> via hydrogen bonding. Option D is wrong because reduction of propanoic acid (CH<sub>3</sub>CH<sub>2</sub>COOH) gives propanal (and then propan-1-ol), never the branched acetone."
+  },
+  {
+    "id": 32,
+    "section": "Chemistry",
+    "question": "Choose the molecule that exists in a form of two stereoisomers:",
+    "options": {"A": "butyne", "B": "1,2-dimethylbenzene", "C": "cyclohexan-1,4-diol", "D": "ethene"},
+    "correct": "C",
+    "explanation": "<strong>Cyclohexan-1,4-diol</strong> has two hydroxyl groups on a saturated six-membered ring; both OH groups can lie on the same face (<em>cis</em>) or on opposite faces (<em>trans</em>) of the ring, giving two distinct <strong>cis/trans stereoisomers</strong>. <strong>Butyne</strong> (A) has a linear C&equiv;C bond that is geometrically fixed and forms no cis/trans isomers (but-1-yne and but-2-yne are structural, not stereo, isomers). <strong>1,2-Dimethylbenzene</strong> (B, ortho-xylene) is a flat aromatic ring with no stereocenter or restricted rotation about a double bond in the substituent chain. <strong>Ethene</strong> (D, CH<sub>2</sub>=CH<sub>2</sub>) is symmetric across the C=C bond and has no possible cis/trans isomers."
+  },
+  {
+    "id": 33,
+    "section": "Chemistry",
+    "question": "In the human body, building blocks of macromolecules exist as specific enantiomers (other enantiomers cannot be used in human metabolism). Choose from the following molecules the one, which is commonly metabolised by human cells:",
+    "options": {"A": "L-glucose", "B": "D-alanine", "C": "L-cysteine", "D": "D-glycine"},
+    "correct": "C",
+    "explanation": "Human ribosomes exclusively incorporate <strong>L-amino acids</strong> into proteins, so <strong>L-cysteine</strong> is the physiologically usable form. <strong>L-glucose</strong> (A) is wrong because natural metabolism uses <strong>D-glucose</strong>; hexokinase and other glycolytic enzymes are stereospecific for the D enantiomer and cannot phosphorylate L-glucose (this is the basis of its use as a non-metabolizable sweetener). <strong>D-alanine</strong> (B) is used by bacteria in peptidoglycan cross-links but is not incorporated into human proteins. <strong>D-glycine</strong> (D) is a trick answer: glycine (H<sub>2</sub>N&ndash;CH<sub>2</sub>&ndash;COOH) has no chiral center because two of its four substituents on the &alpha;-carbon are hydrogens, so \"D-glycine\" does not exist as a distinct enantiomer."
+  },
+  {
+    "id": 34,
+    "section": "Chemistry",
+    "question": "In organic chemistry, common (trivial) names are commonly in use in addition to systematic names. Which of the following trivial names denotes chloroethene?",
+    "options": {"A": "chloroform", "B": "isoprene", "C": "vinyl chloride", "D": "xylene"},
+    "correct": "C",
+    "explanation": "<strong>Vinyl chloride</strong> (CH<sub>2</sub>=CHCl) is the industrial trivial name for <strong>chloroethene</strong>, the monomer polymerized to poly(vinyl chloride), PVC. <strong>Chloroform</strong> (A) is the trivial name for <strong>trichloromethane</strong>, CHCl<sub>3</sub>. <strong>Isoprene</strong> (B) is <strong>2-methylbuta-1,3-diene</strong>, CH<sub>2</sub>=C(CH<sub>3</sub>)&ndash;CH=CH<sub>2</sub>, the monomer of natural rubber. <strong>Xylene</strong> (D) refers to any of the three <strong>dimethylbenzene</strong> isomers (ortho, meta, para)."
+  },
+  {
+    "id": 35,
+    "section": "Chemistry",
+    "question": "Choose the reaction that is classified as an elimination:",
+    "options": {"A": "CH3-CO-O-CH2-CH3 + H2O → CH3-COOH + CH3-CH2-OH", "B": "CH2=CH2 + H2 → CH3-CH3", "C": "CH3-OH + CH3-CH2-COOH → CH3-O-CO-CH2-CH3 + H2O", "D": "CH3-CH2-CH3 → CH3-CH=CH2 + H2"},
+    "correct": "D",
+    "explanation": "An <strong>elimination reaction</strong> removes two substituents from adjacent carbons to form a new &pi; bond, and D shows propane losing two hydrogens (one from C1 and one from C2) to yield propene plus H<sub>2</sub> &mdash; a classic <strong>dehydrogenation</strong> (1,2-elimination). Option A is <strong>ester hydrolysis</strong> of ethyl acetate (substitution at the acyl carbon). Option B (H<sub>2</sub> across a C=C) is <strong>catalytic hydrogenation</strong>, an <strong>addition</strong> reaction. Option C is <strong>Fischer esterification</strong> between methanol and propanoic acid &mdash; a <strong>condensation (substitution)</strong> that releases water, not an elimination."
+  },
+  {
+    "id": 36,
+    "section": "Chemistry",
+    "question": "Methylbutanoate is a product of the reaction whose reactants are:",
+    "options": {"A": "butanoic acid and methanol", "B": "methanoic acid and butanol", "C": "butanoic acid and methyl amine", "D": "methanoic acid and butanone"},
+    "correct": "A",
+    "explanation": "In IUPAC ester nomenclature, the <strong>alkyl group named first</strong> comes from the <strong>alcohol</strong> and the <strong>acyl portion</strong> (root-anoate) comes from the <strong>carboxylic acid</strong>. \"Methyl butanoate\" therefore requires <strong>methanol</strong> (contributing the methyl) and <strong>butanoic acid</strong> (contributing the butanoate acyl group): CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>COOH + CH<sub>3</sub>OH &rarr; CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>COOCH<sub>3</sub> + H<sub>2</sub>O. Option B (methanoic acid + butanol) would give <strong>butyl methanoate (butyl formate)</strong>. Option C (butanoic acid + methylamine) yields an <strong>amide</strong> (N-methylbutanamide), not an ester. Option D (methanoic acid + butanone) is nonsensical because butanone lacks a hydroxyl group and cannot undergo Fischer esterification."
+  },
+  {
+    "id": 37,
+    "section": "Chemistry",
+    "question": "Choose the molecule that contains a chiral carbon:",
+    "options": {"A": "2-aminopropanoic acid", "B": "propanone", "C": "trifluoroacetic acid", "D": "cyclohexanol"},
+    "correct": "A",
+    "explanation": "<strong>2-Aminopropanoic acid</strong> (alanine, CH<sub>3</sub>&ndash;CH(NH<sub>2</sub>)&ndash;COOH) has an &alpha;-carbon bonded to four different groups &mdash; H, NH<sub>2</sub>, COOH, and CH<sub>3</sub> &mdash; making it a <strong>chiral (stereogenic) center</strong>. <strong>Propanone</strong> (B, CH<sub>3</sub>COCH<sub>3</sub>) has a symmetric carbonyl carbon flanked by two identical methyl groups. <strong>Trifluoroacetic acid</strong> (C, CF<sub>3</sub>COOH) has only two carbons and neither is chiral (the CF<sub>3</sub> carbon has three identical fluorines). <strong>Cyclohexanol</strong> (D) has a C&ndash;OH carbon whose two ring neighbors are equivalent by symmetry (each is a &ndash;CH<sub>2</sub>&ndash;(CH<sub>2</sub>)<sub>2</sub>&ndash; chain leading to the same para carbon), so it is achiral."
+  },
+  {
+    "id": 38,
+    "section": "Chemistry",
+    "question": "Which of the following molecules is classified as a phenol?",
+    "options": {"A": "benzaldehyde", "B": "benzene-1,2-diol", "C": "benzyl alcohol", "D": "cyclohexanol"},
+    "correct": "B",
+    "explanation": "A <strong>phenol</strong> is defined by a hydroxyl group bonded <strong>directly to an aromatic ring carbon</strong>. <strong>Benzene-1,2-diol</strong> (catechol) has two OH groups attached directly to the benzene ring, so it qualifies as a phenol (a diphenol). <strong>Benzaldehyde</strong> (A, C<sub>6</sub>H<sub>5</sub>CHO) has an aldehyde substituent, not a hydroxyl. <strong>Benzyl alcohol</strong> (C, C<sub>6</sub>H<sub>5</sub>&ndash;CH<sub>2</sub>OH) has its OH on a <strong>sp<sup>3</sup> methylene</strong> outside the ring, making it a primary aliphatic alcohol, not a phenol. <strong>Cyclohexanol</strong> (D) has an OH on a non-aromatic ring."
+  },
+  {
+    "id": 39,
+    "section": "Chemistry",
+    "question": "Choose the molecule whose oxidation can result in a formation of an organic disulfide:",
+    "options": {"A": "methanesulfonic acid", "B": "dimethyl ether", "C": "dimethyl sulfide", "D": "methanethiol"},
+    "correct": "D",
+    "explanation": "<strong>Thiols (R&ndash;SH)</strong> undergo mild oxidation to give <strong>disulfides (R&ndash;S&ndash;S&ndash;R)</strong>: 2 CH<sub>3</sub>SH &rarr; CH<sub>3</sub>&ndash;S&ndash;S&ndash;CH<sub>3</sub> + 2H<sup>+</sup> + 2e<sup>&minus;</sup>. This is the same chemistry that forms disulfide bridges between cysteine residues in proteins. <strong>Methanesulfonic acid</strong> (A, CH<sub>3</sub>SO<sub>3</sub>H) already contains sulfur in a high oxidation state and cannot form disulfides. <strong>Dimethyl ether</strong> (B, CH<sub>3</sub>&ndash;O&ndash;CH<sub>3</sub>) contains no sulfur. <strong>Dimethyl sulfide</strong> (C, CH<sub>3</sub>&ndash;S&ndash;CH<sub>3</sub>) has its sulfur already fully substituted (no S&ndash;H), so oxidation gives sulfoxide/sulfone (DMSO/DMSO<sub>2</sub>), not a disulfide."
+  },
+  {
+    "id": 40,
+    "section": "Chemistry",
+    "question": "Monocarboxylic acids containing less than four carbons are:",
+    "options": {"A": "gaseous molecules under the room temperature", "B": "stronger acids than their halogeno- derivatives", "C": "diprotic acids that strongly acidify their solutions", "D": "partially ionized in aqueous solutions"},
+    "correct": "D",
+    "explanation": "Formic (HCOOH), acetic (CH<sub>3</sub>COOH), and propanoic acid (CH<sub>3</sub>CH<sub>2</sub>COOH) are <strong>weak acids</strong> with pK<sub>a</sub> values around 3.75, 4.76, and 4.87 respectively, so in aqueous solution they exist as an equilibrium of ionized and un-ionized species &mdash; that is, they are <strong>partially ionized</strong>. Option A is wrong: all three are <strong>liquids</strong> at room temperature (m.p. of acetic acid ~16.6&deg;C, b.p. 118&deg;C). Option B is wrong: halogenated derivatives (e.g., trichloroacetic acid, pK<sub>a</sub> ~0.7) are <strong>stronger</strong> acids because the electron-withdrawing halogens stabilize the conjugate base. Option C is wrong: monocarboxylic acids are <strong>monoprotic</strong> (one COOH), and they are weak, not strong."
+  },
+  {
+    "id": 41,
+    "section": "Chemistry",
+    "question": "The molecule with the structural formula HOOC-CH2-CH2-CH2-COOH",
+    "options": {"A": "is named pentanoic acid by systematic nomenclature", "B": "can be converted to a cyclic anhydride", "C": "can be classified as an unsaturated carboxylic acid", "D": "is an example of so called fatty acids found in lipids"},
+    "correct": "B",
+    "explanation": "This is <strong>glutaric acid (pentanedioic acid)</strong>, a saturated <strong>dicarboxylic acid</strong>. On heating it loses water intramolecularly to form <strong>glutaric anhydride</strong>, a stable <strong>six-membered cyclic anhydride</strong> &mdash; a reaction that succeeds because the 5-carbon chain plus one oxygen closes to a favorable 6-ring. Option A is wrong: it is <strong>pentanedioic acid</strong> (two COOH groups), not pentanoic acid (one COOH). Option C is wrong: the structure has only C&ndash;C single bonds (all &ndash;CH<sub>2</sub>&ndash;), so it is saturated. Option D is wrong: <strong>fatty acids</strong> are long-chain (typically C<sub>12</sub>&ndash;C<sub>24</sub>) monocarboxylic acids that esterify glycerol; glutaric acid is a short-chain dicarboxylic acid and never occurs in triacylglycerols."
+  },
+  {
+    "id": 42,
+    "section": "Chemistry",
+    "question": "Choose molecules that are NOT reactants of the reaction called neutralization:",
+    "options": {"A": "HNO3 + KOH", "B": "CH3COOH + NaOH", "C": "H3PO4 + Ca(OH)2", "D": "HCOOH + CH3OH"},
+    "correct": "D",
+    "explanation": "<strong>Neutralization</strong> is the acid&ndash;base reaction of a proton-donating acid with a hydroxide-donating base to give a salt and water. Options A, B, and C all pair a carboxylic or inorganic <strong>acid</strong> with a metal <strong>hydroxide base</strong>: HNO<sub>3</sub> + KOH &rarr; KNO<sub>3</sub> + H<sub>2</sub>O; CH<sub>3</sub>COOH + NaOH &rarr; CH<sub>3</sub>COONa + H<sub>2</sub>O; H<sub>3</sub>PO<sub>4</sub> + Ca(OH)<sub>2</sub> &rarr; calcium phosphate + water. Option D pairs formic acid with an <strong>alcohol</strong> (methanol), which is a <strong>Fischer esterification</strong> (HCOOH + CH<sub>3</sub>OH &rarr; HCOOCH<sub>3</sub> + H<sub>2</sub>O), not a neutralization because methanol is not a base and methyl formate is not a salt."
+  },
+  {
+    "id": 43,
+    "section": "Chemistry",
+    "question": "Which of the following reactions produces the ION called acetate?",
+    "options": {"A": "ethanoic acid + water →", "B": "acetone + water →", "C": "acetic acid + ethanol →", "D": "acetylene + hydrogen molecule →"},
+    "correct": "A",
+    "explanation": "Ethanoic acid is the systematic name for acetic acid. Its dissociation in water yields the <strong>acetate ion</strong>: CH<sub>3</sub>COOH + H<sub>2</sub>O &rlhar; CH<sub>3</sub>COO<sup>&minus;</sup> + H<sub>3</sub>O<sup>+</sup>. <strong>Acetone + water</strong> (B) is essentially unreactive under normal conditions (only a tiny equilibrium fraction of hydrate forms); it does not ionize to acetate. <strong>Acetic acid + ethanol</strong> (C) undergoes Fischer esterification to <strong>ethyl acetate</strong> and water &mdash; producing a neutral ester, not the acetate ion. <strong>Acetylene + H<sub>2</sub></strong> (D) is catalytic hydrogenation to ethene or ethane; no carboxylate is generated."
+  },
+  {
+    "id": 44,
+    "section": "Chemistry",
+    "question": "Choose the correct description of this molecule: H2N-CH2-(CH2)3-CH(NH2)-COOH",
+    "options": {"A": "it is an amide of hexanoic acid", "B": "it is an amino acid", "C": "it is called 5-carboxypentane-1,5-diamine", "D": "it has branched carbon chain and contains one primary and one secondary amino group"},
+    "correct": "B",
+    "explanation": "This structure is <strong>L-lysine</strong> (2,6-diaminohexanoic acid), one of the twenty proteinogenic <strong>&alpha;-amino acids</strong> &mdash; it has an &alpha;-amino group on C2 next to the carboxyl and a second primary amino group on C6 of its side chain. Option A is wrong: it is not an amide but a free amino acid; an amide would have a C(=O)&ndash;N linkage, not a free NH<sub>2</sub> and COOH. Option C misapplies IUPAC rules &mdash; the correct systematic name uses the amino acid convention (2,6-diaminohexanoic acid), not \"5-carboxypentane-1,5-diamine.\" Option D is wrong: the six-carbon chain is <strong>straight (unbranched)</strong>, and both amino groups are <strong>primary</strong> (each nitrogen bears two H's)."
+  },
+  {
+    "id": 45,
+    "section": "Chemistry",
+    "question": "What of the following is true?",
+    "options": {"A": "elements that should be included in a human diet include lead, mercury and cadmium", "B": "hydroxides mostly contain oxygen, hydrogen and some nonmetal", "C": "oxoacids are mostly made from alkali or alkali earth metals (groups I and II)", "D": "trace elements found in a human body include iron, zinc and copper"},
+    "correct": "D",
+    "explanation": "<strong>Trace elements</strong> are essential micronutrients present in small amounts in the human body; <strong>iron</strong> (heme cofactor in hemoglobin, cytochromes), <strong>zinc</strong> (cofactor for &gt;300 enzymes including carbonic anhydrase and DNA polymerases), and <strong>copper</strong> (in cytochrome c oxidase, ceruloplasmin) are classic examples. Option A is wrong: <strong>lead, mercury, and cadmium</strong> are <strong>toxic heavy metals</strong>, not dietary elements. Option B is wrong: hydroxides typically pair OH<sup>&minus;</sup> with a <strong>metal</strong> cation (NaOH, KOH, Ca(OH)<sub>2</sub>), not a nonmetal. Option C is wrong: <strong>oxoacids</strong> (H<sub>2</sub>SO<sub>4</sub>, HNO<sub>3</sub>, H<sub>3</sub>PO<sub>4</sub>, HClO<sub>4</sub>) are derived from <strong>nonmetals</strong> (S, N, P, Cl), not alkali or alkaline-earth metals."
+  },
+  {
+    "id": 46,
+    "section": "Chemistry",
+    "question": "Choose the correct pair of a name of a common substance and its molecular formula:",
+    "options": {"A": "calcium phosphate is Ca3PO4", "B": "zinc sulfate is Zn(SO4)2", "C": "copper(II) nitrate is CuNO3", "D": "sodium carbonate is Na2CO3"},
+    "correct": "D",
+    "explanation": "Sodium is +1 and carbonate is CO<sub>3</sub><sup>2&minus;</sup>, so charge balance requires two Na<sup>+</sup> per CO<sub>3</sub><sup>2&minus;</sup>, giving <strong>Na<sub>2</sub>CO<sub>3</sub></strong>. Option A is wrong: with Ca<sup>2+</sup> and PO<sub>4</sub><sup>3&minus;</sup> the correct formula is <strong>Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></strong>, not Ca<sub>3</sub>PO<sub>4</sub>. Option B is wrong: zinc is +2 and sulfate is SO<sub>4</sub><sup>2&minus;</sup>, so it is 1:1 &rarr; <strong>ZnSO<sub>4</sub></strong>, not Zn(SO<sub>4</sub>)<sub>2</sub>. Option C is wrong: Cu<sup>2+</sup> with NO<sub>3</sub><sup>&minus;</sup> requires two nitrates &rarr; <strong>Cu(NO<sub>3</sub>)<sub>2</sub></strong>, not CuNO<sub>3</sub>."
+  },
+  {
+    "id": 47,
+    "section": "Chemistry",
+    "question": "At room temperature (25℃), H2O is a liquid but H2S is a gas. THE BEST explanation of this fact is the following statement:",
+    "options": {"A": "oxygen and sulfur differ in the number of valence electrons", "B": "oxygen atom is larger than sulfur atom", "C": "oxygen has a higher electronegativity than sulfur", "D": "oxygen atom has more protons than sulfur atom"},
+    "correct": "C",
+    "explanation": "Oxygen's electronegativity (3.44 on the Pauling scale) is much higher than sulfur's (2.58), so the O&ndash;H bond is highly polar and water molecules engage in strong <strong>intermolecular hydrogen bonding</strong>. These H-bonds raise the boiling point of H<sub>2</sub>O to 100&deg;C, keeping it liquid at 25&deg;C. In H<sub>2</sub>S the S&ndash;H bond is only weakly polar and cannot form true hydrogen bonds, so only weaker van der Waals forces hold molecules together and H<sub>2</sub>S boils at &minus;60&deg;C. Option A is wrong: O and S have the <strong>same</strong> number of valence electrons (both group 16). Option B is wrong: oxygen is actually <strong>smaller</strong> than sulfur. Option D (proton count) is a fact but does not directly explain the phase difference."
+  },
+  {
+    "id": 48,
+    "section": "Chemistry",
+    "question": "Choose the weakest acid:",
+    "options": {"A": "phosphoric acid (pKa1 = 2.12)", "B": "hydrofluoric acid (pKa = 3.18)", "C": "carbonic acid (pKa1 = 6.35)", "D": "hydrocyanic acid (pKa = 9.21)"},
+    "correct": "D",
+    "explanation": "For monoprotic dissociations, <strong>higher pK<sub>a</sub> means weaker acid</strong> because pK<sub>a</sub> = &minus;log K<sub>a</sub> and a smaller K<sub>a</sub> corresponds to less dissociation. Among the listed values, <strong>hydrocyanic acid (HCN, pK<sub>a</sub> = 9.21)</strong> has the highest pK<sub>a</sub>, hence the smallest K<sub>a</sub> (~6 &times; 10<sup>-10</sup>), and is the weakest. Phosphoric acid (pK<sub>a1</sub> 2.12) and hydrofluoric acid (pK<sub>a</sub> 3.18) are moderately weak but much stronger than HCN, and carbonic acid (pK<sub>a1</sub> 6.35) is intermediate."
+  },
+  {
+    "id": 49,
+    "section": "Chemistry",
+    "question": "Choose the INCORRECT pair of the name and molecular formula:",
+    "options": {"A": "sodium oxide Na2O", "B": "magnesium oxide MgO2", "C": "nitrogen dioxide NO2", "D": "calcium oxide CaO"},
+    "correct": "B",
+    "explanation": "Magnesium is a group-2 metal with oxidation state +2, and oxide is O<sup>2&minus;</sup>, so the correct formula of magnesium oxide is <strong>MgO</strong> (1:1 stoichiometry) &mdash; not MgO<sub>2</sub>. MgO<sub>2</sub> would be <strong>magnesium peroxide</strong>, containing the O<sub>2</sub><sup>2&minus;</sup> peroxide anion, a different compound. Option A is correct: 2 Na<sup>+</sup> balance one O<sup>2&minus;</sup> &rarr; Na<sub>2</sub>O. Option C is correct: NO<sub>2</sub> is nitrogen dioxide. Option D is correct: Ca<sup>2+</sup> + O<sup>2&minus;</sup> &rarr; CaO."
+  },
+  {
+    "id": 50,
+    "section": "Chemistry",
+    "question": "Which pair of the molecules can be bound together by a peptide bond?",
+    "options": {"A": "cytosine and guanine", "B": "succinic acid and oxalic acid", "C": "pyruvic acid and lactic acid", "D": "serine and methionine"},
+    "correct": "D",
+    "explanation": "A <strong>peptide bond</strong> is an amide linkage between the &alpha;-carboxyl of one amino acid and the &alpha;-amino group of another, formed by condensation with loss of water. <strong>Serine and methionine</strong> are both proteinogenic amino acids and can therefore be joined by a peptide bond. <strong>Cytosine and guanine</strong> (A) are nucleobases whose interactions in DNA are hydrogen bonds (base pairing), not peptide bonds. <strong>Succinic acid and oxalic acid</strong> (B) are dicarboxylic acids with no amino groups &mdash; they can form anhydrides but not peptides. <strong>Pyruvic acid and lactic acid</strong> (C) are &alpha;-keto and &alpha;-hydroxy carboxylic acids, respectively, and lack amino groups needed for amide formation."
+  },
+  {
+    "id": 51,
+    "section": "Chemistry",
+    "question": "To which of the following molecules can phosphoric acid attach by an ester bond?",
+    "options": {"A": "ribose", "B": "phenylalanine", "C": "pyrrole", "D": "aspartic acid"},
+    "correct": "A",
+    "explanation": "A <strong>phosphoester bond</strong> is formed between a phosphoric acid OH group and an <strong>alcoholic hydroxyl (R&ndash;OH)</strong>, releasing water. <strong>Ribose</strong> is a pentose with multiple free hydroxyls (on C2, C3, C5), and phosphorylation of its 5&prime;-OH is the standard reaction that builds nucleotides and the sugar-phosphate backbone of RNA. <strong>Phenylalanine</strong> (B) has an aromatic ring, an amine, and a carboxyl group but no aliphatic hydroxyl available for a phosphoester. <strong>Pyrrole</strong> (C) is an aromatic five-membered N-containing heterocycle with no hydroxyl group. <strong>Aspartic acid</strong> (D) has two carboxyl groups &mdash; phosphate could form a mixed anhydride with those, not a true phosphoester."
+  },
+  {
+    "id": 52,
+    "section": "Chemistry",
+    "question": "Choose the pair of molecules that BOTH can undergo a hydrolytic cleavage:",
+    "options": {"A": "palmitic acid and stearic acid", "B": "glucose and sucrose", "C": "mannose and galactose", "D": "triacylglycerol and lactose"},
+    "correct": "D",
+    "explanation": "<strong>Hydrolysis</strong> requires a bond that can be broken by addition of water &mdash; typically an ester, amide, or glycosidic linkage. A <strong>triacylglycerol</strong> contains three <strong>ester bonds</strong> between glycerol and fatty acids, hydrolyzed by lipases to glycerol + 3 fatty acids. <strong>Lactose</strong> is a disaccharide with a &beta;-1,4 <strong>glycosidic bond</strong> between galactose and glucose, hydrolyzed by lactase. Option A (palmitic + stearic acid) contains only saturated fatty acids, which are simple carboxylic acids &mdash; nothing to hydrolyze. Options B and C are wrong because <strong>glucose, mannose, and galactose</strong> are all <strong>monosaccharides</strong> with no glycosidic bond to cleave; only sucrose within option B is a hydrolyzable disaccharide, so B fails the \"both\" criterion."
+  },
+  {
+    "id": 53,
+    "section": "Chemistry",
+    "question": "The molecule of adenosine triphosphate (ATP) consists of:",
+    "options": {"A": "glycerol, arachidonic acid and three phosphoric acid residues", "B": "alanine, thymine and phosphoric acid", "C": "adenine, ribose and three phosphoric acid residues", "D": "glycerol, adenosine and one phosphoric acid residue"},
+    "correct": "C",
+    "explanation": "<strong>ATP</strong> is a nucleoside triphosphate composed of the purine base <strong>adenine</strong> joined by an N-glycosidic bond to the pentose <strong>ribose</strong>, whose 5&prime;-hydroxyl is esterified to a chain of <strong>three phosphate groups</strong> (&alpha;, &beta;, &gamma;) linked by high-energy phosphoanhydride bonds. Option A describes a lipid-like fragment, not ATP. Option B mixes an amino acid (alanine) with a pyrimidine (thymine, actually a DNA base) &mdash; no such compound. Option D confuses glycerol (a lipid backbone) with adenosine and describes only one phosphate; adenosine itself is already adenine + ribose, so \"adenosine + glycerol + 1 phosphate\" is not the composition of ATP."
+  },
+  {
+    "id": 54,
+    "section": "Chemistry",
+    "question": "If the reaction (H2PO4)- + H2O ⇄ (HPO4)2- + H3O+ is at an equilibrium and then we add a strong acid to the solution, the result will be this change in concentrations:",
+    "options": {"A": "(H2PO4)- decreases and (HPO4)2- increases", "B": "(HPO4)2- decreases, but (H2PO4)- does not change", "C": "(H2PO4)- decreases, but (HPO4)2- does not change", "D": "(HPO4)2- decreases and (H2PO4)- increases"},
+    "correct": "D",
+    "explanation": "By <strong>Le Chatelier's principle</strong>, adding a strong acid raises [H<sub>3</sub>O<sup>+</sup>] on the right side of the equilibrium H<sub>2</sub>PO<sub>4</sub><sup>&minus;</sup> + H<sub>2</sub>O &rlhar; HPO<sub>4</sub><sup>2&minus;</sup> + H<sub>3</sub>O<sup>+</sup>, so the system shifts to the <strong>left</strong> to consume the added H<sub>3</sub>O<sup>+</sup>. That means <strong>[HPO<sub>4</sub><sup>2&minus;</sup>] decreases</strong> (it is consumed by protonation) and <strong>[H<sub>2</sub>PO<sub>4</sub><sup>&minus;</sup>] increases</strong> (it is produced). Option A has the wrong direction. Options B and C are wrong because both phosphate species must change concurrently in a coupled equilibrium; you cannot alter one without affecting the other."
+  },
+  {
+    "id": 55,
+    "section": "Chemistry",
+    "question": "The concentration of calcium ions in the cytosol of cells is 10^-7 mol/l but in the extracellular fluid it is ten thousand times higher. It follows from this that the concentration in cytosol is:",
+    "options": {"A": "100 nmol/l and outside the cell it is millimolar", "B": "10 nmol/l and outside the cell it is millimolar", "C": "100 pmol/l and outside the cell it is micromolar", "D": "10 pmol/l and outside the cell it is micromolar"},
+    "correct": "A",
+    "explanation": "Convert 10<sup>-7</sup> mol/L to nanomolar: 10<sup>-7</sup> mol/L &times; 10<sup>9</sup> nmol/mol = <strong>100 nmol/L</strong>. Multiplying by 10,000 (= 10<sup>4</sup>) gives 10<sup>-7</sup> &times; 10<sup>4</sup> = <strong>10<sup>-3</sup> mol/L = 1 mmol/L = millimolar</strong>, which is exactly option A. Option B (10 nmol/L) is off by a factor of 10 in the cytosolic value. Options C and D use picomolar and micromolar prefixes that mis-scale the actual 10<sup>-7</sup> and 10<sup>-3</sup> mol/L concentrations. This ~10,000-fold Ca<sup>2+</sup> gradient across the plasma membrane is maintained by the plasma-membrane Ca<sup>2+</sup>-ATPase (PMCA) and Na<sup>+</sup>/Ca<sup>2+</sup> exchanger, and it underlies Ca<sup>2+</sup>'s role as an intracellular second messenger."
+  },
+  {
+    "id": 56,
+    "section": "Chemistry",
+    "question": "If the concentration of fully ionised sulfuric acid in a solution is 0.0005 mol/l, the concentration of hydroxide ions in this solution is:",
+    "options": {"A": "10^-5 mol/l", "B": "10^-9 mol/l", "C": "10^-3 mol/l", "D": "10^-11 mol/l"},
+    "correct": "D",
+    "explanation": "Sulfuric acid is <strong>diprotic</strong> and, if fully ionized, each mole delivers two moles of H<sup>+</sup>: [H<sub>3</sub>O<sup>+</sup>] = 2 &times; 0.0005 mol/L = <strong>10<sup>-3</sup> mol/L</strong>. Applying the ionic product of water at 25&deg;C, K<sub>w</sub> = [H<sub>3</sub>O<sup>+</sup>][OH<sup>&minus;</sup>] = 10<sup>-14</sup>, so [OH<sup>&minus;</sup>] = 10<sup>-14</sup> / 10<sup>-3</sup> = <strong>10<sup>-11</sup> mol/L</strong>. Option A (10<sup>-5</sup>) ignores the diprotic nature and mis-applies K<sub>w</sub>. Option B (10<sup>-9</sup>) uses [H<sub>3</sub>O<sup>+</sup>] = 10<sup>-5</sup> (forgetting the factor of 2 and the correct order of magnitude). Option C (10<sup>-3</sup>) is the value of [H<sub>3</sub>O<sup>+</sup>], not [OH<sup>&minus;</sup>]."
+  },
+  {
+    "id": 57,
+    "section": "Chemistry",
+    "question": "Calculate the pH of 0.004% (mass/volume) sodium hydroxide solution. Relative atomic masses: Ar(sodium) = 23, Ar(oxygen) = 16, Ar(hydrogen) = 1.",
+    "options": {"A": "pH = 13", "B": "pH = 12", "C": "pH = 11", "D": "pH = 10"},
+    "correct": "C",
+    "explanation": "0.004% (m/v) means 0.004 g NaOH per 100 mL, i.e. <strong>0.04 g/L</strong>. The molar mass of NaOH = 23 + 16 + 1 = <strong>40 g/mol</strong>. Concentration = 0.04 g/L &divide; 40 g/mol = <strong>10<sup>-3</sup> mol/L</strong>. NaOH is a strong base fully dissociated to Na<sup>+</sup> + OH<sup>&minus;</sup>, so [OH<sup>&minus;</sup>] = 10<sup>-3</sup> mol/L &rarr; <strong>pOH = 3</strong> and pH = 14 &minus; 3 = <strong>11</strong>. pH 13 (A) would require [OH<sup>&minus;</sup>] = 10<sup>-1</sup> M (100&times; more concentrated). pH 12 (B) implies 10<sup>-2</sup> M. pH 10 (D) implies 10<sup>-4</sup> M."
+  },
+  {
+    "id": 58,
+    "section": "Chemistry",
+    "question": "What is the molar concentration of a glucose solution if it contains 0.18 g of glucose in 1 ml? Relative molecular mass of glucose (Mr) is 180.",
+    "options": {"A": "1 mmol/l", "B": "10 mmol/l", "C": "1 mol/l", "D": "0.1 mol/l"},
+    "correct": "C",
+    "explanation": "Moles of glucose = 0.18 g &divide; 180 g&middot;mol<sup>-1</sup> = <strong>10<sup>-3</sup> mol = 1 mmol</strong>. The volume is 1 mL = 10<sup>-3</sup> L. Molar concentration c = n/V = 10<sup>-3</sup> mol / 10<sup>-3</sup> L = <strong>1 mol/L</strong>. Options A (1 mmol/L) and B (10 mmol/L) forget to convert 1 mL to liters and are off by factors of 1,000 and 100, respectively. Option D (0.1 mol/L) is off by a factor of 10."
+  },
+  {
+    "id": 59,
+    "section": "Chemistry",
+    "question": "If an aqueous solution contains 10^-9 mol/l of hydroxonium ions, it follows from this that the solution:",
+    "options": {"A": "contains 10^-9 mol/l of a hydroxide", "B": "contains 10^-5 mol/l of a strong acid", "C": "contains 10^-5 mol/l of hydroxide ions", "D": "contains also 10^-9 mol/l of hydroxide ions"},
+    "correct": "C",
+    "explanation": "By the water auto-ionization constant at 25&deg;C, [H<sub>3</sub>O<sup>+</sup>][OH<sup>&minus;</sup>] = K<sub>w</sub> = 10<sup>-14</sup>, so [OH<sup>&minus;</sup>] = 10<sup>-14</sup> / 10<sup>-9</sup> = <strong>10<sup>-5</sup> mol/L</strong>. Because [OH<sup>&minus;</sup>] &gt; [H<sub>3</sub>O<sup>+</sup>], the solution is basic (pH = 9). Option A confuses hydroxide with the hydronium concentration &mdash; this equality holds only for neutral water. Option B is wrong: a strong acid would raise H<sub>3</sub>O<sup>+</sup>, not lower it below the neutral value. Option D (10<sup>-9</sup> for both) is only true at pH 7 (neutral, [H<sub>3</sub>O<sup>+</sup>] = [OH<sup>&minus;</sup>] = 10<sup>-7</sup>)."
+  },
+  {
+    "id": 60,
+    "section": "Chemistry",
+    "question": "What is the molar concentration of a solution prepared by mixing 1 ml of 0.1 mmol/l HCl with 99 ml of water?",
+    "options": {"A": "0.01 micromol/l", "B": "0.1 micromol/l", "C": "1 micromol/l", "D": "10 micromol/l"},
+    "correct": "C",
+    "explanation": "Using conservation of moles, c<sub>1</sub>V<sub>1</sub> = c<sub>2</sub>V<sub>2</sub>: (0.1 mmol/L)(1 mL) = c<sub>2</sub>(100 mL), giving c<sub>2</sub> = 0.1/100 = <strong>10<sup>-3</sup> mmol/L</strong>. Converting: 10<sup>-3</sup> mmol/L &times; 1000 &mu;mol/mmol = <strong>1 &mu;mol/L</strong>. Equivalently, the dilution factor is 100 (1 mL into a total 100 mL), so the original 0.1 mmol/L = 100 &mu;mol/L divides by 100 to give 1 &mu;mol/L. Options A (0.01) and B (0.1) apply too large a dilution factor. Option D (10) uses a factor of 10 instead of 100 (forgetting that the total volume is 100 mL, not 10 mL)."
+  }
+]

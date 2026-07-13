@@ -1,0 +1,782 @@
+[
+  {
+    "id": 1,
+    "section": "Biology",
+    "question": "An adrenocorticotropic hormone (ACTH) is secreted by:",
+    "options": {
+      "A": "hypothalamus",
+      "B": "anterior pituitary",
+      "C": "thyroid gland",
+      "D": "parathyroid gland"
+    },
+    "correct": "B",
+    "explanation": "<strong>ACTH</strong> is a 39-amino-acid peptide synthesized in the corticotroph cells of the <strong>anterior pituitary</strong> as a cleavage product of pro-opiomelanocortin (POMC); it drives cortisol release from the adrenal cortex via the HPA axis. The hypothalamus (A) produces <strong>CRH</strong>, the releasing hormone that stimulates the anterior pituitary to secrete ACTH, but does not secrete ACTH itself. The thyroid gland (C) produces T<sub>3</sub>, T<sub>4</sub>, and calcitonin. The parathyroid gland (D) produces <strong>PTH</strong>, which regulates calcium homeostasis."
+  },
+  {
+    "id": 2,
+    "section": "Biology",
+    "question": "At one point as a cell carried out its day-to-day activities, the nucleotides CUA were paired with the nucleotides GAU. This pairing occured:",
+    "options": {
+      "A": "during replication",
+      "B": "during transcription",
+      "C": "when a mRNA codon paired with a tRNA antikodon",
+      "D": "when rRNA codon paired with an amino acid"
+    },
+    "correct": "C",
+    "explanation": "Both sequences contain uracil, so both strands are RNA; the only cellular event in which two RNA fragments base-pair antiparallel is <strong>codon-anticodon recognition</strong> at the ribosome. Reading antiparallel, the mRNA codon 5'-CUA-3' pairs with the tRNA anticodon 3'-GAU-5' (written 5'-UAG-3'). Replication (A) is DNA-DNA and uses thymine, not uracil. Transcription (B) pairs a DNA template with newly made RNA, so one strand would contain T, not U. Option D is nonsensical: rRNA does not carry codons and codons never pair directly with amino acids &mdash; tRNAs are the adaptors that link codons to amino acids."
+  },
+  {
+    "id": 3,
+    "section": "Biology",
+    "question": "Blood hematocrit is:",
+    "options": {
+      "A": "volume relation (%) of plasma to leukocytes",
+      "B": "volume relation (%) of erythrocytes to plasma",
+      "C": "volume relation (%) of erythrocytes to full blood",
+      "D": "volume relation (%) of erythrocytes to rest of cells"
+    },
+    "correct": "C",
+    "explanation": "<strong>Hematocrit</strong> is defined as the fraction of <em>whole blood</em> volume occupied by red blood cells, expressed as a percentage (roughly 40&ndash;45 % in healthy adults) and typically measured after centrifugation of an anticoagulated sample. Option A inverts the relationship and uses leukocytes, which occupy less than 1 % of blood volume. Option B compares erythrocytes to plasma alone, which yields a ratio (not the standard hematocrit) &mdash; the denominator must include the cells themselves. Option D compares erythrocytes to the &ldquo;rest of cells&rdquo; (leukocytes + platelets), an irrelevant ratio never used clinically."
+  },
+  {
+    "id": 4,
+    "section": "Biology",
+    "question": "Hemophilia is an X-linked recessive disease. A phenotype normal man married a phenotype normal woman. Their daughter is healthy, but their son suffers from hemophilia. What can you say about parent's genotypes?",
+    "options": {
+      "A": "it must be de novo mutation, because none of parents is a mutation carrier",
+      "B": "father is a mutation carrier",
+      "C": "mother is a mutation carrier",
+      "D": "both parents are mutation carriers"
+    },
+    "correct": "C",
+    "explanation": "The affected son has genotype X<sup>h</sup>Y and receives his single X chromosome from his mother; a phenotypically normal mother who passes X<sup>h</sup> to her son must therefore be a heterozygous <strong>carrier</strong> X<sup>H</sup>X<sup>h</sup>. A father can only be affected (X<sup>h</sup>Y) or unaffected (X<sup>H</sup>Y) for an X-linked recessive locus &mdash; there is no &ldquo;male carrier&rdquo; state &mdash; so options B and D are biologically impossible. Option A (de novo mutation) is not required when a simpler explanation (a heterozygous mother) fully accounts for the pedigree; heterozygous mothers are in fact the usual source of hemophilia in sons. The healthy daughter is consistent with either X<sup>H</sup>X<sup>H</sup> or X<sup>H</sup>X<sup>h</sup> and does not change the mother's obligate-carrier status."
+  },
+  {
+    "id": 5,
+    "section": "Biology",
+    "question": "If a DNA molecule contains 30% of cytosine, what percentage of adenine is present?",
+    "options": {
+      "A": "20%",
+      "B": "30%",
+      "C": "40%",
+      "D": "60%"
+    },
+    "correct": "A",
+    "explanation": "By <strong>Chargaff's rules</strong>, in double-stranded DNA %A = %T and %G = %C. If %C = 30 %, then %G = 30 %, so C + G = 60 %, which leaves A + T = 40 % of the bases. Because A = T, %A = 40 % / 2 = <strong>20 %</strong>. Option B (30 %) confuses adenine with cytosine or guanine. Option C (40 %) reports the combined A + T total. Option D (60 %) is the combined C + G total. Only 20 % correctly applies Chargaff's equivalence to adenine alone."
+  },
+  {
+    "id": 6,
+    "section": "Biology",
+    "question": "In a population with two alleles for a particular locus, A and a, the allele frequency of a is 0.4. What is the frequency of dominant homozygotes if the population is in Hardy-Weinberg equilibrium?",
+    "options": {
+      "A": "0.6",
+      "B": "0.16",
+      "C": "0.48",
+      "D": "0.36"
+    },
+    "correct": "D",
+    "explanation": "In Hardy-Weinberg equilibrium the genotype frequencies are p<sup>2</sup> + 2pq + q<sup>2</sup> = 1, where p is the dominant allele frequency and q the recessive. With q = 0.4, p = 1 &minus; 0.4 = 0.6, so <strong>dominant homozygotes (AA)</strong> occur at p<sup>2</sup> = 0.6<sup>2</sup> = <strong>0.36</strong>. Option A (0.6) is simply the allele frequency p, not the genotype frequency. Option B (0.16) is q<sup>2</sup>, the frequency of recessive homozygotes (aa). Option C (0.48) is 2pq, the frequency of heterozygotes (Aa)."
+  },
+  {
+    "id": 7,
+    "section": "Biology",
+    "question": "In humans, the meiotic cell division occurs in specialized organs known as:",
+    "options": {
+      "A": "gonads",
+      "B": "gametes",
+      "C": "epididymis",
+      "D": "cell organelles"
+    },
+    "correct": "A",
+    "explanation": "<strong>Meiosis</strong> in humans is confined to the <strong>gonads</strong> &mdash; spermatogonia in the seminiferous tubules of the testes and oogonia in the ovarian follicles &mdash; where diploid germ cells produce haploid gametes. Option B (gametes) confuses the product of meiosis with its location: gametes are the end result, not the site. Option C (epididymis) is a duct that stores and matures spermatozoa after meiosis is already complete in the testis. Option D (cell organelles) is a category error &mdash; meiosis is a whole-cell nuclear division event, not something that occurs inside an organelle."
+  },
+  {
+    "id": 8,
+    "section": "Biology",
+    "question": "In Mendel's experiments, the phenotypic ratio of F2 generation is:",
+    "options": {
+      "A": "3 : 1",
+      "B": "1 : 1",
+      "C": "1 : 2 : 1",
+      "D": "1 : 3 : 1"
+    },
+    "correct": "A",
+    "explanation": "Mendel's classical monohybrid F<sub>2</sub> cross (Aa &times; Aa) yields three dominant phenotypes (AA + 2 Aa) for every one recessive phenotype (aa), giving a <strong>3 : 1 phenotypic ratio</strong>. Option B (1 : 1) is the ratio expected from a testcross (Aa &times; aa), not F<sub>2</sub>. Option C (1 : 2 : 1) is the F<sub>2</sub> <em>genotypic</em> ratio (AA : Aa : aa), not the phenotypic one. Option D (1 : 3 : 1) does not correspond to any standard Mendelian ratio."
+  },
+  {
+    "id": 9,
+    "section": "Biology",
+    "question": "Lymph ducts drain eventually into:",
+    "options": {
+      "A": "subclavian veins",
+      "B": "subclavian arteries",
+      "C": "renal veins",
+      "D": "portal vein"
+    },
+    "correct": "A",
+    "explanation": "Lymph is returned to the systemic circulation via the <strong>thoracic duct</strong> (draining into the left venous angle at the junction of the left <strong>subclavian vein</strong> and internal jugular vein) and the right lymphatic duct (draining into the right subclavian vein). Option B is anatomically wrong &mdash; the arterial system is high pressure and would not permit lymph inflow. Option C (renal veins) drain the kidneys into the inferior vena cava and have no lymphatic connection. Option D (portal vein) collects venous blood from the gut to the liver and again has no direct lymphatic input."
+  },
+  {
+    "id": 10,
+    "section": "Biology",
+    "question": "Mad cow disease is an example of a disease caused by:",
+    "options": {
+      "A": "viruses",
+      "B": "viroids",
+      "C": "prions",
+      "D": "bacteriophages"
+    },
+    "correct": "C",
+    "explanation": "Bovine spongiform encephalopathy (mad cow disease) and its human counterpart variant Creutzfeldt-Jakob disease are caused by <strong>prions</strong> &mdash; misfolded (PrP<sup>Sc</sup>) forms of the normal cellular prion protein that template further misfolding, aggregate as amyloid, and destroy neurons, all without nucleic acid. Option A (viruses) is wrong because prion diseases lack a viral genome and are not affected by antivirals. Option B (viroids) refers to small circular RNA pathogens of plants and never infect mammals. Option D (bacteriophages) are viruses of bacteria and are not implicated in any human or bovine disease."
+  },
+  {
+    "id": 11,
+    "section": "Biology",
+    "question": "Meiosis occurs in one from the following life cycle events:",
+    "options": {
+      "A": "wound healing",
+      "B": "growth",
+      "C": "body cell replacement",
+      "D": "gamete formation"
+    },
+    "correct": "D",
+    "explanation": "<strong>Meiosis</strong> is the reductional division that halves the chromosome number from 2n to n and is used exclusively for <strong>gamete formation</strong> (spermatogenesis and oogenesis) in animals. Wound healing (A), overall growth (B), and routine somatic cell replacement (C) all require the daughter cells to keep the diploid chromosome number and so proceed by <strong>mitosis</strong>, not meiosis. If meiosis occurred during these processes, tissues would rapidly become haploid and non-functional."
+  },
+  {
+    "id": 12,
+    "section": "Biology",
+    "question": "Muscles that decrease the angle between bones on two sides of a joint are:",
+    "options": {
+      "A": "extensors",
+      "B": "flexors",
+      "C": "abductors",
+      "D": "adductors"
+    },
+    "correct": "B",
+    "explanation": "<strong>Flexors</strong> (e.g., biceps brachii at the elbow) contract to bring the articulating bones closer together, thereby <strong>decreasing the joint angle</strong> &mdash; the definition of flexion. Extensors (A) do the opposite: they straighten the joint and increase the angle (e.g., triceps at the elbow). Abductors (C) move a limb <em>away</em> from the body's midline (e.g., deltoid at the shoulder), a motion perpendicular to flexion. Adductors (D) bring a limb <em>toward</em> the midline (e.g., adductor magnus at the hip); neither abduction nor adduction primarily changes the angle between two adjacent bones at the joint."
+  },
+  {
+    "id": 13,
+    "section": "Biology",
+    "question": "Parietal cells in the gastric mucosa produce:",
+    "options": {
+      "A": "mucus",
+      "B": "protein-digesting enzymes (pepsinogen)",
+      "C": "hormones (gastrin, somatostatin)",
+      "D": "hydrochloric acid"
+    },
+    "correct": "D",
+    "explanation": "<strong>Parietal (oxyntic) cells</strong> of the gastric body and fundus secrete <strong>hydrochloric acid</strong> via the H<sup>+</sup>/K<sup>+</sup>-ATPase proton pump &mdash; the target of proton pump inhibitors such as omeprazole &mdash; and also secrete intrinsic factor for vitamin B<sub>12</sub> absorption. Option A (mucus) is produced by surface mucous cells and mucous neck cells, protecting the epithelium from acid. Option B (pepsinogen) is secreted by <strong>chief (zymogenic) cells</strong>, which sit deeper in the gland. Option C (gastrin, somatostatin) are hormones from <strong>G cells</strong> and <strong>D cells</strong> respectively, both endocrine populations, not parietal cells."
+  },
+  {
+    "id": 14,
+    "section": "Biology",
+    "question": "Peripheral nervous system does NOT include:",
+    "options": {
+      "A": "cranial nerves",
+      "B": "spinal cord",
+      "C": "somatic nervous system",
+      "D": "parasympathetic nervous system"
+    },
+    "correct": "B",
+    "explanation": "The <strong>spinal cord</strong>, together with the brain, constitutes the <strong>central nervous system</strong> (CNS); it is protected by the vertebral column and meninges and is <em>not</em> part of the peripheral nervous system (PNS). Cranial nerves (A) &mdash; with the notable exception of the optic nerve (CN II), which is a CNS tract &mdash; are peripheral, connecting the brainstem to head and neck structures. The somatic nervous system (C) transmits voluntary motor and sensory signals to skeletal muscle and skin via peripheral nerves. The parasympathetic nervous system (D) is one division of the autonomic PNS."
+  },
+  {
+    "id": 15,
+    "section": "Biology",
+    "question": "Photoreceptors in the retina of eye are:",
+    "options": {
+      "A": "pyramid and oval cells",
+      "B": "cone and rod cells",
+      "C": "bipolar and horizontal cells",
+      "D": "hair and rod cells"
+    },
+    "correct": "B",
+    "explanation": "The two classes of retinal <strong>photoreceptors</strong> are <strong>rods</strong> (highly sensitive, drive scotopic/low-light vision, contain rhodopsin) and <strong>cones</strong> (drive photopic/color vision, contain three opsin variants for red, green, and blue). Option A (&ldquo;pyramid and oval cells&rdquo;) does not correspond to any retinal cell type &mdash; pyramidal cells are cortical neurons. Option C names <strong>bipolar and horizontal cells</strong>, which are interneurons of the inner retina that process photoreceptor output but do not transduce light. Option D (&ldquo;hair and rod cells&rdquo;) confuses retinal rods with cochlear <strong>hair cells</strong>, the mechanoreceptors of the inner ear."
+  },
+  {
+    "id": 16,
+    "section": "Biology",
+    "question": "Testcross means this crossing:",
+    "options": {
+      "A": "Pp x Pp",
+      "B": "PP x Pp",
+      "C": "Pp x PP",
+      "D": "Pp x pp"
+    },
+    "correct": "D",
+    "explanation": "A <strong>testcross</strong> is a cross between an individual of unknown genotype (showing the dominant phenotype) and a <strong>homozygous recessive (pp)</strong> partner, used to reveal whether the unknown parent is homozygous (PP) or heterozygous (Pp). Option A (Pp &times; Pp) is a standard <em>monohybrid</em> cross producing the classical 3 : 1 F<sub>2</sub>. Options B and C (PP &times; Pp or Pp &times; PP) both involve a homozygous <em>dominant</em> partner &mdash; every offspring shows the dominant phenotype, so no genotype information is revealed. Only crossing to the recessive homozygote (D) exposes hidden recessive alleles in the tested parent."
+  },
+  {
+    "id": 17,
+    "section": "Biology",
+    "question": "The child has B blood group. His mother has AB blood group. What kind of genotype is EXCLUDED to be father's genotype?",
+    "options": {
+      "A": "AA",
+      "B": "BB",
+      "C": "AO",
+      "D": "OO"
+    },
+    "correct": "A",
+    "explanation": "A child with blood group B carries genotype I<sup>B</sup>I<sup>B</sup> or I<sup>B</sup>i; his AB mother (I<sup>A</sup>I<sup>B</sup>) can contribute I<sup>A</sup> or I<sup>B</sup>. To give a group-B child, the mother must have contributed I<sup>B</sup>, and the father must supply either I<sup>B</sup> or i. A father of genotype <strong>AA (I<sup>A</sup>I<sup>A</sup>)</strong> can only contribute I<sup>A</sup>, which combined with the mother's allele would give AB or AA blood &mdash; never B &mdash; so AA is excluded. BB (I<sup>B</sup>I<sup>B</sup>) supplies I<sup>B</sup> &rarr; child B: possible. AO (I<sup>A</sup>i) can supply i, which with maternal I<sup>B</sup> gives I<sup>B</sup>i = group B: possible. OO (ii) supplies i &rarr; group B: possible."
+  },
+  {
+    "id": 18,
+    "section": "Biology",
+    "question": "The hereditary information contained in DNA is based on:",
+    "options": {
+      "A": "sugar backbone of the strands",
+      "B": "the sequence of nitrogenous bases",
+      "C": "the antiparallel nature of the strands",
+      "D": "the hydrogen bonding between nitrogenous bases"
+    },
+    "correct": "B",
+    "explanation": "Genetic information is encoded in the linear <strong>sequence of nitrogenous bases</strong> (A, T, G, C) along a DNA strand &mdash; this sequence is what ribosomes ultimately translate into amino acids after transcription to mRNA. The deoxyribose-phosphate <strong>backbone</strong> (A) is chemically identical along the whole molecule and carries no information. The <strong>antiparallel</strong> orientation of the two strands (C) is a structural feature required for base-pair geometry and directional polymerase activity, but is the same for every DNA molecule. <strong>Hydrogen bonding</strong> between complementary bases (D) stabilizes the double helix and enables replication fidelity, yet the bonds themselves are not the information &mdash; the specific base sequence is."
+  },
+  {
+    "id": 19,
+    "section": "Biology",
+    "question": "The nitrogenous wastes are secreted by the human kidney mostly as:",
+    "options": {
+      "A": "urea",
+      "B": "uric acid",
+      "C": "ammonium hydroxide",
+      "D": "polyurethane"
+    },
+    "correct": "A",
+    "explanation": "Humans are <strong>ureotelic</strong>: dietary and endogenous amino acid nitrogen is converted in the liver via the <strong>urea cycle</strong> to <strong>urea</strong> (CO(NH<sub>2</sub>)<sub>2</sub>), which is highly water-soluble, essentially non-toxic, and forms the bulk of urinary nitrogen. <strong>Uric acid</strong> (B) is the main nitrogenous waste of birds, reptiles, and insects (uricotelic organisms); in humans it is a minor product from purine catabolism (accumulated pathologically in gout). <strong>Ammonium hydroxide</strong> (C) is far too toxic to be a major excretion product &mdash; ammonia in mammals is rapidly detoxified to urea. <strong>Polyurethane</strong> (D) is a synthetic polymer and has no biological role."
+  },
+  {
+    "id": 20,
+    "section": "Biology",
+    "question": "The water balance in a human per day is:",
+    "options": {
+      "A": "25 ml",
+      "B": "250 ml",
+      "C": "2500 ml",
+      "D": "3500 ml"
+    },
+    "correct": "C",
+    "explanation": "A typical adult's daily water balance is roughly <strong>2500 mL</strong> in and 2500 mL out: intake comes from fluids (~1500 mL), food (~700 mL), and metabolic water (~300 mL), while output is distributed between urine (~1500 mL), insensible losses via skin and lungs (~800 mL), and feces (~200 mL). Option A (25 mL) and B (250 mL) are two to three orders of magnitude too small &mdash; well below the obligatory urine volume required for solute excretion. Option D (3500 mL) approximates the intake of an actively sweating athlete or a very hot climate but exceeds the resting balance of a normal adult."
+  },
+  {
+    "id": 21,
+    "section": "Biology",
+    "question": "Thomas Hunt Morgan discovered the fundamental principle of genetics:",
+    "options": {
+      "A": "the law of allele segregation into separate gametes",
+      "B": "the law of linked genes on the same chromosome",
+      "C": "the law of conservation of genetic material in DNA",
+      "D": "the law of codominant heredity of ABO blood group"
+    },
+    "correct": "B",
+    "explanation": "Working with <em>Drosophila melanogaster</em>, <strong>Thomas Hunt Morgan</strong> demonstrated that genes are physically carried on chromosomes and that genes on the same chromosome tend to be inherited together &mdash; the <strong>law of linkage</strong> &mdash; but can be recombined by crossing over, work that earned him the 1933 Nobel Prize. Option A (allele segregation) is <strong>Mendel's first law</strong>, formulated more than 40 years earlier from pea-plant crosses. Option C is not a recognized law; DNA as the genetic material was established by Avery, MacLeod, McCarty and by Hershey and Chase. Option D (ABO codominance) was described by Karl Landsteiner and Ludwik Hirszfeld, not Morgan."
+  },
+  {
+    "id": 22,
+    "section": "Biology",
+    "question": "Vernon Ingram found that the sickle cell hemoglobin differs from the normal hemoglobin by one _____ in the beta chains of this protein.",
+    "options": {
+      "A": "nucleotide",
+      "B": "nitrogenous base",
+      "C": "amino acid",
+      "D": "phosphate group"
+    },
+    "correct": "C",
+    "explanation": "In 1957 <strong>Vernon Ingram</strong> used fingerprinting of tryptic peptides to show that sickle-cell hemoglobin (HbS) differs from normal hemoglobin (HbA) by a single <strong>amino acid substitution</strong> at position 6 of the &beta;-chain: <strong>glutamate &rarr; valine</strong>. This was the first proof that a Mendelian disease could arise from a defined change in a protein's primary sequence. Options A (nucleotide) and B (nitrogenous base) describe the underlying DNA-level cause (an A&rarr;T transversion at codon 6 of <em>HBB</em>), but Ingram's discovery was at the <em>protein</em> level, not the nucleic acid level. Option D (phosphate group) is chemically irrelevant &mdash; hemoglobin is not phosphorylated at position 6."
+  },
+  {
+    "id": 23,
+    "section": "Biology",
+    "question": "What is the probability that a heterozygote parent pair (Aa x Aa) will have a child with the recessive phenotype?",
+    "options": {
+      "A": "25%",
+      "B": "50%",
+      "C": "75%",
+      "D": "100%"
+    },
+    "correct": "A",
+    "explanation": "A Punnett square for Aa &times; Aa gives genotypes in the ratio 1 AA : 2 Aa : 1 aa; only the <strong>aa</strong> class expresses the recessive phenotype, so the probability is <strong>1 / 4 = 25 %</strong>. Option B (50 %) is the frequency of heterozygotes (Aa), not of recessive-phenotype offspring. Option C (75 %) is the combined frequency of <em>dominant</em> phenotype offspring (AA + Aa). Option D (100 %) would only apply to aa &times; aa crosses. This is the archetypal Mendelian carrier-carrier calculation used in genetic counselling for autosomal recessive diseases such as cystic fibrosis."
+  },
+  {
+    "id": 24,
+    "section": "Biology",
+    "question": "What kind of gamete is NOT formed by an individual with AaBb genotype?",
+    "options": {
+      "A": "AB",
+      "B": "Ab",
+      "C": "ab",
+      "D": "Aa"
+    },
+    "correct": "D",
+    "explanation": "A dihybrid (AaBb) individual segregates each locus independently at meiosis, producing four haploid gamete types &mdash; <strong>AB, Ab, aB, ab</strong> &mdash; each carrying one allele per gene. &ldquo;<strong>Aa</strong>&rdquo; (D) contains both alleles of the same locus and is therefore <strong>diploid</strong>, violating the fundamental rule that gametes carry only one allele per gene. Options A (AB), B (Ab), and C (ab) are all valid haploid combinations and appear in the expected 1 : 1 : 1 : 1 ratio when the two loci are unlinked. The missing fourth valid gamete (aB) is simply not listed."
+  },
+  {
+    "id": 25,
+    "section": "Biology",
+    "question": "What structure connects the skeletal muscles to the bones:",
+    "options": {
+      "A": "tendons",
+      "B": "ligaments",
+      "C": "joints",
+      "D": "smooth muscles"
+    },
+    "correct": "A",
+    "explanation": "<strong>Tendons</strong> are dense regular connective-tissue cords composed mainly of parallel type I collagen fibers that transmit force from <strong>skeletal muscle</strong> to <strong>bone</strong>, e.g., the Achilles tendon connecting gastrocnemius/soleus to the calcaneus. <strong>Ligaments</strong> (B) also consist of dense collagen but connect <em>bone to bone</em> at joints, providing stability. <strong>Joints</strong> (C) are the anatomical sites where two or more bones articulate; they are not connective structures themselves. <strong>Smooth muscle</strong> (D) is found in the walls of hollow viscera and blood vessels, is under autonomic control, and is not attached to bones."
+  },
+  {
+    "id": 26,
+    "section": "Biology",
+    "question": "Which organ system includes the skin, sweat glands, and nails:",
+    "options": {
+      "A": "endocrine system",
+      "B": "circulatory system",
+      "C": "integumentary system",
+      "D": "muscular system"
+    },
+    "correct": "C",
+    "explanation": "The <strong>integumentary system</strong> is the outer covering of the body and comprises the <strong>skin</strong> (epidermis + dermis + hypodermis) and its accessory structures &mdash; <strong>hair, nails, sweat (eccrine and apocrine) glands, and sebaceous glands</strong> &mdash; providing protection, thermoregulation, and sensation. The <strong>endocrine system</strong> (A) consists of hormone-secreting glands such as the pituitary and thyroid. The <strong>circulatory system</strong> (B) comprises the heart, blood vessels, and blood. The <strong>muscular system</strong> (D) consists of skeletal, cardiac, and smooth muscle tissues, none of which include skin appendages such as nails."
+  },
+  {
+    "id": 27,
+    "section": "Biology",
+    "question": "Which process is NOT involved in the genetic recombination of prokaryotic organisms?",
+    "options": {
+      "A": "conjugation",
+      "B": "binary fission",
+      "C": "transformation",
+      "D": "transduction"
+    },
+    "correct": "B",
+    "explanation": "<strong>Binary fission</strong> is the prokaryotic mechanism of <em>asexual reproduction</em>: after chromosome replication the cell simply divides into two identical daughters, so no new gene combinations arise. Genetic recombination in bacteria proceeds by three classical horizontal-gene-transfer routes: <strong>conjugation</strong> (A, pilus-mediated plasmid or chromosomal DNA transfer, e.g., F factor); <strong>transformation</strong> (C, uptake of naked environmental DNA by competent cells, first shown by Griffith); and <strong>transduction</strong> (D, phage-mediated DNA transfer, either generalized or specialized). All three of these can generate recombinants, but binary fission alone cannot."
+  },
+  {
+    "id": 28,
+    "section": "Biology",
+    "question": "Which sequence is arranged in the correct order by size, from smallest to largest?",
+    "options": {
+      "A": "nucleotide – nucleus – nitrogenous base – gene",
+      "B": "nucleotide – nitrogenous base - gene – chromosome",
+      "C": "nitrogenous base – nucleotide – gene – chromosome",
+      "D": "nitrogenous base – chromosome – nucleus – gene"
+    },
+    "correct": "C",
+    "explanation": "The correct hierarchy is <strong>nitrogenous base &rarr; nucleotide &rarr; gene &rarr; chromosome</strong>: a nitrogenous base (purine or pyrimidine, ~9&ndash;10 atoms) is one component of a nucleotide (base + deoxyribose + phosphate), many nucleotides form a gene (typically 10<sup>3</sup>&ndash;10<sup>5</sup> bp), and many genes together with structural DNA form a chromosome (10<sup>7</sup>&ndash;10<sup>8</sup> bp in humans). Option A misplaces the <em>nucleus</em>, which is an entire organelle containing all chromosomes and does not belong in a DNA-molecule size list. Option B reverses the base and nucleotide (the base is a component of the nucleotide, so it is smaller). Option D scrambles the hierarchy completely."
+  },
+  {
+    "id": 29,
+    "section": "Biology",
+    "question": "Which stage of mitosis is NOT matched correctly?",
+    "options": {
+      "A": "prophase: chromosomes condense",
+      "B": "prometaphase: chromosomes attach to the mitotic spindle",
+      "C": "metaphase: chromosomes separate",
+      "D": "telophase: chromosomes relax"
+    },
+    "correct": "C",
+    "explanation": "In <strong>metaphase</strong> the chromosomes do <em>not</em> separate &mdash; they align at the equatorial <strong>metaphase plate</strong> with sister kinetochores attached to opposite spindle poles and are held under tension. Separation of sister chromatids occurs during <strong>anaphase</strong>, driven by cleavage of cohesin by separase and shortening of kinetochore microtubules. Option A is correct: <strong>prophase</strong> is defined by chromatin condensation into visible chromosomes and nuclear envelope breakdown. Option B is correct: in <strong>prometaphase</strong> kinetochores capture spindle microtubules. Option D is correct: in <strong>telophase</strong> chromosomes decondense (&ldquo;relax&rdquo;) and nuclear envelopes reform around each daughter set."
+  },
+  {
+    "id": 30,
+    "section": "Biology",
+    "question": "Which structure is mainly responsible for the rigidity of the plant cell?",
+    "options": {
+      "A": "cell wall",
+      "B": "plasma membrane",
+      "C": "nucleolus",
+      "D": "mitochondrion"
+    },
+    "correct": "A",
+    "explanation": "The <strong>plant cell wall</strong> &mdash; a rigid layer built primarily of <strong>cellulose</strong> microfibrils cross-linked with hemicellulose and pectin (and lignin in secondary walls) &mdash; withstands turgor pressure and gives plant cells their fixed shape and mechanical rigidity. The <strong>plasma membrane</strong> (B) is a flexible phospholipid bilayer that regulates transport but provides no significant structural rigidity. The <strong>nucleolus</strong> (C) is a sub-nuclear region for ribosomal RNA synthesis and ribosome assembly. The <strong>mitochondrion</strong> (D) is the ATP-producing organelle and has no role in maintaining cell shape."
+  },
+  {
+    "id": 31,
+    "section": "Chemistry",
+    "question": "2-methylpropane-2-ol is",
+    "options": {
+      "A": "less soluble in water than 2-methylpropane",
+      "B": "a tertiary alcohol",
+      "C": "also called isopropanol",
+      "D": "an ether"
+    },
+    "correct": "B",
+    "explanation": "2-methylpropane-2-ol, (CH<sub>3</sub>)<sub>3</sub>C-OH (<em>tert</em>-butanol), has its hydroxyl group on a carbon bonded to <strong>three other carbons</strong>, which is the definition of a <strong>tertiary alcohol</strong>. Option A is wrong because the -OH group makes it <em>more</em> water-soluble (via hydrogen bonding) than the parent hydrocarbon 2-methylpropane (isobutane), which is a nonpolar gas. Option C confuses it with <strong>isopropanol</strong>, which is propan-2-ol, CH<sub>3</sub>-CH(OH)-CH<sub>3</sub>, a secondary alcohol with only three carbons. Option D is wrong because an ether would have R-O-R', not R-OH."
+  },
+  {
+    "id": 32,
+    "section": "Chemistry",
+    "question": "All the following ions carry a 2- charge except",
+    "options": {
+      "A": "sulfide",
+      "B": "carbonate",
+      "C": "sulfate",
+      "D": "nitrite"
+    },
+    "correct": "D",
+    "explanation": "<strong>Nitrite</strong> is NO<sub>2</sub><sup>-</sup>, carrying only a single negative charge, so it does not belong to the 2&minus; group. Sulfide (A) is S<sup>2-</sup>, formed when sulfur completes its octet by gaining two electrons. Carbonate (B) is CO<sub>3</sub><sup>2-</sup>, the classical divalent anion of carbonic acid. Sulfate (C) is SO<sub>4</sub><sup>2-</sup>, the fully deprotonated conjugate base of H<sub>2</sub>SO<sub>4</sub>. Note that nitrate (NO<sub>3</sub><sup>-</sup>) also carries only a 1&minus; charge, a useful counter-example to remember."
+  },
+  {
+    "id": 33,
+    "section": "Chemistry",
+    "question": "An isotope of sodium has a mass number of 23. What is the number of neutrons for this isotope?",
+    "options": {
+      "A": "23",
+      "B": "34",
+      "C": "12",
+      "D": "0"
+    },
+    "correct": "C",
+    "explanation": "The mass number A equals the sum of protons (Z) and neutrons (N); for sodium the atomic number is Z = 11, so N = A &minus; Z = 23 &minus; 11 = <strong>12</strong>. Option A (23) confuses the mass number with the neutron count &mdash; A includes both protons and neutrons. Option B (34) is the sum A + Z, which has no physical meaning. Option D (0) would describe a nucleus with only protons, which is impossible for any element other than protium (<sup>1</sup>H)."
+  },
+  {
+    "id": 34,
+    "section": "Chemistry",
+    "question": "As we increase the pH of an aqueous solution of H2SO3",
+    "options": {
+      "A": "the concentration of SO3^2- will increase",
+      "B": "the concentration of H3O+ will increase",
+      "C": "the concentration of sulfate will decrease",
+      "D": "sulfur trioxide will be released"
+    },
+    "correct": "A",
+    "explanation": "Sulfurous acid dissociates in two steps: H<sub>2</sub>SO<sub>3</sub> &rlarr; HSO<sub>3</sub><sup>-</sup> &rlarr; SO<sub>3</sub><sup>2-</sup>. Raising the pH (removing H<sup>+</sup>) shifts both equilibria to the right, so the concentration of the fully deprotonated <strong>sulfite ion (SO<sub>3</sub><sup>2-</sup>)</strong> increases. Option B is wrong by definition &mdash; higher pH means <em>lower</em> [H<sub>3</sub>O<sup>+</sup>]. Option C is irrelevant: the solution contains sulfite (SO<sub>3</sub><sup>2-</sup>), not <strong>sulfate</strong> (SO<sub>4</sub><sup>2-</sup>), and no redox process converts one into the other under simple acid-base conditions. Option D is wrong because SO<sub>3</sub> (sulfur trioxide) is not the dehydration product of aqueous H<sub>2</sub>SO<sub>3</sub> under mild base addition."
+  },
+  {
+    "id": 35,
+    "section": "Chemistry",
+    "question": "Atoms of which element have the electron configuration 1s2 2s2 2p6 3s1? (provided they are neutral)",
+    "options": {
+      "A": "potassium",
+      "B": "strontium",
+      "C": "sodium",
+      "D": "nitrogen"
+    },
+    "correct": "C",
+    "explanation": "The configuration 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> contains 2 + 2 + 6 + 1 = <strong>11 electrons</strong>, which for a neutral atom means atomic number Z = 11, i.e., <strong>sodium (Na)</strong>. Potassium (A) has Z = 19 and configuration [Ar] 4s<sup>1</sup>. Strontium (B) has Z = 38 and configuration [Kr] 5s<sup>2</sup>. Nitrogen (D) has Z = 7 and configuration 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>3</sup>. Recognising [Ne] 3s<sup>1</sup> as sodium is a foundational periodic-table skill."
+  },
+  {
+    "id": 36,
+    "section": "Chemistry",
+    "question": "By adding 600 ml of water to 200 ml of a 20 % aqueous solution of sucrose we",
+    "options": {
+      "A": "decrease the concentration of sucrose to 3 %",
+      "B": "decrease the concentration of sucrose four times",
+      "C": "decrease the concentration of sucrose to 15 %",
+      "D": "decrease the concentration of sucrose by one third"
+    },
+    "correct": "B",
+    "explanation": "The mass of sucrose stays constant while the total solution volume increases from 200 mL to 200 + 600 = <strong>800 mL</strong> &mdash; a fourfold increase in volume. Because concentration &prop; 1 / volume for a fixed mass of solute, the sucrose concentration falls to one-quarter of its original value: 20 % &divide; 4 = <strong>5 %</strong>. That is a <strong>fourfold decrease</strong>, matching option B. Option A (3 %) and option C (15 %) give wrong numerical values. Option D (&ldquo;by one third&rdquo;) would give 20 % &minus; 20 %/3 &asymp; 13.3 %, again inconsistent with the correct 5 %."
+  },
+  {
+    "id": 37,
+    "section": "Chemistry",
+    "question": "Choose the correct description of the chemical changes involved in this reaction sequence:    HOOC-CO-CH2-COOH → HOOC-CH(OH)-CH2-COOH → HOOC-CH=CH-COOH → HOOC-CH2-CH2-COOH",
+    "options": {
+      "A": "addition → elimination → elimination",
+      "B": "hydration → elimination → addition",
+      "C": "dehydrogenation → hydrogenation → dehydrogenation",
+      "D": "reduction → dehydration → reduction"
+    },
+    "correct": "D",
+    "explanation": "This is exactly the reversed Krebs-cycle segment <strong>oxaloacetate &rarr; malate &rarr; fumarate &rarr; succinate</strong> written left to right. Step 1: the ketone C=O becomes CH-OH by addition of two H atoms &mdash; a <strong>reduction</strong> (biochemically NADH &rarr; malate). Step 2: the alcohol loses -OH and an adjacent -H to form the C=C double bond &mdash; a <strong>dehydration</strong> (loss of H<sub>2</sub>O). Step 3: the C=C bond gains two H atoms to become a single bond &mdash; a second <strong>reduction</strong> (hydrogenation, biochemically FADH<sub>2</sub>-equivalent). Option A misnames all three; option B calls the first step hydration (adding H<sub>2</sub>O, not H<sub>2</sub>); option C incorrectly puts an oxidation (dehydrogenation) first and last."
+  },
+  {
+    "id": 38,
+    "section": "Chemistry",
+    "question": "Decreasing the pH of a dilute aqueous solution by 3 units",
+    "options": {
+      "A": "decreases the H3O+ concentration 100x",
+      "B": "increases the H3O+ concentration 1000x",
+      "C": "decreases the H3O+ concentration 3x",
+      "D": "does not change the concentration of OH-"
+    },
+    "correct": "B",
+    "explanation": "By definition pH = &minus;log<sub>10</sub>[H<sub>3</sub>O<sup>+</sup>], so a decrease of <strong>3 pH units</strong> corresponds to a <strong>10<sup>3</sup> = 1000-fold increase</strong> in [H<sub>3</sub>O<sup>+</sup>]. Option A is wrong on two counts: 100&times; would be only 2 pH units, and the direction is wrong (decreasing pH means more acidic, so [H<sub>3</sub>O<sup>+</sup>] must rise). Option C confuses linear multiples with logarithmic units. Option D is wrong because the ion product K<sub>w</sub> = [H<sub>3</sub>O<sup>+</sup>][OH<sup>-</sup>] = 10<sup>-14</sup> is constant, so a 1000-fold increase in [H<sub>3</sub>O<sup>+</sup>] necessarily forces [OH<sup>-</sup>] to fall by 1000&times;."
+  },
+  {
+    "id": 39,
+    "section": "Chemistry",
+    "question": "Given the reaction: NH3 + O2 → N2 + H2O. How many moles of N2 are produced when 1.0 mol of NH3 is consumed? (First you have to fill in appropriate stoichiometric coefficients.)",
+    "options": {
+      "A": "0.50 mol",
+      "B": "1.0 mol",
+      "C": "2.0 mol",
+      "D": "4.0 mol"
+    },
+    "correct": "A",
+    "explanation": "Balancing the reaction gives <strong>4 NH<sub>3</sub> + 3 O<sub>2</sub> &rarr; 2 N<sub>2</sub> + 6 H<sub>2</sub>O</strong>: 4 N and 12 H on each side, 6 O on each side. The stoichiometric ratio is 4 mol NH<sub>3</sub> to 2 mol N<sub>2</sub>, i.e., 1 mol N<sub>2</sub> per 2 mol NH<sub>3</sub>. Consuming 1.0 mol NH<sub>3</sub> therefore produces 1.0 &times; (2/4) = <strong>0.50 mol N<sub>2</sub></strong>. Option B (1.0 mol) ignores that two ammonia molecules combine to give one N<sub>2</sub>. Option C (2.0 mol) and option D (4.0 mol) invert or exaggerate the ratio."
+  },
+  {
+    "id": 40,
+    "section": "Chemistry",
+    "question": "H2S is called",
+    "options": {
+      "A": "sulfidic acid",
+      "B": "dihydrogen sulfuric acid",
+      "C": "hydrogen sulfide",
+      "D": "hydrogen sulfate"
+    },
+    "correct": "C",
+    "explanation": "H<sub>2</sub>S is systematically named <strong>hydrogen sulfide</strong> &mdash; a covalent binary hydride of sulfur, a colorless gas notorious for its rotten-egg smell and high toxicity. Option A (&ldquo;sulfidic acid&rdquo;) is not an accepted IUPAC name; in aqueous solution H<sub>2</sub>S can be called <em>hydrosulfuric acid</em>, but the standalone gas is hydrogen sulfide. Option B (&ldquo;dihydrogen sulfuric acid&rdquo;) is a made-up name. Option D (<strong>hydrogen sulfate</strong>) refers to HSO<sub>4</sub><sup>-</sup> (the bisulfate ion, from H<sub>2</sub>SO<sub>4</sub>) &mdash; a completely different sulfur oxoanion with oxidation state +6, not &minus;2."
+  },
+  {
+    "id": 41,
+    "section": "Chemistry",
+    "question": "How many grams of oxygen are in 328 g of calcium nitrate?",
+    "options": {
+      "A": "53 g",
+      "B": "192 g",
+      "C": "32.8 g",
+      "D": "152 g"
+    },
+    "correct": "B",
+    "explanation": "Calcium nitrate is Ca(NO<sub>3</sub>)<sub>2</sub>, with molar mass M = 40 + 2(14 + 3&middot;16) = 40 + 2&middot;62 = <strong>164 g&middot;mol<sup>-1</sup></strong>. Therefore 328 g corresponds to n = 328 / 164 = <strong>2 mol</strong> Ca(NO<sub>3</sub>)<sub>2</sub>. Each formula unit contains 6 O atoms, so 2 mol of the salt contains 2 &times; 6 = 12 mol O, giving a mass of 12 &times; 16 = <strong>192 g</strong> of oxygen. Option A (53 g) roughly equals the oxygen in 1 mol of the salt (96 g) miscalculated. Option C (32.8 g) is 10 % of the total salt mass, an irrelevant number. Option D (152 g) leaves out one of the six oxygens per formula unit."
+  },
+  {
+    "id": 42,
+    "section": "Chemistry",
+    "question": "Identify the product formed from the reduction of acetone.",
+    "options": {
+      "A": "propan-1-ol",
+      "B": "propan-2-ol",
+      "C": "propene",
+      "D": "propanal"
+    },
+    "correct": "B",
+    "explanation": "Acetone is <strong>propan-2-one</strong>, CH<sub>3</sub>-CO-CH<sub>3</sub>. Reduction of a ketone (e.g., by NaBH<sub>4</sub> or LiAlH<sub>4</sub>) adds two H atoms across the C=O bond, converting it to a <strong>secondary alcohol</strong> at the same carbon: CH<sub>3</sub>-CH(OH)-CH<sub>3</sub> = <strong>propan-2-ol</strong> (isopropanol). Option A (propan-1-ol) is a <em>primary</em> alcohol and would arise from reduction of propanal (CH<sub>3</sub>CH<sub>2</sub>CHO), not acetone. Option C (propene) requires dehydration/elimination of water from an alcohol, not a simple reduction. Option D (propanal) is a structural isomer with the carbonyl at C-1; reducing acetone cannot rearrange the skeleton to give propanal."
+  },
+  {
+    "id": 43,
+    "section": "Chemistry",
+    "question": "If a compound contains the group -COOH it",
+    "options": {
+      "A": "was produced by a reduction of an aldehyde",
+      "B": "can dissociate in water",
+      "C": "is an aldehyde",
+      "D": "can be oxidised to an aldehyde"
+    },
+    "correct": "B",
+    "explanation": "The <strong>carboxyl group -COOH</strong> is a weak acid: in water it releases a proton to give -COO<sup>-</sup> and H<sub>3</sub>O<sup>+</sup> (typical pK<sub>a</sub> 3&ndash;5 for simple aliphatic acids like acetic acid), so a -COOH-containing compound can <strong>dissociate in water</strong>. Option A is backwards: reduction of an aldehyde gives a primary alcohol; the carboxylic acid is obtained by <em>oxidation</em> of the aldehyde (or primary alcohol). Option C is a category error &mdash; the -COOH group defines a <strong>carboxylic acid</strong>, not an aldehyde (aldehydes carry the -CHO group). Option D reverses the oxidation direction: a carboxylic acid is already at the highest common carbon oxidation state and can be reduced to an aldehyde, not oxidised to one."
+  },
+  {
+    "id": 44,
+    "section": "Chemistry",
+    "question": "In order to break down a molecule of a triacylglycerol to fatty acids and glycerol we need to perform:",
+    "options": {
+      "A": "hydrolysis",
+      "B": "dehydrogenation",
+      "C": "esterification",
+      "D": "reduction"
+    },
+    "correct": "A",
+    "explanation": "A triacylglycerol is a triester of glycerol with three fatty acids; the three ester bonds are cleaved by <strong>hydrolysis</strong>, in which each -CO-O-CH<sub>2</sub>- linkage reacts with a water molecule to give one -COOH (fatty acid) and one -OH (glycerol). Biologically this is catalysed by lipases (e.g., pancreatic lipase) or by alkali (saponification, yielding soaps and glycerol). Option B (dehydrogenation) removes H<sub>2</sub> and does not cleave ester bonds. Option C (esterification) is the <em>reverse</em> reaction &mdash; it forms the triacylglycerol from fatty acids and glycerol, releasing water. Option D (reduction) adds electrons/H and would not liberate the free acid groups needed."
+  },
+  {
+    "id": 45,
+    "section": "Chemistry",
+    "question": "Increasing the temperature, at which an endothermic reaction occurs, will",
+    "options": {
+      "A": "make more products",
+      "B": "make less products",
+      "C": "cause the reaction to stop",
+      "D": "decrease the pressure of the system"
+    },
+    "correct": "A",
+    "explanation": "For an <strong>endothermic</strong> reaction (&Delta;H > 0), heat can be viewed as a reactant: reactants + heat &rlarr; products. By <strong>Le Chatelier's principle</strong>, raising the temperature adds heat to the reactant side, shifting the equilibrium <em>toward products</em> and increasing K<sub>eq</sub>. Option B has the direction wrong: less product would be the response of an <em>exothermic</em> reaction to heating. Option C is incorrect &mdash; higher temperature actually accelerates the forward rate (Arrhenius); reactions do not spontaneously stop. Option D is unrelated: temperature and pressure are independent thermodynamic variables, and even in gaseous systems increasing T at constant volume raises pressure (via PV = nRT), not lowers it."
+  },
+  {
+    "id": 46,
+    "section": "Chemistry",
+    "question": "Lactate is",
+    "options": {
+      "A": "produced in the Krebs cycle",
+      "B": "an aldehyde",
+      "C": "2-hydroxypropanoic acid",
+      "D": "a component of lactose"
+    },
+    "correct": "C",
+    "explanation": "Lactate is the conjugate base of lactic acid, whose IUPAC name is <strong>2-hydroxypropanoic acid</strong> (CH<sub>3</sub>-CH(OH)-COOH) &mdash; a three-carbon &alpha;-hydroxy acid with a chiral centre at C-2 (L-lactate is the physiologically active enantiomer). Option A is wrong: lactate is generated in the cytosol by <strong>lactate dehydrogenase</strong> during <em>anaerobic glycolysis</em> from pyruvate, not inside the Krebs (citric acid) cycle. Option B is wrong because the carboxyl (-COOH) and hydroxyl (-OH) groups define it as a carboxylic acid + alcohol, not an aldehyde (which requires -CHO). Option D confuses lactate with <strong>lactose</strong>, the milk disaccharide of glucose + galactose &mdash; lactate is not part of lactose."
+  },
+  {
+    "id": 47,
+    "section": "Chemistry",
+    "question": "One of the neurotransmitters in the human nervous system has this structural formula:          CH3-CO-O-CH2-CH2-N+(CH3)3. This structure contains the following functional groups:",
+    "options": {
+      "A": "carboxylic acid group and tertiary amino group",
+      "B": "ester group and quarternary ammonium group",
+      "C": "carboxylic acid group and nitro group",
+      "D": "ether group and amino acid group"
+    },
+    "correct": "B",
+    "explanation": "The molecule shown is <strong>acetylcholine</strong>. The left half, CH<sub>3</sub>-CO-O-CH<sub>2</sub>-, contains an <strong>ester</strong> linkage (acetyl group joined through -O- to the choline ethylene). The right half, -N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub>, is a nitrogen bearing <em>four</em> carbon substituents and a permanent positive charge &mdash; the definition of a <strong>quaternary ammonium</strong> cation. Option A is wrong: there is no free -COOH (the acyl group is bonded to O-C, not O-H) and the nitrogen bears four alkyl groups, not three. Option C is wrong: a nitro group is -NO<sub>2</sub>, which is absent. Option D is wrong: an ether would be C-O-C, but the O here is part of an ester (C=O adjacent), and there is no free -COOH plus -NH<sub>2</sub> to constitute an amino acid."
+  },
+  {
+    "id": 48,
+    "section": "Chemistry",
+    "question": "Potassium will react with water to produce",
+    "options": {
+      "A": "an acid and oxygen",
+      "B": "a salt and an acid",
+      "C": "a salt and a hydroxide",
+      "D": "a hydroxide and hydrogen"
+    },
+    "correct": "D",
+    "explanation": "Alkali metals react vigorously with water in a classic single-displacement reaction: <strong>2 K + 2 H<sub>2</sub>O &rarr; 2 KOH + H<sub>2</sub>&uarr;</strong>, producing <strong>potassium hydroxide</strong> (a strong base) and <strong>hydrogen gas</strong>, which can ignite exothermically. Option A is wrong because no oxygen is released and no acid is formed &mdash; the product is basic, not acidic. Option B is wrong &mdash; no salt is generated because there is no acidic partner and the -OH cannot function as a counter-ion in a salt. Option C mistakes the products entirely: KOH is a hydroxide, but no salt accompanies it in this reaction with pure water."
+  },
+  {
+    "id": 49,
+    "section": "Chemistry",
+    "question": "The conversion of CH3CHO to CH3CH2OH is",
+    "options": {
+      "A": "a reduction",
+      "B": "dehydrogenation",
+      "C": "hydration",
+      "D": "hydrolysis"
+    },
+    "correct": "A",
+    "explanation": "Acetaldehyde (CH<sub>3</sub>CHO) converts to ethanol (CH<sub>3</sub>CH<sub>2</sub>OH) by adding two hydrogen atoms across the C=O bond, formally adding electrons to the carbonyl carbon &mdash; this is a <strong>reduction</strong> (biologically catalysed by alcohol dehydrogenase in the reverse direction, using NADH). Option B (dehydrogenation) is the opposite &mdash; it removes H<sub>2</sub> and would take ethanol back to acetaldehyde. Option C (hydration) adds H<sub>2</sub>O across an unsaturated bond (e.g., an alkene &rarr; alcohol) &mdash; here we add H<sub>2</sub>, not H<sub>2</sub>O. Option D (hydrolysis) breaks a bond by adding water and is used for esters, amides, or glycosidic bonds &mdash; not for aldehyde-to-alcohol conversion."
+  },
+  {
+    "id": 50,
+    "section": "Chemistry",
+    "question": "The conversion of ethanol to acetaldehyde is:",
+    "options": {
+      "A": "oxidation",
+      "B": "dehydration",
+      "C": "hydrogenation",
+      "D": "reduction"
+    },
+    "correct": "A",
+    "explanation": "Ethanol (CH<sub>3</sub>CH<sub>2</sub>OH) is converted to acetaldehyde (CH<sub>3</sub>CHO) by removing two hydrogen atoms from the C1 carbon and its -OH, giving a C=O double bond &mdash; this is a formal <strong>oxidation</strong> (loss of H<sub>2</sub>, equivalent to loss of two electrons at that carbon). In vivo it is catalysed by <strong>alcohol dehydrogenase</strong> using NAD<sup>+</sup>. Option B (dehydration) removes H<sub>2</sub>O and would give ethene, not acetaldehyde. Options C (hydrogenation) and D (reduction) both add hydrogen; they are the reverse of the actual reaction and would convert acetaldehyde back to ethanol."
+  },
+  {
+    "id": 51,
+    "section": "Chemistry",
+    "question": "The conversion of Fe2+ to Fe3+ is a",
+    "options": {
+      "A": "reduction",
+      "B": "oxidation",
+      "C": "ionization",
+      "D": "dissociation"
+    },
+    "correct": "B",
+    "explanation": "Going from Fe<sup>2+</sup> to Fe<sup>3+</sup> means the iron cation <em>loses one electron</em>, which raises its oxidation state from +2 to +3 &mdash; by definition an <strong>oxidation</strong> (mnemonic: OIL RIG &mdash; Oxidation Is Loss of electrons). This is the redox step used, for example, by methemoglobin formation and by ferroxidases such as ceruloplasmin. Option A is the opposite: a reduction would gain electrons (e.g., Fe<sup>3+</sup> &rarr; Fe<sup>2+</sup>). Option C (ionization) is the general process of forming ions from a neutral species and does not describe a change between two already-ionized states. Option D (dissociation) describes breaking a compound into its ions or components in solution, not a change of oxidation number."
+  },
+  {
+    "id": 52,
+    "section": "Chemistry",
+    "question": "The name of the isotope containing one proton and one neutron is:",
+    "options": {
+      "A": "protium",
+      "B": "deuterium",
+      "C": "tritium",
+      "D": "neutrium"
+    },
+    "correct": "B",
+    "explanation": "Hydrogen has three natural isotopes. The nucleus containing <strong>1 proton + 1 neutron</strong> (mass number A = 2) is <strong>deuterium (<sup>2</sup>H, or D)</strong>, sometimes called heavy hydrogen; D<sub>2</sub>O is heavy water. <strong>Protium</strong> (A) is <sup>1</sup>H with one proton and <em>zero</em> neutrons (A = 1), the overwhelmingly abundant natural isotope. <strong>Tritium</strong> (C) is <sup>3</sup>H with 1 proton + 2 neutrons (A = 3), radioactive with a 12.3-year half-life. Option D (&ldquo;neutrium&rdquo;) is not a real isotope name."
+  },
+  {
+    "id": 53,
+    "section": "Chemistry",
+    "question": "The pH of 100 mmol/l solution of a strong hydroxide is",
+    "options": {
+      "A": "higher than the pH of a 1 mol/l strong hydroxide",
+      "B": "2",
+      "C": "12",
+      "D": "higher than the pH of 100 mmol/l weak hydroxide"
+    },
+    "correct": "D",
+    "explanation": "A <strong>strong hydroxide</strong> (e.g., NaOH) dissociates completely in water, so 0.1 mol/L gives [OH<sup>-</sup>] = 0.1 M, pOH = 1, and <strong>pH = 13</strong>. A <em>weak</em> hydroxide (e.g., NH<sub>4</sub>OH) at the same 0.1 mol/L only partially ionises, giving [OH<sup>-</sup>] &lt;&lt; 0.1 M and therefore a <em>lower</em> pH &mdash; so the strong hydroxide indeed has the <strong>higher pH</strong>. Option A is wrong: a 1 mol/L strong hydroxide gives pH 14, which is higher than 13, not lower. Option B (pH 2) describes a strong acid, not a hydroxide. Option C (pH 12) would be a 10 mM strong hydroxide (100 mmol/L would be pH 13, not 12)."
+  },
+  {
+    "id": 54,
+    "section": "Chemistry",
+    "question": "What do tyrosine and butyric acid have in common?",
+    "options": {
+      "A": "contain an amino group",
+      "B": "contain a carboxyl group",
+      "C": "are aromatic",
+      "D": "contain a hydroxyl group"
+    },
+    "correct": "B",
+    "explanation": "<strong>Tyrosine</strong> is HO-C<sub>6</sub>H<sub>4</sub>-CH<sub>2</sub>-CH(NH<sub>2</sub>)-COOH (an aromatic &alpha;-amino acid) and <strong>butyric acid</strong> is CH<sub>3</sub>-CH<sub>2</sub>-CH<sub>2</sub>-COOH (a 4-carbon saturated fatty acid). Both molecules carry a terminal <strong>-COOH (carboxyl) group</strong>, which is why option B is correct. Option A is wrong because butyric acid has no -NH<sub>2</sub>. Option C is wrong because butyric acid is a simple aliphatic chain and contains no aromatic ring. Option D is wrong because butyric acid has no -OH beyond the carboxylic -OH (which is not the aliphatic hydroxyl the question refers to), whereas tyrosine has a phenolic -OH."
+  },
+  {
+    "id": 55,
+    "section": "Chemistry",
+    "question": "What is the concentration of a solution made out of 20 g of sodium chloride and 60 g of water?",
+    "options": {
+      "A": "33 %",
+      "B": "30 %",
+      "C": "25 %",
+      "D": "20 %"
+    },
+    "correct": "C",
+    "explanation": "Mass-percent concentration is <strong>w = m<sub>solute</sub> / m<sub>solution</sub> &times; 100 %</strong>. The total solution mass is m<sub>NaCl</sub> + m<sub>water</sub> = 20 + 60 = <strong>80 g</strong>, and the NaCl mass is 20 g, so w = 20 / 80 &times; 100 % = <strong>25 %</strong>. Option A (33 %) uses the wrong denominator, dividing 20 by 60 (solute over solvent alone). Option B (30 %) does not correspond to any sensible calculation. Option D (20 %) uses 100 g as the denominator, which would be correct only if 100 g of solvent were used, not 60 g."
+  },
+  {
+    "id": 56,
+    "section": "Chemistry",
+    "question": "What is the formula of magnesium nitrite?",
+    "options": {
+      "A": "Mg3N2",
+      "B": "Mg(NO2)3",
+      "C": "Mg(NO3)2",
+      "D": "Mg(NO2)2"
+    },
+    "correct": "D",
+    "explanation": "Magnesium forms Mg<sup>2+</sup> cations, and nitrite is NO<sub>2</sub><sup>-</sup> (one negative charge). Charge balance therefore requires two nitrite ions per magnesium, giving <strong>Mg(NO<sub>2</sub>)<sub>2</sub></strong> (net charge +2 &minus; 2 = 0). Option A (Mg<sub>3</sub>N<sub>2</sub>) is <em>magnesium nitride</em>, containing N<sup>3-</sup>, formed when magnesium burns in nitrogen. Option B (Mg(NO<sub>2</sub>)<sub>3</sub>) implies a +3 magnesium ion, which does not exist. Option C (Mg(NO<sub>3</sub>)<sub>2</sub>) is <em>magnesium nitrate</em> (NO<sub>3</sub><sup>-</sup>, nitrogen +5), not nitrite (NO<sub>2</sub><sup>-</sup>, nitrogen +3)."
+  },
+  {
+    "id": 57,
+    "section": "Chemistry",
+    "question": "When ethanol burns in oxygen, how many molecules of oxygen are consumed per molecule of ethanol?",
+    "options": {
+      "A": "1.5",
+      "B": "3",
+      "C": "2",
+      "D": "4"
+    },
+    "correct": "B",
+    "explanation": "Complete combustion of ethanol is <strong>C<sub>2</sub>H<sub>5</sub>OH + 3 O<sub>2</sub> &rarr; 2 CO<sub>2</sub> + 3 H<sub>2</sub>O</strong>. Balancing check: 2 C on each side, 6 H on each side, and O: 1 (from ethanol) + 3&times;2 = 7 on the left, matching 2&times;2 + 3&times;1 = 7 on the right. Therefore <strong>3 molecules of O<sub>2</sub></strong> are consumed per ethanol. Option A (1.5) would balance carbon only (not H<sub>2</sub>O). Option C (2) is under-oxygenated and would leave carbon partially burned. Option D (4) is over-oxygenated and would violate mass balance."
+  },
+  {
+    "id": 58,
+    "section": "Chemistry",
+    "question": "Which of the following amino acids has an acidic side chain?",
+    "options": {
+      "A": "glutamate",
+      "B": "glycine",
+      "C": "lysine",
+      "D": "isoleucine"
+    },
+    "correct": "A",
+    "explanation": "<strong>Glutamate</strong> (Glu, E) has a side chain -CH<sub>2</sub>-CH<sub>2</sub>-COOH terminating in a second <strong>carboxyl group</strong> (side-chain pK<sub>a</sub> &asymp; 4.1), so at physiological pH the side chain is deprotonated and negatively charged &mdash; the definition of an <strong>acidic amino acid</strong> (with aspartate). Glycine (B) has H as its &ldquo;side chain&rdquo; and is neutral. Lysine (C) has a side-chain -NH<sub>3</sub><sup>+</sup> (pK<sub>a</sub> &asymp; 10.5) and is <strong>basic</strong>. Isoleucine (D) has a branched aliphatic hydrocarbon side chain and is <strong>nonpolar/neutral</strong>."
+  },
+  {
+    "id": 59,
+    "section": "Chemistry",
+    "question": "Which of the following compounds is the least soluble in water?",
+    "options": {
+      "A": "acetic acid",
+      "B": "propan-1-ol",
+      "C": "vinylbenzene",
+      "D": "methanol"
+    },
+    "correct": "C",
+    "explanation": "Water solubility is dominated by the ability to form <strong>hydrogen bonds</strong> with H<sub>2</sub>O. <strong>Vinylbenzene (styrene)</strong>, C<sub>6</sub>H<sub>5</sub>-CH=CH<sub>2</sub>, is an aromatic hydrocarbon with no H-bond donors or acceptors and a large hydrophobic surface, giving very low solubility (~0.3 g/L). Acetic acid (A) is fully miscible with water via both -COOH donation and acceptance. Propan-1-ol (B, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH) is miscible in all proportions thanks to its -OH group despite a modestly long alkyl chain. Methanol (D) is the smallest alcohol and is fully miscible with water. Only styrene lacks any polar functional group."
+  },
+  {
+    "id": 60,
+    "section": "Chemistry",
+    "question": "Which of the following structural features is NOT associated with cis-trans isomerism?",
+    "options": {
+      "A": "double bonds",
+      "B": "ring systems",
+      "C": "triple bonds",
+      "D": "all three are associated with cis-trans isomerism"
+    },
+    "correct": "C",
+    "explanation": "<strong>Cis-trans (geometric) isomerism</strong> requires restricted rotation and two distinguishable substituents on each of two carbons; it therefore arises with <strong>C=C double bonds</strong> (A) and within <strong>ring systems</strong> (B, e.g., 1,2-disubstituted cyclohexane can be cis or trans). A <strong>triple bond (C&equiv;C)</strong>, however, is linear: each sp-hybridised carbon carries only <em>one</em> substituent oriented at 180&deg;, so no cis/trans arrangement is possible. Option D is therefore wrong because triple bonds do not give cis-trans isomers &mdash; that is precisely the feature excluded, which is option C."
+  }
+]
