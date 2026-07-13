@@ -564,25 +564,24 @@
             </div>
           </div>
 
-          <!-- EMPTY-STATE HERO: shown only when the user has 0 attempts.
-               High-conversion — value-props + single primary CTA. Once
-               the user completes their first exam, this whole block hides
-               and the KPI row + populated table take its place. -->
+          <!-- EMPTY-STATE HERO: compact, information-dense. Shown only
+               when user has 0 attempts. One line of value props (chips),
+               one action row (primary CTA + secondary link inline).
+               Goal: the library table below fits above the fold on a
+               standard laptop viewport. -->
           <div id="mockExamEmpty" class="mock-exam-empty" style="display:none;">
-            <div class="mock-exam-empty-icon" aria-hidden="true">
-              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            </div>
             <h2 class="mock-exam-empty-title">Take your first mock exam</h2>
-            <p class="mock-exam-empty-lead">The best predictor of how you'll do on the real LF3 entrance exam is how you do on a full-length simulation under real timing. 60 questions, 120 minutes, no pause.</p>
-            <ul class="mock-exam-empty-benefits">
-              <li><span class="mock-exam-empty-check">&#10003;</span> Biology vs Chemistry section breakdown</li>
-              <li><span class="mock-exam-empty-check">&#10003;</span> Full PhD-level explanations for every question</li>
-              <li><span class="mock-exam-empty-check">&#10003;</span> Topic-level performance to guide review</li>
-              <li><span class="mock-exam-empty-check">&#10003;</span> Real 2-hour exam timing simulation</li>
-            </ul>
-            <a href="practice-exam.html?year=2022" class="btn btn-primary" id="mockExamEmptyCta">Start the free 2022 mock exam &rarr;</a>
-            <p class="mock-exam-empty-fine">Free &middot; 60 questions &middot; 2 hours</p>
-            <div class="mock-exam-empty-divider"><span>Or browse the full library</span></div>
+            <p class="mock-exam-empty-lead">Full-length simulation under real timing &mdash; 60 questions, 120 minutes, no pause.</p>
+            <div class="mock-exam-empty-benefits">
+              <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> Section breakdown</span>
+              <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> PhD-level explanations</span>
+              <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> Topic-level performance</span>
+              <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> Real 2-hour timing</span>
+            </div>
+            <div class="mock-exam-empty-actions">
+              <a href="practice-exam.html?year=2022" class="btn btn-primary" id="mockExamEmptyCta">Start the free 2022 mock exam &rarr;</a>
+              <a href="#mockExamTable" class="mock-exam-empty-secondary">Browse all exams &darr;</a>
+            </div>
           </div>
 
           <!-- EXAM LIBRARY TABLE (always shown). Dense, scannable, responsive.
@@ -1958,59 +1957,55 @@
       background: linear-gradient(135deg, #0F766E 0%, #0d9488 100%);
     }
 
-    /* ---------- Empty state hero (hidden until first attempt) ---------- */
+    /* ---------- Empty state hero (compact, hidden until first attempt) ----------
+       Aggressive height reduction so the library table lands above the fold on
+       a standard laptop (~900px viewport). Removed the icon block, converted
+       vertical benefits list to a single horizontal chip row, merged CTA and
+       secondary action into one row. Padding roughly halved. */
     .mock-exam-empty {
-      background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 60%);
+      background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 70%);
       border: 1px solid #99F6E4;
-      border-radius: 16px;
-      padding: 44px 40px 36px;
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    .mock-exam-empty-icon {
-      width: 72px; height: 72px; margin: 0 auto 18px;
-      border-radius: 50%;
-      background: #CCFBF1;
-      color: #0F766E;
-      display: flex; align-items: center; justify-content: center;
+      border-radius: 12px;
+      padding: 22px 26px 20px;
+      margin-bottom: 24px;
     }
     .mock-exam-empty-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.75rem; font-weight: 700; color: #0F172A;
-      margin: 0 0 12px;
+      font-size: 1.35rem; font-weight: 700; color: #0F172A;
+      margin: 0 0 6px; line-height: 1.25;
     }
     .mock-exam-empty-lead {
-      font-size: 1.02rem; line-height: 1.6; color: #334155;
-      max-width: 620px; margin: 0 auto 24px;
+      font-size: 0.94rem; line-height: 1.5; color: #475569;
+      margin: 0 0 14px;
     }
+    /* Benefits: horizontal chip row (flex wrap on narrow viewports).
+       No max-width, no centering — reads left-aligned like a data row. */
     .mock-exam-empty-benefits {
-      list-style: none; padding: 0;
-      max-width: 460px; margin: 0 auto 28px;
-      text-align: left;
-      display: grid; gap: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin: 0 0 16px;
     }
-    .mock-exam-empty-benefits li {
-      font-size: 0.95rem; color: #0F172A; line-height: 1.5;
-      display: flex; align-items: baseline; gap: 10px;
+    .mock-exam-empty-benefit {
+      font-size: 0.86rem; color: #0F172A; line-height: 1.4;
+      display: inline-flex; align-items: center; gap: 6px;
     }
     .mock-exam-empty-check {
       color: #0F766E; font-weight: 700; flex-shrink: 0;
     }
-    .mock-exam-empty .btn {
-      padding: 14px 32px; font-size: 1rem;
+    /* Actions row: primary button + secondary link on same line. */
+    .mock-exam-empty-actions {
+      display: flex; align-items: center;
+      gap: 16px; flex-wrap: wrap;
     }
-    .mock-exam-empty-fine {
-      font-size: 0.82rem; color: #64748B; margin: 12px 0 0;
+    .mock-exam-empty-actions .btn {
+      padding: 12px 24px; font-size: 0.95rem;
     }
-    .mock-exam-empty-divider {
-      margin: 32px 0 0;
-      display: flex; align-items: center; gap: 14px;
-      color: #94A3B8; font-size: 0.82rem;
+    .mock-exam-empty-secondary {
+      font-size: 0.88rem; color: #475569; text-decoration: none;
+      font-weight: 600; transition: color 0.15s ease;
     }
-    .mock-exam-empty-divider::before,
-    .mock-exam-empty-divider::after {
-      content: ''; flex: 1; height: 1px; background: #E2E8F0;
-    }
+    .mock-exam-empty-secondary:hover { color: #0F766E; }
 
     /* ---------- Library table (Stripe-style dense scan) ---------- */
     .mock-exam-table-wrap {
