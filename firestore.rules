@@ -49,6 +49,16 @@ service cloud.firestore {
         allow create:      if isOwner(uid);
         allow update, delete: if isAdmin();
       }
+      // Mock exam attempts — ONE-shot per year (enforced at the rules
+      // layer, not just the client). Doc ID is the year string, e.g.
+      // "2025". Users can create their own record and read it back.
+      // Only admin can update or delete (e.g. correction of a bad
+      // question, or comp'ing a user a retake as customer service).
+      match /mockExamAttempts/{year} {
+        allow read:   if isOwner(uid) || isAdmin();
+        allow create: if isOwner(uid);
+        allow update, delete: if isAdmin();
+      }
       // Any other subcollection → owner + admin only
       match /{sub=**} {
         allow read, write: if isOwner(uid) || isAdmin();

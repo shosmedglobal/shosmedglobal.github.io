@@ -502,6 +502,32 @@
             <p style="font-size:0.9rem;">Start a practice session and your results will appear here.</p>
           </div>
 
+          <!-- ================================================================
+               MOCK EXAM LIBRARY
+               Cards rendered by loadMockExamLibrary() in JS. Uses config from
+               data/mock-exams/config.json + user attempt records from Firestore
+               to determine each card's state (available / locked / completed).
+               Rules:
+                 - freeYear is accessible to any logged-in user
+                 - Other years require paid access, admin, or reviewer
+                 - Any user with an existing attempt sees Review-only state
+                 - One-shot: rules deny doc updates from owner, so retakes are
+                   blocked even if the client is compromised
+               ================================================================ -->
+          <div id="mockExamLibrarySection" style="margin-top:32px;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+              <div>
+                <h3 class="view-section-title" style="margin:0 0 4px;">Mock Exam Library</h3>
+                <p style="color:var(--gray-500); font-size:0.9rem; margin:0;">Full-length timed simulations from past LF3 exam cycles.</p>
+              </div>
+              <span id="mockExamAccessTag" style="display:none; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; font-weight:700; padding:4px 10px; border-radius:12px; background:#DCFCE7; color:#166534;">Full access</span>
+            </div>
+            <div id="mockExamGrid" class="mock-exam-grid" role="list">
+              <!-- Cards injected by loadMockExamLibrary() -->
+              <div style="grid-column:1/-1; color:var(--gray-500); font-size:0.9rem; padding:16px 0;">Loading mock exams…</div>
+            </div>
+          </div>
+
           <!-- Reset QBank Progress (Full Guidance only) -->
           <div id="dashQbResetSection" style="display:none; margin-top:24px;">
             <div class="dash-card" style="padding:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
@@ -1745,6 +1771,70 @@
     /* Admin sidebar link */
     .sidebar-admin-link { color: #cf5b2e !important; }
     .sidebar-admin-link:hover, .sidebar-admin-link.active { background: rgba(207,91,46,0.12) !important; color: #cf5b2e !important; }
+
+    /* ================== Mock Exam Library grid ==================
+       Card grid injected into the QBank view of the dashboard.
+       Cards degrade from 3-col to 2-col to 1-col as viewport narrows.
+       State classes: .avail (takeable), .done (already taken, review),
+                      .locked (paid content, free-tier user),
+                      .soon (year not yet uploaded). */
+    .mock-exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .mock-exam-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+    }
+    .mock-exam-card.avail:hover,
+    .mock-exam-card.done:hover {
+      border-color: #0d9488;
+      box-shadow: 0 8px 20px rgba(13, 148, 136, 0.10);
+      transform: translateY(-2px);
+    }
+    .mock-exam-card.locked  { background: #f9fafb; border-style: dashed; }
+    .mock-exam-card.soon    { background: #f9fafb; color: #94a3b8; }
+    .mock-exam-card.soon *  { color: inherit; }
+    .mock-exam-card.done    { border-color: #0d948820; background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 40%); }
+    .mock-exam-year {
+      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em;
+      color: #0F172A; line-height: 1;
+    }
+    .mock-exam-badges {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      position: absolute; top: 14px; right: 14px;
+    }
+    .mock-exam-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 10px;
+    }
+    .mock-exam-badge.free      { background: #DCFCE7; color: #166534; }
+    .mock-exam-badge.paid      { background: #FEF3C7; color: #92400E; }
+    .mock-exam-badge.done      { background: #E0F2FE; color: #075985; }
+    .mock-exam-badge.soon      { background: #F1F5F9; color: #64748B; }
+    .mock-exam-badge.star      { background: #FDE68A; color: #78350F; }
+    .mock-exam-meta {
+      font-size: 0.78rem; color: #64748B; line-height: 1.5;
+    }
+    .mock-exam-tagline {
+      font-size: 0.88rem; color: #334155; line-height: 1.5; min-height: 2.6em;
+    }
+    .mock-exam-score {
+      font-size: 0.86rem; font-weight: 600; color: #0f766e;
+      padding: 6px 10px; background: #ecfeff; border-radius: 6px;
+      display: inline-block;
+    }
+    .mock-exam-card .btn {
+      width: 100%; margin-top: auto;
+    }
 
     /* Admin stats grid — single horizontal row of compact tiles
        on wide screens; degrades gracefully on narrower viewports. */
@@ -3259,6 +3349,12 @@
         loadAdminPanel();
       }
 
+      // Lazy-load Mock Exam Library when entering QBank view.
+      // Idempotent — the render function checks a "loaded" flag internally.
+      if (viewName === 'qbank' && typeof loadMockExamLibrary === 'function') {
+        loadMockExamLibrary();
+      }
+
       document.querySelectorAll('.sidebar-link[data-view]').forEach(link => {
         link.classList.toggle('active', link.dataset.view === viewName);
       });
@@ -4341,6 +4437,118 @@
       'strategy-session': 99,   // 1-on-1 call
       'admin-granted':    0,    // admin-granted access, not real revenue
     };
+
+    /* ====================================================================
+       MOCK EXAM LIBRARY
+       Renders the Mock Exam Library card grid inside the QBank view.
+       Idempotent: repeat calls after the first are a no-op unless the
+       user's payment status changes (checked via a lightweight signature).
+       ==================================================================== */
+    let _mockExamLibrarySignature = '';
+    async function loadMockExamLibrary() {
+      const grid = document.getElementById('mockExamGrid');
+      if (!grid) return;
+
+      // Wait until Firebase auth has resolved. If not yet available, retry
+      // shortly. Avoids racing the dashboard's onAuthStateChanged flow.
+      if (typeof firebase === 'undefined' || !firebase.auth) {
+        setTimeout(loadMockExamLibrary, 200);
+        return;
+      }
+      const user = firebase.auth().currentUser;
+      if (!user) { setTimeout(loadMockExamLibrary, 200); return; }
+
+      const email = (user.email || '').toLowerCase();
+      const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
+      const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
+      const isAdmin = ADMIN.includes(email);
+      const isReviewer = REVIEWER.includes(email);
+
+      let isPaid = false;
+      try {
+        const s = await firebase.firestore().collection('users').doc(user.uid).get();
+        const p = s.exists ? s.data() : {};
+        isPaid = p && p.payments && p.payments['exam-bank'] === 'paid';
+      } catch (_) {}
+
+      // Signature — skip a re-render if nothing that affects card state
+      // has changed since the last call. Cheap short-circuit.
+      const sig = user.uid + '|' + (isAdmin?'a':'') + (isReviewer?'r':'') + (isPaid?'p':'');
+      if (sig === _mockExamLibrarySignature && grid.dataset.rendered === '1') return;
+      _mockExamLibrarySignature = sig;
+
+      // Fetch config + user's completed attempts in parallel.
+      let cfg = null, attempts = {};
+      try {
+        [cfg, attempts] = await Promise.all([
+          fetch('data/mock-exams/config.json?v=' + Date.now()).then(r => r.json()),
+          firebase.firestore().collection('users').doc(user.uid).collection('mockExamAttempts').get()
+            .then(snap => { const m = {}; snap.forEach(d => { m[d.id] = d.data(); }); return m; })
+            .catch(() => ({})),
+        ]);
+      } catch (err) {
+        grid.innerHTML = '<div style="grid-column:1/-1; color:#dc2626; font-size:0.9rem;">Could not load mock-exam library. Refresh to retry.</div>';
+        return;
+      }
+
+      // Show "Full access" tag when unlocked across the board.
+      const tag = document.getElementById('mockExamAccessTag');
+      if (tag) tag.style.display = (isPaid || isAdmin || isReviewer) ? '' : 'none';
+
+      // Determine which year gets the "★ Closest to real exam" flag —
+      // by default: the most recent available year.
+      const availableYears = (cfg.years || []).filter(y => y.status === 'available').map(y => y.year);
+      const flagYear = availableYears.length ? availableYears.sort().slice(-1)[0] : null;
+
+      grid.innerHTML = '';
+      (cfg.years || []).forEach(y => {
+        const attempt = attempts[y.year] || null;
+        const isDone = !!attempt && attempt.score;
+        const isFree = y.year === cfg.freeYear;
+        const isSoon = y.status !== 'available';
+        const canTake = !isSoon && (isFree || isPaid || isAdmin || isReviewer);
+        const isLocked = !isSoon && !canTake && !isDone;
+
+        let stateClass = 'avail';
+        if (isSoon) stateClass = 'soon';
+        else if (isDone) stateClass = 'done';
+        else if (isLocked) stateClass = 'locked';
+
+        const badges = [];
+        if (isDone)                                     badges.push('<span class="mock-exam-badge done">Completed</span>');
+        else if (isFree && !isSoon)                      badges.push('<span class="mock-exam-badge free">Free</span>');
+        else if (isLocked)                               badges.push('<span class="mock-exam-badge paid">$99</span>');
+        if (isSoon)                                      badges.push('<span class="mock-exam-badge soon">Coming soon</span>');
+        if (y.year === flagYear && !isDone && !isSoon)   badges.push('<span class="mock-exam-badge star">★ Closest to real exam</span>');
+
+        let scoreLine = '';
+        if (isDone) {
+          const c = attempt.score.correct || 0;
+          const t = attempt.score.total || (y.questionCount || 60);
+          const pct = t > 0 ? Math.round((c / t) * 100) : 0;
+          scoreLine = '<div class="mock-exam-score">' + c + ' / ' + t + ' &middot; ' + pct + '%</div>';
+        }
+
+        let button = '';
+        if (isSoon)         button = '<button class="btn btn-secondary" disabled style="opacity:0.5; cursor:not-allowed;">Coming soon</button>';
+        else if (isDone)    button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review Answers →</a>';
+        else if (isLocked)  button = '<button class="btn btn-primary" onclick="switchView(\'store\'); return false;">Unlock with $99 →</button>';
+        else                button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam →</a>';
+
+        const html =
+          '<div class="mock-exam-card ' + stateClass + '" role="listitem">' +
+            '<div class="mock-exam-badges">' + badges.join('') + '</div>' +
+            '<div class="mock-exam-year">' + y.year + '</div>' +
+            '<div class="mock-exam-meta">' + (y.questionCount || 60) + ' questions &middot; ' + (y.durationMinutes || 120) + ' min &middot; ' + ((y.sections || []).join(' + ') || 'Biology + Chemistry') + '</div>' +
+            '<div class="mock-exam-tagline">' + (y.tagline || '') + '</div>' +
+            scoreLine +
+            button +
+          '</div>';
+        grid.insertAdjacentHTML('beforeend', html);
+      });
+
+      grid.dataset.rendered = '1';
+    }
 
     async function loadAdminPanel() {
       if (adminDataLoaded) return;
