@@ -48,6 +48,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           Question Bank
         </a>
+        <a href="#" class="sidebar-link" data-view="mockexams" id="sidebarMockExamsLink">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Mock Exams
+        </a>
         <a href="#" class="sidebar-link" data-view="resources" id="sidebarResourcesLink">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           Free Resources
@@ -502,32 +506,6 @@
             <p style="font-size:0.9rem;">Start a practice session and your results will appear here.</p>
           </div>
 
-          <!-- ================================================================
-               MOCK EXAM LIBRARY
-               Cards rendered by loadMockExamLibrary() in JS. Uses config from
-               data/mock-exams/config.json + user attempt records from Firestore
-               to determine each card's state (available / locked / completed).
-               Rules:
-                 - freeYear is accessible to any logged-in user
-                 - Other years require paid access, admin, or reviewer
-                 - Any user with an existing attempt sees Review-only state
-                 - One-shot: rules deny doc updates from owner, so retakes are
-                   blocked even if the client is compromised
-               ================================================================ -->
-          <div id="mockExamLibrarySection" style="margin-top:32px;">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
-              <div>
-                <h3 class="view-section-title" style="margin:0 0 4px;">Mock Exam Library</h3>
-                <p style="color:var(--gray-500); font-size:0.9rem; margin:0;">Full-length timed simulations from past LF3 exam cycles.</p>
-              </div>
-              <span id="mockExamAccessTag" style="display:none; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; font-weight:700; padding:4px 10px; border-radius:12px; background:#DCFCE7; color:#166534;">Full access</span>
-            </div>
-            <div id="mockExamGrid" class="mock-exam-grid" role="list">
-              <!-- Cards injected by loadMockExamLibrary() -->
-              <div style="grid-column:1/-1; color:var(--gray-500); font-size:0.9rem; padding:16px 0;">Loading mock exams…</div>
-            </div>
-          </div>
-
           <!-- Reset QBank Progress (Full Guidance only) -->
           <div id="dashQbResetSection" style="display:none; margin-top:24px;">
             <div class="dash-card" style="padding:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
@@ -537,6 +515,24 @@
               </div>
               <button id="dashQbResetBtn" class="btn btn-outline btn-small" style="white-space:nowrap;">Reset Progress</button>
             </div>
+          </div>
+        </div>
+
+        <!-- ========== VIEW: MOCK EXAMS ==========
+             Dedicated view for the mock-exam library. Cards rendered by
+             loadMockExamLibrary() in JS. State-machine per card uses:
+               - config.freeYear vs. this card's year
+               - the user's paid/admin/reviewer status
+               - existing Firestore attempt (forces Review-only)
+             One-shot enforcement lives in firestore.rules (create allowed,
+             update/delete admin-only). -->
+        <div class="view" id="viewMockExams">
+          <div class="dashboard-header">
+            <h1>Mock Exams</h1>
+            <p class="dashboard-sub">Full-length timed simulations from past LF3 entrance-exam cycles.</p>
+          </div>
+          <div id="mockExamGrid" class="mock-exam-grid" role="list">
+            <div style="grid-column:1/-1; color:var(--gray-500); font-size:0.9rem; padding:16px 0;">Loading mock exams…</div>
           </div>
         </div>
 
@@ -1773,67 +1769,73 @@
     .sidebar-admin-link:hover, .sidebar-admin-link.active { background: rgba(207,91,46,0.12) !important; color: #cf5b2e !important; }
 
     /* ================== Mock Exam Library grid ==================
-       Card grid injected into the QBank view of the dashboard.
-       Cards degrade from 3-col to 2-col to 1-col as viewport narrows.
-       State classes: .avail (takeable), .done (already taken, review),
-                      .locked (paid content, free-tier user),
-                      .soon (year not yet uploaded). */
+       Minimal, UWorld-style card grid. Each card carries only what the
+       user needs to decide + act: the year, its state, and the action.
+       No taglines, no meta redundancy, no promotional badges. */
     .mock-exam-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
     .mock-exam-card {
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
-      padding: 20px 20px 18px;
+      padding: 22px 22px 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      justify-content: space-between;
+      min-height: 200px;
       position: relative;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
     }
     .mock-exam-card.avail:hover,
     .mock-exam-card.done:hover {
-      border-color: #0d9488;
-      box-shadow: 0 8px 20px rgba(13, 148, 136, 0.10);
-      transform: translateY(-2px);
+      border-color: #0F172A;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
     }
-    .mock-exam-card.locked  { background: #f9fafb; border-style: dashed; }
-    .mock-exam-card.soon    { background: #f9fafb; color: #94a3b8; }
-    .mock-exam-card.soon *  { color: inherit; }
-    .mock-exam-card.done    { border-color: #0d948820; background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 40%); }
+    /* LOCKED — very clearly not-yet-accessible, but with an obvious
+       upgrade affordance. Gray background, muted year color, lock
+       icon in the top-right corner. */
+    .mock-exam-card.locked {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+    }
+    .mock-exam-card.locked .mock-exam-year { color: #94A3B8; }
+    .mock-exam-card.done   { background: #F0FDFA; border-color: #99F6E4; }
+
     .mock-exam-year {
-      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em;
+      font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em;
       color: #0F172A; line-height: 1;
     }
-    .mock-exam-badges {
-      display: flex; gap: 6px; flex-wrap: wrap;
-      position: absolute; top: 14px; right: 14px;
+    .mock-exam-status {
+      position: absolute; top: 16px; right: 16px;
+      font-size: 0.70rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 12px;
+      display: inline-flex; align-items: center; gap: 4px;
     }
-    .mock-exam-badge {
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; padding: 3px 8px; border-radius: 10px;
-    }
-    .mock-exam-badge.free      { background: #DCFCE7; color: #166534; }
-    .mock-exam-badge.paid      { background: #FEF3C7; color: #92400E; }
-    .mock-exam-badge.done      { background: #E0F2FE; color: #075985; }
-    .mock-exam-badge.soon      { background: #F1F5F9; color: #64748B; }
-    .mock-exam-badge.star      { background: #FDE68A; color: #78350F; }
-    .mock-exam-meta {
-      font-size: 0.78rem; color: #64748B; line-height: 1.5;
-    }
-    .mock-exam-tagline {
-      font-size: 0.88rem; color: #334155; line-height: 1.5; min-height: 2.6em;
-    }
+    .mock-exam-status.free   { background: #DCFCE7; color: #166534; }
+    .mock-exam-status.locked { background: #E2E8F0; color: #475569; }
+    .mock-exam-status.done   { background: #CCFBF1; color: #0F766E; }
     .mock-exam-score {
-      font-size: 0.86rem; font-weight: 600; color: #0f766e;
-      padding: 6px 10px; background: #ecfeff; border-radius: 6px;
-      display: inline-block;
+      font-size: 1.4rem; font-weight: 700; color: #0F766E;
+      line-height: 1.1; margin-top: 12px;
     }
+    .mock-exam-score-label {
+      font-size: 0.74rem; color: #64748B; letter-spacing: 0.04em;
+      text-transform: uppercase; font-weight: 600; margin-top: 2px;
+    }
+    .mock-exam-lock-copy {
+      font-size: 0.85rem; color: #64748B; line-height: 1.5; margin-top: 12px;
+    }
+    .mock-exam-lock-copy strong { color: #0F172A; }
     .mock-exam-card .btn {
-      width: 100%; margin-top: auto;
+      width: 100%; margin-top: 16px;
+    }
+    /* Small lock icon inside the STATUS pill for locked cards. */
+    .mock-exam-lock-icon {
+      display: inline-block; width: 10px; height: 10px; vertical-align: -1px;
     }
 
     /* Admin stats grid — single horizontal row of compact tiles
@@ -3327,6 +3329,7 @@
         'overview': 'viewOverview',
         'studyplan': 'viewStudyplan',
         'qbank': 'viewQbank',
+        'mockexams': 'viewMockExams',
         'resources': 'viewResources',
         'store': 'viewStore',
         'contact': 'viewContact',
@@ -3349,9 +3352,10 @@
         loadAdminPanel();
       }
 
-      // Lazy-load Mock Exam Library when entering QBank view.
-      // Idempotent — the render function checks a "loaded" flag internally.
-      if (viewName === 'qbank' && typeof loadMockExamLibrary === 'function') {
+      // Lazy-load Mock Exam Library when entering its own view.
+      // Idempotent — the render function checks a signature internally
+      // and short-circuits when nothing that would change the cards has changed.
+      if (viewName === 'mockexams' && typeof loadMockExamLibrary === 'function') {
         loadMockExamLibrary();
       }
 
@@ -4491,57 +4495,51 @@
         return;
       }
 
-      // Show "Full access" tag when unlocked across the board.
-      const tag = document.getElementById('mockExamAccessTag');
-      if (tag) tag.style.display = (isPaid || isAdmin || isReviewer) ? '' : 'none';
-
-      // Determine which year gets the "★ Closest to real exam" flag —
-      // by default: the most recent available year.
-      const availableYears = (cfg.years || []).filter(y => y.status === 'available').map(y => y.year);
-      const flagYear = availableYears.length ? availableYears.sort().slice(-1)[0] : null;
-
       grid.innerHTML = '';
       (cfg.years || []).forEach(y => {
         const attempt = attempts[y.year] || null;
         const isDone = !!attempt && attempt.score;
         const isFree = y.year === cfg.freeYear;
-        const isSoon = y.status !== 'available';
-        const canTake = !isSoon && (isFree || isPaid || isAdmin || isReviewer);
-        const isLocked = !isSoon && !canTake && !isDone;
+        const canTake = isFree || isPaid || isAdmin || isReviewer;
+        const isLocked = !canTake && !isDone;
 
         let stateClass = 'avail';
-        if (isSoon) stateClass = 'soon';
-        else if (isDone) stateClass = 'done';
-        else if (isLocked) stateClass = 'locked';
+        let statusPill = '';
+        let body = '';
+        let button = '';
 
-        const badges = [];
-        if (isDone)                                     badges.push('<span class="mock-exam-badge done">Completed</span>');
-        else if (isFree && !isSoon)                      badges.push('<span class="mock-exam-badge free">Free</span>');
-        else if (isLocked)                               badges.push('<span class="mock-exam-badge paid">$99</span>');
-        if (isSoon)                                      badges.push('<span class="mock-exam-badge soon">Coming soon</span>');
-        if (y.year === flagYear && !isDone && !isSoon)   badges.push('<span class="mock-exam-badge star">★ Closest to real exam</span>');
-
-        let scoreLine = '';
         if (isDone) {
           const c = attempt.score.correct || 0;
           const t = attempt.score.total || (y.questionCount || 60);
           const pct = t > 0 ? Math.round((c / t) * 100) : 0;
-          scoreLine = '<div class="mock-exam-score">' + c + ' / ' + t + ' &middot; ' + pct + '%</div>';
+          stateClass = 'done';
+          statusPill = '<span class="mock-exam-status done">Completed</span>';
+          body = '<div class="mock-exam-score">' + c + ' / ' + t + '</div>' +
+                 '<div class="mock-exam-score-label">Score &middot; ' + pct + '%</div>';
+          button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review Answers</a>';
+        } else if (isLocked) {
+          stateClass = 'locked';
+          statusPill = '<span class="mock-exam-status locked">' +
+            '<svg class="mock-exam-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' +
+            'Locked</span>';
+          body = '<div class="mock-exam-lock-copy">Included in <strong>QBank Full Access</strong> &mdash; $99 for 6 months. All past &amp; future mock exams unlocked.</div>';
+          // Uses the same stripe-pay hook as the dashboard's other Buy buttons —
+          // clicks the existing handler that calls createCheckoutSession and
+          // redirects to Stripe Checkout. No page-hop, no /store detour.
+          button = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+        } else {
+          // Available to take — free year OR paid/admin/reviewer.
+          if (isFree) statusPill = '<span class="mock-exam-status free">Free</span>';
+          button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam</a>';
         }
-
-        let button = '';
-        if (isSoon)         button = '<button class="btn btn-secondary" disabled style="opacity:0.5; cursor:not-allowed;">Coming soon</button>';
-        else if (isDone)    button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review Answers →</a>';
-        else if (isLocked)  button = '<button class="btn btn-primary" onclick="switchView(\'store\'); return false;">Unlock with $99 →</button>';
-        else                button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam →</a>';
 
         const html =
           '<div class="mock-exam-card ' + stateClass + '" role="listitem">' +
-            '<div class="mock-exam-badges">' + badges.join('') + '</div>' +
-            '<div class="mock-exam-year">' + y.year + '</div>' +
-            '<div class="mock-exam-meta">' + (y.questionCount || 60) + ' questions &middot; ' + (y.durationMinutes || 120) + ' min &middot; ' + ((y.sections || []).join(' + ') || 'Biology + Chemistry') + '</div>' +
-            '<div class="mock-exam-tagline">' + (y.tagline || '') + '</div>' +
-            scoreLine +
+            statusPill +
+            '<div>' +
+              '<div class="mock-exam-year">' + y.year + '</div>' +
+              body +
+            '</div>' +
             button +
           '</div>';
         grid.insertAdjacentHTML('beforeend', html);

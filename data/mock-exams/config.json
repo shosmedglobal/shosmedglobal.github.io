@@ -1,42 +1,10 @@
 {
   "_comment": "Mock-exam library configuration. Change `freeYear` to designate which year is accessible to free-tier users. All other years are locked behind paid access (users['exam-bank'] === 'paid'), except admins and reviewers who always see everything.",
-  "freeYear": "2023",
+  "freeYear": "2022",
   "years": [
-    {
-      "year": "2022",
-      "status": "available",
-      "questionCount": 60,
-      "durationMinutes": 120,
-      "sections": ["Biology", "Chemistry"],
-      "tagline": "Classic format, foundational topics — great warm-up",
-      "difficulty": "moderate"
-    },
-    {
-      "year": "2023",
-      "status": "available",
-      "questionCount": 60,
-      "durationMinutes": 120,
-      "sections": ["Biology", "Chemistry"],
-      "tagline": "Free full-length simulation — try before you buy",
-      "difficulty": "moderate"
-    },
-    {
-      "year": "2024",
-      "status": "available",
-      "questionCount": 60,
-      "durationMinutes": 120,
-      "sections": ["Biology", "Chemistry"],
-      "tagline": "Metabolism-heavy year, tighter timing",
-      "difficulty": "hard"
-    },
-    {
-      "year": "2025",
-      "status": "available",
-      "questionCount": 60,
-      "durationMinutes": 120,
-      "sections": ["Biology", "Chemistry"],
-      "tagline": "Most recent format, closest to what you'll take",
-      "difficulty": "hard"
-    }
+    { "year": "2022", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2023", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2024", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2025", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] }
   ]
 }
