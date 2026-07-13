@@ -529,10 +529,67 @@
         <div class="view" id="viewMockExams">
           <div class="dashboard-header">
             <h1>Mock Exams</h1>
-            <p class="dashboard-sub">Full-length timed simulations from past LF3 entrance-exam cycles.</p>
+            <p class="dashboard-sub">Simulate the real LF3 entrance exam under real conditions.</p>
           </div>
-          <div id="mockExamGrid" class="mock-exam-grid" role="list">
-            <div style="grid-column:1/-1; color:var(--gray-500); font-size:0.9rem; padding:16px 0;">Loading mock exams…</div>
+
+          <!-- KPI ROW: shown only when the user has ≥1 completed attempt.
+               Two real metrics in Phase 1 (Latest Score, Exams Complete);
+               Trend + Avg Time + Readiness ship in Phase 2. -->
+          <div id="mockExamKpiRow" class="mock-exam-kpis" style="display:none;">
+            <div class="mock-exam-kpi">
+              <div class="mock-exam-kpi-label">Latest score</div>
+              <div class="mock-exam-kpi-value" id="kpiLatestScoreVal">—</div>
+              <div class="mock-exam-kpi-sub" id="kpiLatestScoreSub"></div>
+            </div>
+            <div class="mock-exam-kpi">
+              <div class="mock-exam-kpi-label">Exams completed</div>
+              <div class="mock-exam-kpi-value" id="kpiExamsCompleteVal">—</div>
+              <div class="mock-exam-kpi-progress"><div class="mock-exam-kpi-progress-bar" id="kpiExamsProgressBar" style="width:0;"></div></div>
+            </div>
+          </div>
+
+          <!-- EMPTY-STATE HERO: shown only when the user has 0 attempts.
+               High-conversion — value-props + single primary CTA. Once
+               the user completes their first exam, this whole block hides
+               and the KPI row + populated table take its place. -->
+          <div id="mockExamEmpty" class="mock-exam-empty" style="display:none;">
+            <div class="mock-exam-empty-icon" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h2 class="mock-exam-empty-title">Take your first mock exam</h2>
+            <p class="mock-exam-empty-lead">The best predictor of how you'll do on the real LF3 entrance exam is how you do on a full-length simulation under real timing. 60 questions, 120 minutes, no pause.</p>
+            <ul class="mock-exam-empty-benefits">
+              <li><span class="mock-exam-empty-check">&#10003;</span> Biology vs Chemistry section breakdown</li>
+              <li><span class="mock-exam-empty-check">&#10003;</span> Full PhD-level explanations for every question</li>
+              <li><span class="mock-exam-empty-check">&#10003;</span> Topic-level performance to guide review</li>
+              <li><span class="mock-exam-empty-check">&#10003;</span> Real 2-hour exam timing simulation</li>
+            </ul>
+            <a href="practice-exam.html?year=2022" class="btn btn-primary" id="mockExamEmptyCta">Start the free 2022 mock exam &rarr;</a>
+            <p class="mock-exam-empty-fine">Free &middot; 60 questions &middot; 2 hours</p>
+            <div class="mock-exam-empty-divider"><span>Or browse the full library</span></div>
+          </div>
+
+          <!-- EXAM LIBRARY TABLE (always shown). Dense, scannable, responsive.
+               Columns collapse at narrow widths: Bio/Chem hide <900px,
+               Time/Date hide <760px. -->
+          <div class="mock-exam-table-wrap">
+            <table class="mock-exam-table" id="mockExamTable">
+              <thead>
+                <tr>
+                  <th class="cell-year">Year</th>
+                  <th class="cell-status">Status</th>
+                  <th class="cell-score">Score</th>
+                  <th class="cell-section cell-hide-narrow">Biology</th>
+                  <th class="cell-section cell-hide-narrow">Chemistry</th>
+                  <th class="cell-time cell-hide-narrower">Time</th>
+                  <th class="cell-date cell-hide-narrower">Taken</th>
+                  <th class="cell-actions"></th>
+                </tr>
+              </thead>
+              <tbody id="mockExamTableBody">
+                <tr><td colspan="8" style="text-align:center; padding:24px; color:var(--gray-500);">Loading mock exams&hellip;</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -1768,74 +1825,192 @@
     .sidebar-admin-link { color: #cf5b2e !important; }
     .sidebar-admin-link:hover, .sidebar-admin-link.active { background: rgba(207,91,46,0.12) !important; color: #cf5b2e !important; }
 
-    /* ================== Mock Exam Library grid ==================
-       Minimal, UWorld-style card grid. Each card carries only what the
-       user needs to decide + act: the year, its state, and the action.
-       No taglines, no meta redundancy, no promotional badges. */
-    .mock-exam-grid {
+    /* ================== Mock Exams view (Phase 1) ==================
+       Layout is: header  ->  KPI row (when data exists)  ->  empty-state
+       hero (when no data)  ->  library table. Stripe/Notion visual language:
+       generous spacing, minimum decoration, real numbers foregrounded.
+       ================================================================ */
+
+    /* ---------- KPI row (hidden until user has ≥1 attempt) ---------- */
+    .mock-exam-kpis {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
     }
-    .mock-exam-card {
+    .mock-exam-kpi {
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
-      padding: 22px 22px 20px;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 200px;
-      position: relative;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      gap: 6px;
     }
-    .mock-exam-card.avail:hover,
-    .mock-exam-card.done:hover {
-      border-color: #0F172A;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-      transform: translateY(-1px);
+    .mock-exam-kpi-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #64748B;
     }
-    /* LOCKED — very clearly not-yet-accessible, but with an obvious
-       upgrade affordance. Gray background, muted year color, lock
-       icon in the top-right corner. */
-    .mock-exam-card.locked {
-      background: #F1F5F9;
-      border-color: #E2E8F0;
+    .mock-exam-kpi-value {
+      font-size: 1.9rem; font-weight: 800; color: #0F172A;
+      letter-spacing: -0.02em; line-height: 1;
     }
-    .mock-exam-card.locked .mock-exam-year { color: #94A3B8; }
-    .mock-exam-card.done   { background: #F0FDFA; border-color: #99F6E4; }
+    .mock-exam-kpi-sub {
+      font-size: 0.82rem; color: #64748B;
+      min-height: 1.2em;
+    }
+    .mock-exam-kpi-progress {
+      background: #F1F5F9; height: 6px; border-radius: 3px;
+      overflow: hidden; margin-top: 4px;
+    }
+    .mock-exam-kpi-progress-bar {
+      height: 100%; background: linear-gradient(90deg, #0d9488, #14b8a6);
+      transition: width 0.4s ease;
+    }
 
-    .mock-exam-year {
-      font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em;
-      color: #0F172A; line-height: 1;
+    /* ---------- Empty state hero (hidden until first attempt) ---------- */
+    .mock-exam-empty {
+      background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 60%);
+      border: 1px solid #99F6E4;
+      border-radius: 16px;
+      padding: 44px 40px 36px;
+      text-align: center;
+      margin-bottom: 32px;
     }
-    .mock-exam-status {
-      position: absolute; top: 16px; right: 16px;
-      font-size: 0.70rem; font-weight: 700; letter-spacing: 0.06em;
+    .mock-exam-empty-icon {
+      width: 72px; height: 72px; margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #CCFBF1;
+      color: #0F766E;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mock-exam-empty-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; font-weight: 700; color: #0F172A;
+      margin: 0 0 12px;
+    }
+    .mock-exam-empty-lead {
+      font-size: 1.02rem; line-height: 1.6; color: #334155;
+      max-width: 620px; margin: 0 auto 24px;
+    }
+    .mock-exam-empty-benefits {
+      list-style: none; padding: 0;
+      max-width: 460px; margin: 0 auto 28px;
+      text-align: left;
+      display: grid; gap: 8px;
+    }
+    .mock-exam-empty-benefits li {
+      font-size: 0.95rem; color: #0F172A; line-height: 1.5;
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .mock-exam-empty-check {
+      color: #0F766E; font-weight: 700; flex-shrink: 0;
+    }
+    .mock-exam-empty .btn {
+      padding: 14px 32px; font-size: 1rem;
+    }
+    .mock-exam-empty-fine {
+      font-size: 0.82rem; color: #64748B; margin: 12px 0 0;
+    }
+    .mock-exam-empty-divider {
+      margin: 32px 0 0;
+      display: flex; align-items: center; gap: 14px;
+      color: #94A3B8; font-size: 0.82rem;
+    }
+    .mock-exam-empty-divider::before,
+    .mock-exam-empty-divider::after {
+      content: ''; flex: 1; height: 1px; background: #E2E8F0;
+    }
+
+    /* ---------- Library table (Stripe-style dense scan) ---------- */
+    .mock-exam-table-wrap {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .mock-exam-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+    .mock-exam-table thead th {
+      background: #F8FAFC;
+      color: #64748B;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 12px 20px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .mock-exam-table tbody td {
+      padding: 18px 20px;
+      border-bottom: 1px solid #F1F5F9;
+      vertical-align: middle;
+      color: #0F172A;
+    }
+    .mock-exam-table tbody tr:last-child td { border-bottom: none; }
+    .mock-exam-table tbody tr.row-locked td { color: #94A3B8; }
+    .mock-exam-table tbody tr.row-done { background: #FAFEFD; }
+
+    /* Year column: big year number */
+    .cell-year { width: 84px; }
+    .mock-exam-table .year-num {
+      font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em;
+      color: inherit;
+    }
+
+    /* Status pill (inline, table-style) */
+    .cell-status { width: 128px; }
+    .mock-exam-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.70rem; font-weight: 700; letter-spacing: 0.05em;
       text-transform: uppercase; padding: 4px 10px; border-radius: 12px;
-      display: inline-flex; align-items: center; gap: 4px;
     }
-    .mock-exam-status.free   { background: #DCFCE7; color: #166534; }
-    .mock-exam-status.locked { background: #E2E8F0; color: #475569; }
-    .mock-exam-status.done   { background: #CCFBF1; color: #0F766E; }
-    .mock-exam-score {
-      font-size: 1.4rem; font-weight: 700; color: #0F766E;
-      line-height: 1.1; margin-top: 12px;
-    }
-    .mock-exam-score-label {
-      font-size: 0.74rem; color: #64748B; letter-spacing: 0.04em;
-      text-transform: uppercase; font-weight: 600; margin-top: 2px;
-    }
-    .mock-exam-lock-copy {
-      font-size: 0.85rem; color: #64748B; line-height: 1.5; margin-top: 12px;
-    }
-    .mock-exam-lock-copy strong { color: #0F172A; }
-    .mock-exam-card .btn {
-      width: 100%; margin-top: 16px;
-    }
-    /* Small lock icon inside the STATUS pill for locked cards. */
-    .mock-exam-lock-icon {
+    .mock-exam-pill.free      { background: #DCFCE7; color: #166534; }
+    .mock-exam-pill.locked    { background: #E2E8F0; color: #475569; }
+    .mock-exam-pill.done      { background: #CCFBF1; color: #0F766E; }
+    .mock-exam-pill.available { background: #FEF3C7; color: #92400E; }
+    .mock-exam-pill-lock {
       display: inline-block; width: 10px; height: 10px; vertical-align: -1px;
+    }
+
+    /* Score cell — big number + % underneath */
+    .cell-score { width: 110px; font-variant-numeric: tabular-nums; }
+    .mock-exam-table .score-num {
+      font-weight: 700; color: #0F172A; font-size: 1rem;
+    }
+    .mock-exam-table .score-pct {
+      font-size: 0.78rem; color: #64748B; margin-top: 2px;
+    }
+    .mock-exam-table tr.row-locked .score-num,
+    .mock-exam-table tr.row-locked .score-pct { color: #CBD5E1; }
+
+    /* Section breakdown cells — number + inline bar */
+    .cell-section { width: 130px; font-variant-numeric: tabular-nums; }
+    .section-num  { font-size: 0.9rem; color: #0F172A; margin-bottom: 4px; }
+    .section-bar  { background: #F1F5F9; height: 4px; border-radius: 2px; overflow: hidden; width: 92px; }
+    .section-bar-fill { background: #0d9488; height: 100%; transition: width 0.4s ease; }
+
+    /* Time + date columns */
+    .cell-time { width: 90px; font-variant-numeric: tabular-nums; color: #475569; }
+    .cell-date { width: 110px; color: #475569; font-size: 0.88rem; }
+
+    /* Actions column */
+    .cell-actions { width: 180px; text-align: right; }
+    .cell-actions .btn { padding: 8px 16px; font-size: 0.86rem; }
+
+    /* Responsive collapses */
+    @media (max-width: 900px) {
+      .mock-exam-table .cell-hide-narrow { display: none; }
+    }
+    @media (max-width: 760px) {
+      .mock-exam-table .cell-hide-narrower { display: none; }
+      .mock-exam-table thead th,
+      .mock-exam-table tbody td { padding: 12px 14px; }
+      .cell-actions .btn { padding: 6px 12px; font-size: 0.80rem; }
     }
 
     /* Admin stats grid — single horizontal row of compact tiles
@@ -4443,15 +4618,15 @@
     };
 
     /* ====================================================================
-       MOCK EXAM LIBRARY
-       Renders the Mock Exam Library card grid inside the QBank view.
-       Idempotent: repeat calls after the first are a no-op unless the
-       user's payment status changes (checked via a lightweight signature).
+       MOCK EXAM LIBRARY (Phase 1)
+       Renders the Mock Exams view — empty-state hero, KPI row, and library
+       table. Idempotent via signature short-circuit. Called by switchView
+       when the user enters the mockexams tab.
        ==================================================================== */
     let _mockExamLibrarySignature = '';
     async function loadMockExamLibrary() {
-      const grid = document.getElementById('mockExamGrid');
-      if (!grid) return;
+      const tbody = document.getElementById('mockExamTableBody');
+      if (!tbody) return;
 
       // Wait until Firebase auth has resolved. If not yet available, retry
       // shortly. Avoids racing the dashboard's onAuthStateChanged flow.
@@ -4475,10 +4650,10 @@
         isPaid = p && p.payments && p.payments['exam-bank'] === 'paid';
       } catch (_) {}
 
-      // Signature — skip a re-render if nothing that affects card state
-      // has changed since the last call. Cheap short-circuit.
+      // Signature short-circuits repeat renders when nothing that would
+      // change the view has changed.
       const sig = user.uid + '|' + (isAdmin?'a':'') + (isReviewer?'r':'') + (isPaid?'p':'');
-      if (sig === _mockExamLibrarySignature && grid.dataset.rendered === '1') return;
+      if (sig === _mockExamLibrarySignature && tbody.dataset.rendered === '1') return;
       _mockExamLibrarySignature = sig;
 
       // Fetch config + user's completed attempts in parallel.
@@ -4491,61 +4666,138 @@
             .catch(() => ({})),
         ]);
       } catch (err) {
-        grid.innerHTML = '<div style="grid-column:1/-1; color:#dc2626; font-size:0.9rem;">Could not load mock-exam library. Refresh to retry.</div>';
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:#dc2626;">Could not load mock-exam library. Refresh to retry.</td></tr>';
         return;
       }
 
-      grid.innerHTML = '';
+      const attemptList = Object.values(attempts);
+      const hasAttempts = attemptList.length > 0;
+
+      // ============ EMPTY STATE + KPI ROW ============
+      const emptyEl = document.getElementById('mockExamEmpty');
+      const kpiRowEl = document.getElementById('mockExamKpiRow');
+      if (emptyEl)  emptyEl.style.display  = hasAttempts ? 'none' : '';
+      if (kpiRowEl) kpiRowEl.style.display = hasAttempts ? '' : 'none';
+
+      if (hasAttempts) {
+        // Latest attempt = highest finishedAt timestamp.
+        const sorted = attemptList.slice().sort((a, b) => {
+          const ta = a.finishedAt && a.finishedAt.toMillis ? a.finishedAt.toMillis() : 0;
+          const tb = b.finishedAt && b.finishedAt.toMillis ? b.finishedAt.toMillis() : 0;
+          return tb - ta;
+        });
+        const latest = sorted[0];
+        const lc = (latest.score && latest.score.correct) || 0;
+        const lt = (latest.score && latest.score.total) || 60;
+        const lpct = lt > 0 ? Math.round((lc / lt) * 100) : 0;
+        const latestVal = document.getElementById('kpiLatestScoreVal');
+        const latestSub = document.getElementById('kpiLatestScoreSub');
+        if (latestVal) latestVal.textContent = lc + ' / ' + lt;
+        if (latestSub) latestSub.textContent = lpct + '% · ' + (latest.year || '');
+
+        // Exams complete out of total years available.
+        const totalYears = (cfg.years || []).length;
+        const doneCount = attemptList.length;
+        const doneVal = document.getElementById('kpiExamsCompleteVal');
+        const doneBar = document.getElementById('kpiExamsProgressBar');
+        if (doneVal) doneVal.textContent = doneCount + ' / ' + totalYears;
+        if (doneBar) doneBar.style.width = totalYears > 0 ? Math.round(100 * doneCount / totalYears) + '%' : '0';
+      }
+
+      // ============ LIBRARY TABLE ============
+      const rows = [];
+      const fmt = { d: (ms) => { const dt = new Date(ms); return dt.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}); },
+                    t: (secs) => { const h = Math.floor(secs/3600), m = Math.floor((secs%3600)/60); return (h > 0 ? h + 'h ' : '') + m + 'm'; } };
+
       (cfg.years || []).forEach(y => {
         const attempt = attempts[y.year] || null;
-        const isDone = !!attempt && attempt.score;
+        const isDone = !!(attempt && attempt.score);
         const isFree = y.year === cfg.freeYear;
         const canTake = isFree || isPaid || isAdmin || isReviewer;
         const isLocked = !canTake && !isDone;
 
-        let stateClass = 'avail';
-        let statusPill = '';
-        let body = '';
-        let button = '';
+        // Per-year state → pill + score + section cells + time + date + button
+        let rowClass = '', statusHtml = '', scoreHtml = '<span style="color:#CBD5E1;">—</span>', bioHtml = '<span style="color:#CBD5E1;">—</span>', chemHtml = '<span style="color:#CBD5E1;">—</span>', timeHtml = '<span style="color:#CBD5E1;">—</span>', dateHtml = '<span style="color:#CBD5E1;">—</span>', actionHtml = '';
 
         if (isDone) {
+          rowClass = 'row-done';
+          statusHtml = '<span class="mock-exam-pill done">Completed</span>';
           const c = attempt.score.correct || 0;
-          const t = attempt.score.total || (y.questionCount || 60);
-          const pct = t > 0 ? Math.round((c / t) * 100) : 0;
-          stateClass = 'done';
-          statusPill = '<span class="mock-exam-status done">Completed</span>';
-          body = '<div class="mock-exam-score">' + c + ' / ' + t + '</div>' +
-                 '<div class="mock-exam-score-label">Score &middot; ' + pct + '%</div>';
-          button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review Answers</a>';
+          const t = attempt.score.total || 60;
+          const pct = t > 0 ? Math.round(100 * c / t) : 0;
+          scoreHtml = '<div class="score-num">' + c + ' / ' + t + '</div><div class="score-pct">' + pct + '%</div>';
+
+          // Compute per-section score by walking the answers map. We don't
+          // have the questions here, so we approximate: bio = ids 1..30,
+          // chem = ids 31..60 (per convention set in the JSON).
+          let bioC = 0, bioT = 0, chemC = 0, chemT = 0;
+          const ans = attempt.answers || {};
+          // We need to know which options were correct. Fetch year JSON only
+          // if we need to (per row). To avoid N fetches, we do it lazily but
+          // reuse via a promise cache on window.
+          window._mockExamQCache = window._mockExamQCache || {};
+          if (!window._mockExamQCache[y.year]) {
+            window._mockExamQCache[y.year] = fetch('data/mock-exams/mock-exam-' + y.year + '.json?v=' + Date.now())
+              .then(r => r.json()).catch(() => []);
+          }
+          // Hydrate the per-section split asynchronously after the row renders.
+          const rowId = 'mrow-' + y.year;
+          window._mockExamQCache[y.year].then(questions => {
+            questions.forEach(q => {
+              const isBio = (q.section || '').toLowerCase().indexOf('bio') === 0;
+              if (isBio) { bioT++; if (ans[q.id] === q.correct) bioC++; }
+              else       { chemT++; if (ans[q.id] === q.correct) chemC++; }
+            });
+            const bioPct = bioT > 0 ? Math.round(100 * bioC / bioT) : 0;
+            const chemPct = chemT > 0 ? Math.round(100 * chemC / chemT) : 0;
+            const bioCell = document.querySelector('#' + rowId + ' .cell-bio-inner');
+            const chemCell = document.querySelector('#' + rowId + ' .cell-chem-inner');
+            if (bioCell)  bioCell.innerHTML  = '<div class="section-num">' + bioC + ' / ' + bioT + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + bioPct + '%;"></div></div>';
+            if (chemCell) chemCell.innerHTML = '<div class="section-num">' + chemC + ' / ' + chemT + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + chemPct + '%;"></div></div>';
+          });
+          bioHtml = '<span class="cell-bio-inner"><span style="color:#94A3B8; font-size:0.82rem;">calculating&hellip;</span></span>';
+          chemHtml = '<span class="cell-chem-inner"><span style="color:#94A3B8; font-size:0.82rem;">calculating&hellip;</span></span>';
+
+          // Time used = finishedAt - startedAt (both stored on the attempt doc).
+          if (attempt.startedAt && attempt.finishedAt && attempt.finishedAt.toMillis && attempt.startedAt.toMillis) {
+            const secs = Math.max(0, Math.round((attempt.finishedAt.toMillis() - attempt.startedAt.toMillis()) / 1000));
+            timeHtml = fmt.t(secs);
+          }
+          if (attempt.finishedAt && attempt.finishedAt.toMillis) dateHtml = fmt.d(attempt.finishedAt.toMillis());
+          actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review</a>';
+
         } else if (isLocked) {
-          stateClass = 'locked';
-          statusPill = '<span class="mock-exam-status locked">' +
-            '<svg class="mock-exam-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' +
-            'Locked</span>';
-          body = '<div class="mock-exam-lock-copy">Included in <strong>QBank Full Access</strong> &mdash; $99 for 6 months. All past &amp; future mock exams unlocked.</div>';
-          // Uses the same stripe-pay hook as the dashboard's other Buy buttons —
-          // clicks the existing handler that calls createCheckoutSession and
-          // redirects to Stripe Checkout. No page-hop, no /store detour.
-          button = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+          rowClass = 'row-locked';
+          statusHtml = '<span class="mock-exam-pill locked">' +
+            '<svg class="mock-exam-pill-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Locked</span>';
+          // Uses the same stripe-pay hook as other checkout buttons.
+          actionHtml = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+
         } else {
           // Available to take — free year OR paid/admin/reviewer.
-          if (isFree) statusPill = '<span class="mock-exam-status free">Free</span>';
-          button = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam</a>';
+          statusHtml = isFree
+            ? '<span class="mock-exam-pill free">Free</span>'
+            : '<span class="mock-exam-pill available">Available</span>';
+          actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam</a>';
         }
 
-        const html =
-          '<div class="mock-exam-card ' + stateClass + '" role="listitem">' +
-            statusPill +
-            '<div>' +
-              '<div class="mock-exam-year">' + y.year + '</div>' +
-              body +
-            '</div>' +
-            button +
-          '</div>';
-        grid.insertAdjacentHTML('beforeend', html);
+        const rowId = isDone ? ('mrow-' + y.year) : '';
+        rows.push(
+          '<tr' + (rowClass ? ' class="' + rowClass + '"' : '') + (rowId ? ' id="' + rowId + '"' : '') + '>' +
+            '<td class="cell-year"><span class="year-num">' + y.year + '</span></td>' +
+            '<td class="cell-status">' + statusHtml + '</td>' +
+            '<td class="cell-score">' + scoreHtml + '</td>' +
+            '<td class="cell-section cell-hide-narrow">' + bioHtml + '</td>' +
+            '<td class="cell-section cell-hide-narrow">' + chemHtml + '</td>' +
+            '<td class="cell-time cell-hide-narrower">' + timeHtml + '</td>' +
+            '<td class="cell-date cell-hide-narrower">' + dateHtml + '</td>' +
+            '<td class="cell-actions">' + actionHtml + '</td>' +
+          '</tr>'
+        );
       });
 
-      grid.dataset.rendered = '1';
+      tbody.innerHTML = rows.join('');
+      tbody.dataset.rendered = '1';
     }
 
     async function loadAdminPanel() {
