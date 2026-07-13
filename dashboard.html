@@ -489,7 +489,7 @@
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
               <a href="qbank.html?v=20260423a" class="btn btn-primary" id="startPracticeBtn" onclick="this.href='qbank.html?v=20260423a&amp;t='+Date.now();">Start Practice</a>
-              <a href="practice-exam.html" class="btn btn-secondary" id="dashMockExamBtn" title="Full-length 60-question, 2-hour timed simulation">Take Mock Exam</a>
+              <a href="#" class="btn btn-secondary" id="dashMockExamBtn" onclick="switchView('mockexams'); return false;" title="Open the Mock Exam Library">Take Mock Exam</a>
             </div>
           </div>
 
@@ -6695,8 +6695,10 @@
       // Store examBankPaid globally so QBank and reader can check it
       window._examBankPaid = isPaid || false;
 
-      // The QBank-tab "Take Mock Exam" button is open to all logged-in users
-      // (mock entrance exam simulation is part of the free tier).
+      // The QBank-tab "Take Mock Exam" button now routes to the Mock Exams
+      // sidebar tab (the library view) instead of jumping straight into a
+      // single exam. The library lets the user see all available years
+      // (2022 free, plus 2023/2024/2025 paid) and pick one.
       const mockBtn = document.getElementById('dashMockExamBtn');
       if (mockBtn) {
         mockBtn.removeAttribute('disabled');
@@ -6704,8 +6706,9 @@
         mockBtn.style.pointerEvents = '';
         mockBtn.style.cursor = '';
         mockBtn.textContent = 'Take Mock Exam';
-        mockBtn.setAttribute('href', 'practice-exam.html');
-        mockBtn.title = 'Full-length 60-question, 2-hour mock entrance exam simulation';
+        mockBtn.setAttribute('href', '#');
+        mockBtn.onclick = function (e) { e.preventDefault(); switchView('mockexams'); return false; };
+        mockBtn.title = 'Open the Mock Exam Library';
       }
 
       // Update study plan description based on path
