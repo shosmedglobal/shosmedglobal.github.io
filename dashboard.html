@@ -96,6 +96,37 @@
     <!-- ===== MOBILE OVERLAY ===== -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+    <!-- ===== FORCED PATH SELECTION MODAL =====
+         Shown once, on dashboard load, when a signed-in user has no
+         `path` value in their Firestore profile. Blocks the rest of the
+         dashboard until they pick — no way to dismiss without choosing.
+         Legacy accounts (created before path was captured) will see this
+         on their next login. Admins/reviewers are exempt (their status is
+         email-based). Populated + toggled by ensureUserHasPath() below. -->
+    <div id="pathPickerModal" class="path-picker-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="pathPickerTitle">
+      <div class="path-picker-card">
+        <h2 id="pathPickerTitle">Which are you preparing for?</h2>
+        <p class="path-picker-lead">Pick the one that fits you best. This changes what shows up on your dashboard &mdash; QBank &amp; application help for medical-school applicants, USMLE &amp; residency-match mentorship for current physicians. You can change it later in Profile &amp; Settings.</p>
+        <div class="path-picker-choices">
+          <button type="button" class="path-picker-choice" data-path="applicant" id="pathPickerApplicant">
+            <div class="path-picker-choice-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="path-picker-choice-title">I&rsquo;m applying to medical school</div>
+            <div class="path-picker-choice-sub">Charles University LF3 or similar. Entrance exam prep, application help, and mentorship from LF3 graduates.</div>
+          </button>
+          <button type="button" class="path-picker-choice" data-path="student" id="pathPickerStudent">
+            <div class="path-picker-choice-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <div class="path-picker-choice-title">I&rsquo;m a current med student / IMG</div>
+            <div class="path-picker-choice-sub">Aiming to match into U.S. residency. USMLE prep, ERAS strategy, research plan, and mock interviews.</div>
+          </button>
+        </div>
+        <div class="path-picker-error" id="pathPickerError" style="display:none;"></div>
+      </div>
+    </div>
+
     <!-- ===== MAIN CONTENT ===== -->
     <main class="dashboard-main">
 
@@ -2520,6 +2551,79 @@
       padding: 10px 14px; margin: 0 0 12px;
       background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 8px;
     }
+    /* ===== Path picker modal (forced path selection on first login) ===== */
+    .path-picker-backdrop {
+      position: fixed; inset: 0; z-index: 10001;
+      background: rgba(15, 23, 42, 0.65);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; overflow-y: auto;
+    }
+    .path-picker-card {
+      background: #fff; border-radius: 14px; padding: 32px 32px 28px;
+      width: 100%; max-width: 560px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+    }
+    .path-picker-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: #0F172A; margin: 0 0 10px;
+    }
+    .path-picker-lead {
+      font-size: 0.94rem; line-height: 1.55; color: #475569; margin: 0 0 20px;
+    }
+    .path-picker-choices { display: grid; gap: 12px; }
+    .path-picker-choice {
+      display: block; width: 100%; text-align: left;
+      background: #fff; border: 1.5px solid #E2E8F0; border-radius: 10px;
+      padding: 16px 18px; cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
+      font-family: inherit;
+    }
+    .path-picker-choice:hover {
+      border-color: #0d9488; background: #F0FDFA; transform: translateY(-1px);
+    }
+    .path-picker-choice:disabled { opacity: 0.6; cursor: wait; }
+    .path-picker-choice-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: #CCFBF1; color: #0F766E;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 10px;
+    }
+    .path-picker-choice-title {
+      font-size: 1.02rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;
+    }
+    .path-picker-choice-sub {
+      font-size: 0.86rem; color: #64748B; line-height: 1.5;
+    }
+    .path-picker-error {
+      margin-top: 14px; padding: 10px 12px;
+      background: #FEE2E2; color: #991B1B;
+      font-size: 0.86rem; border-radius: 6px;
+    }
+
+    /* ===== Impersonation banner (top of dashboard when admin viewAs) ===== */
+    .impersonation-banner {
+      position: sticky; top: 0; z-index: 900;
+      background: #FEF3C7; border-bottom: 1px solid #FDE68A;
+      color: #78350F; padding: 10px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; font-size: 0.9rem; font-weight: 500;
+    }
+    .impersonation-banner-msg strong { color: #431407; font-weight: 700; }
+    .impersonation-banner-exit {
+      background: #FBBF24; color: #78350F;
+      padding: 6px 14px; border-radius: 6px;
+      font-weight: 700; text-decoration: none; font-size: 0.85rem;
+      border: none; cursor: pointer;
+    }
+    .impersonation-banner-exit:hover { background: #F59E0B; color: #fff; }
+    /* When impersonating, gray out + block interaction with write controls */
+    body.impersonation-mode .btn-primary,
+    body.impersonation-mode .stripe-pay,
+    body.impersonation-mode .admin-action-btn,
+    body.impersonation-mode #dashQbResetBtn {
+      opacity: 0.55; cursor: not-allowed;
+    }
+
     /* ===== Admin modal (used by Add Booking from Calendar) ===== */
     .admin-modal-overlay {
       position: fixed; inset: 0; z-index: 9999;
@@ -3767,8 +3871,77 @@
       // auth resolves rather than waiting for the full Firestore profile load.
       updateEmailVerifyBanner(user);
 
+      // ===== Impersonation ("View as") bootstrap =====
+      // Admin-only feature: dashboard.html?viewAs=<uid> renders the
+      // dashboard using the TARGET user's profile + data. Admin's Firebase
+      // auth session is unchanged; we just swap the displayed data. Writes
+      // are gated at the UI layer (see the .impersonation-mode CSS block
+      // that dims primary/write buttons).
+      try { await maybeStartImpersonation(user); } catch (e) { console.warn('[impersonate] init failed:', e && e.message); }
+
       await loadDashboard(user);
     });
+
+    // ===================================================================
+    // Impersonation ("View as") implementation
+    // ===================================================================
+    async function maybeStartImpersonation(adminUser) {
+      const targetUid = new URLSearchParams(location.search).get('viewAs');
+      if (!targetUid) return;
+      const ADMIN_EMAILS = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
+      if (!ADMIN_EMAILS.includes((adminUser.email || '').toLowerCase())) {
+        // Non-admin trying to viewAs — silently drop the param.
+        history.replaceState(null, '', 'dashboard.html');
+        return;
+      }
+      // Load target profile via admin's Firestore permissions.
+      let target;
+      try {
+        const snap = await db.collection('users').doc(targetUid).get();
+        if (!snap.exists) { alert('User not found — returning to admin view.'); history.replaceState(null, '', 'dashboard.html'); return; }
+        target = { uid: targetUid, ...snap.data() };
+      } catch (err) {
+        alert('Could not load user: ' + (err && err.message));
+        return;
+      }
+      // Publish target under two globals: one is consumed by getUserProfile()
+      // (which many parts of the dashboard call), the other by any code that
+      // reads the effective UID for per-user Firestore queries (mock exams,
+      // QBank progress). Original admin user is preserved as `_realAdminUser`
+      // in case anything needs to check "am I actually admin?" (e.g. rules).
+      window._impersonatedUid = targetUid;
+      window._impersonatedProfile = target;
+      window._realAdminUser = { uid: adminUser.uid, email: adminUser.email };
+      document.body.classList.add('impersonation-mode');
+      // Yellow sticky banner at the top of the dashboard.
+      const banner = document.createElement('div');
+      banner.className = 'impersonation-banner';
+      banner.innerHTML =
+        '<div class="impersonation-banner-msg">' +
+          'Viewing as <strong>' + (target.name || target.email || targetUid) + '</strong> &middot; ' +
+          '<span style="color:#78350F;">Writes are disabled while impersonating.</span>' +
+        '</div>' +
+        '<button type="button" class="impersonation-banner-exit" onclick="location.href=\'dashboard.html\'">Return to admin view</button>';
+      const main = document.querySelector('.dashboard-main') || document.body;
+      main.insertBefore(banner, main.firstChild);
+      // Block form submissions and stripe-pay clicks defensively (the CSS
+      // greys them out but we also block programmatically in case anything
+      // fires a submit).
+      document.addEventListener('click', function (e) {
+        if (!document.body.classList.contains('impersonation-mode')) return;
+        const t = e.target.closest('.stripe-pay, #dashQbResetBtn, [data-contact-modal]');
+        if (t) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
+    }
+
+    // Small helper used by any code that needs the "effective" UID —
+    // during impersonation this returns the target user's UID, not the
+    // admin's. Data reads for the impersonated view (mock exam attempts,
+    // qbank progress) should route through this.
+    function effectiveUid() {
+      return window._impersonatedUid || (auth.currentUser && auth.currentUser.uid) || null;
+    }
+    window.effectiveUid = effectiveUid;
 
     // ===== Email verification banner =====
     function updateEmailVerifyBanner(user) {
@@ -3839,11 +4012,74 @@
     });
 
     // ===== Load Dashboard =====
+    // Forced path selection — shown once per legacy account. Modal blocks
+    // the rest of the dashboard until the user picks Applicant or Student.
+    // Admins/reviewers are exempt (their status is defined by email, not
+    // profile). Also skipped during impersonation (admin shouldn't be
+    // asked to pick a path FOR someone else — that's what the Set Path
+    // control in the Details panel is for).
+    async function ensureUserHasPath(user, profile) {
+      if (!user) return true;
+      if (profile && profile.path) return true;
+      const emailLc = (user.email || '').toLowerCase();
+      const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
+      const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
+      if (ADMIN.includes(emailLc) || REVIEWER.includes(emailLc)) return true;
+      if (window._impersonatedUid) return true;
+      const modal = document.getElementById('pathPickerModal');
+      const errBox = document.getElementById('pathPickerError');
+      const btnApp = document.getElementById('pathPickerApplicant');
+      const btnStu = document.getElementById('pathPickerStudent');
+      if (!modal || !btnApp || !btnStu) return true;   // markup missing — fail open
+      if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
+      modal.style.display = 'flex';
+      return new Promise(resolve => {
+        function handle(chosenPath) {
+          return async function () {
+            btnApp.disabled = true; btnStu.disabled = true;
+            if (errBox) { errBox.style.display = 'none'; }
+            try {
+              await db.collection('users').doc(user.uid).set({ path: chosenPath }, { merge: true });
+              if (currentProfile) currentProfile.path = chosenPath; else currentProfile = { path: chosenPath };
+              modal.style.display = 'none';
+              resolve(true);
+            } catch (err) {
+              console.error('[path-picker] save failed:', err);
+              if (errBox) { errBox.textContent = 'Could not save your choice. Please try again.'; errBox.style.display = 'block'; }
+              btnApp.disabled = false; btnStu.disabled = false;
+            }
+          };
+        }
+        btnApp.onclick = handle('applicant');
+        btnStu.onclick = handle('student');
+      });
+    }
+
     async function loadDashboard(user) {
-      const profile = await getUserProfile(user.uid);
+      // If impersonating, use the target's profile + a synthetic "user"
+      // object so all downstream code (welcome name, sidebar avatar,
+      // path-based visibility) sees the target instead of the admin.
+      let profile, effUser;
+      if (window._impersonatedProfile) {
+        profile = window._impersonatedProfile;
+        effUser = {
+          uid: window._impersonatedUid,
+          email: profile.email || '',
+          displayName: profile.name || '',
+        };
+      } else {
+        profile = await getUserProfile(user.uid);
+        effUser = user;
+        // Prompt to pick path BEFORE rendering — otherwise the dashboard
+        // renders once with the "Set your path in Settings" placeholder
+        // and then re-renders. Better to gate the first paint.
+        await ensureUserHasPath(user, profile);
+        if (!profile || !profile.path) profile = await getUserProfile(user.uid);
+      }
       currentProfile = profile;
 
-      const displayName = user.displayName || profile?.name || 'Student';
+      const displayName = effUser.displayName || profile?.name || 'Student';
+      user = effUser;                    // downstream code reads `user` — swap it too
 
       // Update welcome
       document.getElementById('userName').textContent = displayName;
@@ -3866,9 +4102,14 @@
       // Keep this list in sync with firestore.rules → isAdmin()
       const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
       const REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
+      // NB: `user` above was re-bound to the effective (impersonated) user
+      // if we're in impersonation mode, so isAdmin/isReviewer reflect the
+      // TARGET's status — the admin panel link stays hidden when viewing
+      // as a regular user, exactly what the "see what they see" feature
+      // is supposed to show.
       const isAdmin = ADMIN_EMAILS.includes(user.email);
       const isReviewer = REVIEWER_EMAILS.includes(user.email);
-      if (isAdmin) {
+      if (isAdmin && !window._impersonatedUid) {
         document.getElementById('sidebarAdminLink').style.display = '';
         document.getElementById('sidebarAdminSep').style.display = '';
       }
@@ -4968,7 +5209,12 @@
       const user = firebase.auth().currentUser;
       if (!user) { setTimeout(loadMockExamLibrary, 200); return; }
 
-      const email = (user.email || '').toLowerCase();
+      // When impersonating, read the target user's data instead of the
+      // admin's. effectiveUid() encapsulates the swap; email/roles fall
+      // back to the profile that already reflects the target.
+      const effUid = (typeof effectiveUid === 'function') ? effectiveUid() : user.uid;
+      const effProfile = window._impersonatedProfile || null;
+      const email = (effProfile ? effProfile.email : user.email || '').toLowerCase();
       const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
       const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
       const isAdmin = ADMIN.includes(email);
@@ -4976,23 +5222,24 @@
 
       let isPaid = false;
       try {
-        const s = await firebase.firestore().collection('users').doc(user.uid).get();
+        const s = effProfile ? { exists: true, data: () => effProfile } : await firebase.firestore().collection('users').doc(effUid).get();
         const p = s.exists ? s.data() : {};
         isPaid = p && p.payments && p.payments['exam-bank'] === 'paid';
       } catch (_) {}
 
       // Signature short-circuits repeat renders when nothing that would
       // change the view has changed.
-      const sig = user.uid + '|' + (isAdmin?'a':'') + (isReviewer?'r':'') + (isPaid?'p':'');
+      const sig = effUid + '|' + (isAdmin?'a':'') + (isReviewer?'r':'') + (isPaid?'p':'');
       if (sig === _mockExamLibrarySignature && tbody.dataset.rendered === '1') return;
       _mockExamLibrarySignature = sig;
 
-      // Fetch config + user's completed attempts in parallel.
+      // Fetch config + attempts for the EFFECTIVE user (impersonated
+      // target when viewing-as, else current admin/user).
       let cfg = null, attempts = {};
       try {
         [cfg, attempts] = await Promise.all([
           fetch('data/mock-exams/config.json?v=' + Date.now()).then(r => r.json()),
-          firebase.firestore().collection('users').doc(user.uid).collection('mockExamAttempts').get()
+          firebase.firestore().collection('users').doc(effUid).collection('mockExamAttempts').get()
             .then(snap => { const m = {}; snap.forEach(d => { m[d.id] = d.data(); }); return m; })
             .catch(() => ({})),
         ]);
@@ -5670,7 +5917,10 @@
         } else if (path === 'student') {
           pathBadge = '<span class="admin-badge admin-badge-student">Student</span>';
         } else {
-          pathBadge = '<span class="admin-badge" style="background:#f3f4f6;color:#6b7280;">-</span>';
+          // Explicit "Not set" state so admin can tell an uncategorized
+          // user apart from a display bug. Amber pill so it stands out
+          // as an action item — this user needs to pick a path.
+          pathBadge = '<span class="admin-badge" style="background:#FEF3C7;color:#92400E;" title="This user has not chosen Med School vs Residency. They will be prompted on next login, or use the Details panel to set it for them.">Not set</span>';
         }
 
         // Resolve signup date from either the Cloud-Function `createdAtMs`
@@ -5710,6 +5960,7 @@
           <td style="white-space:nowrap;">
             <button class="admin-action-btn ${toggleClass}" onclick="toggleQBankAccess('${u.id}', ${isPaid})">${toggleLabel}</button>
             <button class="admin-action-btn admin-btn-details" onclick="toggleUserDetails('${u.id}', this)">Details</button>
+            <a class="admin-action-btn" style="background:#F1F5F9; color:#0F172A; border-color:#CBD5E1;" title="Open the dashboard exactly as this user sees it" href="dashboard.html?viewAs=${u.id}">View as</a>
             <button class="admin-action-btn admin-btn-revoke" style="background:#dc2626; color:#fff; border-color:#dc2626;" onclick="deleteUserAccount('${u.id}', ${JSON.stringify(name).replace(/"/g, '&quot;')}, ${JSON.stringify(email).replace(/"/g, '&quot;')})">Delete</button>
           </td>
         </tr>`;
@@ -5937,7 +6188,24 @@
       info += `<strong>UID:</strong> ${uid}<br>`;
       info += `<strong>Name:</strong> ${escapeHtml(user.name || '-')}<br>`;
       info += `<strong>Email:</strong> ${escapeHtml(user.email || '-')}<br>`;
-      info += `<strong>Path:</strong> ${pathDisplay}<br>`;
+      // Path row + inline setter. Admin/reviewer accounts are defined by
+       // email so we don't offer to set path for them (would be misleading).
+       // For everyone else, show a small button group so admin can backfill
+       // legacy accounts or override a user's choice.
+       const isAdminOrReviewer = PATH_ADMIN_EMAILS_D.includes(detailsEmailLc) || PATH_REVIEWER_EMAILS_D.includes(detailsEmailLc);
+       if (isAdminOrReviewer) {
+         info += `<strong>Path:</strong> ${pathDisplay}<br>`;
+       } else {
+         const applicantSel = user.path === 'applicant' ? ' style="background:#dbeafe;color:#1d4ed8;border-color:#1d4ed8;"' : '';
+         const studentSel   = user.path === 'student'   ? ' style="background:#d1fae5;color:#065f46;border-color:#065f46;"' : '';
+         const clearBtn     = user.path ? `<button class="btn btn-outline btn-small" style="margin-left:4px;" onclick="adminSetUserPath('${uid}', null)">Clear</button>` : '';
+         info += `<strong>Path:</strong> ${pathDisplay}
+           <div style="display:inline-flex; gap:6px; margin-left:12px;">
+             <button class="btn btn-outline btn-small"${applicantSel} onclick="adminSetUserPath('${uid}', 'applicant')">Applicant</button>
+             <button class="btn btn-outline btn-small"${studentSel} onclick="adminSetUserPath('${uid}', 'student')">Student</button>
+             ${clearBtn}
+           </div><br>`;
+       }
       // Created date — handle both the new Cloud-Function `createdAtMs`
       // (number) and the legacy Firestore `createdAt` (Timestamp / string).
       const userMs = user.createdAtMs
@@ -5969,6 +6237,34 @@
       detailsRow.appendChild(td);
       row.after(detailsRow);
     }
+
+    // ===== Admin: set/clear a user's path (Applicant / Student / null) =====
+    // Backfill controller for users whose profile is missing `path`. Also
+    // usable to override an existing choice. Not exposed for admin/reviewer
+    // accounts (their status is email-based, not profile-based).
+    async function adminSetUserPath(uid, path) {
+      if (!uid) return;
+      const label = path === 'applicant' ? 'Applicant' : path === 'student' ? 'Student' : 'not set';
+      if (!confirm('Set this user\'s path to "' + label + '"?')) return;
+      try {
+        const payload = { path: path };  // null clears the field
+        await db.collection('users').doc(uid).set(payload, { merge: true });
+        // Mirror the change into the local cache so the UI reflects it
+        // without waiting for the Firestore stream to catch up.
+        if (typeof allAdminUsers !== 'undefined') {
+          const u = allAdminUsers.find(x => x.id === uid);
+          if (u) u.path = path;
+        }
+        // Re-render the affected row + re-open the details panel so the
+        // admin sees the new state immediately.
+        if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+        setTimeout(() => { if (typeof toggleAdminDetails === 'function') toggleAdminDetails(uid); }, 60);
+      } catch (err) {
+        console.error('adminSetUserPath failed:', err);
+        alert('Failed to update path: ' + (err && err.message));
+      }
+    }
+    window.adminSetUserPath = adminSetUserPath;
 
     // ===== Recent Activity =====
     async function loadRecentActivity() {
