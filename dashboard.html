@@ -130,11 +130,29 @@
     <!-- ===== MAIN CONTENT ===== -->
     <main class="dashboard-main">
 
-      <!-- Loading state -->
+      <!-- Loading state. Timeout fallback rendered on page load — if
+           loadDashboard doesn't hide this within 15s (any await hangs
+           on offline / permission-denied / SDK stall) we render a
+           refresh CTA instead of a forever-spinner. -->
       <div id="loadingState" class="dashboard-loading">
         <div class="spinner"></div>
         <p>Loading your dashboard...</p>
+        <div id="loadingFallback" style="display:none; margin-top:24px; font-size:0.94rem; color:#475569;">
+          <p>Still loading. If this takes more than a few seconds, your session may have expired or the connection dropped.</p>
+          <button type="button" onclick="location.reload()" style="margin-top:12px; padding:10px 22px; font-family:inherit; font-weight:600; background:#0d9488; color:#fff; border:none; border-radius:8px; cursor:pointer;">Refresh</button>
+        </div>
       </div>
+      <script>
+        (function () {
+          // Safety net: if loading persists past 15s, reveal the refresh
+          // CTA and stop the (potentially never-resolving) spinner story.
+          setTimeout(function () {
+            var el = document.getElementById('loadingState');
+            var fb = document.getElementById('loadingFallback');
+            if (el && el.style.display !== 'none' && fb) fb.style.display = '';
+          }, 15000);
+        })();
+      </script>
 
       <!-- Dashboard content (hidden until loaded) -->
       <div id="dashboardContent" style="display:none;">
@@ -2616,12 +2634,47 @@
       border: none; cursor: pointer;
     }
     .impersonation-banner-exit:hover { background: #F59E0B; color: #fff; }
-    /* When impersonating, gray out + block interaction with write controls */
+    /* ===== Impersonation write-block =====
+       During "View as", the operating auth session is still the admin's;
+       every write from the page executes with admin permissions. Because
+       Firestore rules allow admin writes anywhere, the ONLY safeguard is
+       here. Default posture: block ALL interactive writes at both the UI
+       layer (pointer-events, disabled buttons, dimmed form fields) AND
+       the JS layer (capture-phase interceptor further down blocks click
+       + submit + change + input on anything not opted in). Opt individual
+       controls back in with .impersonation-allow.
+
+       Read-only exit paths (link to admin view, sidebar nav, tab switches
+       via the sidebar) are allowed by default because they don't write. */
     body.impersonation-mode .btn-primary,
     body.impersonation-mode .stripe-pay,
     body.impersonation-mode .admin-action-btn,
-    body.impersonation-mode #dashQbResetBtn {
-      opacity: 0.55; cursor: not-allowed;
+    body.impersonation-mode #dashQbResetBtn,
+    body.impersonation-mode .btn-secondary,
+    body.impersonation-mode button[type="submit"],
+    body.impersonation-mode input[type="submit"],
+    body.impersonation-mode .countdown-save-btn,
+    body.impersonation-mode .progress-status-btn {
+      opacity: 0.55; cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+    body.impersonation-mode input:not(.impersonation-allow),
+    body.impersonation-mode textarea:not(.impersonation-allow),
+    body.impersonation-mode select:not(.impersonation-allow) {
+      background: #F8FAFC !important; color: #64748B !important;
+      pointer-events: none !important;
+    }
+    /* Explicit allowlist for controls the admin still needs while in
+       "View as" mode: the exit button in the yellow banner, and the
+       sidebar navigation links (data-view attributes — pure UI). */
+    body.impersonation-mode .impersonation-banner-exit,
+    body.impersonation-mode .impersonation-banner-exit *,
+    body.impersonation-mode [data-view],
+    body.impersonation-mode [data-view] *,
+    body.impersonation-mode .impersonation-allow {
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      cursor: pointer;
     }
 
     /* ===== Admin modal (used by Add Booking from Calendar) ===== */
@@ -3733,7 +3786,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260520-mobnav2"></script>
+  <script src="auth.js?v=20260713-xss"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -3774,6 +3827,21 @@
         'settings': 'viewSettings',
         'admin': 'viewAdmin'
       };
+
+      // Admin route protection at the client-nav layer. Firestore rules
+      // already deny data reads to non-admins, but rendering the admin
+      // UI shell (headers, empty tables, action forms) leaks structure
+      // and confuses non-admin users hitting the URL directly. Kick
+      // them to Overview. Also blocks the view during "View as" so the
+      // admin panel doesn't surface alongside the target's data.
+      if (viewName === 'admin') {
+        const emailLc = (auth.currentUser && auth.currentUser.email || '').toLowerCase();
+        const ADMIN_EMAILS = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
+        const isAdmin = ADMIN_EMAILS.includes(emailLc);
+        if (!isAdmin || window._impersonatedUid) {
+          viewName = 'overview';
+        }
+      }
 
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const targetId = viewMap[viewName];
@@ -3924,14 +3992,84 @@
         '<button type="button" class="impersonation-banner-exit" onclick="location.href=\'dashboard.html\'">Return to admin view</button>';
       const main = document.querySelector('.dashboard-main') || document.body;
       main.insertBefore(banner, main.firstChild);
-      // Block form submissions and stripe-pay clicks defensively (the CSS
-      // greys them out but we also block programmatically in case anything
-      // fires a submit).
-      document.addEventListener('click', function (e) {
-        if (!document.body.classList.contains('impersonation-mode')) return;
-        const t = e.target.closest('.stripe-pay, #dashQbResetBtn, [data-contact-modal]');
-        if (t) { e.preventDefault(); e.stopPropagation(); }
-      }, true);
+
+      // Reset the "last-viewed" persistence so a fresh impersonation
+      // load doesn't restore the admin panel (viewMap['admin']) as the
+      // active view. Force Overview so the admin sees exactly what a
+      // freshly-arrived user sees, not the admin-only panel with the
+      // real user list, delete buttons, etc.
+      try {
+        sessionStorage.removeItem('dashboardView');
+        sessionStorage.setItem('dashboardView', 'overview');
+      } catch (_) {}
+
+      // ===== JS-layer write-block =====
+      // Idempotency guard: this bootstrap runs at most once per page load
+      // even if maybeStartImpersonation is invoked more than once (e.g.
+      // onAuthStateChanged fires twice on token refresh).
+      if (!window._impersonationBlockersInstalled) {
+        window._impersonationBlockersInstalled = true;
+        const isBlocked = (el) => {
+          if (!el || !el.closest) return false;
+          // Sidebar view switching is nav, not a write — allow it.
+          if (el.closest('[data-view]')) return false;
+          // Impersonation exit route.
+          if (el.closest('.impersonation-banner-exit')) return false;
+          // Any element explicitly opted-in.
+          if (el.closest('.impersonation-allow')) return false;
+          // Otherwise: block on buttons, form controls, submit-role elements.
+          return !!el.closest(
+            'button, input, textarea, select, form, ' +
+            '.stripe-pay, [role="button"], .btn, [data-contact-modal], ' +
+            '.countdown-save-btn, .progress-status-btn'
+          );
+        };
+        const blockEvent = function (e) {
+          if (!document.body.classList.contains('impersonation-mode')) return;
+          if (!isBlocked(e.target)) return;
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+        };
+        ['click', 'submit', 'change', 'input', 'keydown', 'keypress'].forEach(evt => {
+          document.addEventListener(evt, function (e) {
+            if (!document.body.classList.contains('impersonation-mode')) return;
+            // Keys other than Enter/Space are read-only.
+            if ((evt === 'keydown' || evt === 'keypress') &&
+                e.key !== 'Enter' && e.key !== ' ') return;
+            if (isBlocked(e.target)) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+            }
+          }, true);
+        });
+
+        // Firestore-write interceptor. Wraps every `.set()` / `.update()` /
+        // `.delete()` on any DocumentReference so nothing sneaks through
+        // via timer or programmatic path (e.g. auto-save that skipped the
+        // UI event). Reads still succeed. Rejections are logged so the
+        // caller can react but nothing corrupts data.
+        try {
+          const fs = firebase.firestore;
+          if (fs && fs.DocumentReference && fs.DocumentReference.prototype) {
+            const proto = fs.DocumentReference.prototype;
+            ['set', 'update', 'delete'].forEach(m => {
+              const orig = proto[m];
+              if (typeof orig !== 'function') return;
+              proto[m] = function () {
+                if (document.body.classList.contains('impersonation-mode')) {
+                  console.warn('[impersonate] Firestore ' + m + ' blocked on', this.path);
+                  return Promise.reject(new Error('Writes are disabled while viewing as another user.'));
+                }
+                return orig.apply(this, arguments);
+              };
+            });
+          }
+        } catch (err) {
+          console.warn('[impersonate] Firestore wrapper install failed:', err && err.message);
+        }
+      }
     }
 
     // Small helper used by any code that needs the "effective" UID —
@@ -4020,12 +4158,25 @@
     // control in the Details panel is for).
     async function ensureUserHasPath(user, profile) {
       if (!user) return true;
-      if (profile && profile.path) return true;
+      // Truthy string wins immediately — this is the normal path once
+      // saved. Guard against 'null' string, empty string, or missing.
+      if (profile && typeof profile.path === 'string' && profile.path.length > 0) return true;
       const emailLc = (user.email || '').toLowerCase();
       const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
       const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
       if (ADMIN.includes(emailLc) || REVIEWER.includes(emailLc)) return true;
       if (window._impersonatedUid) return true;
+      // localStorage safety net — if this uid picked earlier in this
+      // browser but a subsequent Firestore read returned stale data, do
+      // not re-spam the modal. The moment the user picks we persist a
+      // flag here; only the user (or an admin explicitly clearing it)
+      // can bring the picker back.
+      let localFlag = null;
+      try { localFlag = localStorage.getItem('shos_pathPicked_' + user.uid); } catch (_) {}
+      if (localFlag && localFlag.length > 0) {
+        if (profile) profile.path = localFlag;
+        return true;
+      }
       const modal = document.getElementById('pathPickerModal');
       const errBox = document.getElementById('pathPickerError');
       const btnApp = document.getElementById('pathPickerApplicant');
@@ -4033,6 +4184,7 @@
       if (!modal || !btnApp || !btnStu) return true;   // markup missing — fail open
       if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
       modal.style.display = 'flex';
+      console.info('[path-picker] shown for uid', user.uid, 'current profile.path =', profile && profile.path);
       return new Promise(resolve => {
         function handle(chosenPath) {
           return async function () {
@@ -4040,7 +4192,14 @@
             if (errBox) { errBox.style.display = 'none'; }
             try {
               await db.collection('users').doc(user.uid).set({ path: chosenPath }, { merge: true });
+              // Mutate BOTH the caller-passed profile reference AND
+              // currentProfile so the caller does not re-fetch (which
+              // could return a stale cached doc) and downstream code
+              // already sees the new value.
+              if (profile) profile.path = chosenPath;
               if (currentProfile) currentProfile.path = chosenPath; else currentProfile = { path: chosenPath };
+              try { localStorage.setItem('shos_pathPicked_' + user.uid, chosenPath); } catch (_) {}
+              console.info('[path-picker] saved', chosenPath, 'for uid', user.uid);
               modal.style.display = 'none';
               resolve(true);
             } catch (err) {
@@ -4711,39 +4870,51 @@
 
     initProgressTracker();
 
-    // ===== Stripe Checkout =====
+    // ===== Stripe Checkout (event-delegated) =====
     // Calls the createCheckoutSession Cloud Function and redirects to the
     // Stripe-hosted checkout page. On success Stripe redirects to success.html;
     // the stripeWebhook Cloud Function flips the user's payments fields.
-    document.querySelectorAll('.stripe-pay').forEach(btn => {
-      btn.addEventListener('click', async function(e) {
+    //
+    // Delegated on document so dynamically-injected .stripe-pay buttons
+    // (e.g. the Unlock — $99 buttons rendered inside the mock exam library
+    // table after data loads) work without needing to re-bind after every
+    // render.
+    document.addEventListener('click', async function(e) {
+      const btn = e.target.closest && e.target.closest('.stripe-pay');
+      if (!btn) return;
+      // Impersonation guard — during "View as", writes are blocked at the
+      // rules layer anyway, but avoid firing the checkout redirect and
+      // navigating away from the admin's own session.
+      if (document.body.classList.contains('impersonation-mode')) {
         e.preventDefault();
-        const tier = this.dataset.tier;
-        const user = firebase.auth().currentUser;
-        if (!user) {
-          window.location.href = 'login.html';
-          return;
-        }
+        return;
+      }
+      e.preventDefault();
+      if (btn.dataset.checkoutBusy === '1') return;
+      const tier = btn.dataset.tier;
+      const user = firebase.auth().currentUser;
+      if (!user) { window.location.href = 'login.html'; return; }
 
-        const originalText = this.textContent;
-        this.textContent = 'Loading…';
-        this.style.pointerEvents = 'none';
+      btn.dataset.checkoutBusy = '1';
+      const originalHtml = btn.innerHTML;
+      btn.textContent = 'Loading…';
+      btn.style.pointerEvents = 'none';
 
-        try {
-          const fn = firebase.functions().httpsCallable('createCheckoutSession');
-          const result = await fn({ tier, origin: window.location.origin });
-          if (result.data && result.data.url) {
-            window.location.href = result.data.url;
-          } else {
-            throw new Error('No checkout URL returned');
-          }
-        } catch (err) {
-          console.error('Checkout failed:', err);
-          alert('Sorry — we couldn\'t start checkout. Please try again, or email contact@shosmed.com.');
-          this.textContent = originalText;
-          this.style.pointerEvents = '';
+      try {
+        const fn = firebase.functions().httpsCallable('createCheckoutSession');
+        const result = await fn({ tier, origin: window.location.origin });
+        if (result.data && result.data.url) {
+          window.location.href = result.data.url;
+        } else {
+          throw new Error('No checkout URL returned');
         }
-      });
+      } catch (err) {
+        console.error('Checkout failed:', err);
+        alert('Sorry — we couldn\'t start checkout. Please try again, or email contact@shosmed.com.');
+        btn.innerHTML = originalHtml;
+        btn.style.pointerEvents = '';
+        delete btn.dataset.checkoutBusy;
+      }
     });
 
     // ===== Resource Tabs =====
@@ -5171,7 +5342,13 @@
           });
         }
         copy.textContent = contextCopy;
-        ctaBox.innerHTML = '<a href="practice-exam.html?year=' + encodeURIComponent(nextYear) + '" class="btn btn-primary">Start ' + nextYear + ' Exam</a>';
+        // Suppress the "Start next exam" CTA during impersonation — the
+        // admin should not launch a fresh attempt as the target user.
+        if (window._impersonatedUid) {
+          ctaBox.innerHTML = '';
+        } else {
+          ctaBox.innerHTML = '<a href="practice-exam.html?year=' + encodeURIComponent(nextYear) + '" class="btn btn-primary">Start ' + nextYear + ' Exam</a>';
+        }
         return;
       }
 
@@ -5199,22 +5376,44 @@
     async function loadMockExamLibrary() {
       const tbody = document.getElementById('mockExamTableBody');
       if (!tbody) return;
+      try {
+        await _loadMockExamLibraryInner(tbody);
+      } catch (err) {
+        console.error('[mock-exams] loader failed:', err);
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:#dc2626;">Could not load the mock-exam library (' + ((err && err.message) || 'unknown error') + '). Refresh to retry.</td></tr>';
+      }
+    }
+    // Bounded retry counter. If firebase or auth never resolves (SDK
+     // failed, blocked cookies, offline first-load with no cache), we
+     // surrender after ~10 seconds and paint a real error instead of
+     // spinning the "Loading mock exams…" placeholder forever.
+     window._mockExamRetries = window._mockExamRetries || 0;
+    async function _loadMockExamLibraryInner(tbody) {
 
       // Wait until Firebase auth has resolved. If not yet available, retry
       // shortly. Avoids racing the dashboard's onAuthStateChanged flow.
+      const MAX_RETRIES = 50;   // 50 × 200ms = 10s
       if (typeof firebase === 'undefined' || !firebase.auth) {
-        setTimeout(loadMockExamLibrary, 200);
-        return;
+        if (window._mockExamRetries++ < MAX_RETRIES) { setTimeout(loadMockExamLibrary, 200); return; }
+        throw new Error('Firebase auth did not initialize');
       }
       const user = firebase.auth().currentUser;
-      if (!user) { setTimeout(loadMockExamLibrary, 200); return; }
+      if (!user) {
+        if (window._mockExamRetries++ < MAX_RETRIES) { setTimeout(loadMockExamLibrary, 200); return; }
+        throw new Error('No signed-in user');
+      }
+      window._mockExamRetries = 0;
 
       // When impersonating, read the target user's data instead of the
       // admin's. effectiveUid() encapsulates the swap; email/roles fall
-      // back to the profile that already reflects the target.
+      // back to the profile that already reflects the target. Belt-and-
+      // suspenders `|| ''` so a missing email field doesn't kill the
+      // loader (undefined.toLowerCase() would throw silently and leave
+      // the tbody stuck on "Loading…").
       const effUid = (typeof effectiveUid === 'function') ? effectiveUid() : user.uid;
       const effProfile = window._impersonatedProfile || null;
-      const email = (effProfile ? effProfile.email : user.email || '').toLowerCase();
+      const rawEmail = (effProfile && effProfile.email) || (user && user.email) || '';
+      const email = String(rawEmail).toLowerCase();
       const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
       const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
       const isAdmin = ADMIN.includes(email);
@@ -5256,6 +5455,19 @@
       const kpiRowEl = document.getElementById('mockExamKpiRow');
       if (emptyEl)  emptyEl.style.display  = hasAttempts ? 'none' : '';
       if (kpiRowEl) kpiRowEl.style.display = hasAttempts ? '' : 'none';
+
+      // During impersonation, replace the empty-state CTA with a plain
+      // status line — the admin should not start a new attempt on
+      // behalf of the target, and clicking the "Start" link would open
+      // practice-exam.html as ADMIN, not as the target.
+      if (window._impersonatedUid && emptyEl && !hasAttempts) {
+        const empHeading = emptyEl.querySelector('.mock-exam-empty-title, h2, h3');
+        const empBody = emptyEl.querySelector('.mock-exam-empty-lead, p');
+        const empActions = emptyEl.querySelector('.mock-exam-empty-actions');
+        if (empHeading) empHeading.textContent = 'This user has not taken any mock exams yet';
+        if (empBody) empBody.textContent = 'The library table below shows every exam year available on this user\'s account.';
+        if (empActions) empActions.style.display = 'none';
+      }
 
       if (hasAttempts) {
         // Latest attempt = highest finishedAt timestamp.
@@ -5368,7 +5580,7 @@
             timeHtml = fmt.t(secs);
           }
           if (attempt.finishedAt && attempt.finishedAt.toMillis) dateHtml = fmt.d(attempt.finishedAt.toMillis());
-          actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-secondary">Review</a>';
+          actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + (window._impersonatedUid ? '&viewAs=' + encodeURIComponent(window._impersonatedUid) : '') + '" class="btn btn-secondary">Review</a>';
 
         } else if (isLocked) {
           rowClass = 'row-locked';
@@ -5382,7 +5594,14 @@
           statusHtml = isFree
             ? '<span class="mock-exam-pill free">Free</span>'
             : '<span class="mock-exam-pill available">Available</span>';
-          actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam</a>';
+          // During impersonation the admin should not start a NEW attempt
+          // as the target user (writes are blocked anyway; the button
+          // would just error). Show a plain label instead.
+          if (window._impersonatedUid) {
+            actionHtml = '<span style="color:#94A3B8; font-size:0.85rem;">Not taken</span>';
+          } else {
+            actionHtml = '<a href="practice-exam.html?year=' + encodeURIComponent(y.year) + '" class="btn btn-primary">Take Exam</a>';
+          }
         }
 
         const rowId = isDone ? ('mrow-' + y.year) : '';
@@ -5801,17 +6020,9 @@
           // means (a) the function returned 0 (stale read / write
           // never landed) or (b) the function returned N>0 but the
           // client rendered it as 0 (UI bug). Logs once per load.
-          try {
-            const me = firebase.auth().currentUser;
-            const myRow = me && users.find(u => u.id === me.uid);
-            console.info('[admin] visitCount values:',
-              users.map(u => u.email + '=' + u.visitCount).join(', '));
-            if (myRow) {
-              console.info('[admin] my row from cloud-function:',
-                'visitCount=' + myRow.visitCount,
-                'lastVisitAt=' + myRow.lastVisitAt);
-            }
-          } catch (_) {}
+          // Removed console.info dump of every user's email+visitCount.
+          // If a specific row looks wrong, admin can inspect the row in
+          // the DevTools "Network" tab (cloud-function response body).
         }
       } catch (err) {
         // Function not deployed yet OR caller isn't admin per the function's
@@ -5913,14 +6124,14 @@
         } else if (isReviewerUser) {
           pathBadge = '<span class="admin-badge admin-badge-reviewer" title="QBank reviewer">Reviewer</span>';
         } else if (path === 'applicant') {
-          pathBadge = '<span class="admin-badge admin-badge-applicant">Applicant</span>';
+          pathBadge = '<span class="admin-badge admin-badge-applicant" title="Preparing for medical-school entrance exams">Med School</span>';
         } else if (path === 'student') {
-          pathBadge = '<span class="admin-badge admin-badge-student">Student</span>';
+          pathBadge = '<span class="admin-badge admin-badge-student" title="Preparing for USMLE / residency match">Residency</span>';
         } else {
-          // Explicit "Not set" state so admin can tell an uncategorized
+          // Explicit "Not yet" state so admin can tell an uncategorized
           // user apart from a display bug. Amber pill so it stands out
           // as an action item — this user needs to pick a path.
-          pathBadge = '<span class="admin-badge" style="background:#FEF3C7;color:#92400E;" title="This user has not chosen Med School vs Residency. They will be prompted on next login, or use the Details panel to set it for them.">Not set</span>';
+          pathBadge = '<span class="admin-badge" style="background:#FEF3C7;color:#92400E;" title="This user has not chosen Med School vs Residency. They will be prompted on next login, or use the Details panel to set it for them.">Not yet</span>';
         }
 
         // Resolve signup date from either the Cloud-Function `createdAtMs`
@@ -6180,9 +6391,9 @@
       let pathDisplay;
       if (PATH_ADMIN_EMAILS_D.includes(detailsEmailLc))         pathDisplay = 'Admin (full access — both paths)';
       else if (PATH_REVIEWER_EMAILS_D.includes(detailsEmailLc)) pathDisplay = 'Reviewer';
-      else if (user.path === 'applicant')                        pathDisplay = 'Applicant';
-      else if (user.path === 'student')                          pathDisplay = 'Student';
-      else                                                       pathDisplay = '-';
+      else if (user.path === 'applicant')                        pathDisplay = 'Med School';
+      else if (user.path === 'student')                          pathDisplay = 'Residency';
+      else                                                       pathDisplay = 'Not yet';
 
       let info = '';
       info += `<strong>UID:</strong> ${uid}<br>`;
@@ -6201,8 +6412,8 @@
          const clearBtn     = user.path ? `<button class="btn btn-outline btn-small" style="margin-left:4px;" onclick="adminSetUserPath('${uid}', null)">Clear</button>` : '';
          info += `<strong>Path:</strong> ${pathDisplay}
            <div style="display:inline-flex; gap:6px; margin-left:12px;">
-             <button class="btn btn-outline btn-small"${applicantSel} onclick="adminSetUserPath('${uid}', 'applicant')">Applicant</button>
-             <button class="btn btn-outline btn-small"${studentSel} onclick="adminSetUserPath('${uid}', 'student')">Student</button>
+             <button class="btn btn-outline btn-small"${applicantSel} onclick="adminSetUserPath('${uid}', 'applicant')">Med School</button>
+             <button class="btn btn-outline btn-small"${studentSel} onclick="adminSetUserPath('${uid}', 'student')">Residency</button>
              ${clearBtn}
            </div><br>`;
        }
@@ -6244,7 +6455,7 @@
     // accounts (their status is email-based, not profile-based).
     async function adminSetUserPath(uid, path) {
       if (!uid) return;
-      const label = path === 'applicant' ? 'Applicant' : path === 'student' ? 'Student' : 'not set';
+      const label = path === 'applicant' ? 'Med School' : path === 'student' ? 'Residency' : 'not set';
       if (!confirm('Set this user\'s path to "' + label + '"?')) return;
       try {
         const payload = { path: path };  // null clears the field
@@ -6460,7 +6671,7 @@
           // without leaving the dashboard. Falls back gracefully if the
           // question ID is missing or no longer exists in the bank.
           const viewBtn = r.questionId
-            ? `<button class="admin-view-btn" onclick="viewReportQuestion('${escapeHtml(r.questionId)}')">View Question</button>`
+            ? `<button class="admin-view-btn" onclick="viewReportQuestion('${escapeJs(r.questionId)}')">View Question</button>`
             : '';
           return `<div class="admin-report-card" id="report-${id}">
             <div class="admin-report-info">
@@ -6472,7 +6683,7 @@
             </div>
             <div style="display:flex; gap:6px; align-items:flex-start;">
               ${viewBtn}
-              <button class="admin-resolve-btn" onclick="resolveReport('${id}')">Resolve</button>
+              <button class="admin-resolve-btn" onclick="resolveReport('${escapeJs(id)}')">Resolve</button>
             </div>
           </div>`;
         }));
@@ -6589,10 +6800,47 @@
     }
 
     // ===== Utility =====
+    // Escape for HTML text OR attribute context. `div.textContent → innerHTML`
+    // handles `<>&` but leaves `'"` intact — those are safe in text but
+    // devastating inside an attribute (`value="…"`) or inline JS handler
+    // (`onclick="foo('…')"`). Belt-and-suspenders the quote pair by
+    // post-processing.
+    //
+    // A stored-XSS attack was possible via the messages/bookings inbox
+    // before this fix: an attacker submitted `subject: "');alert(1);//"`
+    // (allowed — contact form is public) and the admin's browser fired
+    // the payload when the admin opened the inbox.
     function escapeHtml(str) {
+      if (str == null) return '';
       const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
+      div.textContent = String(str);
+      return div.innerHTML
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    // Explicit attribute escaper — same behavior as escapeHtml today.
+    // Kept as a distinct name so future maintainers know to reach for it
+    // when placing a value inside `attr="…"`.
+    const escapeAttr = escapeHtml;
+    // Escape for placement INSIDE a JS string literal that lives inside
+    // an HTML attribute (e.g. `onclick="foo('${escapeJs(x)}')"`). Uses
+    // Unicode escape sequences `'` / `"` for quotes because
+    // those survive HTML attribute decoding — a plain `\'` would work
+    // in a JS file but the HTML parser strips the backslash before JS
+    // sees it. Also escapes `<` and `>` so `</script>` in the data
+    // can't terminate an inline script tag.
+    function escapeJs(str) {
+      if (str == null) return '';
+      return String(str)
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, '\\u0027')
+        .replace(/"/g, '\\u0022')
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e')
+        .replace(/\r/g, '\\r')
+        .replace(/\n/g, '\\n')
+        .replace(/ /g, '\\u2028')
+        .replace(/ /g, '\\u2029');
     }
 
     // ===== Contact Form Logic =====
@@ -6646,14 +6894,18 @@
         });
       });
 
-      // Pre-fill from user profile
+      // Pre-fill from user profile. When admin is impersonating, use the
+      // TARGET user's identity — the admin should see the form as the
+      // target would see it, not with their own name/email pre-filled.
       function prefillContactForm() {
-        if (currentUser) {
-          const nameEl = document.getElementById('contactName');
-          const emailEl = document.getElementById('contactEmail');
-          if (nameEl && !nameEl.value) nameEl.value = currentUser.displayName || currentProfile?.name || '';
-          if (emailEl && !emailEl.value) emailEl.value = currentUser.email || '';
-        }
+        const nameEl = document.getElementById('contactName');
+        const emailEl = document.getElementById('contactEmail');
+        if (!nameEl && !emailEl) return;
+        const imp = window._impersonatedProfile;
+        const effName  = imp ? (imp.name || '')  : ((currentUser && currentUser.displayName) || (currentProfile && currentProfile.name) || '');
+        const effEmail = imp ? (imp.email || '') : ((currentUser && currentUser.email) || '');
+        if (nameEl  && !nameEl.value)  nameEl.value  = effName;
+        if (emailEl && !emailEl.value) emailEl.value = effEmail;
       }
 
       // Handle URL params for deep linking
@@ -6836,12 +7088,12 @@
             <div class="inbox-expanded">
               <div class="inbox-body">${escapeHtml(msg.body || '')}</div>
               <div class="inbox-actions">
-                <button class="admin-action-btn" onclick="markMessage('${msg.id}','read');event.stopPropagation();">Mark Read</button>
-                <button class="admin-action-btn admin-btn-grant" onclick="replyToMessage('${msg.id}','${escapeHtml(msg.email || '')}','${escapeHtml(msg.subject || '')}');event.stopPropagation();">Reply</button>
-                <button class="admin-action-btn admin-btn-details" onclick="markMessage('${msg.id}','resolved');event.stopPropagation();">Resolve</button>
-                <button class="admin-action-btn admin-btn-revoke" onclick="confirmDeleteMessage('${msg.id}');event.stopPropagation();">Delete</button>
+                <button class="admin-action-btn" onclick="markMessage('${escapeJs(msg.id)}','read');event.stopPropagation();">Mark Read</button>
+                <button class="admin-action-btn admin-btn-grant" onclick="replyToMessage('${escapeJs(msg.id)}','${escapeJs(msg.email || '')}','${escapeJs(msg.subject || '')}');event.stopPropagation();">Reply</button>
+                <button class="admin-action-btn admin-btn-details" onclick="markMessage('${escapeJs(msg.id)}','resolved');event.stopPropagation();">Resolve</button>
+                <button class="admin-action-btn admin-btn-revoke" onclick="confirmDeleteMessage('${escapeJs(msg.id)}');event.stopPropagation();">Delete</button>
               </div>
-              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeHtml(msg.adminNotes || '')}" onchange="saveMessageNotes('${msg.id}', this.value)" onclick="event.stopPropagation();">
+              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeAttr(msg.adminNotes || '')}" onchange="saveMessageNotes('${escapeJs(msg.id)}', this.value)" onclick="event.stopPropagation();">
             </div>
           `;
 
@@ -7124,7 +7376,7 @@
             };
             const btnClass = s === 'cancelled' || s === 'no_show' ? 'admin-btn-revoke' :
               s === 'completed' || s === 'paid' || s === 'confirmed' ? 'admin-btn-grant' : '';
-            actionsHtml += `<button class="admin-action-btn ${btnClass}" onclick="changeBookingStatus('${bk.id}','${s}');event.stopPropagation();">${labels[s] || s}</button>`;
+            actionsHtml += `<button class="admin-action-btn ${btnClass}" onclick="changeBookingStatus('${escapeJs(bk.id)}','${escapeJs(s)}');event.stopPropagation();">${labels[s] || s}</button>`;
           });
 
           card.innerHTML = `
@@ -7142,7 +7394,7 @@
               ${bk.sessionGoal ? `<div class="booking-detail-row" style="margin-top:8px;"><strong>Session Goal:</strong> ${escapeHtml(bk.sessionGoal)}</div>` : ''}
               ${bk.timezone ? `<div class="booking-detail-row"><strong>Timezone:</strong> ${escapeHtml(bk.timezone)}</div>` : ''}
               <div class="booking-status-actions">${actionsHtml}</div>
-              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeHtml(bk.adminNotes || '')}" onchange="saveBookingNotes('${bk.id}', this.value)" onclick="event.stopPropagation();">
+              <input class="inbox-notes-input" placeholder="Admin notes..." value="${escapeAttr(bk.adminNotes || '')}" onchange="saveBookingNotes('${escapeJs(bk.id)}', this.value)" onclick="event.stopPropagation();">
             </div>
           `;
 
@@ -8480,16 +8732,20 @@
         // Also set the CSS class for the ::before fallback
         contentEl.classList.add('watermarked');
         contentEl.setAttribute('data-watermark', (email + '   ').repeat(200));
-
-        console.log('Watermark applied for:', email);
         document.getElementById('spProtectionNotice').style.display = '';
       }
 
-      // Apply watermark when auth state resolves
+      // Apply watermark when auth state resolves. During impersonation,
+      // use the TARGET's email so the watermark reflects who this view
+      // is FOR (a paying user's content, branded to that user's email).
+      // Otherwise the watermark leaks the admin's email onto the target's
+      // rendered chapter content and misrepresents what the target sees.
       firebase.auth().onAuthStateChanged(user => {
-        if (user && user.email) {
-          spApplyWatermark(user.email);
-        }
+        const targetProfile = window._impersonatedProfile;
+        const emailToUse = (targetProfile && targetProfile.email)
+                        || (user && user.email)
+                        || '';
+        if (emailToUse) spApplyWatermark(emailToUse);
       });
 
       // Visibility API: blur content when tab hidden (already handled by global handler,

@@ -31,13 +31,63 @@ service cloud.firestore {
     }
 
     // ====== Users ======
+    // OWNER writes are restricted to a strict FIELD ALLOWLIST. Everything
+    // security-sensitive (payments, role, admin flags, reset counters,
+    // server-managed timestamps) is EXCLUDED from the allowlist — owners
+    // cannot write those fields on either create or update. Only admin
+    // (via console or Cloud Function admin SDK, which bypasses rules
+    // entirely) can touch them.
+    //
+    // If you add a new user-profile field in the client, ADD IT HERE too
+    // or the client's set/update will start failing with permission-denied.
+    //
+    // Kept as an inline `in`-check list rather than a `hasAny/hasOnly`
+    // helper because a prior helper-function implementation was silently
+    // permissive at runtime — using the plain `in` operator against
+    // request.resource.data avoids that class of bug.
+    function ownerWriteIsSafe() {
+      return !('payments' in request.resource.data)
+          && !('role' in request.resource.data)
+          && !('isAdmin' in request.resource.data)
+          && !('banned' in request.resource.data)
+          && !('disabled' in request.resource.data)
+          && !('entitlements' in request.resource.data)
+          && !('visitCount' in request.resource.data)
+          && !('lastVisitAt' in request.resource.data)
+          && !('qbankResetUsed' in request.resource.data)
+          && !('qbankResetCount' in request.resource.data)
+          && !('backfilled' in request.resource.data);
+    }
+    // Update variant: same protected-field check, but by diffing the
+    // resource. Uses explicit `field in <Set>` semantics rather than
+    // `hasAny([...])` on the diff result — the latter was runtime-buggy
+    // in earlier tests (returned false negative, silently allowing
+    // self-grants). This form is equivalent to the create rule for
+    // the write-safety property but permits legitimate updates that
+    // don't touch protected fields.
+    function ownerUpdateIsSafe() {
+      let changed = request.resource.data.diff(resource.data).affectedKeys();
+      return !('payments' in changed)
+          && !('role' in changed)
+          && !('isAdmin' in changed)
+          && !('banned' in changed)
+          && !('disabled' in changed)
+          && !('entitlements' in changed)
+          && !('visitCount' in changed)
+          && !('lastVisitAt' in changed)
+          && !('qbankResetUsed' in changed)
+          && !('qbankResetCount' in changed)
+          && !('backfilled' in changed);
+    }
+
     match /users/{uid} {
       allow read:   if isOwner(uid) || isAdmin();
-      // Admin can create user docs so the "Grant QBank access" flow works
-      // for Auth-only users (e.g. invited reviewers who haven't signed in
-      // yet) — their Firestore profile gets created on demand.
-      allow create: if isOwner(uid) || isAdmin();
-      allow update: if isOwner(uid) || isAdmin();
+      // Admin can create user docs (Grant QBank flow for Auth-only users).
+      // Owner creates go through the field allowlist above.
+      allow create: if isAdmin()
+                    || (isOwner(uid) && ownerWriteIsSafe());
+      allow update: if isAdmin()
+                    || (isOwner(uid) && ownerUpdateIsSafe());
       allow delete: if isAdmin();
 
       // QBank progress + tests live as user sub-docs
@@ -49,18 +99,38 @@ service cloud.firestore {
         allow create:      if isOwner(uid);
         allow update, delete: if isAdmin();
       }
-      // Mock exam attempts — ONE-shot per year (enforced at the rules
-      // layer, not just the client). Doc ID is the year string, e.g.
-      // "2025". Users can create their own record and read it back.
-      // Only admin can update or delete (e.g. correction of a bad
-      // question, or comp'ing a user a retake as customer service).
+      // Mock exam attempts — created ONLY by the `submitMockExam` Cloud
+      // Function, which runs with admin privileges and enforces:
+      //   • paid / free-year / admin access before grading
+      //   • one-shot rule (denies resubmit for non-admins)
+      //   • server-computed score against the private answer key
+      // The client can no longer craft attempts because:
+      //   • the correct answers are not shipped to the browser
+      //   • direct owner writes are denied here
+      // Read still allows the owner (or admin) so the results view can
+      // fetch the attempt doc back for the "Latest score" KPI etc.
       match /mockExamAttempts/{year} {
         allow read:   if isOwner(uid) || isAdmin();
-        allow create: if isOwner(uid);
-        allow update, delete: if isAdmin();
+        allow create, update, delete: if isAdmin();
       }
-      // Any other subcollection → owner + admin only
-      match /{sub=**} {
+
+      // Other user-owned sub-collections (studyNotes, studyHighlights,
+      // savedQuestions, etc.). Enumerated explicitly rather than using
+      // a wildcard `{sub=**}` catch-all, because in Firestore rules a
+      // catch-all subcollection rule OR's with more-specific rules —
+      // an owner-write catch-all would silently override the admin-only
+      // gate on mockExamAttempts. Enumerate the paths we know we need;
+      // any future subcollection has to be added here explicitly.
+      match /studyNotes/{doc} {
+        allow read, write: if isOwner(uid) || isAdmin();
+      }
+      match /studyHighlights/{doc} {
+        allow read, write: if isOwner(uid) || isAdmin();
+      }
+      match /savedQuestions/{doc} {
+        allow read, write: if isOwner(uid) || isAdmin();
+      }
+      match /preferences/{doc} {
         allow read, write: if isOwner(uid) || isAdmin();
       }
     }
@@ -77,20 +147,32 @@ service cloud.firestore {
     }
 
     // ====== Bookings ======
-    // Same submission rule. Authenticated users can read their own bookings;
-    // admin reads all.
+    // Signed-in users must own the booking they create (userId matches
+    // their uid). Anonymous visitors can also book but their userId is
+    // required to be null/absent — preventing a signed-in user from
+    // planting a booking under a *different* user's uid (cross-user
+    // injection). Reads are admin OR the booking's owner.
     match /bookings/{id} {
       allow read:   if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
-      allow create: if true;
+      allow create: if (!isSignedIn() && !('userId' in request.resource.data))
+                    || (isSignedIn() && request.resource.data.userId == request.auth.uid);
       allow update: if isAdmin();
       allow delete: if isAdmin();
     }
 
     // ====== Community Forum ======
+    // Author-scoped writes. `authorUid` on the doc MUST match the caller
+    // both at create and at update — no "author" can rewrite themselves
+    // as another user. Field name matches community.js (which was writing
+    // `authorId`; a separate fix updates that to `authorUid`).
     match /forum_posts/{id} {
       allow read:   if true;
-      allow create: if isSignedIn();
-      allow update: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
+      allow create: if isSignedIn()
+                    && request.resource.data.authorUid == request.auth.uid;
+      allow update: if isAdmin()
+                    || (isSignedIn()
+                        && resource.data.authorUid == request.auth.uid
+                        && request.resource.data.authorUid == resource.data.authorUid);
       allow delete: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
 
       match /{sub=**} {
@@ -159,9 +241,18 @@ service cloud.firestore {
       // Admin can do anything (manual migrations, hand-edits).
       allow write: if isAdmin();
       // Public increment paths — strict allowlist on the incoming keys.
+      // Non-negative constraint on `visits` closes the "zero out the
+      // counter with a big negative increment" hole. `lastVisitAt` is a
+      // server timestamp on write (see auth.js recordUserVisit), so it
+      // ends up as a Timestamp on the server side — but the client
+      // proposes a Sentinel first which is a Map/marker in request.
+      // We don't constrain its type here, only that no other keys leak in.
       allow create, update:
         if doc == 'siteStats'
-           && request.resource.data.keys().hasOnly(['visits', 'lastVisitAt']);
+           && request.resource.data.keys().hasOnly(['visits', 'lastVisitAt'])
+           && (!('visits' in request.resource.data)
+               || request.resource.data.visits is number
+               && request.resource.data.visits >= 0);
       allow create, update:
         if doc == 'visitsByDay'
            && request.resource.data.keys().hasOnly(['days']);

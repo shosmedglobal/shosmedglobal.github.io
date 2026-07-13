@@ -15,7 +15,10 @@ const db = firebase.firestore();
 
 // ===== Auth Functions =====
 
-// Map Firebase error codes to user-friendly messages
+// Map Firebase error codes to user-friendly messages. Covers both the
+// legacy singular `auth/invalid-credential` (Firebase v9.0-9.16) and
+// the current `auth/invalid-login-credentials` (v9.17+ / v10) plus
+// modern user-disabled / operation-not-allowed variants.
 function friendlyError(error) {
   const map = {
     'auth/email-already-in-use': 'This email is already registered. Try logging in instead.',
@@ -24,11 +27,24 @@ function friendlyError(error) {
     'auth/user-not-found': 'No account found with this email.',
     'auth/wrong-password': 'Incorrect password. Please try again.',
     'auth/invalid-credential': 'Incorrect email or password. Please try again.',
+    'auth/invalid-login-credentials': 'Incorrect email or password. Please try again.',
+    'auth/user-disabled': 'This account has been disabled. Please contact support.',
+    'auth/operation-not-allowed': 'Email/password sign-in is not enabled. Please contact support.',
+    'auth/account-exists-with-different-credential': 'An account already exists with this email using a different sign-in method (e.g. Google).',
     'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.',
     'auth/popup-closed-by-user': 'Sign-in popup was closed. Please try again.',
+    'auth/popup-blocked': 'Your browser blocked the sign-in popup. Please allow popups and try again.',
+    'auth/cancelled-popup-request': 'Sign-in was cancelled. Please try again.',
     'auth/network-request-failed': 'Network error. Please check your connection.',
+    'auth/requires-recent-login': 'For your security, please sign in again and retry this action.',
+    'auth/missing-password': 'Please enter your password.',
+    'auth/missing-email': 'Please enter your email address.',
   };
-  return map[error.code] || error.message;
+  if (error && error.code && map[error.code]) return map[error.code];
+  // Fallback: strip the "Firebase: Error (...)." prefix so the raw message
+  // doesn't leak the SDK internals. Show a generic message rather than
+  // the auth/xxx code.
+  return 'Something went wrong. Please try again, or email contact@shosmed.com if it keeps happening.';
 }
 
 // Sign up with email/password
@@ -426,9 +442,9 @@ async function recordSiteVisit() {
 //     and refreshes, every visit counts — which is closer to what the
 //     admin actually wants to see (raw engagement, not a session metric).
 //
-// Verbose logging on every code path so the admin can diagnose silent
-// failures by opening DevTools.
-console.info('[visit] auth.js v4 loaded (no-session-dedupe)');
+// Silent on the happy path in production. `console.error` on failure
+// still surfaces so silent permission denials / quota issues remain
+// visible in DevTools. Emails / UIDs are no longer logged.
 
 // Affirmatively clear all historical dedupe flags so any user stuck with
 // a stale flag from v1/v2/v3 starts fresh on first load of v4.
@@ -441,35 +457,22 @@ try {
 
 window.__shosVisitPromise = null;
 async function recordUserVisit(user) {
-  console.info('[visit] recordUserVisit called with user:',
-               (user && (user.email || user.uid)) || '<null>');
   // Coalesce concurrent calls within ONE page load. Without this the
   // belt-and-suspenders trigger in dashboard.html plus auth.js's own
   // trigger would double-count every load.
-  if (window.__shosVisitPromise) {
-    console.info('[visit] write already in-flight, awaiting existing promise');
-    return window.__shosVisitPromise;
-  }
+  if (window.__shosVisitPromise) return window.__shosVisitPromise;
   window.__shosVisitPromise = (async () => {
     try {
-      if (!user || !user.uid) {
-        console.warn('[visit] no user/uid, skipping');
-        return;
-      }
-      if (typeof db === 'undefined' || typeof firebase === 'undefined') {
-        console.warn('[visit] firebase/db not initialized, skipping');
-        return;
-      }
-      console.info('[visit] writing increment for', user.email || user.uid);
+      if (!user || !user.uid) return;
+      if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
       await db.collection('users').doc(user.uid).set({
         visitCount: firebase.firestore.FieldValue.increment(1),
         lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
       }, { merge: true });
-      console.info('[visit] ✓ user visit recorded for', user.email || user.uid);
     } catch (error) {
       // Surface the actual Firestore error code so silent permission
-      // denials, network failures, or quota issues become visible.
-      console.error('[visit] ✗ FAILED:', error && error.code, '—', error && error.message);
+      // denials, network failures, or quota issues remain visible.
+      console.error('[visit] failed:', error && error.code, '—', error && error.message);
     }
   })();
   return window.__shosVisitPromise;

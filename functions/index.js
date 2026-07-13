@@ -2,9 +2,42 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const Stripe = require('stripe');
 const emails = require('./emails');
+const fs = require('fs');
+const path = require('path');
 
 admin.initializeApp();
 const db = admin.firestore();
+
+// ============================================================================
+// Mock-exam private data cache.
+// The full exam JSONs (with correct answers + explanations) live in
+// functions/exam-data/, which is bundled with the function code and not
+// deployed to Firebase Hosting. Loaded lazily on first call.
+// ============================================================================
+const MOCK_ADMIN_EMAILS = [
+  'eli@shosmed.com',
+  'contact@shosmed.com',
+  'privacy@shosmed.com',
+  'elizolotov@gmail.com',
+];
+const MOCK_REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
+const _examCache = {};
+function loadExam(year) {
+  if (_examCache[year]) return _examCache[year];
+  const file = path.join(__dirname, 'exam-data', `mock-exam-${year}.json`);
+  if (!fs.existsSync(file)) throw new functions.https.HttpsError('not-found', `Mock exam ${year} does not exist.`);
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  _examCache[year] = data;
+  return data;
+}
+let _examConfigCache = null;
+function loadExamConfig() {
+  if (_examConfigCache) return _examConfigCache;
+  const file = path.join(__dirname, 'exam-data', 'config.json');
+  if (!fs.existsSync(file)) throw new functions.https.HttpsError('not-found', 'exam-data/config.json missing');
+  _examConfigCache = JSON.parse(fs.readFileSync(file, 'utf8'));
+  return _examConfigCache;
+}
 
 // Tier → Firestore field mapping. Keep in sync with the existing
 // users/{uid}.payments schema used by qbank.js and dashboard admin tools.
@@ -661,4 +694,159 @@ exports.cleanupOrphanUsers = functions.https.onCall(async (data, context) => {
     console.error('cleanupOrphanUsers failed:', err);
     throw new functions.https.HttpsError('internal', err.message);
   }
+});
+
+// ============================================================================
+// submitMockExam
+// ----------------------------------------------------------------------------
+// Server-side scoring for mock exams. Closes the previous "answer keys are
+// in a public JSON" hole — the private JSONs live in functions/exam-data/
+// and are only readable here. The client sends the user's raw picks; we
+// grade, write the attempt with admin privileges, and return the score +
+// the correct-answer map + the explanations (only after submission).
+//
+// Access checks:
+//   • Signed in
+//   • User is allowed to attempt this year (paid / free-year / admin / reviewer)
+//   • Attempt does not already exist (one-shot rule — admin bypass only)
+//
+// Input:  { year: "2022", answers: { "1": "B", "2": "C", ... } }
+// Output: { score: {correct, total, bioCorrect, bioTotal, chemCorrect, chemTotal},
+//           correctAnswers: { "1": "B", ... },
+//           explanations:   { "1": "…", ... },
+//           finishedAt: ISO string }
+// ============================================================================
+exports.submitMockExam = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'You must be signed in to submit a mock exam.');
+  }
+  const uid = context.auth.uid;
+  const email = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
+  const year = data && String(data.year || '').trim();
+  const answers = (data && typeof data.answers === 'object' && data.answers) || {};
+  if (!/^\d{4}$/.test(year)) {
+    throw new functions.https.HttpsError('invalid-argument', 'Bad year.');
+  }
+
+  const cfg = loadExamConfig();
+  const yearMeta = (cfg.years || []).find(y => y.year === year);
+  if (!yearMeta || yearMeta.status !== 'available') {
+    throw new functions.https.HttpsError('failed-precondition', 'That year is not currently available.');
+  }
+
+  // Access check: admin, reviewer, free year, or paid.
+  const isAdmin = MOCK_ADMIN_EMAILS.includes(email);
+  const isReviewer = MOCK_REVIEWER_EMAILS.includes(email);
+  const isFree = year === cfg.freeYear;
+  let isPaid = false;
+  if (!isAdmin && !isReviewer && !isFree) {
+    const snap = await db.collection('users').doc(uid).get();
+    const p = snap.exists ? (snap.data() || {}) : {};
+    isPaid = !!(p.payments && p.payments['exam-bank'] === 'paid');
+    if (!isPaid) {
+      throw new functions.https.HttpsError('permission-denied',
+        'This mock exam requires QBank Full Access ($99). Purchase it from the dashboard store.');
+    }
+  }
+
+  // One-shot rule — non-admins cannot resubmit.
+  const attemptRef = db.collection('users').doc(uid).collection('mockExamAttempts').doc(year);
+  const existing = await attemptRef.get();
+  if (existing.exists && !isAdmin) {
+    throw new functions.https.HttpsError('already-exists',
+      'You have already taken this exam. Admin can grant a retake.');
+  }
+
+  // Grade against the private answer key.
+  const exam = loadExam(year);
+  let correct = 0, bioCorrect = 0, chemCorrect = 0, bioTotal = 0, chemTotal = 0;
+  const correctAnswers = {};
+  const explanations = {};
+  exam.forEach(q => {
+    if (!q || !q.id) return;
+    const section = q.section || 'Chemistry';
+    if (section === 'Biology') bioTotal++; else chemTotal++;
+    correctAnswers[q.id] = q.correct;
+    explanations[q.id] = q.explanation || '';
+    const userPickRaw = answers[q.id];
+    const userPick = userPickRaw != null ? String(userPickRaw).trim().toUpperCase() : null;
+    const truth = q.correct != null ? String(q.correct).trim().toUpperCase() : null;
+    if (userPick && truth && userPick === truth) {
+      correct++;
+      if (section === 'Biology') bioCorrect++; else chemCorrect++;
+    }
+  });
+
+  const score = { correct, total: exam.length, bioCorrect, bioTotal, chemCorrect, chemTotal };
+
+  // Persist. Admin-write via admin SDK bypasses Firestore rules that
+  // otherwise deny direct owner writes. Server timestamps only.
+  const now = admin.firestore.FieldValue.serverTimestamp();
+  const startedAtMs = data && Number(data.startedAtMs);
+  const startedAt = startedAtMs && startedAtMs > 0
+    ? admin.firestore.Timestamp.fromMillis(startedAtMs)
+    : null;
+  await attemptRef.set({
+    year,
+    finishedAt: now,
+    startedAt: startedAt || now,
+    answers,
+    score,
+    submittedByCf: true,   // sentinel — the client cannot forge attempts that lack this
+  }, { merge: existing.exists });
+
+  return {
+    score,
+    correctAnswers,
+    explanations,
+    finishedAt: new Date().toISOString(),
+    year,
+  };
+});
+
+// ============================================================================
+// getMockExamReview
+// ----------------------------------------------------------------------------
+// Returns the correct answers + explanations for an ALREADY-completed
+// attempt, so the review view can render post-submit even after a page
+// refresh (no answer key ever lands in the client until an attempt is
+// on record). Owner (of the attempt) or admin only.
+//
+// Input:  { year: "2022", uid?: "targetUid" }   // uid required for admin view-as
+// Output: { correctAnswers, explanations }
+// ============================================================================
+exports.getMockExamReview = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+  }
+  const year = data && String(data.year || '').trim();
+  if (!/^\d{4}$/.test(year)) {
+    throw new functions.https.HttpsError('invalid-argument', 'Bad year.');
+  }
+  const callerUid = context.auth.uid;
+  const callerEmail = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
+  const isAdmin = MOCK_ADMIN_EMAILS.includes(callerEmail);
+  const isReviewer = MOCK_REVIEWER_EMAILS.includes(callerEmail);
+  const targetUid = (data && data.uid) ? String(data.uid) : callerUid;
+  if (targetUid !== callerUid && !isAdmin && !isReviewer) {
+    throw new functions.https.HttpsError('permission-denied', 'You can only review your own attempts.');
+  }
+  const attemptRef = db.collection('users').doc(targetUid).collection('mockExamAttempts').doc(year);
+  const attempt = await attemptRef.get();
+  if (!attempt.exists) {
+    // Reviewers/admins may view questions before an attempt exists; regular
+    // owners must have submitted first.
+    if (!isAdmin && !isReviewer) {
+      throw new functions.https.HttpsError('failed-precondition', 'No attempt on record for that year.');
+    }
+  }
+  const exam = loadExam(year);
+  const correctAnswers = {};
+  const explanations = {};
+  exam.forEach(q => {
+    if (!q || !q.id) return;
+    correctAnswers[q.id] = q.correct;
+    explanations[q.id] = q.explanation || '';
+  });
+  return { correctAnswers, explanations, year };
 });

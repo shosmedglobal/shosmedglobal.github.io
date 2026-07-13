@@ -116,14 +116,25 @@ function renderTestHistoryList() {
   section.style.display = 'block';
   list.innerHTML = '';
 
+  // HTML escape used across this render — stops a self-XSS turning
+  // into a stored XSS against admins during "View as" impersonation
+  // (admin reads the target's test history and would render whatever
+  // string the target planted in `test.name`).
+  const _qbEsc = (s) => {
+    if (s == null) return '';
+    const d = document.createElement('div');
+    d.textContent = String(s);
+    return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  };
   testHistory.forEach((test, i) => {
     const date = new Date(test.date);
     const defaultName = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
       ' - ' + date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    const displayName = test.name || defaultName;
+    const displayNameRaw = test.name || defaultName;
+    const displayName = _qbEsc(displayNameRaw);
     const pct = test.total > 0 ? Math.round((test.correct / test.total) * 100) : 0;
     const pctClass = pct >= 70 ? 'score-good' : pct >= 50 ? 'score-mid' : 'score-low';
-    const subjects = test.subjects ? test.subjects.join(', ') : '';
+    const subjects = test.subjects ? _qbEsc(test.subjects.join(', ')) : '';
     const isTestModeRecord = test.mode && test.mode.includes('Test');
     const modeBadge = isTestModeRecord
       ? '<span class="th-mode th-mode-test">Test</span>'
@@ -930,7 +941,6 @@ function applyQBankWatermark(container) {
     container.style.backgroundImage = 'url("' + dataUrl + '")';
     container.style.backgroundRepeat = 'repeat';
     container.style.backgroundSize = '500px 180px';
-    console.log('QBank watermark applied for:', email);
   } catch (e) { /* auth not ready yet */ }
 }
 

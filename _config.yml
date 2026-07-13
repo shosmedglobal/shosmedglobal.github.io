@@ -1,0 +1,26 @@
+# SHOS Med Global — GitHub Pages / Jekyll config.
+#
+# The `exclude` list keeps sensitive files out of the deployed site
+# even though they live in the git repo (Firebase deploy needs them).
+# Without this list, GitHub Pages would happily serve requests like
+# https://shosmed.com/functions/exam-data/mock-exam-2022.json and leak
+# the private mock-exam answer keys.
+#
+# If you add another server-only directory to this repo, ADD IT HERE.
+
+exclude:
+  - functions
+  - scripts
+  - docs/internal
+  - "*.md"
+  - .firebaserc
+  - firebase.json
+  - firestore.rules
+  - README.md
+  - "package*.json"
+  - "*.log"
+
+# Suppress default Jekyll processing of HTML files — the site is static
+# HTML/CSS/JS; Jekyll processing has no value and could accidentally
+# strip content that looks like Liquid ({{ … }}, {% … %}).
+plugins: []

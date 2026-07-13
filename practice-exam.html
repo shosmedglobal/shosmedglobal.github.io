@@ -720,7 +720,12 @@
     <div id="examResultsView" style="display:none;">
       <div class="exam-results">
         <h2>Your Results</h2>
-        <p class="results-sub">Detailed review with explanations below. Take the exam again any time.</p>
+        <p class="results-sub">Detailed review with explanations below. This is a one-time mock exam — your attempt is now on record.</p>
+
+        <!-- Persistence-warning banner. Shown ONLY when finishExam's
+             Firestore write fails so the user knows the results in front
+             of them aren't yet on their account and they should refresh. -->
+        <div id="resultsPersistBanner" role="status" style="display:none; background:#FEF3C7; color:#92400E; border:1px solid #F59E0B; border-radius:10px; padding:12px 16px; margin:0 0 18px; font-size:0.94rem; line-height:1.5;"></div>
 
         <div class="score-summary">
           <div class="score-big" id="scoreBig">0 / 60</div>
@@ -736,7 +741,11 @@
         <div id="reviewList"></div>
 
         <div class="results-actions">
-          <button id="restartExamBtn" class="btn-restart">Take Exam Again</button>
+          <!-- The Firestore rule denies retakes (owner cannot update the
+               attempt doc), so the "Take Exam Again" button is a footgun:
+               the local results reset but Firestore refuses the second
+               write and the user's ORIGINAL attempt resurfaces on next
+               load. Only admin can grant a comp'd retake. -->
           <a href="dashboard.html" class="btn-back-dash">Back to Dashboard</a>
         </div>
       </div>
@@ -815,10 +824,21 @@
    *  STATE
    * ======================================================================= */
 
-  // Per-year localStorage key. Old single-key state
-  // (`shos-mock-exam-state-v1`) is migrated to the 2025 slot on first load
-  // so any user with an in-progress or completed 2025 attempt keeps it.
-  const STORAGE_KEY = () => 'shos-mock-exam-state-' + (mockExamYear || 'unknown') + '-v1';
+  // Per-year, per-USER localStorage key. Adding the uid closes the
+  // shared-browser leak where User B logging in after User A on the
+  // same machine could see A's completed answers + score for that year.
+  // Anonymous / not-yet-signed-in falls back to 'anon' (they can't
+  // start the exam without auth anyway; this is just a safe default).
+  function currentExamUid() {
+    try {
+      if (typeof firebase !== 'undefined' && firebase.auth) {
+        const u = firebase.auth().currentUser;
+        if (u && u.uid) return u.uid;
+      }
+    } catch (_) {}
+    return 'anon';
+  }
+  const STORAGE_KEY = () => 'shos-mock-exam-state-' + currentExamUid() + '-' + (mockExamYear || 'unknown') + '-v2';
   const EXAM_DURATION_SEC = 2 * 60 * 60; // 7200 seconds
 
   let state = {
@@ -845,10 +865,16 @@
 
   function elapsedSec() {
     if (!state.startedAt) return 0;
-    return Math.floor((Date.now() - state.startedAt) / 1000);
+    // Clamp at zero — negative elapsed can occur if the system clock
+    // jumps backward mid-exam (NTP sync, DST edge). Without the clamp,
+    // remainingSec() returns > EXAM_DURATION_SEC and the timer shows
+    // more than 2 hours in a 2-hour exam.
+    return Math.max(0, Math.floor((Date.now() - state.startedAt) / 1000));
   }
   function remainingSec() {
-    return Math.max(0, EXAM_DURATION_SEC - elapsedSec());
+    // Clamp both ways: never below zero, never above EXAM_DURATION_SEC.
+    const raw = EXAM_DURATION_SEC - elapsedSec();
+    return Math.min(EXAM_DURATION_SEC, Math.max(0, raw));
   }
 
   /* =======================================================================
@@ -993,47 +1019,83 @@
     $('submitModal').classList.add('open');
   }
 
-  function finishExam(timeUp) {
+  // Server-provided answer key + explanations. NEVER present in the
+  // stripped client JSON — only revealed after the Cloud Function grades
+  // the submission (or after getMockExamReview for a completed attempt).
+  // Keyed by question id.
+  let _correctAnswers = {};     // { qid: 'A'|'B'|'C'|'D' }
+  let _explanations = {};       // { qid: '<html>' }
+
+  // Idempotency guard for finishExam. A user rapid-clicking the confirm
+  // button, or the timer expiring while the confirm modal is already
+  // opening, would otherwise trigger renderResults() and persist multiple
+  // times. Second-and-later calls become no-ops.
+  let _finishing = false;
+  async function finishExam(timeUp) {
+    if (_finishing || state.finished) {
+      // Already handled — just make sure the results view is up.
+      if (state.finished) { showView('results'); }
+      return;
+    }
+    _finishing = true;
     state.finished = true;
     saveState();
     stopTimer();
-    $('submitModal').classList.remove('open');
-    renderResults(!!timeUp);
+    const modal = $('submitModal');
+    if (modal) modal.classList.remove('open');
+
+    // Show a lightweight "grading…" state before we call the server.
+    // Client can no longer compute a score locally — the answer key is
+    // server-only. We show a placeholder and swap in the real score once
+    // the CF returns.
+    state.score = { correct: 0, total: examQuestions.length, pending: true };
+    saveState();
+    renderResultsPending(!!timeUp);
     showView('results');
-    // Persist the completed attempt to Firestore so it survives across
-    // browsers / devices and prevents retakes. Silent on failure — the
-    // localStorage record still enforces one-shot from this browser.
-    persistAttemptToFirestore();
+
+    const banner = document.getElementById('resultsPersistBanner');
+    try {
+      const graded = await submitAttemptToServer();
+      // Server response is authoritative — overwrite local state.
+      state.score = graded.score;
+      _correctAnswers = graded.correctAnswers || {};
+      _explanations = graded.explanations || {};
+      saveState();
+      renderResults(!!timeUp);
+      if (banner) banner.style.display = 'none';
+    } catch (err) {
+      console.warn('[mock-exam] submit failed:', err && (err.message || err.code));
+      // Keep the pending render in place; explain to the user.
+      if (banner) {
+        banner.style.display = '';
+        banner.textContent = 'Your answers are saved locally, but the server could not grade your attempt (' + (err && (err.message || err.code) || 'unknown error') + '). Please refresh — your answers will still be there.';
+      }
+    }
+    _finishing = false;
   }
 
-  function persistAttemptToFirestore() {
-    try {
-      if (typeof firebase === 'undefined' || !firebase.auth || !firebase.firestore) return;
-      const user = firebase.auth().currentUser;
-      if (!user || !mockExamYear) return;
-      let correct = 0, total = 0;
-      examQuestions.forEach(q => {
-        total++;
-        if (state.answers[q.id] === q.correct) correct++;
-      });
-      const doc = {
-        year: mockExamYear,
-        finishedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        startedAt: state.startedAt ? new Date(state.startedAt) : null,
-        answers: state.answers,
-        score: { correct: correct, total: total },
-      };
-      firebase.firestore()
-        .collection('users').doc(user.uid)
-        .collection('mockExamAttempts').doc(mockExamYear)
-        // merge:true so if this ever runs twice (localStorage says finished but
-        // Firestore didn't write yet), we backfill without erasing the earlier
-        // finishedAt / startedAt.
-        .set(doc, { merge: true })
-        .catch(err => console.warn('[mock-exam] persist attempt failed:', err.code, err.message));
-    } catch (err) {
-      console.warn('[mock-exam] persist attempt exception:', err && err.message);
+  // Server-side scoring via callable Cloud Function `submitMockExam`.
+  // Replaces the previous client-side grading, which exposed every
+  // correct answer to any user who fetched the JSON.
+  async function submitAttemptToServer() {
+    // If we're an admin reviewing another user's attempt, we already
+    // hydrated everything from getMockExamReview — nothing new to submit.
+    if (_reviewingAsAdmin) {
+      return { score: state.score, correctAnswers: _correctAnswers, explanations: _explanations };
     }
+    if (typeof firebase === 'undefined' || !firebase.auth || !firebase.functions) {
+      throw new Error('firebase-unavailable');
+    }
+    const user = firebase.auth().currentUser;
+    if (!user || !mockExamYear) throw new Error('no-user-or-year');
+    const fn = firebase.functions().httpsCallable('submitMockExam');
+    const res = await fn({
+      year: mockExamYear,
+      answers: state.answers || {},
+      startedAtMs: state.startedAt || null,
+    });
+    if (!res || !res.data) throw new Error('empty-response');
+    return res.data;
   }
 
   // Post-exam upsell: shown ONLY when a free-tier user has just completed
@@ -1048,6 +1110,8 @@
       const box = document.getElementById('postExamUpsell');
       if (!box) return;
       box.style.display = 'none';
+      // Never upsell to an admin reviewing another user's attempt.
+      if (_reviewingAsAdmin) return;
       if (typeof firebase === 'undefined' || !firebase.auth || !firebase.firestore) return;
       const user = firebase.auth().currentUser;
       if (!user) return;
@@ -1079,7 +1143,10 @@
         ? "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. That's a real starting point — lock in the pattern before test day."
         : "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. The fastest way to bring that up is more timed reps.";
 
-      box.innerHTML =
+      // The dashboard reads `?view=` to route between views; hash
+       // fragments are ignored. Explicit view=store lands the user on
+       // the store tab, the actual conversion surface.
+       box.innerHTML =
         '<div class="post-exam-upsell">' +
           '<div class="post-exam-upsell-body">' +
             '<div class="post-exam-upsell-label">Ready for more?</div>' +
@@ -1088,7 +1155,7 @@
               ' QBank Full Access ($99, 6 months) unlocks every other year, plus 1,000+ practice questions with PhD-level explanations.</div>' +
           '</div>' +
           '<div class="post-exam-upsell-cta">' +
-            '<a href="dashboard.html#store" class="post-exam-upsell-btn stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>' +
+            '<a href="dashboard.html?view=store" class="post-exam-upsell-btn">Unlock &mdash; $99</a>' +
           '</div>' +
         '</div>';
       box.style.display = '';
@@ -1096,6 +1163,21 @@
       console.warn('[mock-exam] upsell render failed:', err && err.message);
     }
   }
+
+  // Admin impersonation: when opened from the dashboard's "Review" link
+  // during a View-as session, the URL carries ?viewAs=<uid>. If the
+  // requesting user is on the admin allowlist, hydrate + render the
+  // TARGET's attempt in read-only mode. If not (a random user pasted
+  // the param), silently ignore — Firestore rules would deny the read
+  // anyway.
+  const MOCK_ADMIN_EMAILS_FOR_VIEWAS = [
+    'eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'
+  ];
+  function viewAsUidFromUrl() {
+    try { return new URLSearchParams(location.search).get('viewAs') || null; }
+    catch (_) { return null; }
+  }
+  let _reviewingAsAdmin = false;   // set true when we successfully hydrate a target's attempt
 
   // Read the user's Firestore attempt for the active year. If found, mirror
   // it into local state so we can force the results view — critical for the
@@ -1105,8 +1187,20 @@
       if (typeof firebase === 'undefined' || !firebase.auth || !firebase.firestore) return false;
       const user = firebase.auth().currentUser;
       if (!user || !mockExamYear) return false;
+
+      // Decide which UID's attempt to load. Admin visiting
+      // ?viewAs=<targetUid> reads target's attempt (rules allow admin
+      // read). Non-admins always read their own.
+      let readUid = user.uid;
+      const targetUid = viewAsUidFromUrl();
+      const isAdmin = MOCK_ADMIN_EMAILS_FOR_VIEWAS.includes((user.email || '').toLowerCase());
+      if (targetUid && isAdmin) {
+        readUid = targetUid;
+        _reviewingAsAdmin = true;
+      }
+
       const snap = await firebase.firestore()
-        .collection('users').doc(user.uid)
+        .collection('users').doc(readUid)
         .collection('mockExamAttempts').doc(mockExamYear).get();
       if (!snap.exists) return false;
       const data = snap.data() || {};
@@ -1117,7 +1211,26 @@
       state.startedAt = data.startedAt && data.startedAt.toMillis
         ? data.startedAt.toMillis()
         : (state.startedAt || Date.now());
-      saveState();
+      state.score = data.score || null;
+      // Fetch the answer key + explanations from the Cloud Function.
+      // Rules allow the read for the attempt's owner or admin — but the
+      // truth of the answer key is served ONLY by the CF, never by the
+      // stripped client JSON. If this fetch fails, the results page
+      // will show a graceful "could not load explanations" state.
+      try {
+        const fn = firebase.functions().httpsCallable('getMockExamReview');
+        const res = await fn({ year: mockExamYear, uid: readUid });
+        if (res && res.data) {
+          _correctAnswers = res.data.correctAnswers || {};
+          _explanations = res.data.explanations || {};
+        }
+      } catch (err) {
+        console.warn('[mock-exam] review-fetch failed:', err && (err.message || err.code));
+      }
+      // Persist locally ONLY for the caller's own review. If we're an
+      // admin looking at someone else's attempt, don't overwrite the
+      // admin's own per-user localStorage entry.
+      if (!_reviewingAsAdmin) saveState();
       return true;
     } catch (err) {
       console.warn('[mock-exam] hydrate attempt failed:', err && err.message);
@@ -1135,26 +1248,75 @@
    *  RESULTS
    * ======================================================================= */
 
+  // Case-insensitive, whitespace-tolerant answer check. Prevents a
+  // JSON author who wrote `"correct": "b"` from wrongly scoring 0/60.
+  function isAnswerCorrect(userAns, correctAns) {
+    if (userAns == null || correctAns == null) return false;
+    return String(userAns).trim().toUpperCase() === String(correctAns).trim().toUpperCase();
+  }
+  // Safe percent: never NaN, never a fraction. Returns integer 0-100.
+  function safePct(n, d) {
+    if (!d || d <= 0) return 0;
+    return Math.max(0, Math.min(100, Math.round(100 * n / d)));
+  }
+  // HTML text escaper for review options — defends against malformed
+  // JSON (e.g. an option that contains a stray `<` or `&`) breaking
+  // the review DOM. Question text and explanations remain rich HTML
+  // by design (they contain <sub>/<sup>/<p>/<strong>).
+  function esc(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  // Rendered BEFORE the CF response returns — shows a spinner-y placeholder
+  // and hides sections that can't render without the answer key. Prevents
+  // the user from seeing a mis-labelled "0 / 60" while the server grades.
+  function renderResultsPending(timeUp) {
+    $('scoreBig').textContent = '— / ' + examQuestions.length;
+    $('scoreLabel').innerHTML = timeUp
+      ? '<span style="color:#CF5B2E; font-weight:600;">Time expired.</span> Grading your attempt…'
+      : 'Grading your attempt…';
+    $('scoreBreakdown').innerHTML = '';
+    $('reviewList').innerHTML = '<div style="text-align:center; padding:32px; color:#64748B; font-size:0.95rem;">One moment — computing your score.</div>';
+  }
+
   function renderResults(timeUp) {
+    // If server hasn't returned the answer key yet, punt to the pending
+    // placeholder so we don't render a review with no correct-answer info.
+    if (!_correctAnswers || Object.keys(_correctAnswers).length === 0) {
+      return renderResultsPending(timeUp);
+    }
     let total = 0, bioTotal = 0, chemTotal = 0;
     let totalCorrect = 0, bioCorrect = 0, chemCorrect = 0;
 
     examQuestions.forEach(q => {
       total++;
-      if (q.section === 'Biology') bioTotal++; else chemTotal++;
-      if (state.answers[q.id] === q.correct) {
+      const section = (q && q.section) || 'Chemistry';   // default keeps counts stable
+      if (section === 'Biology') bioTotal++; else chemTotal++;
+      // Correct answers come from the server, not from the question row.
+      const truth = q && q.id != null ? _correctAnswers[q.id] : null;
+      if (isAnswerCorrect(state.answers[q && q.id], truth)) {
         totalCorrect++;
-        if (q.section === 'Biology') bioCorrect++; else chemCorrect++;
+        if (section === 'Biology') bioCorrect++; else chemCorrect++;
       }
     });
 
+    // Safe-divide + guarded HTML so a zero-length exam / single-section
+    // year doesn't crash into "NaN%" or "0 / 0".
+    const totalPct = safePct(totalCorrect, total);
     $('scoreBig').textContent = totalCorrect + ' / ' + total;
     $('scoreLabel').innerHTML = timeUp
-      ? '<span style="color:#CF5B2E; font-weight:600;">Time expired.</span> Total score (' + Math.round(100 * totalCorrect / total) + '%)'
-      : 'Total score (' + Math.round(100 * totalCorrect / total) + '%)';
-    $('scoreBreakdown').innerHTML =
-      '<div class="score-bd-item">Biology<strong>' + bioCorrect + ' / ' + bioTotal + '</strong></div>' +
-      '<div class="score-bd-item">Chemistry<strong>' + chemCorrect + ' / ' + chemTotal + '</strong></div>';
+      ? '<span style="color:#CF5B2E; font-weight:600;">Time expired.</span> Total score (' + totalPct + '%)'
+      : 'Total score (' + totalPct + '%)';
+    const bioCell = bioTotal > 0
+      ? '<div class="score-bd-item">Biology<strong>' + bioCorrect + ' / ' + bioTotal + '</strong></div>'
+      : '';
+    const chemCell = chemTotal > 0
+      ? '<div class="score-bd-item">Chemistry<strong>' + chemCorrect + ' / ' + chemTotal + '</strong></div>'
+      : '';
+    $('scoreBreakdown').innerHTML = bioCell + chemCell;
 
     // Post-exam upsell (Phase 2). Show only for free-tier users after
     // completing the free-year exam — peak intent, natural upsell moment.
@@ -1165,11 +1327,18 @@
     reviewList.innerHTML = '';
 
     examQuestions.forEach((q, idx) => {
-      const userAns = state.answers[q.id] || null;
+      if (!q) return;
+      const userAnsRaw = state.answers[q.id];
+      const userAns = userAnsRaw ? String(userAnsRaw).trim().toUpperCase() : null;
+      // Correct answer + explanation ONLY come from the server-populated
+      // maps — the stripped client JSON no longer carries them.
+      const truthRaw = _correctAnswers[q.id];
+      const correctAns = truthRaw != null ? String(truthRaw).trim().toUpperCase() : null;
+      const explanationHtml = _explanations[q.id] || '';
 
       const optsHtml = ['A', 'B', 'C', 'D'].map(letter => {
         const isUserAns = userAns === letter;
-        const isRightAns = q.correct === letter;
+        const isRightAns = correctAns === letter;
         let cls = '';
         if (isRightAns) cls = ' correct';
         else if (isUserAns && !isRightAns) cls = ' wrong';
@@ -1183,8 +1352,11 @@
           badge = '<span class="review-badge wrong">Your answer</span>';
         }
 
+        // Options are plain text and may contain stray `<`/`&` in the
+        // source (e.g. "protein < 10 kDa"). Escape defensively.
+        const optionText = (q.options && q.options[letter] != null) ? esc(q.options[letter]) : '';
         return '<li class="review-option' + cls + '">' +
-                 '<span class="opt-content"><span class="q-option-letter">' + letter + ')</span> ' + q.options[letter] + '</span>' +
+                 '<span class="opt-content"><span class="q-option-letter">' + letter + ')</span> ' + optionText + '</span>' +
                  badge +
                '</li>';
       }).join('');
@@ -1200,7 +1372,7 @@
         '<div class="q-text-rev">' + q.question + '</div>' +
         noAns +
         '<ul class="review-options">' + optsHtml + '</ul>' +
-        '<div class="review-explanation"><strong>Explanation:</strong> ' + q.explanation + '</div>';
+        (explanationHtml ? '<div class="review-explanation"><strong>Explanation:</strong> ' + explanationHtml + '</div>' : '');
 
       reviewList.appendChild(block);
     });
@@ -1263,10 +1435,13 @@
     const restart = $('restartExamBtn');
     if (restart) restart.addEventListener('click', restartExam);
 
-    // keyboard shortcuts during exam: ArrowLeft/Right for navigation
+    // keyboard shortcuts during exam: ArrowLeft/Right for navigation.
+    // Bail on any modifier (Cmd/Ctrl/Alt/Shift + Arrow) so browser
+    // shortcuts like Cmd+Left (Back) or Alt+Left (History Back) still
+    // work as the OS/browser intends them.
     document.addEventListener('keydown', (e) => {
       if (examView().style.display === 'none') return;
-      // skip if focus is in an input/textarea (none here, but safe)
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
       const tag = (e.target && e.target.tagName) || '';
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
       if (e.key === 'ArrowRight' && state.currentIndex < examQuestions.length - 1) {
@@ -1343,6 +1518,33 @@
         console.error('[practice-exam] loadMockExamData failed:', err && err.message);
         const authMsg = document.getElementById('authMessage');
         if (authMsg) authMsg.textContent = 'This mock exam is not yet available. Please pick a different year from your dashboard.';
+        // Hide the Sign In / Create Account buttons — they'd be confusing
+        // to a signed-in user who is here because the year isn't released.
+        const signInBtn = document.getElementById('authSignInBtn');
+        const signUpBtn = document.getElementById('authSignUpBtn');
+        if (signInBtn) signInBtn.style.display = 'none';
+        if (signUpBtn) {
+          signUpBtn.textContent = 'Back to Dashboard';
+          signUpBtn.href = 'dashboard.html?view=mockexams';
+        }
+        showView('auth');
+        return;
+      }
+      // Sanity check: a JSON that returns an empty array must not be
+      // treated as a valid exam. Bounce with the same "not available"
+      // messaging rather than let renderQuestion() explode on the first
+      // access of examQuestions[0].
+      if (!Array.isArray(examQuestions) || examQuestions.length === 0) {
+        console.error('[practice-exam] empty question set for year', mockExamYear);
+        const authMsg = document.getElementById('authMessage');
+        if (authMsg) authMsg.textContent = 'This mock exam is not yet available. Please pick a different year from your dashboard.';
+        const signInBtn = document.getElementById('authSignInBtn');
+        const signUpBtn = document.getElementById('authSignUpBtn');
+        if (signInBtn) signInBtn.style.display = 'none';
+        if (signUpBtn) {
+          signUpBtn.textContent = 'Back to Dashboard';
+          signUpBtn.href = 'dashboard.html?view=mockexams';
+        }
         showView('auth');
         return;
       }
@@ -1352,8 +1554,35 @@
       //    review mode. Prevents retakes across browsers/devices.
       const hydrated = await hydrateAttemptFromFirestore();
       if (hydrated) {
+        // If we hydrated as an admin reviewing another user's attempt,
+        // surface a visible banner so the reviewer knows they are NOT
+        // looking at their own results and cannot re-submit.
+        if (_reviewingAsAdmin) {
+          const targetUid = viewAsUidFromUrl();
+          const bannerEl = document.createElement('div');
+          bannerEl.setAttribute('role', 'status');
+          bannerEl.style.cssText = 'position:sticky; top:64px; z-index:80; background:#FEF3C7; color:#78350F; border-bottom:1px solid #F59E0B; padding:10px 16px; font-size:0.92rem; text-align:center; font-weight:600;';
+          bannerEl.innerHTML = 'Admin review · Viewing user\'s completed attempt (' + esc(mockExamYear) + '). Read-only.'
+            + ' <a href="dashboard.html?viewAs=' + encodeURIComponent(targetUid || '') + '&view=mockexams" style="color:#0F172A; text-decoration:underline; margin-left:12px;">Back to their dashboard</a>';
+          const app = document.querySelector('.exam-app');
+          if (app && app.parentNode) app.parentNode.insertBefore(bannerEl, app);
+        }
         renderResults(false);
         showView('results');
+        return;
+      }
+
+      // If admin is reviewing but no attempt exists for the target,
+      // show a clear message rather than the "not yet available"
+      // paywall / start flow.
+      if (_reviewingAsAdmin) {
+        const authMsg = document.getElementById('authMessage');
+        if (authMsg) authMsg.textContent = 'This user has not taken the ' + mockExamYear + ' mock exam.';
+        const signIn = document.getElementById('authSignInBtn');
+        const signUp = document.getElementById('authSignUpBtn');
+        if (signIn) signIn.style.display = 'none';
+        if (signUp) { signUp.textContent = 'Back to Dashboard'; signUp.href = 'dashboard.html?view=mockexams'; }
+        showView('auth');
         return;
       }
 
@@ -1367,7 +1596,7 @@
       try {
         const profileSnap = await firebase.firestore().collection('users').doc(user.uid).get();
         const profile = profileSnap.exists ? profileSnap.data() : {};
-        isPaid = profile && profile.payments && profile.payments['exam-bank'] === 'paid';
+        isPaid = !!(profile && profile.payments && profile.payments['exam-bank'] === 'paid');
       } catch (_) { /* fall through — treat as not paid */ }
 
       if (isAdmin || isReviewer || isPaid || isFree) {
@@ -1397,6 +1626,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="auth.js?v=20260520-mobnav2"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+  <script src="auth.js?v=20260713-xss"></script>
 </body>
 </html>

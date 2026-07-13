@@ -444,7 +444,12 @@
       const answerRef = db.collection('forum_posts').doc(currentPostId).collection('answers').doc();
       await answerRef.set({
         body: body.substring(0, 5000),
+        // Dual-write authorId (legacy field read by community.js) and
+        // authorUid (field checked by firestore.rules for owner writes).
+        // A prior mismatch caused every author-side update/delete to be
+        // silently denied.
         authorId: currentUser.uid,
+        authorUid: currentUser.uid,
         authorName: currentUser.displayName || 'Anonymous',
         voteCount: 0,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -508,6 +513,7 @@
         body: body.substring(0, 5000),
         category: category,
         authorId: currentUser.uid,
+        authorUid: currentUser.uid,
         authorName: currentUser.displayName || 'Anonymous',
         voteCount: 0,
         answerCount: 0,
