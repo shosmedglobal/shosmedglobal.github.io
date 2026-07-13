@@ -607,6 +607,27 @@
               </tbody>
             </table>
           </div>
+
+          <!-- TOPIC PERFORMANCE (Phase 3): aggregated accuracy per topic
+               across all completed mock-exam attempts. Weakest topics
+               surface at the top of each column so the user knows exactly
+               where to focus next. Hidden when the user has 0 attempts. -->
+          <div id="mockExamTopics" class="mock-exam-topics" style="display:none;">
+            <div class="mock-exam-topics-head">
+              <h3>Performance by topic</h3>
+              <p>Aggregated across all your completed mock exams. Weakest topics at the top of each column.</p>
+            </div>
+            <div class="mock-exam-topics-grid">
+              <div class="mock-exam-topic-col">
+                <h4>Biology</h4>
+                <div id="mockExamTopicsBio" class="mock-exam-topic-list"></div>
+              </div>
+              <div class="mock-exam-topic-col">
+                <h4>Chemistry</h4>
+                <div id="mockExamTopicsChem" class="mock-exam-topic-list"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ========== VIEW: FREE RESOURCES ========== -->
@@ -2080,6 +2101,80 @@
       .mock-exam-table thead th,
       .mock-exam-table tbody td { padding: 12px 14px; }
       .cell-actions .btn { padding: 6px 12px; font-size: 0.80rem; }
+    }
+
+    /* ---------- Topic Performance grid (Phase 3) ----------
+       Shown below the library table when the user has ≥1 attempt.
+       Left column: Biology topics. Right: Chemistry. Rows sorted with
+       weakest topic at top (below 70% flagged amber). This is the
+       "what should I study next" answer, and it links back to the
+       Study Plan (when we have chapter tags matching topic strings). */
+    .mock-exam-topics {
+      margin-top: 36px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px 28px 20px;
+    }
+    .mock-exam-topics-head { margin-bottom: 18px; }
+    .mock-exam-topics-head h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: #0F172A; margin: 0 0 4px;
+    }
+    .mock-exam-topics-head p {
+      font-size: 0.88rem; color: #64748B; margin: 0;
+    }
+    .mock-exam-topics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 720px) {
+      .mock-exam-topics-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .mock-exam-topic-col h4 {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #64748B;
+      margin: 0 0 12px; padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .mock-exam-topic-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(80px, 1fr) 46px;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .mock-exam-topic-row:last-child { border-bottom: none; }
+    .mock-exam-topic-name {
+      font-size: 0.92rem; color: #0F172A;
+      display: flex; align-items: center; gap: 8px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .mock-exam-topic-bar {
+      background: #F1F5F9; height: 6px; border-radius: 3px; overflow: hidden;
+    }
+    .mock-exam-topic-bar-fill {
+      height: 100%; background: #0d9488; border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .mock-exam-topic-pct {
+      font-size: 0.86rem; font-weight: 700; color: #0F172A;
+      text-align: right; font-variant-numeric: tabular-nums;
+    }
+    /* Weak topic (<70%) — amber accent everywhere */
+    .mock-exam-topic-row.weak .mock-exam-topic-name       { color: #92400E; }
+    .mock-exam-topic-row.weak .mock-exam-topic-bar-fill   { background: #F59E0B; }
+    .mock-exam-topic-row.weak .mock-exam-topic-pct        { color: #92400E; }
+    .mock-exam-topic-warn {
+      display: inline-block; width: 14px; height: 14px;
+      color: #F59E0B; flex-shrink: 0;
+    }
+    /* Empty column state (topic list built from questions but user
+       has zero attempts on that section — rare edge case) */
+    .mock-exam-topic-list-empty {
+      font-size: 0.86rem; color: #94A3B8; padding: 12px 0;
     }
 
     /* Admin stats grid — single horizontal row of compact tiles
@@ -4687,6 +4782,86 @@
     };
 
     /* ====================================================================
+       Topic Performance grid (Phase 3)
+       Aggregates accuracy per topic across ALL of the user's completed
+       mock-exam attempts. Sorted weakest-first per section so the user
+       instantly knows where to focus review. Silently degrades if
+       questions don't yet carry a `topic` field (Phase 3 rollout only
+       covers questions tagged by the classifier agents).
+       ==================================================================== */
+    async function renderTopicPerformance(cfg, attempts) {
+      const wrap = document.getElementById('mockExamTopics');
+      const bioCol = document.getElementById('mockExamTopicsBio');
+      const chemCol = document.getElementById('mockExamTopicsChem');
+      if (!wrap || !bioCol || !chemCol) return;
+
+      const attemptList = Object.values(attempts);
+      if (attemptList.length === 0) {
+        wrap.style.display = 'none';
+        return;
+      }
+
+      // Fetch every year's questions in parallel (cached).
+      window._mockExamQCache = window._mockExamQCache || {};
+      const years = attemptList.map(a => a.year).filter(Boolean);
+      await Promise.all(years.map(y => {
+        if (!window._mockExamQCache[y]) {
+          window._mockExamQCache[y] = fetch('data/mock-exams/mock-exam-' + y + '.json?v=' + Date.now())
+            .then(r => r.json()).catch(() => []);
+        }
+        return window._mockExamQCache[y];
+      }));
+
+      // Aggregate: per topic → {correct, total, section}
+      const tally = {};
+      let anyTagged = false;
+      for (const attempt of attemptList) {
+        const qs = await window._mockExamQCache[attempt.year];
+        if (!qs || qs.length === 0) continue;
+        const ans = attempt.answers || {};
+        qs.forEach(q => {
+          if (!q.topic) return;   // untagged questions skipped
+          anyTagged = true;
+          const key = q.topic;
+          if (!tally[key]) tally[key] = { correct: 0, total: 0, section: q.section };
+          tally[key].total++;
+          if (ans[q.id] === q.correct) tally[key].correct++;
+        });
+      }
+
+      // If nothing has topic tags yet, don't render (feature quietly
+      // hides until the tagging pass runs on every year's JSON).
+      if (!anyTagged) {
+        wrap.style.display = 'none';
+        return;
+      }
+
+      // Build sorted lists per section (weakest first).
+      const rows = Object.entries(tally).map(([topic, t]) => ({
+        topic, section: t.section, correct: t.correct, total: t.total,
+        pct: t.total > 0 ? (100 * t.correct / t.total) : 0
+      }));
+      const bio  = rows.filter(r => r.section === 'Biology').sort((a, b) => a.pct - b.pct);
+      const chem = rows.filter(r => r.section === 'Chemistry').sort((a, b) => a.pct - b.pct);
+
+      function rowHtml(r) {
+        const pct = Math.round(r.pct);
+        const isWeak = pct < 70;
+        const warnSvg = isWeak
+          ? '<svg class="mock-exam-topic-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Below 70%"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+          : '';
+        return '<div class="mock-exam-topic-row' + (isWeak ? ' weak' : '') + '">' +
+                 '<div class="mock-exam-topic-name">' + warnSvg + '<span>' + r.topic + '</span></div>' +
+                 '<div class="mock-exam-topic-bar"><div class="mock-exam-topic-bar-fill" style="width:' + pct + '%;"></div></div>' +
+                 '<div class="mock-exam-topic-pct">' + pct + '%</div>' +
+               '</div>';
+      }
+      bioCol.innerHTML  = bio.length  ? bio.map(rowHtml).join('')  : '<div class="mock-exam-topic-list-empty">No biology data yet.</div>';
+      chemCol.innerHTML = chem.length ? chem.map(rowHtml).join('') : '<div class="mock-exam-topic-list-empty">No chemistry data yet.</div>';
+      wrap.style.display = '';
+    }
+
+    /* ====================================================================
        Recommended Next Action card (Phase 2)
        Chooses the single most helpful next step for the user based on:
          - which years they've completed
@@ -4985,6 +5160,16 @@
 
       tbody.innerHTML = rows.join('');
       tbody.dataset.rendered = '1';
+
+      // Phase 3: aggregate per-topic performance across all attempts.
+      // Fire-and-forget — silently hides if no questions carry topic tags yet.
+      if (hasAttempts) {
+        renderTopicPerformance(cfg, attempts).catch(err => {
+          console.warn('[mock-exam] topic grid render failed:', err && err.message);
+          const wrap = document.getElementById('mockExamTopics');
+          if (wrap) wrap.style.display = 'none';
+        });
+      }
     }
 
     async function loadAdminPanel() {
