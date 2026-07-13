@@ -395,6 +395,54 @@
       margin: 0;
       font-size: 0.95rem;
     }
+    /* Post-exam upsell (Phase 2). Peak-intent moment — user just
+       finished the free exam and cares about their score. */
+    .post-exam-upsell {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #F8FAFC;
+      border-radius: 14px;
+      padding: 26px 28px;
+      margin: 20px 0 6px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-exam-upsell::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, #14b8a6 0%, #0d9488 100%);
+    }
+    .post-exam-upsell-body { flex: 1 1 300px; }
+    .post-exam-upsell-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #5EEAD4; margin-bottom: 6px;
+    }
+    .post-exam-upsell-title {
+      font-size: 1.25rem; font-weight: 700; color: #F8FAFC;
+      line-height: 1.35; margin-bottom: 8px;
+    }
+    .post-exam-upsell-copy {
+      font-size: 0.95rem; color: rgba(248,250,252,0.78); line-height: 1.55;
+    }
+    .post-exam-upsell-cta {
+      flex-shrink: 0;
+      display: flex; gap: 10px; align-items: center;
+    }
+    .post-exam-upsell-btn {
+      display: inline-flex; align-items: center;
+      padding: 12px 24px; border-radius: 8px;
+      background: #CF5B2E; color: #fff; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem;
+      border: none; cursor: pointer;
+      transition: background 0.18s ease;
+    }
+    .post-exam-upsell-btn:hover { background: #B74D24; }
+    .post-exam-upsell-price {
+      font-size: 0.82rem; color: rgba(248,250,252,0.6);
+    }
+
     .score-summary {
       background: linear-gradient(135deg, #F0FDFA 0%, #FFFBF5 100%);
       border: 1px solid rgba(13,148,136,0.3);
@@ -679,6 +727,11 @@
           <div class="score-label" id="scoreLabel">Total score</div>
           <div class="score-bd" id="scoreBreakdown"></div>
         </div>
+
+        <!-- Post-exam upsell (Phase 2). Only rendered when a free-tier user
+             has just completed the free year — the peak-intent conversion
+             moment. Populated by maybeShowPostExamUpsell() below. -->
+        <div id="postExamUpsell" style="display:none;"></div>
 
         <div id="reviewList"></div>
 
@@ -983,6 +1036,67 @@
     }
   }
 
+  // Post-exam upsell: shown ONLY when a free-tier user has just completed
+  // the free-year exam. This is the peak-intent moment in the entire
+  // funnel — the user has proved to themselves they want the product,
+  // seen their score, and is looking at what's next. Ask now.
+  //
+  // Silent on all failure paths (not logged in, admin, paid, or wrong
+  // year). We never show the upsell to someone who already paid.
+  async function maybeShowPostExamUpsell(scoreObj) {
+    try {
+      const box = document.getElementById('postExamUpsell');
+      if (!box) return;
+      box.style.display = 'none';
+      if (typeof firebase === 'undefined' || !firebase.auth || !firebase.firestore) return;
+      const user = firebase.auth().currentUser;
+      if (!user) return;
+      if (!mockExamConfig || !mockExamYear) return;
+
+      // Only show for the free year — other years imply paid access already.
+      if (mockExamYear !== mockExamConfig.freeYear) return;
+
+      // Skip admins, reviewers, and existing paid users.
+      const emailLc = (user.email || '').toLowerCase();
+      const REVIEWERS = ['jana.fauknerova@lf3.cuni.cz'];
+      if (MOCK_ADMIN_EMAILS.includes(emailLc)) return;
+      if (REVIEWERS.includes(emailLc)) return;
+      try {
+        const s = await firebase.firestore().collection('users').doc(user.uid).get();
+        const p = s.exists ? s.data() : {};
+        if (p && p.payments && p.payments['exam-bank'] === 'paid') return;
+      } catch (_) { /* treat as not paid → show upsell */ }
+
+      // Compute how many more years the user would unlock. Skips the
+      // free year they just completed.
+      const otherYears = (mockExamConfig.years || [])
+        .map(y => y.year).filter(y => y !== mockExamConfig.freeYear);
+      const otherCount = otherYears.length;
+      if (otherCount === 0) return;   // nothing more to unlock; skip pitch
+
+      const pct = scoreObj.total > 0 ? Math.round(100 * scoreObj.correct / scoreObj.total) : 0;
+      const openingLine = pct >= 65
+        ? "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. That's a real starting point — lock in the pattern before test day."
+        : "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. The fastest way to bring that up is more timed reps.";
+
+      box.innerHTML =
+        '<div class="post-exam-upsell">' +
+          '<div class="post-exam-upsell-body">' +
+            '<div class="post-exam-upsell-label">Ready for more?</div>' +
+            '<div class="post-exam-upsell-title">Unlock ' + otherCount + ' more full-length mock exams</div>' +
+            '<div class="post-exam-upsell-copy">' + openingLine +
+              ' QBank Full Access ($99, 6 months) unlocks every other year, plus 1,000+ practice questions with PhD-level explanations.</div>' +
+          '</div>' +
+          '<div class="post-exam-upsell-cta">' +
+            '<a href="dashboard.html#store" class="post-exam-upsell-btn stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>' +
+          '</div>' +
+        '</div>';
+      box.style.display = '';
+    } catch (err) {
+      console.warn('[mock-exam] upsell render failed:', err && err.message);
+    }
+  }
+
   // Read the user's Firestore attempt for the active year. If found, mirror
   // it into local state so we can force the results view — critical for the
   // one-shot rule across browsers. Returns true when an attempt was hydrated.
@@ -1041,6 +1155,11 @@
     $('scoreBreakdown').innerHTML =
       '<div class="score-bd-item">Biology<strong>' + bioCorrect + ' / ' + bioTotal + '</strong></div>' +
       '<div class="score-bd-item">Chemistry<strong>' + chemCorrect + ' / ' + chemTotal + '</strong></div>';
+
+    // Post-exam upsell (Phase 2). Show only for free-tier users after
+    // completing the free-year exam — peak intent, natural upsell moment.
+    // Fire-and-forget: never blocks the results view; failures are silent.
+    try { maybeShowPostExamUpsell({ correct: totalCorrect, total: total }); } catch (_) {}
 
     const reviewList = $('reviewList');
     reviewList.innerHTML = '';

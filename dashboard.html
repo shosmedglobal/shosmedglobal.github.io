@@ -532,19 +532,35 @@
             <p class="dashboard-sub">Simulate the real LF3 entrance exam under real conditions.</p>
           </div>
 
-          <!-- KPI ROW: shown only when the user has ≥1 completed attempt.
-               Two real metrics in Phase 1 (Latest Score, Exams Complete);
-               Trend + Avg Time + Readiness ship in Phase 2. -->
-          <div id="mockExamKpiRow" class="mock-exam-kpis" style="display:none;">
-            <div class="mock-exam-kpi">
-              <div class="mock-exam-kpi-label">Latest score</div>
-              <div class="mock-exam-kpi-value" id="kpiLatestScoreVal">—</div>
-              <div class="mock-exam-kpi-sub" id="kpiLatestScoreSub"></div>
+          <!-- KPI + RECOMMENDATION ROW: shown only when the user has ≥1
+               completed attempt. Phase 2 adds Avg Time as a third KPI
+               and a Recommended Next Action card on the right — the
+               "what should I do now?" answer at the top of the page. -->
+          <div id="mockExamKpiRow" class="mock-exam-top-row" style="display:none;">
+            <div class="mock-exam-kpis">
+              <div class="mock-exam-kpi">
+                <div class="mock-exam-kpi-label">Latest score</div>
+                <div class="mock-exam-kpi-value" id="kpiLatestScoreVal">—</div>
+                <div class="mock-exam-kpi-sub" id="kpiLatestScoreSub"></div>
+              </div>
+              <div class="mock-exam-kpi">
+                <div class="mock-exam-kpi-label">Exams completed</div>
+                <div class="mock-exam-kpi-value" id="kpiExamsCompleteVal">—</div>
+                <div class="mock-exam-kpi-progress"><div class="mock-exam-kpi-progress-bar" id="kpiExamsProgressBar" style="width:0;"></div></div>
+              </div>
+              <div class="mock-exam-kpi">
+                <div class="mock-exam-kpi-label">Avg time / exam</div>
+                <div class="mock-exam-kpi-value" id="kpiAvgTimeVal">—</div>
+                <div class="mock-exam-kpi-sub" id="kpiAvgTimeSub">of 2h available</div>
+              </div>
             </div>
-            <div class="mock-exam-kpi">
-              <div class="mock-exam-kpi-label">Exams completed</div>
-              <div class="mock-exam-kpi-value" id="kpiExamsCompleteVal">—</div>
-              <div class="mock-exam-kpi-progress"><div class="mock-exam-kpi-progress-bar" id="kpiExamsProgressBar" style="width:0;"></div></div>
+            <div class="mock-exam-recommended" id="mockExamRecommended">
+              <div class="mock-exam-rec-label">Recommended next</div>
+              <div class="mock-exam-rec-body" id="mockExamRecBody">
+                <div class="mock-exam-rec-title" id="mockExamRecTitle">Loading&hellip;</div>
+                <div class="mock-exam-rec-copy" id="mockExamRecCopy"></div>
+              </div>
+              <div id="mockExamRecCta"></div>
             </div>
           </div>
 
@@ -1831,12 +1847,25 @@
        generous spacing, minimum decoration, real numbers foregrounded.
        ================================================================ */
 
-    /* ---------- KPI row (hidden until user has ≥1 attempt) ---------- */
-    .mock-exam-kpis {
+    /* ---------- Top row (Phase 2): KPIs on the left, Recommended
+                                     Next on the right. On narrow
+                                     viewports the recommendation
+                                     falls below the KPI stack. ---------- */
+    .mock-exam-top-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
       gap: 14px;
       margin-bottom: 28px;
+    }
+    @media (max-width: 900px) {
+      .mock-exam-top-row { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- KPI row (nested inside top-row on desktop) ---------- */
+    .mock-exam-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
     }
     .mock-exam-kpi {
       background: #fff;
@@ -1866,6 +1895,46 @@
     .mock-exam-kpi-progress-bar {
       height: 100%; background: linear-gradient(90deg, #0d9488, #14b8a6);
       transition: width 0.4s ease;
+    }
+
+    /* ---------- Recommended Next card (Phase 2) ----------
+       Right column of the top row. Personalized next-action nudge that
+       answers "what should I do now?" — the highest-engagement question
+       for a returning user. */
+    .mock-exam-recommended {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #F8FAFC;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mock-exam-recommended::before {
+      /* Subtle teal accent stripe on the left edge */
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: #14b8a6;
+    }
+    .mock-exam-rec-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #5EEAD4;
+    }
+    .mock-exam-rec-title {
+      font-size: 1.05rem; font-weight: 700; color: #F8FAFC; line-height: 1.3;
+    }
+    .mock-exam-rec-copy {
+      font-size: 0.86rem; color: rgba(248, 250, 252, 0.75);
+      line-height: 1.5; margin-top: 4px;
+    }
+    .mock-exam-recommended .btn {
+      align-self: flex-start; padding: 8px 16px; font-size: 0.86rem;
+    }
+    /* When the recommendation is celebratory (all exams done), tone
+       down the accent to a lighter teal (no more upsell pressure). */
+    .mock-exam-recommended.done-all {
+      background: linear-gradient(135deg, #0F766E 0%, #0d9488 100%);
     }
 
     /* ---------- Empty state hero (hidden until first attempt) ---------- */
@@ -4618,6 +4687,98 @@
     };
 
     /* ====================================================================
+       Recommended Next Action card (Phase 2)
+       Chooses the single most helpful next step for the user based on:
+         - which years they've completed
+         - whether they have paid access
+         - their weakest section (from latest attempt)
+       No advice > wrong advice: if we can't say something specific and
+       useful, we degrade to a generic "keep going" nudge, never spin
+       up fake urgency.
+       ==================================================================== */
+    function renderRecommendedNext(cfg, attempts, roles) {
+      const wrap = document.getElementById('mockExamRecommended');
+      const title = document.getElementById('mockExamRecTitle');
+      const copy = document.getElementById('mockExamRecCopy');
+      const ctaBox = document.getElementById('mockExamRecCta');
+      if (!wrap || !title || !copy || !ctaBox) return;
+      wrap.classList.remove('done-all');
+
+      const years = (cfg.years || []).map(y => y.year);
+      const doneYears = Object.keys(attempts);
+      const undoneYears = years.filter(y => !doneYears.includes(y));
+      const canTake = (y) => (y === cfg.freeYear) || roles.isPaid || roles.isAdmin || roles.isReviewer;
+      const undoneAndTakeable = undoneYears.filter(canTake);
+
+      // Case 1: all exams complete → celebration.
+      if (undoneYears.length === 0) {
+        wrap.classList.add('done-all');
+        title.textContent = 'You\'ve completed every mock exam.';
+        copy.innerHTML = 'That\'s ' + doneYears.length + ' full-length simulations under real timing. Focus your remaining study on your weakest topics.';
+        ctaBox.innerHTML = '<a href="#" class="btn btn-secondary" onclick="switchView(\'qbank\'); return false;" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.3);">Back to QBank</a>';
+        return;
+      }
+
+      // Case 2: user has completed some exams AND has takeable years left → suggest one.
+      if (undoneAndTakeable.length > 0) {
+        // Prefer the OLDEST undone-and-takeable year (chronological practice).
+        const nextYear = undoneAndTakeable.sort()[0];
+        title.textContent = 'Take the ' + nextYear + ' exam next';
+
+        // Contextual copy: if we know the user's weakest section from
+        // their latest attempt, name it so the nudge feels personal.
+        let contextCopy = 'Another full-length simulation will reinforce timing and pattern-recognition for test day.';
+        const latest = Object.values(attempts).sort((a, b) => {
+          const ta = a.finishedAt && a.finishedAt.toMillis ? a.finishedAt.toMillis() : 0;
+          const tb = b.finishedAt && b.finishedAt.toMillis ? b.finishedAt.toMillis() : 0;
+          return tb - ta;
+        })[0];
+        if (latest && latest.answers && latest.score) {
+          // We need to know which section each Q belongs to. Load lazily from cache.
+          window._mockExamQCache = window._mockExamQCache || {};
+          const latestYear = latest.year;
+          if (!window._mockExamQCache[latestYear]) {
+            window._mockExamQCache[latestYear] = fetch('data/mock-exams/mock-exam-' + latestYear + '.json?v=' + Date.now())
+              .then(r => r.json()).catch(() => []);
+          }
+          window._mockExamQCache[latestYear].then(qs => {
+            let bioC = 0, bioT = 0, chemC = 0, chemT = 0;
+            qs.forEach(q => {
+              const isBio = (q.section || '').toLowerCase().indexOf('bio') === 0;
+              if (isBio) { bioT++; if (latest.answers[q.id] === q.correct) bioC++; }
+              else       { chemT++; if (latest.answers[q.id] === q.correct) chemC++; }
+            });
+            if (bioT > 0 && chemT > 0) {
+              const bioPct = 100 * bioC / bioT;
+              const chemPct = 100 * chemC / chemT;
+              const diff = Math.round(Math.abs(bioPct - chemPct));
+              if (diff >= 10) {
+                const weaker = bioPct < chemPct ? 'biology' : 'chemistry';
+                copy.textContent = 'Your ' + weaker + ' is about ' + diff + ' points behind the other section on your last attempt. Another timed set will build the reflexes to close the gap.';
+              }
+            }
+          });
+        }
+        copy.textContent = contextCopy;
+        ctaBox.innerHTML = '<a href="practice-exam.html?year=' + encodeURIComponent(nextYear) + '" class="btn btn-primary">Start ' + nextYear + ' Exam</a>';
+        return;
+      }
+
+      // Case 3: user is free-tier, has done the free exam, wants more.
+      if (undoneYears.length > 0 && !roles.isPaid && !roles.isAdmin && !roles.isReviewer) {
+        title.textContent = 'Unlock ' + undoneYears.length + ' more mock exams';
+        copy.textContent = 'You\'ve done the free ' + cfg.freeYear + ' exam. QBank Full Access ($99, 6 months) unlocks every other year plus 1,000+ practice questions and full explanations.';
+        ctaBox.innerHTML = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+        return;
+      }
+
+      // Fallback (shouldn't hit) — generic keep-going.
+      title.textContent = 'Keep going';
+      copy.textContent = 'Complete another mock exam to build timing intuition.';
+      ctaBox.innerHTML = '';
+    }
+
+    /* ====================================================================
        MOCK EXAM LIBRARY (Phase 1)
        Renders the Mock Exams view — empty-state hero, KPI row, and library
        table. Idempotent via signature short-circuit. Called by switchView
@@ -4702,6 +4863,32 @@
         const doneBar = document.getElementById('kpiExamsProgressBar');
         if (doneVal) doneVal.textContent = doneCount + ' / ' + totalYears;
         if (doneBar) doneBar.style.width = totalYears > 0 ? Math.round(100 * doneCount / totalYears) + '%' : '0';
+
+        // ------ Avg Time / Exam (Phase 2 KPI) ------
+        // Sum of (finishedAt - startedAt) over all attempts / count.
+        // Skip attempts missing either timestamp so a bad row doesn't zero it.
+        const timeVal = document.getElementById('kpiAvgTimeVal');
+        const timeSub = document.getElementById('kpiAvgTimeSub');
+        let totalSecs = 0, timedCount = 0;
+        attemptList.forEach(a => {
+          if (a.finishedAt && a.finishedAt.toMillis && a.startedAt && a.startedAt.toMillis) {
+            const secs = (a.finishedAt.toMillis() - a.startedAt.toMillis()) / 1000;
+            if (secs > 0 && secs < 3 * 3600) { totalSecs += secs; timedCount++; }
+          }
+        });
+        if (timedCount > 0) {
+          const avg = Math.round(totalSecs / timedCount);
+          const h = Math.floor(avg / 3600), m = Math.floor((avg % 3600) / 60);
+          if (timeVal) timeVal.textContent = (h > 0 ? h + 'h ' : '') + m + 'm';
+          const pct = Math.round(100 * avg / (2 * 3600));
+          if (timeSub) timeSub.textContent = pct + '% of 2h available';
+        } else {
+          if (timeVal) timeVal.textContent = '—';
+          if (timeSub) timeSub.textContent = 'no timing data yet';
+        }
+
+        // ------ Recommended Next Action (Phase 2 nudge card) ------
+        renderRecommendedNext(cfg, attempts, { isPaid, isAdmin, isReviewer });
       }
 
       // ============ LIBRARY TABLE ============
