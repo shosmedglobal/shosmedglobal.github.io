@@ -6827,8 +6827,8 @@
     // Unicode escape sequences `'` / `"` for quotes because
     // those survive HTML attribute decoding — a plain `\'` would work
     // in a JS file but the HTML parser strips the backslash before JS
-    // sees it. Also escapes `<` and `>` so `</script>` in the data
-    // can't terminate an inline script tag.
+    // sees it. Also escapes angle brackets so a closing script tag in
+    // the data cannot terminate this inline script block.
     function escapeJs(str) {
       if (str == null) return '';
       return String(str)
@@ -6839,8 +6839,8 @@
         .replace(/>/g, '\\u003e')
         .replace(/\r/g, '\\r')
         .replace(/\n/g, '\\n')
-        .replace(/ /g, '\\u2028')
-        .replace(/ /g, '\\u2029');
+        .replace(/\u2028/g, '\\u2028')
+        .replace(/\u2029/g, '\\u2029');
     }
 
     // ===== Contact Form Logic =====
