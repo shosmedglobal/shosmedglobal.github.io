@@ -2275,13 +2275,13 @@ mark.user-highlight:hover {
 }
 .quiz-toolbar-brand:hover { opacity: 1; }
 .quiz-toolbar-brand img {
-  height: 64px;
+  height: 40px;
   width: auto;
   display: block;
 }
 @media (max-width: 720px) {
   .quiz-toolbar-brand { right: 10px; }
-  .quiz-toolbar-brand img { height: 44px; }
+  .quiz-toolbar-brand img { height: 28px; }
 }
 
 .quiz-tool-btn {

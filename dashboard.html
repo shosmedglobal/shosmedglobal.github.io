@@ -2625,15 +2625,22 @@
       color: #78350F; padding: 10px 18px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 12px; font-size: 0.9rem; font-weight: 500;
+      flex-wrap: wrap;
     }
+    .impersonation-banner-msg { flex: 1 1 240px; min-width: 0; }
     .impersonation-banner-msg strong { color: #431407; font-weight: 700; }
     .impersonation-banner-exit {
       background: #FBBF24; color: #78350F;
       padding: 6px 14px; border-radius: 6px;
       font-weight: 700; text-decoration: none; font-size: 0.85rem;
       border: none; cursor: pointer;
+      flex-shrink: 0;
     }
     .impersonation-banner-exit:hover { background: #F59E0B; color: #fff; }
+    @media (max-width: 520px) {
+      .impersonation-banner { padding: 8px 12px; font-size: 0.82rem; gap: 8px; }
+      .impersonation-banner-exit { padding: 5px 10px; font-size: 0.78rem; }
+    }
     /* ===== Impersonation write-block =====
        During "View as", the operating auth session is still the admin's;
        every write from the page executes with admin permissions. Because
@@ -5323,13 +5330,15 @@
             window._mockExamQCache[latestYear] = fetch('data/mock-exams/mock-exam-' + latestYear + '.json?v=' + Date.now())
               .then(r => r.json()).catch(() => []);
           }
-          window._mockExamQCache[latestYear].then(qs => {
-            let bioC = 0, bioT = 0, chemC = 0, chemT = 0;
-            qs.forEach(q => {
-              const isBio = (q.section || '').toLowerCase().indexOf('bio') === 0;
-              if (isBio) { bioT++; if (latest.answers[q.id] === q.correct) bioC++; }
-              else       { chemT++; if (latest.answers[q.id] === q.correct) chemC++; }
-            });
+          // Per-section split now comes DIRECTLY from the attempt doc —
+          // the CF `submitMockExam` computed it server-side and stored
+          // `score.bioCorrect / bioTotal / chemCorrect / chemTotal`.
+          // The client no longer has `q.correct` (stripped from public
+          // JSON), so re-computing here would be zero everything.
+          Promise.resolve().then(() => {
+            const sc = latest.score || {};
+            const bioC = sc.bioCorrect || 0, bioT = sc.bioTotal || 0;
+            const chemC = sc.chemCorrect || 0, chemT = sc.chemTotal || 0;
             if (bioT > 0 && chemT > 0) {
               const bioPct = 100 * bioC / bioT;
               const chemPct = 100 * chemC / chemT;
@@ -5556,23 +5565,17 @@
             window._mockExamQCache[y.year] = fetch('data/mock-exams/mock-exam-' + y.year + '.json?v=' + Date.now())
               .then(r => r.json()).catch(() => []);
           }
-          // Hydrate the per-section split asynchronously after the row renders.
-          const rowId = 'mrow-' + y.year;
-          window._mockExamQCache[y.year].then(questions => {
-            questions.forEach(q => {
-              const isBio = (q.section || '').toLowerCase().indexOf('bio') === 0;
-              if (isBio) { bioT++; if (ans[q.id] === q.correct) bioC++; }
-              else       { chemT++; if (ans[q.id] === q.correct) chemC++; }
-            });
-            const bioPct = bioT > 0 ? Math.round(100 * bioC / bioT) : 0;
-            const chemPct = chemT > 0 ? Math.round(100 * chemC / chemT) : 0;
-            const bioCell = document.querySelector('#' + rowId + ' .cell-bio-inner');
-            const chemCell = document.querySelector('#' + rowId + ' .cell-chem-inner');
-            if (bioCell)  bioCell.innerHTML  = '<div class="section-num">' + bioC + ' / ' + bioT + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + bioPct + '%;"></div></div>';
-            if (chemCell) chemCell.innerHTML = '<div class="section-num">' + chemC + ' / ' + chemT + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + chemPct + '%;"></div></div>';
-          });
-          bioHtml = '<span class="cell-bio-inner"><span style="color:#94A3B8; font-size:0.82rem;">calculating&hellip;</span></span>';
-          chemHtml = '<span class="cell-chem-inner"><span style="color:#94A3B8; font-size:0.82rem;">calculating&hellip;</span></span>';
+          // Per-section split comes directly from the attempt doc.
+          // The CF pre-computed and stored bioCorrect/bioTotal/chemCorrect/chemTotal;
+          // the client's stripped public JSON has no `q.correct` to
+          // re-derive from.
+          const sc = attempt.score || {};
+          const bioC2 = sc.bioCorrect || 0, bioT2 = sc.bioTotal || bioT || 30;
+          const chemC2 = sc.chemCorrect || 0, chemT2 = sc.chemTotal || chemT || 30;
+          const bioPct = bioT2 > 0 ? Math.round(100 * bioC2 / bioT2) : 0;
+          const chemPct = chemT2 > 0 ? Math.round(100 * chemC2 / chemT2) : 0;
+          bioHtml  = '<span class="cell-bio-inner"><div class="section-num">' + bioC2 + ' / ' + bioT2 + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + bioPct + '%;"></div></div></span>';
+          chemHtml = '<span class="cell-chem-inner"><div class="section-num">' + chemC2 + ' / ' + chemT2 + '</div><div class="section-bar"><div class="section-bar-fill" style="width:' + chemPct + '%;"></div></div></span>';
 
           // Time used = finishedAt - startedAt (both stored on the attempt doc).
           if (attempt.startedAt && attempt.finishedAt && attempt.finishedAt.toMillis && attempt.startedAt.toMillis) {

@@ -31,40 +31,30 @@ service cloud.firestore {
     }
 
     // ====== Users ======
-    // OWNER writes are restricted to a strict FIELD ALLOWLIST. Everything
-    // security-sensitive (payments, role, admin flags, reset counters,
-    // server-managed timestamps) is EXCLUDED from the allowlist — owners
-    // cannot write those fields on either create or update. Only admin
-    // (via console or Cloud Function admin SDK, which bypasses rules
-    // entirely) can touch them.
+    // OWNER writes: SECURITY-CRITICAL fields (payments, role, admin flags,
+    // entitlements) can NEVER be written by an owner — those are Stripe /
+    // admin console / Cloud Function territory only. Client-managed
+    // "self-tracking" fields (visitCount, lastVisitAt, backfilled, QBank
+    // reset counters) are ALLOWED because the client legitimately writes
+    // them from normal flows; if we blocked them, the app would break for
+    // every user on every page load. If you want stronger protection on
+    // those, do it via Cloud Function later.
     //
-    // If you add a new user-profile field in the client, ADD IT HERE too
-    // or the client's set/update will start failing with permission-denied.
-    //
-    // Kept as an inline `in`-check list rather than a `hasAny/hasOnly`
-    // helper because a prior helper-function implementation was silently
-    // permissive at runtime — using the plain `in` operator against
-    // request.resource.data avoids that class of bug.
+    // Uses plain `in` operator against request.resource.data — a prior
+    // `hasAny/hasOnly` helper was silently permissive at runtime.
     function ownerWriteIsSafe() {
       return !('payments' in request.resource.data)
           && !('role' in request.resource.data)
           && !('isAdmin' in request.resource.data)
           && !('banned' in request.resource.data)
           && !('disabled' in request.resource.data)
-          && !('entitlements' in request.resource.data)
-          && !('visitCount' in request.resource.data)
-          && !('lastVisitAt' in request.resource.data)
-          && !('qbankResetUsed' in request.resource.data)
-          && !('qbankResetCount' in request.resource.data)
-          && !('backfilled' in request.resource.data);
+          && !('entitlements' in request.resource.data);
     }
-    // Update variant: same protected-field check, but by diffing the
-    // resource. Uses explicit `field in <Set>` semantics rather than
-    // `hasAny([...])` on the diff result — the latter was runtime-buggy
-    // in earlier tests (returned false negative, silently allowing
-    // self-grants). This form is equivalent to the create rule for
-    // the write-safety property but permits legitimate updates that
-    // don't touch protected fields.
+    // Update variant: same deny list, applied to the diff. `payments` etc.
+    // may EXIST on the doc (from a prior Stripe webhook write) — they just
+    // can't be MODIFIED by the owner. If the owner writes an unrelated
+    // field, the full-doc snapshot still contains payments; we check the
+    // diff to see whether payments actually changed.
     function ownerUpdateIsSafe() {
       let changed = request.resource.data.diff(resource.data).affectedKeys();
       return !('payments' in changed)
@@ -72,12 +62,7 @@ service cloud.firestore {
           && !('isAdmin' in changed)
           && !('banned' in changed)
           && !('disabled' in changed)
-          && !('entitlements' in changed)
-          && !('visitCount' in changed)
-          && !('lastVisitAt' in changed)
-          && !('qbankResetUsed' in changed)
-          && !('qbankResetCount' in changed)
-          && !('backfilled' in changed);
+          && !('entitlements' in changed);
     }
 
     match /users/{uid} {
@@ -147,15 +132,19 @@ service cloud.firestore {
     }
 
     // ====== Bookings ======
-    // Signed-in users must own the booking they create (userId matches
-    // their uid). Anonymous visitors can also book but their userId is
-    // required to be null/absent — preventing a signed-in user from
-    // planting a booking under a *different* user's uid (cross-user
-    // injection). Reads are admin OR the booking's owner.
+    // Anyone can create a booking. If the caller is signed in AND the
+    // booking has a userId, it MUST match the caller's uid (prevents
+    // cross-user injection where a signed-in user plants a booking under
+    // another user's uid). Anonymous bookings and admin-created manual
+    // bookings both pass userId=null; that's allowed. Reads are admin
+    // OR the booking's owner.
     match /bookings/{id} {
       allow read:   if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
-      allow create: if (!isSignedIn() && !('userId' in request.resource.data))
-                    || (isSignedIn() && request.resource.data.userId == request.auth.uid);
+      allow create: if !isSignedIn()
+                    || isAdmin()
+                    || !('userId' in request.resource.data)
+                    || request.resource.data.userId == null
+                    || request.resource.data.userId == request.auth.uid;
       allow update: if isAdmin();
       allow delete: if isAdmin();
     }

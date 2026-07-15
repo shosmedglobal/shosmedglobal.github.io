@@ -52,7 +52,10 @@ async function signUpWithEmail(name, email, password, path) {
   try {
     const result = await auth.createUserWithEmailAndPassword(email, password);
     await result.user.updateProfile({ displayName: name });
-    // Save profile to Firestore
+    // Save profile to Firestore. Do NOT include `payments` — that field
+    // is Stripe-webhook-only per Firestore rules; the client attempting
+    // to plant it (even as `{}`) is rejected by the field allowlist.
+    // Absent payments is treated the same as empty by every read site.
     await db.collection('users').doc(result.user.uid).set({
       name: name.substring(0, 200),
       email: email,
@@ -60,7 +63,6 @@ async function signUpWithEmail(name, email, password, path) {
       agreedToTerms: true,
       agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      payments: {}
     });
     return { success: true, user: result.user };
   } catch (error) {
@@ -109,14 +111,15 @@ async function ensureUserProfile(user) {
   // Doc missing entirely — create a minimal record so the admin can see them.
   // `path` is intentionally null (we don't know if they're applicant/student
   // without asking) — the admin can categorize later.
+  // Omit `payments` — Stripe-webhook-only per rules.
+  // Omit `backfilled` — was diagnostic-only, and adds no value; the admin can
+  // tell a healed doc from an original one by the missing `agreedToTermsDate`.
   await ref.set({
     name: (user.displayName || '').substring(0, 200),
     email: user.email || '',
     path: null,
     agreedToTerms: true,   // they accepted ToS at original signup
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    payments: {},
-    backfilled: true,      // diagnostic flag so we know this was healed
   }, { merge: true });
 }
 
@@ -134,7 +137,7 @@ async function signInWithGoogle(path, fromSignup) {
         await auth.signOut();
         return { success: false, error: 'No account found. Please sign up first.', needsSignup: true };
       }
-      // Create profile from signup page
+      // Create profile from signup page. Omit `payments` — Stripe-webhook-only.
       await db.collection('users').doc(result.user.uid).set({
         name: (result.user.displayName || '').substring(0, 200),
         email: result.user.email,
@@ -142,7 +145,6 @@ async function signInWithGoogle(path, fromSignup) {
         agreedToTerms: true,
         agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        payments: {}
       });
     } else {
       // Existing Google user — self-heal any missing fields (createdAt,

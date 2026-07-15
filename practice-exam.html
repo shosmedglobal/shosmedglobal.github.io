@@ -1281,11 +1281,33 @@
     $('scoreBreakdown').innerHTML = '';
     $('reviewList').innerHTML = '<div style="text-align:center; padding:32px; color:#64748B; font-size:0.95rem;">One moment — computing your score.</div>';
   }
+  // Rendered when the CF review fetch failed and we have score data but
+  // no answer key / explanations. Shows the score honestly (from the
+  // saved attempt doc) and tells the user we couldn't load the review.
+  function renderResultsPartial() {
+    const sc = state.score || {};
+    const total = sc.total || examQuestions.length;
+    const correct = sc.correct || 0;
+    const pct = safePct(correct, total);
+    $('scoreBig').textContent = correct + ' / ' + total;
+    $('scoreLabel').textContent = 'Total score (' + pct + '%)';
+    const bioCell = (sc.bioTotal > 0)
+      ? '<div class="score-bd-item">Biology<strong>' + (sc.bioCorrect || 0) + ' / ' + sc.bioTotal + '</strong></div>' : '';
+    const chemCell = (sc.chemTotal > 0)
+      ? '<div class="score-bd-item">Chemistry<strong>' + (sc.chemCorrect || 0) + ' / ' + sc.chemTotal + '</strong></div>' : '';
+    $('scoreBreakdown').innerHTML = bioCell + chemCell;
+    $('reviewList').innerHTML = '<div style="text-align:center; padding:32px; color:#64748B; font-size:0.95rem; background:#FEF3C7; border:1px solid #F59E0B; border-radius:12px;">Could not load explanations right now. Your score above is your official result. Refresh the page to try loading the review again.</div>';
+  }
 
   function renderResults(timeUp) {
     // If server hasn't returned the answer key yet, punt to the pending
     // placeholder so we don't render a review with no correct-answer info.
+    // If we have score data but no answers (CF review-fetch failed),
+    // render the partial view so the user at least sees their score.
     if (!_correctAnswers || Object.keys(_correctAnswers).length === 0) {
+      if (state.score && typeof state.score.correct === 'number') {
+        return renderResultsPartial();
+      }
       return renderResultsPending(timeUp);
     }
     let total = 0, bioTotal = 0, chemTotal = 0;
@@ -1561,7 +1583,7 @@
           const targetUid = viewAsUidFromUrl();
           const bannerEl = document.createElement('div');
           bannerEl.setAttribute('role', 'status');
-          bannerEl.style.cssText = 'position:sticky; top:64px; z-index:80; background:#FEF3C7; color:#78350F; border-bottom:1px solid #F59E0B; padding:10px 16px; font-size:0.92rem; text-align:center; font-weight:600;';
+          bannerEl.style.cssText = 'position:sticky; top:0; z-index:80; background:#FEF3C7; color:#78350F; border-bottom:1px solid #F59E0B; padding:10px 16px; font-size:0.92rem; text-align:center; font-weight:600;';
           bannerEl.innerHTML = 'Admin review · Viewing user\'s completed attempt (' + esc(mockExamYear) + '). Read-only.'
             + ' <a href="dashboard.html?viewAs=' + encodeURIComponent(targetUid || '') + '&view=mockexams" style="color:#0F172A; text-decoration:underline; margin-left:12px;">Back to their dashboard</a>';
           const app = document.querySelector('.exam-app');
