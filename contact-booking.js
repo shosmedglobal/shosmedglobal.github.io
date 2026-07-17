@@ -364,15 +364,19 @@ function subscribeBookingsForMonth(year, month, callback) {
 // Live "all users" stream — drives the admin Dashboard stat cards
 // (Total Users, New This Month, Paying Users, Revenue) and the user
 // management table.
-function subscribeAllUsers(callback) {
+function subscribeAllUsers(callback, errorCallback) {
   try {
     return db.collection('users').onSnapshot(snap => {
       const users = [];
       snap.forEach(doc => users.push({ id: doc.id, ...doc.data() }));
       callback(users);
-    }, err => console.error('subscribeAllUsers error:', err));
+    }, err => {
+      console.error('subscribeAllUsers error:', err);
+      if (typeof errorCallback === 'function') errorCallback(err);
+    });
   } catch (error) {
     console.error('subscribeAllUsers setup error:', error);
+    if (typeof errorCallback === 'function') errorCallback(error);
     return () => {};
   }
 }
@@ -401,8 +405,13 @@ function subscribeSiteVisits(callback) {
       const data = doc.data() || {};
       callback(data.visits || 0);
     }, err => {
+      // Do NOT emit callback(0) on error — that would flash the tile
+      // from a real number to "0" on any transient permission-denied
+      // or network hiccup. Just log and leave the previous value on
+      // screen. If the disconnect persists, the admin will see stale
+      // data with no explicit error banner; that's better than a fake
+      // "0 visits" reading.
       console.error('subscribeSiteVisits error:', err);
-      callback(0);
     });
   } catch (error) {
     console.error('subscribeSiteVisits setup error:', error);

