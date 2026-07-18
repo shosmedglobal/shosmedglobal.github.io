@@ -172,20 +172,28 @@ async function submitBookingRequest(bookingData) {
 }
 
 // ===== Admin: Load Messages =====
+// (Non-realtime variant — kept for callers that use the one-shot .get()
+// pattern. subscribeAdminMessages() is the live equivalent.)
 async function loadAdminMessages(filterStatus, filterCategory) {
   try {
-    // Use at most ONE where() with orderBy to avoid composite index requirement
-    let query = db.collection('messages').orderBy('createdAt', 'desc');
+    // No .orderBy — see subscribeAdminMessages for why (any doc missing
+    // `createdAt` is silently excluded by orderBy, making orphan
+    // messages invisible while still counted by the badge).
+    let query = db.collection('messages');
     if (filterStatus && filterStatus !== 'all') {
       query = query.where('status', '==', filterStatus);
     }
-    const snap = await query.limit(200).get();
+    const snap = await query.limit(500).get();
     let messages = [];
     snap.forEach(doc => messages.push({ id: doc.id, ...doc.data() }));
-    // Apply category filter client-side (avoids Firestore composite index)
     if (filterCategory && filterCategory !== 'all') {
       messages = messages.filter(m => m.category === filterCategory);
     }
+    messages.sort((a, b) => {
+      const aMs = (a.createdAt && a.createdAt.toMillis) ? a.createdAt.toMillis() : 0;
+      const bMs = (b.createdAt && b.createdAt.toMillis) ? b.createdAt.toMillis() : 0;
+      return bMs - aMs;
+    });
     return messages;
   } catch (error) {
     console.error('loadAdminMessages error:', error);
@@ -295,16 +303,30 @@ async function getBookingsForMonth(year, month) {
 
 function subscribeAdminMessages(filterStatus, filterCategory, callback) {
   try {
-    let query = db.collection('messages').orderBy('createdAt', 'desc');
+    // Do NOT `.orderBy('createdAt')` — Firestore silently EXCLUDES any
+    // doc missing the ordered field, so legacy messages without a
+    // `createdAt` become invisible in the inbox. They still match the
+    // badge's `where('status', '==', 'new')` query, though — producing
+    // a badge count that can't be worked down because the message
+    // itself is unreachable in the UI. Fix: fetch all, sort in-memory.
+    let query = db.collection('messages');
     if (filterStatus && filterStatus !== 'all') {
       query = query.where('status', '==', filterStatus);
     }
-    return query.limit(200).onSnapshot(snap => {
+    return query.limit(500).onSnapshot(snap => {
       let messages = [];
       snap.forEach(doc => messages.push({ id: doc.id, ...doc.data() }));
       if (filterCategory && filterCategory !== 'all') {
         messages = messages.filter(m => m.category === filterCategory);
       }
+      // Sort newest first. Missing `createdAt` sorts LAST (as if 1970),
+      // ensuring old orphan messages are still visible so admin can
+      // clear them and drop the badge to 0.
+      messages.sort((a, b) => {
+        const aMs = (a.createdAt && a.createdAt.toMillis) ? a.createdAt.toMillis() : 0;
+        const bMs = (b.createdAt && b.createdAt.toMillis) ? b.createdAt.toMillis() : 0;
+        return bMs - aMs;
+      });
       callback(messages);
     }, err => console.error('subscribeAdminMessages error:', err));
   } catch (error) {
