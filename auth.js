@@ -409,15 +409,29 @@ async function recordSiteVisit() {
 
     // Country write: only if we can resolve it; never blocks the others.
     const country = await countryPromise;
-    const tasks = [baseWrites, dayWrite];
+    const tasks = [
+      baseWrites.catch(err => { console.error('[visit] siteStats write failed:', err.code, err.message); throw err; }),
+      dayWrite.catch(err => { console.error('[visit] visitsByDay write failed:', err.code, err.message); throw err; }),
+    ];
     if (country) {
       tasks.push(db.collection('_meta').doc('visitsByCountry').set({
         countries: { [country]: firebase.firestore.FieldValue.increment(1) },
-      }, { merge: true }));
+      }, { merge: true }).catch(err => {
+        console.error('[visit] visitsByCountry write failed:', err.code, err.message);
+        throw err;
+      }));
     }
-    await Promise.all(tasks);
+    // Use allSettled so ONE failed write doesn't cancel the others —
+    // e.g. rules regression on visitsByCountry shouldn't stop the daily
+    // chart from updating. Errors are surfaced individually via the
+    // per-promise catch handlers above so a working DevTools console
+    // exposes exactly which write is broken.
+    await Promise.allSettled(tasks);
   } catch (error) {
-    console.warn('recordSiteVisit blocked:', error.message);
+    // Top-level catch — only reached for setup errors (missing SDK,
+    // sessionStorage disabled, etc.). Rule/network errors bubble up
+    // via the individual .catch() handlers above.
+    console.error('[visit] recordSiteVisit setup error:', error.message);
   }
 }
 

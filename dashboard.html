@@ -1598,39 +1598,51 @@
             </div>
           </div>
 
-          <!-- Site Activity (visit charts: daily timeline + country breakdown) -->
+          <!-- Site Activity (visit charts: daily timeline + country breakdown).
+               Range selector lives INSIDE the Daily Visits card because it
+               only applies to that chart. Top Countries is cumulative (the
+               `_meta/visitsByCountry` doc stores all-time totals, no per-day
+               breakdown), so filtering it would require a data-schema
+               rewrite + backfill. Label it explicitly "(all time)" to
+               match reality. -->
           <div class="admin-section">
             <div class="admin-section-header">
               <h3 class="admin-section-title">Site Activity</h3>
-              <div class="admin-controls">
-                <select class="admin-filter" id="visitsRangeSelect" style="min-width:120px;">
-                  <option value="7">Last 7 days</option>
-                  <option value="30" selected>Last 30 days</option>
-                  <option value="90">Last 90 days</option>
-                </select>
+              <div class="admin-controls" style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                <span style="font-size:0.75rem; color:#64748b; font-weight:500;">Anonymous visitors only &middot; signed-in users tracked per-user in User Management</span>
               </div>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:20px;">
               <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
-                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-                  <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Daily visits</h4>
-                  <span id="visitsDailyTotal" style="font-size:0.78rem; color:#64748b;">—</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+                  <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                    <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Daily visits</h4>
+                    <span id="visitsDailyTotal" style="font-size:0.78rem; color:#64748b;">—</span>
+                  </div>
+                  <select class="admin-filter" id="visitsRangeSelect" style="min-width:120px;">
+                    <option value="7">Last 7 days</option>
+                    <option value="30" selected>Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                  </select>
                 </div>
                 <div style="position:relative; height:240px;">
-                  <canvas id="visitsDailyChart"></canvas>
+                  <canvas id="visitsDailyChart" aria-label="Daily visits chart" role="img"></canvas>
                 </div>
               </div>
               <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
-                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-                  <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Top countries</h4>
+                <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+                  <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                    <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Top countries</h4>
+                    <span style="font-size:0.72rem; color:#94a3b8; font-weight:500;">(all time)</span>
+                  </div>
                   <span id="visitsCountryTotal" style="font-size:0.78rem; color:#64748b;">—</span>
                 </div>
                 <div style="position:relative; height:240px;">
-                  <canvas id="visitsCountryChart"></canvas>
+                  <canvas id="visitsCountryChart" aria-label="Top countries by visits" role="img"></canvas>
                 </div>
               </div>
             </div>
-            <p id="visitsEmpty" style="display:none; text-align:center; color:#9ca3af; padding:24px;">No visit data yet — visits will start appearing here as soon as someone visits the site (cleared sessionStorage required).</p>
+            <p id="visitsEmpty" style="display:none; text-align:center; color:#9ca3af; padding:24px;">No visit data yet. Visits are only recorded from ANONYMOUS visitors (signed-in users are tracked per-user in User Management). Open the site in an Incognito window to test.</p>
           </div>
 
           <!-- User Management -->
@@ -3801,7 +3813,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260714-admin"></script>
+  <script src="auth.js?v=20260714-visits"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
