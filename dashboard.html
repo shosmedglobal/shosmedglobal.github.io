@@ -3813,7 +3813,7 @@
   <!-- Chart.js for admin "Site Activity" charts. Loaded async so it doesn't
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="auth.js?v=20260714-visits"></script>
+  <script src="auth.js?v=20260718-visitv5"></script>
   <script src="contact-booking.js?v=20260511-charts"></script>
   <script>
     let currentProfile = null;
@@ -5685,11 +5685,19 @@
     let visitsByDayCache = {};      // { 'YYYY-MM-DD': N }
     let visitsByCountryCache = {};  // { 'US': N, 'CZ': N, ... }
     function loadAdminStats() {
-      // Tear down prior listeners (idempotent)
-      if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; }
-      if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; }
-      if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; }
-      if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; }
+      // Tear down prior listeners (idempotent). If any were live at
+      // entry, the teardown ensures we don't double-subscribe on
+      // re-entry (e.g., admin re-opens the panel).
+      let torndown = 0;
+      if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; torndown++; }
+      if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; torndown++; }
+      if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; torndown++; }
+      if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; torndown++; }
+      window.__SHOS_ADMIN_STATS_INIT_COUNT = (window.__SHOS_ADMIN_STATS_INIT_COUNT || 0) + 1;
+      if (window.__SHOS_VISIT_DEBUG) {
+        console.info('[visit-admin] loadAdminStats() call #' + window.__SHOS_ADMIN_STATS_INIT_COUNT +
+                     ' (torndown ' + torndown + ' prior listeners)');
+      }
 
       // Users → drives Total / New This Month / Paying / Revenue / QBank Active
       // Admin email allowlist — keep in sync with firestore.rules → isAdmin().
@@ -5835,10 +5843,15 @@
         // the site would bump their visitCount in Firestore + fire the
         // stream tick, but the admin table would keep showing the
         // stale count until the admin fully reloaded the panel.
+        //
+        // Diagnostic mode: `window.__SHOS_VISIT_DEBUG = true` in DevTools
+        // (or `?visitdebug=1` on the URL) enables per-tick console
+        // output showing which rows changed. Off in production.
         if (Array.isArray(allAdminUsers) && allAdminUsers.length > 0) {
           const byId = Object.create(null);
           users.forEach(u => { byId[u.id] = u; });
           let anyChanged = false;
+          const changedRows = [];
           allAdminUsers.forEach(row => {
             const fresh = byId[row.id];
             if (!fresh) return;
@@ -5846,14 +5859,24 @@
             const freshLastMs = (fresh.lastVisitAt && fresh.lastVisitAt.toMillis)
               ? fresh.lastVisitAt.toMillis()
               : (typeof fresh.lastVisitAt === 'number' ? fresh.lastVisitAt : null);
-            if ((row.visitCount || 0) !== freshVisit) { row.visitCount = freshVisit; anyChanged = true; }
-            if ((row.lastVisitAt || null) !== freshLastMs) { row.lastVisitAt = freshLastMs; anyChanged = true; }
+            let rowChanged = false;
+            if ((row.visitCount || 0) !== freshVisit) {
+              if (window.__SHOS_VISIT_DEBUG) changedRows.push({ email: row.email, from: row.visitCount || 0, to: freshVisit });
+              row.visitCount = freshVisit; anyChanged = true; rowChanged = true;
+            }
+            if ((row.lastVisitAt || null) !== freshLastMs) { row.lastVisitAt = freshLastMs; anyChanged = true; rowChanged = true; }
             // payments / path may also drift via admin actions elsewhere.
             const stalePaymentsJson = JSON.stringify(row.payments || {});
             const freshPaymentsJson = JSON.stringify(fresh.payments || {});
-            if (stalePaymentsJson !== freshPaymentsJson) { row.payments = fresh.payments || {}; anyChanged = true; }
-            if ((row.path || null) !== (fresh.path || null)) { row.path = fresh.path || null; anyChanged = true; }
+            if (stalePaymentsJson !== freshPaymentsJson) { row.payments = fresh.payments || {}; anyChanged = true; rowChanged = true; }
+            if ((row.path || null) !== (fresh.path || null)) { row.path = fresh.path || null; anyChanged = true; rowChanged = true; }
           });
+          if (window.__SHOS_VISIT_DEBUG) {
+            console.info('[visit-admin] stream tick — users=' + users.length +
+                         ' allAdminUsers=' + allAdminUsers.length +
+                         ' changed=' + changedRows.length,
+                         changedRows.length ? changedRows : '');
+          }
           if (anyChanged) {
             // Rebuild filteredAdminUsers from the current search + filter
             // then re-render. Simplest: trigger the search input's
@@ -5875,7 +5898,10 @@
               if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
               return true;
             });
-            if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+            if (typeof renderAdminUsersPage === 'function') {
+              renderAdminUsersPage();
+              if (window.__SHOS_VISIT_DEBUG) console.info('[visit-admin] renderAdminUsersPage() called');
+            }
           }
         }
 

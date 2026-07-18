@@ -435,60 +435,98 @@ async function recordSiteVisit() {
   }
 }
 
-// Per-user visit counter. Bumps users/{uid}.visitCount on every page load
-// while signed in. Surfaces in the admin "User Management" table so the
-// admin can see who's actively returning.
+// Per-user visit counter. Bumps users/{uid}.visitCount ONCE PER BROWSER
+// SESSION while signed in. Symmetric with the anonymous counter
+// (recordSiteVisit) — both count "sessions", not page loads. So the two
+// metrics are conceptually consistent for the admin dashboard.
 //
-// Design history (and why this is so simple now):
+// Design history:
+//   v1/v2/v3 had subtle sessionStorage-timing bugs (flag set before write
+//     could silence counter permanently after a transient failure). v4
+//     dropped sessionStorage entirely and counted every page load —
+//     simple but conflated "page views" with "sessions". v5 (current)
+//     brings back session dedupe with the timing bug fixed: flag is
+//     set AFTER the write resolves successfully, and the key includes
+//     the uid so multi-account switching in one browser still counts.
 //
-//   v1 used sessionStorage to dedupe ("count once per browser session").
-//     Bug: the flag was set BEFORE the write, so any transient failure
-//     permanently silenced the counter for that session.
-//   v2 moved the flag-set to AFTER a successful write.
-//     Bug: users still in a tab from before the v1 deploy had a stale v1
-//     flag, so the new code respected it and never wrote.
-//   v3 renamed the flag key and explicitly cleared v1 on load.
-//     Bug: STILL showed 0 — symptom suggested either browser cache was
-//     serving stale auth.js, or some auth-state race was making us
-//     skip the write.
-//   v4 (current): drop sessionStorage entirely. Increment on every call.
-//     Within a single page load we coalesce concurrent calls via the
-//     in-flight promise (so two onAuthStateChanged listeners firing
-//     ~simultaneously don't double-count one load). Across page loads
-//     and refreshes, every visit counts — which is closer to what the
-//     admin actually wants to see (raw engagement, not a session metric).
-//
-// Silent on the happy path in production. `console.error` on failure
-// still surfaces so silent permission denials / quota issues remain
-// visible in DevTools. Emails / UIDs are no longer logged.
+// Diagnostic mode: set `window.__SHOS_VISIT_DEBUG = true` (in DevTools
+// or as a URL flag) BEFORE the page loads to enable per-step
+// `[visit]` console output. Off in production for privacy.
 
-// Affirmatively clear all historical dedupe flags so any user stuck with
-// a stale flag from v1/v2/v3 starts fresh on first load of v4.
+// Purge legacy dedupe flags from older versions.
 try {
   if (typeof sessionStorage !== 'undefined') {
     sessionStorage.removeItem('shos_user_visit_recorded');
     sessionStorage.removeItem('shos_user_visit_recorded_v2');
+    sessionStorage.removeItem('shos_user_visit_recorded_v3');
   }
 } catch (_) {}
+
+// Auto-enable debug mode via URL flag `?visitdebug=1` (once per page
+// load) so the admin can toggle from a link without opening DevTools.
+try {
+  if (typeof URLSearchParams !== 'undefined' &&
+      new URLSearchParams(location.search).get('visitdebug') === '1') {
+    window.__SHOS_VISIT_DEBUG = true;
+  }
+} catch (_) {}
+function _visitLog() {
+  if (!window.__SHOS_VISIT_DEBUG) return;
+  try { console.info.apply(console, ['[visit]'].concat([].slice.call(arguments))); } catch (_) {}
+}
 
 window.__shosVisitPromise = null;
 async function recordUserVisit(user) {
   // Coalesce concurrent calls within ONE page load. Without this the
   // belt-and-suspenders trigger in dashboard.html plus auth.js's own
-  // trigger would double-count every load.
-  if (window.__shosVisitPromise) return window.__shosVisitPromise;
+  // trigger would double-count one load.
+  if (window.__shosVisitPromise) {
+    _visitLog('recordUserVisit skipped (already in-flight this page load)');
+    return window.__shosVisitPromise;
+  }
   window.__shosVisitPromise = (async () => {
     try {
-      if (!user || !user.uid) return;
-      if (typeof db === 'undefined' || typeof firebase === 'undefined') return;
+      if (!user || !user.uid) {
+        _visitLog('recordUserVisit skipped (no user)');
+        return;
+      }
+      if (typeof db === 'undefined' || typeof firebase === 'undefined') {
+        _visitLog('recordUserVisit skipped (Firebase SDK missing)');
+        return;
+      }
+
+      // Per-session dedupe. Key includes uid so signing out + in as a
+      // different account in the same browser still counts the second
+      // account's session. The flag is set only AFTER a successful
+      // write, so a permission-denied / network failure does NOT
+      // silence the counter for the rest of the session.
+      const sessionKey = 'shos_user_visit_recorded_v5_' + user.uid;
+      try {
+        if (typeof sessionStorage !== 'undefined' &&
+            sessionStorage.getItem(sessionKey) === '1') {
+          _visitLog('recordUserVisit skipped (already counted this session)', user.email || user.uid);
+          return;
+        }
+      } catch (_) { /* private browsing: sessionStorage may throw — count anyway */ }
+
+      _visitLog('recordUserVisit START uid=' + user.uid + ' email=' + (user.email || '(no email)'));
       await db.collection('users').doc(user.uid).set({
         visitCount: firebase.firestore.FieldValue.increment(1),
         lastVisitAt: firebase.firestore.FieldValue.serverTimestamp(),
       }, { merge: true });
+      _visitLog('recordUserVisit SUCCESS uid=' + user.uid);
+
+      // Set the session flag AFTER the write resolves. Transient
+      // failure leaves the flag unset, so a retry on the same session
+      // will get another chance.
+      try { sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
     } catch (error) {
       // Surface the actual Firestore error code so silent permission
-      // denials, network failures, or quota issues remain visible.
-      console.error('[visit] failed:', error && error.code, '—', error && error.message);
+      // denials, network failures, or quota issues remain visible even
+      // when debug mode is off.
+      console.error('[visit] recordUserVisit FAILED:',
+                    (error && error.code) || 'no-code', '—',
+                    (error && error.message) || String(error));
     }
   })();
   return window.__shosVisitPromise;
