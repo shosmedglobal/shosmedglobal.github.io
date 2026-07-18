@@ -488,23 +488,39 @@ exports.deleteUser = functions.https.onCall(async (data, context) => {
   }
 
   const summary = { authDeleted: false, firestoreDocDeleted: false, subcolsDeleted: 0 };
+  // Track auth failure so we can decide whether Firestore-only cleanup
+  // is enough. If auth.deleteUser succeeds OR the user was already gone,
+  // this stays null. Any other error goes here — we still attempt the
+  // Firestore cleanup below (an orphan doc-only cleanup is legitimate)
+  // and surface the auth error at the end so the caller knows.
+  let authError = null;
 
-  // 1) Delete Auth user (no-op-tolerant: ignore "not found")
+  // 1) Delete Auth user (tolerant of "not found" AND "invalid-uid" —
+  //    the latter happens when the row is a pure Firestore orphan.)
   try {
     await admin.auth().deleteUser(targetUid);
     summary.authDeleted = true;
   } catch (err) {
-    if (err.code !== 'auth/user-not-found') {
-      console.error('[deleteUser] auth.deleteUser failed:', err);
-      throw new functions.https.HttpsError('internal', err.message);
+    if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-uid') {
+      // No auth account to delete. Continue to Firestore cleanup — this
+      // is the "orphan doc" case and admin explicitly wants it gone.
+      console.log('[deleteUser] no auth account for', targetUid, '(' + err.code + ') — cleaning up Firestore only');
+    } else {
+      // Something else went wrong (rate limit, permission, network).
+      // Record it, keep going with Firestore cleanup, and surface the
+      // detail at the end. Do NOT throw here — the admin still wants
+      // the Firestore doc gone.
+      authError = { code: err.code || 'unknown', message: err.message || String(err) };
+      console.error('[deleteUser] auth.deleteUser failed:', targetUid, authError);
     }
   }
 
   // 2) Delete known sub-collections under users/{uid}/...
   //    We don't need a recursive-delete tool here — the well-known
-  //    sub-collections are qbankData and qbankTests.
+  //    sub-collections are qbankData, qbankTests, mockExamAttempts,
+  //    studyNotes, studyHighlights.
   const userRef = db.collection('users').doc(targetUid);
-  for (const sub of ['qbankData', 'qbankTests']) {
+  for (const sub of ['qbankData', 'qbankTests', 'mockExamAttempts', 'studyNotes', 'studyHighlights']) {
     try {
       const snap = await userRef.collection(sub).get();
       if (!snap.empty) {
@@ -527,10 +543,29 @@ exports.deleteUser = functions.https.onCall(async (data, context) => {
     }
   } catch (err) {
     console.error('[deleteUser] firestore doc delete failed:', err);
-    // Non-fatal: Auth was already deleted, user can't log in regardless.
+    // If both Firestore and Auth failed, surface the Firestore error to
+    // the caller (auth error might just be a side-effect of a broken
+    // deploy — but Firestore failing means the admin has no way to
+    // remove this row).
+    if (authError) {
+      throw new functions.https.HttpsError('unknown',
+        'Both Auth and Firestore delete failed. Auth: ' + authError.code + ' — ' + authError.message +
+        '. Firestore: ' + (err.code || 'unknown') + ' — ' + (err.message || String(err)));
+    }
   }
 
   console.log('[deleteUser]', targetUid, summary);
+
+  // If auth delete failed but Firestore cleanup succeeded, tell the
+  // caller — the admin still needs to know the Auth account survived
+  // and may need to be removed manually via the Firebase Console.
+  if (authError) {
+    throw new functions.https.HttpsError('unknown',
+      'Firestore cleaned up (' + summary.subcolsDeleted + ' subdocs removed), but the Auth account could NOT be deleted: ' +
+      authError.code + ' — ' + authError.message +
+      '. Remove it manually via Firebase Console → Authentication → Users.');
+  }
+
   return { success: true, ...summary };
 });
 
