@@ -5828,6 +5828,57 @@
         const errBanner = document.getElementById('adminStatsErrorBanner');
         if (errBanner) errBanner.style.display = 'none';
         recomputeAdminStats();
+
+        // MERGE live Firestore fields into the table cache so per-row
+        // volatile fields (visitCount, lastVisitAt, payments, path)
+        // update in real-time. Without this, a signed-in user visiting
+        // the site would bump their visitCount in Firestore + fire the
+        // stream tick, but the admin table would keep showing the
+        // stale count until the admin fully reloaded the panel.
+        if (Array.isArray(allAdminUsers) && allAdminUsers.length > 0) {
+          const byId = Object.create(null);
+          users.forEach(u => { byId[u.id] = u; });
+          let anyChanged = false;
+          allAdminUsers.forEach(row => {
+            const fresh = byId[row.id];
+            if (!fresh) return;
+            const freshVisit = fresh.visitCount || 0;
+            const freshLastMs = (fresh.lastVisitAt && fresh.lastVisitAt.toMillis)
+              ? fresh.lastVisitAt.toMillis()
+              : (typeof fresh.lastVisitAt === 'number' ? fresh.lastVisitAt : null);
+            if ((row.visitCount || 0) !== freshVisit) { row.visitCount = freshVisit; anyChanged = true; }
+            if ((row.lastVisitAt || null) !== freshLastMs) { row.lastVisitAt = freshLastMs; anyChanged = true; }
+            // payments / path may also drift via admin actions elsewhere.
+            const stalePaymentsJson = JSON.stringify(row.payments || {});
+            const freshPaymentsJson = JSON.stringify(fresh.payments || {});
+            if (stalePaymentsJson !== freshPaymentsJson) { row.payments = fresh.payments || {}; anyChanged = true; }
+            if ((row.path || null) !== (fresh.path || null)) { row.path = fresh.path || null; anyChanged = true; }
+          });
+          if (anyChanged) {
+            // Rebuild filteredAdminUsers from the current search + filter
+            // then re-render. Simplest: trigger the search input's
+            // existing filter path if any query is active, otherwise
+            // reset filteredAdminUsers to a fresh copy.
+            const searchInput = document.getElementById('adminUserSearch');
+            const filterSelect = document.getElementById('adminUserFilter');
+            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+            const filter = filterSelect ? filterSelect.value : 'all';
+            filteredAdminUsers = allAdminUsers.filter(u => {
+              if (query) {
+                const n = (u.name || '').toLowerCase();
+                const e = (u.email || '').toLowerCase();
+                if (!n.includes(query) && !e.includes(query)) return false;
+              }
+              if (filter === 'applicant' && u.path !== 'applicant') return false;
+              if (filter === 'student' && u.path !== 'student') return false;
+              if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
+              if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
+              return true;
+            });
+            if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+          }
+        }
+
         // If the user count changed (new signup / deletion), re-fetch
         // the table data via the Cloud Function so the table stays in
         // sync with the new state.
