@@ -96,36 +96,10 @@
     <!-- ===== MOBILE OVERLAY ===== -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- ===== FORCED PATH SELECTION MODAL =====
-         Shown once, on dashboard load, when a signed-in user has no
-         `path` value in their Firestore profile. Blocks the rest of the
-         dashboard until they pick — no way to dismiss without choosing.
-         Legacy accounts (created before path was captured) will see this
-         on their next login. Admins/reviewers are exempt (their status is
-         email-based). Populated + toggled by ensureUserHasPath() below. -->
-    <div id="pathPickerModal" class="path-picker-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="pathPickerTitle">
-      <div class="path-picker-card">
-        <h2 id="pathPickerTitle">Which are you preparing for?</h2>
-        <p class="path-picker-lead">Pick the one that fits you best. This changes what shows up on your dashboard &mdash; QBank &amp; application help for medical-school applicants, USMLE &amp; residency-match mentorship for current physicians. You can change it later in Profile &amp; Settings.</p>
-        <div class="path-picker-choices">
-          <button type="button" class="path-picker-choice" data-path="applicant" id="pathPickerApplicant">
-            <div class="path-picker-choice-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <div class="path-picker-choice-title">I&rsquo;m applying to medical school</div>
-            <div class="path-picker-choice-sub">Charles University LF3 or similar. Entrance exam prep, application help, and mentorship from LF3 graduates.</div>
-          </button>
-          <button type="button" class="path-picker-choice" data-path="student" id="pathPickerStudent">
-            <div class="path-picker-choice-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            </div>
-            <div class="path-picker-choice-title">I&rsquo;m a current med student / IMG</div>
-            <div class="path-picker-choice-sub">Aiming to match into U.S. residency. USMLE prep, ERAS strategy, research plan, and mock interviews.</div>
-          </button>
-        </div>
-        <div class="path-picker-error" id="pathPickerError" style="display:none;"></div>
-      </div>
-    </div>
+    <!-- Path picker modal removed. Users pick their path during SIGNUP
+         (radio buttons on signup.html). Dashboard silently defaults to
+         'applicant' for anyone missing the field. Users change it via
+         Profile & Settings. See ensureUserHasPath() below. -->
 
     <!-- ===== MAIN CONTENT ===== -->
     <main class="dashboard-main">
@@ -4183,62 +4157,51 @@
     // profile). Also skipped during impersonation (admin shouldn't be
     // asked to pick a path FOR someone else — that's what the Set Path
     // control in the Details panel is for).
+    // Path assignment. Users pick their path during SIGNUP (radio
+    // buttons on signup.html — 'applicant' or 'student'). The dashboard
+    // no longer shows a picker modal — the previous "please pick" popup
+    // felt like an interrogation on every visit for anyone whose path
+    // wasn't set (admin-invited accounts, legacy docs missing the field,
+    // OAuth accounts where the signup flow was skipped).
+    //
+    // Instead: if a user reaches the dashboard with no path, we silently
+    // default them to 'applicant' (the majority use case — LF3 admissions
+    // prep is the primary product), write that default to Firestore
+    // so future loads read from a stable source of truth, and let the
+    // user change it in Profile & Settings whenever they want.
+    //
+    // Admin / reviewer accounts get returned true immediately without
+    // any write (they don't have a "path" — they see everything).
+    // Impersonated views also short-circuit (admin never mutates
+    // target's profile from this code path).
     async function ensureUserHasPath(user, profile) {
       if (!user) return true;
-      // Truthy string wins immediately — this is the normal path once
-      // saved. Guard against 'null' string, empty string, or missing.
+      // Truthy string wins immediately — the normal path once saved.
       if (profile && typeof profile.path === 'string' && profile.path.length > 0) return true;
+
       const emailLc = (user.email || '').toLowerCase();
       const ADMIN = ['eli@shosmed.com','contact@shosmed.com','privacy@shosmed.com','elizolotov@gmail.com'];
       const REVIEWER = ['jana.fauknerova@lf3.cuni.cz'];
       if (ADMIN.includes(emailLc) || REVIEWER.includes(emailLc)) return true;
       if (window._impersonatedUid) return true;
-      // localStorage safety net — if this uid picked earlier in this
-      // browser but a subsequent Firestore read returned stale data, do
-      // not re-spam the modal. The moment the user picks we persist a
-      // flag here; only the user (or an admin explicitly clearing it)
-      // can bring the picker back.
-      let localFlag = null;
-      try { localFlag = localStorage.getItem('shos_pathPicked_' + user.uid); } catch (_) {}
-      if (localFlag && localFlag.length > 0) {
-        if (profile) profile.path = localFlag;
-        return true;
+
+      // No path on record for a real user. Silently default and persist
+      // so subsequent loads read a stable value. If the write fails
+      // (permission-denied, network), we still mutate in-memory so this
+      // session behaves correctly; the next load will retry the write.
+      const DEFAULT_PATH = 'applicant';
+      if (profile) profile.path = DEFAULT_PATH;
+      if (typeof currentProfile !== 'undefined') {
+        if (currentProfile) currentProfile.path = DEFAULT_PATH;
+        else currentProfile = { path: DEFAULT_PATH };
       }
-      const modal = document.getElementById('pathPickerModal');
-      const errBox = document.getElementById('pathPickerError');
-      const btnApp = document.getElementById('pathPickerApplicant');
-      const btnStu = document.getElementById('pathPickerStudent');
-      if (!modal || !btnApp || !btnStu) return true;   // markup missing — fail open
-      if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
-      modal.style.display = 'flex';
-      console.info('[path-picker] shown for uid', user.uid, 'current profile.path =', profile && profile.path);
-      return new Promise(resolve => {
-        function handle(chosenPath) {
-          return async function () {
-            btnApp.disabled = true; btnStu.disabled = true;
-            if (errBox) { errBox.style.display = 'none'; }
-            try {
-              await db.collection('users').doc(user.uid).set({ path: chosenPath }, { merge: true });
-              // Mutate BOTH the caller-passed profile reference AND
-              // currentProfile so the caller does not re-fetch (which
-              // could return a stale cached doc) and downstream code
-              // already sees the new value.
-              if (profile) profile.path = chosenPath;
-              if (currentProfile) currentProfile.path = chosenPath; else currentProfile = { path: chosenPath };
-              try { localStorage.setItem('shos_pathPicked_' + user.uid, chosenPath); } catch (_) {}
-              console.info('[path-picker] saved', chosenPath, 'for uid', user.uid);
-              modal.style.display = 'none';
-              resolve(true);
-            } catch (err) {
-              console.error('[path-picker] save failed:', err);
-              if (errBox) { errBox.textContent = 'Could not save your choice. Please try again.'; errBox.style.display = 'block'; }
-              btnApp.disabled = false; btnStu.disabled = false;
-            }
-          };
-        }
-        btnApp.onclick = handle('applicant');
-        btnStu.onclick = handle('student');
-      });
+      try {
+        await db.collection('users').doc(user.uid).set({ path: DEFAULT_PATH }, { merge: true });
+        console.info('[path] no path on record for', user.uid, '— defaulted to "' + DEFAULT_PATH + '" (user can change in Profile & Settings)');
+      } catch (err) {
+        console.warn('[path] default-write failed (' + (err.code || 'unknown') + '), continuing with in-memory value only:', err.message);
+      }
+      return true;
     }
 
     async function loadDashboard(user) {
