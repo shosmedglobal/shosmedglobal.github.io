@@ -229,25 +229,42 @@ service cloud.firestore {
       allow read: if isAdmin();
       // Admin can do anything (manual migrations, hand-edits).
       allow write: if isAdmin();
-      // Public increment paths — strict allowlist on the incoming keys.
-      // Non-negative constraint on `visits` closes the "zero out the
-      // counter with a big negative increment" hole. `lastVisitAt` is a
-      // server timestamp on write (see auth.js recordUserVisit), so it
-      // ends up as a Timestamp on the server side — but the client
-      // proposes a Sentinel first which is a Map/marker in request.
-      // We don't constrain its type here, only that no other keys leak in.
-      allow create, update:
+
+      // Public increment paths — allowlist on the WRITTEN keys, not on
+      // the entire merged document. A prior version used
+      // `request.resource.data.keys().hasOnly([...])` which fails on
+      // merge-set if the existing doc happens to have any extra legacy
+      // field (from an old rule version, a Firestore console edit, or
+      // migration script). That silently blocked ALL public writes,
+      // freezing the chart. Diff-based check tolerates legacy fields as
+      // long as the write itself only touches the allowlist.
+
+      // For CREATE (no existing doc), diff against an empty doc — so
+      // affectedKeys equals request.resource.data.keys(). Same effect
+      // as hasOnly on the new doc, and prevents extra keys sneaking in
+      // on the initial write.
+      allow create:
         if doc == 'siteStats'
-           && request.resource.data.keys().hasOnly(['visits', 'lastVisitAt'])
-           && (!('visits' in request.resource.data)
-               || request.resource.data.visits is number
-               && request.resource.data.visits >= 0);
-      allow create, update:
+           && request.resource.data.keys().hasOnly(['visits', 'lastVisitAt']);
+      allow create:
         if doc == 'visitsByDay'
            && request.resource.data.keys().hasOnly(['days']);
-      allow create, update:
+      allow create:
         if doc == 'visitsByCountry'
            && request.resource.data.keys().hasOnly(['countries']);
+
+      // For UPDATE (doc exists), check ONLY the fields the write is
+      // touching. Extra legacy keys are ignored — they aren't in
+      // affectedKeys() unless this write is modifying them.
+      allow update:
+        if doc == 'siteStats'
+           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['visits', 'lastVisitAt']);
+      allow update:
+        if doc == 'visitsByDay'
+           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['days']);
+      allow update:
+        if doc == 'visitsByCountry'
+           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['countries']);
     }
   }
 }
