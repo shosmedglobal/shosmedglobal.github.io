@@ -14,6 +14,11 @@
     'general': 'General'
   };
 
+  // Keep in sync with firestore.rules → isAdmin() and qbank.js → ADMIN_EMAILS.
+  // Client-side only, for showing the moderation controls; the actual delete
+  // is authorised server-side by the isAdmin() rule.
+  const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
+
   // ===== State =====
   let currentUser = null;
   let lastDoc = null;
@@ -48,15 +53,25 @@
   });
 
   // ===== Auth State =====
+  let lastAuthUid = undefined;
   auth.onAuthStateChanged((user) => {
+    const changed = lastAuthUid !== (user ? user.uid : null);
+    lastAuthUid = user ? user.uid : null;
     currentUser = user;
     if (user) {
       btnAskQuestion.style.display = 'inline-flex';
     } else {
       btnAskQuestion.style.display = 'none';
     }
+    // The first list render happens before Firebase resolves auth, so the
+    // per-user state (own votes, admin moderation controls) is missing.
+    // Re-render the list once the identity is actually known.
+    if (changed && !currentPostId) {
+      loadPosts(false);
+    }
     // Refresh answer area if viewing a thread
     if (currentPostId) {
+      if (changed) openThread(currentPostId);
       renderPostAnswerArea();
     }
   });
@@ -84,8 +99,15 @@
     return ref.limit(POSTS_PER_PAGE);
   }
 
+  let reloadQueued = false;
+
   async function loadPosts(append) {
-    if (isLoading) return;
+    // A reload requested while one is already in flight (e.g. auth resolving
+    // mid-load) must not be silently dropped — queue it instead.
+    if (isLoading) {
+      if (!append) reloadQueued = true;
+      return;
+    }
     isLoading = true;
 
     try {
@@ -122,9 +144,18 @@
     }
 
     isLoading = false;
+
+    if (reloadQueued) {
+      reloadQueued = false;
+      loadPosts(false);
+    }
   }
 
   // ===== Create Post Card =====
+  // Built with DOM nodes rather than an innerHTML template. Every value that
+  // comes back from Firestore is attacker-controlled (any signed-in client can
+  // write arbitrary fields via the SDK), so none of it is ever concatenated
+  // into markup — text goes through textContent and ids go through dataset.
   function createPostCard(post) {
     const card = document.createElement('div');
     card.className = 'forum-post-card';
@@ -132,42 +163,56 @@
 
     const date = post.createdAt ? post.createdAt.toDate() : new Date();
     const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const categoryLabel = CATEGORY_LABELS[post.category] || post.category;
-    const hasAccepted = post.acceptedAnswerId ? ' has-accepted' : '';
+    const answerCount = toCount(post.answerCount);
 
-    card.innerHTML = `
-      <div class="post-votes">
-        <button class="vote-btn upvote-btn" data-post-id="${post.id}" title="Upvote">&#9650;</button>
-        <span class="vote-count">${post.voteCount || 0}</span>
-      </div>
-      <div class="post-content">
-        <div class="post-title">${escapeHtml(post.title)}</div>
-        <div class="post-excerpt">${escapeHtml(post.body || '')}</div>
-        <div class="post-meta">
-          <span class="post-category">${categoryLabel}</span>
-          <span class="post-author">${escapeHtml(post.authorName || 'Anonymous')}</span>
-          <span class="post-date">${dateStr}</span>
-        </div>
-      </div>
-      <div class="post-stats">
-        <div class="post-answer-count${hasAccepted}">
-          <span class="count-num">${post.answerCount || 0}</span>
-          <span class="count-label">${(post.answerCount === 1) ? 'answer' : 'answers'}</span>
-        </div>
-      </div>
-    `;
+    const votes = el('div', 'post-votes');
+    const upvoteBtn = el('button', 'vote-btn upvote-btn');
+    upvoteBtn.type = 'button';
+    upvoteBtn.title = 'Upvote';
+    upvoteBtn.textContent = '▲';
+    const voteCountEl = el('span', 'vote-count', toCount(post.voteCount));
+    votes.append(upvoteBtn, voteCountEl);
 
-    // Click to open thread (but not on vote button)
+    const meta = el('div', 'post-meta');
+    meta.append(
+      el('span', 'post-category', categoryLabelFor(post.category)),
+      el('span', 'post-author', asText(post.authorName, 'Anonymous')),
+      el('span', 'post-date', dateStr)
+    );
+
+    const content = el('div', 'post-content');
+    content.append(
+      el('div', 'post-title', asText(post.title, '(untitled)')),
+      el('div', 'post-excerpt', asText(post.body, '')),
+      meta
+    );
+
+    const answerBox = el('div', 'post-answer-count' + (post.acceptedAnswerId ? ' has-accepted' : ''));
+    answerBox.append(
+      el('span', 'count-num', answerCount),
+      el('span', 'count-label', answerCount === 1 ? 'answer' : 'answers')
+    );
+    const stats = el('div', 'post-stats');
+    stats.appendChild(answerBox);
+
+    card.append(votes, content, stats);
+
+    // Admin-only moderation control, so spam/abuse posts can be removed from
+    // the live site without opening the Firebase console.
+    if (isAdminUser()) {
+      meta.appendChild(buildDeleteButton('Delete this question and all of its answers?', () => deletePost(post.id)));
+    }
+
+    // Click to open thread (but not on vote/moderation buttons)
     card.addEventListener('click', (e) => {
-      if (e.target.closest('.vote-btn')) return;
+      if (e.target.closest('.vote-btn') || e.target.closest('.mod-delete-btn')) return;
       openThread(post.id);
     });
 
     // Upvote on card
-    const upvoteBtn = card.querySelector('.upvote-btn');
     upvoteBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      togglePostVote(post.id, upvoteBtn, card.querySelector('.vote-count'));
+      togglePostVote(post.id, upvoteBtn, voteCountEl);
     });
 
     // Check if user already voted
@@ -274,27 +319,37 @@
     const container = document.getElementById('thread-question-content');
     const date = post.createdAt ? post.createdAt.toDate() : new Date();
     const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    const categoryLabel = CATEGORY_LABELS[post.category] || post.category;
 
-    container.innerHTML = `
-      <div class="thread-question-header">
-        <h2>${escapeHtml(post.title)}</h2>
-        <span class="post-category">${categoryLabel}</span>
-      </div>
-      <div class="thread-question-body">${escapeHtml(post.body || '')}</div>
-      <div class="thread-question-meta">
-        <div class="thread-vote-box">
-          <button class="thread-vote-btn" id="thread-upvote-btn" title="Upvote">&#9650;</button>
-          <span class="thread-vote-count" id="thread-vote-count">${post.voteCount || 0}</span>
-        </div>
-        <span class="post-author">${escapeHtml(post.authorName || 'Anonymous')}</span>
-        <span class="post-date">${dateStr}</span>
-      </div>
-    `;
+    const header = el('div', 'thread-question-header');
+    header.append(
+      el('h2', null, asText(post.title, '(untitled)')),
+      el('span', 'post-category', categoryLabelFor(post.category))
+    );
+
+    const upvoteBtn = el('button', 'thread-vote-btn');
+    upvoteBtn.type = 'button';
+    upvoteBtn.id = 'thread-upvote-btn';
+    upvoteBtn.title = 'Upvote';
+    upvoteBtn.textContent = '▲';
+    const voteCount = el('span', 'thread-vote-count', toCount(post.voteCount));
+    voteCount.id = 'thread-vote-count';
+    const voteBox = el('div', 'thread-vote-box');
+    voteBox.append(upvoteBtn, voteCount);
+
+    const meta = el('div', 'thread-question-meta');
+    meta.append(
+      voteBox,
+      el('span', 'post-author', asText(post.authorName, 'Anonymous')),
+      el('span', 'post-date', dateStr)
+    );
+
+    if (isAdminUser()) {
+      meta.appendChild(buildDeleteButton('Delete this question and all of its answers?', () => deletePost(post.id)));
+    }
+
+    container.replaceChildren(header, el('div', 'thread-question-body', asText(post.body, '')), meta);
 
     // Thread upvote
-    const upvoteBtn = document.getElementById('thread-upvote-btn');
-    const voteCount = document.getElementById('thread-vote-count');
     upvoteBtn.addEventListener('click', () => {
       togglePostVote(post.id, upvoteBtn, voteCount);
     });
@@ -348,29 +403,46 @@
     const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     const isPostAuthor = currentUser && currentUser.uid === post.authorId;
 
-    let acceptHtml = '';
+    let acceptBtn = null;
     if (isAccepted) {
-      acceptHtml = `<span class="accepted-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accepted Answer</span>`;
+      const badge = el('span', 'accepted-badge');
+      // Static markup only — no untrusted interpolation.
+      badge.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accepted Answer';
+      const row = document.createElement('div');
+      row.appendChild(badge);
+      card.appendChild(row);
     } else if (isPostAuthor) {
-      acceptHtml = `<button class="accept-btn" data-answer-id="${answer.id}">&#10003; Accept Answer</button>`;
+      acceptBtn = el('button', 'accept-btn', '✓ Accept Answer');
+      acceptBtn.type = 'button';
+      acceptBtn.dataset.answerId = answer.id;
+      const row = document.createElement('div');
+      row.appendChild(acceptBtn);
+      card.appendChild(row);
     }
 
-    card.innerHTML = `
-      ${acceptHtml ? '<div>' + acceptHtml + '</div>' : ''}
-      <div class="answer-body">${escapeHtml(answer.body)}</div>
-      <div class="answer-meta">
-        <div class="thread-vote-box">
-          <button class="thread-vote-btn answer-vote-btn" data-answer-id="${answer.id}" title="Upvote">&#9650;</button>
-          <span class="thread-vote-count answer-vote-count">${answer.voteCount || 0}</span>
-        </div>
-        <span class="post-author">${escapeHtml(answer.authorName || 'Anonymous')}</span>
-        <span class="post-date">${dateStr}</span>
-      </div>
-    `;
+    const voteBtn = el('button', 'thread-vote-btn answer-vote-btn');
+    voteBtn.type = 'button';
+    voteBtn.title = 'Upvote';
+    voteBtn.textContent = '▲';
+    voteBtn.dataset.answerId = answer.id;
+    const voteCount = el('span', 'thread-vote-count answer-vote-count', toCount(answer.voteCount));
+    const voteBox = el('div', 'thread-vote-box');
+    voteBox.append(voteBtn, voteCount);
+
+    const meta = el('div', 'answer-meta');
+    meta.append(
+      voteBox,
+      el('span', 'post-author', asText(answer.authorName, 'Anonymous')),
+      el('span', 'post-date', dateStr)
+    );
+
+    if (isAdminUser()) {
+      meta.appendChild(buildDeleteButton('Delete this answer?', () => deleteAnswer(post.id, answer.id)));
+    }
+
+    card.append(el('div', 'answer-body', asText(answer.body, '')), meta);
 
     // Answer vote
-    const voteBtn = card.querySelector('.answer-vote-btn');
-    const voteCount = card.querySelector('.answer-vote-count');
     voteBtn.addEventListener('click', () => {
       toggleAnswerVote(post.id, answer.id, voteBtn, voteCount);
     });
@@ -379,7 +451,6 @@
     }
 
     // Accept button
-    const acceptBtn = card.querySelector('.accept-btn');
     if (acceptBtn) {
       acceptBtn.addEventListener('click', () => acceptAnswer(post.id, answer.id));
     }
@@ -559,11 +630,86 @@
     loadPosts(false);
   });
 
+  // ===== Moderation (admin only) =====
+  function isAdminUser() {
+    return !!(currentUser && ADMIN_EMAILS.includes((currentUser.email || '').toLowerCase()));
+  }
+
+  function buildDeleteButton(confirmMessage, action) {
+    const btn = el('button', 'mod-delete-btn', 'Delete');
+    btn.type = 'button';
+    btn.title = 'Delete (admin)';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!confirm(confirmMessage)) return;
+      btn.disabled = true;
+      action();
+    });
+    return btn;
+  }
+
+  async function deletePost(postId) {
+    try {
+      const postRef = db.collection('forum_posts').doc(postId);
+      // Answers are a subcollection: deleting the parent doc leaves them
+      // orphaned, so remove them first.
+      const answers = await postRef.collection('answers').get();
+      await Promise.all(answers.docs.map(d => d.ref.delete()));
+      await postRef.delete();
+
+      if (currentPostId === postId) closeThread();
+      loadPosts(false);
+    } catch (error) {
+      console.error('Delete post error:', error);
+      alert('Could not delete this post.');
+    }
+  }
+
+  async function deleteAnswer(postId, answerId) {
+    try {
+      await db.collection('forum_posts').doc(postId).collection('answers').doc(answerId).delete();
+      await db.collection('forum_posts').doc(postId).update({
+        answerCount: firebase.firestore.FieldValue.increment(-1)
+      });
+      openThread(postId);
+    } catch (error) {
+      console.error('Delete answer error:', error);
+      alert('Could not delete this answer.');
+    }
+  }
+
   // ===== Utility =====
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
+  // Element builder. `text` is always applied via textContent, so any HTML in
+  // stored forum content is rendered as literal characters, never parsed.
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = String(text);
+    return node;
+  }
+
+  // Coerce a stored value to a display string. Firestore fields are not
+  // type-checked by the SDK, so a hostile client can store an object, array,
+  // or number where a string is expected.
+  function asText(value, fallback) {
+    if (typeof value === 'string' && value.length) return value;
+    if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+    return fallback;
+  }
+
+  // Vote/answer counts are rendered as numbers, never as raw stored values.
+  function toCount(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? Math.trunc(n) : 0;
+  }
+
+  // Only render a label from the known category map. Falls back to "General"
+  // for anything unrecognised instead of echoing the stored string back into
+  // the page. hasOwnProperty guards against prototype keys ("constructor").
+  function categoryLabelFor(category) {
+    return Object.prototype.hasOwnProperty.call(CATEGORY_LABELS, category)
+      ? CATEGORY_LABELS[category]
+      : 'General';
   }
 
   // ===== Initialize =====

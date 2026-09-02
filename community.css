@@ -1144,3 +1144,32 @@
     flex: 1;
   }
 }
+
+/* ===== Admin moderation control =====
+   Rendered by community.js only for ADMIN_EMAILS accounts; the delete itself
+   is authorised server-side by the isAdmin() rule in firestore.rules. */
+.mod-delete-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid rgba(200, 50, 50, 0.35);
+  color: #c23232;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.mod-delete-btn:hover {
+  background: #c23232;
+  color: #fff;
+}
+
+.mod-delete-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

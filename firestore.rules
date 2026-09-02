@@ -152,21 +152,111 @@ service cloud.firestore {
     // ====== Community Forum ======
     // Author-scoped writes. `authorUid` on the doc MUST match the caller
     // both at create and at update — no "author" can rewrite themselves
-    // as another user. Field name matches community.js (which was writing
-    // `authorId`; a separate fix updates that to `authorUid`).
+    // as another user.
+    //
+    // Forum content is world-readable and rendered on community.html, so the
+    // WRITE side is the trust boundary. Everything below is validated: the
+    // exact key set, field types, length caps, and a closed category
+    // allowlist. Without this, a signed-in client using the public Firebase
+    // SDK could store any field of any type (an object where a string is
+    // expected, an unbounded blob, a bogus category) and the page would have
+    // to defend against it at render time. community.js escapes on render as
+    // well; these rules stop the junk from being stored in the first place.
+    //
+    // Counters are NOT free-form: a client may only move voteCount /
+    // answerCount by exactly ±1 per write, and may never set them at create.
+
+    function forumCategoryOk(c) {
+      return c in ['entrance-exams', 'med-school-life', 'usmle-boards', 'residency-match', 'general'];
+    }
+
+    function forumPostCreateOk() {
+      let d = request.resource.data;
+      // Exact shape — same 10 fields community.js → submitQuestion() writes.
+      return d.keys().hasOnly(['title', 'body', 'category', 'authorId', 'authorUid', 'authorName', 'voteCount', 'answerCount', 'acceptedAnswerId', 'createdAt'])
+          && d.keys().hasAll(['title', 'body', 'category', 'authorId', 'authorUid', 'authorName', 'voteCount', 'answerCount', 'acceptedAnswerId', 'createdAt'])
+          && d.authorId == request.auth.uid
+          && d.title is string && d.title.size() > 0 && d.title.size() <= 200
+          && d.body is string && d.body.size() <= 5000
+          && forumCategoryOk(d.category)
+          && d.authorUid == request.auth.uid
+          && d.authorName is string && d.authorName.size() <= 100
+          && d.voteCount == 0
+          && d.answerCount == 0
+          && d.acceptedAnswerId == null
+          && d.createdAt == request.time;
+    }
+
+    // Any signed-in user may nudge a counter by one (that's the vote / new
+    // answer path). They may not touch anything else in the same write, and
+    // they may not jump the value.
+    function voteCountDeltaOk() {
+      let changed = request.resource.data.diff(resource.data).affectedKeys();
+      return changed.hasOnly(['voteCount'])
+          && request.resource.data.voteCount is int
+          && (request.resource.data.voteCount == resource.data.voteCount + 1
+           || request.resource.data.voteCount == resource.data.voteCount - 1);
+    }
+
+    function answerCountDeltaOk() {
+      let changed = request.resource.data.diff(resource.data).affectedKeys();
+      return changed.hasOnly(['answerCount'])
+          && request.resource.data.answerCount is int
+          && (request.resource.data.answerCount == resource.data.answerCount + 1
+           || request.resource.data.answerCount == resource.data.answerCount - 1);
+    }
+
+    // The post's own author editing their question, or accepting an answer.
+    function forumPostAuthorEditOk() {
+      let d = request.resource.data;
+      let changed = d.diff(resource.data).affectedKeys();
+      return changed.hasOnly(['title', 'body', 'category', 'acceptedAnswerId'])
+          && (!('title' in changed) || (d.title is string && d.title.size() > 0 && d.title.size() <= 200))
+          && (!('body' in changed) || (d.body is string && d.body.size() <= 5000))
+          && (!('category' in changed) || forumCategoryOk(d.category))
+          && (!('acceptedAnswerId' in changed) || d.acceptedAnswerId == null || d.acceptedAnswerId is string);
+    }
+
+    function forumAnswerCreateOk() {
+      let d = request.resource.data;
+      // Exact shape — same 6 fields community.js → submitAnswer() writes.
+      return d.keys().hasOnly(['body', 'authorId', 'authorUid', 'authorName', 'voteCount', 'createdAt'])
+          && d.keys().hasAll(['body', 'authorId', 'authorUid', 'authorName', 'voteCount', 'createdAt'])
+          && d.body is string && d.body.size() > 0 && d.body.size() <= 5000
+          && d.authorUid == request.auth.uid
+          && d.authorId == request.auth.uid
+          && d.authorName is string && d.authorName.size() <= 100
+          && d.voteCount == 0
+          && d.createdAt == request.time;
+    }
+
     match /forum_posts/{id} {
       allow read:   if true;
-      allow create: if isSignedIn()
-                    && request.resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && forumPostCreateOk();
       allow update: if isAdmin()
+                    || (isSignedIn() && voteCountDeltaOk())
+                    || (isSignedIn() && answerCountDeltaOk())
                     || (isSignedIn()
                         && resource.data.authorUid == request.auth.uid
-                        && request.resource.data.authorUid == resource.data.authorUid);
+                        && forumPostAuthorEditOk());
       allow delete: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
 
-      match /{sub=**} {
-        allow read: if true;
-        allow write: if isSignedIn();
+      // Answers are the ONLY subcollection. The previous `{sub=**}` catch-all
+      // with `allow write: if isSignedIn()` let any logged-in user overwrite
+      // or delete ANY answer on ANY post — including replacing another user's
+      // answer body while keeping their name on it. Scoped to the author now.
+      match /answers/{answerId} {
+        allow read:   if true;
+        allow create: if isSignedIn() && forumAnswerCreateOk();
+        allow update: if isAdmin()
+                      || (isSignedIn() && voteCountDeltaOk())
+                      || (isSignedIn()
+                          && resource.data.authorUid == request.auth.uid
+                          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['body'])
+                          && request.resource.data.body is string
+                          && request.resource.data.body.size() > 0
+                          && request.resource.data.body.size() <= 5000);
+        allow delete: if isAdmin() || (isSignedIn() && resource.data.authorUid == request.auth.uid);
       }
     }
 
