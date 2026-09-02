@@ -469,7 +469,12 @@ function renderPerformance() {
 // Load questions from JSON
 async function loadQuestions() {
   try {
-    const res = await fetch('questions.json?v=20260423a');
+    // Bump this ?v= whenever questions.json changes. Saved tests store only
+    // questionIds and rehydrate from this file, so edits flow through to
+    // already-completed tests on review — but ONLY if the browser actually
+    // refetches. A stale ?v= serves the old file from HTTP cache and the
+    // edit never lands for returning students.
+    const res = await fetch('questions.json?v=20260902a');
     allQuestions = await res.json();
     updateProgressDisplay();
   } catch (err) {
