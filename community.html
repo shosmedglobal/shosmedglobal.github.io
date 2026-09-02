@@ -276,7 +276,7 @@
         <!-- Featured Q&A (static, SEO-indexable) -->
         <div class="featured-qa">
           <h3 class="featured-qa-title">Featured Questions</h3>
-          <p class="featured-qa-sub">Answers verified by practicing physicians. Have a question? <a href="#" id="link-ask-featured">Ask the community</a>.</p>
+          <p class="featured-qa-sub">Answers verified by practicing physicians. Have a question? <a href="#" data-contact-modal="consultation">Ask us directly</a>.</p>
 
           <article class="qa-card" itemscope itemtype="https://schema.org/Question">
             <div class="qa-question">
@@ -362,74 +362,12 @@
           </article>
         </div>
 
-        <!-- Dynamic Forum -->
-        <div class="forum-divider">
-          <h3>Community Discussion</h3>
-          <p>Ask your own question and get answers from students, graduates, and physicians.</p>
-        </div>
-
-        <!-- Forum List View -->
-        <div id="forum-list-view">
-          <div class="forum-header">
-            <div class="forum-controls">
-              <select class="forum-select" id="forum-category-filter">
-                <option value="all">All Categories</option>
-                <option value="entrance-exams">Entrance Exams</option>
-                <option value="med-school-life">Med School Life</option>
-                <option value="usmle-boards">USMLE &amp; Boards</option>
-                <option value="residency-match">Residency Match</option>
-                <option value="general">General</option>
-              </select>
-              <select class="forum-select" id="forum-sort">
-                <option value="newest">Newest</option>
-                <option value="most-upvoted">Most Upvoted</option>
-                <option value="unanswered">Unanswered</option>
-              </select>
-            </div>
-            <button class="btn-ask" id="btn-ask-question" style="display:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Ask a Question
-            </button>
-          </div>
-
-          <div class="forum-posts" id="forum-posts">
-            <!-- Posts loaded dynamically -->
-          </div>
-
-          <div class="forum-empty" id="forum-empty" style="display:none;">
-            <div class="forum-empty-icon">💬</div>
-            <h3>No questions yet</h3>
-            <p>Be the first to ask a question and start the conversation.</p>
-          </div>
-
-          <div class="load-more-container" id="load-more-container" style="display:none;">
-            <button class="btn-load-more" id="btn-load-more">Load More</button>
-          </div>
-        </div>
-
-        <!-- Thread View -->
-        <div class="thread-view" id="thread-view">
-          <button class="thread-back" id="btn-back-to-list">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            Back to all questions
-          </button>
-
-          <div class="thread-question" id="thread-question-content">
-            <!-- Loaded dynamically -->
-          </div>
-
-          <div class="answers-section" id="answers-section">
-            <h3 id="answers-count-label">Answers</h3>
-            <div id="answers-list">
-              <!-- Loaded dynamically -->
-            </div>
-          </div>
-
-          <!-- Post Answer -->
-          <div id="post-answer-area">
-            <!-- Shown if logged in, login prompt otherwise -->
-          </div>
-        </div>
+        <!-- The user-generated forum (Community Discussion: post list, thread
+             view, ask-question modal) was removed on 2026-09-02. The static
+             Featured Questions above remain — they carry the FAQPage schema
+             and the long-tail SEO value. community.js is no longer loaded;
+             the tab switching it used to own is now inline at the foot of
+             this page. -->
       </div>
 
     </div>
@@ -494,35 +432,6 @@
     </div>
   </footer>
 
-  <!-- Ask Question Modal -->
-  <div class="modal-overlay" id="ask-modal">
-    <div class="modal-content">
-      <h2>Ask a Question</h2>
-      <div class="form-group">
-        <label for="question-title">Title</label>
-        <input type="text" class="form-input" id="question-title" placeholder="What's your question?" maxlength="200">
-      </div>
-      <div class="form-group">
-        <label for="question-category">Category</label>
-        <select class="form-select" id="question-category">
-          <option value="entrance-exams">Entrance Exams</option>
-          <option value="med-school-life">Med School Life</option>
-          <option value="usmle-boards">USMLE &amp; Boards</option>
-          <option value="residency-match">Residency Match</option>
-          <option value="general">General</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="question-body">Details</label>
-        <textarea class="form-textarea" id="question-body" placeholder="Provide more context or details about your question..." maxlength="5000"></textarea>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-cancel" id="btn-cancel-question">Cancel</button>
-        <button class="btn-submit" id="btn-submit-question">Post Question</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Cookie Consent Banner -->
   <div class="cookie-banner" id="cookieBanner" style="display:none;">
     <p>We use essential cookies for authentication and site functionality. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn More</a></p>
@@ -540,7 +449,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
-  <script src="community.js?v=20260902-xss"></script>
   <script src="contact-booking.js"></script>
   <script src="contact-modal.js"></script>
   <script>
@@ -572,14 +480,17 @@
     });
 
     // Featured Q&A "ask" link opens the ask modal
-    const featuredAskLink = document.getElementById('link-ask-featured');
-    if (featuredAskLink) {
-      featuredAskLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        const askBtn = document.getElementById('btn-ask-question');
-        if (askBtn) askBtn.click();
+    // Tab switching (Blog & Articles / Q&A). Previously lived in community.js,
+    // which is no longer loaded now that the user-generated forum is gone.
+    document.querySelectorAll('.community-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.community-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.community-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        const panel = document.getElementById('panel-' + tab.dataset.tab);
+        if (panel) panel.classList.add('active');
       });
-    }
+    });
 
     // Animate elements on scroll
     const observer = new IntersectionObserver((entries) => {
