@@ -77,9 +77,17 @@
 
     // 2) Void tags — restore <br>, <hr>. Optional attributes/whitespace
     //    and optional self-close are tolerated and discarded.
+    //
+    //    NOTE: there is deliberately NO \s* between '&lt;' and the tag name.
+    //    HTML does not allow whitespace there — '< br>' is text, not a tag.
+    //    Allowing it corrupted chemistry content: in "Cl < Br < I < At" the
+    //    '< Br' matched case-insensitively as a <br> opener, and the lazy
+    //    attribute group then swallowed everything up to the next '>'.
+    //    Staying strict here is also the safe direction: it can only cause
+    //    FEWER strings to be promoted back into tags, never more.
     for (const tag of QB_VOID_TAGS) {
       const re = new RegExp(
-        '&lt;\\s*' + tag + '(?:\\s+[\\s\\S]*?)?\\s*\\/?\\s*&gt;',
+        '&lt;' + tag + '(?:\\s+[\\s\\S]*?)?\\s*\\/?\\s*&gt;',
         'gi'
       );
       s = s.replace(re, '<' + tag + '>');
@@ -95,7 +103,7 @@
     //    same-tag pairs resolve.
     for (const tag of QB_ALLOWED_TAGS) {
       const pairRe = new RegExp(
-        '&lt;\\s*' + tag +
+        '&lt;' + tag +
           '(\\s+[\\s\\S]*?)?\\s*&gt;' +                 // group 1: optional attrs
           '([\\s\\S]*?)' +                              // group 2: inner content
           '&lt;\\s*\\/\\s*' + tag + '\\s*&gt;',         // closer
