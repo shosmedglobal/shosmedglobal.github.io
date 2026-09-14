@@ -65,6 +65,53 @@ const TIERS = {
   // the site is a contact-form modal (data-contact-modal="apply-lf3"),
   // not Stripe checkout. If/when that becomes a paid product, add the
   // tier back here AND add a `data-tier="apply-lf3"` button.
+
+  // ---- Match Mentorship à la carte add-ons (Step 3 on the Residency
+  // path). One-time purchases, no plan and no expiry — same shape as
+  // 'strategy-session'. Sold individually from the Store card in
+  // dashboard.html via the shared .stripe-pay handler.
+  //
+  // The keys below deliberately reuse the canonical service IDs already
+  // defined in contact-booking.js (SERVICES) and contact-modal.js, so a
+  // booking and a payment for the same service share one identifier. Do
+  // not invent parallel names here.
+  //
+  // PRICING: all seven Match Mentorship add-ons are $99, so they share a
+  // SINGLE Stripe Price via `priceKey`. Only one product/price has to
+  // exist in Stripe — lookup_key `mentorship-addon` — instead of seven.
+  // `field` stays per-service, so Firestore still records exactly which
+  // service a student bought and the admin panel can reconcile a payment
+  // against its booking.
+  //
+  // If one of these ever needs a different amount, create a second Stripe
+  // Price with its own lookup_key and point that service's `priceKey` at
+  // it. Nothing else has to change.
+  //
+  // IMPORTANT: `mentorship-addon` must exist as the `lookup_key` on an
+  // ACTIVE Price in Stripe. createCheckoutSession resolves the price by
+  // lookup_key; if it is missing, checkout fails with "No active Stripe
+  // price found for lookup_key ...". Amounts live in Stripe, never here.
+  'mentorship-lor': {            // Letter of Rec Coaching
+    field: 'mentorship-lor', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'mentorship-program-list': {   // Program List Guidance
+    field: 'mentorship-program-list', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'mentorship-research': {       // Research Strategy
+    field: 'mentorship-research', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'mentorship-cv': {             // Personal Statement Review
+    field: 'mentorship-cv', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'mentorship-mock-interview': { // Mock Interview Session
+    field: 'mentorship-mock-interview', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'mentorship-eras': {           // ERAS CV Review
+    field: 'mentorship-eras', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
+  'usmle-step-review': {         // USMLE Step Review (per session)
+    field: 'usmle-step-review', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
+  },
 };
 
 const ALLOWED_ORIGINS = new Set([
@@ -112,8 +159,12 @@ exports.createCheckoutSession = functions
 
     let prices;
     try {
+      // Resolve by the tier's shared priceKey when it has one (all the
+      // Match Mentorship add-ons point at 'mentorship-addon'), otherwise
+      // by the tier name itself — which keeps 'full-access' and
+      // 'strategy-session' working exactly as before.
       prices = await stripe.prices.list({
-        lookup_keys: [tier],
+        lookup_keys: [tierConfig.priceKey || tier],
         active: true,
         limit: 1,
       });
@@ -133,7 +184,7 @@ exports.createCheckoutSession = functions
     if (!prices.data.length) {
       throw new functions.https.HttpsError(
         'failed-precondition',
-        `No active Stripe price found for lookup_key "${tier}". Set the lookup_key on the price in the Stripe dashboard.`
+        `No active Stripe price found for lookup_key "${tierConfig.priceKey || tier}". Set the lookup_key on the price in the Stripe dashboard.`
       );
     }
 

@@ -31,9 +31,9 @@ const SERVICE_TYPES = {
   'mentorship-lor':            { name: 'Letter of Rec Coaching',            price: 99,  duration: '1 session',   category: 'student' },
   'mentorship-program-list':   { name: 'Program List Guidance',             price: 99,  duration: '1 session',   category: 'student' },
   'mentorship-research':       { name: 'Research Strategy',                 price: 99,  duration: '1 session',   category: 'student' },
-  'mentorship-cv':             { name: 'CV & Personal Statement Review',    price: 99,  duration: '1 session',   category: 'student' },
+  'mentorship-cv':             { name: 'Personal Statement Review',         price: 99,  duration: '1 session',   category: 'student' },
   'mentorship-mock-interview': { name: 'Mock Interview Session',            price: 99,  duration: '1 session',   category: 'student' },
-  'mentorship-eras':           { name: 'ERAS Application Strategy',         price: 199, duration: 'Full cycle',  category: 'student' },
+  'mentorship-eras':           { name: 'ERAS CV Review',                    price: 99,  duration: '1 session',   category: 'student' },
   'usmle-step-review':         { name: 'USMLE Step Review',                 price: 99,  duration: '1 session',   category: 'student' },
 
   // ----- Other -----

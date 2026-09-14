@@ -1336,12 +1336,12 @@
 
                   <li class="addon-item" tabindex="0">
                     <div class="addon-row">
-                      <span>CV &amp; Personal Statement Review</span>
+                      <span>Personal Statement Review</span>
                       <span class="addon-icon" aria-hidden="true">&#9432;</span>
                     </div>
                     <div class="addon-detail">
                       <span class="addon-price">$99</span>
-                      <p class="addon-desc">Line-by-line revisions and detailed comments on your application drafts.</p>
+                      <p class="addon-desc">Line-by-line revisions and detailed comments on your personal statement drafts.</p>
                     </div>
                   </li>
 
@@ -1358,12 +1358,12 @@
 
                   <li class="addon-item" tabindex="0">
                     <div class="addon-row">
-                      <span>ERAS Application Strategy</span>
+                      <span>ERAS CV Review</span>
                       <span class="addon-icon" aria-hidden="true">&#9432;</span>
                     </div>
                     <div class="addon-detail">
-                      <span class="addon-price">$199</span>
-                      <p class="addon-desc">Timing, program signaling, supplemental questions, and decision frameworks.</p>
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">Line-by-line review of your ERAS CV: how your experiences, publications and descriptions read to a program director, and what to cut, reorder or rewrite.</p>
                     </div>
                   </li>
 
@@ -1380,6 +1380,27 @@
                 </ul>
 
                 <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Ask About Add-Ons</a>
+
+                <!-- Buy a single add-on directly. Reuses the same delegated
+                     .stripe-pay handler as "Get Your Strategy Session" — the
+                     handler reads data-tier at click time, so selecting a
+                     service just rewrites that attribute. Each <option> value
+                     must match a TIERS key in functions/index.js AND the
+                     lookup_key of an active Stripe Price. -->
+                <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--gray-200);">
+                  <label for="addonTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Or buy a single service</label>
+                  <select id="addonTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.88rem; color:var(--navy); background:#fff; margin-bottom:10px; cursor:pointer;">
+                    <option value="">Choose a service&hellip;</option>
+                    <option value="mentorship-lor">Letter of Rec Coaching &mdash; $99</option>
+                    <option value="mentorship-program-list">Program List Guidance &mdash; $99</option>
+                    <option value="mentorship-research">Research Strategy &mdash; $99</option>
+                    <option value="mentorship-cv">Personal Statement Review &mdash; $99</option>
+                    <option value="mentorship-mock-interview">Mock Interview Session &mdash; $99</option>
+                    <option value="mentorship-eras">ERAS CV Review &mdash; $99</option>
+                    <option value="usmle-step-review">USMLE Step Review &mdash; $99 / session</option>
+                  </select>
+                  <a href="#" id="addonBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Service</a>
+                </div>
               </div>
 
             </div>
@@ -1448,9 +1469,9 @@
                       <option value="mentorship-lor">Letter of Rec Coaching &middot; $99</option>
                       <option value="mentorship-program-list">Program List Guidance &middot; $99</option>
                       <option value="mentorship-research">Research Strategy &middot; $99</option>
-                      <option value="mentorship-cv">CV &amp; Personal Statement Review &middot; $99</option>
+                      <option value="mentorship-cv">Personal Statement Review &middot; $99</option>
                       <option value="mentorship-mock-interview">Mock Interview Session &middot; $99</option>
-                      <option value="mentorship-eras">ERAS Application Strategy &middot; $199</option>
+                      <option value="mentorship-eras">ERAS CV Review &middot; $99</option>
                       <option value="usmle-step-review">USMLE Step Review &middot; $99/session</option>
                     </optgroup>
                     <optgroup label="Other">
@@ -4882,6 +4903,11 @@
       e.preventDefault();
       if (btn.dataset.checkoutBusy === '1') return;
       const tier = btn.dataset.tier;
+      // Guard: the Match Mentorship button starts with an empty data-tier
+      // until a service is chosen. pointer-events:none already blocks real
+      // clicks, but a programmatic click would slip through and call the
+      // Cloud Function with an undefined tier, which fails server-side.
+      if (!tier) return;
       const user = firebase.auth().currentUser;
       if (!user) { window.location.href = 'login.html'; return; }
 
@@ -4906,6 +4932,28 @@
         delete btn.dataset.checkoutBusy;
       }
     });
+
+    // ===== Match Mentorship: single add-on purchase =====
+    // Mirrors the chosen service onto the button's data-tier so the shared
+    // .stripe-pay handler above picks it up unchanged. The button stays
+    // inert until a service is selected, so it can never fire checkout
+    // with an empty tier.
+    (function () {
+      const sel = document.getElementById('addonTierSelect');
+      const btn = document.getElementById('addonBuyBtn');
+      if (!sel || !btn) return;
+      sel.addEventListener('change', function () {
+        const tier = sel.value;
+        btn.dataset.tier = tier;
+        btn.style.opacity = tier ? '' : '0.5';
+        btn.style.pointerEvents = tier ? '' : 'none';
+        btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
+        // Surface the price on the button itself, e.g. "Get This Service — $99".
+        const label = tier ? sel.options[sel.selectedIndex].text : '';
+        const price = label.includes('—') ? label.split('—').pop().trim() : '';
+        btn.textContent = price ? 'Get This Service — ' + price : 'Get This Service';
+      });
+    })();
 
     // ===== Resource Tabs =====
     document.querySelectorAll('.resource-tab').forEach(tab => {
