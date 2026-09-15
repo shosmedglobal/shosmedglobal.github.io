@@ -203,9 +203,18 @@
     const urlParams = new URLSearchParams(window.location.search);
     const redirectTo = urlParams.get('redirect') === 'qbank' ? ('qbank.html?v=20260423a&t=' + Date.now()) : 'dashboard.html';
 
+    // Set while a signup submission is in flight. The listener below must not
+    // redirect during that window: createUserWithEmailAndPassword (and the
+    // Google popup) sign the new user in *before* the Firestore profile write
+    // that carries their chosen path completes. Navigating on that auth event
+    // tears down the page mid-write, so the path is lost and the dashboard
+    // loads a profile with none. Each handler does its own redirect once the
+    // write has been awaited.
+    let signupInProgress = false;
+
     // Redirect if already logged in
     auth.onAuthStateChanged((user) => {
-      if (user) window.location.href = redirectTo;
+      if (user && !signupInProgress) window.location.href = redirectTo;
     });
 
     // Email/Password Sign Up
@@ -247,10 +256,13 @@
       btn.disabled = true;
       btn.textContent = 'Creating account...';
 
+      signupInProgress = true;
       const result = await signUpWithEmail(name, email, password, path);
       if (result.success) {
+        // Profile write is already committed at this point; safe to leave.
         window.location.href = redirectTo;
       } else {
+        signupInProgress = false;
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';
         btn.disabled = false;
@@ -289,10 +301,12 @@
 
       const path = pathInput.value;
 
+      signupInProgress = true;
       const result = await signInWithGoogle(path, true);
       if (result.success) {
         window.location.href = redirectTo;
       } else {
+        signupInProgress = false;
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';
       }

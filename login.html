@@ -113,9 +113,17 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script>
+    // Set while a sign-in attempt is in flight, so the listener below stays
+    // out of the way. The Google popup signs the user in before we have
+    // checked whether they actually have an account — redirecting on that
+    // auth event would send a user with no profile to the dashboard and skip
+    // the "No account found" bounce to signup. Each handler redirects itself
+    // once its checks have finished.
+    let authInProgress = false;
+
     // Redirect if already logged in
     auth.onAuthStateChanged((user) => {
-      if (user) window.location.href = 'dashboard.html';
+      if (user && !authInProgress) window.location.href = 'dashboard.html';
     });
 
     // Email/Password Login
@@ -130,10 +138,12 @@
       btn.textContent = 'Logging in...';
       errorMsg.style.display = 'none';
 
+      authInProgress = true;
       const result = await signInWithEmail(email, password);
       if (result.success) {
         window.location.href = 'dashboard.html';
       } else {
+        authInProgress = false;
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';
         btn.disabled = false;
@@ -146,12 +156,14 @@
       const errorMsg = document.getElementById('errorMsg');
       errorMsg.style.display = 'none';
 
+      authInProgress = true;
       const result = await signInWithGoogle(null, false);
       if (result.success) {
         window.location.href = 'dashboard.html';
       } else if (result.needsSignup) {
         window.location.href = 'signup.html';
       } else {
+        authInProgress = false;
         errorMsg.textContent = result.error;
         errorMsg.style.display = 'block';
       }
