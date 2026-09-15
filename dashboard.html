@@ -3865,6 +3865,18 @@
         }
       }
 
+      // Same idea for the two med-school-only views. Their sidebar links are
+      // hidden on the residency path, but the hash is still typeable and the
+      // view would otherwise render — QBank as a locked shell, Mock Exams as
+      // an LF3 entrance-exam table that means nothing to a residency
+      // applicant. Send them to Overview instead. Guarded on currentProfile
+      // being loaded so a hash arriving before the profile resolves is not
+      // bounced for the wrong reason.
+      if ((viewName === 'mockexams' || viewName === 'qbank') &&
+          currentProfile && currentProfile.path === 'student') {
+        viewName = 'overview';
+      }
+
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const targetId = viewMap[viewName];
       const target = targetId ? document.getElementById(targetId) : null;
@@ -4334,6 +4346,11 @@
         // QBank sidebar: visible only for applicant path (hidden for student path, even admin)
         const qbankSidebarLink = document.getElementById('sidebarQbankLink');
         if (qbankSidebarLink) qbankSidebarLink.style.display = isStudent ? 'none' : 'flex';
+        // Mock Exams sidebar: same rule. The mock exams simulate the LF3
+        // entrance exam, which only matters on the med school application
+        // path — a residency applicant has no use for them.
+        const mockExamsSidebarLink = document.getElementById('sidebarMockExamsLink');
+        if (mockExamsSidebarLink) mockExamsSidebarLink.style.display = isStudent ? 'none' : 'flex';
         // Study Plan always visible
         const studyPlanSidebarLink = document.getElementById('sidebarStudyPlanLink');
         if (studyPlanSidebarLink) studyPlanSidebarLink.style.display = 'flex';

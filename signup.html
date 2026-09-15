@@ -134,9 +134,14 @@
           </div>
           <div class="form-group">
             <label>I am:</label>
-            <div class="path-selector">
+            <!-- No option is pre-selected on purpose: the path drives which
+                 dashboard, store and resources the account gets, so it must
+                 be a deliberate choice rather than an accepted default.
+                 Both submit handlers below refuse to continue until one is
+                 picked. -->
+            <div class="path-selector" id="pathSelector">
               <label class="path-option">
-                <input type="radio" name="path" value="applicant" checked>
+                <input type="radio" name="path" value="applicant">
                 <div class="path-option-content">
                   <svg class="path-option-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                   <div>
@@ -209,12 +214,28 @@
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      const path = document.querySelector('input[name="path"]:checked').value;
+      // No default is pre-selected, so this can legitimately be null.
+      const pathInput = document.querySelector('input[name="path"]:checked');
       const termsCheckbox = document.getElementById('agreeTerms');
       const errorMsg = document.getElementById('errorMsg');
       const btn = e.target.querySelector('button[type="submit"]');
 
       errorMsg.style.display = 'none';
+
+      // Checked before the terms box so the errors surface in the same order
+      // the fields appear on the form.
+      if (!pathInput) {
+        errorMsg.textContent = 'Please choose whether you are applying to medical school or to residency.';
+        errorMsg.style.display = 'block';
+        const sel = document.getElementById('pathSelector');
+        if (sel) {
+          sel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          const first = sel.querySelector('input[name="path"]');
+          if (first) first.focus();
+        }
+        return;
+      }
+      const path = pathInput.value;
 
       if (!termsCheckbox.checked) {
         errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
@@ -243,6 +264,22 @@
       const errorMsg = document.getElementById('errorMsg');
       errorMsg.style.display = 'none';
 
+      // Same two gates as the email form, in the same order. Without this the
+      // Google button would sail past the path requirement, since it is not a
+      // form submit.
+      const pathInput = document.querySelector('input[name="path"]:checked');
+      if (!pathInput) {
+        errorMsg.textContent = 'Please choose whether you are applying to medical school or to residency.';
+        errorMsg.style.display = 'block';
+        const sel = document.getElementById('pathSelector');
+        if (sel) {
+          sel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          const first = sel.querySelector('input[name="path"]');
+          if (first) first.focus();
+        }
+        return;
+      }
+
       if (!termsCheckbox.checked) {
         errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
         errorMsg.style.display = 'block';
@@ -250,7 +287,7 @@
         return;
       }
 
-      const path = document.querySelector('input[name="path"]:checked').value;
+      const path = pathInput.value;
 
       const result = await signInWithGoogle(path, true);
       if (result.success) {
