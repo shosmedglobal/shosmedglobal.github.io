@@ -63,7 +63,10 @@ async function signUpWithEmail(name, email, password, path) {
       agreedToTerms: true,
       agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    }, { merge: true });
+    // merge:true because the `onUserCreated` Auth trigger fires in parallel
+    // and stamps `welcomeEmailSentAt` on this same doc. A plain set() would
+    // drop that field whenever the function won the race.
     return { success: true, user: result.user };
   } catch (error) {
     return { success: false, error: friendlyError(error) };

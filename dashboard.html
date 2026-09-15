@@ -4050,6 +4050,28 @@
         alert('Could not load user: ' + (err && err.message));
         return;
       }
+
+      // The Firestore profile can be thin — an account whose signup write was
+      // lost ends up with little more than a path — while Firebase Auth still
+      // holds the real name and email. Without this, "View as" showed the
+      // "Student" placeholder and a raw UID in the banner, which reads like a
+      // broken account rather than an incomplete profile. `listAllUsers` is
+      // the admin-only callable the admin table already uses; it merges Auth
+      // over Firestore. Display-only — impersonation must not write.
+      if (!target.name || !target.email) {
+        try {
+          const res = await firebase.functions().httpsCallable('listAllUsers')();
+          const row = ((res && res.data && res.data.users) || [])
+            .find((u) => u.id === targetUid);
+          if (row) {
+            if (!target.name && row.name) target.name = row.name;
+            if (!target.email && row.email) target.email = row.email;
+            target._thinProfile = true;
+          }
+        } catch (e) {
+          console.warn('[impersonate] Auth fallback unavailable:', e && e.message);
+        }
+      }
       // Publish target under two globals: one is consumed by getUserProfile()
       // (which many parts of the dashboard call), the other by any code that
       // reads the effective UID for per-user Firestore queries (mock exams,
@@ -4064,8 +4086,12 @@
       banner.className = 'impersonation-banner';
       banner.innerHTML =
         '<div class="impersonation-banner-msg">' +
-          'Viewing as <strong>' + (target.name || target.email || targetUid) + '</strong> &middot; ' +
-          '<span style="color:#78350F;">Writes are disabled while impersonating.</span>' +
+          // escapeHtml: `name` is user-supplied and this is an innerHTML sink.
+          'Viewing as <strong>' + escapeHtml(target.name || target.email || targetUid) + '</strong> &middot; ' +
+          (target._thinProfile
+            ? '<span style="color:#78350F;">Profile record is incomplete &mdash; ' +
+              'name/email shown from their sign-in account. Writes are disabled while impersonating.</span>'
+            : '<span style="color:#78350F;">Writes are disabled while impersonating.</span>') +
         '</div>' +
         '<button type="button" class="impersonation-banner-exit" onclick="location.href=\'dashboard.html\'">Return to admin view</button>';
       const main = document.querySelector('.dashboard-main') || document.body;
@@ -4290,7 +4316,16 @@
         else currentProfile = { path: finalPath };
       }
       try {
-        await db.collection('users').doc(user.uid).set({ path: finalPath }, { merge: true });
+        // Carry identity fields alongside the path. A merge-set on a document
+        // that does not exist CREATES it, so writing `{path}` alone against a
+        // missing profile produced a doc holding nothing but a path — no name,
+        // no email — which then rendered as the "Student" placeholder
+        // everywhere and as a bare UID in the admin's "View as" banner.
+        // Only fill blanks; never overwrite what the profile already has.
+        const patch = { path: finalPath };
+        if (!(profile && profile.email) && user.email) patch.email = user.email;
+        if (!(profile && profile.name) && user.displayName) patch.name = user.displayName;
+        await db.collection('users').doc(user.uid).set(patch, { merge: true });
         console.info('[path] path set to "' + finalPath + '" for', user.uid, '(user chose; changeable in Profile & Settings)');
       } catch (err) {
         // Keep the in-memory value so this session behaves correctly; the
