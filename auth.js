@@ -138,10 +138,16 @@ async function signInWithGoogle(path, fromSignup) {
         return { success: false, error: 'No account found. Please sign up first.', needsSignup: true };
       }
       // Create profile from signup page. Omit `payments` — Stripe-webhook-only.
+      //
+      // `path` is written as null rather than defaulting to 'applicant' if
+      // it is somehow absent. signup.html now requires an explicit choice
+      // before this is called, so null should not occur — but if it ever
+      // does, the dashboard's first-run chooser (ensureUserHasPath) asks
+      // the user instead of silently filing them under the wrong product.
       await db.collection('users').doc(result.user.uid).set({
         name: (result.user.displayName || '').substring(0, 200),
         email: result.user.email,
-        path: path || 'applicant',
+        path: path || null,
         agreedToTerms: true,
         agreedToTermsDate: firebase.firestore.FieldValue.serverTimestamp(),
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),

@@ -3800,6 +3800,50 @@
     }
   </style>
 
+  <!-- First-run path chooser.
+       Shown by ensureUserHasPath() when an account reaches the dashboard
+       with no `path` on record — the main case being Google sign-in from
+       the login page, which never asks. The path decides which dashboard,
+       sidebar, store and resources the account gets, so it is answered
+       rather than assumed: there is deliberately no close button, no
+       backdrop-dismiss and no Escape handler. Reuses the .path-selector /
+       .path-option markup and styles from signup.html (dashboard.css) so
+       the question looks identical wherever it is asked. -->
+  <div class="admin-modal-overlay" id="pathChoiceOverlay" style="display:none;">
+    <div class="admin-modal" style="max-width:520px; padding:30px;">
+      <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin:0 0 6px;">One quick question</h2>
+      <p style="color:var(--gray-600); font-size:0.92rem; margin:0 0 20px; line-height:1.55;">
+        Which describes you? This sets up your dashboard, study plan and resources. You can change it later in Profile &amp; Settings.
+      </p>
+      <div class="path-selector" id="pathChoiceSelector">
+        <label class="path-option">
+          <input type="radio" name="pathChoice" value="applicant">
+          <div class="path-option-content">
+            <svg class="path-option-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div>
+              <strong>Med School Application</strong>
+              <span>I want to study medicine in the Czech Republic</span>
+            </div>
+          </div>
+        </label>
+        <label class="path-option">
+          <input type="radio" name="pathChoice" value="student">
+          <div class="path-option-content">
+            <svg class="path-option-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2v8a4 4 0 1 1-8 0V2"/><circle cx="19" cy="15" r="3"/><path d="M7 14a5 5 0 0 0 5 5 7 7 0 0 0 7-4"/></svg>
+            <div>
+              <strong>Residency Application</strong>
+              <span>I need USMLE prep and match mentorship</span>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div id="pathChoiceError" style="display:none; margin-top:14px; padding:10px 12px; background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; color:#B91C1C; font-size:0.85rem;">
+        Please choose one to continue.
+      </div>
+      <button type="button" class="btn btn-primary" id="pathChoiceSave" style="width:100%; margin-top:20px;">Continue</button>
+    </div>
+  </div>
+
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -4197,11 +4241,17 @@
     // wasn't set (admin-invited accounts, legacy docs missing the field,
     // OAuth accounts where the signup flow was skipped).
     //
-    // Instead: if a user reaches the dashboard with no path, we silently
-    // default them to 'applicant' (the majority use case — LF3 admissions
-    // prep is the primary product), write that default to Firestore
-    // so future loads read from a stable source of truth, and let the
-    // user change it in Profile & Settings whenever they want.
+    // Instead: if a user reaches the dashboard with no path, we ASK via a
+    // blocking first-run chooser (see promptForPath below), write the
+    // answer to Firestore so future loads read from a stable source of
+    // truth, and let the user change it in Profile & Settings whenever
+    // they want.
+    //
+    // This previously defaulted silently to 'applicant'. That quietly put
+    // every residency applicant who signed in with Google from the login
+    // page onto the med school product — wrong sidebar, wrong store,
+    // wrong resources — with nothing to indicate a choice had been made
+    // on their behalf.
     //
     // Admin / reviewer accounts get returned true immediately without
     // any write (they don't have a "path" — they see everything).
@@ -4218,23 +4268,66 @@
       if (ADMIN.includes(emailLc) || REVIEWER.includes(emailLc)) return true;
       if (window._impersonatedUid) return true;
 
-      // No path on record for a real user. Silently default and persist
-      // so subsequent loads read a stable value. If the write fails
-      // (permission-denied, network), we still mutate in-memory so this
-      // session behaves correctly; the next load will retry the write.
-      const DEFAULT_PATH = 'applicant';
-      if (profile) profile.path = DEFAULT_PATH;
+      // No path on record for a real user. Ask rather than assume — the
+      // path drives the whole dashboard, so guessing "applicant" quietly
+      // put residency users on the wrong product for their entire session.
+      // The caller awaits this before first paint, so the dashboard does
+      // not render until the question is answered.
+      const chosen = await promptForPath();
+
+      // promptForPath only returns null if the modal markup is missing,
+      // which would be a code bug. Fall back rather than leave the user
+      // staring at a dashboard that never renders; log it loudly so the
+      // cause is findable.
+      const finalPath = (chosen === 'applicant' || chosen === 'student') ? chosen : 'applicant';
+      if (!chosen) {
+        console.error('[path] path chooser unavailable — fell back to "applicant" for', user.uid);
+      }
+
+      if (profile) profile.path = finalPath;
       if (typeof currentProfile !== 'undefined') {
-        if (currentProfile) currentProfile.path = DEFAULT_PATH;
-        else currentProfile = { path: DEFAULT_PATH };
+        if (currentProfile) currentProfile.path = finalPath;
+        else currentProfile = { path: finalPath };
       }
       try {
-        await db.collection('users').doc(user.uid).set({ path: DEFAULT_PATH }, { merge: true });
-        console.info('[path] no path on record for', user.uid, '— defaulted to "' + DEFAULT_PATH + '" (user can change in Profile & Settings)');
+        await db.collection('users').doc(user.uid).set({ path: finalPath }, { merge: true });
+        console.info('[path] path set to "' + finalPath + '" for', user.uid, '(user chose; changeable in Profile & Settings)');
       } catch (err) {
-        console.warn('[path] default-write failed (' + (err.code || 'unknown') + '), continuing with in-memory value only:', err.message);
+        // Keep the in-memory value so this session behaves correctly; the
+        // next load will find no path and ask again.
+        console.warn('[path] write failed (' + (err.code || 'unknown') + '), continuing with in-memory value only:', err.message);
       }
       return true;
+    }
+
+    // Shows the first-run path chooser and resolves with 'applicant' |
+    // 'student' once the user picks one and confirms. Resolves null only
+    // if the modal markup is absent. There is no cancel route by design.
+    function promptForPath() {
+      return new Promise(resolve => {
+        const overlay = document.getElementById('pathChoiceOverlay');
+        const saveBtn = document.getElementById('pathChoiceSave');
+        const errEl = document.getElementById('pathChoiceError');
+        if (!overlay || !saveBtn) { resolve(null); return; }
+
+        overlay.style.display = 'flex';
+        // Clear any stale selection so nothing is pre-chosen here either.
+        overlay.querySelectorAll('input[name="pathChoice"]').forEach(r => { r.checked = false; });
+        if (errEl) errEl.style.display = 'none';
+
+        overlay.addEventListener('change', () => { if (errEl) errEl.style.display = 'none'; });
+
+        saveBtn.addEventListener('click', function onSave() {
+          const picked = overlay.querySelector('input[name="pathChoice"]:checked');
+          if (!picked) {
+            if (errEl) errEl.style.display = 'block';
+            return;
+          }
+          saveBtn.removeEventListener('click', onSave);
+          overlay.style.display = 'none';
+          resolve(picked.value);
+        });
+      });
     }
 
     async function loadDashboard(user) {
