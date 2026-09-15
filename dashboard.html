@@ -4025,6 +4025,19 @@
       // that dims primary/write buttons).
       try { await maybeStartImpersonation(user); } catch (e) { console.warn('[impersonate] init failed:', e && e.message); }
 
+      // Backfill any profile fields Firestore is missing but Auth still has
+      // (name, email, createdAt). This used to run only inside
+      // signInWithEmail/signInWithGoogle, but Firebase persists the session —
+      // someone who signs up once and stays logged in never calls either
+      // again, so a profile left incomplete at signup stayed that way
+      // indefinitely. Running it here heals on the next dashboard visit.
+      // Skipped while impersonating: writes are disabled, and the doc we
+      // would be patching belongs to the target, not the admin.
+      if (!window._impersonatedUid && typeof ensureUserProfile === 'function') {
+        try { await ensureUserProfile(user); }
+        catch (e) { console.warn('[profile] self-heal skipped:', e && e.message); }
+      }
+
       await loadDashboard(user);
     });
 
