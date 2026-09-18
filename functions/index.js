@@ -752,53 +752,32 @@ exports.cleanupOrphanUsers = functions.https.onCall(async (data, context) => {
 // existed and any webhook delivery that was missed.
 //
 // Two-step by design (mirrors the dashboard's confirm-then-act tools):
-//   1. { dryRun: true }  (default) — reads Stripe, writes NOTHING, and returns
-//      every paid Checkout Session with its verification details and whether
-//      it is already in the ledger.
-//   2. { dryRun: false, sessionIds: [...] } — records exactly the sessions the
-//      admin reviewed in step 1. Each one is re-fetched from Stripe and
-//      re-verified at write time.
+//   1. { dryRun: true }  (DEFAULT) — reads Stripe, writes NOTHING, and
+//      returns every paid Checkout Session with its verification result and
+//      whether it is already in the ledger.
+//   2. { dryRun: false, sessionIds: [...] } — records exactly the sessions
+//      the admin reviewed. Each is re-fetched from Stripe and re-verified at
+//      write time; a write run cannot scan.
 //
-// Safety:
-//   - Stripe is the source of truth: a session is only recorded if Stripe
-//     reports it complete + paid, it carries our firebase_uid/tier metadata,
-//     the UID exists in Firebase Auth, and Stripe's customer email matches
-//     that Auth account's email. Anything else is reported as a skip.
-//   - Recording goes through payments.recordCheckoutSession, the same
-//     idempotent path the webhook uses, so a session already in the ledger
-//     is a no-op. Running this twice cannot double-count.
-//   - Refund state is read from the session's charge and applied with the
-//     same absolute-value logic as the charge.refunded webhook.
+// All logic lives in payments.js (tested in test/payments.test.js):
+//   checkReconcileCaller      signed in + admin email + email_verified
+//   parseReconcileRequest     only dryRun / sessionIds / sinceDays accepted;
+//                             any other key (an amount, an email…) is rejected
+//   verifySessionForReconcile Stripe says complete + paid + live, the
+//                             PaymentIntent succeeded for the same amount and
+//                             currency, the UID exists in Auth, and Stripe's
+//                             email matches that account
+//   reconcileSessions         records through the same idempotent path as the
+//                             webhook; never writes QBank access
 // ============================================================================
-const CHECKOUT_SESSION_ID_RE = /^cs_(live|test)_[A-Za-z0-9]{8,200}$/;
-
 exports.reconcileStripePayments = functions
   .runWith({ secrets: ['STRIPE_SECRET_KEY'], timeoutSeconds: 300 })
   .https.onCall(async (data, context) => {
-    if (!context.auth) {
-      throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
-    }
-    const callerEmail = (context.auth.token && context.auth.token.email) || '';
-    if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
-      throw new functions.https.HttpsError('permission-denied', 'Admin only.');
-    }
+    const denied = payments.checkReconcileCaller(context.auth, ADMIN_EMAILS);
+    if (denied) throw new functions.https.HttpsError(denied.code, denied.message);
 
-    const dryRun = !(data && data.dryRun === false);
-    const requestedIds = Array.isArray(data && data.sessionIds) ? data.sessionIds : null;
-    if (!dryRun && (!requestedIds || requestedIds.length === 0)) {
-      throw new functions.https.HttpsError('invalid-argument',
-        'A write run must name the sessionIds reviewed in a dry run.');
-    }
-    if (requestedIds) {
-      if (requestedIds.length > 100) {
-        throw new functions.https.HttpsError('invalid-argument', 'At most 100 sessionIds per run.');
-      }
-      const bad = requestedIds.filter(id => typeof id !== 'string' || !CHECKOUT_SESSION_ID_RE.test(id));
-      if (bad.length) {
-        throw new functions.https.HttpsError('invalid-argument', 'Malformed sessionId(s): ' + bad.join(', '));
-      }
-    }
-    const sinceDays = Math.min(Math.max(parseInt((data && data.sinceDays) || 365, 10) || 365, 1), 730);
+    const req = payments.parseReconcileRequest(data);
+    if (!req.ok) throw new functions.https.HttpsError('invalid-argument', req.message);
 
     const secret = process.env.STRIPE_SECRET_KEY || '';
     if (!secret.startsWith('sk_')) {
@@ -807,15 +786,15 @@ exports.reconcileStripePayments = functions
     const stripe = Stripe(secret);
     const EXPAND = ['payment_intent.latest_charge'];
 
-    // ---- 1. Pull sessions from Stripe
+    // ---- 1. Read sessions from Stripe (the only source of payment facts)
     const sessions = [];
     try {
-      if (requestedIds) {
-        for (const id of requestedIds) {
+      if (req.sessionIds) {
+        for (const id of req.sessionIds) {
           sessions.push(await stripe.checkout.sessions.retrieve(id, { expand: EXPAND }));
         }
       } else {
-        const gte = Math.floor(Date.now() / 1000) - sinceDays * 24 * 60 * 60;
+        const gte = Math.floor(Date.now() / 1000) - req.sinceDays * 24 * 60 * 60;
         for await (const s of stripe.checkout.sessions.list({
           created: { gte },
           limit: 100,
@@ -829,77 +808,22 @@ exports.reconcileStripePayments = functions
       throw new functions.https.HttpsError('internal', 'Could not read checkout sessions from Stripe.');
     }
 
-    // ---- 2. Verify each one and (optionally) record it
-    const deps = Object.assign(paymentDeps(), { source: 'reconcile' });
-    const report = [];
-    for (const s of sessions) {
-      const charge = s.payment_intent && typeof s.payment_intent === 'object'
-        ? s.payment_intent.latest_charge : null;
-      const entry = {
-        sessionId: s.id,
-        created: s.created ? new Date(s.created * 1000).toISOString() : null,
-        amountTotal: s.amount_total,
-        currency: s.currency,
-        livemode: s.livemode === true,
-        status: s.status,
-        paymentStatus: s.payment_status,
-        stripeEmail: (s.customer_details && s.customer_details.email) || s.customer_email || '',
-        uid: (s.metadata && s.metadata.firebase_uid) || null,
-        tier: (s.metadata && s.metadata.tier) || null,
-        amountRefunded: (charge && typeof charge === 'object' && charge.amount_refunded) || 0,
-      };
-
-      const c = payments.classifySession(s, TIERS);
-      if (!c.ok) {
-        // Unpaid / expired / foreign sessions are expected in a scan and
-        // are only worth reporting when the admin asked for them by ID.
-        if (requestedIds) report.push(Object.assign(entry, { action: 'skip', reason: c.reason }));
-        continue;
-      }
-
-      let authEmail = '';
-      try {
-        authEmail = (await admin.auth().getUser(c.uid)).email || '';
-      } catch (_) {
-        report.push(Object.assign(entry, { action: 'skip', reason: 'uid_not_in_firebase_auth' }));
-        continue;
-      }
-      entry.authEmail = authEmail;
-      if (authEmail.toLowerCase() !== entry.stripeEmail.toLowerCase()) {
-        report.push(Object.assign(entry, { action: 'skip', reason: 'email_mismatch_needs_manual_review' }));
-        continue;
-      }
-
-      const [ledgerSnap, userSnap] = await Promise.all([
-        db.collection(payments.LEDGER).doc(s.id).get(),
-        db.collection('users').doc(c.uid).get(),
-      ]);
-      const userPayments = (userSnap.exists && userSnap.data().payments) || {};
-      entry.inLedger = ledgerSnap.exists;
-      entry.userEntitlement = userPayments[c.tierConfig.field] || null;
-      entry.userEntitlementSession = userPayments[`${c.tierConfig.field}-stripe-session`] || null;
-
-      if (dryRun) {
-        entry.action = entry.inLedger ? 'already_recorded' : 'would_record';
-      } else {
-        const r = await payments.recordCheckoutSession(db, s, deps);
-        entry.action = r.result; // 'recorded' | 'duplicate'
-        if (charge && typeof charge === 'object' && charge.amount_refunded > 0) {
-          const rr = await payments.applyChargeRefund(db,
-            Object.assign({}, charge, { payment_intent: s.payment_intent.id }), deps);
-          entry.refund = rr.result;
-        }
-      }
-      report.push(entry);
-    }
+    // ---- 2. Verify each against Stripe + Firebase Auth, then (optionally) record
+    const report = await payments.reconcileSessions(db, sessions, {
+      dryRun: req.dryRun,
+      reportUnpaid: !!req.sessionIds,
+      getAuthUser: async (uid) => {
+        try { return await admin.auth().getUser(uid); } catch (_) { return null; }
+      },
+    }, paymentDeps());
 
     const summary = {
-      dryRun,
+      dryRun: req.dryRun,
       scanned: sessions.length,
-      sinceDays: requestedIds ? null : sinceDays,
+      sinceDays: req.sessionIds ? null : req.sinceDays,
       sessions: report,
     };
-    console.log('[reconcile]', callerEmail, JSON.stringify(summary));
+    console.log('[reconcile]', context.auth.token.email, JSON.stringify(summary));
     return summary;
   });
 

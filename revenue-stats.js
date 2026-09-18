@@ -14,6 +14,8 @@
  *   - paymentStatus === 'paid'     (unpaid / pending / $0 promo excluded)
  *   - net amount > 0               (amountTotal minus amountRefunded;
  *                                   a full refund drops it out entirely)
+ *   - a currency is recorded       (amounts are only ever summed within
+ *                                   their own currency; never assumed USD)
  *   - buyer is not an excluded (admin/internal) account
  * Failed, expired and incomplete checkouts never reach the ledger at all.
  */
@@ -29,6 +31,7 @@
       && t.livemode === true
       && t.paymentStatus === 'paid'
       && typeof t.amountTotal === 'number'
+      && typeof t.currency === 'string' && t.currency.length > 0
       && netCents(t) > 0;
   }
 
@@ -54,7 +57,7 @@
       if (!qualifiesAsRevenue(t)) return;
       if (excludeUids.has(t.uid)) return;
       if (t.email && excludeEmails.has(String(t.email).toLowerCase())) return;
-      const cur = String(t.currency || 'usd').toLowerCase();
+      const cur = t.currency.toLowerCase();
       revenueByCurrency[cur] = (revenueByCurrency[cur] || 0) + netCents(t);
       if (t.uid) payingUids.add(t.uid);
       transactionsCounted++;
