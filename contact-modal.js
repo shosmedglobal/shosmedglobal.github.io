@@ -485,7 +485,11 @@
         name, email,
         category: reason.category,
         subject:  reason.subject,
-        body:     body
+        body:     body,
+        // Stable identifier for the chosen reason. The admin panel uses it
+        // to file the message under Med School / Residency; the subject
+        // wording can change without breaking that.
+        reasonKey: REASONS[reasonKey] ? reasonKey : 'general'
       };
 
       const [firestoreSaved, emailSent] = await Promise.all([

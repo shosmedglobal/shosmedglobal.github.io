@@ -126,6 +126,12 @@ async function submitContactForm(formData) {
       repliedAt: null,
       adminNotes: ''
     };
+    // Contact-form reason identifier (contact-modal.js REASONS key), used by
+    // the admin panel to assign the message to an audience. Only a short
+    // lowercase key is accepted; anything else is simply not stored.
+    if (typeof formData.reasonKey === 'string' && /^[a-z0-9-]{1,40}$/.test(formData.reasonKey)) {
+      doc.reasonKey = formData.reasonKey;
+    }
 
     await db.collection('messages').add(doc);
     return { success: true };
@@ -301,7 +307,7 @@ async function getBookingsForMonth(year, month) {
 // Each function returns an unsubscribe handle; call it to detach the listener.
 // These power the auto-updating admin Inbox, Bookings, Calendar, and badge.
 
-function subscribeAdminMessages(filterStatus, filterCategory, callback) {
+function subscribeAdminMessages(filterStatus, filterCategory, callback, errorCallback) {
   try {
     // Do NOT `.orderBy('createdAt')` — Firestore silently EXCLUDES any
     // doc missing the ordered field, so legacy messages without a
@@ -328,14 +334,17 @@ function subscribeAdminMessages(filterStatus, filterCategory, callback) {
         return bMs - aMs;
       });
       callback(messages);
-    }, err => console.error('subscribeAdminMessages error:', err));
+    }, err => {
+      console.error('subscribeAdminMessages error:', err);
+      if (typeof errorCallback === 'function') errorCallback(err);
+    });
   } catch (error) {
     console.error('subscribeAdminMessages setup error:', error);
     return () => {};
   }
 }
 
-function subscribeAdminBookings(filterStatus, callback) {
+function subscribeAdminBookings(filterStatus, callback, errorCallback) {
   try {
     let query = db.collection('bookings').orderBy('createdAt', 'desc');
     if (filterStatus && filterStatus !== 'all') {
@@ -345,7 +354,10 @@ function subscribeAdminBookings(filterStatus, callback) {
       const bookings = [];
       snap.forEach(doc => bookings.push({ id: doc.id, ...doc.data() }));
       callback(bookings);
-    }, err => console.error('subscribeAdminBookings error:', err));
+    }, err => {
+      console.error('subscribeAdminBookings error:', err);
+      if (typeof errorCallback === 'function') errorCallback(err);
+    });
   } catch (error) {
     console.error('subscribeAdminBookings setup error:', error);
     return () => {};
