@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const Stripe = require('stripe');
 const emails = require('./emails');
+const payments = require('./payments');
 const fs = require('fs');
 const path = require('path');
 
@@ -241,71 +242,32 @@ exports.stripeWebhook = functions
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    if (event.type !== 'checkout.session.completed') {
-      return res.status(200).send('ignored');
-    }
-
-    const session = event.data.object;
-    const uid = session.metadata && session.metadata.firebase_uid;
-    const tier = session.metadata && session.metadata.tier;
-    if (!uid || !tier) {
-      console.error('Missing metadata on session', session.id, session.metadata);
-      return res.status(200).send('ignored: missing metadata');
-    }
-    const tierConfig = TIERS[tier];
-    if (!tierConfig) {
-      console.error('Unknown tier in webhook:', tier);
-      return res.status(200).send('ignored: unknown tier');
-    }
-
-    // Idempotency — if we've already recorded this exact session for this user,
-    // skip. Stripe occasionally replays events; this prevents expiry from being
-    // pushed forward repeatedly.
-    //
-    // The read is inside its own try/catch so a transient Firestore failure
-    // here doesn't throw and trigger a Stripe-side webhook retry storm. We
-    // log and treat the read failure as "not seen before" so the write
-    // attempt below will still happen (which has its own try/catch). Worst
-    // case: a single duplicate write that the set+merge tolerates.
-    const userRef = db.collection('users').doc(uid);
-    let existing = null;
+    // All recording logic — the payment ledger, entitlement fields,
+    // refunds, and idempotency — lives in payments.js. Handled events:
+    //   checkout.session.completed
+    //   checkout.session.async_payment_succeeded
+    //   charge.refunded
+    // Every other type is acknowledged and ignored. Each of those three
+    // must be enabled on the webhook endpoint in the Stripe Dashboard.
     try {
-      const userDoc = await userRef.get();
-      existing = userDoc.exists
-        && userDoc.data().payments
-        && userDoc.data().payments[`${tierConfig.field}-stripe-session`];
-    } catch (readErr) {
-      console.error('Idempotency read failed (will proceed to write):', readErr.message);
-    }
-    if (existing === session.id) {
-      console.log('Already processed:', session.id);
-      return res.status(200).send('already processed');
-    }
-
-    const paymentsUpdate = {
-      [tierConfig.field]: 'paid',
-      [`${tierConfig.field}-purchased-at`]: admin.firestore.FieldValue.serverTimestamp(),
-      [`${tierConfig.field}-stripe-session`]: session.id,
-      [`${tierConfig.field}-amount`]: (session.amount_total || 0) / 100,
-    };
-    if (tierConfig.plan) {
-      paymentsUpdate[`${tierConfig.field}-plan`] = tierConfig.plan;
-    }
-    if (tierConfig.expiryDays) {
-      const expiry = new Date(Date.now() + tierConfig.expiryDays * 24 * 60 * 60 * 1000);
-      paymentsUpdate[`${tierConfig.field}-expires-at`] =
-        admin.firestore.Timestamp.fromDate(expiry);
-    }
-
-    try {
-      await userRef.set({ payments: paymentsUpdate }, { merge: true });
-      console.log(`Granted ${tier} to user ${uid} (session ${session.id})`);
-      return res.status(200).send('ok');
+      const outcome = await payments.handleStripeEvent(db, event, paymentDeps());
+      console.log(`[stripeWebhook] ${event.type} ${event.id} ->`, JSON.stringify(outcome));
+      return res.status(200).send(outcome.result);
     } catch (err) {
-      console.error('Failed to update user:', err);
+      // Storage failure: answer 500 so Stripe retries. Safe, because
+      // recording is idempotent on the Checkout Session ID.
+      console.error(`[stripeWebhook] ${event.type} ${event.id} failed:`, err);
       return res.status(500).send('database update failed');
     }
   });
+
+function paymentDeps() {
+  return {
+    TIERS,
+    FieldValue: admin.firestore.FieldValue,
+    Timestamp: admin.firestore.Timestamp,
+  };
+}
 
 
 // ============================================================================
@@ -781,6 +743,165 @@ exports.cleanupOrphanUsers = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError('internal', err.message);
   }
 });
+
+// ============================================================================
+// reconcileStripePayments
+// ----------------------------------------------------------------------------
+// Admin-only backfill: brings the payment ledger (transactions/*) in line
+// with what Stripe actually charged. Covers payments made before the ledger
+// existed and any webhook delivery that was missed.
+//
+// Two-step by design (mirrors the dashboard's confirm-then-act tools):
+//   1. { dryRun: true }  (default) — reads Stripe, writes NOTHING, and returns
+//      every paid Checkout Session with its verification details and whether
+//      it is already in the ledger.
+//   2. { dryRun: false, sessionIds: [...] } — records exactly the sessions the
+//      admin reviewed in step 1. Each one is re-fetched from Stripe and
+//      re-verified at write time.
+//
+// Safety:
+//   - Stripe is the source of truth: a session is only recorded if Stripe
+//     reports it complete + paid, it carries our firebase_uid/tier metadata,
+//     the UID exists in Firebase Auth, and Stripe's customer email matches
+//     that Auth account's email. Anything else is reported as a skip.
+//   - Recording goes through payments.recordCheckoutSession, the same
+//     idempotent path the webhook uses, so a session already in the ledger
+//     is a no-op. Running this twice cannot double-count.
+//   - Refund state is read from the session's charge and applied with the
+//     same absolute-value logic as the charge.refunded webhook.
+// ============================================================================
+const CHECKOUT_SESSION_ID_RE = /^cs_(live|test)_[A-Za-z0-9]{8,200}$/;
+
+exports.reconcileStripePayments = functions
+  .runWith({ secrets: ['STRIPE_SECRET_KEY'], timeoutSeconds: 300 })
+  .https.onCall(async (data, context) => {
+    if (!context.auth) {
+      throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+    }
+    const callerEmail = (context.auth.token && context.auth.token.email) || '';
+    if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
+      throw new functions.https.HttpsError('permission-denied', 'Admin only.');
+    }
+
+    const dryRun = !(data && data.dryRun === false);
+    const requestedIds = Array.isArray(data && data.sessionIds) ? data.sessionIds : null;
+    if (!dryRun && (!requestedIds || requestedIds.length === 0)) {
+      throw new functions.https.HttpsError('invalid-argument',
+        'A write run must name the sessionIds reviewed in a dry run.');
+    }
+    if (requestedIds) {
+      if (requestedIds.length > 100) {
+        throw new functions.https.HttpsError('invalid-argument', 'At most 100 sessionIds per run.');
+      }
+      const bad = requestedIds.filter(id => typeof id !== 'string' || !CHECKOUT_SESSION_ID_RE.test(id));
+      if (bad.length) {
+        throw new functions.https.HttpsError('invalid-argument', 'Malformed sessionId(s): ' + bad.join(', '));
+      }
+    }
+    const sinceDays = Math.min(Math.max(parseInt((data && data.sinceDays) || 365, 10) || 365, 1), 730);
+
+    const secret = process.env.STRIPE_SECRET_KEY || '';
+    if (!secret.startsWith('sk_')) {
+      throw new functions.https.HttpsError('failed-precondition', 'Stripe secret key is not configured.');
+    }
+    const stripe = Stripe(secret);
+    const EXPAND = ['payment_intent.latest_charge'];
+
+    // ---- 1. Pull sessions from Stripe
+    const sessions = [];
+    try {
+      if (requestedIds) {
+        for (const id of requestedIds) {
+          sessions.push(await stripe.checkout.sessions.retrieve(id, { expand: EXPAND }));
+        }
+      } else {
+        const gte = Math.floor(Date.now() / 1000) - sinceDays * 24 * 60 * 60;
+        for await (const s of stripe.checkout.sessions.list({
+          created: { gte },
+          limit: 100,
+          expand: EXPAND.map(e => 'data.' + e),
+        })) {
+          sessions.push(s);
+        }
+      }
+    } catch (err) {
+      console.error('[reconcile] Stripe read failed:', err.type, err.code, err.message);
+      throw new functions.https.HttpsError('internal', 'Could not read checkout sessions from Stripe.');
+    }
+
+    // ---- 2. Verify each one and (optionally) record it
+    const deps = Object.assign(paymentDeps(), { source: 'reconcile' });
+    const report = [];
+    for (const s of sessions) {
+      const charge = s.payment_intent && typeof s.payment_intent === 'object'
+        ? s.payment_intent.latest_charge : null;
+      const entry = {
+        sessionId: s.id,
+        created: s.created ? new Date(s.created * 1000).toISOString() : null,
+        amountTotal: s.amount_total,
+        currency: s.currency,
+        livemode: s.livemode === true,
+        status: s.status,
+        paymentStatus: s.payment_status,
+        stripeEmail: (s.customer_details && s.customer_details.email) || s.customer_email || '',
+        uid: (s.metadata && s.metadata.firebase_uid) || null,
+        tier: (s.metadata && s.metadata.tier) || null,
+        amountRefunded: (charge && typeof charge === 'object' && charge.amount_refunded) || 0,
+      };
+
+      const c = payments.classifySession(s, TIERS);
+      if (!c.ok) {
+        // Unpaid / expired / foreign sessions are expected in a scan and
+        // are only worth reporting when the admin asked for them by ID.
+        if (requestedIds) report.push(Object.assign(entry, { action: 'skip', reason: c.reason }));
+        continue;
+      }
+
+      let authEmail = '';
+      try {
+        authEmail = (await admin.auth().getUser(c.uid)).email || '';
+      } catch (_) {
+        report.push(Object.assign(entry, { action: 'skip', reason: 'uid_not_in_firebase_auth' }));
+        continue;
+      }
+      entry.authEmail = authEmail;
+      if (authEmail.toLowerCase() !== entry.stripeEmail.toLowerCase()) {
+        report.push(Object.assign(entry, { action: 'skip', reason: 'email_mismatch_needs_manual_review' }));
+        continue;
+      }
+
+      const [ledgerSnap, userSnap] = await Promise.all([
+        db.collection(payments.LEDGER).doc(s.id).get(),
+        db.collection('users').doc(c.uid).get(),
+      ]);
+      const userPayments = (userSnap.exists && userSnap.data().payments) || {};
+      entry.inLedger = ledgerSnap.exists;
+      entry.userEntitlement = userPayments[c.tierConfig.field] || null;
+      entry.userEntitlementSession = userPayments[`${c.tierConfig.field}-stripe-session`] || null;
+
+      if (dryRun) {
+        entry.action = entry.inLedger ? 'already_recorded' : 'would_record';
+      } else {
+        const r = await payments.recordCheckoutSession(db, s, deps);
+        entry.action = r.result; // 'recorded' | 'duplicate'
+        if (charge && typeof charge === 'object' && charge.amount_refunded > 0) {
+          const rr = await payments.applyChargeRefund(db,
+            Object.assign({}, charge, { payment_intent: s.payment_intent.id }), deps);
+          entry.refund = rr.result;
+        }
+      }
+      report.push(entry);
+    }
+
+    const summary = {
+      dryRun,
+      scanned: sessions.length,
+      sinceDays: requestedIds ? null : sinceDays,
+      sessions: report,
+    };
+    console.log('[reconcile]', callerEmail, JSON.stringify(summary));
+    return summary;
+  });
 
 // ============================================================================
 // submitMockExam

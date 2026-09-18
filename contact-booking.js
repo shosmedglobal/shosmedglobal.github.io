@@ -403,6 +403,26 @@ function subscribeAllUsers(callback, errorCallback) {
   }
 }
 
+// Live stream of the Stripe payment ledger (transactions/{checkoutSessionId}).
+// Admin-only per firestore.rules; written solely by Cloud Functions. Feeds
+// the Paying Users / Total Revenue tiles via revenue-stats.js.
+function subscribeTransactions(callback, errorCallback) {
+  try {
+    return db.collection('transactions').onSnapshot(snap => {
+      const txns = [];
+      snap.forEach(doc => txns.push({ id: doc.id, ...doc.data() }));
+      callback(txns);
+    }, err => {
+      console.error('subscribeTransactions error:', err);
+      if (typeof errorCallback === 'function') errorCallback(err);
+    });
+  } catch (error) {
+    console.error('subscribeTransactions setup error:', error);
+    if (typeof errorCallback === 'function') errorCallback(error);
+    return () => {};
+  }
+}
+
 // (subscribeForumPostCount removed — admin "Forum Posts" tile was dropped.
 // The public forum on community.html is unaffected and uses its own queries.)
 

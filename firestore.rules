@@ -120,6 +120,17 @@ service cloud.firestore {
       }
     }
 
+    // ====== Payment ledger ======
+    // One doc per Stripe Checkout Session, keyed by the session ID. Written
+    // ONLY by Cloud Functions (stripeWebhook, reconcileStripePayments) via
+    // the Admin SDK, which bypasses these rules. No client — admin included —
+    // may write, so revenue figures cannot be edited from a browser.
+    // Admins read it to compute Paying Users / Total Revenue.
+    match /transactions/{sessionId} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
     // ====== Messages (contact form) ======
     // Submission is open (visitors don't need to log in).
     // Reads + status updates are admin-only — fixes the bug where messages

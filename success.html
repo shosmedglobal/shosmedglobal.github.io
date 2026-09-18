@@ -161,24 +161,44 @@
         try {
           const snap = await db.collection('users').doc(user.uid).get({ source: 'server' });
           const payments = (snap.data() && snap.data().payments) || {};
-          const hasQbank = payments['exam-bank'] === 'paid';
-          const hasStrategy = payments['strategy-session'] === 'paid';
 
-          if (hasQbank || hasStrategy) {
-            heading.textContent = 'You\'re all set';
-            if (hasQbank) {
-              lead.textContent = 'Your QBank access is unlocked. Start whenever you\'re ready.';
-              ctaContainer.innerHTML =
-                '<a href="qbank.html" class="btn btn-primary">Open the QBank</a>' +
-                '<a href="dashboard.html" class="btn btn-secondary">Go to Dashboard</a>';
-            } else if (hasStrategy) {
-              lead.textContent = 'Your Strategy Session is booked. We\'ll email you within 24 hours to schedule.';
-              ctaContainer.innerHTML =
-                '<a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>';
-            }
-            return true;
+          // Find the purchase THIS checkout created: the webhook stamps
+          // `<field>-stripe-session` with the Checkout Session ID. Matching
+          // on the session (not on a hardcoded product list) confirms every
+          // product — QBank, Strategy Session and each mentorship add-on —
+          // and cannot be fooled by an older purchase of something else.
+          let field = null;
+          if (sessionId) {
+            field = Object.keys(payments).find(k =>
+              k.endsWith('-stripe-session') && payments[k] === sessionId);
+            field = field ? field.slice(0, -'-stripe-session'.length) : null;
           }
-          return false;
+          if (!field || payments[field] !== 'paid') return false;
+
+          const SERVICE_NAMES = {
+            'strategy-session': 'Strategy Session',
+            'mentorship-lor': 'Letter of Rec Coaching',
+            'mentorship-program-list': 'Program List Guidance',
+            'mentorship-research': 'Research Strategy',
+            'mentorship-cv': 'Personal Statement Review',
+            'mentorship-mock-interview': 'Mock Interview Session',
+            'mentorship-eras': 'ERAS CV Review',
+            'usmle-step-review': 'USMLE Step Review',
+          };
+
+          heading.textContent = 'You\'re all set';
+          if (field === 'exam-bank') {
+            lead.textContent = 'Your QBank access is unlocked. Start whenever you\'re ready.';
+            ctaContainer.innerHTML =
+              '<a href="qbank.html" class="btn btn-primary">Open the QBank</a>' +
+              '<a href="dashboard.html" class="btn btn-secondary">Go to Dashboard</a>';
+          } else {
+            const name = SERVICE_NAMES[field] || 'session';
+            lead.textContent = 'Your ' + name + ' is booked. We\'ll email you within 24 hours to schedule.';
+            ctaContainer.innerHTML =
+              '<a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>';
+          }
+          return true;
         } catch (e) {
           console.error('Status check failed:', e);
           return false;

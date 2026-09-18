@@ -1655,6 +1655,7 @@
                 </select>
                 <button class="admin-action-btn admin-btn-grant" onclick="exportUsersCsv()">Export CSV</button>
                 <button class="admin-action-btn" style="background:#fef3c7; color:#92400e; border-color:#fde68a;" onclick="cleanupOrphanProfiles()" title="Delete Firestore /users/{uid} docs whose Firebase Auth account no longer exists">Clean Orphans</button>
+                <button class="admin-action-btn" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0;" onclick="reconcileStripePayments()" title="Compare paid Stripe checkouts with the payment ledger and record any that are missing. Shows a dry run first; nothing is written until you confirm.">Reconcile Payments</button>
               </div>
             </div>
             <div class="admin-table-wrap" id="adminUsersTableWrap">
@@ -3853,7 +3854,8 @@
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
-  <script src="contact-booking.js?v=20260511-charts"></script>
+  <script src="contact-booking.js?v=20260917-ledger"></script>
+  <script src="revenue-stats.js?v=20260917-ledger"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -5368,21 +5370,6 @@
     let adminCurrentPage = 1;
     const ADMIN_PAGE_SIZE = 20;
 
-    // Price map for revenue calculation.
-    // Source of truth for what's actually sellable lives in
-    // functions/index.js → TIERS. The dashboard mirrors those prices
-    // here so revenue can be summed client-side. Keep these two in sync
-    // whenever pricing changes.
-    //
-    // Real Stripe-active tiers (matched against u.payments['exam-bank-plan']):
-    //   full-access      — QBank, $99, 6 months (180 days)
-    //   strategy-session — 1-on-1 USMLE/match call, $99, no expiry
-    //   admin-granted    — comp / reviewer access granted by admin, $0 (excluded from revenue)
-    const PLAN_PRICES = {
-      'full-access':      99,   // QBank — 6 months
-      'strategy-session': 99,   // 1-on-1 call
-      'admin-granted':    0,    // admin-granted access, not real revenue
-    };
 
     /* ====================================================================
        Topic Performance grid (Phase 3)
@@ -5846,6 +5833,7 @@
 
     // ===== Admin Stats (real-time via onSnapshot) =====
     let adminUsersStreamUnsub = null;
+    let adminTransactionsStreamUnsub = null;
     let adminVisitsStreamUnsub = null;
     let adminVisitsByDayUnsub = null;
     let adminVisitsByCountryUnsub = null;
@@ -5859,6 +5847,7 @@
       // re-entry (e.g., admin re-opens the panel).
       let torndown = 0;
       if (typeof adminUsersStreamUnsub === 'function') { adminUsersStreamUnsub(); adminUsersStreamUnsub = null; torndown++; }
+      if (typeof adminTransactionsStreamUnsub === 'function') { adminTransactionsStreamUnsub(); adminTransactionsStreamUnsub = null; torndown++; }
       if (typeof adminVisitsStreamUnsub === 'function') { adminVisitsStreamUnsub(); adminVisitsStreamUnsub = null; torndown++; }
       if (typeof adminVisitsByDayUnsub === 'function') { adminVisitsByDayUnsub(); adminVisitsByDayUnsub = null; torndown++; }
       if (typeof adminVisitsByCountryUnsub === 'function') { adminVisitsByCountryUnsub(); adminVisitsByCountryUnsub = null; torndown++; }
@@ -5932,26 +5921,12 @@
         const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
         let newThisMonth = 0;
-        let paidUsers = 0;
-        let totalRevenue = 0;
         let qbankActiveCount = 0;
 
         users.forEach(u => {
           if (u.createdAt) {
             const created = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
             if (created >= monthStart) newThisMonth++;
-          }
-          const isAdminUser = ADMIN_EMAILS_SET.has((u.email || '').toLowerCase());
-          // Paying users + revenue: exclude admin/test accounts so the
-          // numbers reflect ACTUAL customer payments only — i.e. paid
-          // through Stripe, not admin-granted trials.
-          if (!isAdminUser && u.payments && u.payments['exam-bank'] === 'paid') {
-            const plan = u.payments['exam-bank-plan'] || 'full-access';
-            // Skip admin-granted (comp access) — not real revenue.
-            if (plan !== 'admin-granted') {
-              paidUsers++;
-              totalRevenue += PLAN_PRICES[plan] || 99;
-            }
           }
           // qbankActive proxy: any user who has interacted with QBank.
           // (Subcollection check is too read-heavy for a live stream — we
@@ -5966,14 +5941,56 @@
         // count exactly). Intersecting with Firestore would omit Auth-only
         // accounts whose profile doc failed to land on signup — those
         // users are real and admin can see them in the table, so they
-        // count. `paidUsers` / `newThisMonth` still derive from the
-        // intersection because those metrics require Firestore fields
-        // (`payments`, `createdAt`) that Auth-only accounts don't have.
+        // count. `newThisMonth` still derives from the intersection because
+        // it needs the Firestore `createdAt` field.
         document.getElementById('adminStatTotalUsers').textContent = allAdminUsers.length;
         document.getElementById('adminStatNewUsers').textContent = newThisMonth;
-        document.getElementById('adminStatPaidUsers').textContent = paidUsers;
-        document.getElementById('adminStatRevenue').textContent = '$' + totalRevenue.toLocaleString();
         document.getElementById('adminStatQbankUsers').textContent = qbankActiveCount;
+
+        renderRevenueStats();
+      }
+
+      // Paying Users + Total Revenue come from the Stripe payment LEDGER
+      // (transactions/{checkoutSessionId}), not from users/{uid}.payments.
+      //
+      // The old calculation only looked at payments['exam-bank'] and priced
+      // it from a hardcoded table, so every other product — Strategy
+      // Session and all seven Match Mentorship add-ons — was invisible to
+      // both tiles no matter what Stripe charged. The ledger holds the
+      // amount Stripe actually collected, one doc per Checkout Session, so
+      // a payment cannot be counted twice and refunds net out. The rules
+      // for what counts (live mode, paid, net of refunds) live in
+      // revenue-stats.js, shared with test/payments.test.js.
+      //
+      // Admin/internal accounts stay excluded, as before, so test purchases
+      // don't pollute real metrics.
+      function renderRevenueStats() {
+        const paidEl = document.getElementById('adminStatPaidUsers');
+        const revEl = document.getElementById('adminStatRevenue');
+        if (window._transactionsError) {
+          paidEl.textContent = '—';
+          revEl.textContent = '—';
+          paidEl.title = revEl.title = 'Payment ledger unavailable: ' + window._transactionsError;
+          return;
+        }
+        // Hold at the "-" placeholder until the ledger has loaded at least
+        // once, same no-flicker policy as the other tiles.
+        if (window._transactionsLoaded !== true || typeof SHOSRevenue === 'undefined') return;
+
+        const adminUids = (Array.isArray(allAdminUsers) ? allAdminUsers : [])
+          .filter(u => ADMIN_EMAILS_SET.has((u.email || '').toLowerCase()))
+          .map(u => u.id);
+        const r = SHOSRevenue.summarizeRevenue(window._latestTransactions || [], {
+          excludeEmails: Array.from(ADMIN_EMAILS_SET),
+          excludeUids: adminUids,
+        });
+        paidEl.textContent = r.payingUsers;
+        revEl.textContent = SHOSRevenue.formatUsd(r.revenueCents);
+        paidEl.title = revEl.title = r.transactionsCounted + ' qualifying Stripe payment(s)';
+        const otherCurrencies = Object.keys(r.revenueByCurrency).filter(c => c !== 'usd');
+        if (otherCurrencies.length) {
+          console.warn('[admin] non-USD revenue not included in the USD total:', r.revenueByCurrency);
+        }
       }
       // Expose so loadAdminUsers can trigger a recompute as soon as it
       // has the Auth-backed user set ready.
@@ -5992,6 +6009,24 @@
           }
         }, 800);
       }
+
+      // Payment ledger → Paying Users / Total Revenue. Re-renders on every
+      // ledger change, so a webhook-recorded payment or refund shows up on
+      // an open admin panel without a reload.
+      window._transactionsLoaded = false;
+      window._transactionsError = null;
+      adminTransactionsStreamUnsub = subscribeTransactions(txns => {
+        window._latestTransactions = txns;
+        window._transactionsLoaded = true;
+        window._transactionsError = null;
+        recomputeAdminStats();
+      }, err => {
+        // Most likely cause: firestore.rules without the /transactions
+        // block not yet deployed (permission-denied). Say so on the tiles
+        // rather than leaving them on a silent '-' or showing a false $0.
+        window._transactionsError = (err && (err.code || err.message)) || 'unknown error';
+        recomputeAdminStats();
+      });
 
       adminUsersStreamUnsub = subscribeAllUsers(users => {
         const prevCount = (window._latestFirestoreUsers || []).length;
@@ -7576,6 +7611,79 @@
       } catch (err) {
         console.error('[cleanupOrphans] failed:', err);
         alert('Cleanup failed: ' + (err.message || err));
+      }
+    }
+
+    // ===== Reconcile Stripe payments into the ledger =====
+    // Calls the reconcileStripePayments Cloud Function in two steps:
+    //   1. dry run  — Stripe is read, nothing is written; the admin sees
+    //                 every paid checkout that is missing from the ledger,
+    //                 with its Stripe session ID, amount and email.
+    //   2. confirm  — only the session IDs shown in step 1 are recorded,
+    //                 each re-verified against Stripe at write time.
+    // Recording is idempotent on the session ID, so re-running is harmless.
+    // The Paying Users / Total Revenue tiles update on their own through
+    // the live ledger stream.
+    async function reconcileStripePayments() {
+      const fn = firebase.functions().httpsCallable('reconcileStripePayments');
+      const money = (cents, cur) => (cur || 'usd').toUpperCase() === 'USD'
+        ? '$' + ((cents || 0) / 100).toFixed(2)
+        : ((cents || 0) / 100).toFixed(2) + ' ' + (cur || '').toUpperCase();
+      const line = (e) => '• ' + e.sessionId + '\n    ' + money(e.amountTotal, e.currency) +
+        '  ' + (e.stripeEmail || '(no email)') + '  ' + (e.tier || '?') +
+        '  ' + (e.created ? e.created.slice(0, 10) : '') +
+        (e.livemode ? '' : '  [TEST MODE]') +
+        (e.amountRefunded ? '  [refunded ' + money(e.amountRefunded, e.currency) + ']' : '');
+
+      let dry;
+      try {
+        dry = (await fn({ dryRun: true })).data || {};
+      } catch (err) {
+        console.error('[reconcile] dry run failed:', err);
+        alert('Could not read payments from Stripe: ' + (err.message || err));
+        return;
+      }
+      console.info('[reconcile] dry run:', dry);
+      const sessions = dry.sessions || [];
+      const toRecord = sessions.filter(e => e.action === 'would_record');
+      const already = sessions.filter(e => e.action === 'already_recorded');
+      const skipped = sessions.filter(e => e.action === 'skip');
+
+      const skippedNote = skipped.length
+        ? '\n\nNeeds manual review (' + skipped.length + ', NOT recorded):\n' +
+          skipped.map(e => line(e) + '\n    reason: ' + e.reason).join('\n')
+        : '';
+
+      if (toRecord.length === 0) {
+        alert('Ledger is in sync with Stripe.\n\n' +
+              'Paid checkouts in the last ' + (dry.sinceDays || 365) + ' days: ' + (already.length + skipped.length) +
+              '\nAlready recorded: ' + already.length + skippedNote);
+        return;
+      }
+
+      const ok = confirm(
+        'Stripe shows ' + toRecord.length + ' paid checkout(s) missing from the payment ledger:\n\n' +
+        toRecord.map(line).join('\n') +
+        '\n\nAlready recorded: ' + already.length + skippedNote +
+        '\n\nRecord the ' + toRecord.length + ' listed above? Each is re-verified with Stripe before writing.'
+      );
+      if (!ok) return;
+
+      try {
+        const res = (await fn({ dryRun: false, sessionIds: toRecord.map(e => e.sessionId) })).data || {};
+        console.info('[reconcile] write run:', res);
+        const out = res.sessions || [];
+        const recorded = out.filter(e => e.action === 'recorded').length;
+        const dup = out.filter(e => e.action === 'duplicate').length;
+        const notDone = out.filter(e => e.action !== 'recorded' && e.action !== 'duplicate');
+        alert('Recorded ' + recorded + ' payment(s).' +
+              (dup ? '\n' + dup + ' were already recorded (no change).' : '') +
+              (notDone.length ? '\n\nNot recorded:\n' + notDone.map(e => line(e) + '\n    reason: ' + (e.reason || e.action)).join('\n') : '') +
+              '\n\nPaying Users and Total Revenue update automatically.');
+        if (typeof loadAdminUsers === 'function') await loadAdminUsers();
+      } catch (err) {
+        console.error('[reconcile] write run failed:', err);
+        alert('Reconciliation failed: ' + (err.message || err));
       }
     }
 
