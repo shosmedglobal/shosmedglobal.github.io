@@ -261,6 +261,9 @@ const ids = arr => arr.map(p => p.id).sort();
   check('13i shared reason never auto-assigned', CAT.messageAudience(messages[2]).kind === 'shared' && !mv('residency').includes('m3') && !mv('med-school').includes('m3'));
   check('13j free-text message Unassigned, Overview only', CAT.messageAudience(messages[3]).kind === 'unassigned' && same(mv('overview'), ['m1', 'm2', 'm3', 'm4', 'm5']));
   check('13k invalid reason key falls back to subject', CAT.messageAudience(messages[4]).kind === 'unassigned');
+  check('13k2 a renamed product still matches its old subject line',
+    CAT.messageAudience({ subject: 'Mock Entrance Exam + Interview' }).audience === 'med-school'
+    && CAT.messageAudience({ subject: 'Mock Interview + Feedback' }).audience === 'med-school');
   const att = A.attentionItems({ view: 'overview', people, transactions: txns, messages, bookings, openReports: 2 });
   const byKey = k => (att.find(i => i.key === k) || {}).count;
   check('13l attention: new messages', byKey('messages-new') === 4, att);

@@ -36,7 +36,7 @@
     'mentorship-eras':           { subject: 'Match Mentorship: ERAS CV Review', category: 'booking' },
     'mentorship-research':       { subject: 'Match Mentorship: Research Strategy',          category: 'booking' },
     'applicant-mentor':          { subject: 'Applicant 1-on-1 Mentor Session',              category: 'booking' },
-    'mock-exam':                 { subject: 'Mock Entrance Exam + Interview',               category: 'booking' },
+    'mock-exam':                 { subject: 'Mock Interview + Feedback',                    category: 'booking' },
     'life-in-prague':            { subject: 'Life in Prague Onboarding',                    category: 'booking' },
     'board-review':              { subject: 'USMLE Board Review Inquiry',                  category: 'booking' },
     'submit-match':              { subject: 'Add Me to Recent Match Outcomes',             category: 'general',

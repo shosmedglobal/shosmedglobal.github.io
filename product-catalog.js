@@ -34,7 +34,7 @@
     'full-access':                { name: 'Full QBank Access', audience: 'med-school', stripe: true },
     'full-qbank':                 { name: 'Full QBank Access', audience: 'med-school' },
     'apply-lf3-service':          { name: 'Apply for LF3', audience: 'med-school' },
-    'mock-exam-interview':        { name: 'Mock Exam + Interview', audience: 'med-school' },
+    'mock-exam-interview':        { name: 'Mock Interview + Feedback', audience: 'med-school' },
     'life-in-prague':             { name: 'Life in Prague', audience: 'med-school' },
     'applicant-mentor':           { name: '1-on-1 Mentor Session (applicant)', audience: 'med-school' },
     // Only offered in the Store's Med School section (decision 2026-09-18).
@@ -70,7 +70,11 @@
     'mentorship-eras':           { subject: 'Match Mentorship: ERAS CV Review', audience: 'residency' },
     'mentorship-research':       { subject: 'Match Mentorship: Research Strategy', audience: 'residency' },
     'applicant-mentor':          { subject: 'Applicant 1-on-1 Mentor Session', audience: 'med-school' },
-    'mock-exam':                 { subject: 'Mock Entrance Exam + Interview', audience: 'med-school' },
+    // Renamed 2026-10-11: was 'Mock Entrance Exam + Interview' at $199,
+    // now interview-only at $99. The old subject is kept below so messages
+    // sent before the rename are still filed under Med School.
+    'mock-exam':                 { subject: 'Mock Interview + Feedback', audience: 'med-school',
+                                   legacySubjects: ['Mock Entrance Exam + Interview'] },
     'life-in-prague':            { subject: 'Life in Prague Onboarding', audience: 'med-school' },
     'board-review':              { subject: 'USMLE Board Review Inquiry', audience: 'residency' },
     'submit-match':              { subject: 'Add Me to Recent Match Outcomes', audience: 'residency' },
@@ -110,8 +114,13 @@
     return classify(productAudience(key), false);
   }
 
+  // Subject → reason key, including `legacySubjects` so messages sent under a
+  // previous wording are still recognised after a product is renamed.
   const REASON_BY_SUBJECT = {};
-  Object.keys(CONTACT_REASONS).forEach(k => { REASON_BY_SUBJECT[CONTACT_REASONS[k].subject] = k; });
+  Object.keys(CONTACT_REASONS).forEach(k => {
+    REASON_BY_SUBJECT[CONTACT_REASONS[k].subject] = k;
+    (CONTACT_REASONS[k].legacySubjects || []).forEach(s => { REASON_BY_SUBJECT[s] = k; });
+  });
 
   function messageReasonKey(m) {
     if (!m) return null;

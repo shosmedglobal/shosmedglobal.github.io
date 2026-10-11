@@ -22,7 +22,7 @@ const SERVICE_TYPES = {
   // ----- Med School Application -----
   'full-qbank':                { name: 'Full QBank Access',                 price: 99,  duration: '6 months',    category: 'applicant' },
   'apply-lf3-service':         { name: 'Apply for LF3',                     price: 199, duration: 'Full cycle',  category: 'applicant' },
-  'mock-exam-interview':       { name: 'Mock Exam + Interview',             price: 199, duration: '2 sessions',  category: 'applicant' },
+  'mock-exam-interview':       { name: 'Mock Interview + Feedback',         price: 99,  duration: '1 session',   category: 'applicant' },
   'life-in-prague':            { name: 'Life in Prague',                    price: 99,  duration: '1 session',   category: 'applicant' },
   'applicant-mentor':          { name: '1-on-1 Mentor Session (applicant)', price: 99,  duration: '1 session',   category: 'applicant' },
 
