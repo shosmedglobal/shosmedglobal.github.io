@@ -228,7 +228,7 @@ async function resetProgress() {
   // `plan === 'full-access'` (see functions/index.js TIERS) — so
   // every legitimate paying customer was silently denied a reset.
   // Use the unambiguous payment flag instead of the human label.
-  const isPaid = profile?.payments?.['exam-bank'] === 'paid';
+  const isPaid = SHOSAccess.qbankActive(profile?.payments);
   // Keep this list in sync with firestore.rules → isAdmin() and the
   // matching list in qbank.html (search ADMIN_EMAILS to find both).
   const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];

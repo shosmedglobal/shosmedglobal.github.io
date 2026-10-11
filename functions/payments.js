@@ -62,6 +62,63 @@ const LEDGER = 'transactions';
 // write these (as it always has). Reconciliation and refunds never do.
 const ACCESS_FIELDS = new Set(['exam-bank']);
 
+// Expiry reminders: how many days before the end each one goes out.
+// Ordered soonest-to-latest stage so only one is due at a time.
+const REMINDER_STAGES = [30, 7];
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function toMs(v) {
+  if (v == null || v === '') return null;
+  if (typeof v === 'number') return v;
+  if (typeof v.toMillis === 'function') return v.toMillis();
+  if (typeof v.seconds === 'number') return v.seconds * 1000;
+  if (typeof v._seconds === 'number') return v._seconds * 1000;
+  if (typeof v.__ts === 'number') return v.__ts;
+  const t = Date.parse(v);
+  return isNaN(t) ? null : t;
+}
+
+/**
+ * Renewal maths, mirrored in qbank-access.js: extend from the current expiry
+ * when it is still in the future, otherwise from now, so renewing early
+ * never costs days.
+ */
+function extendExpiry(currentExpiry, nowMs, days) {
+  const cur = toMs(currentExpiry);
+  const base = cur != null && cur > nowMs ? cur : nowMs;
+  return base + days * DAY_MS;
+}
+
+/**
+ * Server-side copy of the QBank access rule (qbank-access.js qbankState):
+ * 'paid' with no expiry never ends; with an expiry it ends at that moment.
+ * test/qbank-access.test.js checks both implementations agree.
+ */
+function qbankAccessActive(payments, nowMs) {
+  const p = payments || {};
+  if (p['exam-bank'] !== 'paid') return false;
+  const exp = toMs(p['exam-bank-expires-at']);
+  return exp == null || exp > nowMs;
+}
+
+/**
+ * Which expiry reminder (if any) this person is due, or null.
+ * Only for access that actually ends, is still active, and has not already
+ * had that reminder. One email per stage per access period; a renewal clears
+ * the flags (see entitlementUpdate).
+ */
+function dueReminderStage(payments, nowMs) {
+  const p = payments || {};
+  if (p['exam-bank'] !== 'paid') return null;
+  const exp = toMs(p['exam-bank-expires-at']);
+  if (exp == null || exp <= nowMs) return null;          // unlimited, or already ended
+  const daysLeft = Math.ceil((exp - nowMs) / DAY_MS);
+  for (const stage of REMINDER_STAGES) {                 // 30 first, then 7
+    if (daysLeft <= stage && !p[`exam-bank-reminder-${stage}-sent`]) return stage;
+  }
+  return null;
+}
+
 const CHECKOUT_SESSION_ID_RE = /^cs_(live|test)_[A-Za-z0-9]{8,200}$/;
 const RECONCILE_ALLOWED_KEYS = new Set(['dryRun', 'sessionIds', 'sinceDays']);
 const MAX_SESSION_IDS = 100;
@@ -104,8 +161,9 @@ function classifySession(session, TIERS) {
 
 // The entitlement write, byte-for-byte the shape the pre-ledger webhook
 // produced. `purchasedAt` is the only input that varies by caller.
-function entitlementUpdate(session, tierConfig, purchasedAt, deps) {
+function entitlementUpdate(session, tierConfig, purchasedAt, deps, existingPayments) {
   const field = tierConfig.field;
+  const existing = existingPayments || {};
   const update = {
     [field]: 'paid',
     [`${field}-purchased-at`]: purchasedAt,
@@ -114,8 +172,14 @@ function entitlementUpdate(session, tierConfig, purchasedAt, deps) {
   };
   if (tierConfig.plan) update[`${field}-plan`] = tierConfig.plan;
   if (tierConfig.expiryDays) {
-    update[`${field}-expires-at`] =
-      deps.Timestamp.fromMillis(now(deps) + tierConfig.expiryDays * 24 * 60 * 60 * 1000);
+    // Renewing early never costs days: extend from the current expiry while
+    // it is still in the future, otherwise from now.
+    update[`${field}-expires-at`] = deps.Timestamp.fromMillis(
+      extendExpiry(existing[`${field}-expires-at`], now(deps), tierConfig.expiryDays));
+    // A renewal starts a fresh reminder cycle.
+    REMINDER_STAGES.forEach(st => {
+      update[`${field}-reminder-${st}-sent`] = deps.FieldValue.delete();
+    });
   }
   return update;
 }
@@ -175,7 +239,7 @@ async function recordCheckoutSession(db, session, deps) {
         entitlement = 'already_present';   // recorded by the pre-ledger webhook
       } else {
         entitlement = 'granted';
-        update = entitlementUpdate(session, tierConfig, FieldValue.serverTimestamp(), deps);
+        update = entitlementUpdate(session, tierConfig, FieldValue.serverTimestamp(), deps, payments);
       }
     } else if (ACCESS_FIELDS.has(field)) {
       entitlement = 'unchanged_access_product';
@@ -184,7 +248,7 @@ async function recordCheckoutSession(db, session, deps) {
     } else {
       entitlement = 'filled_missing_service_record';
       // Historical purchase: stamp Stripe's time, not today's.
-      update = entitlementUpdate(session, tierConfig, Timestamp.fromMillis(stripeCreatedMs), deps);
+      update = entitlementUpdate(session, tierConfig, Timestamp.fromMillis(stripeCreatedMs), deps, payments);
     }
 
     // ---- writes
@@ -419,6 +483,11 @@ async function reconcileSessions(db, sessions, opts, deps) {
 module.exports = {
   LEDGER,
   ACCESS_FIELDS,
+  REMINDER_STAGES,
+  toMs,
+  extendExpiry,
+  qbankAccessActive,
+  dueReminderStage,
   classifySession,
   recordCheckoutSession,
   applyChargeRefund,

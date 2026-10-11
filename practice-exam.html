@@ -1128,7 +1128,7 @@
       try {
         const s = await firebase.firestore().collection('users').doc(user.uid).get();
         const p = s.exists ? s.data() : {};
-        if (p && p.payments && p.payments['exam-bank'] === 'paid') return;
+        if (SHOSAccess.qbankActive(p && p.payments)) return;
       } catch (_) { /* treat as not paid → show upsell */ }
 
       // Compute how many more years the user would unlock. Skips the
@@ -1618,7 +1618,7 @@
       try {
         const profileSnap = await firebase.firestore().collection('users').doc(user.uid).get();
         const profile = profileSnap.exists ? profileSnap.data() : {};
-        isPaid = !!(profile && profile.payments && profile.payments['exam-bank'] === 'paid');
+        isPaid = SHOSAccess.qbankActive(profile && profile.payments);
       } catch (_) { /* fall through — treat as not paid */ }
 
       if (isAdmin || isReviewer || isPaid || isFree) {
@@ -1650,5 +1650,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
+  <script src="qbank-access.js?v=20261011-expiry"></script>
 </body>
 </html>

@@ -101,7 +101,8 @@ const ids = arr => arr.map(p => p.id).sort();
 // =========================================== 3. complimentary access is not revenue
 {
   const c = P('u_comp');
-  check('3a complimentary access labelled Complimentary', c.access.state === 'complimentary' && c.access.label === 'Complimentary');
+  check('3a complimentary access labelled, and says it has no end date',
+    c.access.state === 'complimentary' && c.access.label === 'Complimentary (no end date)', c.access);
   check('3b complimentary user has no purchases', c.purchases.length === 0);
   check('3c complimentary user is NOT a paying customer', !c.paying.any && !c.paying['med-school']);
   check('3d complimentary user IS a med-school member (evidence: access)', c.audiences['med-school']);
@@ -347,6 +348,43 @@ const ids = arr => arr.map(p => p.id).sort();
   keysIn(medSec).forEach(k => check('17i Store med section product is med-school: ' + k, CAT.productAudience(k) === 'med-school'));
   keysIn(resSec).forEach(k => check('17j Store residency section product is residency: ' + k, CAT.productAudience(k) === 'residency'));
   check('17k Store sections found', keysIn(medSec).length >= 1 && keysIn(resSec).length >= 7, [keysIn(medSec), keysIn(resSec)]);
+}
+
+// ===================================== 18. QBank access that ends
+{
+  const D = 86400000;
+  const mk = (id, over) => ({ id, email: id + '@x.test', path: 'applicant',
+    payments: Object.assign({ 'exam-bank': 'paid', 'exam-bank-plan': 'full-access' }, over) });
+  const us = [
+    mk('live', { 'exam-bank-expires-at': { __ts: NOW + 40 * D } }),
+    mk('soon', { 'exam-bank-expires-at': { __ts: NOW + 5 * D } }),
+    mk('done', { 'exam-bank-expires-at': { __ts: NOW - 2 * D } }),
+    mk('comp_until', { 'exam-bank-plan': 'admin-granted', 'exam-bank-expires-at': { __ts: NOW + 60 * D } }),
+    mk('comp_forever', { 'exam-bank-plan': 'admin-granted' }),
+    // No chosen path: only the (now ended) QBank access puts them in Med School.
+    Object.assign(mk('done_nopath', { 'exam-bank-expires-at': { __ts: NOW - 9 * D } }), { path: null }),
+  ];
+  const pp = A.buildPeople(us, [], CFG, NOW);
+  const get = id => pp.find(x => x.id === id);
+  check('18a active purchase shows its end date', get('live').access.state === 'purchased'
+    && /^Purchased until /.test(get('live').access.label) && get('live').access.daysLeft === 40, get('live').access);
+  check('18b expired purchase is not active', get('done').access.state === 'expired'
+    && get('done').access.active === false && /ended/.test(get('done').access.label), get('done').access);
+  check('18c expired person stays in Med School (they had access)', get('done').audiences['med-school']);
+  check('18c2 ...even with no chosen path: ended access is still evidence',
+    get('done_nopath').audiences['med-school'] === true && get('done_nopath').access.state === 'expired', get('done_nopath').derivedPath);
+  check('18d complimentary with a duration shows it', get('comp_until').access.state === 'complimentary'
+    && /until/.test(get('comp_until').access.label), get('comp_until').access);
+  check('18e complimentary with no duration never ends', get('comp_forever').access.unlimited === true
+    && get('comp_forever').access.active === true);
+  const st = A.viewStats('med-school', pp, [], { period: 'all', nowMs: NOW, excludeEmails: [] });
+  check('18f tiles split active / complimentary / ended / ending soon',
+    st.qbank.purchased === 2 && st.qbank.complimentary === 2 && st.qbank.expired === 2 && st.qbank.endingSoon === 1, st.qbank);
+  check('18g the "QBank: Ended" filter finds the expired ones',
+    same(ids(A.filterPeople(pp, 'med-school', { filter: 'access-expired' })), ['done', 'done_nopath']));
+  check('18h expired access is excluded from "QBank: Purchased"',
+    !ids(A.filterPeople(pp, 'med-school', { filter: 'access-purchased' })).includes('done'));
+  check('18i expiry never changes who is a paying customer', pp.every(x => x.paying.any === false));
 }
 
 console.log(`admin-audience: ${passed} passed, ${failures.length} failed`);

@@ -46,19 +46,27 @@ const ADMIN_EMAILS = new Set(new Function(
 )());
 
 // ============================================================ Firestore fake
-const FieldValue = { serverTimestamp: () => ({ __serverTimestamp: true }) };
+const FieldValue = {
+  serverTimestamp: () => ({ __serverTimestamp: true }),
+  // Real FieldValue.delete() removes the key on merge; the renewal path uses
+  // it to clear reminder flags.
+  delete: () => ({ __delete: true }),
+};
 const Timestamp = {
   fromMillis: ms => ({ __ts: ms }),
   fromDate: d => ({ __ts: d.getTime() }),
 };
 
 function isPlainObject(v) {
-  return v && typeof v === 'object' && !Array.isArray(v) && !('__ts' in v) && !v.__serverTimestamp;
+  return v && typeof v === 'object' && !Array.isArray(v) && !('__ts' in v) && !v.__serverTimestamp && !v.__delete;
 }
 function deepMerge(target, src) {
   const out = Object.assign({}, target);
   for (const [k, v] of Object.entries(src)) {
-    out[k] = isPlainObject(v) && isPlainObject(out[k]) ? deepMerge(out[k], v) : v;
+    if (v && v.__delete) { delete out[k]; continue; }
+    // Nested maps always merge (a delete inside a map that does not exist yet
+    // is simply a no-op, as in Firestore).
+    out[k] = isPlainObject(v) ? deepMerge(isPlainObject(out[k]) ? out[k] : {}, v) : v;
   }
   return out;
 }

@@ -178,7 +178,10 @@
             <div class="dash-card" style="margin-bottom:20px; padding:20px;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
                 <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:0;">QBank Progress</h3>
-                <span id="overviewProgressText" style="font-size:0.85rem; font-weight:600; color:var(--accent);">0 / 0</span>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span id="qbankAccessChip" class="qa-chip" hidden></span>
+                  <span id="overviewProgressText" style="font-size:0.85rem; font-weight:600; color:var(--accent);">0 / 0</span>
+                </div>
               </div>
               <div style="background:var(--gray-200); border-radius:8px; height:12px; overflow:hidden;">
                 <div id="overviewProgressBar" style="background:linear-gradient(90deg, var(--accent), #e8a44c); height:100%; border-radius:8px; width:0%; transition:width 0.6s ease;"></div>
@@ -515,6 +518,8 @@
               <a href="#" class="btn btn-secondary" id="dashMockExamBtn" onclick="switchView('mockexams'); return false;" title="Open the Mock Exam Library">Take Mock Exam</a>
             </div>
           </div>
+
+          <div id="qbankAccessBanner" class="qa-banner" hidden></div>
 
           <!-- QBank upgrade prompt removed - full access for all registered users -->
 
@@ -1921,6 +1926,10 @@
                 <span class="profile-label">Path</span>
                 <span class="profile-value" id="profilePath">-</span>
               </div>
+              <div class="profile-row">
+                <span class="profile-label">QBank access</span>
+                <span class="profile-value" id="profileQbankAccess">-</span>
+              </div>
             </div>
 
             <!-- Edit form (hidden) -->
@@ -2566,6 +2575,25 @@
     .admin-tab.active .admin-tab-badge { background: #ef4444; }
     .admin-tab-panel { display: none; }
     .admin-tab-panel.active { display: block; }
+
+    /* ===== QBank access status (end date / countdown / ended) ===== */
+    .qa-chip {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 600; white-space: nowrap;
+      background: #F1F5F9; color: #475569;
+    }
+    .qa-chip.qa-soon { background: #FEF3C7; color: #92400E; }
+    .qa-chip.qa-urgent { background: #FEE2E2; color: #991B1B; }
+    .qa-chip.qa-ended { background: #FEE2E2; color: #991B1B; }
+    .qa-banner {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px;
+      font-size: 0.92rem; border: 1px solid #FDE68A; background: #FFFBEB; color: #78350F;
+    }
+    .qa-banner.qa-ended { border-color: #FECACA; background: #FEF2F2; color: #991B1B; }
+    .qa-banner strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+    .qa-banner p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
+    .qa-banner .btn { flex: none; }
 
     /* ===== Admin audience views (Overview / Med School / Residency) ===== */
     #viewAdmin [hidden] { display: none !important; }
@@ -4126,6 +4154,7 @@
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="contact-booking.js?v=20260918-audience"></script>
   <script src="revenue-stats.js?v=20260918-audience"></script>
+  <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="product-catalog.js?v=20260918-audience"></script>
   <script src="admin-audience.js?v=20260918-audience"></script>
   <script>
@@ -4791,7 +4820,8 @@
       }
 
       // QBank access description
-      const qbankPaid = profile?.payments?.['exam-bank'] === 'paid' || isAdmin || isReviewer;
+      const qbankPaid = SHOSAccess.qbankActive(profile?.payments, { isStaff: isAdmin || isReviewer });
+      renderQbankAccessStatus(SHOSAccess.qbankState(profile?.payments, { isStaff: isAdmin || isReviewer }));
       if (qbankPaid) {
         document.getElementById('qbankAccessDesc').textContent = 'Full Access - 1,000+ questions across Biology and Chemistry.';
       } else {
@@ -4810,7 +4840,7 @@
       // Initialize Study Plan
       // Bio/Chem: first 3 free, rest require exam-bank payment
       // Research: all require research-course payment
-      const examBankPaid = isAdmin || isReviewer || profile?.payments?.['exam-bank'] === 'paid';
+      const examBankPaid = SHOSAccess.qbankActive(profile?.payments, { isStaff: isAdmin || isReviewer });
       const researchPaid = isAdmin || isReviewer || profile?.payments?.['research-course'] === 'paid';
       spInit(profile, examBankPaid, researchPaid);
 
@@ -5575,7 +5605,7 @@
       // Keep this list in sync with firestore.rules → isAdmin()
       const ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
       const isAdmin = ADMIN_EMAILS.includes(currentUser?.email || '');
-      const isPaid = profile?.payments?.['exam-bank'] === 'paid';
+      const isPaid = SHOSAccess.qbankActive(profile?.payments);
       const resetUsed = profile?.qbankResetUsed || (profile?.qbankResetCount || 0) >= 1;
       // Show for paid Full Access users (1 free reset included) or admin
       if (isAdmin || (isPaid && !resetUsed)) {
@@ -5880,7 +5910,7 @@
       try {
         const s = effProfile ? { exists: true, data: () => effProfile } : await firebase.firestore().collection('users').doc(effUid).get();
         const p = s.exists ? s.data() : {};
-        isPaid = p && p.payments && p.payments['exam-bank'] === 'paid';
+        isPaid = SHOSAccess.qbankActive(p && p.payments);
       } catch (_) {}
 
       // Signature short-circuits repeat renders when nothing that would
@@ -6730,9 +6760,32 @@
       const btn = row ? row.querySelector('.admin-btn-grant, .admin-btn-revoke') : null;
       if (btn && btn.dataset.busy === '1') return;
 
-      if (!confirm(currentlyPaid
-        ? 'Switch QBank access OFF for this person?\n\nThis does not refund or change any payment.'
-        : 'Give this person complimentary QBank access?\n\nThis is not a purchase: it does not count as revenue or make them a paying customer.')) return;
+      // Revoking just confirms. Granting asks how long it should last:
+      // a number of months, or empty for access with no end date.
+      // Either way it is complimentary — never a purchase, never revenue.
+      let grantMonths = null;
+      if (currentlyPaid) {
+        if (!confirm('Switch QBank access OFF for this person?\n\nThis does not refund or change any payment.')) return;
+      } else {
+        const answer = prompt(
+          'Give complimentary QBank access.\n\n' +
+          'For how many months? Enter a whole number (for example 6).\n' +
+          'Leave it empty for access with no end date.\n\n' +
+          'This is not a purchase: it never counts as revenue or makes them a paying customer.\n' +
+          'Access with an end date gets the same reminder emails 30 and 7 days before.',
+          '6'
+        );
+        if (answer === null) return;                       // cancelled
+        const typed = String(answer).trim();
+        if (typed !== '') {
+          const months = Number(typed);
+          if (!Number.isInteger(months) || months < 1 || months > 60) {
+            alert('Please enter a whole number of months between 1 and 60, or leave it empty for no end date.');
+            return;
+          }
+          grantMonths = months;
+        }
+      }
 
       if (btn) {
         btn.dataset.busy = '1';
@@ -6754,7 +6807,10 @@
           await db.collection('users').doc(uid).set({
             payments: {
               'exam-bank': firebase.firestore.FieldValue.delete(),
-              'exam-bank-plan': firebase.firestore.FieldValue.delete()
+              'exam-bank-plan': firebase.firestore.FieldValue.delete(),
+              'exam-bank-expires-at': firebase.firestore.FieldValue.delete(),
+              'exam-bank-reminder-30-sent': firebase.firestore.FieldValue.delete(),
+              'exam-bank-reminder-7-sent': firebase.firestore.FieldValue.delete()
             }
           }, { merge: true });
         } else {
@@ -6765,7 +6821,13 @@
           const payload = {
             payments: {
               'exam-bank': 'paid',
-              'exam-bank-plan': 'admin-granted'
+              'exam-bank-plan': 'admin-granted',
+              // A fresh grant starts a fresh reminder cycle.
+              'exam-bank-reminder-30-sent': firebase.firestore.FieldValue.delete(),
+              'exam-bank-reminder-7-sent': firebase.firestore.FieldValue.delete(),
+              'exam-bank-expires-at': grantMonths
+                ? firebase.firestore.Timestamp.fromMillis(SHOSAccess.addMonths(Date.now(), grantMonths))
+                : firebase.firestore.FieldValue.delete()
             }
           };
           if (cached && !cached.hasFirestoreDoc) {
@@ -6785,9 +6847,12 @@
           if (currentlyPaid) {
             delete allAdminUsers[userIdx].payments['exam-bank'];
             delete allAdminUsers[userIdx].payments['exam-bank-plan'];
+            delete allAdminUsers[userIdx].payments['exam-bank-expires-at'];
           } else {
             allAdminUsers[userIdx].payments['exam-bank'] = 'paid';
             allAdminUsers[userIdx].payments['exam-bank-plan'] = 'admin-granted';
+            if (grantMonths) allAdminUsers[userIdx].payments['exam-bank-expires-at'] = SHOSAccess.addMonths(Date.now(), grantMonths);
+            else delete allAdminUsers[userIdx].payments['exam-bank-expires-at'];
           }
         }
 
@@ -7549,6 +7614,63 @@
     }
 
     // =====================================================================
+    // ===== QBank access status =====
+    // Access that ends is shown three ways: the end date on the QBank
+    // Progress card and in Profile & Settings, a countdown chip in the last
+    // 30 days, and a banner on the Question Bank view once it is close or
+    // over. Unlimited access (staff, and admin grants with no duration)
+    // shows no countdown because there is nothing to count down to.
+    function renderQbankAccessStatus(st) {
+      const chip = document.getElementById('qbankAccessChip');
+      const banner = document.getElementById('qbankAccessBanner');
+      const profileRow = document.getElementById('profileQbankAccess');
+      const endDate = st.expiresAtMs ? SHOSAccess.formatEndDate(st.expiresAtMs) : null;
+      const renewBtn = '<a href="#" class="btn btn-primary btn-small" onclick="switchView(\'store\'); return false;">Renew for $99</a>';
+
+      if (profileRow) {
+        profileRow.textContent =
+          st.state === 'staff' ? 'Staff access'
+          : st.state === 'none' ? 'Free preview'
+          : st.state === 'expired' ? 'Ended ' + endDate
+          : st.unlimited ? (st.complimentary ? 'Complimentary (no end date)' : 'Active (no end date)')
+          : 'Active until ' + endDate;
+      }
+
+      if (chip) {
+        chip.hidden = true;
+        chip.className = 'qa-chip';
+        if (st.active && !st.unlimited) {
+          chip.hidden = false;
+          if (st.daysLeft <= 7) { chip.className = 'qa-chip qa-urgent'; chip.textContent = st.daysLeft + (st.daysLeft === 1 ? ' day left' : ' days left'); }
+          else if (st.daysLeft <= 30) { chip.className = 'qa-chip qa-soon'; chip.textContent = st.daysLeft + ' days left'; }
+          else { chip.textContent = 'Access until ' + endDate; }
+          chip.title = 'Your QBank access ends on ' + endDate;
+        } else if (st.state === 'expired') {
+          chip.hidden = false;
+          chip.className = 'qa-chip qa-ended';
+          chip.textContent = 'Access ended';
+          chip.title = 'Ended on ' + endDate;
+        }
+      }
+
+      if (banner) {
+        banner.hidden = true;
+        banner.className = 'qa-banner';
+        banner.innerHTML = '';
+        if (st.state === 'expired') {
+          banner.hidden = false;
+          banner.className = 'qa-banner qa-ended';
+          banner.innerHTML = '<div><strong>Your QBank access ended on ' + escapeHtml(endDate) + '</strong>' +
+            '<p>Nothing was deleted. Your progress, test history and completed mock exams are saved, and come straight back when you renew.</p></div>' + renewBtn;
+        } else if (st.active && !st.unlimited && st.daysLeft <= 30) {
+          banner.hidden = false;
+          banner.innerHTML = '<div><strong>Your QBank access ends in ' + st.daysLeft + (st.daysLeft === 1 ? ' day' : ' days') +
+            ' (' + escapeHtml(endDate) + ')</strong>' +
+            '<p>Renewing early never costs you days — another six months is added to the time you already have.</p></div>' + renewBtn;
+        }
+      }
+    }
+
     // ===== Admin audience views: Overview / Med School / Residency =====
     // =====================================================================
     // One Admin Panel, three views of the SAME data (listAllUsers + the

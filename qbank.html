@@ -388,6 +388,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
+  <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="qbank-sanitizer.js?v=20260511-richhtml"></script>
   <script src="qbank.js?v=20260902-kep3"></script>
   <script>
@@ -491,7 +492,7 @@
         } catch (e) {
           console.warn('Profile load failed or timed out - continuing anyway:', e.message || e);
         }
-        const isPaid = isAdmin || isReviewer || profile?.payments?.['exam-bank'] === 'paid';
+        const isPaid = SHOSAccess.qbankActive(profile?.payments, { isStaff: isAdmin || isReviewer });
         window.qbankAccessLevel = isPaid ? 'full' : 'free';
 
         // Progress + history run in parallel (capped at 3s each)

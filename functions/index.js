@@ -828,6 +828,76 @@ exports.reconcileStripePayments = functions
   });
 
 // ============================================================================
+// qbankExpiryReminders
+// ----------------------------------------------------------------------------
+// Daily check for QBank access that is about to end. Sends two emails per
+// access period: 30 days before and 7 days before. Which one (if any) is due
+// is decided by payments.dueReminderStage, and a flag on the user record
+// stops the same stage going out twice. Renewing clears those flags, so the
+// next period gets its own pair.
+//
+// Only access with an expiry date is considered: admin grants made without a
+// duration never end, so there is nothing to warn about.
+//
+// Cost: one Cloud Scheduler job (Google allows three free per account) and
+// email through the existing Resend free tier — same path as the welcome
+// email, no new spend.
+// ============================================================================
+exports.qbankExpiryReminders = functions
+  .runWith({ secrets: ['RESEND_API_KEY'], timeoutSeconds: 300 })
+  .pubsub.schedule('every day 09:00')
+  .timeZone('UTC')
+  .onRun(async () => {
+    const now = Date.now();
+    let scanned = 0, sent = 0, failed = 0;
+    try {
+      const snap = await db.collection('users').where('payments.exam-bank', '==', 'paid').get();
+      for (const doc of snap.docs) {
+        scanned++;
+        const u = doc.data() || {};
+        const stage = payments.dueReminderStage(u.payments, now);
+        if (!stage) continue;
+        const email = u.email;
+        if (!email) {
+          console.warn('[qbankExpiryReminders] no email on', doc.id, '- skipped');
+          continue;
+        }
+        const expMs = payments.toMs(u.payments['exam-bank-expires-at']);
+        const daysLeft = Math.ceil((expMs - now) / (24 * 60 * 60 * 1000));
+        const endDate = new Date(expMs).toLocaleDateString('en-US',
+          { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+        const subject = daysLeft <= 7
+          ? `Your QBank access ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'}`
+          : 'Your QBank access ends in a month';
+        const result = await sendEmail({
+          to: email,
+          subject,
+          html: emails.qbankExpiryHtml({ name: u.name, daysLeft, endDate }),
+          text: emails.qbankExpiryText({ name: u.name, daysLeft, endDate }),
+        });
+        if (result && result.ok) {
+          // Flag first-and-only-once per stage, so a later run this week
+          // does not email the same person again.
+          await doc.ref.set({
+            payments: { [`exam-bank-reminder-${stage}-sent`]: admin.firestore.FieldValue.serverTimestamp() },
+          }, { merge: true });
+          sent++;
+          console.log(`[qbankExpiryReminders] ${stage}-day notice -> ${email} (ends ${endDate})`);
+        } else {
+          // No flag written: the next daily run retries.
+          failed++;
+          console.error('[qbankExpiryReminders] send failed for', email, result && result.error);
+        }
+      }
+    } catch (err) {
+      console.error('[qbankExpiryReminders] run failed:', err);
+      throw err;                                  // surfaces in the Cloud Scheduler log
+    }
+    console.log(`[qbankExpiryReminders] checked ${scanned} with access; sent ${sent}; failed ${failed}`);
+    return null;
+  });
+
+// ============================================================================
 // submitMockExam
 // ----------------------------------------------------------------------------
 // Server-side scoring for mock exams. Closes the previous "answer keys are
@@ -873,10 +943,14 @@ exports.submitMockExam = functions.https.onCall(async (data, context) => {
   if (!isAdmin && !isReviewer && !isFree) {
     const snap = await db.collection('users').doc(uid).get();
     const p = snap.exists ? (snap.data() || {}) : {};
-    isPaid = !!(p.payments && p.payments['exam-bank'] === 'paid');
+    // Access must be current: 'paid' with no expiry never ends, 'paid' with
+    // an expiry stops at that moment (payments.qbankAccessActive).
+    isPaid = payments.qbankAccessActive(p.payments, Date.now());
     if (!isPaid) {
-      throw new functions.https.HttpsError('permission-denied',
-        'This mock exam requires QBank Full Access ($99). Purchase it from the dashboard store.');
+      const ended = p.payments && p.payments['exam-bank'] === 'paid';
+      throw new functions.https.HttpsError('permission-denied', ended
+        ? 'Your QBank access has ended. Renew from the dashboard store to take this mock exam again.'
+        : 'This mock exam requires QBank Full Access ($99). Purchase it from the dashboard store.');
     }
   }
 
@@ -969,6 +1043,20 @@ exports.getMockExamReview = functions.https.onCall(async (data, context) => {
     // owners must have submitted first.
     if (!isAdmin && !isReviewer) {
       throw new functions.https.HttpsError('failed-precondition', 'No attempt on record for that year.');
+    }
+  }
+  // Answers and explanations are paid content: once access ends they lock,
+  // and come back on renewal. The attempt itself is never deleted, and the
+  // free-year exam stays reviewable on the free tier.
+  if (!isAdmin && !isReviewer) {
+    const cfg = loadExamConfig();
+    if (year !== cfg.freeYear) {
+      const snap = await db.collection('users').doc(callerUid).get();
+      const p = snap.exists ? (snap.data() || {}) : {};
+      if (!payments.qbankAccessActive(p.payments, Date.now())) {
+        throw new functions.https.HttpsError('permission-denied',
+          'Your QBank access has ended. Renew from the dashboard store to see your answers and explanations again.');
+      }
     }
   }
   const exam = loadExam(year);

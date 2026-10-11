@@ -198,7 +198,74 @@ SHOS Med
 shosmed.com`;
 }
 
+
+// ---------- QBank access ending (30 days / 7 days before) ----------
+// Sent by the `qbankExpiryReminders` scheduled function. Access ends on its
+// own; nothing is deleted, and renewing brings progress, explanations and
+// completed mock exams straight back.
+function qbankExpiryHtml({ name, daysLeft, endDate }) {
+  const firstName = (name || '').split(' ')[0] || 'there';
+  const soon = daysLeft <= 7;
+  const headline = soon
+    ? `Your QBank access ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'}`
+    : 'Your QBank access ends in a month';
+  const body = `
+    <tr><td style="padding:0 0 18px;">
+      <h1 style="margin:0; font-size:22px; line-height:1.3; color:${BRAND.navy};">${escapeHtml(headline)}</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 16px; font-size:15px; line-height:1.6; color:${BRAND.gray700};">
+      Hi ${escapeHtml(firstName)}, your Full QBank Access runs until <strong>${escapeHtml(endDate)}</strong>.
+    </td></tr>
+    <tr><td style="padding:0 0 16px; font-size:15px; line-height:1.6; color:${BRAND.gray700};">
+      After that your account stays open and nothing is deleted — your progress, test history and
+      completed mock exams are saved. They simply stay locked until you renew, and your question
+      bank returns to the free preview.
+    </td></tr>
+    <tr><td style="padding:6px 0 22px;">
+      <a href="https://shosmed.com/dashboard.html?view=store"
+         style="display:inline-block; background:${BRAND.accent}; color:#ffffff; text-decoration:none;
+                font-weight:700; font-size:15px; padding:13px 26px; border-radius:999px;">
+        Renew for $99 &rarr;
+      </a>
+    </td></tr>
+    <tr><td style="padding:0 0 8px; font-size:14px; line-height:1.6; color:${BRAND.gray500};">
+      Renewing early never costs you days: another six months is added to the time you already have.
+    </td></tr>
+    <tr><td style="padding:0; font-size:14px; line-height:1.6; color:${BRAND.gray500};">
+      Questions? Just reply to this email.
+    </td></tr>`;
+  return shell({
+    title: headline,
+    preheader: `Full QBank Access ends ${endDate}. Your progress is saved either way.`,
+    bodyHtml: body,
+  });
+}
+
+function qbankExpiryText({ name, daysLeft, endDate }) {
+  const firstName = (name || '').split(' ')[0] || 'there';
+  return `Hi ${firstName},
+
+Your Full QBank Access ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'}, on ${endDate}.
+
+After that your account stays open and nothing is deleted - your progress, test
+history and completed mock exams are saved. They stay locked until you renew,
+and your question bank returns to the free preview.
+
+Renew for $99:
+https://shosmed.com/dashboard.html?view=store
+
+Renewing early never costs you days: another six months is added to the time
+you already have.
+
+Questions? Just reply to this email.
+
+SHOS Med
+shosmed.com`;
+}
+
 module.exports = {
+  qbankExpiryHtml,
+  qbankExpiryText,
   welcomeEmailHtml,
   welcomeEmailText,
   verificationEmailHtml,

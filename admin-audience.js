@@ -22,11 +22,11 @@
  */
 (function (root, factory) {
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = factory(require('./revenue-stats.js'), require('./product-catalog.js'));
+    module.exports = factory(require('./revenue-stats.js'), require('./product-catalog.js'), require('./qbank-access.js'));
   } else {
-    root.SHOSAdmin = factory(root.SHOSRevenue, root.SHOSCatalog);
+    root.SHOSAdmin = factory(root.SHOSRevenue, root.SHOSCatalog, root.SHOSAccess);
   }
-})(typeof window !== 'undefined' ? window : globalThis, function (REV, CAT) {
+})(typeof window !== 'undefined' ? window : globalThis, function (REV, CAT, ACCESS) {
   const VIEWS = ['overview', 'med-school', 'residency'];
   const DAY = 24 * 60 * 60 * 1000;
 
@@ -78,20 +78,30 @@
    * QBank access — read from the entitlement exactly as the site enforces it
    * (payments['exam-bank'] === 'paid'). Nothing here changes access.
    */
-  function qbankAccess(user, role, txnById) {
-    if (role === 'admin' || role === 'reviewer') {
-      return { state: 'staff', label: 'Staff access', active: true };
-    }
+  function qbankAccess(user, role, txnById, nowMs) {
     const p = (user && user.payments) || {};
-    if (p['exam-bank'] !== 'paid') return { state: 'none', label: 'No access', active: false };
-    if (p['exam-bank-plan'] === 'admin-granted') {
-      return { state: 'complimentary', label: 'Complimentary', active: true };
+    const st = ACCESS.qbankState(p, { nowMs, isStaff: role === 'admin' || role === 'reviewer' });
+    if (st.state === 'staff') return { state: 'staff', label: 'Staff access', active: true, everHad: false };
+    if (st.state === 'none') return { state: 'none', label: 'No access', active: false, everHad: false };
+
+    const until = st.expiresAtMs ? ' until ' + ACCESS.formatEndDate(st.expiresAtMs) : '';
+    if (!st.active) {
+      return { state: 'expired', active: false, everHad: true, complimentary: st.complimentary,
+        expiresAtMs: st.expiresAtMs, daysLeft: st.daysLeft,
+        label: (st.complimentary ? 'Complimentary' : 'Purchased') + ' — ended ' + ACCESS.formatEndDate(st.expiresAtMs) };
+    }
+    const base = { active: true, everHad: true, complimentary: st.complimentary,
+      expiresAtMs: st.expiresAtMs, daysLeft: st.daysLeft, unlimited: st.unlimited };
+    if (st.complimentary) {
+      return Object.assign(base, { state: 'complimentary',
+        label: st.unlimited ? 'Complimentary (no end date)' : 'Complimentary' + until });
     }
     const t = txnById[p['exam-bank-stripe-session']];
     if (t && t.refundStatus === 'refunded') {
-      return { state: 'purchased', label: 'Purchased — refunded, access still on', active: true, refundedButActive: true };
+      return Object.assign(base, { state: 'purchased', refundedButActive: true,
+        label: 'Purchased — refunded, access still on' });
     }
-    return { state: 'purchased', label: 'Purchased', active: true };
+    return Object.assign(base, { state: 'purchased', label: 'Purchased' + until });
   }
 
   function pathLabel(path) {
@@ -104,7 +114,7 @@
    * Build one record per account from the listAllUsers rows + ledger.
    * cfg: { adminEmails, reviewerEmails }
    */
-  function buildPeople(users, transactions, cfg) {
+  function buildPeople(users, transactions, cfg, nowMs) {
     const txnById = {};
     const byUid = {};
     (transactions || []).forEach(t => {
@@ -115,11 +125,11 @@
       const role = roleOf(u.email, cfg);
       const purchases = (byUid[u.id] || []).map(toPurchase)
         .sort((a, b) => (b.purchasedAtMs || 0) - (a.purchasedAtMs || 0));
-      const access = qbankAccess(u, role, txnById);
+      const access = qbankAccess(u, role, txnById, nowMs);
       const bought = aud => purchases.some(p => p.audience === aud && p.status !== 'Test mode');
       const isApplicant = role === 'applicant';
       const med = isApplicant && (u.path === 'applicant' || bought('med-school')
-        || access.state === 'purchased' || access.state === 'complimentary');
+        || access.everHad);   // expired QBank access still means med-school
       const res = isApplicant && (u.path === 'student' || bought('residency'));
       let derived;
       if (med && res) derived = 'Both';
@@ -220,6 +230,9 @@
       stats.qbank = {
         purchased: applicants.filter(p => p.access.state === 'purchased').length,
         complimentary: applicants.filter(p => p.access.state === 'complimentary').length,
+        expired: applicants.filter(p => p.access.state === 'expired').length,
+        endingSoon: applicants.filter(p => p.access.active && typeof p.access.daysLeft === 'number'
+          && p.access.daysLeft <= 30).length,
       };
     }
     return stats;
@@ -235,7 +248,7 @@
     'med-school': [
       ['all', 'All med-school applicants'], ['paying', 'Paying customers'],
       ['access-purchased', 'QBank: Purchased'], ['access-complimentary', 'QBank: Complimentary'],
-      ['access-none', 'QBank: No access'],
+      ['access-expired', 'QBank: Ended'], ['access-none', 'QBank: No access'],
     ],
     residency: [
       ['all', 'All residency applicants'], ['paying', 'Paying customers'], ['not-paying', 'No purchases yet'],
@@ -258,6 +271,7 @@
         case 'path-none': return !p.path;
         case 'access-purchased': return p.access.state === 'purchased';
         case 'access-complimentary': return p.access.state === 'complimentary';
+        case 'access-expired': return p.access.state === 'expired';
         case 'access-none': return p.access.state === 'none';
         default: return true;
       }
