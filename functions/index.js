@@ -296,7 +296,7 @@ function paymentDeps() {
 const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
 const EMAIL_REPLY_TO = 'contact@shosmed.com';
 
-async function sendEmail({ to, subject, html, text }) {
+async function sendEmail({ to, subject, html, text, replyTo }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn('[email] RESEND_API_KEY not configured — skipping send to', to);
@@ -315,7 +315,9 @@ async function sendEmail({ to, subject, html, text }) {
         subject,
         html,
         text,
-        reply_to: EMAIL_REPLY_TO,
+        // Admin notifications reply straight to the person who wrote in;
+        // everything else replies to the shared inbox.
+        reply_to: replyTo || EMAIL_REPLY_TO,
       }),
     });
     if (!res.ok) {
@@ -825,6 +827,108 @@ exports.reconcileStripePayments = functions
     };
     console.log('[reconcile]', context.auth.token.email, JSON.stringify(summary));
     return summary;
+  });
+
+// ============================================================================
+// onMessageCreated / onBookingCreated
+// ----------------------------------------------------------------------------
+// Emails the shared inbox whenever a contact message or a booking request is
+// saved, so nothing sits in the admin Inbox unnoticed.
+//
+// Why a server trigger rather than the browser: the public contact modal used
+// to be the only thing sending mail (via Web3Forms, from the visitor's
+// browser), the dashboard's own contact form sent nothing at all, and
+// bookings sent nothing. A Firestore trigger fires for every path, cannot be
+// skipped by an ad blocker or a closed tab, and never tells the visitor the
+// message went through when it did not.
+//
+// Reply-To is the person who wrote in, so replying from any mail client
+// answers them directly. Cost: the existing Resend free tier, same as the
+// welcome email.
+// ============================================================================
+const NOTIFY_TO = 'contact@shosmed.com';
+const ADMIN_INBOX_URL = 'https://shosmed.com/dashboard.html?view=admin';
+
+// Readable labels for the stored category code.
+const MESSAGE_CATEGORY_LABELS = {
+  'booking': 'Book a Service',
+  'content-question': 'Content / Academic Question',
+  'technical-issue': 'Technical Issue',
+  'billing': 'Billing & Payments',
+  'partnership': 'Partnership Inquiry',
+  'general': 'General Question',
+};
+
+exports.onMessageCreated = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .firestore.document('messages/{messageId}')
+  .onCreate(async (snap) => {
+    const m = snap.data() || {};
+    try {
+      const result = await sendEmail({
+        to: NOTIFY_TO,
+        replyTo: m.email || undefined,
+        subject: `[SHOS] ${m.subject || 'New message'} — ${m.name || 'website visitor'}`,
+        html: emails.adminAlertHtml({
+          kind: 'message', name: m.name, email: m.email, body: m.body, inboxUrl: ADMIN_INBOX_URL,
+          lines: [
+            ['Subject', m.subject],
+            ['Category', MESSAGE_CATEGORY_LABELS[m.category] || m.category],
+            ['Signed in', m.userId ? 'yes' : 'no'],
+          ],
+        }),
+        text: emails.adminAlertText({
+          kind: 'message', name: m.name, email: m.email, body: m.body, inboxUrl: ADMIN_INBOX_URL,
+          lines: [
+            ['Subject', m.subject],
+            ['Category', MESSAGE_CATEGORY_LABELS[m.category] || m.category],
+            ['Signed in', m.userId ? 'yes' : 'no'],
+          ],
+        }),
+      });
+      console.log('[onMessageCreated]', snap.id, 'from', m.email || '(no email)',
+        result && result.ok ? 'notified' : (result && result.skipped ? 'skipped (no API key)' : 'FAILED'));
+    } catch (err) {
+      // Never throw: the message is already saved, and a retry storm would
+      // only duplicate emails.
+      console.error('[onMessageCreated] notification failed for', snap.id, err);
+    }
+    return null;
+  });
+
+exports.onBookingCreated = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .firestore.document('bookings/{bookingId}')
+  .onCreate(async (snap) => {
+    const b = snap.data() || {};
+    try {
+      const when = [b.preferredDate, b.preferredTime].filter(Boolean).join(' ');
+      const lines = [
+        ['Service', b.serviceName || b.serviceType],
+        ['Price', typeof b.price === 'number' ? (b.price === 0 ? 'Free' : '$' + b.price) : ''],
+        ['Preferred', when],
+        ['Timezone', b.timezone],
+        ['Status', b.status],
+      ];
+      // Intake answers, when the service asks any.
+      Object.entries(b.intakeAnswers || {}).forEach(([k, v]) => {
+        if (v) lines.push([k, String(v)]);
+      });
+      const payload = {
+        kind: 'booking', name: b.name, email: b.email, body: b.sessionGoal, inboxUrl: ADMIN_INBOX_URL, lines,
+      };
+      const result = await sendEmail({
+        to: NOTIFY_TO,
+        replyTo: b.email || undefined,
+        subject: `[SHOS] Booking: ${b.serviceName || b.serviceType || 'service'} — ${b.name || 'website visitor'}`,
+        html: emails.adminAlertHtml(payload),
+        text: emails.adminAlertText(payload),
+      });
+      console.log('[onBookingCreated]', snap.id, b.serviceType, result && result.ok ? 'notified' : 'not sent');
+    } catch (err) {
+      console.error('[onBookingCreated] notification failed for', snap.id, err);
+    }
+    return null;
   });
 
 // ============================================================================

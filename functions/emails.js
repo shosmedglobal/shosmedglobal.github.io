@@ -263,7 +263,81 @@ SHOS Med
 shosmed.com`;
 }
 
+
+// ---------- Admin notification: a new message or booking arrived ----------
+// Sent by the `onMessageCreated` / `onBookingCreated` Firestore triggers to
+// the shared inbox. Reply-To is set to the person who wrote in, so replying
+// in any mail client reaches them directly.
+//
+// Everything here comes from a web form, so every value is escaped: a body
+// containing HTML must read as text, never render as markup.
+function adminAlertHtml({ kind, name, email, lines, body, inboxUrl }) {
+  const heading = kind === 'booking' ? 'New booking request' : 'New message';
+  const rows = (lines || []).filter(l => l && l[1]).map(([label, value]) => `
+    <tr>
+      <td style="padding:5px 14px 5px 0; font-size:13px; color:${BRAND.gray500}; white-space:nowrap; vertical-align:top;">${escapeHtml(label)}</td>
+      <td style="padding:5px 0; font-size:14px; color:${BRAND.gray700};">${escapeHtml(value)}</td>
+    </tr>`).join('');
+
+  const bodyBlock = body ? `
+    <tr><td style="padding:14px 0 0;">
+      <div style="background:${BRAND.cream}; border-left:3px solid ${BRAND.accent}; border-radius:6px;
+                  padding:14px 16px; font-size:15px; line-height:1.6; color:${BRAND.gray700};
+                  white-space:pre-wrap; word-break:break-word;">${escapeHtml(body)}</div>
+    </td></tr>` : '';
+
+  const inner = `
+    <tr><td style="padding:0 0 4px;">
+      <h1 style="margin:0; font-size:20px; line-height:1.3; color:${BRAND.navy};">${escapeHtml(heading)}</h1>
+    </td></tr>
+    <tr><td style="padding:0 0 14px; font-size:15px; color:${BRAND.gray700};">
+      from <strong>${escapeHtml(name || 'Someone')}</strong>
+      ${email ? `&lt;<a href="mailto:${escapeHtml(email)}" style="color:${BRAND.accent}; text-decoration:none;">${escapeHtml(email)}</a>&gt;` : ''}
+    </td></tr>
+    <tr><td style="padding:0;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">${rows}</table>
+    </td></tr>
+    ${bodyBlock}
+    <tr><td style="padding:22px 0 6px;">
+      <a href="${escapeHtml(inboxUrl)}"
+         style="display:inline-block; background:${BRAND.accent}; color:#ffffff; text-decoration:none;
+                font-weight:700; font-size:15px; padding:12px 24px; border-radius:999px;">
+        Open in the dashboard &rarr;
+      </a>
+    </td></tr>
+    <tr><td style="padding:6px 0 0; font-size:13px; color:${BRAND.gray500};">
+      Replying to this email goes straight to ${escapeHtml(email || 'the sender')}.
+    </td></tr>`;
+
+  return shell({
+    title: heading,
+    preheader: `${heading} from ${name || 'someone'}${email ? ' (' + email + ')' : ''}`,
+    bodyHtml: inner,
+  });
+}
+
+function adminAlertText({ kind, name, email, lines, body, inboxUrl }) {
+  const heading = kind === 'booking' ? 'New booking request' : 'New message';
+  const detail = (lines || []).filter(l => l && l[1]).map(([label, value]) => `${label}: ${value}`).join('\n');
+  return `${heading} from ${name || 'Someone'}${email ? ' <' + email + '>' : ''}
+
+${detail}${body ? `
+
+-----
+${body}
+-----` : ''}
+
+Open in the dashboard:
+${inboxUrl}
+
+Replying to this email goes straight to ${email || 'the sender'}.
+
+SHOS Med`;
+}
+
 module.exports = {
+  adminAlertHtml,
+  adminAlertText,
   qbankExpiryHtml,
   qbankExpiryText,
   welcomeEmailHtml,
