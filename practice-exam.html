@@ -819,6 +819,17 @@
     return { year: mockExamYear, meta, config: cfg };
   }
 
+  /* What the user reads for the active exam: the admissions cycle the
+     paper belongs to ("2021/2022"), carried as `label` in config.json.
+     `mockExamYear` stays the identifier — it keys the question file, the
+     attempt doc and the ?year= parameter — so it is never shown. Falls
+     back to the identifier when a config entry has no label. */
+  function mockExamLabel() {
+    const entry = ((mockExamConfig && mockExamConfig.years) || [])
+      .find(y => y && y.year === mockExamYear);
+    return (entry && entry.label) || mockExamYear || '';
+  }
+
 
   /* =======================================================================
    *  STATE
@@ -1140,8 +1151,8 @@
 
       const pct = scoreObj.total > 0 ? Math.round(100 * scoreObj.correct / scoreObj.total) : 0;
       const openingLine = pct >= 65
-        ? "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. That's a real starting point — lock in the pattern before test day."
-        : "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamYear + " exam. The fastest way to bring that up is more timed reps.";
+        ? "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamLabel() + " exam. That's a real starting point — lock in the pattern before test day."
+        : "You scored " + scoreObj.correct + " / " + scoreObj.total + " (" + pct + "%) on the free " + mockExamLabel() + " exam. The fastest way to bring that up is more timed reps.";
 
       // The dashboard reads `?view=` to route between views; hash
        // fragments are ignored. Explicit view=store lands the user on
@@ -1593,7 +1604,7 @@
           const bannerEl = document.createElement('div');
           bannerEl.setAttribute('role', 'status');
           bannerEl.style.cssText = 'position:sticky; top:0; z-index:80; background:#FEF3C7; color:#78350F; border-bottom:1px solid #F59E0B; padding:10px 16px; font-size:0.92rem; text-align:center; font-weight:600;';
-          bannerEl.innerHTML = 'Admin review · Viewing user\'s completed attempt (' + esc(mockExamYear) + '). Read-only.'
+          bannerEl.innerHTML = 'Admin review · Viewing user\'s completed attempt (' + esc(mockExamLabel()) + '). Read-only.'
             + ' <a href="dashboard.html?viewAs=' + encodeURIComponent(targetUid || '') + '&view=mockexams" style="color:#0F172A; text-decoration:underline; margin-left:12px;">Back to their dashboard</a>';
           const app = document.querySelector('.exam-app');
           if (app && app.parentNode) app.parentNode.insertBefore(bannerEl, app);
@@ -1608,7 +1619,7 @@
       // paywall / start flow.
       if (_reviewingAsAdmin) {
         const authMsg = document.getElementById('authMessage');
-        if (authMsg) authMsg.textContent = 'This user has not taken the ' + mockExamYear + ' mock exam.';
+        if (authMsg) authMsg.textContent = 'This user has not taken the ' + mockExamLabel() + ' mock exam.';
         const signIn = document.getElementById('authSignInBtn');
         const signUp = document.getElementById('authSignUpBtn');
         if (signIn) signIn.style.display = 'none';

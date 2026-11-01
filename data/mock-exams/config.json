@@ -1,10 +1,10 @@
 {
-  "_comment": "Mock-exam library configuration. Change `freeYear` to designate which year is accessible to free-tier users. All other years are locked behind paid access (users['exam-bank'] === 'paid'), except admins and reviewers who always see everything.",
+  "_comment": "Mock-exam library configuration. `year` is the stable identifier — it keys the question file (mock-exam-<year>.json), the attempt document under users/{uid}/mockExamAttempts, and the ?year= URL parameter, so it must never change. `label` is what the user sees: the admissions cycle the paper belongs to. Change `freeYear` to designate which year is accessible to free-tier users. All other years are locked behind paid access (users['exam-bank'] === 'paid'), except admins and reviewers who always see everything.",
   "freeYear": "2022",
   "years": [
-    { "year": "2022", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
-    { "year": "2023", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
-    { "year": "2024", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
-    { "year": "2025", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] }
+    { "year": "2022", "label": "2021/2022", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2023", "label": "2022/2023", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2024", "label": "2023/2024", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] },
+    { "year": "2025", "label": "2024/2025", "status": "available", "questionCount": 60, "durationMinutes": 120, "sections": ["Biology", "Chemistry"] }
   ]
 }

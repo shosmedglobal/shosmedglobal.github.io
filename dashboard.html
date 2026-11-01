@@ -607,7 +607,9 @@
               <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> Real 2-hour timing</span>
             </div>
             <div class="mock-exam-empty-actions">
-              <a href="practice-exam.html?year=2022" class="btn btn-primary" id="mockExamEmptyCta">Start the free 2022 mock exam &rarr;</a>
+              <!-- Label and href are reset from config.json by the loader;
+                   this is the pre-JS fallback. -->
+              <a href="practice-exam.html?year=2022" class="btn btn-primary" id="mockExamEmptyCta">Start the free 2021/2022 mock exam &rarr;</a>
               <a href="#mockExamTable" class="mock-exam-empty-secondary">Browse all exams &darr;</a>
             </div>
           </div>
@@ -2172,11 +2174,12 @@
     .mock-exam-table tbody tr.row-locked td { color: #94A3B8; }
     .mock-exam-table tbody tr.row-done { background: #FAFEFD; }
 
-    /* Year column: big year number */
-    .cell-year { width: 84px; }
+    /* Year column: the admissions cycle, e.g. 2021/2022 — wide enough
+       for the full pair and never broken across two lines. */
+    .cell-year { width: 124px; }
     .mock-exam-table .year-num {
-      font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em;
-      color: inherit;
+      font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em;
+      color: inherit; white-space: nowrap;
     }
 
     /* Status pill (inline, table-style) */
@@ -5790,6 +5793,21 @@
     }
 
     /* ====================================================================
+       Exam display label.
+       `year` ("2022") is the stable identifier — it keys the question
+       file, the attempt doc and the ?year= URL parameter. What the user
+       reads is the admissions cycle the paper belongs to ("2021/2022"),
+       carried as `label` in config.json. Everything the user sees goes
+       through here; identifiers never do. Falls back to the bare year so
+       a config entry without a label still renders.
+       ==================================================================== */
+    function examLabel(cfg, year) {
+      const y = String(year == null ? '' : year);
+      const entry = ((cfg && cfg.years) || []).find(e => e && e.year === y);
+      return (entry && entry.label) || y;
+    }
+
+    /* ====================================================================
        Recommended Next Action card (Phase 2)
        Chooses the single most helpful next step for the user based on:
          - which years they've completed
@@ -5826,7 +5844,7 @@
       if (undoneAndTakeable.length > 0) {
         // Prefer the OLDEST undone-and-takeable year (chronological practice).
         const nextYear = undoneAndTakeable.sort()[0];
-        title.textContent = 'Take the ' + nextYear + ' exam next';
+        title.textContent = 'Take the ' + examLabel(cfg, nextYear) + ' exam next';
 
         // Contextual copy: if we know the user's weakest section from
         // their latest attempt, name it so the nudge feels personal.
@@ -5870,7 +5888,7 @@
         if (window._impersonatedUid) {
           ctaBox.innerHTML = '';
         } else {
-          ctaBox.innerHTML = '<a href="practice-exam.html?year=' + encodeURIComponent(nextYear) + '" class="btn btn-primary">Start ' + nextYear + ' Exam</a>';
+          ctaBox.innerHTML = '<a href="practice-exam.html?year=' + encodeURIComponent(nextYear) + '" class="btn btn-primary">Start ' + examLabel(cfg, nextYear) + ' Exam</a>';
         }
         return;
       }
@@ -5878,7 +5896,7 @@
       // Case 3: user is free-tier, has done the free exam, wants more.
       if (undoneYears.length > 0 && !roles.isPaid && !roles.isAdmin && !roles.isReviewer) {
         title.textContent = 'Unlock ' + undoneYears.length + ' more mock exams';
-        copy.textContent = 'You\'ve done the free ' + cfg.freeYear + ' exam. QBank Full Access ($99, 6 months) unlocks every other year plus 1,000+ practice questions and full explanations.';
+        copy.textContent = 'You\'ve done the free ' + examLabel(cfg, cfg.freeYear) + ' exam. QBank Full Access ($99, 6 months) unlocks every other year plus 1,000+ practice questions and full explanations.';
         ctaBox.innerHTML = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
         return;
       }
@@ -5979,6 +5997,14 @@
       if (emptyEl)  emptyEl.style.display  = hasAttempts ? 'none' : '';
       if (kpiRowEl) kpiRowEl.style.display = hasAttempts ? '' : 'none';
 
+      // The empty-state CTA names the free exam, so it follows
+      // cfg.freeYear rather than the year hardcoded in the markup.
+      const emptyCta = document.getElementById('mockExamEmptyCta');
+      if (emptyCta && cfg.freeYear) {
+        emptyCta.setAttribute('href', 'practice-exam.html?year=' + encodeURIComponent(cfg.freeYear));
+        emptyCta.innerHTML = 'Start the free ' + examLabel(cfg, cfg.freeYear) + ' mock exam &rarr;';
+      }
+
       // During impersonation, replace the empty-state CTA with a plain
       // status line — the admin should not start a new attempt on
       // behalf of the target, and clicking the "Start" link would open
@@ -6006,7 +6032,7 @@
         const latestVal = document.getElementById('kpiLatestScoreVal');
         const latestSub = document.getElementById('kpiLatestScoreSub');
         if (latestVal) latestVal.textContent = lc + ' / ' + lt;
-        if (latestSub) latestSub.textContent = lpct + '% · ' + (latest.year || '');
+        if (latestSub) latestSub.textContent = lpct + '%' + (latest.year ? ' · ' + examLabel(cfg, latest.year) : '');
 
         // Exams complete out of total years available.
         const totalYears = (cfg.years || []).length;
@@ -6124,7 +6150,7 @@
         const rowId = isDone ? ('mrow-' + y.year) : '';
         rows.push(
           '<tr' + (rowClass ? ' class="' + rowClass + '"' : '') + (rowId ? ' id="' + rowId + '"' : '') + '>' +
-            '<td class="cell-year"><span class="year-num">' + y.year + '</span></td>' +
+            '<td class="cell-year"><span class="year-num">' + (y.label || y.year) + '</span></td>' +
             '<td class="cell-status">' + statusHtml + '</td>' +
             '<td class="cell-score">' + scoreHtml + '</td>' +
             '<td class="cell-section cell-hide-narrow">' + bioHtml + '</td>' +
