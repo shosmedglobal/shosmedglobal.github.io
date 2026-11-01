@@ -45,6 +45,41 @@ check('1d the server copy parses to the same object',
     fs.existsSync(path.join(ROOT, 'functions', 'exam-data', 'mock-exam-' + y.year + '.json')));
 });
 
+// -------------------------------------------- public copy stays in sync
+// Students read the stems and options from data/mock-exams/, not from the
+// functions bundle, so a content fix applied only to functions/exam-data/
+// never reaches the exam. scripts/strip-mock-exams.js regenerates the
+// public copy; these checks fail if someone forgets to run it.
+const PUBLIC_SHAPE = ['id', 'section', 'question', 'options'];
+(cfg.years || []).forEach(y => {
+  const pubPath = path.join(ROOT, 'data', 'mock-exams', 'mock-exam-' + y.year + '.json');
+  const srvPath = path.join(ROOT, 'functions', 'exam-data', 'mock-exam-' + y.year + '.json');
+  if (!fs.existsSync(pubPath) || !fs.existsSync(srvPath)) return;
+  const pub = JSON.parse(fs.readFileSync(pubPath, 'utf8'));
+  const srv = JSON.parse(fs.readFileSync(srvPath, 'utf8'));
+
+  check(`6a ${y.year}: both copies have the same number of questions`,
+    pub.length === srv.length, { pub: pub.length, srv: srv.length });
+  const stripped = srv.map(q => ({ id: q.id, section: q.section, question: q.question, options: q.options }));
+  const drift = pub.map((q, i) => {
+    const s = stripped[i];
+    if (!s) return 'Q' + q.id + ' (no server counterpart)';
+    const bad = [];
+    if (q.question !== s.question) bad.push('stem');
+    if (JSON.stringify(q.options) !== JSON.stringify(s.options)) bad.push('options');
+    if (q.id !== s.id) bad.push('id');
+    if (q.section !== s.section) bad.push('section');
+    return bad.length ? 'Q' + s.id + ' ' + bad.join('+') : null;
+  }).filter(Boolean);
+  check(`6b ${y.year}: the public copy matches the server copy (run scripts/strip-mock-exams.js)`,
+    drift.length === 0, drift.slice(0, 12));
+
+  // And it must still leak nothing: no answer key, no explanation, no topic.
+  check(`6c ${y.year}: the public copy carries no answer key or explanation`,
+    pub.every(q => Object.keys(q).every(k => PUBLIC_SHAPE.includes(k))),
+    [...new Set(pub.flatMap(q => Object.keys(q)))]);
+});
+
 // ----------------------------------------------------------------- labels
 const EXPECTED_LABELS = {
   '2022': '2021/2022',
