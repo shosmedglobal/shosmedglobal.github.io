@@ -113,6 +113,32 @@ const TIERS = {
   'usmle-step-review': {         // USMLE Step Review (per session)
     field: 'usmle-step-review', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
   },
+
+  // ---- Full Application Support à la carte (Step 3 on the Med School
+  // path). One-time purchases, no plan and no expiry — same shape as the
+  // Match Mentorship add-ons above.
+  //
+  // Apply for LF3 is $199 and has its own Stripe Price (lookup_key
+  // 'apply-lf3'). The other three are $99 and share ONE Price
+  // (lookup_key 'application-addon'), the same way the residency add-ons
+  // share 'mentorship-addon'. They are kept separate from the residency
+  // $99 Price so a med-school buyer's receipt does not read
+  // "Match Mentorship Add-On".
+  //
+  // Both lookup keys must exist on an ACTIVE Price in Stripe or checkout
+  // fails at click time with "No active Stripe price found for lookup_key".
+  'apply-lf3-service': {         // Apply for LF3 — $199
+    field: 'apply-lf3-service', priceKey: 'apply-lf3', plan: null, expiryDays: null,
+  },
+  'mock-exam-interview': {       // Mock Interview + Feedback
+    field: 'mock-exam-interview', priceKey: 'application-addon', plan: null, expiryDays: null,
+  },
+  'life-in-prague': {            // Life in Prague
+    field: 'life-in-prague', priceKey: 'application-addon', plan: null, expiryDays: null,
+  },
+  'applicant-mentor': {          // 1-on-1 Mentor Session (applicant)
+    field: 'applicant-mentor', priceKey: 'application-addon', plan: null, expiryDays: null,
+  },
 };
 
 const ALLOWED_ORIGINS = new Set([

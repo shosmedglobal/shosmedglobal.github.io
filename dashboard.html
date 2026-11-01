@@ -1238,6 +1238,24 @@
                 </ul>
 
                 <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Ask About Add-Ons</a>
+
+                <!-- Buy one service outright. Same pattern as Match Mentorship
+                     on the residency card: the <select> writes its value onto
+                     the button's data-tier, and the shared .stripe-pay handler
+                     takes it from there. Each <option> value must match a TIERS
+                     key in functions/index.js AND resolve to an active Stripe
+                     Price via that tier's lookup_key. -->
+                <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--gray-200);">
+                  <label for="applicantTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Or buy a single service</label>
+                  <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
+                    <option value="">Choose a service&hellip;</option>
+                    <option value="apply-lf3-service">Apply for LF3 &mdash; $199</option>
+                    <option value="mock-exam-interview">Mock Interview + Feedback &mdash; $99</option>
+                    <option value="life-in-prague">Life in Prague &mdash; $99</option>
+                    <option value="applicant-mentor">1-on-1 Mentor Session &mdash; $99</option>
+                  </select>
+                  <a href="#" id="applicantBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Service</a>
+                </div>
               </div>
 
             </div>
@@ -5411,6 +5429,24 @@
         btn.style.pointerEvents = tier ? '' : 'none';
         btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
         // Surface the price on the button itself, e.g. "Get This Service — $99".
+        const label = tier ? sel.options[sel.selectedIndex].text : '';
+        const price = label.includes('—') ? label.split('—').pop().trim() : '';
+        btn.textContent = price ? 'Get This Service — ' + price : 'Get This Service';
+      });
+    })();
+
+    // ===== Full Application Support: single service purchase =====
+    // Same behaviour as the Match Mentorship control above.
+    (function () {
+      const sel = document.getElementById('applicantTierSelect');
+      const btn = document.getElementById('applicantBuyBtn');
+      if (!sel || !btn) return;
+      sel.addEventListener('change', function () {
+        const tier = sel.value;
+        btn.dataset.tier = tier;
+        btn.style.opacity = tier ? '' : '0.5';
+        btn.style.pointerEvents = tier ? '' : 'none';
+        btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
         const label = tier ? sel.options[sel.selectedIndex].text : '';
         const price = label.includes('—') ? label.split('—').pop().trim() : '';
         btn.textContent = price ? 'Get This Service — ' + price : 'Get This Service';

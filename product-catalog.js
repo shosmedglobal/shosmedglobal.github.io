@@ -33,10 +33,10 @@
     // ---- Med School Application
     'full-access':                { name: 'Full QBank Access', audience: 'med-school', stripe: true },
     'full-qbank':                 { name: 'Full QBank Access', audience: 'med-school' },
-    'apply-lf3-service':          { name: 'Apply for LF3', audience: 'med-school' },
-    'mock-exam-interview':        { name: 'Mock Interview + Feedback', audience: 'med-school' },
-    'life-in-prague':             { name: 'Life in Prague', audience: 'med-school' },
-    'applicant-mentor':           { name: '1-on-1 Mentor Session (applicant)', audience: 'med-school' },
+    'apply-lf3-service':          { name: 'Apply for LF3', audience: 'med-school', stripe: true },
+    'mock-exam-interview':        { name: 'Mock Interview + Feedback', audience: 'med-school', stripe: true },
+    'life-in-prague':             { name: 'Life in Prague', audience: 'med-school', stripe: true },
+    'applicant-mentor':           { name: '1-on-1 Mentor Session (applicant)', audience: 'med-school', stripe: true },
     // Only offered in the Store's Med School section (decision 2026-09-18).
     'entrance-exam-registration': { name: 'Entrance Exam Registration (US & Canada)', audience: 'med-school' },
 
