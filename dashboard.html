@@ -1246,19 +1246,15 @@
                      key in functions/index.js AND resolve to an active Stripe
                      Price via that tier's lookup_key. -->
                 <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--gray-200);">
-                  <label for="applicantTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Or buy a single service</label>
+                  <label for="applicantTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Buy a single add-on</label>
                   <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
-                    <option value="">Choose a service&hellip;</option>
+                    <option value="">Choose an add-on&hellip;</option>
                     <option value="apply-lf3-service">Apply for LF3 &mdash; $199</option>
-                    <!-- The $99 services are ready in TIERS but stay out of this list
-                         until a Stripe Price with lookup_key "application-addon" exists;
-                         offering them sooner would fail at click time.
                     <option value="mock-exam-interview">Mock Interview + Feedback &mdash; $99</option>
                     <option value="life-in-prague">Life in Prague &mdash; $99</option>
                     <option value="applicant-mentor">1-on-1 Mentor Session &mdash; $99</option>
-                    -->
                   </select>
-                  <a href="#" id="applicantBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Service</a>
+                  <a href="#" id="applicantBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Add-On</a>
                 </div>
               </div>
 
@@ -1415,9 +1411,9 @@
                      must match a TIERS key in functions/index.js AND the
                      lookup_key of an active Stripe Price. -->
                 <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--gray-200);">
-                  <label for="addonTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Or buy a single service</label>
+                  <label for="addonTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Buy a single add-on</label>
                   <select id="addonTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.88rem; color:var(--navy); background:#fff; margin-bottom:10px; cursor:pointer;">
-                    <option value="">Choose a service&hellip;</option>
+                    <option value="">Choose an add-on&hellip;</option>
                     <option value="mentorship-lor">Letter of Rec Coaching &mdash; $99</option>
                     <option value="mentorship-program-list">Program List Guidance &mdash; $99</option>
                     <option value="mentorship-research">Research Strategy &mdash; $99</option>
@@ -1426,7 +1422,7 @@
                     <option value="mentorship-eras">ERAS CV Review &mdash; $99</option>
                     <option value="usmle-step-review">USMLE Step Review &mdash; $99 / session</option>
                   </select>
-                  <a href="#" id="addonBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Service</a>
+                  <a href="#" id="addonBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Add-On</a>
                 </div>
               </div>
 
@@ -5435,7 +5431,7 @@
         // Surface the price on the button itself, e.g. "Get This Service — $99".
         const label = tier ? sel.options[sel.selectedIndex].text : '';
         const price = label.includes('—') ? label.split('—').pop().trim() : '';
-        btn.textContent = price ? 'Get This Service — ' + price : 'Get This Service';
+        btn.textContent = price ? 'Get This Add-On — ' + price : 'Get This Add-On';
       });
     })();
 
@@ -5453,7 +5449,7 @@
         btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
         const label = tier ? sel.options[sel.selectedIndex].text : '';
         const price = label.includes('—') ? label.split('—').pop().trim() : '';
-        btn.textContent = price ? 'Get This Service — ' + price : 'Get This Service';
+        btn.textContent = price ? 'Get This Add-On — ' + price : 'Get This Add-On';
       });
     })();
 
