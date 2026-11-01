@@ -1250,9 +1250,13 @@
                   <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
                     <option value="">Choose a service&hellip;</option>
                     <option value="apply-lf3-service">Apply for LF3 &mdash; $199</option>
+                    <!-- The $99 services are ready in TIERS but stay out of this list
+                         until a Stripe Price with lookup_key "application-addon" exists;
+                         offering them sooner would fail at click time.
                     <option value="mock-exam-interview">Mock Interview + Feedback &mdash; $99</option>
                     <option value="life-in-prague">Life in Prague &mdash; $99</option>
                     <option value="applicant-mentor">1-on-1 Mentor Session &mdash; $99</option>
+                    -->
                   </select>
                   <a href="#" id="applicantBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Service</a>
                 </div>
