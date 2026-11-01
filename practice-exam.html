@@ -720,7 +720,7 @@
     <div id="examResultsView" style="display:none;">
       <div class="exam-results">
         <h2>Your Results</h2>
-        <p class="results-sub">Detailed review with explanations below. This is a one-time mock exam — your attempt is now on record.</p>
+        <p class="results-sub">Detailed review with explanations below. Your attempt has been submitted. Each mock exam can be taken once.</p>
 
         <!-- Persistence-warning banner. Shown ONLY when finishExam's
              Firestore write fails so the user knows the results in front
@@ -1338,7 +1338,16 @@
     const chemCell = chemTotal > 0
       ? '<div class="score-bd-item">Chemistry<strong>' + chemCorrect + ' / ' + chemTotal + '</strong></div>'
       : '';
-    $('scoreBreakdown').innerHTML = bioCell + chemCell;
+    // Wrong answers and unanswered questions are different things, so they
+    // are counted separately: "0 / 60" alone cannot tell you whether the
+    // answers were wrong or the exam simply ran out of time.
+    const blankCount = examQuestions.filter(q => !state.answers[q && q.id]).length;
+    const wrongCount = Math.max(0, total - totalCorrect - blankCount);
+    const wrongCell = '<div class="score-bd-item">Incorrect<strong>' + wrongCount + '</strong></div>';
+    const blankCell = blankCount > 0
+      ? '<div class="score-bd-item">Unanswered<strong>' + blankCount + '</strong></div>'
+      : '';
+    $('scoreBreakdown').innerHTML = bioCell + chemCell + wrongCell + blankCell;
 
     // Post-exam upsell (Phase 2). Show only for free-tier users after
     // completing the free-year exam — peak intent, natural upsell moment.
