@@ -187,7 +187,7 @@ NOT_IN_STEM.forEach(([id, re, label]) =>
 const IN_EXPLANATION = [
   [5, /double-stranded/i, 'that Chargaff needs two strands'],
   [8, /monohybrid/i, 'which cross the F2 ratio comes from'],
-  [4, /mosaicism/i, 'new mutation and germline mosaicism'],
+  [4, /must have come from his mother/i, 'why the mother is the expected carrier'],
   [24, /linkage|linked/i, 'why linkage does not change the answer'],
   [34, /fraction and concentration are not the same/i, 'fraction versus concentration'],
   [36, /additive/i, 'that the volumes are treated as additive'],
@@ -213,22 +213,23 @@ IN_EXPLANATION.forEach(([id, re, label]) =>
 
 // Honest about ambiguity where the paper is genuinely loose.
 [[46, /strictly names lactic acid/i], [51, /defensible/i], [54, /defensible/i],
- [45, /an assumption the question never states/i], [20, /weakest part/i], [36, /requires its density/i]]
+ [45, /read as an equilibrium question/i], [20, /balance itself is intake minus output/i],
+ [36, /requires its density/i]]
   .forEach(([id, re]) => check(`3l Q${id} explanation names the ambiguity`, re.test(plain(byId(id).explanation))));
 
 // Second review pass: statements that must be in, and claims that must stay out.
 const REVIEW_PASS_2 = [
   [2,  /both are RNA and neither can be the template/i, 'transcription needs a DNA partner'],
-  [4,  /carrier testing does/i,                        'the pedigree does not settle de novo vs carrier'],
+  [4,  /classic pedigree of an X-linked recessive/i,   'the X-linked recessive pattern'],
   [15, /contributing to the sense of brightness/i,     'melanopsin reaches conscious vision'],
   [16, /reports directly which allele came from/i,     'what the recessive partner buys'],
   [24, /do not appear at all/i,                        'complete linkage removes the recombinants'],
   [36, /% ?m\/v|per unit volume/i,                     'the fourfold result is per volume'],
   [38, /Option A \(decreases 100x\)/,                  'option A is 100x, as the option says'],
-  [45, /a faster reaction is not the same as a larger yield/i, 'rate is not yield'],
+  [45, /not the same as a greater yield/i,             'rate is not yield'],
   [46, /official intended answer/i,                    'C is intended but names the acid'],
   [47, /no free carboxyl group/i,                      'why acetylcholine is not an amino acid'],
-  [53, /monohydroxide such as NaOH/i,                  'the conditions behind pH 13'],
+  [53, /0\.1 mol\/l NaOH at 25/,                        'the worked example behind pH 13'],
 ];
 REVIEW_PASS_2.forEach(([id, re, label]) =>
   check(`3n Q${id} explanation states: ${label}`, re.test(plain(byId(id).explanation)),
@@ -264,6 +265,11 @@ const FALSE_CLAIMS = [
   [46, /actual carbon skeleton and functional groups/i, 'the acid shows lactate’s functional groups'],
   [47, /would require both/i, 'every amino acid needs a primary amino group'],
   [53, /cannot have a pH below 7/i, 'no hydroxide solution can be acidic'],
+  // Third review pass: caveats that had outgrown the teaching.
+  [4, /carrier testing/i, 'a carrier-testing digression'],
+  [20, /weakest part/i, 'an editorial aside about a distractor'],
+  [47, /proline/i, 'a proline aside'],
+  [53, /treating the solution as ideal|Ba\(OH\)/, 'a digression on non-ideal behavior'],
 ];
 FALSE_CLAIMS.forEach(([id, re, label]) =>
   check(`4 Q${id} no longer claims: ${label}`, !re.test(byId(id).explanation)));
