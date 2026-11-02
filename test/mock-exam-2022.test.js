@@ -227,6 +227,7 @@ const REVIEW_PASS_2 = [
   [36, /% ?m\/v|per unit volume/i,                     'the fourfold result is per volume'],
   [38, /Option A \(decreases 100x\)/,                  'option A is 100x, as the option says'],
   [45, /not the same as a greater yield/i,             'rate is not yield'],
+  [45, /does not imply that the reaction stops/i,      'why option C fails, without overclaiming'],
   [46, /official intended answer/i,                    'C is intended but names the acid'],
   [47, /no free carboxyl group/i,                      'why acetylcholine is not an amino acid'],
   [53, /0\.1 mol\/l NaOH at 25/,                        'the worked example behind pH 13'],
@@ -270,6 +271,7 @@ const FALSE_CLAIMS = [
   [20, /weakest part/i, 'an editorial aside about a distractor'],
   [47, /proline/i, 'a proline aside'],
   [53, /treating the solution as ideal|Ba\(OH\)/, 'a digression on non-ideal behavior'],
+  [45, /heating never stops a reaction/i, 'that heating never stops any reaction'],
 ];
 FALSE_CLAIMS.forEach(([id, re, label]) =>
   check(`4 Q${id} no longer claims: ${label}`, !re.test(byId(id).explanation)));
