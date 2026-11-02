@@ -3,7 +3,7 @@
     "id": 1,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "Adrenocorticotropic hormone (ACTH) is secreted primarily by which gland?",
+    "question": "Adrenocorticotropic hormone (ACTH) is secreted by:",
     "options": {
       "A": "hypothalamus",
       "B": "anterior pituitary",
@@ -17,7 +17,7 @@
     "id": 2,
     "section": "Biology",
     "topic": "Molecular biology",
-    "question": "During a cell's day-to-day activity, the triplet 5′-CUA-3′ paired with the triplet 3′-GAU-5′. Both are RNA. In which of the following did this pairing occur?",
+    "question": "At one point as a cell carried out its day-to-day activities, the nucleotides CUA were paired with the nucleotides GAU. This pairing occurred:",
     "options": {
       "A": "during replication",
       "B": "during transcription",
@@ -31,12 +31,12 @@
     "id": 3,
     "section": "Biology",
     "topic": "Immunology & blood",
-    "question": "Hematocrit is the percentage of whole blood volume occupied by which component?",
+    "question": "Blood hematocrit is:",
     "options": {
-      "A": "leukocyte volume divided by plasma volume",
-      "B": "erythrocyte volume divided by plasma volume",
-      "C": "erythrocyte volume divided by whole blood volume",
-      "D": "erythrocyte volume divided by the volume of all other cells"
+      "A": "volume relation (%) of plasma to leukocytes",
+      "B": "volume relation (%) of erythrocytes to plasma",
+      "C": "volume relation (%) of erythrocytes to full blood",
+      "D": "volume relation (%) of erythrocytes to rest of cells"
     },
     "correct": "C",
     "explanation": "<p><strong>Hematocrit</strong> is the fraction of whole blood volume made up of erythrocytes, expressed as a percentage: erythrocyte volume ÷ whole blood volume × 100. It is measured by centrifuging anticoagulated blood, or calculated by an automated analyzer.</p><p>Reference values differ with sex, age, altitude and laboratory method, and shift with pregnancy, dehydration and anemia, so a single universal range is not quoted here.</p><p><strong>Option A</strong>: leukocytes make up well under 1% of blood volume; the buffy coat is not the hematocrit.</p><p><strong>Option B</strong>: erythrocytes ÷ plasma is a ratio of the two fractions to each other, not the fraction of whole blood.</p><p><strong>Option D</strong>: comparing erythrocytes with the remaining cells ignores the plasma, which is most of the blood volume.</p>"
@@ -45,21 +45,21 @@
     "id": 4,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Hemophilia is an X-linked recessive disease. A phenotypically unaffected man and a phenotypically unaffected woman have a healthy daughter and a son who has hemophilia. Assuming ordinary X-linked recessive inheritance with complete penetrance, no new mutation and no germline mosaicism, what can you say about the parents' genotypes?",
+    "question": "Hemophilia is an X-linked recessive disease. A phenotypically normal man married a phenotypically normal woman. Their daughter is healthy, but their son suffers from hemophilia. What can you say about the parents' genotypes?",
     "options": {
-      "A": "it must be a de novo mutation, because neither parent carries the allele",
-      "B": "the father carries the mutation",
-      "C": "the mother carries the mutation",
-      "D": "both parents carry the mutation"
+      "A": "it must be a de novo mutation, because none of the parents is a mutation carrier",
+      "B": "the father is a mutation carrier",
+      "C": "the mother is a mutation carrier",
+      "D": "both parents are mutation carriers"
     },
     "correct": "C",
-    "explanation": "<p>The affected son is XʰY and receives his only X chromosome from his mother. Under the stated assumptions, an unaffected mother who passes Xʰ to her son is a heterozygous carrier, <strong>XᴴXʰ</strong>, and the father is XᴴY. The healthy daughter is consistent with either XᴴXᴴ or XᴴXʰ and does not change this.</p><p>In real families the assumptions matter: roughly a third of severe hemophilia cases arise from a <strong>new mutation</strong>, and maternal <strong>germline mosaicism</strong> can produce an affected son from a mother who is not a carrier in her blood cells. One affected son alone therefore does not prove carrier status — which is why the question states the assumptions explicitly.</p><p><strong>Option A</strong> (de novo mutation): possible in reality, but excluded here by the stated assumptions, and a heterozygous mother remains the most common explanation.</p><p><strong>Option B</strong> (father carries it): for an X-linked recessive locus a man is either affected (XʰY) or not (XᴴY) — there is no male carrier state. An affected father would also have passed Xʰ to his daughter, not his son.</p><p><strong>Option D</strong> (both parents): impossible for the same reason — the father cannot be a carrier.</p>"
+    "explanation": "<p>The affected son is XʰY and receives his only X chromosome from his mother. An unaffected mother who passes Xʰ to her son is therefore a heterozygous carrier, XᴴXʰ, and the father is XᴴY. The healthy daughter is consistent with either XᴴXᴴ or XᴴXʰ and does not change this.</p><p>The question does not spell out its assumptions, and in a real family they matter: roughly a third of severe hemophilia cases arise from a new mutation, and maternal germline mosaicism can produce an affected son from a mother who carries nothing detectable in her blood. One affected son alone does not prove carrier status. The reading the question expects is ordinary X-linked recessive inheritance with no new mutation and no mosaicism, under which the mother must be the carrier.</p><p><strong>Option A</strong> (de novo mutation): not excluded in reality, and in a genetics clinic it is precisely what testing would be done to rule out. It is rejected here because a heterozygous mother is both the more common explanation and the one the question is testing.</p><p><strong>Option B</strong> (the father): for an X-linked recessive locus a man is either affected (XʰY) or not (XᴴY) — there is no male carrier state. An affected father would in any case have passed Xʰ to his daughter, not to his son.</p><p><strong>Option D</strong> (both parents): impossible for the same reason — the father cannot be a carrier.</p>"
   },
   {
     "id": 5,
     "section": "Biology",
     "topic": "Molecular biology",
-    "question": "In a double-stranded DNA molecule, 30% of the bases are cytosine. What percentage of the bases are adenine?",
+    "question": "If a DNA molecule contains 30% cytosine, what percentage of adenine is present?",
     "options": {
       "A": "20%",
       "B": "30%",
@@ -67,7 +67,7 @@
       "D": "60%"
     },
     "correct": "A",
-    "explanation": "<p>In <strong>double-stranded</strong> DNA, Chargaff's rules give %A = %T and %G = %C, because the two strands pair A–T and G–C. If %C = 30%, then %G = 30%, so C + G = 60% and A + T = 40%. Since A = T, <strong>%A = 20%</strong>.</p><p>The question specifies double-stranded DNA because this equality comes from base pairing between the strands; it does not hold for a single-stranded molecule.</p><p><strong>Option B</strong> (30%): confuses adenine with cytosine or guanine.</p><p><strong>Option C</strong> (40%): the combined A + T total, not adenine alone.</p><p><strong>Option D</strong> (60%): the combined C + G total.</p>"
+    "explanation": "<p>Chargaff's rules give %A = %T and %G = %C, because the two strands pair A–T and G–C. If %C = 30%, then %G = 30%, so C + G = 60% and A + T = 40%. Since A = T, <strong>%A = 20%</strong>.</p><p>The question does not say that the molecule is double-stranded, and the equality holds only if it is: in a single strand the four bases are under no such constraint and the adenine content could be anything. Treat “a DNA molecule” here as the usual double helix.</p><p><strong>Option B</strong> (30%): confuses adenine with cytosine or guanine.</p><p><strong>Option C</strong> (40%): the combined A + T total, not adenine alone.</p><p><strong>Option D</strong> (60%): the combined C + G total.</p>"
   },
   {
     "id": 6,
@@ -87,7 +87,7 @@
     "id": 7,
     "section": "Biology",
     "topic": "Cell division",
-    "question": "In humans, meiosis takes place in germ cells within which organs?",
+    "question": "In humans, meiotic cell division occurs in specialized organs known as:",
     "options": {
       "A": "gonads",
       "B": "gametes",
@@ -101,7 +101,7 @@
     "id": 8,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "For a monohybrid cross Aa × Aa, with complete dominance of A over a, what is the expected phenotypic ratio in the F₂ generation?",
+    "question": "In Mendel's experiments, the phenotypic ratio of the F₂ generation is:",
     "options": {
       "A": "3 : 1",
       "B": "1 : 1",
@@ -109,7 +109,7 @@
       "D": "1 : 3 : 1"
     },
     "correct": "A",
-    "explanation": "<p>Crossing Aa × Aa gives genotypes AA : Aa : aa in a 1 : 2 : 1 ratio. With <strong>complete dominance</strong>, AA and Aa look alike, so three offspring show the dominant phenotype for every one showing the recessive phenotype: <strong>3 : 1</strong>.</p><p>This is an <em>expected</em> ratio. It describes probabilities, so a small number of offspring need not match it exactly.</p><p>The question specifies a monohybrid cross with complete dominance because Mendel studied several kinds of cross: a standard dihybrid F₂ gives 9 : 3 : 3 : 1, and incomplete dominance gives a 1 : 2 : 1 phenotypic ratio.</p><p><strong>Option B</strong> (1 : 1): expected from a testcross, Aa × aa.</p><p><strong>Option C</strong> (1 : 2 : 1): the F₂ <em>genotypic</em> ratio, which is also the phenotypic ratio when dominance is incomplete.</p><p><strong>Option D</strong> (1 : 3 : 1): not a standard Mendelian ratio.</p>"
+    "explanation": "<p>Crossing Aa × Aa gives genotypes AA : Aa : aa in a 1 : 2 : 1 ratio. With complete dominance, AA and Aa look alike, so three offspring show the dominant phenotype for every one showing the recessive phenotype: <strong>3 : 1</strong>.</p><p>The question does not name the cross. Mendel's classic F₂ comes from selfing the F₁ of a monohybrid cross between true-breeding parents, with one allele completely dominant, and that is the intended reading — his dihybrid F₂ gives 9 : 3 : 3 : 1, and where dominance is incomplete the phenotypic ratio is 1 : 2 : 1 instead.</p><p>This is an expected ratio. It describes probabilities, so a small number of offspring need not match it exactly.</p><p><strong>Option B</strong> (1 : 1): expected from a testcross, Aa × aa.</p><p><strong>Option C</strong> (1 : 2 : 1): the F₂ genotypic ratio, which is also the phenotypic ratio when dominance is incomplete.</p><p><strong>Option D</strong> (1 : 3 : 1): not a standard Mendelian ratio.</p>"
   },
   {
     "id": 9,
@@ -143,7 +143,7 @@
     "id": 11,
     "section": "Biology",
     "topic": "Cell division",
-    "question": "In humans, which of the following processes involves meiosis?",
+    "question": "Meiosis occurs in one of the following life-cycle events:",
     "options": {
       "A": "wound healing",
       "B": "growth",
@@ -174,7 +174,7 @@
     "question": "Parietal cells in the gastric mucosa produce:",
     "options": {
       "A": "mucus",
-      "B": "pepsinogen, the inactive precursor of pepsin",
+      "B": "protein-digesting enzymes (pepsinogen)",
       "C": "hormones (gastrin, somatostatin)",
       "D": "hydrochloric acid"
     },
@@ -199,7 +199,7 @@
     "id": 15,
     "section": "Biology",
     "topic": "Anatomy & histology",
-    "question": "The principal photoreceptors responsible for image-forming vision in the retina of the eye are:",
+    "question": "Photoreceptors in the retina of the eye are:",
     "options": {
       "A": "pyramid and oval cells",
       "B": "cone and rod cells",
@@ -207,27 +207,27 @@
       "D": "hair and rod cells"
     },
     "correct": "B",
-    "explanation": "<p>The photoreceptors responsible for image-forming vision are <strong>rods</strong> — highly sensitive, containing rhodopsin, and used in dim light — and <strong>cones</strong>, which work in bright light and give color vision through three opsins most sensitive to short, medium and long wavelengths.</p><p>The retina also contains a small population of intrinsically photosensitive ganglion cells that use melanopsin. They do not contribute to the image, but they do set the circadian clock and the pupil reflex, which is why rods and cones are described here as the photoreceptors for image-forming vision.</p><p><strong>Option A</strong> (pyramid and oval cells): not retinal cell types; pyramidal cells are neurons of the cerebral cortex.</p><p><strong>Option C</strong> (bipolar and horizontal cells): retinal interneurons that process the photoreceptor signal, but they do not transduce light.</p><p><strong>Option D</strong> (hair and rod cells): hair cells are the mechanoreceptors of the inner ear, not photoreceptors.</p>"
+    "explanation": "<p>The photoreceptors of the retina are <strong>rods</strong> — highly sensitive, containing rhodopsin, and used in dim light — and <strong>cones</strong>, which work in bright light and give color vision through three opsins most sensitive to short, medium and long wavelengths.</p><p>One refinement: the retina also contains a small population of intrinsically photosensitive ganglion cells that use melanopsin. They respond to light but contribute nothing to the image, setting the circadian clock and driving the pupil reflex instead. Rods and cones remain the photoreceptors of image-forming vision, which is what the question is after.</p><p><strong>Option A</strong> (pyramid and oval cells): not retinal cell types; pyramidal cells are neurons of the cerebral cortex.</p><p><strong>Option C</strong> (bipolar and horizontal cells): retinal interneurons that process the photoreceptor signal, but they do not transduce light.</p><p><strong>Option D</strong> (hair and rod cells): hair cells are the mechanoreceptors of the inner ear, not photoreceptors.</p>"
   },
   {
     "id": 16,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Which of the following crosses is an example of a testcross?",
+    "question": "A testcross means which of the following crosses?",
     "options": {
       "A": "Pp × Pp",
       "B": "PP × Pp",
-      "C": "PP × PP",
+      "C": "Pp × PP",
       "D": "Pp × pp"
     },
     "correct": "D",
-    "explanation": "<p>A <strong>testcross</strong> mates an individual showing the dominant phenotype, whose genotype is unknown, with a <strong>homozygous recessive</strong> partner (pp). Only a homozygous recessive partner reveals hidden recessive alleles: if any offspring show the recessive phenotype, the tested parent must be heterozygous.</p><p>Of the crosses listed, only <strong>Pp × pp</strong> has a homozygous recessive partner, so it is the example. Note that PP × pp is also a testcross — the defining feature is the recessive partner, not the genotype of the parent being tested, which is unknown before the cross.</p><p><strong>Option A</strong> (Pp × Pp): a standard monohybrid cross giving the 3 : 1 F₂ ratio; it does not isolate the genotype of one parent.</p><p><strong>Option B</strong> (PP × Pp): every offspring inherits a P allele and shows the dominant phenotype, so nothing is revealed.</p><p><strong>Option C</strong> (PP × PP): both parents are homozygous dominant and all offspring are PP; there is no unknown genotype to test.</p>"
+    "explanation": "<p>A testcross mates an individual showing the dominant phenotype, whose genotype is unknown, with a homozygous recessive partner (pp). Only a homozygous recessive partner reveals hidden recessive alleles: if any offspring show the recessive phenotype, the tested parent must be heterozygous.</p><p>Of the crosses listed, only <strong>Pp × pp</strong> has a homozygous recessive partner. Note that PP × pp would also be a testcross — the defining feature is the recessive partner, not the genotype of the parent being tested, which is unknown before the cross is made.</p><p><strong>Option A</strong> (Pp × Pp): a standard monohybrid cross giving the 3 : 1 ratio; it does not isolate the genotype of either parent.</p><p><strong>Option B</strong> (PP × Pp) and <strong>Option C</strong> (Pp × PP): the same cross written in either order. Neither is a testcross: every offspring inherits a P allele from the homozygous dominant parent and shows the dominant phenotype, so nothing is revealed. Listing one cross twice is an untidiness in the paper, but it does not affect the answer, since neither version qualifies.</p>"
   },
   {
     "id": 17,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "A child has blood group B and the mother has blood group AB. Under ordinary ABO inheritance, which paternal genotype is excluded?",
+    "question": "The child has B blood group. His mother has AB blood group. What kind of genotype is EXCLUDED as the father's genotype?",
     "options": {
       "A": "AA",
       "B": "BB",
@@ -255,21 +255,21 @@
     "id": 19,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "Nitrogenous waste is excreted by the human kidney mostly as:",
+    "question": "The nitrogenous wastes are excreted by the human kidney mostly as:",
     "options": {
       "A": "urea",
       "B": "uric acid",
-      "C": "ammonium ions",
+      "C": "ammonium hydroxide",
       "D": "polyurethane"
     },
     "correct": "A",
-    "explanation": "<p>Humans are ureotelic. Nitrogen from amino acids is converted in the liver through the urea cycle into <strong>urea</strong>, CO(NH₂)₂, which is very water-soluble and much less toxic than ammonia. Urea makes up the bulk of urinary nitrogen.</p><p>Note the wording: <em>excretion</em> is the elimination of a substance in the urine overall, whereas <em>secretion</em> refers specifically to transport from the peritubular blood into the tubular fluid.</p><p><strong>Option B</strong> (uric acid): the principal nitrogenous waste of birds, reptiles and insects. In humans it is a smaller product of purine breakdown, and accumulates in gout.</p><p><strong>Option C</strong> (ammonium ions): the kidney does excrete ammonium, and it is important for eliminating acid — but it carries far less nitrogen than urea under ordinary conditions.</p><p><strong>Option D</strong> (polyurethane): a synthetic polymer with no biological role.</p>"
+    "explanation": "<p>Humans are ureotelic. Nitrogen from amino acids is converted in the liver through the urea cycle into <strong>urea</strong>, CO(NH₂)₂, which is very water-soluble and much less toxic than ammonia. Urea makes up the bulk of urinary nitrogen.</p><p>A note on the wording: excretion is elimination of a substance in the urine overall, whereas secretion refers specifically to transport from the peritubular blood into the tubular fluid.</p><p><strong>Option B</strong> (uric acid): the principal nitrogenous waste of birds, reptiles and insects. In humans it is a smaller product of purine breakdown, and accumulates in gout.</p><p><strong>Option C</strong> (ammonium hydroxide): the kidney does excrete ammonium, and that route matters for eliminating acid — but it carries far less nitrogen than urea under ordinary conditions. The name is also loose: what the tubule secretes is the ammonium ion, NH₄⁺, and aqueous ammonia is a solution of NH₃ with some NH₄⁺ and OH⁻, not a compound called NH₄OH.</p><p><strong>Option D</strong> (polyurethane): a synthetic polymer with no biological role.</p>"
   },
   {
     "id": 20,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "An adult takes in 1500 mL of water in drinks, 700 mL in food and 300 mL from metabolism each day. What total water loss per day would keep this person in water balance?",
+    "question": "The water balance in a human per day is:",
     "options": {
       "A": "25 ml",
       "B": "250 ml",
@@ -277,18 +277,18 @@
       "D": "3500 ml"
     },
     "correct": "C",
-    "explanation": "<p>Water balance means output equals input. The stated inputs are 1500 + 700 + 300 = <strong>2500 mL per day</strong>, so a matching output of 2500 mL keeps the person in balance. In a typical adult that output is divided between urine (~1500 mL), insensible loss through skin and lungs (~800 mL) and feces (~200 mL).</p><p>These figures are illustrative of a resting adult in a temperate climate. Actual turnover varies widely with body size, activity, temperature and diet — which is why this question gives the inputs rather than assuming a universal daily volume.</p><p><strong>Option A</strong> (25 mL): far below even the obligatory urine volume needed to excrete the daily solute load.</p><p><strong>Option B</strong> (250 mL): an order of magnitude less than the stated intake, so the person would retain water.</p><p><strong>Option D</strong> (3500 mL): 1000 mL more than the stated intake, so the person would lose water. Such turnover is perfectly normal with heavy sweating or high fluid intake, but it does not balance the inputs given here.</p>"
+    "explanation": "<p>The question asks for the conventional figure for daily water turnover in an adult: about <strong>2500 mL</strong> in, and the same out. Intake is roughly 1500 mL as drink, 700 mL in food and 300 mL of metabolic water from oxidation of nutrients; output is roughly 1500 mL of urine, 800 mL of insensible loss through skin and lungs, and 200 mL in feces.</p><p>Those are textbook averages for a resting adult in a temperate climate, and the question does not state them. Real turnover varies widely with body size, activity, ambient temperature and diet, so 2500 mL is the standard figure being tested rather than a physiological constant.</p><p><strong>Option A</strong> (25 mL): far below even the obligatory urine volume needed to excrete the daily solute load.</p><p><strong>Option B</strong> (250 mL): an order of magnitude too low; no adult maintains balance on this.</p><p><strong>Option D</strong> (3500 mL): the weakest part of the question, because this is not impossible — it is an ordinary turnover for someone sweating heavily or drinking a lot. It is rejected only because 2500 mL is the conventional average the question asks for.</p>"
   },
   {
     "id": 21,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Thomas Hunt Morgan's work with fruit flies helped establish which principle?",
+    "question": "Thomas Hunt Morgan discovered the fundamental principle of genetics:",
     "options": {
-      "A": "alleles of a gene segregate into separate gametes",
-      "B": "genes on the same chromosome can be inherited together because of genetic linkage",
-      "C": "genetic material is conserved in DNA",
-      "D": "ABO blood groups show codominant inheritance"
+      "A": "the law of allele segregation into separate gametes",
+      "B": "the law of linked genes on the same chromosome",
+      "C": "the law of conservation of genetic material in DNA",
+      "D": "the law of codominant heredity of ABO blood group"
     },
     "correct": "B",
     "explanation": "<p>Morgan and his group, working with <em>Drosophila melanogaster</em>, showed that certain traits are inherited together more often than independent assortment predicts, because the genes concerned sit on the <strong>same chromosome</strong>. They also showed that recombination frequency between linked genes can be used to map their relative positions.</p><p><strong>Option A</strong> (segregation): Mendel's first law, established decades earlier.</p><p><strong>Option C</strong> (genetic material conserved in DNA): DNA was identified as the hereditary material by later work, notably Avery, MacLeod and McCarty, and Hershey and Chase.</p><p><strong>Option D</strong> (ABO codominance): a separate line of work on human blood groups, unrelated to Morgan's fly genetics.</p>"
@@ -311,7 +311,7 @@
     "id": 23,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Two parents are heterozygous at an autosomal locus (Aa × Aa). Assuming complete dominance, what is the probability that a child will have the recessive phenotype?",
+    "question": "What is the probability that a heterozygous parent pair (Aa × Aa) will have a child with the recessive phenotype?",
     "options": {
       "A": "25%",
       "B": "50%",
@@ -325,7 +325,7 @@
     "id": 24,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Genes A and B assort independently and meiosis is normal. Which of the following cannot be a gamete produced by an individual of genotype AaBb?",
+    "question": "What kind of gamete is NOT formed by an individual with the AaBb genotype?",
     "options": {
       "A": "AB",
       "B": "Ab",
@@ -333,13 +333,13 @@
       "D": "Aa"
     },
     "correct": "D",
-    "explanation": "<p>Meiosis separates the two alleles at each locus, so every normal gamete carries <strong>exactly one allele of gene A and one of gene B</strong>. With independent assortment, an AaBb individual produces four gamete types in equal proportions: AB, Ab, aB and ab.</p><p><strong>Aa</strong> cannot be a gamete: it lists both alleles of the same locus and no allele of gene B at all. It describes the genotype of a cell at that locus, not a product of meiosis.</p><p>The question states that the genes assort independently because AaBb alone does not establish it — if the two loci were completely linked, some of the other combinations might not appear either.</p><p><strong>Option A</strong> (AB): a valid gamete, one allele from each locus.</p><p><strong>Option B</strong> (Ab): also valid.</p><p><strong>Option C</strong> (ab): the fourth valid type. The remaining valid gamete, aB, simply is not listed among the choices.</p>"
+    "explanation": "<p>Meiosis separates the two alleles at each locus, so every normal gamete carries exactly one allele of gene A and one of gene B. An AaBb individual produces four gamete types: AB, Ab, aB and ab.</p><p><strong>Aa</strong> cannot be a gamete: it lists both alleles of the same locus and no allele of gene B at all. It describes a genotype at one locus, not a product of meiosis.</p><p>The question does not say whether the two genes assort independently, and for this answer it does not need to. Linkage would change the <em>proportions</em> of AB, Ab, aB and ab — with complete linkage two of them would hardly appear — but no arrangement of linked loci can put two alleles of the same gene into one gamete.</p><p><strong>Option A</strong> (AB): a valid gamete, one allele from each locus.</p><p><strong>Option B</strong> (Ab): also valid.</p><p><strong>Option C</strong> (ab): the third valid type. The fourth, aB, simply is not listed among the choices.</p>"
   },
   {
     "id": 25,
     "section": "Biology",
     "topic": "Anatomy & histology",
-    "question": "Which structures usually attach skeletal muscles to bones?",
+    "question": "What structure connects the skeletal muscles to the bones?",
     "options": {
       "A": "tendons",
       "B": "ligaments",
@@ -400,10 +400,10 @@
       "A": "prophase: chromosomes condense",
       "B": "prometaphase: chromosomes attach to the mitotic spindle",
       "C": "metaphase: chromosomes separate",
-      "D": "telophase: chromosomes decondense"
+      "D": "telophase: chromosomes relax"
     },
     "correct": "C",
-    "explanation": "<p>The mismatched pair is <strong>metaphase</strong>. At metaphase the chromosomes are <em>aligned</em> on the metaphase plate; sister chromatids are pulled apart at <strong>anaphase</strong>.</p><p>Using the five-stage convention of the options: chromosomes condense in prophase; the nuclear envelope breaks down in prometaphase and kinetochores attach to spindle microtubules; chromosomes align at metaphase; sister chromatids separate at anaphase; and in telophase the chromosomes decondense as nuclear envelopes re-form.</p><p><strong>Option A</strong> (prophase: condense): correctly matched.</p><p><strong>Option B</strong> (prometaphase: attach to spindle): correctly matched in this convention.</p><p><strong>Option D</strong> (telophase: decondense): correctly matched.</p>"
+    "explanation": "<p>The mismatched pair is <strong>metaphase</strong>. At metaphase the chromosomes are <em>aligned</em> on the metaphase plate; sister chromatids are pulled apart at <strong>anaphase</strong>.</p><p>Using the five-stage convention of the options: chromosomes condense in prophase; the nuclear envelope breaks down in prometaphase and kinetochores attach to spindle microtubules; chromosomes align at metaphase; sister chromatids separate at anaphase; and in telophase the chromosomes unwind as nuclear envelopes re-form.</p><p><strong>Option A</strong> (prophase: condense): correctly matched.</p><p><strong>Option B</strong> (prometaphase: attach to the spindle): correctly matched in this convention.</p><p><strong>Option D</strong> (telophase: chromosomes relax): correctly matched. “Relax” is informal for decondense — the chromatin unwinds from its mitotic packing.</p>"
   },
   {
     "id": 30,
@@ -437,7 +437,7 @@
     "id": 32,
     "section": "Chemistry",
     "topic": "Bonding & structure",
-    "question": "Which of the following ions does not have a 2− charge?",
+    "question": "All the following ions carry a 2− charge except",
     "options": {
       "A": "sulfide",
       "B": "carbonate",
@@ -451,7 +451,7 @@
     "id": 33,
     "section": "Chemistry",
     "topic": "Atomic structure",
-    "question": "Sodium has atomic number 11. How many neutrons are in an atom of sodium-23?",
+    "question": "An isotope of sodium has a mass number of 23. What is the number of neutrons for this isotope?",
     "options": {
       "A": "23",
       "B": "34",
@@ -465,21 +465,21 @@
     "id": 34,
     "section": "Chemistry",
     "topic": "Acid-base chemistry",
-    "question": "At a fixed total concentration of sulfur(IV), increasing the pH of an aqueous solution of H₂SO₃ will",
+    "question": "As we increase the pH of an aqueous solution of H₂SO₃",
     "options": {
-      "A": "increase the fraction present as SO₃²⁻",
-      "B": "increase the concentration of H₃O⁺",
-      "C": "decrease the concentration of sulfate",
-      "D": "release sulfur trioxide"
+      "A": "the concentration of SO₃²⁻ will increase",
+      "B": "the concentration of H₃O⁺ will increase",
+      "C": "the concentration of sulfate will decrease",
+      "D": "sulfur trioxide will be released"
     },
     "correct": "A",
-    "explanation": "<p>Sulfurous acid loses its protons in two steps: H₂SO₃ ⇌ H⁺ + HSO₃⁻, then HSO₃⁻ ⇌ H⁺ + SO₃²⁻.</p><p>Raising the pH removes H⁺, so both equilibria shift to the right and a larger <strong>fraction</strong> of the sulfur(IV) present is the fully deprotonated sulfite ion, SO₃²⁻.</p><p>The question fixes the total sulfur(IV) concentration deliberately. Fraction and concentration are not the same thing: if the pH were raised by adding a large volume of dilute base, the fraction present as sulfite would rise while its actual concentration could fall through dilution.</p><p><strong>Option B</strong> ([H₃O⁺] increases): higher pH means lower [H₃O⁺], by definition.</p><p><strong>Option C</strong> (sulfate decreases): the solution contains sulfite (SO₃²⁻), not sulfate (SO₄²⁻). Converting one to the other is an oxidation, which no acid–base change performs.</p><p><strong>Option D</strong> (sulfur trioxide released): SO₃ is not formed from aqueous H₂SO₃ by adding base.</p>"
+    "explanation": "<p>Sulfurous acid loses its protons in two steps: H₂SO₃ ⇌ H⁺ + HSO₃⁻, then HSO₃⁻ ⇌ H⁺ + SO₃²⁻.</p><p>Raising the pH removes H⁺, so both equilibria shift to the right and more of the sulfur(IV) present ends up as the fully deprotonated <strong>sulfite ion, SO₃²⁻</strong>.</p><p>One caveat the question leaves unstated: fraction and concentration are not the same thing. If the total sulfur(IV) stays put — the intended reading — the sulfite concentration genuinely rises. If instead the pH were raised by adding a large volume of dilute base, the fraction present as sulfite would rise while its actual concentration fell through dilution.</p><p><strong>Option B</strong> ([H₃O⁺] increases): a higher pH means a lower [H₃O⁺], by definition.</p><p><strong>Option C</strong> (sulfate decreases): the solution contains sulfite (SO₃²⁻), not sulfate (SO₄²⁻). Converting one to the other is an oxidation, which no acid–base change performs.</p><p><strong>Option D</strong> (sulfur trioxide released): SO₃ is not formed from aqueous H₂SO₃ by adding base.</p>"
   },
   {
     "id": 35,
     "section": "Chemistry",
     "topic": "Atomic structure",
-    "question": "Atoms of which element have the ground-state electron configuration 1s² 2s² 2p⁶ 3s¹?",
+    "question": "Atoms of which element have the electron configuration 1s² 2s² 2p⁶ 3s¹? (provided they are neutral)",
     "options": {
       "A": "potassium",
       "B": "strontium",
@@ -487,21 +487,21 @@
       "D": "nitrogen"
     },
     "correct": "C",
-    "explanation": "<p>The configuration 1s² 2s² 2p⁶ 3s¹ contains 2 + 2 + 6 + 1 = <strong>11 electrons</strong>, which for a neutral atom means atomic number Z = 11, i.e., <strong>sodium (Na)</strong>. Recognising [Ne] 3s¹ as sodium is a foundational periodic-table skill.</p><p><strong>Option A</strong> (potassium): has Z = 19 and configuration [Ar] 4s¹.</p><p><strong>Option B</strong> (strontium): has Z = 38 and configuration [Kr] 5s².</p><p><strong>Option D</strong> (nitrogen): has Z = 7 and configuration 1s² 2s² 2p³.</p>"
+    "explanation": "<p>The configuration 1s² 2s² 2p⁶ 3s¹ contains 2 + 2 + 6 + 1 = 11 electrons, which for a neutral atom means atomic number Z = 11, i.e. <strong>sodium</strong> (Na). Recognizing [Ne] 3s¹ as sodium is a foundational periodic-table skill.</p><p><strong>Option A</strong> (potassium): has Z = 19 and configuration [Ar] 4s¹.</p><p><strong>Option B</strong> (strontium): has Z = 38 and configuration [Kr] 5s².</p><p><strong>Option D</strong> (nitrogen): has Z = 7 and configuration 1s² 2s² 2p³.</p>"
   },
   {
     "id": 36,
     "section": "Chemistry",
     "topic": "Solutions & concentrations",
-    "question": "A 200 mL sample of a 20% (m/v) aqueous solution of sucrose is diluted with water to a final volume of 800 mL. The concentration of sucrose",
+    "question": "By adding 600 ml of water to 200 ml of a 20 % aqueous solution of sucrose we",
     "options": {
-      "A": "decreases to 3%",
-      "B": "decreases to one quarter of its original value",
-      "C": "decreases to 15%",
-      "D": "decreases by one third"
+      "A": "decrease the concentration of sucrose to 3 %",
+      "B": "decrease the concentration of sucrose four times",
+      "C": "decrease the concentration of sucrose to 15 %",
+      "D": "decrease the concentration of sucrose by one third"
     },
     "correct": "B",
-    "explanation": "<p>Dilution does not change the mass of sucrose, only the volume it occupies. The volume goes from 200 mL to 800 mL, a <strong>fourfold increase</strong>, so the concentration falls to <strong>one quarter</strong>: 20% (m/v) ÷ 4 = 5% (m/v).</p><p>Two details are stated rather than assumed. <strong>(m/v)</strong> means grams of sucrose per 100 mL of solution; a mass percentage (m/m) would need the solution's density to convert. And the final <em>volume</em> is given as 800 mL rather than adding 600 mL of water, because volumes of solutions and water are not exactly additive.</p><p><strong>Option A</strong> (3%): not the result of a fourfold dilution of 20%.</p><p><strong>Option C</strong> (15%): would be only a slight dilution, not a fourfold one.</p><p><strong>Option D</strong> (by one third): would leave about 13.3%, inconsistent with the fourfold change in volume.</p>"
+    "explanation": "<p>Dilution does not change the mass of sucrose, only the volume it occupies. The volume goes from 200 ml to 200 + 600 = 800 ml, a fourfold increase, so the concentration falls to <strong>one quarter</strong> of its original value — from 20 % to 5 %.</p><p>Two things the question leaves implicit. It treats the volumes as additive, which is an approximation for a solution and water, though a good one here. And it does not say which percentage convention is meant. Neither affects the answer: a fourfold dilution is a fourfold dilution however the concentration is expressed.</p><p><strong>Option A</strong> (to 3 %): not the result of a fourfold dilution of 20 %, which is 5 %.</p><p><strong>Option C</strong> (to 15 %): a fall of one quarter, rather than a fall to one quarter.</p><p><strong>Option D</strong> (by one third): would leave about 13.3 %, nowhere near the fourfold change in volume.</p>"
   },
   {
     "id": 37,
@@ -549,7 +549,7 @@
     "id": 40,
     "section": "Chemistry",
     "topic": "Bonding & structure",
-    "question": "What is the name of the compound H₂S?",
+    "question": "H₂S is called",
     "options": {
       "A": "sulfidic acid",
       "B": "dihydrogen sulfuric acid",
@@ -563,7 +563,7 @@
     "id": 41,
     "section": "Chemistry",
     "topic": "Stoichiometry",
-    "question": "How many grams of oxygen are contained in 328 g of anhydrous calcium nitrate, Ca(NO₃)₂? Use Ca = 40, N = 14, O = 16.?",
+    "question": "How many grams of oxygen are in 328 g of calcium nitrate?",
     "options": {
       "A": "53 g",
       "B": "192 g",
@@ -577,7 +577,7 @@
     "id": 42,
     "section": "Chemistry",
     "topic": "Organic chemistry",
-    "question": "What product is formed when acetone is reduced with NaBH₄, followed by aqueous work-up?",
+    "question": "Identify the product formed from the reduction of acetone.",
     "options": {
       "A": "propan-1-ol",
       "B": "propan-2-ol",
@@ -585,13 +585,13 @@
       "D": "propanal"
     },
     "correct": "B",
-    "explanation": "<p>Acetone is <strong>propan-2-one</strong>, CH₃-CO-CH₃. Reduction of a ketone (e.g., by NaBH₄ or LiAlH₄) adds two H atoms across the C=O bond, converting it to a <strong>secondary alcohol</strong> at the same carbon: CH₃-CH(OH)-CH₃ = <strong>propan-2-ol</strong> (isopropanol).</p><p><strong>Option A</strong> (propan-1-ol): a <em>primary</em> alcohol that would arise from reduction of propanal (CH₃CH₂CHO), not acetone.</p><p><strong>Option C</strong> (propene): requires dehydration/elimination of water from an alcohol, not a simple reduction.</p><p><strong>Option D</strong> (propanal): a structural isomer with the carbonyl at C-1; reducing acetone cannot rearrange the skeleton to give propanal.</p>"
+    "explanation": "<p>Acetone is propan-2-one, CH₃-CO-CH₃. Reducing a ketone adds two hydrogen atoms across the C=O bond, giving the secondary alcohol at that same carbon: CH₃-CH(OH)-CH₃, <strong>propan-2-ol</strong> (isopropanol).</p><p>The question names no reagent. “Reduction” of a carbonyl is meant in the ordinary sense — a hydride reagent such as NaBH₄ or LiAlH₄, or catalytic hydrogenation — all of which stop at the alcohol. Complete deoxygenation, by the Clemmensen or Wolff–Kishner route, would give propane, which is not among the choices.</p><p><strong>Option A</strong> (propan-1-ol): a primary alcohol, which would come from reducing propanal, not acetone.</p><p><strong>Option C</strong> (propene): requires elimination of water from an alcohol, not a reduction.</p><p><strong>Option D</strong> (propanal): a structural isomer with the carbonyl at C-1. Reduction cannot move the carbonyl along the chain.</p>"
   },
   {
     "id": 43,
     "section": "Chemistry",
     "topic": "Organic chemistry",
-    "question": "If a compound contains the group –COOH, it",
+    "question": "If a compound contains the group -COOH, it",
     "options": {
       "A": "was produced by a reduction of an aldehyde",
       "B": "can dissociate in water",
@@ -619,15 +619,15 @@
     "id": 45,
     "section": "Chemistry",
     "topic": "Stoichiometry",
-    "question": "For a reversible reaction whose forward direction is endothermic, increasing the temperature at equilibrium will",
+    "question": "Increasing the temperature, at which an endothermic reaction occurs, will",
     "options": {
-      "A": "shift the equilibrium toward products",
-      "B": "shift the equilibrium toward reactants",
+      "A": "make more products",
+      "B": "make less products",
       "C": "cause the reaction to stop",
-      "D": "decrease the equilibrium constant"
+      "D": "decrease the pressure of the system"
     },
     "correct": "A",
-    "explanation": "<p>For an endothermic forward reaction (ΔH > 0), heat behaves like a reactant: reactants + heat ⇌ products. By <strong>Le Châtelier's principle</strong>, supplying heat shifts the position of equilibrium <strong>toward the products</strong>, and the equilibrium constant K increases with temperature.</p><p>The question specifies a reversible reaction at equilibrium because that is what Le Châtelier's principle describes. Heating also speeds up both the forward and reverse rates; the shift in position is a separate matter from how fast equilibrium is reached.</p><p><strong>Option B</strong> (toward reactants): this is how an <em>exothermic</em> reaction responds to heating.</p><p><strong>Option C</strong> (reaction stops): at equilibrium both directions continue at equal rates, and heating increases both.</p><p><strong>Option D</strong> (K decreases): K falls with temperature only for an exothermic reaction. For an endothermic one it rises.</p>"
+    "explanation": "<p>For an endothermic reaction (ΔH > 0), heat behaves like a reactant: reactants + heat ⇌ products. Raising the temperature shifts the position of equilibrium toward the products, by Le Châtelier's principle, and the equilibrium constant K rises with temperature. Heating also speeds both directions up, so product appears faster as well. Either way the result is <strong>more product</strong>.</p><p>The question does not say the reaction is reversible or at equilibrium, which is a real looseness, since Le Châtelier's principle describes only a system at equilibrium. For a reaction that runs essentially to completion, heating changes how fast the product forms rather than how much. Both readings point to the same choice.</p><p><strong>Option B</strong> (make less products): this is how an <em>exothermic</em> reaction responds to heating.</p><p><strong>Option C</strong> (cause the reaction to stop): heating speeds reactions up. At equilibrium both directions continue, at equal rates.</p><p><strong>Option D</strong> (decrease the pressure of the system): heating a gas at constant volume raises its pressure. Pressure is in any case unrelated to whether the reaction absorbs or releases heat.</p>"
   },
   {
     "id": 46,
@@ -637,11 +637,11 @@
     "options": {
       "A": "produced in the Krebs cycle",
       "B": "an aldehyde",
-      "C": "the conjugate base of 2-hydroxypropanoic acid",
+      "C": "2-hydroxypropanoic acid",
       "D": "a component of lactose"
     },
     "correct": "C",
-    "explanation": "<p>Lactic acid is 2-hydroxypropanoic acid, CH₃–CH(OH)–COOH. <strong>Lactate</strong> is its conjugate base, 2-hydroxypropanoate, CH₃–CH(OH)–COO⁻, which is the form that predominates at physiological pH. The two names are not interchangeable: the acid carries the –COOH group, the base carries –COO⁻.</p><p>The molecule has a chiral center at C-2. <strong>L-lactate</strong> is the form produced by human glycolytic metabolism; D-lactate occurs mainly from bacterial metabolism and can accumulate in short bowel syndrome.</p><p><strong>Option A</strong> (produced in the Krebs cycle): lactate is formed in the cytosol by lactate dehydrogenase from pyruvate, not within the Krebs (citric acid) cycle. This occurs whenever glycolytic flux exceeds mitochondrial oxidation — during vigorous exercise, for example — and not only when oxygen is absent.</p><p><strong>Option B</strong> (an aldehyde): an aldehyde needs a –CHO group. Lactate has a carboxylate and an alcohol.</p><p><strong>Option D</strong> (a component of lactose): confuses lactate with lactose, the milk disaccharide of glucose + galactose.</p>"
+    "explanation": "<p>Lactic acid is <strong>2-hydroxypropanoic acid</strong>, CH₃–CH(OH)–COOH, which is the structure option C names.</p><p>Worth being precise about: <em>lactate</em> is strictly the conjugate base of that acid, 2-hydroxypropanoate, CH₃–CH(OH)–COO⁻, and at physiological pH essentially all of it is in that deprotonated form. The question uses “lactate” and “lactic acid” interchangeably, as clinical writing usually does. Read strictly, option C names the acid rather than the anion; read as the paper intends, it is the only option that describes lactate's actual carbon skeleton and functional groups, and the other three are plainly wrong.</p><p>The molecule has a chiral center at C-2. L-lactate is the form produced by human glycolytic metabolism; D-lactate comes mainly from bacterial metabolism and can accumulate in short bowel syndrome.</p><p><strong>Option A</strong> (produced in the Krebs cycle): lactate is formed in the cytosol by lactate dehydrogenase from pyruvate, not within the Krebs cycle. It appears whenever glycolytic flux exceeds mitochondrial oxidation — during vigorous exercise, for example — and not only when oxygen is absent.</p><p><strong>Option B</strong> (an aldehyde): an aldehyde needs a –CHO group. Lactate has a carboxylate and an alcohol.</p><p><strong>Option D</strong> (a component of lactose): confuses lactate with lactose, the milk disaccharide of glucose + galactose.</p>"
   },
   {
     "id": 47,
@@ -703,15 +703,15 @@
     "id": 51,
     "section": "Chemistry",
     "topic": "Redox reactions",
-    "question": "In a redox reaction in aqueous solution, Fe²⁺ loses an electron to form Fe³⁺. This process is called",
+    "question": "The conversion of Fe²⁺ to Fe³⁺ is a",
     "options": {
       "A": "reduction",
       "B": "oxidation",
-      "C": "precipitation",
+      "C": "ionization",
       "D": "dissociation"
     },
     "correct": "B",
-    "explanation": "<p>Losing one electron raises the oxidation state of iron from +2 to +3, which is by definition an <strong>oxidation</strong> (mnemonic: OIL RIG — Oxidation Is Loss of electrons). The same step occurs biologically when hemoglobin becomes methemoglobin, and in ferroxidases such as ceruloplasmin.</p><p><strong>Option A</strong> (reduction): the opposite change, a gain of electrons: Fe³⁺ + e⁻ → Fe²⁺.</p><p><strong>Option C</strong> (precipitation): the formation of an insoluble solid from solution, for example Fe³⁺ with hydroxide giving Fe(OH)₃. No electrons are transferred and no oxidation state changes.</p><p><strong>Option D</strong> (dissociation): the separation of a compound into ions or fragments, for example NaCl → Na⁺ + Cl⁻. Oxidation numbers stay the same.</p>"
+    "explanation": "<p>Losing one electron raises the oxidation state of iron from +2 to +3, which is by definition an <strong>oxidation</strong> (mnemonic: OIL RIG — Oxidation Is Loss of electrons). The same step occurs biologically when hemoglobin becomes methemoglobin, and in ferroxidases such as ceruloplasmin.</p><p><strong>Option A</strong> (reduction): the opposite change, a gain of electrons: Fe³⁺ + e⁻ → Fe²⁺.</p><p><strong>Option C</strong> (ionization): the defensible distractor, and worth being honest about. Removing an electron from Fe²⁺ is formally the third ionization of iron, and ionization energies are defined for exactly that kind of step in the gas phase. But in solution chemistry “ionization” normally describes neutral species becoming ions — HCl ionizing in water, for instance — and the iron here is an ion already. Oxidation is the precise term for a change in oxidation state, so B is the better answer rather than the only conceivable one.</p><p><strong>Option D</strong> (dissociation): the separation of a compound into ions or fragments, as in NaCl → Na⁺ + Cl⁻. Oxidation numbers do not change.</p>"
   },
   {
     "id": 52,
@@ -731,15 +731,15 @@
     "id": 53,
     "section": "Chemistry",
     "topic": "Acid-base chemistry",
-    "question": "At 25 °C, assuming ideal behavior, the pH of a 0.100 mol/L solution of NaOH is",
+    "question": "The pH of 100 mmol/l solution of a strong hydroxide is",
     "options": {
-      "A": "higher than the pH of 1.00 mol/L NaOH",
+      "A": "higher than the pH of a 1 mol/l strong hydroxide",
       "B": "2",
       "C": "12",
-      "D": "higher than the pH of 0.100 mol/L NH₃(aq)"
+      "D": "higher than the pH of 100 mmol/l weak hydroxide"
     },
     "correct": "D",
-    "explanation": "<p>NaOH is a strong base and dissociates completely, giving one OH⁻ per formula unit: [OH⁻] = 0.100 mol/L, so pOH = 1 and <strong>pH = 13</strong> at 25 °C.</p><p>Aqueous ammonia is a weak base: NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ lies well to the left, so a 0.100 mol/L solution gives far less than 0.100 mol/L OH⁻ (about 1.3 × 10⁻³ mol/L, pH ≈ 11.1). The NaOH solution therefore has the <strong>higher pH</strong>.</p><p>The conditions are stated because pH values depend on temperature: K<sub>w</sub> = 1.0 × 10⁻¹⁴ applies at 25 °C, and neutral pH is not 7 at other temperatures.</p><p><strong>Option A</strong> (higher than 1.00 mol/L NaOH): 1.00 mol/L NaOH gives pH 14, which is higher than 13, not lower.</p><p><strong>Option B</strong> (pH 2): strongly acidic — this would be an acid, not a base.</p><p><strong>Option C</strong> (pH 12): corresponds to [OH⁻] = 0.010 mol/L, a ten-times more dilute solution.</p>"
+    "explanation": "<p>A strong hydroxide dissociates completely, so 100 mmol/l gives [OH⁻] = 0.100 mol/l: pOH = 1 and pH = 13. A weak hydroxide at the same formal concentration ionizes only partially, releases far less OH⁻, and therefore has a lower pH. The strong hydroxide has the <strong>higher</strong> pH of the two.</p><p>Two things the question leaves unstated: the temperature, since Kw = 1.0 × 10⁻¹⁴ and the pH 13 figure hold at 25 °C, and how many hydroxide ions each formula unit provides — one, as in NaOH, whereas Ba(OH)₂ would give pH 13.3. Neither changes the answer, because option D compares a strong base with a weak one at equal concentration, and that comparison holds either way.</p><p><strong>Option A</strong> (higher than a 1 mol/l strong hydroxide): backwards. The more concentrated solution has the higher pH, 14 against 13.</p><p><strong>Option B</strong> (2): strongly acidic. A hydroxide solution cannot have a pH below 7.</p><p><strong>Option C</strong> (12): the pH of a strong hydroxide ten times more dilute, 10 mmol/l. At 100 mmol/l the value is 13.</p>"
   },
   {
     "id": 54,
@@ -750,16 +750,16 @@
       "A": "contain an amino group",
       "B": "contain a carboxyl group",
       "C": "are aromatic",
-      "D": "contain a phenolic hydroxyl group"
+      "D": "contain a hydroxyl group"
     },
     "correct": "B",
-    "explanation": "<p>Tyrosine is HO–C₆H₄–CH₂–CH(NH₂)–COOH, an aromatic α-amino acid, and butyric acid is CH₃–CH₂–CH₂–COOH, a four-carbon saturated fatty acid. Both carry a <strong>carboxyl group</strong>, –COOH.</p><p><strong>Option A</strong> (amino group): butyric acid has no –NH₂; only tyrosine does.</p><p><strong>Option C</strong> (aromatic): butyric acid is a simple aliphatic chain with no aromatic ring.</p><p><strong>Option D</strong> (phenolic hydroxyl group): only tyrosine has one — the –OH bonded directly to its benzene ring. Butyric acid has no phenolic –OH. (Its carboxyl group does contain an –OH, which is why the group is specified here as phenolic.)</p>"
+    "explanation": "<p>Tyrosine is HO–C₆H₄–CH₂–CH(NH₂)–COOH, an aromatic α-amino acid; butyric acid is CH₃–CH₂–CH₂–COOH, a four-carbon saturated fatty acid. What both carry is the <strong>carboxyl group</strong>, –COOH.</p><p><strong>Option A</strong> (amino group): butyric acid has no –NH₂; only tyrosine does.</p><p><strong>Option C</strong> (aromatic): butyric acid is a plain aliphatic chain with no ring.</p><p><strong>Option D</strong> (hydroxyl group): the defensible distractor, and the reason is worth stating. Tyrosine genuinely has a hydroxyl — the phenolic –OH on its ring — and butyric acid contains an O–H too, but only inside its carboxyl group. Functional groups are classified whole: –COOH counts as a carboxyl, not as a hydroxyl plus a carbonyl. On that convention butyric acid has no hydroxyl group, so this is not something the two share and B is the answer. Counted atom by atom instead of group by group, D could be argued.</p>"
   },
   {
     "id": 55,
     "section": "Chemistry",
     "topic": "Solutions & concentrations",
-    "question": "What is the mass percentage (% m/m) of sodium chloride in a solution made from 20 g of sodium chloride and 60 g of water?",
+    "question": "What is the concentration of a solution made out of 20 g of sodium chloride and 60 g of water?",
     "options": {
       "A": "33 %",
       "B": "30 %",
@@ -767,7 +767,7 @@
       "D": "20 %"
     },
     "correct": "C",
-    "explanation": "<p>Mass percentage is w = m(solute) / m(solution) × 100%. The solution mass is the solute plus the solvent: 20 + 60 = 80 g. So w = 20 / 80 × 100% = <strong>25%</strong>.</p><p><strong>Option A</strong> (33%): divides by the solvent alone (20/60), not by the whole solution.</p><p><strong>Option B</strong> (30%): does not follow from these masses.</p><p><strong>Option D</strong> (20%): a 20% solution would contain 20 g of NaCl in 100 g of solution — that is 20 g of NaCl and 80 g of water. Taking 20 g of solute with 100 g of <em>solvent</em> would instead give 20/120 × 100% = 16.7%.</p>"
+    "explanation": "<p>Mass percentage is w = m(solute) / m(solution) × 100%. The mass of the solution is solute plus solvent: 20 + 60 = 80 g. So w = 20 / 80 × 100% = <strong>25%</strong>.</p><p>The question says only “concentration” without naming a unit. Every choice is a percentage and only masses are given, so mass percentage (% m/m) is what is meant; a molar concentration would need the volume of the solution and the molar mass of NaCl.</p><p><strong>Option A</strong> (33%): divides by the solvent alone (20/60) instead of by the whole solution.</p><p><strong>Option B</strong> (30%): does not follow from these masses.</p><p><strong>Option D</strong> (20%): a 20% solution holds 20 g of NaCl in 100 g of solution — that is 20 g of salt and 80 g of water. Taking 20 g of solute with 100 g of solvent would instead give 20/120 × 100% = 16.7%.</p>"
   },
   {
     "id": 56,
@@ -787,7 +787,7 @@
     "id": 57,
     "section": "Chemistry",
     "topic": "Stoichiometry",
-    "question": "During complete combustion of ethanol to CO₂ and H₂O, how many molecules of oxygen are consumed per molecule of ethanol?",
+    "question": "When ethanol burns in oxygen, how many molecules of oxygen are consumed per molecule of ethanol?",
     "options": {
       "A": "1.5",
       "B": "3",
@@ -795,7 +795,7 @@
       "D": "4"
     },
     "correct": "B",
-    "explanation": "<p>Complete combustion of ethanol is C₂H₅OH + <strong>3 O₂</strong> → 2 CO₂ + 3 H₂O. Checking the balance: 2 carbons each side; 6 hydrogens each side; oxygen 1 (from ethanol) + 3 × 2 = 7 on the left, and 2 × 2 + 3 × 1 = 7 on the right.</p><p>The question says <em>complete</em> combustion because incomplete burning, with a limited oxygen supply, gives carbon monoxide or soot and consumes less oxygen per molecule of ethanol.</p><p><strong>Option A</strong> (1.5): enough to oxidize the carbon to CO₂ only if the hydrogen were ignored.</p><p><strong>Option C</strong> (2): too little oxygen to form 2 CO₂ and 3 H₂O; combustion would be incomplete.</p><p><strong>Option D</strong> (4): more than the equation requires. Extra oxygen may well be present in the vessel, but only 3 molecules are <em>consumed</em> per ethanol molecule.</p>"
+    "explanation": "<p>Burning ethanol in oxygen gives C₂H₅OH + 3 O₂ → 2 CO₂ + 3 H₂O. Checking the balance: 2 carbons each side; 6 hydrogens each side; oxygen 1 (from the ethanol) + 3 × 2 = 7 on the left, and 2 × 2 + 3 × 1 = 7 on the right. So <strong>3</strong> molecules of oxygen are consumed per molecule of ethanol.</p><p>The question does not use the word “complete”, but that is what burning in oxygen means here. Where oxygen is limited, combustion is incomplete, yields carbon monoxide or soot, and consumes less oxygen per molecule of fuel.</p><p><strong>Option A</strong> (1.5): enough to take the carbon to CO₂ only if the hydrogen were ignored.</p><p><strong>Option C</strong> (2): too little to form 2 CO₂ and 3 H₂O; combustion would be incomplete.</p><p><strong>Option D</strong> (4): more than the equation requires. Extra oxygen may well be present in the vessel, but only 3 molecules are consumed per molecule of ethanol.</p>"
   },
   {
     "id": 58,

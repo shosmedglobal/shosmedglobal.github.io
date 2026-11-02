@@ -2,7 +2,7 @@
   {
     "id": 1,
     "section": "Biology",
-    "question": "Adrenocorticotropic hormone (ACTH) is secreted primarily by which gland?",
+    "question": "Adrenocorticotropic hormone (ACTH) is secreted by:",
     "options": {
       "A": "hypothalamus",
       "B": "anterior pituitary",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "section": "Biology",
-    "question": "During a cell's day-to-day activity, the triplet 5′-CUA-3′ paired with the triplet 3′-GAU-5′. Both are RNA. In which of the following did this pairing occur?",
+    "question": "At one point as a cell carried out its day-to-day activities, the nucleotides CUA were paired with the nucleotides GAU. This pairing occurred:",
     "options": {
       "A": "during replication",
       "B": "during transcription",
@@ -24,29 +24,29 @@
   {
     "id": 3,
     "section": "Biology",
-    "question": "Hematocrit is the percentage of whole blood volume occupied by which component?",
+    "question": "Blood hematocrit is:",
     "options": {
-      "A": "leukocyte volume divided by plasma volume",
-      "B": "erythrocyte volume divided by plasma volume",
-      "C": "erythrocyte volume divided by whole blood volume",
-      "D": "erythrocyte volume divided by the volume of all other cells"
+      "A": "volume relation (%) of plasma to leukocytes",
+      "B": "volume relation (%) of erythrocytes to plasma",
+      "C": "volume relation (%) of erythrocytes to full blood",
+      "D": "volume relation (%) of erythrocytes to rest of cells"
     }
   },
   {
     "id": 4,
     "section": "Biology",
-    "question": "Hemophilia is an X-linked recessive disease. A phenotypically unaffected man and a phenotypically unaffected woman have a healthy daughter and a son who has hemophilia. Assuming ordinary X-linked recessive inheritance with complete penetrance, no new mutation and no germline mosaicism, what can you say about the parents' genotypes?",
+    "question": "Hemophilia is an X-linked recessive disease. A phenotypically normal man married a phenotypically normal woman. Their daughter is healthy, but their son suffers from hemophilia. What can you say about the parents' genotypes?",
     "options": {
-      "A": "it must be a de novo mutation, because neither parent carries the allele",
-      "B": "the father carries the mutation",
-      "C": "the mother carries the mutation",
-      "D": "both parents carry the mutation"
+      "A": "it must be a de novo mutation, because none of the parents is a mutation carrier",
+      "B": "the father is a mutation carrier",
+      "C": "the mother is a mutation carrier",
+      "D": "both parents are mutation carriers"
     }
   },
   {
     "id": 5,
     "section": "Biology",
-    "question": "In a double-stranded DNA molecule, 30% of the bases are cytosine. What percentage of the bases are adenine?",
+    "question": "If a DNA molecule contains 30% cytosine, what percentage of adenine is present?",
     "options": {
       "A": "20%",
       "B": "30%",
@@ -68,7 +68,7 @@
   {
     "id": 7,
     "section": "Biology",
-    "question": "In humans, meiosis takes place in germ cells within which organs?",
+    "question": "In humans, meiotic cell division occurs in specialized organs known as:",
     "options": {
       "A": "gonads",
       "B": "gametes",
@@ -79,7 +79,7 @@
   {
     "id": 8,
     "section": "Biology",
-    "question": "For a monohybrid cross Aa × Aa, with complete dominance of A over a, what is the expected phenotypic ratio in the F₂ generation?",
+    "question": "In Mendel's experiments, the phenotypic ratio of the F₂ generation is:",
     "options": {
       "A": "3 : 1",
       "B": "1 : 1",
@@ -112,7 +112,7 @@
   {
     "id": 11,
     "section": "Biology",
-    "question": "In humans, which of the following processes involves meiosis?",
+    "question": "Meiosis occurs in one of the following life-cycle events:",
     "options": {
       "A": "wound healing",
       "B": "growth",
@@ -137,7 +137,7 @@
     "question": "Parietal cells in the gastric mucosa produce:",
     "options": {
       "A": "mucus",
-      "B": "pepsinogen, the inactive precursor of pepsin",
+      "B": "protein-digesting enzymes (pepsinogen)",
       "C": "hormones (gastrin, somatostatin)",
       "D": "hydrochloric acid"
     }
@@ -156,7 +156,7 @@
   {
     "id": 15,
     "section": "Biology",
-    "question": "The principal photoreceptors responsible for image-forming vision in the retina of the eye are:",
+    "question": "Photoreceptors in the retina of the eye are:",
     "options": {
       "A": "pyramid and oval cells",
       "B": "cone and rod cells",
@@ -167,18 +167,18 @@
   {
     "id": 16,
     "section": "Biology",
-    "question": "Which of the following crosses is an example of a testcross?",
+    "question": "A testcross means which of the following crosses?",
     "options": {
       "A": "Pp × Pp",
       "B": "PP × Pp",
-      "C": "PP × PP",
+      "C": "Pp × PP",
       "D": "Pp × pp"
     }
   },
   {
     "id": 17,
     "section": "Biology",
-    "question": "A child has blood group B and the mother has blood group AB. Under ordinary ABO inheritance, which paternal genotype is excluded?",
+    "question": "The child has B blood group. His mother has AB blood group. What kind of genotype is EXCLUDED as the father's genotype?",
     "options": {
       "A": "AA",
       "B": "BB",
@@ -200,18 +200,18 @@
   {
     "id": 19,
     "section": "Biology",
-    "question": "Nitrogenous waste is excreted by the human kidney mostly as:",
+    "question": "The nitrogenous wastes are excreted by the human kidney mostly as:",
     "options": {
       "A": "urea",
       "B": "uric acid",
-      "C": "ammonium ions",
+      "C": "ammonium hydroxide",
       "D": "polyurethane"
     }
   },
   {
     "id": 20,
     "section": "Biology",
-    "question": "An adult takes in 1500 mL of water in drinks, 700 mL in food and 300 mL from metabolism each day. What total water loss per day would keep this person in water balance?",
+    "question": "The water balance in a human per day is:",
     "options": {
       "A": "25 ml",
       "B": "250 ml",
@@ -222,12 +222,12 @@
   {
     "id": 21,
     "section": "Biology",
-    "question": "Thomas Hunt Morgan's work with fruit flies helped establish which principle?",
+    "question": "Thomas Hunt Morgan discovered the fundamental principle of genetics:",
     "options": {
-      "A": "alleles of a gene segregate into separate gametes",
-      "B": "genes on the same chromosome can be inherited together because of genetic linkage",
-      "C": "genetic material is conserved in DNA",
-      "D": "ABO blood groups show codominant inheritance"
+      "A": "the law of allele segregation into separate gametes",
+      "B": "the law of linked genes on the same chromosome",
+      "C": "the law of conservation of genetic material in DNA",
+      "D": "the law of codominant heredity of ABO blood group"
     }
   },
   {
@@ -244,7 +244,7 @@
   {
     "id": 23,
     "section": "Biology",
-    "question": "Two parents are heterozygous at an autosomal locus (Aa × Aa). Assuming complete dominance, what is the probability that a child will have the recessive phenotype?",
+    "question": "What is the probability that a heterozygous parent pair (Aa × Aa) will have a child with the recessive phenotype?",
     "options": {
       "A": "25%",
       "B": "50%",
@@ -255,7 +255,7 @@
   {
     "id": 24,
     "section": "Biology",
-    "question": "Genes A and B assort independently and meiosis is normal. Which of the following cannot be a gamete produced by an individual of genotype AaBb?",
+    "question": "What kind of gamete is NOT formed by an individual with the AaBb genotype?",
     "options": {
       "A": "AB",
       "B": "Ab",
@@ -266,7 +266,7 @@
   {
     "id": 25,
     "section": "Biology",
-    "question": "Which structures usually attach skeletal muscles to bones?",
+    "question": "What structure connects the skeletal muscles to the bones?",
     "options": {
       "A": "tendons",
       "B": "ligaments",
@@ -315,7 +315,7 @@
       "A": "prophase: chromosomes condense",
       "B": "prometaphase: chromosomes attach to the mitotic spindle",
       "C": "metaphase: chromosomes separate",
-      "D": "telophase: chromosomes decondense"
+      "D": "telophase: chromosomes relax"
     }
   },
   {
@@ -343,7 +343,7 @@
   {
     "id": 32,
     "section": "Chemistry",
-    "question": "Which of the following ions does not have a 2− charge?",
+    "question": "All the following ions carry a 2− charge except",
     "options": {
       "A": "sulfide",
       "B": "carbonate",
@@ -354,7 +354,7 @@
   {
     "id": 33,
     "section": "Chemistry",
-    "question": "Sodium has atomic number 11. How many neutrons are in an atom of sodium-23?",
+    "question": "An isotope of sodium has a mass number of 23. What is the number of neutrons for this isotope?",
     "options": {
       "A": "23",
       "B": "34",
@@ -365,18 +365,18 @@
   {
     "id": 34,
     "section": "Chemistry",
-    "question": "At a fixed total concentration of sulfur(IV), increasing the pH of an aqueous solution of H₂SO₃ will",
+    "question": "As we increase the pH of an aqueous solution of H₂SO₃",
     "options": {
-      "A": "increase the fraction present as SO₃²⁻",
-      "B": "increase the concentration of H₃O⁺",
-      "C": "decrease the concentration of sulfate",
-      "D": "release sulfur trioxide"
+      "A": "the concentration of SO₃²⁻ will increase",
+      "B": "the concentration of H₃O⁺ will increase",
+      "C": "the concentration of sulfate will decrease",
+      "D": "sulfur trioxide will be released"
     }
   },
   {
     "id": 35,
     "section": "Chemistry",
-    "question": "Atoms of which element have the ground-state electron configuration 1s² 2s² 2p⁶ 3s¹?",
+    "question": "Atoms of which element have the electron configuration 1s² 2s² 2p⁶ 3s¹? (provided they are neutral)",
     "options": {
       "A": "potassium",
       "B": "strontium",
@@ -387,12 +387,12 @@
   {
     "id": 36,
     "section": "Chemistry",
-    "question": "A 200 mL sample of a 20% (m/v) aqueous solution of sucrose is diluted with water to a final volume of 800 mL. The concentration of sucrose",
+    "question": "By adding 600 ml of water to 200 ml of a 20 % aqueous solution of sucrose we",
     "options": {
-      "A": "decreases to 3%",
-      "B": "decreases to one quarter of its original value",
-      "C": "decreases to 15%",
-      "D": "decreases by one third"
+      "A": "decrease the concentration of sucrose to 3 %",
+      "B": "decrease the concentration of sucrose four times",
+      "C": "decrease the concentration of sucrose to 15 %",
+      "D": "decrease the concentration of sucrose by one third"
     }
   },
   {
@@ -431,7 +431,7 @@
   {
     "id": 40,
     "section": "Chemistry",
-    "question": "What is the name of the compound H₂S?",
+    "question": "H₂S is called",
     "options": {
       "A": "sulfidic acid",
       "B": "dihydrogen sulfuric acid",
@@ -442,7 +442,7 @@
   {
     "id": 41,
     "section": "Chemistry",
-    "question": "How many grams of oxygen are contained in 328 g of anhydrous calcium nitrate, Ca(NO₃)₂? Use Ca = 40, N = 14, O = 16.?",
+    "question": "How many grams of oxygen are in 328 g of calcium nitrate?",
     "options": {
       "A": "53 g",
       "B": "192 g",
@@ -453,7 +453,7 @@
   {
     "id": 42,
     "section": "Chemistry",
-    "question": "What product is formed when acetone is reduced with NaBH₄, followed by aqueous work-up?",
+    "question": "Identify the product formed from the reduction of acetone.",
     "options": {
       "A": "propan-1-ol",
       "B": "propan-2-ol",
@@ -464,7 +464,7 @@
   {
     "id": 43,
     "section": "Chemistry",
-    "question": "If a compound contains the group –COOH, it",
+    "question": "If a compound contains the group -COOH, it",
     "options": {
       "A": "was produced by a reduction of an aldehyde",
       "B": "can dissociate in water",
@@ -486,12 +486,12 @@
   {
     "id": 45,
     "section": "Chemistry",
-    "question": "For a reversible reaction whose forward direction is endothermic, increasing the temperature at equilibrium will",
+    "question": "Increasing the temperature, at which an endothermic reaction occurs, will",
     "options": {
-      "A": "shift the equilibrium toward products",
-      "B": "shift the equilibrium toward reactants",
+      "A": "make more products",
+      "B": "make less products",
       "C": "cause the reaction to stop",
-      "D": "decrease the equilibrium constant"
+      "D": "decrease the pressure of the system"
     }
   },
   {
@@ -501,7 +501,7 @@
     "options": {
       "A": "produced in the Krebs cycle",
       "B": "an aldehyde",
-      "C": "the conjugate base of 2-hydroxypropanoic acid",
+      "C": "2-hydroxypropanoic acid",
       "D": "a component of lactose"
     }
   },
@@ -552,11 +552,11 @@
   {
     "id": 51,
     "section": "Chemistry",
-    "question": "In a redox reaction in aqueous solution, Fe²⁺ loses an electron to form Fe³⁺. This process is called",
+    "question": "The conversion of Fe²⁺ to Fe³⁺ is a",
     "options": {
       "A": "reduction",
       "B": "oxidation",
-      "C": "precipitation",
+      "C": "ionization",
       "D": "dissociation"
     }
   },
@@ -574,12 +574,12 @@
   {
     "id": 53,
     "section": "Chemistry",
-    "question": "At 25 °C, assuming ideal behavior, the pH of a 0.100 mol/L solution of NaOH is",
+    "question": "The pH of 100 mmol/l solution of a strong hydroxide is",
     "options": {
-      "A": "higher than the pH of 1.00 mol/L NaOH",
+      "A": "higher than the pH of a 1 mol/l strong hydroxide",
       "B": "2",
       "C": "12",
-      "D": "higher than the pH of 0.100 mol/L NH₃(aq)"
+      "D": "higher than the pH of 100 mmol/l weak hydroxide"
     }
   },
   {
@@ -590,13 +590,13 @@
       "A": "contain an amino group",
       "B": "contain a carboxyl group",
       "C": "are aromatic",
-      "D": "contain a phenolic hydroxyl group"
+      "D": "contain a hydroxyl group"
     }
   },
   {
     "id": 55,
     "section": "Chemistry",
-    "question": "What is the mass percentage (% m/m) of sodium chloride in a solution made from 20 g of sodium chloride and 60 g of water?",
+    "question": "What is the concentration of a solution made out of 20 g of sodium chloride and 60 g of water?",
     "options": {
       "A": "33 %",
       "B": "30 %",
@@ -618,7 +618,7 @@
   {
     "id": 57,
     "section": "Chemistry",
-    "question": "During complete combustion of ethanol to CO₂ and H₂O, how many molecules of oxygen are consumed per molecule of ethanol?",
+    "question": "When ethanol burns in oxygen, how many molecules of oxygen are consumed per molecule of ethanol?",
     "options": {
       "A": "1.5",
       "B": "3",
