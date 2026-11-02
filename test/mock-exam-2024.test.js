@@ -96,6 +96,13 @@ exam.forEach(q => {
     !/[<>][^\s]/.test(residue) && !/[^\s][<>]/.test(residue),
     residue.match(/.{0,8}[<>].{0,8}/g) || []);
 });
+// Q50 labelled its options "10-15" with the exponent flattened onto the line,
+// which reads as a subtraction. Every power of ten must be superscripted.
+exam.forEach(q => {
+  const fields = [q.question, q.explanation, ...Object.values(q.options)].join(' ');
+  const flat = fields.match(/10[−-][0-9]/g) || [];
+  check(`2j Q${q.id} powers of ten are superscripted`, flat.length === 0, flat);
+});
 
 // ------------------------------------- the official question is preserved
 const ENTITIES = { '&beta;': 'β', '&alpha;': 'α', '&gamma;': 'γ', '&mu;': 'μ',
