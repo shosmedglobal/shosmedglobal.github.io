@@ -101,14 +101,67 @@ function plain(s) {
     .trim();
 }
 
+// A short, explicit list of stems and options that carry an approved
+// language repair — articles, agreement, prepositions, and two chemistry
+// spellings. Everything NOT listed must still match the paper exactly.
+const COSMETIC_STEMS = new Set([6, 9, 12, 15, 30, 32, 36, 39, 45, 54]);
+const COSMETIC_OPTIONS = new Set(['26A', '26B', '26C', '26D', '36C', '40A', '44D', '45C']);
+
 exam.forEach(q => {
-  check(`3a Q${q.id} stem is the official text`,
-    plain(q.question) === plain(official(q.id).question),
-    { now: plain(q.question), official: plain(official(q.id).question) });
-  ['A', 'B', 'C', 'D'].forEach(L =>
+  if (!COSMETIC_STEMS.has(q.id)) {
+    check(`3a Q${q.id} stem is the official text`,
+      plain(q.question) === plain(official(q.id).question),
+      { now: plain(q.question), official: plain(official(q.id).question) });
+  }
+  ['A', 'B', 'C', 'D'].forEach(L => {
+    if (COSMETIC_OPTIONS.has(q.id + L)) return;
     check(`3b Q${q.id} option ${L} is the official text`,
       plain(q.options[L]) === plain(official(q.id).options[L]),
-      { now: plain(q.options[L]), official: plain(official(q.id).options[L]) }));
+      { now: plain(q.options[L]), official: plain(official(q.id).options[L]) });
+  });
+});
+
+// Each listed repair must still BE a repair: the same content words once
+// articles, plurals and the known spelling fixes are set aside. This is what
+// stops "minor wording" from becoming a rewrite.
+const contentWords = s => plain(s).toLowerCase()
+  .replace(/'s\b/g, '')
+  .replace(/methyl ?amine/g, 'methylamine')
+  .replace(/methyl ?butanoate/g, 'methylbutanoate')
+  .replace(/alkaline earth/g, 'alkali earth')
+  .replace(/\bsignals\b/g, 'signal')
+  .replace(/\b(a|an|the|of|in|at|under|during|is|are|was|were|has|runs|occurs|exists|which|what|following|true|special|cell|gamete|human|body|body's|organism|involved|immune|defense|form|forms|stereoisomeric|stereoisomers|two|genotype|filial|generation|first|mendel's|experiments|equilibrium|formation|room|temperature|carbon|chain|branched|molecule|molecules|choose|that|whose|oxidation|can|result|reaction|reactants|product|main|cells|most|frequent|disorders|population|synthesis|replication|nuclear|dna|conducted|inside|each|by|axons|neurons|blood|cerebrospinal|fluid|gaseous|it|and|contains|one|primary|secondary|amino|group|made|from|alkali|metals|groups|i|ii|oxoacids|mostly)\b/g, ' ')
+  .replace(/[^a-z0-9+\-/]/g, ' ')
+  .split(/\s+/).filter(Boolean).sort().join(' ');
+
+[...COSMETIC_STEMS].forEach(id =>
+  check(`3c Q${id} stem differs from the official text only cosmetically`,
+    contentWords(byId(id).question) === contentWords(official(id).question),
+    { now: contentWords(byId(id).question), official: contentWords(official(id).question) }));
+[...COSMETIC_OPTIONS].forEach(k => {
+  const id = Number(k.slice(0, -1)), L = k.slice(-1);
+  check(`3d Q${id} option ${L} differs from the official text only cosmetically`,
+    contentWords(byId(id).options[L]) === contentWords(official(id).options[L]),
+    { now: contentWords(byId(id).options[L]), official: contentWords(official(id).options[L]) });
+});
+
+// And whatever the wording, no stem or option may gain a number or a formula
+// the official paper did not have.
+const numbersIn = s => (plain(s).match(/\d+(?:\.\d+)?/g) || []).sort();
+const formulasIn = s => [...new Set((plain(s).match(/\b[A-Z][A-Za-z]*\d*[A-Za-z0-9]*\b/g) || [])
+  .filter(t => /\d/.test(t)))].sort();
+exam.forEach(q => {
+  const now = plain(q.question + ' ' + Object.values(q.options).join(' '));
+  const was = plain(official(q.id).question + ' ' + Object.values(official(q.id).options).join(' '));
+  check(`3e Q${q.id} introduces no numerical data`,
+    numbersIn(now).every(n => numbersIn(was).includes(n)),
+    numbersIn(now).filter(n => !numbersIn(was).includes(n)));
+  check(`3f Q${q.id} introduces no formula`,
+    formulasIn(now).every(f => formulasIn(was).includes(f)),
+    formulasIn(now).filter(f => !formulasIn(was).includes(f)));
+  check(`3g Q${q.id} stem and options gained no more than 6 words`,
+    now.split(' ').length - was.split(' ').length <= 6,
+    now.split(' ').length - was.split(' ').length);
 });
 
 // ---------------------------------------------------- the review's fixes
@@ -153,8 +206,12 @@ const CORRECTIONS = [
     'the stem’s absolute claim is too broad'],
   [36, /can form an amide under suitable conditions/i, /Yields an amide \(N-methylbutanamide\)/i,
     'an amide forms only under suitable conditions'],
-  [56, /far too high for the hydroxide concentration/i, /mis-applies Kw/i,
+  [56, /six orders of magnitude above the correct hydroxide concentration/i, /mis-applies Kw/i,
     'the distractor arithmetic is not overclaimed'],
+  [56, /\[H₃O⁺\] = 10⁻⁵ mol\/L, whereas the given solution has \[H₃O⁺\] = 10⁻³/, /an acid this strong|a much weaker acid/i,
+    'the distractors are rejected on concentration, not acid strength'],
+  [11, /not a standard test for fetal genetic or chromosomal conditions/i, /not used in pregnancy/i,
+    'arteriography is not a prenatal genetic test, rather than never used'],
 ];
 CORRECTIONS.forEach(([id, present, absent, label]) => {
   check(`4a Q${id} states: ${label}`, present.test(byId(id).explanation),
