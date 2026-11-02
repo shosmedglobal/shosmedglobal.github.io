@@ -253,6 +253,13 @@ const CORRECTIONS = [
   [57, /Reading the 8 % as a <strong>mass\/volume<\/strong> percentage/i, null,
        'the mass/volume reading of 8% is stated before the grams are calculated'],
   [57, /fourfold decrease/i, null, 'the dilution is fourfold, 8% to 2%'],
+  // Two corrections to this pass itself.
+  [12, /A primary oocyte entering meiosis I has 46 chromosomes and 92 chromatids/,
+       /46 chromosomes and 46 chromatids\): describes the primary oocyte before meiosis I/,
+       '46/46 is a diploid cell before replication; the primary oocyte is 46/92'],
+  [30, /Vitamins A, D, E and K are fat-soluble/,
+       /excreted in the urine rather than stored/,
+       'folate is water-soluble; the explanation no longer implies it is not stored'],
 ];
 CORRECTIONS.forEach(([id, present, absent, label]) => {
   check(`4a Q${id} states: ${label}`, present.test(byId(id).explanation),
