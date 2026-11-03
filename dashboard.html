@@ -599,7 +599,7 @@
                standard laptop viewport. -->
           <div id="mockExamEmpty" class="mock-exam-empty" style="display:none;">
             <h2 class="mock-exam-empty-title">Take your first mock exam</h2>
-            <p class="mock-exam-empty-lead">Full-length simulation under real timing &mdash; 60 questions, 120 minutes, no pause.</p>
+            <p class="mock-exam-empty-lead">Full-length simulation under real timing: 60 questions, 120 minutes, no pause.</p>
             <div class="mock-exam-empty-benefits">
               <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> Section breakdown</span>
               <span class="mock-exam-empty-benefit"><span class="mock-exam-empty-check">&#10003;</span> PhD-level explanations</span>
@@ -1128,42 +1128,34 @@
 
         <!-- ========== VIEW: STORE ========== -->
         <div class="view" id="viewStore">
-          <div class="dashboard-header">
-            <h1>Store</h1>
-            <p class="dashboard-sub">Browse and purchase services to support your journey.</p>
-            <!-- Admin-only path toggle (Med School / Residency). Hidden for regular users. -->
-            <div id="storePathToggle" style="display:none; margin-top:14px; gap:8px; flex-wrap:wrap;">
-              <button type="button" class="store-path-btn active" data-store-path="applicant" style="background:var(--accent); color:#fff; border:1.5px solid var(--accent); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Med School Application</button>
-              <button type="button" class="store-path-btn" data-store-path="student" style="background:#fff; color:var(--gray-600); border:1.5px solid var(--gray-300); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Residency Application</button>
-              <span style="font-size:0.78rem; color:var(--gray-500); align-self:center; margin-left:6px;">Admin preview</span>
-            </div>
+          <!-- Admin-only path toggle (Med School / Residency). Hidden for regular users. -->
+          <div id="storePathToggle" style="display:none; margin-bottom:24px; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="store-path-btn active" data-store-path="applicant" style="background:var(--accent); color:#fff; border:1.5px solid var(--accent); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Med School Application</button>
+            <button type="button" class="store-path-btn" data-store-path="student" style="background:#fff; color:var(--gray-600); border:1.5px solid var(--gray-300); border-radius:50px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s;">Residency Application</button>
+            <span style="font-size:0.78rem; color:var(--gray-500); align-self:center; margin-left:6px;">Admin preview</span>
           </div>
 
           <!-- Applicant Services: mirrors the 3-step pricing on applicants.html
                so dashboard pricing stays in sync with the public site. -->
           <div id="storeApplicantServices" style="display:none;">
 
-            <h3 class="view-section-title" id="qbankPricingTitle">Med School Application Plans</h3>
-            <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with the free preview. Upgrade to Full QBank Access for the entrance exam. Add specific services as you progress through the application.</p>
-
-            <!-- Entrance Exam Registration. Sits above the 3-step grid: for a
+            <!-- Entrance Exam Registration. Opens the Med School path: for a
                  US or Canadian applicant, registering for the exam is the first
-                 move, not an afterthought. Two actions, both live:
+                 move, not an afterthought. The card carries its own heading, so
+                 there is no section title above it. Two actions, both live:
                  "Apply for LF3" is the shared .stripe-pay handler on tier
                  apply-lf3-service (Stripe lookup_key apply-lf3, $199), and
                  "Contact Us" opens the booking form with the Entrance Exam
                  Registration service already chosen, the same pattern as the
                  free-consultation CTA on the overview. -->
-            <h3 class="view-section-title">Entrance Exam Registration</h3>
             <div class="lf3-reg-card">
               <div class="lf3-reg-body">
                 <span class="lf3-reg-badge">Official LF3 Representative &middot; US &amp; Canada</span>
-                <h4>Entrance Exam Registration (US &amp; Canada)</h4>
-                <p>SHOS Med is the authorized United States and Canada representative of the <strong>Third Faculty of Medicine (LF3), Charles University, Prague</strong>. We register you for the LF3 entrance examination and handle everything around it &mdash; application submission, required documents, deadlines and exam-day logistics &mdash; for the six-year English-taught MD programme.</p>
-                <p class="lf3-reg-note">The examination is written, administered and scored by LF3, and admissions decisions rest with the faculty. The examination fee is set by LF3 and paid separately from the $199 application service.</p>
+                <h4>Entrance Exam Registration</h4>
+                <p>Register for the entrance examination to the six-year English-taught MD programme at the <strong>Third Faculty of Medicine (LF3), Charles University, Prague</strong>. SHOS Med is the faculty's authorized representative for the United States and Canada.</p>
               </div>
               <div class="lf3-reg-actions">
-                <a href="#" class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service">Apply for LF3 &mdash; $199</a>
+                <a href="#" class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service">Apply for LF3 &middot; $199</a>
                 <a href="#" class="btn btn-secondary btn-small" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} var s=document.getElementById('contactService'); if(s){s.value='entrance-exam-registration'; s.dispatchEvent(new Event('change'));} return false;">Contact Us</a>
               </div>
             </div>
@@ -1273,10 +1265,10 @@
                   <label for="applicantTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Buy a single add-on</label>
                   <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
                     <option value="">Choose an add-on&hellip;</option>
-                    <option value="apply-lf3-service">Apply for LF3 &mdash; $199</option>
-                    <option value="mock-exam-interview">Mock Interview + Feedback &mdash; $99</option>
-                    <option value="life-in-prague">Life in Prague &mdash; $99</option>
-                    <option value="applicant-mentor">1-on-1 Mentor Session &mdash; $99</option>
+                    <option value="apply-lf3-service">Apply for LF3 &middot; $199</option>
+                    <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
+                    <option value="life-in-prague">Life in Prague &middot; $99</option>
+                    <option value="applicant-mentor">1-on-1 Mentor Session &middot; $99</option>
                   </select>
                   <a href="#" id="applicantBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Add-On</a>
                 </div>
@@ -1428,13 +1420,13 @@
                   <label for="addonTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Buy a single add-on</label>
                   <select id="addonTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.88rem; color:var(--navy); background:#fff; margin-bottom:10px; cursor:pointer;">
                     <option value="">Choose an add-on&hellip;</option>
-                    <option value="mentorship-lor">Letter of Rec Coaching &mdash; $99</option>
-                    <option value="mentorship-program-list">Program List Guidance &mdash; $99</option>
-                    <option value="mentorship-research">Research Strategy &mdash; $99</option>
-                    <option value="mentorship-cv">Personal Statement Review &mdash; $99</option>
-                    <option value="mentorship-mock-interview">Mock Interview Session &mdash; $99</option>
-                    <option value="mentorship-eras">ERAS CV Review &mdash; $99</option>
-                    <option value="usmle-step-review">USMLE Step Review &mdash; $99 / session</option>
+                    <option value="mentorship-lor">Letter of Rec Coaching &middot; $99</option>
+                    <option value="mentorship-program-list">Program List Guidance &middot; $99</option>
+                    <option value="mentorship-research">Research Strategy &middot; $99</option>
+                    <option value="mentorship-cv">Personal Statement Review &middot; $99</option>
+                    <option value="mentorship-mock-interview">Mock Interview Session &middot; $99</option>
+                    <option value="mentorship-eras">ERAS CV Review &middot; $99</option>
+                    <option value="usmle-step-review">USMLE Step Review &middot; $99 / session</option>
                   </select>
                   <a href="#" id="addonBuyBtn" class="btn btn-primary stripe-pay" data-tier="" aria-disabled="true" style="width:100%; opacity:0.5; pointer-events:none;">Get This Add-On</a>
                 </div>
@@ -4438,7 +4430,7 @@
           // escapeHtml: `name` is user-supplied and this is an innerHTML sink.
           'Viewing as <strong>' + escapeHtml(target.name || target.email || targetUid) + '</strong> &middot; ' +
           (target._thinProfile
-            ? '<span style="color:#78350F;">Profile record is incomplete &mdash; ' +
+            ? '<span style="color:#78350F;">Profile record is incomplete: ' +
               'name/email shown from their sign-in account. Writes are disabled while impersonating.</span>'
             : '<span style="color:#78350F;">Writes are disabled while impersonating.</span>') +
         '</div>' +
@@ -5443,10 +5435,10 @@
         btn.style.opacity = tier ? '' : '0.5';
         btn.style.pointerEvents = tier ? '' : 'none';
         btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
-        // Surface the price on the button itself, e.g. "Get This Service — $99".
+        // Surface the price on the button itself, e.g. "Get This Service · $99".
         const label = tier ? sel.options[sel.selectedIndex].text : '';
-        const price = label.includes('—') ? label.split('—').pop().trim() : '';
-        btn.textContent = price ? 'Get This Add-On — ' + price : 'Get This Add-On';
+        const price = /[—·]/.test(label) ? label.split(/[—·]/).pop().trim() : '';
+        btn.textContent = price ? 'Get This Add-On · ' + price : 'Get This Add-On';
       });
     })();
 
@@ -5463,8 +5455,8 @@
         btn.style.pointerEvents = tier ? '' : 'none';
         btn.setAttribute('aria-disabled', tier ? 'false' : 'true');
         const label = tier ? sel.options[sel.selectedIndex].text : '';
-        const price = label.includes('—') ? label.split('—').pop().trim() : '';
-        btn.textContent = price ? 'Get This Add-On — ' + price : 'Get This Add-On';
+        const price = /[—·]/.test(label) ? label.split(/[—·]/).pop().trim() : '';
+        btn.textContent = price ? 'Get This Add-On · ' + price : 'Get This Add-On';
       });
     })();
 
@@ -5909,7 +5901,7 @@
       if (undoneYears.length > 0 && !roles.isPaid && !roles.isAdmin && !roles.isReviewer) {
         title.textContent = 'Unlock ' + undoneYears.length + ' more mock exams';
         copy.textContent = 'You\'ve done the free ' + examLabel(cfg, cfg.freeYear) + ' exam. QBank Full Access ($99, 6 months) unlocks every other year plus 1,000+ practice questions and full explanations.';
-        ctaBox.innerHTML = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+        ctaBox.innerHTML = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &middot; $99</a>';
         return;
       }
 
@@ -6142,7 +6134,7 @@
           statusHtml = '<span class="mock-exam-pill locked">' +
             '<svg class="mock-exam-pill-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Locked</span>';
           // Uses the same stripe-pay hook as other checkout buttons.
-          actionHtml = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &mdash; $99</a>';
+          actionHtml = '<a href="#" class="btn btn-primary stripe-pay" data-tier="full-access">Unlock &middot; $99</a>';
 
         } else {
           // Available to take — free year OR paid/admin/reviewer.

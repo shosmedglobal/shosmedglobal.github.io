@@ -129,7 +129,7 @@ check('5c it sits above the Step 3 add-on list', cardAt !== -1 && cardAt < addon
 const card = cardAt === -1 ? '' : html.slice(cardAt - 400, html.indexOf('</div>', html.indexOf('lf3-reg-actions')) + 400);
 check('5d the green CTA buys Apply for LF3 at the $199 tier',
   /class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service"/.test(card));
-check('5e the green CTA names its price', /Apply for LF3 &mdash; \$199/.test(card));
+check('5e the green CTA names its price', /Apply for LF3 &middot; \$199/.test(card));
 check('5f Contact Us is still there, beside it',
   /lf3-reg-actions[\s\S]*?>Contact Us</.test(card));
 check('5g Contact Us opens the booking form on the right service',
@@ -137,23 +137,45 @@ check('5g Contact Us opens the booking form on the right service',
 check('5h the category is set before the service, or the handler clears it',
   card.indexOf("c.value='booking'") < card.indexOf("s.value='entrance-exam-registration'"));
 
-// The copy carries the three things that make the offer legible: who LF3 is,
-// what SHOS Med's standing is, and that the exam fee is not the $199.
+// The copy carries the two things that make the offer legible: which
+// programme at which faculty, and what SHOS Med's standing is.
 check('5i names the faculty in full',
   /Third Faculty of Medicine \(LF3\), Charles University, Prague/.test(card));
-check('5j states the representative status',
-  /authorized United States and Canada representative/.test(card));
-check('5k separates the LF3 exam fee from the $199 service fee',
-  /examination fee is set by LF3 and paid separately/.test(card));
-check('5l does not claim SHOS Med sets or scores the exam',
-  /written, administered and scored by LF3/.test(card));
+check('5j names the programme before the faculty, not as a trailing clause',
+  card.indexOf('six-year English-taught MD programme') < card.indexOf('Third Faculty of Medicine'));
+check('5k states the representative status',
+  /authorized representative for the United States and Canada/.test(card));
+
+// House style: no em dashes in copy a customer reads. Price labels use the
+// middle dot the pricing cards already use ("total · 6 months access").
+check('5l the card copy has no em dash', !card.includes('—') && !card.includes('&mdash;'),
+  (card.match(/.{0,30}(—|&mdash;).{0,30}/g) || []).slice(0, 3));
+const storeStart = html.indexOf('id="viewStore"');
+const storeEnd = html.indexOf('<!-- ========== VIEW:', storeStart + 10);
+const storeMarkup = html.slice(storeStart, storeEnd === -1 ? html.length : storeEnd);
+check('5m no em-dash price labels anywhere in the store',
+  !/&mdash;\s*\$/.test(storeMarkup) && !/—\s*\$/.test(storeMarkup),
+  (storeMarkup.match(/.{0,24}(—|&mdash;)\s*\$.{0,10}/g) || []).slice(0, 5));
+
+// The add-on buttons read the price back off the chosen option's label, so
+// the separator they split on has to be the one the labels use.
+check('5n the add-on buttons split on the separator the labels use',
+  (html.match(/label\.split\(\/\[\u2014\u00b7\]\/\)/g) || []).length === 2,
+  (html.match(/label\.split\([^)]*\)/g) || []));
+
+// The Med School path opens on the registration card: the "Store" heading
+// and the "Med School Application Plans" intro were removed as redundant.
+check('5o the applicant store opens with the registration card',
+  html.indexOf('id="storeApplicantServices"') < cardAt
+  && !html.includes('Med School Application Plans')
+  && !html.includes('Browse and purchase services'));
 
 // The styles the card and its green button depend on must exist, or the
 // card renders as unstyled markup.
 const css = fs.readFileSync(path.join(ROOT, 'dashboard.css'), 'utf8');
 // Matched at the start of a line so a selector that survives only inside the
 // mobile @media block (indented) does not count as defined.
-['.lf3-reg-card', '.lf3-reg-body', '.lf3-reg-badge', '.lf3-reg-note',
+['.lf3-reg-card', '.lf3-reg-body', '.lf3-reg-badge',
  '.lf3-reg-actions', '.btn-apply-lf3'].forEach(sel => {
   check(`6 ${sel} is defined in dashboard.css`,
     css.split('\n').some(line => line.startsWith(sel + ' {') || line.startsWith(sel + ',')));
