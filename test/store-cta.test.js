@@ -127,9 +127,9 @@ check('5b it sits above the 3-step pricing grid', cardAt !== -1 && cardAt < grid
 check('5c it sits above the Step 3 add-on list', cardAt !== -1 && cardAt < addonsAt, [cardAt, addonsAt]);
 
 const card = cardAt === -1 ? '' : html.slice(cardAt - 400, html.indexOf('</div>', html.indexOf('lf3-reg-actions')) + 400);
-check('5d the green CTA buys Apply for LF3 at the $199 tier',
+check('5d the green CTA buys the $199 registration tier',
   /class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service"/.test(card));
-check('5e the green CTA names its price', /Apply for LF3 &middot; \$199/.test(card));
+check('5e the green CTA names its price', /Register for the Exam &middot; \$199/.test(card));
 check('5f Contact Us is still there, beside it',
   /lf3-reg-actions[\s\S]*?>Contact Us</.test(card));
 check('5g Contact Us opens the booking form on the right service',
@@ -137,14 +137,55 @@ check('5g Contact Us opens the booking form on the right service',
 check('5h the category is set before the service, or the handler clears it',
   card.indexOf("c.value='booking'") < card.indexOf("s.value='entrance-exam-registration'"));
 
-// The copy carries the two things that make the offer legible: which
-// programme at which faculty, and what SHOS Med's standing is.
+// What the $199 buys is a seat at the entrance exam, not an application
+// service. The copy has to say that, say where the exam is sat, and not
+// imply the fee reaches further than the exam.
 check('5i names the faculty in full',
   /Third Faculty of Medicine \(LF3\), Charles University, Prague/.test(card));
 check('5j names the programme before the faculty, not as a trailing clause',
   card.indexOf('six-year English-taught MD programme') < card.indexOf('Third Faculty of Medicine'));
 check('5k states the representative status',
   /authorized representative for the United States and Canada/.test(card));
+check('5p the $199 is stated as registering for the exam',
+  /\$199 registers you to sit the entrance examination/.test(card));
+check('5q says the exam is not sat in Prague',
+  /held outside the Czech Republic/.test(card));
+check('5r tuition is named as the faculty fee, not part of the $199',
+  /paying tuition to the faculty/.test(card));
+check('5s document help is secondary, not the product',
+  /lf3-reg-note[\s\S]*?documents LF3 requires/.test(card));
+check('5t the card never calls the $199 an application service',
+  !/Apply for LF3/.test(card) && !/application submission/.test(card),
+  (card.match(/.{0,30}Apply for LF3.{0,30}/g) || []));
+
+// The same $199 tier is sold in three other places. All of them have to call
+// it the same thing, or the buyer sees one name here and another on the
+// receipt. (The Stripe product name itself is set in the Stripe dashboard and
+// is not checkable from here.)
+const PRODUCT_NAME = 'LF3 Entrance Exam Registration';
+check('5u the Step 3 add-on uses the product name',
+  new RegExp('<span>' + PRODUCT_NAME + '</span>').test(html));
+check('5v both tier selects use the product name',
+  (html.match(new RegExp('<option value="apply-lf3-service">' + PRODUCT_NAME, 'g')) || []).length === 2,
+  (html.match(/<option value="apply-lf3-service">[^<]*/g) || []));
+check('5w nothing in the store still says "Apply for LF3"',
+  !/>Apply for LF3/.test(storeMarkupForName()),
+  (storeMarkupForName().match(/.{0,20}>Apply for LF3.{0,20}/g) || []));
+function storeMarkupForName() {
+  const a = html.indexOf('id="viewStore"');
+  const b = html.indexOf('<!-- ========== VIEW:', a + 10);
+  return html.slice(a, b === -1 ? html.length : b);
+}
+
+// The other files that render this product's name to a customer.
+const SIBLINGS = ['applicants.html', 'contact-booking.js', 'product-catalog.js', 'success.html'];
+SIBLINGS.forEach(f => {
+  const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  check(`5x ${f} uses the product name`, src.includes(PRODUCT_NAME), null);
+  check(`5y ${f} no longer calls it "Apply for LF3"`,
+    !/'Apply for LF3'|>Apply for LF3</.test(src),
+    (src.match(/.{0,24}Apply for LF3.{0,24}/g) || []));
+});
 
 // House style: no em dashes in copy a customer reads. Price labels use the
 // middle dot the pricing cards already use ("total · 6 months access").
@@ -175,7 +216,7 @@ check('5o the applicant store opens with the registration card',
 const css = fs.readFileSync(path.join(ROOT, 'dashboard.css'), 'utf8');
 // Matched at the start of a line so a selector that survives only inside the
 // mobile @media block (indented) does not count as defined.
-['.lf3-reg-card', '.lf3-reg-body', '.lf3-reg-badge',
+['.lf3-reg-card', '.lf3-reg-body', '.lf3-reg-badge', '.lf3-reg-note',
  '.lf3-reg-actions', '.btn-apply-lf3'].forEach(sel => {
   check(`6 ${sel} is defined in dashboard.css`,
     css.split('\n').some(line => line.startsWith(sel + ' {') || line.startsWith(sel + ',')));

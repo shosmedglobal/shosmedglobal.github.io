@@ -1139,23 +1139,24 @@
                so dashboard pricing stays in sync with the public site. -->
           <div id="storeApplicantServices" style="display:none;">
 
-            <!-- Entrance Exam Registration. Opens the Med School path: for a
-                 US or Canadian applicant, registering for the exam is the first
-                 move, not an afterthought. The card carries its own heading, so
-                 there is no section title above it. Two actions, both live:
-                 "Apply for LF3" is the shared .stripe-pay handler on tier
-                 apply-lf3-service (Stripe lookup_key apply-lf3, $199), and
-                 "Contact Us" opens the booking form with the Entrance Exam
-                 Registration service already chosen, the same pattern as the
-                 free-consultation CTA on the overview. -->
+            <!-- Entrance Exam Registration. Opens the Med School path: this is
+                 what the $199 buys, so it leads rather than sitting under the
+                 pricing. The card carries its own heading, so there is no
+                 section title above it. Two actions, both live: the green CTA
+                 is the shared .stripe-pay handler on tier apply-lf3-service
+                 (Stripe lookup_key apply-lf3, $199), and "Contact Us" opens the
+                 booking form with the Entrance Exam Registration service
+                 already chosen, the same pattern as the free-consultation CTA
+                 on the overview. -->
             <div class="lf3-reg-card">
               <div class="lf3-reg-body">
                 <span class="lf3-reg-badge">Official LF3 Representative &middot; US &amp; Canada</span>
-                <h4>Entrance Exam Registration</h4>
-                <p>Register for the entrance examination to the six-year English-taught MD programme at the <strong>Third Faculty of Medicine (LF3), Charles University, Prague</strong>. SHOS Med is the faculty's authorized representative for the United States and Canada.</p>
+                <h4>LF3 Entrance Exam Registration</h4>
+                <p>Your $199 registers you to sit the entrance examination for the six-year English-taught MD programme at the <strong>Third Faculty of Medicine (LF3), Charles University, Prague</strong>. The examination is held outside the Czech Republic, so you do not travel to Prague to take it. Pass it and you are eligible to enrol, paying tuition to the faculty.</p>
+                <p class="lf3-reg-note">SHOS Med is the faculty's authorized representative for the United States and Canada. Guidance on the documents LF3 requires comes with your registration.</p>
               </div>
               <div class="lf3-reg-actions">
-                <a href="#" class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service">Apply for LF3 &middot; $199</a>
+                <a href="#" class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service">Register for the Exam &middot; $199</a>
                 <a href="#" class="btn btn-secondary btn-small" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} var s=document.getElementById('contactService'); if(s){s.value='entrance-exam-registration'; s.dispatchEvent(new Event('change'));} return false;">Contact Us</a>
               </div>
             </div>
@@ -1210,12 +1211,12 @@
                 <ul class="addon-list">
                   <li class="addon-item" tabindex="0">
                     <div class="addon-row">
-                      <span>Apply for LF3</span>
+                      <span>LF3 Entrance Exam Registration</span>
                       <span class="addon-icon" aria-hidden="true">&#9432;</span>
                     </div>
                     <div class="addon-detail">
                       <span class="addon-price">$199</span>
-                      <p class="addon-desc">Submission, documents, deadlines and entrance exam logistics. For the 6-year English-taught MD at Charles University, Third Faculty of Medicine.</p>
+                      <p class="addon-desc">Registers you to sit the LF3 entrance examination, held outside the Czech Republic, for the 6-year English-taught MD at Charles University, Third Faculty of Medicine. Guidance on the documents the faculty requires is included.</p>
                     </div>
                   </li>
 
@@ -1265,7 +1266,7 @@
                   <label for="applicantTierSelect" style="display:block; font-size:0.78rem; font-weight:600; color:var(--gray-600); margin-bottom:7px;">Buy a single add-on</label>
                   <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
                     <option value="">Choose an add-on&hellip;</option>
-                    <option value="apply-lf3-service">Apply for LF3 &middot; $199</option>
+                    <option value="apply-lf3-service">LF3 Entrance Exam Registration &middot; $199</option>
                     <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
                     <option value="life-in-prague">Life in Prague &middot; $99</option>
                     <option value="applicant-mentor">1-on-1 Mentor Session &middot; $99</option>
@@ -1488,7 +1489,7 @@
                     </optgroup>
                     <optgroup label="Med School Application">
                       <option value="full-qbank">Full QBank Access &middot; $99</option>
-                      <option value="apply-lf3-service">Apply for LF3 &middot; $199</option>
+                      <option value="apply-lf3-service">LF3 Entrance Exam Registration &middot; $199</option>
                       <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
                       <option value="life-in-prague">Life in Prague &middot; $99</option>
                       <option value="applicant-mentor">1-on-1 Mentor Session (applicant) &middot; $99</option>

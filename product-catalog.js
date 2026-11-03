@@ -33,7 +33,7 @@
     // ---- Med School Application
     'full-access':                { name: 'Full QBank Access', audience: 'med-school', stripe: true },
     'full-qbank':                 { name: 'Full QBank Access', audience: 'med-school' },
-    'apply-lf3-service':          { name: 'Apply for LF3', audience: 'med-school', stripe: true },
+    'apply-lf3-service':          { name: 'LF3 Entrance Exam Registration', audience: 'med-school', stripe: true },
     'mock-exam-interview':        { name: 'Mock Interview + Feedback', audience: 'med-school', stripe: true },
     'life-in-prague':             { name: 'Life in Prague', audience: 'med-school', stripe: true },
     'applicant-mentor':           { name: '1-on-1 Mentor Session (applicant)', audience: 'med-school', stripe: true },

@@ -261,6 +261,14 @@
   line-height: 1.6;
 }
 
+/* Second paragraph: the representative standing and what else comes with the
+   registration, set back from the offer itself. */
+.lf3-reg-note {
+  margin-top: 10px !important;
+  font-size: 0.84rem !important;
+  color: var(--gray-500) !important;
+}
+
 .lf3-reg-actions {
   flex-shrink: 0;
   display: flex;
