@@ -25,7 +25,7 @@
       "D": "can not carry oncogenes"
     },
     "correct": "C",
-    "explanation": "<p>In a latent (lysogenic) infection the viral genome integrates into the host chromosome and replicates passively with host DNA. Even retroviruses (whose mature virions carry RNA) integrate as DNA after reverse transcription, so the integrated provirus is always a DNA copy.</p><p><strong>Option A</strong> (RNA integrated): RNA is not integrated directly; retroviruses first reverse-transcribe their RNA into DNA before integration.</p><p><strong>Option B</strong> (symbiotic): latent infection is parasitic, not symbiotic.</p><p><strong>Option D</strong> (no oncogenes): many latent viruses do carry oncogenes (for example HPV E6/E7, EBV LMP1).</p>"
+    "explanation": "<p><strong>C</strong> is the intended answer for viruses that integrate into the host genome: in a latent, lysogenic infection the viral genome is inserted into a host chromosome and replicates passively with host DNA. Even retroviruses, whose virions carry RNA, integrate as DNA after reverse transcription, so the integrated provirus is a DNA copy.</p><p>Integration is not required for every latent infection. Some viruses, herpesviruses among them, keep their genome as a separate episome in the nucleus.</p><p><strong>Option A</strong> (RNA integrated): RNA is not integrated directly; retroviruses reverse-transcribe into DNA first.</p><p><strong>Option B</strong> (symbiotic): symbiosis is a broad term that includes parasitism, so it does not specifically describe viral latency.</p><p><strong>Option D</strong> (no oncogenes): many latent viruses do carry oncogenes, for example HPV E6/E7 and EBV LMP1.</p>"
   },
   {
     "id": 3,
@@ -45,7 +45,7 @@
     "id": 4,
     "section": "Biology",
     "topic": "Microbiology",
-    "question": "The structure of bacteriophage contains:",
+    "question": "The structure of a bacteriophage contains:",
     "options": {
       "A": "head, tail, envelope",
       "B": "head, base plate, flagellum",
@@ -59,7 +59,7 @@
     "id": 5,
     "section": "Biology",
     "topic": "Microbiology",
-    "question": "Cell wall of Gram positive bacteria contains thick layer of:",
+    "question": "The cell wall of Gram-positive bacteria contains a thick layer of:",
     "options": {
       "A": "peptidoglycan",
       "B": "lipopolysaccharides",
@@ -67,13 +67,13 @@
       "D": "lipoproteins"
     },
     "correct": "A",
-    "explanation": "<p>Gram-positive bacteria have a thick (20-80 nm) layer of peptidoglycan external to the plasma membrane, embedded with teichoic and lipoteichoic acids. This thick peptidoglycan retains the crystal violet-iodine complex during the Gram stain, which is why these cells appear purple.</p><p><strong>Option B</strong> (LPS): lipopolysaccharide is the hallmark of the <strong>outer membrane of Gram-negative</strong> bacteria, not Gram-positives.</p><p><strong>Option C</strong> (carbohydrates): general carbohydrates are not the principal structural component of the Gram-positive wall.</p><p><strong>Option D</strong> (lipoproteins): lipoproteins are also not the principal structural component of the Gram-positive wall.</p>"
+    "explanation": "<p>Gram-positive bacteria have a thick (20-80 nm) layer of peptidoglycan external to the plasma membrane, embedded with teichoic and lipoteichoic acids. This thick peptidoglycan retains the crystal violet-iodine complex during the Gram stain, which is why these cells appear purple.</p><p><strong>Option B</strong> (LPS): lipopolysaccharide is the hallmark of the <strong>outer membrane of Gram-negative</strong> bacteria, not Gram-positives.</p><p><strong>Option C</strong> (carbohydrates): peptidoglycan consists of sugar chains cross-linked by short peptides, so carbohydrate is certainly present. “Carbohydrates” is simply too general; peptidoglycan is the specific answer.</p><p><strong>Option D</strong> (lipoproteins): lipoproteins are not the principal structural component of the Gram-positive wall.</p>"
   },
   {
     "id": 6,
     "section": "Biology",
     "topic": "Cell biology",
-    "question": "Function of lysosomes is:",
+    "question": "The function of lysosomes is:",
     "options": {
       "A": "synthesis of enzymes",
       "B": "intracellular digestion",
@@ -95,7 +95,7 @@
       "D": "structural genes"
     },
     "correct": "D",
-    "explanation": "<p>Euchromatin is the loosely packed, transcriptionally accessible form of chromatin where actively expressed structural and housekeeping genes reside. Heterochromatin, by contrast, is densely compacted and largely transcriptionally silent.</p><p><strong>Option A</strong> (Barr bodies): the inactivated X chromosome is heterochromatic, not euchromatic.</p><p><strong>Option B</strong> (inactive genes): silent genes are located in heterochromatin, not euchromatin.</p><p><strong>Option C</strong> (repetitive sequences): the bulk of repetitive DNA (centromeric and telomeric satellite repeats) is heterochromatic.</p>"
+    "explanation": "<p>Euchromatin is the loosely packed, accessible form of chromatin, where structural and housekeeping genes reside. Heterochromatin, by contrast, is densely compacted and largely transcriptionally silent.</p><p><strong>Option A</strong> (Barr bodies): the inactivated X chromosome is heterochromatic, not euchromatic.</p><p><strong>Option B</strong> (inactive genes): euchromatin contains accessible genes, although not all of them are actively expressed at a given moment. <strong>D</strong> is the intended textbook answer because euchromatin is where transcribed structural genes are found.</p><p><strong>Option C</strong> (repetitive sequences): the bulk of satellite repeat DNA at centromeres and telomeres is heterochromatic, though repetitive elements are not confined to heterochromatin.</p>"
   },
   {
     "id": 8,
@@ -103,19 +103,19 @@
     "topic": "Molecular biology",
     "question": "RNA processing of the primary transcript (pre-mRNA) includes:",
     "options": {
-      "A": "polyadenylation of 3&prime; end",
+      "A": "polyadenylation of 3′ end",
       "B": "excision of exons",
       "C": "methylation of introns",
       "D": "spinalization"
     },
     "correct": "A",
-    "explanation": "<p>Eukaryotic pre-mRNA processing includes three covalent modifications: a 7-methylguanosine cap added to the 5&prime; end, splicing (which excises <em>introns</em> and ligates <em>exons</em>), and addition of a poly(A) tail to the 3&prime; end.</p><p><strong>Option B</strong> (excision of exons): this inverts splicing - introns are excised, exons are kept.</p><p><strong>Option C</strong> (methylation of introns): introns are not routinely methylated during pre-mRNA processing; the 5&prime; cap is methylated, not introns.</p><p><strong>Option D</strong> (spinalization): this is not a recognized molecular biology term.</p>"
+    "explanation": "<p>Eukaryotic pre-mRNA processing includes three covalent modifications: a 7-methylguanosine cap added to the 5′ end, splicing (which excises <em>introns</em> and ligates <em>exons</em>), and addition of a poly(A) tail to the 3′ end.</p><p><strong>Option B</strong> (excision of exons): this inverts splicing - introns are excised, exons are kept.</p><p><strong>Option C</strong> (methylation of introns): introns are not routinely methylated during pre-mRNA processing; the 5′ cap is methylated, not introns.</p><p><strong>Option D</strong> (spinalization): this is not a recognized molecular biology term.</p>"
   },
   {
     "id": 9,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Gregor Mendel <strong>did not</strong> observe inheritance pattern in one of these characters of peas:",
+    "question": "Which of these pea characteristics did Gregor Mendel not study?",
     "options": {
       "A": "flower color",
       "B": "seed shape",
@@ -123,7 +123,7 @@
       "D": "pod shape"
     },
     "correct": "C",
-    "explanation": "<p>Mendel studied seven discrete characters of <em>Pisum sativum</em> in his classic 1866 experiments: seed shape (round/wrinkled), seed color (yellow/green), pod shape (inflated/constricted), pod color (green/yellow), flower color (purple/white), flower position (axial/terminal), and stem/plant height (tall/dwarf). Root length was not among them.</p><p><strong>Option A</strong> (flower color): was one of Mendel&prime;s seven characters (purple vs. white).</p><p><strong>Option B</strong> (seed shape): was one of the seven characters (round vs. wrinkled).</p><p><strong>Option D</strong> (pod shape): was one of the seven characters (inflated vs. constricted).</p>"
+    "explanation": "<p>Mendel studied seven discrete characters of <em>Pisum sativum</em> in the experiments published in 1866: seed shape (round/wrinkled), seed colour (yellow/green), pod shape (inflated/constricted), pod colour (green/yellow), flower colour (purple/white), flower position (axial/terminal), and stem height (tall/dwarf). Root length was not among them.</p><p><strong>Option A</strong> (flower colour): one of Mendel's seven characters, purple versus white.</p><p><strong>Option B</strong> (seed shape): one of the seven characters, round versus wrinkled.</p><p><strong>Option D</strong> (pod shape): one of the seven characters, inflated versus constricted.</p>"
   },
   {
     "id": 10,
@@ -137,27 +137,27 @@
       "D": "CAB"
     },
     "correct": "B",
-    "explanation": "<p>In a linear three-point linkage map, the recombination frequency between the two outer markers equals (approximately) the sum of the two interior intervals. Order ACB (C in the middle) predicts AB = AC + CB = 2 + 3 = 5 cM, which matches the observed 5 cM exactly. The middle gene is therefore C, giving order A&ndash;C&ndash;B (= ACB).</p><p><strong>Option A</strong> (ABC, B in middle): predicts AC = AB + BC = 5 + 3 = 8 cM, but observed AC = 2 cM. Fails.</p><p><strong>Option C</strong> (BAC, A in middle): predicts BC = BA + AC = 5 + 2 = 7 cM, but observed BC = 3 cM. Fails.</p><p><strong>Option D</strong> (CAB, A in middle): same middle gene as C; predicts CB = CA + AB = 2 + 5 = 7 cM, but observed is 3 cM. Fails.</p>"
+    "explanation": "<p>In a linear three-point linkage map, the recombination frequency between the two outer markers equals, approximately, the sum of the two interior intervals. Order ACB (C in the middle) predicts AB = AC + CB = 2 + 3 = 5 cM, which matches the observed 5 cM exactly. The middle gene is therefore C, giving the order A–C–B.</p><p><strong>Option A</strong> (ABC, B in the middle): predicts AC = AB + BC = 5 + 3 = 8 cM, but AC is observed as 2 cM.</p><p><strong>Option C</strong> (BAC, A in the middle): predicts BC = BA + AC = 5 + 2 = 7 cM, but BC is observed as 3 cM.</p><p><strong>Option D</strong> (CAB): this places the same middle gene as option C, namely gene A, and predicts CB = CA + AB = 2 + 5 = 7 cM against an observed 3 cM.</p>"
   },
   {
     "id": 11,
     "section": "Biology",
     "topic": "Genetics",
-    "question": "Match the statement &ldquo;Determines phenotype in a heterozygote&rdquo; with the term:",
+    "question": "Match the statement “Determines phenotype in a heterozygote” with the term:",
     "options": {
       "A": "codominant allele",
       "B": "recessive allele",
-      "C": "incomplete dominant allele",
-      "D": "complete dominant allele"
+      "C": "incompletely dominant allele",
+      "D": "completely dominant allele"
     },
     "correct": "D",
-    "explanation": "<p>A complete dominant allele is one that, when paired with a recessive allele in a heterozygote, fully determines the phenotype - the recessive allele is masked.</p><p><strong>Option A</strong> (codominant): with codominant alleles <em>both</em> alleles are expressed simultaneously (e.g., AB blood type).</p><p><strong>Option B</strong> (recessive): a recessive allele is by definition <em>not</em> expressed in the heterozygote.</p><p><strong>Option C</strong> (incomplete dominant): the heterozygote shows an intermediate, blended phenotype (e.g., red &times; white snapdragon &rarr; pink).</p>"
+    "explanation": "<p>A completely dominant allele is one that, when paired with a recessive allele in a heterozygote, fully determines the phenotype: the recessive allele is masked.</p><p><strong>Option A</strong> (codominant): with codominant alleles <em>both</em> alleles are expressed at once, as in AB blood group.</p><p><strong>Option B</strong> (recessive): a recessive allele is by definition not expressed in the heterozygote.</p><p><strong>Option C</strong> (incompletely dominant): the heterozygote shows an intermediate, blended phenotype, as in a red × white snapdragon cross giving pink.</p>"
   },
   {
     "id": 12,
     "section": "Biology",
     "topic": "Cell division",
-    "question": "What is the physical basis of Mendel&prime;s laws?",
+    "question": "What is the physical basis of Mendel′s laws?",
     "options": {
       "A": "the behavior of chromosomes during meiosis",
       "B": "the behavior of chromosomes during mitosis",
@@ -165,7 +165,7 @@
       "D": "the behavior of chromosomes during S phase"
     },
     "correct": "A",
-    "explanation": "<p>Mendel&prime;s laws of segregation and independent assortment are explained by chromosome behavior during <strong>meiosis</strong>: segregation reflects the separation of homologous chromosomes during anaphase I, and independent assortment reflects the random orientation of each homologous pair at metaphase I.</p><p><strong>Option B</strong> (mitosis): mitosis preserves chromosome identity in somatic cells and does not generate gametes, so it cannot underlie inheritance patterns.</p><p><strong>Option C</strong> (interphase): interphase involves cell growth and DNA replication, not allele segregation.</p><p><strong>Option D</strong> (S phase): S phase is DNA replication only; no segregation occurs.</p>"
+    "explanation": "<p>Mendel's laws of segregation and independent assortment are explained by chromosome behaviour during <strong>meiosis</strong>: segregation reflects the separation of homologous chromosomes at anaphase I, and independent assortment reflects the random orientation of each homologous pair at metaphase I.</p><p><strong>Option B</strong> (mitosis): mitosis generally preserves chromosome number, and the segregation and independent assortment tested here result from chromosome behaviour in meiosis.</p><p><strong>Option C</strong> (interphase): interphase is cell growth and DNA replication, not allele segregation.</p><p><strong>Option D</strong> (S phase): S phase is DNA replication only; no segregation occurs.</p>"
   },
   {
     "id": 13,
@@ -179,7 +179,7 @@
       "D": "impossible to define"
     },
     "correct": "C",
-    "explanation": "<p>After DNA replication in S phase, each of the 46 chromosomes of a human somatic cell consists of two identical sister chromatids joined at the centromere. By G2, every chromosome is therefore double-stranded, giving 46 &times; 2 = <strong>92 chromatids</strong>.</p><p><strong>Option A</strong> (23): 23 is the haploid chromosome number, not the G2 chromatid count.</p><p><strong>Option B</strong> (46): 46 is the number of chromosomes (and chromatids) in G1, before replication.</p><p><strong>Option D</strong> (impossible): the number is well-defined and equals 92.</p>"
+    "explanation": "<p>Assuming a normal human diploid somatic cell: after DNA replication in S phase, each of the 46 chromosomes consists of two identical sister chromatids joined at the centromere. By G2, each chromosome therefore consists of two sister chromatids, giving 46 × 2 = <strong>92 chromatids</strong>.</p><p><strong>Option A</strong> (23): 23 is the haploid chromosome number, not the G2 chromatid count.</p><p><strong>Option B</strong> (46): 46 is the number of chromosomes, and the number of chromatids in G1, before replication.</p><p><strong>Option D</strong> (impossible): the number is well defined and equals 92.</p>"
   },
   {
     "id": 14,
@@ -193,7 +193,7 @@
       "D": "3"
     },
     "correct": "C",
-    "explanation": "<p>Lyonization (random X-inactivation) silences all but one X chromosome in each somatic cell. The number of Barr bodies (condensed inactive X) therefore equals (number of X chromosomes) &minus; 1. For 47, XXX (triple X, or trisomy X), this is 3 &minus; 1 = <strong>2 Barr bodies</strong>.</p><p><strong>Option A</strong> (0): 0 Barr bodies applies to a normal male (46, XY).</p><p><strong>Option B</strong> (1): 1 Barr body corresponds to a normal female (46, XX).</p><p><strong>Option D</strong> (3): 3 Barr bodies would require 4 X chromosomes (48, XXXX).</p>"
+    "explanation": "<p>Lyonization (random X-inactivation) silences all but one X chromosome in each somatic cell. The number of Barr bodies (condensed inactive X) therefore equals (number of X chromosomes) − 1. For 47, XXX (triple X, or trisomy X), this is 3 − 1 = <strong>2 Barr bodies</strong>.</p><p><strong>Option A</strong> (0): 0 Barr bodies applies to a normal male (46, XY).</p><p><strong>Option B</strong> (1): 1 Barr body corresponds to a normal female (46, XX).</p><p><strong>Option D</strong> (3): 3 Barr bodies would require 4 X chromosomes (48, XXXX).</p>"
   },
   {
     "id": 15,
@@ -207,7 +207,7 @@
       "D": "blood group A or blood group B or blood group O"
     },
     "correct": "A",
-    "explanation": "<p>Father is genotype I<sup>A</sup>I<sup>B</sup> (group AB); mother is ii (group O). Each child inherits one allele from each parent: I<sup>A</sup>i (phenotype A) or I<sup>B</sup>i (phenotype B), each with 50% probability. Group O (genotype ii) is impossible because the father has no <em>i</em> allele to contribute.</p><p><strong>Option B</strong> (A or O): includes group O, which is impossible.</p><p><strong>Option C</strong> (B or O): includes group O and excludes group A, both wrong.</p><p><strong>Option D</strong> (A, B, or O): includes the impossible group O.</p>"
+    "explanation": "<p>Father is genotype IᴬIᴮ (group AB); mother is ii (group O). Each child inherits one allele from each parent: Iᴬi (phenotype A) or Iᴮi (phenotype B), each with 50% probability. Group O (genotype ii) is impossible because the father has no <em>i</em> allele to contribute.</p><p><strong>Option B</strong> (A or O): includes group O, which is impossible.</p><p><strong>Option C</strong> (B or O): includes group O and excludes group A, both wrong.</p><p><strong>Option D</strong> (A, B, or O): includes the impossible group O.</p>"
   },
   {
     "id": 16,
@@ -235,13 +235,13 @@
       "D": "will control, respiration"
     },
     "correct": "B",
-    "explanation": "<p>Epithelial tissue covers body surfaces and lines cavities. Its core functions are protection, absorption (e.g., intestinal enterocytes), secretion (glandular epithelium), and selective transport.</p><p><strong>Option A</strong> (conduction, contraction): conduction is a property of nerve tissue, contraction is a property of muscle - neither is epithelial.</p><p><strong>Option C</strong> (sensation, photosynthesis): photosynthesis does not occur in animals; sensory reception is chiefly neural.</p><p><strong>Option D</strong> (will control, respiration): &ldquo;will control&rdquo; is a function of the central nervous system, not epithelium.</p>"
+    "explanation": "<p>Epithelial tissue covers body surfaces and lines cavities. Its core functions are protection, absorption (e.g., intestinal enterocytes), secretion (glandular epithelium), and selective transport.</p><p><strong>Option A</strong> (conduction, contraction): conduction is a property of nerve tissue, contraction is a property of muscle - neither is epithelial.</p><p><strong>Option C</strong> (sensation, photosynthesis): photosynthesis does not occur in animals; sensory reception is chiefly neural.</p><p><strong>Option D</strong> (will control, respiration): “will control” is a function of the central nervous system, not epithelium.</p>"
   },
   {
     "id": 18,
     "section": "Biology",
     "topic": "Anatomy & histology",
-    "question": "Nervous system develops from:",
+    "question": "The nervous system develops from:",
     "options": {
       "A": "mesoderm",
       "B": "endoderm",
@@ -255,7 +255,7 @@
     "id": 19,
     "section": "Biology",
     "topic": "Anatomy & histology",
-    "question": "Aorta originates in:",
+    "question": "The aorta originates in:",
     "options": {
       "A": "right atrium",
       "B": "right ventricle",
@@ -263,7 +263,7 @@
       "D": "left atrium"
     },
     "correct": "C",
-    "explanation": "<p>The aorta carries oxygenated blood from the systemic circulation and exits the heart from the <strong>left ventricle</strong> through the aortic semilunar valve.</p><p><strong>Option A</strong> (right atrium): receives systemic venous return; it is not the source of a great artery.</p><p><strong>Option B</strong> (right ventricle): gives rise to the pulmonary trunk (deoxygenated blood to the lungs), not the aorta.</p><p><strong>Option D</strong> (left atrium): receives oxygenated blood from the pulmonary veins and passes it to the left ventricle; it does not directly give rise to an artery.</p>"
+    "explanation": "<p>The aorta carries oxygenated blood from the <strong>left ventricle</strong> into the systemic circulation, leaving the heart through the aortic semilunar valve.</p><p><strong>Option A</strong> (right atrium): receives systemic venous return; it is not the source of a great artery.</p><p><strong>Option B</strong> (right ventricle): gives rise to the pulmonary trunk, carrying deoxygenated blood to the lungs, not to the aorta.</p><p><strong>Option D</strong> (left atrium): receives oxygenated blood from the pulmonary veins and passes it to the left ventricle; it does not give rise to an artery.</p>"
   },
   {
     "id": 20,
@@ -283,7 +283,7 @@
     "id": 21,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "Function of renal duct system is:",
+    "question": "A function of the renal tubular system is:",
     "options": {
       "A": "secretion of amino acids",
       "B": "excretion of amino acids",
@@ -291,7 +291,7 @@
       "D": "degradation of amino acids"
     },
     "correct": "C",
-    "explanation": "<p>Amino acids are freely filtered at the glomerulus and are then almost completely reabsorbed by Na<sup>+</sup>-coupled transporters in the proximal tubule (the &ldquo;renal duct system&rdquo;). Healthy individuals therefore excrete only trace amino acids in urine. Aminoaciduria results when these transporters are deficient (e.g., Hartnup disease, cystinuria).</p><p><strong>Option A</strong> (secretion): the kidney does not normally secrete amino acids into the tubular lumen.</p><p><strong>Option B</strong> (excretion): only trace amounts are normally excreted; the tubule&prime;s job is to recover them.</p><p><strong>Option D</strong> (degradation): the kidney does not degrade amino acids in this segment.</p>"
+    "explanation": "<p>Amino acids are freely filtered at the glomerulus and are then almost completely reabsorbed by Na⁺-coupled transporters in the proximal tubule. Healthy individuals therefore excrete only trace amino acids in urine. Aminoaciduria results when these transporters are deficient, as in Hartnup disease and cystinuria.</p><p><strong>Option A</strong> (secretion): the kidney does not normally secrete amino acids into the tubular lumen.</p><p><strong>Option B</strong> (excretion): only trace amounts are normally excreted; the tubule's job is to recover them.</p><p><strong>Option D</strong> (degradation): <strong>C</strong> is the intended answer because the renal tubules reabsorb filtered amino acids. Kidney cells do also metabolize amino acids, glutamine in particular, so degradation is not something the kidney never does.</p>"
   },
   {
     "id": 22,
@@ -311,15 +311,15 @@
     "id": 23,
     "section": "Biology",
     "topic": "Cell biology",
-    "question": "A cell&prime;s membrane potential shifts from &minus;70 mV to &minus;50 mV. What change in the cell&prime;s permeability could cause such a shift?",
+    "question": "A cell′s membrane potential shifts from −70 mV to −50 mV. What change in the cell′s permeability could cause such a shift?",
     "options": {
-      "A": "an increase in permeability to Ca<sup>+</sup>",
-      "B": "an increase in permeability to Li<sup>+</sup>",
-      "C": "an increase in permeability to Mn<sup>+</sup>",
-      "D": "an increase in permeability to Na<sup>+</sup>"
+      "A": "an increase in permeability to Ca⁺",
+      "B": "an increase in permeability to Li⁺",
+      "C": "an increase in permeability to Mn⁺",
+      "D": "an increase in permeability to Na⁺"
     },
     "correct": "D",
-    "explanation": "<p>A shift from &minus;70 to &minus;50 mV is a depolarization, produced by inward movement of positive charge. Sodium ions (Na<sup>+</sup>) are abundant outside the cell and have a strongly positive equilibrium potential (~+60 mV), so opening Na<sup>+</sup> channels drives the membrane potential toward that value, causing depolarization.</p><p><strong>Option A</strong> (Ca<sup>+</sup>): calcium (actual species Ca<sup>2+</sup>) does depolarize when admitted, but Na<sup>+</sup> is the canonical excitable-cell depolarization ion and matches the textbook mechanism most cleanly.</p><p><strong>Option B</strong> (Li<sup>+</sup>): lithium is not a physiological ion that mediates excitable-cell depolarization.</p><p><strong>Option C</strong> (Mn<sup>+</sup>): manganese is not a physiological depolarization ion either.</p>"
+    "explanation": "<p>A shift from −70 to −50 mV is a depolarization, produced by inward movement of positive charge. Sodium ions (Na⁺) are abundant outside the cell and have a strongly positive equilibrium potential of about +60 mV, so opening Na⁺ channels drives the membrane potential toward that value.</p><p><strong>Option A</strong> (Ca⁺): the biological calcium ion is Ca²⁺, not Ca⁺. Increasing permeability to Ca²⁺ would also depolarize the cell, and calcium currents do exactly that in cardiac and smooth muscle; <strong>D</strong> is the intended answer because Na⁺ as written is the canonical depolarizing ion of excitable cells.</p><p><strong>Option B</strong> (Li⁺): lithium is not a physiological ion mediating depolarization.</p><p><strong>Option C</strong> (Mn⁺): manganese is not a physiological depolarizing ion either, and its usual biological form is Mn²⁺.</p>"
   },
   {
     "id": 24,
@@ -353,7 +353,7 @@
     "id": 26,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "Focusing in the mammalian eye on nearby objects:",
+    "question": "When the mammalian eye focuses on nearby objects:",
     "options": {
       "A": "lens does not change",
       "B": "lens becomes flatter",
@@ -375,7 +375,7 @@
       "D": "Malnourished persons have diets deficient in proteins."
     },
     "correct": "C",
-    "explanation": "<p>Undernutrition refers specifically to inadequate <em>caloric</em> (energy) intake. Malnutrition is the broader term for any inadequate or imbalanced supply of nutrients, including specific essential nutrients such as proteins, minerals, or vitamins. Mineral deficiency is a form of <em>malnutrition</em>, not undernutrition, so option C misuses the terminology and is the false statement.</p><p><strong>Option A</strong> (correct): undernutrition = inadequate calories - accurate definition.</p><p><strong>Option B</strong> (correct): malnourished persons lack essential nutrients - the broader definition of malnutrition.</p><p><strong>Option D</strong> (correct): protein deficiency is a classic form of malnutrition (e.g., kwashiorkor).</p>"
+    "explanation": "<p><strong>C</strong> is the official intended answer under the question's simplified distinction: undernutrition as insufficient calories, malnutrition as a deficiency of particular nutrients. On that reading, calling a mineral deficiency “undernutrition” misuses the term, so C is the false statement.</p><p>In standard usage the two categories overlap. Undernutrition is not restricted to calories and includes micronutrient deficiencies, and malnutrition covers excesses and imbalances as well as deficiencies.</p><p><strong>Option A</strong>: true under the question's definition, undernutrition as inadequate calorie intake.</p><p><strong>Option B</strong>: true, malnourished persons lack one or more essential nutrients.</p><p><strong>Option D</strong>: treated as true here, protein deficiency being the classic form of malnutrition, as in kwashiorkor. It is not universally true, since malnutrition does not necessarily mean protein deficiency.</p>"
   },
   {
     "id": 28,
@@ -389,13 +389,13 @@
       "D": "0.42"
     },
     "correct": "C",
-    "explanation": "<p>For a fully dominant trait, the dominant phenotype encompasses both homozygous-dominant and heterozygous individuals: <em>p</em><sup>2</sup> + 2<em>pq</em>. With <em>p</em> = 0.7 and <em>q</em> = 0.3, this equals 0.49 + 2(0.7)(0.3) = 0.49 + 0.42 = <strong>0.91</strong>.</p><p><strong>Option A</strong> (0.70): the dominant allele frequency, not a phenotype frequency.</p><p><strong>Option B</strong> (0.49): only the homozygous-dominant fraction (<em>p</em><sup>2</sup>).</p><p><strong>Option D</strong> (0.42): only the heterozygote fraction (2<em>pq</em>).</p>"
+    "explanation": "<p>For a fully dominant trait, the dominant phenotype encompasses both homozygous-dominant and heterozygous individuals: <em>p</em>² + 2<em>pq</em>. With <em>p</em> = 0.7 and <em>q</em> = 0.3, this equals 0.49 + 2(0.7)(0.3) = 0.49 + 0.42 = <strong>0.91</strong>.</p><p><strong>Option A</strong> (0.70): the dominant allele frequency, not a phenotype frequency.</p><p><strong>Option B</strong> (0.49): only the homozygous-dominant fraction (<em>p</em>²).</p><p><strong>Option D</strong> (0.42): only the heterozygote fraction (2<em>pq</em>).</p>"
   },
   {
     "id": 29,
     "section": "Biology",
     "topic": "Human physiology",
-    "question": "In the atmosphere there is approximately ___ of oxygen:",
+    "question": "Oxygen makes up approximately ___ of the atmosphere.",
     "options": {
       "A": "21%",
       "B": "78%",
@@ -403,7 +403,7 @@
       "D": "36%"
     },
     "correct": "A",
-    "explanation": "<p>Earth&prime;s atmosphere is by volume approximately 78% N<sub>2</sub>, <strong>21% O<sub>2</sub></strong>, ~1% argon, plus trace gases (CO<sub>2</sub>, water vapor, methane, etc.).</p><p><strong>Option B</strong> (78%): this is the nitrogen fraction, not oxygen.</p><p><strong>Option C</strong> (2%): close to argon (~1%) but does not correspond to oxygen.</p><p><strong>Option D</strong> (36%): does not correspond to any major atmospheric component.</p>"
+    "explanation": "<p>Earth′s atmosphere is by volume approximately 78% N₂, <strong>21% O₂</strong>, ~1% argon, plus trace gases (CO₂, water vapor, methane, etc.).</p><p><strong>Option B</strong> (78%): this is the nitrogen fraction, not oxygen.</p><p><strong>Option C</strong> (2%): close to argon (~1%) but does not correspond to oxygen.</p><p><strong>Option D</strong> (36%): does not correspond to any major atmospheric component.</p>"
   },
   {
     "id": 30,
@@ -411,13 +411,13 @@
     "topic": "Human physiology",
     "question": "Which sequence of the pyramid of life in an ecosystem is correct?",
     "options": {
-      "A": "solar energy &rarr; herbivores &rarr; plants &rarr; carnivores",
-      "B": "solar energy &rarr; carnivores &rarr; herbivores &rarr; plants",
-      "C": "solar energy &rarr; plants &rarr; carnivores &rarr; herbivores",
-      "D": "solar energy &rarr; plants &rarr; herbivores &rarr; carnivores"
+      "A": "solar energy → herbivores → plants → carnivores",
+      "B": "solar energy → carnivores → herbivores → plants",
+      "C": "solar energy → plants → carnivores → herbivores",
+      "D": "solar energy → plants → herbivores → carnivores"
     },
     "correct": "D",
-    "explanation": "<p>Energy flows in a single direction through trophic levels: solar radiation is captured by autotrophs (plants/producers) via photosynthesis, then transferred to primary consumers (herbivores), then to secondary consumers (carnivores), and so on.</p><p><strong>Option A</strong> (herbivores before plants): herbivores cannot precede plants because plants are the producers that fix solar energy.</p><p><strong>Option B</strong> (carnivores first): reverses the entire trophic hierarchy; energy must flow from producer upward.</p><p><strong>Option C</strong> (plants &rarr; carnivores &rarr; herbivores): carnivores cannot precede herbivores; primary consumers come before secondary consumers.</p>"
+    "explanation": "<p>Energy flows in a single direction through trophic levels: solar radiation is captured by autotrophs (plants/producers) via photosynthesis, then transferred to primary consumers (herbivores), then to secondary consumers (carnivores), and so on.</p><p><strong>Option A</strong> (herbivores before plants): herbivores cannot precede plants because plants are the producers that fix solar energy.</p><p><strong>Option B</strong> (carnivores first): reverses the entire trophic hierarchy; energy must flow from producer upward.</p><p><strong>Option C</strong> (plants → carnivores → herbivores): carnivores cannot precede herbivores; primary consumers come before secondary consumers.</p>"
   },
   {
     "id": 31,
@@ -425,13 +425,13 @@
     "topic": "Bonding & structure",
     "question": "The second most abundant cation of the intracellular fluid is magnesium. There are various forms of nutritional supplements that can bring magnesium to the human body: which of the following is a correct formula of such a supplement?",
     "options": {
-      "A": "MgO<sub>2</sub>",
-      "B": "(H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COO)<sub>2</sub>Mg",
-      "C": "Mg<sub>2</sub>O",
-      "D": "H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COOMg"
+      "A": "MgO₂",
+      "B": "(H₂N−CH₂−COO)₂Mg",
+      "C": "Mg₂O",
+      "D": "H₂N−CH₂−COOMg"
     },
     "correct": "B",
-    "explanation": "<p>Option B is magnesium bisglycinate (also called magnesium glycinate), in which two glycinate anions (H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COO<sup>&minus;</sup>) coordinate to one Mg<sup>2+</sup> cation. Charge balance is satisfied: 2 &times; (&minus;1) + (+2) = 0. It is a widely used, well-tolerated oral magnesium supplement.</p><p><strong>Option A</strong> (MgO<sub>2</sub>): implies a Mg<sup>4+</sup> oxidation state, which does not exist for magnesium (Mg is essentially always Mg<sup>2+</sup>).</p><p><strong>Option C</strong> (Mg<sub>2</sub>O): would require Mg<sup>+</sup>, which is not a real compound formula.</p><p><strong>Option D</strong> (H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;COOMg): not charge-balanced - one anion (&minus;1) paired with a divalent cation (+2) leaves +1 residual charge.</p>"
+    "explanation": "<p>Option B is magnesium bisglycinate, also called magnesium glycinate, in which two glycinate anions (H₂N−CH₂−COO⁻) coordinate one Mg²⁺ cation. Charge balance is satisfied: 2 × (−1) + (+2) = 0. It is a widely used, well-tolerated oral magnesium supplement.</p><p><strong>Option A</strong> (MgO₂): this is a real formula. MgO₂ is magnesium peroxide, built from Mg²⁺ and the peroxide anion O₂²⁻, so magnesium keeps its usual +2 state and no Mg⁴⁺ is involved. It is used industrially and in some bowel preparations rather than as a nutritional magnesium supplement, which is why B is the intended answer. The question's broad wording makes this a weak distractor.</p><p><strong>Option C</strong> (Mg₂O): would require Mg⁺, which magnesium does not form in ordinary compounds.</p><p><strong>Option D</strong> (H₂N−CH₂−COOMg): not charge balanced; one −1 anion with a +2 cation leaves +1 outstanding.</p>"
   },
   {
     "id": 32,
@@ -439,13 +439,13 @@
     "topic": "Bonding & structure",
     "question": "What is the correct formula of calcium phosphate?",
     "options": {
-      "A": "CaPO<sub>4</sub>",
-      "B": "Ca<sub>2</sub>(PO<sub>4</sub>)<sub>3</sub>",
-      "C": "Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>",
-      "D": "Ca(PO<sub>4</sub>)<sub>2</sub>"
+      "A": "CaPO₄",
+      "B": "Ca₂(PO₄)₃",
+      "C": "Ca₃(PO₄)₂",
+      "D": "Ca(PO₄)₂"
     },
     "correct": "C",
-    "explanation": "<p>Calcium is Ca<sup>2+</sup>; phosphate is PO<sub>4</sub><sup>3&minus;</sup>. Charge balance requires 3 Ca<sup>2+</sup> &times; (+2) = +6 and 2 PO<sub>4</sub><sup>3&minus;</sup> &times; (&minus;3) = &minus;6, giving the neutral formula <strong>Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></strong>. This is the principal mineral phase of bones and teeth.</p><p><strong>Option A</strong> (CaPO<sub>4</sub>): net charge = +2 &minus; 3 = &minus;1, not neutral.</p><p><strong>Option B</strong> (Ca<sub>2</sub>(PO<sub>4</sub>)<sub>3</sub>): net charge = +4 &minus; 9 = &minus;5, not neutral.</p><p><strong>Option D</strong> (Ca(PO<sub>4</sub>)<sub>2</sub>): net charge = +2 &minus; 6 = &minus;4, not neutral.</p>"
+    "explanation": "<p>Calcium is Ca²⁺ and phosphate is PO₄³⁻. Charge balance requires 3 Ca²⁺ × (+2) = +6 against 2 PO₄³⁻ × (−3) = −6, giving the neutral formula <strong>Ca₃(PO₄)₂</strong>.</p><p><strong>Option A</strong> (CaPO₄): net charge +2 − 3 = −1, not neutral.</p><p><strong>Option B</strong> (Ca₂(PO₄)₃): net charge +4 − 9 = −5, not neutral.</p><p><strong>Option D</strong> (Ca(PO₄)₂): net charge +2 − 6 = −4, not neutral.</p>"
   },
   {
     "id": 33,
@@ -459,7 +459,7 @@
       "D": "bromic acid"
     },
     "correct": "A",
-    "explanation": "<p>Oxoacids of bromine follow a regular naming pattern based on the oxidation state of bromine: HBrO is hypobromous (Br is +1), HBrO<sub>2</sub> is bromous (+3), HBrO<sub>3</sub> is bromic (+5), HBrO<sub>4</sub> is perbromic (+7).</p><p><strong>Option B</strong> (hydrobromic): hydrobromic acid is HBr (no oxygen), the binary halogen acid.</p><p><strong>Option C</strong> (bromous): bromous acid is HBrO<sub>2</sub>, not HBrO.</p><p><strong>Option D</strong> (bromic): bromic acid is HBrO<sub>3</sub>, not HBrO.</p>"
+    "explanation": "<p>Oxoacids of bromine follow a regular naming pattern based on the oxidation state of bromine: HBrO is hypobromous (Br is +1), HBrO₂ is bromous (+3), HBrO₃ is bromic (+5), HBrO₄ is perbromic (+7).</p><p><strong>Option B</strong> (hydrobromic): hydrobromic acid is HBr (no oxygen), the binary halogen acid.</p><p><strong>Option C</strong> (bromous): bromous acid is HBrO₂, not HBrO.</p><p><strong>Option D</strong> (bromic): bromic acid is HBrO₃, not HBrO.</p>"
   },
   {
     "id": 34,
@@ -473,13 +473,13 @@
       "D": "Fe(I)"
     },
     "correct": "A",
-    "explanation": "<p>In Stock nomenclature, Roman numerals indicate oxidation state. Ferrous = Fe<sup>2+</sup> = Fe(II); ferric = Fe<sup>3+</sup> = Fe(III). Hemoglobin binds O<sub>2</sub> only when its heme iron is in the ferrous (Fe<sup>2+</sup>) state; oxidation to Fe<sup>3+</sup> yields methemoglobin, which cannot bind oxygen.</p><p><strong>Option B</strong> (Fe(III)): this is the ferric ion, not ferrous.</p><p><strong>Option C</strong> (Fe(VI)): not a physiological oxidation state of iron.</p><p><strong>Option D</strong> (Fe(I)): unstable in biology; does not describe ferrous iron.</p>"
+    "explanation": "<p>In Stock nomenclature the Roman numeral gives the oxidation state. Ferrous = Fe²⁺ = <strong>Fe(II)</strong>; ferric = Fe³⁺ = Fe(III). Haemoglobin binds O₂ only while its haem iron is ferrous; oxidation to Fe³⁺ gives methaemoglobin, which cannot carry oxygen.</p><p>The stem's statement describes the usual uptake of non-haem dietary iron, which crosses the enterocyte membrane as Fe²⁺ through DMT1. It is not a rule covering every route: ferric iron bound to transferrin enters cells by receptor-mediated endocytosis.</p><p><strong>Option B</strong> (Fe(III)): this is the ferric ion, not ferrous.</p><p><strong>Option C</strong> (Fe(VI)): not a physiological oxidation state of iron.</p><p><strong>Option D</strong> (Fe(I)): not a biological state of iron, and not ferrous.</p>"
   },
   {
     "id": 35,
     "section": "Chemistry",
     "topic": "Acid-base chemistry",
-    "question": "What happens to the pH of a solution when CO<sub>2</sub> is dissolved in water?",
+    "question": "What happens to the pH of a solution when CO₂ is dissolved in water?",
     "options": {
       "A": "increases",
       "B": "decreases",
@@ -487,7 +487,7 @@
       "D": "becomes neutral"
     },
     "correct": "B",
-    "explanation": "<p>CO<sub>2</sub> + H<sub>2</sub>O &rlhar; H<sub>2</sub>CO<sub>3</sub> &rlhar; H<sup>+</sup> + HCO<sub>3</sub><sup>&minus;</sup>. Carbonic acid is a weak acid; its dissociation increases [H<sup>+</sup>], so the pH falls (becomes more acidic). This is the principle behind the carbonic acid-bicarbonate buffer in blood and explains why exhaling CO<sub>2</sub> raises blood pH (respiratory alkalosis) while CO<sub>2</sub> retention lowers it (respiratory acidosis).</p><p><strong>Option A</strong> (increases): CO<sub>2</sub> generates acid, so pH cannot rise.</p><p><strong>Option C</strong> (unchanged): adding a proton source measurably lowers pH.</p><p><strong>Option D</strong> (neutral): pure water is already close to neutral; dissolving CO<sub>2</sub> makes it acidic, not neutral.</p>"
+    "explanation": "<p>CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻. Carbonic acid is a weak acid, and its dissociation raises [H⁺], so the pH falls. This is the basis of the carbonic acid–bicarbonate buffer of blood: excessive loss of CO₂ during hyperventilation can cause respiratory alkalosis, while CO₂ retention can cause respiratory acidosis.</p><p><strong>Option A</strong> (increases): CO₂ generates acid, so the pH cannot rise.</p><p><strong>Option C</strong> (unchanged): adding a proton source measurably lowers the pH.</p><p><strong>Option D</strong> (neutral): pure water is already close to neutral; dissolving CO₂ makes it acidic.</p>"
   },
   {
     "id": 36,
@@ -495,27 +495,27 @@
     "topic": "Acid-base chemistry",
     "question": "Which of the following compounds is a strong acid?",
     "options": {
-      "A": "CH<sub>3</sub>COOH",
-      "B": "H<sub>2</sub>CO<sub>3</sub>",
+      "A": "CH₃COOH",
+      "B": "H₂CO₃",
       "C": "HCl",
-      "D": "NH<sub>3</sub>"
+      "D": "NH₃"
     },
     "correct": "C",
-    "explanation": "<p>A strong acid is one that dissociates essentially completely in water (K<sub>a</sub> &gt;&gt; 1). HCl ionizes &gt;99% to H<sup>+</sup> + Cl<sup>&minus;</sup> at physiological concentrations and is the canonical strong mineral acid.</p><p><strong>Option A</strong> (CH<sub>3</sub>COOH): acetic acid is a weak acid (K<sub>a</sub> ~ 1.8 &times; 10<sup>&minus;5</sup>).</p><p><strong>Option B</strong> (H<sub>2</sub>CO<sub>3</sub>): carbonic acid is a weak acid.</p><p><strong>Option D</strong> (NH<sub>3</sub>): ammonia is a weak <em>base</em>, not an acid.</p>"
+    "explanation": "<p>A strong acid is one that dissociates essentially completely in water (Kₐ >> 1). HCl ionizes >99% to H⁺ + Cl⁻ at physiological concentrations and is the canonical strong mineral acid.</p><p><strong>Option A</strong> (CH₃COOH): acetic acid is a weak acid (Kₐ ~ 1.8 × 10⁻⁵).</p><p><strong>Option B</strong> (H₂CO₃): carbonic acid is a weak acid.</p><p><strong>Option D</strong> (NH₃): ammonia is a weak <em>base</em>, not an acid.</p>"
   },
   {
     "id": 37,
     "section": "Chemistry",
     "topic": "Redox reactions",
-    "question": "In the reaction Zn + CuSO<sub>4</sub> &rarr; ZnSO<sub>4</sub> + Cu, which species is reduced?",
+    "question": "In the reaction Zn + CuSO₄ → ZnSO₄ + Cu, which species is reduced?",
     "options": {
       "A": "Zn",
       "B": "Cu",
-      "C": "SO<sub>4</sub>",
-      "D": "ZnSO<sub>4</sub>"
+      "C": "SO₄",
+      "D": "ZnSO₄"
     },
     "correct": "B",
-    "explanation": "<p>Reduction is gain of electrons (decrease in oxidation number). Cu<sup>2+</sup> in CuSO<sub>4</sub> picks up two electrons from Zn and is reduced to Cu<sup>0</sup>. A useful mnemonic: <strong>OIL RIG</strong> - Oxidation Is Loss, Reduction Is Gain (of electrons).</p><p><strong>Option A</strong> (Zn): Zn<sup>0</sup> loses two electrons to become Zn<sup>2+</sup>; Zn is <em>oxidized</em>, not reduced.</p><p><strong>Option C</strong> (SO<sub>4</sub>): sulfate is a spectator ion (SO<sub>4</sub><sup>2&minus;</sup>); its oxidation state is unchanged.</p><p><strong>Option D</strong> (ZnSO<sub>4</sub>): this is a product; the sulfate portion is a spectator and the Zn was oxidized (not reduced) to enter this compound.</p>"
+    "explanation": "<p>Reduction is gain of electrons (decrease in oxidation number). Cu²⁺ in CuSO₄ picks up two electrons from Zn and is reduced to Cu⁰. A useful mnemonic: <strong>OIL RIG</strong> - Oxidation Is Loss, Reduction Is Gain (of electrons).</p><p><strong>Option A</strong> (Zn): Zn⁰ loses two electrons to become Zn²⁺; Zn is <em>oxidized</em>, not reduced.</p><p><strong>Option C</strong> (SO₄): sulfate is a spectator ion (SO₄²⁻); its oxidation state is unchanged.</p><p><strong>Option D</strong> (ZnSO₄): this is a product; the sulfate portion is a spectator and the Zn was oxidized (not reduced) to enter this compound.</p>"
   },
   {
     "id": 38,
@@ -529,13 +529,13 @@
       "D": "decreases the equilibrium constant"
     },
     "correct": "B",
-    "explanation": "<p>A catalyst lowers the activation energy (E<sub>a</sub>) by providing an alternative reaction pathway with a lower-energy transition state. It speeds up forward and reverse reactions equally and is regenerated unchanged.</p><p><strong>Option A</strong> (raises E<sub>a</sub>): opposite of the true effect - a catalyst lowers E<sub>a</sub>.</p><p><strong>Option C</strong> (increases K<sub>eq</sub>): because a catalyst accelerates both directions equally, it does <em>not</em> shift K<sub>eq</sub>; only the rate to reach equilibrium changes.</p><p><strong>Option D</strong> (decreases K<sub>eq</sub>): same reason - K<sub>eq</sub> is a thermodynamic quantity that is independent of catalyst.</p>"
+    "explanation": "<p>A catalyst lowers the activation energy (Eₐ) by providing an alternative reaction pathway with a lower-energy transition state. It speeds up forward and reverse reactions equally and is regenerated unchanged.</p><p><strong>Option A</strong> (raises Eₐ): opposite of the true effect - a catalyst lowers Eₐ.</p><p><strong>Option C</strong> (increases K<sub>eq</sub>): because a catalyst accelerates both directions equally, it does <em>not</em> shift K<sub>eq</sub>; only the rate to reach equilibrium changes.</p><p><strong>Option D</strong> (decreases K<sub>eq</sub>): same reason - K<sub>eq</sub> is a thermodynamic quantity that is independent of catalyst.</p>"
   },
   {
     "id": 39,
     "section": "Chemistry",
     "topic": "Acid-base chemistry",
-    "question": "Choose the correct description of this chemical reaction: NH<sub>3</sub> + H<sub>2</sub>O &rlhar; NH<sub>4</sub><sup>+</sup> + OH<sup>&minus;</sup>",
+    "question": "Choose the correct description of this chemical reaction: NH₃ + H₂O ⇌ NH₄⁺ + OH⁻",
     "options": {
       "A": "ammonia acts as an acid",
       "B": "water acts as an acid",
@@ -543,21 +543,21 @@
       "D": "hydroxide acts as a conjugate acid"
     },
     "correct": "B",
-    "explanation": "<p>In the Br&oslash;nsted-Lowry sense, an acid donates a proton and a base accepts one. Here water donates H<sup>+</sup> to ammonia, so <strong>H<sub>2</sub>O is the acid</strong> and NH<sub>3</sub> is the base. The conjugate acid-base pairs are H<sub>2</sub>O / OH<sup>&minus;</sup> and NH<sub>3</sub> / NH<sub>4</sub><sup>+</sup>.</p><p><strong>Option A</strong> (ammonia as acid): ammonia accepts a proton, so it acts as a base, not an acid.</p><p><strong>Option C</strong> (NH<sub>4</sub><sup>+</sup> as conjugate base): NH<sub>4</sub><sup>+</sup> is the conjugate <em>acid</em> of NH<sub>3</sub>, not a conjugate base.</p><p><strong>Option D</strong> (OH<sup>&minus;</sup> as conjugate acid): OH<sup>&minus;</sup> is the conjugate <em>base</em> of H<sub>2</sub>O, not a conjugate acid.</p>"
+    "explanation": "<p>In the Brønsted-Lowry sense, an acid donates a proton and a base accepts one. Here water donates H⁺ to ammonia, so <strong>H₂O is the acid</strong> and NH₃ is the base. The conjugate acid-base pairs are H₂O / OH⁻ and NH₃ / NH₄⁺.</p><p><strong>Option A</strong> (ammonia as acid): ammonia accepts a proton, so it acts as a base, not an acid.</p><p><strong>Option C</strong> (NH₄⁺ as conjugate base): NH₄⁺ is the conjugate <em>acid</em> of NH₃, not a conjugate base.</p><p><strong>Option D</strong> (OH⁻ as conjugate acid): OH⁻ is the conjugate <em>base</em> of H₂O, not a conjugate acid.</p>"
   },
   {
     "id": 40,
     "section": "Chemistry",
     "topic": "Acid-base chemistry",
-    "question": "Which of the following acids has been used for a neutralization of KOH if K<sub>2</sub>HPO<sub>4</sub> is the product?",
+    "question": "Which of the following acids has been used for a neutralization of KOH if K₂HPO₄ is the product?",
     "options": {
-      "A": "H<sub>2</sub>PO<sub>4</sub>",
-      "B": "HPO<sub>4</sub>",
-      "C": "H<sub>4</sub>PO<sub>4</sub>",
-      "D": "H<sub>3</sub>PO<sub>4</sub>"
+      "A": "H₂PO₄",
+      "B": "HPO₄",
+      "C": "H₄PO₄",
+      "D": "H₃PO₄"
     },
     "correct": "D",
-    "explanation": "<p>Phosphoric acid is triprotic: H<sub>3</sub>PO<sub>4</sub>. Stepwise neutralization with KOH yields KH<sub>2</sub>PO<sub>4</sub> (one H replaced), then K<sub>2</sub>HPO<sub>4</sub> (two H replaced), then K<sub>3</sub>PO<sub>4</sub> (all three replaced). Producing K<sub>2</sub>HPO<sub>4</sub> requires starting from H<sub>3</sub>PO<sub>4</sub> and adding 2 equivalents of KOH.</p><p><strong>Option A</strong> (H<sub>2</sub>PO<sub>4</sub>): not a neutral molecule; the species H<sub>2</sub>PO<sub>4</sub><sup>&minus;</sup> is the anion, not the parent acid.</p><p><strong>Option B</strong> (HPO<sub>4</sub>): also an anion (HPO<sub>4</sub><sup>2&minus;</sup>), not a neutral acid.</p><p><strong>Option C</strong> (H<sub>4</sub>PO<sub>4</sub>): not a real species; phosphorus in phosphoric acid has only three ionizable hydrogens.</p>"
+    "explanation": "<p>Phosphoric acid is triprotic: H₃PO₄. Stepwise neutralization with KOH yields KH₂PO₄ (one H replaced), then K₂HPO₄ (two H replaced), then K₃PO₄ (all three replaced). Producing K₂HPO₄ requires starting from H₃PO₄ and adding 2 equivalents of KOH.</p><p><strong>Option A</strong> (H₂PO₄): not a neutral molecule; the species H₂PO₄⁻ is the anion, not the parent acid.</p><p><strong>Option B</strong> (HPO₄): also an anion (HPO₄²⁻), not a neutral acid.</p><p><strong>Option C</strong> (H₄PO₄): not a real species; phosphorus in phosphoric acid has only three ionizable hydrogens.</p>"
   },
   {
     "id": 41,
@@ -571,7 +571,7 @@
       "D": "6"
     },
     "correct": "C",
-    "explanation": "<p>Starting concentration is 10<sup>&minus;3</sup> M. Dividing by 100 gives 10<sup>&minus;3</sup> / 10<sup>2</sup> = 10<sup>&minus;5</sup> M. HCl is a strong acid that dissociates completely, so [H<sup>+</sup>] = 10<sup>&minus;5</sup> M and pH = &minus;log[H<sup>+</sup>] = <strong>5</strong>. (At dilutions below ~10<sup>&minus;6</sup> M one must also account for water autoionization, but at 10<sup>&minus;5</sup> M the contribution of water is negligible.)</p><p><strong>Option A</strong> (pH 3): corresponds to the original undiluted 10<sup>&minus;3</sup> M solution.</p><p><strong>Option B</strong> (pH 4): would result from a 10&times; dilution, not a 100&times; dilution.</p><p><strong>Option D</strong> (pH 6): would require a 1000&times; dilution, and at that point water autoionization must be accounted for.</p>"
+    "explanation": "<p>The starting concentration is 10⁻³ M. Dividing by 100 gives 10⁻³ / 10² = 10⁻⁵ M. HCl is a strong acid and dissociates completely, so [H⁺] = 10⁻⁵ M and pH = −log[H⁺] = <strong>5</strong>.</p><p><strong>Option A</strong> (pH 3): the original undiluted 10⁻³ M solution.</p><p><strong>Option B</strong> (pH 4): a tenfold dilution, not a hundredfold one.</p><p><strong>Option D</strong> (pH 6): would require a thousandfold dilution.</p>"
   },
   {
     "id": 42,
@@ -585,7 +585,7 @@
       "D": "50 g"
     },
     "correct": "B",
-    "explanation": "<p>Mass = (concentration) &times; (volume) &times; (molar mass) = 0.5 mol/L &times; 1 L &times; 40 g/mol = <strong>20 g</strong>. Always check the units cancel cleanly: mol/L &times; L &times; g/mol = g.</p><p><strong>Option A</strong> (10 g): corresponds to a 0.25 M solution, not 0.5 M.</p><p><strong>Option C</strong> (40 g): corresponds to a 1.0 M solution.</p><p><strong>Option D</strong> (50 g): corresponds to a 1.25 M solution.</p>"
+    "explanation": "<p>Mass = (concentration) × (volume) × (molar mass) = 0.5 mol/L × 1 L × 40 g/mol = <strong>20 g</strong>. Always check the units cancel cleanly: mol/L × L × g/mol = g.</p><p><strong>Option A</strong> (10 g): corresponds to a 0.25 M solution, not 0.5 M.</p><p><strong>Option C</strong> (40 g): corresponds to a 1.0 M solution.</p><p><strong>Option D</strong> (50 g): corresponds to a 1.25 M solution.</p>"
   },
   {
     "id": 43,
@@ -595,17 +595,17 @@
     "options": {
       "A": "hydroxonium: 0 mol/L, hydroxide: 0 mol/L",
       "B": "hydroxonium: 7 mol/L, hydroxide: 14 mol/L",
-      "C": "hydroxonium: 10<sup>&minus;7</sup> mol/L, hydroxide: 10<sup>&minus;7</sup> mol/L",
-      "D": "hydroxonium: 10<sup>&minus;7</sup> mol/L, hydroxide: 0 mol/L"
+      "C": "hydroxonium: 10⁻⁷ mol/L, hydroxide: 10⁻⁷ mol/L",
+      "D": "hydroxonium: 10⁻⁷ mol/L, hydroxide: 0 mol/L"
     },
     "correct": "C",
-    "explanation": "<p>pH = &minus;log[H<sub>3</sub>O<sup>+</sup>], so pH 7.0 corresponds to [H<sub>3</sub>O<sup>+</sup>] = 10<sup>&minus;7</sup> M. The water ionization product K<sub>w</sub> = [H<sub>3</sub>O<sup>+</sup>][OH<sup>&minus;</sup>] = 10<sup>&minus;14</sup> at 25 &deg;C, so [OH<sup>&minus;</sup>] is also 10<sup>&minus;7</sup> M. pH 7 is the neutral point where the two are equal.</p><p><strong>Option A</strong> (both 0): both ions are always present in aqueous solution at nonzero concentrations set by K<sub>w</sub>.</p><p><strong>Option B</strong> (7 and 14 mol/L): dimensionally wrong; these concentrations are physically impossible for these ions.</p><p><strong>Option D</strong> (only [H<sub>3</sub>O<sup>+</sup>]): [OH<sup>&minus;</sup>] is also 10<sup>&minus;7</sup> M, not zero.</p>"
+    "explanation": "<p>pH = −log[H₃O⁺], so pH 7.0 corresponds to [H₃O⁺] = 10⁻⁷ mol/L. Using the question's standard approximation of 25 °C, the ionic product of water K<sub>w</sub> = [H₃O⁺][OH⁻] = 10⁻¹⁴, so [OH⁻] is also 10⁻⁷ mol/L. pH 7 is the neutral point, where the two are equal.</p><p><strong>Option A</strong> (both 0): both ions are always present in aqueous solution at non-zero concentrations set by K<sub>w</sub>.</p><p><strong>Option B</strong> (7 and 14 mol/L): the units are right, but pH is logarithmic. pH 7 means [H₃O⁺] = 10⁻⁷ mol/L, not 7 mol/L, and these concentrations are incompatible with the ionic product of water.</p><p><strong>Option D</strong> (only [H₃O⁺]): [OH⁻] is also 10⁻⁷ mol/L, not zero.</p>"
   },
   {
     "id": 44,
     "section": "Chemistry",
     "topic": "Solutions & concentrations",
-    "question": "100 mL of a solution contains 2 g of sodium hydroxide. What is the molar concentration of sodium ions in the solution? Relative atomic masses: A<sub>r</sub>(Na) = 23, A<sub>r</sub>(O) = 16, A<sub>r</sub>(H) = 1.",
+    "question": "100 mL of a solution contains 2 g of sodium hydroxide. What is the molar concentration of sodium ions in the solution? Relative atomic masses: Aᵣ(Na) = 23, Aᵣ(O) = 16, Aᵣ(H) = 1.",
     "options": {
       "A": "0.5 mol/L",
       "B": "0.23 mol/L",
@@ -613,13 +613,13 @@
       "D": "0.05 mol/L"
     },
     "correct": "A",
-    "explanation": "<p>Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol. Moles of NaOH = 2 g &divide; 40 g/mol = 0.05 mol. Concentration = 0.05 mol &divide; 0.100 L = <strong>0.5 mol/L</strong>. NaOH dissociates fully into Na<sup>+</sup> and OH<sup>&minus;</sup> in a 1:1 ratio, so [Na<sup>+</sup>] = 0.5 mol/L.</p><p><strong>Option B</strong> (0.23): does not correspond to any correct step of the calculation.</p><p><strong>Option C</strong> (0.16): also unrelated to the correct calculation.</p><p><strong>Option D</strong> (0.05): this is the number of moles of NaOH, not the molar concentration.</p>"
+    "explanation": "<p>Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol. Moles of NaOH = 2 g ÷ 40 g/mol = 0.05 mol. Concentration = 0.05 mol ÷ 0.100 L = <strong>0.5 mol/L</strong>. NaOH dissociates fully into Na⁺ and OH⁻ in a 1:1 ratio, so [Na⁺] = 0.5 mol/L.</p><p><strong>Option B</strong> (0.23): does not correspond to any correct step of the calculation.</p><p><strong>Option C</strong> (0.16): also unrelated to the correct calculation.</p><p><strong>Option D</strong> (0.05): this is the number of moles of NaOH, not the molar concentration.</p>"
   },
   {
     "id": 45,
     "section": "Chemistry",
     "topic": "Solutions & concentrations",
-    "question": "The concentration of uric acid in a patient&prime;s blood sample is 430 micromoles in one liter. This value is the same as:",
+    "question": "The concentration of uric acid in a patient′s blood sample is 430 micromoles in one liter. This value is the same as:",
     "options": {
       "A": "43.0 mmol/L",
       "B": "0.430 nmol/L",
@@ -627,7 +627,7 @@
       "D": "43.0 nmol/L"
     },
     "correct": "C",
-    "explanation": "<p>Unit prefixes: 1 mmol = 10<sup>&minus;3</sup> mol = 1000 &micro;mol. Therefore 430 &micro;mol/L = 430 &divide; 1000 = <strong>0.430 mmol/L</strong>.</p><p><strong>Option A</strong> (43.0 mmol/L): off by a factor of 100 in the wrong direction.</p><p><strong>Option B</strong> (0.430 nmol/L): off by a factor of 10<sup>6</sup> (1 &micro;mol = 1000 nmol, not 0.001 nmol).</p><p><strong>Option D</strong> (43.0 nmol/L): dimensionally inconsistent with the source value.</p>"
+    "explanation": "<p>Unit prefixes: 1 mmol = 10⁻³ mol = 1000 µmol. Therefore 430 µmol/L = 430 ÷ 1000 = <strong>0.430 mmol/L</strong>.</p><p><strong>Option A</strong> (43.0 mmol/L): a hundred times too large.</p><p><strong>Option B</strong> (0.430 nmol/L): too small by a factor of 10⁶, since 1 µmol = 1000 nmol.</p><p><strong>Option D</strong> (43.0 nmol/L): 430 µmol/L = 430 000 nmol/L, so 43.0 nmol/L is ten thousand times too small.</p>"
   },
   {
     "id": 46,
@@ -641,7 +641,7 @@
       "D": "alcohol and aldehyde"
     },
     "correct": "A",
-    "explanation": "<p>Fischer esterification couples a carboxylic acid (R&ndash;COOH) with an alcohol (R&prime;&ndash;OH) to form an ester (R&ndash;COOR&prime;) plus water, typically catalyzed by a strong acid such as H<sub>2</sub>SO<sub>4</sub>.</p><p><strong>Option B</strong> (alcohol + base): gives an alkoxide (deprotonation), not an ester.</p><p><strong>Option C</strong> (acid + base): gives a salt (neutralization), not an ester.</p><p><strong>Option D</strong> (alcohol + aldehyde): gives a hemiacetal or acetal, not an ester.</p>"
+    "explanation": "<p>Fischer esterification couples a carboxylic acid (R–COOH) with an alcohol (R′–OH) to form an ester (R–COOR′) plus water, typically catalyzed by a strong acid such as H₂SO₄.</p><p><strong>Option B</strong> (alcohol + base): gives an alkoxide (deprotonation), not an ester.</p><p><strong>Option C</strong> (acid + base): gives a salt (neutralization), not an ester.</p><p><strong>Option D</strong> (alcohol + aldehyde): gives a hemiacetal or acetal, not an ester.</p>"
   },
   {
     "id": 47,
@@ -649,13 +649,13 @@
     "topic": "Bonding & structure",
     "question": "Which of the following bonds is the most polar?",
     "options": {
-      "A": "C&minus;H",
-      "B": "O&minus;H",
-      "C": "N&minus;H",
-      "D": "C&minus;C"
+      "A": "C−H",
+      "B": "O−H",
+      "C": "N−H",
+      "D": "C−C"
     },
     "correct": "B",
-    "explanation": "<p>Bond polarity scales with the difference in electronegativity (Pauling scale): O = 3.44, N = 3.04, C = 2.55, H = 2.20. Differences: O&ndash;H &Delta; = 1.24; N&ndash;H &Delta; = 0.84; C&ndash;H &Delta; = 0.35; C&ndash;C &Delta; = 0. The <strong>O&ndash;H</strong> bond is the most polar of these four, which is also why water has its high boiling point and excellent hydrogen-bonding capacity.</p><p><strong>Option A</strong> (C&ndash;H): &Delta; = 0.35, only weakly polar.</p><p><strong>Option C</strong> (N&ndash;H): &Delta; = 0.84, polar but less so than O&ndash;H.</p><p><strong>Option D</strong> (C&ndash;C): &Delta; = 0, a nonpolar bond.</p>"
+    "explanation": "<p>Bond polarity scales with the difference in electronegativity (Pauling scale): O = 3.44, N = 3.04, C = 2.55, H = 2.20. Differences: O–H Δ = 1.24; N–H Δ = 0.84; C–H Δ = 0.35; C–C Δ = 0. The <strong>O–H</strong> bond is the most polar of these four, which is also why water has its high boiling point and excellent hydrogen-bonding capacity.</p><p><strong>Option A</strong> (C–H): Δ = 0.35, only weakly polar.</p><p><strong>Option C</strong> (N–H): Δ = 0.84, polar but less so than O–H.</p><p><strong>Option D</strong> (C–C): Δ = 0, a nonpolar bond.</p>"
   },
   {
     "id": 48,
@@ -669,7 +669,7 @@
       "D": "benzene"
     },
     "correct": "B",
-    "explanation": "<p>Cis-trans isomerism requires a double bond (or a ring) where each of the two doubly bonded carbons carries two different substituents. Butenedioic acid (HOOC&ndash;CH&equals;CH&ndash;COOH) satisfies this: cis is <em>maleic acid</em>, trans is <em>fumaric acid</em>.</p><p><strong>Option A</strong> (propene, CH<sub>3</sub>&ndash;CH&equals;CH<sub>2</sub>): has two H atoms on the terminal carbon, so cis/trans cannot be defined.</p><p><strong>Option C</strong> (2-methylpropane): a saturated hydrocarbon with no double bond, so no geometric isomerism.</p><p><strong>Option D</strong> (benzene): the aromatic ring is planar with equivalent substituents, so cis/trans cannot be defined.</p>"
+    "explanation": "<p>Cis-trans isomerism requires a double bond (or a ring) where each of the two doubly bonded carbons carries two different substituents. Butenedioic acid (HOOC–CH=CH–COOH) satisfies this: cis is <em>maleic acid</em>, trans is <em>fumaric acid</em>.</p><p><strong>Option A</strong> (propene, CH₃–CH=CH₂): has two H atoms on the terminal carbon, so cis/trans cannot be defined.</p><p><strong>Option C</strong> (2-methylpropane): a saturated hydrocarbon with no double bond, so no geometric isomerism.</p><p><strong>Option D</strong> (benzene): the aromatic ring is planar with equivalent substituents, so cis/trans cannot be defined.</p>"
   },
   {
     "id": 49,
@@ -677,13 +677,13 @@
     "topic": "Organic chemistry",
     "question": "Which of the following statements is correct in the context of organic chemistry?",
     "options": {
-      "A": "the most oxidized form of a carbon chain is the one that contains only single C&minus;C bonds",
+      "A": "the most oxidized form of a carbon chain is the one that contains only single C−C bonds",
       "B": "a carbon chain is more oxidized if it contains fewer hydrogen atoms",
       "C": "hydrocarbons are in a higher oxidation state than hydrocarbon derivatives such as alcohols",
       "D": "alkenes are more oxidized than alkynes of the same chain length"
     },
     "correct": "B",
-    "explanation": "<p>For organic carbon, oxidation state increases as bonds to H decrease and bonds to more electronegative atoms (O, N, halogens) or additional &pi; bonds increase. So the carbon chain with <strong>fewer H atoms</strong> (more C&equals;C, C&equals;O, or C&ndash;O bonds) is more oxidized.</p><p><strong>Option A</strong> (single bonds most oxidized): reversed - single-bonded saturated hydrocarbons are the <em>most reduced</em>.</p><p><strong>Option C</strong> (hydrocarbons more oxidized than alcohols): reversed - hydrocarbons are less oxidized than alcohols, which have C&ndash;O bonds.</p><p><strong>Option D</strong> (alkenes more oxidized than alkynes): reversed - alkynes (triple bond) are more oxidized than alkenes (double bond) at the same chain length.</p>"
+    "explanation": "<p>For organic carbon, oxidation state increases as bonds to H decrease and bonds to more electronegative atoms (O, N, halogens) or additional π bonds increase. So the carbon chain with <strong>fewer H atoms</strong> (more C=C, C=O, or C–O bonds) is more oxidized.</p><p><strong>Option A</strong> (single bonds most oxidized): reversed - single-bonded saturated hydrocarbons are the <em>most reduced</em>.</p><p><strong>Option C</strong> (hydrocarbons more oxidized than alcohols): reversed - hydrocarbons are less oxidized than alcohols, which have C–O bonds.</p><p><strong>Option D</strong> (alkenes more oxidized than alkynes): reversed - alkynes (triple bond) are more oxidized than alkenes (double bond) at the same chain length.</p>"
   },
   {
     "id": 50,
@@ -697,21 +697,21 @@
       "D": "cyclohexadiene"
     },
     "correct": "D",
-    "explanation": "<p>Water solubility scales with the number and strength of hydrogen-bonding groups. Cyclohexadiene is a pure hydrocarbon with no polar functional group; it can only interact with water by weak London dispersion forces and is therefore the <strong>least water soluble</strong>.</p><p><strong>Option A</strong> (hexanedioic acid, adipic acid): has two &ndash;COOH groups and can hydrogen-bond strongly with water.</p><p><strong>Option B</strong> (hexanoic acid): has one &ndash;COOH group and hydrogen-bonds with water.</p><p><strong>Option C</strong> (hexyl alcohol): has one &ndash;OH group and hydrogen-bonds with water.</p>"
+    "explanation": "<p>Water solubility scales with the number and strength of hydrogen-bonding groups. Cyclohexadiene is a pure hydrocarbon with no polar functional group; it can only interact with water by weak London dispersion forces and is therefore the <strong>least water soluble</strong>.</p><p><strong>Option A</strong> (hexanedioic acid, adipic acid): has two –COOH groups and can hydrogen-bond strongly with water.</p><p><strong>Option B</strong> (hexanoic acid): has one –COOH group and hydrogen-bonds with water.</p><p><strong>Option C</strong> (hexyl alcohol): has one –OH group and hydrogen-bonds with water.</p>"
   },
   {
     "id": 51,
     "section": "Chemistry",
     "topic": "Organic chemistry",
-    "question": "Choose the pair of molecules in which <strong>both</strong> are classified as &ldquo;secondary&rdquo; (one secondary amine and one secondary alcohol):",
+    "question": "Choose the pair of molecules in which <strong>both</strong> are classified as “secondary” (one secondary amine and one secondary alcohol):",
     "options": {
-      "A": "CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;N(CH<sub>3</sub>)<sub>2</sub> and CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;OH",
-      "B": "CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;NH&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH(OH)&minus;CH<sub>3</sub>",
-      "C": "CH<sub>3</sub>&minus;NH&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;OH",
-      "D": "CH<sub>3</sub>&minus;CH(NH<sub>2</sub>)&minus;CH<sub>3</sub> and CH<sub>3</sub>&minus;CH(OH)&minus;CH<sub>3</sub>"
+      "A": "CH₃−CH₂−N(CH₃)₂ and CH₃−CH₂−OH",
+      "B": "CH₃−CH₂−NH−CH₃ and CH₃−CH(OH)−CH₃",
+      "C": "CH₃−NH−CH₃ and CH₃−CH₂−OH",
+      "D": "CH₃−CH(NH₂)−CH₃ and CH₃−CH(OH)−CH₃"
     },
     "correct": "B",
-    "explanation": "<p>Amines are classified by how many alkyl groups are bonded to nitrogen: 1 = primary (R&ndash;NH<sub>2</sub>), 2 = secondary (R<sub>2</sub>NH), 3 = tertiary (R<sub>3</sub>N). Alcohols are classified by how many alkyl groups are bonded to the carbon bearing the &ndash;OH. In option B, ethyl methyl amine has two alkyl groups on N (<strong>secondary amine</strong>), and propan-2-ol (isopropanol) has two alkyl groups on the &ndash;OH-bearing carbon (<strong>secondary alcohol</strong>).</p><p><strong>Option A</strong>: has a tertiary amine (N with three alkyl groups) and a primary alcohol (ethanol).</p><p><strong>Option C</strong>: has a secondary amine (dimethylamine) but the alcohol (ethanol) is primary.</p><p><strong>Option D</strong>: has a primary amine (isopropylamine) and a secondary alcohol - only the alcohol is secondary.</p>"
+    "explanation": "<p>Amines are classified by how many alkyl groups are bonded to nitrogen: 1 = primary (R–NH₂), 2 = secondary (R₂NH), 3 = tertiary (R₃N). Alcohols are classified by how many alkyl groups are bonded to the carbon bearing the –OH. In option B, ethyl methyl amine has two alkyl groups on N (<strong>secondary amine</strong>), and propan-2-ol (isopropanol) has two alkyl groups on the –OH-bearing carbon (<strong>secondary alcohol</strong>).</p><p><strong>Option A</strong>: has a tertiary amine (N with three alkyl groups) and a primary alcohol (ethanol).</p><p><strong>Option C</strong>: has a secondary amine (dimethylamine) but the alcohol (ethanol) is primary.</p><p><strong>Option D</strong>: has a primary amine (isopropylamine) and a secondary alcohol - only the alcohol is secondary.</p>"
   },
   {
     "id": 52,
@@ -719,13 +719,13 @@
     "topic": "Biochemistry",
     "question": "Which of the following molecules can form a disulfide bond if oxidized?",
     "options": {
-      "A": "HOOC&minus;CH(NH<sub>2</sub>)&minus;CH<sub>2</sub>&minus;SH",
-      "B": "H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;SO<sub>3</sub>H",
-      "C": "CH<sub>3</sub>&minus;S&minus;CH<sub>2</sub>&minus;CH<sub>3</sub>",
-      "D": "HOOC&minus;CH(NH<sub>2</sub>)&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;S&minus;CH<sub>3</sub>"
+      "A": "HOOC−CH(NH₂)−CH₂−SH",
+      "B": "H₂N−CH₂−CH₂−SO₃H",
+      "C": "CH₃−S−CH₂−CH₃",
+      "D": "HOOC−CH(NH₂)−CH₂−CH₂−S−CH₃"
     },
     "correct": "A",
-    "explanation": "<p>A disulfide bond (R&ndash;S&ndash;S&ndash;R&prime;) forms by oxidation of two free thiol groups (&ndash;SH). Option A is the amino acid <strong>cysteine</strong>, which carries a free thiol. Disulfide bridges between cysteine residues stabilize tertiary and quaternary protein structure (e.g., insulin, antibodies).</p><p><strong>Option B</strong> (taurine): a sulfonic acid - the sulfur is already fully oxidized to &ndash;SO<sub>3</sub>H, so no disulfide can form.</p><p><strong>Option C</strong> (ethyl methyl sulfide): a thioether (S bonded to two carbons); it has no S&ndash;H bond and cannot form a disulfide.</p><p><strong>Option D</strong> (methionine): also a thioether (methylthioether side chain); no free &ndash;SH available.</p>"
+    "explanation": "<p>A disulfide bond (R–S–S–R′) forms by oxidation of two free thiol groups (–SH). Option A is the amino acid <strong>cysteine</strong>, which carries a free thiol. Disulfide bridges between cysteine residues stabilize tertiary and quaternary protein structure (e.g., insulin, antibodies).</p><p><strong>Option B</strong> (taurine): a sulfonic acid - the sulfur is already fully oxidized to –SO₃H, so no disulfide can form.</p><p><strong>Option C</strong> (ethyl methyl sulfide): a thioether (S bonded to two carbons); it has no S–H bond and cannot form a disulfide.</p><p><strong>Option D</strong> (methionine): also a thioether (methylthioether side chain); no free –SH available.</p>"
   },
   {
     "id": 53,
@@ -739,7 +739,7 @@
       "D": "propanoic acid"
     },
     "correct": "B",
-    "explanation": "<p>Compute molar masses (g/mol) using A<sub>r</sub>: C = 12, H = 1, O = 16. Propanone (acetone) C<sub>3</sub>H<sub>6</sub>O = 36 + 6 + 16 = <strong>58 g/mol</strong>, the lowest of the four, because the C&equals;O bond replaces two C&ndash;H bonds present in propanol/ether.</p><p><strong>Option A</strong> (propanol, C<sub>3</sub>H<sub>8</sub>O): 36 + 8 + 16 = 60 g/mol.</p><p><strong>Option C</strong> (ethyl methyl ether, C<sub>3</sub>H<sub>8</sub>O): 60 g/mol (constitutional isomer of propanol).</p><p><strong>Option D</strong> (propanoic acid, C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>): 36 + 6 + 32 = 74 g/mol.</p>"
+    "explanation": "<p>Compute molar masses in g/mol using Aᵣ: C = 12, H = 1, O = 16. Propanone (acetone) C₃H₆O = 36 + 6 + 16 = <strong>58 g/mol</strong>, the lowest of the four. Propanone has two fewer hydrogen atoms than propanol and ethyl methyl ether, so its molar mass is 58 rather than 60 g/mol.</p><p><strong>Option A</strong> (propanol, C₃H₈O): 36 + 8 + 16 = 60 g/mol.</p><p><strong>Option C</strong> (ethyl methyl ether, C₃H₈O): 60 g/mol, a constitutional isomer of propanol.</p><p><strong>Option D</strong> (propanoic acid, C₃H₆O₂): 36 + 6 + 32 = 74 g/mol.</p>"
   },
   {
     "id": 54,
@@ -747,13 +747,13 @@
     "topic": "Organic chemistry",
     "question": "Which of the following statements is <strong>not</strong> true about hydrocarbons called arenes? Arenes:",
     "options": {
-      "A": "contain one or more planar ring",
+      "A": "contain one or more planar rings",
       "B": "have delocalized pi-electrons",
       "C": "differ in chemical reactivity from alkenes",
       "D": "have either chair or boat conformation"
     },
     "correct": "D",
-    "explanation": "<p>Chair and boat conformations describe non-planar saturated rings such as <em>cyclohexane</em>, not arenes. Arenes are aromatic and planar, so &ldquo;chair or boat&rdquo; does not apply - this is the false statement.</p><p><strong>Option A</strong> (true): arenes contain one or more planar rings (e.g., the six-membered benzene ring).</p><p><strong>Option B</strong> (true): sp<sup>2</sup> carbons form a continuous conjugated cycle of p-orbitals holding (4n+2) delocalized &pi;-electrons.</p><p><strong>Option C</strong> (true): aromatic stabilization makes arenes prefer electrophilic aromatic substitution over the addition reactions typical of alkenes.</p>"
+    "explanation": "<p>Chair and boat conformations describe non-planar saturated rings such as <em>cyclohexane</em>, not arenes. Arenes are aromatic and planar, so “chair or boat” does not apply - this is the false statement.</p><p><strong>Option A</strong> (true): arenes contain one or more planar rings (e.g., the six-membered benzene ring).</p><p><strong>Option B</strong> (true): sp² carbons form a continuous conjugated cycle of p-orbitals holding (4n+2) delocalized π-electrons.</p><p><strong>Option C</strong> (true): aromatic stabilization makes arenes prefer electrophilic aromatic substitution over the addition reactions typical of alkenes.</p>"
   },
   {
     "id": 55,
@@ -761,13 +761,13 @@
     "topic": "Organic chemistry",
     "question": "Choose the correct pair of a molecule and its name:",
     "options": {
-      "A": "methanal is CH<sub>3</sub>CHO",
-      "B": "hexadecanoic acid is CH<sub>3</sub>&minus;(CH<sub>2</sub>)<sub>14</sub>&minus;COOH",
-      "C": "ethyl propyl ether is CH<sub>3</sub>&minus;CH<sub>2</sub>&minus;C(O)&minus;CH<sub>2</sub>&minus;CH<sub>3</sub>",
-      "D": "butane-1,4-diamine is H<sub>2</sub>N&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;CH<sub>2</sub>&minus;NH&minus;CH<sub>3</sub>"
+      "A": "methanal is CH₃CHO",
+      "B": "hexadecanoic acid is CH₃−(CH₂)₁₄−COOH",
+      "C": "ethyl propyl ether is CH₃−CH₂−C(O)−CH₂−CH₃",
+      "D": "butane-1,4-diamine is H₂N−CH₂−CH₂−CH₂−NH−CH₃"
     },
     "correct": "B",
-    "explanation": "<p>Hexadecanoic acid (palmitic acid) has a 16-carbon chain: 1 carboxyl carbon + 15 chain carbons = <strong>CH<sub>3</sub>&ndash;(CH<sub>2</sub>)<sub>14</sub>&ndash;COOH</strong>.</p><p><strong>Option A</strong>: methanal is HCHO (formaldehyde); CH<sub>3</sub>CHO is ethanal (acetaldehyde).</p><p><strong>Option C</strong>: the structure shown is pentan-3-one (a ketone), not an ether; ethyl propyl ether is CH<sub>3</sub>CH<sub>2</sub>&ndash;O&ndash;CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>.</p><p><strong>Option D</strong>: the structure shows a 4-carbon chain with an N-methylated secondary amine, not a 1,4-diamine; correct butane-1,4-diamine (putrescine) is H<sub>2</sub>N&ndash;(CH<sub>2</sub>)<sub>4</sub>&ndash;NH<sub>2</sub>.</p>"
+    "explanation": "<p>Hexadecanoic acid (palmitic acid) has a sixteen-carbon chain: one carboxyl carbon plus fifteen chain carbons, giving <strong>CH₃–(CH₂)₁₄–COOH</strong>.</p><p><strong>Option A</strong>: methanal is HCHO (formaldehyde); CH₃CHO is ethanal (acetaldehyde).</p><p><strong>Option C</strong>: the structure shown is pentan-3-one, a ketone, not an ether; ethyl propyl ether is CH₃CH₂–O–CH₂CH₂CH₃.</p><p><strong>Option D</strong>: the structure shown has a three-carbon chain between the two nitrogen atoms and a methyl group on one nitrogen, so it is an N-methylated propane-1,3-diamine. Butane-1,4-diamine (putrescine) is H₂N–(CH₂)₄–NH₂, as written.</p>"
   },
   {
     "id": 56,
@@ -781,7 +781,7 @@
       "D": "acetone"
     },
     "correct": "C",
-    "explanation": "<p>Cholesterol is a hydrophobic steroid (one polar &ndash;OH group on a large, mostly nonpolar four-ring skeleton) and is essentially insoluble in plasma. It is transported in lipoprotein particles (LDL, HDL, VLDL) whose protein and phospholipid shells solubilize the lipid core.</p><p><strong>Option A</strong> (pyruvic acid): a small carboxylic acid, freely water-soluble; dissolves in plasma without a carrier.</p><p><strong>Option B</strong> (glucose): highly hydroxylated (four &ndash;OH groups plus one hemiacetal); very water-soluble.</p><p><strong>Option D</strong> (acetone): a small polar ketone that is completely miscible with water.</p>"
+    "explanation": "<p>Cholesterol is a hydrophobic steroid, one polar –OH group on a large and otherwise non-polar four-ring skeleton, and is essentially insoluble in plasma. It travels in lipoprotein particles (LDL, HDL, VLDL), whose protein and phospholipid shells solubilize the lipid core.</p><p><strong>Option A</strong> (pyruvic acid): a small carboxylic acid, freely water-soluble, and dissolves in plasma without a carrier.</p><p><strong>Option B</strong> (glucose): glucose has five hydroxyl groups and is highly water-soluble.</p><p><strong>Option D</strong> (acetone): a small polar ketone, completely miscible with water.</p>"
   },
   {
     "id": 57,
@@ -795,7 +795,7 @@
       "D": "anhydride bond"
     },
     "correct": "D",
-    "explanation": "<p>ATP contains three phosphate groups linked by two phosphoanhydride bonds (between &alpha;-&beta; and &beta;-&gamma; phosphates). Hydrolysis of the terminal phosphoanhydride bond yields ADP + P<sub>i</sub> and releases ~30.5 kJ/mol under standard biological conditions - the energy currency of the cell.</p><p><strong>Option A</strong> (ether bond): there is no true ether (C&ndash;O&ndash;C) bond broken in this hydrolysis.</p><p><strong>Option B</strong> (ester bond): the bond between the &alpha;-phosphate and the ribose 5&prime;-OH is a phosphoester bond, but it is <em>not</em> the bond cleaved in routine ATP hydrolysis to ADP.</p><p><strong>Option C</strong> (glycosidic bond): the N-glycosidic bond joins ribose to adenine and is not the bond broken to yield ADP + P<sub>i</sub>.</p>"
+    "explanation": "<p>ATP contains three phosphate groups linked by two phosphoanhydride bonds (between α-β and β-γ phosphates). Hydrolysis of the terminal phosphoanhydride bond yields ADP + Pᵢ and releases ~30.5 kJ/mol under standard biological conditions - the energy currency of the cell.</p><p><strong>Option A</strong> (ether bond): there is no true ether (C–O–C) bond broken in this hydrolysis.</p><p><strong>Option B</strong> (ester bond): the bond between the α-phosphate and the ribose 5′-OH is a phosphoester bond, but it is <em>not</em> the bond cleaved in routine ATP hydrolysis to ADP.</p><p><strong>Option C</strong> (glycosidic bond): the N-glycosidic bond joins ribose to adenine and is not the bond broken to yield ADP + Pᵢ.</p>"
   },
   {
     "id": 58,
@@ -809,7 +809,7 @@
       "D": "ribose"
     },
     "correct": "A",
-    "explanation": "<p>Counting oxygens: sucrose is a disaccharide of glucose + fructose joined with loss of one H<sub>2</sub>O, giving C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> with <strong>11 oxygens</strong> - the most of the four.</p><p><strong>Option B</strong> (fructose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>): 6 oxygens.</p><p><strong>Option C</strong> (glucose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>): 6 oxygens.</p><p><strong>Option D</strong> (ribose, C<sub>5</sub>H<sub>10</sub>O<sub>5</sub>): 5 oxygens.</p>"
+    "explanation": "<p>Counting oxygens: sucrose is a disaccharide of glucose and fructose joined with the loss of one H₂O, giving C₁₂H₂₂O₁₁ with <strong>11 oxygens</strong>, the most of the four.</p><p><strong>Option B</strong> (fructose, C₆H₁₂O₆): a monosaccharide with 6 oxygens, five fewer than sucrose.</p><p><strong>Option C</strong> (glucose, C₆H₁₂O₆): also 6 oxygens, since glucose and fructose are isomers of the same formula.</p><p><strong>Option D</strong> (ribose, C₅H₁₀O₅): a pentose, with 5 oxygens.</p>"
   },
   {
     "id": 59,
@@ -823,13 +823,13 @@
       "D": "alanine"
     },
     "correct": "D",
-    "explanation": "<p>A chiral carbon has four <em>different</em> substituents. Alanine (CH<sub>3</sub>&ndash;CH(NH<sub>2</sub>)&ndash;COOH) has a chiral &alpha;-carbon (four different substituents: &ndash;CH<sub>3</sub>, &ndash;NH<sub>2</sub>, &ndash;COOH, &ndash;H) and exactly two functional groups (&ndash;NH<sub>2</sub>, &ndash;COOH).</p><p><strong>Option A</strong> (glycine, H<sub>2</sub>N&ndash;CH<sub>2</sub>&ndash;COOH): has two H atoms on the &alpha;-carbon, so it is achiral.</p><p><strong>Option B</strong> (serine): has a chiral &alpha;-carbon but carries three functional groups (&ndash;NH<sub>2</sub>, &ndash;COOH, and &ndash;OH on the side chain).</p><p><strong>Option C</strong> (lysine): has a chiral &alpha;-carbon but three functional groups (two &ndash;NH<sub>2</sub> groups plus &ndash;COOH).</p>"
+    "explanation": "<p>A chiral carbon has four <em>different</em> substituents. Alanine (CH₃–CH(NH₂)–COOH) has a chiral α-carbon (four different substituents: –CH₃, –NH₂, –COOH, –H) and exactly two functional groups (–NH₂, –COOH).</p><p><strong>Option A</strong> (glycine, H₂N–CH₂–COOH): has two H atoms on the α-carbon, so it is achiral.</p><p><strong>Option B</strong> (serine): has a chiral α-carbon but carries three functional groups (–NH₂, –COOH, and –OH on the side chain).</p><p><strong>Option C</strong> (lysine): has a chiral α-carbon but three functional groups (two –NH₂ groups plus –COOH).</p>"
   },
   {
     "id": 60,
     "section": "Chemistry",
     "topic": "Biochemistry",
-    "question": "The arrangement of heteroatoms &minus;CO&minus;NH&minus; (i.e. an amide / peptide-type linkage) occurs in all of the following molecules <strong>except</strong>:",
+    "question": "The arrangement of heteroatoms −CO−NH− (i.e. an amide / peptide-type linkage) occurs in all of the following molecules <strong>except</strong>:",
     "options": {
       "A": "lactose",
       "B": "uracil",
@@ -837,6 +837,6 @@
       "D": "insulin"
     },
     "correct": "A",
-    "explanation": "<p>The &ndash;CO&ndash;NH&ndash; arrangement is an amide (also called a peptide bond when joining amino acids). Lactose is the disaccharide galactose-(&beta;1&rarr;4)-glucose: its monosaccharides are linked by a <strong>glycosidic</strong> (C&ndash;O&ndash;C) bond, not an amide, so it lacks the &ndash;CO&ndash;NH&ndash; linkage.</p><p><strong>Option B</strong> (uracil): contains two cyclic amide groups (&ndash;CO&ndash;NH&ndash;) within its pyrimidine ring.</p><p><strong>Option C</strong> (albumin): a plasma protein built from amino acids joined by peptide (&ndash;CO&ndash;NH&ndash;) bonds.</p><p><strong>Option D</strong> (insulin): a peptide hormone with peptide (&ndash;CO&ndash;NH&ndash;) bonds throughout its A and B chains.</p>"
+    "explanation": "<p>The –CO–NH– arrangement is an amide (also called a peptide bond when joining amino acids). Lactose is the disaccharide galactose-(β1→4)-glucose: its monosaccharides are linked by a <strong>glycosidic</strong> (C–O–C) bond, not an amide, so it lacks the –CO–NH– linkage.</p><p><strong>Option B</strong> (uracil): contains two cyclic amide groups (–CO–NH–) within its pyrimidine ring.</p><p><strong>Option C</strong> (albumin): a plasma protein built from amino acids joined by peptide (–CO–NH–) bonds.</p><p><strong>Option D</strong> (insulin): a peptide hormone with peptide (–CO–NH–) bonds throughout its A and B chains.</p>"
   }
 ]
