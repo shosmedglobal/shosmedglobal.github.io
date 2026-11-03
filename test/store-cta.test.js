@@ -195,11 +195,14 @@ const pubBlurb = addonBlurb(fs.readFileSync(path.join(ROOT, 'applicants.html'), 
 check('5z1 the dashboard add-on has a blurb', !!dashBlurb);
 check('5z2 the public add-on has a blurb', !!pubBlurb);
 check('5z3 the two blurbs are identical', dashBlurb === pubBlurb, [dashBlurb, pubBlurb]);
+// Pinned verbatim: this wording was chosen by the client. Unlike the card,
+// it does name where the exam is held; that is deliberate, so the card's own
+// no-location rule (5q2) is not applied to it.
+const APPROVED_BLURB = 'Registers you to sit the LF3 entrance examination, held outside the '
+  + 'Czech Republic, for the 6-year English-taught MD at Charles University, Third Faculty '
+  + 'of Medicine. Guidance on the documents the faculty requires is included.';
 [['dashboard.html', dashBlurb], ['applicants.html', pubBlurb]].forEach(([f, b]) => {
-  if (!b) return;
-  check(`5z4 ${f} add-on names no exam location`, !/held (in|outside)/.test(b), b);
-  check(`5z5 ${f} add-on says the $199 is the whole cost`,
-    /full cost of the examination/.test(b), b);
+  check(`5z4 ${f} add-on blurb is the approved wording`, b === APPROVED_BLURB, b);
 });
 
 // The other files that render this product's name to a customer.
