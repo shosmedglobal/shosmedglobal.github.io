@@ -148,10 +148,14 @@ check('5k states the representative status',
   /authorized representative for the United States and Canada/.test(card));
 check('5p the $199 is stated as registering for the exam',
   /\$199 registers you to sit the entrance examination/.test(card));
-check('5q says the exam is not sat in Prague',
-  /held outside the Czech Republic/.test(card));
+check('5q says the $199 is the whole cost of sitting the exam',
+  /full cost of the examination, with nothing further to pay/.test(card));
+// Where the exam is held can change, so the copy must not name a location.
+check('5q2 the card names no exam location',
+  !/held (in|outside)/.test(card) && !/travel to Prague/.test(card),
+  (card.match(/.{0,30}(held (in|outside)|travel to Prague).{0,30}/g) || []));
 check('5r tuition is named as the faculty fee, not part of the $199',
-  /paying tuition to the faculty/.test(card));
+  /the faculty then charges tuition/.test(card));
 check('5s document help is secondary, not the product',
   /lf3-reg-note[\s\S]*?documents LF3 requires/.test(card));
 check('5t the card never calls the $199 an application service',
@@ -176,6 +180,27 @@ function storeMarkupForName() {
   const b = html.indexOf('<!-- ========== VIEW:', a + 10);
   return html.slice(a, b === -1 ? html.length : b);
 }
+
+// The Step 3 add-on blurb is written twice, once in the dashboard and once on
+// the public applicants.html. They have to say the same thing, and neither may
+// name where the exam is held, because that can change.
+function addonBlurb(src) {
+  const at = src.indexOf('<span>' + PRODUCT_NAME + '</span>');
+  if (at === -1) return null;
+  const m = src.slice(at).match(/<p class="addon-desc">([\s\S]*?)<\/p>/);
+  return m ? m[1] : null;
+}
+const dashBlurb = addonBlurb(html);
+const pubBlurb = addonBlurb(fs.readFileSync(path.join(ROOT, 'applicants.html'), 'utf8'));
+check('5z1 the dashboard add-on has a blurb', !!dashBlurb);
+check('5z2 the public add-on has a blurb', !!pubBlurb);
+check('5z3 the two blurbs are identical', dashBlurb === pubBlurb, [dashBlurb, pubBlurb]);
+[['dashboard.html', dashBlurb], ['applicants.html', pubBlurb]].forEach(([f, b]) => {
+  if (!b) return;
+  check(`5z4 ${f} add-on names no exam location`, !/held (in|outside)/.test(b), b);
+  check(`5z5 ${f} add-on says the $199 is the whole cost`,
+    /full cost of the examination/.test(b), b);
+});
 
 // The other files that render this product's name to a customer.
 const SIBLINGS = ['applicants.html', 'contact-booking.js', 'product-catalog.js', 'success.html'];
