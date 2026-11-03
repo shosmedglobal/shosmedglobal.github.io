@@ -1146,6 +1146,28 @@
             <h3 class="view-section-title" id="qbankPricingTitle">Med School Application Plans</h3>
             <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with the free preview. Upgrade to Full QBank Access for the entrance exam. Add specific services as you progress through the application.</p>
 
+            <!-- Entrance Exam Registration. Sits above the 3-step grid: for a
+                 US or Canadian applicant, registering for the exam is the first
+                 move, not an afterthought. Two actions, both live:
+                 "Apply for LF3" is the shared .stripe-pay handler on tier
+                 apply-lf3-service (Stripe lookup_key apply-lf3, $199), and
+                 "Contact Us" opens the booking form with the Entrance Exam
+                 Registration service already chosen, the same pattern as the
+                 free-consultation CTA on the overview. -->
+            <h3 class="view-section-title">Entrance Exam Registration</h3>
+            <div class="lf3-reg-card">
+              <div class="lf3-reg-body">
+                <span class="lf3-reg-badge">Official LF3 Representative &middot; US &amp; Canada</span>
+                <h4>Entrance Exam Registration (US &amp; Canada)</h4>
+                <p>SHOS Med is the authorized United States and Canada representative of the <strong>Third Faculty of Medicine (LF3), Charles University, Prague</strong>. We register you for the LF3 entrance examination and handle everything around it &mdash; application submission, required documents, deadlines and exam-day logistics &mdash; for the six-year English-taught MD programme.</p>
+                <p class="lf3-reg-note">The examination is written, administered and scored by LF3, and admissions decisions rest with the faculty. The examination fee is set by LF3 and paid separately from the $199 application service.</p>
+              </div>
+              <div class="lf3-reg-actions">
+                <a href="#" class="btn btn-small btn-apply-lf3 stripe-pay" data-tier="apply-lf3-service">Apply for LF3 &mdash; $199</a>
+                <a href="#" class="btn btn-secondary btn-small" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} var s=document.getElementById('contactService'); if(s){s.value='entrance-exam-registration'; s.dispatchEvent(new Event('change'));} return false;">Contact Us</a>
+              </div>
+            </div>
+
             <!-- 3-step pricing grid (matches applicants.html) -->
             <div id="qbankPricingGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
 
@@ -1260,16 +1282,6 @@
                 </div>
               </div>
 
-            </div>
-
-            <!-- Entrance Exam Registration (compact inline card; left-aligned, max-width matches pricing grid). -->
-            <h3 class="view-section-title" style="margin-top:32px;">Entrance Exam Registration</h3>
-            <div style="background:#fff; border:1px solid #E5E7EB; border-radius:14px; padding:20px 24px; max-width:1180px; margin:0 0 24px 0; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
-              <div style="flex:1; min-width:280px;">
-                <h4 style="margin:0 0 6px; font-size:1rem; color:var(--navy);">Entrance Exam Registration (US &amp; Canada)</h4>
-                <p style="margin:0; color:#6B7280; font-size:0.9rem; line-height:1.5;">Register for the LF3 entrance examination through SHOS Med as the official US &amp; Canada representative.</p>
-              </div>
-              <a href="#" onclick="switchView('contact'); return false;" class="btn btn-secondary btn-small" style="flex-shrink:0;">Contact Us</a>
             </div>
           </div>
 

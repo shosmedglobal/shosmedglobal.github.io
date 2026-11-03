@@ -195,6 +195,98 @@
   color: var(--accent);
 }
 
+/* Entrance Exam Registration CTA. Teal #0d9488 is the site's green, already
+   used for progress bars and chapter accents; it reads as "go" next to the
+   orange accent without introducing a new colour. Declared after
+   .btn-small:hover so the hover state wins at equal specificity. */
+.btn-apply-lf3 {
+  background: #0d9488;
+  border: 1px solid #0d9488;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn-apply-lf3:hover,
+.btn-apply-lf3:focus-visible {
+  background: #0F766E;
+  border-color: #0F766E;
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ===== Entrance Exam Registration card (store, Med School path) ===== */
+.lf3-reg-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-left: 4px solid #0d9488;
+  border-radius: 14px;
+  padding: 22px 26px;
+  max-width: 1180px;
+  margin: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.lf3-reg-body {
+  flex: 1;
+  min-width: 300px;
+}
+
+.lf3-reg-badge {
+  display: inline-block;
+  background: #F0FDFA;
+  color: #0F766E;
+  border: 1px solid #99F6E4;
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.lf3-reg-body h4 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.lf3-reg-body p {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.lf3-reg-note {
+  margin-top: 10px !important;
+  font-size: 0.82rem !important;
+  color: var(--gray-500) !important;
+}
+
+.lf3-reg-actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lf3-reg-actions .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .lf3-reg-card { padding: 18px; gap: 18px; }
+  /* min-width would otherwise hold the card wider than a phone screen. */
+  .lf3-reg-body { min-width: 0; }
+  .lf3-reg-actions { width: 100%; }
+  .lf3-reg-actions .btn { flex: 1; min-width: 140px; }
+}
+
 /* ===== Error / Success Messages ===== */
 .error-msg {
   background: rgba(220, 38, 38, 0.08);
