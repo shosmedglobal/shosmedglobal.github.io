@@ -1162,7 +1162,7 @@
             </div>
 
             <!-- 3-step pricing grid (matches applicants.html) -->
-            <div id="qbankPricingGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
+            <div id="qbankPricingGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
 
               <!-- STEP 1: Start Exploring (Free) -->
               <div class="pricing-card">
@@ -1286,7 +1286,7 @@
             <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with a free call. Take a Strategy Session for a clear plan. Add specific services as your cycle progresses.</p>
 
             <!-- 3-step pricing grid (matches students.html) -->
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
 
               <!-- STEP 1: Free Strategy Call -->
               <div class="pricing-card">
@@ -2623,7 +2623,7 @@
 
     /* ===== Admin audience views (Overview / Med School / Residency) ===== */
     #viewAdmin [hidden] { display: none !important; }
-    #viewAdmin .admin-activity-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    #viewAdmin .admin-activity-grid { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
     #viewAdmin .admin-section > .admin-section-title { margin-bottom: 14px; }
     /* The content column is a grid item; without this it grows to the people
        table's natural width and the whole page scrolls sideways. Scoped to
@@ -2813,7 +2813,12 @@
     .aa-btn-danger:hover { background: #dc2626 !important; color: #fff; border-color: #dc2626 !important; }
 
     /* Site activity + maintenance */
-    .admin-visits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .admin-visits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; }
+    /* Chart.js sizes these canvases to their container once it loads
+       (responsive: true inside a fixed-height wrapper). Until then, and
+       if the CDN ever fails, a bare canvas falls back to its intrinsic
+       300px and pushes a 320-360px screen sideways. */
+    .admin-chart-card canvas { max-width: 100%; }
     .admin-chart-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; min-width: 0; }
     .admin-maintenance summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 6px; }
     .admin-maintenance summary::-webkit-details-marker { display: none; }
