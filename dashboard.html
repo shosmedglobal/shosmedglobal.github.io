@@ -1582,8 +1582,6 @@
           <div class="admin-tabs">
             <button class="admin-tab active" data-admin-tab="dashboard">Dashboard</button>
             <button class="admin-tab" data-admin-tab="inbox" title="Badge counts new messages across all audiences">Inbox <span class="admin-tab-badge" id="inboxBadge" style="display:none;">0</span></button>
-            <button class="admin-tab" data-admin-tab="bookings">Bookings</button>
-            <button class="admin-tab" data-admin-tab="calendar">Calendar</button>
           </div>
 
           <!-- TAB: Dashboard -->
@@ -1613,27 +1611,27 @@
             <div id="adminDefinitionsBody"></div>
           </details>
 
-          <div class="admin-grid-2">
-            <section class="admin-section admin-section-tight" id="adminAttentionSection">
-              <h3 class="admin-section-title">Needs attention</h3>
-              <div id="adminAttention" class="admin-list"><div class="admin-loading">Loading…</div></div>
-            </section>
-            <section class="admin-section admin-section-tight" id="adminUpcomingSection">
-              <h3 class="admin-section-title">Upcoming bookings <span class="admin-title-note">next 14 days</span></h3>
-              <div id="adminUpcoming" class="admin-list"><div class="admin-loading">Loading…</div></div>
-            </section>
-          </div>
+          <section class="admin-section admin-section-tight" id="adminAttentionSection"
+                   data-admin-views="overview med-school">
+            <h3 class="admin-section-title">Needs attention</h3>
+            <div id="adminAttention" class="admin-list"><div class="admin-loading">Loading…</div></div>
+          </section>
 
-          <div class="admin-grid-2">
-            <section class="admin-section admin-section-tight" id="adminPurchasesSection">
-              <h3 class="admin-section-title">Recent purchases <span class="admin-title-note">live Stripe payments</span></h3>
-              <div id="adminRecentPurchases" class="admin-list"><div class="admin-loading">Loading…</div></div>
-            </section>
-            <section class="admin-section admin-section-tight" id="adminServicesSection">
-              <h3 class="admin-section-title" id="adminServicesTitle">Sales by product <span class="admin-title-note" id="adminServicesPeriod">all time</span></h3>
-              <div id="adminServices" class="admin-list"><div class="admin-loading">Loading…</div></div>
-            </section>
-          </div>
+          <!-- One Purchases section: what sold, and the payments behind it.
+               They were two separate boxes saying the same thing twice. -->
+          <section class="admin-section admin-section-tight" id="adminPurchasesSection">
+            <h3 class="admin-section-title" id="adminServicesTitle">Purchases <span class="admin-title-note" id="adminServicesPeriod">all time</span></h3>
+            <div class="admin-purchases-split">
+              <div>
+                <h4 class="admin-subheading">By product</h4>
+                <div id="adminServices" class="admin-list"><div class="admin-loading">Loading…</div></div>
+              </div>
+              <div>
+                <h4 class="admin-subheading">Recent payments <span class="admin-title-note">live Stripe</span></h4>
+                <div id="adminRecentPurchases" class="admin-list"><div class="admin-loading">Loading…</div></div>
+              </div>
+            </div>
+          </section>
 
           <!-- Question Reports — Med School only (QBank). -->
           <div class="admin-section" data-admin-views="med-school" id="adminReportsSection">
@@ -1799,112 +1797,6 @@
             </div>
           </div>
 
-          <!-- TAB: Bookings -->
-          <div class="admin-tab-panel" id="adminTabBookings">
-            <div class="admin-section">
-              <div class="admin-section-header">
-                <h3 class="admin-section-title">Service Bookings</h3>
-                <div class="admin-controls">
-                  <select class="admin-filter" id="bookingAudienceFilter" data-admin-views="overview" aria-label="Filter by audience">
-                    <option value="all">All audiences</option>
-                    <option value="med-school">Med School</option>
-                    <option value="residency">Residency</option>
-                    <option value="shared">Shared (both)</option>
-                    <option value="unclassified">Unclassified</option>
-                  </select>
-                  <select class="admin-filter" id="bookingStatusFilter">
-                    <option value="all">All Bookings</option>
-                    <option value="inquiry">Inquiry</option>
-                    <option value="pending_payment">Pending Payment</option>
-                    <option value="paid">Paid</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="completed">Completed</option>
-                    <option value="cancelled">Cancelled</option>
-                    <option value="no_show">No-Show</option>
-                  </select>
-                </div>
-              </div>
-              <p class="admin-table-caption" id="bookingAudienceNote"></p>
-              <div id="bookingsLoading" class="admin-loading">Loading bookings...</div>
-              <div id="bookingsList"></div>
-              <div id="bookingsEmpty" class="admin-empty-msg" style="display:none;">No bookings found.</div>
-            </div>
-          </div>
-
-          <!-- TAB: Calendar -->
-          <div class="admin-tab-panel" id="adminTabCalendar">
-            <div class="admin-section">
-              <div class="calendar-header">
-                <button class="admin-action-btn" id="calPrev">&laquo; Prev</button>
-                <h3 class="admin-section-title" id="calMonthLabel" style="margin:0;"></h3>
-                <button class="admin-action-btn" id="calNext">Next &raquo;</button>
-              </div>
-              <p class="admin-table-caption" id="calendarAudienceNote"></p>
-              <div class="calendar-grid" id="calendarGrid"></div>
-              <div id="calDayDetail" style="display:none; margin-top:16px;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-                  <h4 id="calDayLabel" style="margin:0; color:var(--navy);"></h4>
-                  <button class="admin-action-btn admin-btn-grant" onclick="openAddBookingModal()">+ Add Booking</button>
-                </div>
-                <div id="calDayBookings"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Modal: Manually add a booking (used from Calendar) -->
-          <div class="admin-modal-overlay" id="addBookingOverlay" style="display:none;" onclick="if(event.target===this)closeAddBookingModal()">
-            <div class="admin-modal">
-              <div class="admin-modal-header">
-                <h3 style="margin:0;">Add Booking</h3>
-                <button class="admin-modal-close" onclick="closeAddBookingModal()" aria-label="Close">&times;</button>
-              </div>
-              <form id="addBookingForm" onsubmit="submitAddBooking(event)">
-                <div class="admin-modal-body">
-                  <div class="admin-modal-row">
-                    <label>Service</label>
-                    <select name="serviceType" required id="addBookingServiceType"></select>
-                  </div>
-                  <div class="admin-modal-row admin-modal-grid-2">
-                    <div>
-                      <label>Client name</label>
-                      <input type="text" name="name" required maxlength="200">
-                    </div>
-                    <div>
-                      <label>Email</label>
-                      <input type="email" name="email" required maxlength="200">
-                    </div>
-                  </div>
-                  <div class="admin-modal-row admin-modal-grid-2">
-                    <div>
-                      <label>Date</label>
-                      <input type="date" name="preferredDate" required id="addBookingDate">
-                    </div>
-                    <div>
-                      <label>Time</label>
-                      <input type="text" name="preferredTime" placeholder="e.g. 3:00 PM EST">
-                    </div>
-                  </div>
-                  <div class="admin-modal-row">
-                    <label>Initial status</label>
-                    <select name="status">
-                      <option value="confirmed">Confirmed</option>
-                      <option value="inquiry">Inquiry</option>
-                      <option value="pending_payment">Pending Payment</option>
-                      <option value="paid">Paid</option>
-                    </select>
-                  </div>
-                  <div class="admin-modal-row">
-                    <label>Notes (admin only)</label>
-                    <textarea name="adminNotes" rows="3" maxlength="2000"></textarea>
-                  </div>
-                </div>
-                <div class="admin-modal-footer">
-                  <button type="button" class="admin-action-btn" onclick="closeAddBookingModal()">Cancel</button>
-                  <button type="submit" class="admin-action-btn admin-btn-grant">Create Booking</button>
-                </div>
-              </form>
-            </div>
-          </div>
 
           <!-- Modal: View a reported question (from Question Reports section).
                Opens via viewReportQuestion(qid). Closes on overlay click,
@@ -2709,6 +2601,21 @@
     .admin-grid-2 > .admin-section { margin-bottom: 20px; }
     .admin-section-tight { padding: 20px 22px; }
     .admin-section-tight .admin-section-title { margin-bottom: 12px; }
+    /* Merged Purchases section: the product table and the payment list sit
+       side by side under one heading, and stack on a narrow screen. */
+    .admin-purchases-split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 18px 28px;
+    }
+    .admin-subheading {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
     .admin-title-note { font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; color: #94a3b8; margin-left: 6px; }
     .admin-list { display: flex; flex-direction: column; }
 
@@ -7484,9 +7391,6 @@
 
     // ===== Admin Tab Navigation =====
     let adminInboxLoaded = false;
-    let adminBookingsLoaded = false;
-    let adminCalendarLoaded = false;
-    let calYear, calMonth;
 
     document.querySelectorAll('.admin-tab[data-admin-tab]').forEach(tab => {
       tab.addEventListener('click', () => {
@@ -7501,17 +7405,6 @@
         if (tab.dataset.adminTab === 'inbox' && !adminInboxLoaded) {
           adminInboxLoaded = true;
           renderInbox();
-        }
-        if (tab.dataset.adminTab === 'bookings' && !adminBookingsLoaded) {
-          adminBookingsLoaded = true;
-          renderBookings();
-        }
-        if (tab.dataset.adminTab === 'calendar' && !adminCalendarLoaded) {
-          adminCalendarLoaded = true;
-          const now = new Date();
-          calYear = now.getFullYear();
-          calMonth = now.getMonth();
-          renderCalendar();
         }
       });
     });
@@ -7861,7 +7754,6 @@
       renderAdminAudience();
       if (typeof paintInbox === 'function') paintInbox();
       if (typeof paintBookings === 'function') paintBookings();
-      if (typeof paintCalendar === 'function') paintCalendar();
       if (view === 'med-school') loadQbankUsage();
     }
 
@@ -8015,14 +7907,17 @@
       const el = document.getElementById('adminAttention');
       if (!el) return;
       if (!st.usersReady) { el.innerHTML = '<div class="admin-loading">Loading…</div>'; return; }
-      const items = SHOSAdmin.attentionItems({
+      const all = SHOSAdmin.attentionItems({
         view: adminView, people: adminPeople, transactions: window._latestTransactions || [],
         messages: window._adminMessages || [], bookings: window._adminBookings || [],
         openReports: window._openReportsCount || 0,
       });
+      // The Bookings tab is gone, so an item whose only action was to open
+      // it has nowhere to go. Booking requests still arrive by email from
+      // the onBookingCreated trigger.
+      const items = all.filter(i => i.target !== 'bookings');
       const pending = [];
       if (!window._adminMessagesLoaded) pending.push('messages');
-      if (!window._adminBookingsLoaded) pending.push('bookings');
       if (!items.length) {
         el.innerHTML = emptyLine(pending.length ? 'Still loading ' + pending.join(' and ') + '…' : 'Nothing needs attention right now.');
         return;
@@ -8103,8 +7998,6 @@
       const el = document.getElementById('adminServices');
       const pEl = document.getElementById('adminServicesPeriod');
       if (pEl) pEl.textContent = SHOSAdmin.PERIODS[adminPeriod].label.toLowerCase() + ' · after refunds';
-      const tEl = document.getElementById('adminServicesTitle');
-      if (tEl && tEl.firstChild) tEl.firstChild.textContent = adminView === 'residency' ? 'Purchased services ' : 'Sales by product ';
       if (!el || ledgerNotReady(el, st)) return;
       const staffIds = adminPeople.filter(p => p.role !== 'applicant').map(p => p.id);
       const rows = SHOSAdmin.servicesBreakdown(window._latestTransactions || [], adminView,
@@ -8655,8 +8548,6 @@
       }
     }
 
-    document.getElementById('bookingStatusFilter')?.addEventListener('change', () => { adminBookingsLoaded = true; renderBookings(); });
-    document.getElementById('bookingAudienceFilter')?.addEventListener('change', () => paintBookings());
 
     async function changeBookingStatus(id, newStatus) {
       // onSnapshot will repaint automatically — explicit re-render unneeded.
@@ -8674,233 +8565,6 @@
     async function saveBookingNotes(id, notes) {
       await updateBookingStatus(id, undefined, notes);
     }
-
-    // ===== Admin Calendar =====
-    function renderCalendar() {
-      const grid = document.getElementById('calendarGrid');
-      const label = document.getElementById('calMonthLabel');
-      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-      label.textContent = monthNames[calMonth] + ' ' + calYear;
-
-      const firstDay = new Date(calYear, calMonth, 1).getDay();
-      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-      const today = new Date();
-      const isCurrentMonth = today.getFullYear() === calYear && today.getMonth() === calMonth;
-
-      let html = dayNames.map(d => `<div class="cal-header-cell">${d}</div>`).join('');
-
-      // Empty cells before first day
-      for (let i = 0; i < firstDay; i++) {
-        html += '<div class="cal-cell empty"></div>';
-      }
-
-      for (let day = 1; day <= daysInMonth; day++) {
-        const isToday = isCurrentMonth && day === today.getDate();
-        const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
-        html += `<div class="cal-cell${isToday ? ' today' : ''}" data-date="${dateStr}">
-          <div class="cal-day-num">${day}</div>
-          <div class="cal-dots" id="cal-dots-${dateStr}"></div>
-        </div>`;
-      }
-
-      grid.innerHTML = html;
-
-      // Add click handlers
-      grid.querySelectorAll('.cal-cell[data-date]').forEach(cell => {
-        cell.addEventListener('click', () => {
-          grid.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('selected'));
-          cell.classList.add('selected');
-          showDayBookings(cell.dataset.date);
-        });
-      });
-
-      // Open the live subscription for this month's bookings
-      loadCalendarBookings();
-    }
-
-    // Calendar holds a single live subscription. Re-opens whenever the
-    // displayed month changes (Prev/Next).
-    let calendarUnsubscribe = null;
-    function loadCalendarBookings() {
-      if (typeof calendarUnsubscribe === 'function') { calendarUnsubscribe(); calendarUnsubscribe = null; }
-
-      calendarUnsubscribe = subscribeBookingsForMonth(calYear, calMonth, bookings => {
-        window._calAllBookings = bookings;
-        paintCalendar();
-      });
-    }
-
-    // Draw the month's booking dots for the current audience view.
-    function paintCalendar() {
-      const bookings = window._calAllBookings;
-      if (!Array.isArray(bookings)) return;
-      const noteEl = document.getElementById('calendarAudienceNote');
-      if (noteEl) {
-        noteEl.textContent = adminView === 'overview'
-          ? 'All bookings, including shared services.'
-          : 'Showing ' + ADMIN_VIEW_META[adminView].name + ' bookings only. Switch to Overview for everything, including shared services.';
-      }
-      {
-        // Group by date
-        const byDate = {};
-        bookings.filter(bk => SHOSAdmin.bookingInView(bk, adminView)).forEach(bk => {
-          if (!bk.preferredDate) return;
-          if (!byDate[bk.preferredDate]) byDate[bk.preferredDate] = [];
-          byDate[bk.preferredDate].push(bk);
-        });
-
-        // Reset all dot containers in the current grid (handles deletions)
-        document.querySelectorAll('[id^="cal-dots-"]').forEach(el => { el.innerHTML = ''; });
-
-        // Render dots for dates that have bookings
-        Object.entries(byDate).forEach(([date, bks]) => {
-          const dotsEl = document.getElementById('cal-dots-' + date);
-          if (!dotsEl) return;
-          let dotsHtml = '';
-          bks.slice(0, 4).forEach(bk => {
-            dotsHtml += `<span class="cal-dot ${bk.status}"></span>`;
-          });
-          if (bks.length > 4) dotsHtml += `<span style="font-size:0.65rem;color:#9ca3af;">+${bks.length - 4}</span>`;
-          dotsEl.innerHTML = dotsHtml;
-        });
-
-        // Store for day detail view + refresh detail if a day is selected
-        window._calBookingsByDate = byDate;
-        const selectedCell = document.querySelector('.cal-cell.selected');
-        if (selectedCell && selectedCell.dataset.date) {
-          showDayBookings(selectedCell.dataset.date);
-        }
-      }
-    }
-
-    function showDayBookings(date) {
-      const detailEl = document.getElementById('calDayDetail');
-      const labelEl = document.getElementById('calDayLabel');
-      const listEl = document.getElementById('calDayBookings');
-      const byDate = window._calBookingsByDate || {};
-      const dayBookings = byDate[date] || [];
-
-      const d = new Date(date + 'T12:00:00');
-      labelEl.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-
-      if (dayBookings.length === 0) {
-        listEl.innerHTML = '<p style="color:#9ca3af; font-size:0.88rem;">No bookings on this date.</p>';
-      } else {
-        let html = '';
-        dayBookings.forEach(bk => {
-          const priceStr = bk.price === 0 ? 'Free' : '$' + bk.price;
-          html += `<div style="padding:10px 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;">
-            <strong>${escapeHtml(bk.serviceName || bk.serviceType)}</strong>
-            <span class="status-badge status-${bk.status}" style="margin-left:8px;">${bk.status.replace('_', ' ')}</span><br>
-            <span style="color:#6b7280;">${escapeHtml(bk.name || '')} &middot; ${escapeHtml(bk.email || '')} &middot; ${priceStr}</span>
-            ${bk.preferredTime ? '<br><span style="color:#9ca3af;">' + escapeHtml(bk.preferredTime) + '</span>' : ''}
-          </div>`;
-        });
-        listEl.innerHTML = html;
-      }
-
-      detailEl.style.display = 'block';
-    }
-
-    // Calendar navigation
-    document.getElementById('calPrev')?.addEventListener('click', () => {
-      calMonth--;
-      if (calMonth < 0) { calMonth = 11; calYear--; }
-      renderCalendar();
-    });
-    document.getElementById('calNext')?.addEventListener('click', () => {
-      calMonth++;
-      if (calMonth > 11) { calMonth = 0; calYear++; }
-      renderCalendar();
-    });
-
-    // ===== Add Booking modal (manual booking creation from calendar) =====
-    function openAddBookingModal() {
-      const overlay = document.getElementById('addBookingOverlay');
-      const form = document.getElementById('addBookingForm');
-      const dateInput = document.getElementById('addBookingDate');
-      const serviceSelect = document.getElementById('addBookingServiceType');
-      if (!overlay || !form || !dateInput || !serviceSelect) return;
-
-      // Reset form to defaults
-      form.reset();
-
-      // Pre-fill date with the currently-selected calendar day, fallback today
-      const selectedCell = document.querySelector('.cal-cell.selected');
-      const defaultDate = selectedCell?.dataset.date || new Date().toISOString().split('T')[0];
-      dateInput.value = defaultDate;
-
-      // Populate service options from SERVICE_TYPES (defined in contact-booking.js)
-      if (serviceSelect.options.length === 0 && typeof SERVICE_TYPES === 'object') {
-        Object.entries(SERVICE_TYPES).forEach(([key, svc]) => {
-          const opt = document.createElement('option');
-          opt.value = key;
-          opt.textContent = svc.name + (svc.price > 0 ? ` ($${svc.price})` : ' (Free)');
-          serviceSelect.appendChild(opt);
-        });
-      }
-
-      overlay.style.display = 'flex';
-      // Focus first field for quick entry
-      setTimeout(() => form.querySelector('input[name="name"]')?.focus(), 50);
-    }
-    function closeAddBookingModal() {
-      const overlay = document.getElementById('addBookingOverlay');
-      if (overlay) overlay.style.display = 'none';
-    }
-    async function submitAddBooking(event) {
-      event.preventDefault();
-      const form = event.target;
-      const fd = new FormData(form);
-      const serviceType = fd.get('serviceType');
-      const service = (typeof SERVICE_TYPES === 'object') ? SERVICE_TYPES[serviceType] : null;
-      if (!service) {
-        alert('Pick a service first.');
-        return;
-      }
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const origLabel = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Creating…';
-
-      try {
-        const doc = {
-          userId: null,                      // admin-created, no user account required
-          name: (fd.get('name') || '').toString().substring(0, 200),
-          email: (fd.get('email') || '').toString().substring(0, 200),
-          serviceType: serviceType,
-          serviceName: service.name,
-          price: service.price,
-          status: fd.get('status') || 'confirmed',
-          preferredDate: fd.get('preferredDate') || null,
-          preferredTime: (fd.get('preferredTime') || '').toString() || null,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          intakeAnswers: {},
-          sessionGoal: '',
-          adminNotes: (fd.get('adminNotes') || '').toString().substring(0, 2000),
-          source: 'admin-manual',            // distinguishes admin-created bookings
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-          completedAt: null
-        };
-        await db.collection('bookings').add(doc);
-        closeAddBookingModal();
-        // Calendar onSnapshot will paint the new dot automatically.
-      } catch (err) {
-        console.error('Create booking failed:', err);
-        alert('Failed to create booking: ' + err.message);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = origLabel;
-      }
-    }
-    // Close modal on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeAddBookingModal();
-    });
 
     // ===== Study Plan =====
     const SP_BIO_CHAPTERS = [
