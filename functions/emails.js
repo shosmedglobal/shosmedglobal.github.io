@@ -271,8 +271,16 @@ shosmed.com`;
 //
 // Everything here comes from a web form, so every value is escaped: a body
 // containing HTML must read as text, never render as markup.
+// Heading per alert kind. An unknown kind falls back to 'New message', the
+// behaviour before payments were added.
+const ALERT_HEADINGS = {
+  booking: 'New booking request',
+  payment: 'New payment',
+  message: 'New message',
+};
+
 function adminAlertHtml({ kind, name, email, lines, body, inboxUrl }) {
-  const heading = kind === 'booking' ? 'New booking request' : 'New message';
+  const heading = ALERT_HEADINGS[kind] || 'New message';
   const rows = (lines || []).filter(l => l && l[1]).map(([label, value]) => `
     <tr>
       <td style="padding:5px 14px 5px 0; font-size:13px; color:${BRAND.gray500}; white-space:nowrap; vertical-align:top;">${escapeHtml(label)}</td>
@@ -317,7 +325,7 @@ function adminAlertHtml({ kind, name, email, lines, body, inboxUrl }) {
 }
 
 function adminAlertText({ kind, name, email, lines, body, inboxUrl }) {
-  const heading = kind === 'booking' ? 'New booking request' : 'New message';
+  const heading = ALERT_HEADINGS[kind] || 'New message';
   const detail = (lines || []).filter(l => l && l[1]).map(([label, value]) => `${label}: ${value}`).join('\n');
   return `${heading} from ${name || 'Someone'}${email ? ' <' + email + '>' : ''}
 

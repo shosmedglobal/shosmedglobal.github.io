@@ -958,6 +958,123 @@ exports.onBookingCreated = functions
   });
 
 // ============================================================================
+// onPaymentRecorded
+// ----------------------------------------------------------------------------
+// Emails the shared inbox whenever a payment lands. Until this existed, a
+// purchase made straight from the Store reached nobody: the webhook recorded
+// the ledger row and granted access silently, and the only notification was
+// whatever Stripe's own account settings happened to send. A payment on
+// 3 Nov 2026 was processed correctly and went unnoticed for exactly that
+// reason.
+//
+// Why a Firestore trigger on the ledger rather than a send inside the
+// webhook: the webhook must answer Stripe quickly and must not fail because
+// an email provider is down, and Stripe retries a non-2xx response, which
+// would duplicate the mail. The ledger doc is written once per checkout
+// session (its ID is the doc ID), so onCreate fires exactly once per payment,
+// retries and duplicate deliveries included.
+//
+// Only webhook-sourced rows are mailed. `reconcileStripePayments` backfills
+// historical payments into the same collection, and mailing those would send
+// a burst of notices about purchases from months ago.
+// ============================================================================
+
+// Customer-facing product names, keyed by the tier in TIERS. Kept in step
+// with PRODUCTS in product-catalog.js at the repo root, which the site uses;
+// functions/ is deployed on its own and cannot import it.
+// test/payment-notification.test.js fails if the two ever disagree.
+const PRODUCT_LABELS = {
+  'full-access': 'Full QBank Access',
+  'apply-lf3-service': 'LF3 Entrance Exam Registration',
+  'mock-exam-interview': 'Mock Interview + Feedback',
+  'life-in-prague': 'Life in Prague',
+  'applicant-mentor': '1-on-1 Mentor Session (applicant)',
+  'strategy-session': 'Strategy Session',
+  'mentorship-lor': 'Letter of Rec Coaching',
+  'mentorship-program-list': 'Program List Guidance',
+  'mentorship-research': 'Research Strategy',
+  'mentorship-cv': 'Personal Statement Review',
+  'mentorship-mock-interview': 'Mock Interview Session',
+  'mentorship-eras': 'ERAS CV Review',
+  'usmle-step-review': 'USMLE Step Review',
+};
+
+/** Minor units to a displayable amount: 9900 USD -> "$99.00". */
+function formatAmount(minorUnits, currency) {
+  const n = typeof minorUnits === 'number' ? minorUnits : 0;
+  const code = String(currency || 'usd').toUpperCase();
+  const sign = code === 'USD' ? '$' : '';
+  return sign + (n / 100).toFixed(2) + (sign ? '' : ' ' + code);
+}
+
+/**
+ * Builds the notification for one ledger row. Pure, so the test can assert
+ * the wording and the skip rules without Firestore or an email provider.
+ * Returns null when this row must not be mailed.
+ */
+function buildPaymentAlert(t, opts) {
+  const o = opts || {};
+  if (!t || t.source !== 'webhook') return null;   // reconciliation backfill
+  const product = PRODUCT_LABELS[t.tier] || t.tier || 'Unknown product';
+  const amount = formatAmount(t.amountTotal, t.currency);
+  const free = !t.amountTotal;
+  const test = t.livemode !== true;
+  const lines = [
+    ['Product', product],
+    ['Amount', free ? amount + ' (no charge — full promo code)' : amount],
+    ['Customer', t.email || '(no email on the session)'],
+    ['Tier', t.tier],
+    ['Stripe session', t.sessionId],
+  ];
+  if (test) lines.unshift(['Mode', 'TEST — not a real payment']);
+  const payload = {
+    kind: 'payment',
+    name: t.email || 'A customer',
+    email: t.email || undefined,
+    inboxUrl: o.inboxUrl || ADMIN_INBOX_URL,
+    lines,
+  };
+  return {
+    to: o.to || NOTIFY_TO,
+    replyTo: t.email || undefined,
+    subject: `[SHOS]${test ? ' [TEST]' : ''} Payment: ${product} — ${amount}`,
+    payload,
+  };
+}
+
+exports.onPaymentRecorded = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .firestore.document('transactions/{sessionId}')
+  .onCreate(async (snap) => {
+    const t = snap.data() || {};
+    const alert = buildPaymentAlert(t);
+    if (!alert) {
+      console.log('[onPaymentRecorded]', snap.id, 'not mailed (source=' + t.source + ')');
+      return null;
+    }
+    try {
+      const result = await sendEmail({
+        to: alert.to,
+        replyTo: alert.replyTo,
+        subject: alert.subject,
+        html: emails.adminAlertHtml(alert.payload),
+        text: emails.adminAlertText(alert.payload),
+      });
+      console.log('[onPaymentRecorded]', snap.id, t.tier,
+        result && result.ok ? 'notified' : (result && result.skipped ? 'skipped (no API key)' : 'FAILED'));
+    } catch (err) {
+      // Never throw: the payment is already recorded and access already
+      // granted. A retry storm would only duplicate the mail.
+      console.error('[onPaymentRecorded] notification failed for', snap.id, err);
+    }
+    return null;
+  });
+
+// Exported for the test; not part of the deployed callable surface.
+exports._buildPaymentAlert = buildPaymentAlert;
+exports._PRODUCT_LABELS = PRODUCT_LABELS;
+
+// ============================================================================
 // qbankExpiryReminders
 // ----------------------------------------------------------------------------
 // Daily check for QBank access that is about to end. Sends two emails per
