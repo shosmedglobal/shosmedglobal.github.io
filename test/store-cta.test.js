@@ -121,7 +121,7 @@ for (const m of html.matchAll(/var (\w+)\s*=\s*document\.getElementById\('(conta
 // the card sits above the Step 1/2/3 grid, not under it.
 const cardAt = html.indexOf('class="lf3-reg-card"');
 const gridAt = html.indexOf('id="qbankPricingGrid"');
-const addonsAt = html.indexOf('>Full Application Support<');
+const addonsAt = html.indexOf('>Application Support<');
 check('5a the registration card exists', cardAt !== -1);
 check('5b it sits above the 3-step pricing grid', cardAt !== -1 && cardAt < gridAt, [cardAt, gridAt]);
 check('5c it sits above the Step 3 add-on list', cardAt !== -1 && cardAt < addonsAt, [cardAt, addonsAt]);

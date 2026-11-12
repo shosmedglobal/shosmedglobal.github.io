@@ -114,7 +114,7 @@ const TIERS = {
     field: 'usmle-step-review', priceKey: 'mentorship-addon', plan: null, expiryDays: null,
   },
 
-  // ---- Full Application Support à la carte (Step 3 on the Med School
+  // ---- Application Support à la carte (Step 3 on the Med School
   // path). One-time purchases, no plan and no expiry — same shape as the
   // Match Mentorship add-ons above.
   //
