@@ -125,7 +125,13 @@ const TIERS = {
   // $99 Price so a med-school buyer's receipt does not read
   // "Match Mentorship Add-On".
   //
-  // Both lookup keys must exist on an ACTIVE Price in Stripe or checkout
+  // LF3 Application Fee Payment is also $99 but deliberately does NOT share
+  // 'application-addon'. Roughly $91 of its $99 is the faculty's 2,000 CZK
+  // admission fee passing through us, not revenue, so it needs its own line
+  // in Stripe reporting. Sharing a Price would make the two impossible to
+  // separate at reconciliation or at tax time.
+  //
+  // Every lookup key here must exist on an ACTIVE Price in Stripe or checkout
   // fails at click time with "No active Stripe price found for lookup_key".
   'apply-lf3-service': {         // Apply for LF3 — $199
     field: 'apply-lf3-service', priceKey: 'apply-lf3', plan: null, expiryDays: null,
@@ -138,6 +144,12 @@ const TIERS = {
   },
   'applicant-mentor': {          // 1-on-1 Mentor Session (applicant)
     field: 'applicant-mentor', priceKey: 'application-addon', plan: null, expiryDays: null,
+  },
+  // Sold only to applicants who already hold 'apply-lf3-service'. The store
+  // enforces that in the UI; this map stays permissive so an admin can still
+  // record the purchase manually for someone who registered off-site.
+  'lf3-application-fee': {       // LF3 Application Fee Payment — $99
+    field: 'lf3-application-fee', priceKey: 'lf3-application-fee', plan: null, expiryDays: null,
   },
 };
 
@@ -986,6 +998,7 @@ exports.onBookingCreated = functions
 const PRODUCT_LABELS = {
   'full-access': 'Full QBank Access',
   'apply-lf3-service': 'LF3 Entrance Exam Registration',
+  'lf3-application-fee': 'LF3 Application Fee Payment',
   'mock-exam-interview': 'Mock Interview + Feedback',
   'life-in-prague': 'Life in Prague',
   'applicant-mentor': '1-on-1 Mentor Session (applicant)',

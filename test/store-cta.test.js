@@ -34,6 +34,10 @@ const TIERS = new Function(indexSrc.match(/const TIERS = (\{[\s\S]*?\n\});/)[0] 
 // in Stripe and added here in the same change.
 const STRIPE_LOOKUP_KEYS = new Set([
   'full-access', 'strategy-session', 'mentorship-addon', 'apply-lf3', 'application-addon',
+  // Product prod_VcL9FhGaEpiHbw, $99. Its Price must carry this lookup_key:
+  // checkout resolves by lookup_key, never by product id, so a price created
+  // without one fails at click time however correct the product looks.
+  'lf3-application-fee',
 ]);
 
 // createCheckoutSession asks Stripe for `tierConfig.priceKey || tier`, so a
@@ -253,6 +257,57 @@ const css = fs.readFileSync(path.join(ROOT, 'dashboard.css'), 'utf8');
 // accent, so the green hover rule has to come after it.
 check('6a the green hover rule wins over .btn-small:hover',
   css.indexOf('.btn-apply-lf3:hover') > css.indexOf('.btn-small:hover'));
+
+// ------------------------------------- LF3 Application Fee Payment add-on
+// A pass-through of the faculty's 2,000 CZK admission fee. We can only pay
+// it for an applicant whose registration we already hold, so the option has
+// to be locked by default and opened by the profile, not the other way
+// round: a profile that fails to load must not leave it sellable.
+const feeOptAt = html.indexOf('id="lf3FeeOption"');
+check('7a the add-on is offered in the store select', feeOptAt !== -1);
+const feeOpt = feeOptAt === -1 ? '' : html.slice(html.lastIndexOf('<option', feeOptAt), html.indexOf('</option>', feeOptAt));
+check('7b it is disabled in the markup, so locked is the default state',
+  /\bdisabled\b/.test(feeOpt), feeOpt.slice(0, 120));
+check('7c its locked label says why', /requires exam registration/.test(feeOpt));
+check('7d it buys the lf3-application-fee tier', /value="lf3-application-fee"/.test(feeOpt));
+
+check('7e the tier exists in functions/index.js', TIERS['lf3-application-fee'] !== undefined);
+check('7f it does not share the generic application-addon price',
+  lookupKey('lf3-application-fee') === 'lf3-application-fee', lookupKey('lf3-application-fee'));
+check('7g its lookup_key is one Stripe carries',
+  STRIPE_LOOKUP_KEYS.has(lookupKey('lf3-application-fee')));
+check('7h it records its own entitlement field',
+  TIERS['lf3-application-fee'].field === 'lf3-application-fee');
+
+// The gate itself: it must key off the registration entitlement, and the
+// profile load must actually call it. Either half missing sells a service
+// we cannot deliver.
+check('7i the gate checks the exam-registration entitlement',
+  /function gateLf3FeeAddon[\s\S]{0,700}?payments\['apply-lf3-service'\]\s*===\s*'paid'/.test(html));
+check('7j the gate enables the option only when registered',
+  /function gateLf3FeeAddon[\s\S]{0,900}?opt\.disabled\s*=\s*!registered/.test(html));
+check('7k the profile load calls the gate', /\n\s*gateLf3FeeAddon\(profile\);/.test(html));
+check('7l a stale selection is cleared when not registered',
+  /if \(!registered && sel && sel\.value === 'lf3-application-fee'\)/.test(html));
+
+// The signed-in store lists it and says who it is for.
+const RESTRICTION = 'Available only to applicants who have already registered '
+  + 'with us for the LF3 entrance examination.';
+check('7m the dashboard store lists the add-on', html.includes('LF3 Application Fee Payment'));
+check('7n it names the 2,000 CZK fee it covers', html.includes('2,000 CZK admission fee'));
+check('7o it states who it is for', html.includes(RESTRICTION));
+
+// The public page must NOT, and this is load-bearing rather than cosmetic:
+// only a signed-in page can check the entitlement, so listing it publicly
+// would advertise a service most visitors are not eligible to buy.
+// Comments are stripped first: the page carries a note saying why the add-on
+// is absent, and a note about a thing is not an offer of it.
+const publicStore = fs.readFileSync(path.join(ROOT, 'applicants.html'), 'utf8')
+  .replace(/<!--[\s\S]*?-->/g, '');
+check('7p the public store does not list the add-on',
+  !publicStore.includes('LF3 Application Fee Payment'));
+check('7q nor offer it as a purchasable tier',
+  !publicStore.includes('lf3-application-fee'));
 
 console.log(`store-cta: ${passed} passed, ${failures.length} failed`);
 if (failures.length) {

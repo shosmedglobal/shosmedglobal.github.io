@@ -1220,6 +1220,17 @@
                     </div>
                   </li>
 
+                  <li class="addon-item" tabindex="0" id="lf3FeeAddonItem">
+                    <div class="addon-row">
+                      <span>LF3 Application Fee Payment</span>
+                      <span class="addon-icon" aria-hidden="true">&#9432;</span>
+                    </div>
+                    <div class="addon-detail">
+                      <span class="addon-price">$99</span>
+                      <p class="addon-desc">We pay the 2,000 CZK admission fee to Charles University, Third Faculty of Medicine on your behalf and send you the faculty's confirmation. <span id="lf3FeeAddonNote">Available only to applicants who have already registered with us for the LF3 entrance examination.</span></p>
+                    </div>
+                  </li>
+
                   <li class="addon-item" tabindex="0">
                     <div class="addon-row">
                       <span>Mock Interview + Feedback</span>
@@ -1267,6 +1278,10 @@
                   <select id="applicantTierSelect" style="width:100%; padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:8px; font-family:inherit; font-size:0.92rem; color:var(--navy); background:#fff; margin-bottom:10px;">
                     <option value="">Choose an add-on&hellip;</option>
                     <option value="apply-lf3-service">LF3 Entrance Exam Registration &middot; $199</option>
+                    <!-- Locked by default. gateLf3FeeAddon() enables it once
+                         'apply-lf3-service' is paid, so a profile that never
+                         loads leaves it locked rather than sellable. -->
+                    <option value="lf3-application-fee" id="lf3FeeOption" disabled>LF3 Application Fee Payment &middot; requires exam registration</option>
                     <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
                     <option value="life-in-prague">Life in Prague &middot; $99</option>
                     <option value="applicant-mentor">1-on-1 Mentor Session &middot; $99</option>
@@ -1490,6 +1505,7 @@
                     <optgroup label="Med School Application">
                       <option value="full-qbank">Full QBank Access &middot; $99</option>
                       <option value="apply-lf3-service">LF3 Entrance Exam Registration &middot; $199</option>
+                      <option value="lf3-application-fee">LF3 Application Fee Payment &middot; $99</option>
                       <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
                       <option value="life-in-prague">Life in Prague &middot; $99</option>
                       <option value="applicant-mentor">1-on-1 Mentor Session (applicant) &middot; $99</option>
@@ -4782,6 +4798,9 @@
       const researchPaid = isAdmin || isReviewer || profile?.payments?.['research-course'] === 'paid';
       spInit(profile, examBankPaid, researchPaid);
 
+      // Unlock the LF3 application-fee add-on only for registered applicants.
+      gateLf3FeeAddon(profile);
+
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
       document.getElementById('dashboardContent').style.display = 'block';
@@ -5357,6 +5376,14 @@
 
     // ===== Application Support: single service purchase =====
     // Same behaviour as the Match Mentorship control above.
+    //
+    // One exception: LF3 Application Fee Payment is a pass-through of the
+    // faculty's 2,000 CZK admission fee, and we can only pay it for someone
+    // whose application we are already handling. gateLf3FeeAddon() locks the
+    // option until 'apply-lf3-service' is on the account, so the restriction
+    // is enforced rather than merely written in the description. The server
+    // still accepts the tier, so an admin can record it by hand for someone
+    // who registered off-site.
     (function () {
       const sel = document.getElementById('applicantTierSelect');
       const btn = document.getElementById('applicantBuyBtn');
@@ -5372,6 +5399,34 @@
         btn.textContent = price ? 'Get This Add-On · ' + price : 'Get This Add-On';
       });
     })();
+
+    // Unlocks the LF3 Application Fee add-on once the entrance-exam
+    // registration is paid for. Called from the profile load, and safe to
+    // call with no profile: the locked state is the default in the markup's
+    // sibling text, so a failure to load leaves the option disabled rather
+    // than selling something we cannot deliver.
+    function gateLf3FeeAddon(profile) {
+      const opt = document.getElementById('lf3FeeOption');
+      const note = document.getElementById('lf3FeeAddonNote');
+      if (!opt) return;
+      const registered = (profile && profile.payments
+        && profile.payments['apply-lf3-service'] === 'paid') === true;
+      opt.disabled = !registered;
+      opt.textContent = registered
+        ? 'LF3 Application Fee Payment · $99'
+        : 'LF3 Application Fee Payment · requires exam registration';
+      if (note) {
+        note.textContent = registered
+          ? 'Your entrance-exam registration is on file, so this is available to you.'
+          : 'Available only to applicants who have already registered with us for the LF3 entrance examination.';
+      }
+      // If it was somehow selected before the profile arrived, clear it.
+      const sel = document.getElementById('applicantTierSelect');
+      if (!registered && sel && sel.value === 'lf3-application-fee') {
+        sel.value = '';
+        sel.dispatchEvent(new Event('change'));
+      }
+    }
 
     // ===== Resource Tabs =====
     document.querySelectorAll('.resource-tab').forEach(tab => {
