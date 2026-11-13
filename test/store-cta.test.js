@@ -274,6 +274,16 @@ check('7d it buys the lf3-application-fee tier', /value="lf3-application-fee"/.t
 check('7e the tier exists in functions/index.js', TIERS['lf3-application-fee'] !== undefined);
 check('7f it does not share the generic application-addon price',
   lookupKey('lf3-application-fee') === 'lf3-application-fee', lookupKey('lf3-application-fee'));
+// Exclusivity, the other way round: nothing else may point at this price.
+// The other $99 med-school add-ons deliberately share 'application-addon',
+// so adding one here would be an easy and invisible mistake. It matters
+// because most of this product's $99 is the faculty's fee passing through
+// us, and a second item on the same price would mix real revenue into it.
+{
+  const sharers = Object.keys(TIERS).filter(t => lookupKey(t) === 'lf3-application-fee');
+  check('7f2 no other store item is sold on the lf3-application-fee price',
+    sharers.length === 1 && sharers[0] === 'lf3-application-fee', sharers);
+}
 check('7g its lookup_key is one Stripe carries',
   STRIPE_LOOKUP_KEYS.has(lookupKey('lf3-application-fee')));
 check('7h it records its own entitlement field',
