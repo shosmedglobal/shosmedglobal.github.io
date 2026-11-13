@@ -295,8 +295,14 @@ check('7h it records its own entitlement field',
 check('7i the gate checks the exam-registration entitlement',
   /function gateLf3FeeAddon[\s\S]{0,700}?payments\['apply-lf3-service'\]\s*===\s*'paid'/.test(html));
 check('7j the gate enables the option only when registered',
-  /function gateLf3FeeAddon[\s\S]{0,900}?opt\.disabled\s*=\s*!registered/.test(html));
-check('7k the profile load calls the gate', /\n\s*gateLf3FeeAddon\(profile\);/.test(html));
+  /function gateLf3FeeAddon[\s\S]{0,1400}?opt\.disabled\s*=\s*!registered/.test(html));
+check('7k the profile load calls the gate, passing staff status',
+  /\n\s*gateLf3FeeAddon\(profile,\s*isAdmin \|\| isReviewer\);/.test(html));
+// Staff bypass: admins and reviewers never buy the $199 registration, so
+// without it the add-on cannot be tested or demonstrated. It must widen the
+// gate for staff ONLY, never replace the entitlement check for applicants.
+check('7k2 staff bypass exists and is additive, not a replacement',
+  /const registered = paid \|\| isStaff === true;/.test(html));
 check('7l a stale selection is cleared when not registered',
   /if \(!registered && sel && sel\.value === 'lf3-application-fee'\)/.test(html));
 

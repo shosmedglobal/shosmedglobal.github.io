@@ -4799,7 +4799,7 @@
       spInit(profile, examBankPaid, researchPaid);
 
       // Unlock the LF3 application-fee add-on only for registered applicants.
-      gateLf3FeeAddon(profile);
+      gateLf3FeeAddon(profile, isAdmin || isReviewer);
 
       // Show dashboard, hide loading
       document.getElementById('loadingState').style.display = 'none';
@@ -5405,20 +5405,27 @@
     // call with no profile: the locked state is the default in the markup's
     // sibling text, so a failure to load leaves the option disabled rather
     // than selling something we cannot deliver.
-    function gateLf3FeeAddon(profile) {
+    function gateLf3FeeAddon(profile, isStaff) {
       const opt = document.getElementById('lf3FeeOption');
       const note = document.getElementById('lf3FeeAddonNote');
       if (!opt) return;
-      const registered = (profile && profile.payments
+      const paid = (profile && profile.payments
         && profile.payments['apply-lf3-service'] === 'paid') === true;
+      // Staff bypass, the same exemption QBank access uses. Without it the
+      // add-on is untestable and undemonstrable from an admin account, since
+      // staff never buy the $199 registration themselves. It opens the option
+      // for admins and reviewers only; for everyone else the rule is unchanged.
+      const registered = paid || isStaff === true;
       opt.disabled = !registered;
       opt.textContent = registered
         ? 'LF3 Application Fee Payment · $99'
         : 'LF3 Application Fee Payment · requires exam registration';
       if (note) {
-        note.textContent = registered
-          ? 'Your entrance-exam registration is on file, so this is available to you.'
-          : 'Available only to applicants who have already registered with us for the LF3 entrance examination.';
+        note.textContent = !paid && isStaff
+          ? 'Unlocked because you are signed in as staff. Applicants see this only once their entrance-exam registration is on file.'
+          : registered
+            ? 'Your entrance-exam registration is on file, so this is available to you.'
+            : 'Available only to applicants who have already registered with us for the LF3 entrance examination.';
       }
       // If it was somehow selected before the profile arrived, clear it.
       const sel = document.getElementById('applicantTierSelect');
