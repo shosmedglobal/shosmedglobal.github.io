@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="exam-copy-guard.css?v=20261114">
 
   <style>
     body { background: #FAFBFC; }
@@ -1632,6 +1633,9 @@
       const email = (user.email || '').toLowerCase();
       const isAdmin = MOCK_ADMIN_EMAILS.includes(email);
       const isReviewer = MOCK_REVIEWER_EMAILS.includes(email);
+      // Staff may lift question text out of an exam they have taken;
+      // everyone else may not. See exam-copy-guard.js.
+      if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin, isReviewer });
       const isFree = mockExamYear === mockExamConfig.freeYear;
 
       let isPaid = false;
@@ -1671,5 +1675,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
+  <script src="exam-copy-guard.js?v=20261114"></script>
 </body>
 </html>
