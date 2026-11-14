@@ -441,7 +441,7 @@
       };
 
       // ---- Step 1: All-parallel fetch + auth. Promise.all gates the render. ----
-      const questionsPromise = fetch('questions.json?v=20261114-bio-review')
+      const questionsPromise = fetch('questions.json?v=20261114b-bio-review')
         .then(r => r.ok ? r.json() : null)
         .catch(err => { console.error('questions.json fetch failed:', err); return null; });
 
@@ -737,7 +737,7 @@
     })();
 
     function loadQuestionsWithAccess() {
-      fetch('questions.json?v=20261114-bio-review')
+      fetch('questions.json?v=20261114b-bio-review')
         .then(res => res.json())
         .then(async (data) => {
           // Filter to free questions only if user is not paid

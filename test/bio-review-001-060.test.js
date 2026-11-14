@@ -196,7 +196,7 @@ const PRESENT = [
   ['bio-44', 'relaxed or supercoiled'],
   ['bio-45', 'does not exceed, 50%'],
   ['bio-46', 'such as macrophages'],
-  ['bio-48', 'ATP synthase uses this gradient'],
+  ['bio-48', 'uses that gradient to make ATP'],
   ['bio-49', 'virtually all human cells'],
   ['bio-49', 'mature red blood cells lack mitochondria'],
   ['bio-50', 'serum IgA is mainly monomeric'],
@@ -215,6 +215,49 @@ for (const [id, snippet] of PRESENT) {
   check(`4 ${id} contains "${snippet.slice(0, 40)}"`,
     !!q && (q.question + q.options.join(' ') + q.explanation).includes(snippet));
 }
+
+// ========================================= 4b. the follow-up pass (five items)
+// Q6 and Q47 renamed an option, which is the edit most likely to half-land:
+// the option changes and the heading of its distractor explanation does not.
+for (const [id, idx, label] of [['bio-6', 3, 'Cytosol'], ['bio-48', 0, 'Cytosol']]) {
+  const q = BY[id];
+  check(`4b ${id} option ${LETTER[idx]} is "${label}"`, q.options[idx] === label, q.options[idx]);
+  check(`4b ${id} option ${LETTER[idx]} no longer says Cytoplasm`, q.options[idx] !== 'Cytoplasm');
+  check(`4b ${id} its explanation heading matches the option`,
+    q.explanation.includes(`<strong>${LETTER[idx]}. ${label}:</strong>`));
+  check(`4b ${id} no stale "${LETTER[idx]}. Cytoplasm:" heading remains`,
+    !q.explanation.includes(`<strong>${LETTER[idx]}. Cytoplasm:</strong>`));
+}
+// Q34: the lagging strand is not made "backwards"; both strands run 5'->3'.
+check('4b bio-35 drops "built backwards"', !BY['bio-35'].explanation.includes('built backwards'));
+check('4b bio-35 states both strands are made 5′→3′',
+  /Both new DNA strands are synthesized in the 5&prime;&rarr;3&prime; direction/.test(BY['bio-35'].explanation));
+check('4b bio-35 says the fragments grow away from the fork',
+  BY['bio-35'].explanation.includes('growing away from the fork'));
+// Q44: the item names no cross, so no dihybrid ratio may be asserted against it.
+check('4b bio-45 has no dihybrid-ratio column', !BY['bio-45'].explanation.includes('Dihybrid Ratio'));
+check('4b bio-45 quotes no 9:3:3:1 ratio', !BY['bio-45'].explanation.includes('9:3:3:1'));
+check('4b bio-45 keeps the centimorgan discussion', BY['bio-45'].explanation.includes('centimorgan'));
+{
+  // Every row of that table must now be two cells wide.
+  const tbl = /<table[^>]*>([\s\S]*?)<\/table>/.exec(BY['bio-45'].explanation)[1];
+  const widths = (tbl.match(/<tr>[\s\S]*?<\/tr>/g) || [])
+    .map(r => (r.match(/<t[dh]\b/g) || []).length);
+  check('4b bio-45 comparison table is uniformly two columns',
+    widths.length === 4 && widths.every(w => w === 2), widths);
+}
+// Q47: ATP synthase uses the gradient; it is not a link in the chain.
+check('4b bio-48 does not count ATP synthase among the chain complexes',
+  !/electron transport chain consists of four protein complexes \(I-IV\) and ATP synthase/.test(BY['bio-48'].explanation));
+check('4b bio-48 says ATP synthase does not transfer electrons',
+  BY['bio-48'].explanation.includes('it does not itself transfer electrons along the chain'));
+// Q53: emulsification and micelle formation are separate jobs.
+check('4b bio-54 separates emulsification from micelle formation',
+  !BY['bio-54'].explanation.includes('emulsify fat into small droplets and help form micelles'));
+check('4b bio-54 names pancreatic lipase for the surface-area benefit',
+  BY['bio-54'].explanation.includes('surface area available to pancreatic lipase'));
+check('4b bio-54 describes mixed micelles carrying digestion products',
+  BY['bio-54'].explanation.includes('mixed micelles'));
 
 // ================================ 5. the educational points teach THIS question
 // Q48/bio-49 is the case the review singled out: a glycolysis question whose
