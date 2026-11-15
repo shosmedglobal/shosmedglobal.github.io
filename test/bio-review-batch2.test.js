@@ -583,7 +583,15 @@ for (const q of data.chemistry) {
   if (untouched.chemistry[q.id] !== hash(q)) { chemDrift++; console.error('  FAIL chemistry ' + q.id + ' changed'); }
 }
 ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches biology only`);
-ok(Object.keys(untouched.biology).length === 566, 'untouched biology hash count unexpected');
+// This sweep covers the items no reviewed batch owns. When a later batch is
+// approved, its ids are removed from this fixture and become that batch's
+// test's responsibility, so the two sweeps partition the bank rather than
+// overlapping. Batch 3 took 60 ids (bio-62..bio-128 minus batch 2's seven),
+// which is why this count is 566 - 60.
+ok(Object.keys(untouched.biology).length === 506, 'untouched biology hash count unexpected');
+// 506 unowned + 60 owned by batch 3 + the 63 in this batch's own fixture = 629
+ok(Object.keys(untouched.biology).length + 60 + Object.keys(before).length === 629,
+   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 + ${Object.keys(before).length}`);
 
 // ===========================================================================
 section('7. Internal consistency of every edited item');
