@@ -316,7 +316,7 @@ const PRESENT = [
   ['bio-450', 'denaturation and irreversible inhibition are not the same thing'],
   ['bio-450', 'Pure noncompetitive inhibition lowers Vmax'],
   ['bio-450', 'the substrate concentration giving half the maximum rate'],
-  ['bio-267', 'Most mature mRNAs then receive a 3&prime; poly(A) tail'],
+  ['bio-267', 'the 3&prime; end of most pre-mRNAs is cleaved and a poly(A) tail is added'],
   ['bio-267', 'Splicing removes introns and joins exons'],
   ['bio-105', 'Punctuated equilibrium describes a pattern in the fossil record'],
   ['bio-105', 'Genetic assimilation describes a phenotype'],
@@ -447,6 +447,82 @@ for (const [id, str] of PRESENT) {
   if (!q) { ok(false, `${id}: not found for PRESENT check`); continue; }
   ok(text(q).includes(str), `${id}: replacement text missing: "${str.slice(0, 70)}"`);
 }
+
+// ===========================================================================
+section('4b. The targeted follow-up pass (Q8, Q17, Q19, Q39, Q44, Q45, Q58)');
+
+// Same discipline as section 3: each "gone" is paired with a check that it was
+// present in the first pass, which for this pass means present in the current
+// file's history rather than in the before-fixture, so the pairing is done
+// against the text the first pass produced, recorded here explicitly.
+const FOLLOWUP_GONE = [
+  // Q8: ordering implication, and introns "removed from mature mRNA"
+  ['bio-267', 'Most mature mRNAs then receive'],
+  ['bio-267', 'Introns are removed from mature mRNA by the spliceosome'],
+  ['bio-267', 'Only exons are retained and joined together in the final mRNA'],
+  // Q17: blanket 3' claim and the alternative-polyadenylation aside
+  ['bio-135', 'does nothing to the 3&prime; end'],
+  ['bio-135', 'Selecting between alternative polyadenylation sites'],
+  ['bio-135', 'a post-transcriptional process that occurs during or after transcription'],
+  ['bio-135', 'producing the wrong isoform'],
+  // Q19: the last categorical "shift results from segment exchange"
+  ['bio-75', 'Antigenic shift is not produced by mutation within one genome: it results from'],
+  ['bio-75', 'Shift arises from exchange of whole genome segments'],
+  // Q39: "establish only that the organism is a prokaryote"
+  ['bio-254', 'establish only that the organism is a prokaryote'],
+  ['bio-254', 'only establish that the organism is prokaryotic'],
+  ['bio-254', 'show only that the organism is a prokaryote'],
+  // Q44: renal artery dividing first into interlobar arteries
+  ['bio-212', 'the renal artery first divides into interlobar arteries'],
+  // Q58: the old option A and its heading
+  ['bio-312', 'Immediately lyses the host cell'],
+  ['bio-312', 'even there lysis is not immediate'],
+  ['bio-312', '<li>In the lysogenic cycle, phage DNA integrates'],
+  // Q45: editorial deletion
+  ['bio-611', 'a harder extension rather than the main point of the question'],
+];
+for (const [id, str] of FOLLOWUP_GONE) {
+  ok(!text(BY[id]).includes(str), `${id}: follow-up did not remove: "${str.slice(0, 70)}"`);
+}
+
+const FOLLOWUP_PRESENT = [
+  ['bio-267', 'During processing, the 3&prime; end of most pre-mRNAs is cleaved and a poly(A) tail is added, supporting mRNA stability and export.'],
+  ['bio-267', 'Introns are normally removed from pre-mRNA, and the remaining exons are joined to form mature mRNA.'],
+  ['bio-135', 'Alternative splicing determines which RNA segments are retained in the mature mRNA, whereas polyadenylation adds the poly(A) tail.'],
+  ['bio-135', 'an RNA-processing step that can occur during or after transcription'],
+  ['bio-135', 'as occurs in some forms of beta-thalassemia'],
+  ['bio-75', 'The mechanism tested here is reassortment'],
+  ['bio-75', 'A frameshift changes a gene&rsquo;s reading frame and usually disrupts the resulting protein.'],
+  ['bio-75', 'It does not describe the reassortment of intact RNA genome segments.'],
+  ['bio-254', 'Circular chromosomes and 70S ribosomes are common features of prokaryotes, but they do not distinguish Bacteria from Archaea.'],
+  ['bio-212', 'The renal artery first divides into segmental arteries, which branch into interlobar arteries that run between the renal pyramids.'],
+  ['bio-312', 'Directs production of new phages followed by host-cell lysis'],
+  ['bio-312', 'This describes the lytic cycle: phage DNA is replicated, viral components are assembled, and the host cell is then lysed.'],
+  ['bio-312', 'In lambda lysogeny, phage DNA integrates into the host chromosome'],
+];
+for (const [id, str] of FOLLOWUP_PRESENT) {
+  ok(text(BY[id]).includes(str), `${id}: follow-up text missing: "${str.slice(0, 70)}"`);
+}
+
+// Q39's replacement sentence is the same in all three places it was asked for:
+// main explanation, educational points and Bottom Line.
+{
+  const e = BY['bio-254'].explanation;
+  const n = (e.match(/Circular chromosomes and 70S ribosomes are common features of prokaryotes/g) || []).length;
+  ok(n === 3, `bio-254: the agreed sentence appears ${n} times, expected 3 (main, points, Bottom Line)`);
+}
+// Q58's option A is now a true description of the lytic cycle, and still wrong
+// for this stem, so the item keeps exactly one defensible answer.
+{
+  const q = BY['bio-312'];
+  ok(q.correct === 1, 'bio-312: key moved off B');
+  ok(/lambda/i.test(q.question), 'bio-312: stem no longer names lambda');
+  ok(!/Immediately/i.test(q.options.join(' ')), 'bio-312: "immediately" survives in an option');
+}
+// Q45: the deletion must not have left an empty bullet behind
+ok(!/<li>\s*<\/li>/.test(BY['bio-611'].explanation), 'bio-611: empty <li> left by the deletion');
+ok((BY['bio-611'].explanation.match(/<li>/g) || []).length === 3,
+   'bio-611: expected 3 educational points after deleting the fourth');
 
 // ===========================================================================
 section('5. The three substantial rewrites and the Q13 reframe');
