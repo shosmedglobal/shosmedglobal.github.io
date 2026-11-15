@@ -265,7 +265,7 @@ const PRESENT = [
   ['bio-69', 'some have catalase, superoxide dismutase, or other defences'],
   ['bio-69', 'not by a universal absence of catalase and superoxide dismutase'],
   ['bio-70', 'short, hair-like surface appendages'],
-  ['bio-70', 'property of the community rather than inherited resistance'],
+  ['bio-70', 'Biofilm growth can increase antibiotic tolerance without requiring acquired resistance genes'],
   ['bio-71', 'Enzymatic inactivation of the drug is one of four major resistance mechanisms'],
   ['bio-72', 'classic F⁺ to F⁻ conjugation system'],
   ['bio-72', 'does not have to carry a free F plasmid'],
@@ -339,7 +339,7 @@ const PRESENT = [
   ['bio-121', 'maternal component, which no embryonic cell produces'],
   ['bio-122', 'Specify regional identity along the anterior-posterior body axis'],
   ['bio-122', 'they do not by themselves establish the axis'],
-  ['bio-123', 'The trophoblast component of the chorion and fetal placenta'],
+  ['bio-123', 'contributes the trophoblast component of the chorion and of the fetal placenta'],
   ['bio-123', 'it is not merely vestigial'],
   ['bio-124', 'normal and essential part of development'],
   ['bio-124', 'Monozygotic twinning involves separation of one early embryo'],
@@ -357,6 +357,94 @@ const PRESENT = [
 for (const [id, str] of PRESENT) {
   ok(text(BY[id]).includes(str), `${id}: replacement text missing: "${str.slice(0, 70)}"`);
 }
+
+// ===========================================================================
+section('6b. The targeted correction pass (16 items)');
+
+// Paired as elsewhere: each "gone" names text the FIRST batch-3 pass produced,
+// recorded here explicitly so a stale string cannot pass vacuously.
+const FOLLOWUP_GONE = [
+  ['bio-64', 'Endotoxin specifically refers to the lipid A component'],
+  ['bio-70', 'property of the community rather than inherited resistance'],
+  ['bio-72', 'has nothing to do with conjugation'],
+  ['bio-72', 'Conjugation specifically requires the F plasmid'],
+  ['bio-72', 'Conjugation is a plasmid-mediated, pilus-dependent process'],
+  ['bio-74', 'its genome can be read as mRNA as soon as it enters the cell'],
+  ['bio-76', 'consisting solely of a misfolded form of the prion protein'],
+  ['bio-76', 'inducing normal PrPᶜ proteins to refold'],
+  ['bio-77', 'which is how lysogenic conversion can give the bacterium new properties'],
+  ['bio-79', 'Orthomyxoviridae'],
+  ['bio-79', 'reassortment (antigenic shift)'],
+  ['bio-79', 'reversing the central dogma'],
+  ['bio-82', 'inserting the proviral DNA into the host cell chromosome'],
+  ['bio-82', 'inserting proviral DNA into the host genome is integrase'],
+  ['bio-85', 'Like all consumers it ingests its food'],
+  ['bio-85', 'Again it ingests its food'],
+  ['bio-88', 'where no soil or organisms previously existed'],
+  ['bio-88', 'is far slower than secondary succession'],
+  ['bio-88', 'where soil and seed banks remain'],
+  ['bio-108', 'Fixing CO₂ only at night with stomata open describes CAM'],
+  ['bio-114', 'a completely different mechanism based on osmotic pressure gradients'],
+  ['bio-121', 'trophoblast that forms the fetal part of the placenta'],
+  ['bio-123', 'A) The trophoblast component of the chorion and fetal placenta'],
+  ['bio-126', 'rather than becoming a structure itself'],
+  ['bio-127', 'A) Rapid mitotic divisions that increase cell number'],
+];
+for (const [id, str] of FOLLOWUP_GONE) {
+  ok(!text(BY[id]).includes(str), `${id}: correction pass did not remove: "${str.slice(0, 70)}"`);
+}
+
+const FOLLOWUP_PRESENT = [
+  ['bio-64', 'Endotoxin is the lipopolysaccharide (LPS) of the Gram-negative outer membrane; lipid A is its principal toxic component.'],
+  ['bio-70', 'Bacteria within a biofilm may also possess genetic antibiotic resistance'],
+  ['bio-72', 'It does not supply the transfer machinery in this F-mediated system'],
+  ['bio-72', 'mobile chromosomal elements can mediate conjugative transfer'],
+  ['bio-72', 'A prophage is phage DNA maintained in a bacterial host'],
+  ['bio-74', 'Baltimore class IV positive-sense RNA virus, such as poliovirus'],
+  ['bio-76', 'infectious, self-propagating protein conformations with no nucleic-acid genome'],
+  ['bio-76', 'In mammalian prion diseases the protein concerned is the prion protein'],
+  ['bio-77', 'Some other temperate phages carry expressed genes that give bacteria new properties, such as toxin production.'],
+  ['bio-79', 'influenza viruses, rotaviruses and hantaviruses'],
+  ['bio-79', 'The segmented influenza genome allows reassortment.'],
+  ['bio-79', 'Influenza, for example, also uses the nucleus'],
+  ['bio-82', 'inserting the viral DNA into the host cell chromosome'],
+  ['bio-82', 'once inserted, that DNA is called a provirus'],
+  ['bio-85', 'A tertiary consumer feeds on secondary consumers; this is a trophic position'],
+  ['bio-88', 'The defining feature is the absence of developed soil'],
+  ['bio-88', 'is often slower than secondary succession'],
+  ['bio-88', 'Seeds, roots or other surviving organisms may also remain'],
+  ['bio-108', 'CAM plants generally take up atmospheric CO₂ at night and store the carbon in organic acids'],
+  ['bio-108', 'the carbon fixation is not confined to the night'],
+  ['bio-114', 'Phloem sap moves by bulk flow down a hydrostatic pressure gradient'],
+  ['bio-121', 'trophoblast that contributes to the fetal part of the placenta'],
+  ['bio-123', 'A) The chorion and fetal portion of the placenta'],
+  ['bio-126', 'during human embryonic development'],
+  ['bio-126', 'axial mesodermal structure that helps organize surrounding tissues through signalling'],
+  ['bio-127', 'A) Successive mitotic divisions that increase cell number'],
+];
+
+// Q55's option A must no longer give the answer away by naming the trophoblast
+// that the stem asks about.
+ok(!/trophoblast/i.test(BY['bio-123'].options[0]),
+   'Q55 (bio-123): option A still names the trophoblast the stem asks about');
+// Q59's keyed option must not reintroduce "rapid" as a defining requirement,
+// while option B legitimately keeps it as part of a wrong description.
+ok(!/^Rapid/.test(BY['bio-127'].options[0]), 'Q59 (bio-127): keyed option starts with "Rapid" again');
+ok(/^Rapid/.test(BY['bio-127'].options[1]), 'Q59 (bio-127): option B unexpectedly changed');
+for (const [id, str] of FOLLOWUP_PRESENT) {
+  ok(text(BY[id]).includes(str), `${id}: correction-pass text missing: "${str.slice(0, 70)}"`);
+}
+
+// Q14: PrP must now appear only as the mammalian example, never as the
+// definition of what a prion is.
+{
+  const e = BY['bio-76'].explanation;
+  const defSentence = e.slice(e.indexOf('<p>'), e.indexOf('</p>'));
+  ok(!/PrP/.test(defSentence), 'Q14 (bio-76): the opening definition still names PrP');
+  ok(/PrP<sup>Sc<\/sup>/.test(e) && /PrP<sup>C<\/sup>/.test(e), 'Q14 (bio-76): PrP forms not written with proper superscripts');
+}
+// Q20: "provirus" must appear only after integration, never in the stem.
+ok(!/provir/i.test(BY['bio-82'].question), 'Q20 (bio-82): the stem still says proviral');
 
 // ===========================================================================
 section('7. The five substantial rewrites');
