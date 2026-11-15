@@ -474,7 +474,7 @@ async function loadQuestions() {
     // already-completed tests on review — but ONLY if the browser actually
     // refetches. A stale ?v= serves the old file from HTTP cache and the
     // edit never lands for returning students.
-    const res = await fetch('questions.json?v=20261114f-bio-batch3b');
+    const res = await fetch('questions.json?v=20261114g-q25-stem');
     allQuestions = await res.json();
     updateProgressDisplay();
   } catch (err) {
