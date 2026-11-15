@@ -499,5 +499,79 @@ ok(Object.keys(untouched.biology).length === 569, `untouched biology hash count 
 ok(Object.keys(untouched.biology).length + IDS.length === 629, 'fixtures do not partition the biology bank');
 ok(Object.keys(untouched.chemistry).length === 485, 'untouched chemistry hash count unexpected');
 
+// ===========================================================================
+section('9. The narrow follow-up correction pass');
+
+// Eight items got a second, localised pass: a distractor feedback body or a
+// single educational point rewritten, with stems, options, keys and headings
+// untouched. Each entry pins the replacement text as PRESENT, the text it
+// replaced as GONE, and the option heading as still intact. The pair is
+// complementary on the same paragraph, so a typo in one half is caught by the
+// other rather than passing vacuously.
+const FOLLOWUP = [
+  ['bio-268', '<strong>B. Termination of transcription:</strong>',
+    ["Bacterial transcription can end through an intrinsic RNA-hairpin mechanism or a Rho-dependent mechanism",
+      "Sigma factor's principal role is recognizing a promoter so that transcription can begin."],
+    ['Transcription termination in prokaryotes occurs by two mechanisms', 'Rho-independent termination uses a GC-rich hairpin loop']],
+  ['bio-280', '<strong>A. Heterozygous:</strong>',
+    ['An Aa × aa cross gives each offspring a 50% chance of showing the dominant phenotype.',
+      'Such a sample supports AA without proving it; the strength of that support depends on how many offspring were observed.',
+      '<li>Any finite all-dominant sample can arise from a heterozygous parent by chance; this becomes less likely as the number of offspring increases.</li>'],
+    ['the conclusion is only probabilistic', 'small all-dominant litter', 'strong evidence for AA rather than proof of it']],
+  ['bio-289', null,
+    ['<li>An Hh × hh cross gives each child a 50% chance of inheriting the H allele.</li>'],
+    ['gives 1/2 affected offspring']],
+  ['bio-315', '<strong>A. Binary fission produces four daughter cells:</strong>',
+    ['Binary fission is one cell division that produces two daughter cells. Replicated chromosomal DNA is partitioned between them.'],
+    ['Each daughter cell receives a copy of the single circular chromosome', 'The process yielding four cells from one starting cell is meiosis']],
+  ['bio-320', null,
+    ['<li>During evolution, many ancestral endosymbiont genes were lost, while others were transferred to the nucleus.'],
+    ['Most of the original endosymbiont genes have since moved to the nuclear genome', '70S']],
+  ['bio-322', '<strong>A. Increased biodiversity at all trophic levels:</strong>',
+    ['Excess nutrients may initially increase algal growth, but severe eutrophication can reduce biodiversity.',
+      'favoring organisms that tolerate low oxygen',
+      '<li>Severe oxygen depletion can create a hypoxic "dead zone", as occurs seasonally in parts of the Gulf of Mexico and the Baltic Sea.</li>'],
+    ['Eutrophication actually decreases biodiversity, not increases it', 'the ecosystem collapses', 'The result is a hypoxic dead zone']],
+  ['bio-324', '<strong>A. Australopithecus afarensis:</strong>',
+    ['It includes Lucy, whose fossil is about 3.2 million years old.', 'whose name means "handy man"'],
+    ['the species that includes the famous Lucy fossil']],
+  ['bio-328', '<strong>C. Endoderm:</strong>',
+    ['Endoderm supplies most of the epithelial lining of the digestive and respiratory tracts',
+      'those are mesodermal derivatives'],
+    ['It does not give rise to muscles, bones, blood, or kidneys']]
+];
+// The follow-up pass promised not to touch these stems, and section 5 only
+// pins which stems differ from the before-fixture, not their exact wording, so
+// the eight stems are pinned verbatim here.
+const FOLLOWUP_STEMS = {
+  'bio-268': 'In bacteria, the sigma factor of RNA polymerase is essential for:',
+  'bio-280': 'A testcross is performed by crossing an organism showing a dominant phenotype with a homozygous recessive organism. If ALL offspring show the dominant phenotype, the tested parent is most likely:',
+  'bio-289': 'Huntington’s disease is autosomal dominant. An affected heterozygous father (Hh) and an unaffected mother (hh) have children. What proportion of their children is expected to inherit the H allele?',
+  'bio-315': 'Bacterial binary fission differs from eukaryotic mitosis in that:',
+  'bio-320': 'The endosymbiotic theory proposes that mitochondria and chloroplasts originated from:',
+  'bio-322': 'Severe nutrient enrichment of a lake from agricultural runoff can lead to which outcome?',
+  'bio-324': 'Which early Homo species has a name meaning handy man and is traditionally associated with Oldowan stone tools?',
+  'bio-328': 'Which germ layer gives rise to skeletal muscle, cardiac muscle, most bone and cartilage, blood, and the kidneys?'
+};
+ok(FOLLOWUP.length === 8, `the follow-up pass covers ${FOLLOWUP.length} items, expected 8`);
+for (const [id, stem] of Object.entries(FOLLOWUP_STEMS)) {
+  ok(BY[id].question === stem, `Q${qnum(id)} (${id}): stem changed during the follow-up pass`);
+}
+// Section 5 pins every option that batch 6 did not rename against the
+// before-fixture. Of these eight items only Q46's option B was renamed, so it
+// is the one option text that needs pinning here.
+ok(BY['bio-320'].options[1] === 'Bacteria that established endosymbiotic relationships with ancestral host cells',
+  'bio-320: option B changed during the follow-up pass');
+for (const [id, heading, present, gone] of FOLLOWUP) {
+  const q = BY[id];
+  const n = qnum(id);
+  if (heading) ok(q.explanation.includes(heading), `Q${n} (${id}): option heading lost: ${heading}`);
+  for (const s of present) ok(q.explanation.includes(s), `Q${n} (${id}): follow-up text missing: ${s.slice(0, 60)}`);
+  for (const s of gone) ok(!q.explanation.includes(s), `Q${n} (${id}): replaced text still present: ${s.slice(0, 60)}`);
+  // the follow-up changed prose only; stems are pinned by section 5 against the
+  // before-fixture, so here it is enough to re-check the key
+  ok(LETTER[q.correct] === KEYS[n], `Q${n} (${id}): key moved during the follow-up pass`);
+}
+
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);

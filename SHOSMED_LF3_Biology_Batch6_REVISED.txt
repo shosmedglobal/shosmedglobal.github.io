@@ -281,7 +281,7 @@ The sigma factor lets RNA polymerase recognize promoter sequences, so that trans
 
 **A. Elongation of the RNA transcript:** Elongation is carried out by the core enzyme of RNA polymerase, which moves along the template strand synthesizing RNA in the 5' to 3' direction. Sigma's job is promoter recognition at initiation. It may remain associated with the enzyme into elongation rather than leaving at a fixed point, but it is not what catalyzes chain extension.
 
-**B. Termination of transcription:** Transcription termination in prokaryotes occurs by two mechanisms, neither involving the sigma factor. Rho-independent termination uses a GC-rich hairpin loop followed by a poly-U sequence in the mRNA. Rho-dependent termination uses the rho helicase protein, which catches up to RNA polymerase and unwinds the RNA-DNA hybrid to release the transcript.
+**B. Termination of transcription:** Bacterial transcription can end through an intrinsic RNA-hairpin mechanism or a Rho-dependent mechanism. These mechanisms terminate transcription. Sigma factor's principal role is recognizing a promoter so that transcription can begin.
 
 **D. Proofreading of newly synthesized RNA:** RNA polymerase can correct some of its own errors, for example by backtracking and cleaving the transcript, so it is not true that the enzyme cannot proofread at all. Error correction is not what sigma does: its principal role is promoter recognition.
 
@@ -580,7 +580,7 @@ In a testcross: if parent is AA × aa → all Aa (dominant phenotype). If parent
 
 ### Why the other choices are wrong:
 
-**A. Heterozygous:** If the parent were heterozygous (Aa), a cross with aa would produce 50% Aa (dominant phenotype) and 50% aa (recessive phenotype). Because every offspring shows the dominant phenotype, AA is the more likely genotype. A heterozygous parent could still produce an all-dominant sample by chance, particularly when few offspring are observed, so this result is strong evidence for AA rather than proof of it.
+**A. Heterozygous:** An Aa × aa cross gives each offspring a 50% chance of showing the dominant phenotype. A heterozygous parent can therefore produce an all-dominant sample by chance. Such a sample supports AA without proving it; the strength of that support depends on how many offspring were observed.
 
 **C. Homozygous recessive:** A homozygous recessive (aa) parent would itself show the recessive phenotype. The stem describes a parent showing the dominant phenotype, so aa is ruled out before any offspring are counted.
 
@@ -592,7 +592,7 @@ In a testcross: if parent is AA × aa → all Aa (dominant phenotype). If parent
   - If the unknown were heterozygous, about half the offspring would show the recessive phenotype.
   - Since every offspring shows the dominant phenotype, homozygous dominant is the most likely genotype for the tested parent.
   - The logic works because the recessive parent contributes only recessive alleles, so offspring phenotype mirrors the unknown parent's gametes.
-  - With few offspring the conclusion is only probabilistic - a heterozygote could by chance produce a small all-dominant litter.
+  - Any finite all-dominant sample can arise from a heterozygous parent by chance; this becomes less likely as the number of offspring increases.
 
 > Bottom Line: A testcross reveals the genotype of a dominant-phenotype organism by crossing it with a homozygous recessive individual.
 
@@ -812,7 +812,7 @@ Hh × hh → 1/2 Hh : 1/2 hh, so half the children are expected to inherit the H
 
 ### Key Educational Points:
 
-  - An affected heterozygote (Hh) crossed with an unaffected homozygote (hh) gives 1/2 affected offspring.
+  - An Hh × hh cross gives each child a 50% chance of inheriting the H allele.
   - One disease-associated allele can be sufficient, but symptoms may begin later, so a person can carry the allele for years without signs of disease; some dominant variants also have reduced penetrance.
   - Autosomal dominant conditions often show a vertical pattern across generations and affect both sexes equally, although age of onset and penetrance can obscure that pattern.
   - Huntington disease has a late onset, so affected people have often already had children before they know they carry the allele.
@@ -1358,7 +1358,7 @@ Bacteria lack the microtubule-based spindle apparatus used in eukaryotic mitosis
 
 ### Why the other choices are wrong:
 
-**A. Binary fission produces four daughter cells:** Binary fission produces two daughter cells, not four. Each daughter cell receives a copy of the single circular chromosome. The process yielding four cells from one starting cell is meiosis (in eukaryotes), which involves two sequential divisions. Binary fission is a single division event.
+**A. Binary fission produces four daughter cells:** Binary fission is one cell division that produces two daughter cells. Replicated chromosomal DNA is partitioned between them. It does not produce four daughter cells from a single division.
 
 **C. Binary fission includes a prolonged G2 phase:** Binary fission does not include a prolonged G2 phase. In fact, bacterial cell cycles can be extremely rapid (E. coli can divide every 20 minutes under optimal conditions) and do not have clearly defined G1, S, and G2 phases like the eukaryotic cell cycle. DNA replication and cell division can even overlap in fast-growing bacteria.
 
@@ -1494,7 +1494,7 @@ Mitochondria derive from a bacterial lineage related to the alphaproteobacteria,
   - Mitochondria trace to a lineage related to the aerobic alphaproteobacteria; chloroplasts to photosynthetic cyanobacteria.
   - The evidence is structural and molecular: double membranes, their own organelle genomes, bacterial-derived translation machinery, division from pre-existing organelles, and gene sequences showing bacterial relationships.
   - Similarities between organelle and bacterial translation machinery explain why some antibacterial antibiotics carry mitochondrial toxicity.
-  - Most of the original endosymbiont genes have since moved to the nuclear genome, so although these organelles divide, they depend on nuclear-encoded proteins and cannot live independently.
+  - During evolution, many ancestral endosymbiont genes were lost, while others were transferred to the nucleus. Mitochondria and chloroplasts depend on many nuclear-encoded proteins and cannot live independently.
 
 > Bottom Line: Mitochondria from a bacterial lineage related to the alphaproteobacteria; chloroplasts from cyanobacteria. Key evidence: double membranes, their own genomes, bacterial-derived translation machinery, and division from pre-existing organelles.
 
@@ -1544,7 +1544,7 @@ Excess nitrogen and phosphorus from fertilizer runoff can stimulate a bloom of a
 
 ### Why the other choices are wrong:
 
-**A. Increased biodiversity at all trophic levels:** Eutrophication actually decreases biodiversity, not increases it. The initial algal bloom may appear productive, but respiration by the bloom itself and by decomposers breaking down organic matter can consume enough oxygen to create hypoxic or anoxic conditions. Fish and invertebrates cannot survive, and the ecosystem collapses to one dominated by a few pollution-tolerant species.
+**A. Increased biodiversity at all trophic levels:** Excess nutrients may initially increase algal growth, but severe eutrophication can reduce biodiversity. Respiration and decomposition can lower dissolved oxygen enough to kill sensitive fish and invertebrates, favoring organisms that tolerate low oxygen. This is not a general increase in biodiversity at all trophic levels.
 
 **C. Decreased nutrient levels in the water:** Eutrophication is caused by increased nutrient levels (especially nitrogen and phosphorus from fertilizer runoff, sewage, or animal waste), not decreased nutrients. The excess nutrients overstimulate algal growth far beyond what the ecosystem can process. Reducing nutrient input is actually the solution to eutrophication.
 
@@ -1556,7 +1556,7 @@ Excess nitrogen and phosphorus from fertilizer runoff can stimulate a bloom of a
   - Nitrogen and phosphorus from fertiliser are the limiting nutrients whose excess drives the bloom.
   - Both the algae and the decomposers consume oxygen: algae respire continuously, so oxygen can fall sharply at night when photosynthesis stops, and decomposers consume more as they break down organic matter.
   - Surface blooms also block light, killing submerged plants and removing another oxygen source.
-  - The result is a hypoxic dead zone, as seen seasonally in the Gulf of Mexico and the Baltic Sea.
+  - Severe oxygen depletion can create a hypoxic "dead zone", as occurs seasonally in parts of the Gulf of Mexico and the Baltic Sea.
 
 > Bottom Line: Severe nutrient enrichment can give: excess nutrients → algal bloom → respiration and decomposition → falling dissolved oxygen → harm to fish and other aquatic life.
 
@@ -1582,7 +1582,7 @@ Homo habilis means handy man. The species was named partly because of its associ
 
 ### Why the other choices are wrong:
 
-**A. Australopithecus afarensis:** Australopithecus afarensis, the species that includes the famous Lucy fossil, was a bipedal australopith dating to about 3.2 million years ago. It is not the Homo species whose name means handy man.
+**A. Australopithecus afarensis:** Australopithecus afarensis was a bipedal australopith. It includes Lucy, whose fossil is about 3.2 million years old. It is not the Homo species whose name means "handy man".
 
 **C. Homo erectus:** Homo erectus is associated with early dispersal beyond Africa, but its name means upright man, so it is not the species asked about here.
 
@@ -1678,7 +1678,7 @@ The mesoderm (middle germ layer) differentiates into: skeletal, cardiac, and smo
 
 **A. Ectoderm:** The ectoderm gives rise to the nervous system (brain, spinal cord, peripheral nerves), the epidermis and its appendages (hair, nails, sweat glands), the lens of the eye, tooth enamel, and the anterior pituitary. It does not produce skeletal muscle, blood, or kidneys. It is not quite true that ectoderm produces no bone at all, because neural crest cells, which derive from ectoderm, form some craniofacial bone and cartilage. The whole collection listed in the stem, however, points to mesoderm.
 
-**C. Endoderm:** The endoderm gives rise to the epithelial lining of the gastrointestinal tract, the respiratory tract, and associated glandular organs (liver, pancreas, thyroid, parathyroid, thymus). It does not give rise to muscles, bones, blood, or kidneys. These structural and supporting tissues come from the mesoderm.
+**C. Endoderm:** Endoderm supplies most of the epithelial lining of the digestive and respiratory tracts and epithelial or glandular components of organs such as the liver, pancreas, thyroid, parathyroids, and thymus. It does not supply the skeletal muscle, cardiac muscle, blood, or kidneys listed in the stem; those are mesodermal derivatives.
 
 **D. Trophoblast:** The trophoblast is the outer cell layer of the blastocyst. It contributes to the fetal part of the placenta and to the chorion, rather than forming the whole placenta, which also has other fetal and maternal components. It does not give rise to any tissues of the embryo itself. The embryo proper develops from the inner cell mass (embryoblast), which differentiates into the three germ layers (ectoderm, mesoderm, endoderm) during gastrulation.
 
