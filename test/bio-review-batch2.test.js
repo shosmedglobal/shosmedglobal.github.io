@@ -49,8 +49,12 @@ const KEYS = {
 };
 
 const MAP = idmap.map;
-const KEEP = new Set(idmap.keep_unchanged);
-const EDITED = Object.values(MAP).filter(id => !KEEP.has(id)).concat(['bio-294']);
+// bio-216 (cones) was a KEEP item for this review, but review batch 5
+// subsequently edited it, so it is now that batch's test's responsibility and
+// cannot be asserted unchanged here.
+const KEPT_BY_REVIEW = new Set(idmap.keep_unchanged);
+const KEEP = new Set(idmap.keep_unchanged.filter(id => id !== 'bio-216'));
+const EDITED = Object.values(MAP).filter(id => !KEPT_BY_REVIEW.has(id)).concat(['bio-294']);
 
 // ===========================================================================
 section('1. Structure');
@@ -587,11 +591,13 @@ ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches b
 // approved, its ids are removed from this fixture and become that batch's
 // test's responsibility, so the two sweeps partition the bank rather than
 // overlapping. Batch 3 took 60 ids (bio-62..bio-128 minus batch 2's seven),
-// which is why this count is 566 - 60.
-ok(Object.keys(untouched.biology).length === 447, 'untouched biology hash count unexpected');
-// 506 unowned + 60 owned by batch 3 + the 63 in this batch's own fixture = 629
-ok(Object.keys(untouched.biology).length + 60 + 59 + Object.keys(before).length === 629,
-   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + ${Object.keys(before).length}`);
+// batch 4 took 59 and batch 5 took 59 new ones (its 60th, bio-216, was
+// already in this batch's own fixture as a KEEP item).
+ok(Object.keys(untouched.biology).length === 388, 'untouched biology hash count unexpected');
+// 388 unowned + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + the 63 in this
+// batch's own fixture = 629
+ok(Object.keys(untouched.biology).length + 60 + 59 + 59 + Object.keys(before).length === 629,
+   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + ${Object.keys(before).length}`);
 
 // ===========================================================================
 section('7. Internal consistency of every edited item');
