@@ -588,10 +588,10 @@ ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches b
 // test's responsibility, so the two sweeps partition the bank rather than
 // overlapping. Batch 3 took 60 ids (bio-62..bio-128 minus batch 2's seven),
 // which is why this count is 566 - 60.
-ok(Object.keys(untouched.biology).length === 506, 'untouched biology hash count unexpected');
+ok(Object.keys(untouched.biology).length === 447, 'untouched biology hash count unexpected');
 // 506 unowned + 60 owned by batch 3 + the 63 in this batch's own fixture = 629
-ok(Object.keys(untouched.biology).length + 60 + Object.keys(before).length === 629,
-   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 + ${Object.keys(before).length}`);
+ok(Object.keys(untouched.biology).length + 60 + 59 + Object.keys(before).length === 629,
+   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + ${Object.keys(before).length}`);
 
 // ===========================================================================
 section('7. Internal consistency of every edited item');
