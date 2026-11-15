@@ -192,6 +192,58 @@ for (const [id, s] of GONE) {
 }
 
 // ===========================================================================
+section('3b. The six-item follow-up pass');
+
+// Superseded wording that must be gone from exactly these six items, paired
+// with proof it really was there before this pass.
+const FOLLOWUP = [
+  ['bio-195', 'This portal circulation ensures that absorbed nutrients are processed',
+              'allows the liver to process nutrients carried in portal blood'],
+  ['bio-195', 'Bottom Line: The hepatic portal system directs absorbed nutrients',
+              'Bottom Line: Most absorbed water-soluble nutrients travel first to the liver'],
+  ['bio-196', 'Gas exchange takes place in the alveoli, not in the airways that lead to them',
+              'Most pulmonary gas exchange occurs across alveolar walls'],
+  ['bio-196', 'which is why it forms the anatomical dead space',
+              'The conducting zone includes the upper airways and extends through the trachea'],
+  ['bio-200', 'These are precisely the conditions found in actively metabolising tissue',
+              'Red-cell 2,3-BPG is a separate influence on hemoglobin'],
+  ['bio-219', 'whose hair cells are loaded with calcium carbonate otoliths',
+              'project into a gelatinous layer containing calcium carbonate crystals called otoconia'],
+  ['bio-229', 'It is a targeted killing mechanism, not the broad inflammatory response',
+              'Antibody-dependent cell-mediated cytotoxicity (ADCC), involving cells such as NK cells, is one such mechanism'],
+  ['bio-229', 'Tolerance is the absence of an immune response',
+              'Immunological tolerance is antigen-specific unresponsiveness'],
+  ['bio-232', 'crippling the adaptive immune system and leading to AIDS',
+              'without effective treatment, infection can progress to AIDS'],
+];
+const FOLLOWUP_IDS = new Set(FOLLOWUP.map(r => r[0]));
+for (const [id, old, now] of FOLLOWUP) {
+  ok(!text(BY[id]).includes(old), `Q${qnum(id)} (${id}): superseded wording still present: "${old.slice(0, 60)}"`);
+  ok(text(BY[id]).includes(now), `Q${qnum(id)} (${id}): replacement missing: "${now.slice(0, 60)}"`);
+}
+// nowhere else in the pack may carry the superseded wording either
+for (const id of IDS) {
+  for (const [, old] of FOLLOWUP) ok(!text(BY[id]).includes(old), `Q${qnum(id)} (${id}): carries superseded follow-up wording`);
+}
+// The follow-up pass was explanation-only. Of its six items, batch 5 itself
+// had revised the stems of bio-200 and bio-229 and nothing else, so the other
+// four must still carry their original stems and all six their options.
+for (const id of FOLLOWUP_IDS) {
+  if (id !== 'bio-200' && id !== 'bio-229') {
+    ok(BY[id].question === before[id].question, `${id}: stem changed, but only its explanation should have`);
+  }
+  ok(JSON.stringify(BY[id].options) === JSON.stringify(before[id].options), `${id}: options changed`);
+}
+ok(FOLLOWUP_IDS.size === 6, `follow-up touched ${FOLLOWUP_IDS.size} items, expected 6`);
+// and the other 54 pack items are byte-identical to the batch-5 commit
+const fuPinned = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures/bio-review-batch5-followup-untouched.json'), 'utf8')).biology;
+ok(Object.keys(fuPinned).length === 54, `follow-up fixture pins ${Object.keys(fuPinned).length} items, expected 54`);
+for (const id of IDS) {
+  if (FOLLOWUP_IDS.has(id)) { ok(fuPinned[id] === undefined, `${id}: a follow-up item should not be pinned`); continue; }
+  ok(fuPinned[id] === hash(BY[id]), `Q${qnum(id)} (${id}): changed, but the follow-up pass covers only six items`);
+}
+
+// ===========================================================================
 section('4. The major rewrite and the eight substantial repairs');
 
 const PRESENT = [
