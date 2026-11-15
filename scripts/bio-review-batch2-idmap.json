@@ -1,0 +1,40 @@
+{
+  "_comment": [
+    "Review batch 2 (displayed Q1-Q60, 'genetic drift' to 'neutrophils') mapped onto questions.json.",
+    "The block is NOT contiguous: the user's test drew from across the bank, so each item was",
+    "matched on topic/stem AND on the answer letter the review asserts. Every one of the 60",
+    "asserted letters matches its stored key, and the 8 items the review marks KEEP land exactly",
+    "on review Q9, Q12, Q26, Q28, Q33, Q34, Q37, Q52 - which is the review's own KEEP list.",
+    "Two items were ambiguous between near-duplicate bank entries and are recorded in 'ambiguous'."
+  ],
+  "map": {
+    "1": "bio-97", "2": "bio-303", "3": "bio-298", "4": "bio-281", "5": "bio-625",
+    "6": "bio-323", "7": "bio-450", "8": "bio-267", "9": "bio-366", "10": "bio-105",
+    "11": "bio-266", "12": "bio-216", "13": "bio-252", "14": "bio-579", "15": "bio-453",
+    "16": "bio-385", "17": "bio-135", "18": "bio-293", "19": "bio-75", "20": "bio-330",
+    "21": "bio-542", "22": "bio-342", "23": "bio-620", "24": "bio-141", "25": "bio-333",
+    "26": "bio-305", "27": "bio-332", "28": "bio-522", "29": "bio-440", "30": "bio-591",
+    "31": "bio-86", "32": "bio-441", "33": "bio-628", "34": "bio-297", "35": "bio-616",
+    "36": "bio-269", "37": "bio-334", "38": "bio-113", "39": "bio-254", "40": "bio-263",
+    "41": "bio-529", "42": "bio-243", "43": "bio-314", "44": "bio-212", "45": "bio-611",
+    "46": "bio-119", "47": "bio-310", "48": "bio-405", "49": "bio-319", "50": "bio-95",
+    "51": "bio-173", "52": "bio-276", "53": "bio-557", "54": "bio-326", "55": "bio-423",
+    "56": "bio-466", "57": "bio-331", "58": "bio-312", "59": "bio-566", "60": "bio-230"
+  },
+  "keep_unchanged": ["bio-366", "bio-216", "bio-305", "bio-522", "bio-628", "bio-297", "bio-334", "bio-276"],
+  "ambiguous": {
+    "9": ["bio-366", "bio-513", "KEEP item, no edit either way"],
+    "12": ["bio-216", "bio-583", "KEEP item, no edit either way"],
+    "24": ["bio-141", "bio-294", "indistinguishable near-duplicates; the same edits are applied to both"]
+  },
+  "also_edited": {
+    "bio-294": "near-duplicate of bio-141 (review Q24); same corrections applied so the bank does not keep one fixed and one broken"
+  },
+  "decisive_discriminators": {
+    "16": "bio-385 carries the C3/C4/CAM educational points the review asks to replace; bio-106 does not",
+    "56": "bio-466 is the only hemophilia item containing the 'affected father x normal mother' cross the review corrects",
+    "57": "bio-331 is the alveolar item whose option B is simple CUBOIDAL, the distractor the review rewrites",
+    "58": "bio-312 is the lysogeny item whose option A is literally 'Immediately lyses the host cell'",
+    "23": "bio-620 is the only growth item built on two historical human population totals"
+  }
+}

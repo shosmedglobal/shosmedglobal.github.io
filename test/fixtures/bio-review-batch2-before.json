@@ -1,0 +1,884 @@
+{
+  "bio-97": {
+    "id": "bio-97",
+    "subject": "biology",
+    "topic": "Genetic drift",
+    "question": "Genetic drift is most likely to significantly change allele frequencies in:",
+    "options": [
+      "A small, isolated population",
+      "A population with high gene flow from neighboring populations",
+      "A very large, randomly mating population",
+      "A population undergoing strong directional selection"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) A small, isolated population</h4><p>Genetic drift is the random change in allele frequencies due to chance events in reproduction. Its effects are inversely proportional to population size - smaller populations experience larger random fluctuations in allele frequencies. This can lead to fixation or loss of alleles regardless of their fitness effects. The founder effect and population bottleneck are special cases of genetic drift in small populations.</p><h4>Why the other choices are wrong:</h4>\n<p><strong>B. A population with high gene flow from neighboring populations:</strong> <em>A population with high gene flow from neighboring populations</em> is a different evolutionary concept. The correct answer is <em>A small, isolated population</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>C. A very large, randomly mating population:</strong> <em>A very large, randomly mating population</em> is a different evolutionary concept. The correct answer is <em>A small, isolated population</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>D. A population undergoing strong directional selection:</strong> <em>A population undergoing strong directional selection</em> is a different evolutionary concept. The correct answer is <em>A small, isolated population</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p><h4>Key Educational Points:</h4><ul><li>Natural selection acts on phenotypic variation within populations - individuals with traits better suited to their environment have higher reproductive success.</li><li>Evidence for evolution comes from multiple independent sources: fossil record, comparative anatomy (homologous structures), molecular biology (DNA/protein comparisons), and biogeography.</li><li>Speciation can occur through geographic isolation (allopatric) or within the same area through ecological or behavioral differences (sympatric).</li></ul><p class='exp-key'>Bottom Line: Genetic drift is a non-adaptive evolutionary mechanism that is most powerful in small populations, where random sampling error can override the effects of natural selection.</p>"
+  },
+  "bio-303": {
+    "id": "bio-303",
+    "subject": "biology",
+    "topic": "Gametogenesis",
+    "question": "In human oogenesis, when does meiosis II complete?",
+    "options": [
+      "During fetal development",
+      "At puberty",
+      "At ovulation",
+      "Only upon fertilization by a sperm"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Only upon fertilization by a sperm</h4><p>In human oogenesis: meiosis I begins in fetal life but arrests at prophase I (dictyotene). At puberty, one oocyte per cycle completes meiosis I at ovulation, producing a secondary oocyte arrested at metaphase II. Meiosis II completes only upon sperm penetration (fertilization), producing the mature ovum and a second polar body.</p><table class='exp-table'><tr><th>Stage</th><th>Timing</th></tr><tr><td>Meiosis I begins</td><td>Fetal development</td></tr><tr><td>Arrest at prophase I</td><td>Fetal life through puberty</td></tr><tr><td>Meiosis I completes</td><td>Ovulation</td></tr><tr><td>Arrest at metaphase II</td><td>After ovulation</td></tr><tr><td>Meiosis II completes</td><td>Fertilization</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. During fetal development:</strong> During fetal development, primary oocytes begin meiosis I and arrest in prophase I (specifically at the dictyotene stage). They do NOT complete meiosis I during fetal life. The primary oocytes remain arrested in prophase I from before birth until puberty, when hormonal signals (LH surge) trigger resumption of meiosis I in each ovulatory cycle.</p>\n<p><strong>B. At puberty:</strong> At puberty, one oocyte per cycle completes meiosis i at ovulation, producing a secondary oocyte arrested at metaphase ii.</p>\n<p><strong>C. At ovulation:</strong> At ovulation, the oocyte has completed meiosis I (forming a secondary oocyte and first polar body) but is arrested again in metaphase II of meiosis II. Meiosis II is only completed if fertilization occurs. If the egg is not fertilized, it degenerates without completing the second meiotic division.</p><h4>Key Educational Points:</h4><ul><li>Human oogenesis has two arrest points: prophase I, and metaphase II.</li><li>Meiosis I begins in fetal life and arrests at prophase I (dictyotene) for years to decades.</li><li>One oocyte per cycle completes meiosis I at ovulation, producing a secondary oocyte that arrests at metaphase II.</li><li>Meiosis II completes only on sperm penetration, releasing the second polar body.</li><li>The long prophase I arrest is the accepted explanation for the rising rate of nondisjunction with maternal age.</li></ul><p class='exp-key'>Bottom Line: Oogenesis has two arrest points: prophase I (years) and metaphase II (until fertilization).</p>"
+  },
+  "bio-298": {
+    "id": "bio-298",
+    "subject": "biology",
+    "topic": "Cell cycle regulation",
+    "question": "Cyclin-dependent kinases (CDKs) are activated by binding to cyclins. Which of the following correctly describes CDK regulation at the G1/S checkpoint?",
+    "options": [
+      "CDK1-cyclin B drives entry into mitosis",
+      "CDK2-cyclin E promotes commitment to DNA replication",
+      "CDK activity is independent of cyclin concentration",
+      "p53 activates CDK to accelerate cell cycle progression"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: CDK2-cyclin E promotes commitment to DNA replication</h4><p>At the G1/S transition (restriction point), cyclin E accumulates and binds CDK2, phosphorylating Rb protein and releasing E2F transcription factors that activate S-phase genes. CDK1-cyclin B is involved at G2/M, not G1/S. p53 is a tumor suppressor that <strong>inhibits</strong> cell cycle progression via p21 (a CDK inhibitor).</p><h4>Why the other choices are wrong:</h4><p><strong>A. CDK1-cyclin B drives entry into mitosis:</strong> CDK1-cyclin B (also called MPF, maturation-promoting factor) does indeed drive entry into mitosis, and this statement is actually TRUE. However, it does not answer the question being asked. CDK1-cyclin B promotes chromosome condensation, nuclear envelope breakdown, and spindle assembly. It is activated by dephosphorylation by CDC25 phosphatase.</p>\n<p><strong>C. CDK activity is independent of cyclin concentration:</strong> CDK activity is absolutely dependent on cyclin binding. CDKs (cyclin-dependent kinases) are only active when bound to their specific cyclin partner. Cyclin levels fluctuate throughout the cell cycle, rising and falling in a cyclical pattern, which is how CDK activity is regulated. Without cyclins, CDKs remain inactive.</p>\n<p><strong>D. p53 activates CDK to accelerate cell cycle progression:</strong> p53 is a tumor suppressor that INHIBITS cell cycle progression, not accelerates it. When DNA damage is detected, p53 activates transcription of p21, which inhibits CDK-cyclin complexes and arrests the cell cycle at the G1/S checkpoint. This allows time for DNA repair. Loss of p53 function is found in over 50% of human cancers.</p><h4>Key Educational Points:</h4><ul><li>CDKs are active only when bound to their cyclin partner; cyclin concentrations oscillate while CDK levels stay roughly constant.</li><li>At the G1/S restriction point, cyclin E-CDK2 phosphorylates Rb, releasing E2F to transcribe S-phase genes.</li><li>Match the pairs: cyclin D-CDK4/6 in G1, cyclin E-CDK2 at G1/S, cyclin A-CDK2 in S, cyclin B-CDK1 at G2/M.</li><li>p53 halts the cycle through p21, a CDK inhibitor, when DNA damage is detected.</li><li>The restriction point is the commitment step: once past it, the cell completes the cycle independently of external growth signals.</li></ul><p class='exp-key'>Bottom Line: Different cyclin-CDK complexes control different checkpoints: cyclin D-CDK4/6 (G1), cyclin E-CDK2 (G1/S), cyclin A-CDK2 (S), cyclin B-CDK1 (G2/M).</p>"
+  },
+  "bio-281": {
+    "id": "bio-281",
+    "subject": "biology",
+    "topic": "Dihybrid cross",
+    "question": "In a dihybrid cross of two organisms heterozygous for both traits (AaBb × AaBb), what fraction of offspring will show BOTH recessive phenotypes?",
+    "options": [
+      "1/16",
+      "3/16",
+      "9/16",
+      "1/4"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 1/16</h4><p>By Mendel's law of independent assortment: probability of aa = 1/4 and probability of bb = 1/4. Probability of both recessive (aabb) = 1/4 × 1/4 = 1/16. The classic dihybrid phenotypic ratio is 9:3:3:1, where 1/16 = double recessive.</p><h4>Why the other choices are wrong:</h4><p><strong>B. 3/16:</strong> 3/16 represents the proportion of offspring showing one dominant and one recessive phenotype in a dihybrid cross (either <i>A</i>&#8209;bb or <i>aaB</i>&#8209;, each 3/16). The double recessive (both traits recessive, aabb) probability is calculated as 1/4 (for aa) x 1/4 (for bb) = 1/16, not 3/16.</p>\n<p><strong>C. 9/16:</strong> 9/16 is the proportion of offspring expressing both dominant phenotypes (<i>A</i>&#8209;<i>B</i>&#8209;) in the classic 9:3:3:1 dihybrid ratio. This is the largest class. The double recessive class (aabb) is the smallest at 1/16. Remember: 9 + 3 + 3 + 1 = 16.</p>\n<p><strong>D. 1/4:</strong> 1/4 would be the probability of a single trait being homozygous recessive (aa or bb alone). For both traits to be homozygous recessive simultaneously, you must multiply the independent probabilities: 1/4 x 1/4 = 1/16. This application of the multiplication rule for independent events is fundamental to dihybrid cross calculations.</p><h4>Key Educational Points:</h4><ul><li>Independent assortment lets you treat each gene separately and multiply the separate probabilities.</li><li>For AaBb × AaBb: P(aa) = 1/4 and P(bb) = 1/4, so P(aabb) = 1/4 × 1/4 = 1/16.</li><li>The classic dihybrid phenotypic ratio is 9:3:3:1, in which the 1 is the double recessive.</li><li>The underlying genotypic ratio is 1:2:1 for each gene considered on its own.</li><li>This multiplication rule holds only for unlinked genes; linked genes require recombination frequency instead.</li></ul><p class='exp-key'>Bottom Line: In a dihybrid cross of heterozygotes: 9/16 <i>A</i>&#8209;<i>B</i>&#8209;, 3/16 <i>A</i>&#8209;bb, 3/16 <i>aaB</i>&#8209;, 1/16 aabb.</p><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "bio-625": {
+    "id": "bio-625",
+    "subject": "biology",
+    "topic": "Arthropod Classification",
+    "question": "A student collects a terrestrial arthropod with eight legs and two main body segments (cephalothorax and abdomen). This organism most likely belongs to the class:",
+    "options": [
+      "Insecta",
+      "Crustacea",
+      "Arachnida",
+      "Chilopoda"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Arachnida</h4><p>The combination of <strong>eight legs</strong> and <strong>two body segments</strong> (cephalothorax/prosoma and abdomen/opisthosoma) is diagnostic of arachnids. This class includes spiders, scorpions, ticks, and mites. Arachnids also lack antennae and wings, and possess chelicerae (fang-like mouthparts) and pedipalps.</p><table class='exp-table'><tr><th>Feature</th><th>Arachnida</th><th>Insecta</th><th>Crustacea</th><th>Chilopoda</th></tr><tr><td>Legs</td><td>8</td><td>6</td><td>Variable (often 10)</td><td>One pair per segment</td></tr><tr><td>Body segments</td><td>2</td><td>3</td><td>2-3</td><td>Many</td></tr><tr><td>Antennae</td><td>None</td><td>1 pair</td><td>2 pairs</td><td>1 pair</td></tr><tr><td>Wings</td><td>None</td><td>Usually present</td><td>None</td><td>None</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Insecta:</strong> Insects have <strong>six legs</strong> (three pairs), <strong>three body segments</strong> (head, thorax, abdomen), one pair of antennae, and most have wings. They are the most species-rich class of animals. Common examples: beetles, butterflies, ants, flies.</p><p><strong>B. Crustacea:</strong> Crustaceans (crabs, lobsters, shrimp, barnacles) typically have <strong>two pairs of antennae</strong>, a variable number of appendages (often 10 walking legs in decapods), and most are aquatic with gills. Although some crustaceans have two body regions, the presence of two antennae pairs and typically aquatic habitat distinguishes them from arachnids.</p><p><strong>D. Chilopoda:</strong> Chilopods (centipedes) have <strong>one pair of legs per body segment</strong> and many segments (15-177 pairs of legs), plus one pair of antennae. They are elongated, flattened predators with venomous forcipules (modified first pair of legs). Do not confuse with Diplopoda (millipedes), which have two pairs of legs per segment.</p><h4>Key Educational Points:</h4><ul><li>All arachnids, insects, crustaceans, and myriapods belong to phylum <strong>Arthropoda</strong>, united by jointed appendages, a chitinous exoskeleton, and segmented bodies.</li><li>The number of legs is the quickest way to distinguish major arthropod classes: 6 = insect, 8 = arachnid, 10+ = crustacean or myriapod.</li><li>Horseshoe crabs, despite their name, are more closely related to arachnids than to true crabs (crustaceans).</li></ul><p class='exp-key'>Bottom Line: Eight legs + two body segments + no antennae = Arachnida. Six legs + three body segments = Insecta. Two pairs of antennae + variable legs = Crustacea. One pair of legs per segment + many segments = Chilopoda.</p>"
+  },
+  "bio-323": {
+    "id": "bio-323",
+    "subject": "biology",
+    "topic": "Greenhouse effect",
+    "question": "Which gas is considered the PRIMARY contributor to the enhanced greenhouse effect and current global warming?",
+    "options": [
+      "Ozone (O₃)",
+      "Nitrogen (N₂)",
+      "Carbon dioxide (CO₂)",
+      "Argon (Ar)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Carbon dioxide (CO₂)</h4><p>While methane (CH₄) is a more potent greenhouse gas per molecule, CO₂ is the primary contributor to enhanced global warming due to its vastly higher atmospheric concentration from fossil fuel combustion, deforestation, and industrial processes. CO₂ absorbs and re-emits infrared radiation, trapping heat in the atmosphere.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Ozone (O₃):</strong> Ozone (O3) plays a different atmospheric role. In the stratosphere, ozone forms a protective layer that absorbs harmful ultraviolet radiation. At ground level, ozone is a pollutant and a minor greenhouse gas. However, its contribution to the enhanced greenhouse effect is small compared to CO2, which is produced in vastly larger quantities by fossil fuel combustion.</p>\n<p><strong>B. Nitrogen (N₂):</strong> Nitrogen (N2) makes up about 78% of the atmosphere but is NOT a greenhouse gas. N2 molecules are homonuclear diatomic molecules with no dipole moment, so they cannot absorb or re-emit infrared radiation. Greenhouse gases (CO2, CH4, N<sub>2</sub>O, H<sub>2</sub>O) have molecular structures that allow them to vibrate and absorb infrared energy.</p>\n<p><strong>D. Argon (Ar):</strong> Argon (Ar) is an inert noble gas that makes up about 0.93% of the atmosphere. As a monatomic gas, it cannot absorb infrared radiation and has zero greenhouse effect. Noble gases are chemically unreactive and do not participate in atmospheric chemistry or climate change.</p><h4>Key Educational Points:</h4><ul><li>CO₂ is the primary driver of the enhanced greenhouse effect, because of its sheer atmospheric abundance.</li><li>Methane traps more heat per molecule, but is present at far lower concentration - potency and total contribution are different questions.</li><li>Human CO₂ comes chiefly from fossil fuel combustion, deforestation, and cement production.</li><li>Greenhouse gases work by absorbing and re-emitting infrared radiation, trapping outgoing heat.</li><li>The natural greenhouse effect is essential to a habitable Earth; it is the enhancement from emissions that causes warming.</li></ul><p class='exp-key'>Bottom Line: Greenhouse gases in order of contribution to warming: CO₂ > CH₄ > N₂O > fluorinated gases. The greenhouse effect itself is natural and necessary; the enhanced effect from human emissions causes warming.</p>"
+  },
+  "bio-450": {
+    "id": "bio-450",
+    "subject": "biology",
+    "topic": "Enzymes",
+    "question": "A competitive inhibitor of an enzyme works by:",
+    "options": [
+      "Binding to the active site, preventing substrate binding",
+      "Binding to an allosteric site, changing enzyme shape",
+      "Permanently denaturing the enzyme",
+      "Increasing the activation energy of the reaction"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Binding to the active site, preventing substrate binding</h4><p>A competitive inhibitor has a molecular shape similar to the substrate and competes for the same active site on the enzyme. When the inhibitor occupies the active site, the substrate cannot bind. Importantly, competitive inhibition can be overcome by increasing substrate concentration, which outcompetes the inhibitor for active site access.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Binding to an allosteric site:</strong> This describes non-competitive (allosteric) inhibition, where the inhibitor binds elsewhere and alters enzyme conformation. It cannot be overcome by adding more substrate.</p>\n<p><strong>C. Permanently denaturing the enzyme:</strong> This describes irreversible inhibition (e.g., heavy metals, nerve gas). Competitive inhibition is typically reversible.</p>\n<p><strong>D. Increasing activation energy:</strong> Inhibitors do not increase activation energy - enzymes lower it. Inhibitors work by blocking or distorting the active site.</p><p class='exp-key'>Bottom Line: Competitive inhibition increases apparent Km (lower apparent affinity) but Vmax remains unchanged (achievable with enough substrate). Non-competitive inhibition decreases Vmax but Km stays the same.</p>"
+  },
+  "bio-267": {
+    "id": "bio-267",
+    "subject": "biology",
+    "topic": "Transcription",
+    "question": "Which of the following is TRUE about eukaryotic mRNA processing?",
+    "options": [
+      "Introns are retained in the mature mRNA and translated",
+      "A 5' poly-A tail and 3' cap are added",
+      "A 5' 7-methylguanosine cap and 3' poly-A tail are added",
+      "Splicing is performed by DNA polymerase"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: A 5' 7-methylguanosine cap and 3' poly-A tail are added</h4><p>Eukaryotic pre-mRNA processing: (1) 5' cap (7-methylguanosine) for protection and ribosome binding; (2) 3' poly-A tail (~200 adenines) for stability and nuclear export; (3) Splicing by the spliceosome to remove introns.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Introns are retained in the mature mRNA and translated:</strong> Introns are removed from mature mRNA by the spliceosome (a complex of snRNAs and proteins) and are NOT translated. Only exons are retained and joined together in the final mRNA. Alternative splicing can include or exclude certain exons, allowing one gene to produce multiple protein variants. Intron retention would produce a nonfunctional protein in most cases.</p>\n<p><strong>B. A 5' poly-A tail and 3' cap are added:</strong> This answer reverses the locations of the cap and tail. The 5' cap is a 7-methylguanosine (not poly-A), and the 3' end receives the poly-A tail (not a cap). This is a common exam trick. Remember: cap at the 5' end (for ribosome recognition and protection from exonucleases), tail at the 3' end (for stability and nuclear export).</p>\n<p><strong>D. Splicing is performed by DNA polymerase:</strong> Splicing is performed by the spliceosome, a large ribonucleoprotein complex composed of five small nuclear RNAs (snRNAs: U1, U2, U4, U5, U6) and associated proteins. DNA polymerase is involved in DNA replication, not RNA processing. The spliceosome recognizes conserved splice site sequences (GU at the 5' splice site, AG at the 3' splice site) to precisely excise introns.</p><h4>Key Educational Points:</h4><ul><li>The central dogma of molecular biology describes information flow: DNA is transcribed to mRNA, which is translated to protein.</li><li>Eukaryotic gene expression is regulated at multiple levels: chromatin remodeling, transcription, post-transcription (splicing), translation, and post-translation.</li><li>Mutations in DNA can be silent, missense, nonsense, or frameshift - each with different impacts on protein structure and function.</li></ul><p class='exp-key'>Bottom Line: 5' = 7-methylguanosine cap; 3' = poly-A tail. Introns are removed, not retained.</p>"
+  },
+  "bio-366": {
+    "id": "bio-366",
+    "subject": "biology",
+    "topic": "Population Genetics",
+    "question": "Which of the following is NOT an assumption of Hardy-Weinberg equilibrium?",
+    "options": [
+      "No mutation occurring",
+      "Random mating within the population",
+      "Small population size",
+      "No natural selection"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Small population size</h4><p>Hardy-Weinberg equilibrium requires a large (theoretically infinite) population size to prevent random fluctuations in allele frequencies (genetic drift). The five assumptions are: (1) no mutation, (2) random mating, (3) no natural selection, (4) infinitely large population, and (5) no gene flow (migration). Small population size violates this requirement and leads to genetic drift, which can change allele frequencies by chance.</p><h4>Why the other choices are wrong:</h4><p><strong>A. No mutation occurring:</strong> No mutation occurring is indeed one of the five assumptions of Hardy-Weinberg equilibrium. Since it IS an assumption, it cannot be the correct answer to a question asking which option is NOT an assumption. Mutations introduce new alleles and would shift allele frequencies over time.</p>\n<p><strong>B. Random mating within the population:</strong> Random mating within the population is also one of the five Hardy-Weinberg assumptions. Non-random mating (like assortative mating) changes genotype frequencies, increasing homozygosity without changing allele frequencies.</p>\n<p><strong>D. No natural selection:</strong> The five assumptions are: (1) no mutation, (2) random mating, (3) no natural selection, (4) infinitely large population, and (5) no gene flow (migration).</p><h4>Key Educational Points:</h4><ul><li>Hardy-Weinberg assumes a very large - theoretically infinite - population, so small population size is a violation rather than an assumption.</li><li>The five assumptions are no mutation, random mating, no natural selection, a very large population, and no gene flow.</li><li>The large-population condition exists to make genetic drift negligible, since chance alone shifts frequencies in small populations.</li><li>Read the direction of the question carefully: it asks which is NOT an assumption.</li><li>The model is a null hypothesis, and departures from it reveal which evolutionary force is actually operating.</li></ul>"
+  },
+  "bio-105": {
+    "id": "bio-105",
+    "subject": "biology",
+    "topic": "Evolution",
+    "question": "Which evolutionary concept describes the rapid diversification of a single ancestral lineage into many new species that fill different ecological niches?",
+    "options": [
+      "Punctuated equilibrium",
+      "Adaptive radiation",
+      "Genetic assimilation",
+      "Gradualism"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) Adaptive radiation</h4><p>Adaptive radiation is the rapid evolutionary diversification of a single ancestral species into many descendant species, each adapted to different ecological niches. This often occurs when organisms colonize new environments with available niches or after mass extinctions remove competitors. Classic examples include Darwin's finches on the Galápagos Islands, cichlid fish in African lakes, and the mammalian radiation after the dinosaur extinction.</p><h4>Why the other choices are wrong:</h4>\n<p><strong>A. Punctuated equilibrium:</strong> <em>Punctuated equilibrium</em> is a different evolutionary concept. The correct answer is <em>Adaptive radiation</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>C. Genetic assimilation:</strong> <em>Genetic assimilation</em> is a different evolutionary concept. The correct answer is <em>Adaptive radiation</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>D. Gradualism:</strong> <em>Gradualism</em> is a different evolutionary concept. The correct answer is <em>Adaptive radiation</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p><h4>Key Educational Points:</h4><ul><li>Natural selection acts on phenotypic variation within populations - individuals with traits better suited to their environment have higher reproductive success.</li><li>Evidence for evolution comes from multiple independent sources: fossil record, comparative anatomy (homologous structures), molecular biology (DNA/protein comparisons), and biogeography.</li><li>Speciation can occur through geographic isolation (allopatric) or within the same area through ecological or behavioral differences (sympatric).</li></ul><p class='exp-key'>Bottom Line: Adaptive radiation is driven by ecological opportunity and requires both available niches and the genetic potential for diversification.</p>"
+  },
+  "bio-266": {
+    "id": "bio-266",
+    "subject": "biology",
+    "topic": "DNA structure",
+    "question": "If a double-stranded DNA molecule contains 20% adenine, what is the percentage of guanine?",
+    "options": [
+      "20%",
+      "30%",
+      "40%",
+      "10%"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 30%</h4><p>By Chargaff's rules: A = T and G = C in dsDNA. If A = 20%, then T = 20%. A + T = 40%, so G + C = 60%, meaning G = C = 30%.</p><h4>Why the other choices are wrong:</h4>\n<p><strong>A. 20%:</strong> If guanine were also 20%, then A + T + G + C = 20 + 20 + 20 + 20 = 80%, which does not account for all bases (must sum to 100%). Since A = T = 20% (40% total), the remaining 60% must be split equally between G and C, giving 30% each.</p><p><strong>C. 40%:</strong> 40% would mean G + C = 80% and A + T = 20%. But we know A = 20%, so T = 20% (by Chargaff's rule A = T), meaning A + T = 40%. Therefore G + C = 60%, and G = C = 30%. The value 40% would only be correct if A were 10% (then A + T = 20%, G + C = 80%, G = 40%).</p>\n<p><strong>D. 10%:</strong> 10% for guanine would require G + C = 20%, leaving A + T = 80%, meaning A = T = 40%. But the question states A = 20%, not 40%. Remember: in double-stranded DNA, the four bases always sum to 100%, and Chargaff's rules (A = T, G = C) allow you to calculate all four percentages from just one.</p><h4>Key Educational Points:</h4><ul><li>The central dogma of molecular biology describes information flow: DNA is transcribed to mRNA, which is translated to protein.</li><li>Eukaryotic gene expression is regulated at multiple levels: chromatin remodeling, transcription, post-transcription (splicing), translation, and post-translation.</li><li>Mutations in DNA can be silent, missense, nonsense, or frameshift - each with different impacts on protein structure and function.</li></ul><p class='exp-key'>Bottom Line: In dsDNA, %G = (100% - 2 × %A) / 2.</p>"
+  },
+  "bio-216": {
+    "id": "bio-216",
+    "subject": "biology",
+    "topic": "Sensory Organs (Eye, Ear)",
+    "question": "Which photoreceptor cells in the retina are responsible for color vision and function best in bright light?",
+    "options": [
+      "Rod cells",
+      "Cone cells",
+      "Bipolar cells",
+      "Ganglion cells"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) Cone cells</h4><p>Cone cells are concentrated in the fovea centralis of the macula and are responsible for photopic (bright light) vision, color perception, and high visual acuity. There are three types of cones, each containing a different photopigment sensitive to short (blue), medium (green), or long (red) wavelengths of light. Rod cells are more numerous (about 120 million vs. 6 million cones) but function in dim light (scotopic vision) and do not detect color.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Rod cells:</strong> Rod cells are more numerous (about 120 million vs.</p>\n<p><strong>C. Bipolar cells:</strong> Bipolar cells are interneurons in the retina that connect photoreceptors (rods and cones) to ganglion cells. They are part of the neural processing layer of the retina, transmitting and modifying visual signals. Bipolar cells do not directly detect light or color; they relay information from the photoreceptors toward the optic nerve.</p>\n<p><strong>D. Ganglion cells:</strong> Ganglion cells are the output neurons of the retina whose axons form the optic nerve (CN II). They receive processed visual information from bipolar and amacrine cells and transmit action potentials to the brain. A special subset, intrinsically photosensitive retinal ganglion cells (ipRGCs), contains melanopsin and helps regulate circadian rhythms, but they are not responsible for color vision.</p><h4>Key Educational Points:</h4><ul><li>Cones mediate colour vision and high acuity, and function in bright (photopic) light.</li><li>Three cone types carry photopigments tuned to short, medium, and long wavelengths.</li><li>Cones are concentrated in the fovea, which is why acuity is highest at the point of fixation.</li><li>Rods are far more numerous - about 120 million versus 6 million cones - but give monochromatic dim-light (scotopic) vision.</li><li>Rods are absent from the fovea, which is why a faint star is easier to see slightly off-centre.</li></ul><p class='exp-key'>Bottom Line: Cones provide color and high-acuity vision in bright light; rods provide monochromatic vision in dim light.</p>"
+  },
+  "bio-252": {
+    "id": "bio-252",
+    "subject": "biology",
+    "topic": "Cell organelles",
+    "question": "A patient is diagnosed with I-cell disease (mucolipidosis II), in which enzymes destined for lysosomes lack the mannose-6-phosphate tag. What is the expected consequence?",
+    "options": [
+      "Lysosomes will contain excess hydrolytic enzymes",
+      "Hydrolytic enzymes will be secreted extracellularly instead of reaching lysosomes",
+      "The Golgi apparatus will undergo apoptosis",
+      "Peroxisomes will compensate by increasing catalase production"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Hydrolytic enzymes will be secreted extracellularly instead of reaching lysosomes</h4><p>In I-cell disease, the enzyme N-acetylglucosamine phosphotransferase is deficient, preventing the addition of mannose-6-phosphate (M<sub>6</sub>P) tags to lysosomal enzymes in the Golgi. Without M<sub>6</sub>P tags, these enzymes are not recognized by M<sub>6</sub>P receptors and follow the default secretory pathway, being released outside the cell. The lysosomes become filled with undigested substrates (inclusion bodies).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Lysosomes will contain excess hydrolytic enzymes:</strong> In I-cell disease, lysosomes actually become depleted of hydrolytic enzymes, not filled with excess. Because enzymes lack the mannose-6-phosphate tag, they are mistakenly secreted out of the cell instead of being delivered to lysosomes. The lysosomes fill with undigested substrates (inclusion bodies, hence \"I-cell\"), not with enzymes.</p>\n<p><strong>C. The Golgi apparatus will undergo apoptosis:</strong> The Golgi apparatus does not undergo apoptosis in I-cell disease. The Golgi continues to function normally in terms of protein processing and sorting; the defect lies specifically in the failure to add the M<sub>6</sub>P tag (due to deficient N-acetylglucosamine phosphotransferase). Without this tag, enzymes follow the default secretory pathway rather than being sorted to lysosomes.</p>\n<p><strong>D. Peroxisomes will compensate by increasing catalase production:</strong> Peroxisomes do not compensate for lysosomal dysfunction by increasing catalase production. Peroxisomes and lysosomes have distinct and non-overlapping functions: peroxisomes handle oxidative reactions and very long-chain fatty acid breakdown, while lysosomes handle hydrolytic degradation of macromolecules. One organelle cannot substitute for the other.</p><h4>Key Educational Points:</h4><ul><li>Mannose-6-phosphate is the address tag that directs newly made enzymes from the Golgi to lysosomes.</li><li>The tag is added in the Golgi by N-acetylglucosamine phosphotransferase; loss of that enzyme causes I-cell disease.</li><li>Without the tag, M6P receptors cannot capture the enzymes, so they follow the default secretory route and are released from the cell.</li><li>The result is the characteristic paradox: high hydrolase levels in the blood alongside lysosomes full of undigested material (inclusion bodies).</li><li>The general principle is that proteins carry sorting signals - losing the signal misroutes the protein rather than destroying it.</li></ul><p class='exp-key'>Bottom Line: Mannose-6-phosphate serves as a molecular address tag that directs enzymes from the Golgi to lysosomes via M<sub>6</sub>P receptor-mediated sorting.</p>"
+  },
+  "bio-579": {
+    "id": "bio-579",
+    "subject": "biology",
+    "topic": "Reproductive System",
+    "question": "Spermatogenesis in human males takes approximately how long from spermatogonium to mature spermatozoon?",
+    "options": [
+      "14 days",
+      "28 days",
+      "64-72 days",
+      "120 days"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 64-72 days</h4><p>The complete process of spermatogenesis - from the initial mitotic division of a spermatogonium through meiosis and spermiogenesis (morphological maturation of spermatids into spermatozoa) - takes approximately 64-72 days in humans. This is followed by an additional 10-14 days for sperm transit and maturation through the epididymis.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 14 days:</strong> 14 days is far too short. This is approximately the length of the follicular or luteal phase of the female menstrual cycle, not the duration of spermatogenesis.</p><p><strong>B. 28 days:</strong> 28 days corresponds roughly to the length of one menstrual cycle. Spermatogenesis takes more than twice as long as this.</p><p><strong>D. 120 days:</strong> 120 days (~4 months) is the approximate lifespan of a mature red blood cell. While sperm production is a continuous process, the development time of individual sperm is 64-72 days, not 120 days.</p><h4>Key Educational Points:</h4><ul><li>Spermatogenesis takes ~64-72 days; epididymal maturation adds ~12 more days</li><li>Spermatogenesis is continuous from puberty onward, unlike oogenesis</li><li>One primary spermatocyte produces four functional spermatozoa</li></ul><p class='exp-key'>Bottom Line: Human spermatogenesis requires approximately 64-72 days from spermatogonium to mature spermatozoon.</p>"
+  },
+  "bio-453": {
+    "id": "bio-453",
+    "subject": "biology",
+    "topic": "Nervous System",
+    "question": "The resting membrane potential of a typical neuron is approximately -70 mV, primarily maintained by which mechanism?",
+    "options": [
+      "Voltage-gated calcium channels",
+      "The sodium-potassium ATPase pump",
+      "Ligand-gated chloride channels",
+      "Passive diffusion of glucose"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The sodium-potassium ATPase pump</h4><p>The Na⁺/K⁺-ATPase actively pumps 3 Na⁺ ions out and 2 K⁺ ions into the cell per ATP hydrolyzed, creating an electrochemical gradient. This, combined with the selective permeability of the resting membrane (more permeable to K⁺ than Na⁺ through leak channels), establishes the negative resting potential of approximately -70 mV inside the cell.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Voltage-gated calcium channels:</strong> These open during action potentials and synaptic transmission but are not responsible for maintaining the resting potential.</p>\n<p><strong>C. Ligand-gated chloride channels:</strong> These open in response to inhibitory neurotransmitters (like GABA) and contribute to inhibitory postsynaptic potentials, not the resting state.</p>\n<p><strong>D. Passive diffusion of glucose:</strong> Glucose is uncharged and transported by facilitated diffusion via GLUT transporters; it does not contribute to membrane potential.</p><p class='exp-key'>Bottom Line: The resting membrane potential results from the Na⁺/K⁺-ATPase pump (electrogenic, pumps 3 Na⁺ out / 2 K⁺ in) and the high K⁺ permeability of the resting membrane through leak channels. K⁺ diffusion out of the cell is the major contributor to the negative charge inside.</p>"
+  },
+  "bio-385": {
+    "id": "bio-385",
+    "subject": "biology",
+    "topic": "Photosynthesis",
+    "question": "In the light reactions of photosynthesis, water molecules are split at which complex?",
+    "options": [
+      "Photosystem I (PSI)",
+      "Cytochrome b₆f complex",
+      "Photosystem II (PSII)",
+      "ATP synthase"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Photosystem II (PSII)</h4><p>Photolysis of water occurs at the oxygen-evolving complex (OEC) associated with Photosystem II. The reaction 2H₂O → O₂ + 4H⁺ + 4e− provides the electrons needed to replace those excited by light energy from the P680 reaction center of PSII. The protons contribute to the thylakoid lumen's H⁺ gradient, and the O₂ is released as a byproduct.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Photosystem I (PSI):</strong> Photosystem I (PSI, P700) receives electrons from plastocyanin and re-energizes them using light energy to eventually reduce NADP+ to NADPH via ferredoxin. PSI does not split water. Water splitting occurs at PSII to replace the electrons that PSII donates to the electron transport chain.</p>\n<p><strong>B. Cytochrome b₆f complex:</strong> The cytochrome b6f complex is an electron carrier between PSII and PSI, analogous to Complex III in mitochondria. It transfers electrons from plastoquinone to plastocyanin while pumping protons into the thylakoid lumen to build the proton gradient. It does not split water.</p>\n<p><strong>D. ATP synthase:</strong> ATP synthase uses the proton gradient across the thylakoid membrane to synthesize ATP from ADP and Pi (photophosphorylation). It is a molecular turbine driven by proton flow, not involved in water splitting. The proton gradient that drives ATP synthase is built partly by the water-splitting reaction at PSII and partly by the cytochrome b6f complex.</p><h4>Key Educational Points:</h4><ul><li>Photosynthesis converts light energy to chemical energy in two stages: light reactions (thylakoid membranes) produce ATP and NADPH, and the Calvin cycle (stroma) fixes CO2 into sugar.</li><li>The light reactions involve two photosystems: PSII (splits water, releases O2) and PSI (reduces NADP+ to NADPH).</li><li>C3, C4, and CAM plants have different strategies for carbon fixation adapted to their environments, balancing photosynthesis efficiency against water loss.</li></ul>"
+  },
+  "bio-135": {
+    "id": "bio-135",
+    "subject": "biology",
+    "topic": "Molecular Genetics Advanced",
+    "question": "Alternative splicing of pre-mRNA allows a single gene to:",
+    "options": [
+      "Produce multiple different mRNAs and thus different protein isoforms",
+      "Bypass the need for a poly-A tail for mRNA stability",
+      "Replicate itself within the genome through retrotransposition",
+      "Increase the rate of transcription by RNA polymerase II"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) Produce multiple different mRNAs and thus different protein isoforms</h4><p>Alternative splicing is a post-transcriptional mechanism that selectively includes or excludes different exons from the pre-mRNA, generating multiple distinct mRNA variants from a single gene. Each variant can be translated into a different protein isoform with potentially different functions, localizations, or binding properties. Over 95% of human multi-exon genes undergo alternative splicing, greatly expanding the proteome.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Bypass the need for a poly-A tail for mRNA stability:</strong> The poly-A tail (a stretch of ~200 adenine nucleotides added to the 3’ end of mRNA) is essential for mRNA stability and export from the nucleus. Alternative splicing does not eliminate the need for polyadenylation-all alternatively spliced mRNAs still require a poly-A tail. Polyadenylation and splicing are separate post-transcriptional modifications, though alternative polyadenylation sites can contribute to mRNA diversity.</p>\n<p><strong>C. Replicate itself within the genome through retrotransposition:</strong> Retrotransposition (the “copy-and-paste” mechanism of mobile genetic elements like LINE-1) involves reverse transcription of RNA into DNA that inserts elsewhere in the genome. This is completely different from alternative splicing, which selectively includes or excludes exons from the final mRNA without altering the DNA. Alternative splicing increases protein diversity from a single gene; retrotransposition increases genome size.</p>\n<p><strong>D. Increase the rate of transcription by RNA polymerase II:</strong> Alternative splicing does not increase the rate of transcription. It is a post-transcriptional process that occurs during or after transcription, determining which combination of exons appears in the mature mRNA. Transcription rate is controlled by promoter elements, transcription factors, and chromatin state. A single gene like the Drosophila DSCAM gene can produce over 38,000 different mRNA variants through alternative splicing.</p><h4>Key Educational Points:</h4><ul><li>Alternative splicing includes or skips different exons, so one gene can yield several mRNAs and several protein isoforms.</li><li>It acts after transcription, on the pre-mRNA, and does not alter the gene itself.</li><li>The great majority of human multi-exon genes are alternatively spliced, which is a major reason the proteome far exceeds the gene count.</li><li>Isoforms from one gene can differ in function, cellular location, or binding partners.</li><li>Mutations at splice sites cause disease by producing the wrong isoform - a well-known mechanism in the thalassaemias.</li></ul><p class='exp-key'>Bottom Line: Alternative splicing explains how ~20,000 human genes can produce over 100,000 different proteins - it is a major mechanism for increasing proteomic diversity without increasing gene number.</p>"
+  },
+  "bio-293": {
+    "id": "bio-293",
+    "subject": "biology",
+    "topic": "Single-gene disorders",
+    "question": "Sickle cell trait (heterozygous HbAS) provides a selective advantage in regions with endemic malaria. This is an example of:",
+    "options": [
+      "Directional selection",
+      "Stabilizing selection",
+      "Heterozygote advantage (balancing selection)",
+      "Disruptive selection"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Heterozygote advantage (balancing selection)</h4><p>In malaria-endemic regions, HbSS individuals suffer from sickle cell disease, HbAA individuals are susceptible to severe malaria, but HbAS heterozygotes have mild sickling that impairs the malaria parasite without causing disease. This maintains both alleles in the population (balanced polymorphism).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Directional selection:</strong> Directional selection shifts the entire population toward one extreme phenotype. If sickle cell were under directional selection, either HbA or HbS would be steadily increasing in frequency. Instead, both alleles are maintained because heterozygotes (HbAS) have the highest fitness in malaria-endemic regions, while both homozygotes are at a disadvantage (HbAA to malaria, HbSS to sickle cell disease).</p>\n<p><strong>B. Stabilizing selection:</strong> Stabilizing selection favors the average phenotype and reduces variation at both extremes. While this might seem similar to heterozygote advantage, stabilizing selection acts on a quantitative trait by selecting against both extremes. Heterozygote advantage (balancing selection) specifically maintains two alleles in the population because the heterozygous genotype has superior fitness.</p>\n<p><strong>D. Disruptive selection:</strong> Disruptive selection favors both extreme phenotypes over the intermediate, potentially splitting the population into two distinct groups. This is the opposite of what happens with sickle cell trait, where the intermediate (heterozygote HbAS) is actually the most fit. Disruptive selection would drive the population toward homozygosity, not maintain heterozygosity.</p><h4>Key Educational Points:</h4><ul><li>Heterozygote advantage (balancing selection) occurs when the heterozygote is fitter than either homozygote.</li><li>HbAS carriers resist severe malaria, while HbAA are susceptible and HbSS have sickle cell disease.</li><li>Selection therefore preserves both alleles rather than eliminating the harmful one - a balanced polymorphism.</li><li>This explains the geographic overlap between sickle cell allele frequency and historical malaria endemicity.</li><li>Thalassaemias and G6PD deficiency show the same pattern, and it is a standard exception to the expectation that deleterious alleles are purged.</li></ul><p class='exp-key'>Bottom Line: Heterozygote advantage occurs when the heterozygous genotype has greater fitness than either homozygote, maintaining both alleles in the population.</p>"
+  },
+  "bio-75": {
+    "id": "bio-75",
+    "subject": "biology",
+    "topic": "Virology",
+    "question": "Antigenic shift in influenza A virus occurs through which mechanism?",
+    "options": [
+      "Recombination between influenza and a host cellular gene",
+      "Point mutations in the hemagglutinin gene during replication",
+      "Frameshift mutations caused by RNA polymerase slippage",
+      "Reassortment of genome segments between different influenza subtypes"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) Reassortment of genome segments between different influenza subtypes</h4><p>Antigenic shift involves the major change of surface antigens (hemagglutinin and/or neuraminidase) through reassortment. This occurs when two different influenza A subtypes co-infect the same cell, and their segmented genomes (8 segments) mix during replication. The result can be a novel virus to which the human population has no immunity, potentially causing pandemics. Antigenic drift, by contrast, involves minor point mutations.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Recombination between influenza and a host cellular gene:</strong> Recombination between viral and host genes is not the mechanism of antigenic shift in influenza. Antigenic shift specifically involves reassortment of genome segments between different influenza virus subtypes when they co-infect the same cell (often in pigs, which can be infected by both avian and human strains). This produces a dramatically new surface antigen against which the population has little immunity, potentially causing pandemics.</p>\n<p><strong>B. Point mutations in the hemagglutinin gene during replication:</strong> Gradual accumulation of point mutations is called <em>antigenic drift</em>, not antigenic shift. Drift causes small, incremental changes in surface antigens (hemagglutinin and neuraminidase) over time, which is why seasonal flu vaccines must be updated annually. Antigenic shift is a sudden, major change from reassortment of entire genome segments, producing entirely new surface protein subtypes.</p>\n<p><strong>C. Frameshift mutations caused by RNA polymerase slippage:</strong> While RNA polymerase errors do contribute to the high mutation rate of influenza (antigenic drift), frameshift mutations typically produce nonfunctional proteins and are usually lethal to the virus. Antigenic shift is not caused by mutation at all - it results from the physical exchange (reassortment) of genome segments when two different influenza A subtypes infect the same cell simultaneously.</p><h4>Key Educational Points:</h4><ul><li>Viruses are obligate intracellular parasites consisting of nucleic acid (DNA or RNA) enclosed in a protein coat (capsid); they cannot reproduce independently.</li><li>Viral replication strategies vary: lytic cycle (immediate reproduction and cell lysis) vs. lysogenic cycle (genome integration as prophage with delayed lysis).</li><li>Retroviruses (like HIV) use reverse transcriptase to convert their RNA genome into DNA, which integrates into the host chromosome as a provirus.</li></ul><p class='exp-key'>Bottom Line: Antigenic shift (reassortment) causes pandemics, while antigenic drift (point mutations) causes seasonal epidemics. Shift requires a segmented genome.</p>"
+  },
+  "bio-330": {
+    "id": "bio-330",
+    "subject": "biology",
+    "topic": "Differentiation",
+    "question": "All cells in a multicellular organism contain the same DNA, yet they develop into different cell types. This is primarily because:",
+    "options": [
+      "Different cells delete genes they do not need",
+      "Different cells express different subsets of genes through differential gene regulation",
+      "Each cell type receives a unique set of chromosomes during mitosis",
+      "Mutations accumulate differently in each cell lineage"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Different cells express different subsets of genes through differential gene regulation</h4><p>Cellular differentiation results from differential gene expression, not changes in DNA content. Transcription factors, epigenetic modifications (DNA methylation, histone modification), and signaling molecules determine which genes are active in each cell type. A skin cell and a neuron have identical genomes but express very different sets of genes. This was demonstrated by somatic cell nuclear transfer experiments (cloning).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Different cells delete genes they do not need:</strong> Most cells do NOT delete genes they don't need. Nearly all cells in a multicellular organism retain the complete genome. This was demonstrated by John Gurdon's nuclear transfer experiments (cloning frogs from intestinal cell nuclei) and by mammalian cloning (Dolly the sheep). Notable exceptions include mature red blood cells (which expel their nucleus) and lymphocytes (which undergo gene rearrangement for antibody/TCR diversity).</p>\n<p><strong>C. Each cell type receives a unique set of chromosomes during mitosis:</strong> Mitosis distributes identical, complete sets of chromosomes to each daughter cell. Every cell in the body (except gametes) receives the same 46 chromosomes. If cells received unique subsets of chromosomes, cloning from a differentiated cell would be impossible. Cell identity is determined by which genes are turned on or off through transcription factors and epigenetic marks.</p>\n<p><strong>D. Mutations accumulate differently in each cell lineage:</strong> While mutations do accumulate in somatic cells over time (somatic mosaicism), this is not the primary mechanism of cell differentiation. Differentiation occurs in early development through ordered patterns of gene regulation driven by signaling molecules (morphogens), transcription factor cascades, and epigenetic modifications. Random mutation accumulation would produce random, not organized, tissue specialization.</p><h4>Key Educational Points:</h4><ul><li>Differentiation results from differential gene expression, not from any loss or change of DNA.</li><li>Nearly all somatic cells retain the complete genome; they simply transcribe different subsets of it.</li><li>The controlling layers are transcription factors, DNA methylation, and histone modification.</li><li>Somatic cell nuclear transfer (cloning) proved the genome stays intact - a differentiated nucleus can direct a whole organism.</li><li>Lymphocytes are the notable exception, since V(D)J recombination genuinely rearranges their DNA.</li></ul><p class='exp-key'>Bottom Line: Differentiation = differential gene expression with the same genome. Epigenetic mechanisms regulate which genes are active in each cell type.</p>"
+  },
+  "bio-542": {
+    "id": "bio-542",
+    "subject": "biology",
+    "topic": "Blood",
+    "question": "A patient's hematocrit is measured at 60% (normal male: 40-54%). Which condition is MOST likely associated with this finding?",
+    "options": [
+      "Iron deficiency anemia",
+      "Polycythemia (e.g., from chronic hypoxia at high altitude)",
+      "Severe hemorrhage",
+      "Aplastic anemia"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Polycythemia (e.g., from chronic hypoxia at high altitude)</h4><p>Hematocrit is the percentage of blood volume occupied by red blood cells. An elevated hematocrit (>54% in males) indicates polycythemia, an increased number of RBCs. Secondary polycythemia commonly occurs in response to chronic hypoxia (e.g., living at high altitude, chronic lung disease, or heavy smoking), which stimulates erythropoietin (EPO) production by the kidneys, driving increased RBC production.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Iron deficiency anemia:</strong> Iron deficiency anemia leads to decreased hemoglobin production and smaller RBCs (microcytic anemia), resulting in a decreased hematocrit, not an elevated one.</p><p><strong>C. Severe hemorrhage:</strong> Acute hemorrhage initially causes loss of whole blood (hematocrit may appear normal). After fluid redistribution and IV fluid administration, the hematocrit drops due to hemodilution. It would not be elevated.</p><p><strong>D. Aplastic anemia:</strong> Aplastic anemia involves failure of the bone marrow to produce adequate blood cells (pancytopenia), leading to decreased RBCs, WBCs, and platelets. Hematocrit would be significantly reduced.</p><h4>Key Educational Points:</h4><ul><li>Hematocrit = percentage of blood volume occupied by RBCs</li><li>Chronic hypoxia leads to increased EPO, increased RBC production, and polycythemia</li></ul><p class='exp-key'>Bottom Line: Elevated hematocrit indicates polycythemia, commonly caused by chronic hypoxia stimulating EPO-driven erythropoiesis.</p>"
+  },
+  "bio-342": {
+    "id": "bio-342",
+    "subject": "biology",
+    "topic": "Biochemistry",
+    "question": "Allosteric enzymes typically display which type of kinetics?",
+    "options": [
+      "Michaelis-Menten hyperbolic kinetics",
+      "Sigmoidal (cooperative) kinetics",
+      "Linear kinetics with constant velocity",
+      "Zero-order kinetics at all substrate concentrations"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Sigmoidal (cooperative) kinetics</h4><p>Allosteric enzymes possess multiple subunits and exhibit cooperativity, meaning the binding of substrate to one subunit affects the affinity of other subunits for the substrate. This produces a sigmoidal (S-shaped) velocity vs. substrate concentration curve rather than the hyperbolic curve seen with Michaelis-Menten enzymes. Phosphofructokinase-1 is a classic example of an allosteric enzyme.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Michaelis-Menten hyperbolic kinetics:</strong> Michaelis-Menten hyperbolic kinetics describe simple, single-subunit enzymes that do not exhibit cooperativity. These enzymes follow the equation V = Vmax[S]/(Km + [S]) and produce a rectangular hyperbola when velocity is plotted against substrate concentration. Allosteric enzymes deviate from this model precisely because of their cooperative binding behavior.</p>\n<p><strong>C. Linear kinetics with constant velocity:</strong> Linear kinetics with constant velocity would mean the reaction rate never changes regardless of substrate concentration. No enzyme behaves this way. Even zero-order kinetics (where rate is constant) only applies when the enzyme is fully saturated at very high substrate concentrations.</p>\n<p><strong>D. Zero-order kinetics at all substrate concentrations:</strong> Zero-order kinetics at all substrate concentrations would mean the enzyme is always saturated, which is physically impossible. At very low substrate concentrations, the reaction rate must depend on substrate concentration. Zero-order behavior only occurs when [S] far exceeds Km and the enzyme is fully saturated.</p><h4>Key Educational Points:</h4><ul><li>Allosteric enzymes are multi-subunit and cooperative: substrate binding at one site alters affinity at the others.</li><li>This produces a sigmoidal velocity curve rather than the hyperbolic Michaelis-Menten curve.</li><li>Sigmoidal kinetics make the enzyme switch-like, so small changes in substrate concentration produce large changes in rate.</li><li>Allosteric regulators bind away from the active site: activators shift the curve left, inhibitors shift it right.</li><li>Phosphofructokinase-1 is the classic example and the rate-limiting step of glycolysis; haemoglobin shows the same cooperative behaviour in oxygen binding.</li></ul>"
+  },
+  "bio-620": {
+    "id": "bio-620",
+    "subject": "biology",
+    "topic": "Ecology and Sustainability",
+    "question": "The global human population has grown from approximately 1 billion in 1800 to over 8 billion today. This rapid growth pattern, often called the \"population explosion,\" most closely resembles which type of growth curve?",
+    "options": [
+      "Logistic growth (S-shaped curve) that has already reached carrying capacity",
+      "Oscillatory growth with regular boom-and-bust cycles",
+      "Linear growth at a constant rate of increase",
+      "Exponential growth (J-shaped curve) in a phase of rapid increase"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Exponential growth (J-shaped curve) in a phase of rapid increase</h4><p>The global human population growth pattern closely resembles <strong>exponential (J-shaped) growth</strong>, characterized by an accelerating rate of increase where the population grows proportionally to its current size. The doubling time shortened dramatically: it took all of human history to reach 1 billion (~1800), but only about 200 years to surpass 8 billion (2022).</p><p>Key milestones: 1 billion (1800) → 2 billion (1927) → 4 billion (1974) → 8 billion (2022). The rate of growth has been slowing since the 1960s (from ~2.1% to ~0.9% per year), suggesting a transition toward logistic growth, but the population is still increasing significantly.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Logistic growth that has already reached carrying capacity:</strong> Logistic growth (S-curve) occurs when a population approaches the <strong>carrying capacity (K)</strong> of its environment, and growth slows as resources become limiting. While growth rate is declining, the human population has NOT leveled off - it continues to increase by approximately 70-80 million people per year. Whether we have reached or exceeded Earth's carrying capacity is debated, but the population has not stabilized.</p><p><strong>C. Linear growth at a constant rate of increase:</strong> Linear growth means adding a constant <em>number</em> of individuals each time period (e.g., adding 10 million per year every year). Human population growth has been faster than linear - the absolute number added per year increased dramatically through the 20th century. In exponential growth, both the rate AND the absolute number increase as the population grows larger.</p><p><strong>B. Oscillatory growth with regular boom-and-bust cycles:</strong> Boom-and-bust (oscillatory) patterns are seen in some animal populations (e.g., lemmings, snowshoe hares) where populations overshoot carrying capacity, crash due to resource depletion, then recover. Human population has not shown such regular oscillations in modern times, though historical events (plagues, famines) caused temporary declines.</p><h4>Key Educational Points:</h4><ul><li>The demographic transition model describes how populations shift from high birth/death rates → high birth/low death (rapid growth) → low birth/death rates (stabilization) as countries develop</li><li>Factors enabling the population explosion: agricultural revolution, industrial revolution, medical advances, sanitation improvements</li><li>UN projections estimate the world population may peak at approximately 10.4 billion around 2080-2100</li></ul><p class='exp-key'>Bottom Line: Human population growth follows a J-shaped (exponential) curve, though growth rate is now declining. The demographic transition - from high to low birth and death rates - is the key concept explaining population dynamics across different stages of development.</p>"
+  },
+  "bio-141": {
+    "id": "bio-141",
+    "subject": "biology",
+    "topic": "Biotechnology and DNA Technology",
+    "question": "Restriction enzymes (restriction endonucleases) are used in molecular biology to:",
+    "options": [
+      "Amplify specific DNA sequences exponentially",
+      "Cut DNA at specific palindromic recognition sequences",
+      "Convert RNA into complementary DNA (cDNA)",
+      "Join DNA fragments from different sources together"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) Cut DNA at specific palindromic recognition sequences</h4><p>Restriction endonucleases recognize and cut DNA at specific palindromic sequences (typically 4-8 base pairs). They may produce blunt ends or sticky ends (overhangs), depending on the enzyme. For example, EcoRI recognizes GAATTC and produces 4-nucleotide sticky ends. These enzymes naturally protect bacteria from bacteriophage infection by degrading foreign DNA. DNA ligase, not restriction enzymes, joins DNA fragments together.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Amplify specific DNA sequences exponentially:</strong> Amplifying DNA sequences exponentially is the function of PCR (polymerase chain reaction), which uses thermal cycling, primers, and Taq polymerase. Restriction enzymes are molecular “scissors”-they cut DNA, they do not amplify it. Bacteria naturally produce restriction enzymes as a defense against bacteriophage DNA, and molecular biologists have repurposed them for cloning and DNA analysis.</p>\n<p><strong>C. Convert RNA into complementary DNA (cDNA):</strong> Converting RNA into cDNA is the function of reverse transcriptase, an enzyme originally discovered in retroviruses. Reverse transcriptase synthesizes a DNA strand complementary to an RNA template. This is used in RT-PCR to study gene expression and to create cDNA libraries. Restriction enzymes work only on DNA, cutting it at specific palindromic recognition sequences.</p>\n<p><strong>D. Join DNA fragments from different sources together:</strong> Joining DNA fragments from different sources is the function of DNA ligase, which catalyzes the formation of phosphodiester bonds between adjacent nucleotides. In molecular cloning, DNA ligase is used to seal the target DNA insert into a vector after both have been cut with compatible restriction enzymes. Restriction enzymes cut DNA; ligase joins it back together.</p><h4>Key Educational Points:</h4><ul><li>The central dogma of molecular biology describes information flow: DNA is transcribed to mRNA, which is translated to protein.</li><li>Eukaryotic gene expression is regulated at multiple levels: chromatin remodeling, transcription, post-transcription (splicing), translation, and post-translation.</li><li>Mutations in DNA can be silent, missense, nonsense, or frameshift - each with different impacts on protein structure and function.</li></ul><p class='exp-key'>Bottom Line: Restriction enzymes cut at palindromic sequences; those producing sticky ends (like EcoRI, BamHI) are especially useful for cloning because sticky ends facilitate complementary base pairing before ligation.</p>"
+  },
+  "bio-333": {
+    "id": "bio-333",
+    "subject": "biology",
+    "topic": "Connective tissue subtypes",
+    "question": "Osteocytes are mature bone cells that reside in small spaces within the bone matrix. These spaces are called:",
+    "options": [
+      "Haversian canals",
+      "Lacunae",
+      "Canaliculi",
+      "Volkmann's canals"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Lacunae</h4><p>Osteocytes occupy lacunae (small cavities) within the calcified bone matrix. They communicate with neighboring osteocytes through cytoplasmic extensions that pass through tiny channels called canaliculi. Haversian canals are central channels containing blood vessels and nerves within osteons. Volkmann's canals connect Haversian canals laterally.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Haversian canals:</strong> Haversian canals are central channels containing blood vessels and nerves within osteons.</p>\n<p><strong>C. Canaliculi:</strong> They communicate with neighboring osteocytes through cytoplasmic extensions that pass through tiny channels called canaliculi.</p>\n<p><strong>D. Volkmann's canals:</strong> Volkmann's canals connect haversian canals laterally.</p><h4>Key Educational Points:</h4><ul><li>Osteocytes occupy small cavities in the mineralised matrix called lacunae.</li><li>They communicate through canaliculi - narrow channels housing cell processes linked by gap junctions.</li><li>This network is essential because mineralised bone is impermeable to diffusion; without canaliculi the osteocytes could not be supplied.</li><li>Osteocytes are former osteoblasts that became trapped in the matrix they themselves secreted.</li><li>Chondrocytes also sit in lacunae, but cartilage has no canaliculi and no blood supply, which is a major reason it heals so poorly.</li></ul><p class='exp-key'>Bottom Line: Lacunae = spaces housing osteocytes (or chondrocytes in cartilage). Canaliculi = tiny channels connecting lacunae. Haversian canals = central vascular channels in osteons.</p>"
+  },
+  "bio-305": {
+    "id": "bio-305",
+    "subject": "biology",
+    "topic": "Tumor suppressors",
+    "question": "The protein p53, often called the 'guardian of the genome,' responds to DNA damage by:",
+    "options": [
+      "Promoting uncontrolled cell division",
+      "Activating p21 to inhibit CDKs, causing cell cycle arrest",
+      "Directly repairing damaged DNA bases",
+      "Activating oncogenes to promote growth"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Activating p21 to inhibit CDKs, causing cell cycle arrest</h4><p>When DNA damage is detected, p53 is stabilized and acts as a transcription factor. It activates p21 (a CDK inhibitor), which blocks cyclin-CDK complexes and arrests the cell cycle at G1/S checkpoint. This allows time for DNA repair. If damage is irreparable, p53 triggers apoptosis via BAX and other pro-apoptotic factors. Loss of p53 function (as in Li-Fraumeni syndrome) leads to cancer predisposition.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Promoting uncontrolled cell division:</strong> This is the opposite of what p53 does. p53 is a tumour suppressor that halts the cycle; uncontrolled division is what follows when p53 is lost, not what p53 itself causes.</p><p><strong>C. Directly repairing damaged DNA bases:</strong> p53 does not repair DNA itself. It is a transcription factor: it buys time by arresting the cycle and switches on genes whose products perform the repair. The repair enzymes are separate proteins.</p><p><strong>D. Activating oncogenes to promote growth:</strong> p53 acts against proliferation rather than for it. Driving growth-promoting genes is the role of proto-oncogenes, which are p53's functional counterparts, not its targets.</p><h4>Key Educational Points:</h4><ul><li>On DNA damage, p53 is stabilised and acts as a transcription factor, inducing p21.</li><li>p21 inhibits cyclin-CDK complexes, arresting the cell cycle at G1/S to allow time for repair.</li><li>If damage proves irreparable, p53 instead triggers apoptosis through BAX and other pro-apoptotic genes.</li><li>This dual role - pause and repair, or eliminate - is why p53 is called guardian of the genome.</li><li>TP53 is the most frequently mutated gene in human cancer; germline loss causes Li-Fraumeni syndrome.</li></ul><p class='exp-key'>Bottom Line: p53 is a tumor suppressor that responds to DNA damage by inducing cell cycle arrest (via p21), DNA repair, or apoptosis (via BAX).</p>"
+  },
+  "bio-332": {
+    "id": "bio-332",
+    "subject": "biology",
+    "topic": "Connective tissue",
+    "question": "Which of the following is classified as a connective tissue?",
+    "options": [
+      "Skeletal muscle",
+      "Neurons of the brain",
+      "Blood",
+      "Simple columnar epithelium"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Blood</h4><p>Blood is classified as a specialized connective tissue. Its extracellular matrix is the liquid plasma, and its 'cells' include erythrocytes, leukocytes, and platelets. Other connective tissues include: loose (areolar), dense (tendons, ligaments), cartilage, bone, adipose tissue, and blood. All connective tissues share the feature of cells dispersed within an extracellular matrix.</p><table class='exp-table'><tr><th>Tissue Type</th><th>Examples</th></tr><tr><td>Epithelial</td><td>Skin epidermis, gut lining</td></tr><tr><td>Connective</td><td>Blood, bone, cartilage, adipose</td></tr><tr><td>Muscle</td><td>Skeletal, cardiac, smooth</td></tr><tr><td>Nervous</td><td>Neurons, glial cells</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Skeletal muscle:</strong> Skeletal muscle is classified as muscle tissue, not connective tissue. The four primary tissue types are epithelial, connective, muscle, and nervous. Skeletal muscle consists of long, multinucleated fibers specialized for voluntary contraction. While muscles contain connective tissue sheaths (epimysium, perimysium, endomysium), the muscle fibers themselves are muscle tissue.</p>\n<p><strong>B. Neurons of the brain:</strong> Neurons are the functional cells of nervous tissue, not connective tissue. Nervous tissue consists of neurons (which transmit electrical signals) and glial cells (which support, insulate, and nourish neurons). The brain contains billions of neurons organized into complex circuits for information processing.</p>\n<p><strong>D. Simple columnar epithelium:</strong> Simple columnar epithelium is classified as epithelial tissue. It consists of a single layer of tall, column-shaped cells and lines the stomach, intestines (with microvilli for absorption), and gallbladder. Epithelial tissue covers surfaces and lines cavities, serving barrier, absorption, and secretory functions.</p><h4>Key Educational Points:</h4><ul><li>Connective tissue is defined by cells dispersed within an extracellular matrix - not by being solid, tough, or fibrous.</li><li>Blood meets that definition: formed elements suspended in plasma, which is its liquid matrix.</li><li>All connective tissues arise from embryonic mesenchyme, which is why blood, bone, cartilage, adipose, and tendon are grouped together despite looking nothing alike.</li><li>Epithelium is the contrasting case: cells packed directly against one another with almost no matrix, sitting on a basement membrane.</li><li>Judge tissue type by the cell-to-matrix relationship, not by physical consistency.</li></ul><p class='exp-key'>Bottom Line: Blood is a connective tissue with a liquid matrix (plasma). All connective tissues have cells + extracellular matrix.</p>"
+  },
+  "bio-522": {
+    "id": "bio-522",
+    "subject": "biology",
+    "topic": "Skeletal System",
+    "question": "Which of the following is part of the axial skeleton?",
+    "options": [
+      "The scapula",
+      "The femur",
+      "The pelvic girdle",
+      "The sternum"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: The sternum</h4><p>The axial skeleton consists of the bones that form the central axis of the body: the skull (cranium and facial bones), the vertebral column, the rib cage (ribs and sternum), and the hyoid bone. The sternum (breastbone) is part of the rib cage and therefore part of the axial skeleton.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The scapula:</strong> The scapula (shoulder blade) is part of the pectoral (shoulder) girdle, which belongs to the appendicular skeleton. The appendicular skeleton includes the limbs and the girdles that attach them to the axial skeleton.</p><p><strong>B. The femur:</strong> The femur (thigh bone) is the longest bone in the body and is part of the lower limb, making it a component of the appendicular skeleton.</p><p><strong>C. The pelvic girdle:</strong> The pelvic girdle (hip bones) connects the lower limbs to the axial skeleton and is classified as part of the appendicular skeleton.</p><h4>Key Educational Points:</h4><ul><li>Axial skeleton (80 bones): skull, vertebral column, rib cage, hyoid</li><li>Appendicular skeleton (126 bones): limbs, pectoral girdle, pelvic girdle</li></ul><p class='exp-key'>Bottom Line: The axial skeleton forms the central axis of the body and includes the skull, vertebral column, and rib cage (including the sternum).</p>"
+  },
+  "bio-440": {
+    "id": "bio-440",
+    "subject": "biology",
+    "topic": "Taxonomy",
+    "question": "A scientist discovers a unicellular organism that lacks a nucleus, has a cell wall made of peptidoglycan, and reproduces by binary fission. In which kingdom should this organism be classified?",
+    "options": [
+      "Protista",
+      "Fungi",
+      "Monera (Prokaryotae)",
+      "Plantae"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Monera (Prokaryotae)</h4><p>Organisms lacking a membrane-bound nucleus are classified as prokaryotes. The presence of peptidoglycan in the cell wall and reproduction by binary fission are hallmarks of bacteria, which belong to kingdom Monera in the five-kingdom classification system.</p><table class='exp-table'><tr><th>Kingdom</th><th>Cell Type</th><th>Cell Wall</th><th>Nutrition</th></tr><tr><td><strong>Monera</strong></td><td>Prokaryotic</td><td>Peptidoglycan</td><td>Varied</td></tr><tr><td>Protista</td><td>Eukaryotic</td><td>Varied</td><td>Varied</td></tr><tr><td>Fungi</td><td>Eukaryotic</td><td>Chitin</td><td>Heterotrophic</td></tr><tr><td>Plantae</td><td>Eukaryotic</td><td>Cellulose</td><td>Autotrophic</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Protista:</strong> Protists are eukaryotic organisms with membrane-bound nuclei; this organism is prokaryotic.</p>\n<p><strong>B. Fungi:</strong> Fungi are eukaryotic and have cell walls made of chitin, not peptidoglycan.</p>\n<p><strong>D. Plantae:</strong> Plants are multicellular eukaryotes with cellulose cell walls and are autotrophic.</p><p class='exp-key'>Bottom Line: Prokaryotic cells (no nucleus, no membrane-bound organelles) with peptidoglycan walls belong to Monera. The five-kingdom system classifies life into Monera, Protista, Fungi, Plantae, and Animalia.</p>"
+  },
+  "bio-591": {
+    "id": "bio-591",
+    "subject": "biology",
+    "topic": "Medical Mycology",
+    "question": "A microbiology student is asked to distinguish between yeasts and molds in a laboratory exercise. Which of the following correctly describes a fundamental difference between these two fungal forms?",
+    "options": [
+      "Yeasts are prokaryotic while molds are eukaryotic",
+      "Yeasts reproduce by budding and are unicellular, while molds grow as multicellular filamentous hyphae",
+      "Molds have cell walls made of cellulose, while yeasts have cell walls made of chitin",
+      "Yeasts are exclusively pathogenic, while molds are exclusively environmental saprophytes"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Yeasts reproduce by budding and are unicellular, while molds grow as multicellular filamentous hyphae</h4><p>The fundamental distinction between yeasts and molds lies in their <strong>growth morphology</strong>:</p><table class='exp-table'><tr><th>Feature</th><th>Yeasts</th><th>Molds</th></tr><tr><td>Cellular form</td><td>Unicellular</td><td>Multicellular</td></tr><tr><td>Growth structure</td><td>Individual round/oval cells</td><td>Filamentous hyphae forming mycelium</td></tr><tr><td>Reproduction</td><td>Budding (asexual) primarily</td><td>Spore formation (conidia)</td></tr><tr><td>Colony appearance</td><td>Smooth, creamy, bacterial-like</td><td>Fuzzy, cottony, pigmented</td></tr></table><p>Some fungi are <strong>dimorphic</strong> - they can switch between yeast and mold forms depending on temperature (yeast at 37°C body temperature, mold at 25°C environmental temperature).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Yeasts are prokaryotic while molds are eukaryotic:</strong> This is incorrect - <strong>all fungi are eukaryotic</strong>, including both yeasts and molds. They possess membrane-bound nuclei, mitochondria, and other eukaryotic organelles. Fungi belong to their own kingdom (Fungi), distinct from prokaryotic bacteria and archaea.</p><p><strong>C. Molds have cell walls made of cellulose, while yeasts have cell walls made of chitin:</strong> <strong>Both</strong> yeasts and molds have cell walls containing <strong>chitin</strong> (a polymer of N-acetylglucosamine). Cellulose is the cell wall component of <strong>plants</strong>, not fungi. This is a key taxonomic distinction: fungi have chitin, plants have cellulose, and bacteria have peptidoglycan.</p><p><strong>D. Yeasts are exclusively pathogenic, while molds are exclusively environmental saprophytes:</strong> Neither statement is true. Most yeasts are harmless commensals or used in industry (<em>Saccharomyces cerevisiae</em> for baking and brewing), while some molds are definitely pathogenic (<em>Aspergillus</em>, <em>Mucor</em>). Both forms include pathogenic and non-pathogenic species.</p><h4>Key Educational Points:</h4><ul><li>All fungi are eukaryotic, heterotrophic, and have chitin-based cell walls</li><li>Dimorphic fungi (Histoplasma, Blastomyces, Coccidioides) switch forms: \"mold in the cold, yeast in the heat\"</li><li>Fungi are more closely related to animals than to plants on the phylogenetic tree</li></ul><p class='exp-key'>Bottom Line: Yeasts = unicellular, budding; Molds = multicellular, filamentous hyphae. Both are eukaryotic with chitin cell walls. Remember: \"mold in the cold, yeast in the heat\" for dimorphic fungi.</p>"
+  },
+  "bio-86": {
+    "id": "bio-86",
+    "subject": "biology",
+    "topic": "Ecology",
+    "question": "Biological magnification (biomagnification) describes a process in which:",
+    "options": [
+      "The concentration of persistent pollutants increases at successively higher trophic levels",
+      "Biodiversity increases with increasing ecosystem complexity",
+      "Organisms at lower trophic levels accumulate more toxins than those at higher levels",
+      "Nutrient concentrations decrease as water flows downstream"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) The concentration of persistent pollutants increases at successively higher trophic levels</h4><p>Biomagnification occurs when non-biodegradable, lipid-soluble substances (such as DDT, mercury, and PCBs) accumulate in organisms and become increasingly concentrated at each trophic level. Top predators (such as eagles, tuna, and polar bears) may accumulate toxin concentrations millions of times higher than the environmental water concentration.</p><h4>Why the other choices are wrong:</h4>\n<p><strong>B. Biodiversity increases with increasing ecosystem complexity:</strong> <em>Biodiversity increases with increasing ecosystem complexity</em> is incorrect for this question. The correct answer is <em>The concentration of persistent pollutants increases at successively higher trophic levels</em>, which specifically matches the definition or concept described in the question stem. Biodiversity increases with increasing ecosystem complexity refers to a different ecological concept.</p>\n<p><strong>C. Organisms at lower trophic levels accumulate more toxins than those at higher levels:</strong> <em>Organisms at lower trophic levels accumulate more toxins than those at higher levels</em> is incorrect for this question. The correct answer is <em>The concentration of persistent pollutants increases at successively higher trophic levels</em>, which specifically matches the definition or concept described in the question stem. Organisms at lower trophic levels accumulate more toxins than those at higher levels refers to a different ecological concept.</p>\n<p><strong>D. Nutrient concentrations decrease as water flows downstream:</strong> <em>Nutrient concentrations decrease as water flows downstream</em> is incorrect for this question. The correct answer is <em>The concentration of persistent pollutants increases at successively higher trophic levels</em>, which specifically matches the definition or concept described in the question stem. Nutrient concentrations decrease as water flows downstream refers to a different ecological concept.</p><h4>Key Educational Points:</h4><ul><li>Energy flows one way through ecosystems (sun to producers to consumers to decomposers), while matter (nutrients) cycles through biogeochemical pathways.</li><li>Only about 10% of energy is transferred between trophic levels - the rest is lost as heat through cellular respiration.</li><li>Biodiversity increases ecosystem stability and resilience; keystone species have disproportionately large effects on community structure.</li></ul><p class='exp-key'>Bottom Line: Biomagnification requires two properties of the pollutant: persistence (resistance to degradation) and lipophilicity (accumulation in fatty tissues rather than excretion).</p>"
+  },
+  "bio-441": {
+    "id": "bio-441",
+    "subject": "biology",
+    "topic": "Scientific Method",
+    "question": "In a controlled experiment testing whether fertilizer increases tomato plant growth, which element serves as the independent variable?",
+    "options": [
+      "The height of the tomato plants",
+      "The amount of fertilizer applied",
+      "The type of soil used",
+      "The number of tomatoes produced"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The amount of fertilizer applied</h4><p>The independent variable is the factor deliberately changed by the researcher to test its effect. In this experiment, the researcher manipulates the amount of fertilizer to observe whether it affects plant growth. All other conditions (soil, water, light) are kept constant between experimental and control groups.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The height of the tomato plants:</strong> Plant height is the dependent variable - it is the measured outcome that may change in response to the independent variable.</p>\n<p><strong>C. The type of soil used:</strong> Soil type should be a controlled variable, kept identical across all groups to ensure a valid comparison.</p>\n<p><strong>D. The number of tomatoes produced:</strong> This could be another dependent variable measured as an outcome, not the factor being manipulated.</p><p class='exp-key'>Bottom Line: Independent variable = what you change. Dependent variable = what you measure. Controlled variables = everything kept the same. A proper control group receives no treatment to serve as a baseline.</p>"
+  },
+  "bio-628": {
+    "id": "bio-628",
+    "subject": "biology",
+    "topic": "Oogenesis",
+    "question": "During oogenesis, polar bodies (polocytes) are formed as a result of:",
+    "options": [
+      "Equal cytoplasmic division during meiosis I and II",
+      "Unequal cytoplasmic division that preserves most cytoplasm in the developing oocyte",
+      "Mitotic divisions of oogonia in the ovarian cortex",
+      "Apoptosis of excess oogonia during fetal development"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Unequal cytoplasmic division that preserves most cytoplasm in the developing oocyte</h4><p>During oogenesis, the meiotic divisions are <strong>asymmetric</strong>: the cytoplasm is distributed unequally so that one daughter cell receives nearly all of it. The larger cell continues developing as the oocyte (and eventually the ovum), while the smaller cells with minimal cytoplasm are called <strong>polar bodies (polocytes)</strong>. This ensures the mature egg has sufficient cytoplasmic reserves (organelles, nutrients, mRNA) to support early embryonic development after fertilization.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Equal cytoplasmic division during meiosis I and II:</strong> This describes <strong>spermatogenesis</strong>, not oogenesis. In sperm formation, both meiotic divisions are symmetric, producing four equal-sized spermatids from each primary spermatocyte. In oogenesis, the divisions are deliberately unequal to concentrate resources in one cell.</p><p><strong>C. Mitotic divisions of oogonia in the ovarian cortex:</strong> Mitotic proliferation of oogonia occurs during <strong>fetal development</strong> (before birth in humans) to amplify the number of germ cells. These mitotic divisions produce equal daughter cells and do not generate polar bodies. Polar bodies arise only during meiosis.</p><p><strong>D. Apoptosis of excess oogonia during fetal development:</strong> Atresia (programmed cell death of oocytes) is a real phenomenon -- from approximately 7 million oogonia at 5 months of fetal life, only about 1-2 million remain at birth and about 400,000 at puberty. However, this is apoptosis, not polar body formation. Polar bodies are viable (though non-functional) cells produced by asymmetric meiotic division.</p><h4>Key Educational Points:</h4><ul><li>Meiosis I of the primary oocyte produces one <strong>secondary oocyte</strong> (large) and the <strong>first polar body</strong> (small). Meiosis I is completed just before ovulation in humans.</li><li>Meiosis II of the secondary oocyte produces the <strong>ovum</strong> (large) and the <strong>second polar body</strong> (small). Meiosis II is completed only upon fertilization by a sperm.</li><li>The first polar body may also divide, so oogenesis can produce up to <strong>three polar bodies and one functional ovum</strong> from a single primary oocyte.</li><li>Polar bodies eventually degenerate and are not fertilized.</li></ul><p class='exp-key'>Bottom Line: Polar bodies are small, cytoplasm-poor cells produced by the unequal meiotic divisions of oogenesis. Their purpose is to discard extra chromosome sets while preserving nearly all cytoplasm in the single functional ovum needed for embryonic development.</p>"
+  },
+  "bio-297": {
+    "id": "bio-297",
+    "subject": "biology",
+    "topic": "Cell cycle",
+    "question": "During which phase of the cell cycle does DNA replication occur?",
+    "options": [
+      "G1 phase",
+      "S phase",
+      "G2 phase",
+      "M phase"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: S phase</h4><p>The S (synthesis) phase is when DNA replication occurs, doubling the DNA content per cell from 2C to 4C while the chromosome number (2n) stays the same. G1 is a growth phase before S; G2 is a growth phase after S where the cell prepares for mitosis; M phase is mitosis/cytokinesis.</p><table class='exp-table'><tr><th>Phase</th><th>Events</th></tr><tr><td>G1</td><td>Growth, organelle duplication, G1 checkpoint</td></tr><tr><td>S</td><td>DNA replication</td></tr><tr><td>G2</td><td>Growth, preparation for mitosis, G2 checkpoint</td></tr><tr><td>M</td><td>Mitosis and cytokinesis</td></tr></table><h4>Why the other choices are wrong:</h4>\n<p><strong>A. G1 phase:</strong> G1 (Gap 1) is the phase of cell growth and normal metabolic activity before DNA synthesis. The cell grows in size, synthesizes proteins, and prepares for DNA replication, but DNA synthesis itself occurs in S phase.</p>\n<p><strong>C. G2 phase:</strong> G2 (Gap 2) occurs after DNA replication is complete. During G2, the cell continues to grow, synthesizes proteins needed for mitosis, and checks for DNA replication errors before entering mitosis.</p>\n<p><strong>D. M phase:</strong> M phase (mitosis) is when the replicated chromosomes are separated into two daughter nuclei. DNA replication must be completed during S phase before the cell can enter mitosis.</p><h4>Key Educational Points:</h4><ul><li>DNA replication occurs in S phase, doubling the DNA content per cell from 2C to 4C.</li><li>Interphase comprises G1 (growth), S (synthesis), and G2 (preparation for mitosis); M phase is mitosis plus cytokinesis.</li><li>After S phase each chromosome consists of two sister chromatids joined at the centromere - the chromosome number itself is unchanged.</li><li>Checkpoints at G1/S, G2/M, and the spindle assembly checkpoint verify readiness before the cell proceeds.</li><li>Cells that exit the cycle enter G0, a quiescent state from which some cell types never return.</li></ul><p class='exp-key'>Bottom Line: S phase = DNA Synthesis. After S phase, each chromosome consists of two sister chromatids joined at the centromere.</p>"
+  },
+  "bio-616": {
+    "id": "bio-616",
+    "subject": "biology",
+    "topic": "Classification and Taxonomy",
+    "question": "The modern classification system organizes life into hierarchical levels. Which of the following lists the taxonomic ranks in correct order from most inclusive to least inclusive?",
+    "options": [
+      "Kingdom → Phylum → Class → Order → Family → Genus → Species",
+      "Kingdom → Class → Phylum → Order → Family → Genus → Species",
+      "Kingdom → Phylum → Order → Class → Family → Genus → Species",
+      "Kingdom → Family → Class → Order → Phylum → Genus → Species"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Kingdom → Phylum → Class → Order → Family → Genus → Species</h4><p>The <strong>Linnaean hierarchical classification</strong> system arranges organisms into nested groups from the most inclusive (Kingdom, containing the most organisms) to the least inclusive (Species, the most specific grouping). The correct order is:</p><p><strong>Domain → Kingdom → Phylum → Class → Order → Family → Genus → Species</strong></p><p>A common mnemonic is: <strong>\"Dear King Philip Came Over For Good Spaghetti\"</strong> (Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species).</p><h4>Why the other choices are wrong:</h4><p><strong>B. Kingdom → Class → Phylum → Order → Family → Genus → Species:</strong> This incorrectly places <strong>Class before Phylum</strong>. Phylum is a larger, more inclusive group than Class. For example, all vertebrates belong to Phylum Chordata, which is then subdivided into classes (Mammalia, Aves, Reptilia, etc.). Class is nested within Phylum, not the other way around.</p><p><strong>C. Kingdom → Phylum → Order → Class → Family → Genus → Species:</strong> This incorrectly places <strong>Order before Class</strong>. Class is more inclusive than Order. For example, Class Mammalia contains multiple orders (Primates, Carnivora, Rodentia, etc.). Each class contains many orders, not the reverse.</p><p><strong>D. Kingdom → Family → Class → Order → Phylum → Genus → Species:</strong> This sequence is severely jumbled, placing Family (a lower rank) near the top and Phylum (a higher rank) near the bottom. This violates the fundamental principle that each successive level is more specific and contains fewer organisms.</p><h4>Key Educational Points:</h4><ul><li>Domain (added by Carl Woese in 1990) sits above Kingdom: Bacteria, Archaea, Eukarya</li><li>The species is the basic unit of classification; it is typically defined as a group of organisms that can interbreed and produce fertile offspring</li><li>Additional ranks (subphylum, superfamily, subspecies, etc.) can be inserted between the seven primary levels</li></ul><p class='exp-key'>Bottom Line: \"Dear King Philip Came Over For Good Spaghetti\" - Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species. Each level is nested within the one above, from most inclusive to most specific.</p>"
+  },
+  "bio-269": {
+    "id": "bio-269",
+    "subject": "biology",
+    "topic": "Translation",
+    "question": "An anticodon on a tRNA reads 3'-UAC-5'. What amino acid does this tRNA carry?",
+    "options": [
+      "Tyrosine",
+      "Methionine",
+      "Leucine",
+      "Isoleucine"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Methionine</h4><p>Anticodon 3'-UAC-5' pairs with mRNA codon 5'-AUG-3'. AUG is the universal start codon encoding methionine.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Tyrosine:</strong> Tyrosine is encoded by the codons UAU and UAC, not AUG. If the anticodon were 3'-AUA-5', it would pair with mRNA codon 5'-UAU-3', which codes for tyrosine. The anticodon in this question (3'-UAC-5') pairs with AUG, the universal start codon for methionine.</p>\n<p><strong>C. Leucine:</strong> Leucine is encoded by six different codons (UUA, UUG, CUU, CUC, CUA, CUG), making it one of the most redundantly coded amino acids. None of these codons is AUG. To carry leucine, a tRNA would need an anticodon complementary to one of the leucine codons.</p>\n<p><strong>D. Isoleucine:</strong> Isoleucine is encoded by three codons: AUU, AUC, and AUA. While these codons start with AU (similar to AUG), the third position differs. AUG specifically encodes methionine and serves as the start codon for translation initiation in both prokaryotes (as formyl-methionine) and eukaryotes.</p><h4>Key Educational Points:</h4><ul><li>The central dogma of molecular biology describes information flow: DNA is transcribed to mRNA, which is translated to protein.</li><li>Eukaryotic gene expression is regulated at multiple levels: chromatin remodeling, transcription, post-transcription (splicing), translation, and post-translation.</li><li>Mutations in DNA can be silent, missense, nonsense, or frameshift - each with different impacts on protein structure and function.</li></ul><p class='exp-key'>Bottom Line: AUG is the start codon encoding methionine. Anticodon-codon pairing is antiparallel.</p>"
+  },
+  "bio-334": {
+    "id": "bio-334",
+    "subject": "biology",
+    "topic": "Muscle tissue",
+    "question": "Which type of muscle tissue is striated, multinucleated, and under voluntary control?",
+    "options": [
+      "Cardiac muscle",
+      "Smooth muscle",
+      "Skeletal muscle",
+      "Myoepithelial cells"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Skeletal muscle</h4><p>Skeletal muscle fibers are formed by fusion of myoblasts, creating long multinucleated cells (syncytium) with peripheral nuclei. The regular arrangement of actin and myosin filaments creates visible striations. Skeletal muscle is under voluntary (somatic) nervous control.</p><table class='exp-table'><tr><th>Feature</th><th>Skeletal</th><th>Cardiac</th><th>Smooth</th></tr><tr><td>Striations</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Nuclei</td><td>Multinucleated, peripheral</td><td>1-2, central</td><td>1, central</td></tr><tr><td>Control</td><td>Voluntary</td><td>Involuntary</td><td>Involuntary</td></tr><tr><td>Intercalated discs</td><td>No</td><td>Yes</td><td>No</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Cardiac muscle:</strong> Cardiac muscle is striated (like skeletal muscle) but is involuntary and has unique features. Cardiac cells are typically uninucleate or binucleate with centrally placed nuclei and are connected by intercalated discs containing gap junctions for synchronized contraction. Cardiac muscle has intrinsic rhythmicity (automaticity) and does not require conscious control.</p>\n<p><strong>B. Smooth muscle:</strong> Smooth muscle is non-striated and involuntary. It has a single, centrally located nucleus per spindle-shaped cell. Smooth muscle lacks the regular sarcomeric organization of skeletal and cardiac muscle, instead using dense bodies to anchor actin filaments. It is found in blood vessel walls, the GI tract, urinary bladder, and uterus.</p>\n<p><strong>D. Myoepithelial cells:</strong> Myoepithelial cells are specialized contractile cells found around secretory units and ducts of certain glands (salivary, mammary, sweat, lacrimal). They have properties of both epithelial and smooth muscle cells and contract to squeeze secretions out of glands. They are not a major muscle tissue type and do not have the striated, multinucleated features of skeletal muscle.</p><h4>Key Educational Points:</h4><ul><li>Skeletal muscle is striated, multinucleated, and under voluntary somatic control - all three features together identify it.</li><li>Multinucleation arises because myoblasts fuse into a single long syncytial fibre during development, leaving nuclei at the periphery.</li><li>Striations reflect the regular sarcomere arrangement of actin and myosin, and are shared with cardiac muscle.</li><li>Cardiac muscle is striated but involuntary, usually has one or two central nuclei, and is joined by intercalated discs.</li><li>Smooth muscle is non-striated, mononucleate, and involuntary, forming the walls of vessels and hollow viscera.</li></ul><p class='exp-key'>Bottom Line: Skeletal = striated, voluntary, multinucleated. Cardiac = striated, involuntary, intercalated discs. Smooth = non-striated, involuntary.</p>"
+  },
+  "bio-113": {
+    "id": "bio-113",
+    "subject": "biology",
+    "topic": "Plant Biology",
+    "question": "Double fertilization in angiosperms produces:",
+    "options": [
+      "A haploid embryo and a diploid seed coat",
+      "A diploid embryo and a triploid endosperm",
+      "Two identical diploid embryos",
+      "Two triploid endosperm nuclei"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) A diploid embryo and a triploid endosperm</h4><p>Double fertilization is unique to angiosperms. One sperm cell fuses with the egg cell to form the diploid (2n) zygote, which develops into the embryo. The second sperm cell fuses with the two polar nuclei in the central cell to form the triploid (3n) endosperm, which serves as nutritive tissue for the developing embryo and seedling.</p><h4>Why the other choices are wrong:</h4><p><strong>A. A haploid embryo and a diploid seed coat:</strong> In double fertilization, the embryo is diploid (2n), formed from the fusion of one sperm cell (n) with the egg cell (n)-not haploid. The seed coat develops from the integuments of the ovule, which are maternal (diploid) tissue. This answer incorrectly states the embryo is haploid. Remember: one sperm + egg = diploid embryo; the other sperm + two polar nuclei = triploid endosperm.</p>\n<p><strong>C. Two identical diploid embryos:</strong> Double fertilization does not produce two embryos. It produces one diploid embryo (from sperm + egg) and one triploid endosperm (from sperm + two polar nuclei). The endosperm serves as a nutritive tissue that feeds the developing embryo. In some seeds (like corn), the endosperm persists; in others (like beans), the embryo absorbs the endosperm before seed maturation.</p>\n<p><strong>D. Two triploid endosperm nuclei:</strong> Double fertilization produces one triploid endosperm nucleus, not two. The triploid endosperm (3n) forms when one sperm nucleus fuses with the two polar nuclei (each n) of the central cell. This 3n endosperm tissue provides nutrition for the developing embryo. The second product of double fertilization is the diploid embryo, not another endosperm.</p><h4>Key Educational Points:</h4><ul><li>Plants alternate between haploid (gametophyte) and diploid (sporophyte) generations; in flowering plants, the sporophyte is dominant.</li><li>Plant transport occurs through xylem (water and minerals, driven by transpiration pull) and phloem (sugars, driven by pressure flow from source to sink).</li><li>Plant hormones (auxins, gibberellins, cytokinins, ethylene, abscisic acid) coordinate growth, development, and responses to environmental stimuli.</li></ul><p class='exp-key'>Bottom Line: Double fertilization is a defining feature of angiosperms - it produces both the embryo (2n) and endosperm (3n) simultaneously, ensuring energy investment in seed nutrient reserves only when fertilization is successful.</p>"
+  },
+  "bio-254": {
+    "id": "bio-254",
+    "subject": "biology",
+    "topic": "Prokaryotic vs eukaryotic cells",
+    "question": "A microbiologist isolates an organism that has a cell wall containing peptidoglycan, a single circular chromosome, and 70S ribosomes. This organism is MOST likely classified as:",
+    "options": [
+      "Archaea",
+      "Bacteria",
+      "Fungi",
+      "Protista"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Bacteria</h4><p>Peptidoglycan in the cell wall is a defining characteristic of Bacteria. While both Bacteria and Archaea are prokaryotes with circular chromosomes and 70S ribosomes, only Bacteria have peptidoglycan (murein) in their cell walls. Archaea have pseudopeptidoglycan or other polymers. Fungi and Protista are eukaryotes with 80S ribosomes.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Archaea:</strong> Archaea have pseudopeptidoglycan or other polymers.</p>\n<p><strong>C. Fungi:</strong> Fungi are eukaryotes with 80S ribosomes, membrane-bound organelles, and cell walls made of chitin (not peptidoglycan). They include yeasts, molds, and mushrooms. Fungi are heterotrophs that obtain nutrition by secreting enzymes and absorbing digested material externally.</p>\n<p><strong>D. Protista:</strong> Protists are a diverse group of eukaryotes with 80S ribosomes and membrane-bound organelles. They include protozoa, algae, and slime molds. Unlike bacteria, protists have a true nucleus and do not have peptidoglycan cell walls. Many protists are unicellular, but some form colonies or multicellular structures.</p><h4>Key Educational Points:</h4><ul><li>Peptidoglycan is the decisive clue: it is found in Bacteria and not in Archaea or eukaryotes.</li><li>Circular chromosomes and 70S ribosomes only establish that the organism is prokaryotic - they do not separate Bacteria from Archaea.</li><li>Archaea have pseudopeptidoglycan or S-layer proteins instead.</li><li>Fungi and protists are eukaryotes with 80S ribosomes; fungal walls contain chitin, not peptidoglycan.</li><li>Because only Bacteria make peptidoglycan, penicillin and lysozyme act on Bacteria but not on Archaea.</li></ul><p class='exp-key'>Bottom Line: Peptidoglycan is unique to bacterial cell walls and is the target of antibiotics like penicillin and lysozyme.</p>"
+  },
+  "bio-263": {
+    "id": "bio-263",
+    "subject": "biology",
+    "topic": "Fermentation and ATP",
+    "question": "In human skeletal muscle during intense anaerobic exercise, pyruvate is converted to lactate. What is the primary purpose of this reaction?",
+    "options": [
+      "To generate additional ATP molecules",
+      "To regenerate NAD⁺ so that glycolysis can continue",
+      "To produce CO₂ for exhalation",
+      "To activate the Krebs cycle"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: To regenerate NAD⁺ so that glycolysis can continue</h4><p>During lactic acid fermentation, lactate dehydrogenase reduces pyruvate to lactate while oxidizing NADH back to NAD⁺. This regeneration of NAD⁺ is essential because glycolysis requires NAD⁺ at the glyceraldehyde-3-phosphate dehydrogenase step. Without NAD⁺ recycling, glycolysis would halt and no ATP could be produced anaerobically.</p><h4>Why the other choices are wrong:</h4><p><strong>A. To generate additional ATP molecules:</strong> The conversion of pyruvate to lactate does not generate any additional ATP. The reaction, catalyzed by lactate dehydrogenase, simply transfers electrons from NADH to pyruvate. ATP production in anaerobic conditions comes exclusively from glycolysis (substrate-level phosphorylation). Fermentation's role is solely to recycle NAD+ so glycolysis can continue.</p>\n<p><strong>C. To produce CO₂ for exhalation:</strong> CO2 is not produced during lactic acid fermentation. CO2 production occurs in alcoholic fermentation (in yeast, where pyruvate is decarboxylated to acetaldehyde then reduced to ethanol) and in the citric acid cycle (during aerobic respiration). In human skeletal muscle, the conversion of pyruvate to lactate produces no gas.</p>\n<p><strong>D. To activate the Krebs cycle:</strong> The Krebs (citric acid) cycle requires oxygen indirectly (because the ETC must be running to regenerate NAD+ and FAD). During intense anaerobic exercise, the Krebs cycle slows or stops because the mitochondrial NAD+ pool becomes depleted. Lactate fermentation is actually an alternative to the Krebs cycle, not an activator of it.</p><h4>Key Educational Points:</h4><ul><li>The sole purpose of lactate fermentation is to regenerate NAD⁺ so glycolysis can continue.</li><li>Lactate dehydrogenase reduces pyruvate to lactate while oxidising NADH back to NAD⁺.</li><li>NAD⁺ is required at the glyceraldehyde-3-phosphate dehydrogenase step; without recycling, glycolysis halts within seconds.</li><li>Fermentation yields no additional ATP itself - all anaerobic ATP comes from glycolysis.</li><li>Lactate is not a waste product: it is exported and reconverted to glucose in the liver via the Cori cycle.</li></ul><p class='exp-key'>Bottom Line: Fermentation does not produce additional ATP - its sole purpose is to regenerate NAD⁺ to keep glycolysis running under anaerobic conditions.</p>"
+  },
+  "bio-529": {
+    "id": "bio-529",
+    "subject": "biology",
+    "topic": "Internal Environment",
+    "question": "A lizard basks on a rock in the morning sun to raise its body temperature before becoming active. This organism is BEST classified as:",
+    "options": [
+      "An endotherm that generates heat metabolically",
+      "A homeotherm with a constant body temperature",
+      "An obligate anaerobe that avoids oxygen",
+      "An ectotherm that relies primarily on external heat sources"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: An ectotherm that relies primarily on external heat sources</h4><p>Ectotherms (including most reptiles, amphibians, fish, and invertebrates) depend primarily on external environmental heat sources to regulate their body temperature. Behavioral thermoregulation, such as basking in the sun, is a key strategy. Ectotherms have lower metabolic rates and cannot generate sufficient internal heat to maintain a constant body temperature.</p><h4>Why the other choices are wrong:</h4><p><strong>A. An endotherm that generates heat metabolically:</strong> Endotherms (mammals and birds) generate body heat primarily through their own metabolism. They maintain relatively constant internal temperatures regardless of external conditions, which requires higher caloric intake.</p><p><strong>B. A homeotherm with a constant body temperature:</strong> Homeotherms maintain a stable internal temperature. While some ectotherms can achieve relatively stable temperatures through behavior, lizards are poikilotherms whose body temperature fluctuates with the environment.</p><p><strong>C. An obligate anaerobe that avoids oxygen:</strong> This describes certain bacteria that cannot survive in the presence of oxygen and is entirely unrelated to thermoregulation.</p><h4>Key Educational Points:</h4><ul><li>Ectotherms use behavioral strategies (basking, burrowing) for thermoregulation</li><li>Endothermy is metabolically expensive but allows activity in variable conditions</li></ul><p class='exp-key'>Bottom Line: Ectotherms rely on external heat sources for thermoregulation, while endotherms generate heat internally through metabolism.</p>"
+  },
+  "bio-243": {
+    "id": "bio-243",
+    "subject": "biology",
+    "topic": "Integumentary/Skin + Nutrition/Vitamins",
+    "question": "Vitamin D synthesis in the skin is initiated by exposure to ultraviolet B (UVB) radiation. Which form of vitamin D does the skin produce?",
+    "options": [
+      "Calcitriol (1,25-dihydroxyvitamin D)",
+      "Cholecalciferol (vitamin D3)",
+      "Calcidiol (25-hydroxyvitamin D)",
+      "Ergocalciferol (vitamin D2)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) Cholecalciferol (vitamin D3)</h4><p>UVB radiation converts 7-dehydrocholesterol in the skin to cholecalciferol (vitamin D3). This is then transported to the liver, where it is hydroxylated to 25-hydroxyvitamin D (calcidiol), the main circulating form used to assess vitamin D status. Finally, calcidiol is converted to the active form, 1,25-dihydroxyvitamin D (calcitriol), in the kidneys by 1-alpha-hydroxylase under PTH stimulation. Ergocalciferol (D2) is the plant-derived form obtained from diet.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Calcitriol (1,25-dihydroxyvitamin D):</strong> Calcitriol (1,25-dihydroxyvitamin D) is the final, biologically active form of vitamin D, but it is NOT produced directly in the skin. It is synthesized in the kidneys by the enzyme 1-alpha-hydroxylase, which adds the second hydroxyl group to calcidiol. Calcitriol acts as a hormone that promotes intestinal calcium absorption and bone mineralization.</p>\n<p><strong>C. Calcidiol (25-hydroxyvitamin D):</strong> Calcidiol (25-hydroxyvitamin D) is the main circulating form of vitamin D used to assess a patient's vitamin D status, but it is produced in the liver, not the skin. Hepatic 25-hydroxylase converts cholecalciferol (from skin) into calcidiol. This is the intermediate step between skin production and kidney activation.</p>\n<p><strong>D. Ergocalciferol (vitamin D2):</strong> Ergocalciferol (vitamin D2) is the plant-derived form of vitamin D, obtained from dietary sources such as mushrooms and fortified foods. It is NOT produced in human skin. The skin exclusively produces cholecalciferol (D3) from 7-dehydrocholesterol upon UVB exposure. Both D2 and D3 undergo the same liver and kidney activation steps.</p><h4>Key Educational Points:</h4><ul><li>UVB converts 7-dehydrocholesterol in skin to cholecalciferol, vitamin D3.</li><li>Activation then requires two hydroxylations: liver to 25-hydroxyvitamin D (calcidiol), kidney to 1,25-dihydroxyvitamin D (calcitriol).</li><li>Calcidiol is the storage form measured to assess vitamin D status; calcitriol is the active hormone.</li><li>The renal step is rate-limiting and PTH-stimulated, which is how calcium demand controls activation.</li><li>Ergocalciferol (D2) is the plant-derived dietary form; because the liver and kidney steps are required, renal disease impairs activation regardless of sun exposure.</li></ul><p class='exp-key'>Bottom Line: Skin produces vitamin D3 (cholecalciferol) → liver makes 25-OH-D (calcidiol) → kidney makes 1,25-(OH)₂-D (calcitriol, active form).</p>"
+  },
+  "bio-314": {
+    "id": "bio-314",
+    "subject": "biology",
+    "topic": "Antibiotics",
+    "question": "Penicillin exerts its antibacterial effect by:",
+    "options": [
+      "Inhibiting bacterial ribosome function (30S subunit)",
+      "Blocking peptidoglycan cross-linking during cell wall synthesis",
+      "Disrupting the bacterial cell membrane",
+      "Inhibiting DNA gyrase (topoisomerase II)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Blocking peptidoglycan cross-linking during cell wall synthesis</h4><p>Penicillin and other beta-lactam antibiotics inhibit transpeptidase (penicillin-binding proteins, PBPs), the enzyme responsible for cross-linking peptidoglycan chains in the bacterial cell wall. Without proper cross-linking, the cell wall weakens and the bacterium lyses due to osmotic pressure. This is why penicillin is bactericidal. Penicillin G is active against many susceptible Gram-positive organisms, whose peptidoglycan and penicillin-binding proteins are directly accessible from outside the cell. In Gram-negative bacteria an additional outer membrane lies over the peptidoglycan and restricts the drug from reaching those targets. Wall architecture is not the whole story, though: beta-lactamase production, how tightly a drug binds particular PBPs, and the chemistry of the individual beta-lactam all shape its spectrum, which is why later agents such as aminopenicillins, extended-spectrum cephalosporins and carbapenems treat many Gram-negative infections.</p><table class='exp-table'><tr><th>Antibiotic</th><th>Target</th></tr><tr><td>Penicillin</td><td>Cell wall (transpeptidase)</td></tr><tr><td>Tetracycline</td><td>30S ribosomal subunit</td></tr><tr><td>Chloramphenicol</td><td>50S ribosomal subunit</td></tr><tr><td>Fluoroquinolones</td><td>DNA gyrase / topoisomerase IV</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Inhibiting bacterial ribosome function (30S subunit):</strong> Inhibition of the bacterial 30S ribosomal subunit is the mechanism of aminoglycoside antibiotics (e.g., gentamicin, streptomycin) and tetracyclines. These drugs block protein synthesis by interfering with mRNA reading or tRNA binding. Penicillin does not affect ribosomes; it targets cell wall synthesis, which is why it is ineffective against Mycoplasma (bacteria that lack cell walls).</p>\n<p><strong>C. Disrupting the bacterial cell membrane:</strong> Disruption of the bacterial cell membrane is the mechanism of polymyxin antibiotics (e.g., colistin) and the antifungal amphotericin B. These drugs insert into and destabilize the membrane lipid bilayer. Penicillin specifically inhibits transpeptidase enzymes (penicillin-binding proteins) that cross-link peptidoglycan chains during cell wall construction.</p>\n<p><strong>D. Inhibiting DNA gyrase (topoisomerase II):</strong> Inhibition of DNA gyrase (topoisomerase II) is the mechanism of fluoroquinolone antibiotics (e.g., ciprofloxacin, levofloxacin). DNA gyrase introduces negative supercoils in bacterial DNA, essential for replication and transcription. Blocking it kills bacteria by disrupting DNA processes. Penicillin has no effect on DNA topology.</p><h4>Key Educational Points:</h4><ul><li>Beta-lactams (penicillins, cephalosporins, carbapenems) inhibit transpeptidase / penicillin-binding proteins, blocking peptidoglycan cross-linking.</li><li>They are bactericidal because the weakened wall cannot resist osmotic pressure, so the cell lyses.</li><li>In Gram-positive bacteria the peptidoglycan and its PBPs sit at the cell surface and are readily accessible, which is part of why traditional penicillins work well against susceptible Gram-positive organisms. In Gram-negatives an outer membrane covers them, and the drug must cross it through porin channels.</li><li>Accessibility is not the only factor deciding spectrum: beta-lactamase production by the organism, how tightly the drug binds particular PBPs, and the chemistry of the individual beta-lactam all matter. This is why aminopenicillins, extended-spectrum cephalosporins and carbapenems are useful against many Gram-negatives.</li><li>Beta-lactams act only on actively growing cells, since the target is wall synthesis rather than an existing wall.</li><li>Learn antibiotic targets by class: cell wall (beta-lactams, vancomycin), 30S (tetracyclines, aminoglycosides), 50S (macrolides, chloramphenicol), DNA gyrase (fluoroquinolones), folate synthesis (sulfonamides).</li></ul><p class='exp-key'>Bottom Line: Beta-lactams inhibit cell wall synthesis. Bacterial resistance via beta-lactamase enzymes that cleave the beta-lactam ring.</p>"
+  },
+  "bio-212": {
+    "id": "bio-212",
+    "subject": "biology",
+    "topic": "Excretory System (Kidney/Nephron)",
+    "question": "Which of the following is the correct order of blood flow through the kidney?",
+    "options": [
+      "Renal artery → interlobar artery → arcuate artery → interlobular artery → afferent arteriole",
+      "Renal artery → arcuate artery → interlobar artery → interlobular artery → afferent arteriole",
+      "Renal artery → interlobular artery → interlobar artery → arcuate artery → afferent arteriole",
+      "Renal artery → afferent arteriole → interlobar artery → arcuate artery → interlobular artery"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) Renal artery → interlobar artery → arcuate artery → interlobular artery → afferent arteriole</h4><p>Blood enters the kidney via the renal artery, which branches into segmental arteries, then interlobar arteries (running between the renal pyramids), arcuate arteries (arching along the corticomedullary junction), interlobular arteries (ascending into the cortex), and finally the afferent arterioles that supply the glomeruli. This progressive branching ensures adequate blood supply to approximately 1 million nephrons per kidney.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Renal artery → arcuate artery → interlobar artery → interlobular artery → afferent arteriole:</strong> This sequence incorrectly places the arcuate artery before the interlobar artery. Anatomically, the renal artery first divides into interlobar arteries that travel between the renal pyramids in the renal columns. Only after reaching the corticomedullary junction do they become arcuate arteries that arch along this boundary. Getting the order correct helps when understanding the zones affected by vascular disease.</p>\n<p><strong>C. Renal artery → interlobular artery → interlobar artery → arcuate artery → afferent arteriole:</strong> This sequence incorrectly begins with interlobular arteries, which are actually the smallest named arteries in the kidney's branching pattern (before the afferent arterioles). The correct progression moves from largest to smallest: renal artery to interlobar to arcuate to interlobular to afferent arteriole.</p>\n<p><strong>D. Renal artery → afferent arteriole → interlobar artery → arcuate artery → interlobular artery:</strong> This sequence places the afferent arteriole immediately after the renal artery, skipping all intermediate branches. The afferent arteriole is the final arterial branch before the glomerular capillary bed. Several levels of branching (interlobar, arcuate, interlobular) occur between the renal artery and the afferent arteriole.</p><h4>Key Educational Points:</h4><ul><li>The nephron is the functional unit of the kidney - it performs filtration (glomerulus), selective reabsorption (tubules), and secretion to produce urine.</li><li>The proximal tubule reabsorbs the bulk of filtered solutes; the loop of Henle creates the concentration gradient; the collecting duct determines final urine concentration.</li><li>ADH (from posterior pituitary) increases water reabsorption in the collecting duct; aldosterone (from adrenal cortex) increases Na+ reabsorption in the distal tubule.</li></ul><p class='exp-key'>Bottom Line: Renal blood flow follows: renal artery → interlobar → arcuate → interlobular → afferent arteriole → glomerulus.</p>"
+  },
+  "bio-611": {
+    "id": "bio-611",
+    "subject": "biology",
+    "topic": "Stem Cells",
+    "question": "Which of the following correctly describes the Yamanaka factors used to generate induced pluripotent stem cells (iPSCs)?",
+    "options": [
+      "Oct3/4, Sox2, Klf4, and c-Myc",
+      "BRCA1, BRCA2, p53, and Rb",
+      "Wnt, Hedgehog, Notch, and BMP",
+      "MyoD, Pax7, Myogenin, and Mrf4"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Oct3/4, Sox2, Klf4, and c-Myc</h4><p>The four <strong>Yamanaka factors</strong> are transcription factors that, when introduced into differentiated somatic cells, can reprogram them into induced pluripotent stem cells (iPSCs):</p><table class='exp-table'><tr><th>Factor</th><th>Function</th></tr><tr><td><strong>Oct3/4</strong> (Pou5f1)</td><td>Master regulator of pluripotency; essential for maintaining the undifferentiated state of ESCs</td></tr><tr><td><strong>Sox2</strong></td><td>Works with Oct3/4 to regulate genes required for self-renewal and pluripotency</td></tr><tr><td><strong>Klf4</strong></td><td>Krüppel-like factor; involved in cell proliferation and differentiation control</td></tr><tr><td><strong>c-Myc</strong></td><td>Proto-oncogene; enhances reprogramming efficiency by promoting cell proliferation and chromatin remodeling</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>B. BRCA1, BRCA2, p53, and Rb:</strong> These are all <strong>tumor suppressor genes</strong>, not reprogramming factors. BRCA1 and BRCA2 are involved in DNA double-strand break repair (mutations predispose to breast and ovarian cancer). p53 is the \"guardian of the genome\" that triggers apoptosis in damaged cells. Rb (retinoblastoma protein) controls the G1/S checkpoint. These genes prevent cancer, not induce pluripotency.</p><p><strong>C. Wnt, Hedgehog, Notch, and BMP:</strong> These are major <strong>developmental signaling pathways</strong> (not transcription factors) that regulate embryonic patterning, cell fate, and tissue organization. While they play roles in stem cell biology and differentiation, they are not the specific transcription factors used by Yamanaka to reprogram cells to pluripotency.</p><p><strong>D. MyoD, Pax7, Myogenin, and Mrf4:</strong> These are <strong>myogenic regulatory factors (MRFs)</strong> - transcription factors that drive differentiation of stem cells into <strong>skeletal muscle cells</strong>. MyoD was actually the first master regulatory transcription factor discovered (it can convert fibroblasts into muscle cells). These factors drive differentiation toward a specific lineage, the opposite of the Yamanaka factors, which drive de-differentiation back to pluripotency.</p><h4>Key Educational Points:</h4><ul><li>Oct3/4 and Sox2 are the most critical - they are sometimes sufficient for reprogramming when combined with small molecules</li><li>c-Myc increases efficiency but also increases tumor risk; safer protocols may omit it</li><li>Alternative factor combinations (e.g., Thomson factors: Oct4, Sox2, Nanog, Lin28) can also generate iPSCs</li></ul><p class='exp-key'>Bottom Line: Yamanaka factors = Oct3/4, Sox2, Klf4, c-Myc (OSKM). These four transcription factors reprogram differentiated cells back to pluripotency. Shinya Yamanaka received the 2012 Nobel Prize for this discovery.</p>"
+  },
+  "bio-119": {
+    "id": "bio-119",
+    "subject": "biology",
+    "topic": "Developmental Biology",
+    "question": "The process by which cells become specialized in structure and function during embryonic development is called:",
+    "options": [
+      "Determination",
+      "Cleavage",
+      "Induction",
+      "Differentiation"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) Differentiation</h4><p>Differentiation is the process by which unspecialized cells acquire specialized structures and functions through selective gene expression. All cells in an organism contain the same genome, but differentiation involves the activation and silencing of specific gene sets, giving each cell type its characteristic morphology and function. Determination refers to the earlier commitment of a cell to a particular fate, while differentiation is the actual acquisition of specialized features.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Determination:</strong> Determination is the commitment of a cell to a particular developmental fate, occurring before visible changes appear. Once a cell is determined, it is destined to become a specific cell type even if transplanted to a different location. Determination precedes differentiation-think of it as the invisible “decision” step, while differentiation is the visible “execution” step where cells actually acquire specialized structures and functions.</p>\n<p><strong>B. Cleavage:</strong> Cleavage refers to the rapid series of mitotic cell divisions that occur immediately after fertilization, dividing the large zygote into many smaller cells (blastomeres) without overall growth. During cleavage, the total embryo size stays roughly the same while cell number increases dramatically. Cleavage increases cell number but does not involve cellular specialization-that comes later during differentiation.</p>\n<p><strong>C. Induction:</strong> Induction is the process by which one group of cells (the inducer) signals neighboring cells (the responder) to adopt a specific developmental fate. A classic example is the Spemann organizer in amphibians, where dorsal mesoderm induces the overlying ectoderm to form neural tissue. Induction is a mechanism that triggers differentiation, but it is not differentiation itself.</p><h4>Key Educational Points:</h4><ul><li>Human embryonic development proceeds through cleavage, gastrulation (three germ layer formation), neurulation, and organogenesis.</li><li>Gastrulation establishes the three primary germ layers (ectoderm, mesoderm, endoderm) that give rise to all tissues and organs.</li><li>Spermatogenesis produces four functional sperm from each primary spermatocyte; oogenesis produces one functional egg plus polar bodies from each primary oocyte.</li></ul><p class='exp-key'>Bottom Line: Differentiation involves changes in gene expression, not changes in DNA sequence - a neuron and a muscle cell contain identical genomes but express different gene sets.</p>"
+  },
+  "bio-310": {
+    "id": "bio-310",
+    "subject": "biology",
+    "topic": "Bacterial genetics",
+    "question": "During bacterial conjugation, DNA is transferred from donor to recipient via a sex pilus. Which genetic element encodes the sex pilus?",
+    "options": [
+      "Bacterial chromosome only",
+      "F (fertility) plasmid",
+      "Transposon",
+      "Bacteriophage genome"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: F (fertility) plasmid</h4><p>The F plasmid (fertility factor) encodes the genes needed for sex pilus formation and DNA transfer. F⁺ cells (donors) have the F plasmid and form pili to connect with F⁻ cells (recipients). During conjugation, a single strand of the F plasmid is transferred. Hfr cells have the F plasmid integrated into the chromosome, allowing transfer of chromosomal genes.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Bacterial chromosome only:</strong> The bacterial chromosome alone does not encode the sex pilus or the transfer machinery needed for conjugation. Hfr (High frequency recombination) strains do have the F plasmid integrated into their chromosome, allowing chromosomal DNA transfer during conjugation. However, the genes for pilus formation and conjugation originally come from the F plasmid.</p>\n<p><strong>C. Transposon:</strong> A transposon (\"jumping gene\") is a mobile genetic element that can move from one location to another within or between DNA molecules. While transposons can carry antibiotic resistance genes and other traits, they do not encode the sex pilus. Transposons rely on transposase enzyme to cut and paste (or copy) themselves into new genomic locations.</p>\n<p><strong>D. Bacteriophage genome:</strong> The bacteriophage genome encodes proteins for viral replication and assembly, not for bacterial conjugation. Bacteriophages can transfer bacterial DNA through transduction, which is a separate mechanism from conjugation. In transduction, bacterial DNA is accidentally packaged in phage particles, not transferred via a pilus.</p><h4>Key Educational Points:</h4><ul><li>The F (fertility) plasmid carries the genes for building the sex pilus and transferring DNA.</li><li>An F⁺ donor forms a pilus to contact an F⁻ recipient, and a single strand of the plasmid is transferred and then copied.</li><li>The recipient thereby becomes F⁺, so the ability to conjugate spreads through the population.</li><li>In an Hfr cell the F plasmid has integrated into the chromosome, so conjugation transfers chromosomal genes as well.</li><li>Conjugation requires direct cell-to-cell contact, which is what distinguishes it from transformation and transduction.</li></ul><p class='exp-key'>Bottom Line: F⁺ (has F plasmid) → transfers F plasmid to F⁻. Hfr (F integrated) → transfers chromosomal genes.</p>"
+  },
+  "bio-405": {
+    "id": "bio-405",
+    "subject": "biology",
+    "topic": "Parasitology",
+    "question": "Which Plasmodium species is responsible for the most severe form of malaria and can cause cerebral malaria?",
+    "options": [
+      "Plasmodium vivax",
+      "Plasmodium ovale",
+      "Plasmodium falciparum",
+      "Plasmodium malariae"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Plasmodium falciparum</h4><p>Plasmodium falciparum causes the most severe and lethal form of malaria. It can infect red blood cells of all ages (unlike P. vivax which prefers reticulocytes), leading to high parasitemia. Infected RBCs express PfEMP1 surface proteins that adhere to endothelial cells in capillaries (sequestration), causing microvascular obstruction. In the brain, this leads to cerebral malaria. P. falciparum also causes severe anemia, acute respiratory distress syndrome, and organ failure.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Plasmodium vivax:</strong> Plasmodium vivax causes benign tertian malaria with 48-hour fever cycles. While it can cause significant illness, it rarely causes the severe complications seen with P. falciparum. P. vivax has a dormant liver stage (hypnozoite) that can cause relapses months or years after initial infection, requiring treatment with primaquine to eliminate this stage.</p>\n<p><strong>B. Plasmodium ovale:</strong> Plasmodium ovale also causes benign tertian malaria and, like P. vivax, can form hypnozoites in the liver leading to relapses. It is the least common of the four major human Plasmodium species and is found mainly in West Africa. It causes milder illness than P. falciparum.</p>\n<p><strong>D. Plasmodium malariae:</strong> Plasmodium malariae causes quartan malaria with 72-hour fever cycles. It produces the mildest form of malaria but can persist in the blood at very low levels for decades if untreated. It does not cause cerebral malaria. P. malariae is associated with nephrotic syndrome in chronic infections.</p><h4>Key Educational Points:</h4><ul><li>Plasmodium falciparum causes the most severe malaria, including cerebral malaria.</li><li>It infects red cells of all ages, so parasitaemia can rise far higher than with other species.</li><li>Infected cells express PfEMP1 and adhere to capillary endothelium - sequestration - obstructing microcirculation.</li><li>Cerebral sequestration produces coma; other severe manifestations include profound anaemia, ARDS, and renal failure.</li><li>P. vivax and P. ovale form dormant liver hypnozoites causing relapse, which falciparum does not.</li></ul>"
+  },
+  "bio-319": {
+    "id": "bio-319",
+    "subject": "biology",
+    "topic": "Origin of life",
+    "question": "The Miller-Urey experiment (1953) demonstrated that:",
+    "options": [
+      "Living cells can arise spontaneously from non-living matter",
+      "Organic molecules such as amino acids can be synthesized from inorganic gases under simulated early Earth conditions",
+      "DNA was the first self-replicating molecule",
+      "Oxygen was abundant in the early Earth atmosphere"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Organic molecules such as amino acids can be synthesized from inorganic gases under simulated early Earth conditions</h4><p>Miller and Urey simulated the hypothesized early Earth atmosphere (CH₄, NH₃, H₂, H₂O) with electrical sparks (simulating lightning). They produced several amino acids and other organic molecules, supporting the hypothesis that abiotic synthesis of organic building blocks was possible on the early, reducing (oxygen-free) Earth.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Living cells can arise spontaneously from non-living matter:</strong> The Miller-Urey experiment did NOT demonstrate spontaneous generation of living cells. Spontaneous generation was disproven by Pasteur in 1859. Miller and Urey showed only that simple organic molecules (amino acids, sugars, lipids) could form from inorganic gases under conditions simulating the early Earth atmosphere. The origin of actual living cells remains a separate, unsolved question.</p>\n<p><strong>C. DNA was the first self-replicating molecule:</strong> The Miller-Urey experiment produced amino acids and other organic molecules, not DNA or self-replicating molecules. The RNA World hypothesis (proposed later) suggests that RNA, not DNA, was likely the first self-replicating molecule because RNA can both store genetic information and catalyze reactions (as a ribozyme). The experiment predates this hypothesis.</p>\n<p><strong>D. Oxygen was abundant in the early Earth atmosphere:</strong> The Miller-Urey experiment actually assumed the early Earth atmosphere was reducing (lacking free O2), containing gases like methane (CH4), ammonia (NH3), hydrogen (H2), and water vapor. Free oxygen accumulated much later, primarily through oxygenic photosynthesis by cyanobacteria (~2.4 billion years ago, the Great Oxidation Event).</p><h4>Key Educational Points:</h4><ul><li>Miller and Urey showed that amino acids and other organic molecules form abiotically from simple inorganic gases.</li><li>They sparked a mixture of CH₄, NH₃, H₂, and H₂O vapour to simulate lightning on the early Earth.</li><li>The experiment supports abiotic synthesis of building blocks - it did not create life or a self-replicating system.</li><li>The simulated atmosphere was reducing, with no free O₂; an oxidising atmosphere would have destroyed the products.</li><li>Later estimates suggest the early atmosphere was less reducing than assumed, but comparable syntheses occur at hydrothermal vents.</li></ul><p class='exp-key'>Bottom Line: Miller-Urey showed abiotic synthesis of amino acids is possible. The early atmosphere was reducing (no free O₂).</p>"
+  },
+  "bio-95": {
+    "id": "bio-95",
+    "subject": "biology",
+    "topic": "Hardy-Weinberg",
+    "question": "According to the Hardy-Weinberg principle, which condition is NOT required for allele frequencies to remain constant in a population?",
+    "options": [
+      "No natural selection",
+      "Random mating",
+      "Sexual reproduction",
+      "Large population size"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) Sexual reproduction</h4><p>The Hardy-Weinberg equilibrium requires five conditions: (1) no mutation, (2) no natural selection, (3) large population size (no genetic drift), (4) no migration (gene flow), and (5) random mating. Sexual reproduction itself is assumed (as it involves allele recombination) but is not listed as a separate condition for maintaining equilibrium. The principle describes the expected genotype frequencies (p² + 2pq + q² = 1) in an idealized population.</p><h4>Why the other choices are wrong:</h4>\n<p><strong>A. No natural selection:</strong> <em>No natural selection</em> is a different evolutionary concept. The correct answer is <em>Sexual reproduction</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>B. Random mating:</strong> <em>Random mating</em> is a different evolutionary concept. The correct answer is <em>Sexual reproduction</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p>\n<p><strong>D. Large population size:</strong> <em>Large population size</em> is a different evolutionary concept. The correct answer is <em>Sexual reproduction</em>, which matches the specific mechanism or principle described in the question. Understanding the distinction between these evolutionary concepts is important for exam success.</p><h4>Key Educational Points:</h4><ul><li>Natural selection acts on phenotypic variation within populations - individuals with traits better suited to their environment have higher reproductive success.</li><li>Evidence for evolution comes from multiple independent sources: fossil record, comparative anatomy (homologous structures), molecular biology (DNA/protein comparisons), and biogeography.</li><li>Speciation can occur through geographic isolation (allopatric) or within the same area through ecological or behavioral differences (sympatric).</li></ul><p class='exp-key'>Bottom Line: Hardy-Weinberg equilibrium serves as a null model for population genetics - any deviation from expected frequencies indicates that one or more evolutionary forces are acting.</p>"
+  },
+  "bio-173": {
+    "id": "bio-173",
+    "subject": "biology",
+    "topic": "Nervous System (CNS + PNS + Autonomic)",
+    "question": "Which neurotransmitter is released at the neuromuscular junction to stimulate skeletal muscle contraction?",
+    "options": [
+      "Acetylcholine",
+      "Norepinephrine",
+      "Dopamine",
+      "Serotonin"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) Acetylcholine</h4><p>Acetylcholine (ACh) is released from motor neuron terminals at the neuromuscular junction. It binds to nicotinic receptors on the motor end plate of the skeletal muscle fiber, causing sodium influx and depolarization. This generates an end-plate potential that triggers an action potential in the muscle fiber, leading to contraction. ACh is rapidly broken down by acetylcholinesterase in the synaptic cleft to allow precise control of muscle activity.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Norepinephrine:</strong> Norepinephrine is the primary neurotransmitter of the postganglionic sympathetic nervous system. It acts on adrenergic receptors (alpha and beta) in target organs to mediate 'fight or flight' responses such as increased heart rate, vasoconstriction, and bronchodilation. It is not used at the neuromuscular junction for skeletal muscle.</p>\n<p><strong>C. Dopamine:</strong> Dopamine is a catecholamine neurotransmitter concentrated in specific brain pathways. It is crucial for motor control (nigrostriatal pathway), reward and motivation (mesolimbic pathway), and executive function (mesocortical pathway). Its deficiency in the basal ganglia causes the motor symptoms of Parkinson disease.</p>\n<p><strong>D. Serotonin:</strong> Serotonin (5-hydroxytryptamine, 5-HT) is a monoamine neurotransmitter synthesized from tryptophan, primarily in the raphe nuclei of the brainstem. It modulates mood, appetite, sleep, and pain perception. About 90% of the body's serotonin is actually found in the GI tract, where it regulates intestinal motility.</p><h4>Key Educational Points:</h4><ul><li>The nervous system is divided into the CNS (brain and spinal cord) and PNS (cranial and spinal nerves); the PNS further divides into somatic (voluntary) and autonomic (involuntary) divisions.</li><li>Action potentials propagate along neurons via sequential depolarization; myelination increases conduction speed through saltatory conduction at nodes of Ranvier.</li><li>Neurotransmitters are released at synapses and bind to receptors on postsynaptic cells - excitatory (e.g., glutamate, acetylcholine) or inhibitory (e.g., GABA, glycine).</li></ul><p class='exp-key'>Bottom Line: Acetylcholine acting on nicotinic receptors at the neuromuscular junction is the sole neurotransmitter for voluntary skeletal muscle activation.</p>"
+  },
+  "bio-276": {
+    "id": "bio-276",
+    "subject": "biology",
+    "topic": "RNA types",
+    "question": "Which type of RNA has a cloverleaf secondary structure and carries amino acids to the ribosome during translation?",
+    "options": [
+      "mRNA",
+      "rRNA",
+      "tRNA",
+      "snRNA"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: tRNA</h4><p>Transfer RNA has a cloverleaf 2D structure (L-shaped in 3D) with an acceptor stem (3'-CCA for amino acid attachment), anticodon loop, D loop, and TψC loop. Aminoacyl-tRNA synthetases charge each tRNA with its correct amino acid.</p><h4>Why the other choices are wrong:</h4><p><strong>A. mRNA:</strong> mRNA (messenger RNA) is a linear, single-stranded molecule that carries the genetic code from DNA to the ribosome. It does not have a cloverleaf structure or carry amino acids. mRNA contains codons (three-nucleotide sequences) that are read by the ribosome, and it is the template for protein synthesis, not the amino acid delivery vehicle.</p>\n<p><strong>B. rRNA:</strong> rRNA (ribosomal RNA) is the structural and catalytic component of ribosomes. It makes up about 60% of ribosomal mass and includes the peptidyl transferase activity that forms peptide bonds (making it a ribozyme). While rRNA has complex secondary and tertiary structures, it does not have a cloverleaf shape and does not carry amino acids to the ribosome.</p>\n<p><strong>D. snRNA:</strong> snRNA (small nuclear RNA) is a component of the spliceosome and is involved in pre-mRNA splicing in the nucleus. The major snRNAs (U1, U2, U4, U5, U6) recognize splice sites and catalyze intron removal. snRNA does not carry amino acids or participate directly in translation.</p><h4>Key Educational Points:</h4><ul><li>tRNA has a cloverleaf secondary structure that folds into an L shape in three dimensions.</li><li>Its parts are the acceptor stem ending in 3'-CCA, the anticodon loop, the D loop, and the TψC loop.</li><li>The amino acid attaches to the CCA end while the anticodon reads the mRNA codon - the two ends do different jobs.</li><li>Aminoacyl-tRNA synthetases charge each tRNA with its correct amino acid, and are the real enforcers of the genetic code.</li><li>tRNA is heavily modified after transcription, which is where the unusual base pseudouridine comes from.</li></ul><p class='exp-key'>Bottom Line: tRNA is the adaptor molecule linking mRNA codons to amino acids.</p>"
+  },
+  "bio-557": {
+    "id": "bio-557",
+    "subject": "biology",
+    "topic": "Human Evolution",
+    "question": "Which of the following is a characteristic shared by ALL primates, distinguishing them from most other mammalian orders?",
+    "options": [
+      "Bipedal locomotion as the primary mode of movement",
+      "A fully terrestrial lifestyle with no arboreal adaptations",
+      "Obligate herbivory with specialized digestive systems for cellulose",
+      "Forward-facing eyes with stereoscopic vision and grasping hands with opposable digits"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Forward-facing eyes with stereoscopic vision and grasping hands with opposable digits</h4><p>Primates share several key characteristics: forward-facing eyes providing binocular (stereoscopic) vision for depth perception, grasping hands and feet with opposable thumbs or big toes, nails instead of claws on most digits, relatively large brains compared to body size, and extended periods of parental care. These traits are adaptations to an arboreal (tree-dwelling) ancestral lifestyle.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Bipedal locomotion:</strong> Habitual bipedalism is unique to hominins (humans and their immediate ancestors), not a characteristic of all primates. Most primates are quadrupedal or use brachiation (arm-swinging) for locomotion.</p><p><strong>B. Fully terrestrial lifestyle:</strong> Many primates are arboreal or semi-arboreal. The ancestral primate lifestyle was arboreal, and many modern primates (e.g., gibbons, spider monkeys, many lemurs) spend most of their lives in trees.</p><p><strong>C. Obligate herbivory:</strong> Most primates are omnivorous, eating a variety of fruits, leaves, insects, and sometimes meat. Few primates are obligate herbivores, and none have the specialized cellulose-digesting systems found in ruminants.</p><h4>Key Educational Points:</h4><ul><li>Key primate traits: stereoscopic vision, grasping hands, nails (not claws), large brain-to-body ratio</li><li>These traits reflect arboreal ancestry, even in terrestrial primates</li></ul><p class='exp-key'>Bottom Line: All primates share forward-facing eyes for stereoscopic vision and grasping hands with opposable digits, reflecting their arboreal evolutionary origins.</p>"
+  },
+  "bio-326": {
+    "id": "bio-326",
+    "subject": "biology",
+    "topic": "Germ layers",
+    "question": "The nervous system and the epidermis of the skin are derived from which primary germ layer?",
+    "options": [
+      "Endoderm",
+      "Mesoderm",
+      "Ectoderm",
+      "Mesenchyme"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Ectoderm</h4><p>The ectoderm is the outermost germ layer and gives rise to: (1) the nervous system (brain, spinal cord, peripheral nerves) via the neural tube, (2) epidermis and its derivatives (hair, nails, sweat glands), (3) lens of the eye, (4) tooth enamel, (5) anterior pituitary, and (6) adrenal medulla (neural crest cells).</p><table class='exp-table'><tr><th>Germ Layer</th><th>Derivatives</th></tr><tr><td>Ectoderm</td><td>Nervous system, epidermis, lens, enamel</td></tr><tr><td>Mesoderm</td><td>Muscle, bone, blood, kidneys, heart</td></tr><tr><td>Endoderm</td><td>GI tract lining, lungs, liver, pancreas, thyroid</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Endoderm:</strong> The endoderm (innermost germ layer) gives rise to the epithelial lining of the digestive tract, respiratory tract, and associated organs including the liver, pancreas, thyroid, parathyroid, and thymus. It does not give rise to the nervous system or epidermis, which are ectodermal derivatives.</p>\n<p><strong>B. Mesoderm:</strong> The mesoderm (middle germ layer) gives rise to muscles (skeletal, cardiac, smooth), bone, cartilage, blood and blood vessels, kidneys, gonads, the dermis of skin, and the adrenal cortex. While the dermis comes from mesoderm, the epidermis (outer skin layer) and the entire nervous system are ectodermal in origin.</p>\n<p><strong>D. Mesenchyme:</strong> Mesenchyme is embryonic connective tissue derived primarily from mesoderm (and partly from neural crest cells). It gives rise to connective tissues such as bone, cartilage, blood vessels, and lymphatic tissue. Mesenchyme is not a primary germ layer itself but rather a tissue type that differentiates from mesodermal and neural crest cells.</p><h4>Key Educational Points:</h4><ul><li>Ectoderm is the outermost germ layer and gives rise to the nervous system and the epidermis.</li><li>Its derivatives include the brain and spinal cord (via the neural tube), epidermis with hair, nails and sweat glands, lens of the eye, tooth enamel, and the anterior pituitary.</li><li>Neural crest cells, an ectodermal derivative, additionally form the adrenal medulla, melanocytes, and much of the peripheral nervous system.</li><li>Skin has a dual origin: the epidermis is ectodermal but the dermis is mesodermal.</li><li>The mnemonic worth keeping is that ectoderm forms what covers you and what senses the world.</li></ul><p class='exp-key'>Bottom Line: Ectoderm = surface + nervous system. Remember: 'ecto' = outer.</p>"
+  },
+  "bio-423": {
+    "id": "bio-423",
+    "subject": "biology",
+    "topic": "Bioenergetics",
+    "question": "2,4-dinitrophenol (DNP) acts as a metabolic poison by:",
+    "options": [
+      "Inhibiting Complex I of the electron transport chain",
+      "Blocking ATP synthase directly",
+      "Acting as a proton ionophore that uncouples oxidative phosphorylation",
+      "Inhibiting the citric acid cycle enzyme isocitrate dehydrogenase"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Acting as a proton ionophore that uncouples oxidative phosphorylation</h4><p>2,4-dinitrophenol (DNP) is a lipid-soluble weak acid that carries protons across the inner mitochondrial membrane, dissipating the proton gradient without ATP synthesis. As an uncoupler, DNP does not inhibit the electron transport chain itself; rather, electron transport continues (and may even accelerate) but the energy is released as heat instead of driving ATP synthesis. DNP was historically used as a weight-loss drug but was banned due to dangerous hyperthermia and death.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Inhibiting Complex I of the electron transport chain:</strong> Complex I (NADH dehydrogenase) is inhibited by rotenone, not by DNP. DNP does not block any specific complex; instead, it acts as a proton ionophore that carries protons across the inner mitochondrial membrane, bypassing ATP synthase. This dissipates the proton gradient so that electron transport continues but ATP synthesis stops.</p>\n<p><strong>B. Blocking ATP synthase directly:</strong> ATP synthase is directly blocked by oligomycin, which plugs its proton channel. DNP has a different mechanism: it does not block ATP synthase but rather eliminates the proton gradient that ATP synthase needs to operate. With DNP, the ETC runs at maximum speed (no back-pressure), oxygen consumption increases, but very little ATP is produced. The energy is released as heat.</p>\n<p><strong>D. Inhibiting the citric acid cycle enzyme isocitrate dehydrogenase:</strong> Isocitrate dehydrogenase is a citric acid cycle enzyme that converts isocitrate to alpha-ketoglutarate while producing NADH. It is regulated allosterically by ATP, ADP, and NAD+ but is not a target of DNP. DNP acts at the inner mitochondrial membrane, not at any metabolic enzyme.</p><h4>Key Educational Points:</h4><ul><li>DNP is a lipid-soluble weak acid that ferries protons across the inner membrane, dissipating the gradient.</li><li>As an uncoupler it separates electron transport from ATP synthesis: the chain runs, sometimes faster, but produces no ATP.</li><li>Oxygen consumption therefore rises while ATP falls, and the energy leaves as heat.</li><li>This is the opposite pattern to an inhibitor, which stops electron flow and oxygen consumption together.</li><li>DNP was sold as a weight-loss drug and banned after deaths from hyperthermia - the therapeutic window is essentially absent.</li></ul>"
+  },
+  "bio-466": {
+    "id": "bio-466",
+    "subject": "biology",
+    "topic": "Genetics",
+    "question": "A mother who is a carrier for hemophilia A (X-linked recessive) has children with an unaffected father. What is the probability that a son will be affected?",
+    "options": [
+      "0%",
+      "25%",
+      "50%",
+      "100%"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 50%</h4><p>Hemophilia A is X-linked recessive. The carrier mother (XHXh) can pass either her normal X or her hemophilia X to each child. Sons receive their single X from the mother and Y from the father. A son who inherits Xh will be affected (XhY) because there is no second X to compensate. Since the mother passes XH or Xh with equal probability, 50% of sons will be affected.</p><table class='exp-table'><tr><th></th><th>XH</th><th>Xh</th></tr><tr><td><strong>XH</strong></td><td>XHXH (normal female)</td><td>XHXh (carrier female)</td></tr><tr><td><strong>Y</strong></td><td>XHY (normal male)</td><td>XhY (affected male)</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. 0%:</strong> Since the mother carries the hemophilia allele, there is always a chance she passes it to sons.</p>\n<p><strong>B. 25%:</strong> This would be the probability among ALL children (both sexes), not specifically among sons.</p>\n<p><strong>D. 100%:</strong> Only sons who inherit Xh are affected; those who inherit XH are normal.</p><p class='exp-key'>Bottom Line: For X-linked recessive traits: carrier mother × normal father → 50% of sons affected, 50% of daughters are carriers. Affected father × normal mother → all sons normal, all daughters are carriers. Males are more commonly affected because they only have one X chromosome.</p>"
+  },
+  "bio-331": {
+    "id": "bio-331",
+    "subject": "biology",
+    "topic": "Epithelial tissue",
+    "question": "Which type of epithelial tissue lines the alveoli of the lungs and is specialized for gas exchange?",
+    "options": [
+      "Stratified squamous epithelium",
+      "Simple cuboidal epithelium",
+      "Simple squamous epithelium",
+      "Pseudostratified ciliated columnar epithelium"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Simple squamous epithelium</h4><p>Simple squamous epithelium consists of a single layer of flat cells, providing the thinnest possible barrier for diffusion. This is ideal for gas exchange in the alveoli (type I pneumocytes), filtration in Bowman's capsule of the kidney, and lining blood vessels (endothelium). Stratified squamous epithelium is found in areas subject to abrasion (skin, oral cavity, esophagus).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Stratified squamous epithelium:</strong> Stratified squamous epithelium consists of multiple layers of flattened cells and is found in areas subject to mechanical abrasion: skin (keratinized), oral cavity, esophagus, and vagina (non-keratinized). Its thickness makes it protective but too thick for efficient gas exchange. The alveoli need the thinnest possible barrier to allow rapid O2 and CO2 diffusion.</p>\n<p><strong>B. Simple cuboidal epithelium:</strong> Simple cuboidal epithelium consists of a single layer of cube-shaped cells. It is found in kidney tubules (reabsorption and secretion), thyroid follicles, and small ducts of glands. While it is a single layer, its cells are thicker than squamous cells, making it less ideal for the rapid diffusion required at the alveolar surface.</p>\n<p><strong>D. Pseudostratified ciliated columnar epithelium:</strong> Pseudostratified ciliated columnar epithelium appears stratified but is actually a single cell layer where all cells touch the basement membrane but not all reach the surface. It lines the trachea and bronchi, where cilia beat in coordinated waves to move mucus and trapped particles upward (the mucociliary escalator). It is too thick for gas exchange.</p><h4>Key Educational Points:</h4><ul><li>Gas exchange happens by passive diffusion, so the barrier must be as thin as possible - hence a single layer of flattened cells.</li><li>Simple squamous epithelium (type I pneumocytes) covers about 95% of the alveolar surface area.</li><li>Type II pneumocytes are cuboidal, far less numerous, and secrete surfactant rather than serving as the exchange surface.</li><li>Diffusion also improves with surface area, which is why the lung is divided into millions of alveoli rather than a few large sacs.</li><li>Thickening of this barrier by fluid or fibrosis reduces oxygen transfer before it affects carbon dioxide, because CO₂ is far more soluble.</li></ul><p class='exp-key'>Bottom Line: Simple = one layer (exchange/absorption). Stratified = multiple layers (protection). Squamous = flat; cuboidal = cube-shaped; columnar = tall.</p>"
+  },
+  "bio-312": {
+    "id": "bio-312",
+    "subject": "biology",
+    "topic": "Viral cycles",
+    "question": "In the lysogenic cycle of a bacteriophage, the viral DNA:",
+    "options": [
+      "Immediately lyses the host cell",
+      "Integrates into the host chromosome as a prophage and replicates passively",
+      "Is degraded by host restriction enzymes",
+      "Forms a capsid inside the host cell without lysis"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Integrates into the host chromosome as a prophage and replicates passively</h4><p>In the lysogenic cycle, viral DNA integrates into the bacterial chromosome (becoming a prophage) and is replicated along with the host DNA during cell division. The phage genes remain dormant. Environmental stressors (UV light, chemicals) can trigger the switch to the lytic cycle, where the prophage excises and initiates viral reproduction and host cell lysis.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Immediately lyses the host cell:</strong> Immediate lysis of the host cell describes the lytic cycle, not the lysogenic cycle. In the lytic cycle, the phage commandeers the host's machinery to rapidly replicate phage DNA and synthesize viral proteins, assembles new phage particles, and then lyses (bursts) the host cell to release hundreds of progeny phages. The lysogenic cycle, by contrast, is a dormant state.</p>\n<p><strong>C. Is degraded by host restriction enzymes:</strong> Host restriction enzymes (part of the bacterial immune system) can degrade foreign DNA, but this describes a defense mechanism against phage infection, not the lysogenic cycle. Some phages evade restriction enzymes through DNA methylation or modification. In lysogeny, the phage DNA successfully integrates into the host genome and is replicated along with it.</p>\n<p><strong>D. Forms a capsid inside the host cell without lysis:</strong> Forming capsids inside the host without lysis does not accurately describe any phage cycle. In the lysogenic cycle, no viral structural proteins (capsids) are produced because the phage genome is dormant as a prophage. Capsid assembly only occurs when the prophage is induced to enter the lytic cycle (triggered by stress like UV light or chemicals).</p><h4>Key Educational Points:</h4><ul><li>In the lysogenic cycle, phage DNA integrates into the host chromosome as a prophage and replicates passively with it.</li><li>The phage genes stay dormant and the host cell survives and divides normally.</li><li>Stressors such as UV light or chemicals induce excision and a switch to the lytic cycle, which destroys the cell.</li><li>Lambda phage is the classic model of this decision.</li><li>Lysogeny can change the host phenotype (lysogenic conversion): diphtheria toxin, cholera toxin, and the Shiga toxin of E. coli O157:H7 are all encoded by prophage genes.</li></ul><p class='exp-key'>Bottom Line: Lysogenic = viral DNA integration as prophage (dormant). Lytic = viral replication and host cell lysis. Lambda phage is a classic example of lysogeny.</p>"
+  },
+  "bio-566": {
+    "id": "bio-566",
+    "subject": "biology",
+    "topic": "Mendelian Genetics",
+    "question": "Two genes on the same chromosome show a recombination frequency of 8%. What does this mean?",
+    "options": [
+      "The genes are on different chromosomes and assort independently",
+      "The genes are 8 centiMorgans apart and are inherited together 92% of the time",
+      "8% of all individuals in the population carry these genes",
+      "There is an 8% chance that both genes will be expressed"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The genes are 8 centiMorgans apart and are inherited together 92% of the time</h4><p>Recombination frequency (RF) directly measures the genetic distance between two linked genes, expressed in centiMorgans (cM). 1% recombination frequency = 1 cM. An RF of 8% means the genes are 8 cM apart, and crossing over between them occurs in 8% of meioses. Consequently, the parental (non-recombinant) combinations are seen in 92% of offspring, indicating relatively tight linkage.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Genes are on different chromosomes:</strong> If genes were on different chromosomes, they would assort independently and show a recombination frequency of 50%, not 8%. The low RF indicates they are linked (on the same chromosome).</p><p><strong>C. 8% of individuals carry these genes:</strong> Recombination frequency has nothing to do with allele frequency in a population. It measures the distance between gene loci based on how often crossing over separates them during meiosis.</p><p><strong>D. 8% chance both genes will be expressed:</strong> Recombination frequency does not relate to gene expression probability. Gene expression depends on transcriptional regulation, not physical distance between genes.</p><h4>Key Educational Points:</h4><ul><li>Recombination frequency (%) = genetic distance in centiMorgans (cM)</li><li>RF of 50% = independent assortment (either different chromosomes or very far apart)</li></ul><p class='exp-key'>Bottom Line: A recombination frequency of 8% means the genes are linked at 8 cM distance, with parental combinations appearing in 92% of offspring.</p>"
+  },
+  "bio-230": {
+    "id": "bio-230",
+    "subject": "biology",
+    "topic": "Immune System",
+    "question": "Which cells are the first phagocytes to arrive at an acute infection site and are the most abundant white blood cells in circulation?",
+    "options": [
+      "Monocytes",
+      "Eosinophils",
+      "Neutrophils",
+      "Basophils"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) Neutrophils</h4><p>Neutrophils constitute 60–70% of circulating white blood cells and are the first responders to sites of acute bacterial infection. They are attracted by chemotactic factors (including complement fragment C5a and bacterial products) and can rapidly phagocytose and destroy pathogens using reactive oxygen species, myeloperoxidase, and antimicrobial peptides. Neutrophils are short-lived (1–2 days in tissues) and form the major component of pus. Monocytes/macrophages arrive later and persist longer.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Monocytes:</strong> Monocytes/macrophages arrive later and persist longer.</p>\n<p><strong>B. Eosinophils:</strong> Combat parasitic infections and modulate allergic responses.</p>\n<p><strong>D. Basophils:</strong> Release histamine and heparin; involved in allergic reactions.</p><h4>Key Educational Points:</h4><ul><li>Innate immunity provides rapid, non-specific defense (physical barriers, phagocytes, complement, inflammation), while adaptive immunity provides specific, slower but more targeted responses.</li><li>Adaptive immunity has two arms: humoral (B cells producing antibodies) and cell-mediated (T cells directly attacking infected/abnormal cells).</li><li>Immunological memory allows faster and stronger responses to previously encountered antigens - this is the basis of vaccination.</li></ul><p class='exp-key'>Bottom Line: Neutrophils are the most abundant WBCs and the first phagocytes recruited to acute inflammation sites.</p>"
+  },
+  "bio-294": {
+    "id": "bio-294",
+    "subject": "biology",
+    "topic": "DNA technology",
+    "question": "Restriction enzymes are used in molecular biology to:",
+    "options": [
+      "Synthesize new DNA strands from an RNA template",
+      "Cut DNA at specific palindromic recognition sequences",
+      "Join DNA fragments together covalently",
+      "Unwind the DNA double helix"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Cut DNA at specific palindromic recognition sequences</h4><p>Restriction endonucleases recognize and cut DNA at specific palindromic sequences (e.g., EcoRI recognizes GAATTC). They may produce sticky ends (overhangs) or blunt ends. They are natural bacterial defense enzymes against phage DNA and are essential tools in recombinant DNA technology.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Synthesize new DNA strands from an RNA template:</strong> Synthesizing DNA from an RNA template describes reverse transcriptase, the enzyme used by retroviruses like HIV. Reverse transcriptase creates a complementary DNA (cDNA) copy from an RNA template. Restriction enzymes, by contrast, are endonucleases that cut double-stranded DNA at specific recognition sequences, typically 4-8 base pair palindromes.</p>\n<p><strong>C. Join DNA fragments together covalently:</strong> Joining DNA fragments together covalently describes DNA ligase, not restriction enzymes. DNA ligase seals phosphodiester bonds between adjacent nucleotides, which is essential for joining Okazaki fragments during replication and for connecting DNA fragments in molecular cloning after restriction enzyme digestion. Restriction enzymes cut DNA; ligase joins it.</p>\n<p><strong>D. Unwind the DNA double helix:</strong> Unwinding the DNA double helix describes helicase, which breaks hydrogen bonds between complementary base pairs to separate the two strands. Restriction enzymes do not unwind DNA. They recognize and cut specific double-stranded DNA sequences, producing either sticky ends (staggered cuts) or blunt ends (straight cuts), depending on the enzyme.</p><h4>Key Educational Points:</h4><ul><li>The central dogma of molecular biology describes information flow: DNA is transcribed to mRNA, which is translated to protein.</li><li>Eukaryotic gene expression is regulated at multiple levels: chromatin remodeling, transcription, post-transcription (splicing), translation, and post-translation.</li><li>Mutations in DNA can be silent, missense, nonsense, or frameshift - each with different impacts on protein structure and function.</li></ul><p class='exp-key'>Bottom Line: Restriction enzymes cut DNA at palindromic sites. DNA ligase joins fragments. Together they enable gene cloning.</p>"
+  },
+  "bio-513": {
+    "id": "bio-513",
+    "subject": "biology",
+    "topic": "Evolution of Populations",
+    "question": "Which of the following is NOT a condition required for Hardy-Weinberg equilibrium?",
+    "options": [
+      "No mutation occurring in the population",
+      "Random mating among all individuals",
+      "Small population size",
+      "No migration into or out of the population"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Small population size</h4><p>Hardy-Weinberg equilibrium requires a LARGE (ideally infinite) population size, NOT a small one. Small populations are subject to genetic drift - random fluctuations in allele frequencies - which violates the Hardy-Weinberg assumption that allele frequencies remain constant. The five conditions for Hardy-Weinberg equilibrium are: (1) no mutation, (2) random mating, (3) no natural selection, (4) large population size, and (5) no migration (gene flow).</p><h4>Why the other choices are wrong:</h4><p><strong>A. No mutation occurring in the population:</strong> This IS a required condition for Hardy-Weinberg equilibrium. Mutations introduce new alleles or change existing ones, altering allele frequencies. In reality, mutations always occur, but at rates low enough that they have minimal effect over short time periods.</p><p><strong>B. Random mating among all individuals:</strong> This IS a required condition. Nonrandom mating (assortative mating, inbreeding) changes genotype frequencies (though not allele frequencies directly). Hardy-Weinberg assumes that every individual has an equal probability of mating with any other individual of the opposite sex.</p><p><strong>D. No migration into or out of the population:</strong> This IS a required condition. Migration (gene flow) introduces or removes alleles from the population, changing allele frequencies. An isolated population is necessary for Hardy-Weinberg equilibrium.</p><h4>Key Educational Points:</h4><ul><li>Hardy-Weinberg equations: p + q = 1 (allele frequencies); p² + 2pq + q² = 1 (genotype frequencies)</li><li>Mnemonic for the five conditions: \"Large, Random, Isolated, Non-selective, Non-mutating\" populations</li><li>Hardy-Weinberg is a null model - real populations never perfectly meet all five conditions</li><li>It is useful for detecting which evolutionary forces are acting on a population</li></ul><p class='exp-key'>Bottom Line: Hardy-Weinberg equilibrium requires a LARGE population; small population size allows genetic drift and is a violation of the equilibrium conditions.</p>"
+  },
+  "bio-583": {
+    "id": "bio-583",
+    "subject": "biology",
+    "topic": "Sensory Organs",
+    "question": "Which photoreceptor cells in the retina are responsible for color vision and function best in bright light conditions?",
+    "options": [
+      "Rod cells",
+      "Cone cells",
+      "Bipolar cells",
+      "Ganglion cells"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Cone cells</h4><p>Cone cells are responsible for photopic (bright light) vision and color perception. There are three types of cones - S (blue, ~420 nm), M (green, ~530 nm), and L (red, ~560 nm) - each containing a different photopsin sensitive to a specific range of wavelengths. Cones are concentrated in the fovea centralis, where visual acuity is highest.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Rod cells:</strong> Rods contain the photopigment rhodopsin and are responsible for scotopic (dim light) vision. They are extremely sensitive to light but cannot distinguish colors. Rods are abundant in the peripheral retina but absent from the fovea.</p><p><strong>C. Bipolar cells:</strong> Bipolar cells are interneurons in the retina that transmit signals from photoreceptors (rods and cones) to ganglion cells. They process and relay visual information but are not themselves photosensitive.</p><p><strong>D. Ganglion cells:</strong> Ganglion cells are neurons whose axons form the optic nerve. They receive input from bipolar cells and transmit visual information to the brain. They do not directly detect light for image formation (though some contain melanopsin for circadian regulation).</p><h4>Key Educational Points:</h4><ul><li>Cones: color vision, bright light (photopic), high acuity, concentrated at fovea</li><li>Rods: black-and-white vision, dim light (scotopic), high sensitivity, peripheral retina</li><li>The fovea contains only cones and provides the sharpest central vision</li></ul><p class='exp-key'>Bottom Line: Cone cells mediate color vision and function in bright light, while rod cells mediate dim-light vision without color discrimination.</p>"
+  }
+}
