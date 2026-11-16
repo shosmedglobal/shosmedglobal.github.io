@@ -746,5 +746,125 @@ for (const id of c.biology_still_unreviewed) {
   ok(data.biology.some(q => q.id === id), `coverage: ${id} should exist in the biology bank`);
 }
 
+// ===========================================================================
+section('12. The focused follow-up: five passages across four items');
+
+// Two of these passages were written by batch 1 itself, so the pre-batch-1
+// fixture is not their baseline. They are listed here as superseded and
+// asserted absent, rather than being treated as drift in section 4.
+const FOLLOWUP = [
+  ['Q5', 'chem-5',
+   "An ester (R-COO-R') is not formed by oxidation.",
+   "An ester (R-COO-R') is not the product expected from the controlled oxidation of a primary alcohol described here.",
+   'batch1'],
+  ['Q8', 'chem-8',
+   'Ethanol is an organic compound because it contains C-H bonds and a carbon backbone.',
+   'Ethanol is an organic compound belonging to the alcohol class.',
+   'original'],
+  ['Q8', 'chem-8',
+   'It contains C-H bonds and a carboxyl group (-COOH), clearly classifying it as organic.',
+   'Acetic acid belongs to the organic carboxylic acids and contains their characteristic -COOH group.',
+   'original'],
+  ['Q21', 'chem-22',
+   'Resonance delocalization, electronegativity, and inductive effects all stabilize conjugate bases.',
+   'Resonance delocalization and electron-withdrawing inductive effects can stabilize a negatively charged conjugate base.',
+   'original'],
+  ['Q47', 'chem-48',
+   'The amino group (-NH2) defines primary amines.',
+   'An -NH₂ group alone does not define a primary amine: acetamide (CH₃CONH₂), for example, is an amide because its nitrogen is bonded directly to a carbonyl carbon.',
+   'original']
+];
+
+ok(FOLLOWUP.length === 5, `${FOLLOWUP.length} follow-up passages, expected 5`);
+const FU_IDS = [...new Set(FOLLOWUP.map(f => f[1]))];
+ok(FU_IDS.length === 4, `${FU_IDS.length} items touched by the follow-up, expected 4`);
+
+for (const [q, id, gone, present, baseline] of FOLLOWUP) {
+  const now = text(BY[id]);
+  ok(now.includes(present), `${q} ${id}: follow-up text missing: "${present.slice(0, 70)}"`);
+  ok(!now.includes(gone), `${q} ${id}: superseded text still present: "${gone.slice(0, 70)}"`);
+  // non-vacuity: a passage whose baseline is the original export must have been
+  // in the before-fixture; one batch 1 itself wrote must NOT have been.
+  const inFixture = text(before[id]).includes(gone);
+  ok(baseline === 'original' ? inFixture : !inFixture,
+    `${q} ${id}: baseline recorded as "${baseline}" but the fixture says otherwise`);
+  // and the follow-up text is unique to its own item
+  const leaked = IDS.filter(o => o !== id && text(BY[o]).includes(present));
+  ok(leaked.length === 0, `${q} ${id}: follow-up text leaked into ${leaked.join(', ')}`);
+}
+
+// the follow-up is explanation-only: nothing else in those four items moved
+for (const id of FU_IDS) {
+  const q = BY[id], was = before[id];
+  ok(q.question === was.question || idmap.stem_changes.includes(disp(id)),
+    `${disp(id)} ${id}: the stem moved outside the batch 1 inventory`);
+  ok(q.options.join('\u0000') === was.options.join('\u0000') ||
+     Object.keys(idmap.option_changes).includes(disp(id)),
+    `${disp(id)} ${id}: an option moved outside the batch 1 inventory`);
+  ok(q.correct === was.correct, `${disp(id)} ${id}: the answer letter moved`);
+  ok(q.id === was.id, `${disp(id)} ${id}: the bank id moved`);
+}
+// Q5's stem and Q21's option D were changed by batch 1 and must still carry
+// exactly those replacements; the other three items' stems and options must be
+// byte-identical to the original export.
+ok(BY['chem-5'].question ===
+  'Under controlled oxidation conditions that prevent further oxidation of the initial carbonyl product, ' +
+  'which functional group is formed from a primary alcohol?',
+  "Q5 chem-5: the stem should still be batch 1's replacement, unchanged by the follow-up");
+for (const id of FU_IDS) {
+  if (!idmap.stem_changes.includes(disp(id))) {
+    ok(BY[id].question === before[id].question, `${disp(id)} ${id}: the stem differs from the original export`);
+  }
+  for (let i = 0; i < 4; i++) {
+    const letter = LETTER[i];
+    const wasChanged = (idmap.option_changes[disp(id)] || []).includes(letter);
+    if (!wasChanged) {
+      ok(BY[id].options[i] === before[id].options[i],
+        `${disp(id)} ${id}: option ${letter} differs from the original export`);
+    }
+  }
+}
+ok(BY['chem-22'].options[3] === 'The ethoxide ion is more resonance-stabilized than the phenoxide ion',
+  'Q21 chem-22: option D should still carry its batch 1 replacement text');
+
+// the specific things the follow-up said to preserve
+ok(!/Baeyer|Villiger/i.test(text(BY['chem-5'])), 'Q5: no Baeyer-Villiger chemistry should have been added');
+ok(BY['chem-48'].explanation.includes('<strong>D. -NH₂ (amino):</strong>'),
+  'Q47: option D keeps its existing heading exactly');
+ok(BY['chem-48'].explanation.includes(
+  'In an alpha-amino acid, an amino group and a carboxyl group are attached to the same alpha carbon.'),
+  'Q47: the alpha-amino-acid sentence should survive in the rewritten paragraph');
+ok(BY['chem-8'].explanation.includes('It is the alcohol found in alcoholic beverages'),
+  'Q8: the rest of option A should be unchanged');
+ok(BY['chem-8'].explanation.includes('It gives vinegar its sour taste and pungent smell.'),
+  'Q8: the rest of option D should be unchanged');
+ok(BY['chem-22'].explanation.includes('Phenol is acidic enough to react with NaOH but not with NaHCO₃'),
+  'Q21: the rest of the Bottom Line should be unchanged');
+ok(BY['chem-5'].explanation.includes('Many small esters have fruity and floral aromas.'),
+  'Q5: the rest of option D should be unchanged');
+
+// The follow-up must preserve all tables and educational-point blocks in these
+// four items. Pin them by content hash: 16-char SHA-256 prefixes of the point
+// list body and of the item's tables, as they stand after the follow-up. The
+// apply harness pins them too, so a later edit to a point line or a table cell
+// in any of these four items fails here even if it touches no asserted string.
+// chem-5 has no table, hence the empty-string hash e3b0c44298fc1c14.
+const PINNED = [
+  ['chem-5', '51b4de8f66e22cc2', 'e3b0c44298fc1c14'],
+  ['chem-8', '3acd72997aa0fada', '6d7b7b9a1b7f5fc6'],
+  ['chem-22', 'fbfd709b177481f5', '1c499dc70334cad3'],
+  ['chem-48', '57acdc64b7deaef0', 'b791e0b0017f6f02']
+];
+const h = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
+const pointBody = e => { const m = e.match(/Key Educational Points:<\/h4><ul>([\s\S]*?)<\/ul>/); return m ? m[1] : ''; };
+const tableBody = e => (e.match(/<table[\s\S]*?<\/table>/g) || []).join('');
+ok(h('') === 'e3b0c44298fc1c14', 'the empty-string hash prefix should be e3b0c44298fc1c14');
+for (const [id, wantPoints, wantTables] of PINNED) {
+  ok(h(pointBody(BY[id].explanation)) === wantPoints,
+    `${disp(id)} ${id}: the educational-point block moved (${h(pointBody(BY[id].explanation))})`);
+  ok(h(tableBody(BY[id].explanation)) === wantTables,
+    `${disp(id)} ${id}: a table moved (${h(tableBody(BY[id].explanation))})`);
+}
+
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
