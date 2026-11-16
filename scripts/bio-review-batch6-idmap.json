@@ -93,8 +93,11 @@
     "bio-334"
   ],
   "absent_still_unreviewed": [
-    "bio-277",
-    "bio-282",
     "bio-294"
-  ]
+  ],
+  "absent_reviewed_later": [
+    "bio-277",
+    "bio-282"
+  ],
+  "_absent_reviewed_later_comment": "These ids sit inside this export's id range but were not part of this export. They were reviewed later, in batch 11, so they are no longer byte-identical to this batch's snapshot and are no longer asserted as untouched here."
 }

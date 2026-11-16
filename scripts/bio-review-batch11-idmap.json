@@ -1,0 +1,81 @@
+{
+  "_comment": [
+    "Biology review batch 11: 26 questions across TWO exports whose display numbering",
+    "restarts independently. File A supplied 5 questions (A1-A5), File B supplied 21",
+    "(B1-B21). The exports carried no bank ids, so each item was matched to the bank by",
+    "its full stem AND option texts, never by topic or by position.",
+    "",
+    "The map below was verified four independent ways before any edit was applied:",
+    "  1. a distinctive stem+option signature per item matched exactly one bank record;",
+    "  2. every stored key letter equals the key the review asserts;",
+    "  3. both of the review's key tallies reproduce (File A A=2 B=1 C=2 D=0;",
+    "     File B A=4 B=5 C=7 D=5);",
+    "  4. the four existing tables sit exactly at A3, B2, B13 and B17, and every point",
+    "     count matches the review's inventory (A 3,5,5,0,6; every File B item 3).",
+    "",
+    "The ids are NOT contiguous: bio-611, bio-616, bio-620, bio-625 and bio-628 fall",
+    "inside the range but belong to batch 2, and bio-253, bio-277, bio-282, bio-462 and",
+    "bio-608 sit far outside it. A5's 8 cM topic is shared with batch 10's bio-577, so",
+    "A5 was pinned by its option set (42% and 16%), not by topic."
+  ],
+  "map": {
+    "A1": "bio-608",
+    "A2": "bio-277",
+    "A3": "bio-253",
+    "A4": "bio-462",
+    "A5": "bio-282",
+    "B1": "bio-603",
+    "B2": "bio-604",
+    "B3": "bio-605",
+    "B4": "bio-606",
+    "B5": "bio-607",
+    "B6": "bio-609",
+    "B7": "bio-610",
+    "B8": "bio-612",
+    "B9": "bio-613",
+    "B10": "bio-614",
+    "B11": "bio-615",
+    "B12": "bio-617",
+    "B13": "bio-618",
+    "B14": "bio-619",
+    "B15": "bio-621",
+    "B16": "bio-622",
+    "B17": "bio-623",
+    "B18": "bio-624",
+    "B19": "bio-626",
+    "B20": "bio-627",
+    "B21": "bio-629"
+  },
+  "asserted_letters_file_a": "AACCB",
+  "asserted_letters_file_b": "CCBBAACCDDCDDAABDCBBC",
+  "keep_unchanged_per_review": ["bio-615", "bio-618", "bio-622"],
+  "keep_unchanged_display": ["B11", "B13", "B16"],
+  "stem_replacements": ["A1", "A5", "B2", "B5", "B6", "B7", "B10", "B15", "B19", "B21"],
+  "option_renames": {
+    "A3": ["B", "C"],
+    "B3": ["B"],
+    "B21": ["A", "B", "C", "D"]
+  },
+  "major_rewrites": ["A3", "B21"],
+  "substantial_repairs": ["A1", "A2", "A5", "B1", "B2", "B3", "B6", "B7", "B12", "B15", "B20"],
+  "targeted_repairs": ["A4", "B4", "B5", "B8", "B9", "B10", "B14", "B17", "B18", "B19"],
+  "point_counts": {
+    "A1": 3, "A2": 5, "A3": 5, "A4": 0, "A5": 6,
+    "B1": 3, "B2": 3, "B3": 3, "B4": 3, "B5": 3, "B6": 3, "B7": 3,
+    "B8": 3, "B9": 3, "B10": 3, "B11": 3, "B12": 3, "B13": 3, "B14": 3,
+    "B15": 3, "B16": 3, "B17": 3, "B18": 3, "B19": 3, "B20": 3, "B21": 3
+  },
+  "tables": ["A3", "B2", "B13", "B17"],
+  "coverage": {
+    "_comment": [
+      "Reconciled against the 31 remaining ids reported after batch 10. All 26 of this",
+      "batch's verified ids fall inside that set, so no previously reviewed item was",
+      "included again, and exactly five genuinely unreviewed biology items remain."
+    ],
+    "reviewed_before_batch11": 598,
+    "new_unique_ids_this_batch": 26,
+    "reviewed_after_batch11": 624,
+    "previously_reviewed_included_again": [],
+    "still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"]
+  }
+}
