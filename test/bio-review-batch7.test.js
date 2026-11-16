@@ -153,18 +153,29 @@ section('3. Claims the review asked to remove');
   }
   ok(paired >= 120, `only ${paired} paired removal checks, expected the review's full list`);
 }
-// every replacement the apply script makes must be in place, and every text it
-// replaced must be gone
+// A later follow-up pass (section 9) replaced some of batch 7's own wording.
+// Those strings are listed here so the derived checks below skip them, and
+// each is asserted absent, so the exemption cannot hide a half-applied edit.
+const SUPERSEDED = new Set([
+  'bio-347 explanation', 'bio-367 explanation', 'bio-383 explanation', 'bio-392 explanation',
+  'bio-349 stem', 'bio-373 stem'
+]);
+const supersededText = [];
 for (const spec of EDITS) {
   const q = BY[spec.id];
   for (const [from, to] of spec.explanation || []) {
+    const skip = SUPERSEDED.has(spec.id + ' explanation') && !q.explanation.includes(to);
+    if (skip) { supersededText.push([spec.id, to]); continue; }
     ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
     ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
   }
   if (spec.explanationFull) ok(q.explanation === spec.explanationFull, `Q${spec.q} (${spec.id}): explanation does not match the full replacement`);
-  if (spec.stemFull) ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
+  if (spec.stemFull && !SUPERSEDED.has(spec.id + ' stem')) ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
   for (const [i, t] of spec.optionFull || []) ok(q.options[i] === t, `Q${spec.q} (${spec.id}): option ${LETTER[i]} does not match the supplied text`);
 }
+// exactly the four explanation passages the follow-up rewrote, and no others
+ok(supersededText.length === 4, `${supersededText.length} batch 7 passages were superseded, expected 4`);
+for (const [id, to] of supersededText) ok(!BY[id].explanation.includes(to), `${id}: a superseded passage is back`);
 
 // ===========================================================================
 section('4. The rewrite and the named repairs');
@@ -242,7 +253,7 @@ const PRESENT = [
   ['bio-388', 'linear electron flow'],
   ['bio-390', 'mainly as malic acid in vacuoles'],
   ['bio-391', 'Cyclic electron flow routes electrons from photosystem I back'],
-  ['bio-392', 'PEP carboxylase uses bicarbonate'],
+  ['bio-392', 'PEP carboxylase adds bicarbonate (HCO₃⁻) to PEP'],
   ['bio-393', 'consumes protons on the stromal side'],
   ['bio-394', 'accessory antenna pigment'],
   ['bio-395', 'the lateral meniscus is more nearly circular'],
@@ -391,6 +402,77 @@ for (const id of idmap.absent_still_unreviewed) ok(untouched.biology[id] === has
 ok(Object.keys(untouched.biology).length === 569, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 569`);
 ok(Object.keys(untouched.biology).length + IDS.length === 629, 'fixtures do not partition the biology bank');
 ok(Object.keys(untouched.chemistry).length === 485, 'untouched chemistry hash count unexpected');
+
+// ===========================================================================
+section('9. The narrow follow-up correction pass');
+
+// Eight items got a second, localised pass. Only Q6 and Q30 changed their
+// stems; everything else is a distractor feedback body or one educational
+// point. Each entry pins the replacement as PRESENT, the superseded text as
+// GONE, and the option heading as intact. The pair is complementary on the
+// same passage, so a typo in one half is caught by the other.
+const FOLLOWUP = [
+  ['bio-347', '<strong>B. Mast cell:</strong>',
+    ['Mast-cell granules contain histamine and proteoglycans.',
+      'Heparin is a sulfated glycosaminoglycan attached to a protein core within these proteoglycans.'],
+    ['heparin, itself a proteoglycan']],
+  ['bio-349', null,
+    ['and the central disc of the pubic symphysis?'],
+    ['fibrocartilaginous disc of the pubic symphysis']],
+  ['bio-360', '<strong>A. None:</strong>',
+    ["Every daughter receives her father's X<sup>h</sup>, and each has a 50% chance of also inheriting her mother's X<sup>h</sup>.",
+      'The expected proportion with two altered alleles is therefore 1/2, not zero.',
+      '<li>Among daughters, the expected genotypes are 50% X<sup>h</sup>X<sup>h</sup> and 50% X<sup>H</sup>X<sup>h</sup>.</li>'],
+    ['If none of the daughters were affected', 'Daughters are therefore half carriers and half affected']],
+  ['bio-362', null,
+    ['<li>An affected person may inherit the variant from a parent with symptoms or from a parent who has not expressed the condition; alternatively, the variant may arise as a new mutation.</li>'],
+    ['Every affected individual has at least one affected parent']],
+  ['bio-367', '<strong>A. Large populations with high genetic diversity:</strong>',
+    ['because selection, migration and other processes can still change them.</p>'],
+    ['Drift is simply not the dominant force here']],
+  ['bio-373', null,
+    ['In a population initially in Hardy-Weinberg equilibrium, with both alleles present'],
+    ['In a simple population-genetics model, individuals preferentially mate']],
+  ['bio-383', null,
+    ['<li>Cell-surface receptors signal through intracellular proteins, second messengers, or both. Some responses are rapid, while others change gene expression over longer periods.</li>'],
+    ['which act within seconds to minutes through second messengers']],
+  ['bio-392', '<strong>A. Phosphoenolpyruvate (PEP):</strong>',
+    ['In C4 and CAM plants, PEP carboxylase adds bicarbonate (HCO₃⁻) to PEP, forming oxaloacetate',
+      'In the Calvin cycle, RuBisCO instead adds CO₂ to RuBP.'],
+    ['is the CO2 acceptor molecule used by PEP carboxylase', 'the two enzymes do not act on the same inorganic-carbon substrate']]
+];
+ok(FOLLOWUP.length === 8, `the follow-up pass covers ${FOLLOWUP.length} items, expected 8`);
+// only Q6 (bio-349) and Q30 (bio-373) may have changed their stems in this pass
+const FOLLOWUP_STEM_IDS = ['bio-349', 'bio-373'];
+const FOLLOWUP_STEMS = {
+  'bio-349': 'Which type of cartilage forms the annulus fibrosus of intervertebral discs and the central disc of the pubic symphysis?',
+  'bio-373': 'In a population initially in Hardy-Weinberg equilibrium, with both alleles present, individuals begin preferentially mating with others of the same genotype at a particular locus. Assume equal reproductive contributions and no selection, mutation, migration or drift. What is the expected effect of this positive assortative mating?'
+};
+for (const [id, stem] of Object.entries(FOLLOWUP_STEMS)) {
+  ok(BY[id].question === stem, `Q${qnum(id)} (${id}): stem does not match the follow-up replacement`);
+}
+for (const [id, heading, present, gone] of FOLLOWUP) {
+  const q = BY[id];
+  const n = qnum(id);
+  if (heading) ok(q.explanation.includes(heading), `Q${n} (${id}): option heading lost: ${heading}`);
+  for (const s of present) ok(text(q).includes(s), `Q${n} (${id}): follow-up text missing: ${s.slice(0, 60)}`);
+  for (const s of gone) ok(!text(q).includes(s), `Q${n} (${id}): replaced text still present: ${s.slice(0, 60)}`);
+  // the pass promised not to touch keys or option texts, and only two stems
+  ok(LETTER[q.correct] === KEYS[n], `Q${n} (${id}): key moved during the follow-up pass`);
+  for (let i = 0; i < 4; i++) {
+    const expected = OPT_CHANGED.has(Number(n) + ':' + i)
+      ? EDITS.find(s => s.id === id).optionFull.find(([j]) => j === i)[1]
+      : before[id].options[i];
+    ok(q.options[i] === expected, `Q${n} (${id}) option ${LETTER[i]}: text changed during the follow-up pass`);
+  }
+  if (!FOLLOWUP_STEM_IDS.includes(id)) {
+    const spec = EDITS.find(s => s.id === id);
+    const expectedStem = spec && spec.stemFull ? spec.stemFull : before[id].question;
+    ok(q.question === expectedStem, `Q${n} (${id}): stem changed although only Q6 and Q30 may change`);
+  }
+}
+// the Q6 stem must no longer give the answer away
+ok(!/fibrocartilag/i.test(BY['bio-349'].question), 'bio-349 (Q6): the stem still names the answer');
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);

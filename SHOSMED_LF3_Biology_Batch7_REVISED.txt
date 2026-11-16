@@ -110,7 +110,7 @@ Fibroblasts are the principal cells of connective tissue proper and synthesize a
 
 **A. Macrophage:** Macrophages are the phagocytic cells of connective tissue. They engulf debris, dead cells and pathogens and present antigen to lymphocytes, and they also secrete signaling molecules such as cytokines. Their principal role here is phagocytosis and immune regulation rather than bulk matrix production.
 
-**B. Mast cell:** Mast cells store granules containing histamine and heparin, itself a proteoglycan, and release them during allergic and inflammatory responses. They alter the local environment, including vascular permeability and blood flow, but they are not the principal producers of connective-tissue matrix.
+**B. Mast cell:** Mast-cell granules contain histamine and proteoglycans. Heparin is a sulfated glycosaminoglycan attached to a protein core within these proteoglycans. Mast cells release mediators during allergic and inflammatory responses, altering blood flow and vascular permeability, but they are not the principal producers of connective-tissue matrix.
 
 **D. Plasma cell:** Plasma cells are differentiated B lymphocytes and are indeed secretory, but their product is antibody, not extracellular matrix. They are immune effector cells that happen to reside in connective tissue.
 
@@ -155,7 +155,7 @@ Intercalated discs are specialized junctional complexes unique to cardiac muscle
 ==============================================================================
 Q6  [bio-349]  Answer: C
 ==============================================================================
-Which type of cartilage forms the annulus fibrosus of intervertebral discs and the fibrocartilaginous disc of the pubic symphysis?
+Which type of cartilage forms the annulus fibrosus of intervertebral discs and the central disc of the pubic symphysis?
 
   A) Hyaline cartilage
   B) Elastic cartilage
@@ -498,7 +498,7 @@ The father (X^hY) passes X^h to every daughter. The heterozygous mother (X^HX^h)
 
 ### Why the other choices are wrong:
 
-**A. None:** If none of the daughters were affected, it would mean none inherited both mutant X chromosomes. However, the father (who has hemophilia) will pass his X^h chromosome to every daughter. Since the mother is a carrier (X^H X^h), each daughter has a 50% chance of receiving the mother's X^h allele too, resulting in an affected (X^h X^h) daughter.
+**A. None:** Every daughter receives her father's X^h, and each has a 50% chance of also inheriting her mother's X^h. The expected proportion with two altered alleles is therefore 1/2, not zero.
 
 **B. 1/4:** 1/4 is the probability of a daughter with two altered alleles among ALL children, assuming equal probabilities of male and female offspring. It is not the answer among daughters specifically, where the father always donates X^h and the mother donates either allele with equal probability, giving 1/2.
 
@@ -508,7 +508,7 @@ The father (X^hY) passes X^h to every daughter. The heterozygous mother (X^HX^h)
 
   - An affected father passes his single affected X to every daughter.
   - A carrier mother passes either her normal or her affected X with equal probability.
-  - Daughters are therefore half carriers and half affected.
+  - Among daughters, the expected genotypes are 50% X^hX^h and 50% X^HX^h.
   - Females with two altered alleles are expected to have hemophilia, but heterozygous females can also have low factor levels and bleeding symptoms.
   - The father gives Y to all sons, so their status depends solely on the mother - half of them will be affected.
 
@@ -568,7 +568,7 @@ Vertical transmission through successive generations, in both sexes, is typical 
 
   - Autosomal dominant traits typically appear in successive generations, although penetrance and age of onset can interrupt that pattern.
   - Males and females are affected in roughly equal numbers, because the gene is autosomal rather than sex-linked.
-  - Every affected individual has at least one affected parent, unless a new mutation has arisen.
+  - An affected person may inherit the variant from a parent with symptoms or from a parent who has not expressed the condition; alternatively, the variant may arise as a new mutation.
   - Each child of an affected heterozygote has a 50% chance of inheriting the dominant allele; with an unaffected noncarrier other parent and full penetrance, that is also the chance of being affected.
   - Contrast the alternatives: autosomal recessive often skips generations, X-linked recessive favours males and has no father-to-son transmission, and mitochondrial inheritance is ordinarily passed only by mothers.
 
@@ -708,7 +708,7 @@ Genetic drift is the random change in allele frequencies due to chance sampling 
 
 ### Why the other choices are wrong:
 
-**A. Large populations with high genetic diversity:** Large population size reduces random sampling fluctuations, so drift has little effect. It does not guarantee stable allele frequencies, because selection, migration and other processes can still change them. Drift is simply not the dominant force here.
+**A. Large populations with high genetic diversity:** Large population size reduces random sampling fluctuations, so drift has little effect. It does not guarantee stable allele frequencies, because selection, migration and other processes can still change them.
 
 **C. Large populations with gene flow:** Large populations with gene flow are doubly buffered against drift. Gene flow (migration) introduces alleles from other populations, maintaining diversity and homogenizing allele frequencies between populations. Combined with large population size, drift has minimal effect.
 
@@ -880,7 +880,7 @@ A population bottleneck is a major reduction in the size of an existing populati
 ==============================================================================
 Q30  [bio-373]  Answer: A
 ==============================================================================
-In a simple population-genetics model, individuals preferentially mate with others of the same genotype at a particular locus. Assume equal reproductive contributions and no selection, mutation, migration or drift. What is the expected effect of this positive assortative mating?
+In a population initially in Hardy-Weinberg equilibrium, with both alleles present, individuals begin preferentially mating with others of the same genotype at a particular locus. Assume equal reproductive contributions and no selection, mutation, migration or drift. What is the expected effect of this positive assortative mating?
 
   A) No change in allele frequencies but an increase in homozygosity
   B) An increase in both allele frequencies and heterozygosity
@@ -1204,7 +1204,7 @@ Steroid hormones (cortisol, estrogen, testosterone, aldosterone) are lipophilic 
   - Steroid hormones are lipophilic and cross the plasma membrane to bind intracellular receptors.
   - The hormone-receptor complex acts as a ligand-activated transcription factor at hormone response elements.
   - Because the response requires transcription and translation, it typically develops over minutes to hours and may last longer.
-  - This contrasts with cell surface receptors, which act within seconds to minutes through second messengers and reach transcription factors only indirectly, through signalling pathways.
+  - Cell-surface receptors signal through intracellular proteins, second messengers, or both. Some responses are rapid, while others change gene expression over longer periods.
   - Being lipophilic, these hormones travel bound to carrier proteins in plasma, and only the free fraction is biologically active.
 
 ==============================================================================
@@ -1421,7 +1421,7 @@ RuBisCO (ribulose-1,5-bisphosphate carboxylase/oxygenase) catalyzes the first st
 
 ### Why the other choices are wrong:
 
-**A. Phosphoenolpyruvate (PEP):** Phosphoenolpyruvate (PEP) is the CO2 acceptor molecule used by PEP carboxylase in C4 and CAM plants during their initial carbon fixation step. In the Calvin cycle, RuBisCO uses ribulose-1,5-bisphosphate (RuBP) as the CO2 acceptor. PEP carboxylase uses bicarbonate rather than CO2 itself, so the two enzymes do not act on the same inorganic-carbon substrate, and it does not catalyse RuBisCO's competing oxygenase reaction.
+**A. Phosphoenolpyruvate (PEP):** In C4 and CAM plants, PEP carboxylase adds bicarbonate (HCO₃⁻) to PEP, forming oxaloacetate during the initial carbon-fixation step. In the Calvin cycle, RuBisCO instead adds CO₂ to RuBP. PEP carboxylase does not catalyze RuBisCO's competing oxygenase reaction.
 
 **B. Glyceraldehyde-3-phosphate (G_3P):** Glyceraldehyde-3-phosphate (G_3P) is actually a product of the Calvin cycle, not the CO2 acceptor. When RuBisCO fixes CO2 to RuBP, the immediate product is two molecules of 3-phosphoglycerate (3-PGA), which are then reduced to G_3P using ATP and NADPH. G_3P is the three-carbon sugar that can be used to make glucose and other organic molecules.
 
