@@ -508,5 +508,57 @@ ok(/some dolphins inhabit rivers/.test(BY['bio-624'].explanation), 'bio-624 (B18
 // no item reintroduces an absolute impermeability or pump claim
 ok(!/impermeable to water/.test(BY['bio-629'].explanation), 'bio-629 (B21): absolute impermeability survives');
 
+// ===========================================================================
+section('11. The clarification from the scientific reread');
+
+// After the reread, one passage changed: the first sentence of option A's
+// feedback in B4 (bio-606). The old wording let "caused by Rickettsia typhi"
+// appear to govern plague as well. The sentence is now split so that each
+// pathogen is named with the disease it causes.
+//
+// The replaced wording was introduced by batch 11 itself, so the pre-batch-11
+// fixture is not its baseline; it is listed here and asserted absent rather
+// than treated as drift in section 4.
+const FOLLOWUP_GONE = 'Rat fleas are associated with plague and flea-borne murine typhus, caused by <em>Rickettsia typhi</em>.';
+const FOLLOWUP_PRESENT = [
+  'Rat fleas can transmit <em>Yersinia pestis</em>, which causes plague.',
+  'They can also transmit <em>Rickettsia typhi</em>, which causes flea-borne murine typhus.'
+];
+
+{
+  const q = BY['bio-606'];
+  const was = before['bio-606'];
+  for (const t of FOLLOWUP_PRESENT) ok(q.explanation.includes(t), `bio-606 (B4): clarification text missing: ${t.slice(0, 70)}`);
+  ok(!text(q).includes(FOLLOWUP_GONE), 'bio-606 (B4): the superseded first sentence is still present');
+  // each pathogen is now paired with its own disease, in the right order
+  const a = q.explanation.match(/<p><strong>A\. Rat flea \(Xenopsylla cheopis\):<\/strong>([\s\S]*?)<\/p>/);
+  ok(a, 'bio-606 (B4): option A feedback paragraph not found');
+  if (a) {
+    const p = strip(a[1]);
+    ok(p.indexOf('Yersinia pestis') < p.indexOf('plague'), 'bio-606 (B4): Yersinia pestis should be named before plague');
+    ok(p.indexOf('Rickettsia typhi') < p.indexOf('flea-borne murine typhus'),
+      'bio-606 (B4): Rickettsia typhi should be named before murine typhus');
+    ok(!/plague and flea-borne murine typhus/.test(p),
+      'bio-606 (B4): the two diseases should no longer share one "caused by" clause');
+    // the rest of the paragraph survives
+    ok(/Epidemic typhus is caused by R\. prowazekii/.test(p), 'bio-606 (B4): the R. prowazekii contrast was lost');
+    ok(/These similar disease names refer to different infections and vectors/.test(p),
+      'bio-606 (B4): the closing sentence of option A was lost');
+  }
+  // the clarification is explanation-only
+  ok(q.question === was.question, 'bio-606 (B4): the stem moved during the clarification');
+  ok(q.options.join('\u0000') === was.options.join('\u0000'), 'bio-606 (B4): an option text moved during the clarification');
+  ok(q.correct === was.correct && LETTER[q.correct] === 'B', 'bio-606 (B4): the answer should still be B');
+  ok(pointCount(q.explanation) === 3, `bio-606 (B4): ${pointCount(q.explanation)} educational points, expected 3`);
+  ok(q.explanation.includes("<p class='exp-key'>Bottom Line: Epidemic typhus = body louse"),
+    'bio-606 (B4): the Bottom Line changed');
+  ok(q.explanation.includes('<h4>Correct Answer: Human body louse (Pediculus humanus corporis)</h4>'),
+    'bio-606 (B4): the correct-answer heading changed');
+  // and the other 25 items are untouched by this pass
+  const movedSinceBatch11 = IDS.filter(id => id !== 'bio-606' && FOLLOWUP_PRESENT.some(t => BY[id].explanation.includes(t)));
+  ok(movedSinceBatch11.length === 0,
+    `the clarification text leaked into ${movedSinceBatch11.join(', ')}`);
+}
+
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
