@@ -152,6 +152,12 @@ section('3. Claims the review asked to remove, and the replacements');
   }
   ok(paired >= 200, `only ${paired} paired removal checks, expected the review's full list`);
 }
+// A later follow-up pass (section 10) replaced some of batch 10's own wording.
+// Those ids are listed here so the derived checks below skip them, and each
+// superseded passage is asserted absent, so the exemption cannot hide a
+// half-applied edit.
+const SUPERSEDED = new Set(['bio-588 explanation', 'bio-589 explanation', 'bio-598 explanation']);
+const supersededText = [];
 // every supplied replacement is present and its predecessor is gone. A few
 // edits extend their anchor rather than replacing it (the review asks for an
 // extra sentence), so the anchor survives inside the new text there.
@@ -159,17 +165,27 @@ let extended = 0;
 for (const spec of EDITS) {
   const q = BY[spec.id];
   for (const [from, to] of spec.explanation || []) {
-    ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
-    if (to.includes(from)) extended++;
-    else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    if (SUPERSEDED.has(spec.id + ' explanation') && !q.explanation.includes(to)) {
+      supersededText.push([spec.id, to]);
+    } else {
+      ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
+      if (to.includes(from)) extended++;
+      else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    }
     ok(before[spec.id].explanation.includes(from), `Q${spec.q} (${spec.id}): the anchor was not in the before-fixture: ${from.slice(0, 60)}`);
   }
   if (spec.stemFull) ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
-  if (spec.explanationFull) ok(q.explanation === spec.explanationFull, `Q${spec.q} (${spec.id}): explanation does not match the full replacement`);
+  if (spec.explanationFull) {
+    if (SUPERSEDED.has(spec.id + ' explanation') && q.explanation !== spec.explanationFull) supersededText.push([spec.id, spec.explanationFull]);
+    else ok(q.explanation === spec.explanationFull, `Q${spec.q} (${spec.id}): explanation does not match the full replacement`);
+  }
   for (const [i, t] of spec.optionFull || []) ok(q.options[i] === t, `Q${spec.q} (${spec.id}): option ${LETTER[i]} does not match the supplied text`);
   for (const h of spec.keepHeadings || []) ok(q.explanation.includes(h), `Q${spec.q} (${spec.id}): heading lost: ${h}`);
 }
 ok(extended >= 1 && extended <= 6, `${extended} edits extend their anchor instead of replacing it, expected a handful`);
+// exactly the three passages the follow-up rewrote, and no others
+ok(supersededText.length === 3, `${supersededText.length} batch 10 passages were superseded, expected 3`);
+for (const [id, to] of supersededText) ok(!BY[id].explanation.includes(to), `${id}: a superseded passage is back`);
 
 // ===========================================================================
 section('4. The three major rewrites and the named repairs');
@@ -506,6 +522,101 @@ for (const id of ['bio-587', 'bio-588', 'bio-589']) {
 for (const id of ['bio-594', 'bio-595']) {
   ok(!/coating (the )?intestinal villi/.test(BY[id].explanation), `${id} (Q${qnum(id)}): the "coating villi" mechanism survives`);
 }
+
+// ===========================================================================
+section('10. The narrow follow-up correction pass');
+
+// Five items received a second, localised pass, in their explanation fields
+// only. Each tuple is [id, text that must now be present, text that must be
+// gone]. The "gone" strings are batch 10's own earlier wording, so section 3
+// exempts and counts them as superseded rather than treating them as drift.
+const FOLLOWUP = [
+  ['bio-545',
+    ['Factor VIII participates in the intrinsic coagulation pathway. aPTT assesses the intrinsic and common pathways; PT assesses the extrinsic and common pathways.',
+      'Hemophilia A typically causes a prolonged aPTT with normal PT, but mild disease can have a normal aPTT.',
+      'It also typically causes a prolonged aPTT with normal PT.',
+      'Bottom Line: Hemophilia A is an X-linked disorder caused by reduced factor VIII activity.',
+      'although mild disease may have a normal aPTT'],
+    ['which is assessed by aPTT. Therefore',
+      'which measures the extrinsic pathway',
+      'It also causes prolonged aPTT with normal PT',
+      'Hemophilia A is Factor VIII deficiency causing']],
+
+  ['bio-572',
+    ['For the 45,X cells described here, the expected Barr body count is 1 − 1 = 0'],
+    ['Barr body count in Turner syndrome:']],
+
+  ['bio-588',
+    ['Bottom Line: In a bone marrow transplant recipient, a pulmonary halo sign and septate hyphae with acute-angle branching strongly suggest invasive aspergillosis',
+      'Mucorales typically have broad, sparsely septate hyphae with irregular or near-right-angle branching',
+      'Neither the hyphal appearance nor the halo sign is specific on its own'],
+    ['prolonged neutropenia together point to invasive aspergillosis',
+      'broad, pauciseptate hyphae with irregular or near-right-angle branching. Neither finding is specific']],
+
+  ['bio-589',
+    ['Some yeasts can also grow in filamentous forms: <em>Candida</em> can produce pseudohyphae and true hyphae.'],
+    ['They should not be distinguished by claiming yeasts can never form filaments']],
+
+  ['bio-598',
+    ['In human malaria, sporozoites invade liver cells and merozoites invade red blood cells.'],
+    ['All <em>Plasmodium</em> species use this machinery']]
+];
+
+ok(FOLLOWUP.length === 5, `the follow-up pass covers ${FOLLOWUP.length} items, expected 5`);
+for (const [id, present, gone] of FOLLOWUP) {
+  for (const t of present) {
+    ok(BY[id].explanation.includes(t), `${id} (Q${qnum(id)}): follow-up text missing: ${t.slice(0, 70)}`);
+  }
+  for (const t of gone) {
+    ok(!text(BY[id]).includes(t), `${id} (Q${qnum(id)}): superseded text still present: ${t.slice(0, 70)}`);
+  }
+}
+
+// Scope: explanation fields only, for exactly these five ids. The baseline for
+// a stem or option is batch 10's own supplied text where it replaced one, and
+// the pre-batch-10 fixture otherwise.
+const FIVE = FOLLOWUP.map(f => f[0]);
+for (const id of FIVE) {
+  const spec = EDITS.find(s => s.id === id);
+  const baseStem = (spec && spec.stemFull) || before[id].question;
+  ok(BY[id].question === baseStem, `${id} (Q${qnum(id)}): the stem moved during the follow-up`);
+  ok(BY[id].correct === before[id].correct, `${id} (Q${qnum(id)}): the answer key moved during the follow-up`);
+  for (let i = 0; i < 4; i++) {
+    const renamed = spec && (spec.optionFull || []).find(([j]) => j === i);
+    const baseOpt = renamed ? renamed[1] : before[id].options[i];
+    ok(BY[id].options[i] === baseOpt, `${id} option ${LETTER[i]}: changed during the follow-up`);
+  }
+}
+
+// The follow-up had to preserve each item's educational-point count and its
+// Bottom Line, and keep the content the user asked to retain.
+const POINT_COUNT = { 'bio-545': 2, 'bio-572': 3, 'bio-588': 3, 'bio-589': 3, 'bio-598': 3 };
+for (const id of FIVE) {
+  const m = BY[id].explanation.match(/Key Educational Points:<\/h4><ul>([\s\S]*?)<\/ul>/);
+  const n = m ? (m[1].match(/<li>/g) || []).length : -1;
+  ok(n === POINT_COUNT[id], `${id} (Q${qnum(id)}): ${n} educational points, expected ${POINT_COUNT[id]}`);
+  ok((BY[id].explanation.match(/class='exp-key'>Bottom Line:/g) || []).length === 1,
+    `${id} (Q${qnum(id)}): expected exactly one Bottom Line`);
+}
+
+// Q47's stem keeps its own wording, and neutropenia was not to be added to it
+ok(/approximately 45-degree angles/.test(BY['bio-588'].question),
+  'bio-588 (Q47): the stem should keep "approximately 45-degree angles"');
+ok(!/neutropeni/i.test(BY['bio-588'].question), 'bio-588 (Q47): neutropenia was added to the stem');
+// Q33 keeps the main explanation's discussion of mosaic and structural forms
+ok(/mosaic/.test(BY['bio-572'].explanation), 'bio-572 (Q33): the mosaic discussion was lost');
+ok(/structural/.test(BY['bio-572'].explanation), 'bio-572 (Q33): the structural-abnormality discussion was lost');
+// Q56 keeps the corrected table row, its other feedback and its Bottom Line
+ok(/Many invasive stages move by gliding/.test(BY['bio-598'].explanation),
+  'bio-598 (Q56): the corrected table row was lost');
+ok(/Bottom Line: (<em>)?Plasmodium(<\/em>)? is an apicomplexan/.test(BY['bio-598'].explanation),
+  'bio-598 (Q56): the Bottom Line changed');
+// Q48 keeps the rest of option B's paragraph
+ok(/<em>Candida<\/em>/.test(BY['bio-589'].explanation),
+  "bio-589 (Q48): the rest of option B's paragraph was lost");
+// Q8 keeps the educational points batch 10 had already corrected
+ok(/X-linked recessive/.test(BY['bio-545'].explanation),
+  'bio-545 (Q8): the corrected educational points were lost');
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
