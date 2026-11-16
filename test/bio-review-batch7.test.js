@@ -399,8 +399,8 @@ for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem+
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
 for (const id of idmap.absent_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
 for (const id of idmap.absent_still_unreviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: outside this export but modified`);
-ok(Object.keys(untouched.biology).length === 569, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 569`);
-ok(Object.keys(untouched.biology).length + IDS.length === 629, 'fixtures do not partition the biology bank');
+ok(Object.keys(untouched.biology).length === 509, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 509`);
+ok(Object.keys(untouched.biology).length + 60 + IDS.length === 629, 'fixtures do not partition the biology bank');
 ok(Object.keys(untouched.chemistry).length === 485, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================

@@ -1,0 +1,32 @@
+{
+  "_comment": [
+    "Display number -> bio id for SHOSMED LF3 Biology review batch 8 (Q1 Toxoplasma definitive host",
+    "through Q60 Fox's proteinoid microspheres), mapped onto questions.json.",
+    "The pack is bio-406..bio-472 with seven ids removed from the span: bio-423 (2,4-dinitrophenol),",
+    "bio-440 (five-kingdom classification), bio-441 (controlled experiment), bio-450 (competitive",
+    "inhibitor), bio-453 (Na+/K+-ATPase) and bio-466 (hemophilia carrier) were all edited in batch 2,",
+    "and bio-462 (LH surge and ovulation) is simply absent from the export for a reason the pack does",
+    "not state. That leaves exactly 60, and every one was verified against BOTH the topic and the",
+    "answer letter the review asserts, never against the display number."
+  ],
+  "map": {
+    "Q1": "bio-406", "Q2": "bio-407", "Q3": "bio-408", "Q4": "bio-409", "Q5": "bio-410",
+    "Q6": "bio-411", "Q7": "bio-412", "Q8": "bio-413", "Q9": "bio-414", "Q10": "bio-415",
+    "Q11": "bio-416", "Q12": "bio-417", "Q13": "bio-418", "Q14": "bio-419", "Q15": "bio-420",
+    "Q16": "bio-421", "Q17": "bio-422", "Q18": "bio-424", "Q19": "bio-425", "Q20": "bio-426",
+    "Q21": "bio-427", "Q22": "bio-428", "Q23": "bio-429", "Q24": "bio-430", "Q25": "bio-431",
+    "Q26": "bio-432", "Q27": "bio-433", "Q28": "bio-434", "Q29": "bio-435", "Q30": "bio-436",
+    "Q31": "bio-437", "Q32": "bio-438", "Q33": "bio-439", "Q34": "bio-442", "Q35": "bio-443",
+    "Q36": "bio-444", "Q37": "bio-445", "Q38": "bio-446", "Q39": "bio-447", "Q40": "bio-448",
+    "Q41": "bio-449", "Q42": "bio-451", "Q43": "bio-452", "Q44": "bio-454", "Q45": "bio-455",
+    "Q46": "bio-456", "Q47": "bio-457", "Q48": "bio-458", "Q49": "bio-459", "Q50": "bio-460",
+    "Q51": "bio-461", "Q52": "bio-463", "Q53": "bio-464", "Q54": "bio-465", "Q55": "bio-467",
+    "Q56": "bio-468", "Q57": "bio-469", "Q58": "bio-470", "Q59": "bio-471", "Q60": "bio-472"
+  },
+  "keep_unchanged_per_review": ["bio-411", "bio-412", "bio-434", "bio-435", "bio-458", "bio-467"],
+  "asserted_letters": "BBBBBCCBBCBBBBBDACBCBBBBBBCBCBABCCCBBBBCCBCBBCCCCCBCCDBADDCA",
+  "stem_replacements": ["Q8", "Q10", "Q14", "Q20", "Q35", "Q50", "Q51", "Q58", "Q59"],
+  "option_renames": { "Q3": "A", "Q37": "B", "Q59": "B" },
+  "absent_already_reviewed": ["bio-423", "bio-440", "bio-441", "bio-450", "bio-453", "bio-466"],
+  "absent_still_unreviewed": ["bio-462"]
+}

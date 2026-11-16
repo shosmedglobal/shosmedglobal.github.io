@@ -353,10 +353,10 @@ for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem+
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
 for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
 // 569 unowned + the 60 in this pack = 629
-ok(Object.keys(untouched.biology).length === 449, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 449`);
+ok(Object.keys(untouched.biology).length === 389, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 389`);
 // 509 unowned + 60 (review batch 6, handed off when that batch was approved)
 // + the 60 in this batch's own pack = 629
-ok(Object.keys(untouched.biology).length + 60 + 60 + IDS.length === 629, 'fixtures do not partition the biology bank');
+ok(Object.keys(untouched.biology).length + 60 + 60 + 60 + IDS.length === 629, 'fixtures do not partition the biology bank');
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
