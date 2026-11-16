@@ -158,20 +158,37 @@ section('3. Claims the review asked to remove, and the replacements');
 // extra sentence, the egg source in Q3), so for those the anchor is
 // expected to survive inside the new text; their number is pinned so the
 // exemption cannot quietly grow.
+// A later follow-up pass (section 10) replaced some of batch 8's own wording.
+// Those ids are listed here so the derived checks below skip them, and each
+// superseded passage is asserted absent, so the exemption cannot hide a
+// half-applied edit.
+const SUPERSEDED = new Set(['bio-413 explanation', 'bio-452 explanation', 'bio-470 explanation',
+  'bio-471 explanation', 'bio-471 option']);
+const supersededText = [];
 let extended = 0;
 for (const spec of EDITS) {
   const q = BY[spec.id];
   for (const [from, to] of spec.explanation || []) {
-    ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
-    if (to.includes(from)) extended++;
-    else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    if (SUPERSEDED.has(spec.id + ' explanation') && !q.explanation.includes(to)) {
+      supersededText.push([spec.id, to]);
+    } else {
+      ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
+      if (to.includes(from)) extended++;
+      else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    }
     ok(before[spec.id].explanation.includes(from), `Q${spec.q} (${spec.id}): the anchor was not in the before-fixture: ${from.slice(0, 60)}`);
   }
   if (spec.stemFull) ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
-  for (const [i, t] of spec.optionFull || []) ok(q.options[i] === t, `Q${spec.q} (${spec.id}): option ${LETTER[i]} does not match the supplied text`);
+  for (const [i, t] of spec.optionFull || []) {
+    if (SUPERSEDED.has(spec.id + ' option') && q.options[i] !== t) supersededText.push([spec.id, t]);
+    else ok(q.options[i] === t, `Q${spec.q} (${spec.id}): option ${LETTER[i]} does not match the supplied text`);
+  }
   for (const h of spec.keepHeadings || []) ok(q.explanation.includes(h), `Q${spec.q} (${spec.id}): heading lost: ${h}`);
 }
 ok(extended === 1, `${extended} edits extend their anchor instead of replacing it, expected 1 (Q3's egg source)`);
+// exactly the five passages the follow-up rewrote, and no others
+ok(supersededText.length === 5, `${supersededText.length} batch 8 passages were superseded, expected 5`);
+for (const [id, to] of supersededText) ok(!text(BY[id]).includes(to), `${id}: a superseded passage is back`);
 
 // ===========================================================================
 section('4. The two substantial rewrites and the named repairs');
@@ -187,7 +204,7 @@ const PRESENT = [
   ['bio-446', 'Chloroplasts trace their ancestry to cyanobacteria'],
   // Q59 (bio-471), the second flagged rewrite
   ['bio-471', 'In simple laboratory models of protobionts (protocell-like compartments)'],
-  ['bio-471', 'Reproduction by coordinated DNA replication and binary fission, as in modern bacteria'],
+  ['bio-471', 'They reproduce by coordinated DNA replication and binary fission'],
   ['bio-471', 'Lipid vesicles and coacervate droplets can concentrate or retain some substances'],
   ['bio-471', 'does not necessarily imply the actively regulated homeostasis of a modern cell'],
   ['bio-471', 'A complete DNA genome and ribosomes are not required for a simple compartment model'],
@@ -329,7 +346,8 @@ for (const [id, stem] of Object.entries(NEW_STEMS)) {
 const NEW_OPTIONS = [
   ['bio-408', 0, 'Larval cysts in undercooked pork', 'Adult worms in undercooked pork'],
   ['bio-445', 1, 'High DNA sequence similarity across many independent homologous regions', 'Similar DNA nucleotide sequences'],
-  ['bio-471', 1, 'Reproduction by coordinated DNA replication and binary fission, as in modern bacteria', 'They can reproduce through binary fission']
+  // Q59's option B was renamed again by the follow-up pass in section 10
+  ['bio-471', 1, 'They reproduce by coordinated DNA replication and binary fission', 'They can reproduce through binary fission']
 ];
 for (const [id, i, now, was] of NEW_OPTIONS) {
   ok(BY[id].options[i] === now, `${id} (Q${qnum(id)}): option ${LETTER[i]} does not match the review's replacement`);
@@ -501,6 +519,70 @@ for (const id of ['bio-438', 'bio-457']) {
 ok(BY['bio-406'].explanation.includes('only definitive host'), 'bio-406 (Q1): the felid-only life cycle claim the review kept is missing');
 ok(/nonbloody diarrhoea, bloating and malabsorption; fever can occur/.test(BY['bio-410'].explanation), 'bio-410 (Q5): expected the scoped symptom claim');
 ok(BY['bio-419'].explanation.includes('UCP1 does not inhibit any electron transport chain complex'), 'bio-419 (Q14): expected UCP1-specific wording');
+
+// ===========================================================================
+section('10. The narrow follow-up correction pass');
+
+// Four items got a second, localised pass: two educational points in Q8, one
+// distractor paragraph each in Q43 and Q58, and Q59's option B renamed with
+// its heading. No stem moved and no other option text moved.
+const FOLLOWUP = [
+  ['bio-413', ['Excystation releases trophozoites, the active form. They are fragile outside the host and ordinarily do not survive passage through the stomach after ingestion.',
+    'Trophozoites may remain in the intestinal lumen or invade the colonic wall. Invasive infection can cause flask-shaped ulcers and amoebic dysentery, and may spread to the liver to form an abscess.'],
+  ['these may stay in the intestinal lumen or invade the wall', 'Trophozoites invade the colonic wall causing amoebic dysentery with flask-shaped ulcers']],
+  ['bio-452', ['Venous pressure is much lower than aortic pressure. Venous return is driven by a pressure gradient toward the right atrium'],
+    ['much lower than aortic pressure (~2-10 mmHg)']],
+  ['bio-470', ['This reverses the standard base distinction: RNA uses uracil, whereas DNA uses thymine.',
+    'supported by RNA\'s ability to carry genetic information and catalyze reactions'],
+  ['The chemical difference that matters for this hypothesis is RNA\'s 2\'-OH group']],
+  ['bio-471', ['<strong>B. They reproduce by coordinated DNA replication and binary fission:</strong>'],
+    ['Reproduction by coordinated DNA replication and binary fission, as in modern bacteria']]
+];
+ok(FOLLOWUP.length === 4, `the follow-up pass covers ${FOLLOWUP.length} items, expected 4`);
+for (const [id, present, gone] of FOLLOWUP) {
+  for (const s of present) ok(text(BY[id]).includes(s), `${id} (Q${qnum(id)}): follow-up text missing: ${s.slice(0, 60)}`);
+  for (const s of gone) {
+    ok(!text(BY[id]).includes(s), `${id} (Q${qnum(id)}): superseded text still present: ${s.slice(0, 60)}`);
+  }
+}
+// the two educational points Q8 replaced, pinned verbatim and in order
+{
+  const pts = [...BY['bio-413'].explanation
+    .match(/Key Educational Points:<\/h4><ul>([\s\S]*?)<\/ul>/)[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m => m[1]);
+  ok(pts.length === 5, `bio-413 (Q8): ${pts.length} educational points, expected 5`);
+  ok(pts[2] === 'Excystation releases trophozoites, the active form. They are fragile outside the host and ordinarily do not survive passage through the stomach after ingestion.',
+    'bio-413 (Q8): educational point 3 does not match the follow-up text');
+  ok(pts[3] === 'Trophozoites may remain in the intestinal lumen or invade the colonic wall. Invasive infection can cause flask-shaped ulcers and amoebic dysentery, and may spread to the liver to form an abscess.',
+    'bio-413 (Q8): educational point 4 does not match the follow-up text');
+  ok(pts[0].startsWith('The cyst is the infective stage') && pts[4].startsWith('In E. histolytica and Giardia'),
+    'bio-413 (Q8): the points the follow-up leaves alone have moved');
+}
+// Q59's option and its heading agree, and the keyed option is still C
+ok(BY['bio-471'].options[1] === 'They reproduce by coordinated DNA replication and binary fission',
+  'bio-471 (Q59): option B does not match the follow-up text');
+ok(BY['bio-471'].explanation.includes('<strong>B. ' + BY['bio-471'].options[1] + ':</strong>'),
+  'bio-471 (Q59): option B and its distractor heading disagree');
+ok(LETTER[BY['bio-471'].correct] === 'C', 'bio-471 (Q59): the key moved off C');
+ok(BY['bio-471'].explanation.includes('Some model compartments can grow and physically divide'),
+  'bio-471 (Q59): option B\'s feedback paragraph should have been left alone');
+// scope: only these four items differ from the batch 8 commit, and no stem moved
+{
+  const FOUR = ['bio-413', 'bio-452', 'bio-470', 'bio-471'];
+  // three of the four had their stems replaced by batch 8 itself, so the
+  // baseline is that pass's pinned stem, not the pre-batch-8 fixture
+  for (const id of FOUR) {
+    const baseline = NEW_STEMS[id] || before[id].question;
+    ok(BY[id].question === baseline, `${id} (Q${qnum(id)}): the stem moved during the follow-up`);
+  }
+  for (let i = 0; i < 4; i++) {
+    ok(BY['bio-413'].options[i] === before['bio-413'].options[i], `bio-413 option ${LETTER[i]}: changed during the follow-up`);
+    ok(BY['bio-452'].options[i] === before['bio-452'].options[i], `bio-452 option ${LETTER[i]}: changed during the follow-up`);
+    ok(BY['bio-470'].options[i] === before['bio-470'].options[i], `bio-470 option ${LETTER[i]}: changed during the follow-up`);
+  }
+  for (const id of FOUR) ok(BY[id].correct === before[id].correct, `${id} (Q${qnum(id)}): the key moved during the follow-up`);
+}
+// no curly quotes crept in from the review text
+for (const id of IDS) ok(!/[‘’“”]/.test(text(BY[id])), `${id} (Q${qnum(id)}): curly quote; the bank uses straight quotes`);
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
