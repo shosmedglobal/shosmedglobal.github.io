@@ -265,7 +265,7 @@ for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === ha
 // Review batches 5, 6 and 7 have each taken 60 of these ids, so 569 - 180.
 // Each approved batch hands its ids to its own test, so the sweeps partition
 // the bank.
-ok(Object.keys(untouched.biology).length === 269, 'untouched biology hash count unexpected');
+ok(Object.keys(untouched.biology).length === 209, 'untouched biology hash count unexpected');
 
 // ===========================================================================
 section('7. Structural invariants across the pack');

@@ -601,12 +601,12 @@ ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches b
 // overlapping. Batch 3 took 60 ids (bio-62..bio-128 minus batch 2's seven),
 // batch 4 took 59 and batch 5 took 59 new ones (its 60th, bio-216, was
 // already in this batch's own fixture as a KEEP item).
-ok(Object.keys(untouched.biology).length === 149, 'untouched biology hash count unexpected');
+ok(Object.keys(untouched.biology).length === 89, 'untouched biology hash count unexpected');
 // 269 unowned + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6)
 // + 59 (batch 7; its 60th, bio-366, was already in this batch's own fixture as
 // a KEEP item) + the 63 in this batch's own fixture = 629
-ok(Object.keys(untouched.biology).length + 60 + 59 + 59 + 60 + 59 + 60 + 60 + Object.keys(before).length === 629,
-   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6) + 59 (batch 7) + 60 (batch 8) + 60 (batch 9) + ${Object.keys(before).length}`);
+ok(Object.keys(untouched.biology).length + 60 + 59 + 59 + 60 + 59 + 60 + 60 + 60 + Object.keys(before).length === 629,
+   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6) + 59 (batch 7) + 60 (batch 8) + 60 (batch 9) + 60 (batch 10) + ${Object.keys(before).length}`);
 
 // ===========================================================================
 section('7. Internal consistency of every edited item');

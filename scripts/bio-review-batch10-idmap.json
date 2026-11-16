@@ -1,0 +1,169 @@
+{
+  "_comment": [
+    "Display number -> bio id for SHOSMED LF3 Biology review batch 10 (Q1 aldosterone through",
+    "Q60 pinworm), mapped onto questions.json.",
+    "The pack is bio-537..bio-602 with six ids removed from the span: bio-542 (hematocrit and",
+    "polycythemia), bio-557 (primate features), bio-566 (recombination frequency of 8%), bio-579",
+    "(duration of spermatogenesis), bio-583 (cone cells) and bio-591 (yeasts versus molds) are all",
+    "absent from the export. Five of them were covered by batch 2; only bio-583, one of the two",
+    "twins batch 2 could not tell apart, is still unreviewed. That leaves exactly 60 items, and",
+    "every one was verified against BOTH its stem and options and the answer letter the review",
+    "asserts, never against the display number."
+  ],
+  "map": {
+    "Q1": "bio-537",
+    "Q2": "bio-538",
+    "Q3": "bio-539",
+    "Q4": "bio-540",
+    "Q5": "bio-541",
+    "Q6": "bio-543",
+    "Q7": "bio-544",
+    "Q8": "bio-545",
+    "Q9": "bio-546",
+    "Q10": "bio-547",
+    "Q11": "bio-548",
+    "Q12": "bio-549",
+    "Q13": "bio-550",
+    "Q14": "bio-551",
+    "Q15": "bio-552",
+    "Q16": "bio-553",
+    "Q17": "bio-554",
+    "Q18": "bio-555",
+    "Q19": "bio-556",
+    "Q20": "bio-558",
+    "Q21": "bio-559",
+    "Q22": "bio-560",
+    "Q23": "bio-561",
+    "Q24": "bio-562",
+    "Q25": "bio-563",
+    "Q26": "bio-564",
+    "Q27": "bio-565",
+    "Q28": "bio-567",
+    "Q29": "bio-568",
+    "Q30": "bio-569",
+    "Q31": "bio-570",
+    "Q32": "bio-571",
+    "Q33": "bio-572",
+    "Q34": "bio-573",
+    "Q35": "bio-574",
+    "Q36": "bio-575",
+    "Q37": "bio-576",
+    "Q38": "bio-577",
+    "Q39": "bio-578",
+    "Q40": "bio-580",
+    "Q41": "bio-581",
+    "Q42": "bio-582",
+    "Q43": "bio-584",
+    "Q44": "bio-585",
+    "Q45": "bio-586",
+    "Q46": "bio-587",
+    "Q47": "bio-588",
+    "Q48": "bio-589",
+    "Q49": "bio-590",
+    "Q50": "bio-592",
+    "Q51": "bio-593",
+    "Q52": "bio-594",
+    "Q53": "bio-595",
+    "Q54": "bio-596",
+    "Q55": "bio-597",
+    "Q56": "bio-598",
+    "Q57": "bio-599",
+    "Q58": "bio-600",
+    "Q59": "bio-601",
+    "Q60": "bio-602"
+  },
+  "keep_unchanged_per_review": [
+    "bio-541",
+    "bio-546",
+    "bio-568",
+    "bio-575",
+    "bio-584",
+    "bio-586"
+  ],
+  "asserted_letters": "ACADADCACBCDBACBDCCABDCBDDCDBADACDDAADCAADAABBACDBDCABBCBBDC",
+  "stem_replacements": [
+    "Q3",
+    "Q6",
+    "Q8",
+    "Q12",
+    "Q13",
+    "Q15",
+    "Q18",
+    "Q22",
+    "Q28",
+    "Q30",
+    "Q34",
+    "Q35",
+    "Q37",
+    "Q38",
+    "Q39",
+    "Q40",
+    "Q41",
+    "Q48",
+    "Q50",
+    "Q53",
+    "Q57",
+    "Q58",
+    "Q59"
+  ],
+  "option_renames": {
+    "Q10": [
+      "B"
+    ],
+    "Q12": [
+      "D"
+    ],
+    "Q13": [
+      "A",
+      "B",
+      "D"
+    ],
+    "Q14": [
+      "A"
+    ],
+    "Q19": [
+      "C"
+    ],
+    "Q20": [
+      "A"
+    ],
+    "Q23": [
+      "C"
+    ],
+    "Q37": [
+      "C",
+      "D"
+    ],
+    "Q41": [
+      "C",
+      "D"
+    ],
+    "Q48": [
+      "D"
+    ]
+  },
+  "major_rewrites": [
+    "Q12",
+    "Q13",
+    "Q37"
+  ],
+  "full_explanation_rewrites": [
+    "Q10",
+    "Q12",
+    "Q13",
+    "Q18",
+    "Q37",
+    "Q48",
+    "Q56"
+  ],
+  "absent_already_reviewed": [
+    "bio-542",
+    "bio-557",
+    "bio-566",
+    "bio-579",
+    "bio-591"
+  ],
+  "absent_still_unreviewed": [
+    "bio-583"
+  ]
+}

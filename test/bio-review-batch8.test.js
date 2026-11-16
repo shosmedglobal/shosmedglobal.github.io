@@ -485,8 +485,8 @@ ok(drift === 0, `${drift} out-of-scope biology items changed`);
 let chem = 0;
 for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
-ok(Object.keys(untouched.biology).length === 509, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 509`);
-ok(Object.keys(untouched.biology).length + 60 + IDS.length === 629, 'fixtures do not partition the biology bank');
+ok(Object.keys(untouched.biology).length === 449, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 449`);
+ok(Object.keys(untouched.biology).length + 60 + 60 + IDS.length === 629, 'fixtures do not partition the biology bank');
 ok(Object.keys(untouched.chemistry).length === 485, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
