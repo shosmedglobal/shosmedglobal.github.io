@@ -51,9 +51,12 @@ const KEYS = {
 const MAP = idmap.map;
 // bio-216 (cones) was a KEEP item for this review, but review batch 5
 // subsequently edited it, so it is now that batch's test's responsibility and
-// cannot be asserted unchanged here.
+// cannot be asserted unchanged here. bio-366 (Hardy-Weinberg assumptions) is
+// the same case one batch later: batch 7 edited it, so it belongs to that
+// batch's test now.
+const HANDED_OFF = ['bio-216', 'bio-366'];
 const KEPT_BY_REVIEW = new Set(idmap.keep_unchanged);
-const KEEP = new Set(idmap.keep_unchanged.filter(id => id !== 'bio-216'));
+const KEEP = new Set(idmap.keep_unchanged.filter(id => !HANDED_OFF.includes(id)));
 const EDITED = Object.values(MAP).filter(id => !KEPT_BY_REVIEW.has(id)).concat(['bio-294']);
 
 // ===========================================================================
@@ -576,6 +579,9 @@ for (const id of ['bio-513', 'bio-583']) {
 // edited bio-285 (its Q21), so it is that batch's test's responsibility and was
 // handed off out of this batch's untouched fixture.
 ok(untouched.biology['bio-285'] === undefined, 'bio-285 should have been handed off to the batch 6 fixture');
+// bio-366 was a KEEP item here; review batch 7 (its Q23) has since corrected it
+ok(JSON.stringify(BY['bio-366']) !== JSON.stringify(before['bio-366']), 'bio-366: expected the batch 7 corrections');
+ok(untouched.biology['bio-366'] === undefined, 'bio-366 should have been handed off to the batch 7 fixture');
 
 let drifted = 0;
 for (const q of data.biology) {
@@ -595,11 +601,12 @@ ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches b
 // overlapping. Batch 3 took 60 ids (bio-62..bio-128 minus batch 2's seven),
 // batch 4 took 59 and batch 5 took 59 new ones (its 60th, bio-216, was
 // already in this batch's own fixture as a KEEP item).
-ok(Object.keys(untouched.biology).length === 328, 'untouched biology hash count unexpected');
-// 328 unowned + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6) + the
-// 63 in this batch's own fixture = 629
-ok(Object.keys(untouched.biology).length + 60 + 59 + 59 + 60 + Object.keys(before).length === 629,
-   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6) + ${Object.keys(before).length}`);
+ok(Object.keys(untouched.biology).length === 269, 'untouched biology hash count unexpected');
+// 269 unowned + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6)
+// + 59 (batch 7; its 60th, bio-366, was already in this batch's own fixture as
+// a KEEP item) + the 63 in this batch's own fixture = 629
+ok(Object.keys(untouched.biology).length + 60 + 59 + 59 + 60 + 59 + Object.keys(before).length === 629,
+   `fixtures do not partition the biology bank: ${Object.keys(untouched.biology).length} + 60 (batch 3) + 59 (batch 4) + 59 (batch 5) + 60 (batch 6) + 59 (batch 7) + ${Object.keys(before).length}`);
 
 // ===========================================================================
 section('7. Internal consistency of every edited item');

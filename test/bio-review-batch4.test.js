@@ -262,9 +262,10 @@ let chem = 0;
 for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry items changed`);
 for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
-// Review batch 5 took 60 of these ids, so 569 - 60. Each approved batch hands
-// its ids to its own test, so the sweeps partition the bank.
-ok(Object.keys(untouched.biology).length === 449, 'untouched biology hash count unexpected');
+// Review batches 5, 6 and 7 have each taken 60 of these ids, so 569 - 180.
+// Each approved batch hands its ids to its own test, so the sweeps partition
+// the bank.
+ok(Object.keys(untouched.biology).length === 389, 'untouched biology hash count unexpected');
 
 // ===========================================================================
 section('7. Structural invariants across the pack');

@@ -1,0 +1,36 @@
+{
+  "_comment": [
+    "Display number -> internal id for the external biology review batch 7.",
+    "The pack is the contiguous bank range bio-343..bio-404 minus two items the export omits:",
+    "bio-346 (transitional epithelium of the bladder, still unreviewed) and bio-385 (water split at PSII,",
+    "already reviewed and edited as batch 2's Q16).",
+    "bio-366 (Q23) was batch 2's Q9, where that review said KEEP UNCHANGED; batch 7 now asks for two",
+    "corrections to it, so it is handed off out of the batch 3-6 untouched fixtures into this pack.",
+    "Every item was confirmed against BOTH the stem topic and the answer letter this review asserts,",
+    "whose tally (A=2, B=32, C=25, D=1) matches the bank exactly."
+  ],
+  "map": {
+    "Q1": "bio-343", "Q2": "bio-344", "Q3": "bio-345", "Q4": "bio-347", "Q5": "bio-348",
+    "Q6": "bio-349", "Q7": "bio-350", "Q8": "bio-351", "Q9": "bio-352", "Q10": "bio-353",
+    "Q11": "bio-354", "Q12": "bio-355", "Q13": "bio-356", "Q14": "bio-357", "Q15": "bio-358",
+    "Q16": "bio-359", "Q17": "bio-360", "Q18": "bio-361", "Q19": "bio-362", "Q20": "bio-363",
+    "Q21": "bio-364", "Q22": "bio-365", "Q23": "bio-366", "Q24": "bio-367", "Q25": "bio-368",
+    "Q26": "bio-369", "Q27": "bio-370", "Q28": "bio-371", "Q29": "bio-372", "Q30": "bio-373",
+    "Q31": "bio-374", "Q32": "bio-375", "Q33": "bio-376", "Q34": "bio-377", "Q35": "bio-378",
+    "Q36": "bio-379", "Q37": "bio-380", "Q38": "bio-381", "Q39": "bio-382", "Q40": "bio-383",
+    "Q41": "bio-384", "Q42": "bio-386", "Q43": "bio-387", "Q44": "bio-388", "Q45": "bio-389",
+    "Q46": "bio-390", "Q47": "bio-391", "Q48": "bio-392", "Q49": "bio-393", "Q50": "bio-394",
+    "Q51": "bio-395", "Q52": "bio-396", "Q53": "bio-397", "Q54": "bio-398", "Q55": "bio-399",
+    "Q56": "bio-400", "Q57": "bio-401", "Q58": "bio-402", "Q59": "bio-403", "Q60": "bio-404"
+  },
+  "keep_unchanged_per_review": ["bio-374", "bio-375", "bio-396", "bio-398", "bio-399", "bio-404"],
+  "asserted_letters": "BCCCBCBBBBCBCBBBCCBCCBCBBCCBBACCBBBCABBCBCBCBBCCCCCBBCBBBBDB",
+  "stem_replacements": ["Q3", "Q4", "Q6", "Q14", "Q16", "Q17", "Q18", "Q19", "Q30", "Q33", "Q34", "Q35", "Q39", "Q40", "Q41", "Q43", "Q44", "Q45", "Q53", "Q58"],
+  "option_renames": {
+    "Q15": "B", "Q18": "C", "Q24": "D", "Q29": "B", "Q43": "B", "Q45": "B", "Q53": "B"
+  },
+  "generic_point_blocks": ["Q42", "Q43", "Q44", "Q45", "Q46", "Q47", "Q48", "Q49", "Q50"],
+  "absent_already_reviewed": ["bio-385"],
+  "absent_still_unreviewed": ["bio-346"],
+  "handed_off_from_batch2": ["bio-366"]
+}

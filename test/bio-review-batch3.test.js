@@ -510,10 +510,10 @@ ok(drifted === 0, `${drifted} out-of-scope biology items changed`);
 let chemDrift = 0;
 for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chemDrift++;
 ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches biology only`);
-// Batch 4 took 60 of these ids and batch 5 another 60, so 569 - 60 - 60. Each
+// Batches 4, 5, 6 and 7 have each taken 60 of these ids, so 569 - 240. Each
 // approved batch hands its ids to that batch's own test, so the sweeps
 // partition the bank.
-ok(Object.keys(untouched.biology).length === 389, 'untouched biology hash count unexpected');
+ok(Object.keys(untouched.biology).length === 329, 'untouched biology hash count unexpected');
 // the seven batch-2 items that were skipped must be byte-identical
 for (const id of idmap.skipped_already_reviewed) {
   ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
