@@ -1,0 +1,35 @@
+{
+  "_comment": [
+    "Display number -> bio id for SHOSMED LF3 Biology review batch 9 (Q1 endosymbiotic evidence",
+    "through Q60 hypertonic dehydration), mapped onto questions.json.",
+    "The pack is bio-473..bio-536 with four ids removed from the span: bio-513 (Hardy-Weinberg",
+    "conditions), bio-518 (osteons in compact bone), bio-522 (axial skeleton) and bio-529 (ectotherm)",
+    "are absent from the export. bio-522 and bio-529 were both covered by batch 2; bio-513 and",
+    "bio-518 are still unreviewed. That leaves exactly 60, and every one was verified against BOTH the topic and the",
+    "answer letter the review asserts, never against the display number."
+  ],
+  "map": {
+    "Q1": "bio-473", "Q2": "bio-474", "Q3": "bio-475", "Q4": "bio-476", "Q5": "bio-477",
+    "Q6": "bio-478", "Q7": "bio-479", "Q8": "bio-480", "Q9": "bio-481", "Q10": "bio-482",
+    "Q11": "bio-483", "Q12": "bio-484", "Q13": "bio-485", "Q14": "bio-486", "Q15": "bio-487",
+    "Q16": "bio-488", "Q17": "bio-489", "Q18": "bio-490", "Q19": "bio-491", "Q20": "bio-492",
+    "Q21": "bio-493", "Q22": "bio-494", "Q23": "bio-495", "Q24": "bio-496", "Q25": "bio-497",
+    "Q26": "bio-498", "Q27": "bio-499", "Q28": "bio-500", "Q29": "bio-501", "Q30": "bio-502",
+    "Q31": "bio-503", "Q32": "bio-504", "Q33": "bio-505", "Q34": "bio-506", "Q35": "bio-507",
+    "Q36": "bio-508", "Q37": "bio-509", "Q38": "bio-510", "Q39": "bio-511", "Q40": "bio-512",
+    "Q41": "bio-514", "Q42": "bio-515", "Q43": "bio-516", "Q44": "bio-517", "Q45": "bio-519",
+    "Q46": "bio-520", "Q47": "bio-521", "Q48": "bio-523", "Q49": "bio-524", "Q50": "bio-525",
+    "Q51": "bio-526", "Q52": "bio-527", "Q53": "bio-528", "Q54": "bio-530", "Q55": "bio-531",
+    "Q56": "bio-532", "Q57": "bio-533", "Q58": "bio-534", "Q59": "bio-535", "Q60": "bio-536"
+  },
+  "keep_unchanged_per_review": ["bio-477", "bio-485", "bio-492", "bio-519", "bio-520", "bio-524", "bio-528"],
+  "asserted_letters": "DADDCDDAAAADDCDCCCADAAAADCABBCCBBBBCBBCBBBCBBACACBDACABCDCBC",
+  "stem_replacements": ["Q2", "Q3", "Q4", "Q8", "Q14", "Q16", "Q17", "Q22", "Q23", "Q25", "Q32", "Q34", "Q35", "Q36", "Q37", "Q38", "Q39", "Q47", "Q48", "Q52", "Q55", "Q58"],
+  "option_renames": {
+    "Q1": ["D"], "Q6": ["B", "D"], "Q14": ["C"], "Q22": ["A"], "Q24": ["B"],
+    "Q34": ["A", "B", "C", "D"], "Q47": ["A", "B"], "Q57": ["D"], "Q58": ["C"]
+  },
+  "major_rewrites": ["Q1", "Q22", "Q34"],
+  "absent_already_reviewed": ["bio-522", "bio-529"],
+  "absent_still_unreviewed": ["bio-513", "bio-518"]
+}
