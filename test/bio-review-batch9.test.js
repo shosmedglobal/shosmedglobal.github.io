@@ -150,24 +150,45 @@ section('3. Claims the review asked to remove, and the replacements');
   }
   ok(paired >= 180, `only ${paired} paired removal checks, expected the review's full list`);
 }
-// every supplied replacement is present and its predecessor is gone. Two edits
-// extend their anchor rather than replacing it (the review asks for an extra
-// sentence in Q25 and Q50), so the anchor survives inside the new text there.
+// A later follow-up pass (section 10) replaced some of batch 9's own wording.
+// Those ids are listed here so the derived checks below skip them, and each
+// superseded passage is asserted absent, so the exemption cannot hide a
+// half-applied edit.
+// bio-501 needs no entry: the follow-up replaced a paragraph batch 9 never
+// touched, so no derived check below refers to it.
+const SUPERSEDED = new Set(['bio-475 stem', 'bio-491 explanation', 'bio-495 explanation',
+  'bio-509 explanation', 'bio-509 heading']);
+const supersededText = [];
+// Two edits extend their anchor rather than replacing it (the review asks for
+// an extra sentence in Q25 and Q50), so the anchor survives in the new text.
 let extended = 0;
 for (const spec of EDITS) {
   const q = BY[spec.id];
   for (const [from, to] of spec.explanation || []) {
-    ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
-    if (to.includes(from)) extended++;
-    else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    if (SUPERSEDED.has(spec.id + ' explanation') && !q.explanation.includes(to)) {
+      supersededText.push([spec.id, to]);
+    } else {
+      ok(q.explanation.includes(to), `Q${spec.q} (${spec.id}): replacement text missing: ${to.slice(0, 60)}`);
+      if (to.includes(from)) extended++;
+      else ok(!q.explanation.includes(from), `Q${spec.q} (${spec.id}): replaced text still present: ${from.slice(0, 60)}`);
+    }
     ok(before[spec.id].explanation.includes(from), `Q${spec.q} (${spec.id}): the anchor was not in the before-fixture: ${from.slice(0, 60)}`);
   }
-  if (spec.stemFull) ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
+  if (spec.stemFull) {
+    if (SUPERSEDED.has(spec.id + ' stem') && q.question !== spec.stemFull) supersededText.push([spec.id, spec.stemFull]);
+    else ok(q.question === spec.stemFull, `Q${spec.q} (${spec.id}): stem does not match the supplied replacement`);
+  }
   if (spec.explanationFull) ok(q.explanation === spec.explanationFull, `Q${spec.q} (${spec.id}): explanation does not match the full replacement`);
   for (const [i, t] of spec.optionFull || []) ok(q.options[i] === t, `Q${spec.q} (${spec.id}): option ${LETTER[i]} does not match the supplied text`);
-  for (const h of spec.keepHeadings || []) ok(q.explanation.includes(h), `Q${spec.q} (${spec.id}): heading lost: ${h}`);
+  for (const h of spec.keepHeadings || []) {
+    if (SUPERSEDED.has(spec.id + ' heading') && !q.explanation.includes(h)) supersededText.push([spec.id, h]);
+    else ok(q.explanation.includes(h), `Q${spec.q} (${spec.id}): heading lost: ${h}`);
+  }
 }
 ok(extended === 2, `${extended} edits extend their anchor instead of replacing it, expected 2 (Q25 and Q50)`);
+// exactly the six passages the follow-up rewrote, and no others
+ok(supersededText.length === 5, `${supersededText.length} batch 9 passages were superseded, expected 5`);
+for (const [id, to] of supersededText) ok(!text(BY[id]).includes(to), `${id}: a superseded passage is back`);
 
 // ===========================================================================
 section('4. The three major rewrites and the named repairs');
@@ -216,7 +237,7 @@ const PRESENT = [
   // the targeted repairs across the rest of the pack
   ['bio-474', 'Some of the earliest widely accepted stromatolite evidence'],
   ['bio-474', 'does not necessarily date the origin of life'],
-  ['bio-475', 'Which sequence is consistent with a model'],
+  ['bio-475', 'Which sequence is consistent with a proposed origin-of-life model'],
   ['bio-475', 'the historical order remains uncertain'],
   ['bio-476', 'Why are alkaline hydrothermal environments considered a possible setting'],
   ['bio-476', 'small mineral pores may help concentrate reactants'],
@@ -290,6 +311,9 @@ for (const s of ABSENT) {
 // ===========================================================================
 section('5. Stems, options and headings stay in sync');
 
+// the follow-up pass in section 10 renamed one further option, Q37's A
+const FOLLOWUP_OPT = new Set(['37:0']);
+
 for (let n = 1; n <= 60; n++) {
   const id = MAP[n];
   const q = BY[id], b = before[id];
@@ -298,7 +322,7 @@ for (let n = 1; n <= 60; n++) {
     `Q${n} (${id}): stem ${changed ? 'changed but was not on the list' : 'is unchanged but the review replaces it'}`);
   for (let i = 0; i < 4; i++) {
     const oc = q.options[i] !== b.options[i];
-    ok(oc === OPT_CHANGED.has(n + ':' + i),
+    ok(oc === (OPT_CHANGED.has(n + ':' + i) || FOLLOWUP_OPT.has(n + ':' + i)),
       `Q${n} (${id}) option ${LETTER[i]}: ${oc ? 'changed unexpectedly' : 'unchanged but the review renames it'}`);
   }
 }
@@ -337,7 +361,7 @@ for (const n of STEM_CHANGED) {
   const id = MAP[n];
   const spec = EDITS.find(s => s.id === id);
   ok(!!spec && !!spec.stemFull, `Q${n} (${id}): no supplied stem replacement`);
-  if (spec && spec.stemFull) {
+  if (spec && spec.stemFull && !SUPERSEDED.has(id + ' stem')) {
     ok(BY[id].question === spec.stemFull, `Q${n} (${id}): stem does not match the supplied text`);
     ok(before[id].question !== spec.stemFull, `Q${n} (${id}): the stem already read this way, so the check is vacuous`);
   }
@@ -519,6 +543,69 @@ for (const id of ['bio-508', 'bio-509']) {
 }
 // Q1/Q22: no leftover claim that mitochondrial genomes are universally circular
 ok(!/circular/.test(BY['bio-473'].explanation), 'bio-473 (Q1): a circular-genome claim survives');
+
+// ===========================================================================
+section('10. The focused follow-up correction pass');
+
+// Five items got a second, localised pass: Q3's stem, one distractor paragraph
+// each in Q19, Q23 and Q29, Q23's pericentric point and Bottom Line, and Q37's
+// option A renamed with its heading. No other stem or option text moved.
+const FOLLOWUP = [
+  ['bio-475', ['Which sequence is consistent with a proposed origin-of-life model in which self-replicating molecules arise before membrane-enclosed protocells?'],
+    ['organic building blocks form first, self-replicating molecules develop next']],
+  ['bio-491', ['Some individuals with Klinefelter syndrome have very mild or no obvious symptoms',
+    'Small testes, impaired fertility and the other findings in A are characteristic, although their presence and severity vary.'],
+  ['it is NOT a completely normal phenotype', 'diagnosed only during infertility workup']],
+  ['bio-495', ['An inversion rearranges a segment within a chromosome; it does not automatically add a whole chromosome.',
+    'Pericentric inversion = includes the centromere; crossing over within the inversion loop can produce chromatids with duplications and deletions',
+    'increasing the risk of pregnancy loss or an affected child'],
+  ['trisomy arises from nondisjunction', 'includes centromere →', 'often leading to inviable offspring']],
+  ['bio-501', ['PKU is an autosomal recessive disorder caused by disease-causing variants in both copies of the PAH gene. It can affect either sex.',
+    'not to provide the hormone treatment proposed in this option'],
+  ['X-linked disorders preferentially affect males', 'PKU is autosomal recessive, NOT X-linked']],
+  ['bio-509', ['<strong>A. Natural selection favoring the inherited trait:</strong>'],
+    ['Natural selection favoring polydactyly']]
+];
+ok(FOLLOWUP.length === 5, `the follow-up pass covers ${FOLLOWUP.length} items, expected 5`);
+for (const [id, present, gone] of FOLLOWUP) {
+  for (const s of present) ok(text(BY[id]).includes(s), `${id} (Q${qnum(id)}): follow-up text missing: ${s.slice(0, 60)}`);
+  // some of these strings were introduced by batch 9 itself, so the pre-batch-9
+  // fixture is not their baseline; section 3 already proves they were present
+  // before this pass by counting the superseded passages.
+  for (const s of gone) ok(!text(BY[id]).includes(s), `${id} (Q${qnum(id)}): superseded text still present: ${s.slice(0, 60)}`);
+}
+// Q3's new stem no longer spells out the whole sequence
+ok(BY['bio-475'].question === 'Which sequence is consistent with a proposed origin-of-life model in which self-replicating molecules arise before membrane-enclosed protocells?',
+  'bio-475 (Q3): the stem does not match the follow-up text');
+ok(!/building blocks form first/.test(BY['bio-475'].question), 'bio-475 (Q3): the stem still reveals the full sequence');
+// Q37's option and its heading agree, and the feedback paragraph was left alone
+ok(BY['bio-509'].options[0] === 'Natural selection favoring the inherited trait',
+  'bio-509 (Q37): option A does not match the follow-up text');
+ok(BY['bio-509'].explanation.includes('<strong>A. ' + BY['bio-509'].options[0] + ':</strong>'),
+  'bio-509 (Q37): option A and its distractor heading disagree');
+ok(/The stem specifies that the founders carried the allele by chance/.test(BY['bio-509'].explanation),
+  'bio-509 (Q37): option A\'s feedback paragraph should have been left unchanged');
+ok(!/polydactyly/i.test(text(BY['bio-509'])), 'bio-509 (Q37): a polydactyly reference survives');
+// scope: only these five items differ from the batch 9 commit
+{
+  const FIVE = ['bio-475', 'bio-491', 'bio-495', 'bio-501', 'bio-509'];
+  const B9_STEMS = { 'bio-475': 'Which sequence is consistent with a proposed origin-of-life model in which self-replicating molecules arise before membrane-enclosed protocells?' };
+  for (const id of FIVE) {
+    const spec = EDITS.find(s => s.id === id);
+    const baseline = B9_STEMS[id] || (spec && spec.stemFull) || before[id].question;
+    ok(BY[id].question === baseline, `${id} (Q${qnum(id)}): the stem moved during the follow-up`);
+    ok(BY[id].correct === before[id].correct, `${id} (Q${qnum(id)}): the key moved during the follow-up`);
+  }
+  // only Q37's option A moved; the other four items' options are as batch 9 left them
+  for (const id of ['bio-475', 'bio-491', 'bio-495', 'bio-501']) {
+    for (let i = 0; i < 4; i++) {
+      const spec = EDITS.find(s => s.id === id);
+      const renamed = (spec && (spec.optionFull || []).some(([j]) => j === i));
+      if (!renamed) ok(BY[id].options[i] === before[id].options[i], `${id} option ${LETTER[i]}: changed during the follow-up`);
+    }
+  }
+  for (let i = 1; i < 4; i++) ok(BY['bio-509'].options[i] === before['bio-509'].options[i], `bio-509 option ${LETTER[i]}: changed during the follow-up`);
+}
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
