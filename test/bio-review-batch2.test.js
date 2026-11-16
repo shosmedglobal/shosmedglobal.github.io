@@ -592,7 +592,7 @@ ok(drifted === 0, `${drifted} out-of-scope biology items changed`);
 
 let chemDrift = 0;
 for (const q of data.chemistry) {
-  if (untouched.chemistry[q.id] !== hash(q)) { chemDrift++; console.error('  FAIL chemistry ' + q.id + ' changed'); }
+  if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) { chemDrift++; console.error('  FAIL chemistry ' + q.id + ' changed'); }
 }
 ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches biology only`);
 // This sweep covers the items no reviewed batch owns. When a later batch is

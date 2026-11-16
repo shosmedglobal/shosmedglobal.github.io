@@ -349,7 +349,7 @@ let drift = 0;
 for (const q of data.biology) if (untouched.biology[q.id] && untouched.biology[q.id] !== hash(q)) { drift++; console.error('  FAIL biology ' + q.id + ' changed but is not in this pack'); }
 ok(drift === 0, `${drift} out-of-scope biology items changed`);
 let chem = 0;
-for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem++;
+for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
 for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
 // 569 unowned + the 60 in this pack = 629

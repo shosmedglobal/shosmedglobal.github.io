@@ -483,11 +483,15 @@ let drift = 0;
 for (const q of data.biology) if (untouched.biology[q.id] && untouched.biology[q.id] !== hash(q)) { drift++; console.error('  FAIL biology ' + q.id + ' changed but is not in this pack'); }
 ok(drift === 0, `${drift} out-of-scope biology items changed`);
 let chem = 0;
-for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem++;
+for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
 ok(Object.keys(untouched.biology).length === 423, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 423`);
 ok(Object.keys(untouched.biology).length + 60 + 60 + 26 + IDS.length === 629, 'fixtures do not partition the biology bank');
-ok(Object.keys(untouched.chemistry).length === 485, 'untouched chemistry hash count unexpected');
+// Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 427 chemistry
+// items no reviewed chemistry batch owns; those 58 are checked by
+// test/chem-review-batch1.test.js.
+ok(Object.keys(untouched.chemistry).length === 427, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
 section('9. The cross-item consistency the review demands');

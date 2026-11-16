@@ -1,0 +1,2366 @@
+SHOS MED / LF3 CHEMISTRY - REVIEW BATCH 1 - REVISED 60-QUESTION EXPORT
+Generated 2026-11-16 after applying the SHOSMED LF3 Chemistry Batch 1 Review.
+
+The supplied export carried NO bank ids; its Q1-Q60 were display numbers only.
+Each item below is labelled with its display number AND the bank id it was
+verified against by matching the ORIGINAL full stem and all four ORIGINAL
+option texts. The ids are deliberately NOT contiguous: the export skipped
+chem-19 (optical isomerism) and chem-61 (ideal gas, 300 K to 600 K at fixed
+volume), so the map runs chem-1..chem-18, then chem-20..chem-60, then chem-62.
+
+Q36 and Q60 are unchanged per the review and are included for completeness.
+Q60 keeps its existing letter-prefixed answer heading, as the review requires.
+
+Verified key letters, Q1-Q60:
+  Q1-Q10:   B D C C B D C C C B
+  Q11-Q20:  C C B B C C A B B B
+  Q21-Q30:  B B B B B B C B B B
+  Q31-Q40:  C B B B C C B B B B
+  Q41-Q50:  B C C B C D C B C C
+  Q51-Q60:  B B B B B C B C C A
+  Tally: A=2, B=33, C=22, D=3.
+
+==============================================================================
+Q1  [chem-1]  Answer: B
+==============================================================================
+What is the maximum number of electrons that can occupy a single s orbital?
+
+  A) 1
+  B) 2
+  C) 6
+  D) 10
+
+### Correct Answer: 2
+
+According to the **Pauli exclusion principle**, any single orbital can hold a maximum of 2 electrons, and they must have opposite spins (+1/2 and -1/2).
+
+  | Subshell | Number of Orbitals | Max Electrons per Orbital | Max Electrons per Subshell |
+  | s | 1 | 2 | 2 |
+  | p | 3 | 2 | 6 |
+  | d | 5 | 2 | 10 |
+  | f | 7 | 2 | 14 |
+
+An s subshell contains only 1 orbital (spherical shape), so it holds a maximum of 2 electrons. A p subshell has 3 orbitals (dumbbell shapes along x, y, z axes), holding up to 6 total.
+
+### Why the other choices are wrong:
+
+**A. 1:** One electron can occupy an orbital, but this is not its maximum capacity. A second electron can occupy the same orbital if it has the opposite spin.
+
+**C. 6:** Six is the capacity of an entire p subshell, which contains three orbitals. Each individual p orbital, like an s orbital, holds at most two electrons.
+
+**D. 10:** 10 is the maximum number of electrons in an entire d subshell (5 orbitals x 2 electrons each). A single orbital of any type (s, p, d, or f) can hold at most 2 electrons with opposite spins, per the Pauli exclusion principle.
+
+### Key Educational Points:
+
+  - One orbital can hold at most two electrons, with opposite spins.
+  - An s subshell contains one orbital; a p subshell contains three.
+  - Subshell capacities are s: 2, p: 6, d: 10 and f: 14 electrons.
+
+>> Bottom Line: Every orbital holds max 2 electrons (Pauli principle). The number of orbitals per subshell increases: s=1, p=3, d=5, f=7 (odd numbers). Total max electrons = 2 x number of orbitals.
+
+==============================================================================
+Q2  [chem-2]  Answer: D
+==============================================================================
+At 25°C, a dilute aqueous solution has a pH of 4. Approximately how many times greater is its hydrogen ion concentration than that of pure water at pH 7?
+
+  A) 3 times
+  B) 30 times
+  C) 300 times
+  D) 1000 times
+
+### Correct Answer: 1000 times
+
+The pH scale is **logarithmic**. For a dilute aqueous solution, pH ≈ -log₁₀[H⁺], so each one-unit decrease in pH corresponds to about ten times the hydrogen ion concentration.
+
+pH 7: [H⁺] = 10⁻⁷ M (pure water)
+
+pH 4: [H⁺] = 10⁻⁴ M
+
+Ratio = 10⁻⁴ / 10⁻⁷ = 10³ = **1,000 times the hydrogen ion concentration**
+
+  | pH Difference | Fold Change in [H+] |
+  | 1 unit | 10x |
+  | 2 units | 100x |
+  | 3 units | 1,000x |
+  | 4 units | 10,000x |
+
+### Why the other choices are wrong:
+
+**A. 3 times:** A difference of 3 pH units does not mean 3 times more acidic. This is a common mistake from treating the pH scale as linear. Because pH is logarithmic (base 10), each unit change represents a 10-fold change in H+ concentration, so 3 units = 10^3 = 1000-fold difference.
+
+**B. 30 times:** A 30-fold difference is not the result of a three-unit pH change. Multiply by 10 for each unit: 10 × 10 × 10 = 1,000.
+
+**C. 300 times:** A three-unit pH difference gives 10^3 = 1,000, not 300. The three is an exponent, not a multiplier applied to 100.
+
+### Key Educational Points:
+
+  - In dilute aqueous solutions, pH ≈ -log₁₀[H⁺].
+  - Each one-unit fall in pH corresponds to about ten times the hydrogen ion concentration.
+  - From pH 7 to pH 4, the concentration ratio is 103 = 1,000.
+
+>> Bottom Line: A decrease of three pH units corresponds to about a 1,000-fold increase in hydrogen ion concentration in dilute aqueous solutions. Neutral water has pH 7 at 25°C.
+
+==============================================================================
+Q3  [chem-3]  Answer: C
+==============================================================================
+Which type of bond is most likely to form between sodium (Na) and chlorine (Cl)?
+
+  A) Nonpolar covalent bond
+  B) Polar covalent bond
+  C) Ionic bond
+  D) Metallic bond
+
+### Correct Answer: Ionic bond
+
+Sodium chloride is an ionic solid made of Na⁺ and Cl⁻ ions in a crystal lattice. Sodium readily loses one electron, while chlorine readily gains one. Attraction between the oppositely charged ions holds the lattice together. The large electronegativity difference supports this ionic description, but numerical electronegativity cutoffs are only guides, not universal rules.
+
+  | Bonding description | Electron distribution | Example |
+  | Nonpolar covalent | Shared approximately equally | H-H |
+  | Polar covalent | Shared unequally | H-Cl |
+  | Ionic | Attraction between oppositely charged ions | NaCl |
+
+Na loses 1 electron to become Na⁺, and Cl gains 1 electron to become Cl⁻. The electrostatic attraction between these oppositely charged ions forms the ionic bond.
+
+### Why the other choices are wrong:
+
+**A. Nonpolar covalent bond:** Nonpolar covalent bonding involves approximately equal sharing, as in H₂ or Cl₂. Sodium chloride instead forms a lattice of positively and negatively charged ions.
+
+**B. Polar covalent bond:** Polar covalent bonds involve unequal sharing within a covalent bond, as in HCl. Solid NaCl is described as an ionic lattice. Electronegativity difference alone is not an absolute test separating all ionic and covalent compounds.
+
+**D. Metallic bond:** Metallic bonds occur between metal atoms in a metallic lattice, where valence electrons are delocalized and shared across many nuclei (the "electron sea" model). This gives metals their characteristic conductivity, malleability, and luster. Since NaCl involves a metal and a nonmetal, the bond is ionic, not metallic.
+
+### Key Educational Points:
+
+  - Sodium chloride contains Na⁺ and Cl⁻ ions arranged in an ionic lattice.
+  - Ionic bonding is electrostatic attraction between oppositely charged ions.
+  - Electronegativity differences guide bonding predictions, but numerical cutoffs have exceptions.
+
+>> Bottom Line: NaCl is held together by attraction between Na⁺ and Cl⁻ ions. Electronegativity differences help predict bonding, but bonding lies on a continuum and numerical cutoffs have exceptions.
+
+==============================================================================
+Q4  [chem-4]  Answer: C
+==============================================================================
+What is the molar mass of calcium carbonate (CaCO₃)? (Ca = 40 g/mol, C = 12 g/mol, O = 16 g/mol)
+
+  A) 68 g/mol
+  B) 84 g/mol
+  C) 100 g/mol
+  D) 116 g/mol
+
+### Correct Answer: 100 g/mol
+
+Molar mass is calculated by adding the atomic masses of all atoms in the formula:
+
+CaCO₃ = 1(Ca) + 1(C) + 3(O)
+
+= 1(40) + 1(12) + 3(16)
+
+= 40 + 12 + 48
+
+= **100 g/mol**
+
+This means 1 mole of CaCO₃ (which is 6.022 x 10²³ formula units) has a mass of 100 grams.
+
+### Why the other choices are wrong:
+
+**A. 68 g/mol:** If you got 68, you may have calculated Ca + C + O = 40 + 12 + 16 = 68, forgetting to multiply oxygen by 3. The subscript 3 in CaCO3 means there are three oxygen atoms: 3 x 16 = 48. Always account for subscripts when calculating molar mass.
+
+**B. 84 g/mol:** 84 g/mol results from counting only two oxygen atoms: 40 + 12 + 2(16) = 84. CaCO₃ contains three oxygen atoms, so their contribution is 48 g/mol.
+
+**D. 116 g/mol:** 116 g/mol results from counting four oxygen atoms: 40 + 12 + 4(16) = 116. The formula has three oxygen atoms, giving 100 g/mol.
+
+### Key Educational Points:
+
+  - A formula's subscripts specify the numbers of atoms to include in its molar mass.
+  - In CaCO₃, the oxygen contribution is 3 × 16 = 48 g/mol.
+  - Adding the contributions gives 40 + 12 + 48 = 100 g/mol.
+
+>> Bottom Line: To find molar mass, multiply the atomic mass of each element by how many times it appears in the formula, then add them all up. Always check that you've accounted for subscripts (the 3 in O₃ means 3 oxygen atoms).
+
+==============================================================================
+Q5  [chem-5]  Answer: B
+==============================================================================
+Under controlled oxidation conditions that prevent further oxidation of the initial carbonyl product, which functional group is formed from a primary alcohol?
+
+  A) Ketone
+  B) Aldehyde
+  C) Carboxylic acid
+  D) Ester
+
+### Correct Answer: Aldehyde
+
+The oxidation of alcohols follows a predictable pattern depending on the type of alcohol:
+
+**Oxidation pathway of primary alcohols:**
+
+Primary alcohol (R-CH₂OH) -> Aldehyde (R-CHO) -> Carboxylic acid (R-COOH)
+
+**Oxidation of secondary alcohols:**
+
+Secondary alcohol (R₂-CHOH) -> Ketone (R₂-CO)
+
+**Tertiary alcohols:**
+
+Resistant to these ordinary oxidation conditions (no H on the carbon bearing OH)
+
+Under the controlled conditions described, oxidation of a primary alcohol stops at the aldehyde. Further oxidation would give a carboxylic acid, so the reagents and conditions chosen decide whether the aldehyde is isolated or oxidized further.
+
+### Why the other choices are wrong:
+
+**A. Ketone:** A ketone is the usual product of oxidizing a secondary alcohol. A primary alcohol produces an aldehyde when oxidation is stopped at the first carbonyl product. Ketones resist the mild oxidizing conditions used for this test; stronger conditions can cleave carbon-carbon bonds.
+
+**C. Carboxylic acid:** A carboxylic acid forms if the aldehyde is oxidized further. The conditions in the stem are chosen to prevent that further oxidation.
+
+**D. Ester:** An ester (R-COO-R') is not formed by oxidation. Acid-catalyzed reaction of a carboxylic acid with an alcohol is one common esterification route, not the only possible way to make an ester. Many small esters have fruity and floral aromas.
+
+### Key Educational Points:
+
+  - A primary alcohol can be oxidized to an aldehyde and then to a carboxylic acid.
+  - Reagents and conditions determine whether the aldehyde is isolated or oxidized further.
+  - Secondary alcohols usually give ketones; tertiary alcohols resist ordinary alcohol-oxidation conditions.
+
+>> Bottom Line: Controlled oxidation: primary alcohol → aldehyde; further oxidation → carboxylic acid. Secondary alcohols usually give ketones. Tertiary alcohols resist these ordinary oxidation conditions.
+
+==============================================================================
+Q6  [chem-6]  Answer: D
+==============================================================================
+Which group of the periodic table contains the halogens?
+
+  A) Group IA (1)
+  B) Group IIA (2)
+  C) Group VIA (16)
+  D) Group VIIA (17)
+
+### Correct Answer: Group VIIA (17)
+
+The halogens are found in Group VIIA, which is Group 17 in modern IUPAC notation. Common halogens at room temperature:
+
+  | Element | Elemental Form | State at Room Temp |
+  | Fluorine | F₂ | Gas (pale yellow) |
+  | Chlorine | Cl₂ | Gas (green-yellow) |
+  | Bromine | Br₂ | Liquid (red-brown) |
+  | Iodine | I₂ | Solid (purple-black) |
+
+Group 17 also includes astatine and tennessine, which are radioactive. The common halogens have seven valence electrons and readily form -1 halide ions. Their oxidizing strength generally decreases from fluorine to iodine.
+
+### Why the other choices are wrong:
+
+**A. Group IA (1):** Group 1 contains hydrogen and the alkali metals. The alkali metals, such as lithium and sodium, have one outer-shell electron and commonly form +1 ions. They react vigorously with water to produce hydrogen gas and a strong base.
+
+**B. Group IIA (2):** Group IIA (Group 2) contains the alkaline earth metals: Be, Mg, Ca, Sr, Ba, and Ra. These elements have 2 valence electrons and form +2 ions. They are less reactive than alkali metals but still quite reactive, especially the heavier members.
+
+**C. Group VIA (16):** Group VIA (Group 16) contains the chalcogens. Oxygen, sulfur, selenium, tellurium and polonium are examples, and Group 16 also includes livermorium. Several members have six valence electrons and can form -2 ions, but the group does not behave as a single uniform set of nonmetals. Oxygen and sulfur are the most important members biologically.
+
+### Key Educational Points:
+
+  - The halogens occupy Group 17, also called Group VIIA in older notation.
+  - Familiar halogens include fluorine, chlorine, bromine and iodine.
+  - These elements have seven valence electrons and commonly gain one electron to form halide ions.
+
+>> Bottom Line: Group VIIA = halogens (7 valence e⁻, gain 1). Group IA (Group 1) = hydrogen plus the alkali metals; the alkali metals have 1 valence e⁻ and lose it. Group IIA = alkaline earth metals. Group VIIIA = noble gases (full valence shell).
+
+==============================================================================
+Q7  [chem-7]  Answer: C
+==============================================================================
+Which of the following salts, when dissolved in water at 25°C, will produce a basic (alkaline) solution?
+
+  A) NaCl
+  B) NH₄Cl
+  C) CH₃COONa (sodium acetate)
+  D) KNO₃
+
+### Correct Answer: CH₃COONa (sodium acetate)
+
+The pH of a salt solution depends on whether the salt comes from a strong or weak acid/base:
+
+  | Salt | Acid | Base | Solution pH |
+  | NaCl | HCl (strong) | NaOH (strong) | Approximately neutral (about 7) |
+  | NH₄Cl | HCl (strong) | NH₃ (weak) | Acidic (<7) |
+  | CH₃COONa | CH₃COOH (weak) | NaOH (strong) | Basic (>7) |
+  | KNO₃ | HNO₃ (strong) | KOH (strong) | Approximately neutral (about 7) |
+
+Sodium acetate is the salt of a **weak acid** (acetic acid) and a **strong base** (NaOH). The acetate ion (CH₃COO⁻) acts as a base in water, accepting a proton to form CH₃COOH, producing OH⁻ ions:
+
+CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻
+
+### Why the other choices are wrong:
+
+**A. NaCl:** NaCl is formed from HCl (strong acid) and NaOH (strong base). When dissolved in water, neither the Na+ nor the Cl- ion undergoes hydrolysis, so the solution remains neutral at pH 7. This is the general rule for salts of strong acid + strong base.
+
+**B. NH₄Cl:** NH4Cl is formed from HCl (strong acid) and NH3 (weak base). The NH4+ ion acts as a weak acid in water, donating a proton to form NH3 and H3O+, making the solution acidic (pH below 7). This is the opposite of what the question asks for.
+
+**D. KNO₃:** KNO3 is formed from HNO3 (strong acid) and KOH (strong base). Like NaCl, neither ion undergoes hydrolysis in water, so the solution is neutral (pH 7). K⁺ and NO₃⁻ have negligible acid-base effects in water, so this solution is approximately neutral at 25°C.
+
+### Key Educational Points:
+
+  - A dissolved salt's ions can act as acids, bases or spectators in water.
+  - Acetate accepts a proton from water, producing OH⁻ and making the solution basic.
+  - Ammonium instead donates a proton to water, making an NH₄Cl solution acidic.
+
+>> Bottom Line: Salt of strong acid + strong base = neutral. Salt of weak acid + strong base = basic. Salt of strong acid + weak base = acidic. Salt of weak acid + weak base = depends on Kₐ vs Kᵇ.
+
+==============================================================================
+Q8  [chem-8]  Answer: C
+==============================================================================
+Which of the following is considered an inorganic carbon compound?
+
+  A) Ethanol (C₂H₅OH)
+  B) Glucose (C₆H₁₂O₆)
+  C) Carbon dioxide (CO₂)
+  D) Acetic acid (CH₃COOH)
+
+### Correct Answer: Carbon dioxide (CO₂)
+
+Carbon dioxide is conventionally classified as an **inorganic carbon compound**. Carbon monoxide, carbonates and bicarbonates are other familiar examples. Organic/inorganic classification is partly conventional; it cannot be decided solely by asking whether C-H or C-C bonds are present.
+
+  | Compound | Compound type | Classification |
+  | Ethanol | Alcohol | Organic |
+  | Glucose | Carbohydrate | Organic |
+  | CO₂ | Simple carbon oxide | Inorganic |
+  | Acetic acid | Carboxylic acid | Organic |
+
+Other inorganic carbon compounds include carbonates (CaCO₃), bicarbonates (NaHCO₃) and carbon monoxide (CO).
+
+### Why the other choices are wrong:
+
+**A. Ethanol (C₂H₅OH):** Ethanol is an organic compound because it contains C-H bonds and a carbon backbone. It is the alcohol found in alcoholic beverages and is produced by fermentation of sugars. Its structure (CH3-CH2-OH) features a hydroxyl functional group attached to a two-carbon chain.
+
+**B. Glucose (C₆H₁₂O₆):** Glucose is an organic compound and the most important simple sugar in biology. It contains multiple C-H bonds and is an important fuel for many cells. Its molecular formula C6H12O6 follows the general carbohydrate formula Cn(H2O)n.
+
+**D. Acetic acid (CH₃COOH):** Acetic acid is an organic compound and the simplest carboxylic acid after formic acid. It gives vinegar its sour taste and pungent smell. It contains C-H bonds and a carboxyl group (-COOH), clearly classifying it as organic.
+
+### Key Educational Points:
+
+  - Carbon dioxide is conventionally classified as inorganic despite containing carbon.
+  - Carbon monoxide, carbonates and bicarbonates are other inorganic carbon compounds.
+  - A C-H bond is common in organic compounds but is not a universal requirement for that classification.
+
+>> Bottom Line: CO₂, CO, carbonates and bicarbonates are conventionally inorganic. Many carbon compounds are organic, but the presence or absence of a C-H bond is not a universal classification rule.
+
+==============================================================================
+Q9  [chem-9]  Answer: C
+==============================================================================
+For the exothermic reaction: 2SO₂(g) + O₂(g)  2SO₃(g), which change will shift the equilibrium to the RIGHT (toward products)?
+
+  A) Increasing the temperature
+  B) Decreasing the pressure
+  C) Removing SO₃ from the system
+  D) Adding a catalyst
+
+### Correct Answer: Removing SO₃ from the system
+
+Le Chatelier's principle states that a system at equilibrium will shift to counteract any imposed change:
+
+  | Change | Shift Direction | Reason |
+  | Increase temperature | LEFT (toward reactants) | Exothermic reaction - heat is a "product" |
+  | Decrease pressure by expanding the vessel at constant temperature | LEFT (more moles of gas) | 3 moles reactant gas vs 2 moles product gas |
+  | Remove SO₃ | RIGHT | System makes more product to restore equilibrium |
+  | Add catalyst | No shift | Speeds up approach to equilibrium without changing K or the equilibrium composition |
+
+### Why the other choices are wrong:
+
+**A. Increasing the temperature:** For an exothermic reaction, heat can be thought of as a product. Increasing temperature adds "heat" to the system, so equilibrium shifts LEFT (toward reactants) to absorb the extra heat. Only for endothermic reactions does raising temperature shift equilibrium to the right.
+
+**B. Decreasing the pressure:** Here the pressure is decreased by expanding the vessel at constant temperature, which favors the side with more moles of gas. There are 3 moles of gas on the left (2 SO₂ + 1 O₂) but only 2 on the right (2 SO₃), so expanding the vessel shifts equilibrium LEFT. A change in total pressure caused by adding or removing an inert gas is not automatically equivalent.
+
+**D. Adding a catalyst:** A catalyst speeds up the approach to equilibrium by providing a lower-activation-energy pathway, without changing K or the equilibrium composition at the same temperature.
+
+### Key Educational Points:
+
+  - Removing SO₃ from this equilibrium favors further formation of SO₃.
+  - Expanding this gas mixture at constant temperature favors the side with more gas particles.
+  - A catalyst changes the speed of reaching equilibrium, not its position at the same temperature.
+
+>> Bottom Line: For this gas equilibrium, removing SO₃ favors further SO₃ formation. Expanding the vessel favors the side with more gas particles. A catalyst helps equilibrium be reached faster but does not change its position.
+
+==============================================================================
+Q10  [chem-10]  Answer: B
+==============================================================================
+How many milliliters of 4M NaOH are required to completely neutralize 200 mL of 2M HCl?
+
+  A) 50 mL
+  B) 100 mL
+  C) 200 mL
+  D) 400 mL
+
+### Correct Answer: 100 mL
+
+The balanced neutralization reaction is:
+
+NaOH + HCl -> NaCl + H₂O
+
+(1:1 molar ratio)
+
+Step-by-step calculation:
+
+Moles of HCl = Molarity x Volume = 2M x 0.200L = 0.400 mol
+
+Since the ratio is 1:1, we need 0.400 mol NaOH
+
+Volume of NaOH = moles / molarity = 0.400 mol / 4M = 0.100 L = **100 mL**
+
+This can also be solved using the dilution-like formula for neutralization: M₁V₁ = M₂V₂ (when molar ratio is 1:1)
+
+4M x V = 2M x 200 mL -> V = 100 mL
+
+### Why the other choices are wrong:
+
+**A. 50 mL:** Using M1V1 = M2V2: 4M x V = 2M x 200 mL gives V = 100 mL, not 50. You would get 50 mL if the NaOH were 8M instead of 4M, or if only 100 mL of HCl were used. Always verify your substitution into the formula.
+
+**C. 200 mL:** 200 mL of 4M NaOH would provide 0.8 mol NaOH, which is double the 0.4 mol needed. This error might arise from using the same volume as the HCl without accounting for the different concentrations.
+
+**D. 400 mL:** 400 mL of 4M NaOH would provide 1.6 mol NaOH, which is 4 times what is needed. This answer would be correct only if the NaOH concentration were 1M instead of 4M.
+
+### Key Educational Points:
+
+  - Balance a neutralization equation before comparing amounts of acid and base.
+  - HCl and NaOH react in a 1:1 mole ratio, so 0.400 mol HCl needs 0.400 mol NaOH.
+  - At 4 mol/L, 0.400 mol NaOH occupies 0.100 L, or 100 mL.
+
+>> Bottom Line: For neutralization, moles of acid = moles of base (when the ratio is 1:1). Use M₁V₁ = M₂V₂ as a shortcut. Always check the balanced equation for the molar ratio first.
+
+==============================================================================
+Q11  [chem-11]  Answer: C
+==============================================================================
+According to Hund's rule, how are the three electrons in the 2p subshell of nitrogen distributed?
+
+  A) All three in one 2p orbital
+  B) Two in one orbital, one in another, one empty
+  C) One electron in each of the three 2p orbitals, all with the same spin
+  D) One electron in each of the three 2p orbitals, with alternating spins
+
+### Correct Answer: One electron in each of the three 2p orbitals, all with the same spin
+
+Hund's rule (also called the rule of maximum multiplicity) states that electrons fill degenerate orbitals (orbitals of equal energy) singly first, with parallel spins, before pairing up.
+
+  | Principle | Rule |
+  | Aufbau principle | Fill lowest energy orbitals first (1s, 2s, 2p, 3s, ...) |
+  | Pauli exclusion principle | Maximum 2 electrons per orbital, with opposite spins |
+  | Hund's rule | Fill degenerate orbitals singly (parallel spins) before pairing |
+
+**Nitrogen (Z=7): 1s² 2s² 2p³**
+
+2p orbitals: [up][up][up] (one in each, same spin)
+
+NOT: [up-down][up][ ] (this violates Hund's rule)
+
+### Why the other choices are wrong:
+
+**A. All three in one 2p orbital:** A single orbital can hold a maximum of 2 electrons (Pauli exclusion principle), so placing 3 electrons in one orbital is physically impossible. Each p subshell has 3 separate orbitals (px, py, pz), and electrons must be distributed among them.
+
+**B. Two in one orbital, one in another, one empty:** This arrangement violates Hund's rule, which states that electrons must occupy all degenerate (equal energy) orbitals singly before any orbital gets a second electron. Pairing electrons in one orbital while leaving another empty creates unnecessary electron-electron repulsion.
+
+**D. One electron in each of the three 2p orbitals, with alternating spins:** While this correctly distributes one electron per orbital, Hund's rule requires that unpaired electrons in degenerate orbitals all have the same spin (parallel spins). This maximizes total spin and minimizes electron-electron repulsion, making the atom more stable.
+
+### Key Educational Points:
+
+  - Hund's rule concerns electrons occupying orbitals of equal energy in the ground state.
+  - Electrons occupy those orbitals singly with parallel spins before pairing.
+  - Nitrogen's 2p³ arrangement therefore has three unpaired electrons.
+
+>> Bottom Line: In the ground state, electrons occupy equal-energy orbitals singly with parallel spins before pairing. Nitrogen's three 2p electrons therefore occupy three different orbitals.
+
+==============================================================================
+Q12  [chem-12]  Answer: C
+==============================================================================
+What is the Stock-system name for Fe₂O₃?
+
+  A) Iron oxide
+  B) Iron(II) oxide
+  C) Iron(III) oxide
+  D) Diiron trioxide
+
+### Correct Answer: Iron(III) oxide
+
+In Fe₂O₃, we need to determine the oxidation state of iron. Since oxygen is -2 and there are 3 oxygens (total charge = -6), two iron atoms must provide +6, so each iron is +3.
+
+2(Fe) + 3(O) = 0 (neutral compound)
+
+2(x) + 3(-2) = 0
+
+2x = +6
+
+x = +3, so iron is in the +3 oxidation state
+
+  | Formula | Stock-system name | Iron Oxidation State |
+  | FeO | Iron(II) oxide | +2 |
+  | Fe₂O₃ | Iron(III) oxide | +3 |
+  | Fe₃O₄ | Iron(II,III) oxide | Mixed +2/+3 |
+
+The Stock system uses a Roman numeral to specify the metal's oxidation state. Fe₂O₃ therefore has the Stock name iron(III) oxide. Compositional nomenclature can instead describe atom ratios, giving diiron trioxide.
+
+### Why the other choices are wrong:
+
+**A. Iron oxide:** Iron oxide does not identify which oxide is meant. The Stock name distinguishes iron(II) oxide, FeO, from iron(III) oxide, Fe₂O₃.
+
+**B. Iron(II) oxide:** Iron(II) oxide is the IUPAC name for FeO, where iron has a +2 oxidation state. In FeO, one iron atom balances one oxygen (-2), so iron must be +2. In Fe2O3, however, the math gives each iron a +3 oxidation state.
+
+**D. Diiron trioxide:** Diiron trioxide is a valid compositional name describing the 2:3 atom ratio. It is not the Stock-system name requested, which specifies iron's +3 oxidation state as iron(III) oxide.
+
+### Key Educational Points:
+
+  - The sum of oxidation numbers in a neutral compound is zero.
+  - In Fe₂O₃, three oxygens contribute -6, so each of the two irons has oxidation state +3.
+  - Stock nomenclature expresses that oxidation state as iron(III), giving iron(III) oxide.
+
+>> Bottom Line: In Stock nomenclature, the Roman numeral gives oxidation state, not the number of atoms. Fe₂O₃ contains iron in oxidation state +3, so its Stock name is iron(III) oxide.
+
+==============================================================================
+Q13  [chem-13]  Answer: B
+==============================================================================
+For a fixed amount of ideal gas at constant temperature, what happens to the pressure if the volume is halved?
+
+  A) Pressure is halved
+  B) Pressure doubles
+  C) Pressure remains the same
+  D) Pressure quadruples
+
+### Correct Answer: Pressure doubles
+
+This is described by Boyle's law: at constant temperature, pressure and volume are inversely proportional.
+
+**Boyle's Law: P₁V₁ = P₂V₂** (at constant T and n)
+
+If V₂ = V₁/2, then:
+
+P₁ x V₁ = P₂ x (V₁/2)
+
+P₂ = 2P₁
+
+  | Gas Law | Relationship | Constant |
+  | Boyle's law | P inversely proportional to V | T, n |
+  | Charles's law | V directly proportional to T | P, n |
+  | Gay-Lussac's law | P directly proportional to T | V, n |
+  | Avogadro's law | V directly proportional to n | T, P |
+  | Ideal gas law | PV = nRT | Combined |
+
+### Why the other choices are wrong:
+
+**A. Pressure is halved:** If pressure halved when volume halved, that would mean pressure is directly proportional to volume. Boyle's law states the opposite: pressure and volume are inversely proportional (P is proportional to 1/V). Halving volume means doubling pressure, since PV = constant.
+
+**C. Pressure remains the same:** Pressure cannot remain unchanged when volume changes at constant temperature, because the gas molecules would be confined to half the space. More collisions per unit area of the container walls means higher pressure, as described by Boyle's law.
+
+**D. Pressure quadruples:** Pressure would quadruple only if volume were reduced to one-quarter of its original value (since P is proportional to 1/V). Halving the volume doubles the pressure. Remember: the change in pressure is the inverse of the change in volume.
+
+### Key Educational Points:
+
+  - Boyle's law: at constant temperature and amount of gas, pressure and volume are inversely proportional, so P₁V₁ = P₂V₂.
+  - Halving the volume therefore doubles the pressure.
+  - At the same temperature, molecular speeds are unchanged on average. Compression increases collisions with each unit area of the container wall, increasing pressure.
+  - Because the relationship is inverse, a P-V graph is a curve (hyperbola), not a straight line.
+  - The law holds only while temperature and amount of gas are held constant - change either and it no longer applies.
+
+>> Bottom Line: Boyle's law (PV = constant) explains why compressing a gas increases its pressure. All individual gas laws are special cases of the ideal gas law PV = nRT, where R = 8.314 J/(mol K).
+
+==============================================================================
+Q14  [chem-14]  Answer: B
+==============================================================================
+A membrane permeable to water but not to Na⁺ or Cl⁻ separates 0.5 M and 0.1 M NaCl solutions at the same temperature and initially equal hydrostatic pressure. In which direction is the initial NET movement of water?
+
+  A) From the 0.5 M solution to the 0.1 M solution
+  B) From the 0.1 M solution to the 0.5 M solution
+  C) Equally in both directions
+  D) Water will not move across the membrane
+
+### Correct Answer: From the 0.1 M solution to the 0.5 M solution
+
+Water crosses this membrane in both directions. With equal initial hydrostatic pressures, the initial net movement is from the **0.1 M solution** toward the **0.5 M solution**. The concentration comparison is valid here because the same nonpenetrating solute is present on both sides.
+
+Initial comparison at equal hydrostatic pressure:
+
+  | Solution Type | Relative Concentration | Water Movement |
+  | Hypotonic (0.1 M) | Lower solute, higher water | Net water leaves |
+  | Hypertonic (0.5 M) | Higher solute, lower water | Net water enters |
+  | Isotonic | Equal | No net movement |
+
+For an ideal dilute solution, osmotic pressure is approximated by Π = iMRT, where i is the van't Hoff factor. For ideally dissociated NaCl, i ≈ 2, because each formula unit gives Na⁺ and Cl⁻. At 0.5 M the effective value is somewhat below 2, so this is an approximation rather than an exact figure. No numerical osmotic-pressure calculation is needed here.
+
+### Why the other choices are wrong:
+
+**A. From the 0.5 M solution to the 0.1 M solution:** This is opposite to the initial net movement under the stated conditions. The more concentrated NaCl solution has the greater osmotic tendency to draw water across this membrane.
+
+**C. Equally in both directions:** Water crosses both ways, but the initial rates are unequal, so there is a net transfer toward 0.5 M NaCl. Later, a hydrostatic-pressure difference can balance the osmotic effect even if the solute concentrations remain unequal.
+
+**D. Water will not move across the membrane:** The membrane allows water to cross. At the initially equal hydrostatic pressures, the concentration difference produces a net movement toward the more concentrated solution.
+
+### Key Educational Points:
+
+  - Osmosis involves water crossing a membrane selectively permeable to water.
+  - With equal initial hydrostatic pressures, net water moves toward the more concentrated nonpenetrating solute.
+  - An opposing pressure difference can stop net osmosis before the solute concentrations become equal.
+
+>> Bottom Line: With a nonpenetrating solute and equal initial hydrostatic pressures, water moves net toward the more concentrated solution. Net movement stops when the opposing effects balance; the concentrations need not become equal.
+
+==============================================================================
+Q15  [chem-15]  Answer: C
+==============================================================================
+Assuming volumes are additive, what volume of water must be added to 100 mL of a 2 M solution to prepare a 0.5 M solution?
+
+  A) 100 mL
+  B) 200 mL
+  C) 300 mL
+  D) 400 mL
+
+### Correct Answer: 300 mL
+
+Using the dilution formula: M₁V₁ = M₂V₂
+
+2M x 100 mL = 0.5M x V₂
+
+V₂ = (2 x 100) / 0.5 = 400 mL (total final volume)
+
+Volume of water to add = V₂ - V₁ = 400 - 100 = **300 mL**
+
+  | Concentration Unit | Definition | Formula |
+  | Molarity (M) | Moles of solute per liter of solution | M = n/V |
+  | Mass percent (w/w%) | Mass of solute per 100 g of solution | (mₛₒₗᵤₜₑ/mₛₒₗᵤₜᵢₒₙ) x 100 |
+  | Volume percent (v/v%) | Volume of solute per 100 mL of solution | (Vₛₒₗᵤₜₑ/Vₛₒₗᵤₜᵢₒₙ) x 100 |
+
+Note: The question asks for water added, not total volume. This is a common source of error. In laboratory preparation, add water until the total solution volume reaches 400 mL; solution and water volumes are not always exactly additive.
+
+### Why the other choices are wrong:
+
+**A. 100 mL:** Adding 100 mL of water to 100 mL of 2M solution gives 200 mL total. By M1V1 = M2V2, the new concentration would be 2M x 100/200 = 1.0 M, not 0.5 M. You need a total volume of 400 mL to reach 0.5 M.
+
+**B. 200 mL:** Adding 200 mL of water to 100 mL of 2M solution gives 300 mL total. The new concentration would be 2M x 100/300 = 0.67 M, which is higher than the target of 0.5 M. More water is needed.
+
+**D. 400 mL:** Adding 400 mL would give a total volume of 500 mL, and the resulting concentration would be 2M x 100/500 = 0.4 M, which is lower than the target 0.5 M. The question asks for water added (300 mL), not the total final volume (400 mL) -- a common trap in dilution problems.
+
+### Key Educational Points:
+
+  - Dilution conserves the amount of dissolved solute: M₁V₁ = M₂V₂.
+  - Here the final solution volume must be 400 mL.
+  - Under the volume-additivity assumption, the water added is 400 - 100 = 300 mL.
+
+>> Bottom Line: The dilution equation M₁V₁ = M₂V₂ works because the number of moles of solute stays constant during dilution. Always distinguish between total final volume and volume of solvent added.
+
+==============================================================================
+Q16  [chem-16]  Answer: C
+==============================================================================
+For the exothermic gas reaction 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), which change speeds up the approach to equilibrium without changing the equilibrium composition? Assume pressure changes are made by changing the vessel volume.
+
+  A) Increasing the temperature
+  B) Increasing the concentration of reactants
+  C) Adding a catalyst
+  D) Increasing the pressure
+
+### Correct Answer: Adding a catalyst
+
+A catalyst increases the reaction rate by providing an alternative pathway with a **lower activation energy**, but it does NOT change the position of equilibrium or the value of the equilibrium constant.
+
+  | Change | Equilibrium effect for this reaction |
+  | Increase temperature | Favors reactants; K changes |
+  | Add a reactant at fixed temperature and volume | Favors products; K is unchanged |
+  | Add a catalyst at unchanged temperature | No change in equilibrium composition or K |
+  | Compress the gases at fixed temperature | Favors products, the side with fewer gas particles |
+
+Reaction rates and equilibrium are different questions. An overall rate law is determined experimentally; its concentration exponents cannot generally be read from the balanced equation. Stoichiometric coefficients determine the rate-law powers only for an appropriate elementary reaction step.
+
+### Why the other choices are wrong:
+
+**A. Increasing the temperature:** Increasing temperature changes K. Because this forward reaction is exothermic, the equilibrium shifts toward reactants, so the equilibrium composition is not preserved.
+
+**B. Increasing the concentration of reactants:** Adding a reactant changes the reaction quotient and causes this mixture to form more product as equilibrium is restored. It does not change K at fixed temperature, but it does change the equilibrium composition.
+
+**D. Increasing the pressure:** Compressing this mixture raises its partial pressures and favors SO₃ formation because the product side has fewer gas particles. Thus the equilibrium composition changes. For other gas reactions with equal gas coefficients on both sides, compression need not shift equilibrium.
+
+### Key Educational Points:
+
+  - Catalysts alter the reaction pathway and help equilibrium be reached faster.
+  - At the same temperature, a catalyst does not change K or the final equilibrium composition.
+  - An overall reaction's rate-law powers generally require experimental determination, not just its balanced equation.
+
+>> Bottom Line: A catalyst supplies a faster reaction pathway while leaving the equilibrium constant and final equilibrium composition unchanged at the same temperature.
+
+==============================================================================
+Q17  [chem-17]  Answer: A
+==============================================================================
+In the reaction: Zn(s) + CuSO₄(aq) -> ZnSO₄(aq) + Cu(s), which species is the reducing agent?
+
+  A) Zn
+  B) Cu²⁺
+  C) SO₄²⁻
+  D) Cu
+
+### Correct Answer: Zn
+
+Zinc is **oxidized** (loses electrons: Zn -> Zn²⁺ + 2e⁻). The species that is oxidized is the **reducing agent** because it reduces the other species by donating electrons.
+
+  | Species | Process | Oxidation Number Change | Role |
+  | Zn | Zn -> Zn²⁺ | 0 -> +2 (oxidized) | Reducing agent |
+  | Cu²⁺ | Cu²⁺ -> Cu | +2 -> 0 (reduced) | Oxidizing agent |
+  | SO₄²⁻ | No change | Spectator ion | Neither |
+
+**Memory aid (OIL RIG):**
+
+Oxidation Is Loss (of electrons)
+
+Reduction Is Gain (of electrons)
+
+The reducing agent IS oxidized; the oxidizing agent IS reduced.
+
+### Why the other choices are wrong:
+
+**B. Cu²⁺:** Cu2+ is actually the oxidizing agent in this reaction, not the reducing agent. Cu2+ gains 2 electrons (is reduced) to become Cu metal. Remember: the oxidizing agent gets reduced itself, while the reducing agent gets oxidized.
+
+**C. SO₄²⁻:** The sulfate ion (SO4 2-) is a spectator ion in this reaction -- it does not participate in the electron transfer. It remains unchanged in solution throughout the reaction. Spectator ions appear unchanged on both sides of the complete ionic equation and are cancelled when writing the net ionic equation.
+
+**D. Cu:** Metallic copper (Cu) is the product of reduction, not a reactant. It forms when Cu2+ gains electrons from zinc. The reducing agent must be a reactant that donates electrons, which is Zn in this case (Zn loses 2 electrons to become Zn2+).
+
+### Key Educational Points:
+
+  - Oxidation is electron loss; reduction is electron gain.
+  - The reducing agent donates electrons and is itself oxidized.
+  - Here Zn loses two electrons, while Cu²⁺ gains them; sulfate is a spectator ion.
+
+>> Bottom Line: The activity series predicts which metals will displace others: Zn is more active than Cu, so Zn can reduce Cu²⁺. In electrochemistry, this forms the basis of galvanic (voltaic) cells.
+
+==============================================================================
+Q18  [chem-18]  Answer: B
+==============================================================================
+A buffer solution is prepared by mixing acetic acid (CH₃COOH) with sodium acetate (CH₃COONa). This buffer is most effective at resisting pH changes near which pH value? (pKₐ of acetic acid = 4.76)
+
+  A) 2.0
+  B) 4.76
+  C) 7.0
+  D) 9.24
+
+### Correct Answer: 4.76
+
+A buffer is most effective when pH = pKₐ of the weak acid component. This is derived from the Henderson-Hasselbalch equation:
+
+**Henderson-Hasselbalch equation:**
+
+pH = pKₐ + log([A⁻]/[HA])
+
+When [A⁻] = [HA], log(1) = 0, so pH = pKₐ
+
+  | Buffer Property | Detail |
+  | Effective range | pKₐ +/- 1 (i.e., pH 3.76 to 5.76 for acetic acid buffer) |
+  | Greatest resistance to small additions | For a given total buffer concentration, resistance to small acid/base additions is greatest near equal acid and conjugate-base amounts (pH = pKₐ) |
+  | Components needed | Weak acid + its conjugate base (or weak base + its conjugate acid) |
+
+When a small amount of strong acid is added, the conjugate base (acetate) neutralizes it. When strong base is added, the weak acid (acetic acid) neutralizes it.
+
+### Why the other choices are wrong:
+
+**A. 2.0:** A pH of 2.0 would indicate a very strongly acidic solution. When a weak acid and its conjugate base are present in equal concentrations, the Henderson-Hasselbalch equation gives pH = pKa + log(1) = pKa + 0 = pKa. For acetic acid, pKa = 4.76.
+
+**C. 7.0:** Buffers can have pH 7 if an appropriate acid-base pair is chosen. This particular pair works best near acetic acid's pKa of 4.76; pH 7 is well outside its usual effective range.
+
+**D. 9.24:** 9.24 is the pKb of acetic acid's conjugate base (acetate ion), since pKa + pKb = 14 for a conjugate acid-base pair at 25°C (14 - 4.76 = 9.24). A buffer made from equal concentrations of a weak acid and its conjugate base has pH = pKa, not pKb. Equal concentrations were not specified in this stem; they describe the optimal ratio, not the only mixture that can act as a buffer.
+
+### Key Educational Points:
+
+  - A weak acid and its conjugate base can buffer added acid or base.
+  - For acetate, buffering is most effective near pKₐ = 4.76, with a useful range roughly one pH unit either side.
+  - Buffer capacity depends on the amounts of both components, not just the pH.
+
+>> Bottom Line: Choose a weak acid/conjugate-base pair with a pKₐ near the target pH. For acetate, the useful range is roughly pH 3.76-5.76, and greater total buffer concentration generally gives greater capacity.
+
+==============================================================================
+Q19  [chem-20]  Answer: B
+==============================================================================
+At room temperature and away from UV light, which reagent provides a visible test to distinguish a simple alkene from an alkane?
+
+  A) Sodium hydroxide solution
+  B) Bromine water (Br₂/H₂O)
+  C) Hydrochloric acid
+  D) Distilled water
+
+### Correct Answer: Bromine water (Br₂/H₂O)
+
+Bromine water is a classic test for unsaturation (double or triple bonds). Alkenes react with bromine, decolorizing the orange-brown solution, while alkanes do not react under these conditions.
+
+  | Hydrocarbon | General Formula | Reaction with Br₂ water | Result |
+  | Acyclic alkane | CₙH₂ₙ₊₂ | No rapid reaction under these test conditions | Stays orange-brown |
+  | Acyclic monoalkene | CₙH₂ₙ | Addition reaction | Decolorizes |
+  | Acyclic monoalkyne | CₙH₂ₙ₋₂ | Addition reaction | Decolorizes |
+
+**What the test observes:**
+
+The alkene consumes bromine by addition at its C=C bond, removing the orange-brown color. In water, bromohydrin products can form; in a nonaqueous, non-nucleophilic solvent, a vicinal dibromide is the usual product. The test here depends on decolorization, not identification of one specific product.
+
+### Why the other choices are wrong:
+
+**A. Sodium hydroxide solution:** Sodium hydroxide (NaOH) is a strong base used in reactions with acids, esters, and amides, but it does not react with simple hydrocarbons like alkanes or alkenes. It would not help distinguish between them since neither undergoes a visible reaction with NaOH.
+
+**C. Hydrochloric acid:** Hydrochloric acid (HCl) is a strong acid, but it does not react visibly with alkanes or simple alkenes under normal lab conditions. While HCl can add across double bonds (hydrohalogenation), this reaction is not easily observed as a quick lab test.
+
+**D. Distilled water:** Distilled water does not react with either alkanes or alkenes, since hydrocarbons are nonpolar and essentially insoluble in water. Water alone does not give a distinctive reaction that separates these two simple hydrocarbons under the test conditions.
+
+### Key Educational Points:
+
+  - An alkene's C=C bond can react by addition with bromine.
+  - Consumption of bromine removes its orange-brown color.
+  - A simple alkane does not rapidly decolorize bromine water under the same conditions away from UV light.
+
+>> Bottom Line: A simple alkene rapidly decolorizes bromine water by addition at C=C. A simple alkane does not under the same conditions without radical initiation. Other reactive compounds can also decolorize bromine, so this is not a universal identification test for every unknown organic compound.
+
+==============================================================================
+Q20  [chem-21]  Answer: B
+==============================================================================
+Benzene preferentially undergoes electrophilic aromatic substitution rather than addition reactions. This is because:
+
+  A) Benzene has very strong C-H bonds
+  B) Substitution preserves the aromatic stability (delocalized pi electron system)
+  C) Benzene is sterically hindered and cannot undergo addition
+  D) Addition preserves benzene's aromatic pi system
+
+### Correct Answer: Substitution preserves the aromatic stability (delocalized pi electron system)
+
+Benzene's aromatic pi system stabilizes the ring. Electrophilic substitution temporarily disrupts this system, but loss of H⁺ restores aromaticity in the product. Addition across the ring would remove aromaticity from that product, so ordinary alkene-like addition is not benzene's characteristic reaction.
+
+  | Reaction type | Aromaticity in the final product |
+  | Substitution | Restored |
+  | Addition | Lost |
+
+**Common Electrophilic Aromatic Substitution (EAS) reactions:**
+
+Halogenation: C₆H₆ + Br₂ (FeBr₃) -> C₆H₅Br + HBr
+
+Nitration: C₆H₆ + HNO₃ (H₂SO₄) -> C₆H₅NO₂ + H₂O
+
+Sulfonation: C₆H₆ + SO₃ (H₂SO₄) -> C₆H₅SO₃H
+
+### Why the other choices are wrong:
+
+**A. Benzene has very strong C-H bonds:** While benzene does have relatively strong C-H bonds (due to sp2 hybridization), this is not the primary reason it prefers substitution. The key factor is the special stability of the aromatic pi system (delocalization energy of about 150 kJ/mol), which would be lost in an addition reaction but is preserved in substitution.
+
+**C. Benzene is sterically hindered and cannot undergo addition:** Benzene is a small planar molecule, so steric crowding does not explain its characteristic reactivity. It can undergo addition, such as catalytic hydrogenation, under suitable conditions.
+
+**D. Addition preserves benzene's aromatic pi system:** Addition to the aromatic ring disrupts its continuous pi system. Electrophilic aromatic substitution instead replaces a ring hydrogen and restores aromaticity after the intermediate forms.
+
+### Key Educational Points:
+
+  - Benzene has a stabilized aromatic system of six pi electrons.
+  - Electrophilic aromatic substitution replaces a ring hydrogen and restores aromaticity in the product.
+  - Benzene can undergo addition under suitable conditions, but ordinary alkene-like addition is not its characteristic reaction.
+
+>> Bottom Line: Aromaticity (Huckel's rule: 4n+2 pi electrons in a planar cyclic conjugated system) provides exceptional stability. Benzene's 6 pi electrons (n=1) make it aromatic. EAS is the hallmark reaction of aromatic compounds.
+
+==============================================================================
+Q21  [chem-22]  Answer: B
+==============================================================================
+Phenol (C₆H₅OH) is more acidic than ethanol (C₂H₅OH) because:
+
+  A) Phenol has a higher molecular weight
+  B) The phenoxide ion is stabilized by resonance delocalization into the aromatic ring
+  C) Phenol has more hydrogen atoms available for donation
+  D) The ethoxide ion is more resonance-stabilized than the phenoxide ion
+
+### Correct Answer: The phenoxide ion is stabilized by resonance delocalization into the aromatic ring
+
+When phenol loses a proton, the resulting phenoxide ion (C₆H₅O⁻) is stabilized because the negative charge is delocalized across the aromatic ring through resonance. Ethoxide has no such stabilization.
+
+  | Property | Phenol | Ethanol |
+  | pKₐ | ~10 | ~16 |
+  | Acidity | More acidic | Less acidic |
+  | Conjugate base stability | Resonance-delocalized into the ring | Not resonance-delocalized into a ring |
+  | Appreciably deprotonated by dilute aqueous NaOH? | Yes (forms sodium phenoxide) | No, only a small fraction |
+  | Reacts with NaHCO₃? | No (too weak an acid) | No |
+
+### Why the other choices are wrong:
+
+**A. Phenol has a higher molecular weight:** Molecular weight has essentially no direct effect on acidity. Acidity depends on how stable the conjugate base is after losing a proton. Phenol (MW 94) is more acidic than ethanol (MW 46) not because of mass, but because the phenoxide ion is resonance-stabilized.
+
+**C. Phenol has more hydrogen atoms available for donation:** The number of hydrogen atoms is not what determines acid strength. Acidity is about how readily a single O-H proton is released and how stable the resulting anion is. Phenol has fewer total H atoms than many less acidic molecules.
+
+**D. The ethoxide ion is more resonance-stabilized than the phenoxide ion:** The comparison is reversed. Phenoxide can delocalize its negative charge into the aromatic ring; ethoxide cannot. The greater stabilization of phenoxide helps make phenol more acidic.
+
+### Key Educational Points:
+
+  - Acidity is assessed by the equilibrium for proton loss in the specified environment.
+  - Phenoxide is resonance-stabilized; ethoxide lacks comparable delocalization into an aromatic ring.
+  - Phenol is therefore much more acidic than ethanol and is appreciably deprotonated by dilute aqueous NaOH.
+
+>> Bottom Line: Acidity depends on the stability of the conjugate base. More stable conjugate base = stronger acid. Resonance delocalization, electronegativity, and inductive effects all stabilize conjugate bases. Phenol is acidic enough to react with NaOH but not with NaHCO₃ (unlike carboxylic acids, which react with both).
+
+==============================================================================
+Q22  [chem-23]  Answer: B
+==============================================================================
+Which test distinguishes ethanal (CH₃CHO) from propanone (CH₃COCH₃)?
+
+  A) Litmus test
+  B) Tollens' test (silver mirror reaction)
+  C) Flame test
+  D) Iodine test
+
+### Correct Answer: Tollens' test (silver mirror reaction)
+
+Tollens' reagent (ammoniacal silver nitrate, [Ag(NH₃)₂]⁺) is reduced by ethanal, which is itself oxidized to a carboxylate. The silver produced deposits as a mirror on the test tube wall. Propanone gives a negative result under the standard test conditions.
+
+  | Test | Reagent | Ethanal (aldehyde) | Propanone (ketone) |
+  | Tollens' test | [Ag(NH₃)₂]⁺ | Silver mirror (positive) | No reaction |
+  | Fehling's test | Cu²⁺ tartrate | Red precipitate (Cu₂O) | No reaction |
+  | Benedict's test | Cu²⁺ citrate | Red-orange precipitate | No reaction |
+
+Some other compounds, including reducing sugars, can also give positive results in these oxidation tests.
+
+**Tollens' test reaction:**
+
+R-CHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → R-COO⁻ + 2Ag(s) + 4NH₃ + 2H₂O
+
+Ethanal is oxidized to a carboxylate; Ag⁺ is reduced to metallic silver. Both sides of this equation carry a net charge of -1.
+
+### Why the other choices are wrong:
+
+**A. Litmus test:** Litmus paper detects whether a solution is acidic or basic by changing color (red in acid, blue in base). It cannot distinguish between aldehydes and ketones since neither is significantly acidic or basic in aqueous solution.
+
+**C. Flame test:** The flame test identifies metal ions by the characteristic colors they produce when heated (e.g., Na = yellow, K = violet, Cu = green). It has nothing to do with organic functional groups and cannot distinguish carbonyl compounds.
+
+**D. Iodine test:** The iodine test is used to detect the presence of starch (which turns blue-black with iodine) or, in the iodoform test, to identify methyl ketones and secondary alcohols with an adjacent methyl group. It is not a general discriminator between aldehydes and ketones: the iodoform test can also be positive with ethanal and with ethanol. For the pair named here, both ethanal and propanone can give a positive iodoform result, so it would not separate them.
+
+### Key Educational Points:
+
+  - Ethanal is oxidized to a carboxylate by alkaline Tollens' reagent.
+  - Silver(I) is reduced to metallic silver, producing the positive test.
+  - Propanone does not react under the same conditions, although some other carbonyl compounds can give positive oxidation tests.
+
+>> Bottom Line: Ethanal reduces Tollens' reagent to metallic silver as it is oxidized to a carboxylate. Propanone does not under the standard test conditions. This compares ease of oxidation, not 'reducibility' of the carbonyl compounds.
+
+==============================================================================
+Q23  [chem-24]  Answer: B
+==============================================================================
+What is the common name for methanoic acid (HCOOH), the simplest carboxylic acid?
+
+  A) Acetic acid
+  B) Formic acid
+  C) Oxalic acid
+  D) Citric acid
+
+### Correct Answer: Formic acid
+
+Formic acid is the common name of methanoic acid, HCOOH, the simplest carboxylic acid. Its name comes from the Latin word for ant, and it occurs in the defensive secretions of some ants.
+
+  | IUPAC Name | Common Name | Formula | Source/Use |
+  | Methanoic acid | Formic acid | HCOOH | Secretions of some ants |
+  | Ethanoic acid | Acetic acid | CH₃COOH | Vinegar |
+  | Ethanedioic acid | Oxalic acid | HOOC-COOH | Rhubarb, spinach |
+  | 2-hydroxypropane-1,2,3-tricarboxylic acid | Citric acid | C₆H₈O₇ | Citrus fruits, Krebs cycle |
+
+Carboxylic acids are named by replacing the -e of the parent alkane with -oic acid (IUPAC). Common names often derive from natural sources.
+
+### Why the other choices are wrong:
+
+**A. Acetic acid:** Acetic acid (CH3COOH) is ethanoic acid in IUPAC nomenclature -- the two-carbon carboxylic acid. It is the main acid in vinegar. The simplest carboxylic acid is formic acid (HCOOH/methanoic acid), which has only one carbon.
+
+**C. Oxalic acid:** Oxalic acid (HOOC-COOH) is ethanedioic acid, a dicarboxylic acid with two carbon atoms and two carboxyl groups. It is found naturally in plants like spinach and rhubarb and can form insoluble calcium oxalate kidney stones.
+
+**D. Citric acid:** Citric acid is a tricarboxylic acid with six carbons (C6H8O7) found abundantly in citrus fruits. It plays a central role in the Krebs cycle (citric acid cycle) of cellular metabolism. It is much larger and more complex than methanoic acid.
+
+### Key Educational Points:
+
+  - Methanoic acid, HCOOH, has the common name formic acid.
+  - Ethanoic acid, CH₃COOH, has the common name acetic acid.
+  - The carboxyl group, -COOH, defines this class of compounds.
+
+>> Bottom Line: Methanoic acid is formic acid, HCOOH. Ethanoic acid is acetic acid, CH₃COOH. Both contain the carboxyl group, -COOH.
+
+==============================================================================
+Q24  [chem-25]  Answer: B
+==============================================================================
+The loss of a protein's three-dimensional structure due to heat or extreme pH, without breaking peptide bonds, is called:
+
+  A) Hydrolysis
+  B) Denaturation
+  C) Polymerization
+  D) Saponification
+
+### Correct Answer: Denaturation
+
+Denaturation disrupts a protein's native folding or subunit assembly while leaving its peptide-bond sequence intact. Heat and pH changes commonly disturb noncovalent interactions; some denaturing treatments can also disrupt disulfide bonds.
+
+  | Structural Level | Bonds/Forces Involved | Affected by Denaturation? |
+  | Primary (sequence) | Peptide bonds (covalent) | No (preserved) |
+  | Secondary (α-helix, β-sheet) | Hydrogen bonds | Can be disrupted |
+  | Tertiary (3D folding) | H-bonds, disulfide bridges, hydrophobic, ionic | Can be disrupted; disulfide bonds may be affected depending on treatment |
+  | Quaternary (subunit assembly) | Noncovalent interactions, and sometimes interchain disulfides | Can be disrupted |
+
+Denaturing agents include: heat, extreme pH, organic solvents (ethanol), heavy metals (Hg²⁺, Pb²⁺), detergents (SDS), and urea.
+
+### Why the other choices are wrong:
+
+**A. Hydrolysis:** Hydrolysis breaks peptide bonds by reaction with water, splitting a polypeptide into shorter fragments or amino acids. Denaturation changes folding without cleaving the peptide backbone.
+
+**C. Polymerization:** Polymerization is the process of joining many small molecules (monomers) into a large chain (polymer). In the context of proteins, polymerization refers to the initial formation of the polypeptide chain from amino acid monomers via peptide bonds -- the building process, not the unfolding process.
+
+**D. Saponification:** Saponification is alkaline ester hydrolysis. For fats, it produces glycerol and fatty-acid salts (soap). This is chemically different from unfolding a protein.
+
+### Key Educational Points:
+
+  - Denaturation disrupts native folding or subunit organization without cleaving the peptide backbone.
+  - Heat, extreme pH and several chemicals can destabilize protein structure.
+  - Peptide-bond hydrolysis cuts the chain; it is a different process from denaturation.
+
+>> Bottom Line: Denaturation changes folding and usually impairs function; peptide-bond hydrolysis cuts the chain. Some denatured proteins can refold, whereas others aggregate and do not recover under the original conditions.
+
+==============================================================================
+Q25  [chem-26]  Answer: B
+==============================================================================
+What structural feature distinguishes unsaturated fatty acids from saturated fatty acids?
+
+  A) Unsaturated fatty acids are shorter in chain length
+  B) Unsaturated fatty acids contain one or more carbon-carbon double bonds
+  C) Unsaturated fatty acids lack a carboxyl group
+  D) Unsaturated fatty acids contain nitrogen atoms
+
+### Correct Answer: Unsaturated fatty acids contain one or more carbon-carbon double bonds
+
+Unsaturated fatty acids contain at least one C=C bond. Cis double bonds introduce bends that usually reduce packing and lower melting point compared with otherwise similar saturated chains; trans double bonds do not produce the same bend.
+
+The comparisons below are typical ones for similar long-chain fatty acids. Saturation alone does not prove whether a substance is solid or liquid at room temperature.
+
+  | Property | Saturated Fatty Acids | Unsaturated Fatty Acids |
+  | C=C double bonds | None | One (mono-) or more (poly-) |
+  | Typical chain shape | Straight | Bent where a cis double bond occurs |
+  | Typical packing | Tighter | Looser, especially for cis-unsaturated chains |
+  | Sources | Animal fats, butter, coconut oil | Olive oil, fish oil, vegetable oils |
+  | Examples | Palmitic (C16:0), Stearic (C18:0) | Oleic (C18:1), Linoleic (C18:2) |
+
+Trans fatty acids have the hydrogen atoms on opposite sides of the double bond, making the chain straighter (similar to saturated). They are considered harmful to cardiovascular health.
+
+### Why the other choices are wrong:
+
+**A. Unsaturated fatty acids are shorter in chain length:** Chain length varies independently of saturation. Both saturated and unsaturated fatty acids can be short or long chain. Common saturated fatty acids like palmitic acid (C16) and stearic acid (C18) have the same chain lengths as common unsaturated ones like oleic acid (C18).
+
+**C. Unsaturated fatty acids lack a carboxyl group:** All fatty acids -- both saturated and unsaturated -- contain a carboxyl group (-COOH) at one end. This is what makes them acids. The carboxyl group is the defining feature of any fatty acid, regardless of the degree of saturation in the hydrocarbon chain.
+
+**D. Unsaturated fatty acids contain nitrogen atoms:** The common fatty acids discussed here contain carbon, hydrogen and oxygen. Nitrogen is not what defines unsaturation; a C=C bond does.
+
+### Key Educational Points:
+
+  - Saturated fatty acids contain no C=C bonds; unsaturated fatty acids contain at least one.
+  - Cis double bonds introduce bends and usually reduce packing compared with similar saturated chains.
+  - Melting point also depends on chain length and double-bond geometry, so saturation is not the sole determinant.
+
+>> Bottom Line: Unsaturated means at least one C=C bond. Cis geometry usually reduces packing; melting point also depends on chain length, double-bond position and geometry. Unsaturated does not automatically mean liquid.
+
+==============================================================================
+Q26  [chem-27]  Answer: B
+==============================================================================
+Sucrose (table sugar) is a disaccharide composed of which two monosaccharides?
+
+  A) Glucose + Glucose
+  B) Glucose + Fructose
+  C) Glucose + Galactose
+  D) Fructose + Galactose
+
+### Correct Answer: Glucose + Fructose
+
+Sucrose is formed by a glycosidic bond between the anomeric carbons of both glucose (C1) and fructose (C2), making it a **non-reducing sugar**.
+
+  | Disaccharide | Monosaccharide Components | Glycosidic Bond | Reducing Sugar? |
+  | Sucrose | Glucose + Fructose | α(1→2)β | No |
+  | Maltose | Glucose + Glucose | alpha(1->4) | Yes |
+  | Lactose | Galactose + Glucose | beta(1->4) | Yes |
+  | Cellobiose | Glucose + Glucose | beta(1->4) | Yes |
+
+In Haworth projections, sugars are drawn as flat ring structures. Glucose forms a six-membered pyranose ring, while fructose forms a five-membered furanose ring in sucrose.
+
+### Why the other choices are wrong:
+
+**A. Glucose + Glucose:** Glucose + glucose linked by an alpha-1,4 glycosidic bond forms maltose, the disaccharide produced during starch digestion. Another glucose+glucose disaccharide is cellobiose (beta-1,4 linkage), found in cellulose breakdown.
+
+**C. Glucose + Galactose:** Glucose + galactose forms lactose, the sugar found in milk. Lactose intolerance results from deficiency of the enzyme lactase, which is needed to break the beta-1,4 glycosidic bond between glucose and galactose.
+
+**D. Fructose + Galactose:** Galactose and fructose are not the components of sucrose. For example, lactulose contains galactose and fructose, whereas sucrose contains glucose and fructose.
+
+### Key Educational Points:
+
+  - Sucrose joins C1 of alpha-glucose to C2 of beta-fructose, written α(1→2)β, so both anomeric configurations are specified.
+  - That bond ties up the anomeric carbons of both sugars, so neither ring can open to a free carbonyl - which is why sucrose is a non-reducing sugar.
+  - Compare the other common disaccharides: lactose is galactose + glucose (β-1,4) and maltose is glucose + glucose (α-1,4), and both are reducing.
+  - At the human intestinal brush border, the sucrase part of sucrase-isomaltase hydrolyzes sucrose so glucose and fructose can be absorbed.
+  - The hydrolysis is called inversion because the mixture's optical rotation changes sign as sucrose is split - a property of the resulting mixture, not any change in D/L configuration.
+
+>> Bottom Line: Sucrose is non-reducing because both anomeric carbons are locked in the glycosidic bond, so neither unit has a free anomeric group that can open to a carbonyl. Hydrolysis releases glucose and fructose, which are reducing sugars.
+
+==============================================================================
+Q27  [chem-28]  Answer: C
+==============================================================================
+Which base is one of the four standard bases of RNA, taking the place of thymine in the standard DNA base set?
+
+  A) Adenine
+  B) Guanine
+  C) Uracil
+  D) Cytosine
+
+### Correct Answer: Uracil
+
+RNA contains uracil (U) in place of thymine (T), which is found in DNA. Uracil pairs with adenine, just as thymine does.
+
+The table compares typical cellular DNA and RNA:
+
+  | Feature | DNA | RNA |
+  | Sugar | Deoxyribose | Ribose |
+  | Bases | A, T, G, C | A, U, G, C |
+  | Structure | Usually double-stranded | Usually single-stranded |
+  | Stability | More stable | Less stable (2'-OH group) |
+
+The bases are classified as purines (adenine, guanine - two rings) and pyrimidines (cytosine, thymine, uracil - one ring). Base pairing: A-T (or A-U) pairs form 2 hydrogen bonds; G-C pairs form 3 hydrogen bonds.
+
+### Why the other choices are wrong:
+
+**A. Adenine:** Adenine (A) is a purine base found in both DNA and RNA. In DNA it pairs with thymine (A-T, 2 hydrogen bonds); in RNA it pairs with uracil (A-U). Since adenine is present in both nucleic acids, it is not unique to RNA.
+
+**B. Guanine:** Guanine (G) is a purine base present in both DNA and RNA. It pairs with cytosine in standard Watson-Crick base pairing (G-C, 3 hydrogen bonds) in both types of nucleic acid. Like adenine, it is shared between DNA and RNA.
+
+**D. Cytosine:** Cytosine (C) is a pyrimidine base found in both DNA and RNA. It pairs with guanine via three hydrogen bonds. In the standard base sets, DNA uses thymine where RNA uses uracil.
+
+### Key Educational Points:
+
+  - The standard RNA bases are A, G, C and U; standard DNA uses T in place of U.
+  - Purines are adenine and guanine; cytosine, thymine and uracil are pyrimidines.
+  - Base-pair hydrogen bonds are different from the covalent bonds of the sugar-phosphate backbone.
+
+>> Bottom Line: A nucleoside = base + sugar. A nucleotide = base + sugar + phosphate. DNA uses deoxyribonucleotides; RNA uses ribonucleotides. The extra 2'-OH group in ribose makes RNA more susceptible to hydrolysis than DNA.
+
+==============================================================================
+Q28  [chem-29]  Answer: B
+==============================================================================
+The nitrogenous bases adenine and guanine belong to which class of heterocyclic compounds?
+
+  A) Pyrimidines
+  B) Purines
+  C) Pyrroles
+  D) Piperidines
+
+### Correct Answer: Purines
+
+Purines are bicyclic heterocyclic compounds consisting of a pyrimidine ring fused to an imidazole ring. Adenine and guanine are the two purine bases found in nucleic acids.
+
+  | Class | Ring Structure | Nucleic Acid Bases |
+  | Purines | Two fused rings (9 atoms) | Adenine (A), Guanine (G) |
+  | Pyrimidines | One ring (6 atoms) | Cytosine (C), Thymine (T), Uracil (U) |
+
+**Important Heterocyclic Compounds in Biology:**
+
+Pyrrole: 5-membered ring with 1 N (component of heme, chlorophyll)
+
+Pyridine: 6-membered ring with 1 N (component of NAD⁺, vitamin B3)
+
+Pyrimidine: 6-membered ring with 2 N (C, T, U bases)
+
+Purine: fused pyrimidine + imidazole (A, G bases; also caffeine, uric acid)
+
+### Why the other choices are wrong:
+
+**A. Pyrimidines:** Pyrimidines are single-ring (six-membered) heterocyclic bases. The pyrimidine bases in nucleic acids are cytosine, thymine (DNA), and uracil (RNA). Adenine and guanine are purines (double-ring), not pyrimidines. A helpful mnemonic: CUT the PYrimidines (C, U, T).
+
+**C. Pyrroles:** Pyrrole is a five-membered aromatic ring containing one nitrogen atom. Pyrrole-derived units occur in heme's porphyrin ring and the related ring system of chlorophyll. Adenine and guanine instead contain the fused purine system.
+
+**D. Piperidines:** Piperidine is a six-membered saturated heterocyclic ring containing one nitrogen atom. It is found in some alkaloids and pharmaceutical drugs (e.g., piperidine derivatives in anesthetics). It is not the fused aromatic purine framework found in adenine and guanine.
+
+### Key Educational Points:
+
+  - A heterocycle contains at least one non-carbon atom within its ring.
+  - Purine is a fused five-plus-six-membered ring system, not a single six-membered ring.
+  - Adenine and guanine are purines; cytosine, thymine and uracil are pyrimidines.
+
+>> Bottom Line: Remember that purines are bigger (2 rings) with shorter names (A, G), while pyrimidines are smaller (1 ring) with longer names (cytosine, thymine, uracil). In standard Watson-Crick DNA base pairing, a purine pairs with a pyrimidine, keeping the helix width constant.
+
+==============================================================================
+Q29  [chem-30]  Answer: B
+==============================================================================
+How are amines classified as primary, secondary, or tertiary?
+
+  A) By the number of amino groups in the molecule
+  B) By the number of carbon atoms bonded to the nitrogen atom
+  C) By the number of hydrogen atoms in the molecule
+  D) By the position of the amino group on the carbon chain
+
+### Correct Answer: By the number of carbon atoms bonded to the nitrogen atom
+
+Amine classification depends on how many of nitrogen's hydrogen atoms have been replaced by carbon-containing groups (alkyl or aryl).
+
+  | Amine Type | Structure | Example | C atoms on N |
+  | Primary (1 degree) | R-NH₂ | Methylamine (CH₃NH₂) | 1 |
+  | Secondary (2 degree) | R₂-NH | Dimethylamine ((CH₃)₂NH) | 2 |
+  | Tertiary (3 degree) | R₃-N | Trimethylamine ((CH₃)₃N) | 3 |
+  | Quaternary ammonium | R₄-N⁺ | Tetramethylammonium | 4 |
+
+Amines generally act as bases because the nitrogen lone pair can accept a proton; their basicity varies with structure and solvent. Amines are generally more basic than water but less basic than hydroxide.
+
+### Why the other choices are wrong:
+
+**A. By the number of amino groups in the molecule:** The number of amino groups determines whether a compound is a monoamine, diamine, etc. -- not whether the amine is primary, secondary, or tertiary. Amine classification depends solely on how many carbon atoms are directly bonded to the nitrogen.
+
+**C. By the number of hydrogen atoms in the molecule:** Total hydrogen count in the molecule is irrelevant to amine classification. What matters is the substitution pattern on the nitrogen atom: primary (N bonded to 1 carbon and 2 H), secondary (N bonded to 2 carbons and 1 H), tertiary (N bonded to 3 carbons and 0 H).
+
+**D. By the position of the amino group on the carbon chain:** Position on the carbon chain is used to name the compound (e.g., 1-aminobutane vs. 2-aminobutane), but it does not determine whether the amine is primary, secondary, or tertiary. Classification depends on the number of carbon groups attached to nitrogen.
+
+### Key Educational Points:
+
+  - Primary, secondary and tertiary amines have one, two or three carbon groups attached directly to nitrogen.
+  - A nitrogen with four carbon groups is a quaternary ammonium ion, with a positive charge.
+  - Amine classification concerns nitrogen substitution; alcohol classification concerns the carbon bearing OH.
+
+>> Bottom Line: Do not confuse amine classification with alcohol classification. For alcohols, the classification is based on the carbon bearing the OH group. For amines, it is based directly on the nitrogen atom. Amines are important in biology: amino acids, neurotransmitters (dopamine, serotonin), and many drugs contain amine groups.
+
+==============================================================================
+Q30  [chem-31]  Answer: B
+==============================================================================
+An atom has the electron configuration 1s² 2s² 2p⁶ 3s² 3p⁴. Which element is this, and how many unpaired electrons does it have?
+
+  A) Silicon, 2 unpaired
+  B) Sulfur, 2 unpaired
+  C) Phosphorus, 3 unpaired
+  D) Chlorine, 1 unpaired
+
+### Correct Answer: Sulfur, 2 unpaired
+
+Total electrons = 2+2+6+2+4 = 16 = Sulfur (S). In the 3p subshell with 4 electrons: by Hund's rule, fill singly first (3 orbitals get 1 each = 3), then pair the 4th, giving 2 unpaired.
+
+  | 3p orbital | 1 | 2 | 3 |
+  | Electrons | ↑↓ | ↑ | ↑ |
+
+### Why the other choices are wrong:
+
+**A. Silicon, 2 unpaired:** Silicon (Z=14) has the electron configuration 1s² 2s² 2p⁶ 3s² 3p², with only 2 electrons in the 3p subshell. The question describes a configuration ending in 3p⁴ (16 electrons total), which corresponds to sulfur, not silicon.
+
+**C. Phosphorus, 3 unpaired:** Phosphorus (Z=15) has configuration 1s² 2s² 2p⁶ 3s² 3p³, with 3 unpaired electrons in the half-filled 3p subshell. The question describes an atom with 3p⁴ (16 electrons), giving sulfur with 2 unpaired electrons. Phosphorus has one fewer electron.
+
+**D. Chlorine, 1 unpaired:** Chlorine (Z=17) has configuration 1s² 2s² 2p⁶ 3s² 3p⁵, with only 1 unpaired electron. The question describes 3p⁴ (16 electrons = sulfur). Chlorine has one more electron than sulfur, resulting in a different number of unpaired electrons.
+
+### Key Educational Points:
+
+  - The configuration contains 16 electrons, identifying the neutral atom as sulfur.
+  - Four 3p electrons occupy three orbitals as one pair and two single electrons in the ground state.
+  - The two unpaired electrons make an isolated ground-state sulfur atom paramagnetic.
+
+>> Bottom Line: To find unpaired electrons, fill orbitals singly (Hund's rule) before pairing. Unpaired electrons determine paramagnetism.
+
+==============================================================================
+Q31  [chem-32]  Answer: C
+==============================================================================
+Using molecular prefixes to specify both atom counts, which name describes N₂O₅?
+
+  A) Nitrogen oxide
+  B) Nitrogen pentoxide
+  C) Dinitrogen pentoxide
+  D) Dinitrogen tetroxide
+
+### Correct Answer: Dinitrogen pentoxide
+
+The prefix di- indicates two nitrogen atoms, and pent- in the commonly used name pentoxide indicates five oxygen atoms. N₂O₅ is commonly called dinitrogen pentoxide. The systematic compositional spelling dinitrogen pentaoxide is also valid.
+
+Common molecular names formed with multiplying prefixes:
+
+  | Prefix | Number | Example |
+  | mono- | 1 | CO = carbon monoxide |
+  | di- | 2 | CO₂ = carbon dioxide |
+  | tri- | 3 | SO₃ = sulfur trioxide |
+  | penta- | 5 | N₂O₅ = dinitrogen pentoxide |
+
+### Why the other choices are wrong:
+
+**A. Nitrogen oxide:** Nitrogen oxide does not specify the 2:5 nitrogen-to-oxygen ratio. Several different nitrogen oxides exist, so a more specific name is required.
+
+**B. Nitrogen pentoxide:** In the explicit molecular-prefix naming pattern used here, di- identifies the two nitrogen atoms. Dinitrogen pentoxide makes the N₂O₅ composition clear.
+
+**D. Dinitrogen tetroxide:** Dinitrogen tetroxide refers to N₂O₄, with four oxygen atoms. N₂O₅ contains five oxygen atoms and is commonly called dinitrogen pentoxide.
+
+### Key Educational Points:
+
+  - Multiplying prefixes can specify how many atoms of each element are present.
+  - Di- identifies two nitrogen atoms in N₂O₅, while penta- identifies five oxygen atoms.
+  - Dinitrogen pentoxide is the common molecular name; dinitrogen pentaoxide is also a valid systematic compositional form.
+
+>> Bottom Line: Multiplying prefixes communicate composition: di- means two and penta- means five. N₂O₅ is commonly called dinitrogen pentoxide; dinitrogen pentaoxide is also a valid systematic compositional form.
+
+==============================================================================
+Q32  [chem-33]  Answer: B
+==============================================================================
+A metal block has a mass of 270 g and a volume of 100 cm³. What is its density, and which metal is it most likely?
+
+  A) 0.27 g/cm³, lithium
+  B) 2.70 g/cm³, aluminum
+  C) 7.87 g/cm³, iron
+  D) 19.3 g/cm³, gold
+
+### Correct Answer: 2.70 g/cm³, aluminum
+
+Density = mass/volume = 270 g / 100 cm³ = **2.70 g/cm³**, which matches aluminum.
+
+  | Metal | Density (g/cm³) |
+  | Lithium | 0.53 |
+  | Aluminum | 2.70 |
+  | Iron | 7.87 |
+  | Gold | 19.3 |
+
+### Why the other choices are wrong:
+
+**A. 0.27 g/cm³, lithium:** Density = mass/volume = 270g / 100cm3 = 2.70 g/cm3, not 0.27 (which would require dividing by 1000 instead of 100). Lithium has a density of about 0.53 g/cm3, making it the lightest metal -- it even floats on water.
+
+**C. 7.87 g/cm³, iron:** The calculated density is 2.70 g/cm3, not 7.87. Iron (Fe) has a density of 7.87 g/cm3, making it nearly three times denser than aluminum. In the lab, you can feel the difference -- an iron block of the same size would feel much heavier.
+
+**D. 19.3 g/cm³, gold:** The calculated density is 2.70 g/cm3, far from 19.3. Gold is one of the densest elements, with a density of 19.3 g/cm3. A gold bar the size of this aluminum block would weigh about 1930 g (almost 2 kg) instead of 270 g.
+
+### Key Educational Points:
+
+  - Density equals mass divided by volume.
+  - 270 g divided by 100 cm³ gives 2.70 g/cm³, consistent with aluminum.
+  - Density carries units; relative density is a ratio and has no units.
+
+>> Bottom Line: Density is mass divided by volume, with units such as g/cm³. Relative density (specific gravity) is a unitless ratio to a reference density, commonly water. An object's average density relative to the surrounding liquid helps determine whether it floats.
+
+==============================================================================
+Q33  [chem-34]  Answer: B
+==============================================================================
+How much heat energy is required to raise the temperature of 500 g of water from 20°C to 80°C? (Specific heat of water = 4.18 J/g·°C)
+
+  A) 12,540 J
+  B) 125,400 J
+  C) 1,254 J
+  D) 209,000 J
+
+### Correct Answer: 125,400 J
+
+Using Q = mcΔT:
+
+Q = 500 g × 4.18 J/g°C × (80-20)°C
+
+Q = 500 × 4.18 × 60 = **125,400 J = 125.4 kJ**
+
+  | Variable | Meaning | Units used here |
+  | Q | Heat energy | Joules (J) |
+  | m | Mass | grams (g) |
+  | c | Specific heat capacity | J/g°C |
+  | ΔT | Temperature change | °C or K |
+
+### Why the other choices are wrong:
+
+**A. 12,540 J:** This value is off by a factor of 10. Using q = mcDeltaT = 500g x 4.18 J/(g*C) x 60C = 125,400 J. Getting 12,540 might result from using 50g instead of 500g, or misplacing a decimal point.
+
+**C. 1,254 J:** This is off by a factor of 100. The correct calculation is 500 x 4.18 x 60 = 125,400 J. This small value would only heat about 5 grams of water by 60 degrees, not 500 grams.
+
+**D. 209,000 J:** 209,000 J would result from using a temperature change of 100°C, for example by adding 20 and 80. The required change is final minus initial temperature: 80 - 20 = 60°C.
+
+### Key Educational Points:
+
+  - Heat is calculated as Q = mcΔT, where m is mass, c is specific heat capacity, and ΔT is the temperature change.
+  - Substituting: 500 g × 4.18 J/g°C × 60 °C = 125,400 J, or 125.4 kJ.
+  - Only the temperature difference matters, and a difference is numerically the same in °C and K, so no conversion is needed.
+  - Water's hydrogen-bond network can absorb energy as its arrangement changes, contributing to water's high specific heat capacity.
+  - That high specific heat is why water moderates temperature so effectively in organisms, lakes, and climate.
+
+>> Bottom Line: Water has an unusually high specific heat (4.18 J/g°C) due to extensive hydrogen bonding, which is why it moderates temperatures in biological and environmental systems.
+
+==============================================================================
+Q34  [chem-35]  Answer: B
+==============================================================================
+Which of the following elements is essential for thyroid hormone synthesis in the human body?
+
+  A) Fluorine (F)
+  B) Iodine (I)
+  C) Bromine (Br)
+  D) Chlorine (Cl)
+
+### Correct Answer: Iodine (I)
+
+Thyroid hormones T3 (triiodothyronine) and T4 (thyroxine) contain 3 and 4 iodine atoms respectively. Iodine deficiency can cause goiter.
+
+  | Element | Biological Role |
+  | Fe | Hemoglobin, cytochromes |
+  | I | Thyroid hormones (T3, T4) |
+  | Ca | Bones, teeth, muscle contraction, signaling |
+  | Zn | Enzyme cofactor, immune function |
+  | Na/K | Nerve impulses, osmotic balance |
+
+### Why the other choices are wrong:
+
+**A. Fluorine (F):** Fluorine is important for dental health -- fluoride ions strengthen tooth enamel and help prevent cavities, which is why it is added to toothpaste and drinking water. However, it plays no role in thyroid hormone synthesis.
+
+**C. Bromine (Br):** Bromide has a biological role in the formation of collagen IV cross-links in basement membranes. It does not replace iodine in T3 and T4, so bromine is not the answer to this question.
+
+**D. Chlorine (Cl):** Chlorine, as the chloride ion (Cl-), is essential for maintaining fluid balance and is a component of stomach acid (HCl). However, it is not involved in thyroid hormone synthesis. Only iodine is incorporated into thyroid hormones.
+
+### Key Educational Points:
+
+  - T3 and T4 contain three and four iodine atoms, respectively.
+  - Iodine is therefore required for their synthesis.
+  - Iodine deficiency can impair thyroid-hormone production and contribute to goiter.
+
+>> Bottom Line: Iodine is incorporated into T3 and T4. Deficiency can impair thyroid-hormone production and cause goiter; adequate thyroid hormone is especially important for development.
+
+==============================================================================
+Q35  [chem-36]  Answer: C
+==============================================================================
+Which type of intermolecular force is responsible for the unusually high boiling point of water compared to H₂S?
+
+  A) London dispersion forces
+  B) Dipole-dipole interactions
+  C) Hydrogen bonds
+  D) Ionic bonds
+
+### Correct Answer: Hydrogen bonds
+
+Water molecules form an extensive hydrogen-bond network through their O-H groups and oxygen lone pairs. Liquid H₂S does not form a comparably strong network, so its molecules separate much more readily on boiling.
+
+  | Interaction | Where it occurs | Important qualification |
+  | London dispersion | All atoms and molecules | Strength increases with polarizability and contact area |
+  | Permanent dipole-dipole | Polar molecules | Strength depends on the molecules and their arrangement |
+  | Hydrogen bonding | Commonly H attached to N, O or F interacting with an acceptor | Especially important in water; not a universal strongest-force ranking |
+
+### Why the other choices are wrong:
+
+**A. London dispersion forces:** Both water and H₂S experience dispersion forces. H₂S is more polarizable, so dispersion alone does not explain why water has the much higher boiling point. Water's hydrogen-bond network supplies the key distinction.
+
+**B. Dipole-dipole interactions:** Both molecules are polar. Ordinary permanent-dipole attractions alone do not explain the large boiling-point difference; the specific hydrogen-bond network in water is important.
+
+**D. Ionic bonds:** Ionic bonds form between oppositely charged ions in ionic compounds like NaCl. Water molecules are covalently bonded (O-H bonds within the molecule) and interact with each other through hydrogen bonds between molecules. The distinction between intramolecular bonds (within molecules) and intermolecular forces (between molecules) is critical.
+
+### Key Educational Points:
+
+  - Water molecules form an extensive hydrogen-bond network.
+  - H₂S lacks a comparable network, helping explain its much lower boiling point.
+  - Dispersion forces occur in both substances; there is no universal strength ranking independent of molecular structure.
+
+>> Bottom Line: Water's extensive hydrogen bonding gives it an unusually high boiling point. Dispersion and dipole interactions also occur; their strengths cannot be ranked by a universal weakest-to-strongest list.
+
+==============================================================================
+Q36  [chem-37]  Answer: C   (UNCHANGED per the review)
+==============================================================================
+A mixture of gases contains 2 atm of O₂ and 3 atm of N₂. According to Dalton's law, what is the total pressure?
+
+  A) 1 atm
+  B) 2.5 atm
+  C) 5 atm
+  D) 6 atm
+
+### Correct Answer: 5 atm
+
+Dalton's law of partial pressures: the total pressure equals the sum of individual partial pressures.
+
+Pₜₒₜₐₗ = PO₂ + PN₂ = 2 + 3 = **5 atm**
+
+  | Gas Law | Statement |
+  | Boyle's | P ∝ 1/V (constant T, n) |
+  | Charles's | V ∝ T (constant P, n) |
+  | Avogadro's | V ∝ n (constant T, P) |
+  | Dalton's | Pₜₒₜₐₗ = ΣPᵢ |
+
+### Why the other choices are wrong:
+
+**A. 1 atm:** Dalton's law states that total pressure equals the sum of partial pressures: Ptotal = PO2 + PN2 = 2 + 3 = 5 atm. Getting 1 atm might result from subtracting (3 - 2 = 1), but partial pressures are always added, never subtracted.
+
+**B. 2.5 atm:** 2.5 atm would be the average of the two partial pressures, but Dalton's law requires addition, not averaging. Each gas contributes its own partial pressure independently: Ptotal = 2 + 3 = 5 atm.
+
+**D. 6 atm:** Getting 6 atm might result from multiplying the pressures (2 x 3 = 6), but Dalton's law involves addition. Each gas in a mixture exerts pressure independently as if it alone occupied the container, and the total is the sum of all individual pressures.
+
+### Key Educational Points:
+
+  - Dalton's law: the total pressure of a gas mixture equals the sum of the partial pressures of its components, so 2 + 3 = 5 atm.
+  - Each gas exerts the pressure it would exert alone in the same container, because ideal gas molecules are assumed not to interact.
+  - Pressure depends on the total number of gas particles, not on their chemical identity.
+  - Partial pressure also relates to composition through the mole fraction: P_i = x_i × P_total.
+  - The components must share the same volume and temperature for the pressures to be simply additive.
+
+>> Bottom Line: Each gas in a mixture behaves independently and exerts its own partial pressure. Partial pressure = mole fraction × total pressure. This is important in respiratory physiology (O₂ and CO₂ partial pressures in blood).
+
+==============================================================================
+Q37  [chem-38]  Answer: B
+==============================================================================
+Which property of water is directly responsible for the formation of a meniscus in a narrow glass tube?
+
+  A) High boiling point
+  B) Surface tension and adhesion
+  C) Low density of ice
+  D) High specific heat
+
+### Correct Answer: Surface tension and adhesion
+
+A meniscus forms due to the interplay between **cohesion** (water-water attraction) and **adhesion** (water-glass attraction). Water's adhesion to glass exceeds its cohesion, creating a concave meniscus.
+
+  | Property | Due To | Biological Importance |
+  | Surface tension | Cohesion (H-bonds) | Insects walk on water |
+  | Capillary action | Adhesion + cohesion | Water transport in plants |
+  | High specific heat | H-bonds absorb energy | Temperature buffering |
+
+### Why the other choices are wrong:
+
+**A. High boiling point:** Water's high boiling point (100 degrees C) is due to strong hydrogen bonds between water molecules, but this property relates to how much energy is needed to vaporize water, not to how water behaves at a glass surface. Meniscus formation depends on the balance between cohesive and adhesive forces.
+
+**C. Low density of ice:** The low density of ice (ice floats) is a unique property caused by hydrogen bonds forming an open crystalline lattice in solid water. While fascinating, this property explains why lakes freeze from the top down, not why water curves upward in a glass tube.
+
+**D. High specific heat:** Water's high specific heat (4.18 J/g*C) means it can absorb large amounts of heat with small temperature changes, which moderates climate and body temperature. This thermal property is unrelated to the capillary and surface phenomena that form a meniscus.
+
+### Key Educational Points:
+
+  - A meniscus forms from competition between adhesion (liquid to container wall) and cohesion (liquid to itself).
+  - In water and glass, adhesion exceeds cohesion, so the liquid creeps up the wall and the meniscus is concave.
+  - In mercury, cohesion exceeds adhesion, so the meniscus is convex - the shape reveals which force dominates.
+  - Both water's cohesion and its high surface tension arise from hydrogen bonding between molecules.
+  - The same imbalance drives capillary action, which is why water climbs a narrow tube and why narrower tubes give greater rise.
+
+>> Bottom Line: Water in glass forms a concave meniscus (adhesion > cohesion). Mercury in glass forms a convex meniscus (cohesion > adhesion). Adhesion and cohesion contribute to water behavior in plant xylem, but transport to the tops of tall plants is driven mainly by transpiration pull through a continuous water column.
+
+==============================================================================
+Q38  [chem-39]  Answer: B
+==============================================================================
+At constant temperature, Henry's law states that the solubility of a gas in a liquid is directly proportional to the partial pressure of the gas above the liquid. Which everyday phenomenon does this explain?
+
+  A) Ice floating on water
+  B) Carbonated drinks releasing bubbles when opened
+  C) Oil and water not mixing
+  D) Salt melting ice on roads
+
+### Correct Answer: Carbonated drinks releasing bubbles when opened
+
+CO₂ is dissolved under high pressure. When the bottle is opened, the CO₂ partial pressure above the liquid falls, so the dissolved CO₂ concentration the solution can hold at equilibrium decreases (Henry's law), and bubbles form.
+
+  | Concept | Formula | Application |
+  | Henry's law | C = kH × P (dilute solution, constant temperature) | Dissolved gas concentration vs that gas's partial pressure |
+  | Decompression sickness | N₂ solubility drops | Divers ascending too fast |
+
+### Why the other choices are wrong:
+
+**A. Ice floating on water:** Ice floating is explained by the anomalous density of solid water -- ice is less dense than liquid water because hydrogen bonds form an open hexagonal lattice. This is a property of water's phase behavior, not gas solubility.
+
+**C. Oil and water not mixing:** Oil-water separation reflects differences in polarity and intermolecular interactions. This is a question of liquid-liquid miscibility, not the dependence of dissolved-gas concentration on gas partial pressure.
+
+**D. Salt melting ice on roads:** Salt lowers water's freezing point, which can promote melting under suitable conditions. This colligative effect is different from Henry's law, which relates dissolved gas concentration to gas partial pressure.
+
+### Key Educational Points:
+
+  - At constant temperature, dissolved gas concentration is approximately proportional to its partial pressure above the liquid.
+  - Opening a carbonated drink lowers the CO₂ partial pressure, so dissolved CO₂ escapes as bubbles.
+  - Henry's constant depends on the gas, solvent, temperature and the convention used to define it.
+
+>> Bottom Line: C = kH × P is the dilute-solution equilibrium relation, where C is the dissolved gas concentration, P is that gas's partial pressure, and kH is Henry's constant defined in that convention and at that temperature. Decompression sickness in divers illustrates the same idea: dissolved N₂ can form bubbles when the surrounding pressure falls rapidly.
+
+==============================================================================
+Q39  [chem-40]  Answer: B
+==============================================================================
+What is the molarity of a solution prepared by dissolving 4.0 g of NaOH (molar mass = 40 g/mol) in enough water to make 500 mL of solution?
+
+  A) 0.1 M
+  B) 0.2 M
+  C) 0.5 M
+  D) 1.0 M
+
+### Correct Answer: 0.2 M
+
+Moles = mass / molar mass = 4.0 / 40 = 0.1 mol
+
+Volume = 500 mL = 0.5 L
+
+Molarity = moles / volume = 0.1 / 0.5 = **0.2 M**
+
+  | Concentration Unit | Formula |
+  | Molarity (M) | moles solute / liters solution |
+  | Mass % (w/w) | (mass solute / mass solution) × 100 |
+  | Molality (m) | moles solute / kg solvent |
+
+### Why the other choices are wrong:
+
+**A. 0.1 M:** Molarity = moles/volume. Moles of NaOH = 4.0g / 40 g/mol = 0.1 mol. Volume = 500 mL = 0.5 L. So M = 0.1/0.5 = 0.2 M. Getting 0.1 M might result from using 1.0 L instead of 0.5 L as the volume.
+
+**C. 0.5 M:** You would get 0.5 M if the solution volume were 200 mL (0.2 L) instead of 500 mL. With 0.1 mol of NaOH in 0.5 L, the correct molarity is 0.1/0.5 = 0.2 M.
+
+**D. 1.0 M:** A 1.0 M NaOH solution in 500 mL would require 0.5 mol of NaOH, which is 20 g (not 4.0 g). With only 4.0 g dissolved, you have 0.1 mol in 0.5 L = 0.2 M.
+
+### Key Educational Points:
+
+  - Convert solute mass to moles before calculating molarity.
+  - 4.0 g NaOH divided by 40 g/mol gives 0.10 mol.
+  - Molarity uses final solution volume in liters: 0.10 mol / 0.500 L = 0.20 M.
+
+>> Bottom Line: Molarity = moles/liters. Always convert mL to L before calculating. Molarity changes with temperature (volume changes); molality does not.
+
+==============================================================================
+Q40  [chem-41]  Answer: B
+==============================================================================
+In the reaction 2H₂ + O₂ → 2H₂O, if 4 moles of H₂ react with 1 mole of O₂, which is the limiting reagent?
+
+  A) H₂
+  B) O₂
+  C) H₂O
+  D) Neither, both are exactly consumed
+
+### Correct Answer: O₂
+
+The stoichiometric ratio requires 2 mol H₂ per 1 mol O₂. With 4 mol H₂, we need 2 mol O₂, but only 1 mol is available.
+
+  | Reagent | Available | Needed | Status |
+  | H₂ | 4 mol | 2 mol (for 1 mol O₂) | Excess (2 mol left over) |
+  | O₂ | 1 mol | 2 mol (for 4 mol H₂) | Limiting |
+
+Only 1 mol O₂ reacts with 2 mol H₂, producing 2 mol H₂O. The remaining 2 mol H₂ are unreacted.
+
+### Why the other choices are wrong:
+
+**A. H₂:** The available oxygen reacts with only 2 mol of the 4 mol of H₂. Hydrogen therefore remains after oxygen is exhausted, so H₂ is the excess reactant, not the limiting reagent.
+
+**C. H₂O:** H₂O is the product of this reaction, not a reactant. The limiting reagent must be one of the reactants (H₂ or O₂): it is the reactant that runs out first, limiting how much product can form.
+
+**D. Neither, both are exactly consumed:** For both reactants to be exactly consumed, they would need to be in the 2:1 stoichiometric ratio (2 mol H₂ per 1 mol O₂). With 4 mol H₂ and 1 mol O₂, the ratio is 4:1, so H₂ is in excess. Only 1 mol O₂ can react (with 2 mol H₂), leaving 2 mol H₂ unreacted. So the answer is not "both consumed"; O₂ is the limiting reagent.
+
+### Key Educational Points:
+
+  - The limiting reagent determines the maximum amount of product.
+  - One mole of O₂ reacts with two moles of H₂, producing two moles of H₂O.
+  - Starting with four moles of H₂ therefore leaves two moles of H₂ after the oxygen is consumed.
+
+>> Bottom Line: The limiting reagent is consumed first and determines the maximum yield. To find it, compare the mole ratio of available reagents to the stoichiometric ratio.
+
+==============================================================================
+Q41  [chem-42]  Answer: B
+==============================================================================
+What happens when the concentration of a dissolved product is increased at constant temperature and volume, with the other concentrations initially unchanged? Assume the mixture was initially at equilibrium.
+
+  A) Equilibrium shifts toward more products
+  B) Equilibrium shifts toward reactants (to the left)
+  C) The equilibrium constant K changes
+  D) Nothing happens; the system is already at equilibrium
+
+### Correct Answer: Equilibrium shifts toward reactants (to the left)
+
+According to Le Chatelier's principle, adding product shifts equilibrium to consume it, moving toward reactants.
+
+For species whose concentrations appear in the equilibrium expression:
+
+  | Change | Shift Direction |
+  | Add reactant | Right (toward products) |
+  | Add product | Left (toward reactants) |
+  | Remove product | Right (toward products) |
+  | Remove reactant | Left (toward reactants) |
+
+### Why the other choices are wrong:
+
+**A. Equilibrium shifts toward more products:** Adding more product causes the system to shift away from products (left), not toward them. Le Chatelier's principle states that the system counteracts the disturbance -- if product concentration increases, the reverse reaction speeds up to consume the excess.
+
+**C. The equilibrium constant K changes:** The equilibrium constant K is determined only by temperature. Changes in concentration shift the position of equilibrium (the reaction quotient Q changes) but do not alter K itself. The system adjusts concentrations until Q equals K again.
+
+**D. Nothing happens; the system is already at equilibrium:** Adding product disrupts the equilibrium: the system is no longer at equilibrium because Q is now greater than K. The system responds by net reverse reaction until Q = K is restored.
+
+### Key Educational Points:
+
+  - At equilibrium, the reaction quotient Q equals the equilibrium constant K.
+  - Increasing a product concentration in the equilibrium expression raises Q, favoring net reverse reaction.
+  - At fixed temperature, the concentrations adjust while K remains unchanged.
+
+>> Bottom Line: Increasing the concentration of a product that appears in the equilibrium expression raises Q above K, so net reverse reaction occurs until equilibrium is restored. At fixed temperature, K does not change.
+
+==============================================================================
+Q42  [chem-43]  Answer: C
+==============================================================================
+According to Brønsted-Lowry theory, a base is defined as:
+
+  A) A substance that produces OH⁻ ions in water
+  B) A proton (H⁺) donor
+  C) A proton (H⁺) acceptor
+  D) An electron pair donor
+
+### Correct Answer: A proton (H⁺) acceptor
+
+The Brønsted-Lowry definition is broader than Arrhenius: acids donate protons, bases accept them.
+
+  | Theory | Acid | Base |
+  | Arrhenius | Produces H⁺ in water | Produces OH⁻ in water |
+  | Brønsted-Lowry | Proton donor | Proton acceptor |
+  | Lewis | Electron pair acceptor | Electron pair donor |
+
+### Why the other choices are wrong:
+
+**A. A substance that produces OH⁻ ions in water:** Producing or increasing OH⁻ in water describes an Arrhenius base. Brønsted-Lowry instead defines a base by proton acceptance. For example, NH₃ accepts H⁺ from water to form NH₄⁺ and OH⁻.
+
+**B. A proton (H⁺) donor:** A proton donor is the Bronsted-Lowry definition of an acid, not a base. Acids donate H+ ions; bases accept them. This is a complementary relationship -- every acid-base reaction involves one species donating a proton and another accepting it.
+
+**D. An electron pair donor:** An electron pair donor is the Lewis definition of a base. While related, the Lewis definition is broader than Bronsted-Lowry: all Bronsted-Lowry bases are Lewis bases, but not all Lewis bases are Bronsted-Lowry bases. The Lewis definition also classifies electron pair acceptors as acids.
+
+### Key Educational Points:
+
+  - A Brønsted-Lowry acid donates a proton; a base accepts one.
+  - NH₃ acts as a base when it accepts H⁺ to form NH₄⁺.
+  - Conjugate acid-base partners differ by one proton.
+
+>> Bottom Line: Brønsted-Lowry theory works in non-aqueous solvents too. Every acid-base reaction involves conjugate pairs: when an acid donates H⁺, it becomes its conjugate base.
+
+==============================================================================
+Q43  [chem-44]  Answer: C
+==============================================================================
+What is the pH of a 0.001 M HCl solution? (HCl is a strong acid that fully dissociates)
+
+  A) 1
+  B) 2
+  C) 3
+  D) 4
+
+### Correct Answer: 3
+
+HCl is a strong acid: HCl → H⁺ + Cl⁻ (100% dissociation)
+
+[H⁺] ≈ 0.001 M = 10⁻³ M, because water's own contribution is negligible here
+
+pH ≈ -log₁₀[H⁺] = -log₁₀(10⁻³) = **3**
+
+At 25°C:
+
+  | [H⁺] | pH | Character |
+  | 10⁻¹ | 1 | Strongly acidic |
+  | 10⁻³ | 3 | Acidic |
+  | 10⁻⁷ | 7 | Neutral |
+  | 10⁻¹² | 12 | Basic |
+
+### Why the other choices are wrong:
+
+**A. 1:** pH 1 corresponds to [H⁺] = 10⁻¹ M, which is 0.1 M - a hundred times more concentrated than the 0.001 M given. This is the answer you get by reading the exponent of the wrong power of ten.
+
+**B. 2:** pH 2 corresponds to [H⁺] = 10⁻² M = 0.01 M. That is ten times more concentrated than the solution described.
+
+**D. 4:** pH 4 corresponds to [H⁺] = 10⁻⁴ M, ten times more dilute than the solution given. Note the direction: a higher pH means a lower hydrogen ion concentration.
+
+### Key Educational Points:
+
+  - Dilute HCl is treated as fully dissociated into hydrogen and chloride ions.
+  - For this solution, [H⁺] ≈ 10⁻³ mol/L, so pH ≈ 3.
+  - A tenfold increase in hydrogen ion concentration lowers pH by one unit.
+
+>> Bottom Line: For a dilute strong monoprotic acid such as HCl, [H⁺] is approximately the acid concentration when water's own contribution is negligible. Then pH ≈ -log₁₀[H⁺]. At 25°C, pH + pOH = 14.
+
+==============================================================================
+Q44  [chem-45]  Answer: B
+==============================================================================
+At 25°C, what is the pH at the equivalence point when aqueous HCl is titrated with NaOH? Assume ideal dilute-solution behavior.
+
+  A) Less than 7
+  B) Exactly 7
+  C) Greater than 7
+  D) Depends on the initial concentration
+
+### Correct Answer: Exactly 7
+
+At the equivalence point, stoichiometrically matching amounts of acid and base have reacted. For a strong acid and a strong base, the resulting salt (here NaCl) does not hydrolyze appreciably, so in this ideal dilute model the pH is 7.
+
+At 25°C:
+
+  | Titration | Salt Formed | pH at Equivalence |
+  | Strong acid + Strong base | Neutral salt (NaCl) | 7 |
+  | Weak acid + Strong base | Basic salt (CH₃COONa) | > 7 |
+  | Strong acid + Weak base | Acidic salt (NH₄Cl) | < 7 |
+
+### Why the other choices are wrong:
+
+**A. Less than 7:** A pH below 7 at the equivalence point occurs when titrating a weak base with a strong acid, because the conjugate acid of the weak base is formed. For a strong acid-strong base titration, only water and a neutral salt remain at the equivalence point.
+
+**C. Greater than 7:** A pH above 7 at the equivalence point occurs when titrating a weak acid with a strong base, because the conjugate base of the weak acid is formed and hydrolyzes slightly. For strong acid + strong base, neither ion hydrolyzes.
+
+**D. Depends on the initial concentration:** Under the stated conditions, stoichiometric neutralization leaves a neutral NaCl solution, so pH is 7. Initial concentrations affect the titration volumes and the shape of the titration curve, but do not change this result in the ideal model.
+
+### Key Educational Points:
+
+  - Equivalence occurs when stoichiometrically matching amounts of acid and base have reacted.
+  - For ideal dilute HCl/NaOH solutions at 25°C, the equivalence solution is neutral, with pH 7.
+  - Equivalence-point pH is not always 7: salts of weak acids or bases can alter the pH.
+
+>> Bottom Line: Equivalence means stoichiometrically matching amounts of acid and base have reacted. For HCl/NaOH at 25°C the solution is neutral, pH 7. An indicator endpoint should lie within the steep part of the titration curve.
+
+==============================================================================
+Q45  [chem-46]  Answer: C
+==============================================================================
+A catalyst increases the rate of a reaction by:
+
+  A) Increasing the temperature of the reaction
+  B) Increasing the concentration of reactants
+  C) Providing an alternative pathway with lower activation energy
+  D) Shifting the equilibrium toward products
+
+### Correct Answer: Providing an alternative pathway with lower activation energy
+
+A catalyst participates in the reaction pathway and is regenerated overall, so it is not consumed. The pathway it provides has a lower activation energy (Eₐ).
+
+  | Property | With Catalyst | Without Catalyst |
+  | Activation energy | Lower | Higher |
+  | Reaction rate | Faster | Slower |
+  | Equilibrium position | Unchanged | Unchanged |
+  | ΔG of reaction | Unchanged | Unchanged |
+
+### Why the other choices are wrong:
+
+**A. Increasing the temperature of the reaction:** A catalyst does not raise the temperature. While increasing temperature does speed up reactions (by increasing molecular kinetic energy), a catalyst works differently -- it provides an alternative reaction pathway with a lower activation energy barrier.
+
+**B. Increasing the concentration of reactants:** A catalyst does not work by adding more reactant. While higher concentration can increase reaction rate, a catalyst works by changing the mechanism of the reaction, providing a lower-energy pathway. It is regenerated at the end and is not consumed.
+
+**D. Shifting the equilibrium toward products:** A catalyst does not shift equilibrium in any direction. Both the forward and reverse reactions are catalyzed, so the system reaches equilibrium faster while the equilibrium position and the equilibrium constant K stay the same.
+
+### Key Educational Points:
+
+  - A catalyst provides an alternative pathway with a lower effective activation barrier.
+  - It participates in reaction steps and is regenerated overall.
+  - It does not change the overall reaction free-energy difference or equilibrium constant at the same temperature.
+
+>> Bottom Line: A catalyst provides a faster pathway and is regenerated overall. It speeds the approach to equilibrium without changing the reaction's overall ΔG or its equilibrium constant at the same temperature.
+
+==============================================================================
+Q46  [chem-47]  Answer: D
+==============================================================================
+What is the oxidation number of manganese in KMnO₄?
+
+  A) +2
+  B) +4
+  C) +5
+  D) +7
+
+### Correct Answer: +7
+
+K = +1, O = -2 (each), Mn = x
+
+(+1) + x + 4(-2) = 0
+
+1 + x - 8 = 0
+
+x = **+7**
+
+  | Rules for Oxidation Numbers | Value |
+  | Free elements | 0 |
+  | Monatomic ions | Equal to charge |
+  | Oxygen (usually) | -2 |
+  | Hydrogen (usually) | +1 |
+  | Sum in a neutral compound | 0 (in a polyatomic ion, the sum equals the ion's charge) |
+
+### Why the other choices are wrong:
+
+**A. +2:** Manganese has oxidation state +2 in compounds such as MnCl₂ or MnSO₄. In KMnO₄, the calculation gives K(+1) + Mn(x) + 4O(-2) = 0, so x = +7. The +2 state is much more reduced; it is commonly the product when permanganate is reduced in acidic solution.
+
+**B. +4:** Manganese has oxidation state +4 in MnO₂ (manganese dioxide), a common battery material. In KMnO₄, the four oxygen atoms contribute -8 and potassium contributes +1, requiring Mn to be +7 to balance to zero.
+
+**C. +5:** +5 would be the oxidation state if only three oxygen atoms were present (as in a hypothetical KMnO3). With four oxygens in KMnO4: +1 + x + 4(-2) = 0 gives x = +7.
+
+### Key Educational Points:
+
+  - Oxidation numbers sum to zero in neutral KMnO₄.
+  - Potassium contributes +1 and four oxygens contribute -8, so manganese is +7.
+  - An oxidation number is a bookkeeping assignment; +7 does not mean permanganate contains a free Mn⁷⁺ ion.
+
+>> Bottom Line: Manganese has oxidation state +7 in permanganate. Permanganate is an oxidizing agent; in acidic solution it is commonly reduced to very pale pink Mn²⁺, while other conditions can give different products, such as brown MnO₂.
+
+==============================================================================
+Q47  [chem-48]  Answer: C
+==============================================================================
+Which functional group defines an organic compound as a carboxylic acid?
+
+  A) -OH (hydroxyl)
+  B) -CHO (aldehyde)
+  C) -COOH (carboxyl)
+  D) -NH₂ (amino)
+
+### Correct Answer: -COOH (carboxyl)
+
+The carboxyl group (-COOH) combines a carbonyl (C=O) and hydroxyl (-OH) on the same carbon.
+
+  | Functional Group | Name | Compound Class |
+  | -OH on a saturated carbon (R-OH) | Hydroxyl | Alcohol; phenols also contain OH but form a separate class |
+  | -CHO | Aldehyde | Aldehyde |
+  | -COOH | Carboxyl | Carboxylic acid |
+  | -NH₂ | Amino | Primary amine when attached to an appropriate carbon group |
+  | -CO- (between carbons) | Carbonyl | Ketone |
+
+### Why the other choices are wrong:
+
+**A. -OH (hydroxyl):** An OH group alone does not identify a carboxylic acid. Alcohols have OH attached to a saturated carbon and phenols have OH attached directly to an aromatic ring. A carboxyl group has OH and C=O on the same carbon.
+
+**B. -CHO (aldehyde):** The aldehyde group (-CHO) is a carbonyl (C=O) bonded to at least one hydrogen. Aldehydes like formaldehyde (HCHO) and acetaldehyde (CH3CHO) are formed by oxidation of primary alcohols. Simple aldehydes such as ethanal can reduce Tollens' reagent.
+
+**D. -NH₂ (amino):** The amino group (-NH2) defines primary amines. In an alpha-amino acid, an amino group and a carboxyl group are attached to the same alpha carbon; alpha-amino acids are the building blocks of proteins. The amino group is basic (can accept a proton), while the carboxyl group is acidic.
+
+### Key Educational Points:
+
+  - A carboxyl group contains C=O and OH attached to the same carbon.
+  - Removing its acidic proton produces a resonance-stabilized carboxylate ion.
+  - An OH group alone does not identify a carboxylic acid.
+
+>> Bottom Line: Carboxylic acids are weak acids. Their acidity comes from resonance stabilization of the carboxylate anion (COO⁻), where the negative charge delocalizes over both oxygens.
+
+==============================================================================
+Q48  [chem-49]  Answer: B
+==============================================================================
+Polyethylene plastic is formed by the polymerization of which monomer?
+
+  A) Methane (CH₄)
+  B) Ethene (CH₂=CH₂)
+  C) Ethyne (HC≡CH)
+  D) Propane (C₃H₈)
+
+### Correct Answer: Ethene (CH₂=CH₂)
+
+Ethene (ethylene) undergoes **addition polymerization**: the double bond opens and monomers link together.
+
+n CH₂=CH₂ → [-CH₂-CH₂-]ₙ (polyethylene)
+
+  | Monomer | Polymer | Use |
+  | Ethene | Polyethylene (PE) | Bags, bottles |
+  | Propene | Polypropylene (PP) | Containers, fibers |
+  | Vinyl chloride | PVC | Pipes, flooring |
+  | Styrene | Polystyrene (PS) | Packaging, insulation |
+
+### Why the other choices are wrong:
+
+**A. Methane (CH₄):** Methane is a fully saturated molecule with no double bonds, so it cannot undergo addition polymerization. Addition polymerization of ethene-type monomers requires a reactive C=C double bond that can open and link monomers together. Other kinds of polymerization work differently. Methane is the simplest alkane and is primarily used as a fuel.
+
+**C. Ethyne (HC≡CH):** Ethyne (acetylene) has a carbon-carbon triple bond and can polymerize, but it produces polyacetylene, not polyethylene. Polyethylene specifically comes from ethene (ethylene, CH2=CH2), where the double bond opens to form the repeating -CH2-CH2- chain.
+
+**D. Propane (C₃H₈):** Propane is a saturated alkane with no double or triple bonds, making it unable to undergo addition polymerization. Like methane, it is used primarily as a fuel (LPG). The monomer for polyethylene must have a reactive double bond.
+
+### Key Educational Points:
+
+  - Ethene is the monomer of polyethylene.
+  - Polymerization converts ethene's C=C pi bonds into new bonds linking the repeating units.
+  - No small molecule is eliminated in ethene's addition polymerization.
+
+>> Bottom Line: Ethene forms polyethylene when its C=C pi bonds are replaced by new links between monomer units; no small molecule is eliminated. Other unsaturated monomers, including some with triple bonds, can also polymerize. Condensation polymerizations commonly release a small molecule such as water.
+
+==============================================================================
+Q49  [chem-50]  Answer: C
+==============================================================================
+Which type of reaction does benzene preferentially undergo?
+
+  A) Electrophilic addition
+  B) Nucleophilic substitution
+  C) Electrophilic aromatic substitution
+  D) Free radical addition
+
+### Correct Answer: Electrophilic aromatic substitution
+
+Benzene undergoes substitution rather than addition to preserve its aromatic stability (resonance energy ~150 kJ/mol).
+
+  | EAS Reaction | Reagent | Product |
+  | Halogenation | Br₂/FeBr₃ | Bromobenzene + HBr |
+  | Nitration | HNO₃/H₂SO₄ | Nitrobenzene + H₂O |
+  | Sulfonation | SO₃/H₂SO₄ | Benzenesulfonic acid |
+
+### Why the other choices are wrong:
+
+**A. Electrophilic addition:** Electrophilic addition is the typical reaction of alkenes (like ethene), where an electrophile adds across the C=C double bond. Benzene avoids simple addition because it would break the aromatic pi system. Instead, benzene undergoes substitution, preserving aromaticity.
+
+**B. Nucleophilic substitution:** Nucleophilic substitution (SN1 or SN2) typically occurs at sp3-hybridized carbon atoms bearing a leaving group, such as alkyl halides. Ordinary benzene also lacks the leaving group those common nucleophilic substitutions require, and its electron-rich aromatic ring attracts electrophiles rather than nucleophiles. Appropriately substituted aromatic compounds can undergo aromatic nucleophilic substitution.
+
+**D. Free radical addition:** Radical addition is not benzene's characteristic reaction under ordinary electrophilic aromatic substitution conditions. Benzene can undergo addition under special photochemical conditions, but that is a different reaction pattern from substitution that restores the aromatic ring.
+
+### Key Educational Points:
+
+  - Electrophilic aromatic substitution is benzene's characteristic reaction pattern.
+  - A ring hydrogen is replaced and the aromatic system is restored.
+  - Halogenation, nitration and sulfonation are examples that use different appropriate reagents.
+
+>> Bottom Line: Aromaticity (Hückel rule: 4n+2 π electrons, planar, cyclic, conjugated) provides exceptional stability. EAS preserves the aromatic ring; addition would destroy it.
+
+==============================================================================
+Q50  [chem-51]  Answer: C
+==============================================================================
+On gentle warming under standard alcohol-oxidation test conditions, which reagent can distinguish a simple primary alcohol from a tertiary alcohol?
+
+  A) Sodium metal
+  B) Litmus paper
+  C) Acidified potassium dichromate (K₂Cr₂O₇)
+  D) Universal indicator
+
+### Correct Answer: Acidified potassium dichromate (K₂Cr₂O₇)
+
+Primary and secondary alcohols are oxidized by K₂Cr₂O₇/H⁺ (orange → green), but simple tertiary alcohols resist oxidation under these test conditions.
+
+  | Alcohol Type | Oxidation Product | Color Change |
+  | Primary (R-CH₂OH) | Aldehyde then acid | Orange → green |
+  | Secondary (R₂CHOH) | Ketone | Orange → green |
+  | Tertiary (R₃COH) | No oxidation under these test conditions | Stays orange |
+
+### Why the other choices are wrong:
+
+**A. Sodium metal:** Sodium metal reacts with all alcohols (primary, secondary, and tertiary) to produce hydrogen gas and an alkoxide. Since it reacts with all alcohols regardless of class, it cannot distinguish between primary and tertiary alcohols.
+
+**B. Litmus paper:** Litmus paper tests for acidity or basicity. Alcohols are essentially neutral (very weak acids), so litmus paper shows no meaningful color change with any alcohol, whether primary, secondary, or tertiary.
+
+**D. Universal indicator:** A pH indicator does not provide a reliable class test for these alcohols in aqueous solution. Their primary-versus-tertiary classification is tested here by their different behavior toward the oxidizing reagent.
+
+### Key Educational Points:
+
+  - Primary alcohols can be oxidized by acidified dichromate under the test conditions.
+  - Reduction of chromium(VI) to chromium(III) produces the orange-to-green change.
+  - Simple tertiary alcohols resist this test because the OH-bearing carbon has no hydrogen.
+
+>> Bottom Line: A primary alcohol reduces acidified dichromate from orange Cr(VI) species to green Cr(III) species as the alcohol is oxidized. A simple tertiary alcohol resists this test because its OH-bearing carbon has no hydrogen.
+
+==============================================================================
+Q51  [chem-52]  Answer: B
+==============================================================================
+Keto-enol tautomerism is observed in carbonyl compounds. In the enol form, which structural feature is present?
+
+  A) A carbon-carbon triple bond
+  B) A hydroxyl group (-OH) attached directly to a carbon of a C=C double bond
+  C) An ester linkage
+  D) A carboxyl group
+
+### Correct Answer: A hydroxyl group (-OH) attached directly to a carbon of a C=C double bond
+
+Keto-enol tautomerism interconverts a carbonyl form and an enol form containing C=C-OH. Acid or base commonly catalyzes the interconversion; the rate depends on the conditions.
+
+  | Form | Structure | Stability |
+  | Keto | R-CO-CH₂-R' | Usually more stable |
+  | Enol | R-C(OH)=CH-R' | Less stable (exceptions exist) |
+
+The equilibrium usually favors the keto form, but certain compounds (like acetylacetone) have significant enol content due to intramolecular hydrogen bonding and conjugation.
+
+### Why the other choices are wrong:
+
+**A. A carbon-carbon triple bond:** A carbon-carbon triple bond (as in alkynes) is unrelated to keto-enol tautomerism. In the enol tautomer a proton has moved from the alpha carbon to the oxygen and the double bond has moved from C=O to C=C. That net change is usually brought about by acid or base catalysis rather than a direct intramolecular hydrogen jump. No triple bonds are involved in this equilibrium.
+
+**C. An ester linkage:** An ester linkage (R-COO-R') connects a carboxyl-derived group to an alkyl or aryl group through a C-O bond. Acid-catalyzed condensation of a carboxylic acid with an alcohol is one common route to an ester. Esters are a completely different functional group from the enol form of a carbonyl.
+
+**D. A carboxyl group:** A carboxyl group (-COOH) defines carboxylic acids. The enol form of a ketone or aldehyde specifically has an -OH group on a carbon that is doubly bonded to another carbon (C=C-OH), which is structurally distinct from a carboxyl group.
+
+### Key Educational Points:
+
+  - An enol has OH attached directly to a carbon of a C=C bond.
+  - Keto and enol forms are distinct compounds that can interconvert, commonly with acid or base catalysis.
+  - Tautomerism changes atom positions; resonance drawings do not describe different compounds.
+
+>> Bottom Line: Tautomers are distinct constitutional isomers that can interconvert. Keto-enol tautomerism changes the positions of a proton and a double bond. Resonance drawings instead describe the same molecule, with unchanged atom positions.
+
+==============================================================================
+Q52  [chem-53]  Answer: B
+==============================================================================
+The reaction between a carboxylic acid and an alcohol in the presence of an acid catalyst produces:
+
+  A) An ether and water
+  B) An ester and water
+  C) An amide and water
+  D) An anhydride and water
+
+### Correct Answer: An ester and water
+
+R-COOH + R'-OH ⇌ R-COO-R' + H₂O
+
+(acid) + (alcohol) ⇌ (ester) + (water)
+
+  | Reaction | Starting groups | Conditions/result |
+  | Fischer esterification | Carboxylic acid + alcohol | Acid-catalyzed equilibrium giving ester + water |
+  | Amide formation | Carboxylic-acid-derived acyl group + ammonia/amine | Usually requires activation or suitable dehydration conditions |
+  | Anhydride formation | Two carboxylic-acid-derived groups | Requires suitable activation or dehydration conditions |
+
+This is Fischer esterification. Many small esters have fruity smells, and ester groups are central to fats and oils (triglycerides = glycerol + 3 fatty acids).
+
+### Why the other choices are wrong:
+
+**A. An ether and water:** Ethers (R-O-R') are formed by dehydration of two alcohol molecules (or by the Williamson synthesis), not by reaction of an acid with an alcohol. An ether has an oxygen bonded to two carbon groups but lacks the C=O of an ester.
+
+**C. An amide and water:** Amides contain an acyl group bonded to nitrogen and are commonly prepared using an amine plus an activated carboxylic acid derivative. Simply mixing a carboxylic acid and an amine usually first forms an ammonium carboxylate salt. The nucleophile in this question is an alcohol, giving an ester.
+
+**D. An anhydride and water:** An acid anhydride joins two acyl groups through oxygen. Its preparation requires suitable activation or dehydration, not simply mixing two acids. The acid-catalyzed reaction of a carboxylic acid with an alcohol instead gives an ester and water.
+
+### Key Educational Points:
+
+  - Fischer esterification combines a carboxylic acid and an alcohol using an acid catalyst.
+  - Ester and water form in a reversible reaction.
+  - Removing water or using an excess reactant can favor ester formation.
+
+>> Bottom Line: Fischer esterification is reversible: carboxylic acid + alcohol ⇌ ester + water. Acid-catalyzed hydrolysis reverses it. Base-promoted ester hydrolysis consumes hydroxide overall and forms a carboxylate; with fats, this produces soap and glycerol.
+
+==============================================================================
+Q53  [chem-54]  Answer: B
+==============================================================================
+Which of the following compounds is the strongest base in aqueous solution?
+
+  A) Aniline (C₆H₅NH₂)
+  B) Diethylamine ((C₂H₅)₂NH)
+  C) Ammonia (NH₃)
+  D) Acetamide (CH₃CONH₂)
+
+### Correct Answer: Diethylamine ((C₂H₅)₂NH)
+
+Basicity depends on how available the nitrogen lone pair is for accepting a proton.
+
+  | Compound | Type | Basicity | Reason |
+  | Acetamide | Amide | Very weak | Lone pair delocalized into C=O |
+  | Aniline | Aromatic | Weak | Lone pair delocalized into ring |
+  | NH₃ | - | Moderate | No electron-donating groups |
+  | Diethylamine | 2° aliphatic | Strongest | Electron-donating alkyl groups, together with the aqueous environment |
+
+### Why the other choices are wrong:
+
+**A. Aniline (C₆H₅NH₂):** Aniline is actually a very weak base because the nitrogen lone pair is delocalized into the aromatic ring by resonance, making it less available to accept a proton. Aromatic amines are typically much weaker bases than aliphatic amines.
+
+**C. Ammonia (NH₃):** Ammonia is a weaker base than diethylamine because the nitrogen in NH3 has no electron-donating alkyl groups. Alkyl groups on nitrogen, as in diethylamine, push electron density toward nitrogen and, in water, generally make the lone pair more available for proton acceptance. More alkyl groups do not always produce a stronger base; solvent effects matter too.
+
+**D. Acetamide (CH₃CONH₂):** Acetamide is an extremely weak base because the nitrogen lone pair is delocalized into the adjacent C=O group by resonance. This makes amides far less basic than amines -- the lone pair is essentially "shared" with the carbonyl oxygen rather than available for protonation.
+
+### Key Educational Points:
+
+  - A base accepts a proton; an available nitrogen lone pair commonly provides the binding site.
+  - Resonance delocalization reduces nitrogen basicity in aniline and especially in amides.
+  - Among the listed compounds in water, diethylamine is the strongest base.
+
+>> Bottom Line: For these compounds in water: diethylamine > ammonia > aniline > acetamide in basicity. Resonance delocalization reduces the availability of the nitrogen lone pair; solvent effects also matter.
+
+==============================================================================
+Q54  [chem-55]  Answer: B
+==============================================================================
+At pH 7.4, free glycine in aqueous solution predominantly exists as:
+
+  A) Uncharged molecules
+  B) Zwitterions (dipolar ions) with both positive and negative charges
+  C) Anions only (negatively charged)
+  D) Cations only (positively charged)
+
+### Correct Answer: Zwitterions (dipolar ions) with both positive and negative charges
+
+Glycine has an amino group and a carboxyl group, with no ionizable side chain. At pH 7.4 its predominant form is H₃N⁺-CH₂-COO⁻. The amino group is mainly protonated and the carboxyl group mainly deprotonated. This species is a zwitterion: it carries positive and negative formal charges but has zero net charge. Other amino acids may carry additional side-chain charges, so the same net-charge conclusion does not apply to all of them.
+
+  | Condition | Predominant glycine form | Charge of that form |
+  | Well below the carboxyl pKₐ (about 2.3) | H₃N⁺-CH₂-COOH | +1 |
+  | Between the two pKₐ values, including pH 7.4 | H₃N⁺-CH₂-COO⁻ | 0 |
+  | Well above the ammonium pKₐ (about 9.6) | H₂N-CH₂-COO⁻ | -1 |
+
+### Why the other choices are wrong:
+
+**A. Uncharged molecules:** The predominant species is not the completely un-ionized NH₂-CH₂-COOH form. Glycine mainly contains both NH₃⁺ and COO⁻ groups at this pH, even though the predominant species has zero net charge.
+
+**C. Anions only (negatively charged):** The glycine species with net charge -1 becomes predominant when pH is raised above the amino group's pKₐ, about 9.6. At pH 7.4 the amino group is still mainly NH₃⁺, so the zwitterion predominates.
+
+**D. Cations only (positively charged):** The glycine species with net charge +1 predominates at sufficiently low pH, when the carboxyl group is mainly COOH. At pH 7.4 the carboxyl group is mainly COO⁻, balancing the positive amino-group charge.
+
+### Key Educational Points:
+
+  - Glycine's predominant form at pH 7.4 contains both NH₃⁺ and COO⁻ groups.
+  - A zwitterion has opposite formal charges within one species but zero net charge.
+  - Other amino acids can carry additional side-chain charges, so their net charge must be assessed individually.
+
+>> Bottom Line: At pH 7.4, glycine is predominantly H₃N⁺-CH₂-COO⁻. Its isoelectric point is about pH 6, where the population's average net charge is zero; that is not the same as saying zwitterions occur only at pI. For other amino acids, also consider ionizable side chains.
+
+==============================================================================
+Q55  [chem-56]  Answer: B
+==============================================================================
+What makes a typical phospholipid in a human cell membrane amphipathic?
+
+  A) They contain only saturated fatty acids
+  B) They have both a hydrophilic phosphate head and hydrophobic fatty acid tails
+  C) They are soluble in both acids and bases
+  D) They can be either solid or liquid at room temperature
+
+### Correct Answer: They have both a hydrophilic phosphate head and hydrophobic fatty acid tails
+
+A typical two-tailed membrane phospholipid:
+
+  | Region | Chemical Nature | Interaction with Water |
+  | Phosphate head group | Polar, charged | Hydrophilic (faces water) |
+  | Hydrocarbon tails (two, in a typical membrane phospholipid) | Nonpolar hydrocarbon | Hydrophobic (faces inward) |
+
+This dual nature causes phospholipids to spontaneously form bilayers in water, with heads facing out and tails facing in, a major basis of the lipid bilayers in human cell membranes.
+
+### Why the other choices are wrong:
+
+**A. They contain only saturated fatty acids:** Phospholipid tails may be saturated or unsaturated. Saturation influences packing and fluidity, but amphipathic describes the coexistence of a hydrophilic region and hydrophobic regions in one molecule.
+
+**C. They are soluble in both acids and bases:** Amphoteric means able to react as either an acid or a base; it does not simply mean soluble in both acids and bases. Amphipathic instead describes a molecule with both hydrophilic and hydrophobic regions.
+
+**D. They can be either solid or liquid at room temperature:** Physical state at room temperature depends on the degree of saturation and chain length of the fatty acids. Amphipathic specifically means having dual solubility character -- a polar head group that interacts with water and nonpolar tails that avoid water -- which is why phospholipids spontaneously form bilayers.
+
+### Key Educational Points:
+
+  - Amphipathic means having both hydrophilic and hydrophobic regions.
+  - A typical membrane phospholipid has a polar head and nonpolar hydrocarbon tails.
+  - Bilayer formation places the heads next to water and shelters the tails inside.
+
+>> Bottom Line: A typical membrane phospholipid has a polar head and nonpolar tails. In water, many two-tailed phospholipids assemble into bilayers with the tails sheltered inside. Other amphipathic molecules may form different structures, such as micelles.
+
+==============================================================================
+Q56  [chem-57]  Answer: C
+==============================================================================
+Which polysaccharide serves as the primary energy storage molecule in animals?
+
+  A) Cellulose
+  B) Starch
+  C) Glycogen
+  D) Chitin
+
+### Correct Answer: Glycogen
+
+  | Polysaccharide | Monomer | Function | Found In |
+  | Starch | Glucose (α) | Energy storage | Plants |
+  | Glycogen | Glucose (α) | Energy storage | Animals (liver, muscle) |
+  | Cellulose | Glucose (β) | Structural | Plant cell walls |
+  | Chitin | N-acetylglucosamine | Structural | Arthropod exoskeletons |
+
+Glycogen is more branched than starch, allowing faster mobilization of glucose when energy is needed.
+
+### Why the other choices are wrong:
+
+**A. Cellulose:** Cellulose is a structural polysaccharide in plants, forming cell walls. It consists of glucose units linked by beta-1,4 glycosidic bonds, which humans cannot digest due to lacking the enzyme cellulase. It provides structural support, not energy storage.
+
+**B. Starch:** Starch is the energy storage polysaccharide in plants, not animals. It consists of amylose (unbranched, alpha-1,4 links) and amylopectin (branched). Glycogen is the animal equivalent -- it is structurally similar to amylopectin but much more highly branched for rapid glucose mobilization.
+
+**D. Chitin:** Chitin is a structural polysaccharide made of N-acetylglucosamine units. It forms the exoskeletons of arthropods (insects, crustaceans) and the cell walls of fungi. It serves a structural role, not energy storage.
+
+### Key Educational Points:
+
+  - Glycogen is the storage polysaccharide of animals; starch performs the same role in plants.
+  - It is a glucose polymer with α-1,4 chains and α-1,6 branch points roughly every 8 to 12 residues.
+  - Heavy branching creates many non-reducing ends, so glucose can be released from many points at once - this is what makes mobilisation fast.
+  - Glycogen is stored mainly in liver and skeletal muscle. Liver glycogen helps maintain blood glucose, whereas skeletal muscle uses its glycogen locally because it lacks glucose-6-phosphatase.
+  - Cellulose is also a glucose polymer, but its β-1,4 linkages make it structural and indigestible to humans.
+
+>> Bottom Line: Glycogen is the main animal storage polysaccharide, with alpha-1,4 chains and alpha-1,6 branches. Human enzymes can digest starch and mobilize glycogen, but humans lack cellulase to cleave cellulose's beta-1,4 glucose linkages.
+
+==============================================================================
+Q57  [chem-58]  Answer: B
+==============================================================================
+In a DNA double helix, if 30% of the bases are adenine, what percentage are cytosine?
+
+  A) 10%
+  B) 20%
+  C) 30%
+  D) 40%
+
+### Correct Answer: 20%
+
+Chargaff's rules: A = T and G = C
+
+If A = 30%, then T = 30%
+
+A + T = 60%, so G + C = 40%
+
+Since G = C: each = 40%/2 = **20%**
+
+  | Base | Percentage | Pairs With |
+  | Adenine (A) | 30% | Thymine (T) |
+  | Thymine (T) | 30% | Adenine (A) |
+  | Cytosine (C) | 20% | Guanine (G) |
+  | Guanine (G) | 20% | Cytosine (C) |
+
+### Why the other choices are wrong:
+
+**A. 10%:** If A = 30%, then T = 30% (Chargaff's rule: A pairs with T). That accounts for 60% of bases. The remaining 40% is split equally between G and C (since G pairs with C), giving G = C = 20%, not 10%.
+
+**C. 30%:** 30% for cytosine would mean G is also 30%, totaling A + T + G + C = 30 + 30 + 30 + 30 = 120%, which exceeds 100%. With A = T = 30% using 60%, only 40% remains for G + C, giving C = 20%.
+
+**D. 40%:** If C were 40%, then G would also be 40% (by Chargaff's rule), totaling 80% for G + C. Added to A + T = 60%, the total would be 140%. The correct split is: A = T = 30% and G = C = 20%, totaling exactly 100%.
+
+### Key Educational Points:
+
+  - In standard complementary double-stranded DNA, A = T and G = C across both strands.
+  - If A is 30%, T is also 30%, leaving 40% for G and C together.
+  - Dividing that remainder equally gives 20% cytosine and 20% guanine.
+
+>> Bottom Line: For standard complementary double-stranded DNA, A = T and G = C when both strands are counted together. These equalities are not required for an individual strand or a single-stranded genome. A-T pairs have two hydrogen bonds and G-C pairs have three.
+
+==============================================================================
+Q58  [chem-59]  Answer: C
+==============================================================================
+Pyrrole is a five-membered aromatic heterocyclic compound containing one nitrogen atom. It is a structural component of which biologically important molecule?
+
+  A) DNA
+  B) ATP
+  C) Hemoglobin (heme group)
+  D) Cholesterol
+
+### Correct Answer: Hemoglobin (heme group)
+
+The heme group in hemoglobin contains a **porphyrin ring**, which is made of four pyrrole rings linked by methine bridges, with an iron (Fe²⁺) ion at the center.
+
+  | Heterocycle | Ring | Biological Role |
+  | Pyrrole-derived units | Five-membered, one N; reduction/substitution varies in derivatives | Heme porphyrin; related tetrapyrrole frameworks in chlorophyll and vitamin B12 |
+  | Pyridine | 6-membered, 1 N | NAD⁺, vitamin B3 |
+  | Pyrimidine | 6-membered, 2 N | Bases C, T, U |
+  | Purine | Fused 5+6 rings | Bases A, G; caffeine |
+
+### Why the other choices are wrong:
+
+**A. DNA:** DNA contains purine and pyrimidine bases, not pyrrole rings. The nucleotide bases in DNA (adenine, guanine, cytosine, thymine) are six-membered pyrimidines or fused pyrimidine-imidazole purines. Pyrrole is a different five-membered heterocycle.
+
+**B. ATP:** ATP (adenosine triphosphate) contains adenine (a purine base), ribose sugar, and three phosphate groups. While adenine has a five-membered imidazole ring fused to pyrimidine, it is not a pyrrole. Pyrrole is a five-membered ring with one nitrogen; the porphyrin framework is built from four pyrrole-derived units.
+
+**D. Cholesterol:** Cholesterol is a steroid lipid built from four fused carbon rings (three six-membered and one five-membered cyclopentane ring). It contains no nitrogen and no pyrrole units. Cholesterol is important for membrane fluidity and is a precursor to steroid hormones.
+
+### Key Educational Points:
+
+  - The heme group contains iron coordinated by a porphyrin framework.
+  - A porphyrin consists of four pyrrole-derived units linked into a larger ring.
+  - Vitamin B12 contains a related but different corrin ring, not a porphyrin.
+
+>> Bottom Line: Heme contains iron coordinated by a porphyrin ring. Chlorophyll a and b contain magnesium in a related chlorin-type ring, while vitamin B12 contains cobalt in a corrin ring. These are related tetrapyrrole frameworks, not three identical porphyrins.
+
+==============================================================================
+Q59  [chem-60]  Answer: C
+==============================================================================
+Moving from left to right across a period in the periodic table, which of the following generally increases?
+
+  A) Atomic radius
+  B) Metallic character
+  C) Electronegativity
+  D) Number of electron shells
+
+### Correct Answer: Electronegativity
+
+Across a typical main-group period, increasing effective nuclear charge strengthens attraction for bonding electrons, while electrons are added within the same outer shell.
+
+  | Property | Across Period → | Down Group ↓ |
+  | Atomic radius | Decreases | Increases |
+  | Electronegativity | Increases | Decreases |
+  | Ionization energy | Increases | Decreases |
+  | Metallic character | Decreases | Increases |
+
+### Why the other choices are wrong:
+
+**A. Atomic radius:** Atomic radius actually decreases from left to right across a period. As protons are added to the nucleus (increasing nuclear charge) without adding new electron shells, the electrons are pulled closer to the nucleus. This is one of the most commonly tested periodic trends.
+
+**B. Metallic character:** Metallic character decreases from left to right across a period. Elements on the left are metals that easily lose electrons; moving right, elements become progressively better at gaining electrons (more nonmetallic). This parallels the increase in electronegativity.
+
+**D. Number of electron shells:** Across a typical main-group period, electrons are added within the same outer principal shell. Moving down a group introduces a new outer shell. All elements in period 3, for example, have 3 occupied electron shells.
+
+### Key Educational Points:
+
+  - Electronegativity describes an atom's attraction for shared electrons in a bond.
+  - It generally increases from left to right across a main-group period.
+  - Increasing effective nuclear charge helps explain this trend and the usual decrease in atomic radius.
+
+>> Bottom Line: Electronegativity measures an atom's ability to attract shared electrons. Fluorine (3.98) is the most electronegative element. Noble gases are generally not assigned electronegativity values.
+
+==============================================================================
+Q60  [chem-62]  Answer: A   (UNCHANGED per the review)
+==============================================================================
+According to Dalton's law of partial pressures, a mixture contains O₂ at 0.40 atm and N₂ at 0.55 atm in a 10 L vessel. What is the total pressure?
+
+  A) 0.95 atm
+  B) 0.15 atm
+  C) 1.10 atm
+  D) 0.40 atm
+
+### Correct Answer: A. 0.95 atm
+
+Dalton's law states that the total pressure of a gas mixture equals the sum of the partial pressures of each component: Ptotal = PO2 + PN2 = 0.40 + 0.55 = 0.95 atm.
+
+Each gas in a mixture behaves independently and exerts its own partial pressure as if it were alone in the container.
+
+### Why the other choices are wrong:
+
+**B. 0.15 atm:** 0.15 atm is the difference between the two partial pressures (0.55 - 0.40), but Dalton's law requires addition of partial pressures, not subtraction. Ptotal = PO2 + PN2 = 0.40 + 0.55 = 0.95 atm.
+
+**C. 1.10 atm:** 1.10 atm might result from doubling one of the values or adding incorrectly. The straightforward sum is 0.40 + 0.55 = 0.95 atm. Each gas contributes independently to the total pressure.
+
+**D. 0.40 atm:** 0.40 atm is just the partial pressure of O2 alone. Dalton's law states total pressure is the sum of all partial pressures in the mixture: Ptotal = 0.40 + 0.55 = 0.95 atm. You must include the contribution of every gas present.
+
+### Key Educational Points:
+
+  - Dalton's law: total pressure is the sum of the partial pressures, so 0.40 + 0.55 = 0.95 atm.
+  - Each component exerts its pressure independently, because ideal gas molecules are assumed not to interact.
+  - The 10 L volume is not needed: both gases already occupy that same volume, so it is common to both terms.
+  - Recognising which given data are irrelevant is part of the skill - not every number in a stem is required.
+  - Expressed as a fraction rather than a sum, the same law gives P_i = x_i × P_total.
+
+>> Bottom Line: Total pressure equals the sum of partial pressures of all gases in a mixture (Dalton's Law).
+
+==============================================================================
+COVERAGE AFTER THIS BATCH
+==============================================================================
+Chemistry reviewed before this batch : 0
+New unique chemistry ids this batch  : 60  (58 edited, 2 kept unchanged)
+Chemistry reviewed after this batch   : 60 of 485
+Previously reviewed items included again: none
+Chemistry still unreviewed            : 425
+  Unreviewed ids inside the chem-1..chem-62 span: chem-19, chem-61
+  The remaining unreviewed chemistry ids are chem-63 onward, except the two above.
+
+Biology is unaffected by this pass: 624 of 629 reviewed, with bio-12, bio-346, bio-513, bio-518, bio-583 still awaiting review.
+
+This pack is awaiting final scientific content approval. Implementation
+success is reported separately from scientific approval.

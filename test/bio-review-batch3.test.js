@@ -508,7 +508,7 @@ for (const q of data.biology) {
 }
 ok(drifted === 0, `${drifted} out-of-scope biology items changed`);
 let chemDrift = 0;
-for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chemDrift++;
+for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) chemDrift++;
 ok(chemDrift === 0, `${chemDrift} chemistry items changed; this review touches biology only`);
 // Batches 4, 5, 6 and 7 have each taken 60 of these ids, so 569 - 240. Each
 // approved batch hands its ids to that batch's own test, so the sweeps

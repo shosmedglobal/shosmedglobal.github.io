@@ -1,0 +1,123 @@
+{
+  "_comment": [
+    "Chemistry review batch 1: the first 60-question chemistry review pack.",
+    "",
+    "The supplied export carried NO bank ids; its Q1-Q60 are display numbers only.",
+    "Each item was mapped by matching its ORIGINAL full stem and all four ORIGINAL",
+    "option texts against the chemistry bank, then cross-checked three further ways:",
+    "  (a) the stored answer letter must equal the letter the review asserts,",
+    "  (b) the whole 60-letter key block must reproduce BDCCBDCCCB CCBBCCABBB",
+    "      BBBBBBCBBB CBBBCCBBBB BCCBCDCBCC BBBBBCBCCA,",
+    "  (c) the resulting tally must be A=2, B=33, C=22, D=3, as the review states.",
+    "All four agree.",
+    "",
+    "The ids are NOT contiguous. The export skipped two bank records inside the",
+    "chem-1..chem-62 span, so the map runs chem-1..chem-18, then chem-20..chem-60",
+    "(one step out of phase), then chem-62 for Q60:",
+    "  chem-19  optical isomerism / enantiomers      - not in the export",
+    "  chem-61  ideal gas, 300 K -> 600 K at fixed V - not in the export",
+    "Both remain unreviewed and are listed under coverage.still_unreviewed_low_ids.",
+    "",
+    "Q21 needed care: chem-22 and chem-257 are near-duplicates, both keyed B and",
+    "both asking why phenol is more acidic than ethanol. The review's Q21 names the",
+    "old option D as a bond-strength claim, which is chem-22's 'Ethanol has stronger",
+    "O-H bonds than phenol'; chem-257's option D is an inductive-effect claim.",
+    "chem-22 is the pack item; chem-257 is untouched and still unreviewed.",
+    "",
+    "Q36 and Q60 are kept byte-identical per the review. Q60's explanation keeps its",
+    "existing 'Correct Answer: A. 0.95 atm' letter-prefixed heading, which the review",
+    "explicitly preserves; every other item in the pack uses an unprefixed heading."
+  ],
+  "map": {
+    "Q1": "chem-1", "Q2": "chem-2", "Q3": "chem-3", "Q4": "chem-4", "Q5": "chem-5",
+    "Q6": "chem-6", "Q7": "chem-7", "Q8": "chem-8", "Q9": "chem-9", "Q10": "chem-10",
+    "Q11": "chem-11", "Q12": "chem-12", "Q13": "chem-13", "Q14": "chem-14", "Q15": "chem-15",
+    "Q16": "chem-16", "Q17": "chem-17", "Q18": "chem-18", "Q19": "chem-20", "Q20": "chem-21",
+    "Q21": "chem-22", "Q22": "chem-23", "Q23": "chem-24", "Q24": "chem-25", "Q25": "chem-26",
+    "Q26": "chem-27", "Q27": "chem-28", "Q28": "chem-29", "Q29": "chem-30", "Q30": "chem-31",
+    "Q31": "chem-32", "Q32": "chem-33", "Q33": "chem-34", "Q34": "chem-35", "Q35": "chem-36",
+    "Q36": "chem-37", "Q37": "chem-38", "Q38": "chem-39", "Q39": "chem-40", "Q40": "chem-41",
+    "Q41": "chem-42", "Q42": "chem-43", "Q43": "chem-44", "Q44": "chem-45", "Q45": "chem-46",
+    "Q46": "chem-47", "Q47": "chem-48", "Q48": "chem-49", "Q49": "chem-50", "Q50": "chem-51",
+    "Q51": "chem-52", "Q52": "chem-53", "Q53": "chem-54", "Q54": "chem-55", "Q55": "chem-56",
+    "Q56": "chem-57", "Q57": "chem-58", "Q58": "chem-59", "Q59": "chem-60", "Q60": "chem-62"
+  },
+  "asserted_key_block": "BDCCBDCCCBCCBBCCABBBBBBBBBCBBBCBBBCCBBBBBCCBCDCBCCBBBBBCBCCA",
+  "asserted_key_tally": { "A": 2, "B": 33, "C": 22, "D": 3 },
+  "keep_unchanged_per_review": ["chem-37", "chem-62"],
+  "keep_unchanged_display": ["Q36", "Q60"],
+
+  "stem_changes": ["Q2", "Q5", "Q7", "Q12", "Q13", "Q14", "Q15", "Q16", "Q19", "Q22",
+                   "Q27", "Q31", "Q38", "Q41", "Q44", "Q50", "Q53", "Q54", "Q55"],
+  "_stem_changes_comment": [
+    "19 items, exactly as the review's inventory lists them. Q7 and Q38 are additions",
+    "of a stated condition (25 C, constant temperature); the other 17 are full",
+    "replacement stems supplied by the review."
+  ],
+  "stem_additions_only": ["Q7", "Q38"],
+
+  "option_changes": { "Q20": ["D"], "Q21": ["D"], "Q31": ["D"], "Q51": ["B"] },
+  "_option_changes_comment": [
+    "Four option texts in four items, exactly as the review's inventory lists them.",
+    "Each one's feedback or correct-answer heading is synchronized in the same edit."
+  ],
+  "heading_resyncs": ["Q50", "Q51", "Q53", "Q54"],
+  "_heading_resyncs_comment": [
+    "Correct-answer headings that were abbreviated relative to their option text.",
+    "Q51's resync follows from its new option B; Q50, Q53 and Q54 were already",
+    "abbreviated in the bank and the review asks for them to be brought into",
+    "agreement. Q60 keeps its existing letter-prefixed heading untouched."
+  ],
+
+  "major_rewrite": ["Q54"],
+  "substantial_repairs": ["Q3", "Q8", "Q12", "Q14", "Q16", "Q19", "Q20", "Q21", "Q22",
+                          "Q31", "Q35", "Q52", "Q55", "Q58"],
+
+  "three_point_replacements": [
+    "Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12",
+    "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25",
+    "Q27", "Q28", "Q29", "Q30", "Q31", "Q32",
+    "Q34", "Q35",
+    "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q46", "Q47", "Q48",
+    "Q49", "Q50", "Q51", "Q52", "Q53", "Q54", "Q55",
+    "Q57", "Q58", "Q59"
+  ],
+  "five_point_blocks_kept": ["Q13", "Q26", "Q33", "Q36", "Q37", "Q56", "Q60"],
+  "five_point_in_place_repairs": { "Q13": [3], "Q26": [1, 4], "Q33": [4], "Q56": [4] },
+  "_point_comment": [
+    "53 three-point replacements + 7 five-point blocks = 60. Verified against the",
+    "bank before editing: the seven items carrying five points are exactly Q13, Q26,",
+    "Q33, Q36, Q37, Q56 and Q60, and the other 53 all carry exactly three.",
+    "Q36, Q37 and Q60 keep their five points untouched."
+  ],
+
+  "no_table_items": ["Q4", "Q5", "Q10", "Q60"],
+  "_no_table_comment": [
+    "Verified in the bank before editing. No table is added to any of these, and",
+    "every other item keeps exactly one table."
+  ],
+  "table_replacements": ["Q3", "Q16", "Q20", "Q35", "Q54"],
+
+  "deviations": [
+    {
+      "item": "Q40 (chem-41)",
+      "what": "Two em dashes in the retained option C and option D feedback were replaced with ordinary punctuation.",
+      "why": "The review did not ask for this. The bank's own convention is no em dashes: only 6 occur across all 485 chemistry records and none as an entity, so these two were inconsistent with surrounding text. Changed because Q40 was already being edited for its option A feedback and point block."
+    }
+  ],
+
+  "coverage": {
+    "chemistry_total": 485,
+    "reviewed_before_this_batch": 0,
+    "new_unique_ids_this_batch": 60,
+    "reviewed_after_this_batch": 60,
+    "edited_this_batch": 58,
+    "kept_unchanged_this_batch": 2,
+    "previously_reviewed_included_again": [],
+    "still_unreviewed_chemistry": 425,
+    "still_unreviewed_low_ids": ["chem-19", "chem-61"],
+    "biology_unaffected": true,
+    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"],
+    "_note": "This pack is awaiting final scientific content approval; implementation success is separate from scientific approval."
+  }
+}

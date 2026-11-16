@@ -169,14 +169,19 @@ checks++; if (drift) failures++;
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
-ok(nChem === 485, `${nChem} untouched chemistry hashes, expected 485`);
+// Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 427 chemistry
+// items no reviewed chemistry batch owns; those 58 are checked by
+// test/chem-review-batch1.test.js.
+ok(nChem === 427, `${nChem} untouched chemistry hashes, expected 427`);
 ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 === 629 + 485, 'the untouched set plus the pack should partition the whole bank');
+ok(nBio + nChem + 26 + 58 === 629 + 485,
+  'the untouched set, this pack and chemistry batch 1 should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 
 // chemistry is wholly untouched
 let chem = 0;
-for (const q of data.chemistry) if (untouched.chemistry[q.id] !== hash(q)) chem++;
+for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry questions changed; this pass must not touch chemistry`);
 
 // ===========================================================================
