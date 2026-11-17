@@ -704,5 +704,54 @@ ok(485 - reviewedIds.size === 306, 'the unreviewed remainder should be 306');
 ok(idmap.deviations.length === 0, 'the id map should record no deviations');
 
 // ---------------------------------------------------------------------------
+section('12. the Q46 follow-up applied after the scientific reread');
+// scripts/apply-chem-review-batch3-followup.js replaced two sentences in
+// chem-167 and nothing else. Each removal is paired with a non-vacuity check.
+const q46was = pre('Q46').explanation, q46 = rec('Q46').explanation;
+const FOLLOWUP = [
+  ['In α decay, the parent nucleus loses 4 mass units and 2 atomic number units.',
+   'In alpha decay, the daughter nucleus has a mass number 4 lower and an atomic number 2 lower than the parent nucleus.'],
+  ['An electron has negligible mass and a charge of −1, not the mass 4 and charge +2 of a helium nucleus.',
+   'An electron has a small but nonzero rest mass and charge −1; a helium-4 nucleus has mass number 4 and charge +2.']
+];
+for (const [gone, present] of FOLLOWUP) {
+  ok(q46was.indexOf(gone) >= 0, `Q46: "${gone.slice(0, 50)}" was not in the before-fixture, so the removal check is vacuous`);
+  ok(q46.indexOf(gone) < 0, `Q46: "${gone.slice(0, 50)}" should be gone`);
+  ok(q46.split(present).length - 1 === 1, `Q46: "${present.slice(0, 50)}" should appear exactly once`);
+}
+// Batch 3 itself left Q46's first main paragraph and its option A paragraph
+// alone (it edited the second main paragraph, the C and D feedback and points
+// 3-5), so those two blocks in the fixture ARE the pre-follow-up text. Each may
+// therefore differ from the fixture by exactly its one replaced sentence.
+const firstPara = e => (e.match(/<p>[\s\S]*?<\/p>/) || [''])[0];
+const paraA = e => (e.match(/<p><strong>A\.[\s\S]*?<\/p>/) || [''])[0];
+ok(firstPara(q46) === firstPara(q46was).replace(FOLLOWUP[0][0], () => FOLLOWUP[0][1]),
+  'Q46: the first main paragraph should differ from the fixture by exactly the one replaced sentence');
+ok(paraA(q46) === paraA(q46was).replace(FOLLOWUP[1][0], () => FOLLOWUP[1][1]),
+  'Q46: option A\'s paragraph should differ from the fixture by exactly the one replaced sentence');
+// Everything else in the record is pinned by sections 4 to 11 of this suite,
+// which already verify Q46's second main paragraph, its C and D feedback and
+// its five points. The follow-up harness is what checked, in one run, that
+// nothing outside these two sentences moved.
+ok(q46.indexOf('An α particle consists of 2 protons and 2 neutrons (a helium-4 nucleus, He-4).') >= 0,
+  'Q46: the opening alpha-particle sentence should survive');
+ok(q46.indexOf('<strong>A. Beta decay:</strong> Beta-minus decay emits an electron from the nucleus as a neutron converts into a proton.') >= 0,
+  'Q46: the opening beta-minus sentence of option A should survive');
+ok(LETTER[rec('Q46').correct] === 'B', 'Q46: the key should still be B');
+ok(pointLines(q46).length === 5, 'Q46: should still carry five educational points');
+// points 1 and 2 were untouched by both the batch 3 pass and this follow-up
+ok(pointLines(q46)[0] === pointLines(q46was)[0] && pointLines(q46)[1] === pointLines(q46was)[1],
+  'Q46: educational points 1 and 2 should be unchanged');
+ok(bottomOf(q46) === bottomOf(q46was), 'Q46: the Bottom Line should be unchanged');
+ok(JSON.stringify(rec('Q46').options) === JSON.stringify(pre('Q46').options), 'Q46: the options should be unchanged');
+ok(rec('Q46').question === pre('Q46').question, 'Q46: the stem should be unchanged');
+// and the rest of the pack is untouched by the follow-up
+const followupChanged = QS.filter(Q => {
+  if (Q === 'Q46') return false;
+  return JSON.stringify(pre(Q)) !== JSON.stringify(rec(Q));
+});
+ok(followupChanged.length === 56, `${followupChanged.length} items other than Q46 differ from the fixture, expected 56`);
+
+// ---------------------------------------------------------------------------
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
