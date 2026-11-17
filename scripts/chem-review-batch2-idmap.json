@@ -1,0 +1,109 @@
+{
+  "_comment": [
+    "Verified display-number to bank-id map for the SHOSMED LF3 Chemistry Batch 2 review.",
+    "The supplied review carried NO bank ids; its Q1-Q60 were display numbers only, and it",
+    "warned explicitly against assuming a contiguous id run.",
+    "Each item was matched four ways before any edit: (1) a distinctive phrase from the",
+    "ORIGINAL stem, requiring exactly one match across all 485 chemistry records; (2) all",
+    "four ORIGINAL option texts; (3) the stored answer letter against the review's asserted",
+    "60-letter key block; (4) the A/B/C/D tally the review asserts (A=16, B=12, C=18, D=14).",
+    "All 60 matched uniquely on every check, and no stem phrase matched a second record, so",
+    "no duplicate resolution was needed. The resulting range turned out to be contiguous,",
+    "chem-63..chem-122, but that was a RESULT of the matching and not an assumption: the",
+    "harness and test re-derive the map from the before-fixture's original stems and options.",
+    "Coverage is computed from unique verified ids against the existing review ledger, not by",
+    "adding 60 to the prior count: none of these 60 ids appears in chemistry batch 1, so the",
+    "chemistry reviewed count rises from 60 to 120 of 485.",
+    "Conditional cleanup NOT needed: the review asked whether the stray 'Unanswered' label",
+    "before Q14 is stored in the stem. It is not. No record in the pack contains that string",
+    "in its stem, options or explanation, so it is a UI status label only and nothing was",
+    "removed on that account.",
+    "No record in the pack contains a table, matching the review's observation; none was added.",
+    "Heading policy: the review requires that every answer and distractor heading visibly",
+    "match its associated option, while also freezing option text outside the six specified",
+    "changes. Each edited item's headings are therefore set to its own option texts verbatim",
+    "(key heading = 'Correct Answer: <letter>. <option>', which is this pack's existing",
+    "convention; distractor heading = '<letter>. <option>:'). This propagates each item's own",
+    "option markup into its headings; normalising the ASCII markup inside option text itself",
+    "was out of scope. Q9 (chem-71) keeps one pre-existing divergence, heading 'CH4 (M=16)'",
+    "against option 'CH₄ (M=16)', because the review orders it kept byte-identical."
+  ],
+  "map": {
+    "Q1": "chem-63", "Q2": "chem-64", "Q3": "chem-65", "Q4": "chem-66", "Q5": "chem-67",
+    "Q6": "chem-68", "Q7": "chem-69", "Q8": "chem-70", "Q9": "chem-71", "Q10": "chem-72",
+    "Q11": "chem-73", "Q12": "chem-74", "Q13": "chem-75", "Q14": "chem-76", "Q15": "chem-77",
+    "Q16": "chem-78", "Q17": "chem-79", "Q18": "chem-80", "Q19": "chem-81", "Q20": "chem-82",
+    "Q21": "chem-83", "Q22": "chem-84", "Q23": "chem-85", "Q24": "chem-86", "Q25": "chem-87",
+    "Q26": "chem-88", "Q27": "chem-89", "Q28": "chem-90", "Q29": "chem-91", "Q30": "chem-92",
+    "Q31": "chem-93", "Q32": "chem-94", "Q33": "chem-95", "Q34": "chem-96", "Q35": "chem-97",
+    "Q36": "chem-98", "Q37": "chem-99", "Q38": "chem-100", "Q39": "chem-101", "Q40": "chem-102",
+    "Q41": "chem-103", "Q42": "chem-104", "Q43": "chem-105", "Q44": "chem-106", "Q45": "chem-107",
+    "Q46": "chem-108", "Q47": "chem-109", "Q48": "chem-110", "Q49": "chem-111", "Q50": "chem-112",
+    "Q51": "chem-113", "Q52": "chem-114", "Q53": "chem-115", "Q54": "chem-116", "Q55": "chem-117",
+    "Q56": "chem-118", "Q57": "chem-119", "Q58": "chem-120", "Q59": "chem-121", "Q60": "chem-122"
+  },
+  "asserted_key_block": "DCABDABDDAAACCBDAABCADBCCCABABCCDDCACDDABDBDDAACCCBCCCDABACB",
+  "asserted_key_tally": { "A": 16, "B": 12, "C": 18, "D": 14 },
+  "keep_unchanged_per_review": ["chem-71", "chem-73", "chem-74"],
+  "stem_changes": [
+    "Q1", "Q3", "Q4", "Q6", "Q10", "Q31", "Q32", "Q33", "Q34", "Q36", "Q37", "Q39",
+    "Q40", "Q41", "Q42", "Q44", "Q45", "Q48", "Q51", "Q52", "Q53", "Q56", "Q57", "Q60"
+  ],
+  "option_changes": {
+    "Q41": ["B"],
+    "Q42": ["A", "B", "C", "D"],
+    "Q53": ["D"]
+  },
+  "major_rewrite": ["Q56"],
+  "numerical_correction": ["Q41"],
+  "missing_feedback_restored": {
+    "Q26": ["B"], "Q39": ["A", "B"], "Q41": ["A", "C"], "Q42": ["A", "B"], "Q43": ["A", "C"],
+    "Q44": ["A", "B"], "Q46": ["B", "C"], "Q47": ["B", "C"], "Q48": ["A", "B"], "Q49": ["A", "B"],
+    "Q50": ["A", "B"], "Q51": ["A", "C"], "Q52": ["A", "B"], "Q53": ["A", "B"], "Q54": ["A", "B"],
+    "Q55": ["B", "C"], "Q56": ["B", "C"], "Q57": ["A", "C"], "Q59": ["A", "B"], "Q60": ["A", "C"]
+  },
+  "mislabelled_feedback_repaired": ["Q55"],
+  "copied_feedback_replaced": ["Q19", "Q38", "Q40", "Q58"],
+  "five_point_items": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12"],
+  "three_point_replacements": [
+    "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24",
+    "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "Q32", "Q33", "Q34", "Q35", "Q36",
+    "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q46", "Q47", "Q48",
+    "Q49", "Q50", "Q51", "Q52", "Q53", "Q54", "Q55", "Q56", "Q57", "Q58", "Q59", "Q60"
+  ],
+  "no_table_items": "all 60; the pack has never carried a table and none was added",
+  "deviations": [],
+  "notes": [
+    {
+      "item": "Q14 (chem-76)",
+      "what": "The conditional 'Unanswered' stem cleanup was not needed.",
+      "why": "The review asked for it only if the label is actually stored. No record in the pack contains the string in its stem, options or explanation, so it is a UI status label."
+    },
+    {
+      "item": "Q9 (chem-71)",
+      "what": "One heading still diverges from its option: heading 'CH4 (M=16)' against option 'CH₄ (M=16)'.",
+      "why": "The review's explicit instruction to keep Q9 byte-identical takes precedence over its general heading-agreement requirement. Repairing it would have edited an item the review ordered untouched."
+    },
+    {
+      "item": "Q35 (chem-97)",
+      "what": "The existing sentence 'BaSO4 is so insoluble that it is used as a contrast agent in medical imaging of the gastrointestinal tract.' was kept verbatim.",
+      "why": "The review states that this sentence can stay and that no clinical guidance is needed. The surrounding prose now frames solubility as a guideline rather than literal zero solubility."
+    }
+  ],
+  "coverage": {
+    "chemistry_total": 485,
+    "reviewed_before_this_batch": 60,
+    "reviewed_before_this_batch_ids": "chem-1..chem-18, chem-20..chem-60, chem-62 (review batch 1)",
+    "new_unique_ids_this_batch": 60,
+    "previously_reviewed_included_again": [],
+    "reviewed_after_this_batch": 120,
+    "edited_this_batch": 57,
+    "kept_unchanged_this_batch": 3,
+    "still_unreviewed_chemistry": 365,
+    "still_unreviewed_low_ids": ["chem-19", "chem-61"],
+    "still_unreviewed_note": "chem-19 (optical isomerism) and chem-61 (ideal gas, 300 K to 600 K at fixed volume) remain unreviewed inside the chem-1..chem-122 span; every other unreviewed chemistry id is chem-123 onward.",
+    "biology_unaffected": true,
+    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"],
+    "approval_status": "Implementation checks passed. This pack is awaiting final scientific content approval, which is reported separately from software consistency."
+  }
+}

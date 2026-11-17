@@ -1,0 +1,1972 @@
+SHOS MED / LF3 CHEMISTRY - REVIEW BATCH 2 - REVISED 60-QUESTION EXPORT
+Generated 2026-11-16 after applying the SHOSMED LF3 Chemistry Batch 2 Review.
+
+The supplied export carried NO bank ids; its Q1-Q60 were display numbers only.
+Each item below is labelled with its display number AND the bank id it was
+verified against by matching the ORIGINAL full stem and all four ORIGINAL
+option texts, cross-checked against the review's asserted key block and tally.
+The ids were NOT assumed contiguous; the verified range turned out to run
+chem-63..chem-122 without a gap, which is a result of the matching and not an
+assumption. No stem phrase matched a second record, so no duplicate had to be
+resolved, and none of these 60 ids appears in review batch 1.
+
+Q9, Q11 and Q12 are unchanged per the review and are included for completeness.
+
+Q41 carries the numerical correction: the ideal-model vapour-pressure DECREASE
+is 26.4 mmHg, not 27.0, and the remaining pressure of about 733.6 mmHg is now
+named separately. Q42 replaces all four options with parallel ratios. Q53
+replaces option D. Q56 is the major rewrite, recast as formal complete-
+neutralisation stoichiometry, for which A = 3 is sound.
+
+Verified key letters, Q1-Q60:
+  Q1-Q10:   D C A B D A B D D A
+  Q11-Q20:  A A C C B D A A B C
+  Q21-Q30:  A D B C C C A B A B
+  Q31-Q40:  C C D D C A C D D A
+  Q41-Q50:  B D B D D A A C C C
+  Q51-Q60:  B C C C D A B A C B
+  Tally: A=16, B=12, C=18, D=14. No answer letter was changed.
+
+==============================================================================
+Q1  [chem-63]  Answer: D
+==============================================================================
+At the same temperature and pressure, O₂ (M = 32 g/mol) and He (M = 4 g/mol) effuse separately through identical tiny openings into a vacuum. Which gas effuses faster, and by what factor?
+
+  A) O₂ effuses 2.83 times faster
+  B) They effuse at equal rates
+  C) He effuses 8 times faster
+  D) He effuses 2.83 times faster
+
+### Correct Answer: D. He effuses 2.83 times faster
+
+Graham's law states rate1/rate2 = sqrt(M2/M1). Thus rateHe/rateO2 = sqrt(32/4) = sqrt(8) = 2.83.
+
+Lighter molecules have higher average speeds at the same temperature, so they effuse more rapidly through a small opening.
+
+### Why the other choices are wrong:
+
+**A. O₂ effuses 2.83 times faster:** This reverses the relationship. Lighter gases effuse faster, not heavier ones. O2 (M=32) is heavier than He (M=4), so O2 effuses slower. By Graham's law, rateHe/rateO2 = sqrt(32/4) = sqrt(8) = 2.83, meaning He is faster.
+
+**B. They effuse at equal rates:** Effusion rate depends inversely on the square root of molar mass (Graham's law). Since O2 and He have very different molar masses (32 vs. 4 g/mol), they effuse at very different rates. Under the same temperature, pressure and opening conditions, equal effusion rates would require equal molar masses.
+
+**C. He effuses 8 times faster:** The factor 8 is the ratio of molar masses (32/4 = 8), but Graham's law uses the square root of this ratio: rate1/rate2 = sqrt(M2/M1) = sqrt(8) = 2.83. A common error is forgetting to take the square root.
+
+### Key Educational Points:
+
+  - Graham's law: the rate of effusion is inversely proportional to the square root of molar mass.
+  - The ratio is √(M₂/M₁) = √(32/4) = √8 ≈ 2.83, so helium effuses about 2.83 times faster than O₂.
+  - At a given temperature, ideal gas particles have the same average translational kinetic energy, so lighter particles move faster on average.
+  - Because the dependence is on a square root, a molar mass eight times smaller gives a speed only about 2.83 times greater - not eight times.
+  - Effusion is escape through a tiny opening; diffusion is spreading through space or another gas. Diffusion also depends on collisions and concentration gradients, so the simple effusion formula is not a universal diffusion-rate equation.
+
+>> Bottom Line: Graham's law - the rate of effusion is inversely proportional to the square root of molar mass.
+
+==============================================================================
+Q2  [chem-64]  Answer: C
+==============================================================================
+At the triple point of water on a phase diagram, which phases coexist in equilibrium?
+
+  A) Solid and liquid only
+  B) Liquid and gas only
+  C) Solid, liquid, and gas
+  D) Solid and gas only
+
+### Correct Answer: C. Solid, liquid, and gas
+
+The triple point is the unique temperature and pressure at which all three phases of a substance coexist in thermodynamic equilibrium. For water, this occurs at approximately 273.16 K and 611 Pa.
+
+The water triple point historically defined the kelvin and remains useful for temperature calibration. Since 2019, the kelvin has been defined using a fixed value of the Boltzmann constant.
+
+### Why the other choices are wrong:
+
+**A. Solid and liquid only:** Solid and liquid coexisting describes any point along the solid-liquid boundary line (melting/freezing curve) on the phase diagram. The triple point is unique because it is the only condition where all three phases coexist simultaneously.
+
+**B. Liquid and gas only:** Liquid and gas coexisting describes any point along the liquid-gas boundary line (vaporization curve), from the triple point up to the critical point. The triple point additionally includes the solid phase.
+
+**D. Solid and gas only:** Solid and gas coexisting without liquid describes points along the solid-gas boundary line (sublimation curve). At the triple point, liquid is also present -- it is the intersection of all three boundary lines.
+
+### Key Educational Points:
+
+  - The triple point is the single temperature and pressure at which solid, liquid, and gas coexist in equilibrium.
+  - It is where all three phase-boundary lines meet on a phase diagram - a point, not a line or region.
+  - For water it lies at 0.01 °C and about 611 Pa, far below atmospheric pressure.
+  - Do not confuse it with the critical point, which is where the liquid-gas boundary ends and those two phases become indistinguishable.
+  - Because it is fixed and reproducible for a pure substance, the triple point of water was long used to define the kelvin.
+
+>> Bottom Line: The triple point is where solid, liquid, and gas phases coexist simultaneously in equilibrium.
+
+==============================================================================
+Q3  [chem-65]  Answer: A
+==============================================================================
+A fixed amount of ideal gas occupies 5.0 L at 0 °C and 1 atm. Approximately what volume will it occupy at 2.0 atm and 273 °C?
+
+  A) 5.0 L
+  B) 2.5 L
+  C) 10.0 L
+  D) 20.0 L
+
+### Correct Answer: A. 5.0 L
+
+Use P1V1/T1 = P2V2/T2 with temperatures in kelvin. T1 = 273.15 K and T2 = 546.15 K, so V2 = (1 × 5.0 × 546.15)/(2.0 × 273.15) ≈ 5.0 L. The absolute temperature approximately doubles while the pressure doubles, so the effects nearly cancel.
+
+### Why the other choices are wrong:
+
+**B. 2.5 L:** Halving the volume to 2.5 L would account for doubling pressure while ignoring the temperature rise. The absolute temperature also approximately doubles, so the final volume is about 5.0 L.
+
+**C. 10.0 L:** Getting 10.0 L might result from only accounting for the temperature increase (doubling T doubles V) while ignoring the pressure increase. Both changes must be considered: the absolute temperature approximately doubles, which tends to double V, while doubling P tends to halve V, so the two effects nearly cancel and V stays at about 5.0 L.
+
+**D. 20.0 L:** 20.0 L would result from doubling the volume twice (once for temperature, once for pressure in the wrong direction). Increasing pressure compresses gas (reduces volume), it does not expand it. The correct answer accounts for both effects simultaneously; because the absolute temperature only approximately doubles, the volume returns to about 5.0 L.
+
+### Key Educational Points:
+
+  - The combined gas law P₁V₁/T₁ = P₂V₂/T₂ handles simultaneous changes in pressure and temperature.
+  - Use kelvin: 0 °C = 273.15 K and 273 °C = 546.15 K.
+  - The absolute temperature approximately doubles and the pressure doubles, so their opposing effects nearly cancel; the answer rounds to 5.0 L.
+  - Spotting that competing changes cancel is faster and safer than grinding through the arithmetic.
+  - Celsius temperatures cannot be used in gas-law ratios. Here the initial 0 °C would even cause division by zero.
+
+>> Bottom Line: The combined gas law relates pressure, volume, and temperature changes for a fixed amount of gas.
+
+==============================================================================
+Q4  [chem-66]  Answer: B
+==============================================================================
+For an ideal gas, what happens to the average translational kinetic energy per particle when the absolute temperature is doubled?
+
+  A) It stays the same
+  B) It doubles
+  C) It quadruples
+  D) It increases by a factor of 1.41
+
+### Correct Answer: B. It doubles
+
+The average translational kinetic energy per particle is given by KEavg = (3/2)kT, where k is Boltzmann's constant and T is absolute temperature. Since this energy is directly proportional to T, doubling T doubles it.
+
+This relationship for the average translational kinetic energy holds for all ideal gases regardless of their identity or molar mass.
+
+### Why the other choices are wrong:
+
+**A. It stays the same:** Average translational kinetic energy is directly proportional to absolute temperature (KEavg = 3/2 kT). If temperature changes, this energy must change proportionally. It stays the same only if temperature is unchanged.
+
+**C. It quadruples:** Translational kinetic energy is directly (linearly) proportional to absolute temperature, not to the square of temperature. Doubling absolute temperature doubles this energy. Quadrupling would require quadrupling the absolute temperature.
+
+**D. It increases by a factor of 1.41:** 1.41 (which is the square root of 2) relates to molecular speed, not to translational kinetic energy. The root-mean-square speed is proportional to the square root of temperature (vrms = sqrt(3RT/M)), so doubling T increases speed by a factor of sqrt(2) = 1.41. But the average translational kinetic energy, being proportional to v², doubles.
+
+### Key Educational Points:
+
+  - The average translational kinetic energy of an ideal gas depends only on absolute temperature: KE = (3/2)kT per molecule.
+  - Doubling the absolute temperature therefore doubles the average kinetic energy.
+  - The mean translational kinetic energy depends on temperature, not on particle identity or molar mass.
+  - Since KE = ½mv², equal energy means heavier molecules move more slowly: speed depends on mass, but energy does not.
+  - The temperature must be absolute - going from 10 °C to 20 °C is nowhere near a doubling.
+
+>> Bottom Line: The average translational kinetic energy per ideal-gas particle is (3/2)kT, so doubling kelvin temperature doubles this energy.
+
+==============================================================================
+Q5  [chem-67]  Answer: D
+==============================================================================
+A liquid has a vapor pressure of 400 mmHg at 80 degrees C. If the external pressure is 760 mmHg, what can be said about the liquid at 80 degrees C?
+
+  A) It is boiling
+  B) It is freezing
+  C) It is at its critical point
+  D) It is not boiling; it needs a higher temperature to boil
+
+### Correct Answer: D. It is not boiling; it needs a higher temperature to boil
+
+A liquid boils when its vapor pressure equals the external (atmospheric) pressure. Since 400 mmHg The temperature must be increased further until the vapor pressure reaches 760 mmHg for boiling to occur.
+
+### Why the other choices are wrong:
+
+**A. It is boiling:** A liquid boils when its vapor pressure equals the external (atmospheric) pressure. Here the vapor pressure (400 mmHg) is less than the external pressure (760 mmHg), so the liquid is not yet boiling. It must be heated further until its vapor pressure reaches 760 mmHg.
+
+**B. It is freezing:** The stem gives no freezing-point information for this liquid. Comparing its vapor pressure with external pressure tells us whether it is at its boiling point, not whether it is freezing.
+
+**C. It is at its critical point:** The critical point is the endpoint of liquid-vapor coexistence, where the two phases become indistinguishable. The supplied pressures instead show that this liquid has not reached its boiling point under the stated external pressure.
+
+### Key Educational Points:
+
+  - A liquid boils when its vapour pressure equals the external pressure.
+  - At 80 °C the vapour pressure is 400 mmHg, still below the external 760 mmHg, so the liquid is not boiling.
+  - Vapour pressure rises steeply with temperature, so further heating will bring it to 760 mmHg and boiling will start.
+  - Boiling point is therefore a property of the liquid and its surroundings together: at altitude, lower external pressure means water boils below 100 °C.
+  - Evaporation can occur at the surface below the boiling point. Boiling involves vapor bubbles forming throughout the liquid when its vapor pressure reaches the surrounding pressure.
+
+>> Bottom Line: Boiling occurs when vapor pressure equals external pressure.
+
+==============================================================================
+Q6  [chem-68]  Answer: A
+==============================================================================
+Assuming ideal-gas behavior, how many moles of gas are in an 8.21 L container at 2.0 atm and 200 K? (R = 0.0821 L·atm·mol⁻¹·K⁻¹)
+
+  A) 1.0 mol
+  B) 0.5 mol
+  C) 2.0 mol
+  D) 4.0 mol
+
+### Correct Answer: A. 1.0 mol
+
+Using the ideal gas law PV = nRT: n = PV/(RT) = (2.0 x 8.21)/(0.0821 x 200) = 16.42/16.42 = 1.0 mol.
+
+The ideal gas law is the most versatile gas equation, connecting pressure, volume, temperature, and amount of gas.
+
+### Why the other choices are wrong:
+
+**B. 0.5 mol:** Using PV = nRT: n = PV/(RT) = (2.0)(8.21)/(0.0821 x 200) = 16.42/16.42 = 1.0 mol. Getting 0.5 might result from using the wrong value for R or miscalculating. Always double-check unit consistency.
+
+**C. 2.0 mol:** At the given volume and temperature, 2.0 mol would exert 4.0 atm, twice the stated pressure. Using n = PV/(RT) with 2.0 atm gives 1.0 mol.
+
+**D. 4.0 mol:** At the given volume and temperature, 4.0 mol would exert 8.0 atm, not 2.0 atm. Both the numerator and denominator here equal 16.42, giving n = 1.0 mol.
+
+### Key Educational Points:
+
+  - The ideal gas law PV = nRT links all four gas variables; rearranged for amount it gives n = PV/RT.
+  - Substituting: n = (2.0 × 8.21)/(0.0821 × 200) = 1.0 mol.
+  - The units of R must match those of P and V - using R = 0.0821 L·atm/mol·K requires pressure in atm and volume in litres.
+  - Temperature must always be in kelvin, whichever value of R is used.
+  - For a fixed amount of ideal gas, holding temperature, pressure or volume constant gives the familiar individual gas laws.
+
+>> Bottom Line: PV = nRT can be rearranged to solve for any single unknown variable.
+
+==============================================================================
+Q7  [chem-69]  Answer: B
+==============================================================================
+Real gases deviate most from ideal behavior under which conditions?
+
+  A) High temperature and low pressure
+  B) Low temperature and high pressure
+  C) High temperature and high pressure
+  D) Low temperature and low pressure
+
+### Correct Answer: B. Low temperature and high pressure
+
+At low temperatures, gas molecules move slowly and intermolecular attractive forces become significant. At high pressures, molecules are close together and their finite volume becomes a significant fraction of the container volume.
+
+Both of these factors cause deviations from the ideal gas law assumptions of negligible intermolecular forces and negligible molecular volume.
+
+### Why the other choices are wrong:
+
+**A. High temperature and low pressure:** High temperature and low pressure are actually the conditions where real gases behave most ideally. At high T, molecules have so much kinetic energy that intermolecular attractions become negligible. At low P, molecules are far apart, making their volume insignificant.
+
+**C. High temperature and high pressure:** High temperature reduces the relative importance of attractive forces, but high pressure can still produce substantial deviations because particles occupy space. The size of the deviation depends on the gas and the actual conditions.
+
+**D. Low temperature and low pressure:** Low temperature increases the relative importance of attractions, but low pressure keeps particles farther apart. The combination of low temperature and high pressure more strongly challenges the ideal model; no fixed degree of deviation follows from these labels alone.
+
+### Key Educational Points:
+
+  - Real gases deviate most from ideal behaviour at low temperature and high pressure.
+  - The ideal model makes two assumptions - that molecules have negligible volume and exert no attractions - and both fail under these conditions.
+  - At lower temperature, attractive interactions are more important relative to translational kinetic energy. Attractions can lower pressure below the ideal prediction, while short-range repulsion and excluded volume can dominate under strong compression.
+  - At high pressure the molecules' own volume becomes a significant fraction of the container, so the free volume is less than assumed.
+  - Gases behave most ideally at high temperature and low pressure, where molecules are fast-moving and far apart.
+
+>> Bottom Line: Real gases deviate from ideal behavior at low temperatures and high pressures.
+
+==============================================================================
+Q8  [chem-70]  Answer: D
+==============================================================================
+In a mixture of gases at 2.0 atm total pressure, nitrogen has a mole fraction of 0.70. What is the partial pressure of nitrogen?
+
+  A) 0.70 atm
+  B) 0.35 atm
+  C) 2.70 atm
+  D) 1.40 atm
+
+### Correct Answer: D. 1.40 atm
+
+The partial pressure of a gas equals its mole fraction times the total pressure: PN2 = XN2 x Ptotal = 0.70 x 2.0 = 1.40 atm.
+
+Mole fraction is a convenient way to express composition and directly relates to partial pressure via Dalton's law.
+
+### Why the other choices are wrong:
+
+**A. 0.70 atm:** 0.70 is the dimensionless mole fraction; it is not itself a pressure of 0.70 atm. Partial pressure = mole fraction x total pressure = 0.70 x 2.0 = 1.40 atm. A mole fraction is always between 0 and 1 and has no units; it must be multiplied by total pressure to get partial pressure.
+
+**B. 0.35 atm:** 0.35 would result from dividing the mole fraction by the total pressure (0.70/2.0) instead of multiplying. The correct formula is Pi = Xi x Ptotal = 0.70 x 2.0 = 1.40 atm.
+
+**C. 2.70 atm:** 2.70 atm would result from adding mole fraction and total pressure (0.70 + 2.0), which is not a valid operation. Partial pressure is found by multiplying: PN2 = XN2 x Ptotal = 0.70 x 2.0 = 1.40 atm.
+
+### Key Educational Points:
+
+  - Partial pressure equals mole fraction times total pressure: P_i = x_i × P_total, so 0.70 × 2.0 = 1.40 atm.
+  - Mole fraction is moles of one component divided by total moles, so it is dimensionless and all fractions in a mixture sum to 1.
+  - Pressure tracks the number of particles rather than their identity, which is why composition by moles converts directly into pressure.
+  - This is Dalton's law expressed as a fraction rather than as a sum - the same physical idea.
+  - Mole fraction is not the same as mass fraction; converting between them requires the molar masses.
+
+>> Bottom Line: Partial pressure = mole fraction x total pressure.
+
+==============================================================================
+Q9  [chem-71]  Answer: D   (UNCHANGED per the review)
+==============================================================================
+Which of the following substances would you expect to have the highest boiling point?
+
+  A) CH₄ (M=16)
+  B) SiH4 (M=32)
+  C) GeH4 (M=77)
+  D) SnH4 (M=123)
+
+### Correct Answer: D. SnH4 (M=123)
+
+All four molecules are nonpolar, so only London dispersion forces act between them. London dispersion forces increase with molar mass because larger electron clouds are more polarizable.
+
+SnH4 has the highest molar mass and thus the strongest London dispersion forces and highest boiling point in this series.
+
+### Why the other choices are wrong:
+
+**A. CH4 (M=16):** CH4 has the lowest molar mass and fewest electrons, so it has the weakest London dispersion forces and the lowest boiling point (-161 degrees C). In this series of Group IV hydrides (all nonpolar), boiling point increases with molecular size.
+
+**B. SiH4 (M=32):** SiH4 has stronger London dispersion forces than CH4 due to its larger electron cloud, but weaker than GeH4 or SnH4. Its boiling point (-112 degrees C) is higher than CH4 but lower than the heavier members of the series.
+
+**C. GeH4 (M=77):** GeH4 has a higher boiling point (-88 degrees C) than SiH4 due to its larger electron cloud and stronger London dispersion forces, but SnH4 is even larger and heavier, giving it the strongest London forces and highest boiling point in this series.
+
+### Key Educational Points:
+
+  - All four molecules here are non-polar, so only London dispersion forces act between them.
+  - Dispersion forces strengthen as the electron cloud grows larger and more polarisable, which in this series tracks molar mass.
+  - SnH₄ is the heaviest, so it has the strongest dispersion forces and the highest boiling point.
+  - Comparing by molar mass is valid only when the intermolecular force type is the same - a hydrogen-bonding molecule can easily outrank a much heavier non-polar one.
+  - That is exactly why H₂O, NH₃, and HF break the trend in their own groups, boiling far higher than their molar masses would suggest.
+
+>> Bottom Line: For nonpolar molecules of similar shape, boiling point increases with molar mass due to stronger London dispersion forces.
+
+==============================================================================
+Q10  [chem-72]  Answer: A
+==============================================================================
+Assuming ideal-gas behavior, what is the density of CO₂ (M = 44 g/mol) at 1 atm and 273 K? (R = 0.0821 L·atm·mol⁻¹·K⁻¹)
+
+  A) 1.96 g/L
+  B) 0.96 g/L
+  C) 2.96 g/L
+  D) 4.40 g/L
+
+### Correct Answer: A. 1.96 g/L
+
+From PV = nRT and n = mass/M, we get d = PM/(RT) = (1.0 x 44)/(0.0821 x 273) = 44/22.4 = 1.96 g/L.
+
+An ideal gas occupies approximately 22.4 L/mol at 1 atm and 273 K, so the density equals the molar mass divided by 22.4 L/mol.
+
+### Why the other choices are wrong:
+
+**B. 0.96 g/L:** The density is 44/(0.0821 × 273) ≈ 1.96 g/L. A density of 0.96 g/L under these conditions would correspond to a molar mass of about 21.5 g/mol, not the given 44 g/mol.
+
+**C. 2.96 g/L:** 2.96 g/L would correspond to a gas with molar mass about 66 g/mol at 1 atm and 273 K. CO2 has M = 44 g/mol, giving density = 44/22.4 = 1.96 g/L. Verify you are using the correct molar mass: 12 + 2(16) = 44 g/mol.
+
+**D. 4.40 g/L:** 4.40 g/L would mean 44/Vm where Vm = 10 L. This might result from using an incorrect value for the molar volume at STP. At 1 atm and 273 K, one mole of an ideal gas occupies approximately 22.4 L, not 10 L.
+
+### Key Educational Points:
+
+  - Combining PV = nRT with n = mass/M gives density directly: d = PM/RT.
+  - Substituting: (1.0 × 44)/(0.0821 × 273) = 1.96 g/L.
+  - An ideal gas occupies approximately 22.4 L/mol at 1 atm and 273 K, so its density is the molar mass divided by 22.4.
+  - Density therefore rises with molar mass and pressure, and falls as temperature rises.
+  - Gas densities are roughly a thousand times smaller than liquid densities, which is why they are quoted in g/L rather than g/mL.
+
+>> Bottom Line: Gas density = PM/(RT); at STP, density = molar mass / 22.4 L/mol.
+
+==============================================================================
+Q11  [chem-73]  Answer: A   (UNCHANGED per the review)
+==============================================================================
+Moving along the liquid-gas boundary line on a phase diagram toward higher temperatures, the line terminates at the:
+
+  A) Critical point
+  B) Triple point
+  C) Normal boiling point
+  D) Eutectic point
+
+### Correct Answer: A. Critical point
+
+The liquid-gas boundary line on a phase diagram ends at the critical point. Beyond this temperature and pressure, the distinction between liquid and gas disappears and the substance exists as a supercritical fluid.
+
+At the critical point, the densities of the liquid and gas phase become equal and the surface tension vanishes.
+
+### Why the other choices are wrong:
+
+**B. Triple point:** The triple point is at the lower end of the liquid-gas boundary, where it meets the solid-liquid and solid-gas boundaries. Moving along the liquid-gas line toward higher temperatures leads away from the triple point, toward the critical point.
+
+**C. Normal boiling point:** The normal boiling point is a specific point on the liquid-gas boundary line where the pressure equals 1 atm. It is not the endpoint of the line. The boundary continues beyond the normal boiling point to higher temperatures and pressures until it reaches the critical point.
+
+**D. Eutectic point:** A eutectic point appears in phase diagrams of mixtures (like alloys or salt solutions), not in single-component phase diagrams. It represents the lowest melting point of a mixture. The endpoint of the liquid-gas line for a pure substance is the critical point.
+
+### Key Educational Points:
+
+  - The liquid-gas boundary line ends at the critical point; beyond it, liquid and gas are no longer distinguishable.
+  - At that point the densities of the two phases become equal and the meniscus between them disappears.
+  - Above the critical temperature and pressure the substance is a supercritical fluid, diffusing like a gas but dissolving like a liquid.
+  - Do not confuse it with the triple point, where all three phases coexist - the critical point terminates a single boundary line.
+  - A gas above its critical temperature cannot be liquefied by pressure alone, no matter how much is applied.
+
+>> Bottom Line: The critical point marks the end of the liquid-gas coexistence curve; beyond it exists a supercritical fluid.
+
+==============================================================================
+Q12  [chem-74]  Answer: A   (UNCHANGED per the review)
+==============================================================================
+A gas sample collected over water at 25 degrees C has a total pressure of 765 mmHg. If the vapor pressure of water at 25 degrees C is 24 mmHg, what is the partial pressure of the dry gas?
+
+  A) 741 mmHg
+  B) 765 mmHg
+  C) 789 mmHg
+  D) 24 mmHg
+
+### Correct Answer: A. 741 mmHg
+
+When gas is collected over water, the total pressure includes both the gas and water vapor. By Dalton's law: Pgas = Ptotal - Pwater = 765 - 24 = 741 mmHg.
+
+This correction is essential in experiments where gas is collected by water displacement.
+
+### Why the other choices are wrong:
+
+**B. 765 mmHg:** 765 mmHg is the total pressure of the collected gas mixture (dry gas + water vapor). By Dalton's law, the dry gas pressure = total pressure - water vapor pressure = 765 - 24 = 741 mmHg. Forgetting to subtract water vapor pressure is a very common error in gas collection problems.
+
+**C. 789 mmHg:** 789 mmHg would result from adding the water vapor pressure to the total (765 + 24 = 789), but the correct operation is subtraction. Since the total pressure includes both the gas and water vapor, you must subtract the water vapor contribution to find the pressure of the dry gas alone.
+
+**D. 24 mmHg:** 24 mmHg is just the water vapor pressure at 25 degrees C, not the pressure of the collected gas. The dry gas pressure is much larger: Pgas = Ptotal - Pwater = 765 - 24 = 741 mmHg.
+
+### Key Educational Points:
+
+  - Gas collected over water is a mixture of the gas and water vapour, so Dalton's law applies.
+  - P_dry gas = P_total − P_water vapour = 765 − 24 = 741 mmHg.
+  - The vapour pressure of water depends only on temperature, so it is looked up from a table rather than calculated.
+  - Omitting this correction overstates how much gas was actually collected.
+  - Water's vapour pressure rises steeply with temperature, so the correction matters far more in a warm room than a cold one.
+
+>> Bottom Line: When collecting gas over water, subtract the water vapor pressure to find the dry gas pressure.
+
+==============================================================================
+Q13  [chem-75]  Answer: C
+==============================================================================
+How many molecules are present in 0.50 mol of glucose (C₆H₁₂O₆)?
+
+  A) 1.20 x 10^24
+  B) 6.02 x 10^23
+  C) 3.01 x 10^23
+  D) 1.51 x 10^23
+
+### Correct Answer: C. 3.01 x 10^23
+
+The number of molecules = moles x Avogadro's number = 0.50 x 6.02 x 10^23 = 3.01 x 10^23 molecules.
+
+One mole contains approximately 6.022 × 10²³ specified entities, such as molecules, atoms or ions.
+
+### Why the other choices are wrong:
+
+**A. 1.20 x 10^24:** 1.20 x 10^24 is the number of molecules in 2.0 moles (2 x 6.02 x 10^23). For 0.50 mol, multiply Avogadro's number by 0.50: 0.50 x 6.02 x 10^23 = 3.01 x 10^23 molecules.
+
+**B. 6.02 x 10^23:** 6.02 × 10²³ molecules corresponds to 1.0 mol of glucose. The sample contains 0.50 mol, so it contains half that number: 3.01 × 10²³ molecules.
+
+**D. 1.51 x 10^23:** 1.51 x 10^23 is one-quarter of Avogadro's number, corresponding to 0.25 mol. For 0.50 mol, the calculation is 0.50 x 6.02 x 10^23 = 3.01 x 10^23 molecules.
+
+### Key Educational Points:
+
+  - Multiply moles by Avogadro's constant to count the specified entities.
+  - Here the entities are glucose molecules: 0.50 × 6.02 × 10²³ = 3.01 × 10²³.
+  - Counting atoms instead would require an additional factor for the atoms in each molecule.
+
+>> Bottom Line: Number of particles = moles x 6.022 x 1023 (Avogadro's number).
+
+==============================================================================
+Q14  [chem-76]  Answer: C
+==============================================================================
+What is the molar mass of Ca(OH)2? (Ca=40, O=16, H=1)
+
+  A) 57 g/mol
+  B) 58 g/mol
+  C) 74 g/mol
+  D) 82 g/mol
+
+### Correct Answer: C. 74 g/mol
+
+Ca(OH)2 contains 1 Ca, 2 O, and 2 H atoms. Molar mass = 40 + 2(16) + 2(1) = 40 + 32 + 2 = 74 g/mol.
+
+Remember to multiply the atoms inside parentheses by the subscript outside before summing.
+
+### Why the other choices are wrong:
+
+**A. 57 g/mol:** Getting 57 might result from calculating Ca + O + H = 40 + 16 + 1 = 57, forgetting the subscript 2 outside the parentheses. Ca(OH)2 means there are 2 OH groups: Ca + 2O + 2H = 40 + 32 + 2 = 74 g/mol.
+
+**B. 58 g/mol:** 58 g/mol results from 40 + 16 + 2(1), which counts only one oxygen. Ca(OH)₂ contains two oxygens and two hydrogens, so the correct total is 40 + 2(16) + 2(1) = 74 g/mol.
+
+**D. 82 g/mol:** Getting 82 might come from an arithmetic error or from adding an extra atom somewhere. The correct calculation: 1 Ca (40) + 2 O (32) + 2 H (2) = 74 g/mol. Check each element's count carefully using the subscripts.
+
+### Key Educational Points:
+
+  - A subscript outside parentheses multiplies every atom inside them.
+  - Ca(OH)₂ contains one Ca, two O and two H atoms per formula unit.
+  - Its molar mass is 40 + 2(16) + 2(1) = 74 g/mol using the supplied values.
+
+>> Bottom Line: Molar mass is calculated by summing atomic masses of all atoms in the formula.
+
+==============================================================================
+Q15  [chem-77]  Answer: B
+==============================================================================
+In the reaction 2 Al + 3 Cl₂ -> 2 AlCl3, if 5.4 g of Al (M=27) reacts with excess Cl₂, how many moles of AlCl3 are produced?
+
+  A) 0.10 mol
+  B) 0.20 mol
+  C) 0.30 mol
+  D) 0.40 mol
+
+### Correct Answer: B. 0.20 mol
+
+Moles of Al = 5.4/27 = 0.20 mol. From the balanced equation, 2 mol Al produces 2 mol AlCl3 (1:1 ratio). Therefore 0.20 mol Al produces 0.20 mol AlCl3.
+
+Always convert mass to moles first, then use stoichiometric ratios from the balanced equation.
+
+### Why the other choices are wrong:
+
+**A. 0.10 mol:** Moles of Al = 5.4/27 = 0.20 mol. The reaction ratio is 2 Al : 2 AlCl3 (which simplifies to 1:1), so 0.20 mol Al produces 0.20 mol AlCl3. Getting 0.10 might result from using a 2:1 ratio incorrectly.
+
+**C. 0.30 mol:** 0.30 mol AlCl3 would require 0.30 mol Al (since the ratio is 1:1), which means 8.1 g of Al. We only have 5.4 g (0.20 mol), so the maximum product is 0.20 mol AlCl3.
+
+**D. 0.40 mol:** 0.40 mol AlCl3 would require 0.40 mol Al = 10.8 g. With only 5.4 g (0.20 mol) of Al available, the maximum yield is limited to 0.20 mol AlCl3.
+
+### Key Educational Points:
+
+  - Convert aluminum mass to amount: 5.4 g / 27 g/mol = 0.20 mol.
+  - The coefficients 2 Al and 2 AlCl₃ give a 1:1 mole ratio.
+  - With chlorine in excess, the theoretical amount of AlCl₃ is 0.20 mol.
+
+>> Bottom Line: Stoichiometry problems require converting to moles, applying mole ratios, then converting to desired units.
+
+==============================================================================
+Q16  [chem-78]  Answer: D
+==============================================================================
+When 10.0 g of CaCO₃ (M=100) is heated and decomposes completely via CaCO₃ -> CaO + CO₂, what mass of CO₂ (M=44) is released?
+
+  A) 2.2 g
+  B) 10.0 g
+  C) 5.6 g
+  D) 4.4 g
+
+### Correct Answer: D. 4.4 g
+
+Moles of CaCO3 = 10.0/100 = 0.10 mol. The equation shows a 1:1 ratio, so 0.10 mol CO2 is produced. Mass of CO2 = 0.10 x 44 = 4.4 g.
+
+This thermal decomposition of limestone is an important industrial process for producing quicklime (CaO).
+
+### Why the other choices are wrong:
+
+**A. 2.2 g:** 2.2 g would be the mass of CO2 from only 0.05 mol CaCO3 (5.0 g). With 10.0 g CaCO3 (0.10 mol), the CO2 produced is 0.10 mol x 44 g/mol = 4.4 g. This answer is off by a factor of 2.
+
+**B. 10.0 g:** 10.0 g is the mass of the original CaCO3, not the mass of CO2 produced. By conservation of mass, the total products (CaO + CO2) must equal 10.0 g. CaO weighs 5.6 g, so CO2 = 10.0 - 5.6 = 4.4 g.
+
+**C. 5.6 g:** 5.6 g is actually the mass of CaO produced (0.10 mol x 56 g/mol = 5.6 g), not CO2. The CO2 produced is 0.10 mol x 44 g/mol = 4.4 g. Be careful to identify which product the question asks about.
+
+### Key Educational Points:
+
+  - CaCO₃ produces CaO and CO₂ in a 1:1:1 mole ratio.
+  - 10.0 g CaCO₃ corresponds to 0.10 mol, producing 0.10 mol CO₂.
+  - The CO₂ mass is 4.4 g; the remaining 5.6 g is CaO, conserving the initial 10.0 g.
+
+>> Bottom Line: Use mole ratios from balanced equations to convert between masses of reactants and products.
+
+==============================================================================
+Q17  [chem-79]  Answer: A
+==============================================================================
+In the reaction N₂ + 3 H₂ -> 2 NH₃, if 1 mol N₂ is mixed with 2 mol H₂, which is the limiting reagent?
+
+  A) H₂
+  B) N₂
+  C) NH₃
+  D) Neither; they are in stoichiometric ratio
+
+### Correct Answer: A. H₂
+
+The equation requires 3 mol H2 per 1 mol N2. We have 1 mol N2 (needing 3 mol H2) but only 2 mol H2 available. Since H2 is insufficient, it is the limiting reagent.
+
+In the complete-reaction stoichiometric model, the limiting reactant determines the maximum product amount; actual conversion may be lower.
+
+### Why the other choices are wrong:
+
+**B. N₂:** N2 is actually in excess. The stoichiometry requires 3 mol H2 per 1 mol N2. With 2 mol H2, only 2/3 mol N2 is needed, but 1 mol N2 is available. H2 runs out first, making it the limiting reagent, while 1/3 mol N2 would remain after complete consumption of H2.
+
+**C. NH₃:** NH3 is the product of the reaction, not a reactant. The limiting reagent must be one of the starting materials. With H2 as the limiting reagent (2 mol available vs. 3 mol needed per mol N2), the theoretical maximum is 4/3 mol NH3.
+
+**D. Neither; they are in stoichiometric ratio:** The stoichiometric ratio requires 3 mol H2 per 1 mol N2. With 1 mol N2 and 2 mol H2, the actual ratio is 2:1, not 3:1. Since there is less H2 than required, H2 is the limiting reagent.
+
+### Key Educational Points:
+
+  - Compare available amounts with the balanced ratio N₂:H₂ = 1:3.
+  - Two moles of H₂ require only 2/3 mol N₂, so H₂ is limiting.
+  - The theoretical maximum is 4/3 mol NH₃, with 1/3 mol N₂ left if H₂ is fully consumed.
+
+>> Bottom Line: The limiting reagent is the reactant that runs out first based on stoichiometric requirements.
+
+==============================================================================
+Q18  [chem-80]  Answer: A
+==============================================================================
+A reaction has a theoretical yield of 50.0 g but only 42.5 g of product is obtained. What is the percent yield?
+
+  A) 85.0%
+  B) 50.0%
+  C) 42.5%
+  D) 117.6%
+
+### Correct Answer: A. 85.0%
+
+Percent yield = (actual yield / theoretical yield) x 100 = (42.5 / 50.0) x 100 = 85.0%.
+
+Actual recovery of pure product is often below the theoretical yield because of incomplete reaction, side reactions or handling losses. An apparent measured yield above 100% can result from retained solvent, impurities or measurement/calculation errors.
+
+### Why the other choices are wrong:
+
+**B. 50.0%:** Getting 50% might result from dividing theoretical yield by some other number. Percent yield = (actual/theoretical) x 100 = (42.5/50.0) x 100 = 85.0%. The formula always divides actual yield by theoretical yield, not the other way around.
+
+**C. 42.5%:** 42.5 is the actual yield in grams, not the percent yield. A common mistake is confusing the raw mass with the percentage. Percent yield = (42.5 g / 50.0 g) x 100% = 85.0%.
+
+**D. 117.6%:** 117.6% comes from reversing the required ratio: 50.0/42.5 × 100. Here the correct ratio is actual/theoretical = 42.5/50.0. An apparent experimental yield above 100% would prompt a check of purity, drying and measurements; it does not demonstrate creation of matter.
+
+### Key Educational Points:
+
+  - Percent yield = actual yield / theoretical yield × 100%.
+  - 42.5/50.0 × 100% = 85.0%.
+  - An apparent yield above 100% suggests extra material or an error in measurement or calculation.
+
+>> Bottom Line: Percent yield = (actual yield / theoretical yield) x 100%.
+
+==============================================================================
+Q19  [chem-81]  Answer: B
+==============================================================================
+A compound contains 40.0% carbon, 6.7% hydrogen, and 53.3% oxygen by mass. What is its empirical formula? (C=12, H=1, O=16)
+
+  A) CHO
+  B) CH2O
+  C) C2H4O₂
+  D) C3H6O3
+
+### Correct Answer: B. CH2O
+
+Assume 100 g: C = 40.0/12 = 3.33 mol, H = 6.7/1 = 6.7 mol, O = 53.3/16 = 3.33 mol. Dividing by the smallest (3.33): C:H:O = 1:2:1, giving CH2O.
+
+C₂H₄O₂ and C₃H₆O₃ have the same elemental ratio, but neither is reduced to the simplest whole-number ratio. The data establish CH₂O as the empirical formula, not a unique molecular formula.
+
+### Why the other choices are wrong:
+
+**A. CHO:** CHO would have a C:H:O ratio of 1:1:1, giving mass percentages of about 41.4% C, 3.4% H, and 55.2% O. The actual data shows 6.7% H, which requires 2 hydrogens per carbon, giving CH2O as the empirical formula.
+
+**C. C2H4O₂:** C₂H₄O₂ reduces to CH₂O when every subscript is divided by two. It matches the elemental ratio but is not the simplest ratio requested. A molar mass would be needed to determine a molecular formula.
+
+**D. C3H6O3:** C₃H₆O₃ reduces to CH₂O when every subscript is divided by three. An empirical formula must use the smallest whole-number ratio, so this unreduced formula is not the answer.
+
+### Key Educational Points:
+
+  - For percentage data, assume a 100 g sample and convert each element's mass to moles.
+  - The mole amounts are approximately 3.33 C, 6.7 H and 3.33 O, giving a 1:2:1 ratio.
+  - The empirical formula is CH₂O; molecular size cannot be determined from percentages alone.
+
+>> Bottom Line: Empirical formula is the simplest whole-number ratio of atoms, found by dividing moles of each element by the smallest value.
+
+==============================================================================
+Q20  [chem-82]  Answer: C
+==============================================================================
+If 25.0 mL of a 6.0 M HCl solution is diluted to 150.0 mL, what is the new concentration?
+
+  A) 0.50 M
+  B) 2.0 M
+  C) 1.0 M
+  D) 36.0 M
+
+### Correct Answer: C. 1.0 M
+
+Using the dilution equation M1V1 = M2V2: 6.0 x 25.0 = M2 x 150.0, so M2 = 150/150 = 1.0 M.
+
+Dilution does not change the number of moles of solute; only the volume changes, reducing the concentration proportionally.
+
+### Why the other choices are wrong:
+
+**A. 0.50 M:** Using M1V1 = M2V2: 6.0 M x 25.0 mL = M2 x 150.0 mL, so M2 = 150/150 = 1.0 M. Getting 0.50 M might result from using 300 mL as the final volume. The question says diluted to 150.0 mL total, not adding 150 mL.
+
+**B. 2.0 M:** 2.0 M would result if the final volume were 75 mL: 6.0 x 25 = M x 75, M = 2.0. But the final volume is 150 mL, giving M = (6.0 x 25)/150 = 1.0 M. Watch for the common error of using volume added vs. total volume.
+
+**D. 36.0 M:** 36.0 M results from multiplying 6.0 M by the volume ratio 150/25 = 6 instead of dividing by that ratio. The dilution formula is M1V1 = M2V2. Dilution always decreases concentration since you are adding more solvent to the same amount of solute.
+
+### Key Educational Points:
+
+  - Dilution preserves solute amount: M₁V₁ = M₂V₂.
+  - The final volume is 150.0 mL, six times the initial 25.0 mL.
+  - The final concentration is therefore 6.0/6 = 1.0 M; 'diluted to' means final solution volume.
+
+>> Bottom Line: M1V1 = M2V2 is the dilution equation; moles of solute remain constant.
+
+==============================================================================
+Q21  [chem-83]  Answer: A
+==============================================================================
+How many grams of NaOH (M=40) are needed to prepare 500 mL of a 0.20 M solution?
+
+  A) 4.0 g
+  B) 2.0 g
+  C) 8.0 g
+  D) 10.0 g
+
+### Correct Answer: A. 4.0 g
+
+Moles needed = M x V = 0.20 x 0.500 L = 0.10 mol. Mass = moles x molar mass = 0.10 x 40 = 4.0 g.
+
+Always convert volume to liters when using molarity (mol/L).
+
+### Why the other choices are wrong:
+
+**B. 2.0 g:** Moles needed = M x V = 0.20 M x 0.500 L = 0.10 mol. Mass = 0.10 x 40 = 4.0 g. Getting 2.0 g might result from using 250 mL instead of 500 mL, or from a calculation error halving the correct answer.
+
+**C. 8.0 g:** 8.0 g would correspond to 0.20 mol NaOH, which is what you need for 1.0 L (not 500 mL) of 0.20 M solution. For only 500 mL = 0.50 L, you need half that amount: 0.10 mol = 4.0 g.
+
+**D. 10.0 g:** 10.0 g of NaOH = 0.25 mol. Dissolved in 500 mL, this gives a 0.50 M solution, not 0.20 M. For 0.20 M in 500 mL, you need only 0.10 mol = 4.0 g.
+
+### Key Educational Points:
+
+  - Convert 500 mL of final solution to 0.500 L.
+  - The required amount is 0.20 mol/L × 0.500 L = 0.10 mol NaOH.
+  - Multiply by 40 g/mol to obtain 4.0 g, then prepare the solution to the stated final volume.
+
+>> Bottom Line: Mass of solute = molarity x volume (in L) x molar mass.
+
+==============================================================================
+Q22  [chem-84]  Answer: D
+==============================================================================
+A compound has an empirical formula of CH2O and a molar mass of 180 g/mol. What is its molecular formula? (CH2O = 30 g/mol)
+
+  A) C2H4O₂
+  B) C3H6O3
+  C) C4H8O4
+  D) C₆H₁₂O₆
+
+### Correct Answer: D. C₆H₁₂O₆
+
+The ratio = molar mass / empirical formula mass = 180/30 = 6, so multiplying every subscript in CH₂O by six gives C₆H₁₂O₆. The formula alone does not identify a unique compound.
+
+The molecular formula is always a whole-number multiple of the empirical formula.
+
+### Why the other choices are wrong:
+
+**A. C2H4O₂:** C₂H₄O₂ is twice CH₂O and has molar mass 60 g/mol. It has the correct elemental ratio but not the required molar mass of 180 g/mol.
+
+**B. C3H6O3:** C₃H₆O₃ is three times CH₂O and has molar mass 90 g/mol. The required multiplier is six, not three.
+
+**C. C4H8O4:** C₄H₈O₄ IS a whole-number multiple of CH₂O: its multiplier is four. It is wrong because its molar mass is 120 g/mol, not 180 g/mol.
+
+### Key Educational Points:
+
+  - Divide molecular molar mass by empirical-formula molar mass to find the integer multiplier.
+  - Here 180/30 = 6, giving C₆H₁₂O₆.
+  - Matching the elemental ratio is insufficient; the molecular formula must also match the supplied molar mass.
+
+>> Bottom Line: Molecular formula = empirical formula x (molar mass / empirical formula mass).
+
+==============================================================================
+Q23  [chem-85]  Answer: B
+==============================================================================
+In the combustion reaction 2 C₂H₆ + 7 O₂ -> 4 CO₂ + 6 H₂O, how many moles of O₂ are needed to combust 3.0 mol of C₂H₆?
+
+  A) 7.0 mol
+  B) 10.5 mol
+  C) 14.0 mol
+  D) 3.5 mol
+
+### Correct Answer: B. 10.5 mol
+
+From the equation, 2 mol C2H6 requires 7 mol O2. For 3.0 mol C2H6: (3.0 x 7)/2 = 10.5 mol O2.
+
+Complete combustion of a hydrocarbon produces CO₂ and H₂O. Incomplete combustion can also produce carbon monoxide or soot.
+
+### Why the other choices are wrong:
+
+**A. 7.0 mol:** 7.0 mol O2 is needed for 2 mol C2H6 (the coefficient ratio from the balanced equation is 7:2). For 3 mol C2H6, you need 3/2 x 7 = 10.5 mol O2. Scale the stoichiometric ratio proportionally.
+
+**C. 14.0 mol:** 14.0 mol would be needed for 4 mol C2H6 (since 7 mol O2 per 2 mol C2H6 = 14 per 4). For only 3 mol C2H6: (7/2) x 3 = 10.5 mol O2.
+
+**D. 3.5 mol:** 3.5 mol O2 is what 1 mol of C2H6 requires (7/2 = 3.5). For 3 mol C2H6, multiply by 3: 3.5 x 3 = 10.5 mol O2. Always identify the mole ratio first, then scale.
+
+### Key Educational Points:
+
+  - The balanced equation describes complete combustion of ethane.
+  - Its O₂:C₂H₆ mole ratio is 7:2.
+  - Three moles of ethane require 3.0 × 7/2 = 10.5 mol O₂.
+
+>> Bottom Line: Use stoichiometric coefficients as mole ratios to determine amounts of reactants or products.
+
+==============================================================================
+Q24  [chem-86]  Answer: C
+==============================================================================
+What volume of 0.50 M H₂SO₄ is needed to neutralize 100 mL of 1.0 M NaOH? (H₂SO₄ + 2 NaOH -> Na₂SO₄ + 2 H₂O)
+
+  A) 50 mL
+  B) 200 mL
+  C) 100 mL
+  D) 250 mL
+
+### Correct Answer: C. 100 mL
+
+Moles NaOH = 1.0 x 0.100 = 0.10 mol. From the equation, 1 mol H2SO4 reacts with 2 mol NaOH, so moles H2SO4 needed = 0.10/2 = 0.050 mol. Volume = 0.050/0.50 = 0.100 L = 100 mL.
+
+Sulfuric acid is diprotic, so one mole neutralizes two moles of NaOH.
+
+### Why the other choices are wrong:
+
+**A. 50 mL:** 50 mL of 0.50 M H2SO4 provides 0.025 mol H2SO4, which can neutralize 0.050 mol OH-. But 100 mL of 1.0 M NaOH provides 0.100 mol OH-, so 50 mL of H2SO4 is not enough -- it only neutralizes half the NaOH.
+
+**B. 200 mL:** 200 mL of 0.50 M H2SO4 provides 0.10 mol H2SO4, which can neutralize 0.20 mol OH-. This is twice the required 0.100 mol OH-. The 1:2 ratio means 1 mol H2SO4 neutralizes 2 mol NaOH, so 0.05 mol H2SO4 (100 mL) is correct.
+
+**D. 250 mL:** 250 mL of 0.50 M H2SO4 provides 0.125 mol H2SO4, which can neutralize 0.25 mol OH-, 2.5 times the required 0.100 mol OH-. Using the 1:2 stoichiometry: 0.10 mol NaOH requires 0.05 mol H2SO4, which is 100 mL at 0.50 M.
+
+### Key Educational Points:
+
+  - Complete neutralization uses two moles of NaOH per mole of H₂SO₄.
+  - The NaOH sample contains 0.100 mol, requiring 0.050 mol H₂SO₄.
+  - At 0.50 mol/L, the required acid volume is 0.100 L = 100 mL.
+
+>> Bottom Line: For neutralization, account for the number of acidic protons or basic hydroxides per molecule.
+
+==============================================================================
+Q25  [chem-87]  Answer: C
+==============================================================================
+What mass of water is produced when 4.0 g of H₂ (M=2) reacts with excess O₂? (2 H₂ + O₂ -> 2 H₂O, MH₂O=18)
+
+  A) 18 g
+  B) 9 g
+  C) 36 g
+  D) 72 g
+
+### Correct Answer: C. 36 g
+
+Moles of H2 = 4.0/2 = 2.0 mol. From the equation, 2 mol H2 produces 2 mol H2O (1:1 ratio). So 2.0 mol H2O is formed. Mass = 2.0 x 18 = 36 g.
+
+Hydrogen gas is the limiting reagent here since oxygen is in excess.
+
+### Why the other choices are wrong:
+
+**A. 18 g:** 18 g is the molar mass of water (one mole of H2O). From 4.0 g H2 = 2.0 mol H2, the 1:1 ratio with H2O gives 2.0 mol H2O = 2.0 x 18 = 36 g. Getting 18 g means you calculated for only 1 mol H2 instead of 2.
+
+**B. 9 g:** 9 g would be half a mole of water (0.5 x 18). From 4.0 g H2, you have 2.0 mol H2. The balanced equation shows 2 H2 produces 2 H2O (1:1 ratio), so 2.0 mol H2 yields 2.0 mol H2O = 36 g.
+
+**D. 72 g:** 72 g would correspond to 4 mol of water. The reaction produces water in a 1:1 mole ratio with H2. Since 4.0 g H2 = 2.0 mol H2, you get 2.0 mol H2O = 36 g, not 72 g. Getting 72 might result from doubling the answer or using an incorrect ratio.
+
+### Key Educational Points:
+
+  - 4.0 g H₂ corresponds to 2.0 mol H₂ using the supplied molar mass.
+  - H₂ and H₂O have a 1:1 mole ratio in the balanced reaction.
+  - The theoretical water yield is 2.0 × 18 = 36 g; the additional mass comes from oxygen.
+
+>> Bottom Line: Convert mass to moles, apply stoichiometric ratio, then convert back to mass.
+
+==============================================================================
+Q26  [chem-88]  Answer: C
+==============================================================================
+A hydrate has the formula CuSO4 . xH2O. If 24.97 g of the hydrate yields 16.00 g of anhydrous CuSO4 (M=160) after heating, what is x?
+
+  A) 3
+  B) 4
+  C) 5
+  D) 7
+
+### Correct Answer: C. 5
+
+Mass of water lost = 24.97 - 16.00 = 8.97 g. Moles CuSO4 = 16.00/160 = 0.100 mol. Moles H2O = 8.97/18 = 0.498 mol (approximately 0.50 mol). Ratio = 0.50/0.10 = 5, so x = 5.
+
+CuSO4 . 5H2O is copper(II) sulfate pentahydrate, a well-known blue crystalline solid.
+
+### Why the other choices are wrong:
+
+**A. 3:** Three waters per CuSO₄ would mean 0.300 mol water for 0.100 mol salt, or 5.40 g water. The observed loss is 8.97 g, so x = 3 is too small.
+
+**B. 4:** Four waters per CuSO₄ would mean 0.400 mol water for 0.100 mol salt, or 7.20 g water. The observed 8.97 g loss is closer to five waters per salt formula unit.
+
+**D. 7:** Seven waters per CuSO₄ would mean 0.700 mol water for 0.100 mol salt, or 12.60 g water. That exceeds the observed 8.97 g loss. The measured mole ratio is about 4.98, which rounds to five.
+
+### Key Educational Points:
+
+  - Water lost = 24.97 − 16.00 = 8.97 g, assuming heating removes water without decomposing the salt.
+  - The sample contains 0.100 mol CuSO₄ and about 0.498 mol water.
+  - Divide water moles by salt moles: x ≈ 4.98 ≈ 5, giving CuSO₄·5H₂O.
+
+>> Bottom Line: The number of water molecules in a hydrate is found by comparing moles of water lost to moles of anhydrous salt.
+
+==============================================================================
+Q27  [chem-89]  Answer: A
+==============================================================================
+How many atoms of oxygen are in 0.25 mol of Ca3(PO4)2?
+
+  A) 1.20 x 10^24
+  B) 6.02 x 10^23
+  C) 1.51 x 10^23
+  D) 3.01 x 10^23
+
+### Correct Answer: A. 1.20 x 10^24
+
+Each formula unit of Ca3(PO4)2 contains 8 oxygen atoms (4 per PO4, times 2). Total O atoms = 0.25 mol x 8 x 6.02 x 10^23 = 1.204 x 10^24.
+
+Always count the total atoms of the specific element per formula unit before multiplying by moles and Avogadro's number.
+
+### Why the other choices are wrong:
+
+**B. 6.02 x 10^23:** 6.02 x 10^23 equals Avogadro's number, representing 1 mol of atoms. But 0.25 mol of Ca3(PO4)2 contains 0.25 x 8 = 2.0 mol of oxygen atoms (8 O per formula unit), so the count is 2.0 x 6.02 x 10^23 = 1.20 x 10^24.
+
+**C. 1.51 x 10^23:** 1.51 x 10^23 is 0.25 x 6.02 x 10^23, which would be correct only if each formula unit contained just 1 oxygen atom. Ca3(PO4)2 has 8 oxygen atoms (4 per phosphate group x 2 groups), so the correct count is 0.25 x 8 x 6.02 x 10^23 = 1.20 x 10^24.
+
+**D. 3.01 x 10^23:** 3.01 x 10^23 is 0.50 x Avogadro's number, which would represent 0.50 mol of atoms. The actual moles of oxygen in 0.25 mol Ca3(PO4)2 is 0.25 x 8 = 2.0 mol, giving 2.0 x 6.02 x 10^23 = 1.20 x 10^24 atoms.
+
+### Key Educational Points:
+
+  - Ca₃(PO₄)₂ contains eight oxygen atoms per formula unit.
+  - 0.25 mol of the salt therefore contains 2.0 mol oxygen atoms.
+  - Multiplying by Avogadro's constant gives approximately 1.20 × 10²⁴ oxygen atoms.
+
+>> Bottom Line: Count atoms per formula unit carefully, especially with polyatomic ions in parentheses.
+
+==============================================================================
+Q28  [chem-90]  Answer: B
+==============================================================================
+What is the molarity of a solution prepared by dissolving 11.7 g of NaCl (M=58.5) in enough water to make 500 mL of solution?
+
+  A) 0.20 M
+  B) 0.40 M
+  C) 0.80 M
+  D) 1.0 M
+
+### Correct Answer: B. 0.40 M
+
+Moles of NaCl = 11.7/58.5 = 0.20 mol. Molarity = moles/volume(L) = 0.20/0.500 = 0.40 M.
+
+Molarity is the most common unit of concentration in chemistry, defined as moles of solute per liter of solution.
+
+### Why the other choices are wrong:
+
+**A. 0.20 M:** M = n/V = (11.7/58.5)/0.500 = 0.200/0.500 = 0.40 M. Getting 0.20 M might result from using 1.0 L instead of 0.500 L. Always convert mL to L before dividing: 500 mL = 0.500 L.
+
+**C. 0.80 M:** 0.80 M would require 0.40 mol in 500 mL, meaning 23.4 g of NaCl. With only 11.7 g (0.20 mol), the concentration is 0.20/0.50 = 0.40 M. This error might arise from doubling somewhere in the calculation.
+
+**D. 1.0 M:** 1.0 M would require 0.50 mol NaCl in 500 mL, which is 29.25 g. With only 11.7 g providing 0.20 mol, dissolved in 0.50 L, the molarity is 0.40 M.
+
+### Key Educational Points:
+
+  - 11.7 g / 58.5 g/mol = 0.20 mol NaCl.
+  - Molarity uses liters of final solution, not liters of solvent added.
+  - 0.20 mol / 0.500 L = 0.40 M.
+
+>> Bottom Line: Molarity (M) = moles of solute / liters of solution.
+
+==============================================================================
+Q29  [chem-91]  Answer: A
+==============================================================================
+A solution is prepared by dissolving 18.0 g of glucose (M=180) in 500 g of water. What is the molality of the solution?
+
+  A) 0.20 m
+  B) 0.10 m
+  C) 0.36 m
+  D) 1.0 m
+
+### Correct Answer: A. 0.20 m
+
+Moles of glucose = 18.0/180 = 0.10 mol. Molality = moles of solute / kg of solvent = 0.10/0.500 = 0.20 m.
+
+Unlike molarity, molality uses the mass of solvent (not solution volume), making it temperature-independent.
+
+### Why the other choices are wrong:
+
+**B. 0.10 m:** Molality = moles solute / kg solvent = (18.0/180) / 0.500 = 0.10/0.500 = 0.20 m. Getting 0.10 m might result from using 1000 g (1 kg) instead of 500 g as the solvent mass.
+
+**C. 0.36 m:** 0.36 m might result from a calculation error or using the wrong molar mass. With 18.0 g glucose (M=180): moles = 0.10 mol; solvent = 500 g = 0.500 kg; molality = 0.10/0.50 = 0.20 m.
+
+**D. 1.0 m:** A 1.0 m solution would require 1.0 mol of glucose per kg of solvent = 180 g per kg. We only have 18.0 g in 500 g of water, which is 0.10 mol in 0.50 kg = 0.20 m.
+
+### Key Educational Points:
+
+  - Molality is solute moles divided by kilograms of solvent.
+  - 18.0 g glucose gives 0.10 mol; 500 g water is 0.500 kg.
+  - The molality is 0.20 mol/kg, written 0.20 m, and does not change merely because the solution expands with temperature.
+
+>> Bottom Line: Molality (m) = moles of solute / kilograms of solvent.
+
+==============================================================================
+Q30  [chem-92]  Answer: B
+==============================================================================
+What is the mass percent of NaOH in a solution containing 8.0 g NaOH dissolved in 192 g of water?
+
+  A) 2.0%
+  B) 4.0%
+  C) 8.0%
+  D) 16.0%
+
+### Correct Answer: B. 4.0%
+
+Mass percent = (mass of solute / mass of solution) x 100 = (8.0 / (8.0 + 192)) x 100 = (8.0/200) x 100 = 4.0%.
+
+Mass percent uses the total mass of the solution (solute + solvent) as the denominator.
+
+### Why the other choices are wrong:
+
+**A. 2.0%:** Mass percent = (mass solute / mass solution) x 100. Mass of solution = 8.0 + 192 = 200 g. So mass percent = (8.0/200) x 100 = 4.0%. Getting 2.0% might result from dividing by 400 or some other calculation error.
+
+**C. 8.0%:** An 8.0% result would use 100 g as the total solution mass, but the actual total is 8.0 + 192 = 200 g. Dividing by solvent mass alone would give about 4.17%, not 8.0%. Mass percent uses total solution mass, giving 4.0%.
+
+**D. 16.0%:** 16.0% might result from dividing by only 50 g or from some other arithmetic error. The correct denominator is the total mass of solution: solute + solvent = 8.0 + 192 = 200 g. Mass percent = 8.0/200 x 100 = 4.0%.
+
+### Key Educational Points:
+
+  - Solution mass includes both solute and solvent: 8.0 + 192 = 200 g.
+  - Mass percent = solute mass / solution mass × 100%.
+  - The result is 8.0/200 × 100% = 4.0%, not the percentage calculated using solvent mass alone.
+
+>> Bottom Line: Mass percent = (mass solute / mass solution) x 100%.
+
+==============================================================================
+Q31  [chem-93]  Answer: C
+==============================================================================
+A dilute water sample, with density approximately 1.0 g/mL, contains 5 mg of fluoride ion per liter of solution. Approximately what is its concentration in ppm by mass?
+
+  A) 0.5 ppm
+  B) 50 ppm
+  C) 5 ppm
+  D) 500 ppm
+
+### Correct Answer: C. 5 ppm
+
+Mass-based ppm means milligrams of solute per kilogram of solution. With the stated density, one liter of solution has a mass of about one kilogram, so 5 mg/L corresponds to approximately 5 mg/kg = 5 ppm.
+
+Parts per million is commonly used for very low concentrations in environmental and water chemistry.
+
+### Why the other choices are wrong:
+
+**A. 0.5 ppm:** For dilute aqueous solutions with density close to 1 g/mL, 1 mg/L corresponds to approximately 1 ppm by mass. With 5 mg/L of fluoride, the concentration is about 5 ppm, not 0.5. You would get about 0.5 ppm if the concentration were 0.5 mg/L.
+
+**B. 50 ppm:** 50 ppm would correspond to about 50 mg/L, ten times the actual concentration. Under the stated density assumption 1 mg/L is approximately 1 ppm by mass, so 5 mg/L is about 5 ppm.
+
+**D. 500 ppm:** 500 ppm would mean 500 mg/L or 0.5 g/L, which is 100 times the actual value. At 5 mg/L, the concentration is approximately 5 ppm. The numerical equivalence of mg/L and mass-based ppm is an approximation for dilute aqueous solutions with density close to 1 kg/L.
+
+### Key Educational Points:
+
+  - One ppm by mass equals one milligram of solute per kilogram of solution.
+  - For this dilute aqueous sample, one liter of solution weighs approximately one kilogram.
+  - Thus 5 mg/L is approximately 5 ppm; mg/L and ppm are not universally interchangeable.
+
+>> Bottom Line: For dilute aqueous solutions, ppm is approximately equal to mg/L.
+
+==============================================================================
+Q32  [chem-94]  Answer: C
+==============================================================================
+At 1 atm, an aqueous solution of a nonvolatile, non-electrolyte solute boils at 100.52 °C. Using the ideal dilute-solution approximation and Kb = 0.52 °C·kg/mol, what is its molality?
+
+  A) 0.52 m
+  B) 2.0 m
+  C) 1.0 m
+  D) 0.26 m
+
+### Correct Answer: C. 1.0 m
+
+Boiling point elevation: ΔTb = Kb x m. Here ΔTb = 100.52 - 100.00 = 0.52 C. So m = ΔTb / Kb = 0.52 / 0.52 = 1.0 m.
+
+In this approximation, ΔTb = iKbm. The non-electrolyte has i = 1, so m = 0.52/0.52 = 1.0 mol/kg.
+
+### Why the other choices are wrong:
+
+**A. 0.52 m:** ΔTb = Kb x m, so m = ΔTb / Kb = 0.52 / 0.52 = 1.0 m. Getting 0.52 m might result from confusing the elevation with the molality, or from not dividing properly. The numbers being the same (0.52) can be confusing, but m = 0.52/0.52 = 1.0.
+
+**B. 2.0 m:** 2.0 m would give ΔTb = 0.52 x 2.0 = 1.04 degrees C elevation, meaning a boiling point of 101.04 degrees C. For a boiling point of 100.52 degrees C, the elevation is only 0.52 degrees, giving m = 0.52/0.52 = 1.0 m.
+
+**D. 0.26 m:** 0.26 m would give ΔTb = 0.52 x 0.26 = 0.135 degrees C, a boiling point of only 100.135 degrees C. The observed elevation of 0.52 degrees C requires m = 0.52/0.52 = 1.0 m.
+
+### Key Educational Points:
+
+  - At 1 atm, the elevation above pure water is 100.52 − 100.00 = 0.52 °C.
+  - A non-electrolyte has ideal particle factor i = 1.
+  - Molality = ΔTb/Kb = 1.0 mol/kg for the stated model.
+
+>> Bottom Line: For this nonvolatile non-electrolyte in the ideal dilute model, ΔTb = Kbm. Electrolytes require an appropriate van't Hoff factor.
+
+==============================================================================
+Q33  [chem-95]  Answer: D
+==============================================================================
+Using ideal particle counts, and assuming complete salt dissociation without further reaction, which of the following aqueous solutions would have the lowest freezing point?
+
+  A) 0.10 m glucose (non-electrolyte)
+  B) 0.10 m NaCl
+  C) 0.10 m CaCl2
+  D) 0.10 m AlCl3
+
+### Correct Answer: D. 0.10 m AlCl3
+
+Freezing point depression depends on total particle concentration: ΔTf = Kf x i x m, where i is the van't Hoff factor. AlCl3 dissociates into 4 ions (Al3+ + 3 Cl-), giving an ideal i = 4 and the greatest depression.
+
+In this ideal model NaCl gives i = 2, CaCl2 gives i = 3 and glucose gives i = 1. More particles means a lower freezing point. Real electrolyte solutions need not have these exact effective particle factors because ions interact.
+
+### Why the other choices are wrong:
+
+**A. 0.10 m glucose (non-electrolyte):** Glucose does not dissociate (ideal van't Hoff factor i = 1), so its effective particle concentration is 0.10 m. Freezing point depression depends on total particle concentration, and glucose produces the fewest particles among these choices.
+
+**B. 0.10 m NaCl:** NaCl dissociates into Na+ and Cl- (ideal i = 2), giving an effective concentration of 0.20 m particles. This produces more freezing point depression than glucose but less than CaCl2 or AlCl3.
+
+**C. 0.10 m CaCl2:** CaCl2 dissociates into Ca2+ and 2 Cl- (ideal i = 3), giving an effective concentration of 0.30 m particles. While this is more than NaCl, AlCl3 produces even more particles (ideal i = 4), so CaCl2 does not produce the lowest freezing point.
+
+### Key Educational Points:
+
+  - The ideal freezing-point depression is ΔTf = iKfm.
+  - The stipulated particle factors are 1 for glucose, 2 for NaCl, 3 for CaCl₂ and 4 for AlCl₃.
+  - At equal molality, ideal AlCl₃ has the largest i × m and therefore the lowest freezing point.
+
+>> Bottom Line: At equal molality in the stated ideal model, the solute giving the most particles produces the greatest freezing-point depression.
+
+==============================================================================
+Q34  [chem-96]  Answer: D
+==============================================================================
+Using the ideal-solution approximation, what is the osmotic pressure of a 0.30 M glucose solution at 25 °C (298 K)? (R = 0.0821 L·atm·mol⁻¹·K⁻¹)
+
+  A) 3.67 atm
+  B) 0.73 atm
+  C) 14.7 atm
+  D) 7.34 atm
+
+### Correct Answer: D. 7.34 atm
+
+Osmotic pressure: pi = MRT = 0.30 x 0.0821 x 298 = 7.34 atm.
+
+Osmotic pressure is important in biological systems, where cell membranes act as semipermeable barriers. Even dilute solutions can generate significant osmotic pressure.
+
+### Why the other choices are wrong:
+
+**A. 3.67 atm:** 3.67 atm would result from using about half the correct molarity or an incorrect temperature. Using Pi = iMRT with i=1 (glucose is a non-electrolyte): Pi = 1 x 0.30 x 0.0821 x 298 = 7.34 atm.
+
+**B. 0.73 atm:** 0.73 atm is exactly 1/10 of the correct answer. This might result from using 0.030 M instead of 0.30 M, or from a decimal place error. Check: Pi = 0.30 x 0.0821 x 298 = 7.34 atm.
+
+**C. 14.7 atm:** 14.7 atm is approximately twice the calculated value. It would result from using i = 2, but dissolved glucose remains as molecules and uses i = 1 in this model. Therefore Π = 0.30 × 0.0821 × 298 ≈ 7.34 atm.
+
+### Key Educational Points:
+
+  - Osmotic pressure is the opposing pressure needed to prevent net solvent flow through a suitable semipermeable membrane.
+  - In the ideal model, Π = iMRT; glucose uses i = 1.
+  - Substitution gives Π ≈ 7.34 atm; molarity uses liters of solution.
+
+>> Bottom Line: For an ideal non-electrolyte solution, Π = MRT, with temperature in kelvin and units consistent with R.
+
+==============================================================================
+Q35  [chem-97]  Answer: C
+==============================================================================
+According to solubility rules, which of the following compounds is insoluble in water?
+
+  A) NaCl
+  B) KNO3
+  C) BaSO4
+  D) NH4Cl
+
+### Correct Answer: C. BaSO4
+
+BaSO₄ is very sparingly soluble in water. It is a familiar exception to the general solubility of many sulfates; PbSO₄ and SrSO₄ are other examples. The sodium, potassium and ammonium salts listed here are soluble.
+
+BaSO4 is so insoluble that it is used as a contrast agent in medical imaging of the gastrointestinal tract.
+
+### Why the other choices are wrong:
+
+**A. NaCl:** NaCl dissolves readily in water. Sodium salts are generally classified as soluble in the introductory solubility guidelines, and NaCl is not one of the poorly soluble chloride exceptions.
+
+**B. KNO3:** KNO₃ is soluble in water. Both the usual potassium-salt guideline and the nitrate-salt guideline identify it as a soluble salt.
+
+**D. NH4Cl:** NH₄Cl is soluble in water. Common ammonium salts are generally soluble, and this chloride does not behave like the poorly soluble chlorides of silver or lead.
+
+### Key Educational Points:
+
+  - BaSO₄ is a common sparingly soluble sulfate.
+  - NaCl, KNO₃ and NH₄Cl are soluble under the usual aqueous conditions used in this question.
+  - Qualitative solubility rules help predict precipitation; poorly soluble salts still dissolve to a limited extent.
+
+>> Bottom Line: BaSO₄ is very sparingly soluble; many other sulfates are soluble. Solubility guidelines describe common patterns, and "insoluble" does not mean absolutely no dissolution.
+
+==============================================================================
+Q36  [chem-98]  Answer: A
+==============================================================================
+At constant temperature, Henry's law states that the equilibrium solubility of a gas in a liquid is:
+
+  A) Directly proportional to the partial pressure of the gas above the liquid
+  B) Inversely proportional to temperature
+  C) Independent of pressure
+  D) Inversely proportional to pressure
+
+### Correct Answer: A. Directly proportional to the partial pressure of the gas above the liquid
+
+At a fixed temperature, Henry's law can be written C = kH × P for a sufficiently dilute dissolved gas, where P is that gas's partial pressure above the liquid. The constant depends on the gas, solvent and temperature. Raising that partial pressure raises the equilibrium dissolved concentration.
+
+This principle explains why carbonated beverages release CO2 when opened (pressure decreases).
+
+### Why the other choices are wrong:
+
+**B. Inversely proportional to temperature:** Many gases become less soluble as temperature rises, but this does not establish a universal 1/T law. Henry's proportionality concerns gas partial pressure while temperature is held constant.
+
+**C. Independent of pressure:** Gas solubility is definitely dependent on pressure -- this is the core of Henry's law. Raising the gas's partial pressure at unchanged temperature dissolves more gas. This is why carbonated beverages are sealed under high CO2 pressure to keep the gas dissolved.
+
+**D. Inversely proportional to pressure:** The relationship is direct, not inverse. Henry's law states that solubility is directly proportional to the gas's partial pressure at unchanged temperature: C = kH × P. Raising that partial pressure forces more gas molecules into solution. If it were inverse, opening a soda bottle (decreasing pressure) would cause gas to dissolve further, but the opposite happens -- bubbles escape.
+
+### Key Educational Points:
+
+  - Henry's law is an equilibrium relationship at a specified temperature.
+  - In the C = kHP convention, dissolved concentration is proportional to the gas's own partial pressure.
+  - The constant depends on the gas, solvent and temperature; temperature changes require separate consideration.
+
+>> Bottom Line: At fixed temperature, C = kHP relates equilibrium dissolved-gas concentration to that gas's partial pressure; the constant must be defined consistently.
+
+==============================================================================
+Q37  [chem-99]  Answer: C
+==============================================================================
+Using an ideal van't Hoff factor i = 2, what boiling-point change is predicted when 1.0 mol NaCl is dissolved in 1.0 kg water? (Kb = 0.52 °C·kg/mol)
+
+  A) It increases by 0.52 degrees C
+  B) It decreases by 0.52 degrees C
+  C) It increases by 1.04 degrees C
+  D) It remains unchanged
+
+### Correct Answer: C. It increases by 1.04 degrees C
+
+NaCl dissociates into Na+ and Cl- ions, so the stipulated ideal van't Hoff factor is i = 2. The boiling point elevation = i x Kb x m = 2 x 0.52 x 1.0 = 1.04 degrees C.
+
+For electrolytes, you must account for dissociation by multiplying by the van't Hoff factor. This is a model prediction; a real 1 m electrolyte solution need not have exactly i = 2.
+
+### Why the other choices are wrong:
+
+**A. It increases by 0.52 degrees C:** 0.52 degrees C would be the elevation for a non-electrolyte at 1 m concentration (ΔTb = Kb x m = 0.52 x 1 = 0.52). But with the stipulated ideal factor i = 2 for NaCl, the effective particle concentration is doubled. So ΔTb = i x Kb x m = 2 x 0.52 x 1 = 1.04 degrees C.
+
+**B. It decreases by 0.52 degrees C:** For the nonvolatile NaCl solute in this model, the boiling point increases rather than decreases. At a given temperature, the solvent vapor pressure is lower, so a higher temperature is needed to reach the same external pressure.
+
+**D. It remains unchanged:** With m = 1.0 mol/kg and the stipulated i = 2, the predicted elevation is 2 × 0.52 × 1.0 = 1.04 °C. An unchanged boiling point does not follow from this model.
+
+### Key Educational Points:
+
+  - The salt molality is 1.0 mol/kg.
+  - The question stipulates ideal i = 2, representing one Na⁺ and one Cl⁻ per formula unit.
+  - The predicted boiling-point elevation is 1.04 °C; nonvolatile solute lowers solvent vapor pressure in this model.
+
+>> Bottom Line: The ideal estimate is ΔTb = iKbm = 1.04 °C. The effective van't Hoff factor of a real electrolyte solution can differ from the simple ion count.
+
+==============================================================================
+Q38  [chem-100]  Answer: D
+==============================================================================
+Which of the following is NOT a colligative property?
+
+  A) Boiling point elevation
+  B) Freezing point depression
+  C) Osmotic pressure
+  D) Color of the solution
+
+### Correct Answer: D. Color of the solution
+
+In the ideal dilute-solution treatment, colligative effects depend on dissolved-particle concentration or mole fraction rather than on the particles' chemical identity. These effects include boiling-point elevation, freezing-point depression, solvent vapor-pressure lowering and osmotic pressure. Color instead depends on which species absorb visible light. Its intensity can also change with concentration, so "depends on concentration" does not by itself make a property colligative.
+
+### Why the other choices are wrong:
+
+**A. Boiling point elevation:** Boiling-point elevation is colligative. In the dilute model, ΔTb = iKbm relates it to the concentration of dissolved particles for a given solvent.
+
+**B. Freezing point depression:** Freezing-point depression is colligative. In the dilute model, ΔTf = iKfm, so the particle concentration determines the predicted change for a given solvent.
+
+**C. Osmotic pressure:** Osmotic pressure is colligative. For an ideal dilute solution, Π = iMRT depends on dissolved-particle concentration and temperature.
+
+### Key Educational Points:
+
+  - The standard colligative effects are vapor-pressure lowering, boiling-point elevation, freezing-point depression and osmotic pressure.
+  - Their simple formulas describe ideal or sufficiently dilute solutions.
+  - Color depends on the identity of light-absorbing species; concentration can affect its intensity without making it colligative.
+
+>> Bottom Line: Color depends on the absorbing species and can also depend on concentration. Colligative properties are the specific particle-count effects described by the ideal solution model.
+
+==============================================================================
+Q39  [chem-101]  Answer: D
+==============================================================================
+Using the ideal dilute-solution approximation, estimate the freezing point after 6.0 g of urea (M = 60 g/mol, non-electrolyte) is dissolved in 250 g of water. Take pure water's freezing point as 0 °C and Kf = 1.86 °C·kg/mol.
+
+  A) -3.72 degrees C
+  B) -1.49 degrees C
+  C) -0.37 degrees C
+  D) -0.74 degrees C
+
+### Correct Answer: D. -0.74 degrees C
+
+Moles of urea = 6.0/60 = 0.10 mol. Molality = 0.10/0.250 = 0.40 m. Freezing point depression = Kf x m = 1.86 x 0.40 = 0.744 degrees C. New freezing point = 0 - 0.744 = -0.74 degrees C.
+
+Urea is a non-electrolyte so the ideal particle factor is i = 1.
+
+### Why the other choices are wrong:
+
+**A. -3.72 degrees C:** A depression of 3.72 °C would require 2.0 mol/kg for a non-electrolyte. Here the molality is only (6.0/60)/0.250 = 0.40 mol/kg, giving a depression of 0.744 °C.
+
+**B. -1.49 degrees C:** A freezing point near −1.49 °C results from using i = 2 with the correct molality. Urea is a non-electrolyte and uses i = 1 in this model, so the predicted freezing point is −0.74 °C.
+
+**C. -0.37 degrees C:** This is approximately half of the correct answer. It could result from using only half the moles of urea or doubling the solvent mass. For colligative properties, every number in the calculation matters: moles, solvent mass in kg, and the Kf constant.
+
+### Key Educational Points:
+
+  - The solution contains 0.10 mol urea in 0.250 kg water, so m = 0.40 mol/kg.
+  - Urea uses ideal i = 1, giving ΔTf = 1.86 × 0.40 = 0.744 °C.
+  - Freezing-point depression is subtracted from the pure-solvent freezing point, giving approximately −0.74 °C.
+
+>> Bottom Line: Using i = 1, ΔTf = Kfm = 0.744 °C. Subtracting this depression from 0 °C gives approximately −0.74 °C.
+
+==============================================================================
+Q40  [chem-102]  Answer: A
+==============================================================================
+According to standard qualitative solubility guidelines for water at room temperature, which of the following salts is classified as soluble?
+
+  A) Na2S
+  B) AgCl
+  C) PbCl2
+  D) CaCO₃
+
+### Correct Answer: A. Na2S
+
+Na₂S is classified as soluble under the usual guideline for common sodium salts. AgCl and PbCl₂ are poorly soluble chloride exceptions at room temperature, while CaCO₃ is a poorly soluble carbonate. These classifications are useful approximations, not statements of absolutely zero solubility.
+
+The solubility rules are essential for predicting whether a precipitate forms in a double replacement reaction.
+
+### Why the other choices are wrong:
+
+**B. AgCl:** AgCl is very sparingly soluble in water and is a familiar exception to the general solubility of chlorides. It therefore is not the salt classified as soluble here.
+
+**C. PbCl2:** PbCl₂ is sparingly soluble in cold or room-temperature water and is listed as a chloride exception. Its solubility increases substantially on heating, which is why the temperature context matters.
+
+**D. CaCO₃:** CaCO₃ is poorly soluble in water under the stated conditions. Common carbonates other than the usual Group 1 and ammonium examples are generally classified as poorly soluble.
+
+### Key Educational Points:
+
+  - Common sodium salts such as Na₂S are generally soluble in water.
+  - AgCl and PbCl₂ are familiar chloride exceptions, while CaCO₃ is a poorly soluble carbonate.
+  - Solubility depends on conditions, including temperature; the guidelines do not mean that poorly soluble salts never dissolve.
+
+>> Bottom Line: Na₂S follows the usual soluble-sodium-salt guideline. AgCl, PbCl₂ and CaCO₃ are classified as poorly soluble under the stated conditions.
+
+==============================================================================
+Q41  [chem-103]  Answer: B
+==============================================================================
+Assume an ideal solution. If 2.0 mol of a nonvolatile, non-electrolyte solute is dissolved in 1000 g of water, by approximately how much is the vapor pressure lowered at 100 °C? (Water molar mass = 18.0 g/mol; pure-water vapor pressure = 760 mmHg)
+
+  A) 7.6 mmHg
+  B) 26.4 mmHg
+  C) 13.5 mmHg
+  D) 38.0 mmHg
+
+### Correct Answer: B. 26.4 mmHg
+
+For an ideal solution with a nonvolatile solute, Raoult's law gives Psolution = Xwater × Ppure. Therefore the lowering is ΔP = Xsolute × Ppure. Water amount = 1000/18.0 ≈ 55.56 mol. The solute mole fraction is 2.0/(55.56 + 2.0) ≈ 0.03475. Thus ΔP ≈ 0.03475 × 760 = 26.4 mmHg. The solution's vapor pressure is about 760 − 26.4 = 733.6 mmHg; the question asks for the decrease, not this remaining pressure.
+
+### Why the other choices are wrong:
+
+**A. 7.6 mmHg:** A lowering of 7.6 mmHg would correspond to Xsolute = 7.6/760 = 0.010. The actual mole fraction is about 0.03475, so the predicted lowering is larger.
+
+**C. 13.5 mmHg:** A lowering of 13.5 mmHg corresponds to Xsolute ≈ 0.0178, roughly half the required fraction. Use both 2.0 mol solute and 55.56 mol water in the denominator to obtain 26.4 mmHg.
+
+**D. 38.0 mmHg:** A lowering of 38.0 mmHg would require Xsolute = 38.0/760 = 0.050. The actual value is about 0.03475, giving a smaller decrease of 26.4 mmHg.
+
+### Key Educational Points:
+
+  - Convert solvent mass to moles before calculating mole fraction.
+  - Xsolute = 2.0/(2.0 + 55.56), not 2.0/55.56.
+  - The vapor-pressure decrease is approximately 26.4 mmHg; the remaining vapor pressure is approximately 733.6 mmHg.
+
+>> Bottom Line: For the stated ideal solution, ΔP = XsolutePpure ≈ 26.4 mmHg. The mole-fraction denominator includes both solute and solvent.
+
+==============================================================================
+Q42  [chem-104]  Answer: D
+==============================================================================
+In a simplified Henry's-law model, a diver breathes the same air mixture at 4 atm rather than 1 atm. At the same temperature and after equilibration, how does the dissolved nitrogen concentration compare with its surface value?
+
+  A) Twice as much
+  B) Three times as much
+  C) Sixteen times as much
+  D) Four times as much
+
+### Correct Answer: D. Four times as much
+
+With the nitrogen fraction held constant, nitrogen's partial pressure increases in the same ratio as total pressure: 4/1 = 4. At constant temperature, the model C = kHPN₂ therefore predicts four times the equilibrium dissolved nitrogen concentration. This is an equilibrium comparison; actual uptake depends on time and physiological conditions. A rapid pressure reduction can allow dissolved nitrogen to form bubbles, contributing to decompression sickness.
+
+### Why the other choices are wrong:
+
+**A. Twice as much:** Twice as much would follow from a twofold rise in nitrogen partial pressure. The stated pressure ratio is four, and the gas mixture is unchanged.
+
+**B. Three times as much:** Three times as much would require a threefold partial-pressure ratio. Here the ratio is 4/1, so the final equilibrium concentration is four times its starting value.
+
+**C. Sixteen times as much:** Sixteen times as much incorrectly squares the pressure ratio. Henry's law is directly proportional to gas partial pressure at constant temperature, so the factor is four.
+
+### Key Educational Points:
+
+  - Henry's law uses nitrogen partial pressure, not total pressure without regard to gas composition.
+  - With the same air mixture, raising total pressure from 1 to 4 atm also raises nitrogen partial pressure fourfold.
+  - The predicted fourfold concentration is an equilibrium value, not an instantaneous measure of nitrogen uptake.
+
+>> Bottom Line: With unchanged temperature and gas composition, a fourfold pressure rise gives four times the equilibrium dissolved nitrogen concentration in this simplified model.
+
+==============================================================================
+Q43  [chem-105]  Answer: B
+==============================================================================
+According to Bronsted-Lowry theory, an acid is defined as a:
+
+  A) Proton acceptor
+  B) Proton donor
+  C) Electron pair donor
+  D) Electron pair acceptor
+
+### Correct Answer: B. Proton donor
+
+The Bronsted-Lowry definition states that an acid is a proton (H+) donor and a base is a proton acceptor. This is broader than the Arrhenius definition, which requires aqueous solutions.
+
+This definition allows substances like NH3 to be classified as bases even in non-aqueous systems.
+
+### Why the other choices are wrong:
+
+**A. Proton acceptor:** A proton acceptor is a Brønsted-Lowry base. An acid has the opposite role: it donates H⁺ to a base.
+
+**C. Electron pair donor:** An electron-pair donor is a Lewis base. That is a different definition from the proton-donor definition of a Brønsted-Lowry acid.
+
+**D. Electron pair acceptor:** An electron pair acceptor is the Lewis definition of an acid. BF₃ is a classic Lewis acid because it has an empty orbital that can accept an electron pair. While some Lewis acids are also Bronsted-Lowry acids, the definitions operate on different principles: proton transfer vs. electron pair sharing.
+
+### Key Educational Points:
+
+  - A Brønsted-Lowry acid donates H⁺; a base accepts H⁺.
+  - After donating a proton, an acid becomes its conjugate base.
+  - This proton-transfer definition can be used beyond aqueous solutions.
+
+>> Bottom Line: Bronsted-Lowry acid = proton donor; Bronsted-Lowry base = proton acceptor.
+
+==============================================================================
+Q44  [chem-106]  Answer: D
+==============================================================================
+Which of the following acts as a Lewis acid because its central atom has an incomplete octet?
+
+  A) NH₃
+  B) H₂O
+  C) OH-
+  D) BF3
+
+### Correct Answer: D. BF3
+
+A Lewis acid is an electron pair acceptor. BF3 has an incomplete octet on boron (only 6 electrons), making it an excellent electron pair acceptor. NH3 and OH- are Lewis bases (electron pair donors).
+
+The Lewis definition is broader than the Brønsted-Lowry definition because it also covers electron-pair acceptance without proton transfer, and it includes species without protons.
+
+### Why the other choices are wrong:
+
+**A. NH₃:** NH₃ has a complete octet around nitrogen and a lone pair it can donate to BF₃. In that reaction, ammonia is the Lewis base, not the electron-deficient acceptor.
+
+**B. H₂O:** Water's oxygen has a complete octet and lone pairs that can be donated when water acts as a ligand. It is not the incomplete-octet species requested in this question.
+
+**C. OH-:** The hydroxide ion is a strong Lewis base and a strong Bronsted-Lowry base. It carries a negative charge and has multiple lone pairs, making it an excellent electron pair donor. It is the opposite of a Lewis acid.
+
+### Key Educational Points:
+
+  - A Lewis acid accepts an electron pair; a Lewis base donates one.
+  - Boron in BF₃ has only six electrons in its valence shell and can accept a lone pair.
+  - Formation of a donor-acceptor bond, such as NH₃→BF₃, need not involve proton transfer.
+
+>> Bottom Line: Lewis acid = electron pair acceptor; Lewis base = electron pair donor.
+
+==============================================================================
+Q45  [chem-107]  Answer: D
+==============================================================================
+At 25 °C, what is the approximate pH of a 0.010 M aqueous NaOH solution, treating it as ideal?
+
+  A) 2
+  B) 10
+  C) 14
+  D) 12
+
+### Correct Answer: D. 12
+
+NaOH is a strong base: [OH-] = 0.01 M = 10^-2 M. pOH = -log(10^-2) = 2. pH = 14 - pOH = 14 - 2 = 12.
+
+NaOH supplies one OH⁻ per formula unit, so [OH⁻] ≈ 0.010 M here. At 25 °C, pH + pOH ≈ 14. Other hydroxide bases may supply a different number of OH⁻ ions per formula unit.
+
+### Why the other choices are wrong:
+
+**A. 2:** This is the pOH, not the pH. For 0.01 M NaOH, pOH = −log(10⁻²) = 2. Answering 2 means stopping one step early, or treating a strong base as though it were a strong acid of the same concentration.
+
+**B. 10:** This would follow from mistakenly using pH = 12 − pOH, or from taking [OH⁻] as 10⁻⁴. The correct conversion is pH = 14 − pOH = 14 − 2 = 12 at 25 °C.
+
+**C. 14:** In the concentration approximation at 25 °C, pH 14 corresponds to [OH⁻] about 1 M, a hundredfold larger than the given value. Here pOH = 2 and pH ≈ 12. The pH scale does not have universal limits of 0 and 14.
+
+### Key Educational Points:
+
+  - Dissolved NaOH supplies one OH⁻ per formula unit.
+  - [OH⁻] ≈ 10⁻² M gives pOH ≈ 2.
+  - At 25 °C, pH ≈ 14 − 2 = 12; the value 14 in this relation depends on temperature.
+
+>> Bottom Line: For this dilute NaOH solution at 25 °C, [OH⁻] ≈ 0.010 M, pOH ≈ 2 and pH ≈ 12.
+
+==============================================================================
+Q46  [chem-108]  Answer: A
+==============================================================================
+A weak acid HA has Ka = 1.0 x 10^-5. What is the pH of a 0.10 M solution of HA?
+
+  A) 3.0
+  B) 1.0
+  C) 5.0
+  D) 7.0
+
+### Correct Answer: A. 3.0
+
+For a weak acid: Ka = x^2 / (0.10 - x). Since Ka is small, assume 0.10 - x is approximately 0.10. Then x^2 = 1.0 x 10^-5 x 0.10 = 1.0 x 10^-6. So x = [H+] = 1.0 x 10^-3 M. pH = 3.0.
+
+The 5% approximation is valid here since 10^-3 / 0.10 = 1%, well under 5%.
+
+### Why the other choices are wrong:
+
+**B. 1.0:** pH 1 would follow from treating the 0.10 M acid as fully dissociated. HA is weak, so its hydrogen ion concentration must instead be found from Ka.
+
+**C. 5.0:** 5.0 is pKa = −log(10⁻⁵), not the pH of this acid-only solution. The concentration also enters: [H⁺] ≈ sqrt(KaC) = 10⁻³ M.
+
+**D. 7.0:** The calculation gives about 10⁻³ M H⁺, so this solution is acidic with pH about 3, not neutral at pH 7. Weak does not mean that an acid has no effect on pH.
+
+### Key Educational Points:
+
+  - For HA alone in water, Ka ≈ x²/(C − x), with x approximately the H⁺ concentration.
+  - Here x ≈ sqrt(10⁻⁵ × 0.10) = 10⁻³ M, giving pH ≈ 3.0.
+  - x/C is about 1%, so replacing C − x by C is justified for this estimate.
+
+>> Bottom Line: For weak acids, use Ka = x2/C when the approximation x << C is valid; pH = -log(x).
+
+==============================================================================
+Q47  [chem-109]  Answer: A
+==============================================================================
+What is the conjugate base of H2PO4-?
+
+  A) HPO4^2-
+  B) H₃PO₄
+  C) PO4^3-
+  D) H2PO4-
+
+### Correct Answer: A. HPO4^2-
+
+A conjugate base is formed when an acid loses one proton. H2PO4- loses one H+ to form HPO4^2-. This is the second dissociation step of phosphoric acid.
+
+H2PO4- is amphoteric - it can act as either an acid (donating H+) or a base (accepting H+).
+
+### Why the other choices are wrong:
+
+**B. H₃PO₄:** H₃PO₄ is obtained when H₂PO₄⁻ GAINS a proton, so it is the conjugate acid. The question asks for the species after one proton is lost.
+
+**C. PO4^3-:** PO₄³⁻ would require removal of two protons from H₂PO₄⁻. A conjugate acid-base pair differs by just one H⁺, giving HPO₄²⁻ here.
+
+**D. H2PO4-:** This is the original species given in the question, not its conjugate base. A conjugate acid-base pair always differs by exactly one proton (H⁺). The conjugate base must have one fewer proton than the starting species.
+
+### Key Educational Points:
+
+  - A conjugate base is formed by removing one H⁺.
+  - H₂PO₄⁻ loses H⁺ to give HPO₄²⁻, with one fewer hydrogen and one more negative charge.
+  - Gaining H⁺ instead would form H₃PO₄, its conjugate acid.
+
+>> Bottom Line: A conjugate base is formed by removing one proton from the acid.
+
+==============================================================================
+Q48  [chem-110]  Answer: C
+==============================================================================
+A buffer contains 0.10 M acetic acid and 0.10 M sodium acetate. Using the concentration form of the Henderson-Hasselbalch equation and Ka = 1.8 × 10⁻⁵, what is its approximate pH?
+
+  A) 9.26
+  B) 7.00
+  C) 4.74
+  D) 2.87
+
+### Correct Answer: C. 4.74
+
+Using the Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]) = -log(1.8 x 10^-5) + log(0.10/0.10) = 4.74 + 0 = 4.74.
+
+When the concentrations of weak acid and conjugate base are equal, the pH is approximately equal to the pKa of the acid in this concentration treatment.
+
+### Why the other choices are wrong:
+
+**A. 9.26:** 9.26 is the approximate pKb of acetate at 25 °C, not this buffer's pH. The equal acetic-acid/acetate ratio gives pH ≈ pKa ≈ 4.74.
+
+**B. 7.00:** Equal amounts of a weak acid and its conjugate base do not necessarily give pH 7. Their buffer pH is near the acid's pKa, which here is 4.74.
+
+**D. 2.87:** A pH near 2.87 is the weak-acid estimate for 0.10 M acetic acid WITHOUT the added acetate: [H⁺] ≈ sqrt(1.8 × 10⁻⁵ × 0.10). The buffer contains substantial acetate, so the equal-ratio buffer calculation gives pH ≈ 4.74.
+
+### Key Educational Points:
+
+  - Henderson-Hasselbalch uses pH ≈ pKa + log([A⁻]/[HA]) in this concentration model.
+  - Equal acid and conjugate-base concentrations make the logarithm zero.
+  - pKa = −log(1.8 × 10⁻⁵) ≈ 4.74, so the buffer pH is approximately 4.74.
+
+>> Bottom Line: Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]). When [A-] = [HA], pH = pKa.
+
+==============================================================================
+Q49  [chem-111]  Answer: C
+==============================================================================
+Which indicator would be most appropriate for a titration of a weak acid with a strong base (equivalence point around pH 8.7)?
+
+  A) Methyl orange (pH 3.1-4.4)
+  B) Bromothymol blue (pH 6.0-7.6)
+  C) Phenolphthalein (pH 8.2-10.0)
+  D) Methyl red (pH 4.4-6.2)
+
+### Correct Answer: C. Phenolphthalein (pH 8.2-10.0)
+
+Choose an indicator whose transition range falls within the steep pH change near equivalence. With the stated equivalence pH around 8.7, phenolphthalein's 8.2-10.0 range is the best match among these choices. The observed color-change endpoint approximates the stoichiometric equivalence point; the two are not definitions of the same event.
+
+### Why the other choices are wrong:
+
+**A. Methyl orange (pH 3.1-4.4):** Methyl orange changes at pH 3.1-4.4, an acidic range far below the supplied equivalence pH of about 8.7. It is a poor match to this titration.
+
+**B. Bromothymol blue (pH 6.0-7.6):** Bromothymol blue changes around neutral pH, 6.0-7.6. Phenolphthalein's basic range is a better match to the given equivalence pH of 8.7.
+
+**D. Methyl red (pH 4.4-6.2):** Methyl red changes at pH 4.4-6.2, below the supplied basic equivalence pH. The useful criterion is a transition within the steep region near equivalence, not a universal requirement that every suitable indicator range contain the exact equivalence pH.
+
+### Key Educational Points:
+
+  - The equivalence point is determined by reaction stoichiometry; the endpoint is the observed indicator change.
+  - An indicator should change within the steep part of the curve near equivalence.
+  - Of the listed ranges, phenolphthalein's 8.2-10.0 best matches the supplied basic equivalence pH.
+
+>> Bottom Line: Select an indicator whose transition occurs within the steep part of the titration curve near equivalence; phenolphthalein is the best match to the stated pH of about 8.7.
+
+==============================================================================
+Q50  [chem-112]  Answer: C
+==============================================================================
+What is the Ka of a weak acid if its conjugate base has Kb = 2.5 x 10^-10? (Kw = 1.0 x 10^-14)
+
+  A) 2.5 x 10^-4
+  B) 1.0 x 10^-4
+  C) 4.0 x 10^-5
+  D) 4.0 x 10^-4
+
+### Correct Answer: C. 4.0 x 10^-5
+
+For a conjugate acid-base pair: Ka x Kb = Kw. Therefore Ka = Kw/Kb = (1.0 x 10^-14)/(2.5 x 10^-10) = 4.0 x 10^-5.
+
+For a conjugate pair in water at a fixed temperature, KaKb = Kw; a larger Ka corresponds to a smaller Kb.
+
+### Why the other choices are wrong:
+
+**A. 2.5 x 10^-4:** Using Ka = 2.5 × 10⁻⁴ would give KaKb = 6.25 × 10⁻¹⁴, not the supplied 1.0 × 10⁻¹⁴. Divide Kw by Kb rather than carrying over the 2.5 coefficient.
+
+**B. 1.0 x 10^-4:** Using 1.0 × 10⁻⁴ would give a product of 2.5 × 10⁻¹⁴. The coefficient must also be divided: (1.0/2.5) × 10⁻⁴ = 4.0 × 10⁻⁵.
+
+**D. 4.0 x 10^-4:** 4.0 × 10⁻⁴ is ten times too large. Multiplying it by 2.5 × 10⁻¹⁰ gives 1.0 × 10⁻¹³; the required product is 1.0 × 10⁻¹⁴.
+
+### Key Educational Points:
+
+  - Ka and Kb must refer to a conjugate acid-base pair in the same solvent and at the same temperature.
+  - Here Ka = Kw/Kb = 4.0 × 10⁻⁵.
+  - Multiplication checks the answer: (4.0 × 10⁻⁵)(2.5 × 10⁻¹⁰) = 1.0 × 10⁻¹⁴.
+
+>> Bottom Line: Ka x Kb = Kw = 1.0 x 10-14 at 25 degrees C for any conjugate acid-base pair.
+
+==============================================================================
+Q51  [chem-113]  Answer: B
+==============================================================================
+Which statement best describes the two dissociation steps of H₂SO₄ in dilute aqueous solution?
+
+  A) Both dissociations are strong
+  B) The first dissociation is strong; the second is weak
+  C) Both dissociations are weak
+  D) The first dissociation is weak; the second is strong
+
+### Correct Answer: B. The first dissociation is strong; the second is weak
+
+H₂SO₄ is treated as essentially completely dissociated in its first step, producing H⁺ and HSO₄⁻. The second step is an equilibrium: HSO₄⁻ ⇌ H⁺ + SO₄²⁻, with Ka2 about 1.2 × 10⁻² at 25 °C. HSO₄⁻ is therefore classified as a weak acid, although how much of it dissociates depends on concentration.
+
+### Why the other choices are wrong:
+
+**A. Both dissociations are strong:** The first step is treated as complete in dilute water, but the second has a finite equilibrium constant and is not generally treated as a second fully dissociated strong-acid step.
+
+**C. Both dissociations are weak:** The first dissociation of H₂SO₄ is strong in dilute aqueous solution. Only the second step is treated using the weaker HSO₄⁻ equilibrium here.
+
+**D. The first dissociation is weak; the second is strong:** This reverses the two steps. Removing the first proton from H₂SO₄ is much more favorable than removing the second from HSO₄⁻ under the stated aqueous conditions.
+
+### Key Educational Points:
+
+  - Diprotic means that two protons can be removed in successive steps.
+  - H₂SO₄'s first dissociation is essentially complete in dilute water.
+  - HSO₄⁻ has a finite second dissociation constant, so its extent of dissociation depends on the solution conditions.
+
+>> Bottom Line: In dilute water, sulfuric acid's first dissociation is essentially complete; the second is an equilibrium governed by Ka2. Diprotic does not mean both steps are strong.
+
+==============================================================================
+Q52  [chem-114]  Answer: C
+==============================================================================
+At 25 °C, a buffer contains 0.20 M NH₃ and 0.10 M NH₄Cl. Using the concentration form of the Henderson-Hasselbalch equation, Kb(NH₃) = 1.8 × 10⁻⁵ and Kw = 1.0 × 10⁻¹⁴, what is its approximate pH?
+
+  A) 4.44
+  B) 8.95
+  C) 9.56
+  D) 10.26
+
+### Correct Answer: C. 9.56
+
+First find pKa of NH4+: Ka = Kw/Kb = (1.0 × 10^-14)/(1.8 × 10^-5) = 5.6 × 10^-10, so pKa ≈ 9.26. Using Henderson-Hasselbalch: pH = 9.26 + log(0.20/0.10) = 9.26 + 0.30 = 9.56.
+
+For base buffers, you can use the Henderson-Hasselbalch equation with the pKa of the conjugate acid.
+
+### Why the other choices are wrong:
+
+**A. 4.44:** 4.44 is approximately the pOH: pKb + log([NH₄⁺]/[NH₃]) = 4.74 + log(0.5) ≈ 4.44. At 25 °C, subtract this from 14 to obtain pH ≈ 9.56.
+
+**B. 8.95:** 8.95 results from reversing the ratio in the pH form: 9.26 + log(0.10/0.20). The pH equation uses base/conjugate acid = [NH₃]/[NH₄⁺] = 2.
+
+**D. 10.26:** 10.26 would add 1.00 to pKa, as if the base/acid ratio were 10. The actual ratio is 2 and log 2 ≈ 0.30, so the result is 9.56.
+
+### Key Educational Points:
+
+  - At 25 °C, pKa(NH₄⁺) = 14 − pKb(NH₃) ≈ 9.26.
+  - Use [NH₃]/[NH₄⁺] = 0.20/0.10 = 2 in the pH form of Henderson-Hasselbalch.
+  - pH ≈ 9.26 + 0.30 = 9.56; the corresponding pOH is about 4.44.
+
+>> Bottom Line: For basic buffers, use pH = pKa(conjugate acid) + log([base]/[conjugate acid]).
+
+==============================================================================
+Q53  [chem-115]  Answer: C
+==============================================================================
+Using the usual buffer approximation, at the half-equivalence point in the titration of a weak monoprotic acid with a strong base, the pH is approximately equal to:
+
+  A) 7.00
+  B) The pKb of the conjugate base
+  C) The pKa of the weak acid
+  D) The pH at the equivalence point
+
+### Correct Answer: C. The pKa of the weak acid
+
+At half-equivalence, half the initial acid has been converted stoichiometrically to its conjugate base. Their concentrations are approximately equal in the usual buffer treatment. Therefore pH ≈ pKa + log 1 = pKa. This allows an estimate of pKa from a titration curve.
+
+### Why the other choices are wrong:
+
+**A. 7.00:** Half-equivalence does not mean neutral pH. The pH is near the acid's pKa and would be near 7 only for an acid whose pKa is near 7.
+
+**B. The pKb of the conjugate base:** pKb describes the conjugate base, whereas the acid-buffer pH equation uses pKa. At 25 °C they sum to about 14, but they are generally different numbers.
+
+**D. The pH at the equivalence point:** Half-equivalence and equivalence are different stages. At half-equivalence, appreciable acid and conjugate base coexist. At equivalence, the original acid has been neutralized stoichiometrically and conjugate-base hydrolysis determines the pH.
+
+### Key Educational Points:
+
+  - Half-equivalence means half the initial acid has been neutralized stoichiometrically.
+  - Acid and conjugate base are approximately equal in the usual buffer treatment.
+  - The logarithmic ratio is approximately zero, so pH ≈ pKa, not the equivalence-point pH.
+
+>> Bottom Line: For a weak monoprotic acid under the usual buffer approximation, half-equivalence gives [HA] ≈ [A⁻] and pH ≈ pKa.
+
+==============================================================================
+Q54  [chem-116]  Answer: C
+==============================================================================
+Which of the following is the strongest acid?
+
+  A) HCN (Ka = 6.2 x 10^-10)
+  B) CH3COOH (Ka = 1.8 x 10^-5)
+  C) HF (Ka = 6.8 x 10^-4)
+  D) HClO (Ka = 3.0 x 10^-8)
+
+### Correct Answer: C. HF (Ka = 6.8 x 10^-4)
+
+The strength of a weak acid is determined by its Ka value. The larger the Ka, the more the acid dissociates and the stronger it is. HF has the largest Ka (6.8 x 10^-4) among the options.
+
+Note that HF, while the strongest listed, is still a weak acid compared to strong acids like HCl (which fully dissociate).
+
+### Why the other choices are wrong:
+
+**A. HCN (Ka = 6.2 x 10^-10):** HCN has the smallest listed Ka, 6.2 × 10⁻¹⁰. It is the weakest of these acids under the comparison conditions, not the strongest.
+
+**B. CH3COOH (Ka = 1.8 x 10^-5):** Acetic acid has Ka = 1.8 × 10⁻⁵, smaller than HF's 6.8 × 10⁻⁴. Acetic acid is therefore weaker than HF in this comparison.
+
+**D. HClO (Ka = 3.0 x 10^-8):** HClO has Ka = 3.0 × 10⁻⁸, between the values for HCN and acetic acid. It remains well below HF, which has the largest listed Ka.
+
+### Key Educational Points:
+
+  - Compare Ka values under the same solvent and temperature conditions.
+  - HF has the largest listed Ka and is therefore the strongest acid listed.
+  - Acid strength is different from solution concentration; all four listed acids are weak acids in the usual aqueous classification.
+
+>> Bottom Line: At the same temperature and in the same solvent, larger Ka means stronger acid. Here HF > CH₃COOH > HClO > HCN; strongest among these choices does not mean fully dissociated.
+
+==============================================================================
+Q55  [chem-117]  Answer: D
+==============================================================================
+What is the [OH-] in a solution with pH = 10 at 25 degrees C?
+
+  A) 10^4 M
+  B) 10^-10 M
+  C) 10^-14 M
+  D) 10^-4 M
+
+### Correct Answer: D. 10^-4 M
+
+If pH = 10, then pOH = 14 - 10 = 4. [OH-] = 10^-pOH = 10^-4 M.
+
+A pH above 7 indicates a basic solution with [OH-] > [H+]. The relationship pH + pOH = 14 is used in this dilute-solution calculation at 25 degrees C.
+
+### Why the other choices are wrong:
+
+**A. 10^4 M:** This reverses the sign of the exponent. With pOH = 4, [OH⁻] is approximately 10⁻⁴ M, not 10⁴ M. Use [OH⁻] ≈ 10^(−pOH).
+
+**B. 10^-10 M:** 10⁻¹⁰ M is approximately the H⁺ concentration for pH 10. The question asks for OH⁻, found from pOH = 14 − 10 = 4.
+
+**C. 10^-14 M:** 10⁻¹⁴ is the familiar numerical value of Kw at 25 °C. In the dilute concentration approximation, it is the product [H⁺][OH⁻], not either ion concentration on its own. Dividing by [H⁺] ≈ 10⁻¹⁰ M gives [OH⁻] ≈ 10⁻⁴ M.
+
+### Key Educational Points:
+
+  - At 25 °C, pOH ≈ 14 − pH = 4 for this calculation.
+  - [OH⁻] ≈ 10^(−4) M; the exponent is negative.
+  - Do not confuse hydroxide concentration with hydrogen ion concentration or with Kw.
+
+>> Bottom Line: pOH = 14 - pH; [OH-] = 10^-pOH.
+
+==============================================================================
+Q56  [chem-118]  Answer: A
+==============================================================================
+How many moles of NaOH are required by the balanced equation for complete neutralization of 1 mol of H₃PO₄ to Na₃PO₄?
+
+  A) 3
+  B) 2
+  C) 1
+  D) 4
+
+### Correct Answer: A. 3
+
+Phosphoric acid has three acidic protons. In the formal complete-neutralization equation, each mole of OH⁻ removes one mole of acidic protons, so one mole of H₃PO₄ requires three moles of NaOH: H₃PO₄ + 3NaOH → Na₃PO₄ + 3H₂O.
+
+This stoichiometric ratio does not mean that every aqueous titration curve displays three sharp steps. The third proton is much more weakly acidic, so its transition is not normally resolved clearly in a conventional dilute titration.
+
+### Why the other choices are wrong:
+
+**B. 2:** Two moles of NaOH per mole of H₃PO₄ correspond to removing two protons, giving the formal hydrogen phosphate product Na₂HPO₄. The question specifies complete neutralization to Na₃PO₄.
+
+**C. 1:** One mole of NaOH per mole of H₃PO₄ removes one proton, giving the formal dihydrogen phosphate product NaH₂PO₄. Two further proton equivalents remain in the stated full-neutralization calculation.
+
+**D. 4:** H₃PO₄ has three acidic protons, so only three moles of NaOH are needed in the balanced complete-neutralization equation. Four moles would supply one mole of excess base.
+
+### Key Educational Points:
+
+  - Triprotic H₃PO₄ has three acidic protons per molecule.
+  - Formal complete neutralization to Na₃PO₄ requires a 1:3 H₃PO₄:NaOH mole ratio.
+  - Stoichiometric proton count and the number of clearly resolved titration steps are different concepts.
+
+>> Bottom Line: The balanced complete-neutralization equation requires 3 mol NaOH per mol H₃PO₄. It does not guarantee three clearly visible steps on an aqueous titration curve.
+
+==============================================================================
+Q57  [chem-119]  Answer: B
+==============================================================================
+At 25 °C, 50 mL of 0.10 M HCl is mixed with 50 mL of 0.10 M NaOH. Assuming ideal dilute-solution behavior, what is the resulting pH?
+
+  A) 1.0
+  B) 7.0
+  C) 13.0
+  D) 0.0
+
+### Correct Answer: B. 7.0
+
+Moles of HCl = 0.10 x 0.050 = 0.005 mol. Moles of NaOH = 0.10 x 0.050 = 0.005 mol.
+
+HCl and NaOH react 1:1, and each sample contains 0.005 mol. Neither is left in stoichiometric excess. The remaining Na⁺ and Cl⁻ have negligible acid-base effects, so the solution is approximately neutral, pH 7 at 25 °C.
+
+### Why the other choices are wrong:
+
+**A. 1.0:** pH 1 describes approximately 0.10 M HCl before mixing in this concentration model. The equal amount of NaOH neutralizes that acid, so the final solution does not retain its starting acidic pH.
+
+**C. 13.0:** pH 13 describes approximately 0.10 M NaOH before mixing at 25 °C. Its hydroxide is neutralized by the equal amount of HCl, leaving no excess strong base.
+
+**D. 0.0:** pH 0 would correspond to about 1 M H⁺ in the simple concentration approximation. No acid remains in stoichiometric excess here; the mixture is approximately neutral.
+
+### Key Educational Points:
+
+  - Calculate moles before deciding whether acid or base remains in excess.
+  - Both samples contain 0.005 mol and react in a 1:1 ratio.
+  - The final solution is approximately neutral at 25 °C; pH 7 is not a temperature-independent definition of neutrality.
+
+>> Bottom Line: Equal stoichiometric amounts of HCl and NaOH leave a nearly neutral NaCl solution, with pH about 7 at 25 °C.
+
+==============================================================================
+Q58  [chem-120]  Answer: A
+==============================================================================
+Which of the following salts produces an acidic solution when dissolved in water?
+
+  A) NH4Cl
+  B) NaCl
+  C) KNO3
+  D) Na2CO3
+
+### Correct Answer: A. NH4Cl
+
+NH4+ is the conjugate acid of the weak base NH3, so it hydrolyzes in water: NH4+ + H2O ⇌ NH3 + H3O+, producing an acidic solution. Cl- is the conjugate base of the strong acid HCl and its effect on pH is negligible.
+
+NaCl and KNO3 are neutral salts (strong acid + strong base). Na2CO3 is basic (CO3^2- hydrolyzes).
+
+### Why the other choices are wrong:
+
+**B. NaCl:** Na⁺ and Cl⁻ have negligible acid-base effects in water under these conditions, so NaCl gives an approximately neutral solution rather than the acidic solution requested.
+
+**C. KNO3:** K⁺ and NO₃⁻ have negligible acid-base effects in water under these conditions. KNO₃ therefore gives an approximately neutral solution, unlike NH₄Cl.
+
+**D. Na2CO3:** CO₃²⁻ accepts a proton from water: CO₃²⁻ + H₂O ⇌ HCO₃⁻ + OH⁻. The hydroxide produced makes sodium carbonate solution basic, not acidic.
+
+### Key Educational Points:
+
+  - NH₄⁺ is the conjugate acid of the weak base NH₃.
+  - It transfers a proton to water at equilibrium, increasing H₃O⁺ and making the solution acidic.
+  - Salt-solution pH depends on the acid-base behavior of the dissolved ions; carbonate instead produces OH⁻.
+
+>> Bottom Line: Salts of weak bases and strong acids produce acidic solutions due to cation hydrolysis.
+
+==============================================================================
+Q59  [chem-121]  Answer: C
+==============================================================================
+What volume of 0.20 M NaOH is required to reach the equivalence point when titrating 25.0 mL of 0.40 M HCl?
+
+  A) 12.5 mL
+  B) 25.0 mL
+  C) 50.0 mL
+  D) 100.0 mL
+
+### Correct Answer: C. 50.0 mL
+
+For this 1:1 HCl/NaOH reaction, the equivalence point is reached when moles of acid = moles of base. Moles HCl = 0.40 x 0.025 = 0.010 mol. Volume NaOH = moles/M = 0.010/0.20 = 0.050 L = 50.0 mL.
+
+The 1:1 stoichiometry of HCl and NaOH means we need equal moles, but different volumes due to the different concentrations.
+
+### Why the other choices are wrong:
+
+**A. 12.5 mL:** 12.5 mL of 0.20 M NaOH contains 0.00250 mol, only one-quarter of the 0.0100 mol HCl present. It cannot reach equivalence.
+
+**B. 25.0 mL:** 25.0 mL of 0.20 M NaOH contains 0.00500 mol, only half the HCl amount. The base is half as concentrated as the acid, so twice the acid volume is required.
+
+**D. 100.0 mL:** This volume provides 20.0 mmol of NaOH - double the amount of HCl. This would result in excess base and a basic solution (pH > 7). At the equivalence point, you need exactly equal moles, not excess base.
+
+### Key Educational Points:
+
+  - HCl amount = 0.40 mol/L × 0.0250 L = 0.0100 mol.
+  - The 1:1 reaction requires the same amount of NaOH.
+  - Required volume = 0.0100/0.20 = 0.0500 L = 50.0 mL.
+
+>> Bottom Line: Use the balanced equation to match stoichiometric amounts. HCl and NaOH react 1:1, so 0.010 mol HCl requires 50.0 mL of 0.20 M NaOH.
+
+==============================================================================
+Q60  [chem-122]  Answer: B
+==============================================================================
+A buffer contains 0.30 M CH₃COOH and 0.60 M CH₃COONa. Using the concentration form of the Henderson-Hasselbalch equation with pKa = 4.74, what is its approximate pH?
+
+  A) 4.44
+  B) 5.04
+  C) 4.74
+  D) 5.34
+
+### Correct Answer: B. 5.04
+
+Using Henderson-Hasselbalch: pH = pKa + log([A-]/[HA]) = 4.74 + log(0.60/0.30) = 4.74 + log(2) = 4.74 + 0.30 = 5.04.
+
+The larger acetate concentration raises the pH above pKa, but the estimated pH of 5.04 is still acidic under ordinary aqueous conditions.
+
+### Why the other choices are wrong:
+
+**A. 4.44:** 4.44 results from reversing the ratio: 4.74 + log(0.30/0.60). The equation uses conjugate base divided by weak acid, so the required ratio is 2, not 0.5.
+
+**C. 4.74:** pH would be approximately pKa = 4.74 if the acid and conjugate base had equal concentrations in this model. Here acetate is twice as concentrated, so the logarithmic term is positive.
+
+**D. 5.34:** This value overshoots the correct answer. It might come from using a ratio of 4 instead of 2 (since log 4 = 0.60). The actual ratio is [A⁻]/[HA] = 0.60/0.30 = 2, and log(2) = 0.30, giving pH = 4.74 + 0.30 = 5.04.
+
+### Key Educational Points:
+
+  - The Henderson-Hasselbalch ratio is [conjugate base]/[weak acid].
+  - Here the ratio is 2 and log 2 ≈ 0.30, giving pH ≈ 5.04.
+  - This buffer remains acidic; pH above pKa is not the same as pH above neutral.
+
+>> Bottom Line: For the stipulated concentration model, pH ≈ 4.74 + log 2 = 5.04. More conjugate base than acid raises pH above pKa without necessarily making the solution alkaline.
+
+==============================================================================
+COVERAGE AFTER THIS BATCH
+==============================================================================
+Chemistry reviewed before this batch  : 60
+  (chem-1..chem-18, chem-20..chem-60, chem-62 (review batch 1))
+New unique chemistry ids this batch   : 60  (57 edited, 3 kept unchanged)
+Previously reviewed items included again: none
+Chemistry reviewed after this batch   : 120 of 485
+Chemistry still unreviewed            : 365
+  chem-19 (optical isomerism) and chem-61 (ideal gas, 300 K to 600 K at fixed volume) remain unreviewed inside the chem-1..chem-122 span; every other unreviewed chemistry id is chem-123 onward.
+
+Biology is unaffected by this pass: 624 of 629 reviewed, with bio-12, bio-346, bio-513, bio-518, bio-583 still awaiting review. This review
+does not resolve those five pending biology items.
+
+Implementation checks passed. This pack is awaiting final scientific content approval, which is reported separately from software consistency.
