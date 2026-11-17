@@ -23,6 +23,10 @@
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
+// NOTE: chemistry review batch 4 (chem-182..chem-241) landed after this suite
+// was written, so those 60 ids were pruned from its untouched fixture and the
+// counts below were stepped down. The sweep still covers every chemistry record
+// that no reviewed pack owns.
 'use strict';
 
 const fs = require('fs');
@@ -229,8 +233,8 @@ section('3. Nothing outside the pack moved');
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} untouched biology hashes, expected 629`);
-ok(nChem === 306, `${nChem} untouched chemistry hashes, expected 306`);
-ok(nChem + 60 + 60 + 59 === 485, 'the untouched set, this pack and chemistry batches 2 and 3 should account for all 485');
+ok(nChem === 246, `${nChem} untouched chemistry hashes, expected 246`);
+ok(nChem + 60 + 60 + 59 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3 and 4 should account for all 485');
 ok(data.biology.length === 629, `biology holds ${data.biology.length} questions, expected 629`);
 ok(data.chemistry.length === 485, `chemistry holds ${data.chemistry.length} questions, expected 485`);
 

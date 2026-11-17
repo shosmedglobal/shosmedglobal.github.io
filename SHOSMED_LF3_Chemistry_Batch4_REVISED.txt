@@ -1,0 +1,1629 @@
+SHOSMED LF3 CHEMISTRY, BATCH 4: REVISED 60-QUESTION EXPORT
+Implemented 17 November 2026 from SHOSMED_LF3_Chemistry_Batch4_Review.txt
+For scientific re-read. Implementation checks establish structure and
+consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  Display Q1-Q60 map to chem-182 .. chem-241.
+  Each id was verified on FOUR independent things before any text changed:
+  a distinctive phrase from the ORIGINAL stem, all four ORIGINAL option texts,
+  the stored answer letter, and the review's full key block and A/B/C/D tally.
+  The stem phrase and the option set were tested TOGETHER, because an option set
+  alone is not unique in this bank: Q11 (chem-192) and Q36 (chem-217) share the
+  set 0 / 1 / 2 / 3. Contiguity was a RESULT of that verification, not an
+  assumption. No id in this pack appears in chemistry batch 1, 2 or 3, so all 60
+  displays are newly reviewed unique ids.
+
+  Verified key block : BCDBBCCBBB CBCCDCDBCB BCCCBCCBCC CBCCCBABBB ACCBCBBBBB CCBBBCCABB
+  Verified tally     : A=3, B=28, C=26, D=3
+
+WHAT CHANGED
+  All 60 items edited: every one carried a repeated generic three-point block.
+  Stems replaced          : 28 (Q5, Q10, Q11, Q13, Q14, Q17, Q19, Q23, Q24, Q26, Q27, Q28, Q31, Q32, Q40, Q41, Q45, Q47, Q49, Q50, Q52, Q53, Q54, Q55, Q56, Q58, Q59, Q60)
+  Option texts replaced   : 3 (Q14 D, Q19 D, Q60 D)
+  Educational points      : 60 blocks replaced, 180 points total
+  Bottom Lines            : 45 replaced, 12 kept, 57 total in Q1-Q57, none added to Q58-Q60
+  Tables                  : 13 preserved; 7 repaired (Q14, Q22, Q26, Q35, Q37, Q50, Q57)
+  Distractor feedback     : 25 missing paragraphs restored, 113 replaced, 180 total
+  Answer letters and ids  : none moved
+  Q59                     : the fairness rewrite, with new stem and all four paragraphs
+
+PRESENTATION PRESERVED
+  Q1-Q57 keep the UNLETTERED keyed heading; Q58-Q60 keep the lettered one.
+  Every heading, keyed and distractor, now matches its own option text.
+  Q41's pre-existing trailing empty div element was left byte-for-byte.
+  Less-than and greater-than signs in student text follow this pack's stored
+  HTML-entity convention, which the real sanitizer passes through unchanged.
+
+COVERAGE, FROM UNIQUE VERIFIED IDS
+  Chemistry reviewed before this batch : 179 of 485
+  New unique chemistry ids this batch  : 60 (60 displays, no repeats of an earlier pack)
+  Chemistry reviewed after this batch  : 239 of 485
+  Chemistry still unreviewed           : 246
+  Biology                              : unaffected, 624 of 629 reviewed
+
+DEVIATIONS
+  none. Seven presentation notes and five small extensions beyond a named
+  sentence are recorded in scripts/chem-review-batch4-idmap.json.
+
+==============================================================================
+
+Q1  [chem-182]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The electron configuration of a Cl− ion is the same as that of which noble gas?
+
+  A. Neon
+  B. Argon   <= key
+  C. Krypton
+  D. Helium
+
+EXPLANATION:
+Correct Answer: Argon
+Chlorine (Z=17) has the electron configuration 1s² 2s² 2p⁶ 3s² 3p⁵. When it gains one electron to form Cl−, it has 18 electrons: 1s² 2s² 2p⁶ 3s² 3p⁶.
+This is identical to the electron configuration of argon (Ar, Z=18). The Cl− ion is said to be isoelectronic with argon.
+Why the other choices are wrong:
+A. Neon: Neon has 10 electrons. A chloride ion has 17 + 1 = 18 electrons, so its configuration does not match neon.
+C. Krypton: Krypton has 36 electrons. Chloride has only 18 electrons and therefore matches argon, not krypton.
+D. Helium: Helium has only two electrons, with configuration 1s². Chloride has 18 electrons, so it cannot have helium's configuration.
+Key Educational Points:
+  - A negative ion has more electrons than its neutral atom; Cl− has 17 + 1 = 18.
+  - Argon's configuration is 1s² 2s² 2p⁶ 3s² 3p⁶, also the configuration of Cl−.
+  - Species with the same number of electrons are isoelectronic, but their nuclear charges and sizes can differ.
+Bottom Line: Cl− has 18 electrons and the same electron configuration as argon. Count electrons using the atomic number and ionic charge; sharing an electron configuration does not make two species the same element.
+
+==============================================================================
+
+Q2  [chem-183]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which subshell designation is NOT possible?
+
+  A. 3d
+  B. 2p
+  C. 2d   <= key
+  D. 4f
+
+EXPLANATION:
+Correct Answer: 2d
+The angular momentum quantum number l determines the subshell type: l=0 (s), l=1 (p), l=2 (d), l=3 (f). The value of l must be less than n (it ranges from 0 to n−1).
+For n=2, l can only be 0 or 1, corresponding to 2s and 2p subshells. A 2d subshell would require l=2, but l cannot equal n. The d subshell first appears at n=3.
+All other options are valid: 3d (n=3, l=2), 2p (n=2, l=1), 4f (n=4, l=3).
+Why the other choices are wrong:
+A. 3d: For a 3d subshell, n = 3 and l = 2. This is allowed because l can take the values 0, 1 and 2 when n = 3.
+B. 2p: For a 2p subshell, n = 2 and l = 1. This is allowed because l can be 0 or 1 when n = 2.
+D. 4f: For a 4f subshell, n = 4 and l = 3. This is allowed because l can range from 0 to 3 when n = 4.
+Key Educational Points:
+  - For a given principal quantum number n, l can range from 0 to n − 1.
+  - The labels s, p, d and f correspond to l = 0, 1, 2 and 3.
+  - A d subshell requires n ≥ 3, so 2d is impossible.
+Bottom Line: The quantum number l ranges from 0 to n−1. Therefore, a d subshell (l=2) cannot exist for n=1 or n=2.
+
+==============================================================================
+
+Q3  [chem-184]  correct answer: D
+------------------------------------------------------------------------------
+STEM: According to the Pauli exclusion principle, two electrons in the same orbital must differ in their:
+
+  A. principal quantum number
+  B. angular momentum quantum number
+  C. magnetic quantum number
+  D. spin quantum number   <= key
+
+EXPLANATION:
+Correct Answer: spin quantum number
+The Pauli exclusion principle states that no two electrons in an atom can have the same set of four quantum numbers (n, l, mₗ, mₛ).
+Two electrons in the same orbital share identical values of n, l, and mₗ. The only quantum number left to differ is the spin quantum number (mₛ), which can be +½ or −½. This is why each orbital can hold a maximum of 2 electrons with opposite spins.
+Why the other choices are wrong:
+A. principal quantum number: Electrons in the same orbital have the same principal quantum number n, which identifies their shell. It is their spin quantum numbers that must differ.
+B. angular momentum quantum number: Electrons in the same orbital also share the same angular momentum quantum number l, which identifies the subshell. Different l values would place them in different subshells.
+C. magnetic quantum number: The magnetic quantum number (mₗ) specifies which orbital within a subshell an electron occupies. Two electrons in the same orbital have the same mₗ. The Pauli exclusion principle requires that they differ in spin (mₛ), limiting each orbital to a maximum of 2 electrons (one spin-up, one spin-down).
+Key Educational Points:
+  - An electron in an atom is described by four quantum numbers: n, l, mₗ and mₛ.
+  - Two electrons in the same orbital share n, l and mₗ.
+  - An orbital holds at most two electrons, with opposite spin quantum numbers, +½ and −½.
+Bottom Line: The Pauli exclusion principle limits each orbital to two electrons, which must have opposite spins (+½ and −½).
+
+==============================================================================
+
+Q4  [chem-185]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following has the most protons?
+
+  A. ⁵⁶Fe
+  B. ⁵⁸Ni   <= key
+  C. ⁵⁵Mn
+  D. ⁵⁹Co
+
+EXPLANATION:
+Correct Answer: ⁵⁸Ni
+The number of protons equals the atomic number (Z), not the mass number. The mass number (superscript) is the sum of protons and neutrons.
+
+Isotope | Element | Protons (Z)
+    ⁵⁶Fe | Iron | 26
+    ⁵⁸Ni | Nickel | 28
+    ⁵⁵Mn | Manganese | 25
+    ⁵⁹Co | Cobalt | 27
+
+Nickel has the highest atomic number (28) and therefore the most protons.
+Why the other choices are wrong:
+A. ⁵⁶Fe: Iron has atomic number 26, so ⁵⁶Fe contains 26 protons. Its mass number 56 counts protons plus neutrons, not protons alone.
+C. ⁵⁵Mn: Manganese has atomic number 25, so ⁵⁵Mn contains 25 protons. Nickel has 28 protons and therefore has more than manganese.
+D. ⁵⁹Co: Cobalt (Co) has atomic number 27, giving it 27 protons. Although ⁵⁹Co has the highest mass number of the four, mass number includes neutrons. Nickel (Z=28) still has more protons. This question tests whether you distinguish between mass number and atomic number.
+Key Educational Points:
+  - Atomic number Z equals the number of protons and determines the element.
+  - Mass number A equals protons plus neutrons.
+  - Nickel has 28 protons, more than the listed iron, manganese and cobalt isotopes, regardless of their mass numbers.
+Bottom Line: The number of protons is determined by the element's atomic number, not its mass number. The mass number includes both protons and neutrons.
+
+==============================================================================
+
+Q5  [chem-186]  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the ground-state electron configuration of a neutral chromium atom (Z = 24)?
+
+  A. [Ar] 3d⁴ 4s²
+  B. [Ar] 3d⁵ 4s¹   <= key
+  C. [Ar] 3d⁶
+  D. [Ar] 3d³ 4s² 4p¹
+
+EXPLANATION:
+Correct Answer: [Ar] 3d⁵ 4s¹
+Neutral chromium has 24 electrons. Its observed ground-state configuration is [Ar] 3d⁵ 4s¹. The simple filling sequence would suggest [Ar] 3d⁴ 4s², but the 3d and 4s levels are close in energy, and interactions among the electrons favor the observed arrangement. Chromium is therefore a familiar exception to the simplest filling-rule prediction. A half-filled d subshell is a useful pattern to recognize here, not a rule that predicts every atom's configuration.
+Why the other choices are wrong:
+A. [Ar] 3d⁴ 4s²: [Ar] 3d⁴ 4s² is the prediction from the simplest filling sequence, but it is not chromium's observed ground-state configuration. Chromium has one 4s electron and five 3d electrons.
+C. [Ar] 3d⁶: [Ar] 3d⁶ contains 24 electrons, but the correct electron count alone does not establish the ground state. Neutral chromium's ground state also contains one 4s electron.
+D. [Ar] 3d³ 4s² 4p¹: This configuration places an electron in 4p and does not represent chromium's ground state. The observed configuration is [Ar] 3d⁵ 4s¹.
+Key Educational Points:
+  - Neutral chromium has 24 electrons: 18 in the argon core and six outside it.
+  - Its observed ground-state configuration is [Ar] 3d⁵ 4s¹.
+  - Simple orbital-filling rules are useful guides, but some atoms have exceptions because orbital energies and electron interactions are close in balance.
+Bottom Line: Neutral chromium's ground state is [Ar] 3d⁵ 4s¹. Learn this observed exception to the simple filling sequence; do not apply a universal 'half-filled is always preferred' rule.
+
+==============================================================================
+
+Q6  [chem-187]  correct answer: C
+------------------------------------------------------------------------------
+STEM: How many orbitals are in the 4f subshell?
+
+  A. 3
+  B. 5
+  C. 7   <= key
+  D. 9
+
+EXPLANATION:
+Correct Answer: 7
+The number of orbitals in a subshell equals 2l + 1, where l is the angular momentum quantum number.
+
+Subshell | l value | Number of orbitals (2l+1) | Max electrons
+    s | 0 | 1 | 2
+    p | 1 | 3 | 6
+    d | 2 | 5 | 10
+    f | 3 | 7 | 14
+
+For the f subshell, l=3, so the number of orbitals = 2(3)+1 = 7. Each can hold 2 electrons, for a maximum of 14 electrons.
+Why the other choices are wrong:
+A. 3: Three orbitals corresponds to a p subshell (l=1, mₗ = −1, 0, +1). The f subshell has l=3, giving mₗ values from −3 to +3: that is 7 distinct values, meaning 7 orbitals. The number of orbitals in any subshell is always 2l + 1.
+B. 5: Five orbitals corresponds to a d subshell (l=2, mₗ = −2 to +2). The f subshell has l=3, so mₗ ranges from −3 to +3, giving 2(3)+1 = 7 orbitals. Each orbital can hold 2 electrons, so the f subshell can accommodate a maximum of 14 electrons.
+D. 9: Nine orbitals would correspond to l=4 (a g subshell, which has mₗ from −4 to +4). The f subshell has l=3, giving 2(3)+1 = 7 orbitals. The pattern is: s=1, p=3, d=5, f=7, g=9 orbitals.
+Key Educational Points:
+  - An f subshell has l = 3.
+  - A subshell contains 2l + 1 orbitals, so an f subshell contains seven.
+  - Each orbital holds at most two electrons, giving an f subshell a maximum capacity of 14 electrons.
+Bottom Line: The number of orbitals in a subshell is 2l+1. The s, p, d, and f subshells contain 1, 3, 5, and 7 orbitals respectively.
+
+==============================================================================
+
+Q7  [chem-188]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which ion has the smallest ionic radius?
+
+  A. Na⁺
+  B. Mg²⁺
+  C. Al³⁺   <= key
+  D. F−
+
+EXPLANATION:
+Correct Answer: Al³⁺
+Na⁺, Mg²⁺, Al³⁺, and F− are all isoelectronic species with 10 electrons (same as neon). For isoelectronic species, the one with the most protons has the smallest radius because the greater nuclear charge pulls the electrons closer.
+
+Ion | Protons | Electrons | Relative size
+    F− | 9 | 10 | Largest
+    Na⁺ | 11 | 10 | ↓
+    Mg²⁺ | 12 | 10 | ↓
+    Al³⁺ | 13 | 10 | Smallest
+
+Al³⁺ has 13 protons attracting only 10 electrons, resulting in the smallest ionic radius.
+Why the other choices are wrong:
+A. Na⁺: Na+ has 10 electrons attracted by 11 protons. Al³⁺ also has 10 electrons but has 13 protons, so its stronger nuclear attraction produces a smaller ion.
+B. Mg²⁺: Mg²⁺ has the same 10-electron configuration as Al³⁺, but only 12 protons rather than 13. It is therefore larger than Al³⁺.
+D. F−: F⁻ has 10 electrons but only 9 protons - the fewest protons among the isoelectronic set. This makes F⁻ the largest of these four ions because fewer protons exert less pull on the electron cloud. Anions are generally larger than cations with the same electron count.
+Key Educational Points:
+  - F−, Na+, Mg²⁺ and Al³⁺ each have 10 electrons.
+  - Within this isoelectronic series, increasing nuclear charge pulls the electron cloud more tightly.
+  - Their size order is F− > Na+ > Mg²⁺ > Al³⁺.
+Bottom Line: Among isoelectronic species, higher nuclear charge (more protons) results in a smaller ionic radius.
+
+==============================================================================
+
+Q8  [chem-189]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which element has the electron configuration [Ne] 3s² 3p³?
+
+  A. Silicon
+  B. Phosphorus   <= key
+  C. Sulfur
+  D. Chlorine
+
+EXPLANATION:
+Correct Answer: Phosphorus
+[Ne] represents the first 10 electrons (1s² 2s² 2p⁶). Adding 3s² 3p³ gives 10 + 2 + 3 = 15 electrons.
+The element with atomic number 15 is phosphorus (P). Phosphorus is in Period 3, Group VA, with 5 valence electrons (3s² 3p³). Silicon (Z=14) would be [Ne] 3s² 3p², sulfur (Z=16) would be [Ne] 3s² 3p⁴, and chlorine (Z=17) would be [Ne] 3s² 3p⁵.
+Why the other choices are wrong:
+A. Silicon: Silicon has 14 electrons and ground-state configuration [Ne] 3s² 3p². The additional 3p electron in the question identifies phosphorus instead.
+C. Sulfur: Sulfur has 16 electrons and configuration [Ne] 3s² 3p⁴. The given configuration contains one fewer electron.
+D. Chlorine: Chlorine has 17 electrons and configuration [Ne] 3s² 3p⁵. The given configuration contains only 15 electrons.
+Key Educational Points:
+  - [Ne] represents 10 electrons; adding 3s² 3p³ gives 15 in total.
+  - Atomic number 15 identifies phosphorus.
+  - Phosphorus has five valence electrons and belongs to Group 15, also called Group VA in older notation.
+Bottom Line: Electron configuration reveals element identity. Group VA elements have 5 valence electrons in the ns²np³ configuration.
+
+==============================================================================
+
+Q9  [chem-190]  correct answer: B
+------------------------------------------------------------------------------
+STEM: A neutral atom has 20 neutrons and a mass number of 39. What is the element?
+
+  A. Calcium
+  B. Potassium   <= key
+  C. Argon
+  D. Scandium
+
+EXPLANATION:
+Correct Answer: Potassium
+The mass number (A) equals the number of protons (Z) plus neutrons (N): A = Z + N.
+Given: A = 39 and N = 20, so Z = 39 − 20 = 19 protons.
+The element with atomic number 19 is potassium (K). Calcium has Z=20, argon has Z=18, and scandium has Z=21.
+Why the other choices are wrong:
+A. Calcium: Calcium has 20 protons. An atom with mass number 39 and 20 protons would have 19 neutrons, not the 20 stated in the question.
+C. Argon: Argon has 18 protons. An argon atom with mass number 39 would have 21 neutrons, which does not match the question.
+D. Scandium: Scandium has 21 protons. With mass number 39, it would have 18 neutrons rather than 20.
+Key Educational Points:
+  - Mass number equals the number of protons plus the number of neutrons.
+  - Here, Z = 39 − 20 = 19, identifying potassium.
+  - Because the atom is neutral, it also has 19 electrons.
+Bottom Line: Mass number = protons + neutrons. The number of protons (atomic number) uniquely identifies the element.
+
+==============================================================================
+
+Q10  [chem-191]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In the usual introductory Aufbau (diagonal-rule) filling sequence for neutral atoms, how are the 4s and 3d subshells ordered?
+
+  A. 3d before 4s
+  B. 4s before 3d   <= key
+  C. 3d and 4s simultaneously
+  D. 4p before 3d
+
+EXPLANATION:
+Correct Answer: 4s before 3d
+The usual diagonal-rule sequence places 4s before 3d: 3p → 4s → 3d → 4p. In this rule, subshells are ordered by n + l; 4s has n + l = 4, whereas 3d has n + l = 5. This is a useful introductory filling guide. It does not mean that 4s is always lower in energy than 3d in every atom or ion: the relative energies depend on the atom and its electron configuration.
+Why the other choices are wrong:
+A. 3d before 4s: The usual diagonal-rule sequence places 4s before 3d, not the reverse. This question asks about that introductory sequence, rather than the orbital-energy ordering in every individual atom or ion.
+C. 3d and 4s simultaneously: The introductory filling sequence lists 4s and then 3d as separate steps. It does not describe them as filling simultaneously.
+D. 4p before 3d: In the usual sequence, 3d comes before 4p. Thus the relevant order is 4s → 3d → 4p.
+Key Educational Points:
+  - The diagonal rule orders subshells using n + l, with lower n first when those sums are equal.
+  - In that sequence, 4s comes before 3d, and 3d before 4p.
+  - Real orbital energies depend on the atom and its electron configuration, so the filling mnemonic has limits.
+Bottom Line: The usual introductory filling sequence is 3p → 4s → 3d → 4p. Do not turn that mnemonic into a claim that 4s is always lower in energy than 3d.
+
+==============================================================================
+
+Q11  [chem-192]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In the hydrogen-like atomic-orbital model, what is the total number of radial and angular nodes in a 3p orbital?
+
+  A. 0
+  B. 1
+  C. 2   <= key
+  D. 3
+
+EXPLANATION:
+Correct Answer: 2
+The total number of nodes in an orbital equals n − 1, where n is the principal quantum number.
+For a 3p orbital: total nodes = 3 − 1 = 2.
+For a 3p orbital, n = 3 and l = 1. Radial nodes = n − l − 1 = 1, angular nodes = l = 1, and the total is n − 1 = 2. The angular node of a usual real p orbital is a plane, but that does not make every angular node in every subshell planar.
+Why the other choices are wrong:
+A. 0: Only the 1s orbital has zero nodes. The total number of nodes for any orbital is n − 1. For a 3p orbital: 3 − 1 = 2 nodes (1 radial node + 1 angular node). Nodes are regions where the probability of finding an electron is zero, and they increase with the principal quantum number.
+B. 1: One is the number of radial nodes, and also the number of angular nodes, in a 3p orbital. The question asks for their total, which is 1 + 1 = 2.
+D. 3: Three total nodes would apply to an orbital with n = 4 (since total nodes = n − 1). For the 3p orbital, total nodes = 3 − 1 = 2. These are distributed as 1 angular node (the nodal plane characteristic of all p orbitals) and 1 radial node (a spherical shell where electron density is zero).
+Key Educational Points:
+  - For a 3p orbital, n = 3 and l = 1.
+  - Radial nodes = n − l − 1 = 1.
+  - Angular nodes = l = 1, so the total is two.
+Bottom Line: In the hydrogen-like orbital model, total nodes = n − 1. A 3p orbital has one radial node and one angular node, giving two in total.
+
+==============================================================================
+
+Q12  [chem-193]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which pair of atoms are isotopes of the same element?
+
+  A. ¹⁴C and ¹⁴N
+  B. ¹⁶O and ¹⁸O   <= key
+  C. ²³Na and ²⁴Mg
+  D. ⁴⁰Ar and ⁴⁰Ca
+
+EXPLANATION:
+Correct Answer: ¹⁶O and ¹⁸O
+Isotopes are atoms of the same element (same number of protons, same Z) with different mass numbers (different numbers of neutrons).
+¹⁶O and ¹⁸O are both oxygen atoms (Z=8). ¹⁶O has 8 neutrons and ¹⁸O has 10 neutrons - they are isotopes.
+¹⁴C (Z=6) and ¹⁴N (Z=7) are isobars (same mass number, different elements). ⁴⁰Ar (Z=18) and ⁴⁰Ca (Z=20) are also isobars.
+Why the other choices are wrong:
+A. ¹⁴C and ¹⁴N: ¹⁴C and ¹⁴N have the same mass number but different atomic numbers: carbon has six protons and nitrogen has seven. They are isobars, not isotopes of one element.
+C. ²³Na and ²⁴Mg: ²³Na has 11 protons and ²⁴Mg has 12. Although each has 12 neutrons, their different proton numbers make them different elements, not isotopes of one element.
+D. ⁴⁰Ar and ⁴⁰Ca: ⁴⁰Ar and ⁴⁰Ca share mass number 40 but have different proton numbers, 18 and 20. They are isobars, not isotopes of one element.
+Key Educational Points:
+  - Isotopes of one element share a proton number but differ in neutron number.
+  - ¹⁶O and ¹⁸O each have eight protons, with eight and ten neutrons respectively.
+  - Equal mass numbers alone do not establish isotopes; different elements can have the same mass number.
+Bottom Line: Isotopes have the same atomic number but different mass numbers. Isobars have the same mass number but are different elements.
+
+==============================================================================
+
+Q13  [chem-194]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed element has the highest electronegativity on the Pauling scale?
+
+  A. Oxygen
+  B. Nitrogen
+  C. Fluorine   <= key
+  D. Chlorine
+
+EXPLANATION:
+Correct Answer: Fluorine
+Electronegativity describes an atom's attraction for the electrons it shares in a bond. On the Pauling scale it generally increases across a period and generally decreases down a group, and fluorine is the highest of all the elements at about 4.0.
+
+Element | Electronegativity (Pauling)
+    Nitrogen | 3.0
+    Oxygen | 3.4
+    Fluorine | 4.0
+    Chlorine | 3.2
+
+Why the other choices are wrong:
+A. Oxygen: Oxygen is highly electronegative, about 3.4 on the Pauling scale, but fluorine is higher at about 4.0.
+B. Nitrogen: Nitrogen has a Pauling electronegativity of about 3.0. It attracts shared electrons strongly, but less strongly than fluorine.
+D. Chlorine: Chlorine has an electronegativity of about 3.16 - high, but less than fluorine (3.98). Chlorine is directly below fluorine in Group 17. Moving down a group decreases electronegativity because the valence electrons are farther from the nucleus and more shielded by inner electron shells.
+Key Educational Points:
+  - Electronegativity describes an atom's attraction for shared bonding electrons.
+  - Fluorine is highest on the Pauling scale, at about 4.0.
+  - Electronegativity and electron affinity are different properties and need not have the same highest-ranked element.
+Bottom Line: Fluorine has the highest Pauling electronegativity, about 4.0. Electronegativity concerns shared electrons in a bond, not the energy change when an isolated atom gains an electron.
+
+==============================================================================
+
+Q14  [chem-195]  correct answer: C
+------------------------------------------------------------------------------
+STEM: For main-group elements, which property generally increases down a group?
+
+  A. Ionization energy
+  B. Electronegativity
+  C. Metallic character   <= key
+  D. Energy released on electron attachment
+
+EXPLANATION:
+Correct Answer: Metallic character
+For main-group elements, the following tendencies are generally observed down a group:
+
+Property | Trend down a group
+    Atomic radius | Generally increases
+    Metallic character | Generally increases
+    Ionization energy | Generally decreases
+    Electronegativity | Generally decreases
+    Energy released on electron attachment | Irregular; not a reliable simple down-group trend
+
+Metallic character generally increases down a main group because valence electrons lie farther from the nucleus and are more shielded, so an outer electron is easier to lose. Trends of this kind are useful generalizations rather than exceptionless rules.
+Why the other choices are wrong:
+A. Ionization energy: First ionization energy generally decreases down a main group because the outer electron is farther from the nucleus and more shielded. This is the opposite of the increase asked about.
+B. Electronegativity: Electronegativity generally decreases down a main group. An atom's attraction for shared bonding electrons becomes weaker as its valence shell lies farther from the nucleus.
+D. Energy released on electron attachment: The energy released when an isolated atom gains an electron has an irregular pattern, with important exceptions. A general increase down a main group is not the reliable trend tested here.
+Key Educational Points:
+  - Down a main group, valence electrons generally lie farther from the nucleus and experience more shielding.
+  - Easier loss of outer electrons is associated with greater metallic character.
+  - Periodic trends are useful generalizations, not rules without exceptions.
+Bottom Line: Metallic character generally increases down a main group as outer electrons become easier to remove. Electron attachment has more exceptions and should not be treated as a simple universal trend.
+
+==============================================================================
+
+Q15  [chem-196]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Which element has the highest first ionization energy?
+
+  A. Li
+  B. Be
+  C. N
+  D. Ne   <= key
+
+EXPLANATION:
+Correct Answer: Ne
+First ionization energy is the energy required to remove one electron from a gaseous atom. It generally increases across a period and up a group.
+Among the listed Period 2 elements, neon has the highest first ionization energy. Its filled 2s² 2p⁶ valence shell and large effective nuclear charge make an electron hard to remove.
+Note: Within Period 2, there are minor exceptions (Be > B and N > O), but the overall trend places Ne highest.
+Why the other choices are wrong:
+A. Li: Lithium's outer electron occupies 2s and is relatively easy to remove. Removing it leaves the helium configuration, so lithium's first ionization energy is much lower than neon's.
+B. Be: Beryllium has a higher ionization energy than lithium due to its greater nuclear charge, but it is still far below neon. Be has a filled 2s subshell, which provides some extra stability, but neon's completely filled 2s²2p⁶ configuration is far more stable. Ionization energy generally increases across a period.
+C. N: Nitrogen has a relatively high ionization energy (enhanced by its half-filled 2p³ configuration), but neon still has a significantly higher value. Among the listed Period 2 elements, neon's filled outer shell gives it the highest first ionization energy, so Ne requires the most energy to remove an electron.
+Key Educational Points:
+  - First ionization energy is the energy needed to remove one electron from a gaseous neutral atom.
+  - Neon has the highest first ionization energy among Li, Be, N and Ne.
+  - The general across-period increase has exceptions, including Be/B and N/O.
+Bottom Line: Neon has the highest first ionization energy among the listed Period 2 elements. Its filled valence shell and strong attraction for its outer electrons make electron removal difficult.
+
+==============================================================================
+
+Q16  [chem-197]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The elements Na, Mg, and Al are in the same period. Which has the smallest atomic radius?
+
+  A. Na
+  B. Mg
+  C. Al   <= key
+  D. They are all the same size
+
+EXPLANATION:
+Correct Answer: Al
+Atomic radius generally decreases across a period from left to right. Each successive element has one more proton, and the added electrons enter the same main shell, so the increase in nuclear charge is not fully offset by shielding. The effective nuclear attraction therefore grows and pulls the electron cloud closer.
+Na (Z=11), Mg (Z=12), and Al (Z=13) are all in Period 3. Al has the highest nuclear charge of the three and therefore the smallest atomic radius: Na > Mg > Al.
+Why the other choices are wrong:
+A. Na: Na, Mg and Al all have their outer electrons in the third shell. Sodium has the weakest effective nuclear attraction of these three and the largest atomic radius.
+B. Mg: Magnesium is smaller than sodium but larger than aluminum in this comparison. Aluminum's greater effective nuclear attraction pulls its outer electron cloud more tightly.
+D. They are all the same size: Sharing a principal shell does not give atoms identical sizes. In this series, increasing effective nuclear attraction gives the order Na > Mg > Al.
+Key Educational Points:
+  - Na, Mg and Al have valence electrons in the n = 3 shell.
+  - Increasing nuclear charge across this series is not completely offset by electron shielding.
+  - Aluminum is the smallest of these three atoms.
+Bottom Line: For Na, Mg and Al, the atomic-radius order is Na > Mg > Al. Increasing effective nuclear attraction across this part of Period 3 contracts the electron cloud.
+
+==============================================================================
+
+Q17  [chem-198]  correct answer: D
+------------------------------------------------------------------------------
+STEM: For neutral ground-state atoms of main-group elements in the same group, excluding helium, which number is shared?
+
+  A. neutrons
+  B. electron shells
+  C. total electrons
+  D. valence electrons   <= key
+
+EXPLANATION:
+Correct Answer: valence electrons
+Main-group elements in the same group have the same number of valence electrons, which helps explain their similar chemical behavior. For example, Group 1 atoms have one valence electron and Group 17 atoms have seven. Helium is a special case: it has two valence electrons, whereas the other Group 18 elements have eight. The simple rule should not be applied without qualification to all transition elements.
+Why the other choices are wrong:
+A. neutrons: Neutron number depends on the isotope and is not fixed by an element's group. Even isotopes of one element have different neutron numbers.
+B. electron shells: Elements farther down a group have additional occupied electron shells. Shared group membership does not mean a shared number of shells.
+C. total electrons: A neutral atom's total electron number equals its atomic number. Different elements in a group have different atomic numbers and therefore different total electron counts.
+Key Educational Points:
+  - Main-group elements in the same group usually share a valence-electron count.
+  - Group 1 atoms have one valence electron; Group 17 atoms have seven.
+  - Helium has two valence electrons, unlike the eight in the other Group 18 atoms.
+Bottom Line: The same-group valence-electron rule applies to neutral main-group atoms, with helium as the familiar Group 18 exception. Similar valence patterns help explain similar, not identical, chemistry.
+
+==============================================================================
+
+Q18  [chem-199]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following elements is classified as a metalloid?
+
+  A. Aluminum
+  B. Silicon   <= key
+  C. Phosphorus
+  D. Sulfur
+
+EXPLANATION:
+Correct Answer: Silicon
+Metalloids are elements with a combination of the properties associated with metals and with nonmetals. They are found along the staircase boundary between metals and nonmetals in the periodic table.
+Silicon (Si) is a well-known metalloid. It has a metallic luster but conducts electricity far less readily than a metal, which makes it a semiconductor; its conductivity can be changed by temperature or by added impurities. Aluminum is a metal, while phosphorus and sulfur are nonmetals.
+Other metalloids include boron (B), germanium (Ge), arsenic (As), antimony (Sb), and tellurium (Te).
+Why the other choices are wrong:
+A. Aluminum: Aluminum is a metal. Its conductivity, metallic bonding and ability to form positive ions distinguish it from the metalloid silicon.
+C. Phosphorus: Phosphorus is normally classified as a nonmetal, not a metalloid. Being near the metal/nonmetal boundary does not by itself make every element there a metalloid.
+D. Sulfur: Sulfur is a nonmetal. It does not have the characteristic semiconductor behavior used to identify silicon in this question.
+Key Educational Points:
+  - Metalloids have a combination of properties associated with metals and nonmetals.
+  - Silicon is a familiar metalloid and semiconductor.
+  - Aluminum is a metal, whereas phosphorus and sulfur are classified as nonmetals.
+Bottom Line: Silicon is a metalloid and an important semiconductor. It has a combination of properties that differs from both typical metals and typical nonmetals.
+
+==============================================================================
+
+Q19  [chem-200]  correct answer: C
+------------------------------------------------------------------------------
+STEM: For electron attachment X(g) + e− → X−(g), take the energy change as negative when energy is released. Across the main-group elements, this energy change generally becomes more negative when moving:
+
+  A. down a group
+  B. from right to left across a period
+  C. from left to right across a period (generally)   <= key
+  D. from Group 17 to Group 18
+
+EXPLANATION:
+Correct Answer: from left to right across a period (generally)
+Using the sign convention in the question, a more negative value means that electron attachment releases more energy. Across much of a main-group period, attachment becomes more favorable toward the halogens. This is a general pattern with important exceptions, especially for filled or half-filled subshells and noble gases. Chlorine releases more energy on electron attachment than fluorine, despite fluorine's higher electronegativity.
+Why the other choices are wrong:
+A. down a group: Electron-attachment energies do not follow a simple increasingly negative pattern down a group. Changes in size, shielding and electron repulsion produce important exceptions.
+B. from right to left across a period: The broad across-period tendency toward the halogens runs from left to right. Moving right to left is not the direction of the general trend asked about.
+D. from Group 17 to Group 18: Group 18 atoms already have closed valence shells. Adding an electron is much less favorable than for the neighboring halogens, so this step does not make the attachment energy more negative.
+Key Educational Points:
+  - Always check the sign convention used for electron affinity or electron-attachment energy.
+  - Across much of a main-group period, electron attachment becomes more favorable toward the halogens.
+  - Chlorine releases more energy than fluorine on electron attachment, showing that electronegativity and electron affinity are not identical rankings.
+Bottom Line: With negative values defined as energy release, electron attachment generally becomes more favorable toward the halogens across a period. The pattern has significant exceptions and is not a strict step-by-step rule.
+
+==============================================================================
+
+Q20  [chem-201]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which pair of elements would you expect to have the most similar chemical properties?
+
+  A. Na and Cl
+  B. O and S   <= key
+  C. N and O
+  D. Li and Be
+
+EXPLANATION:
+Correct Answer: O and S
+Main-group elements in the same group have the most similar chemical properties because they share the same number of valence electrons and similar outer-electron configurations. Similar valence configurations do not imply identical physical properties or reactivity.
+Oxygen (Z=8) and sulfur (Z=16) are both in Group VIA. Both have 6 valence electrons, form −2 ions, and make similar compounds (e.g., H₂O and H₂S).
+Na and Cl are in different groups (IA vs VIIA). N and O are neighbors in the same period. Li and Be are also neighbors in the same period.
+Why the other choices are wrong:
+A. Na and Cl: Sodium is a Group 1 metal with one valence electron, whereas chlorine is a Group 17 nonmetal with seven. Their usual chemical behavior is very different.
+C. N and O: Nitrogen and oxygen are neighboring elements but belong to different main groups. Nitrogen has five valence electrons and oxygen has six.
+D. Li and Be: Lithium and beryllium share a period, not a group. Lithium has one valence electron and beryllium has two, giving different usual bonding and ion-forming patterns.
+Key Educational Points:
+  - Oxygen and sulfur belong to Group 16 and have six valence electrons.
+  - Similar outer-electron patterns often produce analogous chemical behavior, such as the formulas H₂O and H₂S.
+  - Shared group membership does not mean identical physical properties or reaction rates.
+Bottom Line: Oxygen and sulfur are Group 16 main-group elements with six valence electrons. This gives useful similarities in chemistry, although their compounds and reactivities are not identical.
+
+==============================================================================
+
+Q21  [chem-202]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following correctly lists elements in order of INCREASING first ionization energy?
+
+  A. Na < Mg < Al < Si
+  B. K < Na < Li < He   <= key
+  C. F < O < N < C
+  D. Cl < Br < I < At
+
+EXPLANATION:
+Correct Answer: K < Na < Li < He
+First ionization energy generally increases up a group and across a period (left to right). K, Na, and Li are all in Group IA, with ionization energy increasing as we go up: K < Na < Li. Helium has the highest ionization energy of all elements (noble gas, Period 1).
+Option A is incorrect because Al actually has a lower ionization energy than Mg (removal from a 3p orbital is easier than from a filled 3s² pair). Option C is not an increasing sequence. For those four atoms, the correct increasing order is C < O < N < F. Nitrogen has a higher first ionization energy than oxygen, an important exception to the broad across-period trend. Option D reverses the trend (ionization energy decreases down a group).
+Why the other choices are wrong:
+A. Na < Mg < Al < Si: This sequence Na < Mg < Al < Si suggests a strictly increasing trend across Period 3, but it ignores the dip at aluminum. Al (group 13) actually has a lower ionization energy than Mg (group 2) because Al loses a 3p electron, which is easier to remove than a paired 3s electron in Mg. The actual order in Period 3 is Na < Al < Mg < Si < P (with another dip at S).
+C. F < O < N < C: The correct increasing order for these atoms is C < O < N < F. Oxygen has a paired electron in its 2p⁴ configuration; removing that electron reduces electron repulsion. Nitrogen's 2p³ configuration is half-filled, so removing an electron requires more energy than it does from oxygen.
+D. Cl < Br < I < At: This sequence Cl < Br < I < At suggests ionization energy increases going down a group, but the opposite is true. As you descend a group, atoms become larger, outer electrons are farther from the nucleus and more shielded, so ionization energy decreases. The correct order within a group would be Cl > Br > I > At.
+Key Educational Points:
+  - First ionization energy decreases from Li to Na to K as the outer electron becomes farther from the nucleus and more shielded.
+  - Helium holds its electrons especially strongly, so K < Na < Li < He is correct.
+  - Subshell occupancy matters: Mg has a higher first ionization energy than Al, and N has a higher value than O.
+Bottom Line: K < Na < Li < He is an increasing first-ionization-energy sequence. Across-period trends have exceptions: Mg > Al and N > O.
+
+==============================================================================
+
+Q22  [chem-203]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Transition metals are located in which block of the periodic table?
+
+  A. s-block
+  B. p-block
+  C. d-block   <= key
+  D. f-block
+
+EXPLANATION:
+Correct Answer: d-block
+Transition elements are associated with the d-block in the center of the periodic table. In the strict definition, a transition element has an incomplete d subshell in its atom or can form a cation with an incomplete d subshell. Thus 'd-block element' and 'transition element' are not perfectly interchangeable terms. For example, zinc and its usual Zn²⁺ ion both have filled d¹⁰ subshells. Variable oxidation states and colored complexes are common among transition elements, but not universal properties of every element or compound.
+
+Block | Location/examples | Useful distinction
+    s | Groups 1 and 2, plus helium | Includes the nonmetals hydrogen and helium as well as metals
+    p | Groups 13-18, except helium | Contains metals, metalloids and nonmetals
+    d | Central block, Groups 3-12 | Contains the transition elements; strict definitions require attention to d occupancy
+    f | Rows associated with the lanthanides and actinides | Commonly called the inner-transition region
+
+Why the other choices are wrong:
+A. s-block: The s-block includes Groups 1 and 2 and helium. It is not the block containing the transition metals, and it is not made entirely of reactive metals because hydrogen and helium are nonmetals.
+B. p-block: The p-block contains Groups 13-18 except helium. It includes many familiar nonmetals, metalloids and some metals, rather than the central transition-metal block.
+D. f-block: The f-block region is associated with the lanthanides and actinides, often called inner-transition elements. The question asks about the transition metals in the central d-block. All actinides are radioactive.
+Key Educational Points:
+  - The d-block occupies the central part of the periodic table.
+  - A transition element has an incomplete d subshell in its atom or can form a cation with one.
+  - Block assignment follows electron configuration: helium is in the s-block even though it belongs to Group 18.
+Bottom Line: The transition elements are found in the d-block. The strict definition involves an incomplete d subshell in the atom or a cation, so the two labels are not exact synonyms.
+
+==============================================================================
+
+Q23  [chem-204]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed element, in its usual elemental form, is the strongest oxidizing agent under standard conditions?
+
+  A. Nitrogen
+  B. Oxygen
+  C. Fluorine   <= key
+  D. Neon
+
+EXPLANATION:
+Correct Answer: Fluorine
+Fluorine in its elemental form, F₂, is an exceptionally strong oxidizing agent. An oxidizing agent accepts electrons from another substance. This question compares a specific kind of reactivity, oxidizing ability, rather than claiming that one simple periodic trend ranks every possible reaction.
+Why the other choices are wrong:
+A. Nitrogen: Elemental nitrogen is N₂. Its strong N≡N bond makes many reactions slow under ordinary conditions; nitrogen's position in the periodic table alone does not make it the strongest oxidizing agent.
+B. Oxygen: Elemental oxygen, O₂, is an important oxidizing agent, but F₂ is the stronger oxidizing agent in this comparison.
+D. Neon: Neon has a closed valence shell and is very unreactive under ordinary conditions. It does not readily accept electrons as a strong oxidizing agent.
+Key Educational Points:
+  - An oxidizing agent accepts electrons and causes another substance to be oxidized.
+  - Elemental fluorine is F₂ and is an exceptionally strong oxidizing agent.
+  - Reaction behavior also depends on bonding and conditions; the strong N≡N bond helps explain N₂'s limited reactivity in many ordinary situations.
+Bottom Line: F₂ is the strongest oxidizing agent among these choices. Oxidizing ability is a specific property; reactivity without a named reaction is too broad for a universal ranking.
+
+==============================================================================
+
+Q24  [chem-205]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed element is an essential trace element in humans?
+
+  A. Carbon
+  B. Calcium
+  C. Iron   <= key
+  D. Oxygen
+
+EXPLANATION:
+Correct Answer: Iron
+Iron is essential in small amounts compared with major body elements such as carbon, oxygen and calcium. It is part of heme in hemoglobin and also supports electron-transfer proteins such as cytochromes. 'Trace' refers to the small quantity required or present, not to a small biological importance. Not every element detected in trace amounts is necessarily an essential nutrient.
+Why the other choices are wrong:
+A. Carbon: Carbon is essential, but it is a major constituent of organic molecules throughout the body. It is not classified as a trace element in this comparison.
+B. Calcium: Calcium is essential for bones, signaling and other functions, but it is required in much larger amounts than trace elements such as iron.
+D. Oxygen: Oxygen is a major constituent of water and many biological molecules. Its abundance distinguishes it from an essential trace element such as iron.
+Key Educational Points:
+  - Essential trace elements are needed in small quantities, but their functions are important.
+  - Iron is present in hemoglobin's heme groups and in electron-transfer proteins.
+  - Carbon, oxygen and calcium are essential major elements rather than trace elements.
+Bottom Line: Iron is an essential trace element: only a small amount is required, but it has important roles in oxygen transport and electron transfer.
+
+==============================================================================
+
+Q25  [chem-206]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The second ionization energy of sodium is significantly higher than its first ionization energy because:
+
+  A. sodium is a metal
+  B. removing the second electron breaks into a filled noble gas core   <= key
+  C. the second electron is in a higher energy level
+  D. sodium has only one isotope
+
+EXPLANATION:
+Correct Answer: removing the second electron breaks into a filled noble gas core
+Sodium (Na) has the configuration [Ne] 3s¹. Removing the first electron (the 3s¹ valence electron) is relatively easy, requiring 496 kJ/mol.
+After removing the first electron, Na⁺ has the configuration [Ne] = 1s² 2s² 2p⁶, which is a very stable noble gas configuration. Removing a second electron means breaking into this stable core, which requires enormously more energy (4562 kJ/mol - about 9 times higher).
+This dramatic jump in successive ionization energies occurs whenever removal requires breaking into a noble gas core.
+Why the other choices are wrong:
+A. sodium is a metal: While it is true that sodium is a metal, simply being a metal does not explain the large jump in ionization energy. Many metals have relatively smooth increases between successive ionization energies. The key factor is the electron configuration: after removing the first electron, sodium achieves a noble gas configuration ([Ne]), and breaking into that stable core requires dramatically more energy.
+C. the second electron is in a higher energy level: This is actually backwards. The second electron to be removed from Na comes from a lower energy level (2p), not a higher one. After the 3s1 electron is removed, the next electron must come from the 2p subshell, which is closer to the nucleus and more tightly held. That is precisely why the second ionization energy is so much larger.
+D. sodium has only one isotope: Sodium has one stable isotope, ²³Na, but radioactive sodium isotopes also exist. Isotope count does not explain the large ionization-energy jump; removing an electron from the inner closed shell does.
+Key Educational Points:
+  - Neutral sodium has configuration [Ne] 3s¹.
+  - Removing the 3s electron gives Na+ with a closed neon-like shell.
+  - The second ionization removes an inner-shell electron, explaining the large energy jump.
+Bottom Line: The first electron removed from Na is the outer 3s electron. The second comes from the closed inner shell of Na+, so much more energy is required.
+
+==============================================================================
+
+Q26  [chem-207]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed halogen is liquid at 25 °C and 1 bar?
+
+  A. Fluorine
+  B. Chlorine
+  C. Bromine   <= key
+  D. Iodine
+
+EXPLANATION:
+Correct Answer: Bromine
+At 25 °C and 1 bar, the halogens listed here occur in all three states of matter:
+
+Halogen | State at 25 °C and 1 bar
+    Fluorine (F₂) | Gas (pale yellow)
+    Chlorine (Cl₂) | Gas (yellow-green)
+    Bromine (Br₂) | Liquid (reddish-brown)
+    Iodine (I₂) | Solid (dark purple/gray)
+
+Bromine and mercury are the two elements that are liquid at 25 °C and 1 bar. Down Group VIIA, larger and more polarizable electron clouds give stronger London dispersion attractions and higher melting and boiling temperatures.
+Why the other choices are wrong:
+A. Fluorine: Fluorine (F2) is a pale yellow gas at room temperature with a boiling point of -188 degrees C. It is the lightest halogen and the most reactive element, reacting with almost all substances including noble gases like xenon. Its low molecular weight and weak London dispersion forces keep it gaseous.
+B. Chlorine: Chlorine (Cl2) is a yellow-green gas at room temperature with a boiling point of -34 degrees C. It is widely used in water purification and as a disinfectant. Like fluorine, its relatively low molecular mass means London dispersion forces are insufficient to make it liquid at 25 °C and 1 bar.
+D. Iodine: Iodine (I2) is a shiny, dark purple-black solid at room temperature that sublimes readily to form a violet vapor. It has a melting point of 114 degrees C. Its large electron cloud generates strong London dispersion forces, making it solid rather than liquid. A helpful mnemonic: going down the halogens, the physical states go gas (F2, Cl2), liquid (Br2), solid (I2).
+Key Educational Points:
+  - Bromine is a liquid at 25 °C and 1 bar.
+  - The listed halogens occur as diatomic molecules: F₂, Cl₂, Br₂ and I₂.
+  - Increasing polarizability down this series strengthens dispersion attractions and helps explain the changes in melting and boiling temperatures.
+Bottom Line: At 25 °C and 1 bar, F₂ and Cl₂ are gases, Br₂ is a liquid and I₂ is a solid. Larger, more polarizable electron clouds give stronger dispersion attractions in this series.
+
+==============================================================================
+
+Q27  [chem-208]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed gaseous atom releases the most energy when it gains one electron?
+
+  A. Na
+  B. P
+  C. Cl   <= key
+  D. Ar
+
+EXPLANATION:
+Correct Answer: Cl
+Chlorine releases the most energy among these choices when an isolated gaseous atom gains an electron. Cl changes from [Ne] 3s² 3p⁵ to the closed-shell configuration [Ne] 3s² 3p⁶ in Cl−. Electron attachment must be evaluated for the stated gaseous atom; it is not the same question as which ion is usually formed in a compound.
+Why the other choices are wrong:
+A. Na: A neutral sodium atom has configuration [Ne] 3s¹. An added electron enters the same 3s subshell, giving [Ne] 3s², not a new subshell. This attachment can release energy, but much less than electron attachment to chlorine.
+B. P: Phosphorus has a half-filled 3p³ subshell. Adding an electron produces 3p⁴ and requires pairing within a p orbital, making the attachment less favorable than completing chlorine's 3p subshell.
+D. Ar: Argon already has a closed valence shell. An additional electron would have to occupy a higher shell, and formation of a stable ground-state Ar− ion by simple attachment is unfavorable. Do not interpret a rounded or omitted tabulated value as a literal zero-energy process.
+Key Educational Points:
+  - Chlorine gains an electron into 3p, completing its valence shell.
+  - Electron attachment to sodium gives 3s², not a new subshell.
+  - Energy changes for isolated gaseous atoms must be distinguished from the ions favored in compounds.
+Bottom Line: Cl releases the most energy on electron attachment among Na, P, Cl and Ar. For sodium, an added electron enters 3s; for argon, the closed valence shell makes attachment unfavorable.
+
+==============================================================================
+
+Q28  [chem-209]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which compound forms a predominantly ionic lattice in the solid state?
+
+  A. H₂O
+  B. NaCl   <= key
+  C. CO₂
+  D. NH₃
+
+EXPLANATION:
+Correct Answer: NaCl
+Solid NaCl consists of an extended arrangement of Na+ and Cl− ions held together mainly by electrostatic attraction. Electron transfer is a useful way to account for the ions, but the ionic bond itself is the attraction between opposite charges. Bonding has degrees of ionic and covalent character, so 'only ionic bonds' is too absolute. A metal plus a nonmetal is a useful introductory pattern, not a requirement for every ionic compound.
+Why the other choices are wrong:
+A. H₂O: Water consists of molecules with polar covalent O–H bonds. Hydrogen bonding between water molecules does not turn the substance into a NaCl-like ionic lattice.
+C. CO₂: Carbon dioxide consists of molecules with covalent C=O bonds. The whole molecule is nonpolar because its equal bond dipoles cancel in the linear geometry.
+D. NH₃: Ammonia consists of molecules with polar covalent N–H bonds. Its classification follows its bonding and structure, not a universal rule that ionic substances must contain a metal.
+Key Educational Points:
+  - Ionic bonding is electrostatic attraction between oppositely charged ions.
+  - Solid NaCl contains an extended lattice of Na+ and Cl−, not separate NaCl molecules.
+  - Metal/nonmetal combinations are a common guide, but the actual ions and structure determine whether a solid is ionic.
+Bottom Line: NaCl forms a predominantly ionic solid: oppositely charged ions attract throughout an extended lattice. Ionic and covalent bonding are useful models, not perfectly separated categories.
+
+==============================================================================
+
+Q29  [chem-210]  correct answer: C
+------------------------------------------------------------------------------
+STEM: What is the molecular geometry of methane (CH₄) according to VSEPR theory?
+
+  A. Linear
+  B. Trigonal planar
+  C. Tetrahedral   <= key
+  D. Trigonal pyramidal
+
+EXPLANATION:
+Correct Answer: Tetrahedral
+According to VSEPR theory (Valence Shell Electron Pair Repulsion), electron pairs around a central atom arrange themselves to minimize repulsion.
+In CH₄, carbon has 4 bonding pairs and 0 lone pairs. Four electron groups adopt a tetrahedral arrangement with bond angles of approximately 109.5°.
+The usual valence-bond description of the same geometry calls the carbon sp³ hybridized: one s orbital and three p orbitals are combined into four equivalent sp³ hybrid orbitals directed toward the corners of a tetrahedron. This is a bonding model for the observed shape, not an extra step required by VSEPR.
+Why the other choices are wrong:
+A. Linear: In the simple examples used here, a linear geometry (180 degree bond angle) arises when a central atom has two bonding regions and no lone pairs, as in CO2 or the gaseous BeCl2 monomer. Carbon in methane has four bonding pairs around it, which is far more than the two needed for linear geometry.
+B. Trigonal planar: Trigonal planar geometry (120 degree bond angles) occurs with three bonding regions and no lone pairs, as in BF3 or the carbonate ion. Methane has four bonding pairs, not three, so trigonal planar does not apply.
+D. Trigonal pyramidal: Trigonal pyramidal geometry occurs when there are four electron regions but one is a lone pair, as in ammonia (NH3). In methane, carbon has four bonding pairs and zero lone pairs, giving a perfect tetrahedral shape with 109.5 degree bond angles rather than the slightly compressed angles of a trigonal pyramid.
+Key Educational Points:
+  - Methane's central carbon has four bonding electron groups and no lone pairs.
+  - VSEPR places those four groups tetrahedrally, with H–C–H angles of about 109.5°.
+  - The usual valence-bond description of carbon in methane uses sp³ hybrid orbitals.
+Bottom Line: Four electron groups around a central atom (with no lone pairs) produce tetrahedral molecular geometry with 109.5° bond angles.
+
+==============================================================================
+
+Q30  [chem-211]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following molecules is nonpolar despite having polar bonds?
+
+  A. H₂O
+  B. NH₃
+  C. CO₂   <= key
+  D. HF
+
+EXPLANATION:
+Correct Answer: CO₂
+A molecule can have polar bonds but be nonpolar overall if the bond dipoles cancel each other due to the molecule's symmetry.
+CO₂ is a linear molecule (180° bond angle). The two C=O bond dipoles point in exactly opposite directions and cancel out, making the molecule nonpolar.
+H₂O (bent, 104.5°) and NH₃ (trigonal pyramidal) have polar bonds that do not cancel due to their asymmetric geometry and lone pairs. HF has only one polar bond and is inherently polar.
+Why the other choices are wrong:
+A. H₂O: Water has polar O–H bonds and a bent shape. Its bond dipoles do not cancel, so the molecule has a net dipole.
+B. NH₃: Ammonia has a trigonal pyramidal shape. Its N–H bond dipoles do not cancel in this arrangement, so NH₃ is polar.
+D. HF: HF is a diatomic molecule with one strongly polar H–F bond. There is no second bond dipole to cancel it, so HF is polar.
+Key Educational Points:
+  - Molecular polarity depends on both bond polarity and molecular geometry.
+  - In linear CO₂, the two equal C=O bond dipoles cancel.
+  - The dipoles do not cancel in bent H₂O, pyramidal NH₃ or diatomic HF.
+Bottom Line: CO₂ contains polar bonds but has no net molecular dipole: the equal C=O bond dipoles point in opposite directions and cancel.
+
+==============================================================================
+
+Q31  [chem-212]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which pure substance forms strong, conventional hydrogen bonds between its molecules?
+
+  A. CH₄
+  B. H₂S
+  C. HF   <= key
+  D. Cl₂
+
+EXPLANATION:
+Correct Answer: HF
+HF molecules form strong hydrogen bonds: a hydrogen covalently bonded to fluorine interacts with a lone pair on fluorine in another molecule. The familiar strong examples generally involve hydrogen attached to N, O or F. This is a useful introductory guide, not an exhaustive definition of every possible hydrogen bond.
+Why the other choices are wrong:
+A. CH₄: Methane's C–H bonds do not provide the strongly polarized hydrogen donors needed for the conventional strong hydrogen-bond network tested here. Its intermolecular attractions are mainly dispersion forces.
+B. H₂S: H₂S does not form the strong intermolecular hydrogen-bond network characteristic of HF. The familiar strong-hydrogen-bond pattern uses the much more strongly polarizing atoms N, O and F.
+D. Cl₂: Cl₂ contains no hydrogen atoms, so it cannot donate a hydrogen bond. Attractions between its nonpolar molecules are mainly dispersion forces.
+Key Educational Points:
+  - Familiar strong hydrogen bonds usually involve H bonded to N, O or F and a suitable electron-pair acceptor.
+  - HF molecules can act as both hydrogen-bond donors and acceptors.
+  - An intermolecular H...F hydrogen bond is distinct from the covalent H–F bond within an HF molecule.
+Bottom Line: HF forms strong intermolecular hydrogen bonds. The familiar N/O/F rule identifies the usual strong examples, without defining every possible hydrogen-bond interaction.
+
+==============================================================================
+
+Q32  [chem-213]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Using the usual valence-bond model, what is the hybridization of each carbon atom in ethene (C₂H₄)?
+
+  A. sp
+  B. sp²   <= key
+  C. sp³
+  D. sp³d
+
+EXPLANATION:
+Correct Answer: sp²
+Each carbon in ethene forms three sigma bonds: two C–H bonds and the sigma component of the C=C double bond. Three sp² hybrid orbitals describe these bonds in a roughly trigonal planar arrangement. The remaining unhybridized p orbital on each carbon overlaps sideways to form the pi component of the double bond.
+
+Hybridization | Electron groups | Geometry | Example
+    sp | 2 | Linear | C₂H₂
+    sp² | 3 | Trigonal planar | C₂H₄
+    sp³ | 4 | Tetrahedral | CH₄
+
+Why the other choices are wrong:
+A. sp: sp hybridization occurs when a carbon forms two σ bonds and has two unhybridized p orbitals available for pi bonding, giving a linear geometry (180 degrees). This is seen in alkynes like acetylene (C2H2) and in CO2. Ethene has three σ bonds per carbon (two C-H and one C-C), requiring sp2 hybridization instead.
+C. sp³: sp3 hybridization occurs when a carbon forms four σ bonds with no π bonds, producing a tetrahedral geometry (109.5 degrees). This is the hybridization in alkanes like methane and ethane. Since ethene has a C=C double bond (one sigma + one pi), carbon needs an unhybridized p orbital for the π bond, making sp2 the correct hybridization.
+D. sp³d: The sp³d label describes a five-orbital hybridization model, not the three sigma-bonding directions around each carbon in ethene. The appropriate model for ethene is sp², with a remaining p orbital used for pi bonding.
+Key Educational Points:
+  - A C=C double bond contains one sigma component and one pi component.
+  - Each carbon in ethene has three sigma-bonding directions, described by sp² hybridization.
+  - Sideways overlap of the remaining p orbitals forms the pi bond and restricts free rotation about C=C.
+Bottom Line: Each carbon in ethene is described as sp²: three sigma bonds lie approximately in a plane, and an unhybridized p orbital contributes to the pi bond.
+
+==============================================================================
+
+Q33  [chem-214]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following molecules has a bent (V-shaped) geometry?
+
+  A. BeCl₂
+  B. CO₂
+  C. H₂O   <= key
+  D. BF₃
+
+EXPLANATION:
+Correct Answer: H₂O
+Water (H₂O) has a bent (V-shaped) molecular geometry. The oxygen atom has 4 electron groups: 2 bonding pairs (to H atoms) and 2 lone pairs.
+While 4 electron groups arrange in a tetrahedral electron geometry, the molecular geometry considers only the positions of atoms. With 2 bonding pairs and 2 lone pairs, the shape is bent with a bond angle of about 104.5° (less than the ideal 109.5° due to lone pair repulsion).
+The gaseous BeCl₂ monomer and CO₂ are both linear (180°). BF₃ is trigonal planar (120°).
+Why the other choices are wrong:
+A. BeCl₂: The gaseous BeCl₂ monomer has two bonding directions around Be and is linear in the simple VSEPR description. This does not describe the extended bonding in solid BeCl₂.
+B. CO₂: CO₂ has two electron-group directions around its central carbon. Each double bond counts as one group, giving a linear rather than bent molecule.
+D. BF₃: BF₃ has three bonding groups and no lone pair on boron in its Lewis structure. Its molecular geometry is trigonal planar, not bent.
+Key Educational Points:
+  - Oxygen in H₂O has two bonding pairs and two lone pairs.
+  - Four electron groups give a tetrahedral electron-group arrangement.
+  - Considering only the atom positions gives a bent molecule with an angle of about 104.5°.
+Bottom Line: Water has four electron groups around oxygen, but only two are bonds. Its electron-group arrangement is tetrahedral while its molecular shape is bent.
+
+==============================================================================
+
+Q34  [chem-215]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The strongest type of intermolecular force present in liquid water is:
+
+  A. London dispersion forces
+  B. dipole-dipole interactions
+  C. hydrogen bonding   <= key
+  D. ionic bonding
+
+EXPLANATION:
+Correct Answer: hydrogen bonding
+Water molecules experience several kinds of intermolecular attraction, and hydrogen bonding is the strongest and most distinctive of them in liquid water.
+In water, each O−H bond is highly polar. The hydrogen atoms (partial positive charge) are attracted to lone pairs on oxygen atoms (partial negative charge) of neighboring molecules. Each water molecule can form up to 4 hydrogen bonds.
+Note: an ionic lattice is an extended structure of oppositely charged ions. Ionic attraction is not the interaction between the neutral molecules of liquid water.
+Hydrogen bonding in water accounts for its unusually high boiling point, high specific heat, and high surface tension compared to similar-sized molecules.
+Why the other choices are wrong:
+A. London dispersion forces: Dispersion forces occur between water molecules, but hydrogen bonding is the stronger distinctive interaction in liquid water. Dispersion forces are not universally weak in all substances; they become substantial for larger, more polarizable particles.
+B. dipole-dipole interactions: Water is polar and has dipole interactions. Hydrogen bonding is the more specific, strongly directional interaction identified in this question, involving an O–H hydrogen and an oxygen lone pair on another molecule.
+D. ionic bonding: An ionic lattice is held together by attraction between positive and negative ions. Liquid water consists mainly of neutral H₂O molecules with covalent O–H bonds and hydrogen bonds between molecules.
+Key Educational Points:
+  - Water molecules are polar and can both donate and accept hydrogen bonds.
+  - Hydrogen bonding helps explain water's relatively high boiling point for such a small molecule.
+  - Dispersion and ordinary dipole interactions are also present; naming hydrogen bonding does not exclude them.
+Bottom Line: Hydrogen bonding is the strongest characteristic intermolecular interaction in liquid water. Do not use this comparison as a universal ranking of forces in every substance.
+
+==============================================================================
+
+Q35  [chem-216]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In a metallic bond, the valence electrons are best described as:
+
+  A. transferred from one atom to another
+  B. shared between two specific atoms
+  C. delocalized and free to move throughout the metal   <= key
+  D. trapped in localized orbitals between atoms
+
+EXPLANATION:
+Correct Answer: delocalized and free to move throughout the metal
+In metallic bonding, the valence electrons are delocalized over the whole lattice: they are not associated with any particular atom but move freely through the metal. The bonding is the attraction between the positive ion cores and this shared "sea of electrons".
+This model explains key metallic properties:
+
+Property | Explanation
+    Electrical conductivity | Mobile, delocalized electrons carry charge through the metal.
+    Thermal conductivity | Mobile electrons and lattice vibrations transfer energy.
+    Malleability/ductility | Atomic layers can shift while metallic attraction is maintained.
+    Metallic luster | Electrons respond to incident light, producing strong reflection.
+
+Why the other choices are wrong:
+A. transferred from one atom to another: Electron transfer from one atom to another describes ionic bonding, as seen in NaCl where sodium donates an electron to chlorine. In metals, electrons are not transferred to specific atoms but instead form a shared "electron sea" that belongs to the entire metallic lattice.
+B. shared between two specific atoms: Sharing electrons between two specific atoms describes covalent bonding, as in H2 or CH4. In metallic bonding, the valence electrons are not localized between any two atoms but are free to move throughout the entire crystal, which is why metals conduct electricity so well.
+D. trapped in localized orbitals between atoms: Trapped in localized orbitals is essentially a description of covalent bonding. The defining feature of metallic bonding is the delocalization of valence electrons across the entire metal lattice. This "electron sea model" explains metallic properties: electrical conductivity (mobile electrons carry charge), thermal conductivity, malleability, and metallic luster.
+Key Educational Points:
+  - Valence electrons in a metal are delocalized over many atoms.
+  - Their mobility enables electrical conduction.
+  - Metallic attraction can persist as atomic layers shift, helping explain malleability and ductility.
+Bottom Line: Metallic bonding involves attraction between positive ion cores and delocalized electrons. Electron mobility helps explain conductivity, while the bonding arrangement allows layers to shift without the solid simply separating.
+
+==============================================================================
+
+Q36  [chem-217]  correct answer: B
+------------------------------------------------------------------------------
+STEM: How many lone pairs of electrons does the nitrogen atom in ammonia (NH₃) have?
+
+  A. 0
+  B. 1   <= key
+  C. 2
+  D. 3
+
+EXPLANATION:
+Correct Answer: 1
+Nitrogen has 5 valence electrons. In NH₃, nitrogen forms three single bonds with three hydrogen atoms, using 3 of its valence electrons. The remaining 2 valence electrons form one lone pair.
+This gives nitrogen 4 electron groups: 3 bonding pairs + 1 lone pair. The electron geometry is tetrahedral, but the molecular geometry is trigonal pyramidal (considering only atom positions).
+The lone pair compresses the H−N−H bond angle from the ideal 109.5° to approximately 107°.
+Why the other choices are wrong:
+A. 0: NH₃ has eight valence electrons in total: five from nitrogen and three from hydrogen. Three N–H bonds use six electrons, leaving two as one lone pair. Zero lone pairs would not account for all eight electrons.
+C. 2: Two lone pairs would use four electrons in addition to the six in the three N–H bonds. That would require ten valence electrons, but neutral NH₃ has only eight.
+D. 3: Three lone pairs plus three N–H bonds would require twelve valence electrons. Neutral NH₃ has eight, so only one lone pair remains after forming its three bonds.
+Key Educational Points:
+  - Neutral NH₃ contains eight valence electrons.
+  - Three N–H bonds use six electrons; the remaining two form one lone pair on nitrogen.
+  - Three bonds and one lone pair give ammonia a trigonal pyramidal shape.
+Bottom Line: Nitrogen in NH₃ has one lone pair, giving a trigonal pyramidal shape. Lone pairs occupy more space than bonding pairs and compress bond angles.
+
+==============================================================================
+
+Q37  [chem-218]  correct answer: A
+------------------------------------------------------------------------------
+STEM: Which compound is expected to have the highest melting point?
+
+  A. NaCl   <= key
+  B. CH₄
+  C. H₂O
+  D. CO₂
+
+EXPLANATION:
+Correct Answer: NaCl
+NaCl has the highest melting point of these choices. Melting its crystal requires overcoming the strong electrostatic attractions that hold Na⁺ and Cl− in an ordered ionic lattice; it does not require separating the solid into isolated gas-phase ions.
+NaCl melts at about 801 °C. For comparison:
+
+Substance | Solid type/main attractions | Melting behavior at 1 atm
+    NaCl | Ionic lattice | Melts at about 801 °C
+    H₂O | Molecular solid; hydrogen bonding | Melts at about 0 °C
+    CO₂ | Molecular solid; dispersion attractions | Does not melt at 1 atm; sublimes at about −78.5 °C
+    CH₄ | Molecular solid; dispersion attractions | Melts at about −182.5 °C
+
+The molecular solids listed here (CH₄, CO₂, H₂O) change state at much lower temperatures because only the weaker attractions between whole molecules have to be overcome, not the covalent bonds inside them.
+Why the other choices are wrong:
+B. CH₄: Methane (CH4) is a nonpolar molecule held together only by weak London dispersion forces, giving it a melting point of about -182.5 degrees C. Those weak attractions are far easier to overcome than the ionic attractions holding NaCl's lattice together.
+C. H₂O: Water (H2O) has relatively strong hydrogen bonds, giving it a melting point of 0 degrees C, which is high for a small covalent molecule. However, this is still far below the 801 degrees C melting point of NaCl, because the electrostatic attraction between ions in an ionic crystal is much stronger than hydrogen bonds.
+D. CO₂: At 1 atm, solid CO₂ changes directly to gas at about −78.5 °C rather than melting. Its molecules are held together mainly by dispersion attractions; the strong covalent C=O bonds within each molecule are not broken during sublimation.
+Key Educational Points:
+  - NaCl melts at about 801 °C, much higher than the listed molecular solids.
+  - A phase change disrupts the solid's arrangement and intermolecular or ionic attractions; it does not normally break the covalent bonds within intact molecules.
+  - CO₂ sublimes rather than melts at 1 atm, so its sublimation temperature must not be labelled a melting point.
+Bottom Line: NaCl has the highest melting point among these choices because of its strong ionic lattice attractions. CO₂'s −78.5 °C value at 1 atm is a sublimation temperature, not a melting point.
+
+==============================================================================
+
+Q38  [chem-219]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The bond angle in a molecule with sp³ hybridized central atom and no lone pairs is approximately:
+
+  A. 90°
+  B. 109.5°   <= key
+  C. 120°
+  D. 180°
+
+EXPLANATION:
+Correct Answer: 109.5°
+In the ideal tetrahedral model, sp³ hybridization gives four equivalent bonding directions toward the corners of a tetrahedron, with bond angles of approximately 109.5°.
+
+Hybridization | Geometry (no lone pairs) | Bond angle
+    sp | Linear | 180°
+    sp² | Trigonal planar | 120°
+    sp³ | Tetrahedral | 109.5°
+
+In familiar examples with lone pairs on the sp³ atom, the bond angle is reduced below 109.5°: NH₃ ≈ 107° and H₂O ≈ 104.5°.
+Why the other choices are wrong:
+A. 90°: 90 degree bond angles are found in octahedral geometry (six bonding regions around the central atom, as in SF6) and in the square planar arrangement. In sp3 hybridization with four equivalent bonding pairs, the electron pairs spread to maximize separation, reaching 109.5 degrees rather than 90.
+C. 120°: An angle of 120° belongs to an ideal trigonal planar arrangement with three directions. Four equivalent bonding directions without lone pairs form a tetrahedron, with angles of about 109.5°.
+D. 180°: 180 degrees is the bond angle for sp-hybridized atoms with linear geometry (two bonding regions, no lone pairs), as in CO2, BeCl2, or the carbon atoms in acetylene. With four bonding pairs in sp3, a linear arrangement is geometrically impossible.
+Key Educational Points:
+  - Four bonding electron groups with no lone pairs favor a tetrahedral arrangement.
+  - The ideal tetrahedral angle is about 109.5°.
+  - In familiar examples such as NH₃ and H₂O, lone pairs change the molecular shape and reduce the bond angle from the ideal tetrahedral value.
+Bottom Line: In the ideal tetrahedral model, four equivalent bonds and no central lone pairs give angles of about 109.5°.
+
+==============================================================================
+
+Q39  [chem-220]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which amino acid contains a thiol (–SH) group in its side chain that can form disulfide bridges?
+
+  A. Methionine
+  B. Cysteine   <= key
+  C. Serine
+  D. Threonine
+
+EXPLANATION:
+Correct Answer: Cysteine
+Cysteine is the only standard amino acid whose side chain contains a free thiol (–SH) group. Oxidation of two cysteine thiol groups forms an S–S link between the two cysteine residues. The corresponding linked pair of free cysteine molecules is called cystine. A disulfide can link two parts of one polypeptide or connect different polypeptide chains.
+Methionine also contains sulfur, but it is present as a thioether (–S–CH₃), which cannot form disulfide bonds. Serine and threonine contain hydroxyl (–OH) groups, not thiol groups.
+Why the other choices are wrong:
+A. Methionine: Methionine contains sulfur in a thioether, not a free thiol group. It does not form the ordinary cysteine-type disulfide bridge by oxidation of two –SH groups.
+C. Serine: Serine's side chain is –CH₂OH. It contains a hydroxyl group rather than sulfur, so it cannot form the S–S bridge described here.
+D. Threonine: Threonine's side chain is –CH(OH)CH₃. Like serine, it has a hydroxyl group rather than a thiol and cannot form this disulfide link.
+Key Educational Points:
+  - Cysteine has a side-chain thiol, –SH.
+  - Oxidation links two cysteine sulfur atoms through an S–S bond.
+  - Disulfide bridges can stabilize a folded chain or a multi-chain protein assembly.
+Bottom Line: Two cysteine thiols can be oxidized to form a covalent disulfide bridge. The bridge may connect regions of one chain or connect different chains.
+
+==============================================================================
+
+Q40  [chem-221]  correct answer: B
+------------------------------------------------------------------------------
+STEM: At pH 7.4 in aqueous solution, which form of free alanine predominates?
+
+  A. An uncharged molecule with –NH₂ and –COOH
+  B. A zwitterion with –NH₃⁺ and –COO−   <= key
+  C. An anion with –NH₂ and –COO−
+  D. A cation with –NH₃⁺ and –COOH
+
+EXPLANATION:
+Correct Answer: A zwitterion with –NH₃⁺ and –COO−
+Free alanine has a carboxyl-group pKa of about 2.3 and an ammonium-group pKa of about 9.7. At pH 7.4, the carboxyl group is predominantly –COO−, while the amino group is predominantly –NH₃+. The major form is therefore a zwitterion: it has both a positive and a negative formal charge, with zero net formal charge. This conclusion concerns free alanine; amino acids with ionizable side chains can have different overall charges.
+Why the other choices are wrong:
+A. An uncharged molecule with –NH₂ and –COOH: The uncharged –NH₂/–COOH form is not the predominant form of alanine in water at pH 7.4. Internal acid–base transfer favors the charged –NH₃+/–COO− zwitterion.
+C. An anion with –NH₂ and –COO−: The –NH₂/–COO− anion becomes predominant above the ammonium-group pKa, about 9.7. At pH 7.4, most amino groups are still protonated.
+D. A cation with –NH₃⁺ and –COOH: The –NH₃+/–COOH cation predominates at sufficiently acidic pH, below the carboxyl-group pKa of about 2.3. At pH 7.4, the carboxyl group is mostly deprotonated.
+Key Educational Points:
+  - Above a group's pKa, its deprotonated form is favored; below it, its protonated form is favored.
+  - At pH 7.4, alanine's carboxyl is mainly –COO− and its amino group mainly –NH₃+.
+  - The predominant alanine zwitterion has zero net formal charge despite containing two charged groups.
+Bottom Line: At pH 7.4, free alanine is predominantly –NH₃+/–COO−. A zwitterion has opposite charges within one species; zero net charge does not mean no charged groups.
+
+==============================================================================
+
+Q41  [chem-222]  correct answer: A
+------------------------------------------------------------------------------
+STEM: In the overall condensation representation of peptide formation from free amino acids, which two functional groups are linked?
+
+  A. Amino group and carboxyl group   <= key
+  B. Two carboxyl groups
+  C. Two amino groups
+  D. Hydroxyl group and carboxyl group
+
+EXPLANATION:
+Correct Answer: Amino group and carboxyl group
+The carboxyl group of one amino acid and the amino group of another are linked through an amide bond, called a peptide bond. In the overall condensation equation from free amino acids, one water molecule is removed for each bond formed. Cells make peptide bonds using activated amino acids attached to tRNA; the simple condensation equation is a net chemical representation, not a step-by-step description of ribosomal synthesis. Partial double-bond character makes the peptide unit approximately planar and restricts rotation about its C–N bond.
+Why the other choices are wrong:
+B. Two carboxyl groups: A condensation reaction between two carboxyl groups would form an acid anhydride (R-CO-O-CO-R), not a peptide bond. Acid anhydrides are important in organic chemistry (e.g., acetic anhydride) but are not found in protein backbone linkages.
+C. Two amino groups: Two amino groups alone do not form the peptide linkage. In the overall condensation representation, the peptide bond is formed from one amino group (-NH2) and one carboxyl group (-COOH), with loss of water.
+D. Hydroxyl group and carboxyl group: A condensation reaction between a hydroxyl group and a carboxyl group forms an ester bond (R-CO-O-R), not a peptide bond. Ester bonds are found in lipids (fats and oils) and in polyester materials, but the protein backbone uses amide (peptide) bonds exclusively.
+Key Educational Points:
+  - A peptide bond is an amide linkage between a carboxyl carbon and an amino nitrogen.
+  - The overall condensation equation from free amino acids removes one water molecule per peptide bond.
+  - Partial double-bond character restricts rotation about the peptide C–N bond; neighboring backbone bonds provide much of the chain's flexibility.
+Bottom Line: A peptide bond links a carboxyl carbon to an amino nitrogen. The overall equation from free amino acids is a condensation, while cellular synthesis uses activated amino acids.
+
+==============================================================================
+
+Q42  [chem-223]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following amino acids has an aromatic side chain?
+
+  A. Valine
+  B. Leucine
+  C. Tryptophan   <= key
+  D. Alanine
+
+EXPLANATION:
+Correct Answer: Tryptophan
+Tryptophan (Trp, W) contains an aromatic indole ring system in its side chain. Phenylalanine (benzyl group) and tyrosine (hydroxybenzyl group) are other familiar amino acids with aromatic side chains, and histidine's imidazole ring is also aromatic.
+Valine, leucine, and alanine all have aliphatic (non-aromatic), nonpolar side chains. Valine has an isopropyl group, leucine has an isobutyl group, and alanine has a simple methyl group. Tryptophan's indole ring gives it strong UV absorbance near 280 nm.
+Why the other choices are wrong:
+A. Valine: Valine has a branched aliphatic side chain, –CH(CH₃)₂. It contains no aromatic ring.
+B. Leucine: Leucine has a branched aliphatic side chain, –CH₂CH(CH₃)₂. Its branching does not make it aromatic.
+D. Alanine: Alanine's side chain is a methyl group, –CH₃. It contains no ring and is not aromatic.
+Key Educational Points:
+  - Tryptophan contains an indole group with aromatic rings.
+  - Valine, leucine and alanine have aliphatic side chains without aromatic rings.
+  - Aromaticity describes a ring's electronic structure; it is not the same property as an amino acid's charge or acid–base behavior.
+Bottom Line: Tryptophan has an aromatic indole side chain. The other listed side chains are aliphatic and contain no aromatic ring.
+
+==============================================================================
+
+Q43  [chem-224]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Denaturation of a protein results in the loss of:
+
+  A. Peptide bonds
+  B. Primary structure
+  C. Three-dimensional conformation   <= key
+  D. Amino acid sequence
+
+EXPLANATION:
+Correct Answer: Three-dimensional conformation
+Denaturation is loss of a protein's native three-dimensional structure, often with loss of function. Heat, pH changes or denaturing chemicals can disturb the interactions that maintain its fold. Denaturation usually leaves the peptide backbone and amino-acid sequence intact; peptide-bond hydrolysis is a separate process. Different treatments disrupt different interactions, and reduction of disulfide bonds is not required for every instance of denaturation. Some proteins can refold, whereas others aggregate or fail to recover their original structure.
+Why the other choices are wrong:
+A. Peptide bonds: Breaking peptide bonds would cut the polypeptide backbone. That is hydrolysis or another chemical cleavage process, not a necessary part of denaturation.
+B. Primary structure: Primary structure is the amino-acid sequence, which is usually retained during denaturation. The native fold can be lost without changing the sequence.
+D. Amino acid sequence: The amino-acid sequence ordinarily remains the same when a protein unfolds. Changes to that sequence require separate chemical cleavage or modification, not merely loss of the native conformation.
+Key Educational Points:
+  - Denaturation concerns loss of native three-dimensional structure.
+  - Peptide bonds and amino-acid sequence are usually preserved.
+  - Refolding depends on the protein and conditions; aggregation can prevent recovery.
+Bottom Line: Denaturation disrupts the native fold, usually without cleaving the peptide backbone. Recovery of the fold is possible for some proteins but is not guaranteed.
+
+==============================================================================
+
+Q44  [chem-225]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Glycine is unique among the 20 standard amino acids because it:
+
+  A. Is the largest amino acid
+  B. Lacks a chiral center at the α-carbon   <= key
+  C. Contains a sulfur atom
+  D. Has a positively charged side chain at pH 7
+
+EXPLANATION:
+Correct Answer: Lacks a chiral center at the α-carbon
+Glycine (Gly, G) has a hydrogen atom as its side chain (R = H). Because the α-carbon is bonded to two identical groups (two hydrogen atoms, in addition to the amino group and carboxyl group), it is not a chiral center. All other 19 standard amino acids have four different substituents on the α-carbon, giving each of them a chiral α-carbon.
+Glycine is actually the smallest amino acid (not the largest). Sulfur-containing amino acids are cysteine and methionine. Positively charged side chains at pH 7 belong to lysine, arginine, and histidine (partially).
+Why the other choices are wrong:
+A. Is the largest amino acid: Glycine is actually the smallest amino acid, not the largest. Its side chain is just a single hydrogen atom (R = H). The largest standard amino acid is tryptophan, which has a bulky indole ring system in its side chain.
+C. Contains a sulfur atom: The sulfur-containing amino acids are cysteine (with a thiol -SH group) and methionine (with a thioether -S-CH3 group). Glycine's side chain is simply a hydrogen atom and contains no sulfur. Cysteine's thiol group is particularly important because it can form disulfide bridges that stabilize protein structure.
+D. Has a positively charged side chain at pH 7: Near pH 7, lysine (pKa ~10.5) and arginine (pKa ~12.5) have predominantly positive side chains, while histidine (pKa ~6.0) is mostly neutral with a smaller protonated fraction. Glycine has no ionizable side chain at all, since its R group is just H.
+Key Educational Points:
+  - Glycine has H as its side chain.
+  - Its α-carbon therefore carries two identical hydrogens and is achiral.
+  - The other 19 standard amino acids have chiral α-carbons; chirality should not be confused with the optical rotation of every possible sample.
+Bottom Line: Glycine's α-carbon has two identical hydrogen substituents, so it is not a chiral center.
+
+==============================================================================
+
+Q45  [chem-226]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which listed amino acid has a side-chain pKa closest to physiological pH (about 7.4), making it commonly useful in acid–base catalysis?
+
+  A. Lysine
+  B. Aspartate
+  C. Histidine   <= key
+  D. Proline
+
+EXPLANATION:
+Correct Answer: Histidine
+Histidine's imidazole side chain has a typical aqueous pKa of about 6, closer to 7.4 than the other listed ionizable side chains. Most free histidine side chains are unprotonated at pH 7.4, but proton exchange is accessible, and an enzyme's local environment can shift the pKa. Histidine is therefore common in catalytic proton transfer. This does not mean that lysine, aspartate or other residues cannot act as catalytic acids or bases.
+Why the other choices are wrong:
+A. Lysine: Lysine's side-chain pKa is typically about 10.5, so it is mostly protonated at pH 7.4. Lysine can participate in catalysis, but its typical pKa is farther from 7.4 than histidine's.
+B. Aspartate: Aspartate's side-chain pKa is typically about 3.7, so it is mostly deprotonated at pH 7.4. It can serve in acid–base catalysis, but its usual pKa is farther from 7.4 than histidine's.
+D. Proline: Proline does not have a separate imidazole-like ionizable side chain. Its ring connects back to the backbone nitrogen, so it does not supply the side-chain acid–base group described here.
+Key Educational Points:
+  - Histidine's imidazole side chain has a typical aqueous pKa near 6.
+  - Protonated histidine can donate a proton, while its unprotonated form can accept one.
+  - Protein environments can change side-chain pKa values, allowing several kinds of residues to participate in acid–base catalysis.
+Bottom Line: Histidine's side-chain pKa is relatively close to physiological pH, making it a common participant in proton transfer. Catalytic acid–base roles are not exclusive to histidine.
+
+==============================================================================
+
+Q46  [chem-227]  correct answer: B
+------------------------------------------------------------------------------
+STEM: A protein composed of two identical polypeptide subunits is described as a:
+
+  A. Monomer with tertiary structure
+  B. Homodimer with quaternary structure   <= key
+  C. Heterodimer with quaternary structure
+  D. Monomer with secondary structure
+
+EXPLANATION:
+Correct Answer: Homodimer with quaternary structure
+Quaternary structure describes the arrangement of multiple polypeptide subunits (protomers) in a multi-subunit protein. When two identical subunits associate, the resulting complex is called a homodimer (homo = same, dimer = two units).
+A heterodimer would consist of two different polypeptide chains. A monomer is a single polypeptide chain with no quaternary structure. Tertiary structure describes the 3D folding of a single polypeptide chain, while secondary structure refers to local backbone folding patterns (α-helices, β-sheets).
+Why the other choices are wrong:
+A. Monomer with tertiary structure: A monomer is a single polypeptide chain. A protein with only one chain has tertiary structure (its 3D fold) but not quaternary structure. Quaternary structure by definition requires the assembly of multiple polypeptide subunits. Since the question describes two subunits, "monomer" does not apply.
+C. Heterodimer with quaternary structure: A heterodimer contains two different polypeptide subunits. Here the two subunits are identical, so the assembly is a homodimer. The usual adult hemoglobin molecule has four subunits, not just one alpha and one beta chain.
+D. Monomer with secondary structure: Secondary structure refers to local folding patterns like alpha-helices and beta-sheets within a single polypeptide chain, stabilized by backbone hydrogen bonds. A protein with two subunits has quaternary structure, which is the highest level of protein organization and describes how multiple chains associate.
+Key Educational Points:
+  - A dimer contains two subunits; a homodimer contains two identical subunits.
+  - The arrangement of multiple polypeptide subunits is quaternary structure.
+  - Each subunit can also have its own secondary and tertiary structure.
+Bottom Line: Quaternary structure arises from the association of multiple polypeptide subunits. Identical subunits form homo-oligomers; different subunits form hetero-oligomers.
+
+==============================================================================
+
+Q47  [chem-228]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which effect favors burying nonpolar side chains during the folding of a soluble globular protein in water?
+
+  A. Peptide bonds
+  B. Hydrophobic interactions   <= key
+  C. Disulfide bonds
+  D. Ionic bonds between side chains
+
+EXPLANATION:
+Correct Answer: Hydrophobic interactions
+The hydrophobic effect favors reducing the exposure of nonpolar side chains to water. In many soluble globular proteins, these side chains become buried in the interior, changing the organization of surrounding water and contributing to favorable folding free energy. Folding reflects several interacting contributions, including hydrogen bonds, close packing, electrostatic interactions and sometimes disulfide bonds; one contribution should not be declared universally dominant for every protein and condition.
+Why the other choices are wrong:
+A. Peptide bonds: Peptide bonds connect the amino-acid residues in the backbone. They define the chain's connectivity but do not explain why nonpolar side chains tend to become buried away from water.
+C. Disulfide bonds: Disulfide bonds covalently connect cysteine residues and can form or rearrange during folding. They can stabilize a protein, but they do not explain the general burial of nonpolar side chains.
+D. Ionic bonds between side chains: Attractions between oppositely charged side chains can contribute to folding and stability. Their importance depends on the surroundings; they are not the effect that specifically favors burying nonpolar groups.
+Key Educational Points:
+  - Exposed nonpolar surfaces interact unfavorably with water compared with their burial in many folded proteins.
+  - The hydrophobic effect is not a new covalent bond between nonpolar side chains.
+  - Hydrogen bonds, packing, electrostatic interactions and disulfides can also contribute to protein structure and stability.
+Bottom Line: The hydrophobic effect favors burial of nonpolar side chains in soluble globular proteins. Overall folding also depends on several other interactions.
+
+==============================================================================
+
+Q48  [chem-229]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Proline differs from all other standard amino acids because its side chain:
+
+  A. Contains a carboxyl group
+  B. Forms a covalent bond with the backbone nitrogen   <= key
+  C. Contains an aromatic ring
+  D. Is positively charged at all pH values
+
+EXPLANATION:
+Correct Answer: Forms a covalent bond with the backbone nitrogen
+Proline's side chain loops back and bonds to its backbone nitrogen, forming a saturated five-membered ring. In free proline, the unprotonated nitrogen is a secondary amine, not an imine. In an internal peptide-bonded proline residue, the backbone nitrogen has no N–H bond and cannot donate the usual backbone hydrogen bond. The ring also restricts backbone rotation. These properties often make proline unfavorable within a regular alpha helix or introduce a kink, but proline is not absolutely excluded from helices.
+Why the other choices are wrong:
+A. Contains a carboxyl group: Amino acids with carboxyl groups in their side chains are aspartate and glutamate (the acidic amino acids). Proline's side chain is a three-carbon aliphatic chain that loops back to bond with the backbone nitrogen atom, forming a five-membered pyrrolidine ring. This cyclic structure restricts backbone rotation.
+C. Contains an aromatic ring: Proline's ring is saturated and is not aromatic. Its unusual property is the connection back to the backbone nitrogen, not aromaticity.
+D. Is positively charged at all pH values: Proline's charge depends on pH and whether it is free or incorporated into a peptide. Its ring is not a side chain that remains positively charged at every pH.
+Key Educational Points:
+  - Proline's saturated ring connects the side chain to the backbone nitrogen.
+  - This ring restricts backbone flexibility.
+  - Internal peptide-bonded proline has no backbone N–H donor and can interrupt regular helix hydrogen bonding, without being completely absent from helices.
+Bottom Line: Proline's ring connects its side chain to the backbone nitrogen. This restricts rotation, and an internal proline residue lacks an N–H donor, often producing a bend or kink.
+
+==============================================================================
+
+Q49  [chem-230]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In the overall condensation equation for forming one linear peptide from 15 free amino acids, how many water molecules are produced?
+
+  A. 13
+  B. 14   <= key
+  C. 15
+  D. 16
+
+EXPLANATION:
+Correct Answer: 14
+A linear chain of n amino-acid residues has n − 1 peptide links. In the overall condensation equation starting from free amino acids, each link corresponds to loss of one water molecule. Thus 15 amino acids give 15 − 1 = 14 links and 14 water molecules in that equation. This is net stoichiometry; ribosomal synthesis uses activated amino acids attached to tRNA rather than direct dehydration of free amino acids.
+Why the other choices are wrong:
+A. 13: Thirteen peptide links connect 14 residues in a linear chain. A chain of 15 residues needs one more link, giving 14 waters in the overall condensation equation.
+C. 15: There is no peptide link beyond each end of the linear chain. The number of links is one fewer than the number of residues, so 15 residues give 14 waters in the stated equation.
+D. 16: Sixteen links would connect 17 residues in a linear chain. For 15 residues, n − 1 gives 14, not 16.
+Key Educational Points:
+  - A linear chain of n residues contains n − 1 peptide links.
+  - In the overall condensation equation from free amino acids, one water is produced per link.
+  - For 15 residues, the calculation is 15 − 1 = 14; this net equation is not the detailed ribosomal mechanism.
+Bottom Line: A linear 15-residue peptide has 14 peptide links. Its overall condensation equation from free amino acids produces 14 H₂O.
+
+==============================================================================
+
+Q50  [chem-231]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Using typical aqueous side-chain pKa values, which pair has predominantly negatively charged side chains at pH 7.4?
+
+  A. Lysine and Arginine
+  B. Aspartate and Glutamate   <= key
+  C. Histidine and Cysteine
+  D. Asparagine and Glutamine
+
+EXPLANATION:
+Correct Answer: Aspartate and Glutamate
+Aspartate (Asp, D) and glutamate (Glu, E) are the two amino acids with negatively charged (acidic) side chains at pH 7.4. Aspartate has a –CH₂–COO− side chain (pKₐ ≈ 3.7) and glutamate has a –CH₂–CH₂–COO− side chain (pKₐ ≈ 4.1). Both are predominantly deprotonated at physiological pH.
+
+Amino Acid | Side Chain | Predominant side-chain charge at pH 7.4
+    Aspartate | –CH₂–COO− | Negative
+    Glutamate | –(CH₂)₂–COO− | Negative
+    Lysine | –(CH₂)₄–NH₃⁺ | Positive
+    Arginine | Guanidinium | Positive
+
+Asparagine and glutamine are the amide derivatives of aspartate and glutamate - they are predominantly uncharged at physiological pH.
+Why the other choices are wrong:
+A. Lysine and Arginine: Lysine (pKa ~10.5) and arginine (pKa ~12.5) both have positively charged side chains at physiological pH, not negatively charged. They are the principal basic amino acids and often participate in ionic interactions with negatively charged residues like aspartate and glutamate.
+C. Histidine and Cysteine: Histidine's side chain is mostly neutral at pH 7.4, with a smaller positively charged fraction. Cysteine's thiol is also mostly neutral at this pH, although a minority is deprotonated to a negative thiolate. Neither has a predominantly negative side chain under the stated typical aqueous conditions.
+D. Asparagine and Glutamine: Asparagine and glutamine have side-chain amides, –CONH₂, rather than the carboxyl groups of aspartate and glutamate. These amide side chains are predominantly uncharged near physiological pH.
+Key Educational Points:
+  - Aspartate and glutamate have side-chain carboxyl groups that are mostly deprotonated at pH 7.4.
+  - Lysine and arginine side chains are predominantly positive at this pH.
+  - Histidine is mostly neutral under typical aqueous conditions at pH 7.4, but can gain a proton; protein environments can alter these ionization patterns.
+Bottom Line: Aspartate and glutamate have predominantly –COO− side chains at pH 7.4. Ionization depends on pH relative to pKa, so 'predominantly' is more accurate than 'always' or 'completely'.
+
+==============================================================================
+
+Q51  [chem-232]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The isoelectric point (pI) of an amino acid is the pH at which:
+
+  A. The amino acid carries a net positive charge
+  B. The amino acid carries a net negative charge
+  C. The amino acid has no net electrical charge   <= key
+  D. All functional groups are uncharged
+
+EXPLANATION:
+Correct Answer: The amino acid has no net electrical charge
+The isoelectric point, pI, is the pH at which an amino acid or protein has zero average net electrical charge. Positive and negative charged groups can still be present: zero net charge does not mean that every group is uncharged. For a simple amino acid without an ionizable side chain, the zwitterion predominates near the pI, and pI = (pKa₁ + pKa₂)/2. Zero average charge also explains the absence of net charge-driven migration in an ideal electrophoresis experiment at the pI.
+Why the other choices are wrong:
+A. The amino acid carries a net positive charge: Below its pI, an amino acid has a positive average net charge because more of its ionizable groups are protonated. At the pI itself, the average positive and negative charges balance.
+B. The amino acid carries a net negative charge: Above its pI, an amino acid has a negative average net charge because more groups are deprotonated. This differs from the zero average net charge at the pI.
+D. All functional groups are uncharged: Charged groups remain present at the pI. For example, the predominant glycine zwitterion has –NH₃+ and –COO− groups whose charges cancel; neither group is uncharged.
+Key Educational Points:
+  - At the pI, positive and negative charges balance on average.
+  - A zwitterion can contain charged groups while having zero net formal charge.
+  - For an amino acid with no ionizable side chain, pI is the average of the carboxyl and ammonium pKa values.
+Bottom Line: pI is the pH of zero average net charge, not the pH at which every functional group is uncharged.
+
+==============================================================================
+
+Q52  [chem-233]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which type of bond links successive amino acid residues along a protein's polypeptide backbone?
+
+  A. Hydrogen bond
+  B. Ionic bond
+  C. Peptide bond   <= key
+  D. Disulfide bond
+
+EXPLANATION:
+Correct Answer: Peptide bond
+Successive residues along a polypeptide backbone are joined by peptide bonds. A peptide bond is a covalent amide linkage running from the carbonyl carbon of one residue to the nitrogen of the next, formed between the α-carboxyl group of one amino acid and the α-amino group of the following one. Most peptide links are written –CO–NH–, but an internal proline residue has no N–H at that nitrogen.
+Hydrogen bonds stabilize secondary structure. Ionic bonds, hydrophobic interactions, and van der Waals forces contribute to tertiary structure. Disulfide bonds are covalent but link cysteine side chains rather than joining successive backbone residues.
+Why the other choices are wrong:
+A. Hydrogen bond: Hydrogen bonds help stabilize structures such as alpha helices and beta sheets. They are not the covalent C–N links that connect successive residues along the backbone.
+B. Ionic bond: Attractions between charged side chains can stabilize protein structure, but they are not the amide bonds joining successive backbone residues.
+D. Disulfide bond: Disulfide bonds connect the sulfur atoms of cysteine side chains. They can cross-link parts of a protein, but they are not the regular links between successive residues in the polypeptide backbone.
+Key Educational Points:
+  - A peptide bond joins a carbonyl carbon to the nitrogen of the next residue.
+  - These bonds form the continuous polypeptide backbone.
+  - Disulfide bonds link cysteine side chains rather than supplying the usual residue-to-residue backbone connection.
+Bottom Line: Successive amino-acid residues are joined along the backbone by peptide bonds, which are covalent amide C–N links.
+
+==============================================================================
+
+Q53  [chem-234]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In a Fischer projection of a chiral α-amino acid drawn with COOH at the top and side chain R at the bottom, where is NH₂ for the L configuration?
+
+  A. Right in a Fischer projection
+  B. Left in a Fischer projection   <= key
+  C. Above the α-carbon in a Fischer projection
+  D. Below the α-carbon in a Fischer projection
+
+EXPLANATION:
+Correct Answer: Left in a Fischer projection
+With COOH at the top and the side chain at the bottom of this Fischer projection, an L-amino acid has NH₂ on the left and H on the right. The D configuration has those horizontal positions reversed. The stated orientation is essential: 'left' alone does not identify configuration in an arbitrarily drawn projection. D/L describes configuration relative to a reference convention, not the sign of optical rotation. Glycine is achiral and is neither D nor L.
+Why the other choices are wrong:
+A. Right in a Fischer projection: With the stated top and bottom groups, placing NH₂ on the right gives the D configuration. D does not mean that the molecule must rotate light to the right.
+C. Above the α-carbon in a Fischer projection: The top position is occupied by COOH in the projection specified in the stem. Placing NH₂ there would change the drawing convention, so the simple left/right rule would no longer apply as stated.
+D. Below the α-carbon in a Fischer projection: The bottom position is occupied by the side chain R in the specified projection. It is not the NH₂ position for the L configuration.
+Key Educational Points:
+  - Use a defined Fischer orientation: COOH at the top and side chain R at the bottom.
+  - In that orientation, NH₂ on the left gives L; NH₂ on the right gives D.
+  - D/L does not specify the sign of optical rotation, and achiral glycine has no D/L designation.
+Bottom Line: With COOH at the top and R at the bottom of the Fischer projection, NH₂ on the left identifies L. The orientation must be stated.
+
+==============================================================================
+
+Q54  [chem-235]  correct answer: B
+------------------------------------------------------------------------------
+STEM: An ideal α-helix has approximately how many amino acid residues per complete turn?
+
+  A. 2.5 amino acid residues
+  B. 3.6 amino acid residues   <= key
+  C. 5.0 amino acid residues
+  D. 7.2 amino acid residues
+
+EXPLANATION:
+Correct Answer: 3.6 amino acid residues
+The usual protein α-helix is a right-handed helical structure in which the polypeptide backbone coils around a central axis. Each complete turn of the ideal helix contains approximately 3.6 amino acid residues, with a pitch (rise per turn) of about 0.54 nm and a rise of about 0.15 nm per residue.
+The helix is stabilized by a regular pattern of hydrogen bonds between the C=O group of residue i and the N–H group of residue i+4. The side chains project outward from the helix backbone. Proline and glycine tend to disfavor regular α-helical structure, proline because of its ring and glycine because of its conformational flexibility.
+Why the other choices are wrong:
+A. 2.5 amino acid residues: A value of 2.5 residues per turn does not describe the ideal alpha helix. Its approximate geometry is 3.6 residues per turn and a pitch of 0.54 nm.
+C. 5.0 amino acid residues: Five residues per turn is not the standard alpha-helical value. Use approximately 3.6 residues per turn; actual protein helices can be distorted from the ideal geometry.
+D. 7.2 amino acid residues: About 7.2 residues span two turns of an ideal alpha helix, not one. The one-turn value is approximately 3.6.
+Key Educational Points:
+  - An ideal alpha helix has approximately 3.6 residues per turn.
+  - About 0.15 nm rise per residue gives a pitch of about 0.54 nm per turn.
+  - Internal backbone C=O groups hydrogen-bond to N–H groups four residues farther along the chain.
+Bottom Line: An ideal alpha helix has about 3.6 residues per turn and a regular i → i+4 backbone hydrogen-bond pattern.
+
+==============================================================================
+
+Q55  [chem-236]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Among the 20 standard amino acids in their free forms, which has a secondary α-amino group?
+
+  A. Glycine
+  B. Proline   <= key
+  C. Tryptophan
+  D. Histidine
+
+EXPLANATION:
+Correct Answer: Proline
+In the unprotonated structure of free proline, the alpha-amino nitrogen is bonded to two carbon atoms and one hydrogen, making it a secondary amine. Its saturated ring joins the side chain back to that nitrogen. A secondary amine is not an imine, so 'imino group' is misleading here. When proline is an internal residue of a peptide, its nitrogen is part of a tertiary amide and has no N–H hydrogen-bond donor.
+The ring restricts backbone rotation. Peptide bonds preceding proline have a higher cis proportion than most other peptide bonds, but most are still trans. Proline can introduce bends or kinks rather than necessarily destroying every regular secondary structure.
+Why the other choices are wrong:
+A. Glycine: Glycine is unique for having the simplest side chain (just a hydrogen atom), making it the smallest amino acid with no chirality at the α-carbon. However, free glycine has a standard primary alpha-amino group (-NH2), not a secondary one.
+C. Tryptophan: Tryptophan contains a large aromatic indole ring system. Free tryptophan has a primary alpha-amino group like most standard amino acids, and its indole nitrogen belongs to that aromatic ring rather than to the alpha-amino group.
+D. Histidine: Histidine contains an imidazole ring in its side chain, which has important acid-base properties (pKa ~6.0). Its imidazole nitrogens are part of that ring; free histidine's alpha-amino group is a standard primary amine. Only proline has a side chain that connects back to the alpha-amino nitrogen.
+Key Educational Points:
+  - Free proline's unprotonated alpha-amino nitrogen is attached to two carbons, so it is a secondary amine.
+  - The ring connecting its side chain to that nitrogen restricts backbone rotation.
+  - Once proline is an internal peptide residue, its nitrogen has no N–H bond for the usual backbone hydrogen-bond donation.
+Bottom Line: Free proline has a secondary alpha-amino group, not an imino group. Internal peptide-bonded proline has a tertiary amide nitrogen with no N–H donor.
+
+==============================================================================
+
+Q56  [chem-237]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In the regular triple-helical regions of fibrillar collagen, which amino acid occurs at every third position?
+
+  A. Alanine
+  B. Proline
+  C. Glycine   <= key
+  D. Leucine
+
+EXPLANATION:
+Correct Answer: Glycine
+Fibrillar collagen has a triple-helical structure of three polypeptide chains wound around each other. In its regular triple-helical regions the repeating motif is Gly–X–Y, with glycine at every third position. X is often proline and Y is often hydroxyproline; these are common occupants of those positions rather than requirements at every one.
+Glycine occupies every third position of these regions because its side chain is only a hydrogen atom. At the tightly packed core of the triple helix there is room for little more, and a larger side chain would cause steric clashes. Certain glycine substitutions in type I collagen can disrupt the triple helix and cause osteogenesis imperfecta.
+Why the other choices are wrong:
+A. Alanine: Alanine is a small, nonpolar amino acid but is not the one required at every third position in collagen. The Gly-X-Y repeating motif specifically requires glycine because the interior of the collagen triple helix is so tightly packed that only glycine (with its single hydrogen atom side chain) can fit.
+B. Proline: Proline often occupies the X position in the Gly-X-Y sequence, while hydroxyproline is common at Y. Glycine, rather than proline, is required at every third position in the regular triple-helical pattern.
+D. Leucine: Leucine is a large, branched, hydrophobic amino acid that would be far too bulky to fit into the crowded interior of the collagen triple helix. The three polypeptide chains wind around each other so tightly that every third residue must be glycine, the smallest amino acid, to avoid steric clashes.
+Key Educational Points:
+  - The regular collagen triple helix contains a repeating Gly-X-Y sequence.
+  - Glycine occurs every third position and fits into the tightly packed core because its side chain is only H.
+  - Proline and hydroxyproline are common at X and Y positions, respectively.
+Bottom Line: Regular triple-helical regions of fibrillar collagen follow a Gly-X-Y repeat. Glycine's small side chain allows close packing at the helix core.
+
+==============================================================================
+
+Q57  [chem-238]  correct answer: C
+------------------------------------------------------------------------------
+STEM: An enzyme that catalyzes the hydrolysis of peptide bonds is classified as a:
+
+  A. Ligase
+  B. Transferase
+  C. Hydrolase (protease)   <= key
+  D. Lyase
+
+EXPLANATION:
+Correct Answer: Hydrolase (protease)
+Enzymes that cleave peptide bonds are classified as hydrolases, specifically proteases (also called peptidases or proteinases). Hydrolases (EC class 3) catalyze bond cleavage in which water is consumed in the overall reaction.
+
+Enzyme class | Main reaction type | Example
+    Oxidoreductases (EC 1) | Oxidation–reduction | Lactate dehydrogenase
+    Transferases (EC 2) | Functional-group transfer | Kinases
+    Hydrolases (EC 3) | Hydrolytic bond cleavage | Proteases, lipases
+    Lyases (EC 4) | Nonhydrolytic cleavage or addition across double bonds | Decarboxylases
+    Isomerases (EC 5) | Rearrangement within a molecule | Phosphoglucose isomerase
+    Ligases (EC 6) | Energy-coupled bond formation, often using ATP | DNA ligase
+    Translocases (EC 7) | Catalyzed movement of ions or molecules across membranes | H+-transporting ATPase
+
+Why the other choices are wrong:
+A. Ligase: Ligases join molecules through energy-coupled bond formation, often using ATP. The reaction in the question instead cleaves a peptide bond by hydrolysis, so it belongs to the hydrolases.
+B. Transferase: Transferases are classified by transfer of a functional group from a donor to an acceptor. The overall reaction here is hydrolytic cleavage of a peptide bond, which places the enzyme among hydrolases.
+D. Lyase: Lyases catalyze nonhydrolytic bond cleavage or addition across double bonds. Some lyases can add or remove water, but that is different from hydrolyzing a peptide bond.
+Key Educational Points:
+  - Proteases, also called peptidases, are hydrolases in EC class 3.
+  - Peptide-bond hydrolysis consumes water in the overall cleavage reaction.
+  - The current enzyme classification has seven main classes, including translocases as EC 7.
+Bottom Line: Proteases are hydrolases that cleave peptide bonds by adding water across the bond.
+
+==============================================================================
+
+Q58  [chem-239]  correct answer: A
+------------------------------------------------------------------------------
+STEM: What is the systematic IUPAC name of CH₃CH(CH₃)CH₂CH₃?
+
+  A. 2-methylbutane   <= key
+  B. 3-methylbutane
+  C. 2-methylpentane
+  D. isopentane
+
+EXPLANATION:
+Correct Answer: A. 2-methylbutane
+The longest carbon chain has 4 carbons (butane). A methyl group (CH₃) is attached to carbon 2. For this singly substituted alkane, numbering from the end nearest the branch gives the substituent the lowest locant, yielding 2-methylbutane.
+Why the other choices are wrong:
+B. 3-methylbutane: For this singly substituted butane chain, number from the end that gives the methyl group the lower locant. That gives position 2 rather than 3.
+C. 2-methylpentane: 2-methylpentane would have a total of 6 carbons (5 in the main chain + 1 methyl branch). The given formula CH3CH(CH3)CH2CH3 has only 5 carbons total, so the longest chain is 4 carbons (butane), not 5 (pentane). Counting carbons carefully is essential for correct IUPAC naming.
+D. isopentane: Isopentane is a common name for the same compound. The question specifically asks for the systematic name, which is 2-methylbutane.
+Key Educational Points:
+  - The molecule has five carbons in total, but its longest continuous chain contains four.
+  - A methyl group on carbon 2 gives the systematic name 2-methylbutane.
+  - Isopentane refers to the same compound by its common name.
+
+==============================================================================
+
+Q59  [chem-240]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which reagent is decolorized by ethene but not ethane at room temperature in the absence of ultraviolet light?
+
+  A. Dilute NaOH
+  B. Bromine water   <= key
+  C. Concentrated H₂SO₄
+  D. Anhydrous AlCl₃
+
+EXPLANATION:
+Correct Answer: B. Bromine water
+Bromine water loses its orange-brown color when bromine is consumed in reaction with ethene's C=C bond. Ethane does not produce this decolorization under the stated room-temperature conditions without ultraviolet light. This gives a visible distinction between these two hydrocarbons. Bromine decolorization is not uniquely specific to alkenes in every possible sample: other substances can also consume bromine.
+Why the other choices are wrong:
+A. Dilute NaOH: Dilute aqueous NaOH does not provide this color-change test for ethene versus ethane. NaOH is a strong base even when its solution is dilute; base strength and concentration are different properties.
+C. Concentrated H₂SO₄: Concentrated sulfuric acid can react with ethene, so it could help distinguish this pair in a differently worded test. However, it is not the colored reagent that is decolorized in the reaction asked about here.
+D. Anhydrous AlCl₃: Anhydrous AlCl₃ is a Lewis acid catalyst in reactions such as Friedel–Crafts chemistry. It does not provide the bromine color change described in the question.
+Key Educational Points:
+  - Ethene consumes bromine and decolorizes bromine water through reaction at its C=C bond.
+  - Ethane does not produce the same change at room temperature without ultraviolet light.
+  - A test's meaning depends on the substances and conditions: bromine can also react with compounds other than alkenes.
+
+==============================================================================
+
+Q60  [chem-241]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In the absence of peroxides, addition of HBr to propene produces mainly:
+
+  A. 1-bromopropane
+  B. 2-bromopropane   <= key
+  C. 1,2-dibromopropane
+  D. 2,2-dibromopropane
+
+EXPLANATION:
+Correct Answer: B. 2-bromopropane
+Markovnikov's rule states that the hydrogen atom adds to the carbon of the double bond bearing more hydrogen atoms, while the halide adds to the more substituted carbon. In propene (CH₃CH=CH₂), the more stable secondary carbocation intermediate leads to 2-bromopropane as the major product.
+Why the other choices are wrong:
+A. 1-bromopropane: 1-bromopropane would be the anti-Markovnikov product, where bromine adds to the less substituted carbon. This occurs in peroxide-initiated (radical) addition of HBr. Under normal (ionic) conditions, Markovnikov's rule applies: the hydrogen adds to the carbon with more hydrogens, and the halide adds to the more substituted carbon.
+C. 1,2-dibromopropane: 1,2-Dibromopropane is the product expected when Br₂ adds across propene's double bond under suitable nonaqueous conditions. Adding HBr supplies one H and one Br, not two Br atoms.
+D. 2,2-dibromopropane: 2,2-Dibromopropane contains two bromine atoms on the central carbon. A single HBr addition across propene's one double bond introduces only one bromine atom, giving mainly 2-bromopropane.
+Key Educational Points:
+  - Under ordinary ionic conditions, H adds to propene's terminal double-bond carbon and Br mainly to the middle carbon.
+  - The major product is 2-bromopropane, consistent with formation of the more stable secondary carbocation intermediate.
+  - Peroxides can change the mechanism and orientation of HBr addition, which is why the reaction conditions are stated.
+
+==============================================================================

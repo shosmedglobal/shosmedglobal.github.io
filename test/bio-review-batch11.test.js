@@ -18,6 +18,10 @@
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
+// NOTE: chemistry review batch 4 (chem-182..chem-241) landed after this suite
+// was written, so those 60 ids were pruned from its untouched fixture and the
+// counts below were stepped down. The sweep still covers every chemistry record
+// that no reviewed pack owns.
 'use strict';
 
 const fs = require('fs');
@@ -176,12 +180,12 @@ const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
-// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 308 chemistry
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(nChem === 308, `${nChem} untouched chemistry hashes, expected 308`);
+ok(nChem === 248, `${nChem} untouched chemistry hashes, expected 248`);
 ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 + 58 + 60 + 59 === 629 + 485,
+ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 === 629 + 485,
   'the untouched set, this pack and chemistry batches 1, 2 and 3 should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 

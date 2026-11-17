@@ -23,6 +23,10 @@
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
+// NOTE: chemistry review batch 4 (chem-182..chem-241) landed after this suite
+// was written, so those 60 ids were pruned from its untouched fixture and the
+// counts below were stepped down. The sweep still covers every chemistry record
+// that no reviewed pack owns.
 'use strict';
 
 const fs = require('fs');
@@ -511,10 +515,10 @@ ok(chem === 0, `${chem} chemistry items changed; this review touches biology onl
 ok(Object.keys(untouched.biology).length === 483, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 483`);
 ok(Object.keys(untouched.biology).length + 60 + 26 + IDS.length === 629, 'fixtures do not partition the biology bank');
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
-// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 308 chemistry
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(Object.keys(untouched.chemistry).length === 308, 'untouched chemistry hash count unexpected');
+ok(Object.keys(untouched.chemistry).length === 248, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
 section('9. The cross-item consistency the review demands');

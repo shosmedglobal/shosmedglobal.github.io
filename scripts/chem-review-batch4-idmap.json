@@ -1,0 +1,122 @@
+{
+  "_comment": [
+    "Verified display-number to bank-id map for the SHOSMED LF3 chemistry review, batch 4.",
+    "",
+    "The review supplies display numbers only. Each id below was verified FOUR ways",
+    "before any text was changed:",
+    "  1. a distinctive phrase from the ORIGINAL stem,",
+    "  2. all four ORIGINAL option texts, in order,",
+    "  3. the stored answer letter,",
+    "  4. the full 60-letter key block and its A/B/C/D tally, both asserted by the review.",
+    "The stem phrase and the four-option signature were tested TOGETHER, because in this",
+    "bank an option set alone is not unique: Q11 (chem-192) and Q36 (chem-217) both carry",
+    "the set 0 / 1 / 2 / 3. The pair is unique for all 60.",
+    "",
+    "Contiguity (chem-182 .. chem-241) is a RESULT of that verification, not an assumption.",
+    "No id in this pack appears in chemistry batch 1 (chem-1..chem-60), batch 2",
+    "(chem-63..chem-122) or batch 3 (chem-76 and chem-123..chem-181), so all 60 displays",
+    "are newly reviewed unique ids.",
+    "",
+    "Presentation preserved: Q1-Q57 store the keyed heading WITHOUT its letter, Q58-Q60",
+    "WITH it; every heading was re-synced to agree with its own option text. '<' and '>'",
+    "in student text are stored as &lt; / &gt; entities in this pack, which the real",
+    "sanitizer passes through unchanged, so new text follows the same convention.",
+    "",
+    "Independently confirmed against the stored records before editing: 13 tables in",
+    "exactly the questions the review names, 57 Bottom Lines in Q1-Q57 and none in",
+    "Q58-Q60, 60 generic three-point blocks, and exactly the 25 missing distractor",
+    "paragraphs the review lists."
+  ],
+  "batch": 4,
+  "subject": "chemistry",
+  "reviewed": "2026-11-17",
+  "source_review": "SHOSMED_LF3_Chemistry_Batch4_Review.txt",
+  "map": {
+    "Q1": "chem-182", "Q2": "chem-183", "Q3": "chem-184", "Q4": "chem-185", "Q5": "chem-186",
+    "Q6": "chem-187", "Q7": "chem-188", "Q8": "chem-189", "Q9": "chem-190", "Q10": "chem-191",
+    "Q11": "chem-192", "Q12": "chem-193", "Q13": "chem-194", "Q14": "chem-195", "Q15": "chem-196",
+    "Q16": "chem-197", "Q17": "chem-198", "Q18": "chem-199", "Q19": "chem-200", "Q20": "chem-201",
+    "Q21": "chem-202", "Q22": "chem-203", "Q23": "chem-204", "Q24": "chem-205", "Q25": "chem-206",
+    "Q26": "chem-207", "Q27": "chem-208", "Q28": "chem-209", "Q29": "chem-210", "Q30": "chem-211",
+    "Q31": "chem-212", "Q32": "chem-213", "Q33": "chem-214", "Q34": "chem-215", "Q35": "chem-216",
+    "Q36": "chem-217", "Q37": "chem-218", "Q38": "chem-219", "Q39": "chem-220", "Q40": "chem-221",
+    "Q41": "chem-222", "Q42": "chem-223", "Q43": "chem-224", "Q44": "chem-225", "Q45": "chem-226",
+    "Q46": "chem-227", "Q47": "chem-228", "Q48": "chem-229", "Q49": "chem-230", "Q50": "chem-231",
+    "Q51": "chem-232", "Q52": "chem-233", "Q53": "chem-234", "Q54": "chem-235", "Q55": "chem-236",
+    "Q56": "chem-237", "Q57": "chem-238", "Q58": "chem-239", "Q59": "chem-240", "Q60": "chem-241"
+  },
+  "asserted_key_block": "BCDBBCCBBBCBCCDCDBCBBCCCBCCBCCCBCCCBABBBACCBCBBBBBCCBBBCCABB",
+  "asserted_key_tally": { "A": 3, "B": 28, "C": 26, "D": 3 },
+  "verification": {
+    "stem_phrase_plus_four_options_unique": true,
+    "option_set_alone_not_unique": ["Q11 chem-192 and Q36 chem-217 share the set 0 / 1 / 2 / 3"],
+    "contiguous_chem_182_to_241": "derived, not assumed",
+    "overlap_with_earlier_packs": "none",
+    "new_unique_ids_this_batch": 60
+  },
+  "stem_changes": [
+    "Q5", "Q10", "Q11", "Q13", "Q14", "Q17", "Q19", "Q23", "Q24", "Q26", "Q27", "Q28",
+    "Q31", "Q32", "Q40", "Q41", "Q45", "Q47", "Q49", "Q50", "Q52", "Q53", "Q54", "Q55",
+    "Q56", "Q58", "Q59", "Q60"
+  ],
+  "option_changes": { "Q14": ["D"], "Q19": ["D"], "Q60": ["D"] },
+  "tables": [
+    "Q4", "Q6", "Q7", "Q13", "Q14", "Q22", "Q26", "Q32", "Q35", "Q37", "Q38", "Q50", "Q57"
+  ],
+  "tables_repaired": ["Q14", "Q22", "Q26", "Q35", "Q37", "Q50", "Q57"],
+  "tables_kept_as_is": ["Q4", "Q6", "Q7", "Q13", "Q32", "Q38"],
+  "bottom_line_replacements": [
+    "Q1", "Q5", "Q10", "Q11", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20",
+    "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q30", "Q31", "Q32", "Q33",
+    "Q34", "Q35", "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q47",
+    "Q48", "Q49", "Q50", "Q51", "Q52", "Q53", "Q54", "Q55", "Q56"
+  ],
+  "bottom_lines_kept": ["Q2", "Q3", "Q4", "Q6", "Q7", "Q8", "Q9", "Q12", "Q29", "Q36", "Q46", "Q57"],
+  "bottom_lines_absent_by_design": ["Q58", "Q59", "Q60"],
+  "missing_feedback_restored": {
+    "Q1": ["A", "C"], "Q3": ["A", "B"], "Q4": ["A", "C"], "Q5": ["A", "C"],
+    "Q7": ["A", "B"], "Q10": ["A", "C"], "Q12": ["A", "C"], "Q13": ["A", "B"],
+    "Q14": ["A", "B"], "Q15": ["A"], "Q16": ["A", "B"], "Q19": ["A", "B"],
+    "Q36": ["C", "D"]
+  },
+  "point_blocks_replaced": 60,
+  "points_total": 180,
+  "generic_point_groups_removed": {
+    "Q1-Q27": "atomic/periodic stock points",
+    "Q28-Q38": "bonding stock points",
+    "Q39-Q57": "acid-base stock points, irrelevant to the amino-acid items",
+    "Q58-Q60": "organic stock points"
+  },
+  "major_rewrite": ["Q59"],
+  "deviations": [],
+  "notes": [
+    "Heading policy: for every item the keyed heading and all three distractor headings were set to that item's own option texts verbatim (entity-encoded where the option contains < or >), so each heading visibly matches its option. Two pre-existing mismatches were capitalization only: Q3 C ('Magnetic' vs 'magnetic') and Q19 D, whose option text the review replaces anyway.",
+    "Q1-Q57 keep the unlettered keyed heading and Q58-Q60 the lettered one, as the review requires; the harness carries a per-item flag and refuses a spec whose flag disagrees with the Q1-Q57 / Q58-Q60 split.",
+    "Q37's replacement table keeps the stored row order (NaCl, H2O, CO2, CH4) rather than the review's listing order; the review states the order can match the existing table.",
+    "Q35's table keeps its stored row label 'Metallic luster' where the review's instruction writes 'Luster'; the review says to preserve the rows and change the descriptions.",
+    "Q50's table carries no pKa column; the approximate pKa values the review asks to retain live in that item's main prose, which is kept.",
+    "Q26's table heading was changed from 'State at room temperature' to 'State at 25 °C and 1 bar' so the table carries the explicit conditions the new stem states.",
+    "Q21's A and D feedback is kept as the review directs; D's pre-existing 'Cl > Br > I > At' uses bare > where the rest of that item uses &gt;. Both render identically and the review forbids a bank-wide cleanup, so it was left alone.",
+    "Q41's trailing empty <div> is outside the review's scope and was preserved byte-for-byte."
+  ],
+  "small_extensions_beyond_a_named_sentence": [
+    "Q5: the supplied full-main replacement also drops the stored copper sentence ([Ar] 3d10 4s1), because the review replaces the whole main prose.",
+    "Q14: the table's other trend cells were prefixed with 'Generally' as the review's 'keep the other rows with generally where appropriate' directs.",
+    "Q50: 'they are uncharged at physiological pH' in the main prose was changed to 'predominantly uncharged', matching the 'predominantly' wording the review requires in the same item.",
+    "Q55: C's pre-existing 'is the largest of the standard amino acids' was dropped, consistent with the review's instruction in Q42 not to use an unsupported side-chain size superlative.",
+    "Q52: the main prose's 'they are not part of the primary backbone sequence' was reworded to 'rather than joining successive backbone residues', because the review forbids teaching that disulfide locations can never be part of a primary-structure description."
+  ],
+  "coverage": {
+    "chemistry_total": 485,
+    "reviewed_before_this_batch": 179,
+    "displays_in_this_pack": 60,
+    "new_unique_ids_this_batch": 60,
+    "previously_reviewed_included_again": [],
+    "reviewed_after_this_batch": 239,
+    "edited_this_batch": 60,
+    "kept_unchanged_this_batch": 0,
+    "still_unreviewed_chemistry": 246,
+    "biology_unaffected": true,
+    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"]
+  }
+}
