@@ -46,6 +46,22 @@ DEVIATIONS
   none. Seven presentation notes and five small extensions beyond a named
   sentence are recorded in scripts/chem-review-batch4-idmap.json.
 
+FOLLOW-UP CORRECTIONS, 17 November 2026
+  Four later corrections are already included below, in explanation text only,
+  and they add no newly reviewed ids:
+    Q35 chem-216  option A feedback: electron transfer explains ion FORMATION,
+                  with ionic bonding named as the attraction between the ions
+                  and metallic delocalization stated separately.
+    Q37 chem-218  option B feedback: the melting point is given in the pack's own
+                  notation and agrees with the table, and the covalent C-H bonds
+                  are stated to remain intact on melting.
+    Q50 chem-231  the sentence after the table: the claim is scoped to the
+                  side-chain amide groups.
+    Q57 chem-238  first sentence of the main explanation: classification scoped to
+                  HYDROLYTIC peptide-bond cleavage.
+  Every stem, option text, answer letter, id, heading, table, educational-point
+  block and Bottom Line was preserved, and the other 56 items were untouched.
+
 ==============================================================================
 
 Q1  [chem-182]  correct answer: B
@@ -976,7 +992,7 @@ Property | Explanation
     Metallic luster | Electrons respond to incident light, producing strong reflection.
 
 Why the other choices are wrong:
-A. transferred from one atom to another: Electron transfer from one atom to another describes ionic bonding, as seen in NaCl where sodium donates an electron to chlorine. In metals, electrons are not transferred to specific atoms but instead form a shared "electron sea" that belongs to the entire metallic lattice.
+A. transferred from one atom to another: Electron transfer can explain the formation of Na⁺ and Cl− from neutral atoms; ionic bonding is the electrostatic attraction between those ions. In a metal, valence electrons are delocalized over many atoms rather than transferred to particular atoms.
 B. shared between two specific atoms: Sharing electrons between two specific atoms describes covalent bonding, as in H2 or CH4. In metallic bonding, the valence electrons are not localized between any two atoms but are free to move throughout the entire crystal, which is why metals conduct electricity so well.
 D. trapped in localized orbitals between atoms: Trapped in localized orbitals is essentially a description of covalent bonding. The defining feature of metallic bonding is the delocalization of valence electrons across the entire metal lattice. This "electron sea model" explains metallic properties: electrical conductivity (mobile electrons carry charge), thermal conductivity, malleability, and metallic luster.
 Key Educational Points:
@@ -1035,7 +1051,7 @@ Substance | Solid type/main attractions | Melting behavior at 1 atm
 
 The molecular solids listed here (CH₄, CO₂, H₂O) change state at much lower temperatures because only the weaker attractions between whole molecules have to be overcome, not the covalent bonds inside them.
 Why the other choices are wrong:
-B. CH₄: Methane (CH4) is a nonpolar molecule held together only by weak London dispersion forces, giving it a melting point of about -182.5 degrees C. Those weak attractions are far easier to overcome than the ionic attractions holding NaCl's lattice together.
+B. CH₄: Methane molecules are nonpolar and attract one another mainly through London dispersion forces. These relatively weak intermolecular attractions help explain methane's low melting point, about −182.5 °C. The C–H bonds within each methane molecule are covalent and remain intact when methane melts.
 C. H₂O: Water (H2O) has relatively strong hydrogen bonds, giving it a melting point of 0 degrees C, which is high for a small covalent molecule. However, this is still far below the 801 degrees C melting point of NaCl, because the electrostatic attraction between ions in an ionic crystal is much stronger than hydrogen bonds.
 D. CO₂: At 1 atm, solid CO₂ changes directly to gas at about −78.5 °C rather than melting. Its molecules are held together mainly by dispersion attractions; the strong covalent C=O bonds within each molecule are not broken during sublimation.
 Key Educational Points:
@@ -1364,7 +1380,7 @@ Amino Acid | Side Chain | Predominant side-chain charge at pH 7.4
     Lysine | –(CH₂)₄–NH₃⁺ | Positive
     Arginine | Guanidinium | Positive
 
-Asparagine and glutamine are the amide derivatives of aspartate and glutamate - they are predominantly uncharged at physiological pH.
+Asparagine and glutamine are the amide derivatives of aspartate and glutamate; their side-chain amide groups are predominantly uncharged at physiological pH.
 Why the other choices are wrong:
 A. Lysine and Arginine: Lysine (pKa ~10.5) and arginine (pKa ~12.5) both have positively charged side chains at physiological pH, not negatively charged. They are the principal basic amino acids and often participate in ionic interactions with negatively charged residues like aspartate and glutamate.
 C. Histidine and Cysteine: Histidine's side chain is mostly neutral at pH 7.4, with a smaller positively charged fraction. Cysteine's thiol is also mostly neutral at this pH, although a minority is deprotonated to a negative thiolate. Neither has a predominantly negative side chain under the stated typical aqueous conditions.
@@ -1536,7 +1552,7 @@ STEM: An enzyme that catalyzes the hydrolysis of peptide bonds is classified as 
 
 EXPLANATION:
 Correct Answer: Hydrolase (protease)
-Enzymes that cleave peptide bonds are classified as hydrolases, specifically proteases (also called peptidases or proteinases). Hydrolases (EC class 3) catalyze bond cleavage in which water is consumed in the overall reaction.
+Enzymes that hydrolyze peptide bonds are classified as hydrolases, specifically proteases (also called peptidases or proteinases). Hydrolases (EC class 3) catalyze bond cleavage in which water is consumed in the overall reaction.
 
 Enzyme class | Main reaction type | Example
     Oxidoreductases (EC 1) | Oxidation–reduction | Lactate dehydrogenase
