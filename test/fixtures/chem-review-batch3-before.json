@@ -1,0 +1,906 @@
+{
+ "Q1": {
+  "q": "Q1",
+  "id": "chem-76",
+  "subject": "chemistry",
+  "topic": "Stoichiometry & Moles",
+  "question": "What is the molar mass of Ca(OH)2? (Ca=40, O=16, H=1)",
+  "options": [
+   "57 g/mol",
+   "58 g/mol",
+   "74 g/mol",
+   "82 g/mol"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. 74 g/mol</h4><p>Ca(OH)2 contains 1 Ca, 2 O, and 2 H atoms. Molar mass = 40 + 2(16) + 2(1) = 40 + 32 + 2 = 74 g/mol.</p><p>Remember to multiply the atoms inside parentheses by the subscript outside before summing.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 57 g/mol:</strong> Getting 57 might result from calculating Ca + O + H = 40 + 16 + 1 = 57, forgetting the subscript 2 outside the parentheses. Ca(OH)2 means there are 2 OH groups: Ca + 2O + 2H = 40 + 32 + 2 = 74 g/mol.</p>\n<p><strong>B. 58 g/mol:</strong> 58 g/mol results from 40 + 16 + 2(1), which counts only one oxygen. Ca(OH)₂ contains two oxygens and two hydrogens, so the correct total is 40 + 2(16) + 2(1) = 74 g/mol.</p>\n<p><strong>D. 82 g/mol:</strong> Getting 82 might come from an arithmetic error or from adding an extra atom somewhere. The correct calculation: 1 Ca (40) + 2 O (32) + 2 H (2) = 74 g/mol. Check each element's count carefully using the subscripts.</p><h4>Key Educational Points:</h4><ul><li>A subscript outside parentheses multiplies every atom inside them.</li><li>Ca(OH)₂ contains one Ca, two O and two H atoms per formula unit.</li><li>Its molar mass is 40 + 2(16) + 2(1) = 74 g/mol using the supplied values.</li></ul><p class='exp-key'>Bottom Line: Molar mass is calculated by summing atomic masses of all atoms in the formula.</p>"
+ },
+ "Q2": {
+  "q": "Q2",
+  "id": "chem-123",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "For the reaction N₂(g) + 3 H₂(g) <-> 2 NH₃(g), what is the expression for Kc?",
+  "options": [
+   "[NH₃] / ([N₂][H₂])",
+   "[N₂][H₂]<sup>3</sup> / [NH₃]<sup>2</sup>",
+   "[NH₃]<sup>2</sup> / ([N₂][H₂]<sup>3</sup>)",
+   "2[NH₃] / ([N₂] + 3[H₂])"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. [NH3]<sup>2</sup> / ([N2][H2]<sup>3</sup>)</h4><p>The equilibrium constant expression Kc = products over reactants, each raised to the power of their stoichiometric coefficients. Kc = [NH3]<sup>2</sup> / ([N2][H2]<sup>3</sup>).</p><p>Pure solids and liquids are not included in the equilibrium expression - only gases and aqueous species.</p><h4>Why the other choices are wrong:</h4><p><strong>D. 2[NH₃] / ([N₂] + 3[H₂]):</strong> Stoichiometric coefficients in the balanced equation become exponents in the equilibrium expression, not multipliers or addition factors. The correct form uses multiplication of concentrations raised to powers, never addition. This is a fundamental rule for writing any K expression.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Kc = [products]<sup>c</sup>oefficients / [reactants]<sup>c</sup>oefficients for species in solution or gas phase.</p>",
+  "free": true
+ },
+ "Q3": {
+  "q": "Q3",
+  "id": "chem-124",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "For the reaction 2 SO₂(g) + O₂(g) <-> 2 SO₃(g), if more O₂ is added at equilibrium, what happens according to Le Chatelier's principle?",
+  "options": [
+   "Equilibrium shifts left",
+   "No change occurs",
+   "Equilibrium shifts right, producing more SO₃",
+   "Kc increases"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. Equilibrium shifts right, producing more SO3</h4><p>Adding more O2 increases the concentration of a reactant. Le Chatelier's principle states that the system will shift to counteract this change, consuming the added O2 by shifting toward products (right).</p><p>The value of Kc does not change - only the position of equilibrium shifts.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Kc increases:</strong> The equilibrium constant Kc depends only on temperature, not on changes in concentration. Adding reactant shifts the equilibrium position (the amounts change), but Kc remains the same. Only changing the temperature can alter the value of Kc.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Adding more reactant shifts equilibrium toward products; Kc remains constant at constant temperature.</p>"
+ },
+ "Q4": {
+  "q": "Q4",
+  "id": "chem-125",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "For a reaction at equilibrium with Kp = 0.50, what is the relationship to Kc if Δn(gas) = -2? (R = 0.0821, T = 300 K)",
+  "options": [
+   "Kp > Kc",
+   "Cannot be determined",
+   "Kp = Kc",
+   "Kp < Kc"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Kp < Kc</h4><p>The relationship Kp = Kc(RT)^(Δn) applies. With Δn = -2: Kp = Kc(0.0821 x 300)<sup>-2</sup> = Kc/(24.63)<sup>2</sup> = Kc/606.4. Since Kp = Kc/606.4, Kp is much smaller than Kc.</p><p>When Δn is negative (fewer gas moles in products), Kp < Kc.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Kp > Kc:</strong> Kp exceeds Kc only when Δn(gas) is positive. At 300 K, RT is about 24.6, so raising it to a positive power gives a factor greater than 1. Here Δn = −2, so the factor is well below 1 and Kp must be the smaller of the two.</p><p><strong>B. Cannot be determined:</strong> The relationship is fully determined once Δn(gas) is known. Because Kp = Kc(RT)^Δn, the sign of Δn alone decides whether Kp is larger or smaller than Kc. The actual values of Kp, R and T are not needed to make the comparison.</p><p><strong>C. Kp = Kc:</strong> Kp equals Kc only when Δn(gas) = 0, meaning equal moles of gas on both sides, because (RT)⁰ = 1. Here Δn = −2, so (RT)^(−2) is far from 1 and the two constants differ substantially.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Kp = Kc(RT)^Δn, where Δn = moles gaseous products - moles gaseous reactants.</p>"
+ },
+ "Q5": {
+  "q": "Q5",
+  "id": "chem-126",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "If the temperature of an exothermic reaction at equilibrium is increased, which direction does the equilibrium shift?",
+  "options": [
+   "Toward products",
+   "No change",
+   "Toward reactants",
+   "Depends on pressure"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. Toward reactants</h4><p>For an exothermic reaction, heat can be thought of as a product. Increasing temperature adds heat, so the system shifts to consume the added heat by shifting toward reactants (left).</p><p>Unlike adding a reactant, changing temperature actually changes the value of K.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Depends on pressure:</strong> The direction of the temperature-induced shift depends on whether the reaction is exothermic or endothermic, not on pressure. Pressure and temperature are independent variables that each cause predictable, separate shifts according to Le Chatelier's principle.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Increasing temperature shifts equilibrium away from the exothermic direction; K changes with temperature.</p>"
+ },
+ "Q6": {
+  "q": "Q6",
+  "id": "chem-127",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "A first-order reaction has a rate constant k = 0.0693 min<sup>-1</sup>. What is the half-life of this reaction?",
+  "options": [
+   "5 min",
+   "10 min",
+   "15 min",
+   "20 min"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 10 min</h4><p>For a first-order reaction, t<sub>1</sub>/2 = ln(2)/k = 0.693/0.0693 = 10 min.</p><p>The half-life of a first-order reaction is constant and independent of the initial concentration, which is a distinctive feature of first-order kinetics.</p><h4>Why the other choices are wrong:</h4><p><strong>D. 20 min:</strong> This is double the correct half-life. It might result from confusing the formula with t½ = 1/(k[A]₀) (which is for second-order reactions). For first-order reactions, half-life depends only on k: t½ = 0.693/k, with no concentration dependence.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: For first-order reactions, t<sub>1</sub>/2 = 0.693/k, independent of initial concentration.</p>"
+ },
+ "Q7": {
+  "q": "Q7",
+  "id": "chem-128",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "The rate law for a reaction is rate = k[A]<sup>2</sup>[B]. If the concentration of A is doubled while B remains constant, by what factor does the rate increase?",
+  "options": [
+   "2",
+   "4",
+   "3",
+   "8"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 4</h4><p>Rate = k[A]<sup>2</sup>[B]. If [A] is doubled: new rate = k(2[A])<sup>2</sup>[B] = k(4[A]<sup>2</sup>)[B] = 4 x original rate. The rate increases by a factor of 4.</p><p>The reaction is second order in A, so doubling A quadruples the rate (2<sup>2</sup> = 4).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 2:</strong> A factor of 2 would be correct if the rate were first-order in A (rate = k[A][B]). Since the rate is second-order in A ([A]²), doubling [A] increases the rate by 2² = 4. The exponent determines how sensitively the rate responds to concentration changes.</p>\n<p><strong>C. 3:</strong> A factor of 3 has no basis in this rate law. When you double a concentration raised to the power n, the rate changes by 2ⁿ. Here n = 2 for A, so 2² = 4. The factor 3 would not arise from any standard integer-order rate law with doubling of concentration.</p>\n<p><strong>D. 8:</strong> A factor of 8 = 2³ would apply if the rate were third-order in A (rate = k[A]³[B]). Here the order with respect to A is 2, so doubling [A] gives 2² = 4. A factor of 8 would also result from doubling both [A] and [B] when the total order is 3.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: For a reactant with order n, multiplying its concentration by x changes the rate by x<sup>n</sup>.</p>"
+ },
+ "Q8": {
+  "q": "Q8",
+  "id": "chem-129",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "What is the overall order of a reaction with rate law: rate = k[X][Y]<sup>2</sup>?",
+  "options": [
+   "3",
+   "2",
+   "1",
+   "4"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. 3</h4><p>The overall order is the sum of the individual orders: 1 (from [X]) + 2 (from [Y]<sup>2</sup>) = 3. The reaction is third order overall.</p><p>The order of each reactant is determined experimentally and does not necessarily correspond to stoichiometric coefficients.</p><h4>Why the other choices are wrong:</h4><p><strong>B. 2:</strong> The order with respect to Y alone is 2, but this ignores the first-order contribution from X. The overall reaction order is the sum of all exponents in the rate law: 1 (from [X]) + 2 (from [Y]²) = 3. Always add all individual orders together.</p>\n<p><strong>C. 1:</strong> This is only the order with respect to X. The overall order requires summing the exponents of all concentration terms in the rate law. With rate = k[X]¹[Y]², the overall order = 1 + 2 = 3.</p>\n<p><strong>D. 4:</strong> There is no way to get 4 from the given rate law. Perhaps this comes from multiplying the orders or miscounting. The rule is straightforward: add all exponents. For rate = k[X]¹[Y]², overall order = 1 + 2 = 3.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Overall reaction order = sum of individual orders of all reactants in the rate law.</p>"
+ },
+ "Q9": {
+  "q": "Q9",
+  "id": "chem-130",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "The activation energy (Ea) of a reaction is 50 kJ/mol. A catalyst is added that lowers Ea to 30 kJ/mol. What effect does this have?",
+  "options": [
+   "The reaction rate increases and equilibrium shifts right",
+   "The reaction rate increases but Kc is unchanged",
+   "Only the forward reaction rate increases",
+   "The enthalpy of reaction changes"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. The reaction rate increases but Kc is unchanged</h4><p>A catalyst lowers the activation energy for both forward and reverse reactions equally, increasing the rate at which equilibrium is reached without changing the position of equilibrium or the value of Kc.</p><p>Catalysts provide an alternative reaction pathway with a lower energy barrier.</p><h4>Why the other choices are wrong:</h4><p><strong>D. The enthalpy of reaction changes:</strong> Enthalpy (ΔH) is a state function that depends on the initial and final states, not on the pathway. A catalyst changes the pathway (lowering Ea) but does not change the overall energy difference between reactants and products. ΔH remains the same.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Catalysts increase reaction rate by lowering Ea but do not change equilibrium position or Kc.</p>"
+ },
+ "Q10": {
+  "q": "Q10",
+  "id": "chem-131",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "According to the Arrhenius equation, k = A x e^(-Ea/RT). If the temperature increases from 300 K to 310 K and Ea = 80 kJ/mol, the rate constant will:",
+  "options": [
+   "Approximately double",
+   "Stay the same",
+   "Decrease",
+   "Increase by exactly 10%"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. Approximately double</h4><p>Using the Arrhenius equation with typical activation energies around 50-100 kJ/mol, a 10 K increase near room temperature roughly doubles the rate constant. The ratio k2/k1 = exp[(Ea/R)(1/T1 - 1/T2)] gives approximately 2 for these values.</p><p>This is the basis for the common rule of thumb that reaction rates double for every 10 degree C increase in temperature.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Increase by exactly 10%:</strong> A 10 K increase does not produce a simple 10% rate increase. The Arrhenius equation gives an exponential dependence on temperature. For Ea = 80 kJ/mol, calculating the ratio k₂/k₁ = exp[(Ea/R)(1/T₁ − 1/T₂)] gives approximately a factor of 2, not 1.10.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: As a rough rule, many reaction rates approximately double for every 10 K increase in temperature near room temperature.</p>"
+ },
+ "Q11": {
+  "q": "Q11",
+  "id": "chem-132",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "For the reaction A -> B + C, the following mechanism is proposed: Step 1 (slow): A -> D; Step 2 (fast): D -> B + C. What is the rate law?",
+  "options": [
+   "rate = k[A]",
+   "rate = k[D]",
+   "rate = k[B][C]",
+   "rate = k[A]<sup>2</sup>"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. rate = k[A]</h4><p>The rate law is determined by the slow (rate-determining) step. Step 1 involves one molecule of A decomposing, so rate = k[A]. This is first order in A.</p><p>The slow step acts as a bottleneck; the overall reaction cannot proceed faster than this step.</p><h4>Why the other choices are wrong:</h4><p><strong>B. rate = k[A]²:</strong> This would imply the slow step involves two molecules of A colliding (bimolecular in A). However, the given mechanism shows A → D as a unimolecular slow step (one molecule of A transforms into D), making the rate first-order in A, not second-order.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: The rate-determining step (slowest step) determines the rate law of the overall reaction.</p>"
+ },
+ "Q12": {
+  "q": "Q12",
+  "id": "chem-133",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "A reaction has Kc = 4.0 x 10<sup>-3</sup> at 25 degrees C. Which statement is true?",
+  "options": [
+   "Products are heavily favored at equilibrium",
+   "Reactants are heavily favored at equilibrium",
+   "The reaction is at equilibrium when [products] = [reactants]",
+   "The reaction does not proceed at all"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Reactants are heavily favored at equilibrium</h4><p>When Kc << 1, the denominator (reactant concentrations) is much larger than the numerator (product concentrations), meaning reactants are favored at equilibrium.</p><p>Kc > 1 favors products, Kc < 1 favors reactants, and Kc = 1 means roughly equal amounts.</p><h4>Why the other choices are wrong:</h4><p><strong>D. The reaction does not proceed at all:</strong> A small Kc means the equilibrium lies far to the left, but the reaction still proceeds - it just does not convert much reactant to product. Even with a very small K, some product forms. A reaction that truly does not proceed would have K = 0, which is essentially impossible thermodynamically.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Kc >> 1 means products favored; Kc << 1 means reactants favored at equilibrium.</p>"
+ },
+ "Q13": {
+  "q": "Q13",
+  "id": "chem-134",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "For a zero-order reaction, which statement is correct?",
+  "options": [
+   "The half-life is independent of initial concentration",
+   "The rate doubles when concentration doubles",
+   "The rate is independent of reactant concentration",
+   "A plot of ln[A] vs time is linear"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. The rate is independent of reactant concentration</h4><p>For a zero-order reaction, rate = k[A]<sup>0</sup> = k. The rate is constant regardless of the concentration of reactant A. This occurs in enzyme-catalyzed reactions at saturation or surface reactions on saturated catalysts.</p><p>The half-life of a zero-order reaction is t<sub>1</sub>/2 = [A]_0 / (2k), which depends on the initial concentration.</p><h4>Why the other choices are wrong:</h4><p><strong>D. A plot of ln[A] vs time is linear:</strong> A linear ln[A] vs. time plot is the hallmark of first-order kinetics. For zero-order reactions, a plot of [A] vs. time is linear (with slope = −k). This distinction between plotting [A], ln[A], or 1/[A] vs. time is the standard method for determining reaction order experimentally.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Zero-order reactions have a constant rate that does not depend on reactant concentration.</p>"
+ },
+ "Q14": {
+  "q": "Q14",
+  "id": "chem-135",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "The reaction quotient Q is calculated to be 5.0 for a system where Kc = 2.0. In which direction will the reaction proceed?",
+  "options": [
+   "Toward products (right)",
+   "Cannot be determined",
+   "The system is at equilibrium",
+   "Toward reactants (left)"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Toward reactants (left)</h4><p>When Q > Kc, there are more products than at equilibrium. The system will shift toward reactants (left) to decrease Q until Q = Kc and equilibrium is reached.</p><p>When Q < Kc, the reaction shifts right; when Q = Kc, the system is at equilibrium.</p><h4>Why the other choices are wrong:</h4><p><strong>C. The system is at equilibrium:</strong> Equilibrium is reached only when Q = K exactly. Here Q = 5.0 ≠ 2.0 = K, so the system is not at equilibrium. It must shift to the left (consuming products and forming reactants) until Q decreases to equal K.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: If Q > K, shift left (toward reactants); if Q < K, shift right (toward products); if Q = K, at equilibrium.</p>"
+ },
+ "Q15": {
+  "q": "Q15",
+  "id": "chem-136",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "For an endothermic reaction at equilibrium, increasing the temperature will:",
+  "options": [
+   "Increase K",
+   "Decrease K",
+   "Not change K",
+   "Make K equal to 1"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. Increase K</h4><p>For an endothermic reaction (positive ΔH), heat is effectively a reactant. Increasing temperature adds heat, shifting equilibrium toward products and increasing the value of K.</p><p>This is the opposite of exothermic reactions, where increasing temperature decreases K.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Make K equal to 1:</strong> K = 1 means ΔG° = 0, which only happens at one specific temperature for a given reaction. Raising the temperature of an endothermic reaction increases K, but not necessarily to exactly 1. K = 1 is a special case, not a general result of heating.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: For endothermic reactions, K increases with increasing temperature; for exothermic reactions, K decreases.</p>"
+ },
+ "Q16": {
+  "q": "Q16",
+  "id": "chem-137",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "A second-order reaction has a rate constant k = 0.040 M<sup>-1</sup> s<sup>-1</sup> and initial concentration of 0.50 M. What is the half-life?",
+  "options": [
+   "17.3 s",
+   "25 s",
+   "100 s",
+   "50 s"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. 50 s</h4><p>For a second-order reaction, t<sub>1</sub>/2 = 1/(k[A]_0) = 1/(0.040 x 0.50) = 1/0.020 = 50 s.</p><p>Unlike first-order reactions, the half-life of a second-order reaction depends on the initial concentration and increases as reactant is consumed.</p><h4>Why the other choices are wrong:</h4><p><strong>C. 100 s:</strong> This is double the correct value, perhaps from using [A]₀ = 0.25 M or k = 0.020 M⁻¹s⁻¹. Plugging in the correct values: t½ = 1/(0.040 × 0.50) = 50 s. Always verify units: k in M⁻¹s⁻¹ multiplied by [A]₀ in M gives s⁻¹, and inverting gives seconds.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Second-order half-life = 1/(k[A]_0); it increases as concentration decreases.</p>"
+ },
+ "Q17": {
+  "q": "Q17",
+  "id": "chem-138",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "Adding an inert gas to an equilibrium mixture of gases at constant volume will:",
+  "options": [
+   "Shift equilibrium toward products",
+   "Have no effect on the equilibrium position",
+   "Shift equilibrium toward reactants",
+   "Increase the equilibrium constant"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Have no effect on the equilibrium position</h4><p>At constant volume, adding an inert gas increases total pressure but does not change the partial pressures or concentrations of any reacting species. Since the equilibrium expression depends on partial pressures (or concentrations) of reactants and products, the position of equilibrium is unaffected.</p><p>However, adding inert gas at constant pressure would increase volume and could shift equilibrium.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Increase the equilibrium constant:</strong> The equilibrium constant depends only on temperature. Adding inert gas, changing pressure, or changing concentration cannot alter K. Only a temperature change can change the value of K, according to the van't Hoff equation.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Inert gas at constant volume does not affect equilibrium because partial pressures of reactants and products remain unchanged.</p>"
+ },
+ "Q18": {
+  "q": "Q18",
+  "id": "chem-139",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "The rate of a reaction is found to triple when the concentration of reactant A is tripled. What is the order with respect to A?",
+  "options": [
+   "0",
+   "3",
+   "2",
+   "1"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. 1</h4><p>If tripling [A] triples the rate, then rate is proportional to [A]<sup>1</sup>. Mathematically: 3 = 3<sup>n</sup>, so n = 1. The reaction is first order with respect to A.</p><p>To determine order experimentally, compare the factor change in rate to the factor change in concentration.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 0:</strong> Zero-order means rate = k (constant), so changing concentration would not affect the rate at all. Here the rate does change when [A] changes, which rules out zero-order. Zero-order kinetics are observed when a catalyst or enzyme is saturated.</p>\n<p><strong>B. 3:</strong> If the order were 3, tripling [A] would increase the rate by 3³ = 27 times, not 3 times. The relationship is: rate ratio = (concentration ratio)<sup>o</sup>rder. Since 3¹ = 3, the order must be 1. Third-order reactions are quite rare in practice.</p>\n<p><strong>C. 2:</strong> If second-order in A, tripling [A] would increase the rate by 3² = 9 times, not 3 times. The general formula is: new rate / old rate = (new [A] / old [A])<sup>n</sup>. Here 3 = 3<sup>n</sup>, so n = 1. Second-order would mean a 9-fold rate increase.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: If multiplying concentration by x changes rate by x<sup>n</sup>, then n is the order with respect to that reactant.</p>"
+ },
+ "Q19": {
+  "q": "Q19",
+  "id": "chem-140",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "In a reaction mechanism, what is an intermediate?",
+  "options": [
+   "A species produced in one step and consumed in a later step",
+   "A substance that appears in the rate law",
+   "The same as a catalyst",
+   "A reactant that is in excess"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. A species produced in one step and consumed in a later step</h4><p>An intermediate is formed during the reaction mechanism but does not appear in the overall balanced equation. It is produced in one elementary step and consumed in a subsequent step.</p><p>Intermediates differ from catalysts, which are present at both the start and end of the reaction.</p><h4>Why the other choices are wrong:</h4><p><strong>D. A reactant that is in excess:</strong> An excess reactant is simply a starting material present in greater amount than needed. An intermediate is a completely different concept - it is a transient species formed and then consumed during the multi-step mechanism. Excess reactants appear in the overall equation; intermediates do not.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Intermediates are produced and consumed within the mechanism; they do not appear in the overall equation.</p>"
+ },
+ "Q20": {
+  "q": "Q20",
+  "id": "chem-141",
+  "subject": "chemistry",
+  "topic": "Chemical Equilibrium & Kinetics",
+  "question": "For the equilibrium PCl5(g) <-> PCl3(g) + Cl₂(g), what happens when the volume of the container is decreased at constant temperature?",
+  "options": [
+   "Equilibrium shifts toward reactants (PCl5)",
+   "Equilibrium shifts toward products",
+   "No effect on equilibrium",
+   "Kc changes"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. Equilibrium shifts toward reactants (PCl5)</h4><p>Decreasing volume increases pressure. Le Chatelier's principle states the system will shift toward the side with fewer moles of gas. Reactant side has 1 mol gas (PCl5), product side has 2 mol gas (PCl3 + Cl2), so equilibrium shifts left.</p><p>Kc remains unchanged because temperature is constant.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Kc changes:</strong> Kc depends only on temperature, never on pressure or volume changes. What changes is the equilibrium position (the actual concentrations shift), but Kc itself stays the same. Only a temperature change can alter the value of Kc.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Increasing pressure (decreasing volume) shifts equilibrium toward the side with fewer moles of gas.</p>"
+ },
+ "Q21": {
+  "q": "Q21",
+  "id": "chem-142",
+  "subject": "chemistry",
+  "topic": "Reaction Kinetics",
+  "question": "Two reactions are given: Reaction 1 has Ea = 40 kJ/mol, Reaction 2 has Ea = 100 kJ/mol. Both are at the same temperature. Which reaction is faster?",
+  "options": [
+   "Cannot be determined without knowing the pre-exponential factor",
+   "Reaction 2 (higher Ea)",
+   "Both have the same rate",
+   "Reaction 1 (lower Ea)"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. Cannot be determined without knowing the pre-exponential factor</h4><p>While a lower Ea generally favors a faster reaction, the Arrhenius equation k = Ae^(-Ea/RT) also depends on the pre-exponential factor A, which reflects the frequency and orientation of collisions. Without knowing A for both reactions, we cannot definitively determine which is faster.</p><p>However, if A values are similar, the reaction with lower Ea would be faster.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Reaction 1 (lower Ea):</strong> While lower Ea favors a faster rate, the Arrhenius equation has two parameters: Ea and the pre-exponential factor A (related to collision frequency and orientation). If Reaction 2 has a much larger A, it could still be faster despite its higher Ea. Both parameters matter.</p><h4>Key Educational Points:</h4><ul><li>Chemical equilibrium is dynamic - forward and reverse reactions occur at equal rates, but concentrations remain constant (not necessarily equal).</li><li>Le Chatelier's principle: a system at equilibrium will shift to counteract any imposed change in concentration, pressure, or temperature.</li><li>Reaction rate depends on concentration, temperature, surface area, and catalysts. Catalysts lower activation energy without being consumed.</li></ul><p class='exp-key'>Bottom Line: Reaction rate depends on both activation energy (Ea) and the pre-exponential factor (A) in the Arrhenius equation.</p>"
+ },
+ "Q22": {
+  "q": "Q22",
+  "id": "chem-143",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "In the reaction Zn + Cu<sup>2</sup>+ -> Zn<sup>2</sup>+ + Cu, which species is oxidized?",
+  "options": [
+   "Cu<sup>2</sup>+",
+   "Zn",
+   "Cu",
+   "Zn<sup>2</sup>+"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Zn</h4><p>Zinc goes from oxidation state 0 to +2, losing two electrons (oxidation). Cu<sup>2</sup>+ gains two electrons to become Cu (reduction). Zn is the reducing agent and Cu<sup>2</sup>+ is the oxidizing agent.</p><p>Remember: OIL RIG - Oxidation Is Loss of electrons, Reduction Is Gain of electrons.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Zn²⁺:</strong> Zn²⁺ is the product of oxidation, not the species being oxidized. The species that is oxidized is the reactant that loses electrons: Zn → Zn²⁺ + 2e⁻. Zinc metal (Zn) is oxidized, and Zn²⁺ is what it becomes after losing electrons.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: The species that loses electrons is oxidized; the species that gains electrons is reduced.</p>",
+  "free": true
+ },
+ "Q23": {
+  "q": "Q23",
+  "id": "chem-144",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "In a galvanic (voltaic) cell, oxidation occurs at the:",
+  "options": [
+   "Cathode",
+   "Anode",
+   "Salt bridge",
+   "External circuit"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Anode</h4><p>In a galvanic cell, oxidation occurs at the anode (negative terminal) and reduction occurs at the cathode (positive terminal). Electrons flow from anode to cathode through the external circuit.</p><p>Remember: AN OX (anode = oxidation) and RED CAT (reduction = cathode).</p><h4>Why the other choices are wrong:</h4><p><strong>D. External circuit:</strong> The external circuit (wire) conducts electrons from the anode to the cathode but is not where oxidation occurs. Electrons flow through the wire because of the potential difference between the two half-cells. The redox reactions happen at the electrode surfaces in contact with the solutions.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Anode = oxidation; Cathode = reduction. In galvanic cells, the anode is negative and cathode is positive.</p>"
+ },
+ "Q24": {
+  "q": "Q24",
+  "id": "chem-145",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "Given: E<sub>cell</sub>(standard) = E<sub>cathode</sub>(standard) - E<sub>anode</sub>(standard). If Zn<sup>2</sup>+/Zn has E = -0.76 V and Cu<sup>2</sup>+/Cu has E = +0.34 V, what is E<sub>cell</sub> for a Zn-Cu galvanic cell?",
+  "options": [
+   "0.42 V",
+   "1.10 V",
+   "-1.10 V",
+   "-0.42 V"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 1.10 V</h4><p>Cu<sup>2</sup>+ is reduced (cathode) and Zn is oxidized (anode). E<sub>cell</sub> = E<sub>cathode</sub> - E<sub>anode</sub> = 0.34 - (-0.76) = 0.34 + 0.76 = 1.10 V.</p><p>A positive E<sub>cell</sub> indicates a spontaneous reaction in a galvanic cell.</p><h4>Why the other choices are wrong:</h4><p><strong>D. -0.42 V:</strong> This incorrect value likely comes from a sign error or incorrect assignment of electrodes. Always assign the electrode with the more positive reduction potential as the cathode. E°cell = E°cathode − E°anode = (+0.34) − (−0.76) = +1.10 V.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: E<sub>cell</sub> = E<sub>cathode</sub> - E<sub>anode</sub>; positive E<sub>cell</sub> means the reaction is spontaneous.</p>"
+ },
+ "Q25": {
+  "q": "Q25",
+  "id": "chem-146",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "The Nernst equation is E = E<sub>standard</sub> - (RT/nF)lnQ. At 25 degrees C, for a cell with E<sub>standard</sub> = 1.10 V, n = 2, and Q = 1, what is E?",
+  "options": [
+   "0 V",
+   "1.10 V",
+   "0.55 V",
+   "2.20 V"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 1.10 V</h4><p>When Q = 1, ln(Q) = ln(1) = 0. So E = E<sub>standard</sub> - (RT/nF)(0) = E<sub>standard</sub> = 1.10 V.</p><p>When all species are at standard conditions (1 M, 1 atm), Q = 1 and the cell potential equals the standard cell potential.</p><h4>Why the other choices are wrong:</h4><p><strong>D. 2.20 V:</strong> This is double the standard potential and might arise from multiplying by n instead of applying the Nernst equation correctly. The Nernst equation at Q = 1 gives E = E° − (RT/nF) × ln(1) = E° − 0 = E°. Cell potential does not scale with the number of electrons transferred.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: When Q = 1, the Nernst equation gives E = E<sub>standard</sub> because ln(1) = 0.</p>"
+ },
+ "Q26": {
+  "q": "Q26",
+  "id": "chem-147",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "During the electrolysis of molten NaCl, what is produced at the cathode?",
+  "options": [
+   "Cl₂ gas",
+   "O₂ gas",
+   "NaOH",
+   "Na metal"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Na metal</h4><p>At the cathode (reduction occurs), Na+ ions gain electrons: Na+ + e- -> Na. At the anode, Cl- ions are oxidized: 2 Cl- -> Cl2 + 2e-.</p><p>Electrolysis of molten NaCl (Downs process) is the industrial method for producing sodium metal and chlorine gas.</p><h4>Why the other choices are wrong:</h4><p><strong>C. NaOH:</strong> NaOH is produced during electrolysis of aqueous NaCl (the chloralkali process), not molten NaCl. In the molten salt, there is no water present to form hydroxide ions. The cathode reaction in molten NaCl is simply Na⁺ + e⁻ → Na(l).</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: In electrolysis, cations are reduced at the cathode and anions are oxidized at the anode.</p>"
+ },
+ "Q27": {
+  "q": "Q27",
+  "id": "chem-148",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "According to Faraday's first law, how many moles of Cu are deposited by passing 2 Faradays (2 x 96,485 C) of charge through a CuSO4 solution? (Cu<sup>2</sup>+ + 2e- -> Cu)",
+  "options": [
+   "0.5 mol",
+   "1.0 mol",
+   "2.0 mol",
+   "4.0 mol"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 1.0 mol</h4><p>Each mole of Cu<sup>2</sup>+ requires 2 moles of electrons (2 Faradays) for deposition. With 2 Faradays of charge: moles Cu = 2F / 2F per mol = 1.0 mol.</p><p>Faraday's law relates the amount of substance deposited to the charge passed: moles = Q/(nF).</p><h4>Why the other choices are wrong:</h4><p><strong>D. 4.0 mol:</strong> This significantly overestimates the amount deposited. Faraday's law: moles of metal = (total charge in coulombs)/(n × F), where n is the number of electrons per ion. For Cu²⁺, n = 2, so moles = (2 × 96,485)/(2 × 96,485) = 1.0 mol.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Moles deposited = total charge (coulombs) / (n x F), where n is electrons per ion and F = 96,485 C/mol.</p>"
+ },
+ "Q28": {
+  "q": "Q28",
+  "id": "chem-149",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "Which of the following is the strongest oxidizing agent based on standard reduction potentials: F2 (E = +2.87 V), Au<sup>3</sup>+ (E = +1.50 V), Ag+ (E = +0.80 V), Zn<sup>2</sup>+ (E = -0.76 V)?",
+  "options": [
+   "Zn<sup>2</sup>+",
+   "Ag+",
+   "Au<sup>3</sup>+",
+   "F2"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. F2</h4><p>The species with the highest (most positive) standard reduction potential is the strongest oxidizing agent, as it has the greatest tendency to be reduced (gain electrons). F2 at +2.87 V is the strongest oxidizing agent.</p><p>Conversely, the species with the most negative reduction potential is the strongest reducing agent.</p><h4>Why the other choices are wrong:</h4><p><strong>C. Au³⁺:</strong> Au³⁺ has E° = +1.50 V, making it a strong oxidizing agent but still weaker than F₂ (+2.87 V). Gold's high reduction potential explains why gold is found as a native metal in nature - very few substances can oxidize it. Nevertheless, F₂ at +2.87 V is the strongest common oxidizing agent.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Higher standard reduction potential = stronger oxidizing agent (greater tendency to gain electrons).</p>"
+ },
+ "Q29": {
+  "q": "Q29",
+  "id": "chem-150",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "What is the oxidation state of sulfur in H₂SO₄?",
+  "options": [
+   "+2",
+   "+4",
+   "+8",
+   "+6"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. +6</h4><p>In H<sub>2</sub>SO<sub>4</sub>: H = +1 (x2 = +2), O = -2 (x4 = -8). Sum must be 0: +2 + S + (-8) = 0, so S = +6.</p><p>Sulfur in H<sub>2</sub>SO<sub>4</sub> is in its highest common oxidation state, making sulfuric acid a potential oxidizing agent, especially when hot and concentrated.</p><h4>Why the other choices are wrong:</h4><p><strong>C. +8:</strong> An oxidation state of +8 would exceed the number of valence electrons sulfur has (6). The maximum oxidation state for a main-group element equals its group number. Sulfur is in Group 16 (VIA), so its maximum oxidation state is +6, not +8.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Assign known oxidation states first (H = +1, O = -2), then solve for the unknown element.</p>"
+ },
+ "Q30": {
+  "q": "Q30",
+  "id": "chem-151",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "In corrosion of iron, which reaction occurs at the anodic region?",
+  "options": [
+   "O₂ + 2H₂O + 4e- -> 4OH-",
+   "Fe -> Fe<sup>2</sup>+ + 2e-",
+   "Fe<sup>2</sup>+ + 2e- -> Fe",
+   "2H+ + 2e- -> H₂"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Fe -> Fe<sup>2</sup>+ + 2e-</h4><p>Corrosion is an electrochemical process where iron is oxidized at the anode: Fe -> Fe<sup>2</sup>+ + 2e-. At the cathode, oxygen is reduced: O2 + 2H<sub>2</sub>O + 4e- -> 4OH-. The Fe<sup>2</sup>+ eventually forms rust (Fe<sub>2</sub>O<sub>3</sub> . xH2O).</p><p>Corrosion requires both oxygen and water (moisture) to proceed.</p><h4>Why the other choices are wrong:</h4><p><strong>D. 2H⁺ + 2e⁻ → H₂:</strong> This is a cathodic reduction reaction that occurs in acidic conditions (hydrogen evolution). It is not the anodic reaction. In iron corrosion, the anodic reaction is always the oxidation of iron metal. The cathodic reaction varies depending on pH and oxygen availability.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Iron corrosion involves oxidation of Fe at the anode and reduction of O2 at the cathode.</p>"
+ },
+ "Q31": {
+  "q": "Q31",
+  "id": "chem-152",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "A current of 5.0 A is passed through a solution of AgNO3 for 965 seconds. How many grams of silver (M=108) are deposited? (Ag+ + e- -> Ag, F = 96,485 C/mol)",
+  "options": [
+   "2.70 g",
+   "1.08 g",
+   "10.8 g",
+   "5.40 g"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. 5.40 g</h4><p>Charge = I x t = 5.0 x 965 = 4825 C. Moles of electrons = 4825/96,485 = 0.050 mol. Since Ag+ requires 1 electron, moles Ag = 0.050 mol. Mass = 0.050 x 108 = 5.40 g.</p><p>This is a direct application of Faraday's laws of electrolysis.</p><h4>Why the other choices are wrong:</h4><p><strong>C. 10.8 g:</strong> This is double the correct answer. It might result from an error like using 2 × 965 seconds or doubling the charge. Check: Q = It = 5.0 × 965 = 4825 C; moles of e⁻ = 4825/96,485 = 0.050; mass Ag = 0.050 × 108 = 5.40 g.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Mass deposited = (I x t x M) / (n x F), where I is current, t is time, M is molar mass, n is electron count.</p>"
+ },
+ "Q32": {
+  "q": "Q32",
+  "id": "chem-153",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "Which of the following reactions is a disproportionation reaction?",
+  "options": [
+   "2 Na + Cl₂ -> 2 NaCl",
+   "Cl₂ + 2 KBr -> 2 KCl + Br2",
+   "2 H<sub>2</sub>O₂ -> 2 H₂O + O₂",
+   "Fe + CuSO4 -> FeSO4 + Cu"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. 2 H<sub>2</sub>O<sub>2</sub> -> 2 H<sub>2</sub>O + O2</h4><p>In disproportionation, the same element is both oxidized and reduced. In H<sub>2</sub>O<sub>2</sub>, oxygen is -1. In H<sub>2</sub>O, oxygen is -2 (reduced). In O2, oxygen is 0 (oxidized). So oxygen in H<sub>2</sub>O<sub>2</sub> simultaneously undergoes oxidation and reduction.</p><p>H2O2 is a classic example of a compound that readily undergoes disproportionation.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Fe + CuSO₄ → FeSO₄ + Cu:</strong> This is a single displacement reaction where iron replaces copper. Fe is oxidized and Cu²⁺ is reduced - two different elements changing oxidation state. In disproportionation, the same element acts as both the oxidizing and reducing agent, as oxygen does in H₂O₂ (−1 → −2 and −1 → 0).</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Disproportionation occurs when the same element in one species is simultaneously oxidized and reduced.</p>"
+ },
+ "Q33": {
+  "q": "Q33",
+  "id": "chem-154",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "What is the standard cell potential for a galvanic cell made from Al (E = -1.66 V) and Ni<sup>2</sup>+/Ni (E = -0.25 V)?",
+  "options": [
+   "-1.41 V",
+   "1.41 V",
+   "1.91 V",
+   "-1.91 V"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 1.41 V</h4><p>Al has the more negative reduction potential, so it is oxidized (anode). Ni<sup>2</sup>+ is reduced (cathode). E<sub>cell</sub> = E<sub>cathode</sub> - E<sub>anode</sub> = (-0.25) - (-1.66) = -0.25 + 1.66 = 1.41 V.</p><p>The more active metal (more negative E) is always the anode in a galvanic cell.</p><h4>Why the other choices are wrong:</h4><p><strong>D. -1.91 V:</strong> This value has both the wrong magnitude and sign. Standard cell potentials for galvanic cells must be positive. The correct calculation: Ni²⁺/Ni (−0.25 V) is the cathode (more positive), Al³⁺/Al (−1.66 V) is the anode. E°cell = −0.25 − (−1.66) = +1.41 V.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: The metal with more negative standard reduction potential acts as the anode (is oxidized) in a galvanic cell.</p>"
+ },
+ "Q34": {
+  "q": "Q34",
+  "id": "chem-155",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "In the balanced redox reaction: MnO4- + 8H+ + 5e- -> Mn<sup>2</sup>+ + 4H₂O, what is the change in oxidation state of Mn?",
+  "options": [
+   "+7 to +2 (reduction by 5)",
+   "+2 to +7 (oxidation by 5)",
+   "+4 to +2 (reduction by 2)",
+   "+7 to +4 (reduction by 3)"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. +7 to +2 (reduction by 5)</h4><p>In MnO4-, Mn has an oxidation state of +7. In Mn<sup>2</sup>+, it is +2. The change is from +7 to +2, a decrease of 5, matching the 5 electrons gained in the half-reaction.</p><p>Permanganate is a powerful oxidizing agent in acidic solution because Mn(VII) has a strong tendency to be reduced.</p><h4>Why the other choices are wrong:</h4><p><strong>D. +7 to +4 (reduction by 3):</strong> While the starting oxidation state (+7) is correct, the product Mn²⁺ has an oxidation state of +2, not +4. MnO₂ is the product when permanganate reacts in neutral or basic conditions (reduction by 3), but in acidic conditions (with H⁺), Mn is fully reduced to Mn²⁺ (reduction by 5).</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: The number of electrons in a half-reaction equals the change in oxidation state.</p>"
+ },
+ "Q35": {
+  "q": "Q35",
+  "id": "chem-156",
+  "subject": "chemistry",
+  "topic": "Redox Reactions & Electrochemistry",
+  "question": "Which method protects iron from corrosion by using a more active metal?",
+  "options": [
+   "Electroplating with gold",
+   "Galvanizing (coating with zinc)",
+   "Painting the surface",
+   "Applying oil"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Galvanizing (coating with zinc)</h4><p>Galvanizing coats iron with zinc, which is more reactive (more negative E) than iron. Zinc preferentially oxidizes (acts as a sacrificial anode), protecting the iron even if the coating is scratched.</p><p>This is cathodic protection - the iron becomes the cathode and is protected from oxidation.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Applying oil:</strong> Oil creates a hydrophobic barrier that prevents moisture from reaching the metal surface, similar to painting. This is a barrier method, not cathodic protection. Cathodic protection specifically requires a more reactive metal (like zinc or magnesium) that oxidizes preferentially, keeping the iron in a reduced (metallic) state.</p><h4>Key Educational Points:</h4><ul><li>In redox reactions, oxidation is loss of electrons (OIL) and reduction is gain of electrons (RIG). They always occur together.</li><li>Standard electrode potentials (E°) predict spontaneity: a positive cell potential (E°cell > 0) indicates a spontaneous galvanic cell reaction.</li><li>Electrochemistry has major applications: batteries (galvanic cells), electroplating (electrolytic cells), and corrosion prevention.</li></ul><p class='exp-key'>Bottom Line: Cathodic protection uses a more active (more easily oxidized) metal as a sacrificial anode to protect the less active metal.</p>"
+ },
+ "Q36": {
+  "q": "Q36",
+  "id": "chem-157",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "The enthalpy change for the reaction C(s) + O₂(g) -> CO₂(g) is -393 kJ/mol. This reaction is:",
+  "options": [
+   "Endothermic",
+   "Isothermal",
+   "Thermoneutral",
+   "Exothermic"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Exothermic</h4><p>A negative enthalpy change (ΔH < 0) indicates an exothermic reaction - heat is released to the surroundings. The combustion of carbon releases 393 kJ per mole of CO2 formed.</p><p>Exothermic reactions feel hot to the touch because energy flows from the system to the surroundings.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Endothermic:</strong> An endothermic reaction absorbs heat from its surroundings and has a positive enthalpy change. Here the value is −393 kJ/mol, so heat flows in the opposite direction.</p><p><strong>B. Isothermal:</strong> Isothermal describes a process held at constant temperature. That is a statement about the conditions, not about whether heat is released or absorbed - an exothermic reaction can be run isothermally if the heat is carried away.</p><p><strong>C. Thermoneutral:</strong> A thermoneutral reaction would have an enthalpy change of zero, exchanging no net heat. Here it is −393 kJ/mol, a large negative value.</p><h4>Key Educational Points:</h4><ul><li>A negative enthalpy change means the system releases heat to its surroundings, which defines an exothermic reaction.</li><li>The sign convention is written from the system's point of view: the system loses energy, so the value is negative.</li><li>Exothermic reactions warm their surroundings; endothermic reactions, with a positive enthalpy change, cool them.</li><li>Combustion reactions such as this one are always strongly exothermic.</li><li>Enthalpy change describes heat exchange only - on its own it does not determine whether a reaction is spontaneous.</li></ul><p class='exp-key'>Bottom Line: Negative ΔH = exothermic (heat released); positive ΔH = endothermic (heat absorbed).</p>",
+  "free": true
+ },
+ "Q37": {
+  "q": "Q37",
+  "id": "chem-158",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "Using Hess's law, given: C + O₂ -> CO₂ (ΔH = -393 kJ) and CO + 1/2 O₂ -> CO₂ (ΔH = -283 kJ), what is ΔH for C + 1/2 O₂ -> CO?",
+  "options": [
+   "-676 kJ",
+   "+110 kJ",
+   "-110 kJ",
+   "+676 kJ"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. -110 kJ</h4><p>By Hess's law: ΔH(target) = ΔH(reaction 1) - ΔH(reaction 2) = (-393) - (-283) = -110 kJ. We subtract because we reverse reaction 2 (CO2 -> CO + 1/2 O2, ΔH = +283) and add it to reaction 1.</p><p>Hess's law states that enthalpy change depends only on initial and final states, not the path taken.</p><h4>Why the other choices are wrong:</h4><p><strong>A. -676 kJ:</strong> −676 kJ is the two given values simply added, (−393) + (−283). Hess's law requires the second reaction to be reversed before combining, which changes the sign of its enthalpy change.</p><p><strong>B. +110 kJ:</strong> The magnitude is right but the sign is inverted. Reversing reaction 2 gives +283, and −393 + 283 = −110 kJ. Forming CO from its elements releases energy rather than absorbing it.</p><p><strong>D. +676 kJ:</strong> This is the sum of the two magnitudes given a positive sign. Both the addition and the sign are wrong: the second equation must be reversed and then added, not summed as given.</p><h4>Key Educational Points:</h4><ul><li>Hess's law states that the enthalpy change of a reaction depends only on the initial and final states, not on the route taken.</li><li>The target is reaction 1 minus reaction 2: (−393) − (−283) = −110 kJ.</li><li>Subtracting a reaction is equivalent to reversing it, and reversing a reaction reverses the sign of its enthalpy change.</li><li>Multiplying a reaction through by a factor multiplies its enthalpy change by the same factor.</li><li>The law works because enthalpy is a state function - a property of the state itself, not of how the state was reached.</li></ul><p class='exp-key'>Bottom Line: Hess's law allows calculation of ΔH for a reaction by combining known thermochemical equations.</p>"
+ },
+ "Q38": {
+  "q": "Q38",
+  "id": "chem-159",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "A 50.0 g sample of water absorbs 4180 J of heat. By how many degrees Celsius does its temperature rise? (Specific heat of water = 4.18 J/g degrees C)",
+  "options": [
+   "10 degrees C",
+   "20 degrees C",
+   "50 degrees C",
+   "100 degrees C"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 20 degrees C</h4><p>Using q = m x c x ΔT: 4180 = 50.0 x 4.18 x ΔT. ΔT = 4180/(50.0 x 4.18) = 4180/209 = 20.0 degrees C.</p><p>Calorimetry uses the relationship between heat, mass, specific heat capacity, and temperature change.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 10 degrees C:</strong> 10 °C would follow from doubling the denominator - for instance using 100 g rather than 50.0 g. With 50.0 g, mc = 209 J/°C and 4180/209 = 20.</p><p><strong>C. 50 degrees C:</strong> 50 °C comes from dividing the heat by the mass alone and omitting the specific heat capacity. Both m and c belong in the denominator.</p><p><strong>D. 100 degrees C:</strong> 100 °C is far too large for this quantity of heat. Raising 50.0 g of water by 100 °C would require about 20,900 J, five times the 4180 J supplied.</p><h4>Key Educational Points:</h4><ul><li>Rearranging Q = mcΔT for temperature change gives ΔT = Q/(mc).</li><li>Substituting: 4180 J / (50.0 g × 4.18 J/g°C) = 20.0 °C.</li><li>Check that the units cancel: joules divided by (grams × J/g°C) leaves °C.</li><li>For a fixed quantity of heat, the temperature rise is inversely proportional to both mass and specific heat capacity.</li><li>The answer is a temperature change, so the same number applies whether expressed in °C or K.</li></ul><p class='exp-key'>Bottom Line: q = mc(ΔT); rearrange to find any unknown variable in calorimetry problems.</p>"
+ },
+ "Q39": {
+  "q": "Q39",
+  "id": "chem-160",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "The bond energies of H-H, Cl-Cl, and H-Cl are 436, 243, and 431 kJ/mol respectively. What is ΔH for H₂ + Cl₂ -> 2 HCl?",
+  "options": [
+   "-183 kJ",
+   "+183 kJ",
+   "+862 kJ",
+   "-862 kJ"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. -183 kJ</h4><p>ΔH = sum of bonds broken - sum of bonds formed = (436 + 243) - (2 x 431) = 679 - 862 = -183 kJ.</p><p>Breaking bonds requires energy (endothermic) while forming bonds releases energy (exothermic). If more energy is released than absorbed, the reaction is exothermic.</p><h4>Why the other choices are wrong:</h4><p><strong>B. +183 kJ:</strong> The magnitude is correct but the sign is inverted, which happens if bonds broken are subtracted from bonds formed. The convention is bonds broken minus bonds formed.</p><p><strong>C. +862 kJ:</strong> 862 kJ is the energy released in forming the two H–Cl bonds alone (2 × 431). The energy absorbed in breaking H–H and Cl–Cl must still be subtracted from it.</p><p><strong>D. -862 kJ:</strong> This is the bond-forming energy alone, given a negative sign. The calculation must combine both halves: ΔH = (436 + 243) − (2 × 431) = −183 kJ.</p><h4>Key Educational Points:</h4><ul><li>Using bond energies, the enthalpy change equals the energy needed to break bonds minus the energy released forming bonds.</li><li>Substituting: (436 + 243) − (2 × 431) = 679 − 862 = −183 kJ.</li><li>Breaking bonds always absorbs energy and forming bonds always releases it; the sign of the overall change depends on which is larger.</li><li>Count every bond formed - two H-Cl bonds are made here, not one, and missing the factor of 2 is the usual error.</li><li>Bond energies are averages taken across many compounds, so this method gives a good estimate rather than an exact value.</li></ul><p class='exp-key'>Bottom Line: ΔH = energy of bonds broken - energy of bonds formed. Negative result = exothermic.</p>"
+ },
+ "Q40": {
+  "q": "Q40",
+  "id": "chem-161",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "For a spontaneous process at all temperatures, which condition on ΔH and ΔS must hold?",
+  "options": [
+   "ΔH < 0, ΔS < 0",
+   "ΔH > 0, ΔS < 0",
+   "ΔH < 0, ΔS > 0",
+   "ΔH > 0, ΔS > 0"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. ΔH < 0, ΔS > 0</h4><p>For spontaneity, ΔG = ΔH - T(ΔS) must be negative. When ΔH is negative and ΔS is positive, both terms make ΔG negative regardless of temperature.</p><p>An exothermic reaction with increasing entropy is always spontaneous.</p><h4>Why the other choices are wrong:</h4><p><strong>A. ΔH < 0, ΔS < 0:</strong> An exothermic reaction whose entropy decreases is spontaneous only at low temperature. As temperature rises the −TΔS term grows increasingly positive and eventually outweighs the negative enthalpy change.</p><p><strong>B. ΔH > 0, ΔS < 0:</strong> This combination is never spontaneous at any temperature. Both terms push ΔG positive, so it is the reverse reaction that is favourable.</p><p><strong>D. ΔH > 0, ΔS > 0:</strong> An endothermic reaction with increasing entropy becomes spontaneous only above a crossover temperature, where TΔS finally exceeds ΔH. Below that temperature the enthalpy term dominates.</p><h4>Key Educational Points:</h4><ul><li>Spontaneity is decided by the Gibbs free energy change, ΔG = ΔH − TΔS, and requires ΔG to be negative.</li><li>If the enthalpy change is negative and the entropy change positive, both terms drive ΔG negative at every temperature.</li><li>The reverse combination - positive enthalpy change with negative entropy change - is never spontaneous at any temperature.</li><li>The two mixed cases depend on temperature, becoming spontaneous either above or below a crossover temperature.</li><li>Spontaneous means thermodynamically favourable, not fast: a spontaneous reaction can still be immeasurably slow without a catalyst.</li></ul><p class='exp-key'>Bottom Line: ΔG = ΔH - T(ΔS); spontaneous at all T when ΔH < 0 and ΔS > 0.</p>"
+ },
+ "Q41": {
+  "q": "Q41",
+  "id": "chem-162",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "What is ΔG at 25 degrees C (298 K) for a reaction with ΔH = -100 kJ and ΔS = -200 J/K?",
+  "options": [
+   "-100 kJ",
+   "-159.6 kJ",
+   "+40.4 kJ",
+   "-40.4 kJ"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. -40.4 kJ</h4><p>ΔG = ΔH - T(ΔS) = -100 kJ - 298 K x (-0.200 kJ/K) = -100 + 59.6 = -40.4 kJ. Note: convert ΔS to kJ/K first (-200 J/K = -0.200 kJ/K).</p><p>The negative ΔG indicates the reaction is spontaneous at this temperature despite the negative entropy change.</p><h4>Why the other choices are wrong:</h4><p><strong>A. -100 kJ:</strong> −100 kJ is the enthalpy change alone, ignoring the entropy term entirely. ΔG equals ΔH only in the special case where TΔS is zero.</p><p><strong>B. -159.6 kJ:</strong> This comes from adding the TΔS term rather than subtracting it: −100 − 59.6. Because the entropy change is negative, subtracting TΔS contributes a positive 59.6.</p><p><strong>C. +40.4 kJ:</strong> The magnitude is right but the sign is reversed. ΔG = −100 − (298 × −0.200) = −100 + 59.6 = −40.4 kJ, which is negative and therefore spontaneous.</p><h4>Key Educational Points:</h4><ul><li>Use ΔG = ΔH − TΔS, with the temperature in kelvin.</li><li>The units must match: convert −200 J/K to −0.200 kJ/K before combining it with a value in kJ.</li><li>Substituting: −100 − 298(−0.200) = −100 + 59.6 = −40.4 kJ.</li><li>Watch the double negative - subtracting a negative entropy term adds a positive quantity, making the result less negative.</li><li>The result is negative, so the reaction is spontaneous at 298 K despite the unfavourable entropy change.</li></ul><p class='exp-key'>Bottom Line: Always use consistent units (kJ or J) when calculating ΔG = ΔH - T(ΔS).</p>"
+ },
+ "Q42": {
+  "q": "Q42",
+  "id": "chem-163",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "Which of the following processes has a positive entropy change (ΔS > 0)?",
+  "options": [
+   "Water freezing to ice",
+   "Gas compressing into a smaller volume",
+   "Vapor condensing to liquid",
+   "Solid dissolving in water to form ions"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Solid dissolving in water to form ions</h4><p>When a solid dissolves into ions, disorder increases because one ordered solid produces multiple freely moving ions in solution. Freezing, compression, and condensation all decrease disorder (negative ΔS).</p><p>Entropy is a measure of disorder or the number of accessible microstates.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Water freezing to ice:</strong> Freezing converts a mobile liquid into an ordered crystalline lattice, sharply reducing the number of accessible arrangements. The entropy change is negative.</p><p><strong>B. Gas compressing into a smaller volume:</strong> Reducing the volume available to a gas reduces the positions its molecules can occupy, so entropy falls.</p><p><strong>C. Vapor condensing to liquid:</strong> Condensation takes freely moving gas molecules into a much more constrained liquid, another large entropy decrease.</p><h4>Key Educational Points:</h4><ul><li>Entropy increases when a system gains disorder, or more precisely when more microstates become accessible.</li><li>Dissolving an ionic solid converts one ordered lattice into many independently moving ions, so the entropy change is positive.</li><li>Freezing, condensing and compressing all reduce freedom of movement and therefore have negative entropy changes.</li><li>Physical state is a reliable guide: a gas has far more entropy than a liquid, which has more than a solid.</li><li>Counting particles helps too - a reaction that produces more moles of gas generally has a positive entropy change.</li></ul><p class='exp-key'>Bottom Line: Processes that increase disorder (more particles, more motion, larger volume) have positive ΔS.</p>"
+ },
+ "Q43": {
+  "q": "Q43",
+  "id": "chem-164",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "A reaction is non-spontaneous at 25 degrees C. Given ΔH = +50 kJ and ΔS = +100 J/K, above what temperature will it become spontaneous?",
+  "options": [
+   "200 K",
+   "500 K",
+   "250 K",
+   "1000 K"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 500 K</h4><p>Spontaneous when ΔG < 0: ΔH - T(ΔS) < 0. Solving: T > ΔH/ΔS = 50,000 J / 100 J/K = 500 K. Above 500 K, the reaction becomes spontaneous.</p><p>Reactions that are endothermic but entropy-favored become spontaneous at high temperatures.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 200 K:</strong> 200 K lies below the crossover, so the reaction is still non-spontaneous there. Setting ΔG = 0 gives T = ΔH/ΔS = 50,000/100 = 500 K.</p><p><strong>C. 250 K:</strong> 250 K would follow from a unit slip - for example dividing 50 kJ by 100 J/K without first converting the enthalpy change to joules. Both quantities must use the same energy unit.</p><p><strong>D. 1000 K:</strong> The reaction is indeed spontaneous at 1000 K, but the question asks for the threshold above which spontaneity begins. That threshold is 500 K, and any temperature above it will do.</p><h4>Key Educational Points:</h4><ul><li>When the enthalpy and entropy changes are both positive, the reaction becomes spontaneous only above a crossover temperature.</li><li>Find it by setting ΔG = 0, which gives T = ΔH/ΔS.</li><li>Substituting with consistent units: 50,000 J / 100 J/K = 500 K.</li><li>Converting the enthalpy change from kJ to J before dividing is essential; mixing units is the commonest error in this calculation.</li><li>Above 500 K the TΔS term outweighs the enthalpy term, so the entropy gain is what drives the reaction forward.</li></ul><p class='exp-key'>Bottom Line: The crossover temperature for spontaneity is T = ΔH/ΔS when both have the same sign.</p>"
+ },
+ "Q44": {
+  "q": "Q44",
+  "id": "chem-165",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "When 200 mL of 1.0 M HCl is mixed with 200 mL of 1.0 M NaOH in a calorimeter, the temperature rises by 6.8 degrees C. What is the enthalpy of neutralization per mole? (Assume solution density = 1.0 g/mL, specific heat = 4.18 J/g degrees C)",
+  "options": [
+   "-5.68 kJ/mol",
+   "-28.4 kJ/mol",
+   "-11.4 kJ/mol",
+   "-56.8 kJ/mol"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. -56.8 kJ/mol</h4><p>Total mass = 400 g. q = mc(ΔT) = 400 x 4.18 x 6.8 = 11,370 J = 11.37 kJ. Moles of HCl reacted = 0.200 x 1.0 = 0.200 mol. Enthalpy per mole = -11.37/0.200 = -56.8 kJ/mol (negative because exothermic).</p><p>The standard enthalpy of neutralization for strong acid + strong base is approximately -57 kJ/mol.</p><h4>Why the other choices are wrong:</h4><p><strong>A. -5.68 kJ/mol:</strong> This is a factor of ten too small, the signature of a misplaced decimal when converting joules to kilojoules: 11,370 J is 11.37 kJ, not 1.137 kJ.</p><p><strong>B. -28.4 kJ/mol:</strong> This results from dividing by 0.400 mol - the acid and base moles added together - instead of by the 0.200 mol of reaction that actually occurs. HCl and NaOH react in a 1:1 ratio, so only 0.200 mol of water is formed.</p><p><strong>C. -11.4 kJ/mol:</strong> 11.4 kJ is the total heat released, not the heat per mole. The question asks for a molar enthalpy, so this figure must still be divided by the 0.200 mol that reacted.</p><h4>Key Educational Points:</h4><ul><li>First find the heat released using Q = mcΔT, taking the total mass of the combined solution (400 g).</li><li>Q = 400 × 4.18 × 6.8 ≈ 11.4 kJ.</li><li>Then divide by the moles reacting: 0.200 L × 1.0 mol/L = 0.200 mol, giving about 56.8 kJ per mole.</li><li>The value is negative because the solution warmed, meaning the reaction released heat to it.</li><li>Any strong acid with any strong base gives close to −57 kJ/mol, because the reaction occurring is essentially just H⁺ + OH⁻ → H₂O.</li></ul><p class='exp-key'>Bottom Line: Calorimetry: q = mc(ΔT), then divide by moles to get molar enthalpy.</p>"
+ },
+ "Q45": {
+  "q": "Q45",
+  "id": "chem-166",
+  "subject": "chemistry",
+  "topic": "Thermochemistry",
+  "question": "According to the third law of thermodynamics, the entropy of a perfect crystal at 0 K is:",
+  "options": [
+   "Maximum",
+   "Negative",
+   "Zero",
+   "Undefined"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. Zero</h4><p>The third law of thermodynamics states that the entropy of a perfect crystalline substance at absolute zero (0 K) is exactly zero. At 0 K, the crystal has only one possible microstate (perfect order), so S = k ln(1) = 0.</p><p>This provides an absolute reference point for measuring entropy values.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Maximum:</strong> Entropy is at a minimum at absolute zero, not a maximum. Entropy rises with temperature as more microstates become accessible.</p><p><strong>B. Negative:</strong> Absolute entropy cannot be negative. It is defined as k ln W, and the number of microstates W is at least 1, so the smallest possible value is zero.</p><p><strong>D. Undefined:</strong> Far from being undefined, this value is precisely fixed by the third law, and that is exactly its purpose: it gives entropy an absolute zero point, so absolute entropies can be tabulated.</p><h4>Key Educational Points:</h4><ul><li>The third law of thermodynamics states that a perfect crystal at 0 K has zero entropy.</li><li>At absolute zero with perfect order there is only one possible arrangement, and S = k ln(1) = 0.</li><li>This gives entropy an absolute zero point, which is why absolute entropies can be tabulated whereas enthalpies are only ever quoted as changes.</li><li>The law specifies a perfect crystal; real crystals with defects or disorder retain some residual entropy at 0 K.</li><li>It also explains why absolute zero can be approached but never actually reached.</li></ul><p class='exp-key'>Bottom Line: Third law of thermodynamics: S = 0 for a perfect crystal at T = 0 K.</p>"
+ },
+ "Q46": {
+  "q": "Q46",
+  "id": "chem-167",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "Which type of radioactive decay involves the emission of a helium-4 nucleus?",
+  "options": [
+   "Beta decay",
+   "Alpha decay",
+   "Gamma decay",
+   "Positron emission"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Alpha decay</h4><p>An α particle consists of 2 protons and 2 neutrons (a helium-4 nucleus, He-4). In α decay, the parent nucleus loses 4 mass units and 2 atomic number units.</p><p>Alpha particles are the heaviest and least penetrating form of radiation, stopped by a sheet of paper.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Beta decay:</strong> Beta-minus decay emits an electron from the nucleus as a neutron converts into a proton. An electron has negligible mass and a charge of −1, not the mass 4 and charge +2 of a helium nucleus.</p><p><strong>C. Gamma decay:</strong> Gamma emission releases a high-energy photon with neither mass nor charge, so it changes neither the mass number nor the atomic number.</p><p><strong>D. Positron emission:</strong> Positron emission releases the antimatter counterpart of an electron: negligible mass, charge +1. The charge sign is right but the mass is nothing like that of a helium nucleus.</p><h4>Key Educational Points:</h4><ul><li>An alpha particle is a helium-4 nucleus: two protons and two neutrons.</li><li>Alpha decay therefore reduces the mass number by 4 and the atomic number by 2.</li><li>Alpha particles are massive and carry a double positive charge, so they ionise strongly but penetrate very poorly - a sheet of paper stops them.</li><li>That combination makes external alpha sources relatively harmless while inhaled or ingested ones are particularly damaging.</li><li>Compare beta particles (electrons, stopped by thin aluminium) and gamma rays (photons, needing lead or concrete).</li></ul><p class='exp-key'>Bottom Line: Alpha particle = He-4 nucleus (2p + 2n); reduces mass number by 4 and atomic number by 2.</p>",
+  "free": true
+ },
+ "Q47": {
+  "q": "Q47",
+  "id": "chem-168",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "In beta-minus decay, a neutron is converted into:",
+  "options": [
+   "A proton, an electron, and an antineutrino",
+   "A proton and an α particle",
+   "Two protons and an electron",
+   "A positron and a neutrino"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. A proton, an electron, and an antineutrino</h4><p>In beta-minus decay, a neutron transforms into a proton (stays in the nucleus), an electron (emitted as a β particle), and an antineutrino. The atomic number increases by 1, but the mass number stays the same.</p><p>This process occurs in neutron-rich nuclei to increase the proton-to-neutron ratio.</p><h4>Why the other choices are wrong:</h4><p><strong>B. A proton and an α particle:</strong> An alpha particle contains two protons and two neutrons - far more mass than a single neutron holds. A neutron cannot produce one.</p><p><strong>C. Two protons and an electron:</strong> This would not conserve charge or mass. A neutron is uncharged, so its decay products must sum to zero charge: one proton at +1 and one electron at −1.</p><p><strong>D. A positron and a neutrino:</strong> This describes beta-plus decay, in which a proton converts into a neutron. Beta-minus decay runs the other way, converting a neutron into a proton and emitting an electron with an antineutrino.</p><h4>Key Educational Points:</h4><ul><li>In beta-minus decay a neutron converts into a proton, an electron, and an antineutrino.</li><li>The proton remains in the nucleus while the electron is ejected as the beta particle.</li><li>The atomic number therefore rises by one while the mass number is unchanged - the element changes, the nucleon count does not.</li><li>This decay occurs in neutron-rich nuclei, shifting them toward a more stable neutron-to-proton ratio.</li><li>Beta-plus decay (positron emission) is the mirror image: it occurs in proton-rich nuclei and lowers the atomic number by one.</li></ul><p class='exp-key'>Bottom Line: Beta-minus decay: n -> p + e- + antineutrino; atomic number increases by 1, mass number unchanged.</p>"
+ },
+ "Q48": {
+  "q": "Q48",
+  "id": "chem-169",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "Gamma radiation differs from alpha and beta radiation in that γ rays:",
+  "options": [
+   "Have a positive charge",
+   "Are electromagnetic waves with no mass or charge",
+   "Have the highest mass",
+   "Are stopped by paper"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. Are electromagnetic waves with no mass or charge</h4><p>Gamma rays are high-energy photons (electromagnetic radiation) with no mass and no charge. They often accompany alpha or β decay as the nucleus releases excess energy to reach a more stable state.</p><p>Gamma rays have the highest penetrating power and require thick lead or concrete shielding.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Have a positive charge:</strong> Alpha particles carry the positive charge, at +2. Gamma rays are uncharged, which is exactly why they are not deflected by electric or magnetic fields.</p><p><strong>C. Have the highest mass:</strong> Gamma rays have no rest mass at all. Alpha particles are the most massive of the three radiations, at four atomic mass units.</p><p><strong>D. Are stopped by paper:</strong> Paper stops alpha particles, because their large mass and double charge make them lose energy very quickly. Gamma rays are the most penetrating and need thick lead or concrete.</p><h4>Key Educational Points:</h4><ul><li>Gamma rays are high-energy photons - electromagnetic radiation with no mass and no charge.</li><li>Because no particle leaves the nucleus, gamma emission changes neither the mass number nor the atomic number.</li><li>It usually follows alpha or beta decay, shedding the excess energy of a nucleus left in an excited state.</li><li>Having no charge, gamma rays ionise weakly but penetrate deeply, so thick lead or concrete is needed to stop them.</li><li>Ionising power and penetrating power run opposite to one another: alpha ionises most and penetrates least, gamma the reverse.</li></ul><p class='exp-key'>Bottom Line: Gamma rays are massless, chargeless electromagnetic radiation with high penetrating power.</p>"
+ },
+ "Q49": {
+  "q": "Q49",
+  "id": "chem-170",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "A radioactive isotope has a half-life of 8 days. If you start with 64 g, how much remains after 24 days?",
+  "options": [
+   "8 g",
+   "16 g",
+   "32 g",
+   "4 g"
+  ],
+  "correct": 0,
+  "explanation": "<h4>Correct Answer: A. 8 g</h4><p>Number of half-lives = 24/8 = 3. Amount remaining = 64 x (1/2)<sup>3</sup> = 64 x 1/8 = 8 g.</p><p>After each half-life, exactly half of the remaining radioactive material decays. After 3 half-lives, 1/8 of the original remains.</p><h4>Why the other choices are wrong:</h4><p><strong>B. 16 g:</strong> 16 g remains after 2 half-lives, which would be 16 days. The elapsed time here is 24 days, or 3 half-lives.</p><p><strong>C. 32 g:</strong> 32 g is what remains after a single half-life of 8 days - half of the original 64 g.</p><p><strong>D. 4 g:</strong> 4 g would remain after 4 half-lives, that is 32 days. Count carefully: 24/8 = 3 half-lives, leaving (1/2)³ = 1/8 of the original.</p><h4>Key Educational Points:</h4><ul><li>After n half-lives the fraction remaining is (1/2)ⁿ.</li><li>Here 24 days divided by an 8-day half-life gives 3 half-lives.</li><li>So 64 g × (1/2)³ = 64/8 = 8 g remains.</li><li>Decay is exponential rather than linear: each half-life removes half of what is left, so the amount approaches but never reaches zero.</li><li>Half-life is a fixed property of the isotope and is unaffected by temperature, pressure, or chemical combination.</li></ul><p class='exp-key'>Bottom Line: After n half-lives, the remaining amount = initial amount x (1/2)<sup>n</sup>.</p>"
+ },
+ "Q50": {
+  "q": "Q50",
+  "id": "chem-171",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "What particle completes this nuclear equation: U-238 -> Th-234 + ?",
+  "options": [
+   "Beta particle (electron)",
+   "Gamma ray",
+   "Neutron",
+   "Alpha particle (He-4)"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Alpha particle (He-4)</h4><p>Mass number: 238 = 234 + 4. Atomic number: 92 (U) = 90 (Th) + 2. The emitted particle has mass 4 and charge +2, which is an α particle (He-4).</p><p>Conservation of mass number and atomic number must hold in all nuclear equations.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Beta particle (electron):</strong> A beta particle has essentially no mass number and a charge of −1, so emitting one raises the atomic number by 1 while leaving the mass number unchanged. Here the mass number falls by 4.</p><p><strong>B. Gamma ray:</strong> A gamma ray changes neither the mass number nor the atomic number, so it cannot account for uranium-238 becoming thorium-234.</p><p><strong>C. Neutron:</strong> A neutron has mass number 1 and no charge. Emitting one would give thorium-237 and would not change the atomic number at all, whereas here it drops from 92 to 90.</p><h4>Key Educational Points:</h4><ul><li>Nuclear equations must conserve both mass number and atomic number.</li><li>Mass number: 238 − 234 = 4. Atomic number: 92 − 90 = 2.</li><li>A particle with mass number 4 and charge +2 is a helium-4 nucleus - an alpha particle.</li><li>Balancing those two numbers identifies the missing particle without needing to recall the decay series.</li><li>A beta particle would leave the mass number unchanged and a gamma ray would change neither number, so neither can fit here.</li></ul><p class='exp-key'>Bottom Line: In nuclear equations, both mass number and atomic number must be conserved on both sides.</p>"
+ },
+ "Q51": {
+  "q": "Q51",
+  "id": "chem-172",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "Nuclear fission involves:",
+  "options": [
+   "Combining light nuclei to form a heavier nucleus",
+   "Conversion of protons to neutrons",
+   "Emission of γ rays only",
+   "Splitting a heavy nucleus into lighter nuclei"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Splitting a heavy nucleus into lighter nuclei</h4><p>Nuclear fission is the splitting of a heavy nucleus (like U-235 or Pu-239) into two or more lighter nuclei, usually accompanied by the release of neutrons and a large amount of energy.</p><p>Fission is used in nuclear power plants and nuclear weapons. The released neutrons can cause a chain reaction.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Combining light nuclei to form a heavier nucleus:</strong> That describes fusion, the opposite process. Fusion powers stars, whereas fission powers reactors - and the two are the most commonly confused pair in this topic.</p><p><strong>B. Conversion of protons to neutrons:</strong> This describes beta-plus decay or electron capture, which adjusts the proton-to-neutron ratio inside a single nucleus rather than splitting it into fragments.</p><p><strong>C. Emission of γ rays only:</strong> Gamma emission is nuclear de-excitation. Gamma rays are indeed released during fission as part of the energy output, but emission alone does not split the nucleus.</p><h4>Key Educational Points:</h4><ul><li>Fission is the splitting of a heavy nucleus into lighter nuclei, releasing neutrons and a large amount of energy.</li><li>Those released neutrons can trigger further fissions, which is what makes a self-sustaining chain reaction possible.</li><li>Uranium-235 and plutonium-239 are the standard fissile fuels.</li><li>Energy is released because the lighter products have a higher binding energy per nucleon than the heavy parent nucleus.</li><li>Fusion is the opposite process - combining light nuclei - and the two are easily confused.</li></ul><p class='exp-key'>Bottom Line: Fission = splitting heavy nuclei; fusion = combining light nuclei. Both release enormous energy.</p>"
+ },
+ "Q52": {
+  "q": "Q52",
+  "id": "chem-173",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "In nuclear fusion, energy is released when:",
+  "options": [
+   "Heavy nuclei split apart",
+   "Radioactive nuclei emit beta particles",
+   "Light nuclei combine to form heavier nuclei",
+   "Neutrons are absorbed by uranium"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. Light nuclei combine to form heavier nuclei</h4><p>Nuclear fusion combines light nuclei (such as hydrogen isotopes) into heavier ones (such as helium), releasing enormous energy. This is the process that powers the Sun and other stars.</p><p>Fusion produces more energy per unit mass than fission but requires extremely high temperatures to overcome electrostatic repulsion.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Heavy nuclei split apart:</strong> That is fission, not fusion. Both release energy, but fission moves heavy nuclei down toward iron while fusion moves light nuclei up toward it.</p><p><strong>B. Radioactive nuclei emit beta particles:</strong> Beta decay adjusts the neutron-to-proton ratio of a single nucleus. It releases far less energy than fusion and does not combine nuclei.</p><p><strong>D. Neutrons are absorbed by uranium:</strong> Neutron absorption by uranium triggers fission, not fusion. When U-235 absorbs a neutron it becomes unstable and splits into lighter fragments.</p><h4>Key Educational Points:</h4><ul><li>Fusion combines light nuclei into a heavier one, releasing energy.</li><li>It powers the Sun and other stars, where hydrogen nuclei ultimately fuse into helium.</li><li>Extremely high temperatures are required to overcome the electrostatic repulsion between two positively charged nuclei.</li><li>Fusion releases more energy per unit mass than fission, which is why it is such an attractive potential energy source.</li><li>Both fission and fusion release energy for the same underlying reason: the products lie higher on the binding-energy-per-nucleon curve than the reactants.</li></ul><p class='exp-key'>Bottom Line: Nuclear fusion combines light nuclei; it powers stars and releases more energy per unit mass than fission.</p>"
+ },
+ "Q53": {
+  "q": "Q53",
+  "id": "chem-174",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "The binding energy per nucleon is highest for nuclei near which element?",
+  "options": [
+   "Hydrogen",
+   "Helium",
+   "Uranium",
+   "Iron (Fe-56)"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: D. Iron (Fe-56)</h4><p>Iron-56 has the highest binding energy per nucleon (about 8.8 MeV/nucleon), making it the most stable nucleus. Elements lighter than iron can release energy by fusion; elements heavier than iron can release energy by fission.</p><p>This is why iron is the end product of stellar nucleosynthesis in massive stars.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Hydrogen:</strong> Hydrogen-1 has a single proton and no binding energy at all, since binding energy arises from the attraction between nucleons and there is only one. Hydrogen sits at the very bottom of the curve.</p><p><strong>B. Helium:</strong> Helium-4 is unusually stable for such a light nucleus and sits noticeably above its neighbours on the curve, but at about 7.1 MeV per nucleon it is still well below iron's peak.</p><p><strong>C. Uranium:</strong> Uranium has a lower binding energy per nucleon, roughly 7.6 MeV, than iron's 8.8 MeV. That is precisely why uranium can release energy by splitting into fragments nearer to iron.</p><h4>Key Educational Points:</h4><ul><li>Binding energy per nucleon peaks at iron-56, making it the most stable arrangement of nucleons.</li><li>Nuclei lighter than iron release energy by fusing; nuclei heavier than iron release energy by splitting.</li><li>Both processes move nuclei toward that peak, which is the single idea that unifies fusion and fission.</li><li>This is why fusion in stars halts at iron - fusing beyond it consumes energy rather than releasing it.</li><li>Binding energy is the energy that would be required to pull a nucleus apart, and it appears physically as the mass defect.</li></ul><p class='exp-key'>Bottom Line: Fe-56 has maximum binding energy per nucleon; fusion of lighter elements and fission of heavier elements both move toward iron.</p>"
+ },
+ "Q54": {
+  "q": "Q54",
+  "id": "chem-175",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "Carbon-14 dating works because C-14:",
+  "options": [
+   "Has a half-life of 5 million years",
+   "Is stable and does not decay",
+   "Has a half-life of 5,730 years and is incorporated into living organisms",
+   "Is only found in rocks and minerals"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: C. Has a half-life of 5,730 years and is incorporated into living organisms</h4><p>Living organisms continuously exchange carbon with the environment, maintaining a constant C-14/C-12 ratio. When the organism dies, C-14 decays with a half-life of 5,730 years without being replenished.</p><p>By measuring the remaining C-14 ratio, scientists can determine when the organism died (effective up to about 50,000 years).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Has a half-life of 5 million years:</strong> The half-life is 5,730 years, not 5 million. A half-life that long would leave the C-14 content almost unchanged over archaeological timescales, making the method useless for dating.</p><p><strong>B. Is stable and does not decay:</strong> C-14 is radioactive - that is the entire basis of the method. A stable isotope would give no clock at all.</p><p><strong>D. Is only found in rocks and minerals:</strong> C-14 is formed in the upper atmosphere and enters living things through the carbon cycle. Because dating depends on an organism exchanging carbon and then ceasing to do so at death, the method applies to once-living material rather than to rocks.</p><h4>Key Educational Points:</h4><ul><li>Carbon-14 dating works because a living organism exchanges carbon with its environment and holds a roughly constant C-14 to C-12 ratio.</li><li>At death that exchange stops, and the C-14 already present decays with a half-life of 5,730 years without being replaced.</li><li>Measuring the remaining ratio therefore gives the time elapsed since death.</li><li>The method is useful to roughly 50,000 years - beyond about ten half-lives too little C-14 remains to measure reliably.</li><li>It only works on once-living material, which is why rocks are dated instead with much longer-lived isotopes such as uranium-lead.</li></ul><p class='exp-key'>Bottom Line: C-14 dating relies on the known half-life (5,730 years) and the cessation of C-14 uptake at death.</p>"
+ },
+ "Q55": {
+  "q": "Q55",
+  "id": "chem-176",
+  "subject": "chemistry",
+  "topic": "Nuclear Chemistry & Radioactivity",
+  "question": "A radioactive sample has an activity of 800 Bq. After 30 minutes, its activity drops to 100 Bq. What is the half-life?",
+  "options": [
+   "5 min",
+   "10 min",
+   "15 min",
+   "20 min"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: B. 10 min</h4><p>Activity ratio: 100/800 = 1/8 = (1/2)<sup>n</sup>, so n = 3 half-lives. Time for 3 half-lives = 30 min, so t<sub>1</sub>/2 = 30/3 = 10 min.</p><p>Activity (disintegrations per second) decreases exponentially with the same half-life as the amount of radioactive material.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 5 min:</strong> With a 5-minute half-life, 30 minutes would be 6 half-lives and the activity would fall to 800/2⁶ = 12.5 Bq, far below the 100 Bq observed.</p><p><strong>C. 15 min:</strong> With a 15-minute half-life, 30 minutes would be only 2 half-lives, leaving 800/4 = 200 Bq rather than 100 Bq.</p><p><strong>D. 20 min:</strong> With a 20-minute half-life, 30 minutes is 1.5 half-lives, giving roughly 283 Bq. The ratio 800/100 = 8 = 2³ shows exactly 3 half-lives have passed.</p><h4>Key Educational Points:</h4><ul><li>Activity falls by half with each half-life, exactly as the quantity of undecayed material does.</li><li>The ratio here is 100/800 = 1/8 = (1/2)³, so three half-lives have elapsed.</li><li>Dividing 30 minutes by 3 half-lives gives a half-life of 10 minutes.</li><li>Work from the ratio rather than the absolute numbers - the actual initial activity is not needed to find the half-life.</li><li>Activity is measured in becquerel, one disintegration per second, and is proportional to the number of undecayed nuclei present.</li></ul><p class='exp-key'>Bottom Line: Activity decreases by half each half-life; use the ratio of final to initial activity to find the number of half-lives elapsed.</p>"
+ },
+ "Q56": {
+  "q": "Q56",
+  "id": "chem-177",
+  "subject": "chemistry",
+  "topic": "Atomic Structure",
+  "question": "Which set of quantum numbers is permissible for an electron in an atom?",
+  "options": [
+   "n=2, l=2, mₗ=0, mₛ=+½",
+   "n=3, l=2, mₗ=−1, mₛ=−½",
+   "n=1, l=1, mₗ=0, mₛ=+½",
+   "n=4, l=3, mₗ=+4, mₛ=−½"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: n=3, l=2, mₗ=−1, mₛ=−½</h4><p>For a valid set of quantum numbers: <strong>n</strong> must be a positive integer, <strong>l</strong> ranges from 0 to n−1, <strong>mₗ</strong> ranges from −l to +l, and <strong>mₛ</strong> is +½ or −½.</p><p>Option A: n=2, l=2 is invalid because l must be less than n. Option C: n=1, l=1 is invalid for the same reason. Option D: mₗ=+4 exceeds the range for l=3 (max is +3). Option B satisfies all rules: l=2 &lt; n=3, and mₗ=−1 is within −2 to +2.</p><h4>Why the other choices are wrong:</h4><p><strong>D. n=4, l=3, mₗ=+4, mₛ=−½:</strong> The magnetic quantum number mₗ must be in the range −l to +l. For l=3 (an f subshell), mₗ can be −3, −2, −1, 0, +1, +2, or +3. mₗ=+4 exceeds this range. The number of allowed mₗ values (2l+1) gives the number of orbitals in that subshell.</p><h4>Key Educational Points:</h4><ul><li>Atomic structure determines chemical behavior: the number of valence electrons dictates bonding patterns, reactivity, and position in the periodic table.</li><li>Electron configuration follows the Aufbau principle (fill lowest energy first), Hund's rule (maximize unpaired electrons), and the Pauli exclusion principle (max 2 electrons per orbital).</li><li>Periodic trends (atomic radius, ionization energy, electronegativity, electron affinity) follow predictable patterns across periods and down groups.</li></ul><p class='exp-key'>Bottom Line: The angular momentum quantum number l must be less than the principal quantum number n, and mₗ must be between −l and +l.</p>"
+ },
+ "Q57": {
+  "q": "Q57",
+  "id": "chem-178",
+  "subject": "chemistry",
+  "topic": "Atomic Structure",
+  "question": "How many unpaired electrons are present in a ground-state nitrogen atom?",
+  "options": [
+   "1",
+   "2",
+   "3",
+   "5"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: 3</h4><p>Nitrogen (Z=7) has the electron configuration 1s² 2s² 2p³. The 1s and 2s orbitals are completely filled, so all electrons there are paired. In the 2p subshell, there are three orbitals (2pₓ, 2py, 2pz) and three electrons.</p><p>By <strong>Hund's rule</strong>, electrons fill each orbital singly before pairing up. Therefore, each of the three 2p orbitals contains one unpaired electron, giving <strong>3 unpaired electrons</strong> total.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1:</strong> One unpaired electron would describe an element like hydrogen or sodium. Nitrogen's electron configuration is 1s² 2s² 2p³. According to Hund's rule, the three 2p electrons occupy three separate p orbitals with parallel spins before any pairing occurs. All three 2p electrons are unpaired, giving nitrogen a total of 3 unpaired electrons.</p>\n<p><strong>B. 2:</strong> Two unpaired electrons would apply to elements like carbon (2p²) or oxygen (2p⁴). Nitrogen has exactly three 2p electrons, and by Hund's rule (maximize spin multiplicity), each occupies a separate 2p orbital. This gives three unpaired electrons, not two.</p>\n<p><strong>D. 5:</strong> This might confuse the total number of electrons in the outer shell with unpaired electrons. Nitrogen has 5 valence electrons (2s² 2p³), but the two 2s electrons are paired. Only the three 2p electrons are unpaired. Always check which electrons are paired and which are not.</p><h4>Key Educational Points:</h4><ul><li>Atomic structure determines chemical behavior: the number of valence electrons dictates bonding patterns, reactivity, and position in the periodic table.</li><li>Electron configuration follows the Aufbau principle (fill lowest energy first), Hund's rule (maximize unpaired electrons), and the Pauli exclusion principle (max 2 electrons per orbital).</li><li>Periodic trends (atomic radius, ionization energy, electronegativity, electron affinity) follow predictable patterns across periods and down groups.</li></ul><p class='exp-key'>Bottom Line: Hund's rule states that electrons occupy degenerate orbitals singly with parallel spins before any pairing occurs.</p>"
+ },
+ "Q58": {
+  "q": "Q58",
+  "id": "chem-179",
+  "subject": "chemistry",
+  "topic": "Atomic Structure",
+  "question": "Which of the following atoms has the largest atomic radius?",
+  "options": [
+   "Na",
+   "Mg",
+   "Al",
+   "K"
+  ],
+  "correct": 3,
+  "explanation": "<h4>Correct Answer: K</h4><p>Atomic radius increases going <strong>down a group</strong> (more electron shells) and decreases going <strong>across a period</strong> (greater nuclear charge pulls electrons closer).</p><p>Na, Mg, and Al are all in Period 3, with atomic radius decreasing in that order: Na &gt; Mg &gt; Al. Potassium (K) is in Period 4, Group 1, which means it has an additional electron shell compared to sodium. Therefore K has a larger radius than all the Period 3 elements listed.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Na:</strong> Na, mg, and al are all in period 3, with atomic radius decreasing in that order: na &gt; mg &gt; al.</p>\n<p><strong>B. Mg:</strong> Na, mg, and al are all in period 3, with atomic radius decreasing in that order: na &gt; mg &gt; al.</p>\n<p><strong>C. Al:</strong> Na, mg, and al are all in period 3, with atomic radius decreasing in that order: na &gt; mg &gt; al.</p><h4>Key Educational Points:</h4><ul><li>Atomic structure determines chemical behavior: the number of valence electrons dictates bonding patterns, reactivity, and position in the periodic table.</li><li>Electron configuration follows the Aufbau principle (fill lowest energy first), Hund's rule (maximize unpaired electrons), and the Pauli exclusion principle (max 2 electrons per orbital).</li><li>Periodic trends (atomic radius, ionization energy, electronegativity, electron affinity) follow predictable patterns across periods and down groups.</li></ul><p class='exp-key'>Bottom Line: Atomic radius increases down a group due to additional electron shells and decreases across a period due to increasing effective nuclear charge.</p>"
+ },
+ "Q59": {
+  "q": "Q59",
+  "id": "chem-180",
+  "subject": "chemistry",
+  "topic": "Atomic Structure",
+  "question": "The isotopes ³⁵Cl and ³⁷Cl differ in their number of:",
+  "options": [
+   "protons",
+   "electrons",
+   "neutrons",
+   "valence electrons"
+  ],
+  "correct": 2,
+  "explanation": "<h4>Correct Answer: neutrons</h4><p>Isotopes are atoms of the <strong>same element</strong> that have the same number of protons (same atomic number) but different numbers of <strong>neutrons</strong> (different mass numbers).</p><p>³⁵Cl has 17 protons and 35−17 = 18 neutrons. ³⁷Cl has 17 protons and 37−17 = 20 neutrons. Both have 17 electrons in a neutral atom and the same 7 valence electrons. Only the neutron count differs.</p><h4>Why the other choices are wrong:</h4><p><strong>D. Valence electrons:</strong> Both isotopes have the same electron configuration (1s² 2s² 2p⁶ 3s² 3p⁵) and therefore the same 7 valence electrons. Chemical properties depend on electron configuration, which is why isotopes behave almost identically in chemical reactions. Their differences (mass, nuclear stability) are physical, not chemical.</p><h4>Key Educational Points:</h4><ul><li>Atomic structure determines chemical behavior: the number of valence electrons dictates bonding patterns, reactivity, and position in the periodic table.</li><li>Electron configuration follows the Aufbau principle (fill lowest energy first), Hund's rule (maximize unpaired electrons), and the Pauli exclusion principle (max 2 electrons per orbital).</li><li>Periodic trends (atomic radius, ionization energy, electronegativity, electron affinity) follow predictable patterns across periods and down groups.</li></ul><p class='exp-key'>Bottom Line: Isotopes have the same atomic number (protons) but different mass numbers (neutrons), and they exhibit essentially identical chemical behavior.</p>"
+ },
+ "Q60": {
+  "q": "Q60",
+  "id": "chem-181",
+  "subject": "chemistry",
+  "topic": "Atomic Structure",
+  "question": "What is the maximum number of electrons that can occupy the third principal energy level (n=3)?",
+  "options": [
+   "8",
+   "18",
+   "32",
+   "9"
+  ],
+  "correct": 1,
+  "explanation": "<h4>Correct Answer: 18</h4><p>The maximum number of electrons in a principal energy level is given by the formula <strong>2n²</strong>.</p><p>For n=3: 2(3)² = 2 × 9 = <strong>18 electrons</strong>.</p><p>These are distributed among the subshells: 3s (2 electrons), 3p (6 electrons), and 3d (10 electrons). Total: 2+6+10 = 18.</p><p>Note: Although many elements do not fill the 3d subshell before starting 4s, the third shell can ultimately hold 18 electrons.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 8:</strong> The \"octet\" (8 electrons) fills the 3s and 3p subshells but ignores the 3d subshell. The third shell contains 3s (2e), 3p (6e), and 3d (10e), totaling 18 electrons. The formula for maximum electrons in shell n is 2n² = 2(3²) = 18.</p>\n<p><strong>C. 32:</strong> This is the maximum for the fourth shell (n=4), where 2n² = 2(4²) = 32. For n=3, the calculation gives 2(3²) = 2(9) = 18. The subshells in n=3 are: 3s (2), 3p (6), and 3d (10), totaling 18 electrons.</p>\n<p><strong>D. 9:</strong> This might come from n² = 9, forgetting to multiply by 2. The formula is 2n², which accounts for the two possible spin states of each electron (spin up and spin down, per the Pauli exclusion principle). So n=3 gives 2 × 9 = 18 electrons maximum.</p><h4>Key Educational Points:</h4><ul><li>Atomic structure determines chemical behavior: the number of valence electrons dictates bonding patterns, reactivity, and position in the periodic table.</li><li>Electron configuration follows the Aufbau principle (fill lowest energy first), Hund's rule (maximize unpaired electrons), and the Pauli exclusion principle (max 2 electrons per orbital).</li><li>Periodic trends (atomic radius, ionization energy, electronegativity, electron affinity) follow predictable patterns across periods and down groups.</li></ul><p class='exp-key'>Bottom Line: The maximum electron capacity of a principal energy level n is 2n², distributed among s, p, d, and f subshells.</p>"
+ }
+}

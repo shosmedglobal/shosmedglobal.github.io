@@ -1,0 +1,392 @@
+{
+ "_comment": [
+  "Verified display-number to bank-id map for the SHOSMED LF3 Chemistry Batch 3 review.",
+  "The supplied export carried no bank ids. Each display number was matched on its",
+  "ORIGINAL full stem and all four ORIGINAL option texts, then cross-checked against",
+  "the key letter stored in the bank, the review's asserted 60-letter key block and",
+  "its A=11/B=20/C=13/D=16 tally.",
+  "Contiguity was NOT assumed. Q1 is the calcium-hydroxide molar-mass item, which the",
+  "review states repeats a previously approved question: it is the only calcium-hydroxide",
+  "record in the whole bank and it maps to chem-76, already reviewed as Q14 of batch 2.",
+  "Q2..Q60 came out as chem-123..chem-181 without a gap, which is a RESULT of the",
+  "matching, not an assumption. No stem phrase matched a second record, so no duplicate",
+  "had to be resolved.",
+  "Coverage below is computed from UNIQUE verified ids: 59 new ids, not 60, because",
+  "Q1/chem-76 was already counted in batch 2.",
+  "No record in this pack carries a table.",
+  "Heading policy: for every edited item the keyed heading and the three distractor",
+  "headings are set to that item's own option texts verbatim, so each heading visibly",
+  "matches its option. Q1-Q55 keep the letter prefix; Q56-Q60 keep the bank's existing",
+  "unlettered keyed-heading presentation, as the review requires."
+ ],
+ "map": {
+  "Q1": "chem-76",
+  "Q2": "chem-123",
+  "Q3": "chem-124",
+  "Q4": "chem-125",
+  "Q5": "chem-126",
+  "Q6": "chem-127",
+  "Q7": "chem-128",
+  "Q8": "chem-129",
+  "Q9": "chem-130",
+  "Q10": "chem-131",
+  "Q11": "chem-132",
+  "Q12": "chem-133",
+  "Q13": "chem-134",
+  "Q14": "chem-135",
+  "Q15": "chem-136",
+  "Q16": "chem-137",
+  "Q17": "chem-138",
+  "Q18": "chem-139",
+  "Q19": "chem-140",
+  "Q20": "chem-141",
+  "Q21": "chem-142",
+  "Q22": "chem-143",
+  "Q23": "chem-144",
+  "Q24": "chem-145",
+  "Q25": "chem-146",
+  "Q26": "chem-147",
+  "Q27": "chem-148",
+  "Q28": "chem-149",
+  "Q29": "chem-150",
+  "Q30": "chem-151",
+  "Q31": "chem-152",
+  "Q32": "chem-153",
+  "Q33": "chem-154",
+  "Q34": "chem-155",
+  "Q35": "chem-156",
+  "Q36": "chem-157",
+  "Q37": "chem-158",
+  "Q38": "chem-159",
+  "Q39": "chem-160",
+  "Q40": "chem-161",
+  "Q41": "chem-162",
+  "Q42": "chem-163",
+  "Q43": "chem-164",
+  "Q44": "chem-165",
+  "Q45": "chem-166",
+  "Q46": "chem-167",
+  "Q47": "chem-168",
+  "Q48": "chem-169",
+  "Q49": "chem-170",
+  "Q50": "chem-171",
+  "Q51": "chem-172",
+  "Q52": "chem-173",
+  "Q53": "chem-174",
+  "Q54": "chem-175",
+  "Q55": "chem-176",
+  "Q56": "chem-177",
+  "Q57": "chem-178",
+  "Q58": "chem-179",
+  "Q59": "chem-180",
+  "Q60": "chem-181"
+ },
+ "asserted_key_block": "CCCDCBBABAABCDADBDAAABBBBDBDDBDCBABDCBACDDBDCBABADDCDCBBCDCB",
+ "asserted_key_tally": {
+  "A": 11,
+  "B": 20,
+  "C": 13,
+  "D": 16
+ },
+ "keep_unchanged_per_review": [
+  "chem-76",
+  "chem-158",
+  "chem-162"
+ ],
+ "keep_unchanged_display": [
+  "Q1",
+  "Q37",
+  "Q41"
+ ],
+ "overlap_with_earlier_packs": {
+  "Q1": {
+   "id": "chem-76",
+   "previously": "batch 2 display Q14",
+   "counted_as_new": false
+  }
+ },
+ "stem_changes": [
+  "Q3",
+  "Q4",
+  "Q5",
+  "Q9",
+  "Q10",
+  "Q11",
+  "Q12",
+  "Q16",
+  "Q17",
+  "Q18",
+  "Q21",
+  "Q24",
+  "Q27",
+  "Q31",
+  "Q33",
+  "Q39",
+  "Q40",
+  "Q42",
+  "Q43",
+  "Q44",
+  "Q55"
+ ],
+ "option_changes": {
+  "Q10": [
+   "A"
+  ],
+  "Q42": [
+   "D"
+  ]
+ },
+ "major_rewrite": [
+  "Q42"
+ ],
+ "numerical_correction": [
+  "Q10"
+ ],
+ "three_point_replacements": [
+  "Q2",
+  "Q3",
+  "Q4",
+  "Q5",
+  "Q6",
+  "Q7",
+  "Q8",
+  "Q9",
+  "Q10",
+  "Q11",
+  "Q12",
+  "Q13",
+  "Q14",
+  "Q15",
+  "Q16",
+  "Q17",
+  "Q18",
+  "Q19",
+  "Q20",
+  "Q21",
+  "Q22",
+  "Q23",
+  "Q24",
+  "Q25",
+  "Q26",
+  "Q27",
+  "Q28",
+  "Q29",
+  "Q30",
+  "Q31",
+  "Q32",
+  "Q33",
+  "Q34",
+  "Q35",
+  "Q56",
+  "Q57",
+  "Q58",
+  "Q59",
+  "Q60"
+ ],
+ "five_point_items": [
+  "Q36",
+  "Q37",
+  "Q38",
+  "Q39",
+  "Q40",
+  "Q41",
+  "Q42",
+  "Q43",
+  "Q44",
+  "Q45",
+  "Q46",
+  "Q47",
+  "Q48",
+  "Q49",
+  "Q50",
+  "Q51",
+  "Q52",
+  "Q53",
+  "Q54",
+  "Q55"
+ ],
+ "five_point_blocks_replaced": [
+  "Q42",
+  "Q48",
+  "Q52",
+  "Q53",
+  "Q54"
+ ],
+ "missing_feedback_restored": {
+  "Q2": [
+   "A",
+   "B"
+  ],
+  "Q3": [
+   "A",
+   "B"
+  ],
+  "Q5": [
+   "A",
+   "B"
+  ],
+  "Q6": [
+   "A",
+   "C"
+  ],
+  "Q9": [
+   "A",
+   "C"
+  ],
+  "Q10": [
+   "B",
+   "C"
+  ],
+  "Q11": [
+   "C",
+   "D"
+  ],
+  "Q12": [
+   "A",
+   "C"
+  ],
+  "Q13": [
+   "A",
+   "B"
+  ],
+  "Q14": [
+   "A",
+   "B"
+  ],
+  "Q15": [
+   "B",
+   "C"
+  ],
+  "Q16": [
+   "A",
+   "B"
+  ],
+  "Q17": [
+   "A",
+   "C"
+  ],
+  "Q19": [
+   "B",
+   "C"
+  ],
+  "Q20": [
+   "B",
+   "C"
+  ],
+  "Q21": [
+   "B",
+   "C"
+  ],
+  "Q22": [
+   "A",
+   "C"
+  ],
+  "Q23": [
+   "A",
+   "C"
+  ],
+  "Q24": [
+   "A",
+   "C"
+  ],
+  "Q25": [
+   "A",
+   "C"
+  ],
+  "Q26": [
+   "A",
+   "B"
+  ],
+  "Q27": [
+   "A",
+   "C"
+  ],
+  "Q28": [
+   "A",
+   "B"
+  ],
+  "Q29": [
+   "A",
+   "B"
+  ],
+  "Q30": [
+   "A",
+   "C"
+  ],
+  "Q31": [
+   "A",
+   "B"
+  ],
+  "Q32": [
+   "A",
+   "B"
+  ],
+  "Q33": [
+   "A",
+   "C"
+  ],
+  "Q34": [
+   "B",
+   "C"
+  ],
+  "Q35": [
+   "A",
+   "C"
+  ],
+  "Q56": [
+   "A",
+   "C"
+  ],
+  "Q59": [
+   "A",
+   "B"
+  ]
+ },
+ "mislabelled_feedback_repaired": [
+  "Q11"
+ ],
+ "duplicated_feedback_replaced": [
+  "Q58"
+ ],
+ "deviations": [],
+ "notes": [
+  "Heading policy: eight headings were re-synced so that each visibly matches its own option text verbatim (keyed headings of Q2, Q3, Q10, Q32 and Q42; distractor headings Q22 D, Q30 D and Q32 D). This propagates each item's own markup into its headings; normalising option markup itself was out of scope.",
+  "Q56-Q60 keep the bank's existing unlettered keyed-heading presentation, with its text matched to the keyed option, as the review requires. All five already matched and none needed changing.",
+  "Q47: the review permits but does not require \"electron antineutrino\" in the main mechanism. The main mechanism was left as stored; the replacement C and D feedback use the specific term, and option A keeps the general term \"antineutrino\".",
+  "Two items share their four-option set with another bank record (Q6/chem-127 with Q55/chem-176, and Q8/chem-129 with chem-118). Identification therefore used the original stem and the option set together; neither mapping is ambiguous.",
+  "Q32 keeps the standard definition sentence \"the same element is both oxidized and reduced\" in its main explanation. That is not the banned \"acts as both the oxidizing and reducing agent\" phrasing and does not contradict the replaced D feedback.",
+  "Q38 changed only its C feedback, as the review instructed; its stem, options, main explanation, other feedback, five points and Bottom Line are byte-identical.",
+  "The sanitizer rewrites class='exp-key' to class=\"exp-key\" and escapes bare < and > in 32 fields (ASCII arrows and inequality signs). Both are pre-existing bank conventions and render correctly; no content is dropped."
+ ],
+ "coverage": {
+  "chemistry_total": 485,
+  "reviewed_before_this_batch": 120,
+  "reviewed_before_this_batch_ids": "batch 1 chem-1..chem-62 except chem-19 and chem-61; batch 2 chem-63..chem-122",
+  "displays_in_this_pack": 60,
+  "new_unique_ids_this_batch": 59,
+  "previously_reviewed_included_again": [
+   "chem-76"
+  ],
+  "reviewed_after_this_batch": 179,
+  "edited_this_batch": 57,
+  "kept_unchanged_this_batch": 3,
+  "still_unreviewed_chemistry": 306,
+  "still_unreviewed_note": "chem-19 and chem-61 remain unreviewed inside the chem-1..chem-181 span; every other unreviewed id is chem-182 onward.",
+  "biology_unaffected": true,
+  "biology_still_unreviewed": [
+   "bio-12",
+   "bio-346",
+   "bio-513",
+   "bio-518",
+   "bio-583"
+  ],
+  "approval_status": "Implementation checks pass. Final scientific approval for this pack is still pending and is separate from implementation completion."
+ },
+ "small_extensions_beyond_a_named_sentence": [
+  "Q24: the review rewrote this stem and Bottom Line in E°cell notation, so the retained calculation line was re-notated from E<sub>cell</sub> = E<sub>cathode</sub> - E<sub>anode</sub> to E°cell = E°cathode − E°anode for consistency within the item. The arithmetic and the result are unchanged.",
+  "Q32 D: replacing only the named phrase would have left the redundant clause \"as oxygen does in H₂O₂\", so the end of that sentence now reads \"with oxygen going from −1 to −2 and from −1 to 0\".",
+  "Q30: the review supplies a complete replacement main paragraph, which necessarily removes the stored \"Fe<sub>2</sub>O<sub>3</sub> . xH2O\" rust formula. The review asks that rust not be described as a single pure compound.",
+  "Q13: qualifying the concentration independence required rewriting the enzyme-saturation sentence in the same paragraph, so that it reads as an approximation over a concentration range.",
+  "Q17 and Q20: scoping the reasoning to the stated fixed-temperature (and fixed-volume) ideal-gas conditions required rewording the stored sentence rather than only appending a condition."
+ ]
+}

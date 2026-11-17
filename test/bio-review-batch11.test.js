@@ -12,6 +12,9 @@
  * Every "claim removed" assertion is paired with a check that the claim really
  * was in the before-fixture, so a typo cannot make an assertion pass vacuously.
  */
+// NOTE: chemistry review batch 3 (chem-123..chem-181) was approved after this
+// suite was written. Those 59 ids were pruned from its untouched fixture and
+// are swept by test/chem-review-batch3.test.js instead.
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
@@ -173,13 +176,13 @@ const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
-// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 367 chemistry
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 308 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(nChem === 367, `${nChem} untouched chemistry hashes, expected 367`);
+ok(nChem === 308, `${nChem} untouched chemistry hashes, expected 308`);
 ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 + 58 + 60 === 629 + 485,
-  'the untouched set, this pack and chemistry batches 1 and 2 should partition the whole bank');
+ok(nBio + nChem + 26 + 58 + 60 + 59 === 629 + 485,
+  'the untouched set, this pack and chemistry batches 1, 2 and 3 should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 
 // chemistry is wholly untouched

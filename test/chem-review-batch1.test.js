@@ -17,6 +17,9 @@
  * large new testing framework for this prose pass, so this suite follows the
  * shape of the existing per-batch suites and is sized to the 60-item pack.
  */
+// NOTE: chemistry review batch 3 (chem-123..chem-181) was approved after this
+// suite was written. Those 59 ids were pruned from its untouched fixture and
+// are swept by test/chem-review-batch3.test.js instead.
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
@@ -226,8 +229,8 @@ section('3. Nothing outside the pack moved');
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} untouched biology hashes, expected 629`);
-ok(nChem === 365, `${nChem} untouched chemistry hashes, expected 365`);
-ok(nChem + 60 + 60 === 485, 'the untouched set, this pack and chemistry batch 2 should account for all 485');
+ok(nChem === 306, `${nChem} untouched chemistry hashes, expected 306`);
+ok(nChem + 60 + 60 + 59 === 485, 'the untouched set, this pack and chemistry batches 2 and 3 should account for all 485');
 ok(data.biology.length === 629, `biology holds ${data.biology.length} questions, expected 629`);
 ok(data.chemistry.length === 485, `chemistry holds ${data.chemistry.length} questions, expected 485`);
 

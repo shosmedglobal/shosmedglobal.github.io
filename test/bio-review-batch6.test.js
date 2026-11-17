@@ -15,6 +15,9 @@
  * Automated checks establish structure and consistency, not biological
  * accuracy; the science comes from the review itself.
  */
+// NOTE: chemistry review batch 3 (chem-123..chem-181) was approved after this
+// suite was written. Those 59 ids were pruned from its untouched fixture and
+// are swept by test/chem-review-batch3.test.js instead.
 // NOTE: chemistry review batch 2 (chem-63..chem-122) was approved after this
 // suite was written, so those 60 ids were pruned from its untouched fixture and
 // the counts below were stepped down. Chemistry batch 2 has its own suite.
@@ -501,10 +504,10 @@ for (const id of idmap.absent_still_unreviewed) ok(untouched.biology[id] === has
 ok(Object.keys(untouched.biology).length === 303, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 303`);
 ok(Object.keys(untouched.biology).length + 60 + 60 + 60 + 60 + 26 + IDS.length === 629, 'fixtures do not partition the biology bank');
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
-// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 367 chemistry
+// chem-20..chem-36, chem-38..chem-60), so this sweep covers the 308 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(Object.keys(untouched.chemistry).length === 367, 'untouched chemistry hash count unexpected');
+ok(Object.keys(untouched.chemistry).length === 308, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
 section('9. The narrow follow-up correction pass');

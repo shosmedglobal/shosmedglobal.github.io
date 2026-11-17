@@ -20,6 +20,9 @@
  * these prose edits. This suite therefore follows the shape of the existing
  * per-batch suites and is sized to the 60-item pack.
  */
+// NOTE: chemistry review batch 3 (chem-123..chem-181) was approved after this
+// suite was written. Those 59 ids were pruned from its untouched fixture and
+// are swept by test/chem-review-batch3.test.js instead.
 'use strict';
 
 const fs = require('fs');
@@ -245,8 +248,8 @@ ok(chemDrift === 0, `${chemDrift} out-of-pack chemistry records changed`);
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} biology hashes in the untouched fixture, expected 629`);
-ok(nChem === 425, `${nChem} out-of-pack chemistry hashes, expected 425`);
-ok(nChem + 60 === 485, 'the untouched chemistry set plus this pack should be the whole chemistry bank');
+ok(nChem === 366, `${nChem} out-of-pack chemistry hashes, expected 366`);
+ok(nChem + 60 + 59 === 485, 'the untouched chemistry set, this pack and the 59 new ids of chemistry batch 3 should be the whole chemistry bank');
 ok(data.biology.length === 629 && data.chemistry.length === 485,
   `bank is ${data.biology.length} biology / ${data.chemistry.length} chemistry, expected 629 / 485`);
 
