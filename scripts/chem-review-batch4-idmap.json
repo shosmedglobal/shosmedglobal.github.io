@@ -32,52 +32,274 @@
   "reviewed": "2026-11-17",
   "source_review": "SHOSMED_LF3_Chemistry_Batch4_Review.txt",
   "map": {
-    "Q1": "chem-182", "Q2": "chem-183", "Q3": "chem-184", "Q4": "chem-185", "Q5": "chem-186",
-    "Q6": "chem-187", "Q7": "chem-188", "Q8": "chem-189", "Q9": "chem-190", "Q10": "chem-191",
-    "Q11": "chem-192", "Q12": "chem-193", "Q13": "chem-194", "Q14": "chem-195", "Q15": "chem-196",
-    "Q16": "chem-197", "Q17": "chem-198", "Q18": "chem-199", "Q19": "chem-200", "Q20": "chem-201",
-    "Q21": "chem-202", "Q22": "chem-203", "Q23": "chem-204", "Q24": "chem-205", "Q25": "chem-206",
-    "Q26": "chem-207", "Q27": "chem-208", "Q28": "chem-209", "Q29": "chem-210", "Q30": "chem-211",
-    "Q31": "chem-212", "Q32": "chem-213", "Q33": "chem-214", "Q34": "chem-215", "Q35": "chem-216",
-    "Q36": "chem-217", "Q37": "chem-218", "Q38": "chem-219", "Q39": "chem-220", "Q40": "chem-221",
-    "Q41": "chem-222", "Q42": "chem-223", "Q43": "chem-224", "Q44": "chem-225", "Q45": "chem-226",
-    "Q46": "chem-227", "Q47": "chem-228", "Q48": "chem-229", "Q49": "chem-230", "Q50": "chem-231",
-    "Q51": "chem-232", "Q52": "chem-233", "Q53": "chem-234", "Q54": "chem-235", "Q55": "chem-236",
-    "Q56": "chem-237", "Q57": "chem-238", "Q58": "chem-239", "Q59": "chem-240", "Q60": "chem-241"
+    "Q1": "chem-182",
+    "Q2": "chem-183",
+    "Q3": "chem-184",
+    "Q4": "chem-185",
+    "Q5": "chem-186",
+    "Q6": "chem-187",
+    "Q7": "chem-188",
+    "Q8": "chem-189",
+    "Q9": "chem-190",
+    "Q10": "chem-191",
+    "Q11": "chem-192",
+    "Q12": "chem-193",
+    "Q13": "chem-194",
+    "Q14": "chem-195",
+    "Q15": "chem-196",
+    "Q16": "chem-197",
+    "Q17": "chem-198",
+    "Q18": "chem-199",
+    "Q19": "chem-200",
+    "Q20": "chem-201",
+    "Q21": "chem-202",
+    "Q22": "chem-203",
+    "Q23": "chem-204",
+    "Q24": "chem-205",
+    "Q25": "chem-206",
+    "Q26": "chem-207",
+    "Q27": "chem-208",
+    "Q28": "chem-209",
+    "Q29": "chem-210",
+    "Q30": "chem-211",
+    "Q31": "chem-212",
+    "Q32": "chem-213",
+    "Q33": "chem-214",
+    "Q34": "chem-215",
+    "Q35": "chem-216",
+    "Q36": "chem-217",
+    "Q37": "chem-218",
+    "Q38": "chem-219",
+    "Q39": "chem-220",
+    "Q40": "chem-221",
+    "Q41": "chem-222",
+    "Q42": "chem-223",
+    "Q43": "chem-224",
+    "Q44": "chem-225",
+    "Q45": "chem-226",
+    "Q46": "chem-227",
+    "Q47": "chem-228",
+    "Q48": "chem-229",
+    "Q49": "chem-230",
+    "Q50": "chem-231",
+    "Q51": "chem-232",
+    "Q52": "chem-233",
+    "Q53": "chem-234",
+    "Q54": "chem-235",
+    "Q55": "chem-236",
+    "Q56": "chem-237",
+    "Q57": "chem-238",
+    "Q58": "chem-239",
+    "Q59": "chem-240",
+    "Q60": "chem-241"
   },
   "asserted_key_block": "BCDBBCCBBBCBCCDCDBCBBCCCBCCBCCCBCCCBABBBACCBCBBBBBCCBBBCCABB",
-  "asserted_key_tally": { "A": 3, "B": 28, "C": 26, "D": 3 },
+  "asserted_key_tally": {
+    "A": 3,
+    "B": 28,
+    "C": 26,
+    "D": 3
+  },
   "verification": {
     "stem_phrase_plus_four_options_unique": true,
-    "option_set_alone_not_unique": ["Q11 chem-192 and Q36 chem-217 share the set 0 / 1 / 2 / 3"],
+    "option_set_alone_not_unique": [
+      "Q11 chem-192 and Q36 chem-217 share the set 0 / 1 / 2 / 3"
+    ],
     "contiguous_chem_182_to_241": "derived, not assumed",
     "overlap_with_earlier_packs": "none",
     "new_unique_ids_this_batch": 60
   },
   "stem_changes": [
-    "Q5", "Q10", "Q11", "Q13", "Q14", "Q17", "Q19", "Q23", "Q24", "Q26", "Q27", "Q28",
-    "Q31", "Q32", "Q40", "Q41", "Q45", "Q47", "Q49", "Q50", "Q52", "Q53", "Q54", "Q55",
-    "Q56", "Q58", "Q59", "Q60"
+    "Q5",
+    "Q10",
+    "Q11",
+    "Q13",
+    "Q14",
+    "Q17",
+    "Q19",
+    "Q23",
+    "Q24",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q31",
+    "Q32",
+    "Q40",
+    "Q41",
+    "Q45",
+    "Q47",
+    "Q49",
+    "Q50",
+    "Q52",
+    "Q53",
+    "Q54",
+    "Q55",
+    "Q56",
+    "Q58",
+    "Q59",
+    "Q60"
   ],
-  "option_changes": { "Q14": ["D"], "Q19": ["D"], "Q60": ["D"] },
+  "option_changes": {
+    "Q14": [
+      "D"
+    ],
+    "Q19": [
+      "D"
+    ],
+    "Q60": [
+      "D"
+    ]
+  },
   "tables": [
-    "Q4", "Q6", "Q7", "Q13", "Q14", "Q22", "Q26", "Q32", "Q35", "Q37", "Q38", "Q50", "Q57"
+    "Q4",
+    "Q6",
+    "Q7",
+    "Q13",
+    "Q14",
+    "Q22",
+    "Q26",
+    "Q32",
+    "Q35",
+    "Q37",
+    "Q38",
+    "Q50",
+    "Q57"
   ],
-  "tables_repaired": ["Q14", "Q22", "Q26", "Q35", "Q37", "Q50", "Q57"],
-  "tables_kept_as_is": ["Q4", "Q6", "Q7", "Q13", "Q32", "Q38"],
+  "tables_repaired": [
+    "Q14",
+    "Q22",
+    "Q26",
+    "Q35",
+    "Q37",
+    "Q50",
+    "Q57"
+  ],
+  "tables_kept_as_is": [
+    "Q4",
+    "Q6",
+    "Q7",
+    "Q13",
+    "Q32",
+    "Q38"
+  ],
   "bottom_line_replacements": [
-    "Q1", "Q5", "Q10", "Q11", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20",
-    "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q30", "Q31", "Q32", "Q33",
-    "Q34", "Q35", "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q47",
-    "Q48", "Q49", "Q50", "Q51", "Q52", "Q53", "Q54", "Q55", "Q56"
+    "Q1",
+    "Q5",
+    "Q10",
+    "Q11",
+    "Q13",
+    "Q14",
+    "Q15",
+    "Q16",
+    "Q17",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q30",
+    "Q31",
+    "Q32",
+    "Q33",
+    "Q34",
+    "Q35",
+    "Q37",
+    "Q38",
+    "Q39",
+    "Q40",
+    "Q41",
+    "Q42",
+    "Q43",
+    "Q44",
+    "Q45",
+    "Q47",
+    "Q48",
+    "Q49",
+    "Q50",
+    "Q51",
+    "Q52",
+    "Q53",
+    "Q54",
+    "Q55",
+    "Q56"
   ],
-  "bottom_lines_kept": ["Q2", "Q3", "Q4", "Q6", "Q7", "Q8", "Q9", "Q12", "Q29", "Q36", "Q46", "Q57"],
-  "bottom_lines_absent_by_design": ["Q58", "Q59", "Q60"],
+  "bottom_lines_kept": [
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q12",
+    "Q29",
+    "Q36",
+    "Q46",
+    "Q57"
+  ],
+  "bottom_lines_absent_by_design": [
+    "Q58",
+    "Q59",
+    "Q60"
+  ],
   "missing_feedback_restored": {
-    "Q1": ["A", "C"], "Q3": ["A", "B"], "Q4": ["A", "C"], "Q5": ["A", "C"],
-    "Q7": ["A", "B"], "Q10": ["A", "C"], "Q12": ["A", "C"], "Q13": ["A", "B"],
-    "Q14": ["A", "B"], "Q15": ["A"], "Q16": ["A", "B"], "Q19": ["A", "B"],
-    "Q36": ["C", "D"]
+    "Q1": [
+      "A",
+      "C"
+    ],
+    "Q3": [
+      "A",
+      "B"
+    ],
+    "Q4": [
+      "A",
+      "C"
+    ],
+    "Q5": [
+      "A",
+      "C"
+    ],
+    "Q7": [
+      "A",
+      "B"
+    ],
+    "Q10": [
+      "A",
+      "C"
+    ],
+    "Q12": [
+      "A",
+      "C"
+    ],
+    "Q13": [
+      "A",
+      "B"
+    ],
+    "Q14": [
+      "A",
+      "B"
+    ],
+    "Q15": [
+      "A"
+    ],
+    "Q16": [
+      "A",
+      "B"
+    ],
+    "Q19": [
+      "A",
+      "B"
+    ],
+    "Q36": [
+      "C",
+      "D"
+    ]
   },
   "point_blocks_replaced": 60,
   "points_total": 180,
@@ -87,7 +309,9 @@
     "Q39-Q57": "acid-base stock points, irrelevant to the amino-acid items",
     "Q58-Q60": "organic stock points"
   },
-  "major_rewrite": ["Q59"],
+  "major_rewrite": [
+    "Q59"
+  ],
   "deviations": [],
   "notes": [
     "Heading policy: for every item the keyed heading and all three distractor headings were set to that item's own option texts verbatim (entity-encoded where the option contains < or >), so each heading visibly matches its option. Two pre-existing mismatches were capitalization only: Q3 C ('Magnetic' vs 'magnetic') and Q19 D, whose option text the review replaces anyway.",
@@ -117,6 +341,34 @@
     "kept_unchanged_this_batch": 0,
     "still_unreviewed_chemistry": 246,
     "biology_unaffected": true,
-    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"]
+    "biology_still_unreviewed": [
+      "bio-12",
+      "bio-346",
+      "bio-513",
+      "bio-518",
+      "bio-583"
+    ]
+  },
+  "followup_corrections": {
+    "date": "2026-11-17",
+    "scope": "explanation fields only; four records; no newly reviewed ids, coverage stays at 239 of 485",
+    "ids": {
+      "Q35": "chem-216",
+      "Q37": "chem-218",
+      "Q50": "chem-231",
+      "Q57": "chem-238"
+    },
+    "changes": [
+      "Q35 chem-216: option A feedback body replaced. Electron transfer now explains ion FORMATION, with ionic bonding named as the attraction between the resulting ions, and metallic delocalization stated separately.",
+      "Q37 chem-218: option B feedback body replaced. CH4 -> CH subscript 4 presentation already in the heading; the body now uses −182.5 °C matching the table, and adds that the covalent C–H bonds stay intact on melting.",
+      "Q50 chem-231: the single sentence between the table and the feedback replaced; the hyphen dash became a semicolon and the claim is scoped to the side-chain amide groups.",
+      "Q57 chem-238: the first sentence of the main explanation replaced; \"cleave\" became \"hydrolyze\", scoping the classification to hydrolytic cleavage without adding a discussion of nonhydrolytic peptide cleavage."
+    ],
+    "preserved": "all stems, option texts, answer letters, ids, keyed and distractor headings, 13 tables, 180 educational points, 57 Bottom Lines; the other 56 pack items and every out-of-pack record byte-identical",
+    "presentation_notes": [
+      "Q35: the supplied text wrote \"Na+\"; it is stored as Na with a superscript plus, the convention this pack already uses for sodium ions, so it matches the Unicode minus in Cl−.",
+      "Q57: the pack bolds the two key class names, so <strong> was kept on \"hydrolases\" and \"proteases\"; only the wording changed."
+    ],
+    "deviations": []
   }
 }

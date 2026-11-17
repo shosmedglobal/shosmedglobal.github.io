@@ -422,6 +422,40 @@ for (const [Q, gone, present] of REPAIRS) {
   ok(now.indexOf(present) >= 0, `${Q}: "${present.slice(0, 55)}" should be present`);
 }
 
+// Four follow-up corrections applied after the batch 4 re-read, 17 November 2026.
+// These replaced text that this pass itself had written, so the before-fixture
+// cannot witness them; non-vacuity was established against the commit instead.
+const FOLLOWUP = [
+  ['Q35', 'Electron transfer from one atom to another describes ionic bonding, as seen in NaCl',
+          'Electron transfer can explain the formation of Na⁺ and Cl− from neutral atoms; ionic bonding is the electrostatic attraction between those ions.'],
+  ['Q35', 'form a shared "electron sea" that belongs to the entire metallic lattice',
+          'valence electrons are delocalized over many atoms rather than transferred to particular atoms.'],
+  ['Q37', '-182.5 degrees C', 'about −182.5 °C. The C–H bonds within each methane molecule are covalent and remain intact when methane melts.'],
+  ['Q37', 'Methane (CH4) is a nonpolar molecule', 'Methane molecules are nonpolar and attract one another mainly through London dispersion forces.'],
+  ['Q50', 'aspartate and glutamate - they are predominantly uncharged',
+          'the amide derivatives of aspartate and glutamate; their side-chain amide groups are predominantly uncharged at physiological pH.'],
+  ['Q57', 'Enzymes that cleave peptide bonds are classified as',
+          'Enzymes that hydrolyze peptide bonds are classified as <strong>hydrolases</strong>, specifically <strong>proteases</strong>']
+];
+for (const [Q, gone, present] of FOLLOWUP) {
+  const now = allText(rec(Q));
+  ok(now.indexOf(gone) < 0, `${Q} follow-up: "${gone.slice(0, 55)}" should be gone`);
+  ok(now.indexOf(present) >= 0, `${Q} follow-up: "${present.slice(0, 55)}" should be present`);
+}
+// the follow-up touched only these four, and only their explanation fields
+ok(['Q35', 'Q37', 'Q50', 'Q57'].every(Q => MAP[Q] === { Q35: 'chem-216', Q37: 'chem-218', Q50: 'chem-231', Q57: 'chem-238' }[Q]),
+  'the four follow-up ids come from the verified map');
+ok(/<p><strong>A\. transferred from one atom to another:<\/strong> Electron transfer can explain/.test(rec('Q35').explanation),
+  "Q35 follow-up: the new text is option A's feedback body under its unchanged heading");
+ok(/<p><strong>B\. CH₄:<\/strong> Methane molecules are nonpolar/.test(rec('Q37').explanation),
+  "Q37 follow-up: the new text is option B's feedback body under its unchanged heading");
+ok(/<\/table><p>Asparagine and glutamine are the amide derivatives[\s\S]*?<\/p><h4>Why the other choices/.test(rec('Q50').explanation),
+  'Q50 follow-up: the new sentence is the single paragraph between the table and the feedback');
+ok(/^<h4>Correct Answer: Hydrolase \(protease\)<\/h4><p>Enzymes that hydrolyze[\s\S]*?proteinases\)\. Hydrolases \(EC class 3\) catalyze bond cleavage in which water is consumed in the overall reaction\.<\/p>/.test(rec('Q57').explanation),
+  'Q57 follow-up: the new first sentence is followed by the unchanged second sentence');
+ok((rec('Q37').explanation.match(/−182\.5 °C/g) || []).length === 2,
+  "Q37 follow-up: the −182.5 °C value agrees between the table and option B's feedback");
+
 // universal claims the review bans anywhere in the pack
 const BANNED = [
   'optically active',
