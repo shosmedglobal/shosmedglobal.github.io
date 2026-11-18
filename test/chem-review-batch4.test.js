@@ -236,10 +236,13 @@ for (const q of data.chemistry) {
   if (!untouched.chemistry[q.id]) continue;   // pruned by a later reviewed batch
   if (untouched.chemistry[q.id] !== hash(q)) { chemBad++; console.error('    changed outside the pack: ' + q.id); }
 }
-ok(Object.keys(untouched.chemistry).length === 305, `the untouched fixture holds ${Object.keys(untouched.chemistry).length} out-of-pack chemistry hashes (305 after the batch 6 prune)`);
+/* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
+   from this fixture, so the hash count below steps down by 60. nChem counts LIVE
+   out-of-pack records and is unaffected by pruning. */
+ok(Object.keys(untouched.chemistry).length === 245, `the untouched fixture holds ${Object.keys(untouched.chemistry).length} out-of-pack chemistry hashes (245 after the batch 7 prune)`);
 ok(chemBad === 0, `${chemBad} chemistry records outside the pack changed`);
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts changed');
-ok(Object.keys(untouched.chemistry).length + 60 + 60 + 60 === 485, 'the untouched chemistry hashes, this 60-item pack and chemistry batches 5 and 6 should be the whole chemistry bank');
+ok(Object.keys(untouched.chemistry).length + 60 + 60 + 60 + 60 === 485, 'the untouched chemistry hashes, this 60-item pack and chemistry batches 5, 6 and 7 should be the whole chemistry bank');
 
 // ---------------------------------------------------------------------------
 section('4. the specific science and feedback repairs the review names');

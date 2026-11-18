@@ -1,0 +1,1444 @@
+SHOSMED LF3 CHEMISTRY, BATCH 7: REVISED 60-QUESTION EXPORT
+Implemented 18 November 2026 from SHOSMED_LF3_Chemistry_Batch7_Review.txt
+For final scientific review. Implementation checks establish structure and
+consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  Display Q1-Q60 map to chem-362 .. chem-421.
+  This review supplied ORIGINAL IDENTIFICATION SIGNATURES, so the map was derived
+  by FULL CONTENT MATCH rather than inferred:
+    1. Each signature's original stem plus all four original option texts was
+       matched against all 485 chemistry records, on a canonical form that decodes
+       entities, strips tags, folds HTML and Unicode sub/superscripts to plain
+       digits, normalises dashes, quotes, Greek letters and arrows, and collapses
+       whitespace. All 60 matched exactly one record each.
+    2. No two records anywhere in the bank share a full signature, and no two share
+       even a canonical stem, so no match was ambiguous and none had to be resolved
+       by topic or answer-letter pattern.
+    3. Every stored answer letter agreed with the review letter for that display
+       number, reproducing the review key block and its A=7/B=27/C=18/D=8 tally.
+    4. Every stored topic agreed with the signature topic.
+  Contiguity is a RESULT of that verification, not an assumption. No id in this
+  pack appears in chemistry batch 1, 2, 3, 4, 5 or 6, so all 60 displays are newly
+  reviewed unique ids.
+
+  Verified key block : BBBBBBCBCC BCCACBBBCC CCBBDBCBBB BBDCCDCBDB CADCDABACA ACDBBBBDAB
+  Verified tally     : A=7, B=27, C=18, D=8
+
+WHAT CHANGED
+  Items edited            : 54
+  KEEP items, untouched   : 6 (Q5, Q18, Q19, Q30, Q36, Q59), byte-identical in every field
+  Points-only item        : Q60, point 3 only, with no heading expansion
+  Stems replaced          : 27 (Q4, Q8, Q9, Q10, Q11, Q12, Q14, Q15, Q22, Q24, Q27, Q28, Q29, Q31, Q32, Q33, Q34, Q37, Q38, Q39, Q40, Q45, Q48, Q49, Q50, Q52, Q53)
+  Option texts replaced   : 6 (Q34 B, Q43 D, Q44 C, Q46 D, Q53 A, Q57 B), headings synchronized
+  Answer letters and ids  : none moved; no answer-position rebalancing
+  Educational points      : 96 in 32 blocks, unchanged as a count; the four repeated
+                            generic blocks were replaced in Q1-Q4 only, and elsewhere
+                            only the individual points the review names
+  Bottom Lines            : 56, unchanged; none added to Q1-Q4
+  Tables                  : 7 (Q6, Q7, Q10, Q16, Q25, Q27, Q32); only Q6 gained a row,
+                            the EC 7 Translocase row the review requires
+  Distractor paragraphs   : 180, exactly one per distractor
+  MAJOR QUESTION REWRITE  : Q29 (condensation polymerization in a stated chemical model)
+  SUBSTANTIAL EXPLANATION REPAIRS: Q9 (ATP accounting), Q12 (glycine charge, stem narrowed),
+                            Q27 (vitamin solubility and storage), Q32 (cofactor terminology)
+
+HEADING SYNCHRONIZATION
+  Many stored distractor headings were abbreviated rather than the full option text.
+  For EDITED items the review requires keyed and distractor headings to be
+  synchronized with the actual options, so 29 headings were expanded. The six KEEP
+  items and the points-only item are exempt and keep their abbreviated headings.
+  Each item's lettered/unlettered keyed-heading style is preserved: Q1-Q4 keep a
+  lettered keyed heading, Q5-Q60 keep an unlettered one.
+
+TWO ITEMS THE REVIEW ASKED TO CHECK RATHER THAN ASSUME
+  Q22's exponent is ALREADY a real exponent in the stored field, which holds
+  "remaining = initial x (1/2)<sup>n</sup>". The "(1/2)n" appearance in the review
+  source was a plain-text extraction artifact, not a stored or rendered defect, so
+  nothing was changed there.
+  The standalone 'Unanswered' and 'Report an issue' labels appear in NO stored field
+  anywhere in the bank; all 629 biology and 485 chemistry records were searched.
+  They are UI text, so they were not touched and are not reported as a data fix.
+
+PRESENTATION PRESERVED
+  Feedback paragraph glue is per item and unchanged: Q1-Q32 separate paragraphs with
+  a newline, Q33-Q60 do not. Paragraphs were edited in place, never reassembled.
+  Q1 and Q2 keep their pre-existing trailing empty div element byte for byte.
+  The pack stores no HTML entities and none were introduced. The two stored curly
+  quotes, in Q2's kept option D feedback, are unchanged and no new one was added.
+  No em dash was added anywhere.
+  Prime marks follow the bank's existing ASCII apostrophe convention (3'-OH, 5' -> 3');
+  the bank stores no U+2032 prime character, and rule 4 of the review asks that
+  existing punctuation conventions be matched without a bank-wide cleanup.
+
+COVERAGE, FROM UNIQUE VERIFIED IDS
+  Chemistry reviewed before this batch : 359 of 485
+  New unique chemistry ids this batch  : 60 (60 displays, no repeats of an earlier pack)
+  Chemistry reviewed after this batch  : 419 of 485
+  Chemistry still unreviewed           : 66 (chem-19, chem-61, and chem-422 .. chem-485)
+  Biology                              : outside this review, unaffected
+
+DEVIATIONS
+  none.
+
+==============================================================================
+
+Q1  [chem-362]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Protection of a hydroxyl group in organic synthesis is commonly achieved by converting it to:
+
+  A. A thiol (–SH)
+  B. A silyl ether (e.g., TBS ether)   <= key
+  C. An amine (–NH₂)
+  D. A sulfonate ester
+
+EXPLANATION:
+Correct Answer: B. A silyl ether (e.g., TBS ether)
+Silyl ethers (such as TBS - tert-butyldimethylsilyl ether, or TMS - trimethylsilyl ether) are widely used protecting groups for alcohols. They are stable under many reaction conditions but can be selectively removed with fluoride ions (e.g., TBAF). Protection/deprotection strategies are essential in multi-step synthesis when a functional group must survive reactions intended for other parts of the molecule.
+Why the other choices are wrong:
+A. A thiol (–SH): A thiol (–SH) is the sulfur analog of an alcohol. While thiol-for-hydroxyl swaps exist in organic synthesis, this is a functional group transformation, not a protecting group strategy. Protection means temporarily masking a group so it can be restored later. Silyl ethers are useful because they can mask the hydroxyl group during suitable reactions and later be removed to regenerate the alcohol.
+C. An amine (–NH₂): An amine (–NH₂) is not used to protect a hydroxyl group. Converting –OH to –NH₂ would be a major functional group change, not protection. Good protecting groups are easily installed, stable during subsequent reactions, and readily removed when needed. The choice of protecting group depends on which later reactions it must tolerate and how it will be removed.
+D. A sulfonate ester: Tosylates and mesylates are commonly used to turn an alcohol's hydroxyl group into a good leaving group for substitution or elimination. That is activation for further reaction; a silyl ether is the standard hydroxyl-protection choice among these options.
+Key Educational Points:
+  - A protecting group temporarily masks a functional group so it can be restored later.
+  - Silyl ethers protect alcohols under suitable reaction conditions and can often be removed with fluoride.
+  - Tosylates and mesylates are commonly used to activate alcohols as leaving groups.
+
+==============================================================================
+
+Q2  [chem-363]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In retrosynthetic analysis, the symbol ⇒ represents:
+
+  A. A forward reaction step
+  B. A disconnection (working backward from product to simpler precursors)   <= key
+  C. An equilibrium
+  D. A catalytic step
+
+EXPLANATION:
+Correct Answer: B. A disconnection (working backward from product to simpler precursors)
+Retrosynthesis plans a synthesis by working backward from the target molecule. The arrow ⇒ means 'can be made from' and points toward proposed precursors. A disconnection breaks a bond on paper; a functional-group interconversion can also be a retrosynthetic step. Synthons are idealized fragments used in planning, whereas the reagents actually used are their synthetic equivalents.
+Why the other choices are wrong:
+A. A forward reaction step: A forward reaction step is shown by a regular reaction arrow (→). The retrosynthetic arrow (⇒) indicates the reverse thought process: working backward from the target molecule to identify simpler precursors. Retrosynthesis is a planning strategy, not an actual reaction - it maps out how a complex molecule can be built from available starting materials.
+C. An equilibrium: Chemical equilibrium is shown by opposing arrows, ⇌. The retrosynthetic arrow ⇒ instead shows a planning relationship between a target and proposed precursors, not an equilibrium between them.
+D. A catalytic step: A catalytic step has no special arrow notation; it is simply shown as a reaction arrow with the catalyst written above or below. The retrosynthetic arrow (⇒) means “can be derived from” - pointing from a complex target molecule to simpler building blocks. This approach, pioneered by E. J. Corey, earned him the 1990 Nobel Prize in Chemistry.
+Key Educational Points:
+  - Retrosynthesis works backward from a target to possible starting materials.
+  - The arrow ⇒ means 'can be made from'; it does not represent a reaction occurring in reverse.
+  - A proposed disconnection must ultimately correspond to a feasible forward reaction.
+
+==============================================================================
+
+Q3  [chem-364]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Swern oxidation uses which reagent system to oxidize an alcohol to a carbonyl compound?
+
+  A. CrO₃/pyridine
+  B. DMSO/oxalyl chloride/base   <= key
+  C. PCC/CH₂Cl₂
+  D. Jones reagent
+
+EXPLANATION:
+Correct Answer: B. DMSO/oxalyl chloride/base
+The Swern oxidation uses DMSO activated by oxalyl chloride ((COCl)₂) at low temperature (−78°C), followed by an amine base (usually triethylamine). It oxidizes primary alcohols to aldehydes and secondary alcohols to ketones under mild, chromium-free conditions. The mild conditions and absence of toxic heavy metals make it advantageous for sensitive substrates.
+Why the other choices are wrong:
+A. CrO₃/pyridine: A chromium trioxide-pyridine complex is a chromium-based alcohol oxidant; its use in dichloromethane is associated with Collins oxidation. It is not the DMSO/oxalyl chloride/base system that defines Swern oxidation.
+C. PCC/CH₂Cl₂: PCC in dichloromethane can oxidize primary alcohols to aldehydes and secondary alcohols to ketones. It is a different, chromium-containing reagent system. Which oxidation is most suitable depends on the substrate and its other functional groups.
+D. Jones reagent: Jones reagent (CrO₃ in aqueous H₂SO₄/acetone) is a strong oxidant that converts primary alcohols all the way to carboxylic acids. The Swern oxidation, by contrast, stops at the aldehyde stage and uses no metals. It works by activating DMSO to form a reactive intermediate that oxidizes the alcohol while itself being reduced to dimethyl sulfide (DMS).
+Key Educational Points:
+  - Swern oxidation uses activated DMSO followed by a base.
+  - Primary alcohols give aldehydes; secondary alcohols give ketones.
+  - Swern oxidation avoids chromium reagents, but its suitability still depends on the substrate.
+
+==============================================================================
+
+Q4  [chem-365]  correct answer: B
+------------------------------------------------------------------------------
+STEM: A primary amide, RCONH₂, can be converted to a primary amine with one fewer carbon atom by which named reaction?
+
+  A. Curtius rearrangement
+  B. Hofmann rearrangement   <= key
+  C. Lossen rearrangement
+  D. Schmidt reaction
+
+EXPLANATION:
+Correct Answer: B. Hofmann rearrangement
+The Hofmann rearrangement (or Hofmann degradation) treats a primary amide (RCONH₂) with bromine and base (Br₂/NaOH) to give a primary amine (RNH₂) with one fewer carbon (the carbonyl carbon is removed; in the basic reaction mixture it is ultimately captured as carbonate). The mechanism involves formation of an isocyanate intermediate followed by hydrolysis. The Curtius rearrangement uses acyl azides to achieve a similar result.
+Why the other choices are wrong:
+A. Curtius rearrangement: Curtius rearrangement starts from an acyl azide, RCON₃, rather than the primary amide specified here. It can also yield a primary amine with one fewer carbon after formation and hydrolysis of an isocyanate.
+C. Lossen rearrangement: Lossen rearrangement starts from an activated hydroxamic acid derivative. It can form an isocyanate and ultimately an amine, but its starting material is not the simple primary amide in the stem.
+D. Schmidt reaction: In the carboxylic-acid version of the Schmidt reaction, a carboxylic acid reacts with hydrazoic acid under acidic conditions to give an amine with one fewer carbon. It is not the rearrangement of a primary amide asked about here.
+Key Educational Points:
+  - Hofmann rearrangement converts a primary amide into a primary amine with one fewer carbon.
+  - The carbon removed is the original carbonyl carbon.
+  - Related rearrangements can give similar products but begin with different functional groups.
+
+==============================================================================
+
+Q5  [chem-366]  correct answer: B   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: Which statement best describes how enzymes accelerate chemical reactions?
+
+  A. They increase the temperature of the reaction
+  B. They lower the activation energy of the reaction   <= key
+  C. They shift the equilibrium toward products
+  D. They increase the free energy change (ΔG) of the reaction
+
+EXPLANATION:
+Correct Answer: They lower the activation energy of the reaction
+Enzymes are biological catalysts that speed up reactions by providing an alternative reaction pathway with a lower activation energy barrier. They achieve this by stabilizing the transition state through precise molecular interactions in the active site - including hydrogen bonds, ionic interactions, and transient covalent bonds with the substrate.
+Why the other choices are wrong:
+A. Increase temperature: Enzymes do not change temperature; they work by lowering the energy barrier at the existing temperature, which is why biological reactions proceed rapidly at body temperature.
+C. Shift equilibrium: Enzymes accelerate both forward and reverse reactions equally - they do not change the position of equilibrium or the equilibrium constant (Keq).
+D. Increase ΔG: Enzymes do not alter the thermodynamics (ΔG) of a reaction. They only affect kinetics (how fast equilibrium is reached), not whether or which direction is favorable.
+Bottom Line: Enzymes lower activation energy without changing ΔG or equilibrium. They are specific (lock-and-key or induced-fit model), reusable, and regulated by factors like pH, temperature, inhibitors, and allosteric modulators.
+
+==============================================================================
+
+Q6  [chem-367]  correct answer: B
+------------------------------------------------------------------------------
+STEM: An enzyme that catalyzes the transfer of a phosphate group from ATP to a substrate is classified as a:
+
+  A. Oxidoreductase
+  B. Transferase   <= key
+  C. Hydrolase
+  D. Lyase
+
+EXPLANATION:
+Correct Answer: Transferase
+The IUBMB enzyme classification has seven main classes, based on the reactions catalyzed. Transferases catalyze the transfer of functional groups (such as methyl, amino, phosphate, or glycosyl groups) from one molecule to another. Kinases are a specific subclass of transferases that transfer phosphate groups from ATP to substrates.
+| Class | Reaction Type | Example |
+| Oxidoreductase | Electron transfer (redox) | Dehydrogenases, oxidases |
+| Transferase | Group transfer | Kinases, transaminases |
+| Hydrolase | Hydrolysis (bond cleavage by water) | Lipase, protease |
+| Lyase | Bond cleavage without hydrolysis or oxidation, or the reverse addition reaction | Decarboxylase, aldolase |
+| Isomerase | Structural rearrangement | Mutase, racemase |
+| Ligase | Bond formation coupled to an energy-supplying reaction, commonly nucleotide cleavage | DNA ligase, synthetases |
+| Translocase | Movement of ions or molecules across membranes, or their separation within membranes | Na⁺/K⁺-transporting ATPase |
+Why the other choices are wrong:
+A. Oxidoreductase: These catalyze oxidation-reduction reactions (electron transfer), not group transfer.
+C. Hydrolase: Hydrolases break bonds by adding water; they do not transfer groups between molecules.
+D. Lyase: Lyases cleave bonds without hydrolysis or oxidation (e.g., removing CO₂ or H₂O), not transferring groups.
+Bottom Line: The seven EC classes are oxidoreductases, transferases, hydrolases, lyases, isomerases, ligases and translocases. A kinase that transfers a phosphate group from ATP to a substrate is a transferase.
+
+==============================================================================
+
+Q7  [chem-368]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which vitamin serves as the precursor for the coenzymes NAD⁺ and NADP⁺, and its deficiency causes pellagra (the disease of the 4 D's: dermatitis, diarrhea, dementia, death)?
+
+  A. Thiamine (B1)
+  B. Riboflavin (B2)
+  C. Niacin (B3)   <= key
+  D. Pyridoxine (B6)
+
+EXPLANATION:
+Correct Answer: Niacin (B3)
+Niacin (nicotinic acid or nicotinamide) is the precursor of NAD⁺ (nicotinamide adenine dinucleotide) and NADP⁺, which are essential coenzymes in hundreds of redox reactions in metabolism. NAD⁺ is crucial in glycolysis, the citric acid cycle, and oxidative phosphorylation. Severe deficiency leads to pellagra, classically characterized by dermatitis (on sun-exposed skin), diarrhea, dementia, and if untreated, death.
+| Vitamin | Coenzyme Form | Deficiency Disease |
+| Thiamine (B1) | TPP (thiamine pyrophosphate) | Beriberi, Wernicke-Korsakoff |
+| Riboflavin (B2) | FAD, FMN | Cheilosis, angular stomatitis |
+| Niacin (B3) | NAD⁺, NADP⁺ | Pellagra (4 D's) |
+| Pyridoxine (B6) | PLP (pyridoxal phosphate) | Peripheral neuropathy, anemia |
+Why the other choices are wrong:
+A. Thiamine (B1): Forms TPP, a coenzyme for pyruvate dehydrogenase and alpha-ketoglutarate dehydrogenase; deficiency causes beriberi (wet: cardiac; dry: neurological).
+B. Riboflavin (B2): Forms FAD and FMN, electron carriers in the ETC and various oxidases; deficiency causes oral/skin lesions, not pellagra.
+D. Pyridoxine (B6): Forms PLP, essential for transamination and amino acid metabolism; deficiency causes neuropathy and sideroblastic anemia.
+Bottom Line: Niacin supplies the nicotinamide part of NAD⁺ and NADP⁺. Severe deficiency causes pellagra. Tryptophan can also contribute to niacin production; the dietary convention is approximately 60 mg tryptophan per 1 mg niacin equivalent. A poorly varied diet dominated by untreated maize can increase risk because its niacin is poorly available and it supplies relatively little tryptophan.
+
+==============================================================================
+
+Q8  [chem-369]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In human cells, most enzymes of the citric acid cycle are located in the:
+
+  A. Cytoplasm
+  B. Mitochondrial matrix   <= key
+  C. Inner mitochondrial membrane
+  D. Endoplasmic reticulum
+
+EXPLANATION:
+Correct Answer: Mitochondrial matrix
+Most citric acid cycle reactions occur in the mitochondrial matrix. The important exception is succinate dehydrogenase, which is embedded in the inner mitochondrial membrane and also functions as Complex II of the electron transport chain. The cycle oxidizes acetyl-CoA, releases CO₂ and transfers electrons to NAD⁺ and enzyme-bound FAD. These electrons can then support oxidative phosphorylation.
+Why the other choices are wrong:
+A. Cytoplasm: Glycolysis takes place in the cytosol. The citric acid cycle is mainly in the mitochondrial matrix, where acetyl-CoA can come from carbohydrate, fatty acid or amino acid metabolism. Entry into the cycle does not always require pyruvate as the source.
+C. Inner mitochondrial membrane: The inner mitochondrial membrane contains the electron transport chain and ATP synthase. It also contains succinate dehydrogenase, but most citric acid cycle enzymes are in the matrix, which is what the stem asks.
+D. Endoplasmic reticulum: The ER is involved in protein folding (rough ER) and lipid synthesis (smooth ER), not in the citric acid cycle.
+Bottom Line: Per acetyl-CoA, a turn of the cycle yields 3 NADH, one FAD-linked reduction, 1 GTP or ATP, and 2 CO₂. The FAD is bound to succinate dehydrogenase. Most cycle enzymes are in the matrix; succinate dehydrogenase is the membrane-bound exception.
+
+==============================================================================
+
+Q9  [chem-370]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In human cells carrying out aerobic respiration, the majority of ATP generated from glucose is produced by:
+
+  A. Substrate-level phosphorylation in glycolysis
+  B. Substrate-level phosphorylation in the Krebs cycle
+  C. Oxidative phosphorylation (chemiosmosis) in the electron transport chain   <= key
+  D. Photophosphorylation in chloroplasts
+
+EXPLANATION:
+Correct Answer: Oxidative phosphorylation (chemiosmosis) in the electron transport chain
+Oxidative phosphorylation supplies about 26-28 ATP out of the approximate 30-32 ATP obtained per glucose in the standard accounting for human cells. The other 4 ATP equivalents are the net 2 ATP from glycolysis and 2 GTP or ATP from the citric acid cycle. Electrons enter the respiratory chain at different points and ultimately reduce oxygen to water. Complexes I, III and IV pump protons across the inner mitochondrial membrane; ATP synthase uses their return flow to make ATP. The yield varies with the shuttle used for cytosolic NADH and with coupling efficiency.
+Why the other choices are wrong:
+A. Substrate-level phosphorylation in glycolysis: Glycolysis produces only 2 net ATP per glucose via substrate-level phosphorylation - a small fraction of total yield.
+B. Substrate-level phosphorylation in the Krebs cycle: The Krebs cycle produces 2 GTP (equivalent to 2 ATP) per glucose via substrate-level phosphorylation.
+D. Photophosphorylation in chloroplasts: This occurs in chloroplasts during photosynthesis, not during cellular respiration in mitochondria.
+Bottom Line: Most ATP from aerobic glucose oxidation comes from oxidative phosphorylation. Common estimates are about 2.5 ATP per mitochondrial NADH and about 1.5 ATP per electron pair entering the ubiquinone pool while bypassing Complex I. The latter occurs during succinate oxidation by Complex II; its FAD is enzyme-bound, not a free FADH₂ molecule entering the complex.
+
+==============================================================================
+
+Q10  [chem-371]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which is one of the four standard bases in RNA but not one of the four standard bases in DNA?
+
+  A. Adenine
+  B. Guanine
+  C. Uracil   <= key
+  D. Cytosine
+
+EXPLANATION:
+Correct Answer: Uracil
+RNA contains the bases adenine, guanine, cytosine, and uracil. DNA contains adenine, guanine, cytosine, and thymine instead of uracil. Uracil differs from thymine by lacking a methyl group at the C-5 position. In RNA, uracil pairs with adenine through two hydrogen bonds, just as thymine does in DNA.
+| Feature | DNA | RNA |
+| Sugar | Deoxyribose | Ribose |
+| Bases | A, T, G, C | A, U, G, C |
+| Structure | Usually a double-stranded helix | Usually single-stranded |
+| Stability | More resistant to alkaline hydrolysis | More susceptible because of the 2'-OH group |
+Why the other choices are wrong:
+A. Adenine: Found in both DNA and RNA; it pairs with thymine in DNA and uracil in RNA.
+B. Guanine: Found in both DNA and RNA; it pairs with cytosine in both nucleic acids.
+D. Cytosine: Found in both DNA and RNA; it pairs with guanine through three hydrogen bonds in both.
+Bottom Line: DNA uses thymine; RNA uses uracil. The methyl group on thymine helps DNA repair enzymes distinguish thymine from deaminated cytosine (which produces uracil), protecting DNA integrity - a likely evolutionary reason DNA uses thymine.
+
+==============================================================================
+
+Q11  [chem-372]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which lipid class provides the basic bilayer framework of human cell membranes?
+
+  A. Triglycerides
+  B. Phospholipids   <= key
+  C. Cholesterol
+  D. Waxes
+
+EXPLANATION:
+Correct Answer: Phospholipids
+Typical membrane phospholipids have a polar, phosphate-containing head and two hydrophobic hydrocarbon chains. In water, these amphipathic molecules assemble into the bilayer framework of human cell membranes, with the polar heads facing water and the nonpolar chains sheltered inside. This bilayer acts as a selectively permeable barrier, allowing small nonpolar molecules to pass while restricting ions and large polar molecules.
+Why the other choices are wrong:
+A. Triglycerides: Triglycerides (triacylglycerols) are energy storage lipids found in adipose tissue; they are fully hydrophobic and do not form bilayers.
+C. Cholesterol: Cholesterol is an important membrane component that modulates fluidity, but it is not the primary structural lipid - it inserts between phospholipids.
+D. Waxes: Waxes are esters of long-chain fatty acids and alcohols; they serve as waterproof coatings on surfaces (leaves, feathers) rather than membrane components.
+Bottom Line: Phospholipid bilayers form spontaneously due to the hydrophobic effect. The fluid mosaic model describes membranes as dynamic structures with phospholipids, cholesterol, and proteins that can move laterally. Membrane fluidity is influenced by fatty acid saturation, chain length, and cholesterol content.
+
+==============================================================================
+
+Q12  [chem-373]  correct answer: C
+------------------------------------------------------------------------------
+STEM: At pH 7.4, which form predominates for free glycine (R = H)?
+
+  A. Fully protonated cation (NH₃⁺-CHR-COOH)
+  B. Fully deprotonated anion (NH₂-CHR-COO⁻)
+  C. Zwitterion (NH₃⁺-CHR-COO⁻)   <= key
+  D. Uncharged molecule (NH₂-CHR-COOH)
+
+EXPLANATION:
+Correct Answer: Zwitterion (NH₃⁺-CHR-COO⁻)
+At pH 7.4, glycine's carboxyl group is predominantly deprotonated (COO⁻) and its amino group predominantly protonated (NH₃⁺). The predominant species therefore carries one positive and one negative charge and is a zwitterion. This does not mean that pH 7.4 is glycine's isoelectric point: its pI is about 6. The pI is the pH at which the population of molecules has zero average net charge. Amino acids with ionizable side chains can have a different predominant net charge at pH 7.4.
+Why the other choices are wrong:
+A. Fully protonated cation (NH₃⁺-CHR-COOH): The fully protonated cation predominates at sufficiently low pH, when the carboxyl group is mainly COOH. At pH 7.4, glycine's carboxyl group is mainly COO⁻.
+B. Fully deprotonated anion (NH₂-CHR-COO⁻): The form with NH₂ and COO⁻ predominates at sufficiently high pH, when the amino group loses its proton. At pH 7.4, that amino group is still mainly NH₃⁺.
+D. Uncharged molecule (NH₂-CHR-COOH): The uncharged NH₂-CHR-COOH form is not the predominant form of glycine in water at pH 7.4. A zwitterion has charged groups even though its own charges sum to zero.
+Bottom Line: Glycine is predominantly a zwitterion at pH 7.4. Predominant molecular form and isoelectric point are different concepts. Do not assume every amino acid has zero net charge at physiological pH.
+
+==============================================================================
+
+Q13  [chem-374]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The bond that links amino acids together in a polypeptide chain is called a:
+
+  A. Glycosidic bond
+  B. Ester bond
+  C. Peptide bond   <= key
+  D. Phosphodiester bond
+
+EXPLANATION:
+Correct Answer: Peptide bond
+A peptide bond is a covalent amide linkage, –C(=O)–N–, joining amino-acid residues in a polypeptide. Its net formation from free amino and carboxyl groups can be drawn as loss of water. In cells, however, ribosomes form peptide bonds using activated amino acids attached to tRNAs, rather than directly dehydrating free amino acids. Resonance gives the peptide C–N bond partial double-bond character, restricting its rotation and making the peptide group approximately planar.
+Why the other choices are wrong:
+A. Glycosidic bond: Links monosaccharides together in carbohydrates (e.g., glucose units in starch); not found between amino acids.
+B. Ester bond: Links fatty acids to glycerol in lipids (triglycerides, phospholipids); also found in some other biomolecules but not in peptide chains.
+D. Phosphodiester bond: Links nucleotides together in nucleic acids (DNA and RNA backbone); not found in polypeptides.
+Bottom Line: Peptide bonds link amino acids in proteins. Glycosidic bonds link sugars. Phosphodiester bonds link nucleotides. Ester bonds link fatty acids to glycerol. Each biopolymer has its characteristic linkage type.
+
+==============================================================================
+
+Q14  [chem-375]  correct answer: A
+------------------------------------------------------------------------------
+STEM: For the dilute aqueous equilibrium A(aq) ⇌ B(aq) at constant temperature, increasing [A] while initially leaving [B] unchanged causes the system to:
+
+  A. Shift toward products to partially consume the added reactant   <= key
+  B. Shift toward reactants to produce more of the added substance
+  C. Remain unchanged because equilibrium is already established
+  D. Reach a new equilibrium with a different equilibrium constant
+
+EXPLANATION:
+Correct Answer: Shift toward products to partially consume the added reactant
+Le Chatelier's principle states that when a system at equilibrium is subjected to a stress, it shifts in the direction that partially relieves that stress. Here, adding A lowers the reaction quotient [B]/[A] below its equilibrium value, so net conversion toward B occurs until equilibrium is restored at the same equilibrium constant.
+Why the other choices are wrong:
+B. Shift toward reactants to produce more of the added substance: This would increase the stress rather than relieve it - the system shifts in the opposite direction of the perturbation.
+C. Remain unchanged because equilibrium is already established: For the equilibrium and concentration change specified, the reaction quotient changes, so the mixture is no longer at equilibrium. A catalyst would change how rapidly equilibrium is reached without changing its position.
+D. Reach a new equilibrium with a different equilibrium constant: The equilibrium constant (Keq) depends only on temperature. Changing concentration shifts the position of equilibrium but does not change Keq.
+Bottom Line: For A(aq) ⇌ B(aq), increasing [A] alone shifts the mixture toward B; increasing [B] alone shifts it toward A. At constant temperature the equilibrium constant is unchanged. Adding more of a pure solid or pure liquid already present does not generally have the same effect.
+
+==============================================================================
+
+Q15  [chem-376]  correct answer: C
+------------------------------------------------------------------------------
+STEM: For a dilute buffer made from a weak acid HA and its conjugate base A⁻, assume the concentration form of the Henderson-Hasselbalch equation applies. What is the pH when [HA] = [A⁻]?
+
+  A. pH = 0
+  B. pH = 7.0
+  C. pH = pKa of the weak acid   <= key
+  D. pH = 14 - pKa
+
+EXPLANATION:
+Correct Answer: pH = pKa of the weak acid
+The Henderson-Hasselbalch equation (pH = pKa + log([A⁻]/[HA])) relates buffer pH to the ratio of conjugate base to weak acid. When the concentrations of HA and A⁻ are equal, log([A⁻]/[HA]) = log(1) = 0, so pH = pKa. For a fixed total concentration of this acid-base pair, its buffering contribution is greatest near pH = pKa.
+Why the other choices are wrong:
+A. pH = 0: An ideal solution with hydrogen-ion concentration 1 mol/L has pH 0. Equal buffer-component concentrations instead make pH equal to the acid's pKa, which is not generally zero.
+B. pH = 7.0: The buffer has pH 7 only if its acid has pKa = 7. Equal acid and base concentrations do not automatically make a solution neutral. Neutral pH is 7 at 25 °C and changes with temperature.
+D. pH = 14 - pKa: At 25 °C, 14 - pKa gives the pKb of the conjugate base. It is not the buffer pH obtained when [HA] and [A⁻] are equal.
+Bottom Line: When [A⁻] = [HA], the logarithm of their ratio is zero and pH ≈ pKa. A weak-acid/conjugate-base buffer generally works best within about one pH unit of its pKa; the amount of buffer present also matters.
+
+==============================================================================
+
+Q16  [chem-377]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In a galvanic (voltaic) cell, oxidation occurs at which electrode?
+
+  A. Cathode
+  B. Anode   <= key
+  C. Salt bridge
+  D. Both electrodes equally
+
+EXPLANATION:
+Correct Answer: Anode
+In any electrochemical cell (galvanic or electrolytic), oxidation always occurs at the anode and reduction always occurs at the cathode. In a galvanic cell, the anode is the negative terminal (electrons flow from anode through the external circuit to cathode), and the spontaneous redox reaction generates electrical energy.
+| Feature | Anode | Cathode |
+| Reaction | Oxidation (electron loss) | Reduction (electron gain) |
+| Sign (galvanic) | Negative (−) | Positive (+) |
+| Sign (electrolytic) | Positive (+) | Negative (−) |
+| Mnemonic | An Ox | Red Cat |
+Why the other choices are wrong:
+A. Cathode: Reduction, meaning gain of electrons, occurs at the cathode. The species reduced may be a cation, a neutral molecule or another species; reduction is not restricted to metal cations. Remember: Red Cat = Reduction at Cathode.
+C. Salt bridge: The salt bridge provides ion flow to maintain electrical neutrality in each half-cell; no redox reactions occur in it.
+D. Both electrodes equally: Oxidation and reduction are separate half-reactions occurring at different electrodes, not at the same one.
+Bottom Line: An Ox, Red Cat: oxidation at the anode, reduction at the cathode. A galvanic cell operates spontaneously under its actual conditions, with Ecell > 0 and ΔG < 0. Under standard conditions the corresponding relation uses E°cell and ΔG°. An electrolytic cell uses external electrical energy to drive a nonspontaneous reaction.
+
+==============================================================================
+
+Q17  [chem-378]  correct answer: B
+------------------------------------------------------------------------------
+STEM: How many moles of water are produced when 2 moles of hydrogen gas react completely with 1 mole of oxygen gas? (2H₂ + O₂ → 2H₂O)
+
+  A. 1 mole
+  B. 2 moles   <= key
+  C. 3 moles
+  D. 4 moles
+
+EXPLANATION:
+Correct Answer: 2 moles
+The balanced equation 2H₂ + O₂ → 2H₂O shows that the mole ratio of hydrogen to oxygen to water is 2:1:2. When 2 moles of H₂ react with 1 mole of O₂, exactly 2 moles of water are produced. The coefficients in a balanced equation directly represent the mole ratios of reactants and products.
+Why the other choices are wrong:
+A. 1 mole: One mole of H₂O would contain only 2 mol of hydrogen atoms and 1 mol of oxygen atoms. The stated reactants supply 4 mol of hydrogen atoms and 2 mol of oxygen atoms and react completely, so they form 2 mol of water.
+C. 3 moles: Three moles of H₂O would require 6 mol of hydrogen atoms and 3 mol of oxygen atoms, more than the stated reactants provide.
+D. 4 moles: Four moles of H₂O would require 8 mol of hydrogen atoms and 4 mol of oxygen atoms. The reactants provide only 4 mol of hydrogen atoms and 2 mol of oxygen atoms.
+Bottom Line: Balanced equations give mole ratios. The law of conservation of mass requires that atoms are neither created nor destroyed. Stoichiometry calculations: convert given → moles → use mole ratio → convert to desired unit.
+
+==============================================================================
+
+Q18  [chem-379]  correct answer: B   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: A solution is prepared by dissolving 58.5 g of NaCl (molar mass = 58.5 g/mol) in enough water to make 1.00 L of solution. What is the molarity of this solution?
+
+  A. 0.50 M
+  B. 1.00 M   <= key
+  C. 2.00 M
+  D. 58.5 M
+
+EXPLANATION:
+Correct Answer: 1.00 M
+Molarity (M) is defined as moles of solute per liter of solution. First, calculate moles: 58.5 g ÷ 58.5 g/mol = 1.00 mol. Then, molarity = 1.00 mol / 1.00 L = 1.00 M. This is one of the most fundamental calculations in chemistry.
+Why the other choices are wrong:
+A. 0.50 M: This would result from dissolving only 29.25 g of NaCl in 1 L, or 58.5 g in 2 L.
+C. 2.00 M: This would require 117 g of NaCl in 1 L, or 58.5 g in 0.5 L.
+D. 58.5 M: This confuses grams with molarity; molarity requires conversion to moles first.
+Bottom Line: Molarity = moles of solute / liters of solution. Always convert mass to moles using molar mass before calculating molarity. Other concentration units include molality (mol/kg solvent), mass percent, and mole fraction.
+
+==============================================================================
+
+Q19  [chem-380]  correct answer: C   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: According to the ideal gas law (PV = nRT), if the temperature of a fixed amount of gas is doubled (in Kelvin) while volume is held constant, the pressure will:
+
+  A. Halve
+  B. Remain the same
+  C. Double   <= key
+  D. Quadruple
+
+EXPLANATION:
+Correct Answer: Double
+From PV = nRT, when n and V are constant, P is directly proportional to T (in Kelvin): P = nRT/V. Doubling the absolute temperature doubles the pressure. This relationship is known as Gay-Lussac's law and reflects the fact that gas molecules move faster at higher temperatures, colliding with container walls more frequently and forcefully.
+Why the other choices are wrong:
+A. Halve: Pressure would halve if temperature were halved (at constant V), not doubled.
+B. Remain the same: Pressure remains unchanged only if both T and V change proportionally, or if neither changes.
+D. Quadruple: Pressure quadruples if temperature quadruples (at constant V), not merely doubles.
+Bottom Line: At constant V: P ∝ T (Gay-Lussac's law). At constant T: P ∝ 1/V (Boyle's law). At constant P: V ∝ T (Charles's law). Always use absolute temperature (Kelvin) in gas law calculations - never Celsius.
+
+==============================================================================
+
+Q20  [chem-381]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which intermolecular force is primarily responsible for the unusually high boiling point of water compared to other molecules of similar size?
+
+  A. London dispersion forces
+  B. Dipole-dipole interactions
+  C. Hydrogen bonding   <= key
+  D. Covalent bonding
+
+EXPLANATION:
+Correct Answer: Hydrogen bonding
+Water molecules form strong hydrogen bonds between the partially positive hydrogen atoms of one molecule and the lone pairs on the highly electronegative oxygen atom of a neighboring molecule. Each water molecule can form up to four hydrogen bonds, creating an extensive network that requires substantial energy to disrupt - hence the unusually high boiling point (100 °C at 1 atm) for such a small molecule (MW = 18).
+Why the other choices are wrong:
+A. London dispersion forces: London dispersion forces arise from fluctuating electron distributions and occur in all molecules. Their strength increases with polarizability and molecular size, so they are not always the weakest intermolecular attraction. They do not account for water's unusually high boiling point compared with similarly sized molecules.
+B. Dipole-dipole interactions: Water does have permanent dipole-dipole interactions, but hydrogen bonding is a particularly strong type of dipole interaction that dominates water's properties.
+D. Covalent bonding: Covalent bonds are intramolecular (within molecules, O-H bonds); boiling involves breaking intermolecular forces, not covalent bonds.
+Bottom Line: In the common examples studied here, hydrogen bonding occurs between an H bonded to N, O or F and a suitable lone pair on another atom. Water's unique properties - high boiling point, high specific heat, high surface tension, ice floating - all result from extensive hydrogen bonding.
+
+==============================================================================
+
+Q21  [chem-382]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Two molecules with the same molecular formula but differing in the connectivity (order of bonding) of their atoms are called:
+
+  A. Enantiomers
+  B. Geometric (cis-trans) isomers
+  C. Structural (constitutional) isomers   <= key
+  D. Conformational isomers
+
+EXPLANATION:
+Correct Answer: Structural (constitutional) isomers
+Structural isomers share the same molecular formula but differ in which atoms are bonded to which - they have different connectivity. For example, butane (CH₃CH₂CH₂CH₃) and isobutane (CH₃CH(CH₃)CH₃) both have the formula C₄H₁₀ but different structural arrangements, leading to different physical and chemical properties.
+Why the other choices are wrong:
+A. Enantiomers: Enantiomers are non-superimposable mirror-image stereoisomers. They have the same connectivity but differ in spatial arrangement, whereas the molecules described in the stem differ in connectivity.
+B. Geometric (cis-trans) isomers: These differ in arrangement around a rigid structure (double bond or ring) - cis vs. trans - but have the same connectivity.
+D. Conformational isomers: These are different spatial arrangements of the same molecule achieved by rotation around single bonds (e.g., chair vs. boat cyclohexane); they have identical connectivity.
+Bottom Line: Isomers share the same molecular formula. Structural isomers differ in connectivity. Stereoisomers (geometric and optical) have the same connectivity but differ in spatial arrangement. Enantiomers are particularly important in pharmacology - different enantiomers can have dramatically different biological activities.
+
+==============================================================================
+
+Q22  [chem-383]  correct answer: C
+------------------------------------------------------------------------------
+STEM: A radioactive isotope has a half-life of 8 days. Starting with 100 g of that isotope, what mass of the original undecayed isotope remains after 24 days?
+
+  A. 50 g
+  B. 25 g
+  C. 12.5 g   <= key
+  D. 6.25 g
+
+EXPLANATION:
+Correct Answer: 12.5 g
+For a macroscopic sample, the amount of undecayed parent isotope falls to approximately half after each half-life. In 24 days with a half-life of 8 days, there are 24/8 = 3 half-lives. Starting with 100 g: after 1 half-life (8 days) → 50 g; after 2 half-lives (16 days) → 25 g; after 3 half-lives (24 days) → 12.5 g. The formula is: remaining = initial × (1/2)^n, where n = number of half-lives.
+Why the other choices are wrong:
+A. 50 g: This would be the amount after only 1 half-life (8 days), not 3.
+B. 25 g: This would be the amount after 2 half-lives (16 days).
+D. 6.25 g: This would be the amount after 4 half-lives (32 days).
+Bottom Line: Remaining amount = Initial × (½)^(t/t½). Half-life is constant regardless of the starting amount. After 10 half-lives, less than 0.1% of the original parent isotope remains. This principle is used in radioactive dating, nuclear medicine dosing, and waste disposal planning.
+
+==============================================================================
+
+Q23  [chem-384]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The heme group found in hemoglobin contains an iron ion coordinated within which heterocyclic ring system?
+
+  A. Pyrimidine
+  B. Porphyrin   <= key
+  C. Imidazole
+  D. Thiazole
+
+EXPLANATION:
+Correct Answer: Porphyrin
+The heme group consists of a porphyrin ring - a large planar heterocyclic structure made of four pyrrole rings connected by methine bridges. The iron(II) ion sits at the center of this ring, coordinated by four nitrogen atoms from the pyrrole subunits. In hemoglobin, this Fe²⁺ reversibly binds molecular oxygen for transport from lungs to tissues.
+Why the other choices are wrong:
+A. Pyrimidine: Pyrimidine is a six-membered ring with two nitrogen atoms; it forms the basis of nucleotide bases (cytosine, thymine, uracil) but is not the ring system in heme.
+C. Imidazole: Imidazole is a five-membered ring with two nitrogens found in the amino acid histidine. The proximal histidine in hemoglobin does coordinate to the heme iron, but heme itself is a porphyrin, not an imidazole.
+D. Thiazole: Thiazole contains sulfur and nitrogen in a five-membered ring; it is found in thiamine (vitamin B1), not in heme.
+Bottom Line: Porphyrins are tetrapyrrole macrocycles that coordinate metal ions. Heme (Fe-porphyrin) is found in hemoglobin, myoglobin, and cytochromes. Chlorophyll a and b contain magnesium in a related chlorin ring, a partially reduced porphyrin-type system. Vitamin B12 (Co-corrin) has a related ring structure.
+
+==============================================================================
+
+Q24  [chem-385]  correct answer: B
+------------------------------------------------------------------------------
+STEM: At constant pressure, a reaction that releases heat to its surroundings is classified as:
+
+  A. Endothermic
+  B. Exothermic   <= key
+  C. Isothermal
+  D. Adiabatic
+
+EXPLANATION:
+Correct Answer: Exothermic
+An exothermic reaction releases heat to its surroundings. At constant pressure, when only pressure-volume work is involved, the heat transferred equals the enthalpy change, so ΔH Why the other choices are wrong:
+A. Endothermic: Endothermic reactions absorb heat from surroundings (ΔH > 0), causing the surroundings to cool. Examples: melting ice, dissolving ammonium nitrate.
+C. Isothermal: Isothermal means occurring at constant temperature - it describes process conditions, not whether heat is released or absorbed.
+D. Adiabatic: Adiabatic means there is no heat transfer between the system and its surroundings (q = 0). Its temperature may change, but a temperature change is not part of the definition. It does not describe a reaction releasing heat to the surroundings.
+Bottom Line: Exothermic: ΔH  0 (heat absorbed, products higher enthalpy). Whether a reaction is spontaneous depends on Gibbs free energy (ΔG = ΔH − TΔS), not enthalpy alone.
+
+==============================================================================
+
+Q25  [chem-386]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Which of the following elements has the highest electronegativity?
+
+  A. Sodium (Na)
+  B. Carbon (C)
+  C. Oxygen (O)
+  D. Fluorine (F)   <= key
+
+EXPLANATION:
+Correct Answer: Fluorine (F)
+Electronegativity measures an atom's ability to attract shared electrons in a chemical bond. Fluorine has the highest electronegativity of all elements (3.98 on the Pauling scale) due to its small atomic radius and high effective nuclear charge. Electronegativity generally increases across a period (left to right) and decreases down a group (top to bottom) in the periodic table.
+| Element | Electronegativity (Pauling) | Position |
+| Na | 0.93 | Group 1 (alkali metal) |
+| C | 2.55 | Period 2, Group 14 |
+| O | 3.44 | Period 2, Group 16 |
+| F | 3.98 | Period 2, Group 17 |
+Why the other choices are wrong:
+A. Sodium (Na): As an alkali metal (far left of periodic table), Na has very low electronegativity - it readily loses its valence electron rather than attracting electrons.
+B. Carbon (C): Carbon has intermediate electronegativity, allowing it to form both polar and nonpolar covalent bonds with various elements.
+C. Oxygen (O): Oxygen is highly electronegative (second only to fluorine among common elements) but still less so than fluorine.
+Bottom Line: Electronegativity trend: increases across a period, decreases down a group. For these four elements on the Pauling scale: F > O > Cl > N (3.98, 3.44, 3.16, 3.04). Noble gases are generally not assigned electronegativity values. Electronegativity differences determine bond polarity.
+
+==============================================================================
+
+Q26  [chem-387]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The esterification reaction between a carboxylic acid and an alcohol produces an ester and:
+
+  A. Carbon dioxide
+  B. Water   <= key
+  C. Hydrogen gas
+  D. An aldehyde
+
+EXPLANATION:
+Correct Answer: Water
+In the net reaction between a carboxylic acid and an alcohol, an ester and water are formed: R–C(=O)–OH + HO–R' ⇌ R–C(=O)–O–R' + H₂O. The ester linkage is –C(=O)–O–. This reaction is typically acid-catalyzed and reversible; the acid-catalyzed reverse process (hydrolysis) breaks the ester back into acid and alcohol.
+Why the other choices are wrong:
+A. Carbon dioxide: CO₂ is produced in decarboxylation reactions, not esterification.
+C. Hydrogen gas: Hydrogen gas is not the small-molecule product of this esterification. For example, H₂ can be released when a reactive metal reacts with an acid; here the eliminated small molecule is water.
+D. An aldehyde: Aldehydes are produced by oxidation of primary alcohols, not by esterification.
+Bottom Line: R-COOH + R'-OH ⇌ R-COOR' + H₂O (acid-catalyzed). Esters are responsible for many fruit fragrances and flavors. Important biological esters include triglycerides (fat storage) and aspirin (acetylsalicylic acid). Fischer esterification uses H₂SO₄ as catalyst.
+
+==============================================================================
+
+Q27  [chem-388]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following vitamins is water-soluble?
+
+  A. Vitamin A
+  B. Vitamin D
+  C. Vitamin C   <= key
+  D. Vitamin K
+
+EXPLANATION:
+Correct Answer: Vitamin C
+Vitamin C and the B vitamins are water-soluble; vitamins A, D, E and K are fat-soluble. Many water-soluble vitamins require regular dietary intake because their reserves are limited, but storage differs between vitamins. Vitamin B12 is an important exception, with substantial stores that can last for years. Vitamin C also has a body pool, so it should not be described as completely unstored. Excess water-soluble vitamins are often excreted in urine, but high intakes of some can still be harmful.
+| Category | Vitamins | Storage | Toxicity Risk |
+| Fat-soluble | A, D, E, K | Storage varies; A and D can accumulate, while K has relatively small stores | Excess A or D can be toxic |
+| Water-soluble | C, B-complex | Many have limited reserves; B12 is a major storage exception | High doses of some, such as B6 or niacin, can be harmful |
+Why the other choices are wrong:
+A. Vitamin A: Fat-soluble; stored in the liver. Excess can cause hypervitaminosis A (headache, liver damage, birth defects).
+B. Vitamin D: Fat-soluble; stored in adipose tissue and liver. Excess causes hypercalcemia.
+D. Vitamin K: Vitamin K is fat-soluble and is needed to activate several clotting proteins. Its tissue stores are relatively small compared with those of other fat-soluble vitamins, so storage alone is not a reliable way to classify vitamins.
+Bottom Line: Vitamin C is water-soluble; A, D, E and K are fat-soluble. Solubility class helps explain handling in the body, but does not by itself determine storage or safety at high intake.
+
+==============================================================================
+
+Q28  [chem-389]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Under controlled oxidation conditions that avoid further oxidation, a primary alcohol is converted to which functional group?
+
+  A. Ketone
+  B. Aldehyde   <= key
+  C. Carboxylic acid
+  D. Ether
+
+EXPLANATION:
+Correct Answer: Aldehyde
+When a primary alcohol (R-CH₂OH) undergoes mild oxidation (e.g., with PCC - pyridinium chlorochromate), the -CH₂OH group is converted to a -CHO (aldehyde) group. If a stronger oxidizing agent is used (e.g., KMnO₄ or K₂Cr₂O₇), or oxidation continues, the aldehyde is further oxidized to a carboxylic acid (-COOH).
+Why the other choices are wrong:
+A. Ketone: Ketones are produced by oxidation of secondary alcohols (R₂CHOH → R₂C=O), not primary alcohols.
+C. Carboxylic acid: With conditions that allow further oxidation, a primary alcohol can give a carboxylic acid. The stem specifically asks about controlled conditions that stop at the aldehyde.
+D. Ether: Ethers can be prepared by substitution reactions or by dehydration of suitable alcohols. Those are different transformations from the controlled oxidation described here.
+Bottom Line: Controlled oxidation of a primary alcohol gives an aldehyde; suitable further oxidation gives a carboxylic acid. Under standard alcohol-oxidation conditions, secondary alcohols give ketones, while tertiary alcohols resist oxidation because they lack an H on the carbon bearing OH.
+
+==============================================================================
+
+Q29  [chem-390]  correct answer: B
+------------------------------------------------------------------------------
+STEM: A polymer is formed by repeatedly joining monomers that have two reactive functional groups, with water eliminated during each bond-forming step. How is this polymerization classified?
+
+  A. Addition polymerization
+  B. Condensation (dehydration) polymerization   <= key
+  C. Free radical polymerization
+  D. Ring-opening polymerization
+
+EXPLANATION:
+Correct Answer: Condensation (dehydration) polymerization
+This is condensation polymerization: monomers join while a small molecule is eliminated. In the reaction described, that molecule is water, so it is also called dehydration. For example, a diol and a dicarboxylic acid can form a polyester with loss of water. Other condensation polymerizations can eliminate different small molecules. Cellular synthesis of proteins and nucleic acids uses activated precursors and should not be described as simple repeated water loss from free monomers.
+Why the other choices are wrong:
+A. Addition polymerization: In the familiar addition polymerization of an alkene such as ethene, monomers join without eliminating a small molecule at each linking step. The repeated water elimination in the stem instead identifies condensation polymerization.
+C. Free radical polymerization: Free-radical polymerization describes a mechanism initiated by radicals, commonly used for alkene monomers such as styrene. The defining feature given here is elimination of water as functional groups link.
+D. Ring-opening polymerization: Ring-opening polymerization begins with cyclic monomers whose rings open as the chain grows. The stem instead describes reaction between functional groups with elimination of water.
+Bottom Line: Condensation polymerization joins monomers while eliminating a small molecule, which is water in this example. Hydrolysis consumes water to cleave suitable linkages. Actual biosynthetic pathways must be described using their activated substrates and real leaving groups.
+
+==============================================================================
+
+Q30  [chem-391]  correct answer: B   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: An atom of carbon-14 (¹⁴C) differs from carbon-12 (¹²C) in that it has:
+
+  A. 2 more protons
+  B. 2 more neutrons   <= key
+  C. 2 more electrons
+  D. 2 fewer protons
+
+EXPLANATION:
+Correct Answer: 2 more neutrons
+Isotopes of an element have the same number of protons (same atomic number) but different numbers of neutrons (different mass number). Carbon always has 6 protons (Z = 6). ¹²C has 12 - 6 = 6 neutrons, while ¹⁴C has 14 - 6 = 8 neutrons - a difference of 2. The extra neutrons make ¹⁴C unstable (radioactive), and it decays by beta emission with a half-life of ~5,730 years.
+Why the other choices are wrong:
+A. 2 more protons: Changing the proton number would change the element entirely (to oxygen, Z = 8); isotopes must have the same number of protons.
+C. 2 more electrons: Neutral atoms of both isotopes have 6 electrons. Adding electrons would create an ion, not an isotope.
+D. 2 fewer protons: This would change the element to beryllium (Z = 4), not produce a carbon isotope.
+Bottom Line: Isotopes differ in neutrons only. Same element = same protons. ¹⁴C is used in radiocarbon dating of organic material up to ~50,000 years old. Its constant decay rate allows archaeologists to determine the age of biological specimens.
+
+==============================================================================
+
+Q31  [chem-392]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In human cells, the main pathway for energy-yielding β-oxidation of ordinary long-chain fatty acids is associated with which compartment?
+
+  A. Cytoplasm
+  B. Mitochondrial matrix   <= key
+  C. Smooth endoplasmic reticulum
+  D. Nucleus
+
+EXPLANATION:
+Correct Answer: Mitochondrial matrix
+Mitochondrial β-oxidation breaks down fatty acyl-CoA chains through repeated reactions associated with the matrix and the matrix-facing side of the inner membrane. Long-chain acyl groups enter through the carnitine shuttle; fatty acyl-CoA itself does not cross the inner membrane directly. Oxidation generates acetyl-CoA, NADH and electrons transferred through enzyme-bound FAD. Peroxisomes also carry out β-oxidation, especially the initial shortening of very-long-chain fatty acids.
+Why the other choices are wrong:
+A. Cytoplasm: In human cells, the main pathway for fatty acid synthesis is cytosolic, whereas the mitochondrial β-oxidation pathway is associated with the matrix. Peroxisomes provide an additional site of fatty acid breakdown.
+C. Smooth endoplasmic reticulum: The endoplasmic reticulum participates in lipid synthesis and in a different pathway called ω-oxidation. It is not the site of the mitochondrial β-oxidation pathway asked about here.
+D. Nucleus: The nucleus contains genetic material and is the site of DNA replication and transcription, not metabolic pathways like β-oxidation.
+Bottom Line: For saturated palmitate (C16), 7 β-oxidation cycles yield 8 acetyl-CoA, 7 NADH and 7 FAD-linked reductions. The last C4 intermediate splits into two acetyl-CoA. Standard accounting gives about 106 ATP equivalents after the activation cost of 2 ATP equivalents; the yield is an estimate.
+
+==============================================================================
+
+Q32  [chem-393]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In traditional enzyme terminology, a tightly bound, non-protein organic component required for an enzyme's activity is called a:
+
+  A. Substrate
+  B. Prosthetic group (cofactor)   <= key
+  C. Product
+  D. Inhibitor
+
+EXPLANATION:
+Correct Answer: Prosthetic group (cofactor)
+Some enzymes require a non-protein component for activity. Such components can be organic molecules or inorganic ions. A tightly associated component is traditionally called a prosthetic group; FAD bound to succinate dehydrogenase is an example. 'Coenzyme' is an older term for organic helpers in enzyme reactions and does not provide a universal rule about how tightly every molecule binds. The protein component of a cofactor-dependent enzyme is the apoenzyme; its active form with the required component is the holoenzyme.
+| Term | Definition | Example |
+| Apoenzyme | Protein component without its required non-protein component | Apoenzyme of a cofactor-dependent enzyme |
+| Cofactor | Non-protein component required for catalysis; may be organic or inorganic | Enzyme-bound FAD, Mg²⁺ |
+| Prosthetic group | Traditional term for a tightly associated non-protein component | Heme in a peroxidase; FAD in succinate dehydrogenase |
+| Coenzyme | Traditional term for an organic helper in enzyme reactions | NAD⁺, coenzyme A |
+| Holoenzyme | Active enzyme with its required component | Apoenzyme plus its required cofactor |
+Why the other choices are wrong:
+A. Substrate: The substrate is the molecule acted upon by the enzyme (converted to product), not a helper molecule.
+C. Product: The product is what the enzyme generates from the substrate; it does not assist in catalysis.
+D. Inhibitor: An inhibitor reduces or blocks enzyme activity; it opposes enzyme function rather than assisting it.
+Bottom Line: For this traditional terminology question, the tightly bound helper is a prosthetic group. Cofactors can be organic or inorganic. Many vitamin-derived compounds participate in enzyme reactions, but their association with enzymes varies.
+
+==============================================================================
+
+Q33  [chem-394]  correct answer: D
+------------------------------------------------------------------------------
+STEM: What is the Stock-system name for FeCl₃?
+
+  A. Iron chloride
+  B. Ferric dichloride
+  C. Iron(II) chloride
+  D. Iron(III) chloride   <= key
+
+EXPLANATION:
+Correct Answer: Iron(III) chloride
+Iron is a transition metal that can form ions with different charges. In FeCl₃, each chloride ion carries a −1 charge, and three chloride ions give a total negative charge of −3. To balance this, iron must have a +3 charge. Using Stock notation, we write the Roman numeral III in parentheses: iron(III) chloride.
+Why the other choices are wrong:
+A. Iron chloride: 'Iron chloride' does not state the oxidation state requested by the Stock system. FeCl₂ contains iron(II), while FeCl₃ contains iron(III).
+B. Ferric dichloride: While "ferric" correctly refers to Fe³⁺, "dichloride" incorrectly indicates only two chloride ions. The correct older name would be ferric chloride (with three chlorides implied by the formula).
+C. Iron(II) chloride: Iron(II) chloride would be FeCl₂, where iron has a +2 charge balanced by only two chloride ions. The formula given has three chlorides.
+Key Educational Points:
+  - Stock notation uses a Roman numeral for oxidation state; for a simple monatomic ion, this equals its charge
+  - The total positive charge must equal the total negative charge in an ionic compound
+  - Older names use suffixes: -ous for the lower charge (ferrous = Fe²⁺) and -ic for the higher charge (ferric = Fe³⁺)
+Bottom Line: In Stock notation, FeCl₃ is iron(III) chloride: three chloride ions balance iron in oxidation state +3. Other naming systems also exist, so Stock notation should not be described as the only possible nomenclature.
+
+==============================================================================
+
+Q34  [chem-395]  correct answer: C
+------------------------------------------------------------------------------
+STEM: What is the conventional oxyacid name for HNO₃(aq)?
+
+  A. Hydronitric acid
+  B. Nitrous acid
+  C. Nitric acid   <= key
+  D. Hydrogen nitrate
+
+EXPLANATION:
+Correct Answer: Nitric acid
+HNO₃ is an oxyacid - an acid containing hydrogen, oxygen, and another element. It is derived from the polyatomic nitrate ion (NO₃−). For oxyacids, the naming rule is: when the polyatomic ion ends in -ate, the acid name uses the suffix -ic acid. Nitrate → nitric acid.
+Why the other choices are wrong:
+A. Hydronitric acid: The conventional oxyacid name derived from nitrate is nitric acid. The hydro-...-ic pattern is used for familiar binary acids such as HCl(aq), not for naming HNO₃ in this oxyacid system.
+B. Nitrous acid: Nitrous acid is HNO₂, associated with nitrite, NO₂⁻. HNO₃ is associated with nitrate, NO₃⁻, and is named nitric acid.
+D. Hydrogen nitrate: 'Hydrogen nitrate' describes the composition, but the stem asks for the conventional oxyacid name, nitric acid. The alternative compositional description is not restricted to the pure compound simply because it lacks the word 'acid'.
+Key Educational Points:
+  - Oxyacid naming: -ate ion → -ic acid; -ite ion → -ous acid
+  - Binary acid naming: hydro- prefix + nonmetal root + -ic acid (e.g., HCl = hydrochloric acid)
+  - HNO₃ (nitric acid) and HNO₂ (nitrous acid) form a common pair to remember
+Bottom Line: HNO₃ is nitric acid - derived from the nitrate ion, where the -ate suffix converts to -ic acid.
+
+==============================================================================
+
+Q35  [chem-396]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which formula correctly represents calcium phosphate?
+
+  A. CaPO₄
+  B. Ca₂(PO₄)₃
+  C. Ca₃(PO₄)₂   <= key
+  D. Ca₃PO₄
+
+EXPLANATION:
+Correct Answer: Ca₃(PO₄)₂
+Calcium forms Ca²⁺ ions, and phosphate is the polyatomic ion PO₄³−. To balance the charges, we need the least common multiple of 2 and 3, which is 6. This requires three calcium ions (3 × +2 = +6) and two phosphate ions (2 × −3 = −6). The formula is therefore Ca₃(PO₄)₂.
+Why the other choices are wrong:
+A. CaPO₄: This gives a total positive charge of +2 (from Ca²⁺) and a total negative charge of −3 (from PO₄³−), which are not balanced. Ionic compounds must be electrically neutral.
+B. Ca₂(PO₄)₃: This gives +4 from calcium and −9 from phosphate, which is also not balanced. This formula reverses the correct subscripts.
+D. Ca₃PO₄: Ca₃PO₄ contains three Ca²⁺ ions but only one PO₄³⁻ ion, giving a net charge of +3. The neutral formula requires two whole phosphate ions: Ca₃(PO₄)₂. The 4 counts oxygen atoms inside each phosphate, while the outside 2 counts phosphate groups.
+Key Educational Points:
+  - Balance ionic charges and use the simplest whole-number ratio of intact ions; reduce any common factor after criss-crossing charges
+  - Parentheses are required around polyatomic ions when the subscript is greater than 1
+  - The main mineral of bone and teeth is hydroxyapatite, Ca₁₀(PO₄)₆(OH)₂, a calcium phosphate mineral with a different formula from Ca₃(PO₄)₂
+Bottom Line: Calcium phosphate is Ca₃(PO₄)₂ - three Ca²⁺ ions balance two PO₄³− ions for electrical neutrality.
+
+==============================================================================
+
+Q36  [chem-397]  correct answer: D   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: What is the correct name for the compound H₂SO₃(aq)?
+
+  A. Sulfuric acid
+  B. Hydrosulfuric acid
+  C. Sulfonic acid
+  D. Sulfurous acid   <= key
+
+EXPLANATION:
+Correct Answer: Sulfurous acid
+H₂SO₃ is an oxyacid derived from the sulfite ion (SO₃²−). When a polyatomic ion ends in -ite, the corresponding acid uses the suffix -ous. Therefore: sulfite → sulfurous acid.
+Why the other choices are wrong:
+A. Sulfuric acid: Sulfuric acid is H₂SO₄, derived from the sulfate ion (SO₄²−). The -ate ending gives the -ic acid suffix. H₂SO₄ has one more oxygen than H₂SO₃.
+B. Hydrosulfuric acid: The "hydro-" prefix is reserved for binary acids with no oxygen. H₂S(aq) is hydrosulfuric acid. H₂SO₃ contains oxygen, so it cannot use the hydro- prefix.
+C. Sulfonic acid: Sulfonic acid (–SO₃H) is an organic functional group where sulfur is bonded to a carbon chain. It is not the name for the inorganic oxyacid H₂SO₃.
+Key Educational Points:
+  - The -ite/-ous and -ate/-ic pairing is a fundamental naming pattern for oxyacids
+  - H₂SO₄ (sulfuric, from sulfate) vs. H₂SO₃ (sulfurous, from sulfite)
+  - The hydro- prefix applies only to binary acids (no oxygen present)
+Bottom Line: H₂SO₃ is sulfurous acid - the -ite ion (sulfite) gives the -ous acid name.
+
+==============================================================================
+
+Q37  [chem-398]  correct answer: C
+------------------------------------------------------------------------------
+STEM: What is the full Stock-system name, including the waters of crystallization, for CuSO₄·5H₂O?
+
+  A. Copper sulfate pentahydrate
+  B. Copper(I) sulfate pentahydrate
+  C. Copper(II) sulfate pentahydrate   <= key
+  D. Copper(II) sulfate monohydrate
+
+EXPLANATION:
+Correct Answer: Copper(II) sulfate pentahydrate
+This compound contains three pieces of information to name: (1) the copper ion's charge, (2) the sulfate polyatomic ion, and (3) the waters of hydration. The sulfate ion is SO₄²− (charge −2), so copper must be Cu²⁺ to balance. The five water molecules attached to the crystal are indicated by the prefix penta- followed by -hydrate.
+Why the other choices are wrong:
+A. Copper sulfate pentahydrate: 'Copper sulfate pentahydrate' is commonly understood, but it omits the oxidation-state numeral requested by the stem. Sulfate has charge −2, so copper is +2 in this formula and the full Stock-system name uses copper(II).
+B. Copper(I) sulfate pentahydrate: Copper(I) has a +1 charge, so the formula for copper(I) sulfate would be Cu₂SO₄, not CuSO₄. The 1:1 ratio with sulfate confirms Cu²⁺.
+D. Copper(II) sulfate monohydrate: "Mono-" means one water molecule (·1H₂O), but the formula clearly shows ·5H₂O, requiring the prefix "penta-" for five.
+Key Educational Points:
+  - Hydrates are named using Greek prefixes: mono-, di-, tri-, tetra-, penta-, hexa-
+  - The dot (·) in the formula separates the ionic compound from the water of crystallization
+  - CuSO₄·5H₂O is a bright blue crystal; the anhydrous form (CuSO₄) is white
+Bottom Line: Name hydrates by stating the ionic compound with Stock notation, then the Greek prefix + hydrate for the water molecules.
+
+==============================================================================
+
+Q38  [chem-399]  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the simplest whole-number formula for tin(IV) oxide?
+
+  A. SnO
+  B. SnO₂   <= key
+  C. Sn₂O₄
+  D. Sn₂O
+
+EXPLANATION:
+Correct Answer: SnO₂
+The name "tin(IV) oxide" tells us that tin has a +4 oxidation state (Roman numeral IV) and is combined with oxide ions (O²−). To balance a +4 charge with −2 charges, we need two oxide ions per tin ion: SnO₂.
+Why the other choices are wrong:
+A. SnO: This is tin(II) oxide (stannous oxide), where tin has a +2 charge balanced by one O²−. The (IV) in the name specifies a higher oxidation state.
+C. Sn₂O₄: Sn₂O₄ has the same 1:2 tin-to-oxygen ratio, but it is not reduced to the simplest formula requested. Dividing both subscripts by 2 gives SnO₂.
+D. Sn₂O: This would require each tin to have a +1 charge, which is not a common oxidation state for tin and does not match tin(IV).
+Key Educational Points:
+  - The Roman numeral in Stock notation gives the metal's oxidation state
+  - For simple ionic formulas, use the lowest whole-number ratio of intact ions; do not split a polyatomic ion to reduce its internal formula
+  - Tin has two common oxidation states: +2 (stannous/tin(II)) and +4 (stannic/tin(IV))
+Bottom Line: Tin(IV) oxide is SnO₂ - one Sn⁴⁺ balanced by two O²− ions, written in the simplest ratio.
+
+==============================================================================
+
+Q39  [chem-400]  correct answer: D
+------------------------------------------------------------------------------
+STEM: What is the conventional binary-acid name for HBr(aq)?
+
+  A. Hydrogen bromide
+  B. Bromous acid
+  C. Bromic acid
+  D. Hydrobromic acid   <= key
+
+EXPLANATION:
+Correct Answer: Hydrobromic acid
+HBr dissolved in water is a binary acid - an acid composed of hydrogen and one other element, with no oxygen. Binary acids are named with the prefix hydro-, the root of the nonmetal, and the suffix -ic acid. Therefore: hydro- + brom- + -ic acid = hydrobromic acid.
+Why the other choices are wrong:
+A. Hydrogen bromide: 'Hydrogen bromide' names HBr as a compound, and an aqueous sample can be described as a solution of hydrogen bromide. The conventional binary-acid name specifically requested here is hydrobromic acid.
+B. Bromous acid: The suffix -ous would apply to an oxyacid derived from a -ite polyatomic ion (e.g., HBrO₂ is bromous acid). HBr has no oxygen.
+C. Bromic acid: The suffix -ic without the hydro- prefix applies to oxyacids derived from -ate ions (e.g., HBrO₃ is bromic acid). HBr is a binary acid, not an oxyacid.
+Key Educational Points:
+  - Binary acids (no oxygen): hydro- + root + -ic acid
+  - The same compound has different names depending on state: HBr(g) is hydrogen bromide; HBr(aq) is hydrobromic acid
+  - Common binary acids: HCl (hydrochloric), HBr (hydrobromic), HI (hydroiodic), H₂S (hydrosulfuric), HF (hydrofluoric)
+Bottom Line: HBr(aq) is hydrobromic acid - binary acids use the hydro-...-ic acid naming pattern.
+
+==============================================================================
+
+Q40  [chem-401]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Using the introductory ionic naming convention of cation name followed by the unchanged anion name, which pairing is correct?
+
+  A. NaOH - sodium oxide
+  B. Mg(OH)₂ - magnesium hydroxide   <= key
+  C. KOH - potassium hydrogen oxide
+  D. Ca(OH)₂ - calcium dihydroxide
+
+EXPLANATION:
+Correct Answer: Mg(OH)₂ - magnesium hydroxide
+Compounds containing the hydroxide ion (OH−) are named by stating the metal cation followed by "hydroxide." Magnesium forms Mg²⁺, which requires two OH− ions for charge balance: Mg(OH)₂. The name is simply magnesium hydroxide, with no prefix needed because magnesium has only one common charge.
+Why the other choices are wrong:
+A. NaOH - sodium oxide: NaOH is sodium hydroxide, not sodium oxide. Sodium oxide would be Na₂O. The hydroxide ion (OH−) is a distinct polyatomic ion from the oxide ion (O²−).
+C. KOH - potassium hydrogen oxide: KOH is correctly named potassium hydroxide. "Hydrogen oxide" is not used; hydroxide is treated as a single polyatomic ion (OH−), not broken into hydrogen and oxide.
+D. Ca(OH)₂ - calcium dihydroxide: 'Calcium dihydroxide' can be used as a compositional name, but the convention specified in this question gives calcium hydroxide. In that convention the ion charges determine the ratio, so a numerical prefix is not added to the anion name.
+Key Educational Points:
+  - Hydroxide (OH−) is a polyatomic ion named as one unit
+  - In the cation-name plus anion-name convention used here, charge balance supplies the subscripts; numerical prefixes are omitted
+  - A suspension of Mg(OH)₂ in water is called milk of magnesia and is used as an antacid and laxative
+Bottom Line: Under the naming convention specified, Mg(OH)₂ is magnesium hydroxide. Other compositional naming methods can use numerical prefixes, so the rule should not be stated as a universal ban.
+
+==============================================================================
+
+Q41  [chem-402]  correct answer: C
+------------------------------------------------------------------------------
+STEM: An older chemistry text refers to "cuprous chloride." What is the modern (Stock notation) name and formula?
+
+  A. Copper(II) chloride, CuCl
+  B. Copper(I) chloride, CuCl₂
+  C. Copper(I) chloride, CuCl   <= key
+  D. Copper(II) chloride, CuCl₂
+
+EXPLANATION:
+Correct Answer: Copper(I) chloride, CuCl
+In the older naming system, the suffix -ous refers to the lower oxidation state, while -ic refers to the higher one. Copper's two common oxidation states are +1 and +2. Therefore, cuprous = Cu⁺ (the lower charge), and cupric = Cu²⁺. Cu⁺ paired with Cl− gives the formula CuCl. In Stock notation: copper(I) chloride.
+Why the other choices are wrong:
+A. Copper(II) chloride, CuCl: CuCl is the correct formula for cuprous chloride, but the name 'copper(II)' is wrong. Cuprous means copper(I), so the correct pairing is copper(I) chloride, CuCl.
+B. Copper(I) chloride, CuCl₂: While copper(I) is correct for cuprous, the formula CuCl₂ is wrong. Cu⁺ needs only one Cl− to balance the charge.
+D. Copper(II) chloride, CuCl₂: This would be "cupric chloride" in the old system. The -ous suffix specifically indicates the lower oxidation state, not the higher one.
+Key Educational Points:
+  - Classical naming: -ous = lower oxidation state, -ic = higher oxidation state
+  - Common pairs: ferrous/ferric (Fe²⁺/Fe³⁺), cuprous/cupric (Cu⁺/Cu²⁺), stannous/stannic (Sn²⁺/Sn⁴⁺)
+  - Stock notation (Roman numerals) is now preferred because it is unambiguous
+Bottom Line: The -ous suffix indicates the lower charge - cuprous = Cu⁺, so cuprous chloride = copper(I) chloride = CuCl.
+
+==============================================================================
+
+Q42  [chem-403]  correct answer: A
+------------------------------------------------------------------------------
+STEM: Which of the following correctly names the compound (NH₄)₂CO₃?
+
+  A. Ammonium carbonate   <= key
+  B. Nitrogen hydrogen carbonate
+  C. Diammonium tricarbonate
+  D. Ammonium carbide
+
+EXPLANATION:
+Correct Answer: Ammonium carbonate
+(NH₄)₂CO₃ contains two polyatomic ions: the ammonium cation (NH₄⁺) and the carbonate anion (CO₃²−). Two ammonium ions (+1 each = +2 total) balance one carbonate ion (−2). The compound is named simply by stating the cation followed by the anion: ammonium carbonate.
+Why the other choices are wrong:
+B. Nitrogen hydrogen carbonate: The ammonium ion (NH₄⁺) is a recognized polyatomic ion with its own name. It is not broken down into individual elements when naming compounds.
+C. Diammonium tricarbonate: 'Tricarbonate' would indicate three carbonate groups, but this formula contains one. The conventional name is ammonium carbonate. The two ammonium ions are required to balance carbonate's −2 charge.
+D. Ammonium carbide: Carbide (C⁴− or C₂²−) is a completely different ion from carbonate (CO₃²−). Carbide contains only carbon; carbonate contains carbon and oxygen.
+Key Educational Points:
+  - Ammonium (NH₄⁺) is the most common polyatomic cation and is named as a unit
+  - Carbonate (CO₃²−) should not be confused with carbide (C⁴−) or bicarbonate (HCO₃−)
+  - (NH₄)₂CO₃ is historically known as "smelling salts" - it decomposes to release ammonia gas
+Bottom Line: (NH₄)₂CO₃ is ammonium carbonate - name both polyatomic ions directly, with no prefixes.
+
+==============================================================================
+
+Q43  [chem-404]  correct answer: D
+------------------------------------------------------------------------------
+STEM: What is the key structural difference between a sulfonic acid group (–SO₃H) and a carboxylic acid group (–COOH)?
+
+  A. The sulfonic acid group contains nitrogen
+  B. The carboxylic acid group is always a stronger acid
+  C. The sulfonic acid group cannot ionize in water
+  D. A sulfonic acid group has sulfur bonded to three oxygens; a carboxyl group has carbon bonded to two   <= key
+
+EXPLANATION:
+Correct Answer: A sulfonic acid group has sulfur bonded to three oxygens; a carboxyl group has carbon bonded to two
+A sulfonic acid group is commonly drawn as R–S(=O)₂–OH, whereas a carboxylic acid group is R–C(=O)–OH. Simple sulfonic acids such as methanesulfonic acid are usually much stronger in water than ordinary carboxylic acids such as acetic acid. Their conjugate bases are stabilized by charge delocalization and electron-withdrawing effects. The strength is not predicted by counting oxygen atoms alone.
+Why the other choices are wrong:
+A. The sulfonic acid group contains nitrogen: Sulfonic acid (–SO₃H) contains only sulfur, oxygen, and hydrogen. It is sulfonamides (–SO₂NH₂) that contain nitrogen, which is a derivative, not the acid itself.
+B. The carboxylic acid group is always a stronger acid: For common examples such as methanesulfonic acid and acetic acid, the sulfonic acid is stronger. Acid strength depends on the complete structure and solvent, so 'always' is not a sound rule for every substituted acid.
+C. The sulfonic acid group cannot ionize in water: Simple sulfonic acids ionize extensively in dilute water. Their solubility also depends on the rest of the molecule; a sulfonic acid group does not guarantee that every compound containing it is highly water-soluble.
+Key Educational Points:
+  - A sulfonic acid group contains sulfur and three oxygens; a carboxyl group contains carbon and two oxygens
+  - Charge delocalization and electron-withdrawing effects stabilize sulfonate conjugate bases
+  - Methanesulfonic acid and p-toluenesulfonic acid are common laboratory sulfonic acids
+Bottom Line: Sulfonic and carboxylic acids differ in their central atom and oxygen connectivity. Typical simple sulfonic acids are stronger in water than typical simple carboxylic acids because of differences in conjugate-base stabilization.
+
+==============================================================================
+
+Q44  [chem-405]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Sulfonamide drugs (such as sulfanilamide) were historically significant because they:
+
+  A. Were the first antiviral medications
+  B. Worked by inhibiting human cell division
+  C. Were among the first widely used systemic antibacterial drugs   <= key
+  D. Contained a sulfonic acid group that killed bacteria by lowering pH
+
+EXPLANATION:
+Correct Answer: Were among the first widely used systemic antibacterial drugs
+Sulfonamide antibacterials became widely used in the 1930s, before widespread clinical use of penicillin. They mimic para-aminobenzoic acid (PABA) and inhibit dihydropteroate synthase in bacterial folate synthesis. Humans obtain folate from the diet and lack that enzyme, which helps explain selective antibacterial action. These drugs contain a sulfonamide linkage; sulfanilamide itself contains –SO₂NH₂.
+Why the other choices are wrong:
+A. Were the first antiviral medications: Sulfonamides are antibacterial, not antiviral. They target the folate synthesis pathway, which viruses do not possess. Early antiviral drugs like amantadine came decades later.
+B. Worked by inhibiting human cell division: Sulfonamides are selectively toxic to bacteria precisely because they target a pathway (folate synthesis) that human cells do not use. Drugs that inhibit human cell division are typically anticancer agents.
+D. Contained a sulfonic acid group that killed bacteria by lowering pH: Sulfanilamide contains a sulfonamide group, –SO₂NH₂, rather than a sulfonic acid group, –SO₃H. Its antibacterial action is due to interference with bacterial folate synthesis, not acidification of the infection site. Other sulfonamide drugs can have substituents on the sulfonamide nitrogen.
+Key Educational Points:
+  - Sulfonamides helped establish systemic antibacterial treatment before widespread penicillin use
+  - They work by structural mimicry of PABA, blocking bacterial folate biosynthesis
+  - A sulfonamide contains an S(=O)₂–N linkage, whereas a sulfonic acid contains S(=O)₂–OH
+Bottom Line: Sulfonamide antibacterials block bacterial folate synthesis. They were historically important early systemic antibacterial drugs; they were not the first effective antibacterial treatment of every kind.
+
+==============================================================================
+
+Q45  [chem-406]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Household detergents often contain sodium alkylbenzenesulfonates. Why are these molecules effective surfactants?
+
+  A. They are strong oxidizing agents that break down grease
+  B. They lower the boiling point of water, allowing grease to evaporate
+  C. They react chemically with fats to form soluble glycerol
+  D. They have a nonpolar hydrocarbon tail and a highly polar sulfonate head, creating an amphiphilic structure   <= key
+
+EXPLANATION:
+Correct Answer: They have a nonpolar hydrocarbon tail and a highly polar sulfonate head, creating an amphiphilic structure
+Sodium alkylbenzenesulfonates have a nonpolar hydrocarbon region and a charged, hydrophilic sulfonate head. They collect at oil-water interfaces and lower surface tension, helping water wet greasy surfaces and disperse oil. Above a suitable concentration they also form micelles that can solubilize oily molecules. A surfactant-coated oil droplet and a micelle are related cleaning structures, but they are not the same thing.
+Why the other choices are wrong:
+A. They are strong oxidizing agents that break down grease: These detergent molecules remove grease through their behavior at interfaces and through aggregation, not by acting as strong oxidants. Oxidizing bleaches use different chemistry.
+B. They lower the boiling point of water, allowing grease to evaporate: Surfactants lower the surface tension of water, not its boiling point. Furthermore, grease removal does not occur by evaporation.
+C. They react chemically with fats to form soluble glycerol: Saponification is base-promoted hydrolysis of fats, producing glycerol and fatty acid salts; hydroxide is consumed overall. It is used to make soap. The detergent action asked about here disperses and solubilizes grease without requiring this chemical conversion.
+Key Educational Points:
+  - Surfactants reduce water's surface tension, allowing better wetting of surfaces
+  - Many sulfonate detergents work better than soaps in hard water because their calcium and magnesium salts remain more soluble
+  - Surfactants stabilize oil-water interfaces and can form micelles with nonpolar regions inside and polar heads facing water
+Bottom Line: Alkylbenzenesulfonate detergents combine a hydrophobic region with an ionic head, allowing wetting, dispersion and solubilization of greasy material. The sulfonate group alone does not make every small sulfonate molecule an effective detergent.
+
+==============================================================================
+
+Q46  [chem-407]  correct answer: A
+------------------------------------------------------------------------------
+STEM: Urea [(NH₂)₂CO] is a carbonic acid derivative with important biological and industrial roles. Which statement about urea is correct?
+
+  A. Urea is the primary nitrogenous waste product excreted by humans   <= key
+  B. Urea contains a sulfur atom in its structure
+  C. Urea is a strong acid in aqueous solution
+  D. Urea has no modern industrial uses
+
+EXPLANATION:
+Correct Answer: Urea is the primary nitrogenous waste product excreted by humans
+Urea is synthesized in the liver via the urea cycle, which converts toxic ammonia (from amino acid catabolism) into the much less toxic urea. Urea is then excreted by the kidneys. Its carbonyl carbon is bonded directly to two –NH₂ groups, making urea a diamide of carbonic acid; these are amide nitrogens, not ordinary amine groups.
+Why the other choices are wrong:
+B. Urea contains a sulfur atom in its structure: Urea's molecular formula is CH₄N₂O - it contains carbon, hydrogen, nitrogen, and oxygen only. There is no sulfur in its structure.
+C. Urea is a strong acid in aqueous solution: Urea is not a strong acid in water. Delocalization of the nitrogen lone pairs into the carbonyl system makes its nitrogen groups much less basic than ordinary amines. Concentrated urea solutions are used to denature proteins, not as strong acids or bases.
+D. Urea has no modern industrial uses: Urea is manufactured on a large scale for nitrogen fertilizer and other industrial applications. Wöhler's preparation of urea from ammonium cyanate in 1828 was historically important, but it does not support the claim that urea has no modern uses.
+Key Educational Points:
+  - Urea is a diamide of carbonic acid: (NH₂)₂CO
+  - Wöhler's 1828 preparation showed that a compound associated with living organisms could be made from inorganic starting material, helping undermine vitalist ideas
+  - Urea is the world's most widely used nitrogen fertilizer and is also used as a protein denaturant in biochemistry
+Bottom Line: Urea is the main nitrogenous waste in humans, a diamide of carbonic acid, and one of the most industrially important organic compounds.
+
+==============================================================================
+
+Q47  [chem-408]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Phosgene (COCl₂) can be viewed as a derivative of carbonic acid. What makes phosgene extremely dangerous?
+
+  A. It is a powerful oxidizing agent that ignites spontaneously in air
+  B. It is highly toxic because it reacts with nucleophilic groups in lung tissue, causing pulmonary edema   <= key
+  C. It is radioactive and causes radiation sickness
+  D. It is an explosive compound that detonates on contact with water
+
+EXPLANATION:
+Correct Answer: It is highly toxic because it reacts with nucleophilic groups in lung tissue, causing pulmonary edema
+Phosgene (COCl₂) is a highly reactive acyl chloride - the dichloride derivative of carbonic acid. When inhaled, it reacts with nucleophilic groups (–NH₂, –OH, –SH) on proteins in the alveolar membranes of the lungs. This cross-linking and acylation damages the lung tissue, leading to fluid accumulation (pulmonary edema) that can be fatal. It was infamously used as a chemical weapon in World War I.
+Why the other choices are wrong:
+A. It is a powerful oxidizing agent that ignites spontaneously in air: Phosgene is not an oxidizing agent and does not spontaneously ignite. Its toxicity comes from its reactivity as an electrophilic acyl chloride, not from redox chemistry.
+C. It is radioactive and causes radiation sickness: Phosgene contains only carbon, oxygen, and chlorine - none of which are radioactive in their common isotopes. Its danger is purely chemical.
+D. It is an explosive compound that detonates on contact with water: Phosgene does not simply detonate on contact with water. Hydrolysis gives CO₂ and HCl. Its major inhalation danger is chemical lung injury, and serious pulmonary edema can develop after a delay.
+Key Educational Points:
+  - Phosgene is carbonyl dichloride, the acid dichloride of carbonic acid: replacing both OH groups in (HO)₂CO with Cl gives COCl₂
+  - Its high electrophilicity allows it to acylate biological nucleophiles, causing tissue damage
+  - Despite its toxicity, phosgene is used industrially in the production of polycarbonates and polyurethanes
+Bottom Line: Phosgene is dangerous because its electrophilic carbonyl reacts with nucleophilic groups in lung proteins, causing lethal pulmonary edema.
+
+==============================================================================
+
+Q48  [chem-409]  correct answer: A
+------------------------------------------------------------------------------
+STEM: Guanidine [HN=C(NH₂)₂] is a strong organic base in water. Why is its conjugate acid, the guanidinium ion, especially stable?
+
+  A. The positive charge is stabilized by resonance delocalization over three equivalent nitrogen atoms   <= key
+  B. It contains an aromatic ring that stabilizes the positive charge
+  C. The sulfur atom in guanidine donates electrons to stabilize the cation
+  D. Guanidinium is stabilized by intramolecular hydrogen bonding with a carbonyl group
+
+EXPLANATION:
+Correct Answer: The positive charge is stabilized by resonance delocalization over three equivalent nitrogen atoms
+When guanidine is protonated, the resulting guanidinium ion [C(NH₂)₃]⁺ has a remarkable symmetry: the positive charge is delocalized equally across three equivalent nitrogen atoms through resonance. This gives a symmetric, Y-shaped structure with three equivalent C–N bonds. The extensive delocalization makes the guanidinium ion exceptionally stable, which is why guanidine is such a strong base (pKₐ of conjugate acid ≈ 13.6).
+Why the other choices are wrong:
+B. It contains an aromatic ring that stabilizes the positive charge: Guanidine has no aromatic ring. It is a small, acyclic molecule. The stabilization comes from resonance across the three C–N bonds in a planar, non-cyclic arrangement.
+C. The sulfur atom in guanidine donates electrons to stabilize the cation: Guanidine contains only carbon, nitrogen, and hydrogen - no sulfur. Its formula is HN=C(NH₂)₂.
+D. Guanidinium is stabilized by intramolecular hydrogen bonding with a carbonyl group: Guanidine contains no oxygen and therefore no carbonyl group. Guanidinium is stabilized by charge delocalization, not hydrogen bonding to a carbonyl. Arginine's guanidinium-containing side chain also has no carbonyl group.
+Key Educational Points:
+  - The pKa of guanidinium, guanidine's conjugate acid, is about 13.6 in water, consistent with guanidine being a strong organic base
+  - The guanidinium group is found in the amino acid arginine, which is positively charged at physiological pH
+  - Three-fold symmetric resonance stabilization is the key to guanidinium's exceptional stability
+Bottom Line: The guanidinium ion is exceptionally stable because its positive charge is delocalized symmetrically across three equivalent nitrogen atoms via resonance.
+
+==============================================================================
+
+Q49  [chem-410]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which pair of small molecules is formed by the simple dissociation of carbamic acid (H₂N–COOH)?
+
+  A. Water and urea
+  B. Carbon monoxide and water
+  C. Ammonia and carbon dioxide   <= key
+  D. Nitrogen gas and formic acid
+
+EXPLANATION:
+Correct Answer: Ammonia and carbon dioxide
+The simple dissociation is H₂NCOOH ⇌ NH₃ + CO₂. This equation conserves all atoms and is the transformation asked about here. The stability and lifetime of free carbamic acid depend on conditions, so it should not be described as incapable of existing under any conditions. Many carbamate salts and esters can be isolated and have important biological or practical uses.
+Why the other choices are wrong:
+A. Water and urea: Water and urea are not the products of the simple one-molecule dissociation asked about here. Urea contains two nitrogens, so forming it requires additional chemistry involving a source of the second nitrogen; it is not the NH₃/CO₂ dissociation.
+B. Carbon monoxide and water: Decomposition into CO and H₂O would leave the nitrogen unaccounted for. The nitrogen in carbamic acid is released as ammonia.
+D. Nitrogen gas and formic acid: Nitrogen gas and formic acid are not the products of the simple dissociation. The balanced equation gives NH₃ and CO₂; the proposed pair does not account for the atoms in that transformation.
+Key Educational Points:
+  - Carbamic acid is the half-amide of carbonic acid: one –OH replaced by –NH₂
+  - Many carbamate salts and esters are more persistent than free carbamic acid and are useful in biology and chemistry
+  - CO₂ transport in blood involves carbaminohemoglobin, where CO₂ forms carbamate bonds with terminal amino groups
+Bottom Line: Carbamic acid can dissociate into ammonia and carbon dioxide. Its stability depends on the environment, and many carbamate derivatives are useful compounds.
+
+==============================================================================
+
+Q50  [chem-411]  correct answer: A
+------------------------------------------------------------------------------
+STEM: In water, which ranking places these compounds from strongest acid to weakest acid?
+
+  A. Methanesulfonic acid > acetic acid > ethanol   <= key
+  B. Acetic acid > methanesulfonic acid > ethanol
+  C. Ethanol > acetic acid > methanesulfonic acid
+  D. Acetic acid > ethanol > methanesulfonic acid
+
+EXPLANATION:
+Correct Answer: Methanesulfonic acid > acetic acid > ethanol
+The approximate aqueous pKa values are −1.9 for methanesulfonic acid, 4.75 for acetic acid and 16 for ethanol. Lower pKa means a stronger acid, so the order is methanesulfonic acid > acetic acid > ethanol. Charge delocalization and electron-withdrawing effects help stabilize methanesulfonate; acetate is also resonance-stabilized, whereas ethoxide lacks comparable resonance delocalization. The complete structure and solvent matter, not simply a count of oxygen atoms or resonance drawings.
+Why the other choices are wrong:
+B. Acetic acid > methanesulfonic acid > ethanol: Methanesulfonic acid has a much lower aqueous pKa than acetic acid and is therefore stronger in water. Reversing them gives the wrong order. Both conjugate bases are resonance-stabilized, but that does not make their acid strengths equal.
+C. Ethanol > acetic acid > methanesulfonic acid: This reverses the entire ranking. Ethanol is the weakest acid of the three, not the strongest.
+D. Acetic acid > ethanol > methanesulfonic acid: This incorrectly places the sulfonic acid as the weakest. Methanesulfonic acid is by far the strongest acid in this group.
+Key Educational Points:
+  - When comparing acids in the same solvent, a lower pKa means a stronger acid
+  - For these compounds in water: methanesulfonic acid > acetic acid > ethanol
+  - Conjugate-base stabilization depends on resonance, electron-withdrawing effects and solvation, not oxygen counting alone
+Bottom Line: Use the aqueous pKa values to rank this set: methanesulfonic acid is strongest, acetic acid is intermediate and ethanol is weakest. Conjugate-base stabilization explains the trend.
+
+==============================================================================
+
+Q51  [chem-412]  correct answer: A
+------------------------------------------------------------------------------
+STEM: What is the difference between a nucleoside and a nucleotide?
+
+  A. A nucleotide contains a phosphate group esterified to the sugar; a nucleoside lacks phosphate   <= key
+  B. A nucleoside contains a phosphate group; a nucleotide does not
+  C. A nucleoside contains deoxyribose; a nucleotide contains ribose
+  D. A nucleotide uses a different base than a nucleoside
+
+EXPLANATION:
+Correct Answer: A nucleotide contains a phosphate group esterified to the sugar; a nucleoside lacks phosphate
+A nucleoside contains a nitrogenous base attached to ribose or deoxyribose. A nucleotide is a phosphorylated nucleoside: phosphate is attached through a sugar oxygen, commonly at the 5' position, although other positions occur. In ATP, the first phosphate is linked to the sugar and the additional phosphates are linked to one another. Adenosine is a nucleoside; adenosine 5'-monophosphate (AMP) is a nucleotide.
+Why the other choices are wrong:
+B. A nucleoside contains a phosphate group; a nucleotide does not: This reverses the correct relationship. It is the nucleotide that has the phosphate, not the nucleoside. Remember: nucleotide = nucleoside + phosphate.
+C. A nucleoside contains deoxyribose; a nucleotide contains ribose: Both nucleosides and nucleotides can contain either ribose (RNA) or deoxyribose (DNA). The sugar type is independent of whether a phosphate group is present.
+D. A nucleotide uses a different base than a nucleoside: The same five bases (adenine, guanine, cytosine, thymine/uracil) are found in both nucleosides and nucleotides. Adding a phosphate does not change the base.
+Key Educational Points:
+  - Naming convention: base + sugar = nucleoside; base + sugar + phosphate = nucleotide
+  - Nucleoside examples: adenosine, guanosine, cytidine, thymidine, uridine
+  - Nucleotide examples: AMP, GMP, CMP, TMP, UMP (monophosphates)
+Bottom Line: A nucleotide = nucleoside + phosphate. The phosphate group is the distinguishing feature.
+
+==============================================================================
+
+Q52  [chem-413]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In the standard nucleosides of DNA and RNA, what is the bond joining a purine or pyrimidine base to C-1' of the sugar called?
+
+  A. A phosphodiester bond
+  B. A peptide bond
+  C. An N-glycosidic bond   <= key
+  D. A disulfide bond
+
+EXPLANATION:
+Correct Answer: An N-glycosidic bond
+In the standard nucleosides of DNA and RNA, the base is linked to the sugar by a β-N-glycosidic bond. It joins N-9 of a purine or N-1 of a pyrimidine to the sugar's anomeric carbon, C-1'. The N indicates attachment through nitrogen, distinguishing it from the O-glycosidic links commonly discussed in carbohydrates. This is a statement of connectivity, not a claim that nucleosides are synthesized in cells simply by eliminating water from a free base and sugar.
+Why the other choices are wrong:
+A. A phosphodiester bond: Phosphodiester bonds link successive nucleotides in the sugar-phosphate backbone of nucleic acids (connecting the 3' carbon of one sugar to the 5' carbon of the next via phosphate). This is not the base-sugar bond.
+B. A peptide bond: Peptide bonds (C–N amide bonds) join amino acids in proteins. While also a C–N bond, the term "peptide bond" is reserved for amino acid linkages, not nucleoside chemistry.
+D. A disulfide bond: Disulfide bonds (S–S) form between cysteine residues in proteins. They involve sulfur atoms and have no role in nucleic acid structure.
+Key Educational Points:
+  - In standard DNA/RNA nucleosides, purines attach through N-9 and pyrimidines through N-1
+  - The sugar attachment is at C-1', the anomeric carbon
+  - The standard nucleosides in DNA and RNA have β-N-glycosidic base-sugar bonds
+Bottom Line: The base-sugar bond in nucleosides is a β-N-glycosidic bond, connecting N-9 (purines) or N-1 (pyrimidines) to the C-1' of the sugar.
+
+==============================================================================
+
+Q53  [chem-414]  correct answer: D
+------------------------------------------------------------------------------
+STEM: What is the most specific name for the phosphate linkage connecting successive sugars in the DNA backbone?
+
+  A. Phosphomonoester bond
+  B. Hydrogen bond
+  C. Glycosidic bond
+  D. Phosphodiester bond   <= key
+
+EXPLANATION:
+Correct Answer: Phosphodiester bond
+In the nucleic acid backbone, a single phosphate group is esterified to two sugar molecules: it connects the 3'-OH of one nucleotide to the 5'-OH of the next. Because the phosphate forms ester bonds with two different sugar molecules, this linkage is called a phosphodiester bond. This bond gives the backbone its directionality (5' → 3') and carries a negative charge at physiological pH.
+Why the other choices are wrong:
+A. Phosphomonoester bond: A phosphomonoester has phosphate esterified to one alcohol group, as in AMP. In the DNA backbone, a phosphate links the 3' oxygen of one sugar and the 5' oxygen of the next, so the linkage is a phosphodiester.
+B. Hydrogen bond: Hydrogen bonds hold the two complementary strands of DNA together (A=T and G≡C base pairing). They do not form the covalent backbone linkages.
+C. Glycosidic bond: Glycosidic bonds connect the nitrogenous base to the sugar within each nucleoside. The sugar-to-sugar linkage through phosphate is a separate bond type.
+Key Educational Points:
+  - "Di" in phosphodiester means the phosphate is esterified to two different sugar molecules
+  - The negative charges on phosphodiester bonds make DNA a polyanion, contributing to its interaction with histones
+  - Nucleases cleave phosphodiester bonds; endonucleases cut internally, exonucleases cut from the ends
+Bottom Line: The DNA backbone uses phosphodiester bonds - a phosphate group bridging the 3'-OH of one sugar to the 5'-OH of the next.
+
+==============================================================================
+
+Q54  [chem-415]  correct answer: B
+------------------------------------------------------------------------------
+STEM: According to Chargaff's rules for double-stranded DNA, if a sample contains 22% adenine, what percentage of the bases is cytosine?
+
+  A. 22%
+  B. 28%   <= key
+  C. 44%
+  D. 11%
+
+EXPLANATION:
+Correct Answer: 28%
+Chargaff's rules state that in double-stranded DNA, adenine pairs with thymine (A = T) and guanine pairs with cytosine (G = C). If adenine = 22%, then thymine = 22%. Together, A + T = 44%. Since all four bases must total 100%, G + C = 100% − 44% = 56%. Because G = C, each equals 56% ÷ 2 = 28%.
+Why the other choices are wrong:
+A. 22%: This would be correct if cytosine paired with adenine, but it does not. Cytosine pairs with guanine. The 22% figure applies to thymine (A = T = 22%).
+C. 44%: This is the combined percentage of A + T (22% + 22%). Cytosine alone cannot account for 44% when all four bases must sum to 100%.
+D. 11%: This error might arise from halving the adenine percentage, but there is no chemical basis for this calculation. Chargaff's rules relate complementary bases (A with T, G with C), not halving individual base percentages.
+Key Educational Points:
+  - In conventional double-stranded DNA, %A = %T and %G = %C because of complementary base pairing
+  - These rules arise from Watson-Crick base pairing: A forms 2 hydrogen bonds with T; G forms 3 hydrogen bonds with C
+  - Single-stranded nucleic acids need not satisfy these equalities. Complementary double-stranded RNA instead has A = U and G = C
+Bottom Line: In dsDNA, A = T and G = C. With 22% adenine: T = 22%, leaving C = G = 28% each.
+
+==============================================================================
+
+Q55  [chem-416]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which statement correctly distinguishes purines from pyrimidines?
+
+  A. Purines (cytosine, thymine, uracil) have a single-ring structure
+  B. Purines (adenine, guanine) have a fused bicyclic ring consisting of a six-membered ring joined to a five-membered ring   <= key
+  C. Pyrimidines (adenine, guanine) have a double-ring structure
+  D. Purines and pyrimidines have identical ring structures but differ in their functional groups
+
+EXPLANATION:
+Correct Answer: Purines (adenine, guanine) have a fused bicyclic ring consisting of a six-membered ring joined to a five-membered ring
+Purines - adenine (A) and guanine (G) - have a characteristic fused bicyclic structure: a six-membered pyrimidine ring fused to a five-membered imidazole ring. This makes them larger than pyrimidines. Pyrimidines - cytosine (C), thymine (T), and uracil (U) - have a single six-membered ring. In standard Watson-Crick pairing, a purine pairs with a pyrimidine: A with T in DNA, and G with C.
+Why the other choices are wrong:
+A. Purines (cytosine, thymine, uracil) have a single-ring structure: This misclassifies the bases. Cytosine, thymine, and uracil are pyrimidines (single ring), not purines. The assignment of bases to the wrong category is the error.
+C. Pyrimidines (adenine, guanine) have a double-ring structure: Adenine and guanine do have two fused rings, but they are purines, not pyrimidines. The error is the category label; the two-ring description of these particular bases is correct.
+D. Purines and pyrimidines have identical ring structures but differ in their functional groups: Their ring structures are fundamentally different - purines have two fused rings, pyrimidines have one ring. This structural difference is what defines the two classes.
+Key Educational Points:
+  - Purines are adenine and guanine; each has two fused rings
+  - Mnemonic: PYRimidines CUT - Cytosine, Uracil, Thymine (single ring)
+  - Standard purine-pyrimidine base pairing helps maintain the approximately 2-nm diameter of the usual B-DNA double helix
+Bottom Line: Purines (A, G) have two fused rings; pyrimidines (C, T, U) have one ring. Standard Watson-Crick pairs combine one purine with one pyrimidine.
+
+==============================================================================
+
+Q56  [chem-417]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Keto-enol tautomerism in DNA bases is biologically significant because:
+
+  A. It increases the thermal stability of the double helix
+  B. Rare tautomeric forms can mispair with the wrong complementary base, potentially causing point mutations   <= key
+  C. It converts purines into pyrimidines during DNA replication
+  D. It is the mechanism by which DNA polymerase proofreads newly synthesized strands
+
+EXPLANATION:
+Correct Answer: Rare tautomeric forms can mispair with the wrong complementary base, potentially causing point mutations
+DNA bases normally exist in their keto (for G and T) or amino (for A and C) tautomeric forms. Rarely, they shift to enol or imino forms. These rare tautomers have different hydrogen bonding patterns. For example, the rare enol form of thymine can pair with guanine instead of adenine, and the rare imino form of cytosine can pair with adenine instead of guanine. If this occurs during DNA replication, it can lead to a point mutation.
+Why the other choices are wrong:
+A. It increases the thermal stability of the double helix: The important effect of rare tautomers here is their altered hydrogen-bonding pattern, which can permit mispairing. The normal double helix is stabilized largely by base stacking and interactions between complementary bases; an overall increase in helix stability is not the lesson being tested.
+C. It converts purines into pyrimidines during DNA replication: Tautomerism is a proton shift within the same molecule - it changes the arrangement of hydrogen atoms and double bonds but cannot add or remove ring atoms. A purine remains a purine after tautomerization.
+D. It is the mechanism by which DNA polymerase proofreads newly synthesized strands: Many replicative DNA polymerases proofread through a 3' → 5' exonuclease activity that removes incorrectly inserted nucleotides. That is a separate enzymatic correction process, not the tautomeric change in a base.
+Key Educational Points:
+  - A tautomeric mispair can become a lasting sequence mutation if it escapes correction and is copied in a later replication step
+  - Normal forms: amino (A, C) and keto (G, T); rare forms: imino (A, C) and enol (G, T)
+  - Spontaneous tautomeric mutations are one source of transition mutations (purine ↔ purine or pyrimidine ↔ pyrimidine substitutions)
+Bottom Line: Rare tautomeric forms of DNA bases can form non-standard base pairs during replication, leading to spontaneous point mutations.
+
+==============================================================================
+
+Q57  [chem-418]  correct answer: B
+------------------------------------------------------------------------------
+STEM: DNA and RNA strands have directionality. The convention of reading nucleic acid sequences from 5' to 3' refers to:
+
+  A. The numbering of carbon atoms on the nitrogenous base
+  B. The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end   <= key
+  C. The direction from the fifth nucleotide to the third nucleotide in the sequence
+  D. The number of hydrogen bonds between complementary bases
+
+EXPLANATION:
+Correct Answer: The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end
+The prime marks distinguish sugar-carbon numbering from base-atom numbering. The sugar's five carbons are numbered 1' to 5', but C-5' is outside the five-membered ring, which contains four carbons and one oxygen. A strand's 5' and 3' ends are named for this sugar orientation; the terminal chemical groups can vary. During standard DNA or RNA synthesis, polymerases add nucleotides to the growing strand's free 3'-OH, so synthesis proceeds 5' → 3'.
+Why the other choices are wrong:
+A. The numbering of carbon atoms on the nitrogenous base: Atoms in the nitrogenous base are numbered without prime marks; the numbers can refer to nitrogen as well as carbon atoms. The prime notation (1', 2', 3', 4', 5') is specifically used for sugar carbons to distinguish them from base atom numbering.
+C. The direction from the fifth nucleotide to the third nucleotide in the sequence: The numbers 5' and 3' refer to specific carbon positions on each sugar unit, not to positions of nucleotides in the overall sequence. A sequence of any length has a 5' end and a 3' end.
+D. The number of hydrogen bonds between complementary bases: Hydrogen bond numbers (2 for A-T, 3 for G-C) are unrelated to strand directionality. The 5' → 3' convention describes the sugar-phosphate backbone orientation.
+Key Educational Points:
+  - DNA polymerase adds nucleotides only to the 3'-OH end (5' → 3' synthesis)
+  - The two strands of DNA run antiparallel: one 5' → 3', the other 3' → 5'
+  - The prime symbol distinguishes sugar carbons (1'–5') from base atom numbering
+Bottom Line: 5' → 3' describes backbone orientation. Polymerases extend a growing strand at its 3'-OH. C-5' is outside the sugar ring, and a 5' end does not invariably carry a phosphate.
+
+==============================================================================
+
+Q58  [chem-419]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Which of the following disaccharides is a NON-reducing sugar?
+
+  A. Maltose
+  B. Lactose
+  C. Cellobiose
+  D. Sucrose   <= key
+
+EXPLANATION:
+Correct Answer: Sucrose
+Sucrose is a non-reducing sugar because the glycosidic bond links the anomeric carbons of BOTH monosaccharide units - C1 of glucose to C2 of fructose (an α(1→2)β linkage: α at glucose C1 and β at fructose C2). Since both anomeric carbons are involved in the bond, neither can open to form a free aldehyde or ketone group, making sucrose unable to reduce Benedict's or Fehling's reagent.
+Why the other choices are wrong:
+A. Maltose: Maltose (glucose-α-1,4-glucose) is a reducing sugar because only one anomeric carbon (C1 of the first glucose) is involved in the glycosidic bond. The second glucose retains a free anomeric carbon (C1) that can open and act as a reducing agent.
+B. Lactose: Lactose (galactose-β-1,4-glucose) is a reducing sugar. The glycosidic bond involves C1 of galactose, but the anomeric C1 of the glucose residue remains free and can undergo ring-opening to expose its aldehyde group.
+C. Cellobiose: Cellobiose (glucose-β-1,4-glucose) is a reducing sugar for the same reason as maltose - one glucose residue retains a free anomeric carbon. The only difference from maltose is the beta configuration of the glycosidic bond.
+Key Educational Points:
+  - For these disaccharides, a free anomeric hemiacetal permits ring opening and reducing behavior
+  - Sucrose links both anomeric centers through an α(1→2)β bond and is non-reducing before hydrolysis
+  - Maltose, lactose, and cellobiose each have one free anomeric carbon → reducing sugars
+Bottom Line: Sucrose is non-reducing because both anomeric carbons participate in the glycosidic bond, leaving no free hemiacetal to act as a reducing agent.
+
+==============================================================================
+
+Q59  [chem-420]  correct answer: A   (KEEP: unchanged)
+------------------------------------------------------------------------------
+STEM: The structural difference between starch (amylose) and cellulose is primarily due to:
+
+  A. Amylose has α-1,4 glycosidic bonds while cellulose has β-1,4 glycosidic bonds   <= key
+  B. Amylose contains glucose while cellulose contains galactose
+  C. Amylose is a pentose polymer while cellulose is a hexose polymer
+  D. Amylose is branched while cellulose is unbranched
+
+EXPLANATION:
+Correct Answer: Amylose has α-1,4 glycosidic bonds while cellulose has β-1,4 glycosidic bonds
+Both amylose and cellulose are polymers of D-glucose linked in the 1→4 position, but they differ in the stereochemistry of the glycosidic bond. Amylose uses α-1,4 linkages, which create a helical structure that humans can digest with α-amylase. Cellulose uses β-1,4 linkages, producing straight, rigid chains that form extensive hydrogen-bonded sheets. Humans lack cellulase and cannot digest cellulose.
+Why the other choices are wrong:
+B. Amylose contains glucose while cellulose contains galactose: Both amylose and cellulose are homopolymers of D-glucose. Galactose is found in other polysaccharides like galactans and in the disaccharide lactose, but not in cellulose.
+C. Amylose is a pentose polymer while cellulose is a hexose polymer: Both are hexose (6-carbon sugar) polymers made of glucose. Pentose polymers (such as xylans) exist in plant cell walls but are distinct from both starch and cellulose.
+D. Amylose is branched while cellulose is unbranched: Amylose is actually the UNBRANCHED component of starch (linear α-1,4 chains). The branched component of starch is amylopectin (which has α-1,6 branch points). Cellulose is also unbranched.
+Key Educational Points:
+  - α-1,4 linkages (amylose) → helical, digestible by human amylase
+  - β-1,4 linkages (cellulose) → straight chains, indigestible by humans
+  - Amylopectin and glycogen use α-1,4 (linear) and α-1,6 (branch) linkages
+Bottom Line: The α vs. β configuration of the glycosidic bond is the key structural difference between amylose (starch) and cellulose.
+
+==============================================================================
+
+Q60  [chem-421]  correct answer: B   (points-only)
+------------------------------------------------------------------------------
+STEM: Glycogen differs from amylopectin in that glycogen:
+
+  A. Contains only α-1,4 linkages and no branch points
+  B. Is more highly branched with α-1,6 branch points approximately every 8-12 glucose residues   <= key
+  C. Is composed of fructose rather than glucose
+  D. Contains β-1,4 linkages instead of α-1,4 linkages
+
+EXPLANATION:
+Correct Answer: Is more highly branched with α-1,6 branch points approximately every 8-12 glucose residues
+Both glycogen and amylopectin are branched glucose polymers with α-1,4 linear linkages and α-1,6 branch points. The key difference is the degree of branching: glycogen branches approximately every 8-12 glucose residues, while amylopectin branches every 24-30 residues. This more extensive branching makes glycogen more compact and provides more non-reducing ends for rapid glucose mobilization.
+Why the other choices are wrong:
+A. Contains only α-1,4 linkages and no branch points: This describes amylose, not glycogen. Glycogen is highly branched and contains both α-1,4 and α-1,6 glycosidic linkages. The branching is essential for its function as a rapid energy reserve.
+C. Is composed of fructose rather than glucose: Glycogen, like amylose and amylopectin, is composed entirely of D-glucose monomers. Fructose polymers (fructans like inulin) are found in some plants but are not glycogen.
+D. Contains β-1,4 linkages instead of α-1,4 linkages: β-1,4 linkages are characteristic of cellulose. Glycogen uses α-1,4 linkages for its linear chains and α-1,6 linkages at branch points, just like amylopectin.
+Key Educational Points:
+  - Glycogen: branching every 8-12 residues (highly branched, compact)
+  - Amylopectin: branching every 24-30 residues (less branched)
+  - More non-reducing ends allow glycogen phosphorylase to release glucose 1-phosphate from many chains simultaneously
+Bottom Line: Glycogen is more highly branched than amylopectin, with α-1,6 branches every 8-12 glucose residues, enabling rapid glucose mobilization.
+
+==============================================================================

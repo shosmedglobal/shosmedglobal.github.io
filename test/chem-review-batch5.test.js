@@ -175,10 +175,13 @@ for (const q of data.chemistry) {
 ok(chemBad === 0, 'every chemistry record outside the pack is unchanged');
 /* nChem counts LIVE records outside this pack, so it stays 425 however many of
    their hashes a later batch prunes from the fixture. The fixture count is the
-   number that steps down: 365 after the chemistry batch 6 prune. */
+   number that steps down: 305 after the chemistry batch 7 prune. */
 ok(nChem === 425, '425 chemistry records lie outside the pack (got ' + nChem + ')');
 ok(nChem + 60 === 485, 'the partition adds up: 425 outside + 60 in the pack = 485');
-ok(Object.keys(untouched.chemistry).length === 365,
+/* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
+   from this fixture, so the hash count below steps down by 60. nChem counts LIVE
+   out-of-pack records and is unaffected by pruning. */
+ok(Object.keys(untouched.chemistry).length === 305,
   'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (365 after the batch 6 prune)');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts are still 629 / 485');
 

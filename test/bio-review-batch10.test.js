@@ -502,7 +502,10 @@ ok(Object.keys(untouched.biology).length + 26 + IDS.length === 629, 'fixtures do
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(Object.keys(untouched.chemistry).length === 128, 'untouched chemistry hash count unexpected');
+/* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
+   from this fixture, so the hash count below steps down by 60. nChem counts LIVE
+   out-of-pack records and is unaffected by pruning. */
+ok(Object.keys(untouched.chemistry).length === 68, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
 section('9. The cross-item consistency the review demands');

@@ -237,8 +237,8 @@ section('3. Nothing outside the pack moved');
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} untouched biology hashes, expected 629`);
-ok(nChem === 126, `${nChem} untouched chemistry hashes, expected 126`);
-ok(nChem + 60 + 60 + 59 + 60 + 60 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3, 4, 5 and 6 should account for all 485');
+ok(nChem === 66, `${nChem} untouched chemistry hashes, expected 66 after the chemistry batch 7 prune`);
+ok(nChem + 60 + 60 + 59 + 60 + 60 + 60 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3, 4, 5, 6 and 7 should account for all 485');
 ok(data.biology.length === 629, `biology holds ${data.biology.length} questions, expected 629`);
 ok(data.chemistry.length === 485, `chemistry holds ${data.chemistry.length} questions, expected 485`);
 
