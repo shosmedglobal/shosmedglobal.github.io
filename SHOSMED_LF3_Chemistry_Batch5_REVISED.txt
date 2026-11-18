@@ -54,6 +54,29 @@ COVERAGE, FROM UNIQUE VERIFIED IDS
 DEVIATIONS
   none.
 
+FOLLOW-UP CORRECTIONS, 17 November 2026
+  Five later corrections are already included below, in distractor-feedback text
+  only, and they add no newly reviewed ids:
+    Q17 chem-258  option C: the reviewer-directed wording is gone; formyl chloride
+                  is still named unstable and impractical for this reaction.
+    Q19 chem-260  option A: ordinary primary alcohols show no reaction during the
+                  room-temperature test, and substitution under other conditions
+                  is attributed to SN2 rather than to a free primary carbocation.
+    Q43 chem-284  option A, one sentence: the ester general structure now allows an
+                  alkyl or aryl group in the second position.
+    Q54 chem-295  option D: four carbon-containing groups, alkyl or aryl; the
+                  Gabriel product is named, and alkylating a tertiary amine is
+                  given as the route to a quaternary salt.
+    Q55 chem-296  option C, opening sentence: the explicit side-chain structure and
+                  the para relationship on the ring.
+  Every stem, option text, answer letter, id, keyed and option heading, main
+  explanation and educational-point block was preserved, the other 55 items were
+  untouched, and the pack still holds 186 points, no Bottom Lines and no tables.
+  One presentation note: in Q43 the supplied sentence writes R prime with a prime
+  character while the kept anhydride sentence in the same paragraph still uses a
+  straight apostrophe. The supplied wording was kept verbatim rather than editing
+  a sentence the brief said to keep.
+
 ==============================================================================
 
 Q1  [chem-242]  correct answer: C
@@ -438,7 +461,7 @@ Correct Answer: B. Acetophenone
 AlCl₃ activates acetyl chloride to form an acylium electrophile, CH₃CO⁺. Benzene reacts with this electrophile, and aqueous work-up releases acetophenone, C₆H₅COCH₃. The introduced carbonyl group deactivates the ring, so further Friedel-Crafts acylation is strongly disfavored. The resonance-stabilized acylium ion also avoids the carbocation rearrangements associated with some alkylations.
 Why the other choices are wrong:
 A. Toluene: Toluene (methylbenzene) is the product of Friedel-Crafts alkylation with CH3Cl/AlCl3, not acylation. Friedel-Crafts acylation uses an acyl chloride (RCOCl) and introduces a C=O-containing group (acyl group) onto the ring. Acetyl chloride (CH3COCl) gives acetophenone (C6H5COCH3).
-C. Benzaldehyde: Benzaldehyde contains –CHO, whereas acetyl chloride introduces –COCH₃. Benzene formylation requires different reagents; unstable formyl chloride should not be presented as a routine substitute for acetyl chloride.
+C. Benzaldehyde: Benzaldehyde contains –CHO, whereas acetyl chloride introduces –COCH₃. Formyl chloride is unstable and is not a practical reagent for the standard Friedel-Crafts reaction, so benzene formylation uses a different method.
 D. Benzoic acid: Benzoic acid contains –COOH, not the –COCH₃ group introduced here. The product is a ketone. In this acylation, the acylium electrophile resists rearrangement and the newly introduced carbonyl group discourages further ring acylation.
 Key Educational Points:
   - Acetyl chloride introduces an acetyl group, –COCH₃, onto benzene.
@@ -483,7 +506,7 @@ EXPLANATION:
 Correct Answer: C. Immediately at room temperature
 Lucas reagent is concentrated HCl containing ZnCl₂. A suitable tertiary alcohol generally forms an insoluble alkyl chloride rapidly at room temperature, giving immediate cloudiness. The reaction is facilitated by formation of a relatively stable tertiary carbocation. Simple secondary alcohols are usually slower, while ordinary primary alcohols generally show no reaction during the room-temperature test. The timing is a practical guide, not an exact stopwatch rule; benzylic and allylic alcohols are important exceptions.
 Why the other choices are wrong:
-A. Only upon heating: Heating is not normally required for the immediate positive test of a suitable tertiary alcohol. Ordinary primary alcohols react much less readily under the test conditions, but their substitution must not be explained by a stable primary carbocation.
+A. Only upon heating: Heating is not normally required for a suitable tertiary alcohol to give a positive Lucas test. Ordinary primary alcohols generally show no reaction during the room-temperature test. When they undergo substitution under suitable conditions, it usually proceeds by SN2, without a free primary carbocation.
 B. After several minutes at room temperature, with no immediate cloudiness: Delayed cloudiness is more characteristic of a suitable secondary alcohol than a tertiary one. Exact timing varies with the alcohol and test conditions, so a fixed five-minute cutoff is not a universal rule.
 D. Not at all: A suitable tertiary alcohol usually gives a rapid positive test because its conversion to an alkyl chloride is favorable under these conditions. The cloudy material is the poorly water-soluble chloride product.
 Key Educational Points:
@@ -1034,7 +1057,7 @@ EXPLANATION:
 Correct Answer: C. (CH₃CO)₂O
 Acetic anhydride (CH₃CO)₂O has the general structure of two acyl groups bonded to the same oxygen (RCO–O–COR). CH₃COOCH₃ is an ester (methyl acetate), CH₃CONHCH₃ is an amide (N-methylacetamide), and CH₃COCl is an acid chloride (acetyl chloride).
 Why the other choices are wrong:
-A. CH₃COOCH₃: CH3COOCH3 is methyl acetate, an ester (not an anhydride). Esters have the general structure R-COO-R', where an alkyl group replaces the acidic hydrogen of a carboxylic acid. An anhydride, by contrast, has two acyl groups linked by an oxygen: R-CO-O-CO-R', which can be thought of as two carboxylic acid molecules minus one water.
+A. CH₃COOCH₃: CH3COOCH3 is methyl acetate, an ester (not an anhydride). Carboxylic esters contain R–C(=O)–O–R′, where R′ can be an alkyl group, as here, or an aryl group. An anhydride, by contrast, has two acyl groups linked by an oxygen: R-CO-O-CO-R', which can be thought of as two carboxylic acid molecules minus one water.
 B. CH₃CONHCH₃: CH₃CONHCH₃ is N-methylacetamide, containing a carbonyl carbon bonded to nitrogen. Its N–H group can donate hydrogen bonds, while its carbonyl oxygen can accept them. Its resistance to hydrolysis is mainly explained by amide resonance and poor leaving-group ability, not by the mere presence of an N–H bond.
 D. CH₃COCl: CH3COCl is acetyl chloride, an acid chloride (acyl chloride). Acid chlorides have the structure R-CO-Cl and are the most reactive carboxylic acid derivatives. They react vigorously with water, alcohols, and amines. The four common carboxylic acid derivatives are: acid chlorides, anhydrides, esters, and amides.
 Key Educational Points:
@@ -1289,7 +1312,7 @@ The Gabriel synthesis uses potassium phthalimide, which acts as a nucleophile in
 Why the other choices are wrong:
 A. Secondary amines: Gabriel synthesis cannot produce secondary amines because the phthalimide nitrogen can only be alkylated once before hydrolysis. The method involves potassium phthalimide reacting with a primary alkyl halide (SN2), then hydrolysis releases the primary amine. For secondary amines, other methods like reductive amination are used.
 B. Tertiary amines: Tertiary amines cannot be made by Gabriel synthesis for the same reason. The phthalimide nitrogen is already bonded to two carbonyl carbons, so only one alkyl group can be introduced. Gabriel synthesis is valued precisely because it avoids the over-alkylation problem that plagues direct amine synthesis.
-D. Quaternary ammonium salts: Quaternary ammonium salts (R4N+) have four alkyl groups on nitrogen and a positive charge. Gabriel synthesis produces only primary amines (one alkyl group on the free nitrogen). Making quaternary salts requires exhaustive alkylation of an amine, which is a completely different approach.
+D. Quaternary ammonium salts: Quaternary ammonium salts contain R₄N⁺ ions, with four carbon-containing groups bonded to nitrogen; these can be alkyl or aryl groups. Gabriel synthesis instead releases a primary amine, RNH₂. A quaternary ammonium salt can be prepared by alkylating a tertiary amine.
 Key Educational Points:
   - Phthalimide anion substitutes on a suitable primary alkyl halide by SN2.
   - Cleavage of the resulting N-alkyl phthalimide releases a primary amine.
@@ -1311,7 +1334,7 @@ Correct Answer: B. Cysteine
 Cysteine contains a thiol group, –SH, in its side chain. Oxidation can join two cysteine sulfur atoms in a disulfide bond; the disulfide-linked pair is called cystine. Such links can stabilize protein structure. Methionine also contains sulfur, but in a thioether group rather than a free thiol.
 Why the other choices are wrong:
 A. Valine: Valine is a branched-chain, nonpolar amino acid with the side chain -CH(CH3)2. It contains only carbon, hydrogen, nitrogen, and oxygen, with no sulfur. Valine is one of the three branched-chain amino acids (along with leucine and isoleucine) that are essential in human nutrition.
-C. Tyrosine: Tyrosine has an aromatic side chain (a phenol group, 4-hydroxyphenyl). It contains no sulfur. Tyrosine is important as a precursor to several key biomolecules: dopamine, norepinephrine, epinephrine, thyroid hormones, and melanin.
+C. Tyrosine: Tyrosine's side chain is –CH₂–C₆H₄–OH, with –OH opposite the –CH₂– attachment on the benzene ring. It contains no sulfur. Tyrosine is important as a precursor to several key biomolecules: dopamine, norepinephrine, epinephrine, thyroid hormones, and melanin.
 D. Histidine: Histidine contains an imidazole ring with nitrogen atoms and no sulfur. Among the standard twenty amino acids, cysteine has a thiol and methionine has a thioether. Methionine's side chain does not ordinarily form the disulfide links characteristic of cysteine.
 Key Educational Points:
   - Cysteine has a sulfur-containing thiol side chain.

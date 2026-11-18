@@ -42,21 +42,74 @@
   "review_file": "SHOSMED_LF3_Chemistry_Batch5_Review.txt",
   "implemented": "2026-11-17",
   "map": {
-    "Q1": "chem-242", "Q2": "chem-243", "Q3": "chem-244", "Q4": "chem-245", "Q5": "chem-246",
-    "Q6": "chem-247", "Q7": "chem-248", "Q8": "chem-249", "Q9": "chem-250", "Q10": "chem-251",
-    "Q11": "chem-252", "Q12": "chem-253", "Q13": "chem-254", "Q14": "chem-255", "Q15": "chem-256",
-    "Q16": "chem-257", "Q17": "chem-258", "Q18": "chem-259", "Q19": "chem-260", "Q20": "chem-261",
-    "Q21": "chem-262", "Q22": "chem-263", "Q23": "chem-264", "Q24": "chem-265", "Q25": "chem-266",
-    "Q26": "chem-267", "Q27": "chem-268", "Q28": "chem-269", "Q29": "chem-270", "Q30": "chem-271",
-    "Q31": "chem-272", "Q32": "chem-273", "Q33": "chem-274", "Q34": "chem-275", "Q35": "chem-276",
-    "Q36": "chem-277", "Q37": "chem-278", "Q38": "chem-279", "Q39": "chem-280", "Q40": "chem-281",
-    "Q41": "chem-282", "Q42": "chem-283", "Q43": "chem-284", "Q44": "chem-285", "Q45": "chem-286",
-    "Q46": "chem-287", "Q47": "chem-288", "Q48": "chem-289", "Q49": "chem-290", "Q50": "chem-291",
-    "Q51": "chem-292", "Q52": "chem-293", "Q53": "chem-294", "Q54": "chem-295", "Q55": "chem-296",
-    "Q56": "chem-297", "Q57": "chem-298", "Q58": "chem-299", "Q59": "chem-300", "Q60": "chem-301"
+    "Q1": "chem-242",
+    "Q2": "chem-243",
+    "Q3": "chem-244",
+    "Q4": "chem-245",
+    "Q5": "chem-246",
+    "Q6": "chem-247",
+    "Q7": "chem-248",
+    "Q8": "chem-249",
+    "Q9": "chem-250",
+    "Q10": "chem-251",
+    "Q11": "chem-252",
+    "Q12": "chem-253",
+    "Q13": "chem-254",
+    "Q14": "chem-255",
+    "Q15": "chem-256",
+    "Q16": "chem-257",
+    "Q17": "chem-258",
+    "Q18": "chem-259",
+    "Q19": "chem-260",
+    "Q20": "chem-261",
+    "Q21": "chem-262",
+    "Q22": "chem-263",
+    "Q23": "chem-264",
+    "Q24": "chem-265",
+    "Q25": "chem-266",
+    "Q26": "chem-267",
+    "Q27": "chem-268",
+    "Q28": "chem-269",
+    "Q29": "chem-270",
+    "Q30": "chem-271",
+    "Q31": "chem-272",
+    "Q32": "chem-273",
+    "Q33": "chem-274",
+    "Q34": "chem-275",
+    "Q35": "chem-276",
+    "Q36": "chem-277",
+    "Q37": "chem-278",
+    "Q38": "chem-279",
+    "Q39": "chem-280",
+    "Q40": "chem-281",
+    "Q41": "chem-282",
+    "Q42": "chem-283",
+    "Q43": "chem-284",
+    "Q44": "chem-285",
+    "Q45": "chem-286",
+    "Q46": "chem-287",
+    "Q47": "chem-288",
+    "Q48": "chem-289",
+    "Q49": "chem-290",
+    "Q50": "chem-291",
+    "Q51": "chem-292",
+    "Q52": "chem-293",
+    "Q53": "chem-294",
+    "Q54": "chem-295",
+    "Q55": "chem-296",
+    "Q56": "chem-297",
+    "Q57": "chem-298",
+    "Q58": "chem-299",
+    "Q59": "chem-300",
+    "Q60": "chem-301"
   },
   "asserted_key_block": "CBAACDCBCCBBBBBBBCCBCBBCBACBBBCBBBBABDBBBBCBCBBBBCCCBCBBBBBB",
-  "asserted_key_tally": { "A": 4, "B": 37, "C": 17, "D": 2 },
+  "asserted_key_tally": {
+    "A": 4,
+    "B": 37,
+    "C": 17,
+    "D": 2
+  },
   "verification": {
     "unique_60_window_matching_key_block": "chem-242..chem-301 (the only one in 485 records)",
     "keys_agreeing_individually": "60/60",
@@ -67,29 +120,93 @@
   },
   "scope": {
     "items_edited": 59,
-    "kept_byte_identical": ["Q58"],
-    "points_only": ["Q7", "Q29", "Q38", "Q54"],
-    "major_rewrites": ["Q30", "Q60"],
+    "kept_byte_identical": [
+      "Q58"
+    ],
+    "points_only": [
+      "Q7",
+      "Q29",
+      "Q38",
+      "Q54"
+    ],
+    "major_rewrites": [
+      "Q30",
+      "Q60"
+    ],
     "answer_letter_changes": 0,
     "id_changes": 0,
     "bottom_lines_added": 0,
     "tables_added": 0
   },
-  "stem_changes": ["Q2", "Q4", "Q5", "Q6", "Q8", "Q12", "Q14", "Q18", "Q19", "Q20", "Q21", "Q25", "Q30", "Q33", "Q37", "Q45", "Q46", "Q47", "Q48", "Q51", "Q53", "Q56", "Q59", "Q60"],
+  "stem_changes": [
+    "Q2",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q8",
+    "Q12",
+    "Q14",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q25",
+    "Q30",
+    "Q33",
+    "Q37",
+    "Q45",
+    "Q46",
+    "Q47",
+    "Q48",
+    "Q51",
+    "Q53",
+    "Q56",
+    "Q59",
+    "Q60"
+  ],
   "option_changes": {
-    "Q14": { "letter": "D", "from": "m-chloronitrobenzene", "to": "Nitrobenzene" },
-    "Q16": { "letter": "D", "from": "Ethanol has a stronger inductive effect", "to": "The ethyl group stabilizes ethoxide by withdrawing electron density" },
-    "Q19": { "letter": "B", "from": "Within 5 minutes at room temperature", "to": "After several minutes at room temperature, with no immediate cloudiness" },
-    "Q20": { "letter": "D", "from": "Pentene", "to": "Pent-1-ene" },
-    "Q30": { "letter": "D", "from": "Crotonaldehyde directly", "to": "Crotonaldehyde (but-2-enal)" },
-    "Q51": { "letter": "D", "from": "An uncharged molecule", "to": "A molecule with no charged functional groups" }
+    "Q14": {
+      "letter": "D",
+      "from": "m-chloronitrobenzene",
+      "to": "Nitrobenzene"
+    },
+    "Q16": {
+      "letter": "D",
+      "from": "Ethanol has a stronger inductive effect",
+      "to": "The ethyl group stabilizes ethoxide by withdrawing electron density"
+    },
+    "Q19": {
+      "letter": "B",
+      "from": "Within 5 minutes at room temperature",
+      "to": "After several minutes at room temperature, with no immediate cloudiness"
+    },
+    "Q20": {
+      "letter": "D",
+      "from": "Pentene",
+      "to": "Pent-1-ene"
+    },
+    "Q30": {
+      "letter": "D",
+      "from": "Crotonaldehyde directly",
+      "to": "Crotonaldehyde (but-2-enal)"
+    },
+    "Q51": {
+      "letter": "D",
+      "from": "An uncharged molecule",
+      "to": "A molecule with no charged functional groups"
+    }
   },
   "points": {
     "stock_blocks_before": 3,
     "stock_point_lines_before": 9,
     "three_point_blocks_replaced": 57,
-    "five_point_blocks_replaced": ["Q59", "Q60"],
-    "five_point_blocks_kept": ["Q58"],
+    "five_point_blocks_replaced": [
+      "Q59",
+      "Q60"
+    ],
+    "five_point_blocks_kept": [
+      "Q58"
+    ],
     "total_before": 186,
     "total_after": 186
   },
@@ -114,6 +231,35 @@
     "kept_unchanged_this_batch": 1,
     "still_unreviewed_chemistry": 186,
     "biology_unaffected": true,
-    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"]
+    "biology_still_unreviewed": [
+      "bio-12",
+      "bio-346",
+      "bio-513",
+      "bio-518",
+      "bio-583"
+    ]
+  },
+  "followup_corrections": {
+    "date": "2026-11-17",
+    "scope": "explanation fields only; five records; no newly reviewed ids, coverage stays at 299 of 485",
+    "ids": {
+      "Q17": "chem-258",
+      "Q19": "chem-260",
+      "Q43": "chem-284",
+      "Q54": "chem-295",
+      "Q55": "chem-296"
+    },
+    "changes": [
+      "Q17 chem-258: option C feedback body replaced. The reviewer-directed wording about what should not be presented is gone; formyl chloride is still named unstable and impractical for the standard Friedel-Crafts reaction.",
+      "Q19 chem-260: option A feedback body replaced. Ordinary primary alcohols are now said to show no reaction during the room-temperature test, and their substitution under other conditions is attributed to SN2 rather than denied a carbocation in the abstract.",
+      "Q43 chem-284: one sentence inside option A replaced. The ester general structure is now R-C(=O)-O-R prime, with R prime allowed to be alkyl or aryl; the methyl-acetate identification and the anhydride comparison are kept verbatim.",
+      "Q54 chem-295: option D feedback body replaced. Quaternary ammonium salts are R4N+ with four carbon-containing groups, alkyl or aryl; the Gabriel product is named RNH2 and alkylating a tertiary amine is given as the route. This supersedes the batch 5 points-only restriction for Q54.",
+      "Q55 chem-296: the opening sentence of option C replaced with the explicit side-chain structure and the para relationship; the sulfur and precursor sentences are kept verbatim."
+    ],
+    "preserved": "all stems, option texts, answer letters, ids, keyed and option headings, main explanations and educational-point blocks; 186 points, 0 Bottom Lines, 0 tables; the other 55 pack items and every out-of-pack record byte-identical",
+    "presentation_notes": [
+      "Q43: the supplied sentence uses a prime for R prime while the kept anhydride sentence in the same paragraph still uses a straight apostrophe. The supplied wording was kept verbatim rather than editing the sentence the brief said to keep, so that one paragraph now carries both forms."
+    ],
+    "deviations": []
   }
 }

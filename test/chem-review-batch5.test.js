@@ -144,8 +144,10 @@ for (const Q of QS) if (pre(Q).correct !== rec(Q).correct) keyMoves++;
 ok(keyMoves === 0, 'no answer letter moved');
 ok(QS.every(Q => rec(Q).id === MAP[Q]), 'no bank id moved');
 
-/* points-only items */
-for (const Q of ['Q7', 'Q29', 'Q38', 'Q54']) {
+/* points-only items. Q54 was points-only in the batch 5 pass, but the
+   17 November 2026 follow-up explicitly superseded that restriction and
+   replaced its option D feedback, so it is no longer checked here. */
+for (const Q of ['Q7', 'Q29', 'Q38']) {
   const a = pre(Q), b = rec(Q);
   ok(a.question === b.question, Q + ' is points-only: stem untouched');
   ok(JSON.stringify(a.options) === JSON.stringify(b.options), Q + ' is points-only: options untouched');
@@ -231,7 +233,7 @@ const REPAIRS = [
   ['Q16', 'Ethanol has a stronger inductive effect', 'The ethyl group stabilizes ethoxide by withdrawing electron density'],
   ['Q16', 'In phenol, the aromatic ring withdraws and delocalizes the negative charge.', 'phenoxide can delocalize negative charge into the ring, whereas ethoxide cannot'],
   // Q17 acylation
-  ['Q17', 'would require formyl chloride (HCOCl) as the acylating agent', 'unstable formyl chloride should not be presented as a routine substitute'],
+  ['Q17', 'would require formyl chloride (HCOCl) as the acylating agent', 'Formyl chloride is unstable and is not a practical reagent'],
   ['Q17', 'an advantage of acylation over alkylation is that the ketone product does not rearrange', 'the acylium electrophile resists rearrangement'],
   ['Q17', 'acylation does not suffer from polysubstitution because the product ketone is deactivated', 'further Friedel-Crafts acylation is strongly disfavored'],
   // Q18 alcohol oxidation
@@ -240,7 +242,7 @@ const REPAIRS = [
   ['Q18', 'Which type of alcohol is most easily oxidized to a carboxylic acid?', 'without breaking its carbon skeleton?'],
   // Q19 Lucas test
   ['Q19', 'Within 5 minutes at room temperature', 'After several minutes at room temperature, with no immediate cloudiness'],
-  ['Q19', 'their carbocation intermediates (primary carbocations) are highly unstable', 'must not be explained by a stable primary carbocation'],
+  ['Q19', 'their carbocation intermediates (primary carbocations) are highly unstable', 'it usually proceeds by SN2, without a free primary carbocation'],
   ['Q19', 'Secondary alcohols react within 5 minutes, while primary alcohols require prolonged heating', 'The timing is a practical guide, not an exact stopwatch rule'],
   ['Q19', 'Tertiary alcohols absolutely do react with Lucas reagent', 'The cloudy material is the poorly water-soluble chloride product'],
   // Q20 dehydration
@@ -389,6 +391,60 @@ for (const [Q, gone, present] of REPAIRS) {
   ok(now.indexOf(present) >= 0, `${Q}: "${present.slice(0, 55)}" should be present`);
 }
 
+/* Five follow-up corrections applied after the batch 5 re-read, 17 November 2026.
+   These replaced text this pass itself had written, so the before-fixture cannot
+   witness them; non-vacuity was established against the commit instead. */
+const FOLLOWUP = [
+  ['Q17', 'should not be presented as a routine substitute for acetyl chloride',
+          'Formyl chloride is unstable and is not a practical reagent for the standard Friedel-Crafts reaction, so benzene formylation uses a different method.'],
+  ['Q19', 'their substitution must not be explained by a stable primary carbocation',
+          'When they undergo substitution under suitable conditions, it usually proceeds by SN2, without a free primary carbocation.'],
+  ['Q19', 'Ordinary primary alcohols react much less readily under the test conditions',
+          'Ordinary primary alcohols generally show no reaction during the room-temperature test.'],
+  ['Q43', "Esters have the general structure R-COO-R', where an alkyl group replaces the acidic hydrogen",
+          'Carboxylic esters contain R–C(=O)–O–R′, where R′ can be an alkyl group, as here, or an aryl group.'],
+  ['Q54', 'have four alkyl groups on nitrogen and a positive charge',
+          'Quaternary ammonium salts contain R₄N⁺ ions, with four carbon-containing groups bonded to nitrogen; these can be alkyl or aryl groups.'],
+  ['Q54', 'Making quaternary salts requires exhaustive alkylation of an amine',
+          'A quaternary ammonium salt can be prepared by alkylating a tertiary amine.'],
+  ['Q55', 'Tyrosine has an aromatic side chain (a phenol group, 4-hydroxyphenyl).',
+          "Tyrosine's side chain is –CH₂–C₆H₄–OH, with –OH opposite the –CH₂– attachment on the benzene ring."]
+];
+for (const [Q, gone, present] of FOLLOWUP) {
+  const now = allText(rec(Q));
+  ok(now.indexOf(gone) < 0, `${Q} follow-up: "${gone.slice(0, 55)}" should be gone`);
+  ok(now.indexOf(present) >= 0, `${Q} follow-up: "${present.slice(0, 55)}" should be present`);
+}
+/* The follow-up changed distractor BODIES only. The before-fixture predates the
+   batch 5 pass, so it cannot serve as the baseline for "unchanged by the
+   follow-up"; that diff was run against the commit instead. What is asserted
+   here is that each item's keyed heading, main explanation and point block are
+   still the ones the batch 5 pass set. */
+const FOLLOWUP_INTACT = {
+  Q17: ['AlCl₃ activates acetyl chloride to form an acylium electrophile, CH₃CO⁺.',
+        '<li>The electrophile is a resonance-stabilized acylium ion.</li>'],
+  Q19: ['Lucas reagent is concentrated HCl containing ZnCl₂.',
+        '<li>The Lucas test detects formation of a poorly water-soluble alkyl chloride as cloudiness.</li>',
+        'Delayed cloudiness is more characteristic of a suitable secondary alcohol than a tertiary one.'],
+  Q43: ['Acetic anhydride (CH₃CO)₂O has the general structure of two acyl groups bonded to the same oxygen',
+        '<li>An acid anhydride has two acyl groups connected through an oxygen atom.</li>'],
+  Q54: ['The Gabriel synthesis uses potassium phthalimide',
+        '<li>Phthalimide anion substitutes on a suitable primary alkyl halide by SN2.</li>'],
+  Q55: ['Cysteine contains a thiol group, –SH, in its side chain.',
+        '<li>Cysteine has a sulfur-containing thiol side chain.</li>']
+};
+for (const Q of Object.keys(FOLLOWUP_INTACT)) {
+  for (const k of FOLLOWUP_INTACT[Q])
+    ok(rec(Q).explanation.indexOf(k) >= 0, Q + ' follow-up: still carries -> "' + k.slice(0, 55) + '"');
+}
+/* Q43 keeps the surrounding sentences the brief names */
+ok(/CH3COOCH3 is methyl acetate, an ester \(not an anhydride\)/.test(rec('Q43').explanation) &&
+   /An anhydride, by contrast, has two acyl groups linked by an oxygen/.test(rec('Q43').explanation),
+  'Q43 follow-up: the methyl-acetate identification and the anhydride comparison are kept');
+/* Q55 keeps the sulfur and precursor sentences */
+ok(/It contains no sulfur\. Tyrosine is important as a precursor/.test(rec('Q55').explanation),
+  'Q55 follow-up: the sulfur and precursor sentences are kept');
+
 /* universal or incorrect claims the review bans anywhere in the pack */
 const BANNED = [
   'PCl5',
@@ -427,10 +483,10 @@ section("5. the review's own particular-attention list");
 ok(/a freely existing methyl carbocation need not be invoked/.test(rec('Q12').explanation),
   'Q12 should not teach a freely generated CH₃⁺');
 ok(/resonance-stabilized acylium ion/.test(rec('Q17').explanation) &&
-   /unstable formyl chloride should not be presented as a routine substitute/.test(rec('Q17').explanation),
+   /Formyl chloride is unstable and is not a practical reagent/.test(rec('Q17').explanation),
   'Q17 should fix the acylium account and the formyl-chloride prescription');
 ok(/no immediate cloudiness/.test(rec('Q19').options[1]) &&
-   /must not be explained by a stable primary carbocation/.test(rec('Q19').explanation),
+   /without a free primary carbocation/.test(rec('Q19').explanation),
   "Q19 should remove B's overlap with C and the primary-carbocation claim");
 ok(/It is not the direct β-elimination product/.test(rec('Q20').explanation) &&
    rec('Q20').explanation.indexOf('rearrangement of the carbon skeleton') < 0,
@@ -720,7 +776,7 @@ ok(mainsKept >= 20, 'at least 20 main paragraphs were left alone and checked for
 /* ------------------------------------------------------------------ */
 section('11. cross-item consistency and the coverage ledger');
 
-ok(/formyl chloride is unstable/.test(rec('Q12').explanation) && /unstable formyl chloride/.test(rec('Q17').explanation),
+ok(/formyl chloride is unstable/.test(rec('Q12').explanation) && /Formyl chloride is unstable/.test(rec('Q17').explanation),
   'Q12 and Q17 agree that formyl chloride is unstable');
 ok(/reduced to a primary alcohol after aqueous work-up/.test(rec('Q39').explanation) &&
    /converts an alkyl carboxylic acid to a primary alcohol/.test(rec('Q47').explanation),
