@@ -180,13 +180,20 @@ for (const Q of QS) if (!STEMS.includes(Q)) ok(pre(Q).question === rec(Q).questi
 
 const optsNow = [];
 for (const Q of QS) pre(Q).options.forEach((o, j) => { if (o !== rec(Q).options[j]) optsNow.push(Q + ' ' + L[j]); });
-ok(JSON.stringify(optsNow) === JSON.stringify(['Q34 B', 'Q43 D', 'Q44 C', 'Q46 D', 'Q53 A', 'Q57 B']),
-  'exactly the six listed option texts changed (got ' + optsNow.join(', ') + ')');
+/* The batch 7 pass itself replaced six option texts. The 18 November 2026 final
+   follow-up then replaced Q2's option B and replaced Q57's option B again, so
+   measured against the pre-batch-7 fixture the set is seven slots. Section 11
+   checks the follow-up's own two option edits against their own baseline. */
+ok(JSON.stringify(optsNow) === JSON.stringify(['Q2 B', 'Q34 B', 'Q43 D', 'Q44 C', 'Q46 D', 'Q53 A', 'Q57 B']),
+  'exactly the batch 7 option texts plus the follow-up Q2/Q57 slots changed (got ' + optsNow.join(', ') + ')');
+const SUPERSEDED = { 'Q57 B': "The orientation defined by the 5' and 3' carbon positions of the sugars" };
 for (const slot of Object.keys(idmap.option_changes)) {
   const [Q, letter] = slot.split(' ');
   const c = idmap.option_changes[slot], j = L.indexOf(letter);
   ok(pre(Q).options[j] === c.from, slot + ': the original text was as the id map records');
-  ok(rec(Q).options[j] === c.to, slot + ': now reads ' + JSON.stringify(c.to));
+  const want = SUPERSEDED[slot] !== undefined ? SUPERSEDED[slot] : c.to;
+  ok(rec(Q).options[j] === want, slot + ': now reads ' + JSON.stringify(want) +
+    (SUPERSEDED[slot] !== undefined ? ' (the batch 7 wording was superseded by the final follow-up)' : ''));
 }
 
 /* Q60 is strictly point-3-only */
@@ -443,7 +450,9 @@ const REPAIRS = [
   ['Q56', "Proofreading is performed by the 3' → 5' exonuclease activity of DNA polymerase", 'Many replicative DNA polymerases proofread'],
   ['Q56', 'Tautomeric shifts are rare events that do not contribute to overall helix stability.', 'stabilized largely by base stacking and interactions between complementary bases'],
   // Q57 C-5' is outside the ring; a 5' end is not always phosphorylated
-  ['Q57', "The positions on the sugar ring - the 5' carbon bears the phosphate group", "The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end"],
+  /* batch 7 replaced this option with a backbone-orientation wording; the final
+     follow-up replaced it again, so the anchor is the wording now in the bank */
+  ['Q57', "The positions on the sugar ring - the 5' carbon bears the phosphate group", "The orientation defined by the 5' and 3' carbon positions of the sugars"],
   ['Q57', "numbered 1' through 5'", "C-5' is outside the five-membered ring, which contains four carbons and one oxygen"],
   ['Q57', 'Base carbons are numbered without the prime symbol (1, 2, 3, etc.).', 'the numbers can refer to nitrogen as well as carbon atoms'],
   ['Q57', 'the 5\' end has the phosphate, the 3\' end has the free hydroxyl where new nucleotides are added', "a 5' end does not invariably carry a phosphate"],
@@ -613,7 +622,9 @@ for (const Q of QS) {
   for (const letter of Object.keys(now)) if (was[letter] && was[letter].head !== now[letter].head) expanded.push(Q + ' ' + letter);
   if (keyedOf(pre(Q).explanation) !== keyedOf(rec(Q).explanation)) expanded.push(Q + ' keyed');
 }
-ok(expanded.length === 29, '29 headings were synchronized (got ' + expanded.length + ': ' + expanded.join(', ') + ')');
+/* 29 in the batch 7 pass, plus Q2's keyed heading, which the final follow-up
+   re-synchronized to its new option B (Q57's keyed heading was already counted) */
+ok(expanded.length === 30, '30 headings differ from the pre-batch-7 fixture (got ' + expanded.length + ': ' + expanded.join(', ') + ')');
 
 /* ------------------------------------------------------------------ */
 section('7. structural invariants, paragraph structure included');
@@ -749,6 +760,136 @@ ok(stillOut.length === 66, 'recomputed: 66 chemistry ids remain unreviewed (got 
 ok(JSON.stringify(stillOut.filter(id => Number(id.slice(5)) < 422)) === JSON.stringify(['chem-19', 'chem-61']),
   'recomputed: chem-19 and chem-61 are the only gaps below chem-422');
 ok(stillOut.filter(id => Number(id.slice(5)) >= 422).length === 64, 'recomputed: chem-422 .. chem-485 are the remaining 64');
+
+/* ------------------------------------------------------------------ */
+section('11. the 18 November 2026 final follow-up: three records only');
+
+/* This follow-up landed after the batch 7 pass, so the batch 7 before-fixture is
+   the wrong baseline for it: that fixture predates both passes. The follow-up
+   fixture holds the post-batch-7, pre-follow-up state - a hash for each of the
+   60 pack records, and the full text of the three the follow-up edits - so the
+   "exactly three moved" claim and every "the superseded wording is gone" claim
+   are both checked against a real before-state. */
+const fuBefore = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch7-followup-before.json'), 'utf8'));
+const FU = ['Q2', 'Q24', 'Q57'];
+const FU_ID = { Q2: 'chem-363', Q24: 'chem-385', Q57: 'chem-418' };
+const fuPre = Q => fuBefore.records[Q];
+
+ok(Object.keys(fuBefore.hashes).length === 60, 'the follow-up baseline covers all 60 pack records');
+ok(Object.keys(fuBefore.records).length === 3, 'the follow-up baseline stores the three full records');
+
+const fuMoved = QS.filter(Q => hash(rec(Q)) !== fuBefore.hashes[Q]);
+ok(JSON.stringify(fuMoved) === JSON.stringify(FU),
+  'exactly Q2, Q24 and Q57 moved in the follow-up (got ' + fuMoved.join(', ') + ')');
+for (const Q of QS) if (!FU.includes(Q))
+  ok(hash(rec(Q)) === fuBefore.hashes[Q], Q + ': byte-identical through the follow-up');
+
+for (const Q of FU) {
+  ok(MAP[Q] === FU_ID[Q], Q + ': the follow-up brief id ' + FU_ID[Q] + ' is the verified batch 7 id');
+  ok(L[rec(Q).correct] === 'B', Q + ': the answer letter is still B');
+  ok(rec(Q).question === fuPre(Q).question, Q + ': its stem is byte-identical');
+  ok(rec(Q).id === fuPre(Q).id && rec(Q).topic === fuPre(Q).topic, Q + ': id and topic unmoved');
+  ok(pointLines(rec(Q).explanation).join('|') === pointLines(fuPre(Q).explanation).join('|'), Q + ': its educational points are byte-identical');
+}
+ok(QS.every(Q => rec(Q).question === fuBefore.records[Q] ? true : true) &&
+   QS.filter(Q => FU.includes(Q)).every(Q => rec(Q).question === fuPre(Q).question),
+  'no stem changed in the follow-up');
+
+/* option texts changed only in Q2 B and Q57 B */
+const fuOpts = [];
+for (const Q of FU) fuPre(Q).options.forEach((o, j) => { if (o !== rec(Q).options[j]) fuOpts.push(Q + ' ' + L[j]); });
+ok(JSON.stringify(fuOpts) === JSON.stringify(['Q2 B', 'Q57 B']),
+  'only Q2 B and Q57 B changed option text in the follow-up (got ' + fuOpts.join(', ') + ')');
+
+/* 1. Q2 chem-363: option B and its LETTERED keyed heading */
+ok(rec('Q2').options[1] === 'A backward planning step from a target molecule to proposed precursors', 'Q2 B: the follow-up option text');
+ok(fuPre('Q2').options[1] === 'A disconnection (working backward from product to simpler precursors)',
+  'Q2 NON-VACUITY: option B really was the disconnection wording before');
+ok(!/A disconnection \(working backward/.test(allText(rec('Q2'))), 'Q2: the superseded option wording is gone from the item');
+ok(keyedOf(rec('Q2').explanation) === 'B. A backward planning step from a target molecule to proposed precursors',
+  'Q2: the keyed heading is lettered and matches the new option B');
+ok(/^[ABCD]\. /.test(keyedOf(rec('Q2').explanation)), 'Q2: the keyed heading stays LETTERED');
+ok(mainOf(rec('Q2').explanation) === mainOf(fuPre('Q2').explanation), 'Q2: the main explanation is byte-identical');
+ok(JSON.stringify(fbParts(rec('Q2').explanation)) === JSON.stringify(fbParts(fuPre('Q2').explanation)),
+  'Q2: every distractor heading and body is byte-identical');
+ok([0, 2, 3].every(j => rec('Q2').options[j] === fuPre('Q2').options[j]), 'Q2: options A, C and D are byte-identical');
+/* the point of the change: the answer now agrees with the already-corrected explanation */
+ok(/a functional-group interconversion can also be a retrosynthetic step/.test(rec('Q2').explanation),
+  'Q2: the explanation still says a transform need not be a bond disconnection');
+ok(!/disconnection/i.test(rec('Q2').options[1]), 'Q2: option B no longer names a disconnection');
+
+/* 2. Q24 chem-385: option A's feedback body only */
+const fb24 = fbParts(rec('Q24').explanation);
+ok(fb24.A.head === 'Endothermic' && fb24.A.head === fbParts(fuPre('Q24').explanation).A.head, 'Q24: heading "A. Endothermic:" is unchanged');
+ok(fb24.A.body === ' Endothermic processes absorb heat from the surroundings (ΔH > 0 under the stated conditions). The surroundings may cool if their temperature is not maintained. Examples include melting ice and dissolving ammonium nitrate.',
+  'Q24 A: the replacement feedback body');
+ok(/causing the surroundings to cool/.test(fuPre('Q24').explanation),
+  'Q24 NON-VACUITY: the inevitable-cooling wording really was there before');
+ok(!/causing the surroundings to cool/.test(rec('Q24').explanation), 'Q24: the inevitable-cooling wording is gone');
+ok(/Endothermic reactions absorb heat from surroundings \(ΔH > 0\), causing/.test(fuPre('Q24').explanation) &&
+   !/Endothermic reactions absorb heat from surroundings \(ΔH > 0\), causing/.test(rec('Q24').explanation),
+  'Q24: the old sentence as a whole is gone');
+ok(/Endothermic processes/.test(rec('Q24').explanation) && !/Endothermic reactions absorb/.test(rec('Q24').explanation),
+  'Q24: melting is now described as a process rather than a reaction');
+ok(JSON.stringify(rec('Q24').options) === JSON.stringify(fuPre('Q24').options), 'Q24: all four options are byte-identical');
+ok(keyedOf(rec('Q24').explanation) === keyedOf(fuPre('Q24').explanation), 'Q24: its keyed heading is byte-identical');
+ok(mainOf(rec('Q24').explanation) === mainOf(fuPre('Q24').explanation), 'Q24: the main explanation is byte-identical');
+ok(blOf(rec('Q24').explanation) === blOf(fuPre('Q24').explanation), 'Q24: its Bottom Line is byte-identical');
+for (const letter of ['C', 'D']) {
+  ok(fb24[letter].head === fbParts(fuPre('Q24').explanation)[letter].head &&
+     fb24[letter].body === fbParts(fuPre('Q24').explanation)[letter].body,
+    'Q24: option ' + letter + "'s feedback is byte-identical");
+}
+ok((fb24.A.body.match(/\.(?:\s|$)/g) || []).length === 3,
+  'Q24 A: the paragraph is three sentences (got ' + (fb24.A.body.match(/\.(?:\s|$)/g) || []).length + ')');
+
+/* 3. Q57 chem-418: option B and its UNLETTERED keyed heading */
+ok(rec('Q57').options[1] === "The orientation defined by the 5' and 3' carbon positions of the sugars", 'Q57 B: the follow-up option text');
+ok(fuPre('Q57').options[1] === "The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end",
+  'Q57 NON-VACUITY: option B really was the batch 7 backbone wording before');
+ok(!/sugar-phosphate backbone from its 5' end toward its 3' end/.test(allText(rec('Q57'))),
+  'Q57: the superseded option wording is gone from the item');
+ok(keyedOf(rec('Q57').explanation) === "The orientation defined by the 5' and 3' carbon positions of the sugars",
+  'Q57: the keyed heading matches the new option B');
+ok(!/^[ABCD]\. /.test(keyedOf(rec('Q57').explanation)), 'Q57: the keyed heading stays UNLETTERED');
+ok(mainOf(rec('Q57').explanation) === mainOf(fuPre('Q57').explanation), 'Q57: the main explanation is byte-identical');
+ok(JSON.stringify(fbParts(rec('Q57').explanation)) === JSON.stringify(fbParts(fuPre('Q57').explanation)),
+  'Q57: every distractor heading and body is byte-identical');
+ok(blOf(rec('Q57').explanation) === blOf(fuPre('Q57').explanation), 'Q57: its Bottom Line is byte-identical');
+ok([0, 2, 3].every(j => rec('Q57').options[j] === fuPre('Q57').options[j]), 'Q57: options A, C and D are byte-identical');
+/* the point of the change: the option no longer largely repeats the stem */
+ok(/carbon positions of the sugars/.test(rec('Q57').options[1]), 'Q57: option B now says what the numbers refer to');
+ok(!/5' end toward its 3' end/.test(rec('Q57').options[1]), 'Q57: option B no longer restates the stem');
+ok(/The convention of reading nucleic acid sequences from 5' to 3' refers to/.test(rec('Q57').question), 'Q57: the stem is unchanged');
+
+/* pack-wide invariants the follow-up had to preserve */
+let fuPts = 0, fuBlocks = 0, fuBL = 0, fuTables = 0, fuFb = 0;
+for (const Q of QS) {
+  const e = rec(Q).explanation;
+  if (/<h4>Key Educational Points:<\/h4>/.test(e)) { fuBlocks++; fuPts += pointLines(e).length; }
+  if (blOf(e) !== null) fuBL++;
+  fuTables += (e.match(/<table/g) || []).length;
+  fuFb += (fbOf(e).match(/<p[ >]/g) || []).length;
+}
+ok(fuPts === 96 && fuBlocks === 32, 'the follow-up preserves 96 educational points in 32 blocks (got ' + fuPts + '/' + fuBlocks + ')');
+ok(fuBL === 56, 'the follow-up preserves 56 Bottom Lines (got ' + fuBL + ')');
+ok(fuTables === 7, 'the follow-up preserves 7 tables (got ' + fuTables + ')');
+ok(fuFb === 180, 'the follow-up preserves 180 distractor paragraphs (got ' + fuFb + ')');
+ok(QS.map(Q => L[rec(Q).correct]).join('') === KEYS, 'every answer letter in the pack is unchanged by the follow-up');
+for (const Q of FU) {
+  ok(curly(allText(rec(Q))) <= curly(allText(fuPre(Q))), Q + ': the curly-quote count did not rise');
+  ok(!/—/.test(allText(rec(Q))), Q + ': no em dash');
+  ok(!/�/.test(allText(rec(Q))), Q + ': no replacement character');
+  ok(!/<p><p>|<\/p><\/p>/.test(rec(Q).explanation), Q + ': no doubled paragraph tag');
+  let depth = 0, maxDepth = 0;
+  for (const m of rec(Q).explanation.matchAll(/<(\/?)p[ >]/g)) { if (m[1]) depth--; else { depth++; maxDepth = Math.max(maxDepth, depth); } }
+  ok(depth === 0 && maxDepth === 1, Q + ': paragraph nesting depth is 1');
+}
+ok(idmap.followup_corrections && idmap.followup_corrections.items.length === 3,
+  'the id map records the three follow-up corrections');
+ok(idmap.followup_corrections.coverage_unchanged === true && idmap.coverage.reviewed_after_this_batch === 419,
+  'the follow-up adds no newly reviewed id: coverage stays 419 of 485');
+ok(idmap.followup_corrections.deviations.length === 0, 'the follow-up records no deviation');
 
 console.log('\n' + n + ' checks, ' + bad + ' failure(s)');
 if (bad) process.exit(1);

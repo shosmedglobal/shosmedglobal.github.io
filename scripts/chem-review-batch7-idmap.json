@@ -328,5 +328,76 @@
       "bio-518",
       "bio-583"
     ]
+  },
+  "followup_corrections": {
+    "applied": "2026-11-18",
+    "brief": "Final follow-up to chemistry batch 7: three item edits, no major rewrites, no new reviewed ids.",
+    "reconfirmation": [
+      "Each of the three ids was reconfirmed against its CURRENT stem, options and stored",
+      "answer letter before editing, not taken from the display number. The harness is",
+      "all-or-nothing and writes nothing unless every id, letter, anchor and pack invariant",
+      "checks out."
+    ],
+    "items": [
+      {
+        "q": "Q2",
+        "id": "chem-363",
+        "key": "B",
+        "field": "option B + lettered keyed heading",
+        "change": "Option B replaced so the answer agrees with the already-corrected explanation: a retrosynthetic transform is broader than a bond disconnection.",
+        "from": "A disconnection (working backward from product to simpler precursors)",
+        "to": "A backward planning step from a target molecule to proposed precursors",
+        "heading": "Correct Answer: B. A backward planning step from a target molecule to proposed precursors",
+        "preserved": "the stem, options A/C/D, the main explanation, all distractor feedback and all three educational points"
+      },
+      {
+        "q": "Q24",
+        "id": "chem-385",
+        "key": "B",
+        "field": "explanation (option A's feedback body)",
+        "change": "Option A feedback body replaced: cooling is not inevitable when temperature is maintained, and melting is a physical process rather than a chemical reaction.",
+        "from": " Endothermic reactions absorb heat from surroundings (deltaH > 0), causing the surroundings to cool. Examples: melting ice, dissolving ammonium nitrate.",
+        "to": " Endothermic processes absorb heat from the surroundings (deltaH > 0 under the stated conditions). The surroundings may cool if their temperature is not maintained. Examples include melting ice and dissolving ammonium nitrate.",
+        "preserved": "the heading \"A. Endothermic:\", the stem, all four options, the keyed heading, the main explanation, options C and D feedback, and the Bottom Line"
+      },
+      {
+        "q": "Q57",
+        "id": "chem-418",
+        "key": "B",
+        "field": "option B + unlettered keyed heading",
+        "change": "Option B replaced so it identifies what the numbers refer to instead of largely repeating the stem. This explicitly supersedes the batch 7 option-B wording.",
+        "from": "The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end",
+        "to": "The orientation defined by the 5' and 3' carbon positions of the sugars",
+        "heading": "Correct Answer: The orientation defined by the 5' and 3' carbon positions of the sugars",
+        "preserved": "the stem, options A/C/D, the main explanation, all distractor feedback, all three educational points and the Bottom Line"
+      }
+    ],
+    "invariants_held": {
+      "records_changed": 3,
+      "stems_changed": 0,
+      "option_texts_changed": [
+        "Q2 B",
+        "Q57 B"
+      ],
+      "keyed_headings_resynchronized": [
+        "Q2 (lettered)",
+        "Q57 (unlettered)"
+      ],
+      "answer_letters_moved": 0,
+      "ids_moved": 0,
+      "topics_moved": 0,
+      "other_items_in_pack_unchanged": 57,
+      "educational_points": 96,
+      "point_blocks": 32,
+      "bottom_lines": 56,
+      "tables": 7,
+      "feedback_paragraphs": 180
+    },
+    "notes": [
+      "Q2's keyed heading stays LETTERED and Q57's stays UNLETTERED, matching each item's",
+      "stored style. No other heading in the pack moved."
+    ],
+    "coverage_unchanged": true,
+    "deviations": []
   }
 }

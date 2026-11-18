@@ -81,6 +81,42 @@ COVERAGE, FROM UNIQUE VERIFIED IDS
 DEVIATIONS
   none.
 
+FINAL FOLLOW-UP APPLIED 2026-11-18: THREE RECORDS ONLY
+  Each id was reconfirmed against its CURRENT stem, options and stored answer
+  letter before editing. Nothing was written until every id, letter, anchor and
+  pack invariant checked out.
+
+  Q2 chem-363, answer B (option B + lettered keyed heading)
+    Option B replaced so the answer agrees with the already-corrected explanation: a retrosynthetic transform is broader than a bond disconnection.
+    was : A disconnection (working backward from product to simpler precursors)
+    now : A backward planning step from a target molecule to proposed precursors
+    head: Correct Answer: B. A backward planning step from a target molecule to proposed precursors
+    kept: the stem, options A/C/D, the main explanation, all distractor feedback and all three educational points
+
+  Q24 chem-385, answer B (explanation (option A's feedback body))
+    Option A feedback body replaced: cooling is not inevitable when temperature is maintained, and melting is a physical process rather than a chemical reaction.
+    was : Endothermic reactions absorb heat from surroundings (deltaH > 0), causing the surroundings to cool. Examples: melting ice, dissolving ammonium nitrate.
+    now : Endothermic processes absorb heat from the surroundings (deltaH > 0 under the stated conditions). The surroundings may cool if their temperature is not maintained. Examples include melting ice and dissolving ammonium nitrate.
+    kept: the heading "A. Endothermic:", the stem, all four options, the keyed heading, the main explanation, options C and D feedback, and the Bottom Line
+
+  Q57 chem-418, answer B (option B + unlettered keyed heading)
+    Option B replaced so it identifies what the numbers refer to instead of largely repeating the stem. This explicitly supersedes the batch 7 option-B wording.
+    was : The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end
+    now : The orientation defined by the 5' and 3' carbon positions of the sugars
+    head: Correct Answer: The orientation defined by the 5' and 3' carbon positions of the sugars
+    kept: the stem, options A/C/D, the main explanation, all distractor feedback, all three educational points and the Bottom Line
+
+  Records changed         : 3; the other 57 pack items are byte-identical
+  Stems changed           : 0
+  Option texts changed    : Q2 B, Q57 B
+  Keyed headings re-synced: Q2 (lettered), Q57 (unlettered)
+  Answer letters / ids    : 0 / 0 moved
+  Educational points      : 96 in 32 blocks; Bottom Lines 56; tables 7; distractor paragraphs 180
+  Q2's keyed heading stays LETTERED and Q57's stays UNLETTERED, matching each item's
+  stored style. No other heading in the pack moved.
+  Coverage unchanged      : still 419 of 485 chemistry reviewed, 66 remaining
+  Deviations              : none
+
 ==============================================================================
 
 Q1  [chem-362]  correct answer: B
@@ -111,12 +147,12 @@ Q2  [chem-363]  correct answer: B
 STEM: In retrosynthetic analysis, the symbol ⇒ represents:
 
   A. A forward reaction step
-  B. A disconnection (working backward from product to simpler precursors)   <= key
+  B. A backward planning step from a target molecule to proposed precursors   <= key
   C. An equilibrium
   D. A catalytic step
 
 EXPLANATION:
-Correct Answer: B. A disconnection (working backward from product to simpler precursors)
+Correct Answer: B. A backward planning step from a target molecule to proposed precursors
 Retrosynthesis plans a synthesis by working backward from the target molecule. The arrow ⇒ means 'can be made from' and points toward proposed precursors. A disconnection breaks a bond on paper; a functional-group interconversion can also be a retrosynthetic step. Synthons are idealized fragments used in planning, whereas the reagents actually used are their synthetic equivalents.
 Why the other choices are wrong:
 A. A forward reaction step: A forward reaction step is shown by a regular reaction arrow (→). The retrosynthetic arrow (⇒) indicates the reverse thought process: working backward from the target molecule to identify simpler precursors. Retrosynthesis is a planning strategy, not an actual reaction - it maps out how a complex molecule can be built from available starting materials.
@@ -590,7 +626,7 @@ STEM: At constant pressure, a reaction that releases heat to its surroundings is
 EXPLANATION:
 Correct Answer: Exothermic
 An exothermic reaction releases heat to its surroundings. At constant pressure, when only pressure-volume work is involved, the heat transferred equals the enthalpy change, so ΔH Why the other choices are wrong:
-A. Endothermic: Endothermic reactions absorb heat from surroundings (ΔH > 0), causing the surroundings to cool. Examples: melting ice, dissolving ammonium nitrate.
+A. Endothermic: Endothermic processes absorb heat from the surroundings (ΔH > 0 under the stated conditions). The surroundings may cool if their temperature is not maintained. Examples include melting ice and dissolving ammonium nitrate.
 C. Isothermal: Isothermal means occurring at constant temperature - it describes process conditions, not whether heat is released or absorbed.
 D. Adiabatic: Adiabatic means there is no heat transfer between the system and its surroundings (q = 0). Its temperature may change, but a temperature change is not part of the definition. It does not describe a reaction releasing heat to the surroundings.
 Bottom Line: Exothermic: ΔH  0 (heat absorbed, products higher enthalpy). Whether a reaction is spontaneous depends on Gibbs free energy (ΔG = ΔH − TΔS), not enthalpy alone.
@@ -1352,12 +1388,12 @@ Q57  [chem-418]  correct answer: B
 STEM: DNA and RNA strands have directionality. The convention of reading nucleic acid sequences from 5' to 3' refers to:
 
   A. The numbering of carbon atoms on the nitrogenous base
-  B. The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end   <= key
+  B. The orientation defined by the 5' and 3' carbon positions of the sugars   <= key
   C. The direction from the fifth nucleotide to the third nucleotide in the sequence
   D. The number of hydrogen bonds between complementary bases
 
 EXPLANATION:
-Correct Answer: The orientation of the sugar-phosphate backbone from its 5' end toward its 3' end
+Correct Answer: The orientation defined by the 5' and 3' carbon positions of the sugars
 The prime marks distinguish sugar-carbon numbering from base-atom numbering. The sugar's five carbons are numbered 1' to 5', but C-5' is outside the five-membered ring, which contains four carbons and one oxygen. A strand's 5' and 3' ends are named for this sugar orientation; the terminal chemical groups can vary. During standard DNA or RNA synthesis, polymerases add nucleotides to the growing strand's free 3'-OH, so synthesis proceeds 5' → 3'.
 Why the other choices are wrong:
 A. The numbering of carbon atoms on the nitrogenous base: Atoms in the nitrogenous base are numbered without prime marks; the numbers can refer to nitrogen as well as carbon atoms. The prime notation (1', 2', 3', 4', 5') is specifically used for sugar carbons to distinguish them from base atom numbering.
