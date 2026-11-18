@@ -70,6 +70,55 @@ COVERAGE, FROM UNIQUE VERIFIED IDS
 DEVIATIONS
   none.
 
+FOLLOW-UP APPLIED 2026-11-18: FIVE RECORDS ONLY
+  Each id was reconfirmed against its CURRENT stored content before editing, and
+  each stored answer letter against the letter the follow-up states. Nothing was
+  written until every id, letter, anchor and pack invariant checked out.
+
+  Q2 chem-303, answer B (question)
+    Stem replaced so the plural option fragments read off it.
+    was : Meso-tartaric acid has two stereocenters but is optically inactive. Which feature explains its overall achirality?
+    now : Meso-tartaric acid molecules are achiral despite having two stereocenters because they:
+    kept: all four options, all headings, the whole explanation and all five educational points
+
+  Q9 chem-310, answer C (explanation (main))
+    One sentence of the main explanation replaced with a mechanistic statement of mutarotation.
+    was : This difference underlies mutarotation.
+    now : Mutarotation involves ring opening and reclosing that interconverts the α and β anomers.
+    kept: the preceding chair-flip explanation, the stem, all options, all feedback and all five points
+
+  Q22 chem-323, answer B (options + explanation (headings))
+    Options A, C and D made grammatically parallel with option B, and their distractor headings synchronized.
+    was : Are shorter than natural fats
+    now : They are shorter than natural fats
+    was : Cannot be metabolized at all
+    now : They cannot be metabolized at all
+    was : Contain more calories than cis fats
+    now : They contain more calories than cis fats
+    kept: option B byte for byte, the stem, every feedback body, the main explanation and all three points
+
+  Q28 chem-329, answer C (explanation (option A feedback))
+    First sentence of option A's feedback rephrased as an estimated yield rather than a use.
+    was : About 1.5 ATP is used for an electron pair entering the ubiquinone pool while bypassing Complex I, as in succinate oxidation through Complex II.
+    now : About 1.5 ATP is the estimated yield per electron pair that enters the ubiquinone pool while bypassing Complex I, as occurs during succinate oxidation by Complex II.
+    kept: the following enzyme-bound sentence, options B and D feedback, the stem, all options, the main explanation and all three points
+
+  Q45 chem-346, answer B (question)
+    Stem replaced to remove xanthine, which had named the answer inside the question.
+    was : Which complete fused heterocyclic ring system underlies caffeine's xanthine structure?
+    now : Which complete fused heterocyclic ring system is the structural basis of caffeine?
+    kept: all four choices, all headings, the whole explanation and all three educational points
+
+  Records changed        : 5; the other 55 items in the pack are byte-identical
+  Stems changed          : Q2, Q45
+  Option texts changed   : Q22 A, Q22 C, Q22 D, with their headings synchronized
+  Answer letters and ids : 0 moved
+  Educational points     : 210; feedback paragraphs 180; tables/Bottom Lines 0/0
+  Q45's option B still reads 'Purine (xanthine)'. The brief asked for the stem only, so the
+  parenthetical stays; what is removed is the stem naming xanthine before the student answers.
+  Coverage unchanged     : still 359 of 485 chemistry reviewed, 126 remaining
+  Deviations             : none
+
 ==============================================================================
 
 Q1  [chem-302]  correct answer: B
@@ -99,7 +148,7 @@ Key Educational Points:
 
 Q2  [chem-303]  correct answer: B
 ------------------------------------------------------------------------------
-STEM: Meso-tartaric acid has two stereocenters but is optically inactive. Which feature explains its overall achirality?
+STEM: Meso-tartaric acid molecules are achiral despite having two stereocenters because they:
 
   A. Have no chiral centers at all
   B. Possess an internal plane of symmetry   <= key
@@ -283,7 +332,7 @@ STEM: The α and β anomers of D-glucose differ in the configuration at:
 
 EXPLANATION:
 Correct Answer: C. C-1 (the anomeric carbon)
-When glucose cyclizes to form the pyranose ring, the C1 aldehyde carbon becomes a new stereocenter called the anomeric carbon. In the usual Haworth drawing of D-glucopyranose, the α-OH is down and trans to the C6 CH₂OH group; the β-OH is up and cis to it. In the preferred ⁴C₁ chair, these hydroxyls are axial and equatorial, respectively; a chair flip exchanges axial and equatorial positions without changing α into β. This difference underlies mutarotation.
+When glucose cyclizes to form the pyranose ring, the C1 aldehyde carbon becomes a new stereocenter called the anomeric carbon. In the usual Haworth drawing of D-glucopyranose, the α-OH is down and trans to the C6 CH₂OH group; the β-OH is up and cis to it. In the preferred ⁴C₁ chair, these hydroxyls are axial and equatorial, respectively; a chair flip exchanges axial and equatorial positions without changing α into β. Mutarotation involves ring opening and reclosing that interconverts the α and β anomers.
 Why the other choices are wrong:
 A. C-2: C-2 is the carbon whose configuration distinguishes epimers like glucose and mannose (they differ only at C-2). The anomeric carbon in glucose is C-1, which is the carbon that forms a new stereocenter when the open-chain form cyclizes into the ring form.
 B. C-4: C-4 configuration distinguishes glucose from galactose (they are C-4 epimers). Anomers specifically differ at the anomeric carbon (C-1 in aldoses like glucose), which is the hemiacetal carbon formed during ring closure.
@@ -589,18 +638,18 @@ Q22  [chem-323]  correct answer: B
 ------------------------------------------------------------------------------
 STEM: Why is a high intake of industrially produced trans fats a cardiovascular concern?
 
-  A. Are shorter than natural fats
+  A. They are shorter than natural fats
   B. They raise LDL cholesterol and increase cardiovascular risk   <= key
-  C. Cannot be metabolized at all
-  D. Contain more calories than cis fats
+  C. They cannot be metabolized at all
+  D. They contain more calories than cis fats
 
 EXPLANATION:
 Correct Answer: B. They raise LDL cholesterol and increase cardiovascular risk
 Industrially produced trans fats raise LDL cholesterol and increase cardiovascular risk. Partial hydrogenation of oils has been an important source. Trans double bonds have a different geometry from cis bonds, but their health effects should not be explained simply as tighter chain packing. Small amounts of trans fats also occur naturally in ruminant meat and dairy products.
 Why the other choices are wrong:
-A. Are shorter than natural fats: Trans describes the arrangement around a double bond, not a shorter chain. Cis and trans fatty acids can have the same carbon number and molecular formula.
-C. Cannot be metabolized at all: Trans fatty acids can be absorbed and metabolized. Their cardiovascular risk does not mean that the body is unable to process them.
-D. Contain more calories than cis fats: The concern is not an extra calorie content unique to trans fats. Like other dietary fats, they supply approximately 9 kcal per gram; their adverse effects on blood lipids are a separate issue.
+A. They are shorter than natural fats: Trans describes the arrangement around a double bond, not a shorter chain. Cis and trans fatty acids can have the same carbon number and molecular formula.
+C. They cannot be metabolized at all: Trans fatty acids can be absorbed and metabolized. Their cardiovascular risk does not mean that the body is unable to process them.
+D. They contain more calories than cis fats: The concern is not an extra calorie content unique to trans fats. Like other dietary fats, they supply approximately 9 kcal per gram; their adverse effects on blood lipids are a separate issue.
 Key Educational Points:
   - Cis/trans describes double-bond geometry, not carbon-chain length or calorie content.
   - Partial hydrogenation can generate industrial trans fats; some trans fats also occur naturally.
@@ -736,7 +785,7 @@ EXPLANATION:
 Correct Answer: C. 2.5
 The usual estimate is about 2.5 ATP per mitochondrial NADH. Electron transfer through Complexes I, III and IV supports proton pumping, and ATP synthase uses the resulting gradient. The value is an approximate yield used for calculations, not an exact output in every cell or condition.
 Why the other choices are wrong:
-A. 1.5: About 1.5 ATP is used for an electron pair entering the ubiquinone pool while bypassing Complex I, as in succinate oxidation through Complex II. Its FAD is enzyme-bound; a free FADH₂ molecule does not enter Complex II.
+A. 1.5: About 1.5 ATP is the estimated yield per electron pair that enters the ubiquinone pool while bypassing Complex I, as occurs during succinate oxidation by Complex II. Its FAD is enzyme-bound; a free FADH₂ molecule does not enter Complex II.
 B. 2: Two ATP is not the usual estimate for mitochondrial NADH entering through Complex I. The standard calculation uses approximately 2.5 ATP, while recognizing that actual yields depend on coupling and cellular conditions.
 D. 3: Three ATP per NADH is an older textbook accounting value. The convention specified here uses approximately 2.5, so three is not the best answer for this question.
 Key Educational Points:
@@ -1116,7 +1165,7 @@ Key Educational Points:
 
 Q45  [chem-346]  correct answer: B
 ------------------------------------------------------------------------------
-STEM: Which complete fused heterocyclic ring system underlies caffeine's xanthine structure?
+STEM: Which complete fused heterocyclic ring system is the structural basis of caffeine?
 
   A. Pyrimidine
   B. Purine (xanthine)   <= key

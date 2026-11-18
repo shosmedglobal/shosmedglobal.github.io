@@ -1,0 +1,145 @@
+{
+  "_comment": [
+    "Baseline for the 18 November 2026 chemistry batch 6 follow-up.",
+    "hashes: every one of the 60 pack records as it stood AFTER the batch 6 pass",
+    "and BEFORE this follow-up, so the suite can prove that exactly five records",
+    "moved and the other 55 are byte-identical.",
+    "records: the full pre-follow-up text of the five records the follow-up edits,",
+    "so each \"the superseded wording is gone\" check is paired with a real check",
+    "that the wording was there to begin with."
+  ],
+  "hashes": {
+    "Q1": "d8340b313955c094",
+    "Q2": "796b56714bd536d1",
+    "Q3": "78ee07306ffb01fd",
+    "Q4": "a73a933670d3f124",
+    "Q5": "479aaa4f938256f6",
+    "Q6": "f5cd1b87cba507d0",
+    "Q7": "4d3f5ec2c3864e7d",
+    "Q8": "54aa9a06504f6d35",
+    "Q9": "77d461d8a9b11c4b",
+    "Q10": "53537eedc3a5f4bf",
+    "Q11": "b7581391e1692fc9",
+    "Q12": "d3ea25616a04eae8",
+    "Q13": "72d470bfacd7dcf4",
+    "Q14": "b85d55d32222a3f0",
+    "Q15": "06da75dd88fa0aef",
+    "Q16": "0d33a2578ef28d46",
+    "Q17": "5cdf06853aff4f6c",
+    "Q18": "857c9f4ddc98ec33",
+    "Q19": "92b0e9422dfc5a8a",
+    "Q20": "44f94c9ba18bd448",
+    "Q21": "59493ec454c086db",
+    "Q22": "6c0d50b837f3b7b5",
+    "Q23": "ef0e10f5ae14e0b4",
+    "Q24": "e510d3500831d917",
+    "Q25": "bfc801f5212f65cb",
+    "Q26": "80005a3a7e95ecaf",
+    "Q27": "4f30563235023613",
+    "Q28": "962300c9c3718e6f",
+    "Q29": "d4196e1b8f7afbaa",
+    "Q30": "4d1db46ac35db2c4",
+    "Q31": "decafbd95cbd1bf4",
+    "Q32": "81b75c67377e3fb0",
+    "Q33": "ff2df790ccbcc724",
+    "Q34": "9b6fb9103b65bdbf",
+    "Q35": "7b9fd29f0cfa3a01",
+    "Q36": "92c75294320e03f0",
+    "Q37": "a136d01ef4d3d2ab",
+    "Q38": "b03cceb504a142ef",
+    "Q39": "60c681fd5b321988",
+    "Q40": "f30316ee4fa41ab6",
+    "Q41": "3a81027aae1b351a",
+    "Q42": "fd8aadee0a00c62f",
+    "Q43": "c1152ebadd25d546",
+    "Q44": "912ff42514ab354e",
+    "Q45": "19dbd336811bb0d6",
+    "Q46": "db75397ca68d4a20",
+    "Q47": "d345015ad5b089b1",
+    "Q48": "6ab118a0d9b0c52d",
+    "Q49": "f93030b5407a9492",
+    "Q50": "94c117bb376a6b5f",
+    "Q51": "af51d045ff97d8d7",
+    "Q52": "cc0c071df8fffbaa",
+    "Q53": "d5d53678e871077c",
+    "Q54": "a3ab96b8655b2ce2",
+    "Q55": "59fc1be3ea634822",
+    "Q56": "0f0c56658503378d",
+    "Q57": "2beb6fb42d8a1ae6",
+    "Q58": "94dffce2afd9de21",
+    "Q59": "f27c3a3d5641d52f",
+    "Q60": "9fbaebd0c8849c25"
+  },
+  "records": {
+    "Q2": {
+      "id": "chem-303",
+      "subject": "chemistry",
+      "topic": "Isomerism",
+      "question": "Meso-tartaric acid has two stereocenters but is optically inactive. Which feature explains its overall achirality?",
+      "options": [
+        "Have no chiral centers at all",
+        "Possess an internal plane of symmetry",
+        "Are racemic mixtures",
+        "Contain only one chiral center"
+      ],
+      "correct": 1,
+      "explanation": "<h4>Correct Answer: B. Possess an internal plane of symmetry</h4><p>Meso-tartaric acid has an internal mirror plane in an appropriate conformation, making the molecule superimposable on its mirror image. It is therefore achiral despite having two stereocenters. A meso compound is a single achiral substance, whereas a racemate is an equal mixture of two different enantiomers.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Have no chiral centers at all:</strong> Meso-tartaric acid does have two stereocenters. The presence of stereocenters alone does not establish that the whole molecule is chiral; its overall symmetry also matters.</p>\n<p><strong>C. Are racemic mixtures:</strong> A racemate contains equal amounts of two enantiomers whose optical rotations cancel in the sample. Meso-tartaric acid is one achiral compound, so its lack of optical rotation does not require an enantiomer mixture.</p>\n<p><strong>D. Contain only one chiral center:</strong> Meso-tartaric acid has two stereocenters, not one. Its achirality follows from the relationship between the two halves of the molecule, rather than from an absence of stereocenters.</p><h4>Key Educational Points:</h4><ul><li>A meso compound has stereocenters but is achiral as a whole.</li><li>Meso-tartaric acid illustrates how an internal mirror plane can make a structure superimposable on its mirror image.</li><li>A meso substance and a racemate are different: one is achiral, while the other contains two enantiomers in equal amounts.</li><li>Separating a racemate can give its individual enantiomers; a meso compound cannot be separated into an enantiomeric pair.</li><li>For a structure whose only stereogenic features are n tetrahedral centers, 2ⁿ is an upper bound; symmetry can reduce the number of distinct stereoisomers.</li></ul>"
+    },
+    "Q9": {
+      "id": "chem-310",
+      "subject": "chemistry",
+      "topic": "Saccharides",
+      "question": "The α and β anomers of D-glucose differ in the configuration at:",
+      "options": [
+        "C-2",
+        "C-4",
+        "C-1 (the anomeric carbon)",
+        "C-6"
+      ],
+      "correct": 2,
+      "explanation": "<h4>Correct Answer: C. C-1 (the anomeric carbon)</h4><p>When glucose cyclizes to form the pyranose ring, the C1 aldehyde carbon becomes a new stereocenter called the anomeric carbon. In the usual Haworth drawing of D-glucopyranose, the α-OH is down and trans to the C6 CH₂OH group; the β-OH is up and cis to it. In the preferred ⁴C₁ chair, these hydroxyls are axial and equatorial, respectively; a chair flip exchanges axial and equatorial positions without changing α into β. This difference underlies mutarotation.</p><h4>Why the other choices are wrong:</h4><p><strong>A. C-2:</strong> C-2 is the carbon whose configuration distinguishes epimers like glucose and mannose (they differ only at C-2). The anomeric carbon in glucose is C-1, which is the carbon that forms a new stereocenter when the open-chain form cyclizes into the ring form.</p>\n<p><strong>B. C-4:</strong> C-4 configuration distinguishes glucose from galactose (they are C-4 epimers). Anomers specifically differ at the anomeric carbon (C-1 in aldoses like glucose), which is the hemiacetal carbon formed during ring closure.</p>\n<p><strong>D. C-6:</strong> C-6 is the terminal carbon bearing a –CH₂OH group in glucose; it is not a stereocenter in the ring form and plays no role in anomer formation. The anomers differ at C1: their OH groups are trans or cis to the C6 CH₂OH group, respectively, in α- and β-D-glucopyranose.</p><h4>Key Educational Points:</h4><ul><li>Cyclisation turns the C1 carbonyl carbon into a new stereocentre, known as the anomeric carbon.</li><li>α and β anomers differ only in the configuration at that one carbon.</li><li>In the preferred ⁴C₁ chair of D-glucopyranose, the β-anomer's OH is equatorial; axial/equatorial is a conformation label, not the definition of α/β.</li><li>Anomers are diastereomers rather than enantiomers, because they differ at only one of several stereocentres.</li><li>Humans digest starch's α-linked glucose chains but lack cellulase for the β(1→4) linkages in cellulose.</li></ul>"
+    },
+    "Q22": {
+      "id": "chem-323",
+      "subject": "chemistry",
+      "topic": "Lipids",
+      "question": "Why is a high intake of industrially produced trans fats a cardiovascular concern?",
+      "options": [
+        "Are shorter than natural fats",
+        "They raise LDL cholesterol and increase cardiovascular risk",
+        "Cannot be metabolized at all",
+        "Contain more calories than cis fats"
+      ],
+      "correct": 1,
+      "explanation": "<h4>Correct Answer: B. They raise LDL cholesterol and increase cardiovascular risk</h4><p>Industrially produced trans fats raise LDL cholesterol and increase cardiovascular risk. Partial hydrogenation of oils has been an important source. Trans double bonds have a different geometry from cis bonds, but their health effects should not be explained simply as tighter chain packing. Small amounts of trans fats also occur naturally in ruminant meat and dairy products.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Are shorter than natural fats:</strong> Trans describes the arrangement around a double bond, not a shorter chain. Cis and trans fatty acids can have the same carbon number and molecular formula.</p>\n<p><strong>C. Cannot be metabolized at all:</strong> Trans fatty acids can be absorbed and metabolized. Their cardiovascular risk does not mean that the body is unable to process them.</p>\n<p><strong>D. Contain more calories than cis fats:</strong> The concern is not an extra calorie content unique to trans fats. Like other dietary fats, they supply approximately 9 kcal per gram; their adverse effects on blood lipids are a separate issue.</p><h4>Key Educational Points:</h4><ul><li>Cis/trans describes double-bond geometry, not carbon-chain length or calorie content.</li><li>Partial hydrogenation can generate industrial trans fats; some trans fats also occur naturally.</li><li>Raising LDL cholesterol and cardiovascular risk is the key health lesson; molecular packing alone is not a sufficient explanation.</li></ul>"
+    },
+    "Q28": {
+      "id": "chem-329",
+      "subject": "chemistry",
+      "topic": "Metabolic Biochemistry",
+      "question": "Using the usual approximate ATP accounting for human mitochondria, how many ATP equivalents are obtained when one mitochondrial NADH supplies electrons through Complex I?",
+      "options": [
+        "1.5",
+        "2",
+        "2.5",
+        "3"
+      ],
+      "correct": 2,
+      "explanation": "<h4>Correct Answer: C. 2.5</h4><p>The usual estimate is about 2.5 ATP per mitochondrial NADH. Electron transfer through Complexes I, III and IV supports proton pumping, and ATP synthase uses the resulting gradient. The value is an approximate yield used for calculations, not an exact output in every cell or condition.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1.5:</strong> About 1.5 ATP is used for an electron pair entering the ubiquinone pool while bypassing Complex I, as in succinate oxidation through Complex II. Its FAD is enzyme-bound; a free FADH₂ molecule does not enter Complex II.</p>\n<p><strong>B. 2:</strong> Two ATP is not the usual estimate for mitochondrial NADH entering through Complex I. The standard calculation uses approximately 2.5 ATP, while recognizing that actual yields depend on coupling and cellular conditions.</p>\n<p><strong>D. 3:</strong> Three ATP per NADH is an older textbook accounting value. The convention specified here uses approximately 2.5, so three is not the best answer for this question.</p><h4>Key Educational Points:</h4><ul><li>Mitochondrial NADH supplies electrons to Complex I.</li><li>The usual estimates are about 2.5 ATP for NADH and 1.5 for an electron pair that bypasses Complex I.</li><li>These are approximate energy-accounting values, not guaranteed fixed yields.</li></ul>"
+    },
+    "Q45": {
+      "id": "chem-346",
+      "subject": "chemistry",
+      "topic": "Heterocyclic Compounds",
+      "question": "Which complete fused heterocyclic ring system underlies caffeine's xanthine structure?",
+      "options": [
+        "Pyrimidine",
+        "Purine (xanthine)",
+        "Indole",
+        "Piperidine"
+      ],
+      "correct": 1,
+      "explanation": "<h4>Correct Answer: B. Purine (xanthine)</h4><p>Caffeine (1,3,7-trimethylxanthine) is a methylated derivative of xanthine, which itself is a purine derivative. The purine ring system consists of fused pyrimidine and imidazole rings. Caffeine acts as a central nervous system stimulant by blocking adenosine receptors. Other xanthine derivatives include theobromine (in chocolate) and theophylline (in tea).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyrimidine:</strong> A pyrimidine component is present within the fused system, but it does not name the whole structure. Caffeine is a methylated xanthine, a derivative of the purine ring system.</p>\n<p><strong>C. Indole:</strong> Indole (benzene fused to pyrrole) is the ring system found in tryptophan and serotonin, not in caffeine. Caffeine is built on the purine (xanthine) ring system. Other biologically important xanthine derivatives include theobromine (in chocolate, lacking one methyl group) and theophylline (in tea).</p>\n<p><strong>D. Piperidine:</strong> Piperidine is a saturated six-membered ring with one nitrogen. Caffeine instead has a fused nitrogen-containing xanthine structure, so piperidine does not describe its ring system.</p><h4>Key Educational Points:</h4><ul><li>Caffeine is 1,3,7-trimethylxanthine.</li><li>Xanthine belongs to the purine family, with a fused two-ring framework.</li><li>A ring within a fused structure is not necessarily the name of the complete ring system.</li></ul>"
+    }
+  }
+}

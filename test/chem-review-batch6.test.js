@@ -137,8 +137,12 @@ for (const Q of QS) if (!STEMS.includes(Q)) ok(pre(Q).question === rec(Q).questi
 
 const optsNow = [];
 for (const Q of QS) pre(Q).options.forEach((o, j) => { if (o !== rec(Q).options[j]) optsNow.push(Q + ' ' + L[j]); });
-ok(JSON.stringify(optsNow) === JSON.stringify(['Q22 B', 'Q44 A', 'Q50 B']),
-  'exactly the three listed option texts changed (got ' + optsNow.join(', ') + ')');
+/* The batch 6 pass itself replaced three option texts. The 18 November 2026
+   follow-up then made Q22's A, C and D parallel with its B, so measured against
+   the pre-batch-6 fixture all four of Q22's options now differ. Section 12
+   checks the follow-up's own three option edits against their own baseline. */
+ok(JSON.stringify(optsNow) === JSON.stringify(['Q22 A', 'Q22 B', 'Q22 C', 'Q22 D', 'Q44 A', 'Q50 B']),
+  'exactly the batch 6 option texts plus the follow-up Q22 set changed (got ' + optsNow.join(', ') + ')');
 for (const Q of Object.keys(idmap.option_changes)) {
   const c = idmap.option_changes[Q], j = L.indexOf(c.letter);
   ok(pre(Q).options[j] === c.from, Q + ' ' + c.letter + ': the original text was ' + JSON.stringify(c.from));
@@ -190,7 +194,10 @@ const REPAIRS = [
   ['Q2', 'The optical rotation from one chiral center is exactly cancelled by the other.', 'making the molecule superimposable on its mirror image'],
   ['Q2', 'the rotation caused by one chiral center is exactly canceled by its mirror-image counterpart within the same molecule', 'its overall symmetry also matters'],
   ['Q2', 'meso = one molecule canceling itself', 'Meso-tartaric acid is one achiral compound'],
-  ['Q2', 'Meso compounds are optically inactive despite having chiral centers because they:', 'Which feature explains its overall achirality?'],
+  /* the batch 6 stem read "Which feature explains its overall achirality?"; the
+     18 November 2026 follow-up replaced it again so the plural option fragments
+     fit, so the anchor here is the wording that survives both passes */
+  ['Q2', 'Meso compounds are optically inactive despite having chiral centers because they:', 'achiral despite having two stereocenters'],
   // Q3 CIP isotopes
   ['Q3', 'substituent priority is determined by:', 'what determines their initial priority'],
   ['Q3', 'If there is a tie, you move outward along the chain to the next atoms until a difference is found.', 'the higher mass number takes priority, such as ²H over ¹H'],
@@ -697,6 +704,161 @@ ok(JSON.stringify(idmap.scope.major_explanatory_rewrites) === JSON.stringify(['Q
   'the id map flags Q2, Q22 and Q32 as the major explanatory rewrites');
 ok(JSON.stringify(idmap.scope.fairness_repairs) === JSON.stringify(['Q35', 'Q50']),
   'the id map flags Q35 and Q50 as the fairness repairs');
+
+/* ------------------------------------------------------------------ */
+section('12. the 18 November 2026 follow-up: five records only');
+
+/* This follow-up landed after the batch 6 pass, so the batch 6 before-fixture is
+   the wrong baseline for it: that fixture predates both passes. The follow-up
+   fixture holds the post-batch-6, pre-follow-up state - a hash for each of the
+   60 pack records, and the full text of the five the follow-up edits - so the
+   "exactly five moved" claim and every "the superseded wording is gone" claim
+   are both checked against a real before-state. */
+const fuBefore = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch6-followup-before.json'), 'utf8'));
+const FU = ['Q2', 'Q9', 'Q22', 'Q28', 'Q45'];
+const FU_ID = { Q2: 'chem-303', Q9: 'chem-310', Q22: 'chem-323', Q28: 'chem-329', Q45: 'chem-346' };
+const FU_KEY = { Q2: 'B', Q9: 'C', Q22: 'B', Q28: 'C', Q45: 'B' };
+
+ok(Object.keys(fuBefore.hashes).length === 60, 'the follow-up baseline covers all 60 pack records');
+ok(Object.keys(fuBefore.records).length === 5, 'the follow-up baseline stores the five full records');
+const fuPre = Q => fuBefore.records[Q];
+
+const fuMoved = QS.filter(Q => hash(rec(Q)) !== fuBefore.hashes[Q]);
+ok(JSON.stringify(fuMoved) === JSON.stringify(FU),
+  'exactly Q2, Q9, Q22, Q28 and Q45 moved in the follow-up (got ' + fuMoved.join(', ') + ')');
+for (const Q of QS) if (!FU.includes(Q))
+  ok(hash(rec(Q)) === fuBefore.hashes[Q], Q + ': byte-identical through the follow-up');
+
+for (const Q of FU) {
+  ok(MAP[Q] === FU_ID[Q], Q + ': the follow-up brief id ' + FU_ID[Q] + ' is the verified batch 6 id');
+  ok(L[rec(Q).correct] === FU_KEY[Q], Q + ': the answer letter is still ' + FU_KEY[Q]);
+  ok(rec(Q).id === fuPre(Q).id && rec(Q).topic === fuPre(Q).topic, Q + ': id and topic unmoved');
+}
+
+/* only Q2 and Q45 change stems; only Q22 changes option texts */
+const fuStems = FU.filter(Q => rec(Q).question !== fuPre(Q).question);
+ok(JSON.stringify(fuStems) === JSON.stringify(['Q2', 'Q45']),
+  'only Q2 and Q45 changed stems in the follow-up (got ' + fuStems.join(', ') + ')');
+const fuOpts = [];
+for (const Q of FU) fuPre(Q).options.forEach((o, j) => { if (o !== rec(Q).options[j]) fuOpts.push(Q + ' ' + L[j]); });
+ok(JSON.stringify(fuOpts) === JSON.stringify(['Q22 A', 'Q22 C', 'Q22 D']),
+  'only Q22 A, C and D changed option texts in the follow-up (got ' + fuOpts.join(', ') + ')');
+
+/* 1. Q2 chem-303: stem only */
+ok(rec('Q2').question === 'Meso-tartaric acid molecules are achiral despite having two stereocenters because they:',
+  'Q2: the stem is the follow-up wording');
+ok(fuPre('Q2').question.includes('Which feature explains its overall achirality?'),
+  'Q2 non-vacuity: the superseded stem really was the interim wording');
+ok(!rec('Q2').question.includes('Which feature explains'), 'Q2: the interim stem question form is gone');
+ok(rec('Q2').explanation === fuPre('Q2').explanation, 'Q2: the explanation is byte-identical');
+ok(JSON.stringify(rec('Q2').options) === JSON.stringify(fuPre('Q2').options), 'Q2: all four options are byte-identical');
+/* the point of the change: the plural option fragments now read off the stem */
+for (const o of rec('Q2').options) ok(/^(Have|Possess|Are|Contain) /.test(o), 'Q2: option ' + JSON.stringify(o) + ' is a plural fragment the new stem governs');
+ok(/because they:$/.test(rec('Q2').question), 'Q2: the stem ends in the plural lead-in the options need');
+
+/* 2. Q9 chem-310: one sentence of the main explanation */
+ok(rec('Q9').explanation.includes('Mutarotation involves ring opening and reclosing that interconverts the α and β anomers.'),
+  'Q9: the replacement mutarotation sentence is present');
+ok(fuPre('Q9').explanation.includes('This difference underlies mutarotation.'),
+  'Q9 non-vacuity: the terse sentence really was there before');
+ok(!rec('Q9').explanation.includes('This difference underlies mutarotation.'), 'Q9: the terse sentence is gone');
+ok(mainOf(rec('Q9').explanation).includes('Mutarotation involves ring opening'),
+  'Q9: the new sentence sits in the main explanation, not elsewhere');
+ok(rec('Q9').explanation.includes('a chair flip exchanges axial and equatorial positions without changing α into β'),
+  'Q9: the preceding chair-flip explanation is preserved');
+ok(rec('Q9').question === fuPre('Q9').question &&
+   JSON.stringify(rec('Q9').options) === JSON.stringify(fuPre('Q9').options),
+  'Q9: stem and options are byte-identical');
+ok(fbOf(rec('Q9').explanation) === fbOf(fuPre('Q9').explanation), 'Q9: every feedback body is byte-identical');
+ok(pointLines(rec('Q9').explanation).join('|') === pointLines(fuPre('Q9').explanation).join('|'), 'Q9: the educational points are byte-identical');
+ok((mainOf(rec('Q9').explanation).match(/Mutarotation|mutarotation/g) || []).length === 1, 'Q9: mutarotation is explained once, not twice');
+
+/* 3. Q22 chem-323: options A, C and D made parallel with B, headings synchronized */
+const q22 = rec('Q22');
+ok(q22.options[0] === 'They are shorter than natural fats', 'Q22 A: the parallel option text');
+ok(q22.options[2] === 'They cannot be metabolized at all', 'Q22 C: the parallel option text');
+ok(q22.options[3] === 'They contain more calories than cis fats', 'Q22 D: the parallel option text');
+ok(q22.options[1] === 'They raise LDL cholesterol and increase cardiovascular risk' &&
+   q22.options[1] === fuPre('Q22').options[1], 'Q22 B: preserved byte for byte');
+for (const [j, was] of [[0, 'Are shorter than natural fats'], [2, 'Cannot be metabolized at all'], [3, 'Contain more calories than cis fats']])
+  ok(fuPre('Q22').options[j] === was, 'Q22 non-vacuity: option ' + L[j] + ' really read ' + JSON.stringify(was));
+for (const o of q22.options) ok(/^They /.test(o), 'Q22: option ' + JSON.stringify(o) + ' now opens in the same grammatical form as the key');
+/* the headings must have moved with them, which section 7 then re-checks bank-wide */
+for (const [letter, text] of [['A', 'They are shorter than natural fats'], ['C', 'They cannot be metabolized at all'], ['D', 'They contain more calories than cis fats']])
+  ok(q22.explanation.includes('<p><strong>' + letter + '. ' + text + ':</strong>'),
+    'Q22: the ' + letter + ' distractor heading was synchronized');
+ok(!/<strong>A\. Are shorter|<strong>C\. Cannot be metabolized|<strong>D\. Contain more calories/.test(q22.explanation),
+  'Q22: no un-synchronized heading is left behind');
+ok(q22.question === fuPre('Q22').question, 'Q22: the stem is byte-identical');
+ok(mainOf(q22.explanation) === mainOf(fuPre('Q22').explanation), 'Q22: the main explanation is byte-identical');
+ok(pointLines(q22.explanation).join('|') === pointLines(fuPre('Q22').explanation).join('|'), 'Q22: the educational points are byte-identical');
+/* the feedback BODIES, with only the headings differing */
+const stripHeads = s => s.replace(/<strong>[ABCD]\. [\s\S]*?:<\/strong>/g, '<H>');
+ok(stripHeads(fbOf(q22.explanation)) === stripHeads(fbOf(fuPre('Q22').explanation)),
+  'Q22: every feedback body outside the headings is byte-identical');
+
+/* 4. Q28 chem-329: the first sentence of option A's feedback */
+const fbA28 = (rec('Q28').explanation.match(/<p><strong>A\. 1\.5:<\/strong>[\s\S]*?<\/p>/) || [''])[0];
+ok(fbA28.includes('About 1.5 ATP is the estimated yield per electron pair that enters the ubiquinone pool while bypassing Complex I, as occurs during succinate oxidation by Complex II.'),
+  'Q28 A: the replacement first sentence is present');
+ok(fuPre('Q28').explanation.includes('About 1.5 ATP is used for an electron pair entering the ubiquinone pool while bypassing Complex I, as in succinate oxidation through Complex II.'),
+  'Q28 non-vacuity: the "is used for" wording really was there before');
+ok(!rec('Q28').explanation.includes('About 1.5 ATP is used for an electron pair'), 'Q28 A: the "is used for" wording is gone');
+ok(fbA28.includes('Its FAD is enzyme-bound; a free FADH₂ molecule does not enter Complex II.'),
+  'Q28 A: the following enzyme-bound sentence is preserved');
+ok(fbA28.split('. ').length === 3, 'Q28 A: the paragraph is still two sentences (got ' + fbA28.split('. ').length + ' segments)');
+ok(rec('Q28').question === fuPre('Q28').question &&
+   JSON.stringify(rec('Q28').options) === JSON.stringify(fuPre('Q28').options),
+  'Q28: stem and options are byte-identical');
+ok(mainOf(rec('Q28').explanation) === mainOf(fuPre('Q28').explanation), 'Q28: the main explanation is byte-identical');
+ok(pointLines(rec('Q28').explanation).join('|') === pointLines(fuPre('Q28').explanation).join('|'), 'Q28: the educational points are byte-identical');
+for (const letter of ['B', 'D']) {
+  const now = (rec('Q28').explanation.match(new RegExp('<p><strong>' + letter + '\\. [\\s\\S]*?</p>')) || [''])[0];
+  const was = (fuPre('Q28').explanation.match(new RegExp('<p><strong>' + letter + '\\. [\\s\\S]*?</p>')) || [''])[0];
+  ok(now === was && now.length > 0, 'Q28: option ' + letter + "'s feedback paragraph is byte-identical");
+}
+/* the yield numbers must not have drifted while the sentence was rephrased */
+ok(/about 2\.5 ATP per mitochondrial NADH/.test(rec('Q28').explanation), 'Q28: the 2.5 figure survives');
+ok((rec('Q28').explanation.match(/1\.5/g) || []).length === (fuPre('Q28').explanation.match(/1\.5/g) || []).length,
+  'Q28: the 1.5 figure appears the same number of times as before');
+
+/* 5. Q45 chem-346: stem only */
+ok(rec('Q45').question === 'Which complete fused heterocyclic ring system is the structural basis of caffeine?',
+  'Q45: the stem is the follow-up wording');
+ok(/xanthine/.test(fuPre('Q45').question), 'Q45 non-vacuity: the stem really did name xanthine before');
+ok(!/xanthine/.test(rec('Q45').question), 'Q45: xanthine no longer appears in the stem');
+ok(/^Which complete fused heterocyclic ring system/.test(rec('Q45').question), 'Q45: the complete-ring-system framing is kept');
+ok(JSON.stringify(rec('Q45').options) === JSON.stringify(fuPre('Q45').options), 'Q45: all four choices are byte-identical');
+ok(rec('Q45').options[1] === 'Purine (xanthine)', 'Q45: option B still names purine, with xanthine in parentheses');
+ok(rec('Q45').explanation === fuPre('Q45').explanation, 'Q45: the explanation is byte-identical');
+ok(/Caffeine \(1,3,7-trimethylxanthine\)/.test(rec('Q45').explanation), 'Q45: the explanation still identifies caffeine as a trimethylxanthine');
+
+/* pack-wide invariants the follow-up had to preserve */
+let fuPoints = 0, fuFb = 0, fuTables = 0, fuBottoms = 0;
+for (const Q of QS) {
+  const e = rec(Q).explanation;
+  fuPoints += pointLines(e).length;
+  fuFb += (fbOf(e).match(/<p[ >]/g) || []).length;
+  fuTables += (e.match(/<table/g) || []).length;
+  fuBottoms += (e.match(/Bottom Line/g) || []).length;
+}
+ok(fuPoints === 210, 'the follow-up preserves 210 educational points (got ' + fuPoints + ')');
+ok(fuFb === 180, 'the follow-up preserves 180 feedback paragraphs (got ' + fuFb + ')');
+ok(fuTables === 0 && fuBottoms === 0, 'the follow-up adds no table and no Bottom Line');
+const fuKeys = QS.map(Q => L[rec(Q).correct]).join('');
+ok(fuKeys === KEYS, 'every answer letter in the pack is unchanged by the follow-up');
+for (const Q of FU) {
+  const curly = t => (t.match(/[‘’“”]/g) || []).length;
+  ok(curly(rec(Q).explanation) <= curly(fuPre(Q).explanation), Q + ': the curly-quote count did not rise');
+  ok(!/—/.test(rec(Q).question + rec(Q).explanation + rec(Q).options.join('')), Q + ': no em dash');
+  ok(!/�/.test(rec(Q).question + rec(Q).explanation + rec(Q).options.join('')), Q + ': no replacement character');
+}
+ok(idmap.followup_corrections && idmap.followup_corrections.items.length === 5,
+  'the id map records the five follow-up corrections');
+ok(idmap.followup_corrections.coverage_unchanged === true &&
+   idmap.coverage.reviewed_after_this_batch === 359,
+  'the follow-up adds no newly reviewed id: coverage stays 359 of 485');
+ok(idmap.followup_corrections.deviations.length === 0, 'the follow-up records no deviation');
 
 console.log('\n' + n + ' checks, ' + bad + ' failure(s)');
 if (bad) process.exit(1);

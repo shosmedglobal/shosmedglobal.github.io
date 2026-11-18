@@ -51,21 +51,74 @@
   "review_file": "SHOSMED_LF3_Chemistry_Batch6_Review.txt",
   "implemented": "2026-11-18",
   "map": {
-    "Q1": "chem-302", "Q2": "chem-303", "Q3": "chem-304", "Q4": "chem-305", "Q5": "chem-306",
-    "Q6": "chem-307", "Q7": "chem-308", "Q8": "chem-309", "Q9": "chem-310", "Q10": "chem-311",
-    "Q11": "chem-312", "Q12": "chem-313", "Q13": "chem-314", "Q14": "chem-315", "Q15": "chem-316",
-    "Q16": "chem-317", "Q17": "chem-318", "Q18": "chem-319", "Q19": "chem-320", "Q20": "chem-321",
-    "Q21": "chem-322", "Q22": "chem-323", "Q23": "chem-324", "Q24": "chem-325", "Q25": "chem-326",
-    "Q26": "chem-327", "Q27": "chem-328", "Q28": "chem-329", "Q29": "chem-330", "Q30": "chem-331",
-    "Q31": "chem-332", "Q32": "chem-333", "Q33": "chem-334", "Q34": "chem-335", "Q35": "chem-336",
-    "Q36": "chem-337", "Q37": "chem-338", "Q38": "chem-339", "Q39": "chem-340", "Q40": "chem-341",
-    "Q41": "chem-342", "Q42": "chem-343", "Q43": "chem-344", "Q44": "chem-345", "Q45": "chem-346",
-    "Q46": "chem-347", "Q47": "chem-348", "Q48": "chem-349", "Q49": "chem-350", "Q50": "chem-351",
-    "Q51": "chem-352", "Q52": "chem-353", "Q53": "chem-354", "Q54": "chem-355", "Q55": "chem-356",
-    "Q56": "chem-357", "Q57": "chem-358", "Q58": "chem-359", "Q59": "chem-360", "Q60": "chem-361"
+    "Q1": "chem-302",
+    "Q2": "chem-303",
+    "Q3": "chem-304",
+    "Q4": "chem-305",
+    "Q5": "chem-306",
+    "Q6": "chem-307",
+    "Q7": "chem-308",
+    "Q8": "chem-309",
+    "Q9": "chem-310",
+    "Q10": "chem-311",
+    "Q11": "chem-312",
+    "Q12": "chem-313",
+    "Q13": "chem-314",
+    "Q14": "chem-315",
+    "Q15": "chem-316",
+    "Q16": "chem-317",
+    "Q17": "chem-318",
+    "Q18": "chem-319",
+    "Q19": "chem-320",
+    "Q20": "chem-321",
+    "Q21": "chem-322",
+    "Q22": "chem-323",
+    "Q23": "chem-324",
+    "Q24": "chem-325",
+    "Q25": "chem-326",
+    "Q26": "chem-327",
+    "Q27": "chem-328",
+    "Q28": "chem-329",
+    "Q29": "chem-330",
+    "Q30": "chem-331",
+    "Q31": "chem-332",
+    "Q32": "chem-333",
+    "Q33": "chem-334",
+    "Q34": "chem-335",
+    "Q35": "chem-336",
+    "Q36": "chem-337",
+    "Q37": "chem-338",
+    "Q38": "chem-339",
+    "Q39": "chem-340",
+    "Q40": "chem-341",
+    "Q41": "chem-342",
+    "Q42": "chem-343",
+    "Q43": "chem-344",
+    "Q44": "chem-345",
+    "Q45": "chem-346",
+    "Q46": "chem-347",
+    "Q47": "chem-348",
+    "Q48": "chem-349",
+    "Q49": "chem-350",
+    "Q50": "chem-351",
+    "Q51": "chem-352",
+    "Q52": "chem-353",
+    "Q53": "chem-354",
+    "Q54": "chem-355",
+    "Q55": "chem-356",
+    "Q56": "chem-357",
+    "Q57": "chem-358",
+    "Q58": "chem-359",
+    "Q59": "chem-360",
+    "Q60": "chem-361"
   },
   "asserted_key_block": "BBBBCBBDCBCBBBABCBCCBBBBCBBCBBCCBCCBBBBCCBBBBBBCBBBCBBCBCBBA",
-  "asserted_key_tally": { "A": 2, "B": 39, "C": 18, "D": 1 },
+  "asserted_key_tally": {
+    "A": 2,
+    "B": 39,
+    "C": 18,
+    "D": 1
+  },
   "verification": {
     "matched_by_full_content": "60/60, each to exactly one record",
     "ambiguous_signatures_in_bank": 0,
@@ -77,36 +130,138 @@
   },
   "scope": {
     "items_edited": 59,
-    "kept_byte_identical": ["Q7"],
-    "points_only": ["Q24", "Q47", "Q48", "Q52", "Q57"],
-    "major_explanatory_rewrites": ["Q2", "Q22", "Q32"],
-    "fairness_repairs": ["Q35", "Q50"],
+    "kept_byte_identical": [
+      "Q7"
+    ],
+    "points_only": [
+      "Q24",
+      "Q47",
+      "Q48",
+      "Q52",
+      "Q57"
+    ],
+    "major_explanatory_rewrites": [
+      "Q2",
+      "Q22",
+      "Q32"
+    ],
+    "fairness_repairs": [
+      "Q35",
+      "Q50"
+    ],
     "answer_letter_changes": 0,
     "id_changes": 0,
     "bottom_lines_added": 0,
     "tables_added": 0
   },
-  "stem_changes": ["Q2", "Q3", "Q15", "Q19", "Q22", "Q26", "Q27", "Q28", "Q32", "Q33", "Q35", "Q44", "Q45", "Q49", "Q50", "Q54", "Q55", "Q60"],
+  "stem_changes": [
+    "Q2",
+    "Q3",
+    "Q15",
+    "Q19",
+    "Q22",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q32",
+    "Q33",
+    "Q35",
+    "Q44",
+    "Q45",
+    "Q49",
+    "Q50",
+    "Q54",
+    "Q55",
+    "Q60"
+  ],
   "option_changes": {
-    "Q22": { "letter": "B", "from": "Behave more like saturated fats, increasing cardiovascular risk", "to": "They raise LDL cholesterol and increase cardiovascular risk" },
-    "Q44": { "letter": "A", "from": "C-1 (nitrogen)", "to": "N-1 (the ring nitrogen)" },
-    "Q50": { "letter": "B", "from": "Anti-periplanar (trans-diaxial)", "to": "Anti-periplanar" }
+    "Q22": {
+      "letter": "B",
+      "from": "Behave more like saturated fats, increasing cardiovascular risk",
+      "to": "They raise LDL cholesterol and increase cardiovascular risk"
+    },
+    "Q44": {
+      "letter": "A",
+      "from": "C-1 (nitrogen)",
+      "to": "N-1 (the ring nitrogen)"
+    },
+    "Q50": {
+      "letter": "B",
+      "from": "Anti-periplanar (trans-diaxial)",
+      "to": "Anti-periplanar"
+    }
   },
   "points": {
     "stock_blocks_before": 3,
     "stock_point_lines_before": 9,
-    "whole_block_replacements": ["Q2", "Q14", "Q16-Q60 (45 generic blocks)"],
+    "whole_block_replacements": [
+      "Q2",
+      "Q14",
+      "Q16-Q60 (45 generic blocks)"
+    ],
     "targeted_point_replacements": {
-      "Q1": [1, 3, 4], "Q3": [1, 2, 4], "Q4": [3, 4], "Q5": [2, 3, 4], "Q6": [5],
-      "Q8": [1, 2, 3], "Q9": [3, 5], "Q10": [4, 5], "Q11": [1, 4, 5], "Q12": [4, 5],
-      "Q13": [4], "Q15": [1, 2]
+      "Q1": [
+        1,
+        3,
+        4
+      ],
+      "Q3": [
+        1,
+        2,
+        4
+      ],
+      "Q4": [
+        3,
+        4
+      ],
+      "Q5": [
+        2,
+        3,
+        4
+      ],
+      "Q6": [
+        5
+      ],
+      "Q8": [
+        1,
+        2,
+        3
+      ],
+      "Q9": [
+        3,
+        5
+      ],
+      "Q10": [
+        4,
+        5
+      ],
+      "Q11": [
+        1,
+        4,
+        5
+      ],
+      "Q12": [
+        4,
+        5
+      ],
+      "Q13": [
+        4
+      ],
+      "Q15": [
+        1,
+        2
+      ]
     },
-    "blocks_unchanged": ["Q7"],
+    "blocks_unchanged": [
+      "Q7"
+    ],
     "total_before": 210,
     "total_after": 210
   },
   "structural_repairs": {
-    "Q28_missing_feedback_restored": ["B"],
+    "Q28_missing_feedback_restored": [
+      "B"
+    ],
     "Q32_malformed_paragraph_repaired": "chem-333 stored '<p><p><strong>A. 2 ATP:</strong>' (5 opens / 4 closes, nesting depth 2); repaired as part of Q32's rewrite",
     "Q32_option_B_feedback_was_misassigned": "its paragraph discussed 2 ATP instead of its own option, 12 ATP",
     "Q12_A_was_truncated": "ended mid-sentence at 'Enantiomers would differ at every stereocenter (d-glucose vs.'"
@@ -132,6 +287,113 @@
     "kept_unchanged_this_batch": 1,
     "still_unreviewed_chemistry": 126,
     "biology_unaffected": true,
-    "biology_still_unreviewed": ["bio-12", "bio-346", "bio-513", "bio-518", "bio-583"]
+    "biology_still_unreviewed": [
+      "bio-12",
+      "bio-346",
+      "bio-513",
+      "bio-518",
+      "bio-583"
+    ]
+  },
+  "followup_corrections": {
+    "applied": "2026-11-18",
+    "brief": "Narrowly scoped follow-up to chemistry batch 6: five records, explanation, stem and option text only.",
+    "reconfirmation": [
+      "Each of the five ids was reconfirmed against its CURRENT stored content before editing,",
+      "not taken from the display number: the brief id was checked against the verified batch 6",
+      "map, the stored answer letter against the letter the brief states, and an exact anchor",
+      "string against the stored field. The harness is all-or-nothing and writes nothing unless",
+      "every id, letter, anchor and pack invariant checks out."
+    ],
+    "items": [
+      {
+        "q": "Q2",
+        "id": "chem-303",
+        "key": "B",
+        "field": "question",
+        "change": "Stem replaced so the plural option fragments read off it.",
+        "from": "Meso-tartaric acid has two stereocenters but is optically inactive. Which feature explains its overall achirality?",
+        "to": "Meso-tartaric acid molecules are achiral despite having two stereocenters because they:",
+        "preserved": "all four options, all headings, the whole explanation and all five educational points"
+      },
+      {
+        "q": "Q9",
+        "id": "chem-310",
+        "key": "C",
+        "field": "explanation (main)",
+        "change": "One sentence of the main explanation replaced with a mechanistic statement of mutarotation.",
+        "from": "This difference underlies mutarotation.",
+        "to": "Mutarotation involves ring opening and reclosing that interconverts the α and β anomers.",
+        "preserved": "the preceding chair-flip explanation, the stem, all options, all feedback and all five points"
+      },
+      {
+        "q": "Q22",
+        "id": "chem-323",
+        "key": "B",
+        "field": "options + explanation (headings)",
+        "change": "Options A, C and D made grammatically parallel with option B, and their distractor headings synchronized.",
+        "from": [
+          "Are shorter than natural fats",
+          "Cannot be metabolized at all",
+          "Contain more calories than cis fats"
+        ],
+        "to": [
+          "They are shorter than natural fats",
+          "They cannot be metabolized at all",
+          "They contain more calories than cis fats"
+        ],
+        "preserved": "option B byte for byte, the stem, every feedback body, the main explanation and all three points"
+      },
+      {
+        "q": "Q28",
+        "id": "chem-329",
+        "key": "C",
+        "field": "explanation (option A feedback)",
+        "change": "First sentence of option A's feedback rephrased as an estimated yield rather than a use.",
+        "from": "About 1.5 ATP is used for an electron pair entering the ubiquinone pool while bypassing Complex I, as in succinate oxidation through Complex II.",
+        "to": "About 1.5 ATP is the estimated yield per electron pair that enters the ubiquinone pool while bypassing Complex I, as occurs during succinate oxidation by Complex II.",
+        "preserved": "the following enzyme-bound sentence, options B and D feedback, the stem, all options, the main explanation and all three points"
+      },
+      {
+        "q": "Q45",
+        "id": "chem-346",
+        "key": "B",
+        "field": "question",
+        "change": "Stem replaced to remove xanthine, which had named the answer inside the question.",
+        "from": "Which complete fused heterocyclic ring system underlies caffeine's xanthine structure?",
+        "to": "Which complete fused heterocyclic ring system is the structural basis of caffeine?",
+        "preserved": "all four choices, all headings, the whole explanation and all three educational points"
+      }
+    ],
+    "invariants_held": {
+      "records_changed": 5,
+      "stems_changed": [
+        "Q2",
+        "Q45"
+      ],
+      "option_texts_changed": [
+        "Q22 A",
+        "Q22 C",
+        "Q22 D"
+      ],
+      "headings_synchronized": [
+        "Q22 A",
+        "Q22 C",
+        "Q22 D"
+      ],
+      "answer_letters_moved": 0,
+      "ids_moved": 0,
+      "other_items_in_pack_unchanged": 55,
+      "educational_points": 210,
+      "feedback_paragraphs": 180,
+      "tables": 0,
+      "bottom_lines": 0
+    },
+    "notes": [
+      "Q45's option B still reads 'Purine (xanthine)'. The brief asked for the stem only, so the",
+      "parenthetical stays; what is removed is the stem naming xanthine before the student answers."
+    ],
+    "coverage_unchanged": true,
+    "deviations": []
   }
 }
