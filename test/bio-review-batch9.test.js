@@ -28,6 +28,8 @@
 // counts below were stepped down. The sweep still covers every chemistry record
 // that no reviewed pack owns.
 'use strict';
+// NOTE: chemistry batch 5 (chem-242..chem-301) pruned 60 ids from this suite's
+// untouched fixture on 17 November 2026; the counts below were stepped to match.
 
 const fs = require('fs');
 const path = require('path');
@@ -518,7 +520,7 @@ ok(Object.keys(untouched.biology).length + 60 + 26 + IDS.length === 629, 'fixtur
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(Object.keys(untouched.chemistry).length === 248, 'untouched chemistry hash count unexpected');
+ok(Object.keys(untouched.chemistry).length === 188, 'untouched chemistry hash count unexpected');
 
 // ===========================================================================
 section('9. The cross-item consistency the review demands');

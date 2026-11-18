@@ -23,6 +23,8 @@
 // counts below were stepped down. The sweep still covers every chemistry record
 // that no reviewed pack owns.
 'use strict';
+// NOTE: chemistry batch 5 (chem-242..chem-301) pruned 60 ids from this suite's
+// untouched fixture on 17 November 2026; the counts below were stepped to match.
 
 const fs = require('fs');
 const path = require('path');
@@ -183,9 +185,9 @@ ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(nChem === 248, `${nChem} untouched chemistry hashes, expected 248`);
+ok(nChem === 188, `${nChem} untouched chemistry hashes, expected 188`);
 ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 === 629 + 485,
+ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 + 60 === 629 + 485,
   'the untouched set, this pack and chemistry batches 1, 2 and 3 should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 

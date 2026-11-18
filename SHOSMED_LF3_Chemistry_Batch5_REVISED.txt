@@ -1,0 +1,1442 @@
+SHOSMED LF3 CHEMISTRY, BATCH 5: REVISED 60-QUESTION EXPORT
+Implemented 17 November 2026 from SHOSMED_LF3_Chemistry_Batch5_Review.txt
+For scientific re-read. Implementation checks establish structure and
+consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  Display Q1-Q60 map to chem-242 .. chem-301.
+  The review supplies no bank ids and no original stems, only a topic title per
+  display number and the full key block. Verification therefore ran four ways,
+  all against the stored records BEFORE any edit:
+    1. Every 60-record window in the 485-record chemistry bank was tested against
+       the review key block. Exactly ONE window matches, chem-242 .. chem-301.
+    2. Each stored key was compared with the review letter for that display
+       number: 60 of 60 agree, and the derived tally is A=4 B=37 C=17 D=2.
+    3. Each full stem, and each full stem plus all four option texts, is unique
+       in the whole chemistry bank: 60 of 60 unique on the stem alone.
+    4. Each topic and each specific defect the review reports was read against
+       the stored record, for example Q14 having A and D both name the meta
+       isomer, and Q19 having B overlap C on timing.
+  Contiguity is a RESULT of that verification, not an assumption. No id in this
+  pack appears in chemistry batch 1, 2, 3 or 4, so all 60 displays are newly
+  reviewed unique ids.
+
+  Verified key block : CBAACDCBCC BBBBBBBCCB CBBCBACBBB CBBBBABDBB BBCBCBBBBC CCBCBBBBBB
+  Verified tally     : A=4, B=37, C=17, D=2
+
+WHAT CHANGED
+  Items edited            : 59; Q58 kept byte-identical in every field
+  Stems replaced          : 24 (Q2, Q4, Q5, Q6, Q8, Q12, Q14, Q18, Q19, Q20, Q21, Q25, Q30, Q33, Q37, Q45, Q46, Q47, Q48, Q51, Q53, Q56, Q59, Q60)
+  Option texts replaced   : 6 (Q14 D, Q16 D, Q19 B, Q20 D, Q30 D, Q51 D), headings synchronized
+  Educational points      : 59 blocks replaced, 186 points in total, unchanged as a count
+  Main explanations       : 30 replaced outright, others repaired sentence by sentence
+  Distractor paragraphs   : 109 replaced, 180 in total
+  Answer letters and ids  : none moved
+  Bottom Lines and tables : 0 before, 0 after; none added
+  Points-only items       : Q7, Q29, Q38, Q54
+  Major rewrites          : Q30 (aldol addition versus condensation) and Q60 (stereoisomer counting)
+
+PRESENTATION PRESERVED
+  Every keyed heading stays LETTERED, in this pack's stored style.
+  Every main explanation stays a single paragraph, as stored.
+  Feedback paragraphs keep the stored newline separator.
+  Q29 and Q36 keep their pre-existing trailing empty div element byte for byte.
+  Formula typography uses the pack's Unicode subscripts and charges, matching the
+  stems and options; the existing sub and sup markup elsewhere was left in place.
+
+COVERAGE, FROM UNIQUE VERIFIED IDS
+  Chemistry reviewed before this batch : 239 of 485
+  New unique chemistry ids this batch  : 60 (60 displays, no repeats of an earlier pack)
+  Chemistry reviewed after this batch  : 299 of 485
+  Chemistry still unreviewed           : 186
+  Biology                              : unaffected, 624 of 629 reviewed
+
+DEVIATIONS
+  none.
+
+==============================================================================
+
+Q1  [chem-242]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The hybridization of carbon atoms in ethyne (C₂H₂) is:
+
+  A. sp³
+  B. sp²
+  C. sp   <= key
+  D. sp³d
+
+EXPLANATION:
+Correct Answer: C. sp
+In ethyne, each carbon forms one triple bond (one σ and two π bonds) and one single bond to hydrogen. This requires two hybrid orbitals, corresponding to sp hybridization. The bond angle is 180°, giving ethyne a linear geometry.
+Why the other choices are wrong:
+A. sp³: sp3 hybridization gives a tetrahedral geometry with four σ bonds and no π bonds. In ethyne, each carbon forms only two σ bonds (one C-H and one C-C) and two π bonds, requiring only two hybrid orbitals. The two unhybridized p orbitals form the two π bonds of the triple bond.
+B. sp²: sp2 hybridization gives a trigonal planar geometry with three σ bonds and one π bond, as seen in ethene (C2H4). Ethyne has a triple bond requiring two π bonds, so carbon needs two unhybridized p orbitals. Only sp hybridization (two hybrid orbitals + two unhybridized p orbitals) satisfies this.
+D. sp³d: In the usual hybridization model, each carbon in ethyne uses two sp orbitals for its sigma bonds and retains two unhybridized p orbitals for the two pi bonds. An sp³d description does not fit this carbon bonding arrangement.
+Key Educational Points:
+  - Each carbon in ethyne has two directions of sigma bonding and is described as sp-hybridized.
+  - A carbon–carbon triple bond contains one sigma bond and two pi bonds.
+  - Ethyne is linear, with bond angles of 180°.
+
+==============================================================================
+
+Q2  [chem-243]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which alkyne gives acetone (propan-2-one) on hydration with water, dilute sulfuric acid and a mercury(II) sulfate catalyst?
+
+  A. Ethyne
+  B. Propyne   <= key
+  C. But-1-yne
+  D. But-2-yne
+
+EXPLANATION:
+Correct Answer: B. Propyne
+Under these conditions, water adds to propyne to form an enol, CH₃C(OH)=CH₂. Proton transfer and rearrangement of the double bond then convert this enol into the more stable carbonyl compound, CH₃COCH₃, acetone. This enol-to-carbonyl change is called keto–enol tautomerism. The three-carbon skeleton is retained.
+Why the other choices are wrong:
+A. Ethyne: Ethyne gives the enol CH₂=CHOH, which changes into ethanal, CH₃CHO. Ethyne has only two carbon atoms, so hydration cannot give the three-carbon product acetone.
+C. But-1-yne: But-1-yne gives butan-2-one, CH₃COCH₂CH₃, under these hydration conditions. Its four-carbon skeleton is retained, so the product is not acetone.
+D. But-2-yne: But-2-yne is a symmetrical four-carbon alkyne. Hydration and tautomerism give butan-2-one, the same ketone obtained here from but-1-yne, rather than three-carbon acetone.
+Key Educational Points:
+  - Mercury(II)-catalyzed hydration of an alkyne first produces an enol that changes into a carbonyl compound.
+  - Propyne gives acetone; count carbon atoms to check the product.
+  - Ethyne gives ethanal, whereas both but-1-yne and but-2-yne give butan-2-one under these conditions.
+
+==============================================================================
+
+Q3  [chem-244]  correct answer: A
+------------------------------------------------------------------------------
+STEM: What is the product when 2-butene reacts with ozone (O₃) followed by reductive workup with Zn/H₂O?
+
+  A. 2 molecules of acetaldehyde   <= key
+  B. 1 molecule of formaldehyde + 1 molecule of propanal
+  C. 2 molecules of formaldehyde
+  D. 1 molecule of butanal
+
+EXPLANATION:
+Correct Answer: A. 2 molecules of acetaldehyde
+Ozonolysis cleaves the double bond. 2-Butene (CH₃CH=CHCH₃) has the double bond between C2 and C3. Cleavage produces two fragments: CH₃CHO (acetaldehyde) from each side. Reductive workup with Zn prevents further oxidation to carboxylic acids.
+Why the other choices are wrong:
+B. 1 molecule of formaldehyde + 1 molecule of propanal: 1 molecule of formaldehyde + 1 molecule of propanal would result from ozonolysis of 1-butene (CH2=CHCH2CH3), where the double bond is between C1 and C2. In 2-butene, the double bond is symmetrically placed between C2 and C3, so the cleavage produces two identical fragments (CH3CHO, acetaldehyde).
+C. 2 molecules of formaldehyde: 2 molecules of formaldehyde would result from ozonolysis of ethene (CH2=CH2), where each carbon of the double bond has two hydrogens. For 2-butene (CH3CH=CHCH3), each carbon of the double bond bears a methyl group, yielding acetaldehyde (CH3CHO) rather than formaldehyde (HCHO).
+D. 1 molecule of butanal: Butanal retains all four carbon atoms in one chain. Reductive ozonolysis of this acyclic alkene cleaves its central C=C bond, giving two molecules of ethanal instead. Cleavage of a cyclic alkene can leave both carbonyl groups in one molecule, so two separate products are not a universal rule.
+Key Educational Points:
+  - Reductive ozonolysis converts the two carbons of a C=C bond into carbonyl carbons.
+  - Each double-bond carbon in but-2-ene bears a hydrogen, so the products are aldehydes.
+  - One molecule of but-2-ene produces two molecules of ethanal, preserving the total of four carbon atoms.
+
+==============================================================================
+
+Q4  [chem-245]  correct answer: A
+------------------------------------------------------------------------------
+STEM: What is the conventional order used to outline the stages of a productive free-radical chlorination chain?
+
+  A. Initiation → Propagation → Termination   <= key
+  B. Propagation → Initiation → Termination
+  C. Termination → Propagation → Initiation
+  D. Initiation → Termination → Propagation
+
+EXPLANATION:
+Correct Answer: A. Initiation → Propagation → Termination
+A radical chain is conventionally described as initiation, propagation and termination. Light can initiate methane chlorination by splitting Cl₂ into two chlorine radicals. During propagation, Cl· + CH₄ → HCl + CH₃·, followed by CH₃· + Cl₂ → CH₃Cl + Cl·. The regenerated chlorine radical can continue the chain. Termination removes radicals, for example when two Cl· radicals combine. These processes can occur at the same time in a reaction mixture; the sequence is a way of describing a productive chain.
+Why the other choices are wrong:
+B. Propagation → Initiation → Termination: Propagation requires radicals to be present. In the conventional description, initiation explains their formation before the chain-carrying propagation steps are introduced.
+C. Termination → Propagation → Initiation: Termination describes removal of radicals, not their initial generation. Starting an outline with termination therefore does not describe how a productive radical chain is established.
+D. Initiation → Termination → Propagation: Putting termination before propagation omits the repeated steps that produce chloromethane and regenerate a radical. An individual newly formed radical can nevertheless terminate without first propagating; the listed stages are not a compulsory timeline for every radical.
+Key Educational Points:
+  - Initiation generates radicals, such as by light-induced homolytic cleavage of Cl₂.
+  - Propagation consumes a radical and generates another radical, allowing the chain to continue.
+  - Termination removes radicals; it can occur while other chains are still propagating.
+
+==============================================================================
+
+Q5  [chem-246]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which factor helps explain why cyclopropane undergoes ring-opening reactions more readily than cyclohexane?
+
+  A. It has fewer hydrogen atoms
+  B. It has more π electrons
+  C. Its C–C bonds have significant angle strain   <= key
+  D. It is aromatic
+
+EXPLANATION:
+Correct Answer: C. Its C–C bonds have significant angle strain
+The three-membered ring of cyclopropane forces its carbon framework into angles of about 60°, far from the preferred tetrahedral angle of about 109.5°. It also has torsional strain from eclipsing C–H bonds. Opening the ring can relieve this strain. Cyclohexane can adopt a chair conformation with bond angles close to tetrahedral and largely staggered bonds, so it has much less ring strain.
+Why the other choices are wrong:
+A. It has fewer hydrogen atoms: Having fewer hydrogen atoms does not make a cycloalkane more reactive. Cyclopropane has 6 hydrogens (C3H6) compared to cyclohexane's 12 (C6H12), but the difference in reactivity comes from ring strain, not hydrogen count. The 60-degree bond angles in cyclopropane deviate enormously from the ideal sp3 angle of 109.5 degrees.
+B. It has more π electrons: Cyclopropane has no pi electrons; it contains only σ bonds. Pi electrons are found in unsaturated compounds like alkenes and aromatic rings. Cyclopropane's high reactivity stems from the severe angle strain forcing its C-C bonds to bend, creating "banana bonds" that store extra energy and make the ring eager to open.
+D. It is aromatic: Cyclopropane is not an ordinary aromatic π system. Its tendency to undergo ring opening is associated with ring strain, including angle and torsional strain, rather than aromatic stabilization.
+Key Educational Points:
+  - Cyclopropane has substantial angle strain because its ring angles are about 60°.
+  - Eclipsing C–H bonds also contribute torsional strain.
+  - Chair cyclohexane has much less strain; opening a strained ring can be energetically favorable.
+
+==============================================================================
+
+Q6  [chem-247]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Which of the following compounds has the highest normal boiling point, measured at 1 atm?
+
+  A. Pentane
+  B. 2-methylbutane
+  C. 2,2-dimethylpropane
+  D. Cyclopentane   <= key
+
+EXPLANATION:
+Correct Answer: D. Cyclopentane
+Cyclopentane has the highest normal boiling point in this set, about 49 °C. The approximate values for pentane, 2-methylbutane and 2,2-dimethylpropane are 36, 28 and 10 °C, respectively. Among those three C₅H₁₂ isomers, greater branching is associated with weaker overall intermolecular attractions and a lower boiling point. Cyclopentane has the different formula C₅H₁₀, so that branching comparison alone does not establish its position. Molecular shape affects intermolecular interactions, but cyclic compounds do not universally boil above acyclic compounds.
+Why the other choices are wrong:
+A. Pentane: Pentane is the straight-chain C₅H₁₂ isomer and boils at about 36 °C. It boils above its two branched isomers, but below cyclopentane at about 49 °C.
+B. 2-methylbutane: 2-Methylbutane is a branched C₅H₁₂ isomer with a normal boiling point of about 28 °C. It is therefore below both pentane and cyclopentane.
+C. 2,2-dimethylpropane: 2,2-Dimethylpropane is the most compact of the three C₅H₁₂ isomers and boils at about 10 °C. It has the lowest, not the highest, boiling point in this set.
+Key Educational Points:
+  - Normal boiling points are compared at the same pressure, 1 atm.
+  - Within the three C₅H₁₂ isomers here, increasing branching lowers the boiling point.
+  - Cyclopentane boils at about 49 °C and has formula C₅H₁₀, not C₅H₁₂.
+
+==============================================================================
+
+Q7  [chem-248]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Treatment of propyne with sodium amide (NaNH₂) in liquid ammonia followed by methyl iodide (CH₃I) gives:
+
+  A. Butane
+  B. But-1-yne
+  C. But-2-yne   <= key
+  D. Pent-2-yne
+
+EXPLANATION:
+Correct Answer: C. But-2-yne
+NaNH₂ is a strong enough base to deprotonate the terminal alkyne hydrogen of propyne (CH₃C≡CH), forming the acetylide anion CH₃C≡C−Na⁺. This nucleophile then undergoes SN2 reaction with CH₃I to give CH₃C≡CCH₃ (but-2-yne).
+Why the other choices are wrong:
+A. Butane: Butane (C4H10) is a fully saturated alkane with no triple bond. The reaction of a terminal alkyne with NaNH2 creates an acetylide anion (a carbon nucleophile), which then attacks methyl iodide in an SN2 reaction. This preserves the triple bond, so the product must be an alkyne, not an alkane.
+B. But-1-yne: But-1-yne (CH3CH2C triple bond CH) would require adding an ethyl group to acetylene, not a methyl group to propyne. Starting from propyne (CH3C triple bond CH), the NaNH2 removes the terminal H to give CH3C triple bond C- Na+, which reacts with CH3I to give CH3C triple bond C-CH3 (but-2-yne), an internal alkyne.
+D. Pent-2-yne: Pent-2-yne (CH3C triple bond CCH2CH3) has five carbons. Since propyne has 3 carbons and methyl iodide adds 1 carbon, the product can only have 4 carbons total. Carbon count is a quick way to eliminate wrong answers in synthesis problems.
+Key Educational Points:
+  - NaNH₂ removes the terminal hydrogen from propyne to form an acetylide ion.
+  - The acetylide attacks methyl iodide by an SN2 reaction, forming a new C–C bond.
+  - Adding one methyl carbon to three-carbon propyne produces four-carbon but-2-yne.
+
+==============================================================================
+
+Q8  [chem-249]  correct answer: B
+------------------------------------------------------------------------------
+STEM: For a planar, monocyclic, fully conjugated π system in its ground state, Hückel's rule predicts aromaticity when it contains:
+
+  A. 4n π electrons
+  B. (4n + 2) π electrons   <= key
+  C. 4n + 1 π electrons
+  D. Any even number of π electrons
+
+EXPLANATION:
+Correct Answer: B. (4n + 2) π electrons
+Hückel's rule applies to a planar ring with a continuous set of overlapping p orbitals. A closed-shell system with 4n + 2 π electrons, where n is a nonnegative integer, is aromatic. The allowed counts begin 2, 6, 10 and 14. A planar, fully conjugated ring with 4n π electrons is antiaromatic. If a ring avoids planarity or lacks continuous conjugation, it may instead be nonaromatic. Electron counting alone is not enough.
+Why the other choices are wrong:
+A. 4n π electrons: A 4n π-electron count corresponds to antiaromaticity when the ring is also planar and fully conjugated. A nonplanar ring with that count, such as cyclooctatetraene, is nonaromatic rather than antiaromatic.
+C. 4n + 1 π electrons: 4n + 1 is an odd number of pi electrons, which does not correspond to any standard aromaticity rule. Aromatic stability requires an even number of pi electrons following the (4n + 2) formula, where n = 0, 1, 2, 3... giving 2, 6, 10 and 14 pi electrons for a monocyclic ring. Benzene has 6, with n = 1.
+D. Any even number of π electrons: Simply having an even number of pi electrons does not guarantee aromaticity. For example, cyclooctatetraene has 8 pi electrons (an even number), but 8 does not fit the (4n + 2) formula. Instead, 8 = 4(2), making it anti-aromatic if planar. Cyclooctatetraene avoids this by adopting a non-planar tub shape.
+Key Educational Points:
+  - Apply Hückel's rule to a planar, cyclic, continuously conjugated π system.
+  - The aromatic electron counts are 4n + 2, with n = 0, 1, 2 and so on.
+  - A 4n count is antiaromatic only when the other structural conditions are met.
+
+==============================================================================
+
+Q9  [chem-250]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which substituent is an ortho/para director in electrophilic aromatic substitution?
+
+  A. -NO₂
+  B. -COOH
+  C. -OH   <= key
+  D. -CHO
+
+EXPLANATION:
+Correct Answer: C. -OH
+The hydroxyl group (-OH) is an activating group that donates electron density to the ring through resonance (lone pairs on oxygen). This increases electron density at the ortho and para positions, directing incoming electrophiles there. -NO₂, -COOH, and -CHO are all electron-withdrawing and are meta directors.
+Why the other choices are wrong:
+A. -NO₂: A nitro group withdraws electron density strongly through resonance and induction. It deactivates the benzene ring and favors meta substitution, unlike the activating hydroxyl group.
+B. -COOH: A carboxyl group attached through its carbonyl carbon withdraws electron density from the aromatic ring. It is deactivating and meta-directing rather than activating and ortho/para-directing.
+D. -CHO: The aldehyde group, –CHO, withdraws electron density through its carbonyl group. It deactivates the ring and favors meta substitution.
+Key Educational Points:
+  - A hydroxyl group can donate a lone pair into a benzene ring by resonance.
+  - This donation activates the ring and favors substitution at the ortho and para positions.
+  - –NO₂, –COOH and –CHO are deactivating meta directors in the examples here.
+
+==============================================================================
+
+Q10  [chem-251]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Nitration of benzene uses a mixture of concentrated HNO₃ and H₂SO₄. The active electrophile is:
+
+  A. NO₂⁻
+  B. NO₃⁻
+  C. NO₂⁺   <= key
+  D. NO⁺
+
+EXPLANATION:
+Correct Answer: C. NO₂⁺
+Concentrated sulfuric acid protonates nitric acid, which then loses water to generate the nitronium ion (NO₂⁺). This powerful electrophile attacks the electron-rich benzene ring in the rate-determining step of electrophilic aromatic substitution.
+Why the other choices are wrong:
+A. NO₂⁻: NO2- (nitrite ion) is a nucleophile, not an electrophile. Electrophilic aromatic substitution requires an electron-poor species that attacks the electron-rich benzene ring. The nitronium ion (NO2+) is generated when concentrated H2SO4 protonates HNO3, causing it to lose water and form the powerful electrophile.
+B. NO₃⁻: Nitrate, NO₃⁻, is the conjugate base of nitric acid. It is not the electrophile that attacks the ring in nitration. The active electrophile is the positively charged nitronium ion, NO₂⁺.
+D. NO⁺: NO+ (nitrosonium ion) is an electrophile but is involved in nitrosation reactions, not nitration. Nitrosation typically occurs with nitrous acid (HNO2) and is important in diazonium salt formation from amines. The nitration of benzene specifically uses the nitronium ion NO2+, which adds -NO2 to the ring.
+Key Educational Points:
+  - The electrophile in standard mixed-acid nitration is NO₂⁺, the nitronium ion.
+  - Sulfuric acid helps generate NO₂⁺ from nitric acid.
+  - Nitration replaces a ring hydrogen with –NO₂ and restores aromaticity after the substitution.
+
+==============================================================================
+
+Q11  [chem-252]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Toluene undergoes electrophilic bromination faster than benzene because the methyl group is:
+
+  A. An electron-withdrawing group by induction
+  B. An electron-donating group by hyperconjugation and induction   <= key
+  C. A meta director
+  D. A deactivating substituent
+
+EXPLANATION:
+Correct Answer: B. An electron-donating group by hyperconjugation and induction
+The methyl group donates electron density to the benzene ring through both positive inductive effect (+I) and hyperconjugation. This increases the electron density of the ring, making it more nucleophilic and thus more reactive toward electrophiles. The methyl group is an activating, ortho/para-directing substituent.
+Why the other choices are wrong:
+A. An electron-withdrawing group by induction: A methyl group is treated as electron-donating in this aromatic-substitution comparison. Its inductive effect and hyperconjugation help stabilize the positively charged reaction intermediate; it does not deactivate the ring by withdrawing electron density.
+C. A meta director: A meta director directs incoming electrophiles preferentially to the meta position. Electron-withdrawing groups like -NO2, -CN, and -COOH are meta directors. The methyl group, being electron-donating, is an ortho/para director. It activates the ortho and para positions by increasing electron density at those sites through hyperconjugation.
+D. A deactivating substituent: The methyl group activates the aromatic ring toward electrophilic bromination compared with benzene. It also favors ortho and para substitution. Activation describes the effect on reaction rate; directing describes the preferred position.
+Key Educational Points:
+  - A methyl substituent activates benzene toward electrophilic aromatic substitution.
+  - Hyperconjugation and electron donation help stabilize the reaction intermediate.
+  - Methyl is an ortho/para director; rate effects and positional effects are related but distinct ideas.
+
+==============================================================================
+
+Q12  [chem-253]  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the initial monosubstitution product when benzene reacts with CH₃Cl in the presence of AlCl₃?
+
+  A. Chlorobenzene
+  B. Toluene   <= key
+  C. Benzaldehyde
+  D. Phenol
+
+EXPLANATION:
+Correct Answer: B. Toluene
+This Friedel-Crafts alkylation replaces a hydrogen on benzene with a methyl group, giving toluene. AlCl₃ acts as a Lewis acid and activates CH₃Cl by strongly polarizing its C–Cl bond. The ring attacks the activated methyl group; a freely existing methyl carbocation need not be invoked. Toluene is more reactive than benzene toward further alkylation, so additional substitution can occur if conditions allow it.
+Why the other choices are wrong:
+A. Chlorobenzene: Chlorobenzene results from introducing chlorine onto the ring, for example with Cl₂ and a suitable Lewis acid. CH₃Cl/AlCl₃ transfers a methyl group in this reaction; it does not chlorinate benzene.
+C. Benzaldehyde: Benzaldehyde contains a formyl group, –CHO, but this reaction introduces –CH₃. A different formylation method is needed to introduce –CHO; formyl chloride is unstable and is not used like an ordinary acyl chloride.
+D. Phenol: Phenol contains an –OH group attached directly to the ring. Neither CH₃Cl nor AlCl₃ supplies an oxygen-containing group in this reaction, so phenol is not the product.
+Key Educational Points:
+  - Friedel-Crafts alkylation forms a bond between an aromatic ring and an alkyl group.
+  - AlCl₃ activates the alkyl halide; methylation does not require a free CH₃⁺ intermediate.
+  - Toluene is the first product here, but its activated ring can undergo further alkylation.
+
+==============================================================================
+
+Q13  [chem-254]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which compound is NOT aromatic?
+
+  A. Pyridine
+  B. Cyclooctatetraene   <= key
+  C. Furan
+  D. Thiophene
+
+EXPLANATION:
+Correct Answer: B. Cyclooctatetraene
+Cyclooctatetraene (COT) has 8 π electrons (4n where n = 2), which makes it anti-aromatic if planar. To avoid anti-aromaticity, COT adopts a non-planar tub-shaped conformation and behaves as a non-aromatic polyene. Pyridine, furan, and thiophene are all aromatic heterocycles with 6 π electrons.
+Why the other choices are wrong:
+A. Pyridine: Pyridine has six π electrons in its aromatic ring. Its nitrogen contributes one electron from a p orbital; the nitrogen lone pair lies outside the aromatic π system and is not part of that six-electron count.
+C. Furan: Furan has four π electrons from its two double bonds and two from one oxygen lone pair. The resulting six-electron conjugated ring is aromatic.
+D. Thiophene: Thiophene has four π electrons from its two double bonds and two from one sulfur lone pair. This gives an aromatic six-electron π system.
+Key Educational Points:
+  - Cyclooctatetraene adopts a nonplanar shape and is nonaromatic.
+  - A planar, fully conjugated eight-π-electron ring would be antiaromatic.
+  - Pyridine, furan and thiophene each have six aromatic π electrons, but their lone pairs contribute differently.
+
+==============================================================================
+
+Q14  [chem-255]  correct answer: B
+------------------------------------------------------------------------------
+STEM: During mononitration of chlorobenzene, which product or product mixture is formed preferentially?
+
+  A. m-nitrochlorobenzene
+  B. o- and p-nitrochlorobenzene   <= key
+  C. 2,4-dinitrochlorobenzene
+  D. Nitrobenzene
+
+EXPLANATION:
+Correct Answer: B. o- and p-nitrochlorobenzene
+Chlorine is an ortho/para director despite being a ring deactivator. Although Cl withdraws electron density through its inductive effect (-I), it donates electron density through resonance (+M) from its lone pairs. The resonance effect selectively stabilizes the intermediate arenium ion at ortho and para positions. The principal products are the ortho and para isomers; this does not mean that no meta product can form.
+Why the other choices are wrong:
+A. m-nitrochlorobenzene: m-nitrochlorobenzene would be the major product if chlorine were a meta director. However, chlorine is an ortho/para director (despite being a ring deactivator). Chlorine has lone pairs that donate electron density to the ring by resonance, favoring ortho and para positions, even though its inductive effect is electron-withdrawing.
+C. 2,4-dinitrochlorobenzene: 2,4-Dinitrochlorobenzene contains two nitro groups. The question specifies mononitration, which introduces one nitro group. Further nitration requires a separate reaction of the already deactivated nitrochlorobenzene.
+D. Nitrobenzene: Nitrobenzene lacks the chlorine substituent. In the electrophilic nitration described here, a ring hydrogen is replaced by –NO₂ while the original chlorine remains attached.
+Key Educational Points:
+  - Chlorine deactivates a benzene ring overall through its electron-withdrawing inductive effect.
+  - Lone-pair donation favors ortho and para substitution despite that deactivation.
+  - Mononitration introduces one nitro group and retains the chlorine substituent.
+
+==============================================================================
+
+Q15  [chem-256]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following polycyclic aromatic hydrocarbons has 10 π electrons?
+
+  A. Benzene
+  B. Naphthalene   <= key
+  C. Anthracene
+  D. Phenanthrene
+
+EXPLANATION:
+Correct Answer: B. Naphthalene
+Naphthalene, C₁₀H₈, has two fused six-membered rings and ten sp² carbon atoms. Each contributes one electron to its delocalized π system, giving ten π electrons in total. The shared ring atoms are counted only once. Benzene has six π electrons; anthracene and phenanthrene each have fourteen.
+Why the other choices are wrong:
+A. Benzene: Benzene has one six-membered ring and six π electrons. It is aromatic, but it is neither polycyclic nor a ten-π-electron system.
+C. Anthracene: Anthracene has three linearly fused rings and fourteen π electrons. Counting its fourteen sp² carbon atoms gives the total without double-counting shared ring edges.
+D. Phenanthrene: Phenanthrene has three angularly fused rings and fourteen π electrons. Its different arrangement of rings does not change that electron count to ten.
+Key Educational Points:
+  - Naphthalene contains ten π electrons distributed over a fused aromatic system.
+  - Shared atoms in fused rings must not be counted twice.
+  - Anthracene and phenanthrene have different ring arrangements but each contains fourteen π electrons.
+
+==============================================================================
+
+Q16  [chem-257]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Phenol is more acidic than ethanol because:
+
+  A. Phenol has a higher molecular weight
+  B. The phenoxide ion is stabilized by resonance with the benzene ring   <= key
+  C. The O–H bond in phenol is shorter
+  D. The ethyl group stabilizes ethoxide by withdrawing electron density
+
+EXPLANATION:
+Correct Answer: B. The phenoxide ion is stabilized by resonance with the benzene ring
+When phenol loses a proton, the resulting phenoxide ion (C₆H₅O−) delocalizes the negative charge into the aromatic ring through resonance, stabilizing the conjugate base. Ethoxide cannot do this, so ethanol is a much weaker acid (pKₐ ≈ 16 vs. phenol pKₐ ≈ 10).
+Why the other choices are wrong:
+A. Phenol has a higher molecular weight: Molecular weight has no direct relationship to acidity. Acidity depends on how well the conjugate base is stabilized after losing a proton. Phenol (MW 94) is more acidic than ethanol (MW 46) not because it is heavier, but because the phenoxide ion (C6H5O-) is resonance-stabilized by the benzene ring.
+C. The O–H bond in phenol is shorter: A claim about a shorter O–H bond does not establish the relative acidity. This comparison concerns proton loss and the relative stabilization of the resulting conjugate bases; phenoxide has resonance delocalization that ethoxide lacks.
+D. The ethyl group stabilizes ethoxide by withdrawing electron density: The ethyl group is electron-donating in this comparison, not an electron-withdrawing group that stabilizes ethoxide. The most useful distinction is that phenoxide can delocalize negative charge into the ring, whereas ethoxide cannot.
+Key Educational Points:
+  - Acid strength is related to the stability of the conjugate base produced by proton loss.
+  - Phenoxide is resonance-stabilized; ethoxide lacks comparable resonance delocalization.
+  - The approximate aqueous pKₐ values, 10 for phenol and 16 for ethanol, show that phenol is much more acidic.
+
+==============================================================================
+
+Q17  [chem-258]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Benzene reacts with acetyl chloride (CH₃COCl) in the presence of AlCl₃ to give:
+
+  A. Toluene
+  B. Acetophenone   <= key
+  C. Benzaldehyde
+  D. Benzoic acid
+
+EXPLANATION:
+Correct Answer: B. Acetophenone
+AlCl₃ activates acetyl chloride to form an acylium electrophile, CH₃CO⁺. Benzene reacts with this electrophile, and aqueous work-up releases acetophenone, C₆H₅COCH₃. The introduced carbonyl group deactivates the ring, so further Friedel-Crafts acylation is strongly disfavored. The resonance-stabilized acylium ion also avoids the carbocation rearrangements associated with some alkylations.
+Why the other choices are wrong:
+A. Toluene: Toluene (methylbenzene) is the product of Friedel-Crafts alkylation with CH3Cl/AlCl3, not acylation. Friedel-Crafts acylation uses an acyl chloride (RCOCl) and introduces a C=O-containing group (acyl group) onto the ring. Acetyl chloride (CH3COCl) gives acetophenone (C6H5COCH3).
+C. Benzaldehyde: Benzaldehyde contains –CHO, whereas acetyl chloride introduces –COCH₃. Benzene formylation requires different reagents; unstable formyl chloride should not be presented as a routine substitute for acetyl chloride.
+D. Benzoic acid: Benzoic acid contains –COOH, not the –COCH₃ group introduced here. The product is a ketone. In this acylation, the acylium electrophile resists rearrangement and the newly introduced carbonyl group discourages further ring acylation.
+Key Educational Points:
+  - Acetyl chloride introduces an acetyl group, –COCH₃, onto benzene.
+  - The electrophile is a resonance-stabilized acylium ion.
+  - The product's carbonyl group deactivates the ring, limiting further Friedel-Crafts acylation.
+
+==============================================================================
+
+Q18  [chem-259]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which class of alcohol commonly undergoes oxidation first to an aldehyde and then to a carboxylic acid without breaking its carbon skeleton?
+
+  A. Tertiary alcohol
+  B. Secondary alcohol
+  C. Primary alcohol   <= key
+  D. Phenol
+
+EXPLANATION:
+Correct Answer: C. Primary alcohol
+Primary alcohols (RCH₂OH) can be oxidized first to an aldehyde (RCHO) and then further to a carboxylic acid (RCOOH) using strong oxidizing agents like KMnO₄ or K₂Cr₂O₇. Secondary alcohols ordinarily give ketones under standard alcohol-oxidation conditions; harsher oxidation can cleave carbon–carbon bonds. Tertiary alcohols resist oxidation under normal conditions because they lack an H on the carbon bearing the -OH.
+Why the other choices are wrong:
+A. Tertiary alcohol: A tertiary alcohol has no hydrogen on the carbon bearing –OH. It therefore resists the usual oxidation to a carbonyl compound without carbon–carbon bond cleavage.
+B. Secondary alcohol: A secondary alcohol normally gives a ketone rather than an aldehyde. Converting that ketone further into smaller acids requires a different, more destructive oxidation pathway.
+D. Phenol: Phenol has the -OH group bonded directly to an aromatic ring, which makes its oxidation chemistry completely different from aliphatic alcohols. Phenol does not undergo simple oxidation to a carboxylic acid like primary alcohols do. Instead, phenol can be oxidized to quinones under certain conditions, which is a fundamentally different pathway.
+Key Educational Points:
+  - A primary alcohol can give an aldehyde and, with further oxidation, a carboxylic acid.
+  - A secondary alcohol normally gives a ketone under standard alcohol-oxidation conditions.
+  - A tertiary alcohol lacks the required hydrogen on its –OH-bearing carbon and resists that usual pathway.
+
+==============================================================================
+
+Q19  [chem-260]  correct answer: C
+------------------------------------------------------------------------------
+STEM: In the standard Lucas test, a small saturated tertiary alcohol that is initially soluble in the reagent typically produces cloudiness:
+
+  A. Only upon heating
+  B. After several minutes at room temperature, with no immediate cloudiness
+  C. Immediately at room temperature   <= key
+  D. Not at all
+
+EXPLANATION:
+Correct Answer: C. Immediately at room temperature
+Lucas reagent is concentrated HCl containing ZnCl₂. A suitable tertiary alcohol generally forms an insoluble alkyl chloride rapidly at room temperature, giving immediate cloudiness. The reaction is facilitated by formation of a relatively stable tertiary carbocation. Simple secondary alcohols are usually slower, while ordinary primary alcohols generally show no reaction during the room-temperature test. The timing is a practical guide, not an exact stopwatch rule; benzylic and allylic alcohols are important exceptions.
+Why the other choices are wrong:
+A. Only upon heating: Heating is not normally required for the immediate positive test of a suitable tertiary alcohol. Ordinary primary alcohols react much less readily under the test conditions, but their substitution must not be explained by a stable primary carbocation.
+B. After several minutes at room temperature, with no immediate cloudiness: Delayed cloudiness is more characteristic of a suitable secondary alcohol than a tertiary one. Exact timing varies with the alcohol and test conditions, so a fixed five-minute cutoff is not a universal rule.
+D. Not at all: A suitable tertiary alcohol usually gives a rapid positive test because its conversion to an alkyl chloride is favorable under these conditions. The cloudy material is the poorly water-soluble chloride product.
+Key Educational Points:
+  - The Lucas test detects formation of a poorly water-soluble alkyl chloride as cloudiness.
+  - Suitable tertiary alcohols usually react rapidly, secondary alcohols more slowly and ordinary primary alcohols poorly at room temperature.
+  - Initial solubility and special structures such as benzylic or allylic alcohols can affect interpretation.
+
+==============================================================================
+
+Q20  [chem-261]  correct answer: B
+------------------------------------------------------------------------------
+STEM: When 2-methylbutan-2-ol is heated with concentrated H₂SO₄ under dehydration conditions, the major alkene product is:
+
+  A. 2-methylbut-1-ene
+  B. 2-methylbut-2-ene   <= key
+  C. 3-methylbut-1-ene
+  D. Pent-1-ene
+
+EXPLANATION:
+Correct Answer: B. 2-methylbut-2-ene
+According to Zaitsev's rule, the major product of elimination is the more substituted alkene. Dehydration of a tertiary alcohol proceeds via E1 mechanism through a stable tertiary carbocation. Removal of a proton from C3 gives the trisubstituted 2-methylbut-2-ene as the major product over the less substituted 2-methylbut-1-ene.
+Why the other choices are wrong:
+A. 2-methylbut-1-ene: 2-methylbut-1-ene is the less substituted alkene (Hofmann product). According to Zaitsev's rule, the major product of E1 elimination (favored for tertiary alcohols with acid catalyst) is the more substituted alkene. 2-methylbut-2-ene (trisubstituted) is more stable than 2-methylbut-1-ene (disubstituted) and is therefore the major product.
+C. 3-methylbut-1-ene: 3-Methylbut-1-ene places the double bond away from the carbon that originally bore –OH. It is not the direct β-elimination product of the initially formed tertiary carbocation. The major product comes from removing a β-hydrogen to form the more substituted 2-methylbut-2-ene.
+D. Pent-1-ene: Pent-1-ene has an unbranched carbon skeleton. The normal dehydration of 2-methylbutan-2-ol retains its branch and mainly produces 2-methylbut-2-ene.
+Key Educational Points:
+  - Acid-catalyzed dehydration of this tertiary alcohol proceeds through a tertiary carbocation.
+  - A β-hydrogen is removed to form a double bond adjacent to the carbocation carbon.
+  - The more substituted alkene, 2-methylbut-2-ene, is the major product under these conditions.
+
+==============================================================================
+
+Q21  [chem-262]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which reagent is commonly used in anhydrous dichloromethane to convert a primary alcohol into an aldehyde while limiting further oxidation?
+
+  A. KMnO₄ (acidic)
+  B. K₂Cr₂O₇/H⁺
+  C. PCC (pyridinium chlorochromate)   <= key
+  D. Concentrated HNO₃
+
+EXPLANATION:
+Correct Answer: C. PCC (pyridinium chlorochromate)
+PCC is used under anhydrous conditions to oxidize a primary alcohol to an aldehyde. In contrast, heating a primary alcohol with excess aqueous acidified dichromate or permanganate commonly gives a carboxylic acid. The conditions matter: an aldehyde can also be obtained with acidified dichromate by carefully controlling the oxidation and distilling the aldehyde away as it forms.
+Why the other choices are wrong:
+A. KMnO₄ (acidic): Acidified permanganate commonly oxidizes a primary alcohol beyond the aldehyde stage under aqueous oxidation conditions. It is not the standard selective reagent in anhydrous dichloromethane described here.
+B. K₂Cr₂O₇/H⁺: Acidified dichromate can give an aldehyde if the product is removed by controlled distillation. With excess oxidant under aqueous reflux, further oxidation gives the carboxylic acid. PCC is the reagent associated with the anhydrous method in this stem.
+D. Concentrated HNO₃: Concentrated HNO3 is a strong oxidizing acid, but it is not typically used for selective alcohol oxidation. It tends to cause harsh, non-selective oxidation and can nitrate aromatic rings. For controlled oxidation of a primary alcohol to an aldehyde, mild, anhydrous reagents like PCC or Dess-Martin periodinane are preferred.
+Key Educational Points:
+  - PCC in anhydrous conditions commonly converts a primary alcohol into an aldehyde.
+  - Excess aqueous oxidant and reflux can favor further oxidation to a carboxylic acid.
+  - Removing an aldehyde by distillation can limit further oxidation even when dichromate is used.
+
+==============================================================================
+
+Q22  [chem-263]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Williamson ether synthesis involves the reaction of:
+
+  A. An alcohol with an alcohol using H₂SO₄
+  B. An alkoxide ion with a primary alkyl halide   <= key
+  C. A Grignard reagent with an epoxide
+  D. An alcohol with a carboxylic acid
+
+EXPLANATION:
+Correct Answer: B. An alkoxide ion with a primary alkyl halide
+Williamson synthesis forms an ether when an alkoxide ion attacks a suitable alkyl halide by an SN2 reaction: RO⁻ + R′X → ROR′ + X⁻. Methyl and unhindered primary halides are especially useful. Secondary halides often give competing elimination, and tertiary halides are unsuitable for this SN2 route. The method can make both symmetrical and unsymmetrical ethers.
+Why the other choices are wrong:
+A. An alcohol with an alcohol using H₂SO₄: Acid-catalyzed dehydration of a suitable alcohol can form an ether, but that is a different method. For example, ethanol can give diethyl ether under controlled heating with sulfuric acid. The required conditions and competing alkene formation depend on the alcohol.
+C. A Grignard reagent with an epoxide: A Grignard reagent opens an epoxide to form a magnesium alkoxide, which gives an alcohol after aqueous work-up. That carbon–carbon bond-forming reaction is different from an alkoxide forming an ether by SN2 substitution.
+D. An alcohol with a carboxylic acid: An alcohol reacting with a carboxylic acid produces an ester (via Fischer esterification), not an ether. Esters have the general structure R-COO-R', while ethers have R-O-R'. The Williamson synthesis is an SN2 reaction, whereas esterification is a condensation/addition-elimination reaction.
+Key Educational Points:
+  - An alkoxide is the nucleophile in Williamson ether synthesis.
+  - Methyl or unhindered primary alkyl halides favor the required SN2 reaction.
+  - With a hindered halide, elimination can compete with or replace ether formation.
+
+==============================================================================
+
+Q23  [chem-264]  correct answer: B
+------------------------------------------------------------------------------
+STEM: When ethanol reacts with sodium metal, the products are:
+
+  A. Sodium ethanoate and H₂
+  B. Sodium ethoxide and H₂   <= key
+  C. Sodium ethoxide and H₂O
+  D. Ethane and NaOH
+
+EXPLANATION:
+Correct Answer: B. Sodium ethoxide and H₂
+Sodium reacts with ethanol to produce sodium ethoxide and hydrogen gas: 2CH₃CH₂OH + 2Na → 2CH₃CH₂ONa + H₂. Sodium is oxidized to Na⁺, and hydrogen from the O–H groups is reduced to H₂. Ethanol often reacts less vigorously than water, but reaction speed alone does not establish relative acid strength.
+Why the other choices are wrong:
+A. Sodium ethanoate and H₂: Sodium ethanoate is the salt of ethanoic acid, not ethanol. Ethanoic acid with sodium metal can give sodium ethanoate and H₂; ethanol gives ethoxide because its carbon framework is not oxidized into a carboxyl group in this reaction.
+C. Sodium ethoxide and H₂O: Sodium ethoxide and H2O is incorrect because the reaction produces H2 gas, not water. The sodium metal reduces the proton from the -OH group: 2 CH3CH2OH + 2 Na -> 2 CH3CH2ONa + H2 (gas). This is analogous to sodium reacting with water (2 Na + 2 H2O -> 2 NaOH + H2), but the reaction with ethanol is less vigorous.
+D. Ethane and NaOH: Forming ethane would require removal of ethanol's oxygen-containing group. In this reaction the C–O bond remains intact: the O–H hydrogen is replaced by sodium to form ethoxide, and H₂ is released.
+Key Educational Points:
+  - Sodium metal reacts with ethanol to give sodium ethoxide and H₂.
+  - Two alcohol molecules supply the two hydrogen atoms in one H₂ molecule.
+  - Reaction rate and acid strength are different concepts; visible vigor alone does not measure acidity.
+
+==============================================================================
+
+Q24  [chem-265]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following gives a positive result with FeCl₃ solution (violet/green coloration)?
+
+  A. Ethanol
+  B. Diethyl ether
+  C. Phenol   <= key
+  D. Methanol
+
+EXPLANATION:
+Correct Answer: C. Phenol
+Phenol gives a characteristic colored complex with Fe³⁺ under the usual ferric chloride test conditions, commonly a violet color for phenol itself. The exact color depends on the compound and conditions. The test is useful for phenols, but some enols and other suitable ligands also give positive reactions, so it is not absolutely specific for a phenolic aromatic ring.
+Why the other choices are wrong:
+A. Ethanol: Ethanol does not give the characteristic positive phenol-test color under these conditions. Its ordinary aliphatic hydroxyl group behaves differently from the phenolic group in phenol. A positive ferric chloride test is not, however, restricted to aromatic compounds.
+B. Diethyl ether: Diethyl ether does not give the characteristic phenol-test color. Its oxygen can donate a lone pair to a Lewis acid, so the absence of –OH does not mean that ethers are incapable of coordination; that is different from the colored reaction tested here.
+D. Methanol: Methanol is an aliphatic alcohol and does not give the characteristic positive test under these conditions. Phenol does, but the test is not exclusive to phenols because some enols also form colored iron complexes.
+Key Educational Points:
+  - Phenol can form a colored coordination complex with Fe³⁺.
+  - Ethanol, methanol and diethyl ether do not give the characteristic positive test here.
+  - Some enols also test positive, so the result supports rather than uniquely proves a phenol identification.
+
+==============================================================================
+
+Q25  [chem-266]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In the usual aqueous comparison, which sequence lists these compounds from strongest to weakest acid?
+
+  A. Water > Ethanol > Phenol
+  B. Phenol > Water > Ethanol   <= key
+  C. Ethanol > Phenol > Water
+  D. Ethanol > Water > Phenol
+
+EXPLANATION:
+Correct Answer: B. Phenol > Water > Ethanol
+The standard aqueous comparison is phenol > water > ethanol. Phenol is much more acidic because phenoxide is stabilized by resonance. Water and ethanol are much closer in acidity; the usual introductory comparison places water ahead of ethanol. Alkyl electron donation and solvation both affect the stability of ethoxide. Approximate aqueous pKₐ values of 10 for phenol and 16 for ethanol show the much larger separation between those two acids.
+Why the other choices are wrong:
+A. Water > Ethanol > Phenol: This sequence incorrectly places phenol last. Resonance stabilization of phenoxide makes phenol much more acidic than water or ethanol in the comparison used here.
+C. Ethanol > Phenol > Water: This sequence incorrectly places ethanol first. Ethoxide lacks phenoxide's resonance stabilization, so ethanol is much less acidic than phenol and is placed below water in this aqueous comparison.
+D. Ethanol > Water > Phenol: This sequence reverses the intended trend by putting ethanol first and phenol last. Compare conjugate-base stabilization and the stated aqueous conditions, rather than molecular mass.
+Key Educational Points:
+  - The standard aqueous order used here is phenol > water > ethanol.
+  - Resonance stabilization makes phenoxide much more stable than a comparable localized alkoxide ion.
+  - Acidity comparisons depend on the solvent; numerical pKₐ values must use compatible conventions.
+
+==============================================================================
+
+Q26  [chem-267]  correct answer: A
+------------------------------------------------------------------------------
+STEM: Acid-catalyzed ring opening of an epoxide by water produces:
+
+  A. A diol (1,2-diol)   <= key
+  B. An aldehyde
+  C. A ketone
+  D. An ether
+
+EXPLANATION:
+Correct Answer: A. A diol (1,2-diol)
+An epoxide contains a strained three-membered ring with one oxygen atom. In acid-catalyzed hydrolysis, protonation makes the ring more susceptible to attack by water. One ring C–O bond breaks as a new bond forms between a ring carbon and the oxygen of water. Proton transfers give a 1,2-diol, with –OH groups on adjacent carbons.
+Why the other choices are wrong:
+B. An aldehyde: The reaction specified is hydrolysis to a diol, not formation of an aldehyde. Some epoxides can rearrange to carbonyl compounds under other conditions without breaking a C–C bond, so oxidative cleavage is not a universal requirement.
+C. A ketone: A ketone contains a C=O group flanked by two carbon groups. Epoxide ring-opening with water does not create a carbonyl group; instead, it adds two hydroxyl groups to give a diol. Ketones can be formed from epoxides through different reagents, such as rearrangement with Lewis acids under specific conditions.
+D. An ether: Water opening an epoxide gives a diol. An alcohol nucleophile can instead give a hydroxy ether. In either case, nucleophilic attack forms a new C–O bond; the identity of the nucleophile determines the group introduced.
+Key Educational Points:
+  - Epoxides are strained three-membered cyclic ethers.
+  - Acid-catalyzed attack by water opens the ring and gives adjacent hydroxyl groups.
+  - One hydroxyl oxygen comes from the epoxide and the other from water.
+
+==============================================================================
+
+Q27  [chem-268]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Glycerol (propane-1,2,3-triol) is classified as:
+
+  A. A monohydric primary alcohol
+  B. A dihydric secondary alcohol
+  C. A trihydric alcohol   <= key
+  D. A phenol
+
+EXPLANATION:
+Correct Answer: C. A trihydric alcohol
+Glycerol (HOCH₂CH(OH)CH₂OH) contains three hydroxyl groups, making it a trihydric alcohol (triol). It has two primary –OH groups and one secondary –OH group. Glycerol forms the backbone of triacylglycerols and glycerophospholipids.
+Why the other choices are wrong:
+A. A monohydric primary alcohol: A monohydric alcohol has only one -OH group (like ethanol). Glycerol has three -OH groups on three consecutive carbons, making it trihydric. "Primary" refers to the carbon type bearing the -OH, not the number of hydroxyl groups. Glycerol actually has two primary -OH groups (on C1 and C3) and one secondary -OH (on C2).
+B. A dihydric secondary alcohol: A dihydric alcohol (diol) has two -OH groups, like ethylene glycol (ethane-1,2-diol), which is used as antifreeze. Glycerol has three -OH groups, so it is trihydric. Additionally, calling it "secondary" is misleading since glycerol has both primary and secondary hydroxyl groups.
+D. A phenol: A phenol has an -OH group directly bonded to a benzene ring. Glycerol is an aliphatic triol (propane-1,2,3-triol) with no aromatic ring. Phenols and alcohols differ significantly in acidity and chemical behavior because of the aromatic ring's electron effects on the -OH group.
+Key Educational Points:
+  - Glycerol contains three alcohol groups and is therefore a triol.
+  - Its two terminal alcohol sites are primary and its middle alcohol site is secondary.
+  - Glycerol is the backbone of triacylglycerols and glycerophospholipids, not all phospholipids.
+
+==============================================================================
+
+Q28  [chem-269]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which reagent is used in the Tollens' test to distinguish aldehydes from ketones?
+
+  A. Fehling's solution
+  B. Ammoniacal silver nitrate (Ag(NH₃)₂⁺)   <= key
+  C. Benedict's solution
+  D. Iodine in NaOH
+
+EXPLANATION:
+Correct Answer: B. Ammoniacal silver nitrate (Ag(NH₃)₂⁺)
+Tollens' reagent contains the diamminesilver(I) ion, [Ag(NH₃)₂]⁺, in an alkaline solution. An aldehyde is oxidized to a carboxylate while silver(I) is reduced to metallic silver, often forming a silver mirror. Ordinary simple ketones are negative, but some α-hydroxy ketones and reducing sugars can also give a positive result. The test is therefore not an absolute aldehyde-versus-every-ketone distinction.
+Why the other choices are wrong:
+A. Fehling's solution: Fehling's solution (Cu2+ in alkaline tartrate) also tests for aldehydes (forming a brick-red Cu2O precipitate) but is a different reagent from Tollens'. Fehling's test is better suited for aliphatic aldehydes and reducing sugars. It uses copper(II) ions rather than silver ions, and the positive result is a red precipitate rather than a silver mirror.
+C. Benedict's solution: Benedict's solution is similar to Fehling's, containing Cu2+ ions in alkaline citrate solution. It also detects reducing sugars and aldehydes by producing a color change from blue to green, yellow, orange, or red (depending on concentration). However, Benedict's is not the reagent used in the Tollens' test.
+D. Iodine in NaOH: Iodine in NaOH is used for the iodoform test, which gives a yellow CHI₃ precipitate with suitable methyl ketones. Ethanal, ethanol and alcohols of the form CH₃CH(OH)R also give the test under suitable conditions. This is different from the silver-deposition reaction of Tollens' reagent.
+Key Educational Points:
+  - Tollens' reagent contains [Ag(NH₃)₂]⁺ and can deposit metallic silver.
+  - Aldehydes are oxidized to carboxylates under the alkaline test conditions.
+  - Simple ketones are usually negative, but α-hydroxy ketones and reducing sugars prevent an absolute rule.
+
+==============================================================================
+
+Q29  [chem-270]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The reaction of a ketone with hydroxylamine (NH₂OH) produces:
+
+  A. An imine (Schiff base)
+  B. An oxime   <= key
+  C. A hydrazone
+  D. A semicarbazone
+
+EXPLANATION:
+Correct Answer: B. An oxime
+Hydroxylamine (NH₂OH) reacts with the carbonyl group of ketones (and aldehydes) through nucleophilic addition-elimination to form an oxime (C=N–OH). This is a condensation reaction with loss of water. Imines form with primary amines, hydrazones with hydrazine, and semicarbazones with semicarbazide.
+Why the other choices are wrong:
+A. An imine (Schiff base): An imine (Schiff base) is formed when a ketone or aldehyde reacts with a primary amine (R-NH2), not hydroxylamine. The product has a C=N-R linkage. Schiff bases are important intermediates in biological chemistry, such as in the mechanism of transaminase enzymes and in the visual cycle (retinal + opsin).
+C. A hydrazone: A hydrazone is formed when a ketone or aldehyde reacts with hydrazine (NH2-NH2) or a substituted hydrazine. The product has a C=N-NH2 (or C=N-NHR) linkage. 2,4-Dinitrophenylhydrazine (Brady's reagent) reacts with carbonyl compounds to form orange/red 2,4-DNP hydrazones, which is a classic qualitative test.
+D. A semicarbazone: A semicarbazone is formed when a ketone or aldehyde reacts with semicarbazide (NH2-NH-CO-NH2). These derivatives have sharp, characteristic melting points and were historically used to identify unknown carbonyl compounds before modern spectroscopy. Each nitrogen reagent (NH2OH, NH2NH2, semicarbazide) gives a different C=N derivative.
+Key Educational Points:
+  - Hydroxylamine reacts with an aldehyde or ketone to give an oxime, containing C=N–OH.
+  - Formation of the oxime is a condensation reaction that releases water.
+  - Different nitrogen reagents give different derivatives: hydroxylamine gives an oxime, hydrazine a hydrazone and semicarbazide a semicarbazone.
+
+==============================================================================
+
+Q30  [chem-271]  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the initial aldol addition product when two molecules of acetaldehyde (ethanal) react in cold dilute aqueous NaOH, before dehydration?
+
+  A. Acetone
+  B. 3-hydroxybutanal   <= key
+  C. Acetic acid
+  D. Crotonaldehyde (but-2-enal)
+
+EXPLANATION:
+Correct Answer: B. 3-hydroxybutanal
+Base removes an α-hydrogen from one ethanal molecule to form an enolate. This attacks the carbonyl carbon of a second ethanal molecule, forming a new C–C bond. Protonation gives CH₃CH(OH)CH₂CHO, 3-hydroxybutanal, a β-hydroxy aldehyde. This initial step is aldol addition. Subsequent loss of water gives but-2-enal; the addition followed by dehydration is commonly called aldol condensation.
+Why the other choices are wrong:
+A. Acetone: Acetone is a three-carbon ketone. The addition joins two two-carbon ethanal molecules to give a four-carbon β-hydroxy aldehyde, so acetone does not match the carbon count or functional groups.
+C. Acetic acid: Ethanoic acid would result from oxidation of ethanal. The reaction here forms a new carbon–carbon bond between two ethanal molecules and gives a β-hydroxy aldehyde.
+D. Crotonaldehyde (but-2-enal): But-2-enal is produced when 3-hydroxybutanal loses water. It is the later dehydration product, whereas the question asks for the initial addition product before dehydration.
+Key Educational Points:
+  - Aldol addition uses an enolate nucleophile to form a new C–C bond with a carbonyl compound.
+  - Two ethanal molecules give the four-carbon β-hydroxy aldehyde 3-hydroxybutanal.
+  - Dehydration gives but-2-enal; distinguish this later condensation product from the initial aldol addition product.
+
+==============================================================================
+
+Q31  [chem-272]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following carbonyl compounds does NOT undergo the iodoform reaction?
+
+  A. Acetaldehyde
+  B. Acetone
+  C. Benzaldehyde   <= key
+  D. Methyl ethyl ketone
+
+EXPLANATION:
+Correct Answer: C. Benzaldehyde
+Benzaldehyde lacks the CH₃CO– arrangement needed for this carbonyl comparison and gives a negative iodoform test. Acetone and butan-2-one are methyl ketones and are positive. Ethanal is also positive even though it is an aldehyde. Suitable alcohols can be positive after oxidation; ethanol is the important primary-alcohol example.
+Why the other choices are wrong:
+A. Acetaldehyde: Ethanal, CH₃CHO, gives a positive iodoform test. It is the usual aldehyde exception to the shorthand description of this as a methyl-ketone test.
+B. Acetone: Acetone, CH₃COCH₃, is a methyl ketone. Under the test conditions it gives the characteristic yellow iodoform precipitate.
+D. Methyl ethyl ketone: Methyl ethyl ketone is butan-2-one, CH₃COCH₂CH₃. It contains a methyl group directly attached to the carbonyl carbon and therefore gives a positive iodoform test.
+Key Educational Points:
+  - Methyl ketones contain CH₃CO– and ordinarily give a positive iodoform test.
+  - Ethanal and ethanol are important positive examples outside the methyl-ketone class.
+  - Benzaldehyde lacks the required methyl-carbonyl arrangement and is negative.
+
+==============================================================================
+
+Q32  [chem-273]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The product of Grignard reaction between CH₃MgBr and formaldehyde (HCHO), after hydrolysis, is:
+
+  A. Methanol
+  B. Ethanol   <= key
+  C. Propan-1-ol
+  D. Propan-2-ol
+
+EXPLANATION:
+Correct Answer: B. Ethanol
+The Grignard reagent CH₃MgBr adds to the carbonyl of formaldehyde (HCHO): CH₃MgBr + HCHO → CH₃CH₂OMgBr. Acidic hydrolysis gives ethanol (CH₃CH₂OH). Formaldehyde with a Grignard reagent always produces a primary alcohol.
+Why the other choices are wrong:
+A. Methanol: Methanol (CH3OH) has only one carbon and would result from reducing formaldehyde (HCHO) with NaBH4 or LiAlH4, not from a Grignard reaction. The Grignard reaction adds carbon atoms: CH3MgBr contributes one carbon to formaldehyde's one carbon, giving a two-carbon product (ethanol).
+C. Propan-1-ol: Propan-1-ol can be prepared by adding ethylmagnesium bromide to formaldehyde, followed by aqueous work-up. The reagent in this question is methylmagnesium bromide, so the product has only two carbons and is ethanol.
+D. Propan-2-ol: Propan-2-ol would result from CH₃MgBr adding to ethanal, followed by aqueous work-up. Adding CH₃MgBr to acetone instead gives the tertiary alcohol 2-methylpropan-2-ol. The formaldehyde used here gives a primary alcohol.
+Key Educational Points:
+  - Grignard addition forms a C–C bond; aqueous work-up protonates the resulting alkoxide.
+  - Formaldehyde gives a primary alcohol, other ordinary aldehydes a secondary alcohol and ketones a tertiary alcohol.
+  - CH₃MgBr supplies one carbon and formaldehyde supplies one carbon, giving two-carbon ethanol.
+
+==============================================================================
+
+Q33  [chem-274]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The classic Cannizzaro reaction in concentrated aqueous alkali is characteristic of aldehydes that:
+
+  A. Have α-hydrogens
+  B. Lack α-hydrogens   <= key
+  C. Are unsaturated
+  D. Contain a methyl group
+
+EXPLANATION:
+Correct Answer: B. Lack α-hydrogens
+The Cannizzaro reaction occurs with aldehydes that have no α-hydrogens (such as formaldehyde and benzaldehyde) when treated with concentrated NaOH. One molecule is oxidized to a carboxylate and the other is reduced to an alcohol (disproportionation). Aldehydes with readily enolizable α-hydrogens generally favor competing aldol chemistry under basic conditions.
+Why the other choices are wrong:
+A. Have α-hydrogens: Aldehydes with readily enolizable alpha-hydrogens preferentially undergo the aldol reaction (not Cannizzaro) in base. The alpha-hydrogen is abstracted to form an enolate, which attacks another carbonyl. The Cannizzaro reaction specifically occurs with aldehydes that lack alpha-hydrogens (like formaldehyde, benzaldehyde, or trimethylacetaldehyde) because they cannot form enolates.
+C. Are unsaturated: The presence of another double or triple bond is not the defining criterion. The classic examples are non-enolizable aldehydes such as benzaldehyde and formaldehyde, which lack α-hydrogens and can undergo disproportionation in concentrated alkali.
+D. Contain a methyl group: Containing a methyl group is not relevant to the Cannizzaro reaction. In fact, acetaldehyde (CH3CHO) has a methyl group with alpha-hydrogens and undergoes aldol condensation, not the Cannizzaro reaction. The Cannizzaro reaction is a disproportionation where one aldehyde molecule is oxidized to a carboxylate and another is reduced to an alcohol.
+Key Educational Points:
+  - Classic Cannizzaro substrates include formaldehyde and benzaldehyde, which have no α-hydrogens.
+  - One aldehyde molecule is oxidized to a carboxylate while another is reduced to an alcohol.
+  - Aldehydes with readily enolizable α-hydrogens commonly undergo competing aldol reactions in base.
+
+==============================================================================
+
+Q34  [chem-275]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Reduction of a ketone with NaBH₄ produces:
+
+  A. A primary alcohol
+  B. A secondary alcohol   <= key
+  C. A tertiary alcohol
+  D. An alkane
+
+EXPLANATION:
+Correct Answer: B. A secondary alcohol
+NaBH₄ is a mild reducing agent that selectively reduces the carbonyl group. A ketone (R₁COR₂) is reduced to a secondary alcohol (R₁CH(OH)R₂) because the carbon bearing the new –OH group remains bonded to two other carbon-containing groups. Most aldehydes give primary alcohols on reduction; formaldehyde gives methanol.
+Why the other choices are wrong:
+A. A primary alcohol: Reducing an aldehyde such as ethanal gives a primary alcohol. A ketone already has two carbon groups attached to its carbonyl carbon; those two groups remain attached after reduction, so the new alcohol site is secondary.
+C. A tertiary alcohol: A tertiary alcohol has three carbon groups attached to the carbon bearing the -OH. Reducing a ketone (which has two carbon groups on the carbonyl carbon) with NaBH4 adds one hydrogen, giving a carbon with two carbon groups, one hydrogen, and one -OH. That is a secondary alcohol, not tertiary. Tertiary alcohols cannot be made by simple carbonyl reduction.
+D. An alkane: An alkane would result from complete reduction that removes the oxygen entirely. NaBH4 is a mild reducing agent that reduces the C=O double bond to C-OH (adding H across the C=O bond) but does not remove the oxygen atom. Stronger conditions, like Clemmensen reduction (Zn-Hg/HCl) or Wolff-Kishner reduction (NH2NH2/KOH), can fully reduce a carbonyl to a -CH2- group.
+Key Educational Points:
+  - NaBH₄ reduces a ketone's carbonyl group to an alcohol after protonation.
+  - The alcohol-bearing carbon retains two carbon substituents, making the product secondary.
+  - This reduction adds hydrogen without adding a carbon substituent or removing the oxygen atom.
+
+==============================================================================
+
+Q35  [chem-276]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following is the correct order of reactivity toward nucleophilic addition?
+
+  A. Acetone > Formaldehyde > Acetaldehyde
+  B. Formaldehyde > Acetaldehyde > Acetone   <= key
+  C. Acetaldehyde > Formaldehyde > Acetone
+  D. Acetone > Acetaldehyde > Formaldehyde
+
+EXPLANATION:
+Correct Answer: B. Formaldehyde > Acetaldehyde > Acetone
+Reactivity toward nucleophilic addition decreases with increasing steric hindrance and increasing electron donation to the carbonyl carbon. Formaldehyde (HCHO) has the least steric hindrance and no electron-donating alkyl groups. Acetaldehyde (CH₃CHO) has one methyl group, and acetone (CH₃COCH₃) has two, making it the least reactive.
+Why the other choices are wrong:
+A. Acetone > Formaldehyde > Acetaldehyde: Acetone > Formaldehyde > Acetaldehyde incorrectly places acetone first. Acetone is the least reactive toward nucleophilic addition because its two methyl groups create the most steric hindrance around the carbonyl carbon and donate the most electron density (reducing electrophilicity). Formaldehyde, with no alkyl groups, is the most reactive.
+C. Acetaldehyde > Formaldehyde > Acetone: Acetaldehyde > Formaldehyde > Acetone incorrectly places acetaldehyde as most reactive. Formaldehyde (HCHO) has the highest reactivity because its carbonyl carbon has two small hydrogen atoms, offering minimal steric hindrance and no electron-donating alkyl groups. Reactivity decreases as more alkyl groups are attached: HCHO > CH3CHO > (CH3)2CO.
+D. Acetone > Acetaldehyde > Formaldehyde: Acetone > Acetaldehyde > Formaldehyde is exactly backwards. Two factors determine nucleophilic addition reactivity: (1) steric effects, with more groups around the carbonyl making nucleophilic approach harder, and (2) electronic effects, with electron-donating alkyl groups reducing the partial positive charge on carbon. Both factors favor formaldehyde as most reactive.
+Key Educational Points:
+  - Formaldehyde is least hindered and has no electron-donating alkyl substituents on its carbonyl carbon.
+  - Alkyl substituents both hinder nucleophilic approach and reduce carbonyl electrophilicity.
+  - The usual comparison is formaldehyde > ethanal > acetone for nucleophilic addition.
+
+==============================================================================
+
+Q36  [chem-277]  correct answer: A
+------------------------------------------------------------------------------
+STEM: The reaction of acetone with HCN produces:
+
+  A. Acetone cyanohydrin   <= key
+  B. Acetonitrile
+  C. Lactic acid
+  D. Acrylonitrile
+
+EXPLANATION:
+Correct Answer: A. Acetone cyanohydrin
+HCN adds across the carbonyl of acetone via nucleophilic addition. The CN− ion attacks the electrophilic carbonyl carbon, and subsequent protonation gives the cyanohydrin: (CH₃)₂C(OH)(CN). Cyanohydrin formation is a key reaction for extending the carbon chain and introducing functional groups.
+Why the other choices are wrong:
+B. Acetonitrile: Acetonitrile (CH3CN) is a nitrile formed by dehydration of acetamide or by reaction of methyl halide with cyanide, not by HCN addition to a ketone. The cyanohydrin reaction is a nucleophilic addition where CN- attacks the carbonyl carbon and H+ protonates the oxygen, giving (CH3)2C(OH)(CN), which is acetone cyanohydrin.
+C. Lactic acid: Hydrolysis of acetone cyanohydrin's nitrile group gives 2-hydroxy-2-methylpropanoic acid, (CH₃)₂C(OH)COOH, after acidic work-up. It does not give lactic acid. Lactic acid has three carbons and can instead be obtained by hydrolyzing the cyanohydrin of ethanal. The immediate product asked for here is acetone cyanohydrin.
+D. Acrylonitrile: Acrylonitrile (CH2=CHCN) is an unsaturated nitrile used in polymer production (polyacrylonitrile). It is made industrially by ammoxidation of propene, not by adding HCN to acetone. The HCN addition to a carbonyl is a nucleophilic addition reaction, preserving the carbon-oxygen bond as a hydroxyl group.
+Key Educational Points:
+  - Cyanide attacks the carbonyl carbon, and protonation gives a cyanohydrin.
+  - The original carbonyl carbon ends up bonded to both –OH and –CN.
+  - Cyanohydrin formation adds one carbon; acetone's three carbons become four in its cyanohydrin.
+
+==============================================================================
+
+Q37  [chem-278]  correct answer: B
+------------------------------------------------------------------------------
+STEM: An aldehyde is treated with excess alcohol and an acid catalyst while water is removed. Which product is favored?
+
+  A. A hemiacetal
+  B. An acetal   <= key
+  C. An ester
+  D. An enol ether
+
+EXPLANATION:
+Correct Answer: B. An acetal
+An alcohol first adds to the aldehyde to form a hemiacetal, with –OH and –OR on the same carbon. Further reaction with alcohol under acid catalysis can give an acetal, with two –OR groups on that carbon, plus water. The reaction is reversible: excess alcohol and removal of water favor acetal formation, whereas aqueous acid favors hydrolysis. Some cyclic hemiacetals, including those in sugars, are stable and abundant.
+Why the other choices are wrong:
+A. A hemiacetal: A hemiacetal has one –OH and one –OR group on the former carbonyl carbon. Under the stated conditions, further reaction and removal of water favor the acetal. Hemiacetals are not universally unstable; cyclic sugar forms are important examples.
+C. An ester: An ester (R-COOR') is formed by the reaction of a carboxylic acid (not an aldehyde) with an alcohol under acid catalysis (Fischer esterification). The aldehyde carbonyl carbon is at a lower oxidation state than a carboxylic acid, so the product of aldehyde + alcohol is an acetal, not an ester.
+D. An enol ether: An enol ether has an alkoxy group attached to a C=C bond. The favored product here instead has two –OR groups on the former aldehyde carbon and no carbonyl-derived C=C bond.
+Key Educational Points:
+  - A hemiacetal has –OH and –OR on one carbon; an acetal has two –OR groups there.
+  - Excess alcohol and removal of water favor acetal formation in this reversible reaction.
+  - Acetals can protect carbonyl groups and can be hydrolyzed with aqueous acid.
+
+==============================================================================
+
+Q38  [chem-279]  correct answer: D
+------------------------------------------------------------------------------
+STEM: Which of the following carboxylic acids is the strongest?
+
+  A. CH₃COOH
+  B. ClCH₂COOH
+  C. Cl₂CHCOOH
+  D. Cl₃CCOOH   <= key
+
+EXPLANATION:
+Correct Answer: D. Cl₃CCOOH
+Electron-withdrawing groups (like Cl) stabilize the carboxylate conjugate base through the inductive effect (-I). More chlorine atoms increase the electron-withdrawing power, stabilizing the negative charge more effectively. Thus acidity increases: CH₃COOH Why the other choices are wrong:
+A. CH₃COOH: Acetic acid (CH3COOH, pKa 4.76) is the weakest acid in this series because the methyl group is slightly electron-donating, which destabilizes the carboxylate anion. With no electron-withdrawing substituents, acetic acid serves as the baseline for comparing substituent effects on acidity.
+B. ClCH₂COOH: Chloroacetic acid (ClCH2COOH, pKa 2.86) is stronger than acetic acid because the chlorine atom withdraws electron density through the inductive effect, stabilizing the carboxylate anion. However, it has only one chlorine, so its inductive effect is weaker than that of dichloro- or trichloroacetic acid.
+C. Cl₂CHCOOH: Dichloroacetic acid (Cl2CHCOOH, pKa 1.29) is stronger than monochloroacetic acid because two chlorine atoms exert a greater electron-withdrawing inductive effect. However, trichloroacetic acid (Cl3CCOOH, pKa 0.65) is even stronger because three chlorines provide the maximum inductive withdrawal in this series.
+Key Educational Points:
+  - Chlorine substituents withdraw electron density through the inductive effect.
+  - Stabilizing the carboxylate conjugate base increases the acid's strength.
+  - In this series, acidity increases from acetic acid to mono-, di- and trichloroacetic acid.
+
+==============================================================================
+
+Q39  [chem-280]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Fischer esterification involves the reaction of a carboxylic acid with an alcohol in the presence of:
+
+  A. A base catalyst
+  B. An acid catalyst (e.g., H₂SO₄)   <= key
+  C. NaOH
+  D. LiAlH₄
+
+EXPLANATION:
+Correct Answer: B. An acid catalyst (e.g., H₂SO₄)
+Fischer esterification is an acid-catalyzed condensation of a carboxylic acid and an alcohol to form an ester and water: RCOOH + R'OH ⇌ RCOOR' + H₂O. The acid catalyst protonates the carbonyl oxygen, making the carbon more electrophilic. The reaction is reversible, so excess alcohol or removal of water shifts the equilibrium toward ester formation.
+Why the other choices are wrong:
+A. A base catalyst: A base mainly deprotonates the starting carboxylic acid to form a carboxylate salt, rather than catalyzing Fischer esterification. This reaction uses acid to make the carbonyl more susceptible to attack by the alcohol.
+C. NaOH: NaOH is a strong base that would deprotonate the carboxylic acid to form a carboxylate salt (RCOO- Na+), which is unreactive toward nucleophilic attack by an alcohol. In fact, NaOH is the reagent used for ester hydrolysis (saponification), which is the opposite of esterification.
+D. LiAlH₄: LiAlH₄ is a reducing reagent, not a Fischer esterification catalyst. With sufficient reagent under suitable anhydrous conditions, a carboxylic acid can be reduced to a primary alcohol after aqueous work-up. The acidic proton consumes some hydride, but it does not make carboxylic-acid reduction impossible. Reducing one carboxylic-acid molecule does not generate the two alcohol molecules obtained by reducing an ester.
+Key Educational Points:
+  - Fischer esterification combines a carboxylic acid and an alcohol to give an ester and water.
+  - Acid catalysis increases the carbonyl's susceptibility to nucleophilic attack.
+  - Removing water or using excess alcohol shifts the equilibrium toward the ester.
+
+==============================================================================
+
+Q40  [chem-281]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The correct order of reactivity of carboxylic acid derivatives toward nucleophilic acyl substitution is:
+
+  A. Ester > Amide > Acid chloride > Anhydride
+  B. Acid chloride > Anhydride > Ester > Amide   <= key
+  C. Amide > Ester > Anhydride > Acid chloride
+  D. Anhydride > Acid chloride > Amide > Ester
+
+EXPLANATION:
+Correct Answer: B. Acid chloride > Anhydride > Ester > Amide
+Reactivity depends on the leaving group ability and the electron donation to the carbonyl. Acid chlorides are most reactive (Cl− is a good leaving group, minimal resonance stabilization). Amides are least reactive because the nitrogen lone pair strongly stabilizes the carbonyl through resonance, and NH₂⁻ is a poor leaving group.
+Why the other choices are wrong:
+A. Ester > Amide > Acid chloride > Anhydride: This order incorrectly places esters and amides above acid chlorides and anhydrides. The usual relative leaving-group ability is Cl⁻ > RCOO⁻ > RO⁻ > NH₂⁻. Chloride and carboxylate leave more readily; alkoxide and especially amide anions are poor leaving groups. Resonance donation into the acyl group also affects reactivity.
+C. Amide > Ester > Anhydride > Acid chloride: Amide > Ester > Anhydride > Acid chloride is also backwards. Amides are the least reactive carboxylic acid derivatives because nitrogen donates its lone pair into the carbonyl by resonance, stabilizing the amide group and making it resistant to nucleophilic attack. This is why peptide bonds (amide bonds) are kinetically stable in proteins.
+D. Anhydride > Acid chloride > Amide > Ester: Anhydride > Acid chloride > Amide > Ester incorrectly places anhydrides above acid chlorides. Acid chlorides are the most reactive because Cl- is the best leaving group (weakest base) among the four. The full reactivity order is: acid chloride > anhydride > ester > amide, corresponding to decreasing leaving group ability.
+Key Educational Points:
+  - The usual order is acid chloride > anhydride > ester > amide.
+  - Better leaving groups generally make nucleophilic acyl substitution easier.
+  - Nitrogen-to-carbonyl resonance donation makes ordinary amides especially resistant to this reaction.
+
+==============================================================================
+
+Q41  [chem-282]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Hydrolysis of ethyl ethanoate (ethyl acetate) with NaOH is called:
+
+  A. Esterification
+  B. Saponification   <= key
+  C. Transesterification
+  D. Decarboxylation
+
+EXPLANATION:
+Correct Answer: B. Saponification
+Saponification is the base-promoted hydrolysis of an ester. Hydroxide attacks the ester carbonyl, ultimately giving a carboxylate salt and an alcohol: CH₃COOCH₂CH₃ + NaOH → CH₃COONa + CH₃CH₂OH. Hydroxide is consumed in the overall reaction. Formation of the carboxylate makes the process strongly product-favored under these alkaline conditions; acidification in a separate step would give the carboxylic acid.
+Why the other choices are wrong:
+A. Esterification: Esterification is the formation of an ester from an acid and alcohol, which is the reverse of what this question describes. The question describes ester hydrolysis (breaking the ester bond), not ester formation. Fischer esterification (acid-catalyzed) makes esters; saponification (base-promoted hydrolysis) breaks them.
+C. Transesterification: Transesterification replaces an ester's alkoxy group with that from another alcohol, producing a different ester and an alcohol. Saponification instead converts the ester to a carboxylate salt. Some transesterification methods are base-catalyzed, so the presence of a base alone does not identify the reaction.
+D. Decarboxylation: Decarboxylation is the loss of CO2 from a carboxylic acid or its derivative. It has nothing to do with ester hydrolysis. An example of decarboxylation is heating a beta-keto acid, which loses CO2 to give a ketone. Saponification, by contrast, breaks the ester into a carboxylate salt and an alcohol.
+Key Educational Points:
+  - Ester hydrolysis with hydroxide gives a carboxylate and an alcohol.
+  - Hydroxide is consumed overall, so this is base-promoted rather than simply base-catalyzed hydrolysis.
+  - Acidifying the carboxylate afterward gives the corresponding carboxylic acid.
+
+==============================================================================
+
+Q42  [chem-283]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Decarboxylation of sodium acetate with soda lime (NaOH/CaO) produces:
+
+  A. Ethane
+  B. Methane   <= key
+  C. Ethene
+  D. Acetone
+
+EXPLANATION:
+Correct Answer: B. Methane
+Heating sodium acetate (CH₃COONa) with soda lime (NaOH + CaO) causes decarboxylation: CH₃COONa + NaOH → CH₄ + Na₂CO₃. The product alkane has one fewer carbon than the original acid. This is a classic method for preparing methane in the laboratory.
+Why the other choices are wrong:
+A. Ethane: Ethane has two carbon atoms. Here, the carboxyl carbon of two-carbon sodium acetate ends up in carbonate, leaving a one-carbon hydrocarbon product, methane. The balanced equation accounts for both original carbon atoms.
+C. Ethene: Ethene has two carbons and a C=C bond. Sodium acetate instead gives one-carbon methane in this reaction. The stated reaction replaces the carboxylate group with hydrogen; it does not create an alkene from this substrate.
+D. Acetone: Acetone ((CH3)2CO) has three carbons and a carbonyl group. The decarboxylation of sodium acetate removes the carboxyl carbon into Na2CO3, producing the simplest alkane, methane. Acetone can be formed by dry distillation of calcium acetate, which is a different reaction entirely.
+Key Educational Points:
+  - Heating sodium acetate with soda lime gives methane and sodium carbonate.
+  - The hydrocarbon product has one carbon fewer than the starting acetate ion.
+  - The removed carboxyl carbon remains accounted for in carbonate.
+
+==============================================================================
+
+Q43  [chem-284]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following is an anhydride?
+
+  A. CH₃COOCH₃
+  B. CH₃CONHCH₃
+  C. (CH₃CO)₂O   <= key
+  D. CH₃COCl
+
+EXPLANATION:
+Correct Answer: C. (CH₃CO)₂O
+Acetic anhydride (CH₃CO)₂O has the general structure of two acyl groups bonded to the same oxygen (RCO–O–COR). CH₃COOCH₃ is an ester (methyl acetate), CH₃CONHCH₃ is an amide (N-methylacetamide), and CH₃COCl is an acid chloride (acetyl chloride).
+Why the other choices are wrong:
+A. CH₃COOCH₃: CH3COOCH3 is methyl acetate, an ester (not an anhydride). Esters have the general structure R-COO-R', where an alkyl group replaces the acidic hydrogen of a carboxylic acid. An anhydride, by contrast, has two acyl groups linked by an oxygen: R-CO-O-CO-R', which can be thought of as two carboxylic acid molecules minus one water.
+B. CH₃CONHCH₃: CH₃CONHCH₃ is N-methylacetamide, containing a carbonyl carbon bonded to nitrogen. Its N–H group can donate hydrogen bonds, while its carbonyl oxygen can accept them. Its resistance to hydrolysis is mainly explained by amide resonance and poor leaving-group ability, not by the mere presence of an N–H bond.
+D. CH₃COCl: CH3COCl is acetyl chloride, an acid chloride (acyl chloride). Acid chlorides have the structure R-CO-Cl and are the most reactive carboxylic acid derivatives. They react vigorously with water, alcohols, and amines. The four common carboxylic acid derivatives are: acid chlorides, anhydrides, esters, and amides.
+Key Educational Points:
+  - An acid anhydride has two acyl groups connected through an oxygen atom.
+  - Acetic anhydride is CH₃CO–O–COCH₃, often written (CH₃CO)₂O.
+  - Distinguish anhydrides from esters, amides and acid chlorides by the group attached to the acyl carbon.
+
+==============================================================================
+
+Q44  [chem-285]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Aspirin is produced by the acetylation of salicylic acid with:
+
+  A. Acetic acid
+  B. Acetic anhydride   <= key
+  C. Acetaldehyde
+  D. Acetone
+
+EXPLANATION:
+Correct Answer: B. Acetic anhydride
+Aspirin (acetylsalicylic acid) is synthesized by treating salicylic acid (2-hydroxybenzoic acid) with acetic anhydride. The phenolic –OH group is acetylated to form an ester linkage. Acetic anhydride is preferred over acetic acid because the reaction is faster and more complete.
+Why the other choices are wrong:
+A. Acetic acid: Acetic acid is much less effective than acetic anhydride for acetylating salicylic acid's phenolic hydroxyl group in the standard laboratory synthesis. Acetic anhydride provides an activated acetyl group and is the intended reagent here.
+C. Acetaldehyde: Acetaldehyde does not transfer an acetyl group in the reaction used to make aspirin. Forming aspirin requires an ester at the phenolic oxygen, which is readily achieved with an activated acetyl donor such as acetic anhydride.
+D. Acetone: Acetone (CH3COCH3) is a ketone that does not serve as an acetylating agent. Ketones are relatively unreactive toward nucleophilic acyl substitution because they lack a good leaving group. To make aspirin, you need acetic anhydride (or acetyl chloride), which can donate an acetyl group to the phenolic -OH of salicylic acid.
+Key Educational Points:
+  - Aspirin is acetylsalicylic acid.
+  - Acetylation converts salicylic acid's phenolic hydroxyl group into an ester.
+  - Acetic anhydride supplies the acetyl group; the carboxylic-acid group is retained.
+
+==============================================================================
+
+Q45  [chem-286]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following compounds has the highest normal boiling point at 1 atm?
+
+  A. Ethyl acetate (MW 88)
+  B. Propionic acid (MW 74)
+  C. Butanamide (MW 87)   <= key
+  D. Butanoyl chloride (MW 107)
+
+EXPLANATION:
+Correct Answer: C. Butanamide (MW 87)
+Butanamide has the highest normal boiling point in this set, about 216 °C. Its primary amide group has N–H hydrogen-bond donors and a carbonyl oxygen that accepts hydrogen bonds, allowing strong intermolecular association. Its large amide dipole also contributes. The result depends on the combined intermolecular interactions and molecular structure, not molecular mass alone or a universal claim that N–H hydrogen bonds exceed O–H hydrogen bonds in strength.
+Why the other choices are wrong:
+A. Ethyl acetate (MW 88): Ethyl acetate boils at about 77 °C. Its oxygen atoms can accept hydrogen bonds, but it has no O–H or N–H group to donate hydrogen bonds between its own molecules, so it lacks butanamide's extensive self-association.
+B. Propionic acid (MW 74): Propionic acid boils at about 141 °C and associates strongly through hydrogen bonding. It nevertheless boils below butanamide in this set. Compare the overall interactions of these compounds rather than assuming that every amide–amide hydrogen bond is stronger than every acid–acid hydrogen bond.
+D. Butanoyl chloride (MW 107): Butanoyl chloride boils at about 102 °C despite its higher molecular mass. It is polar and can participate in interactions with hydrogen-bond donors, but it has no O–H or N–H group for the strong self-association available to butanamide.
+Key Educational Points:
+  - Boiling points reflect intermolecular attraction as well as molecular size and shape.
+  - In a primary amide, N–H groups donate hydrogen bonds and the carbonyl oxygen accepts them.
+  - Butanamide boils highest in this set; molecular mass alone does not predict the ranking.
+
+==============================================================================
+
+Q46  [chem-287]  correct answer: B
+------------------------------------------------------------------------------
+STEM: In Hell-Volhard-Zelinsky bromination of butanoic acid, followed by aqueous work-up, which carbon has a hydrogen replaced by bromine in the final acid product?
+
+  A. The carbonyl carbon
+  B. The α-carbon   <= key
+  C. The β-carbon
+  D. The terminal carbon
+
+EXPLANATION:
+Correct Answer: B. The α-carbon
+The HVZ reaction uses Br₂ with a catalytic amount of PBr₃ (or red phosphorus) to selectively brominate the α-carbon of a carboxylic acid. The mechanism involves formation of an acid bromide, which enolizes more readily than the acid itself, followed by α-bromination. The substrate must have an α-hydrogen. Aqueous work-up converts the acyl bromide back into a carboxylic acid, so the product is an α-bromo carboxylic acid; butanoic acid gives 2-bromobutanoic acid.
+Why the other choices are wrong:
+A. The carbonyl carbon: An acyl bromide is an intermediate, so bromine is temporarily bonded to the carbonyl carbon. Aqueous work-up restores the carboxylic-acid group. The hydrogen-to-bromine substitution retained in the final product is on the adjacent α-carbon.
+C. The β-carbon: The β-carbon (two carbons away from the carbonyl) is not the site of bromination in the HVZ reaction. Alpha-bromination is favored because the enol intermediate places a reactive double bond between the α-carbon and the carbonyl carbon, making the alpha position the site of electrophilic attack by bromine.
+D. The terminal carbon: In butanoic acid, the terminal methyl carbon is C4, whereas the α-carbon is C2. The reaction brominates C2 through an enol intermediate, not the terminal C4 position.
+Key Educational Points:
+  - HVZ bromination replaces an α-hydrogen in a suitable carboxylic acid.
+  - An acyl bromide and its enol participate before aqueous work-up restores the acid group.
+  - Butanoic acid gives 2-bromobutanoic acid, distinguishing its α-carbon from its terminal carbon.
+
+==============================================================================
+
+Q47  [chem-288]  correct answer: B
+------------------------------------------------------------------------------
+STEM: After treatment of an alkyl carboxylic acid (RCOOH) with excess LiAlH₄ followed by aqueous work-up, the organic product is:
+
+  A. An aldehyde
+  B. A primary alcohol   <= key
+  C. A secondary alcohol
+  D. An alkane
+
+EXPLANATION:
+Correct Answer: B. A primary alcohol
+LiAlH₄ reduces RCOOH to RCH₂OH after aqueous work-up, giving a primary alcohol. Sufficient reagent is needed because the acidic proton also consumes hydride. Reduction proceeds beyond the aldehyde oxidation level, so an aldehyde is not normally isolated. Ordinary NaBH₄ alone does not perform this carboxylic-acid reduction under standard conditions.
+Why the other choices are wrong:
+A. An aldehyde: An aldehyde is not normally isolated because the reducing conditions also convert that carbonyl functionality to an alcohol. The product after work-up is RCH₂OH.
+C. A secondary alcohol: A secondary alcohol has two carbon substituents on the carbon bearing the -OH. Reducing a carboxylic acid (R-COOH) gives R-CH2OH, which is a primary alcohol (only one carbon substituent on the -OH-bearing carbon). Secondary alcohols are formed by reducing ketones, not carboxylic acids.
+D. An alkane: An alkane would have lost the oxygen functionality entirely. This carboxylic-acid reduction retains one oxygen as the alcohol group, producing RCH₂OH rather than removing that oxygen to give an alkane.
+Key Educational Points:
+  - Excess LiAlH₄ followed by aqueous work-up converts an alkyl carboxylic acid to a primary alcohol.
+  - The carboxyl carbon is retained as the alcohol-bearing carbon.
+  - Standard NaBH₄ conditions reduce aldehydes and ketones but not ordinary carboxylic acids.
+
+==============================================================================
+
+Q48  [chem-289]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which sequence gives the correct order of base strength in dilute aqueous solution near 25 °C?
+
+  A. NH₃ > CH₃NH₂ > (CH₃)₂NH
+  B. (CH₃)₂NH > CH₃NH₂ > NH₃   <= key
+  C. CH₃NH₂ > (CH₃)₂NH > NH₃
+  D. (CH₃)₃N > (CH₃)₂NH > CH₃NH₂
+
+EXPLANATION:
+Correct Answer: B. (CH₃)₂NH > CH₃NH₂ > NH₃
+In this aqueous comparison, dimethylamine is slightly more basic than methylamine, and both are more basic than ammonia. Alkyl electron donation favors proton acceptance, but water stabilizes the bases and their conjugate acids differently. The observed order therefore depends on both electronic effects and solvation, not simply on counting methyl groups.
+Why the other choices are wrong:
+A. NH₃ > CH₃NH₂ > (CH₃)₂NH: This sequence puts ammonia ahead of the two methyl-substituted amines. In water, methylamine and dimethylamine are stronger bases than ammonia, so that ranking is reversed.
+C. CH₃NH₂ > (CH₃)₂NH > NH₃: Methylamine and dimethylamine are close in aqueous basicity, but dimethylamine is slightly stronger under the stated conditions. Adding an alkyl group does not provide a universal ranking for every amine in every solvent.
+D. (CH₃)₃N > (CH₃)₂NH > CH₃NH₂: Trimethylamine is less basic than dimethylamine in water; the ordering shown is associated with the gas-phase comparison instead. Trimethylammonium, (CH₃)₃NH⁺, has one N–H bond and can donate a hydrogen bond. Its solvation is less favorable than that of the less substituted ammonium ions; it does not lack N–H bonds altogether.
+Key Educational Points:
+  - The aqueous order in this comparison is (CH₃)₂NH > CH₃NH₂ > NH₃.
+  - Both electron donation and solvation affect amine basicity.
+  - Protonating trimethylamine gives (CH₃)₃NH⁺, which has one N–H bond; gas-phase and aqueous rankings can differ.
+
+==============================================================================
+
+Q49  [chem-290]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Aniline is a weaker base than cyclohexylamine because:
+
+  A. Aniline has a higher molecular weight
+  B. The nitrogen lone pair in aniline is delocalized into the benzene ring   <= key
+  C. Aniline has more hydrogen atoms
+  D. Cyclohexylamine has a phenyl group
+
+EXPLANATION:
+Correct Answer: B. The nitrogen lone pair in aniline is delocalized into the benzene ring
+In aniline, the nitrogen lone pair participates in resonance with the aromatic π system, reducing its availability for protonation. In cyclohexylamine, no such delocalization occurs (the ring is saturated), so the nitrogen lone pair is fully available as a base. This makes cyclohexylamine significantly more basic than aniline.
+Why the other choices are wrong:
+A. Aniline has a higher molecular weight: Aniline, C₆H₇N, actually has a lower molecular mass than cyclohexylamine, C₆H₁₃N. Molecular mass does not explain the basicity difference. The key structural distinction here is delocalization of aniline's nitrogen lone pair into the aromatic ring.
+C. Aniline has more hydrogen atoms: Aniline actually has fewer hydrogen atoms than cyclohexylamine, but this is irrelevant to basicity. The number of hydrogens on a molecule does not determine how readily the nitrogen lone pair accepts a proton. The key factor is lone pair delocalization: in cyclohexylamine, the lone pair is fully localized on nitrogen and readily available for protonation.
+D. Cyclohexylamine has a phenyl group: This statement has the structures confused. Cyclohexylamine has a cyclohexyl group (saturated ring), not a phenyl group (aromatic ring). Aniline is the one with the phenyl group. The aromatic ring in aniline is what reduces basicity by delocalizing the nitrogen lone pair through resonance, which cannot happen with the saturated cyclohexane ring.
+Key Educational Points:
+  - Aniline's nitrogen lone pair can delocalize into its aromatic ring.
+  - This reduces its availability for protonation compared with an ordinary alkylamine.
+  - Cyclohexylamine has a saturated ring and lacks this aromatic lone-pair delocalization.
+
+==============================================================================
+
+Q50  [chem-291]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which amino acid has a nonpolar, hydrophobic side chain?
+
+  A. Serine
+  B. Aspartate
+  C. Leucine   <= key
+  D. Lysine
+
+EXPLANATION:
+Correct Answer: C. Leucine
+Leucine has an isobutyl side chain (–CH₂CH(CH₃)₂), which is entirely hydrocarbon and therefore nonpolar and hydrophobic. Serine has a polar hydroxyl group; at physiological pH the side chain of aspartate contains –COO⁻ and that of lysine is predominantly –NH₃⁺.
+Why the other choices are wrong:
+A. Serine: Serine's side chain is –CH₂OH. Its hydroxyl group can form hydrogen bonds, making the side chain polar rather than hydrocarbon-like and hydrophobic.
+B. Aspartate: Aspartate's side chain is predominantly –CH₂COO⁻ at physiological pH. This negative charge interacts strongly with water, unlike leucine's nonpolar side chain.
+D. Lysine: Lysine's side-chain amino group is predominantly protonated as –NH₃⁺ at physiological pH. That positive charge makes the side chain hydrophilic rather than nonpolar.
+Key Educational Points:
+  - Leucine's side chain is a nonpolar hydrocarbon group.
+  - Serine is polar, while aspartate and lysine have charged side chains near physiological pH.
+  - Classify side chains separately from the amino acid's shared backbone groups.
+
+==============================================================================
+
+Q51  [chem-292]  correct answer: C
+------------------------------------------------------------------------------
+STEM: At its isoelectric point in aqueous solution, free glycine exists predominantly as:
+
+  A. A cation
+  B. An anion
+  C. A zwitterion   <= key
+  D. A molecule with no charged functional groups
+
+EXPLANATION:
+Correct Answer: C. A zwitterion
+Near its isoelectric point, about pH 6, free glycine is predominantly ⁺H₃N–CH₂–COO⁻, a zwitterion. It contains both a positive and a negative charge but has zero net charge in this form. At the isoelectric point the population has zero average net charge and no net electrophoretic migration. Zero net charge does not mean that all functional groups are uncharged.
+Why the other choices are wrong:
+A. A cation: At sufficiently low pH, glycine is mainly ⁺H₃N–CH₂–COOH and has net charge +1. Near its isoelectric point, loss of the carboxyl proton makes the zwitterion predominant instead.
+B. An anion: At sufficiently high pH, glycine is mainly H₂N–CH₂–COO⁻ and has net charge −1. That is above its isoelectric point, not the predominant form at the pI.
+D. A molecule with no charged functional groups: The structure H₂N–CH₂–COOH has no charged functional groups, but it is not glycine's predominant form at its pI in water. The predominant zwitterion has charged groups whose contributions cancel.
+Key Educational Points:
+  - A zwitterion contains both positive and negative charges within the same molecular species.
+  - Free glycine is predominantly ⁺H₃N–CH₂–COO⁻ near its pI, about pH 6.
+  - The isoelectric point concerns zero average net charge, not absence of all charged groups.
+
+==============================================================================
+
+Q52  [chem-293]  correct answer: C
+------------------------------------------------------------------------------
+STEM: The peptide bond between two amino acids is:
+
+  A. An ester bond
+  B. A glycosidic bond
+  C. An amide bond   <= key
+  D. A disulfide bond
+
+EXPLANATION:
+Correct Answer: C. An amide bond
+A peptide bond is an amide linkage between the carboxyl-derived carbonyl carbon of one amino-acid residue and the amino nitrogen of the next. Resonance gives the C–N bond partial double-bond character, making the peptide unit approximately planar and restricting rotation. The linkage is often written –CO–NH–, but a peptide bond to proline's nitrogen has no N–H hydrogen.
+Why the other choices are wrong:
+A. An ester bond: A carboxylic ester connects an acyl group to an oxygen-containing group, as in the fatty-acid esters of glycerol. A peptide instead contains an acyl carbon–nitrogen linkage. DNA and RNA have phosphodiester links, which are esters of phosphate and are structurally different from carboxylic esters.
+B. A glycosidic bond: Glycosidic bonds involve a sugar's anomeric carbon. The common O-glycosidic links between sugars differ from the carbonyl carbon–nitrogen amide linkage in a peptide bond.
+D. A disulfide bond: A disulfide bond joins two cysteine side chains through an S–S linkage and can stabilize protein structure. It does not replace the peptide bonds connecting successive residues. The backbone also contains the other covalent bonds within each amino-acid residue.
+Key Educational Points:
+  - Peptide bonds are amide linkages connecting amino-acid residues.
+  - Resonance makes the peptide unit approximately planar and restricts rotation about its C–N bond.
+  - Disulfide bonds connect cysteine side chains, whereas peptide bonds connect residues along the backbone.
+
+==============================================================================
+
+Q53  [chem-294]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Treatment of a primary aromatic amine with nitrous acid in hydrochloric acid at 0–5 °C gives a relatively persistent intermediate. Which type of compound is it?
+
+  A. A secondary amine
+  B. A diazonium salt   <= key
+  C. A nitrile
+  D. An amide
+
+EXPLANATION:
+Correct Answer: B. A diazonium salt
+Primary aromatic amines react with HNO₂ (generated from NaNO₂ + HCl) at 0–5°C to form relatively stable diazonium salts (ArN₂⁺Cl−). These are important intermediates in organic synthesis for Sandmeyer reactions and azo dye formation. Primary aliphatic amines also form diazonium salts, but they decompose rapidly to give nitrogen gas and carbocations.
+Why the other choices are wrong:
+A. A secondary amine: A secondary amine would require a second carbon-containing group on nitrogen. Nitrous acid does not simply alkylate the starting amine; under the stated conditions it converts the primary aromatic amino group into an arenediazonium group.
+C. A nitrile: A nitrile (R-CN) is formed by dehydrating primary amides or by nucleophilic substitution with cyanide. It is not a product of primary amine + HNO2. The diazonium salt formed in this reaction is a versatile synthetic intermediate that can be converted to phenols, halides, nitriles (via Sandmeyer reaction), and azo dyes.
+D. An amide: Forming an amide from this amine would require an acylating reagent, such as an acid chloride or anhydride. Nitrous acid performs diazotization instead. Acylating a primary amine normally gives an N-substituted amide, not necessarily RCONH₂.
+Key Educational Points:
+  - Primary aromatic amines form arenediazonium ions with nitrous acid in cold acidic solution.
+  - Low temperature helps preserve the intermediate for subsequent reactions.
+  - Aliphatic diazonium ions are much less persistent and commonly lose N₂ rapidly.
+
+==============================================================================
+
+Q54  [chem-295]  correct answer: C
+------------------------------------------------------------------------------
+STEM: Gabriel synthesis is used to prepare:
+
+  A. Secondary amines
+  B. Tertiary amines
+  C. Primary amines   <= key
+  D. Quaternary ammonium salts
+
+EXPLANATION:
+Correct Answer: C. Primary amines
+The Gabriel synthesis uses potassium phthalimide, which acts as a nucleophile in an SN2 reaction with a primary alkyl halide. Subsequent hydrolysis (or treatment with hydrazine - Ing-Manske procedure) releases the primary amine. This method avoids over-alkylation problems because the nitrogen in phthalimide is only monoalkylated.
+Why the other choices are wrong:
+A. Secondary amines: Gabriel synthesis cannot produce secondary amines because the phthalimide nitrogen can only be alkylated once before hydrolysis. The method involves potassium phthalimide reacting with a primary alkyl halide (SN2), then hydrolysis releases the primary amine. For secondary amines, other methods like reductive amination are used.
+B. Tertiary amines: Tertiary amines cannot be made by Gabriel synthesis for the same reason. The phthalimide nitrogen is already bonded to two carbonyl carbons, so only one alkyl group can be introduced. Gabriel synthesis is valued precisely because it avoids the over-alkylation problem that plagues direct amine synthesis.
+D. Quaternary ammonium salts: Quaternary ammonium salts (R4N+) have four alkyl groups on nitrogen and a positive charge. Gabriel synthesis produces only primary amines (one alkyl group on the free nitrogen). Making quaternary salts requires exhaustive alkylation of an amine, which is a completely different approach.
+Key Educational Points:
+  - Phthalimide anion substitutes on a suitable primary alkyl halide by SN2.
+  - Cleavage of the resulting N-alkyl phthalimide releases a primary amine.
+  - The method avoids repeated alkylation of a free amine during the substitution step.
+
+==============================================================================
+
+Q55  [chem-296]  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following amino acids contains sulfur?
+
+  A. Valine
+  B. Cysteine   <= key
+  C. Tyrosine
+  D. Histidine
+
+EXPLANATION:
+Correct Answer: B. Cysteine
+Cysteine contains a thiol group, –SH, in its side chain. Oxidation can join two cysteine sulfur atoms in a disulfide bond; the disulfide-linked pair is called cystine. Such links can stabilize protein structure. Methionine also contains sulfur, but in a thioether group rather than a free thiol.
+Why the other choices are wrong:
+A. Valine: Valine is a branched-chain, nonpolar amino acid with the side chain -CH(CH3)2. It contains only carbon, hydrogen, nitrogen, and oxygen, with no sulfur. Valine is one of the three branched-chain amino acids (along with leucine and isoleucine) that are essential in human nutrition.
+C. Tyrosine: Tyrosine has an aromatic side chain (a phenol group, 4-hydroxyphenyl). It contains no sulfur. Tyrosine is important as a precursor to several key biomolecules: dopamine, norepinephrine, epinephrine, thyroid hormones, and melanin.
+D. Histidine: Histidine contains an imidazole ring with nitrogen atoms and no sulfur. Among the standard twenty amino acids, cysteine has a thiol and methionine has a thioether. Methionine's side chain does not ordinarily form the disulfide links characteristic of cysteine.
+Key Educational Points:
+  - Cysteine has a sulfur-containing thiol side chain.
+  - Two cysteines can be oxidized to a disulfide-linked pair, cystine.
+  - Methionine's sulfur is in a thioether, which behaves differently from cysteine's thiol.
+
+==============================================================================
+
+Q56  [chem-297]  correct answer: B
+------------------------------------------------------------------------------
+STEM: When a suitable quaternary ammonium hydroxide is heated and more than one alkene position is possible, the usual Hofmann-elimination preference is for:
+
+  A. The most substituted alkene (Zaitsev product)
+  B. The least substituted alkene (Hofmann product)   <= key
+  C. An alcohol
+  D. An amine oxide
+
+EXPLANATION:
+Correct Answer: B. The least substituted alkene (Hofmann product)
+Hofmann elimination removes a β-hydrogen and a tertiary amine leaving group from a quaternary ammonium ion, forming an alkene on heating. The less substituted alkene is often favored because removal of a less hindered β-hydrogen is easier. The usual exhaustive-methylation route releases trimethylamine, but a general quaternary ammonium salt can release a different tertiary amine. Substrate structure and the required elimination geometry can affect the outcome.
+Why the other choices are wrong:
+A. The most substituted alkene (Zaitsev product): The more substituted alkene is the usual Zaitsev product. Hofmann elimination often favors the less substituted alternative because of the accessibility of the β-hydrogen, although this is a trend rather than an exceptionless rule.
+C. An alcohol: The elimination produces an alkene, a tertiary amine and water. Hydroxide removes a β-hydrogen rather than replacing the ammonium group with –OH in the reaction described here.
+D. An amine oxide: An amine oxide is produced by a different reaction: oxidation of a tertiary amine with a peroxide (like H2O2 or mCPBA). Amine oxide elimination (Cope elimination) is a related but distinct reaction. Hofmann elimination specifically involves heating a quaternary ammonium hydroxide, often favoring the less substituted alkene.
+Key Educational Points:
+  - Heating a suitable quaternary ammonium hydroxide can give an alkene, a tertiary amine and water.
+  - Hofmann elimination often favors the less substituted alkene.
+  - A β-hydrogen and suitable elimination geometry are required; the preference is not universal.
+
+==============================================================================
+
+Q57  [chem-298]  correct answer: B
+------------------------------------------------------------------------------
+STEM: The Hinsberg test distinguishes between primary, secondary, and tertiary amines using:
+
+  A. FeCl₃ solution
+  B. Benzenesulfonyl chloride (C₆H₅SO₂Cl)   <= key
+  C. Tollens' reagent
+  D. Ninhydrin solution
+
+EXPLANATION:
+Correct Answer: B. Benzenesulfonyl chloride (C₆H₅SO₂Cl)
+The Hinsberg test uses benzenesulfonyl chloride in alkaline solution. A primary amine forms a sulfonamide with an N–H proton; deprotonation gives a salt that is soluble in alkali in the standard test. A secondary amine forms a sulfonamide with no N–H proton, so it does not show this base-solubilization behavior. A tertiary amine does not form the diagnostic sulfonamide. The unchanged tertiary amine can be protonated by dilute acid.
+Why the other choices are wrong:
+A. FeCl₃ solution: FeCl3 solution is used to test for phenols (giving a characteristic violet, green, or blue color due to complex formation with Fe3+ ions) and for enols. It does not distinguish between amine classes. The Hinsberg test specifically uses benzenesulfonyl chloride, which reacts differently with primary, secondary, and tertiary amines.
+C. Tollens' reagent: Tollens' reagent (ammoniacal AgNO3) is used to detect aldehydes by oxidizing them to carboxylates while reducing Ag+ to metallic silver (the "silver mirror" test). It has no application in amine classification. The Hinsberg comparison instead depends on sulfonamide formation and whether the product can be deprotonated in alkali.
+D. Ninhydrin solution: Ninhydrin solution is used to detect alpha-amino acids and primary amines, producing a characteristic purple color (Ruhemann's purple). While ninhydrin does react with amines, it does not distinguish between primary, secondary, and tertiary amines the way the Hinsberg test does.
+Key Educational Points:
+  - Benzenesulfonyl chloride is the reagent in the Hinsberg test.
+  - A primary-amine sulfonamide retains an N–H proton that allows formation of an alkali-soluble salt.
+  - Secondary-amine sulfonamides lack that proton; tertiary amines do not form the diagnostic sulfonamide.
+
+==============================================================================
+
+Q58  [chem-299]  correct answer: B   (kept unchanged)
+------------------------------------------------------------------------------
+STEM: How many structural isomers does C₄H₁₀ have?
+
+  A. 1
+  B. 2   <= key
+  C. 3
+  D. 4
+
+EXPLANATION:
+Correct Answer: B. 2
+C₄H₁₀ (butane) has two structural isomers: n-butane (CH₃CH₂CH₂CH₃) with a straight chain, and isobutane or 2-methylpropane (CH(CH₃)₃) with a branched chain. These differ in the connectivity of their carbon atoms.
+Why the other choices are wrong:
+A. 1: One isomer would mean C4H10 has only one possible structure, but there are two: n-butane (a straight chain of four carbons, CH3CH2CH2CH3) and isobutane (2-methylpropane, (CH3)3CH, with a branched structure). Even with just four carbons, branching creates a second structural isomer.
+C. 3: Three structural isomers is incorrect for C4H10. There are only two ways to arrange four carbon atoms: as a straight chain (butane) or with one branch (2-methylpropane). The number of structural isomers grows rapidly with carbon count: C5H12 has 3, C6H14 has 5, C7H16 has 9, and C10H22 has 75.
+D. 4: Four structural isomers is too many for C4H10. With only four carbons, the branching options are very limited. You can have a straight chain or a single methyl branch (there is only one position for it). Compare this to C5H12, which has 3 isomers: pentane, 2-methylbutane, and 2,2-dimethylpropane (neopentane).
+Key Educational Points:
+  - Structural (constitutional) isomers share a molecular formula but differ in how the atoms are connected.
+  - C₄H₁₀ has exactly two: n-butane, a straight chain, and methylpropane (isobutane), which is branched.
+  - Count systematically - shorten the main chain by one and move the branch - and check that each new structure is genuinely different, not the same skeleton drawn at another angle.
+  - Branching lowers the boiling point, because a more compact molecule presents less surface for London dispersion forces.
+  - Structural isomers differ in connectivity; stereoisomers have identical connectivity and differ only in spatial arrangement.
+
+==============================================================================
+
+Q59  [chem-300]  correct answer: B
+------------------------------------------------------------------------------
+STEM: For an alkene to have distinct E/Z configurations about a C=C bond, which structural requirement must be met?
+
+  A. A triple bond
+  B. Two different substituents on each carbon of the double bond   <= key
+  C. Free rotation about the double bond
+  D. An asymmetric carbon
+
+EXPLANATION:
+Correct Answer: B. Two different substituents on each carbon of the double bond
+Each carbon of the double bond must have two different substituents. Restricted rotation about C=C then allows two distinct configurations. E/Z notation compares the higher-priority group on each carbon: together gives Z, opposite gives E. In simple examples such as but-2-ene, cis/trans terminology can also be used. If either carbon has two identical groups, there is no E/Z pair at that bond.
+Why the other choices are wrong:
+A. A triple bond: An ordinary carbon–carbon triple bond is linear and has only one external substituent on each carbon. It therefore does not create the two-sided arrangement required for an E/Z pair.
+C. Free rotation about the double bond: Free rotation would allow the arrangements to interconvert easily. Rotation about a C=C bond requires disruption of π overlap, which creates the barrier separating its configurations. Ordinary single-bond rotation usually gives conformations rather than a stable alkene E/Z pair.
+D. An asymmetric carbon: An alkene can have E/Z configurations without any tetrahedral chiral carbon. A carbon attached to four different groups is one common source of chirality, but it is not required for all enantiomerism either.
+Key Educational Points:
+  - Each double-bond carbon must have two different substituents for E/Z configurations to exist.
+  - Restricted rotation results from the π interaction between the double-bonded carbons.
+  - E/Z notation compares substituent priorities on the two carbons, not simply their sizes.
+  - Cis/trans terminology works for familiar simple cases, while E/Z notation is more general.
+  - Alkene stereoisomerism does not require a tetrahedral chiral carbon; substituted rings can also show cis/trans relationships.
+
+==============================================================================
+
+Q60  [chem-301]  correct answer: B
+------------------------------------------------------------------------------
+STEM: A molecule has one tetrahedral carbon bonded to four different groups and no other source of stereoisomerism. How many stereoisomers are possible?
+
+  A. 1
+  B. 2   <= key
+  C. 3
+  D. 4
+
+EXPLANATION:
+Correct Answer: B. 2
+The four different groups around this carbon can form two configurations, designated R and S. These are nonsuperimposable mirror images, so they are enantiomers. With one such center and no other source of stereoisomerism, the count is two. The familiar 2ⁿ expression is an upper limit for n tetrahedral chiral centers when these are the only stereogenic elements; symmetry can reduce the count in molecules with multiple centers.
+Why the other choices are wrong:
+A. 1: One would mean only one distinct configuration. Here the four different groups create two nonsuperimposable mirror-image configurations. An achiral molecule still has a mirror image; its mirror image is simply superimposable on it.
+C. 3: The specified single center has only two configurations, R and S, so there is no third configuration. Some molecules with multiple centers have three stereoisomers because of symmetry and a meso form, but that does not apply to this molecule.
+D. 4: Four requires additional independent stereochemical variation, such as a second chiral center or a separate E/Z unit. The stem excludes those possibilities, leaving only two configurations.
+Key Educational Points:
+  - A tetrahedral carbon attached to four different groups is a common type of chiral center.
+  - One such center, with no other stereogenic element, gives two configurations: R and S.
+  - These two configurations are nonsuperimposable mirror images, called enantiomers.
+  - Pure enantiomers rotate plane-polarized light equally in opposite directions under the same conditions; a racemic mixture has no net rotation.
+  - For molecules whose only stereogenic elements are n tetrahedral chiral centers, 2ⁿ is an upper limit; symmetry can reduce the actual number.
+
+==============================================================================
