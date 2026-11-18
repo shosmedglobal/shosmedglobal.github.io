@@ -4950,7 +4950,7 @@
         try {
           if (!window._qbankCounts) {
             const [qRes, pRes] = await Promise.all([
-              fetch('questions.json?v=20261117d-chem5fu').then(r => r.json()),
+              fetch('questions.json?v=20261118a-chem6').then(r => r.json()),
               fetch('questions-physics.json?v=20260423a').then(r => r.json()).catch(() => ({ physics: [] })),
             ]);
             window._qbankCounts = {
@@ -7162,7 +7162,7 @@
       if (window._questionsById) return window._questionsById;
       try {
         const [qRes, pRes] = await Promise.all([
-          fetch('questions.json?v=20261117d-chem5fu').then(r => r.json()),
+          fetch('questions.json?v=20261118a-chem6').then(r => r.json()),
           fetch('questions-physics.json?v=20260423a').then(r => r.json()).catch(() => ({ physics: [] })),
         ]);
         const all = {};

@@ -29,6 +29,8 @@
 // counts below were stepped down. The sweep still covers every chemistry record
 // that no reviewed pack owns.
 'use strict';
+// NOTE: chemistry batch 6 (chem-302..chem-361) pruned 60 ids from this suite's
+// untouched fixture on 18 November 2026; the counts below were stepped to match.
 // NOTE: chemistry batch 5 (chem-242..chem-301) pruned 60 ids from this suite's
 // untouched fixture on 17 November 2026; the counts below were stepped to match.
 
@@ -264,8 +266,8 @@ for (const q of data.chemistry) {
 }
 checks++; if (chemDrift) failures++;
 const nChem = Object.keys(untouched.chemistry).length;
-ok(nChem === 305, `${nChem} out-of-pack chemistry hashes, expected 305`);
-ok(nChem + 60 + 60 + 60 === 485, 'the out-of-pack set, this pack and chemistry batches 4 and 5 should be the whole chemistry bank');
+ok(nChem === 245, `${nChem} out-of-pack chemistry hashes, expected 245`);
+ok(nChem + 60 + 60 + 60 + 60 === 485, 'the out-of-pack set, this pack and chemistry batches 4, 5 and 6 should be the whole chemistry bank');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts should be 629 and 485');
 for (const id of IDS) ok(!(id in untouched.chemistry), `${id} is both in the pack and in the untouched set`);
 

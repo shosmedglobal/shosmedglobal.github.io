@@ -10,6 +10,8 @@
  * scientific approval of the chemistry.
  */
 'use strict';
+// NOTE: chemistry batch 6 (chem-302..chem-361) pruned 60 ids from this suite's
+// untouched fixture on 18 November 2026; the counts below were stepped to match.
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -171,8 +173,13 @@ for (const q of data.chemistry) {
   if (untouched.chemistry[q.id] !== hash(q)) { chemBad++; console.error('    changed outside the pack: ' + q.id); }
 }
 ok(chemBad === 0, 'every chemistry record outside the pack is unchanged');
+/* nChem counts LIVE records outside this pack, so it stays 425 however many of
+   their hashes a later batch prunes from the fixture. The fixture count is the
+   number that steps down: 365 after the chemistry batch 6 prune. */
 ok(nChem === 425, '425 chemistry records lie outside the pack (got ' + nChem + ')');
 ok(nChem + 60 === 485, 'the partition adds up: 425 outside + 60 in the pack = 485');
+ok(Object.keys(untouched.chemistry).length === 365,
+  'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (365 after the batch 6 prune)');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts are still 629 / 485');
 
 /* ------------------------------------------------------------------ */

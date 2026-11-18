@@ -1,0 +1,902 @@
+{
+  "Q1": {
+    "q": "Q1",
+    "id": "chem-302",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Which molecule can exhibit optical activity?",
+    "options": [
+      "Propan-2-ol",
+      "Butan-2-ol",
+      "2-methylpropan-2-ol",
+      "Methanol"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Butan-2-ol</h4><p>Butan-2-ol (CH₃CH(OH)CH₂CH₃) has a chiral center at C2, bonded to four different groups: –H, –OH, –CH₃, and –CH₂CH₃. This asymmetry allows it to rotate plane-polarized light. The other molecules either lack four different substituents on any carbon (no chirality center) or are too symmetric.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Propan-2-ol:</strong> Propan-2-ol (CH₃CH(OH)CH₃) has a central carbon bonded to –OH, –H, and two identical –CH₃ groups. Since two substituents are the same, this carbon is not a chiral center, so propan-2-ol cannot rotate plane-polarized light.</p>\n<p><strong>C. 2-methylpropan-2-ol:</strong> 2-Methylpropan-2-ol ((CH₃)₃COH) is a tertiary alcohol where the central carbon bears three identical methyl groups plus one –OH. With three of four substituents identical, there is no chiral center and no optical activity.</p>\n<p><strong>D. Methanol:</strong> Methanol (CH₃OH) is the simplest alcohol. Its carbon is bonded to three hydrogen atoms and one –OH group, giving it no chiral center. A carbon must have four different substituents to be a stereocenter.</p><h4>Key Educational Points:</h4><ul><li>A molecule is optically active only if it is chiral - non-superimposable on its mirror image.</li><li>In butan-2-ol, C2 carries H, OH, CH₃, and C₂H₅ - four different groups, so it is a stereocentre.</li><li>Test each carbon in turn for four different substituents; any carbon with two identical groups cannot be a stereocentre.</li><li>Then check the whole molecule for an internal mirror plane: a compound with stereocentres but internal symmetry is meso and is optically inactive.</li><li>A racemic mixture of equal enantiomers also shows no net rotation, even though each molecule in it is chiral.</li></ul>"
+  },
+  "Q2": {
+    "q": "Q2",
+    "id": "chem-303",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Meso compounds are optically inactive despite having chiral centers because they:",
+    "options": [
+      "Have no chiral centers at all",
+      "Possess an internal plane of symmetry",
+      "Are racemic mixtures",
+      "Contain only one chiral center"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Possess an internal plane of symmetry</h4><p>A meso compound contains chiral centers but has an internal plane of symmetry (or other symmetry element) that makes the molecule achiral overall. The optical rotation from one chiral center is exactly cancelled by the other. For example, meso-tartaric acid has two chiral centers but is optically inactive.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Have no chiral centers at all:</strong> This is incorrect because meso compounds do have chiral centers - they typically have two or more. What makes them special is that the molecule has an internal plane of symmetry, so the rotation caused by one chiral center is exactly canceled by its mirror-image counterpart within the same molecule.</p>\n<p><strong>C. Are racemic mixtures:</strong> A racemic mixture is an equal mixture of two separate enantiomers (R and S) that cancels optical rotation externally. A meso compound is a single molecule that is optically inactive due to internal symmetry - it is not a mixture. This is an important distinction: racemic = two molecules averaging out; meso = one molecule canceling itself.</p>\n<p><strong>D. Contain only one chiral center:</strong> A molecule with only one chiral center cannot be a meso compound. Meso compounds require at least two chiral centers arranged so that an internal mirror plane makes one half the mirror image of the other, resulting in internal cancellation of optical rotation.</p><h4>Key Educational Points:</h4><ul><li>A meso compound contains stereocentres yet is achiral, because an internal plane of symmetry makes it superimposable on its own mirror image.</li><li>The rotation contributed by one half of the molecule is cancelled exactly by the other half, so no net optical rotation is observed.</li><li>This is internal compensation, and it is different from a racemic mixture, where cancellation occurs between two separate molecules.</li><li>A racemate can in principle be resolved into optically active enantiomers; a meso compound cannot, because it is one achiral substance.</li><li>Meso forms are the reason the 2ⁿ rule overcounts - always check for internal symmetry before trusting it.</li></ul>"
+  },
+  "Q3": {
+    "q": "Q3",
+    "id": "chem-304",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "In the Cahn-Ingold-Prelog (CIP) system, substituent priority is determined by:",
+    "options": [
+      "Molecular weight of the entire group",
+      "Atomic number of the atom directly bonded to the chiral center",
+      "Electronegativity of the substituent",
+      "Number of bonds in the substituent"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Atomic number of the atom directly bonded to the chiral center</h4><p>In CIP priority rules, atoms directly attached to the chiral center are ranked by atomic number (higher atomic number = higher priority). If there is a tie, you move outward along the chain to the next atoms until a difference is found. For example: I > Br > Cl > S > O > N > C > H.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Molecular weight of the entire group:</strong> CIP rules look at atoms one at a time, starting with the atom directly attached to the chiral center. The molecular weight of the entire substituent group is irrelevant - only the atomic number at each point of comparison matters. For example, –CH₂CH₃ vs. –CH₂OH: you compare C vs. C first, then if tied, move outward to the next atoms.</p>\n<p><strong>C. Electronegativity of the substituent:</strong> Electronegativity describes how strongly an atom attracts bonding electrons, which influences polarity and reactivity. However, CIP priority is based on atomic number (number of protons), not electronegativity. While higher atomic number often correlates with higher electronegativity for light elements, this is not always true and is not the rule used.</p>\n<p><strong>D. Number of bonds in the substituent:</strong> The number of bonds in a substituent is not used to assign CIP priority. The system works by comparing atomic numbers at each successive point of difference, outward from the chiral center. Double and triple bonds are handled by the phantom atom rule: a C=O double bond is treated as if carbon is bonded to two oxygen atoms and oxygen to two carbon atoms.</p><h4>Key Educational Points:</h4><ul><li>CIP priority is set by the atomic number of the atom directly bonded to the stereocentre: higher atomic number, higher priority.</li><li>If two atoms tie, move outward one bond at a time and compare at the first point of difference.</li><li>A double bond is treated as though the atom were duplicated.</li><li>Priority depends on atomic number alone - not on group size, mass, or electronegativity, which is the most common trap.</li><li>With the lowest-priority group pointing away from you, 1 to 2 to 3 clockwise is R and anticlockwise is S.</li></ul>"
+  },
+  "Q4": {
+    "q": "Q4",
+    "id": "chem-305",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "A compound with the configuration (R)-2-bromobutane and its mirror image (S)-2-bromobutane are:",
+    "options": [
+      "Identical",
+      "Enantiomers",
+      "Diastereomers",
+      "Constitutional isomers"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Enantiomers</h4><p>Enantiomers are non-superimposable mirror images that differ in the configuration at every chiral center. (R)-2-bromobutane and (S)-2-bromobutane are mirror images with opposite configurations at the single stereocenter. They have identical physical properties except for the direction of optical rotation and their interaction with other chiral molecules.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Identical:</strong> They have identical physical properties except for the direction of optical rotation and their interaction with other chiral molecules.</p>\n<p><strong>C. Diastereomers:</strong> Diastereomers are stereoisomers that are not mirror images of each other. They occur when a molecule has two or more stereocenters and the configurations differ at some but not all centers. (R)- and (S)-2-bromobutane have only one chiral center, so their mirror-image relationship makes them enantiomers, not diastereomers.</p>\n<p><strong>D. Constitutional isomers:</strong> Constitutional (structural) isomers have the same molecular formula but different atom connectivity - for example, butan-1-ol and butan-2-ol. (R)- and (S)-2-bromobutane have identical connectivity; they differ only in the 3D arrangement of atoms around the chiral center, making them stereoisomers (specifically enantiomers).</p><h4>Key Educational Points:</h4><ul><li>Two molecules that are non-superimposable mirror images are enantiomers.</li><li>With a single stereocentre, inverting it produces the mirror image, so R and S forms of 2-bromobutane are an enantiomeric pair.</li><li>Enantiomers share all ordinary physical properties, differing only in the direction of optical rotation and in reactions with other chiral species.</li><li>Diastereomers, by contrast, are stereoisomers that are not mirror images and do differ in melting point, boiling point, and solubility.</li><li>R/S is an assigned configurational label, not a measurement - it does not tell you which way the compound rotates light, which must be determined experimentally.</li></ul>"
+  },
+  "Q5": {
+    "q": "Q5",
+    "id": "chem-306",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Which statement about diastereomers is correct?",
+    "options": [
+      "They are mirror images of each other",
+      "They have identical physical properties",
+      "They are stereoisomers that are NOT mirror images",
+      "They always have opposite optical rotations"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. They are stereoisomers that are NOT mirror images</h4><p>Diastereomers are stereoisomers that are not related as mirror images. They differ at some but not all stereocenters. Unlike enantiomers, diastereomers have different physical properties (melting point, boiling point, solubility, etc.) and can be separated by conventional techniques such as chromatography or recrystallization.</p><h4>Why the other choices are wrong:</h4><p><strong>A. They are mirror images of each other:</strong> Stereoisomers that are mirror images are called enantiomers, not diastereomers. Diastereomers are stereoisomers that are specifically NOT mirror images. For example, (2R,3R)-tartaric acid and (2R,3S)-tartaric acid (meso) are diastereomers because they differ at one stereocenter but not all.</p>\n<p><strong>B. They have identical physical properties:</strong> Unlike enantiomers (which share nearly all physical properties except optical rotation direction), diastereomers have different physical properties: different melting points, boiling points, solubilities, and densities. This makes them separable by ordinary techniques like crystallization or distillation.</p>\n<p><strong>D. They always have opposite optical rotations:</strong> Enantiomers always rotate plane-polarized light by equal amounts in opposite directions. Diastereomers have no such predictable relationship - their optical rotations can differ in both magnitude and sign. There is no rule requiring them to be opposite.</p><h4>Key Educational Points:</h4><ul><li>Diastereomers are stereoisomers that are not mirror images of one another.</li><li>They arise when a molecule has two or more stereocentres and only some of them are inverted.</li><li>Because they are not mirror images, they have genuinely different physical properties and can be separated by ordinary means such as distillation or crystallisation.</li><li>Enantiomers require every stereocentre to be inverted, and share identical physical properties - which is why they are far harder to separate.</li><li>Cis-trans isomers are themselves a kind of diastereomer: stereoisomers that are not mirror images.</li></ul>"
+  },
+  "Q6": {
+    "q": "Q6",
+    "id": "chem-307",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "The E/Z system for naming geometric isomers uses which priority rule?",
+    "options": [
+      "Alphabetical order of substituents",
+      "Cahn-Ingold-Prelog priority rules",
+      "Molecular weight of substituents",
+      "Size of substituents"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Cahn-Ingold-Prelog priority rules</h4><p>The E/Z system assigns priorities to the two substituents on each carbon of the double bond using CIP rules (based on atomic number). If the higher-priority groups are on the same side, the isomer is Z (zusammen, German for 'together'). If on opposite sides, it is E (entgegen, 'opposite'). This system is more general than cis/trans.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Alphabetical order of substituents:</strong> Alphabetical ordering is not used in any IUPAC stereochemical naming system. The E/Z system assigns priority based on CIP (Cahn-Ingold-Prelog) rules, which rank substituents by atomic number. If the two higher-priority groups are on the same side of the double bond, the configuration is Z (zusammen = together); if on opposite sides, it is E (entgegen = opposite).</p>\n<p><strong>C. Molecular weight of substituents:</strong> Molecular weight of substituents is not used in the E/Z system. CIP priority is determined by atomic number at each successive point of difference, not by mass. For instance, –Cl (atomic number 17) has higher priority than –CH₂CH₂CH₃ regardless of molecular weight.</p>\n<p><strong>D. Size of substituents:</strong> Physical size (van der Waals radius) of substituents has no role in the E/Z naming system. Priority is determined strictly by atomic number using CIP rules. This is a common misconception - a bulky tert-butyl group does not automatically get higher priority than a small bromine atom; Br (Z=35) outranks C (Z=6).</p><h4>Key Educational Points:</h4><ul><li>The E/Z system assigns priority on each alkene carbon using CIP rules, exactly as R/S does at a stereocentre.</li><li>Z (zusammen, together) means the two higher-priority groups are on the same side; E (entgegen, opposite) means they are on opposite sides.</li><li>E/Z exists because cis/trans becomes ambiguous once the two carbons carry four different substituents.</li><li>Z is not simply a synonym for cis: the labels coincide only when the priority groups happen to be the ones cis/trans referred to.</li><li>As with R/S, priority is decided by atomic number, working outward to the first point of difference.</li></ul>"
+  },
+  "Q7": {
+    "q": "Q7",
+    "id": "chem-308",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "How many stereoisomers exist for 2,3-dibromobutane?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. 3</h4><p>2,3-Dibromobutane has two chiral centers (C2 and C3). Normally, 2² = 4 stereoisomers would be expected. However, because the molecule has identical substituents on C2 and C3 (–CH₃ and –Br), one pair of configurations creates a meso compound (with an internal mirror plane). This reduces the total to 3 stereoisomers: (R,R), (S,S), and meso (R,S).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 2:</strong> Two chiral centers normally give 2² = 4 stereoisomers. However, 2,3-dibromobutane is a special case because the two halves of the molecule are identical. This creates a meso form (with an internal mirror plane) that reduces the count from 4 to 3: one (R,R), one (S,S), and one meso (R,S).</p>\n<p><strong>C. 4:</strong> The formula 2ⁿ = 2² = 4 gives the maximum possible stereoisomers for two chiral centers. However, because 2,3-dibromobutane has identical substituent patterns on C2 and C3, one pair of expected stereoisomers collapses into a single meso compound. This reduces the count from 4 to 3.</p>\n<p><strong>D. 5:</strong> Five stereoisomers is not possible from two chiral centers, since the maximum from 2ⁿ is 4, and the actual count can only decrease (due to meso forms), never increase beyond 2ⁿ. The correct answer is 3: a pair of enantiomers and one meso form.</p><h4>Key Educational Points:</h4><ul><li>The 2ⁿ rule predicts 4 stereoisomers for two stereocentres, but 2,3-dibromobutane has only 3.</li><li>The two halves of the molecule are identical, so one combination possesses an internal mirror plane and is a meso compound.</li><li>The three are therefore one pair of enantiomers plus a single achiral meso form.</li><li>Always check for internal symmetry before applying 2ⁿ - it gives an upper limit, not a guaranteed count.</li><li>The meso form is a diastereomer of each enantiomer, so it differs in physical properties and can be separated from them.</li></ul>"
+  },
+  "Q8": {
+    "q": "Q8",
+    "id": "chem-309",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Glucose is classified as:",
+    "options": [
+      "A ketopentose",
+      "An aldopentose",
+      "A ketohexose",
+      "An aldohexose"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D. An aldohexose</h4><p>Glucose (C₆H₁₂O₆) has 6 carbon atoms (hexose) and an aldehyde functional group at C1 (aldo-). Therefore it is classified as an aldohexose. Fructose, by contrast, is a ketohexose (6 carbons with a ketone group at C2).</p><h4>Why the other choices are wrong:</h4><p><strong>A. A ketopentose:</strong> A ketopentose is a 5-carbon sugar with a ketone (C=O) functional group. Ribulose is an example. Glucose has 6 carbons and an aldehyde group, so it is neither a pentose nor a ketose. Remember: “aldo-” = aldehyde at C1, “keto-” = ketone (usually at C2), “-pentose” = 5 carbons, “-hexose” = 6 carbons.</p>\n<p><strong>B. An aldopentose:</strong> An aldopentose is a 5-carbon sugar with an aldehyde group. Ribose (found in RNA) is a classic example. Glucose has the right functional group (aldehyde) but has 6 carbons, not 5, making it an aldohexose.</p>\n<p><strong>C. A ketohexose:</strong> Fructose, by contrast, is a ketohexose (6 carbons with a ketone group at c2).</p><h4>Key Educational Points:</h4><ul><li>Monosaccharides are named by carbon count and carbonyl type: hexose means six carbons, and aldo- means an aldehyde group.</li><li>Glucose has six carbons with an aldehyde at C1, so it is an aldohexose.</li><li>Fructose also has six carbons but a ketone at C2, making it a ketohexose.</li><li>Aldoses are reducing sugars because the aldehyde can be oxidised; ketoses such as fructose still test positive, because alkaline test conditions isomerise them to aldoses.</li><li>The D in D-glucose refers to the configuration at the highest-numbered stereocentre (C5) relative to D-glyceraldehyde. It is a structural label and says nothing about which way the sugar rotates polarised light.</li></ul><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "Q9": {
+    "q": "Q9",
+    "id": "chem-310",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "The α and β anomers of D-glucose differ in the configuration at:",
+    "options": [
+      "C-2",
+      "C-4",
+      "C-1 (the anomeric carbon)",
+      "C-6"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. C-1 (the anomeric carbon)</h4><p>When glucose cyclizes to form the pyranose ring, the C1 aldehyde carbon becomes a new stereocenter called the anomeric carbon. In a Haworth projection the α-anomer has the C1 –OH pointing down (trans to the C6 CH₂OH group) and the β-anomer has it pointing up (cis to CH₂OH). In the chair conformation these correspond to axial and equatorial positions respectively - axial and equatorial describe the chair, while up and down describe the Haworth drawing. This difference underlies mutarotation.</p><h4>Why the other choices are wrong:</h4><p><strong>A. C-2:</strong> C-2 is the carbon whose configuration distinguishes epimers like glucose and mannose (they differ only at C-2). The anomeric carbon in glucose is C-1, which is the carbon that forms a new stereocenter when the open-chain form cyclizes into the ring form.</p>\n<p><strong>B. C-4:</strong> C-4 configuration distinguishes glucose from galactose (they are C-4 epimers). Anomers specifically differ at the anomeric carbon (C-1 in aldoses like glucose), which is the hemiacetal carbon formed during ring closure.</p>\n<p><strong>D. C-6:</strong> C-6 is the terminal carbon bearing a –CH₂OH group in glucose; it is not a stereocenter in the ring form and plays no role in anomer formation. Anomers arise from the two possible orientations of the –OH group at C-1 when the open chain cyclizes: axial (α) or equatorial (β) in the chair conformation.</p><h4>Key Educational Points:</h4><ul><li>Cyclisation turns the C1 carbonyl carbon into a new stereocentre, known as the anomeric carbon.</li><li>α and β anomers differ only in the configuration at that one carbon.</li><li>In a Haworth projection of D-glucopyranose the α-OH points down and the β-OH up; β-D-glucose is the more stable because that hydroxyl sits equatorial.</li><li>Anomers are diastereomers rather than enantiomers, because they differ at only one of several stereocentres.</li><li>The distinction has large consequences: α-1,4 linkages give digestible starch, while β-1,4 linkages give indigestible cellulose.</li></ul>"
+  },
+  "Q10": {
+    "q": "Q10",
+    "id": "chem-311",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Cellulose differs from starch primarily in:",
+    "options": [
+      "The monosaccharide units used",
+      "The type of glycosidic linkage (α vs. β)",
+      "The number of carbon atoms per unit",
+      "The molecular weight"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. The type of glycosidic linkage (α vs. β)</h4><p>Both cellulose and starch are polymers of D-glucose, but starch uses α-1,4 glycosidic bonds (and α-1,6 for branches), while cellulose uses β-1,4 glycosidic bonds. This seemingly small difference has huge consequences: humans can digest starch (via α-amylase) but cannot digest cellulose because we lack the enzyme cellulase to cleave β-linkages.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The monosaccharide units used:</strong> Both cellulose and starch are polymers of the same monosaccharide: D-glucose. The difference lies in how the glucose units are connected. Starch uses α(1→4) glycosidic bonds (easily digested by human amylase), while cellulose uses β(1→4) bonds (humans lack cellulase to break these, which is why we cannot digest cellulose/fiber).</p>\n<p><strong>C. The number of carbon atoms per unit:</strong> Both cellulose and starch are built from glucose, which has 6 carbon atoms per unit. The critical difference is the stereochemistry of the glycosidic bond: α in starch versus β in cellulose. This small geometric difference has enormous biological consequences for digestibility and structural properties.</p>\n<p><strong>D. The molecular weight:</strong> While cellulose molecules tend to be longer than individual amylose or amylopectin chains, molecular weight is not the primary distinguishing feature. The fundamental difference is the type of glycosidic linkage (α vs. β), which determines the polymer’s shape - starch coils into helices, while cellulose forms straight, rigid fibers that hydrogen-bond into tough sheets.</p><h4>Key Educational Points:</h4><ul><li>Starch and cellulose are both polymers of D-glucose - they differ in the linkage, not in the monomer.</li><li>Starch uses α-1,4 bonds, with α-1,6 branches in amylopectin; cellulose uses β-1,4 bonds.</li><li>The β linkage flips alternate glucose units, producing straight chains that hydrogen-bond side by side into rigid fibres.</li><li>Human amylase hydrolyses only α linkages, so cellulose passes through the gut as dietary fibre.</li><li>Ruminants and termites digest cellulose only through symbiotic microbes that supply cellulase - they have no such enzyme themselves.</li></ul>"
+  },
+  "Q11": {
+    "q": "Q11",
+    "id": "chem-312",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Lactose is a reducing sugar because:",
+    "options": [
+      "It contains fructose",
+      "It has a free anomeric carbon on the galactose unit",
+      "It has a free anomeric carbon on the glucose unit",
+      "Both anomeric carbons are free"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. It has a free anomeric carbon on the glucose unit</h4><p>Lactose consists of β-D-galactose linked β-1,4 to D-glucose. The glycosidic bond uses the C1 anomeric carbon of galactose, but the C1 of glucose remains free. This free anomeric carbon can open to form an aldehyde, which can reduce Tollens' or Fehling's reagent, making lactose a reducing sugar.</p><h4>Why the other choices are wrong:</h4><p><strong>A. It contains fructose:</strong> Lactose contains galactose and glucose, not fructose. Sucrose is the disaccharide that contains fructose (bonded to glucose). In lactose, galactose is linked through its C-1 anomeric carbon to C-4 of glucose, leaving glucose’s C-1 anomeric carbon free to open and act as the reducing end.</p>\n<p><strong>B. It has a free anomeric carbon on the galactose unit:</strong> In lactose, the galactose unit’s anomeric carbon (C-1) is involved in the β(1→4) glycosidic bond to glucose, so it is NOT free. It is the glucose unit that retains a free anomeric carbon capable of ring-opening to expose its aldehyde, which can then reduce Benedict’s or Fehling’s reagent.</p>\n<p><strong>D. Both anomeric carbons are free:</strong> If both anomeric carbons were free, the two monosaccharides would not be bonded together at all (since the glycosidic bond requires at least one anomeric carbon). In lactose, galactose’s anomeric C-1 forms the glycosidic linkage, while glucose’s anomeric C-1 remains free. Compare this to sucrose, where both anomeric carbons participate in the bond, making sucrose non-reducing.</p><h4>Key Educational Points:</h4><ul><li>A reducing sugar has a free anomeric carbon that can open to an aldehyde and then be oxidised.</li><li>In lactose the β-1,4 bond uses the anomeric carbon of galactose, leaving glucose's C1 free - hence it is reducing.</li><li>Sucrose is the contrasting case: its linkage ties up both anomeric carbons, so it is non-reducing.</li><li>All monosaccharides are reducing sugars; for a disaccharide you must check whether an anomeric carbon remains free.</li><li>Benedict's and Fehling's tests detect exactly this free, oxidisable carbonyl group.</li></ul>"
+  },
+  "Q12": {
+    "q": "Q12",
+    "id": "chem-313",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "D-glucose and D-mannose are:",
+    "options": [
+      "Enantiomers",
+      "Epimers differing at C-2",
+      "Anomers",
+      "Identical compounds"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Epimers differing at C-2</h4><p>Epimers are diastereomers that differ in configuration at only one stereocenter. D-glucose and D-mannose have the same configuration at C3, C4, and C5, but opposite configuration at C2. D-glucose and D-galactose are C-4 epimers. Enantiomers would differ at every stereocenter (D-glucose vs. L-glucose).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Enantiomers:</strong> Enantiomers would differ at every stereocenter (d-glucose vs.</p>\n<p><strong>C. Anomers:</strong> Anomers are cyclic sugar forms that differ specifically at the anomeric carbon (C-1 in aldoses) - the α and β forms of the same sugar. D-glucose and D-mannose differ at C-2 in their open-chain forms, so they are epimers, not anomers.</p>\n<p><strong>D. Identical compounds:</strong> D-glucose and D-mannose have the same molecular formula (C₆H₁₂O₆) but different configurations at C-2. They are clearly different compounds with distinct physical properties (different melting points, specific rotations). The term for sugars differing at exactly one stereocenter is epimers.</p><h4>Key Educational Points:</h4><ul><li>Epimers are diastereomers that differ in configuration at exactly one stereocentre.</li><li>D-glucose and D-mannose differ only at C2; D-glucose and D-galactose differ only at C4.</li><li>Enantiomers, by contrast, require every stereocentre to be inverted - that is D-glucose versus L-glucose.</li><li>Because epimers are diastereomers, they are genuinely different compounds with different properties, handled by different enzymes.</li><li>Epimerases interconvert them, which is how dietary galactose is converted for entry into glycolysis.</li></ul>"
+  },
+  "Q13": {
+    "q": "Q13",
+    "id": "chem-314",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Mutarotation is the process by which:",
+    "options": [
+      "A sugar undergoes hydrolysis",
+      "The optical rotation of a freshly dissolved sugar changes over time until equilibrium between anomers is reached",
+      "A sugar loses water",
+      "A polysaccharide breaks down"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. The optical rotation of a freshly dissolved sugar changes over time until equilibrium between anomers is reached</h4><p>When a pure anomer of glucose (either α or β) is dissolved in water, the ring can open and reclose to form both anomers. This gradual interconversion causes the specific rotation to change over time until an equilibrium mixture is reached (approximately 36% α and 64% β for D-glucose at 25°C).</p><h4>Why the other choices are wrong:</h4><p><strong>A. A sugar undergoes hydrolysis:</strong> Hydrolysis is the cleavage of a bond by addition of water, as when a disaccharide is split into monosaccharides. Mutarotation does not break any covalent bonds between sugar units - it is the interconversion between α and β anomeric forms of the same monosaccharide through the open-chain intermediate.</p>\n<p><strong>C. A sugar loses water:</strong> Losing water describes a dehydration or condensation reaction (like forming a glycosidic bond). Mutarotation involves the ring opening and reclosing of a single sugar molecule in aqueous solution, allowing the α and β anomers to equilibrate. The observed optical rotation gradually changes until the equilibrium mixture is reached.</p>\n<p><strong>D. A polysaccharide breaks down:</strong> Polysaccharide breakdown (hydrolysis of glycosidic bonds by enzymes like amylase) is a completely different process. Mutarotation refers specifically to the spontaneous change in optical rotation observed when a pure anomer of a sugar is dissolved in water, as it equilibrates between its α and β forms.</p><h4>Key Educational Points:</h4><ul><li>Mutarotation is the change in observed optical rotation as a freshly dissolved sugar equilibrates between its α and β anomers.</li><li>It occurs because the ring opens transiently to the free carbonyl form and can reclose either way.</li><li>At equilibrium D-glucose is roughly 64% β and 36% α, with only a trace present as the open chain.</li><li>β predominates because its anomeric hydroxyl occupies the more stable equatorial position.</li><li>The rotation changes because the anomer ratio is shifting - the D/L configuration of the sugar is fixed and does not change.</li></ul>"
+  },
+  "Q14": {
+    "q": "Q14",
+    "id": "chem-315",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Which test can detect reducing sugars?",
+    "options": [
+      "Biuret test",
+      "Benedict's test",
+      "Ninhydrin test",
+      "Xanthoproteic test"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Benedict's test</h4><p>Benedict's reagent contains Cu²⁺ ions (blue) in alkaline citrate solution. Reducing sugars (which have a free or potentially free anomeric carbon) reduce Cu²⁺ to Cu₂O (brick-red precipitate). The Biuret test detects proteins, the ninhydrin test detects amino acids, and the xanthoproteic test detects aromatic amino acids.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Biuret test:</strong> The biuret test detects proteins (peptide bonds), not sugars. It uses Cu²⁺ ions in strongly alkaline NaOH solution; when peptide bonds are present, they form violet-colored complexes with the copper. A minimum of two peptide bonds (i.e., a tripeptide or larger) is required for a positive result.</p>\n<p><strong>C. Ninhydrin test:</strong> The ninhydrin test detects free amino acids and primary amines. Ninhydrin reacts with the α-amino group to produce a purple-blue color known as Ruhemann’s purple. It is widely used in forensics (fingerprint detection) and amino acid analysis after chromatography.</p>\n<p><strong>D. Xanthoproteic test:</strong> The xanthoproteic test specifically detects aromatic amino acids (tyrosine, tryptophan, phenylalanine) in proteins. Concentrated nitric acid nitrates the aromatic rings, producing a yellow color that turns orange upon addition of base. It does not react with sugars.</p><h4>Key Educational Points:</h4><ul><li>Benedict's test detects reducing sugars: a free aldehyde or ketone group reduces Cu²⁺ to Cu⁺.</li><li>A positive result is a brick-red precipitate of copper(I) oxide, with the colour running blue to green to orange to red as concentration rises.</li><li>It detects glucose, fructose, lactose, and maltose, but not sucrose, which has no free anomeric carbon.</li><li>Fructose is a ketose yet still reacts, because the alkaline conditions isomerise it to an aldose first.</li><li>Starch is not detected either - iodine solution is the appropriate test for starch.</li></ul>"
+  },
+  "Q15": {
+    "q": "Q15",
+    "id": "chem-316",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Fructose adopts predominantly which ring form in solution?",
+    "options": [
+      "Pyranose (6-membered ring)",
+      "Furanose (5-membered ring)",
+      "Open-chain form",
+      "Both pyranose and furanose in equal amounts"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A. Pyranose (6-membered ring)</h4><p>Free fructose in aqueous solution exists predominantly (~68-75%) as <strong>beta-D-fructopyranose</strong>, a six-membered (pyranose) ring. Although fructose is often associated with its furanose form (as found in sucrose), when dissolved in water as the free monosaccharide, the thermodynamically more stable pyranose form predominates. The pyranose ring is formed by internal hemiketal formation between the C-2 keto group and the C-6 hydroxyl group.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Furanose (5-membered ring):</strong> While fructose does form a furanose (5-membered) ring in certain contexts - notably when it is part of sucrose - free fructose in aqueous solution exists predominantly as the β-D-fructopyranose form (about 68-75%). The furanose forms make up a much smaller fraction of the equilibrium mixture.</p>\n<p><strong>C. Open-chain form:</strong> The open-chain (acyclic) form of fructose makes up less than 1% of the equilibrium mixture in aqueous solution. Sugars strongly favor cyclic forms because ring closure to hemiacetals or hemiketals is thermodynamically favorable, reducing the reactivity of the carbonyl group.</p>\n<p><strong>D. Both pyranose and furanose in equal amounts:</strong> Fructose does not exist in equal amounts of pyranose and furanose. In aqueous solution, the equilibrium strongly favors the pyranose form (~70%), with smaller amounts of furanose forms (~22-28%) and traces of the open chain. The exact ratio depends on temperature and solvent.</p><h4>Key Educational Points:</h4><ul><li>Free fructose in aqueous solution exists predominantly as β-D-fructopyranose, a six-membered ring - roughly 70% at equilibrium.</li><li>The six-membered pyranose ring is thermodynamically more stable than the five-membered furanose form.</li><li>Fructose is often pictured as a furanose because that is the form locked in place within sucrose - the bound and free forms genuinely differ.</li><li>The ring-size names describe the ring itself: pyranose is six-membered and furanose five-membered, after pyran and furan.</li><li>Whichever ring forms, cyclisation generates the anomeric carbon and therefore allows mutarotation.</li></ul>"
+  },
+  "Q16": {
+    "q": "Q16",
+    "id": "chem-317",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Saturated fatty acids differ from unsaturated fatty acids in that they:",
+    "options": [
+      "Have shorter carbon chains",
+      "Contain no carbon-carbon double bonds",
+      "Are always liquid at room temperature",
+      "Are derived from plants only"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Contain no carbon-carbon double bonds</h4><p>Saturated fatty acids have only single bonds between carbon atoms (the chain is 'saturated' with hydrogen). This allows them to pack closely together, resulting in higher melting points (solid at room temperature, e.g., stearic acid). Unsaturated fatty acids have one or more C=C double bonds, introducing kinks that reduce packing efficiency and lower melting points.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Have shorter carbon chains:</strong> Chain length is independent of saturation. Both saturated and unsaturated fatty acids come in various chain lengths (commonly 12–24 carbons). For example, stearic acid (saturated, C18) and oleic acid (unsaturated, C18) have the same chain length but differ in saturation.</p>\n<p><strong>C. Are always liquid at room temperature:</strong> Saturated fatty acids are typically solid at room temperature (like butter and animal fats), not liquid. It is unsaturated fatty acids - with kinks from cis double bonds that prevent tight packing - that tend to be liquid at room temperature (like olive oil). This property is directly related to the presence or absence of double bonds.</p>\n<p><strong>D. Are derived from plants only:</strong> Both plants and animals produce saturated and unsaturated fatty acids. Coconut oil and palm oil (plant-derived) are rich in saturated fats, while fish oils (animal-derived) are rich in unsaturated fats. The distinction is structural (presence of double bonds), not based on biological source.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q17": {
+    "q": "Q17",
+    "id": "chem-318",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "A triglyceride is formed by esterification of:",
+    "options": [
+      "Glycerol with one fatty acid",
+      "Glycerol with two fatty acids",
+      "Glycerol with three fatty acids",
+      "Sphingosine with three fatty acids"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Glycerol with three fatty acids</h4><p>A triglyceride (triacylglycerol) is a triester formed when all three hydroxyl groups of glycerol react with fatty acids (which may be the same or different). Three molecules of water are released. Triglycerides are the main form of fat storage in the body and the primary component of dietary fats and oils.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Glycerol with one fatty acid:</strong> Esterification of glycerol with only one fatty acid produces a monoglyceride (monoacylglycerol), not a triglyceride. Monoglycerides are important emulsifiers used in food processing and are also intermediates in fat digestion.</p>\n<p><strong>B. Glycerol with two fatty acids:</strong> Glycerol bonded to two fatty acids forms a diglyceride (diacylglycerol, DAG). DAG is a signaling molecule in cells and an intermediate in both triglyceride synthesis and breakdown. A triglyceride (“tri-” = three) specifically requires all three hydroxyl groups of glycerol to be esterified with fatty acids.</p>\n<p><strong>D. Sphingosine with three fatty acids:</strong> Sphingosine is the backbone of sphingolipids (such as sphingomyelin and ceramide), not triglycerides. Triglycerides are built on a glycerol backbone. Sphingosine is a long-chain amino alcohol, structurally different from glycerol, and sphingolipids play important roles in cell membranes and signaling.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q18": {
+    "q": "Q18",
+    "id": "chem-319",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Saponification of a fat produces:",
+    "options": [
+      "Fatty acids and glycerol",
+      "Soap (fatty acid salts) and glycerol",
+      "Fatty acids and ethanol",
+      "Fatty acid esters and water"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Soap (fatty acid salts) and glycerol</h4><p>Saponification is the base-catalyzed hydrolysis of a triglyceride with NaOH or KOH. It produces glycerol and the sodium or potassium salts of fatty acids, which are soaps. For example: fat + 3NaOH → glycerol + 3RCOONa. The carboxylate salts are amphiphilic molecules that act as surfactants.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Fatty acids and glycerol:</strong> Hydrolysis of a fat under acidic conditions produces free fatty acids and glycerol. Saponification is base-catalyzed hydrolysis (using NaOH or KOH), which converts the fatty acids directly into their sodium or potassium salts - these salts are what we call soap. The difference is acid hydrolysis yields fatty acids; base hydrolysis yields fatty acid salts (soap).</p>\n<p><strong>C. Fatty acids and ethanol:</strong> Ethanol is not a product of fat saponification. Glycerol (a triol with three –OH groups) is released when the three ester bonds of the triglyceride are cleaved. Ethanol would appear in ester hydrolysis only if the original ester were an ethyl ester, not a glycerol ester.</p>\n<p><strong>D. Fatty acid esters and water:</strong> Saponification is the reverse of esterification - it breaks ester bonds, not forms them. The reaction requires aqueous base and produces soap (fatty acid salts) and glycerol. Water is a reactant in saponification (hydrolysis), not a product.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q19": {
+    "q": "Q19",
+    "id": "chem-320",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Which lipid is the basic structural unit of cell membranes?",
+    "options": [
+      "Triglyceride",
+      "Cholesterol",
+      "Phospholipid",
+      "Wax"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Phospholipid</h4><p>Phospholipids are the primary building blocks of biological membranes. They have a glycerol backbone, two fatty acid chains (hydrophobic tails), and a phosphate-containing head group (hydrophilic). This amphipathic nature causes them to spontaneously form lipid bilayers in aqueous environments, creating the basis of cell membranes.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Triglyceride:</strong> Triglycerides are the main form of energy storage in adipose tissue. They are fully hydrophobic (three nonpolar fatty acid tails, no polar head group) and cannot form the bilayer structure needed for membranes. Phospholipids, with their polar head and two nonpolar tails, are amphipathic and spontaneously form bilayers.</p>\n<p><strong>B. Cholesterol:</strong> Cholesterol is an important membrane component that modulates fluidity - it prevents membranes from becoming too rigid at low temperatures or too fluid at high temperatures. However, cholesterol inserts between phospholipids; it is not the primary structural building block of the bilayer itself.</p>\n<p><strong>D. Wax:</strong> Waxes are esters of long-chain fatty acids with long-chain alcohols. They form waterproof coatings on surfaces (leaf cuticles, bird feathers, ear canals) but are not components of cell membranes. Their extreme hydrophobicity makes them unsuitable for forming the dynamic bilayer structure membranes require.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q20": {
+    "q": "Q20",
+    "id": "chem-321",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Cholesterol belongs to which class of lipids?",
+    "options": [
+      "Triglycerides",
+      "Phospholipids",
+      "Steroids",
+      "Waxes"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Steroids</h4><p>Cholesterol is a steroid, characterized by a fused four-ring structure (three six-membered rings and one five-membered ring - the steroid nucleus). It is an essential component of animal cell membranes, modulating fluidity, and serves as the precursor for steroid hormones (cortisol, testosterone, estradiol), bile acids, and vitamin D.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Triglycerides:</strong> Triglycerides are esters of glycerol with three fatty acids, used primarily for energy storage. Cholesterol has a completely different structure: four fused carbon rings (the steroid nucleus: three six-membered rings and one five-membered ring) with a hydroxyl group and a hydrocarbon tail.</p>\n<p><strong>B. Phospholipids:</strong> Phospholipids have a glycerol backbone, two fatty acid tails, and a phosphate-containing head group. Cholesterol lacks a glycerol backbone entirely. Instead, it has the characteristic four-ring steroid skeleton. Cholesterol is classified as a steroid, and it serves as the precursor for steroid hormones, bile acids, and vitamin D.</p>\n<p><strong>D. Waxes:</strong> Waxes are esters formed from long-chain fatty acids and long-chain alcohols. Cholesterol, while it contains a hydroxyl group, is built around the planar four-ring steroid nucleus and is classified as a steroid. Other steroids derived from cholesterol include testosterone, estrogen, cortisol, and aldosterone.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q21": {
+    "q": "Q21",
+    "id": "chem-322",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Oleic acid (C18:1) has the molecular formula C₁₇H₃₃COOH. It is described as:",
+    "options": [
+      "A saturated fatty acid with 18 carbons",
+      "A monounsaturated fatty acid with 18 carbons",
+      "A polyunsaturated fatty acid with 18 carbons",
+      "A saturated fatty acid with 17 carbons"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. A monounsaturated fatty acid with 18 carbons</h4><p>The notation C18:1 means 18 carbon atoms and 1 double bond. Oleic acid has a single cis double bond at the Δ9 position (between C9 and C10). It is the most abundant fatty acid in human adipose tissue and is found in high concentrations in olive oil. A saturated C18 acid (stearic acid) would have the formula C₁₇H₃₅COOH.</p><h4>Why the other choices are wrong:</h4><p><strong>A. A saturated fatty acid with 18 carbons:</strong> Oleic acid has one carbon-carbon double bond (C18:1, meaning 18 carbons, 1 double bond), so it is unsaturated, not saturated. Stearic acid (C18:0) is the saturated counterpart with 18 carbons and no double bonds. The single cis double bond at position 9 in oleic acid creates a kink that lowers its melting point compared to stearic acid.</p>\n<p><strong>C. A polyunsaturated fatty acid with 18 carbons:</strong> Polyunsaturated means having two or more C=C double bonds. Oleic acid has only one double bond (C18:1), making it monounsaturated. Examples of polyunsaturated fatty acids include linoleic acid (C18:2, omega-6) and linolenic acid (C18:3, omega-3).</p>\n<p><strong>D. A saturated fatty acid with 17 carbons:</strong> Oleic acid has 18 total carbons (including the carboxyl carbon), as indicated by the C18:1 designation. The formula C₁₇H₃₃COOH counts 17 carbons in the hydrocarbon chain plus 1 in the –COOH group, totaling 18 carbons. It is monounsaturated, not saturated.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q22": {
+    "q": "Q22",
+    "id": "chem-323",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Trans fats are harmful because they:",
+    "options": [
+      "Are shorter than natural fats",
+      "Behave more like saturated fats, increasing cardiovascular risk",
+      "Cannot be metabolized at all",
+      "Contain more calories than cis fats"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Behave more like saturated fats, increasing cardiovascular risk</h4><p>Trans fatty acids have a straight chain conformation similar to saturated fats (unlike the kinked cis configuration of natural unsaturated fats). This allows tighter molecular packing, raising melting points and LDL cholesterol levels. Trans fats increase the risk of cardiovascular disease and are produced artificially during partial hydrogenation of vegetable oils.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Are shorter than natural fats:</strong> Trans fats are not shorter than natural fats. They typically have the same chain length as their cis counterparts. The key difference is geometry: the trans configuration around the double bond makes the chain straighter (similar to saturated fats), allowing tighter molecular packing, higher melting points, and increased cardiovascular risk.</p>\n<p><strong>C. Cannot be metabolized at all:</strong> Trans fats can be metabolized, but they are processed differently from cis fats. The body incorporates them into cell membranes and lipoproteins where their rigid, straight-chain shape (mimicking saturated fats) disrupts normal membrane fluidity and promotes LDL cholesterol accumulation.</p>\n<p><strong>D. Contain more calories than cis fats:</strong> Trans and cis fats with the same chain length and number of double bonds have essentially the same caloric content (~9 kcal/g). The health hazard of trans fats is not about calories but about their shape: the trans geometry creates a straight chain that packs like a saturated fat, raising LDL (“bad”) cholesterol and lowering HDL (“good”) cholesterol.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q23": {
+    "q": "Q23",
+    "id": "chem-324",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "The iodine number of a fat measures:",
+    "options": [
+      "The percentage of iodine in the fat",
+      "The degree of unsaturation",
+      "The molecular weight of the fat",
+      "The acidity of the fat"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. The degree of unsaturation</h4><p>The iodine number (or iodine value) is the mass of iodine (in grams) that reacts with 100 g of fat. I₂ adds across C=C double bonds, so a higher iodine number indicates more double bonds (greater unsaturation). Oils (liquid fats) have higher iodine numbers than solid fats. For example, butter has an iodine number around 25–40, while linseed oil is about 170–204.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The percentage of iodine in the fat:</strong> The iodine number does not measure the percentage of iodine naturally present in the fat. Instead, it measures how much iodine (I₂) the fat can absorb by reacting with its C=C double bonds. Each double bond adds two iodine atoms across it, so more double bonds means a higher iodine number.</p>\n<p><strong>C. The molecular weight of the fat:</strong> Molecular weight of a fat is determined by the chain lengths and number of fatty acids, not by iodine absorption. The iodine number specifically quantifies the number of C=C double bonds (unsaturation). For example, olive oil (high in oleic acid) has an iodine number around 80, while highly polyunsaturated linseed oil has an iodine number above 170.</p>\n<p><strong>D. The acidity of the fat:</strong> The acidity of a fat is measured by its acid number (mg KOH needed to neutralize free fatty acids), not the iodine number. The iodine number measures unsaturation. A high iodine number indicates many double bonds, meaning the fat is highly unsaturated and more susceptible to oxidation (rancidity).</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q24": {
+    "q": "Q24",
+    "id": "chem-325",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Sphingomyelin is a membrane lipid that contains:",
+    "options": [
+      "Glycerol, two fatty acids, and a phosphate group",
+      "Sphingosine, a fatty acid, and a phosphocholine head group",
+      "Three fatty acids and glycerol",
+      "Cholesterol and a phosphate group"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Sphingosine, a fatty acid, and a phosphocholine head group</h4><p>Sphingomyelin belongs to the sphingolipid family. Its backbone is sphingosine (an amino alcohol with a long hydrocarbon chain) rather than glycerol. A fatty acid is attached to the amino group via an amide bond (forming ceramide), and a phosphocholine head group is attached to the C1 hydroxyl. Sphingomyelin is abundant in the myelin sheath of nerve cells.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Glycerol, two fatty acids, and a phosphate group:</strong> This description fits a glycerophospholipid (like phosphatidylcholine), which has a glycerol backbone. Sphingomyelin is a sphingolipid: it uses sphingosine as its backbone instead of glycerol. Sphingosine is an 18-carbon amino alcohol to which a fatty acid is attached via an amide bond (forming ceramide), plus a phosphocholine head group.</p>\n<p><strong>C. Three fatty acids and glycerol:</strong> Three fatty acids plus glycerol describes a triglyceride (triacylglycerol), which is a storage lipid. Sphingomyelin is a membrane lipid with a sphingosine backbone, one fatty acid (linked by an amide bond, not an ester), and a phosphocholine head group. It is abundant in the myelin sheath of nerve cells.</p>\n<p><strong>D. Cholesterol and a phosphate group:</strong> Cholesterol does not serve as the backbone of sphingomyelin. However, cholesterol and sphingomyelin do associate closely in cell membranes, forming lipid rafts - microdomains involved in cell signaling. Sphingomyelin’s backbone is sphingosine, and its structure includes a ceramide unit plus a phosphocholine head group.</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q25": {
+    "q": "Q25",
+    "id": "chem-326",
+    "subject": "chemistry",
+    "topic": "Lipids",
+    "question": "Which omega-3 fatty acid is commonly found in fish oil?",
+    "options": [
+      "Oleic acid",
+      "Palmitic acid",
+      "Eicosapentaenoic acid (EPA)",
+      "Stearic acid"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Eicosapentaenoic acid (EPA)</h4><p>EPA (C20:5, ω-3) is a polyunsaturated omega-3 fatty acid with 20 carbons and 5 double bonds. It is abundant in fatty fish and fish oil supplements. Together with DHA (docosahexaenoic acid), EPA has anti-inflammatory properties and is associated with cardiovascular benefits. Oleic acid is ω-9, and palmitic and stearic acids are saturated.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Oleic acid:</strong> Oleic acid is an omega-9 monounsaturated fatty acid (C18:1, ω9), abundantly found in olive oil. It is not an omega-3 fatty acid. The \"omega\" number indicates the position of the first double bond from the methyl end of the chain.</p>\n<p><strong>B. Palmitic acid:</strong> Palmitic acid (C16:0) is a fully saturated fatty acid - it has no double bonds at all. It is one of the most common saturated fatty acids in the human body and in foods like palm oil and meat. Being saturated, it cannot be classified as any omega type.</p>\n<p><strong>D. Stearic acid:</strong> Stearic acid (C18:0) is a saturated fatty acid with 18 carbons and no double bonds. It is found in animal fats and cocoa butter. Since it has no double bonds, it is not an omega-3 (or any omega) fatty acid. The two main omega-3 fatty acids in fish oil are EPA (C20:5) and DHA (C22:6).</p><h4>Key Educational Points:</h4><ul><li>Lipids are hydrophobic molecules that include fats, phospholipids, steroids, and waxes - they serve as energy storage, membrane components, and signaling molecules.</li><li>Saturated fatty acids have no C=C double bonds (solid at room temperature); unsaturated fatty acids have one or more C=C bonds (liquid at room temperature).</li><li>Phospholipids are amphipathic (hydrophilic head + hydrophobic tails) - this property drives the spontaneous formation of biological membranes.</li></ul>"
+  },
+  "Q26": {
+    "q": "Q26",
+    "id": "chem-327",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "Glycolysis converts one molecule of glucose into:",
+    "options": [
+      "1 pyruvate + 2 ATP",
+      "2 pyruvate + 2 ATP + 2 NADH",
+      "2 pyruvate + 4 ATP + 2 NADH",
+      "1 pyruvate + 4 ATP + 1 NADH"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. 2 pyruvate + 2 ATP + 2 NADH</h4><p>Glycolysis is a 10-step pathway that occurs in the cytoplasm. One glucose (6C) is split into two pyruvate (3C) molecules. The net yield is 2 ATP (4 produced − 2 consumed in the investment phase) and 2 NADH. Although 4 ATP are generated by substrate-level phosphorylation, 2 ATP are consumed in the initial phosphorylation steps.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1 pyruvate + 2 ATP:</strong> Glycolysis produces 2 pyruvate molecules, not 1. Glucose (6 carbons) is split into two 3-carbon molecules (via fructose-1,6-bisphosphate cleavage by aldolase), and each is converted to pyruvate. Additionally, the net ATP yield is 2 (4 produced minus 2 invested), and 2 NADH are generated.</p>\n<p><strong>C. 2 pyruvate + 4 ATP + 2 NADH:</strong> While 4 ATP molecules are produced in total during the payoff phase of glycolysis (2 per pyruvate by substrate-level phosphorylation), 2 ATP are consumed in the investment phase (hexokinase and PFK-1 steps). The net yield is therefore 2 ATP, not 4. The 2 NADH produced are correct.</p>\n<p><strong>D. 1 pyruvate + 4 ATP + 1 NADH:</strong> This answer gets every detail wrong: glycolysis produces 2 pyruvate (not 1), yields 2 net ATP (not 4), and generates 2 NADH (not 1). Each molecule of glucose is cleaved into two 3-carbon units that are independently processed through the payoff phase.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q27": {
+    "q": "Q27",
+    "id": "chem-328",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "The Krebs cycle (citric acid cycle) takes place in:",
+    "options": [
+      "The cytoplasm",
+      "The mitochondrial matrix",
+      "The inner mitochondrial membrane",
+      "The endoplasmic reticulum"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. The mitochondrial matrix</h4><p>The Krebs cycle occurs in the mitochondrial matrix. Acetyl-CoA enters the cycle by condensing with oxaloacetate (4C) to form citrate (6C). Through a series of oxidation and decarboxylation steps, the cycle produces 3 NADH, 1 FADH₂, 1 GTP, and 2 CO₂ per turn, regenerating oxaloacetate.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The cytoplasm:</strong> Glycolysis occurs in the cytoplasm, not the Krebs cycle. Pyruvate from glycolysis must be actively transported into the mitochondrial matrix (via the pyruvate dehydrogenase complex) before entering the citric acid cycle. This compartmentalization allows independent regulation of these pathways.</p>\n<p><strong>C. The inner mitochondrial membrane:</strong> The inner mitochondrial membrane is the site of the electron transport chain (ETC) and ATP synthase, which carry out oxidative phosphorylation. The Krebs cycle enzymes (except succinate dehydrogenase, which is embedded in the inner membrane) are dissolved in the mitochondrial matrix.</p>\n<p><strong>D. The endoplasmic reticulum:</strong> The endoplasmic reticulum handles protein synthesis and folding (rough ER) and lipid synthesis and detoxification (smooth ER). It plays no role in the citric acid cycle. The Krebs cycle is confined to the mitochondrial matrix, where its eight enzymes sequentially oxidize acetyl-CoA.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q28": {
+    "q": "Q28",
+    "id": "chem-329",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "How many ATP equivalents are produced per molecule of NADH in oxidative phosphorylation?",
+    "options": [
+      "1.5",
+      "2",
+      "2.5",
+      "3"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. 2.5</h4><p>NADH donates electrons to Complex I of the electron transport chain. As electrons pass through Complexes I, III, and IV, protons are pumped across the inner mitochondrial membrane. The resulting proton gradient drives ATP synthase. The current accepted value is approximately 2.5 ATP per NADH (and about 1.5 ATP per FADH₂, which enters at Complex II).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1.5:</strong> 1.5 ATP per molecule is the yield from FADH₂, not NADH. FADH₂ enters the electron transport chain at Complex II (bypassing Complex I), pumping fewer protons and thus producing less ATP. NADH enters at Complex I, pumping more protons and yielding approximately 2.5 ATP.</p>\n<p><strong>D. 3:</strong> 3 ATP per NADH is the older textbook value based on the P/O ratio. The revised value of ~2.5 reflects more accurate measurements of proton pumping stoichiometry and the energy cost of metabolite transport. Similarly, FADH₂ was revised from 2 ATP down to ~1.5 ATP.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q29": {
+    "q": "Q29",
+    "id": "chem-330",
+    "subject": "chemistry",
+    "topic": "Lipid Metabolism",
+    "question": "In β-oxidation of fatty acids, each cycle removes how many carbon atoms?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. 2</h4><p>β-Oxidation is a cyclic process that cleaves two carbon atoms at a time from the fatty acyl-CoA chain in the form of acetyl-CoA. Each cycle involves four reactions: oxidation (FAD), hydration, oxidation (NAD⁺), and thiolysis. A C16 fatty acid (palmitate) undergoes 7 cycles, producing 8 acetyl-CoA, 7 NADH, and 7 FADH₂.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1:</strong> One carbon at a time is removed in decarboxylation reactions (like pyruvate dehydrogenase removing CO₂). Beta-oxidation works differently: it cleaves a 2-carbon acetyl-CoA unit from the fatty acid chain in each cycle through a sequence of oxidation, hydration, oxidation, and thiolysis steps.</p>\n<p><strong>C. 3:</strong> Three carbons are not removed per cycle. Each round of β-oxidation shortens the fatty acyl-CoA by exactly 2 carbons, releasing one acetyl-CoA. For example, palmitoyl-CoA (C16) undergoes 7 cycles to produce 8 acetyl-CoA molecules (7 cuts producing 8 two-carbon fragments).</p>\n<p><strong>D. 4:</strong> Four carbons would mean each cycle removes nearly a quarter of a typical 16-carbon fatty acid. In reality, each cycle removes 2 carbons as acetyl-CoA. The four steps of each β-oxidation cycle are: (1) FAD-dependent oxidation, (2) hydration, (3) NAD⁺-dependent oxidation, and (4) thiolytic cleavage by CoA.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q30": {
+    "q": "Q30",
+    "id": "chem-331",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "Pyruvate dehydrogenase converts pyruvate to:",
+    "options": [
+      "Lactate",
+      "Acetyl-CoA + CO₂",
+      "Oxaloacetate",
+      "Citrate"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Acetyl-CoA + CO₂</h4><p>The pyruvate dehydrogenase complex catalyzes the oxidative decarboxylation of pyruvate: pyruvate + CoA + NAD⁺ → acetyl-CoA + CO₂ + NADH. This irreversible reaction links glycolysis to the Krebs cycle. The complex requires five coenzymes: TPP (thiamine), FAD, NAD⁺, CoA, and lipoic acid.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Lactate:</strong> Pyruvate is converted to lactate by lactate dehydrogenase under anaerobic conditions (e.g., intense exercise in muscle). Pyruvate dehydrogenase is a different enzyme complex that performs oxidative decarboxylation under aerobic conditions, producing acetyl-CoA, CO₂, and NADH.</p>\n<p><strong>C. Oxaloacetate:</strong> Oxaloacetate is produced from pyruvate by pyruvate carboxylase, an anaplerotic enzyme that replenishes Krebs cycle intermediates. This reaction requires biotin (vitamin B7) as a cofactor and ATP. Pyruvate dehydrogenase, by contrast, performs irreversible oxidative decarboxylation to form acetyl-CoA.</p>\n<p><strong>D. Citrate:</strong> Citrate is the first product of the Krebs cycle, formed when acetyl-CoA condenses with oxaloacetate (catalyzed by citrate synthase). Pyruvate dehydrogenase acts before the Krebs cycle, converting pyruvate to acetyl-CoA, which then enters the cycle.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q31": {
+    "q": "Q31",
+    "id": "chem-332",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "Under anaerobic conditions in human muscle, pyruvate is converted to:",
+    "options": [
+      "Ethanol",
+      "Acetyl-CoA",
+      "Lactate",
+      "Acetaldehyde"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Lactate</h4><p>In the absence of sufficient oxygen, NADH from glycolysis cannot be reoxidized by the electron transport chain. Lactate dehydrogenase reduces pyruvate to lactate, regenerating NAD⁺ so glycolysis can continue. This allows limited ATP production anaerobically. Ethanol is the product of anaerobic fermentation in yeast, not in human muscle.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Ethanol:</strong> Ethanol is the product of anaerobic fermentation in yeast, not in human muscle.</p>\n<p><strong>B. Acetyl-CoA:</strong> Acetyl-CoA is produced from pyruvate by the pyruvate dehydrogenase complex under aerobic conditions inside mitochondria. Under anaerobic conditions, pyruvate stays in the cytoplasm and is reduced to lactate instead, regenerating NAD⁺ so glycolysis can continue.</p>\n<p><strong>D. Acetaldehyde:</strong> Acetaldehyde is an intermediate in alcoholic fermentation (yeast), formed by decarboxylation of pyruvate. Human muscle cells do not produce acetaldehyde from pyruvate. Instead, lactate dehydrogenase directly reduces pyruvate to lactate using NADH.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q32": {
+    "q": "Q32",
+    "id": "chem-333",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "The total theoretical ATP yield from complete oxidation of one glucose molecule is approximately:",
+    "options": [
+      "2 ATP",
+      "12 ATP",
+      "30-32 ATP",
+      "38 ATP"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. 30-32 ATP</h4><p>Complete oxidation of glucose produces: glycolysis (2 ATP + 2 NADH), pyruvate dehydrogenase (2 NADH), and Krebs cycle (2 GTP + 6 NADH + 2 FADH₂). Using 2.5 ATP/NADH and 1.5 ATP/FADH₂: 10 NADH × 2.5 = 25, 2 FADH₂ × 1.5 = 3, plus 2 ATP + 2 GTP = 4, totaling ~30–32 ATP depending on the shuttle system used for cytoplasmic NADH.</p><h4>Why the other choices are wrong:</h4><p><p><strong>A. 2 ATP:</strong> 2 ATP is only the net yield from glycolysis alone. Complete oxidation of glucose includes glycolysis (2 ATP net), the citric acid cycle (2 GTP ≈ 2 ATP), and oxidative phosphorylation (~26-28 ATP from NADH and FADH2), totaling approximately 30-32 ATP.</p>\n<p><strong>B. 12 ATP:</strong> 2 ATP is the net yield from glycolysis alone (substrate-level phosphorylation). Complete aerobic oxidation includes glycolysis, the Krebs cycle, and oxidative phosphorylation, generating 30–32 ATP total. The 2 ATP from glycolysis represents only about 6–7% of the total yield.</p>\n<p><strong>D. 38 ATP:</strong> 38 ATP was the older textbook estimate based on the assumption of 3 ATP/NADH and 2 ATP/FADH₂. The currently accepted value is approximately 30–32 ATP, reflecting revised P/O ratios (~2.5 ATP/NADH, ~1.5 ATP/FADH₂) and the energy cost of transporting cytoplasmic NADH into mitochondria.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q33": {
+    "q": "Q33",
+    "id": "chem-334",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "Which enzyme catalyzes the committed (rate-limiting) step of glycolysis?",
+    "options": [
+      "Hexokinase",
+      "Phosphofructokinase-1 (PFK-1)",
+      "Pyruvate kinase",
+      "Aldolase"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Phosphofructokinase-1 (PFK-1)</h4><p>PFK-1 catalyzes the phosphorylation of fructose-6-phosphate to fructose-1,6-bisphosphate, which is the committed step of glycolysis. It is allosterically activated by AMP and fructose-2,6-bisphosphate, and inhibited by ATP and citrate. Although hexokinase is also regulated, PFK-1 is considered the primary regulatory enzyme of the pathway.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Hexokinase:</strong> Although hexokinase is also regulated, pfk-1 is considered the primary regulatory enzyme of the pathway.</p>\n<p><strong>C. Pyruvate kinase:</strong> Pyruvate kinase catalyzes the last step of glycolysis (PEP → pyruvate + ATP). It is allosterically regulated, but it is not the committed step. PFK-1 is the committed step because once fructose-6-phosphate is phosphorylated to fructose-1,6-bisphosphate, the pathway is irreversibly committed to glycolysis.</p>\n<p><strong>D. Aldolase:</strong> Aldolase cleaves fructose-1,6-bisphosphate into two 3-carbon molecules (DHAP and glyceraldehyde-3-phosphate). It is not a regulatory enzyme and operates near equilibrium. The rate-limiting step must be both irreversible and subject to allosteric regulation, which describes PFK-1.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q34": {
+    "q": "Q34",
+    "id": "chem-335",
+    "subject": "chemistry",
+    "topic": "Lipid Metabolism",
+    "question": "Ketone bodies are produced from:",
+    "options": [
+      "Glucose in the cytoplasm",
+      "Amino acids in the nucleus",
+      "Acetyl-CoA in the liver mitochondria",
+      "Fatty acids in the endoplasmic reticulum"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Acetyl-CoA in the liver mitochondria</h4><p>Ketogenesis occurs in liver mitochondria when excess acetyl-CoA accumulates (typically during fasting, starvation, or uncontrolled diabetes). The three ketone bodies are acetoacetate, β-hydroxybutyrate, and acetone. They serve as an alternative fuel source for the brain, heart, and skeletal muscle when glucose availability is limited.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Glucose in the cytoplasm:</strong> Glucose in the cytoplasm undergoes glycolysis to form pyruvate. Ketone bodies are not synthesized from glucose directly. They are synthesized from acetyl-CoA (derived primarily from fatty acid β-oxidation) in the liver mitochondria, especially during fasting, starvation, or uncontrolled diabetes when fatty acid oxidation is greatly increased.</p>\n<p><strong>B. Amino acids in the nucleus:</strong> While some amino acids are ketogenic (their carbon skeletons can be converted to acetyl-CoA or acetoacetyl-CoA), ketogenesis itself occurs in the mitochondria, not the nucleus. The nucleus houses DNA and handles transcription, not metabolic synthesis. The three ketone bodies are acetoacetate, beta-hydroxybutyrate, and acetone.</p>\n<p><strong>D. Fatty acids in the endoplasmic reticulum:</strong> Fatty acid synthesis (lipogenesis) occurs in the cytoplasm, not the endoplasmic reticulum, and fatty acid breakdown (β-oxidation) occurs in mitochondria. Ketone bodies are produced in liver mitochondria from the excess acetyl-CoA that accumulates when β-oxidation outpaces the Krebs cycle’s capacity to consume it.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q35": {
+    "q": "Q35",
+    "id": "chem-336",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "FAD is reduced to FADH₂ in which step of the Krebs cycle?",
+    "options": [
+      "Citrate → Isocitrate",
+      "α-Ketoglutarate → Succinyl-CoA",
+      "Succinate → Fumarate",
+      "Malate → Oxaloacetate"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Succinate → Fumarate</h4><p>Succinate dehydrogenase (Complex II of the electron transport chain) catalyzes the oxidation of succinate to fumarate, reducing FAD to FADH₂. This is the only Krebs cycle enzyme embedded in the inner mitochondrial membrane and the only one using FAD as its coenzyme. The other oxidation steps use NAD⁺.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Citrate → Isocitrate:</strong> The citrate → isocitrate step is catalyzed by aconitase through a dehydration-rehydration mechanism. No oxidation-reduction occurs here (no NAD⁺ or FAD involved). It is an isomerization reaction that repositions the hydroxyl group to enable the next oxidative decarboxylation step.</p>\n<p><strong>B. α-Ketoglutarate → Succinyl-CoA:</strong> α-Ketoglutarate → succinyl-CoA is catalyzed by α-ketoglutarate dehydrogenase, which produces NADH (not FADH₂) plus CO₂. This enzyme complex is structurally similar to pyruvate dehydrogenase and uses the same five coenzymes (TPP, lipoate, CoA, FAD, NAD⁺), but the FAD here is used internally, and NADH is the net reduced product.</p>\n<p><strong>D. Malate → Oxaloacetate:</strong> Malate → oxaloacetate is catalyzed by malate dehydrogenase, which uses NAD⁺ as the electron acceptor (producing NADH, not FADH₂). The only step in the Krebs cycle that reduces FAD to FADH₂ is succinate → fumarate, catalyzed by succinate dehydrogenase (Complex II of the ETC).</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q36": {
+    "q": "Q36",
+    "id": "chem-337",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Pyrrole is a weaker base than pyridine because:",
+    "options": [
+      "Pyrrole has a larger ring",
+      "The nitrogen lone pair in pyrrole is part of the aromatic π system",
+      "Pyrrole has fewer nitrogen atoms",
+      "Pyridine is non-aromatic"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. The nitrogen lone pair in pyrrole is part of the aromatic π system</h4><p>In pyrrole, the nitrogen lone pair is delocalized into the ring as part of the aromatic 6 π-electron system (4 from two C=C + 2 from N). Protonation would disrupt this aromaticity, making pyrrole a very weak base (pKₐ of conjugate acid ≈ −4). In pyridine, the nitrogen lone pair is in an sp² orbital perpendicular to the π system and is freely available for protonation (pKₐ ≈ 5.2).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyrrole has a larger ring:</strong> Both pyrrole and pyridine are five- and six-membered heterocycles, respectively, but ring size is not the reason for the basicity difference. The critical factor is whether the nitrogen lone pair is part of the aromatic π system. In pyrrole, the lone pair is needed for aromaticity (contributing 2 electrons to the 6 π-electron system), making it unavailable for protonation.</p>\n<p><strong>C. Pyrrole has fewer nitrogen atoms:</strong> Both pyrrole and pyridine each contain one nitrogen atom. The number of nitrogen atoms is not the reason for the basicity difference. In pyridine, the nitrogen lone pair sits in an sp² orbital in the plane of the ring (not part of the π system), so it is freely available to accept a proton, making pyridine a reasonable base.</p>\n<p><strong>D. Pyridine is non-aromatic:</strong> Pyridine is aromatic - it has 6 π electrons and fulfills Hückel’s rule. Saying pyridine is non-aromatic is incorrect. Both pyrrole and pyridine are aromatic, but only in pyrrole is the nitrogen lone pair essential for maintaining the aromatic sextet.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q37": {
+    "q": "Q37",
+    "id": "chem-338",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Adenine, a purine base found in DNA and RNA, consists of fused:",
+    "options": [
+      "Two pyrimidine rings",
+      "A pyrimidine ring and an imidazole ring",
+      "Two furan rings",
+      "A pyridine ring and a pyrrole ring"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. A pyrimidine ring and an imidazole ring</h4><p>The purine ring system is composed of a pyrimidine ring (6-membered, containing N) fused to an imidazole ring (5-membered, containing two N). Adenine (6-aminopurine) and guanine (2-amino-6-oxopurine) are the two purine bases found in nucleic acids. This bicyclic structure is central to the structure of DNA, RNA, ATP, and many coenzymes.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Two pyrimidine rings:</strong> Two fused pyrimidine rings would give a different bicyclic system. Purines (adenine, guanine) consist of a six-membered pyrimidine ring fused to a five-membered imidazole ring. The pyrimidine ring provides positions for the amino or keto substituents that distinguish adenine from guanine.</p>\n<p><strong>C. Two furan rings:</strong> Furan is a five-membered ring containing oxygen, found in furanose sugar forms but not in nucleotide bases. Adenine contains no oxygen in its ring system. Purines are built from nitrogen-containing rings only: a pyrimidine (two N atoms, six-membered) fused with an imidazole (two N atoms, five-membered).</p>\n<p><strong>D. A pyridine ring and a pyrrole ring:</strong> While pyridine and pyrrole are both nitrogen-containing heterocycles, the purine ring system is specifically described as a fusion of pyrimidine and imidazole. Pyridine (one N, six-membered) is part of the pyrimidine structure, and pyrrole (one N, five-membered) is related to imidazole, but the correct terminology for the purine components is pyrimidine + imidazole.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q38": {
+    "q": "Q38",
+    "id": "chem-339",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Which heterocyclic ring is found in the amino acid tryptophan?",
+    "options": [
+      "Pyridine",
+      "Indole",
+      "Pyrimidine",
+      "Thiophene"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Indole</h4><p>Tryptophan contains an indole ring system, which is a benzene ring fused to a pyrrole ring. Indole is a bicyclic structure with the molecular formula C₈H₇N. The indole nitrogen contributes its lone pair to the aromatic π system. Tryptophan is the precursor to serotonin and melatonin in biological systems.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyridine:</strong> Pyridine is a six-membered ring with one nitrogen, found in niacin (vitamin B3) and NAD⁺/NADP⁺. Tryptophan contains an indole ring system, which is a benzene ring fused to a pyrrole ring. Indole gives tryptophan its characteristic UV absorption and its role as a precursor to serotonin and melatonin.</p>\n<p><strong>C. Pyrimidine:</strong> Pyrimidine is a six-membered ring with two nitrogen atoms, found in DNA/RNA bases (cytosine, thymine, uracil). It is not present in any amino acid side chain. Tryptophan’s side chain contains indole, a bicyclic system formed by benzene fused to pyrrole.</p>\n<p><strong>D. Thiophene:</strong> Thiophene is a five-membered aromatic ring containing sulfur instead of nitrogen. It is found in some pharmaceutical compounds but not in amino acids. Tryptophan contains an indole ring (benzene fused to pyrrole), with nitrogen as the heteroatom.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q39": {
+    "q": "Q39",
+    "id": "chem-340",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "The pyrimidine bases found in DNA are:",
+    "options": [
+      "Adenine and guanine",
+      "Cytosine and thymine",
+      "Cytosine and uracil",
+      "Adenine and cytosine"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Cytosine and thymine</h4><p>DNA contains two pyrimidine bases: cytosine (C) and thymine (T). RNA contains cytosine and uracil (U) instead of thymine. Pyrimidines are single-ring structures (6-membered ring with two nitrogen atoms). Adenine and guanine are the purine bases (double-ring structures) found in both DNA and RNA.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Adenine and guanine:</strong> Adenine and guanine are the purine bases (double-ring structures) found in both DNA and RNA.</p>\n<p><strong>C. Cytosine and uracil:</strong> RNA contains cytosine and uracil (u) instead of thymine.</p>\n<p><strong>D. Adenine and cytosine:</strong> Adenine is a purine, not a pyrimidine, so this pairing mixes the two categories. The pyrimidines in DNA are cytosine (pairs with guanine via 3 hydrogen bonds) and thymine (pairs with adenine via 2 hydrogen bonds). Remember: pyrimidines have one ring; purines have two.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q40": {
+    "q": "Q40",
+    "id": "chem-341",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Furan, pyrrole, and thiophene are five-membered heterocycles. The heteroatom in thiophene is:",
+    "options": [
+      "Nitrogen",
+      "Oxygen",
+      "Sulfur",
+      "Phosphorus"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Sulfur</h4><p>Thiophene (C₄H₄S) is a five-membered aromatic heterocycle containing one sulfur atom. Like pyrrole (N) and furan (O), the heteroatom contributes two electrons to the aromatic π system, giving 6 π electrons total (4n + 2, n = 1). Thiophene is the most stable and most aromatic of the three due to the better size match of sulfur's 3p orbitals with carbon 2p orbitals.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Nitrogen:</strong> Nitrogen is the heteroatom in pyrrole (and pyridine, imidazole, etc.). In the trio of five-membered heterocycles commonly compared: furan has oxygen, pyrrole has nitrogen, and thiophene has sulfur. The prefix “thio-” in organic chemistry always indicates sulfur.</p>\n<p><strong>B. Oxygen:</strong> Oxygen is the heteroatom in furan, not thiophene. Furan, pyrrole, and thiophene are the classic trio of five-membered aromatic heterocycles, each contributing 2 electrons from the heteroatom’s lone pair to complete the aromatic sextet of 6 π electrons.</p>\n<p><strong>D. Phosphorus:</strong> Phosphorus is not found in common simple heterocyclic aromatic compounds. Thiophene contains sulfur (“thio” = sulfur in Greek). Phosphorus-containing heterocycles do exist in specialized chemistry but are not among the standard five-membered aromatic heterocycles taught at this level.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q41": {
+    "q": "Q41",
+    "id": "chem-342",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Histidine contains which heterocyclic ring in its side chain?",
+    "options": [
+      "Pyrrole",
+      "Pyridine",
+      "Imidazole",
+      "Indole"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Imidazole</h4><p>Histidine has an imidazole ring (C₃H₄N₂) in its side chain. Imidazole is a five-membered ring with two nitrogen atoms. One nitrogen (pyrrole-type) contributes its lone pair to the π system, while the other (pyridine-type) has its lone pair available for protonation. This gives histidine a pKₐ near physiological pH (~6.0), making it an important catalytic residue in many enzymes.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyrrole:</strong> Pyrrole is a five-membered ring with one nitrogen. Imidazole, found in histidine, has two nitrogen atoms in its five-membered ring. This second nitrogen gives histidine its ability to act as both a proton donor and acceptor near physiological pH (pKa ~6.0 for the imidazole side chain), making it crucial in enzyme active sites.</p>\n<p><strong>B. Pyridine:</strong> Pyridine is a six-membered ring with one nitrogen, found in niacin and its coenzymes. Histidine’s side chain contains imidazole, a five-membered ring with two nitrogens. The imidazole ring’s pKa (~6.0) is close to physiological pH, allowing histidine to participate in acid-base catalysis in many enzymes.</p>\n<p><strong>D. Indole:</strong> Indole is the fused bicyclic ring (benzene + pyrrole) found in tryptophan, not histidine. Histidine has the smaller, single-ring imidazole group. A useful way to remember: histidine and imidazole both contain the sequence “...i...id...” in their names.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q42": {
+    "q": "Q42",
+    "id": "chem-343",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "How many nitrogen atoms does the pyrimidine ring contain?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. 2</h4><p>Pyrimidine is a six-membered heterocyclic ring containing two nitrogen atoms at positions 1 and 3. It is the parent structure of the nucleic acid bases cytosine, thymine, and uracil. The two nitrogen atoms are in a 1,3-relationship (meta to each other). Pyridine, by contrast, has only one nitrogen atom in a six-membered ring.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 1:</strong> One nitrogen in a six-membered ring describes pyridine, not pyrimidine. Pyrimidine has two nitrogen atoms at positions 1 and 3 of the ring. Think of it as pyridine with an extra nitrogen inserted. Pyrimidine is the parent ring of the nucleobases cytosine, thymine, and uracil.</p>\n<p><strong>C. 3:</strong> Three nitrogen atoms in a six-membered ring describes triazine (1,3,5-triazine). Pyrimidine contains exactly 2 nitrogen atoms. For comparison: pyridine has 1 N, pyrimidine has 2 N, and triazine has 3 N in six-membered rings.</p>\n<p><strong>D. 4:</strong> Four nitrogen atoms in a six-membered ring would leave only 2 carbons, which is theoretically possible (tetrazine exists) but is far removed from pyrimidine. Pyrimidine has 2 nitrogens and 4 carbons. Purine bases (adenine, guanine) contain 4 total nitrogens but across a bicyclic (9-atom) ring system.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q43": {
+    "q": "Q43",
+    "id": "chem-344",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Which of the following is a six-membered heterocycle containing nitrogen, found as a component of NAD⁺ and NADH?",
+    "options": [
+      "Pyrrole",
+      "Nicotinamide (pyridine derivative)",
+      "Furan",
+      "Thiophene"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Nicotinamide (pyridine derivative)</h4><p>NAD⁺ (nicotinamide adenine dinucleotide) contains nicotinamide, which is a derivative of pyridine (3-carboxamidopyridine). The pyridine ring in NAD⁺ accepts a hydride ion during reduction to form NADH. Nicotinamide is also known as niacinamide, the amide form of vitamin B₃ (niacin).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyrrole:</strong> Pyrrole is a five-membered ring, not six-membered. It is found in porphyrins (heme, chlorophyll) and in the amino acid proline (as pyrrolidine). The nicotinamide portion of NAD⁺ is based on pyridine, a six-membered ring with one nitrogen.</p>\n<p><strong>C. Furan:</strong> Furan is a five-membered ring containing oxygen, not nitrogen. It is found in furanose sugar forms (like the ribose in RNA) but not in the redox-active portion of NAD⁺. NAD⁺ contains nicotinamide, which is a pyridine ring bearing a carboxamide group.</p>\n<p><strong>D. Thiophene:</strong> Thiophene is a five-membered ring containing sulfur. It is not found in NAD⁺ or any standard coenzyme. The active ring in NAD⁺ is the nicotinamide ring (a pyridine derivative), which accepts a hydride ion (H–) at C-4 during reduction to NADH.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q44": {
+    "q": "Q44",
+    "id": "chem-345",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Electrophilic aromatic substitution on pyrrole preferentially occurs at which position?",
+    "options": [
+      "C-1 (nitrogen)",
+      "C-2 (α-position)",
+      "C-3 (β-position)",
+      "Equally at all positions"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. C-2 (α-position)</h4><p>Pyrrole is an electron-rich heterocycle (more reactive than benzene toward electrophiles). Attack at C-2 (α-position) is preferred because the resulting cation intermediate can be stabilized by more resonance structures than attack at C-3 (β-position). Pyrrole is so reactive that it can undergo electrophilic substitution under very mild conditions without a Lewis acid catalyst.</p><h4>Why the other choices are wrong:</h4><p><strong>A. C-1 (nitrogen):</strong> C-1 is the nitrogen atom in pyrrole, not a carbon. Electrophilic substitution occurs on carbon atoms. Substitution at nitrogen would disrupt the aromatic π system (the nitrogen lone pair is part of it). Electrophiles preferentially attack C-2 (α-position) because the intermediate carbocation is stabilized by more resonance forms than attack at C-3.</p>\n<p><strong>C. C-3 (β-position):</strong> The C-3 (β-position) is less favored for electrophilic attack because the resulting intermediate has fewer resonance stabilization forms compared to attack at C-2 (α-position). At C-2, the positive charge in the intermediate can be delocalized over three positions (including nitrogen), whereas at C-3 only two positions stabilize it.</p>\n<p><strong>D. Equally at all positions:</strong> Electrophilic substitution does not occur equally at all positions. Like benzene derivatives, five-membered heterocycles show regioselectivity. In pyrrole, the α-position (C-2) is strongly preferred because it provides greater resonance stabilization of the Wheland intermediate. Pyrrole is actually more reactive than benzene toward electrophilic substitution due to the electron-rich nature of the ring.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q45": {
+    "q": "Q45",
+    "id": "chem-346",
+    "subject": "chemistry",
+    "topic": "Heterocyclic Compounds",
+    "question": "Caffeine is a derivative of which heterocyclic ring system?",
+    "options": [
+      "Pyrimidine",
+      "Purine (xanthine)",
+      "Indole",
+      "Piperidine"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Purine (xanthine)</h4><p>Caffeine (1,3,7-trimethylxanthine) is a methylated derivative of xanthine, which itself is a purine derivative. The purine ring system consists of fused pyrimidine and imidazole rings. Caffeine acts as a central nervous system stimulant by blocking adenosine receptors. Other xanthine derivatives include theobromine (in chocolate) and theophylline (in tea).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Pyrimidine:</strong> The purine ring system consists of fused pyrimidine and imidazole rings.</p>\n<p><strong>C. Indole:</strong> Indole (benzene fused to pyrrole) is the ring system found in tryptophan and serotonin, not in caffeine. Caffeine is built on the purine (xanthine) ring system. Other biologically important xanthine derivatives include theobromine (in chocolate, lacking one methyl group) and theophylline (in tea).</p>\n<p><strong>D. Piperidine:</strong> Piperidine is a fully saturated six-membered ring with one nitrogen (found in some alkaloids like piperine in black pepper). Caffeine contains the planar, aromatic purine ring system. As a purine derivative, caffeine is structurally related to adenine and guanine, which is why it can block adenosine receptors in the brain.</p><h4>Key Educational Points:</h4><ul><li>Heterocyclic compounds contain at least one non-carbon atom (usually N, O, or S) in the ring and are found throughout biochemistry.</li><li>Important five-membered heterocycles include pyrrole (in heme and chlorophyll), imidazole (in histidine), and thiazole (in thiamine/vitamin B1).</li><li>Six-membered heterocycles include pyridine (in NAD+/NADP+), pyrimidine (cytosine, thymine, uracil), and purine (adenine, guanine).</li></ul>"
+  },
+  "Q46": {
+    "q": "Q46",
+    "id": "chem-347",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "Polyethylene is formed by which type of polymerization?",
+    "options": [
+      "Condensation polymerization",
+      "Addition (chain-growth) polymerization",
+      "Ring-opening polymerization",
+      "Step-growth polymerization with elimination of water"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Addition (chain-growth) polymerization</h4><p>Polyethylene is formed by addition polymerization of ethylene (ethene) monomers: nCH₂=CH₂ → –(CH₂–CH₂)ₙ–. The double bond opens and monomers add sequentially without loss of atoms (no by-products). This is initiated by free radicals, cations, or anions, or by coordination catalysts (Ziegler-Natta).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Condensation polymerization:</strong> Condensation polymerization involves the loss of a small molecule (usually water) when monomers join. Polyethylene forms from ethylene (CH₂=CH₂) by opening double bonds without losing any atoms - this is addition (chain-growth) polymerization. Examples of condensation polymers include nylon and polyester.</p>\n<p><strong>C. Ring-opening polymerization:</strong> Ring-opening polymerization involves breaking open cyclic monomers to form a chain (e.g., caprolactam → nylon-6). Ethylene is a simple alkene, not a cyclic compound, so ring-opening does not apply. Polyethylene forms by addition of ethylene monomers through their C=C double bonds.</p>\n<p><strong>D. Step-growth polymerization with elimination of water:</strong> Step-growth polymerization with water elimination is another name for condensation polymerization. In polyethylene synthesis, no water or other byproduct is released. Each ethylene monomer adds to the growing chain by opening its C=C double bond, making it a classic example of addition (chain-growth) polymerization.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q47": {
+    "q": "Q47",
+    "id": "chem-348",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "Nylon-6,6 is produced by condensation polymerization of:",
+    "options": [
+      "Ethylene glycol and terephthalic acid",
+      "Hexamethylenediamine and adipic acid",
+      "Caprolactam",
+      "Styrene and butadiene"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Hexamethylenediamine and adipic acid</h4><p>Nylon-6,6 is a polyamide formed by the condensation of hexamethylenediamine (H₂N(CH₂)₆NH₂) and adipic acid (HOOC(CH₂)₄COOH), with water eliminated at each step. The 6,6 designation refers to the six carbon atoms in each monomer. PET is made from ethylene glycol and terephthalic acid; nylon-6 is made from caprolactam.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Ethylene glycol and terephthalic acid:</strong> Ethylene glycol and terephthalic acid are the monomers for PET (polyethylene terephthalate), the polyester used in plastic bottles and clothing fibers. Nylon-6,6 requires a diamine and a dicarboxylic acid, both with 6 carbons: hexamethylenediamine (H₂N–(CH₂)₆–NH₂) and adipic acid (HOOC–(CH₂)₄–COOH).</p>\n<p><strong>C. Caprolactam:</strong> Caprolactam is the monomer for nylon-6, which is made by ring-opening polymerization of this cyclic amide. Nylon-6,6 is a different polymer made by condensation of two distinct monomers (a diamine and a diacid), each contributing 6 carbons - hence the “6,6” in the name.</p>\n<p><strong>D. Styrene and butadiene:</strong> Styrene and butadiene are monomers for styrene-butadiene rubber (SBR), a synthetic rubber made by copolymerization. These are vinyl monomers that undergo addition polymerization. Nylon-6,6 is an entirely different class - a polyamide formed by condensation of hexamethylenediamine and adipic acid.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q48": {
+    "q": "Q48",
+    "id": "chem-349",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "In an SN2 reaction, the rate depends on the concentration of:",
+    "options": [
+      "Only the substrate",
+      "Only the nucleophile",
+      "Both the substrate and the nucleophile",
+      "Neither - it is zero order"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Both the substrate and the nucleophile</h4><p>SN2 (bimolecular nucleophilic substitution) follows second-order kinetics: rate = k[substrate][nucleophile]. The reaction occurs in a single concerted step where the nucleophile attacks the substrate from the back side while the leaving group departs simultaneously, resulting in inversion of configuration (Walden inversion).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Only the substrate:</strong> Rate depending only on the substrate describes SN1, not SN2. SN1 is first-order (rate = k[substrate]) because the rate-determining step is unimolecular ionization to form a carbocation. SN2 is second-order (rate = k[substrate][nucleophile]) because the nucleophile attacks in the same step as the leaving group departs.</p>\n<p><strong>B. Only the nucleophile:</strong> The rate of SN2 depends on both the nucleophile and the substrate, not just the nucleophile. The mechanism is a concerted, one-step process: the nucleophile attacks the electrophilic carbon from the back side while the leaving group simultaneously departs. Both species must be present in the transition state.</p>\n<p><strong>D. Neither - it is zero order:</strong> A zero-order reaction has a rate independent of all reactant concentrations, which does not apply to SN2. The SN2 reaction is second-order overall: first-order in substrate and first-order in nucleophile. This means doubling either concentration doubles the rate.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q49": {
+    "q": "Q49",
+    "id": "chem-350",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "SN1 reactions are favored by:",
+    "options": [
+      "Primary substrates and strong nucleophiles",
+      "Tertiary substrates and polar protic solvents",
+      "Primary substrates and polar aprotic solvents",
+      "Methyl substrates and weak nucleophiles"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Tertiary substrates and polar protic solvents</h4><p>SN1 reactions proceed through a carbocation intermediate. Tertiary substrates form the most stable carbocations. Polar protic solvents (water, alcohols) stabilize both the carbocation and the leaving group through solvation. The rate-determining step is unimolecular (ionization), so nucleophile strength does not affect the rate.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Primary substrates and strong nucleophiles:</strong> Primary substrates with strong nucleophiles favor SN2, the opposite mechanism. SN1 requires stable carbocation formation, which primary carbons cannot provide (too unstable). Strong nucleophiles attack before ionization can occur, pushing the reaction toward SN2.</p>\n<p><strong>C. Primary substrates and polar aprotic solvents:</strong> Primary substrates with polar aprotic solvents strongly favor SN2. Polar aprotic solvents (like DMSO, DMF, acetone) enhance nucleophile reactivity by not solvating anions, and primary substrates are sterically accessible for backside attack. SN1 needs polar protic solvents to stabilize the carbocation intermediate.</p>\n<p><strong>D. Methyl substrates and weak nucleophiles:</strong> Methyl substrates cannot form stable carbocations at all (a methyl cation would be extremely unstable). Methyl halides react almost exclusively by SN2. The combination of weak nucleophiles with methyl substrates would simply result in very slow reaction, not SN1.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q50": {
+    "q": "Q50",
+    "id": "chem-351",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "E2 elimination requires which geometric relationship between the leaving group and the β-hydrogen?",
+    "options": [
+      "Syn-periplanar",
+      "Anti-periplanar (trans-diaxial)",
+      "Gauche",
+      "Any geometry is acceptable"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Anti-periplanar (trans-diaxial)</h4><p>E2 elimination is a concerted, one-step process that requires an anti-periplanar arrangement - the β-hydrogen and the leaving group must be on opposite sides with a dihedral angle of 180°. This geometry allows optimal orbital overlap for simultaneous bond breaking and π-bond formation. In cyclohexane rings, both groups must be axial and trans to each other.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Syn-periplanar:</strong> Syn-periplanar geometry (leaving group and β-hydrogen on the same side, 0° dihedral angle) can occasionally lead to E2 elimination but is strongly disfavored compared to anti-periplanar. The anti arrangement (180° dihedral) allows optimal orbital overlap between the breaking C–H bond and the C–LG bond for π bond formation.</p>\n<p><strong>C. Gauche:</strong> Gauche geometry (~60° dihedral angle) does not provide the orbital alignment needed for E2 elimination. The anti-periplanar arrangement (180°) is required because it places the H and leaving group in the optimal orientation for simultaneous removal and departure, allowing the new π bond to form smoothly.</p>\n<p><strong>D. Any geometry is acceptable:</strong> E2 is highly geometry-dependent - not any arrangement will work. The anti-periplanar requirement means the β-hydrogen and leaving group must be 180° apart (trans-diaxial in cyclohexanes). This geometric constraint can determine which product forms and sometimes prevents elimination entirely if the required arrangement is inaccessible.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q51": {
+    "q": "Q51",
+    "id": "chem-352",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "E1 elimination shares which feature with SN1?",
+    "options": [
+      "Both require a strong base",
+      "Both proceed via a carbocation intermediate",
+      "Both give inversion of configuration",
+      "Both follow second-order kinetics"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Both proceed via a carbocation intermediate</h4><p>Both E1 and SN1 reactions begin with the same rate-determining step: ionization of the substrate to form a carbocation. In E1, a base then removes a β-proton to form a double bond. In SN1, a nucleophile attacks the carbocation. Because they share the same first step, E1 and SN1 often compete with each other, especially at higher temperatures where elimination is favored.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Both require a strong base:</strong> Neither E1 nor SN1 requires a strong base. Both are unimolecular reactions whose rate-determining step is spontaneous ionization of the substrate to form a carbocation. A strong base would promote E2 elimination instead. E1 and SN1 are typically favored by weak nucleophiles/bases and polar protic solvents.</p>\n<p><strong>C. Both give inversion of configuration:</strong> Inversion of configuration (Walden inversion) is characteristic of SN2, not SN1. In SN1, the planar carbocation intermediate can be attacked from either face, leading to racemization (mixture of retention and inversion). E1 produces an alkene, so configuration at the carbon is not retained in the same way.</p>\n<p><strong>D. Both follow second-order kinetics:</strong> Both E1 and SN1 follow first-order kinetics (rate = k[substrate]), not second-order. The rate-determining step for both is the same: unimolecular departure of the leaving group to form a carbocation. This shared carbocation intermediate is why E1 and SN1 often compete when tertiary substrates are used.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q52": {
+    "q": "Q52",
+    "id": "chem-353",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "Which of the following is a copolymer?",
+    "options": [
+      "Polyethylene",
+      "Polystyrene",
+      "Styrene-butadiene rubber (SBR)",
+      "Polyvinyl chloride"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Styrene-butadiene rubber (SBR)</h4><p>A copolymer is formed from two or more different monomers. SBR is made by copolymerization of styrene and 1,3-butadiene. Polyethylene, polystyrene, and PVC are all homopolymers - each is derived from a single type of monomer. Copolymers allow tailoring of properties by combining characteristics of different monomers.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Polyethylene:</strong> Polyethylene is a homopolymer made from only one type of monomer (ethylene, CH₂=CH₂). A copolymer requires two or more different monomers. SBR (styrene-butadiene rubber) is a copolymer because it combines styrene and butadiene units in the same chain.</p>\n<p><strong>B. Polystyrene:</strong> Polystyrene is also a homopolymer, made from only styrene monomers. While styrene is one of the monomers in SBR, polystyrene by itself contains no butadiene. A copolymer must incorporate two or more chemically distinct monomer types within its polymer chain.</p>\n<p><strong>D. Polyvinyl chloride:</strong> Polyvinyl chloride (PVC) is a homopolymer made from vinyl chloride (CH₂=CHCl) monomers only. It is one of the most widely produced plastics. To be a copolymer, the polymer chain must contain repeating units derived from at least two different monomers, as in SBR (styrene + butadiene) or ABS (acrylonitrile + butadiene + styrene).</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q53": {
+    "q": "Q53",
+    "id": "chem-354",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "PET (polyethylene terephthalate) is formed by condensation of ethylene glycol and terephthalic acid. The linkage between monomers is:",
+    "options": [
+      "An amide bond",
+      "An ester bond",
+      "An ether bond",
+      "A glycosidic bond"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. An ester bond</h4><p>PET is a polyester. The hydroxyl groups of ethylene glycol (HOCH₂CH₂OH) react with the carboxyl groups of terephthalic acid (a dicarboxylic acid) to form ester linkages (–COO–) with loss of water. PET is used in beverage bottles, textile fibers (polyester fabric), and food packaging.</p><h4>Why the other choices are wrong:</h4><p><strong>A. An amide bond:</strong> Amide bonds (–CONH–) form between a carboxylic acid and an amine, as in nylon. PET forms from a diol (ethylene glycol) and a dicarboxylic acid (terephthalic acid), which react via their –OH and –COOH groups to form ester bonds (–COO–) with loss of water.</p>\n<p><strong>C. An ether bond:</strong> Ether bonds (C–O–C) form by dehydration between two alcohols or by Williamson synthesis. PET formation involves a carboxylic acid reacting with an alcohol to form an ester bond (–COO–), not a simple ether bond. Polyethylene oxide would be an example of a polyether.</p>\n<p><strong>D. A glycosidic bond:</strong> Glycosidic bonds are specific to carbohydrate chemistry, linking sugar units together (e.g., in starch, cellulose, lactose). PET is a synthetic polyester made from ethylene glycol and terephthalic acid, connected by ester bonds. Despite both involving –OH groups, glycosidic bonds are hemiacetal/acetal linkages, structurally different from esters.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q54": {
+    "q": "Q54",
+    "id": "chem-355",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "Which factor most strongly favors SN2 over E2 when treating a primary alkyl halide with a base/nucleophile?",
+    "options": [
+      "Using a strong, bulky base like tert-butoxide",
+      "Using a strong, unhindered nucleophile like CH₃O⁻",
+      "Increasing the temperature",
+      "Using a polar protic solvent"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Using a strong, unhindered nucleophile like CH₃O⁻</h4><p>A strong, small nucleophile like methoxide (CH₃O−) can easily access the electrophilic carbon in an SN2 pathway. Bulky bases like tert-butoxide are hindered and cannot easily attack the carbon, favoring proton abstraction (E2) instead. Higher temperature and polar protic solvents also tend to favor elimination.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Using a strong, bulky base like tert-butoxide:</strong> A strong, bulky base like tert-butoxide (t-BuO–) favors E2 over SN2. Its steric bulk prevents it from approaching the electrophilic carbon for backside attack, so instead it abstracts a β-hydrogen to cause elimination. Unhindered nucleophiles like methoxide (CH₃O–) can readily perform the SN2 backside attack.</p>\n<p><strong>C. Increasing the temperature:</strong> Increasing temperature generally favors elimination (E2) over substitution (SN2). Elimination has a higher activation entropy (more disorder in the transition state - two molecules become three fragments: base-H, alkene, and leaving group), so it benefits more from increased thermal energy.</p>\n<p><strong>D. Using a polar protic solvent:</strong> Polar protic solvents (water, methanol, ethanol) actually hinder SN2 by solvating and stabilizing the nucleophile, reducing its reactivity. Polar aprotic solvents (DMSO, DMF) are better for SN2 because they solvate cations but leave the nucleophilic anion free and reactive.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q55": {
+    "q": "Q55",
+    "id": "chem-356",
+    "subject": "chemistry",
+    "topic": "Polymers & Reaction Mechanisms",
+    "question": "Vulcanization of rubber involves cross-linking polymer chains with:",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Sulfur",
+      "Chlorine"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Sulfur</h4><p>Vulcanization is the process of heating natural rubber (polyisoprene) with sulfur, which forms cross-links (–S–S– or –Sₓ–) between polymer chains at the double bond positions. This converts soft, sticky rubber into a durable, elastic material with improved mechanical properties and resistance to heat and solvents. Charles Goodyear discovered this process in 1839.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Oxygen:</strong> Oxygen exposure causes oxidation and degradation of rubber, not beneficial cross-linking. Vulcanization specifically uses sulfur atoms to form bridges (–S–S– or –Sₙ–) between polyisoprene chains at double bond sites, making the rubber stronger, more elastic, and resistant to heat and solvents.</p>\n<p><strong>B. Nitrogen:</strong> Nitrogen is not used in vulcanization. The process, discovered by Charles Goodyear in 1839, involves heating natural rubber with sulfur. The sulfur atoms react with the allylic positions of the polyisoprene chains to form cross-links. More sulfur creates a harder product (hard rubber/ebonite); less sulfur gives flexible rubber.</p>\n<p><strong>D. Chlorine:</strong> Chlorine is not used in traditional vulcanization. However, chlorine does feature in some rubber chemistry: chloroprene rubber (neoprene) contains C–Cl bonds as part of its monomer structure. Standard vulcanization uses sulfur, which forms disulfide bridges that give rubber its characteristic elasticity and durability.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q56": {
+    "q": "Q56",
+    "id": "chem-357",
+    "subject": "chemistry",
+    "topic": "Functional Group Reactions",
+    "question": "The conversion of a primary alcohol to a carboxylic acid involves:",
+    "options": [
+      "Reduction",
+      "Oxidation",
+      "Hydrolysis",
+      "Dehydration"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Oxidation</h4><p>Converting a primary alcohol (RCH₂OH) to a carboxylic acid (RCOOH) requires two successive oxidations - first to an aldehyde (RCHO), then to the acid. Strong oxidants like KMnO₄ or K₂Cr₂O₇ in acidic conditions accomplish this in one pot. The oxidation state of carbon increases from −1 (in RCH₂OH) to +3 (in RCOOH).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Reduction:</strong> Reduction adds hydrogen (or electrons) to a molecule, decreasing its oxidation state. Converting R–CH₂OH to R–COOH increases the oxidation state of the carbon (from –1 to +3), which is oxidation. Reduction of a primary alcohol would instead produce an alkane (R–CH₃).</p>\n<p><strong>C. Hydrolysis:</strong> Hydrolysis is the cleavage of a bond using water (e.g., splitting an ester into acid + alcohol). The conversion of a primary alcohol to a carboxylic acid is an oxidation: the carbon gains bonds to oxygen and loses bonds to hydrogen. Strong oxidizing agents like KMnO₄ or CrO₃ can accomplish this in one step.</p>\n<p><strong>D. Dehydration:</strong> Dehydration (loss of water) converts an alcohol to an alkene, not to a carboxylic acid. For example, heating ethanol with concentrated H₂SO₄ produces ethylene. The conversion to a carboxylic acid requires oxidation (adding oxygen bonds), typically proceeding through an aldehyde intermediate.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q57": {
+    "q": "Q57",
+    "id": "chem-358",
+    "subject": "chemistry",
+    "topic": "Functional Group Reactions",
+    "question": "Conversion of a carboxylic acid to an acid chloride is best accomplished using:",
+    "options": [
+      "HCl",
+      "NaCl",
+      "SOCl₂ (thionyl chloride)",
+      "Cl₂/UV light"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. SOCl₂ (thionyl chloride)</h4><p>Thionyl chloride (SOCl₂) reacts with carboxylic acids to give acid chlorides, SO₂, and HCl - both gaseous by-products that leave the reaction mixture, driving the reaction to completion: RCOOH + SOCl₂ → RCOCl + SO₂↑ + HCl↑. PCl₃ and PCl₅ can also be used but produce less convenient by-products.</p><h4>Why the other choices are wrong:</h4><p><strong>A. HCl:</strong> HCl is a simple acid that cannot convert a carboxylic acid to an acid chloride - the reaction is thermodynamically unfavorable. SOCl₂ (thionyl chloride) drives the reaction forward because its byproducts (SO₂ and HCl) are gases that escape the reaction, shifting equilibrium toward products.</p>\n<p><strong>B. NaCl:</strong> NaCl is a stable ionic salt that cannot donate chloride in a way that displaces –OH from a carboxylic acid. Acid chloride synthesis requires an activating reagent like SOCl₂, PCl₃, or PCl₅ that makes the hydroxyl a better leaving group while providing reactive chloride.</p>\n<p><strong>D. Cl₂/UV light:</strong> Cl₂/UV light causes free radical halogenation of C–H bonds (as in the chlorination of alkanes), not conversion of –COOH to –COCl. Acid chloride formation requires nucleophilic acyl substitution with reagents like thionyl chloride (SOCl₂), which also conveniently produces gaseous byproducts.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q58": {
+    "q": "Q58",
+    "id": "chem-359",
+    "subject": "chemistry",
+    "topic": "Functional Group Reactions",
+    "question": "Which functional group transformation occurs when an alkene reacts with H₂ over a Pd/C catalyst?",
+    "options": [
+      "Oxidation to an epoxide",
+      "Reduction to an alkane",
+      "Isomerization to a cycloalkane",
+      "Halogenation"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. Reduction to an alkane</h4><p>Catalytic hydrogenation (H₂/Pd, Pt, or Ni) adds H₂ across the double bond in a syn fashion (both H atoms add to the same face), converting the alkene to an alkane. This is a heterogeneous catalytic reaction where both H₂ and the alkene adsorb onto the metal surface before H atoms are delivered.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Oxidation to an epoxide:</strong> Epoxide formation from an alkene requires a peracid (like mCPBA) or a peroxide, not H₂ and Pd/C. Catalytic hydrogenation (H₂/Pd) adds two hydrogen atoms across the double bond, reducing the alkene to an alkane in a syn addition.</p>\n<p><strong>C. Isomerization to a cycloalkane:</strong> Isomerization to a cycloalkane would require forming a new C–C bond to close a ring, which catalytic hydrogenation does not do. H₂/Pd simply adds hydrogen atoms across the π bond of the alkene. The carbon skeleton remains unchanged - only the degree of saturation changes.</p>\n<p><strong>D. Halogenation:</strong> Halogenation (adding Br₂ or Cl₂) is a completely different reaction from hydrogenation. H₂/Pd is a classic heterogeneous catalytic hydrogenation: the alkene and H₂ adsorb onto the palladium surface, and both hydrogen atoms add to the same face of the double bond (syn addition), producing an alkane.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "Q59": {
+    "q": "Q59",
+    "id": "chem-360",
+    "subject": "chemistry",
+    "topic": "Functional Group Reactions",
+    "question": "A Wittig reaction converts a ketone or aldehyde into:",
+    "options": [
+      "An alcohol",
+      "An alkene",
+      "An amine",
+      "An ester"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. An alkene</h4><p>The Wittig reaction uses a phosphonium ylide (R₃P=CR'₂) to react with an aldehyde or ketone, replacing the C=O with a C=C double bond. The by-product is triphenylphosphine oxide (Ph₃P=O). This is a powerful method for synthesizing alkenes with specific placement of the double bond, unlike elimination reactions which may give mixtures.</p><h4>Why the other choices are wrong:</h4><p><strong>A. An alcohol:</strong> Reduction of a ketone or aldehyde (using NaBH₄ or LiAlH₄) produces an alcohol. The Wittig reaction does something different: a phosphorus ylide (R₃P=CHR’) reacts with the carbonyl to replace C=O with C=C, producing an alkene and triphenylphosphine oxide as a byproduct.</p>\n<p><strong>C. An amine:</strong> Amines are produced by reductive amination of ketones/aldehydes (reaction with an amine followed by reduction). The Wittig reaction specifically converts a C=O to a C=C bond. It is one of the most important methods for making alkenes with precise control over double bond placement.</p>\n<p><strong>D. An ester:</strong> Ester formation from a carbonyl requires an oxidation step (like Baeyer–Villiger oxidation for ketones). The Wittig reaction replaces the carbonyl oxygen with a carbon from the phosphorus ylide, forming a new C=C double bond. The driving force is the formation of the very strong P=O bond in the triphenylphosphine oxide byproduct.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  },
+  "Q60": {
+    "q": "Q60",
+    "id": "chem-361",
+    "subject": "chemistry",
+    "topic": "Functional Group Reactions",
+    "question": "Beckmann rearrangement of an oxime produces:",
+    "options": [
+      "An amide",
+      "A nitrile",
+      "An amine",
+      "An imine"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A. An amide</h4><p>The Beckmann rearrangement is an acid-catalyzed conversion of an oxime (R₁R₂C=NOH) to an amide. The group anti to the hydroxyl migrates from carbon to nitrogen as the N–O bond breaks. This rearrangement is industrially important for the production of caprolactam (from cyclohexanone oxime), which is the monomer for nylon-6.</p><h4>Why the other choices are wrong:</h4><p><strong>B. A nitrile:</strong> Nitriles (R–C≡N) can be formed by dehydration of primary amides or aldoximes, but this is not the Beckmann rearrangement. The Beckmann rearrangement specifically converts a ketoxime to a substituted amide through migration of the group anti to the hydroxyl, with ring expansion if the oxime is cyclic.</p>\n<p><strong>C. An amine:</strong> Amines (R–NH₂) are formed by reduction of amides, nitriles, or imines. The Beckmann rearrangement produces an amide, not an amine. The mechanism involves protonation of the oxime’s hydroxyl, departure of water, 1,2-shift of the anti-periplanar group to nitrogen, and hydrolysis to the amide.</p>\n<p><strong>D. An imine:</strong> An imine (Schiff base, R₂C=NR) is actually the starting point: an oxime is a special type of imine (where N is bonded to –OH). The Beckmann rearrangement transforms this oxime into an amide. Industrially, this reaction is used to convert cyclohexanone oxime to caprolactam, the monomer for nylon-6.</p><h4>Key Educational Points:</h4><ul><li>Chemical structure determines chemical properties - understanding structure allows prediction of reactivity and behavior.</li><li>Conservation laws (mass, energy, charge) govern all chemical reactions and must be satisfied in balanced equations.</li><li>Thermodynamics tells us whether a reaction CAN occur (spontaneity); kinetics tells us how FAST it occurs.</li></ul>"
+  }
+}

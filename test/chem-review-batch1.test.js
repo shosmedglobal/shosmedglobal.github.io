@@ -28,6 +28,8 @@
 // counts below were stepped down. The sweep still covers every chemistry record
 // that no reviewed pack owns.
 'use strict';
+// NOTE: chemistry batch 6 (chem-302..chem-361) pruned 60 ids from this suite's
+// untouched fixture on 18 November 2026; the counts below were stepped to match.
 // NOTE: chemistry batch 5 (chem-242..chem-301) pruned 60 ids from this suite's
 // untouched fixture on 17 November 2026; the counts below were stepped to match.
 
@@ -235,8 +237,8 @@ section('3. Nothing outside the pack moved');
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} untouched biology hashes, expected 629`);
-ok(nChem === 186, `${nChem} untouched chemistry hashes, expected 186`);
-ok(nChem + 60 + 60 + 59 + 60 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3, 4 and 5 should account for all 485');
+ok(nChem === 126, `${nChem} untouched chemistry hashes, expected 126`);
+ok(nChem + 60 + 60 + 59 + 60 + 60 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3, 4, 5 and 6 should account for all 485');
 ok(data.biology.length === 629, `biology holds ${data.biology.length} questions, expected 629`);
 ok(data.chemistry.length === 485, `chemistry holds ${data.chemistry.length} questions, expected 485`);
 
