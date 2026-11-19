@@ -88,7 +88,7 @@ module.exports = [
     kcMustContain: 'Gravitational potential energy PE = mgh',
     kc: "For a height change near Earth's surface, ΔU = mgΔh. Raising an object increases its gravitational potential energy; lowering it decreases that energy.",
     fb: [
-      ['A', ' This is gΔh without the factor of mass. The given 2 kg mass doubles the value from 150 J to 300 J.'],
+      ['A', ' This would be the gravitational potential-energy increase for a 1 kg object raised by 15 m when g = 10 m/s². The given object has a mass of 2 kg, so its energy increase is 2 × 10 × 15 = 300 J.'],
       ['B', ' For this mass, a 200 J increase would correspond to a 10 m rise. The stated rise is 15 m.'],
       ['D', ' The product mΔh is 30 kg·m, not an energy. Multiplying by g supplies both the required factor of 10 and the correct units.']
     ] },

@@ -400,6 +400,24 @@ repaired('Q36', 'is compressed by 0.3 m. How much elastic potential energy is st
 repaired('Q37', 'A force of 600 N is applied to a piston', 'A normal force of 600 N',
   'a normal force and an average pressure are specified');
 
+/* The final content reread asked for one further change: the body of Q29's
+   option A feedback. Everything else in Q29 stays as this pass left it. */
+{
+  const r = rec('Q29');
+  const A = "<p><strong>A. 150 J:</strong> This would be the gravitational potential-energy increase for a 1 kg object raised by 15 m when g = 10 m/s². The given object has a mass of 2 kg, so its energy increase is 2 × 10 × 15 = 300 J.</p>";
+  ok(r.explanation.indexOf(A) >= 0, 'Q29: option A feedback carries the reread wording');
+  ok(r.explanation.indexOf('This is gΔh without the factor of mass') < 0, 'Q29: the earlier option A body is gone');
+  ok(r.explanation.indexOf('potential-energy increase for a 1 kg object') >= 0, 'Q29: the new body names the 1 kg object the 150 J value would belong to');
+  ok(r.explanation.slice(r.explanation.indexOf(A)).indexOf('2 × 10 × 15 = 300 J') >= 0, 'Q29: the new body recomputes the correct 300 J');
+  ok(r.options[0] === '150 J', 'Q29: option A text is unchanged');
+  ok(r.explanation.indexOf("<p><strong>A. " + r.options[0] + ':') >= 0, 'Q29: the feedback heading still reproduces option A');
+  ok(r.explanation.indexOf('<strong>B. 200 J:</strong> For this mass, a 200 J increase would correspond to a 10 m rise.') >= 0, 'Q29: option B feedback untouched');
+  ok(r.explanation.indexOf('<strong>D. 30 J:</strong> The product mΔh is 30 kg·m, not an energy.') >= 0, 'Q29: option D feedback untouched');
+  ok(r.explanation.indexOf("<p>Near Earth's surface, with g treated as constant, the increase in gravitational potential energy is ΔU = mgΔh = 2 × 10 × 15 = <strong>300 J</strong>.") >= 0, 'Q29: main explanation untouched');
+  ok(r.explanation.indexOf("Key Concept: For a height change near Earth's surface, ΔU = mgΔh.") >= 0, 'Q29: Key Concept untouched');
+  ok(r.correct === 2, 'Q29: still keyed C');
+}
+
 /* ------------------------------------------------------------------ */
 section("7. the review's numerical results, recomputed here");
 
