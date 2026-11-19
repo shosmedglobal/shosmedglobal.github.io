@@ -187,10 +187,10 @@ ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(nChem === 68, `${nChem} untouched chemistry hashes, expected 68 after the chemistry batch 7 prune`);
+ok(nChem === 12, `${nChem} untouched chemistry hashes, expected 12 after the chemistry batch 8 prune`);
 ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 + 60 + 60 + 60 === 629 + 485,
-  'the untouched set, this pack and chemistry batches 1, 2, 3, 4, 5, 6 and 7 should partition the whole bank');
+ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 + 60 + 60 + 60 + 56 === 629 + 485,
+  'the untouched set, this pack and chemistry batches 1 to 8 should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 
 // chemistry is wholly untouched

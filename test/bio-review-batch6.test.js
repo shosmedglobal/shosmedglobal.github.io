@@ -518,7 +518,10 @@ ok(Object.keys(untouched.biology).length + 60 + 60 + 60 + 60 + 26 + IDS.length =
 /* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
    from this fixture, so the hash count below steps down by 60. nChem counts LIVE
    out-of-pack records and is unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 68, 'untouched chemistry hash count unexpected');
+/* NOTE: the chemistry batch 8 pass added 56 new ids (chem-422 .. chem-477),
+   pruned from this fixture, so the hash count below steps down by 56. Live
+   out-of-pack counts are unaffected by pruning. */
+ok(Object.keys(untouched.chemistry).length === 12, 'untouched chemistry hash count unexpected (12 after the chemistry batch 8 prune)');
 
 // ===========================================================================
 section('9. The narrow follow-up correction pass');

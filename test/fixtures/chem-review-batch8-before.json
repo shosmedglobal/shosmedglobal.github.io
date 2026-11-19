@@ -1,0 +1,844 @@
+{
+  "Q1": {
+    "id": "chem-369",
+    "subject": "chemistry",
+    "topic": "Metabolic Biochemistry",
+    "question": "In human cells, most enzymes of the citric acid cycle are located in the:",
+    "options": [
+      "Cytoplasm",
+      "Mitochondrial matrix",
+      "Inner mitochondrial membrane",
+      "Endoplasmic reticulum"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Mitochondrial matrix</h4><p>Most citric acid cycle reactions occur in the mitochondrial matrix. The important exception is succinate dehydrogenase, which is embedded in the inner mitochondrial membrane and also functions as Complex II of the electron transport chain. The cycle oxidizes acetyl-CoA, releases CO₂ and transfers electrons to NAD⁺ and enzyme-bound FAD. These electrons can then support oxidative phosphorylation.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Cytoplasm:</strong> Glycolysis takes place in the cytosol. The citric acid cycle is mainly in the mitochondrial matrix, where acetyl-CoA can come from carbohydrate, fatty acid or amino acid metabolism. Entry into the cycle does not always require pyruvate as the source.</p>\n<p><strong>C. Inner mitochondrial membrane:</strong> The inner mitochondrial membrane contains the electron transport chain and ATP synthase. It also contains succinate dehydrogenase, but most citric acid cycle enzymes are in the matrix, which is what the stem asks.</p>\n<p><strong>D. Endoplasmic reticulum:</strong> The ER is involved in protein folding (rough ER) and lipid synthesis (smooth ER), not in the citric acid cycle.</p><p class='exp-key'>Bottom Line: Per acetyl-CoA, a turn of the cycle yields 3 NADH, one FAD-linked reduction, 1 GTP or ATP, and 2 CO₂. The FAD is bound to succinate dehydrogenase. Most cycle enzymes are in the matrix; succinate dehydrogenase is the membrane-bound exception.</p>"
+  },
+  "Q2": {
+    "id": "chem-382",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Two molecules with the same molecular formula but differing in the connectivity (order of bonding) of their atoms are called:",
+    "options": [
+      "Enantiomers",
+      "Geometric (cis-trans) isomers",
+      "Structural (constitutional) isomers",
+      "Conformational isomers"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Structural (constitutional) isomers</h4><p>Structural isomers share the same molecular formula but differ in which atoms are bonded to which - they have different connectivity. For example, butane (CH₃CH₂CH₂CH₃) and isobutane (CH₃CH(CH₃)CH₃) both have the formula C₄H₁₀ but different structural arrangements, leading to different physical and chemical properties.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Enantiomers:</strong> Enantiomers are non-superimposable mirror-image stereoisomers. They have the same connectivity but differ in spatial arrangement, whereas the molecules described in the stem differ in connectivity.</p>\n<p><strong>B. Geometric (cis-trans) isomers:</strong> These differ in arrangement around a rigid structure (double bond or ring) - cis vs. trans - but have the same connectivity.</p>\n<p><strong>D. Conformational isomers:</strong> These are different spatial arrangements of the same molecule achieved by rotation around single bonds (e.g., chair vs. boat cyclohexane); they have identical connectivity.</p><p class='exp-key'>Bottom Line: Isomers share the same molecular formula. Structural isomers differ in connectivity. Stereoisomers (geometric and optical) have the same connectivity but differ in spatial arrangement. Enantiomers are particularly important in pharmacology - different enantiomers can have dramatically different biological activities.</p>"
+  },
+  "Q3": {
+    "id": "chem-396",
+    "subject": "chemistry",
+    "topic": "Inorganic Nomenclature",
+    "question": "Which formula correctly represents calcium phosphate?",
+    "options": [
+      "CaPO₄",
+      "Ca₂(PO₄)₃",
+      "Ca₃(PO₄)₂",
+      "Ca₃PO₄"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Ca₃(PO₄)₂</h4><p>Calcium forms Ca²⁺ ions, and phosphate is the polyatomic ion PO₄³−. To balance the charges, we need the least common multiple of 2 and 3, which is 6. This requires <strong>three</strong> calcium ions (3 × +2 = +6) and <strong>two</strong> phosphate ions (2 × −3 = −6). The formula is therefore Ca₃(PO₄)₂.</p><h4>Why the other choices are wrong:</h4><p><strong>A. CaPO₄:</strong> This gives a total positive charge of +2 (from Ca²⁺) and a total negative charge of −3 (from PO₄³−), which are not balanced. Ionic compounds must be electrically neutral.</p><p><strong>B. Ca₂(PO₄)₃:</strong> This gives +4 from calcium and −9 from phosphate, which is also not balanced. This formula reverses the correct subscripts.</p><p><strong>D. Ca₃PO₄:</strong> Ca₃PO₄ contains three Ca²⁺ ions but only one PO₄³⁻ ion, giving a net charge of +3. The neutral formula requires two whole phosphate ions: Ca₃(PO₄)₂. The 4 counts oxygen atoms inside each phosphate, while the outside 2 counts phosphate groups.</p><h4>Key Educational Points:</h4><ul><li>Balance ionic charges and use the simplest whole-number ratio of intact ions; reduce any common factor after criss-crossing charges</li><li>Parentheses are required around polyatomic ions when the subscript is greater than 1</li><li>The main mineral of bone and teeth is hydroxyapatite, Ca₁₀(PO₄)₆(OH)₂, a calcium phosphate mineral with a different formula from Ca₃(PO₄)₂</li></ul><p class='exp-key'>Bottom Line: Calcium phosphate is Ca₃(PO₄)₂ - three Ca²⁺ ions balance two PO₄³− ions for electrical neutrality.</p>"
+  },
+  "Q4": {
+    "id": "chem-409",
+    "subject": "chemistry",
+    "topic": "Sulfonic Acids and Carbonic Derivatives",
+    "question": "Guanidine [HN=C(NH₂)₂] is a strong organic base in water. Why is its conjugate acid, the guanidinium ion, especially stable?",
+    "options": [
+      "The positive charge is stabilized by resonance delocalization over three equivalent nitrogen atoms",
+      "It contains an aromatic ring that stabilizes the positive charge",
+      "The sulfur atom in guanidine donates electrons to stabilize the cation",
+      "Guanidinium is stabilized by intramolecular hydrogen bonding with a carbonyl group"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: The positive charge is stabilized by resonance delocalization over three equivalent nitrogen atoms</h4><p>When guanidine is protonated, the resulting <strong>guanidinium ion</strong> [C(NH₂)₃]⁺ has a remarkable symmetry: the positive charge is delocalized equally across <strong>three equivalent nitrogen atoms</strong> through resonance. This gives a symmetric, Y-shaped structure with three equivalent C–N bonds. The extensive delocalization makes the guanidinium ion exceptionally stable, which is why guanidine is such a strong base (pKₐ of conjugate acid ≈ 13.6).</p><h4>Why the other choices are wrong:</h4><p><strong>B. It contains an aromatic ring that stabilizes the positive charge:</strong> Guanidine has no aromatic ring. It is a small, acyclic molecule. The stabilization comes from resonance across the three C–N bonds in a planar, non-cyclic arrangement.</p><p><strong>C. The sulfur atom in guanidine donates electrons to stabilize the cation:</strong> Guanidine contains only carbon, nitrogen, and hydrogen - no sulfur. Its formula is HN=C(NH₂)₂.</p><p><strong>D. Guanidinium is stabilized by intramolecular hydrogen bonding with a carbonyl group:</strong> Guanidine contains no oxygen and therefore no carbonyl group. Guanidinium is stabilized by charge delocalization, not hydrogen bonding to a carbonyl. Arginine's guanidinium-containing side chain also has no carbonyl group.</p><h4>Key Educational Points:</h4><ul><li>The pKa of guanidinium, guanidine's conjugate acid, is about 13.6 in water, consistent with guanidine being a strong organic base</li><li>The guanidinium group is found in the amino acid arginine, which is positively charged at physiological pH</li><li>Three-fold symmetric resonance stabilization is the key to guanidinium's exceptional stability</li></ul><p class='exp-key'>Bottom Line: The guanidinium ion is exceptionally stable because its positive charge is delocalized symmetrically across three equivalent nitrogen atoms via resonance.</p>"
+  },
+  "Q5": {
+    "id": "chem-422",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "Mutarotation refers to the change in optical rotation that occurs when:",
+    "options": [
+      "A sugar is heated and undergoes caramelization",
+      "A sugar is reduced to its corresponding sugar alcohol",
+      "A polysaccharide is hydrolyzed into monosaccharides",
+      "The α and β anomers of a sugar interconvert in solution through the open-chain form"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: The α and β anomers of a sugar interconvert in solution through the open-chain form</h4><p>Mutarotation is the gradual change in optical rotation observed when a pure anomer (α or β) of a sugar is dissolved in water. The cyclic hemiacetal ring opens transiently to form the open-chain (linear) aldehyde, which can then re-close to form either the α or β anomer. Over time, an equilibrium mixture of both anomers is established, and the specific rotation reaches a stable intermediate value.</p><h4>Why the other choices are wrong:</h4><p><strong>A. A sugar is heated and undergoes caramelization:</strong> Caramelization is a non-enzymatic browning reaction involving the decomposition and polymerization of sugars at high temperatures. It changes the sugar's chemical structure irreversibly and is not related to mutarotation.</p><p><strong>C. A polysaccharide is hydrolyzed into monosaccharides:</strong> Hydrolysis of glycosidic bonds releases monosaccharides from polysaccharides. While the released monosaccharides can undergo mutarotation, the hydrolysis process itself is not mutarotation.</p><p><strong>B. A sugar is reduced to its corresponding sugar alcohol:</strong> Reduction of a sugar's aldehyde or ketone group (e.g., glucose → sorbitol) produces a sugar alcohol (alditol). This permanently eliminates the anomeric carbon, making mutarotation impossible.</p><h4>Key Educational Points:</h4><ul><li>Mutarotation requires a free anomeric carbon (hemiacetal/hemiketal)</li><li>For glucose: α-D-glucose (+112°) ⇌ open-chain ⇌ β-D-glucose (+18.7°) → equilibrium at +52.7°</li><li>Sugars with no free anomeric carbon (e.g., sucrose, sugar alcohols) cannot undergo mutarotation</li></ul><p class='exp-key'>Bottom Line: Mutarotation is the spontaneous interconversion of α and β anomers in solution via the open-chain form, reaching an equilibrium optical rotation.</p>"
+  },
+  "Q6": {
+    "id": "chem-423",
+    "subject": "chemistry",
+    "topic": "Saccharides",
+    "question": "In a Haworth projection of β-D-glucopyranose, the hydroxyl group at C1 is oriented:",
+    "options": [
+      "Below the plane of the ring (axial, same side as the ring oxygen reference)",
+      "Above the plane of the ring (equatorial, opposite the reference carbon C6 on the right)",
+      "Above the plane of the ring (on the same side as the CH₂OH group at C5)",
+      "To the right in the Fischer projection, which corresponds to below in Haworth"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Above the plane of the ring (on the same side as the CH₂OH group at C5)</h4><p>In a Haworth projection of β-D-glucopyranose, the β anomer is defined by having the hydroxyl group at C1 on the SAME side of the ring as the reference group (the CH₂OH group at C5 in D-sugars). Since the CH₂OH group at C5 is drawn above the ring plane in the standard Haworth projection of D-glucose, the β-OH at C1 is also above the plane.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Below the plane of the ring:</strong> A C1-OH below the ring plane in a D-hexopyranose Haworth projection corresponds to the α anomer, not the β anomer. In α-D-glucopyranose, the OH at C1 is below the ring (trans to the CH₂OH at C5).</p><p><strong>B. Above the plane of the ring (opposite the reference carbon C6 on the right):</strong> While the OH is indeed above the ring, the reasoning is incorrect. The defining feature of the β anomer is that the C1-OH is on the same side as the CH₂OH at C5, not described by its relation to C6.</p><p><strong>D. To the right in the Fischer projection, which corresponds to below in Haworth:</strong> While it is true that right-side groups in Fischer often project below in Haworth, the β anomer of D-glucose has the C1-OH above the ring, not below. The α/β designation depends on the relationship to the reference carbon, not a simple right/below rule.</p><h4>Key Educational Points:</h4><ul><li>β anomer: C1-OH on the SAME side as the CH₂OH group (above in D-sugars)</li><li>α anomer: C1-OH on the OPPOSITE side from CH₂OH group (below in D-sugars)</li><li>Mnemonic: β = \"above the boat\" (up) in D-sugars</li></ul><p class='exp-key'>Bottom Line: In β-D-glucopyranose, the C1 hydroxyl is above the ring plane, on the same side as the CH₂OH group at C5.</p>"
+  },
+  "Q7": {
+    "id": "chem-424",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "A molecule has 3 chiral centers and no internal plane of symmetry. How many stereoisomers does this molecule have?",
+    "options": [
+      "4",
+      "6",
+      "8",
+      "16"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 8</h4><p>The maximum number of stereoisomers for a molecule with n chiral centers is 2<sup>n</sup>. With 3 chiral centers and no internal plane of symmetry (ruling out meso forms), all 2³ = 8 stereoisomers are distinct. These consist of 4 pairs of enantiomers (8 individual stereoisomers total).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 4:</strong> The value 4 = 2² would apply to a molecule with only 2 chiral centers. With 3 chiral centers and no meso forms, the correct count is 2³ = 8.</p><p><strong>B. 6:</strong> Six is not a power of 2 and does not correspond to any standard stereoisomer count. It might be confused with the reduced count when meso forms exist (e.g., tartaric acid has 2 chiral centers but only 3 stereoisomers due to one meso form), but the question states no internal plane of symmetry.</p><p><strong>D. 16:</strong> The value 16 = 2⁴ would apply to a molecule with 4 chiral centers. With only 3 chiral centers, the maximum is 2³ = 8.</p><h4>Key Educational Points:</h4><ul><li>Maximum stereoisomers = 2<sup>n</sup> where n is the number of chiral centers</li><li>Meso compounds (with an internal plane of symmetry) reduce the actual count below 2<sup>n</sup></li><li>The question specifies no internal symmetry plane, so the full 2<sup>n</sup> applies</li></ul><p class='exp-key'>Bottom Line: With 3 chiral centers and no meso forms, a molecule has 2³ = 8 stereoisomers.</p>"
+  },
+  "Q8": {
+    "id": "chem-425",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Tartaric acid has two chiral centers, yet only three stereoisomers exist instead of four. This is because one form is a:",
+    "options": [
+      "Racemic mixture that counts as a single stereoisomer",
+      "Meso compound with an internal plane of symmetry, making it achiral despite having chiral centers",
+      "Geometric (cis-trans) isomer that cannot be separated",
+      "Structural isomer rather than a stereoisomer"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Meso compound with an internal plane of symmetry, making it achiral despite having chiral centers</h4><p>Tartaric acid (2,3-dihydroxybutanedioic acid) has two chiral centers, so 2² = 4 stereoisomers might be expected. However, one configuration has an internal mirror plane that makes the two halves of the molecule mirror images of each other. This meso form is superimposable on its mirror image and is therefore achiral, reducing the total from 4 to 3 stereoisomers: (R,R), (S,S), and meso (R,S).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Racemic mixture that counts as a single stereoisomer:</strong> A racemic mixture is an equal mixture of two enantiomers - it is not a single stereoisomer. The (R,R) and (S,S) enantiomers can form a racemate, but this is a mixture, not an individual stereoisomer. The reduction from 4 to 3 is due to the meso form, not racemization.</p><p><strong>C. Geometric (cis-trans) isomer that cannot be separated:</strong> Geometric isomerism requires restricted rotation (as in alkenes or cyclic structures). Tartaric acid's stereoisomerism arises from chiral centers, not restricted rotation. The three forms are all separable.</p><p><strong>D. Structural isomer rather than a stereoisomer:</strong> All three forms of tartaric acid have the same connectivity (structural formula). They differ only in the spatial arrangement of atoms, making them stereoisomers, not structural isomers.</p><h4>Key Educational Points:</h4><ul><li>Meso compounds have chiral centers but are overall achiral due to an internal mirror plane</li><li>Meso forms reduce the number of stereoisomers below the 2<sup>n</sup> maximum</li><li>Tartaric acid: (R,R) + (S,S) are enantiomers; meso (R,S) is a diastereomer of both</li></ul><p class='exp-key'>Bottom Line: The meso form of tartaric acid possesses an internal plane of symmetry, making it achiral despite having two chiral centers, reducing the total stereoisomers from 4 to 3.</p>"
+  },
+  "Q9": {
+    "id": "chem-426",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Two molecules are non-superimposable mirror images of each other. They are best described as:",
+    "options": [
+      "Diastereomers",
+      "Conformational isomers",
+      "Constitutional (structural) isomers",
+      "Enantiomers"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Enantiomers</h4><p>Enantiomers are stereoisomers that are non-superimposable mirror images of each other. They have identical physical properties (melting point, boiling point, solubility) except for the direction they rotate plane-polarized light (equal magnitude, opposite sign) and their interactions with other chiral molecules.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Diastereomers:</strong> Diastereomers are stereoisomers that are NOT mirror images of each other. They have different physical properties (different melting points, solubilities, etc.). Examples include cis/trans isomers and compounds that differ at some but not all chiral centers.</p><p><strong>C. Constitutional (structural) isomers:</strong> Constitutional isomers have the same molecular formula but differ in the connectivity of their atoms (e.g., butane vs. isobutane). The molecules described have the same connectivity but differ in 3D spatial arrangement, making them stereoisomers.</p><p><strong>B. Conformational isomers:</strong> Conformational isomers (conformers) are different spatial arrangements of the same molecule that interconvert through rotation around single bonds (e.g., chair vs. boat cyclohexane). They are not distinct isolable compounds under normal conditions.</p><h4>Key Educational Points:</h4><ul><li>Enantiomers: non-superimposable mirror images, same physical properties except optical rotation</li><li>Diastereomers: stereoisomers that are NOT mirror images, different physical properties</li><li>A molecule must be chiral (lacking an internal plane of symmetry) to have an enantiomer</li></ul><p class='exp-key'>Bottom Line: Non-superimposable mirror images are enantiomers - the defining relationship of chiral molecules.</p>"
+  },
+  "Q10": {
+    "id": "chem-427",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Using Cahn-Ingold-Prelog priority rules, what is the configuration of the following chiral center: a carbon bonded to -OH (highest priority), -NH₂, -CH₃, and -H (lowest priority), where viewing from opposite the -H shows the remaining three groups decreasing in priority counterclockwise?",
+    "options": [
+      "R configuration",
+      "S configuration",
+      "Z configuration",
+      "E configuration"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: S configuration</h4><p>In the Cahn-Ingold-Prelog (CIP) system, the four substituents are ranked by atomic number. Here: OH (O=8) > NH₂ (N=7) > CH₃ (C=6) > H (H=1). When the lowest priority group (H) is directed away from the viewer (into the page), the remaining three groups are observed. If they decrease in priority in a counterclockwise direction, the configuration is S (sinister = left). Clockwise would be R (rectus = right).</p><h4>Why the other choices are wrong:</h4><p><strong>A. R configuration:</strong> R (rectus) would apply if the three groups decreased in priority in a CLOCKWISE direction when viewed with H pointing away. The question specifies counterclockwise, which gives S.</p><p><strong>C. Z configuration:</strong> Z (zusammen = together) is used for geometric isomerism around double bonds (E/Z nomenclature), not for chiral centers. Z indicates that the two higher-priority groups are on the same side of the double bond.</p><p><strong>D. E configuration:</strong> E (entgegen = opposite) is also used for double bond geometry, indicating that the two higher-priority groups are on opposite sides. It is not applicable to tetrahedral chiral centers.</p><h4>Key Educational Points:</h4><ul><li>R/S designation: for chiral centers (sp³ carbon with 4 different substituents)</li><li>E/Z designation: for geometric isomers around double bonds</li><li>Counterclockwise priority decrease (with lowest priority away) = S; clockwise = R</li></ul><p class='exp-key'>Bottom Line: Counterclockwise decrease in priority (with the lowest-priority group pointing away) defines the S (sinister) configuration.</p>"
+  },
+  "Q11": {
+    "id": "chem-428",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "2-butene exists as cis and trans isomers. Using E/Z nomenclature, trans-2-butene is designated as:",
+    "options": [
+      "(Z)-2-butene",
+      "(S)-2-butene",
+      "(R)-2-butene",
+      "(E)-2-butene"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: (E)-2-butene</h4><p>In E/Z nomenclature, the priority of substituents on each carbon of the double bond is determined by CIP rules. In 2-butene, each double-bond carbon has a -CH₃ (higher priority) and -H (lower priority). In the trans isomer, the two methyl groups (higher priority on each carbon) are on opposite sides of the double bond, which is designated E (entgegen = opposite). In the cis isomer, they are on the same side, designated Z (zusammen = together).</p><h4>Why the other choices are wrong:</h4><p><strong>A. (Z)-2-butene:</strong> Z (zusammen = together) describes the arrangement where the higher-priority groups on each double-bond carbon are on the SAME side. This corresponds to cis-2-butene, not trans-2-butene.</p><p><strong>C. (R)-2-butene:</strong> R is a stereodescriptor for chiral centers (tetrahedral stereochemistry), not for double bond geometry. 2-butene has a planar double bond and no chiral centers.</p><p><strong>B. (S)-2-butene:</strong> Like R, the S designation applies to chiral centers and is not used for alkene geometry. Double bond stereoisomerism uses E/Z (or cis/trans) notation.</p><h4>Key Educational Points:</h4><ul><li>E = entgegen (opposite sides) = generally corresponds to trans</li><li>Z = zusammen (same side) = generally corresponds to cis</li><li>E/Z is more rigorous than cis/trans because it uses CIP priority rules, which can assign configurations when cis/trans is ambiguous</li></ul><p class='exp-key'>Bottom Line: Trans-2-butene is (E)-2-butene because the higher-priority methyl groups are on opposite sides (entgegen) of the double bond.</p>"
+  },
+  "Q12": {
+    "id": "chem-429",
+    "subject": "chemistry",
+    "topic": "Thermochemistry",
+    "question": "Given the following data:\nC(s) + O₂(g) → CO₂(g), ΔH = −393 kJ/mol\nH₂(g) + ½O₂(g) → H₂O(l), ΔH = −286 kJ/mol\nCH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l), ΔH = −890 kJ/mol\n\nUsing Hess's law, what is the enthalpy of formation of methane (ΔH<sub>f</sub> for CH₄(g))?",
+    "options": [
+      "+75 kJ/mol",
+      "−75 kJ/mol",
+      "+890 kJ/mol",
+      "−890 kJ/mol"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: −75 kJ/mol</h4><p>The formation reaction for methane is: C(s) + 2H₂(g) → CH₄(g). Using Hess's law, we combine the given reactions. Add reaction 1 [C + O₂ → CO₂, ΔH = −393] and 2× reaction 2 [2H₂ + O₂ → 2H₂O, ΔH = 2(−286) = −572], then subtract reaction 3 [CH₄ + 2O₂ → CO₂ + 2H₂O, ΔH = −890]. ΔH<sub>f</sub> = (−393) + (−572) − (−890) = −393 − 572 + 890 = −75 kJ/mol.</p><h4>Why the other choices are wrong:</h4><p><strong>A. +75 kJ/mol:</strong> This has the correct magnitude but wrong sign. The error arises from subtracting the combustion reactions from reaction 3 instead of the correct direction. Methane formation is exothermic (negative ΔH).</p><p><strong>C. +890 kJ/mol:</strong> This is simply the reverse of the combustion enthalpy of methane. The enthalpy of formation and combustion are different thermodynamic quantities; they are not simply negatives of each other (except for elements in their standard states).</p><p><strong>D. −890 kJ/mol:</strong> This is the enthalpy of combustion of methane, not its enthalpy of formation. The formation reaction produces methane from its elements; combustion burns methane in oxygen.</p><h4>Key Educational Points:</h4><ul><li>Hess's law: ΔH is path-independent; combine known reactions to find unknown ΔH values</li><li>ΔH<sub>f</sub> is defined for forming 1 mole of compound from elements in their standard states</li><li>When reversing a reaction, change the sign of ΔH; when multiplying, multiply ΔH accordingly</li></ul><p class='exp-key'>Bottom Line: Using Hess's law with combustion data: ΔH<sub>f</sub>(CH₄) = (−393) + 2(−286) − (−890) = −75 kJ/mol.</p>"
+  },
+  "Q13": {
+    "id": "chem-430",
+    "subject": "chemistry",
+    "topic": "Thermochemistry",
+    "question": "The bond energies are: H−H = 436 kJ/mol, Cl−Cl = 242 kJ/mol, H−Cl = 431 kJ/mol. What is the enthalpy change for the reaction H₂(g) + Cl₂(g) → 2HCl(g)?",
+    "options": [
+      "−184 kJ",
+      "+184 kJ",
+      "−247 kJ",
+      "−862 kJ"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: −184 kJ</h4><p>Using bond energies: ΔH = Σ(bonds broken) − Σ(bonds formed). Bonds broken: 1 H−H (436 kJ) + 1 Cl−Cl (242 kJ) = 678 kJ. Bonds formed: 2 H−Cl (2 × 431 = 862 kJ). ΔH = 678 − 862 = −184 kJ. The negative value indicates an exothermic reaction.</p><h4>Why the other choices are wrong:</h4><p><strong>B. +184 kJ:</strong> This has the correct magnitude but the wrong sign. The error comes from subtracting bonds broken from bonds formed (reversed formula). The correct formula is ΔH = bonds broken − bonds formed. Since more energy is released in forming bonds than consumed in breaking them, the reaction is exothermic.</p><p><strong>C. −247 kJ:</strong> This might result from an arithmetic error such as forgetting to multiply the H−Cl bond energy by 2 (forming only one HCl instead of two) or using incorrect bond energy values.</p><p><strong>D. −862 kJ:</strong> This is simply the total energy released in forming 2 H−Cl bonds, ignoring the energy required to break the H−H and Cl−Cl bonds. The net ΔH must account for both bond breaking (endothermic) and bond forming (exothermic).</p><h4>Key Educational Points:</h4><ul><li>ΔH = Σ(bond energies of bonds broken) − Σ(bond energies of bonds formed)</li><li>Breaking bonds requires energy (positive); forming bonds releases energy (negative)</li><li>If ΔH < 0, the reaction is exothermic; if ΔH > 0, the reaction is endothermic</li></ul><p class='exp-key'>Bottom Line: ΔH = (436 + 242) − (2 × 431) = 678 − 862 = −184 kJ, an exothermic reaction.</p>"
+  },
+  "Q14": {
+    "id": "chem-431",
+    "subject": "chemistry",
+    "topic": "Thermochemistry",
+    "question": "The standard enthalpy of formation (ΔH°f) of O₂(g) is:",
+    "options": [
+      "−249 kJ/mol",
+      "+249 kJ/mol",
+      "0 kJ/mol",
+      "−498 kJ/mol"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 0 kJ/mol</h4><p>By definition, the standard enthalpy of formation of any element in its most stable allotropic form (standard state) at 25°C and 1 atm is zero. O₂(g) is the standard state of oxygen, so ΔH°f = 0. This convention provides the reference point from which all other formation enthalpies are measured.</p><h4>Why the other choices are wrong:</h4><p><strong>A. −249 kJ/mol:</strong> This value might be confused with a bond dissociation energy or ionization energy. Since O₂ is an element in its standard state, no formation reaction is needed, and ΔH°f is defined as zero.</p><p><strong>B. +249 kJ/mol:</strong> The O=O bond dissociation energy is approximately 498 kJ/mol (not 249). But this is irrelevant - the enthalpy of formation of an element in its standard state is always zero by definition.</p><p><strong>D. −498 kJ/mol:</strong> 498 kJ/mol is approximately the bond dissociation energy of O=O, representing the energy needed to break one mole of O₂ into atoms. This is not the enthalpy of formation, which is zero for O₂(g).</p><h4>Key Educational Points:</h4><ul><li>ΔH°f = 0 for ALL elements in their standard states (e.g., O₂(g), N₂(g), C(graphite), Fe(s))</li><li>Standard states: gases as ideal gases at 1 atm, solids and liquids in their most stable form at 25°C</li><li>Ozone (O₃) is NOT the standard state of oxygen, so ΔH°f(O₃) ≠ 0</li></ul><p class='exp-key'>Bottom Line: The enthalpy of formation of any element in its standard state is zero by definition - O₂(g) is oxygen's standard state, so ΔH°f = 0.</p>"
+  },
+  "Q15": {
+    "id": "chem-432",
+    "subject": "chemistry",
+    "topic": "Thermochemistry",
+    "question": "A reaction has ΔH = −100 kJ and ΔS = −200 J/K. At what temperature does this reaction change from spontaneous to non-spontaneous?",
+    "options": [
+      "200 K",
+      "The reaction is never spontaneous",
+      "0.5 K",
+      "500 K"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 500 K</h4><p>Spontaneity is determined by Gibbs free energy: ΔG = ΔH − TΔS. A reaction is spontaneous when ΔG < 0. At the crossover temperature, ΔG = 0, so ΔH = TΔS. Converting units: ΔH = −100 kJ = −100,000 J. T = ΔH/ΔS = (−100,000 J)/(−200 J/K) = 500 K. Below 500 K, the reaction is spontaneous (ΔG < 0); above 500 K, it becomes non-spontaneous (ΔG > 0).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 200 K:</strong> This might result from dividing ΔH in kJ directly by ΔS in J/K without unit conversion: −100/−200 = 0.5, which is incorrect. Or it may be an arbitrary confusion. Proper unit conversion (kJ to J) gives T = 500 K.</p><p><strong>C. 0.5 K:</strong> This results from dividing −100 kJ/mol by −200 J/K without converting kJ to J: 100/200 = 0.5. Always convert to consistent units (both in J or both in kJ) before calculating.</p><p><strong>B. The reaction is never spontaneous:</strong> When ΔH is negative and ΔS is negative, the reaction IS spontaneous at low temperatures where the favorable enthalpy term dominates. It becomes non-spontaneous only above the crossover temperature (500 K in this case).</p><h4>Key Educational Points:</h4><ul><li>ΔG = ΔH − TΔS; spontaneous when ΔG < 0</li><li>For ΔH < 0 and ΔS < 0: spontaneous at low T, non-spontaneous at high T</li><li>Always convert units - ΔH is often in kJ while ΔS is in J/K</li><li>Crossover temperature: T = ΔH/ΔS (when both have the same sign)</li></ul><p class='exp-key'>Bottom Line: The crossover temperature is T = ΔH/ΔS = −100,000 J / −200 J/K = 500 K; the reaction is spontaneous below this temperature.</p>"
+  },
+  "Q16": {
+    "id": "chem-433",
+    "subject": "chemistry",
+    "topic": "Thermochemistry",
+    "question": "Which of the following processes results in an INCREASE in entropy (ΔS > 0)?",
+    "options": [
+      "Water freezing at 0°C",
+      "Synthesis of a protein from amino acids",
+      "Dissolution of NaCl in water",
+      "Gas compression from 10 L to 1 L at constant temperature"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Dissolution of NaCl in water</h4><p>When NaCl dissolves in water, the highly ordered crystal lattice breaks apart into freely moving Na⁺ and Cl⁻ ions dispersed throughout the solvent. Although the water molecules near the ions become somewhat more ordered (hydration shells), the overall effect is a net increase in entropy because the destruction of the rigid lattice creates much more disorder than the partial ordering of surrounding water molecules.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Water freezing at 0°C:</strong> Freezing converts liquid water (relatively disordered) into ice (highly ordered crystal lattice). This is a transition from higher to lower entropy, so ΔS < 0 for the system.</p><p><strong>B. Synthesis of a protein from amino acids:</strong> Polymerization of many small molecules (amino acids) into one large, specifically ordered molecule (protein) decreases the number of independent particles and restricts conformational freedom, resulting in ΔS < 0 for the system.</p><p><strong>D. Gas compression from 10 L to 1 L at constant temperature:</strong> Compressing a gas reduces the volume available to the gas molecules, decreasing the number of accessible microstates. Entropy decreases: ΔS = nR ln(V₂/V₁) = nR ln(1/10) < 0.</p><h4>Key Educational Points:</h4><ul><li>Entropy increases with: more particles, greater volume, higher temperature, dissolution, phase change solid→liquid→gas</li><li>Entropy decreases with: crystallization, polymerization, compression, condensation</li><li>The second law of thermodynamics: total entropy of the universe always increases in a spontaneous process</li></ul><p class='exp-key'>Bottom Line: Dissolving NaCl in water increases entropy by disrupting the ordered crystal lattice into dispersed ions in solution.</p>"
+  },
+  "Q17": {
+    "id": "chem-434",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "When metallic sodium is placed in water, a vigorous reaction occurs. Which of the following correctly describes the products and observations of this reaction?",
+    "options": [
+      "Na₂O is formed and the solution turns acidic",
+      "Na₂O₂ is formed and the solution remains neutral",
+      "NaCl is formed and chlorine gas is released",
+      "NaOH and H₂ gas are formed; the solution turns strongly basic"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: NaOH and H₂ gas are formed; the solution turns strongly basic</h4><p>The reaction of sodium with water is:</p><p><strong>2Na(s) + 2H₂O(l) → 2NaOH(aq) + H₂(g)</strong></p><p>Sodium is an alkali metal (Group 1) that reacts vigorously with water. The sodium moves rapidly on the water surface, often melting into a ball from the exothermic heat. The evolved hydrogen gas may ignite. The resulting NaOH solution is strongly basic (pH ~ 14 for concentrated solutions).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Na₂O is formed and the solution turns acidic:</strong> Sodium oxide (Na₂O) is formed when sodium burns in limited oxygen, not when it reacts with water. Furthermore, Na₂O itself reacts with water to form NaOH, giving a basic (not acidic) solution. Alkali metals never produce acidic solutions with water.</p><p><strong>C. NaCl is formed and chlorine gas is released:</strong> NaCl formation requires a chlorine source. Water contains no chlorine atoms. NaCl is produced when sodium reacts with chlorine gas (2Na + Cl₂ → 2NaCl) or with hydrochloric acid, not with pure water.</p><p><strong>B. Na₂O₂ is formed and the solution remains neutral:</strong> Sodium peroxide (Na₂O₂) forms when sodium burns in excess oxygen, not in water. Moreover, Na₂O₂ reacting with water produces NaOH and H₂O₂, giving a basic solution, never a neutral one.</p><p class='exp-key'>Bottom Line: All Group 1 metals react with water to produce the metal hydroxide and hydrogen gas. Reactivity increases going down the group: Li < Na < K < Rb < Cs.</p>"
+  },
+  "Q18": {
+    "id": "chem-435",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "A chemist performs flame tests on several unknown salts. One sample produces a lilac (pale violet) flame. Which metal ion is most likely present?",
+    "options": [
+      "Potassium (K⁺)",
+      "Calcium (Ca²⁺)",
+      "Sodium (Na⁺)",
+      "Copper (Cu²⁺)"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Potassium (K⁺)</h4><p>Potassium salts produce a characteristic <strong>lilac (pale violet)</strong> flame. This color is often difficult to see because even traces of sodium contamination produce an intense yellow flame that can mask it. A cobalt blue glass filter is commonly used to absorb the yellow sodium emission, making the potassium lilac visible.</p><table class='exp-table'><tr><th>Metal Ion</th><th>Flame Color</th></tr><tr><td>Na⁺</td><td>Intense yellow</td></tr><tr><td>K⁺</td><td>Lilac / pale violet</td></tr><tr><td>Ca²⁺</td><td>Brick red / orange-red</td></tr><tr><td>Cu²⁺</td><td>Blue-green</td></tr><tr><td>Ba²⁺</td><td>Apple green</td></tr><tr><td>Li⁺</td><td>Crimson red</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>C. Sodium (Na⁺):</strong> Sodium produces a very intense, persistent yellow flame (589 nm emission from the sodium D-lines). This is the most easily recognized flame color and is so strong that it can mask other flame colors, which is why cobalt blue glass is used to filter it out during potassium tests.</p><p><strong>B. Calcium (Ca²⁺):</strong> Calcium gives a brick-red or orange-red flame color. This is distinct from the crimson red of lithium and the lilac of potassium. Calcium is an alkaline earth metal (Group 2), and its flame test is commonly used to identify it in qualitative analysis.</p><p><strong>D. Copper (Cu²⁺):</strong> Copper compounds produce a blue-green or green flame. This is particularly vivid when copper(II) chloride is used, as the volatile CuCl₂ readily enters the flame. The color is completely different from the lilac of potassium.</p><p class='exp-key'>Bottom Line: Memorize the key flame colors: Na⁺ = yellow, K⁺ = lilac, Ca²⁺ = brick red, Cu²⁺ = blue-green. Use cobalt blue glass to distinguish K⁺ from Na⁺ contamination.</p>"
+  },
+  "Q19": {
+    "id": "chem-436",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Calcium carbonate (CaCO₃) is heated strongly in a kiln. Which products are formed?",
+    "options": [
+      "Ca(OH)₂ and CO₂",
+      "Ca and CO₂",
+      "CaO and CO",
+      "CaO and CO₂"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: CaO and CO₂</h4><p>Thermal decomposition of calcium carbonate is a fundamental industrial reaction:</p><p><strong>CaCO₃(s) → CaO(s) + CO₂(g)</strong></p><p>This occurs at approximately 840 °C and is the basis of lime production. The product CaO (quicklime) is a white, strongly basic solid used in cement manufacturing, water treatment, and steel production. The CO₂ escapes as a gas, driving the reaction forward (Le Chatelier's principle).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Ca(OH)₂ and CO₂:</strong> Calcium hydroxide (slaked lime) is formed when CaO reacts with water (CaO + H₂O → Ca(OH)₂), not directly from thermal decomposition of CaCO₃. Heating CaCO₃ in a dry kiln produces no water, so hydroxide formation is impossible under these conditions.</p><p><strong>C. CaO and CO:</strong> Carbon monoxide (CO) is not produced in the thermal decomposition of carbonates. CO is formed during incomplete combustion of carbon-containing fuels or in the reduction of metal oxides with carbon (e.g., Fe₂O₃ + 3CO → 2Fe + 3CO₂ in blast furnaces). The carbonate ion decomposes to give CO₂, not CO.</p><p><strong>B. Ca and CO₂:</strong> Reducing CaCO₃ all the way to elemental calcium would require an extremely powerful reducing agent and much higher temperatures. Calcium is a reactive metal (E° = -2.87 V) that cannot be produced simply by heating its carbonate. Industrial calcium is produced by electrolysis of molten CaCl₂.</p><p class='exp-key'>Bottom Line: All Group 2 carbonates decompose on heating to give the metal oxide + CO₂. The decomposition temperature increases down the group: MgCO₃ < CaCO₃ < SrCO₃ < BaCO₃.</p>"
+  },
+  "Q20": {
+    "id": "chem-437",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Iron(III) chloride solution is treated with potassium thiocyanate (KSCN). What observation confirms the presence of Fe³⁺ ions?",
+    "options": [
+      "A blood-red coloration develops in solution",
+      "A deep blue precipitate appears (Prussian blue)",
+      "A white precipitate forms",
+      "Effervescence with a colorless, odorless gas"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A blood-red coloration develops in solution</h4><p>The reaction of Fe³⁺ with thiocyanate ions produces the intensely colored iron(III) thiocyanate complex:</p><p><strong>Fe³⁺(aq) + 3SCN⁻(aq) → [Fe(SCN)₃](aq)</strong></p><p>This produces a characteristic <strong>blood-red</strong> color in solution. The reaction is extremely sensitive and is used as a qualitative test for Fe³⁺ ions. Even very low concentrations of Fe³⁺ give a visible red color.</p><h4>Why the other choices are wrong:</h4><p><strong>C. A white precipitate forms:</strong> White precipitates in qualitative analysis are typically associated with Ag⁺ (AgCl), Ba²⁺ (BaSO₄), or Pb²⁺ (PbCl₂). The Fe³⁺/SCN⁻ reaction produces a soluble, intensely colored complex, not a precipitate.</p><p><strong>B. A deep blue precipitate appears (Prussian blue):</strong> Prussian blue (Fe₄[Fe(CN)₆]₃) forms when Fe³⁺ reacts with potassium ferrocyanide K₄[Fe(CN)₆], not with thiocyanate. This is a different confirmatory test for Fe³⁺. Similarly, Turnbull's blue forms when Fe²⁺ reacts with potassium ferricyanide K₃[Fe(CN)₆].</p><p><strong>D. Effervescence with a colorless, odorless gas:</strong> Gas evolution typically indicates an acid-carbonate reaction (CO₂) or a metal-acid reaction (H₂). Neither Fe³⁺ nor SCN⁻ produces gas when mixed. Thiocyanate is a pseudohalide that forms stable complexes with transition metals.</p><p class='exp-key'>Bottom Line: Key Fe tests: Fe³⁺ + SCN⁻ → blood-red complex; Fe³⁺ + [Fe(CN)₆]⁴⁻ → Prussian blue precipitate; Fe²⁺ + NaOH → green precipitate (turns brown in air as Fe²⁺ oxidizes to Fe³⁺).</p>"
+  },
+  "Q21": {
+    "id": "chem-438",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "The Statue of Liberty has a characteristic green color due to the patina on its copper surface. Which compound is primarily responsible for this green patina?",
+    "options": [
+      "Copper(I) oxide (Cu₂O)",
+      "Copper(II) sulfate pentahydrate (CuSO₄·5H₂O)",
+      "Basic copper(II) carbonate (Cu₂(OH)₂CO₃)",
+      "Copper(II) chloride (CuCl₂)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Basic copper(II) carbonate (Cu₂(OH)₂CO₃)</h4><p>When copper is exposed to the atmosphere over long periods, it undergoes a series of oxidation reactions. Initially, a thin layer of Cu₂O (reddish-brown) forms, followed by CuO (black). Over years, reaction with moisture, CO₂, and sulfur compounds in the air produces the green patina, which is primarily <strong>basic copper(II) carbonate</strong> - the same mineral as malachite. In coastal or industrial areas, basic copper(II) sulfate and chloride also contribute.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Copper(I) oxide (Cu₂O):</strong> Cu₂O is a reddish-brown solid that forms as the first oxidation layer on copper. It is an intermediate in patina formation, not the final green product. Cu₂O is used in antifouling paints for ship hulls and as a pigment.</p><p><strong>B. Copper(II) sulfate pentahydrate (CuSO₄·5H₂O):</strong> While CuSO₄·5H₂O is indeed blue (not green) and is highly soluble in water, it would dissolve in rain and wash away. The patina must be an insoluble compound to persist on the surface. Basic copper carbonate is insoluble and adheres as a protective layer.</p><p><strong>D. Copper(II) chloride (CuCl₂):</strong> CuCl₂ is a brown-yellow solid in anhydrous form and green in solution, but it is highly water-soluble and would not persist as an outdoor patina. While chloride-containing copper compounds can form in marine environments as a minor patina component, they are not the primary green compound.</p><p class='exp-key'>Bottom Line: Copper patina is a protective green layer of basic copper carbonate. Unlike iron rust, which flakes off and exposes fresh metal to further corrosion, copper patina adheres tightly and protects the underlying metal.</p>"
+  },
+  "Q22": {
+    "id": "chem-439",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Aluminum is described as an amphoteric metal because its oxide reacts with both acids and bases. What is the product when Al₂O₃ reacts with excess NaOH solution?",
+    "options": [
+      "Al(OH)₃ and Na₂O",
+      "NaAlO₂ (sodium aluminate) and H₂O",
+      "AlCl₃ and NaOH",
+      "Na₂O and Al"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: NaAlO₂ (sodium aluminate) and H₂O</h4><p>The reaction of aluminum oxide with sodium hydroxide demonstrates its amphoteric character:</p><p><strong>Al₂O₃(s) + 2NaOH(aq) → 2NaAlO₂(aq) + H₂O(l)</strong></p><p>Aluminum oxide acts as an acidic oxide here, reacting with the base NaOH to form sodium aluminate. With acids, Al₂O₃ acts as a basic oxide: Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O. This dual behavior defines amphoterism.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Al(OH)₃ and Na₂O:</strong> This is not a balanced or chemically sensible reaction. Na₂O is an extremely reactive basic oxide that does not form in aqueous solution. Al(OH)₃ could be an intermediate, but in excess NaOH, Al(OH)₃ dissolves to form the soluble aluminate ion [Al(OH)₄]⁻, which simplifies to AlO₂⁻ + 2H₂O.</p><p><strong>C. AlCl₃ and NaOH:</strong> This answer contains chlorine, but neither Al₂O₃ nor NaOH contains chlorine atoms. Products must be composed of elements present in the reactants. AlCl₃ would form from Al₂O₃ reacting with HCl, not NaOH.</p><p><strong>D. Na₂O and Al:</strong> Reducing Al₂O₃ to elemental aluminum would require enormous energy input. Aluminum is produced industrially by electrolysis of Al₂O₃ dissolved in cryolite (Hall-Heroult process), not by reaction with NaOH. Na₂O is also not a product of aqueous NaOH reactions.</p><p class='exp-key'>Bottom Line: Amphoteric oxides and hydroxides (Al₂O₃, ZnO, Al(OH)₃, Zn(OH)₂) react with both acids and bases. This property is exploited in the Bayer process, where Al₂O₃ is selectively dissolved from bauxite using NaOH.</p>"
+  },
+  "Q23": {
+    "id": "chem-440",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Zinc hydroxide, Zn(OH)₂, is treated with excess hydrochloric acid. Which product forms?",
+    "options": [
+      "ZnCl₂ and H₂O",
+      "Na₂ZnO₂ and H₂O",
+      "ZnO and HCl",
+      "Zn and Cl₂"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: ZnCl₂ and H₂O</h4><p>Zinc hydroxide is amphoteric and reacts with acids as a base:</p><p><strong>Zn(OH)₂(s) + 2HCl(aq) → ZnCl₂(aq) + 2H₂O(l)</strong></p><p>This is a straightforward neutralization reaction. The hydroxide acts as a base, accepting protons from the acid. With excess NaOH, Zn(OH)₂ would instead dissolve to form the zincate ion: Zn(OH)₂ + 2NaOH → Na₂[Zn(OH)₄].</p><h4>Why the other choices are wrong:</h4><p><strong>B. Na₂ZnO₂ and H₂O:</strong> Sodium zincate forms when Zn(OH)₂ reacts with NaOH (a base), not with HCl (an acid). This answer confuses the acidic and basic behavior of the amphoteric hydroxide. With HCl, Zn(OH)₂ acts as a base; with NaOH, it acts as an acid.</p><p><strong>C. ZnO and HCl:</strong> Dehydration of Zn(OH)₂ to ZnO occurs on heating, not by reaction with HCl. In fact, ZnO itself would react with HCl to form ZnCl₂ + H₂O. The presence of HCl drives a neutralization, not a dehydration.</p><p><strong>D. Zn and Cl₂:</strong> Forming elemental zinc and chlorine gas would require an input of energy (electrolysis), not a simple acid-base reaction. This answer suggests decomposition of ZnCl₂, which is the reverse of a spontaneous combination reaction and is thermodynamically unfavorable at room temperature.</p><p class='exp-key'>Bottom Line: Zinc hydroxide is a classic amphoteric hydroxide: with acids it forms zinc salts (Zn²⁺), with bases it forms zincate ([Zn(OH)₄]²⁻). Zinc is an essential cofactor in over 300 enzymes, including carbonic anhydrase and alcohol dehydrogenase.</p>"
+  },
+  "Q24": {
+    "id": "chem-441",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Which of the following correctly ranks the halogens in order of DECREASING oxidizing power?",
+    "options": [
+      "I₂ > Br₂ > Cl₂ > F₂",
+      "F₂ > I₂ > Br₂ > Cl₂",
+      "Cl₂ > F₂ > Br₂ > I₂",
+      "F₂ > Cl₂ > Br₂ > I₂"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: F₂ > Cl₂ > Br₂ > I₂</h4><p>Oxidizing power of halogens decreases going down Group 17. Fluorine is the strongest oxidizing agent of all elements (E° = +2.87 V for F₂/F⁻). This trend exists because:</p><ul><li>Smaller atomic radius means greater attraction for incoming electrons</li><li>Higher electronegativity (F = 4.0, Cl = 3.0, Br = 2.8, I = 2.5)</li><li>A more positive standard reduction potential</li></ul><p>A practical consequence: a higher halogen can displace a lower halogen from its salts. For example, Cl₂ + 2KBr → 2KCl + Br₂.</p><h4>Why the other choices are wrong:</h4><p><strong>A. I₂ > Br₂ > Cl₂ > F₂:</strong> This is the exact reverse of the correct trend. Iodine is the weakest oxidizing agent among the common halogens because its large atomic size and low electronegativity make it least effective at gaining electrons. Iodine is actually a mild enough oxidizing agent that it is used as a wound disinfectant.</p><p><strong>C. Cl₂ > F₂ > Br₂ > I₂:</strong> Placing chlorine above fluorine contradicts both experimental data and periodic trends. Fluorine has the highest electronegativity of any element and the most positive reduction potential. Fluorine is so reactive it can oxidize water and even noble gas compounds (XeF₂).</p><p><strong>B. F₂ > I₂ > Br₂ > Cl₂:</strong> This incorrectly places iodine above bromine and chlorine. The trend is strictly monotonic going down the group, with no exceptions among the common halogens.</p><p class='exp-key'>Bottom Line: Halogen reactivity and oxidizing power decrease down the group: F₂ > Cl₂ > Br₂ > I₂. This allows displacement reactions where a higher halogen displaces a lower one from solution.</p>"
+  },
+  "Q25": {
+    "id": "chem-442",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "In the industrial Haber process, nitrogen and hydrogen react to form ammonia. Which conditions favor the highest yield of NH₃ at equilibrium?",
+    "options": [
+      "Low temperature and high pressure",
+      "Low temperature and low pressure",
+      "High temperature and low pressure",
+      "High temperature and high pressure"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Low temperature and high pressure</h4><p>The Haber process reaction is:</p><p><strong>N₂(g) + 3H₂(g) ⇌ 2NH₃(g)  ΔH = -92 kJ/mol</strong></p><p>Applying Le Chatelier's principle:</p><ul><li><strong>Pressure:</strong> 4 moles of gas on the left vs. 2 moles on the right. High pressure shifts equilibrium toward fewer moles of gas → more NH₃.</li><li><strong>Temperature:</strong> The reaction is exothermic (ΔH < 0). Low temperature favors the exothermic direction → more NH₃.</li></ul><p>In practice, a compromise temperature of ~450 °C is used with an iron catalyst because very low temperatures give unacceptably slow reaction rates despite higher equilibrium yield. Pressures of 150-300 atm are used.</p><h4>Why the other choices are wrong:</h4><p><strong>C. High temperature and low pressure:</strong> This is the worst combination. High temperature shifts the exothermic equilibrium backward (toward reactants), and low pressure favors the side with more gas moles (also reactants). Both factors reduce NH₃ yield.</p><p><strong>B. Low temperature and low pressure:</strong> Low temperature correctly favors NH₃ formation, but low pressure favors the side with more gas moles (4 mol reactants vs. 2 mol products), shifting equilibrium away from NH₃. The pressure effect works against the desired product.</p><p><strong>D. High temperature and high pressure:</strong> High pressure correctly favors NH₃, but high temperature drives the exothermic equilibrium backward. This is the actual industrial compromise - high pressure for yield, moderate-high temperature for rate - but it does not give the highest equilibrium yield, which the question asks about.</p><p class='exp-key'>Bottom Line: For maximum equilibrium yield (not rate), apply Le Chatelier's principle: exothermic reactions favor low temperature; reactions producing fewer gas moles favor high pressure. Industrial processes use compromise conditions to balance yield and rate.</p>"
+  },
+  "Q26": {
+    "id": "chem-443",
+    "subject": "chemistry",
+    "topic": "Descriptive Inorganic Chemistry",
+    "question": "Carbon monoxide (CO) is highly toxic because it binds to hemoglobin. What is the approximate relative affinity of CO for hemoglobin compared to oxygen (O₂)?",
+    "options": [
+      "CO binds about 2 times more strongly than O₂",
+      "CO binds about 10 times more strongly than O₂",
+      "CO and O₂ bind with approximately equal affinity",
+      "CO binds about 200-250 times more strongly than O₂"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: CO binds about 200-250 times more strongly than O₂</h4><p>Carbon monoxide binds to the Fe²⁺ in hemoglobin with an affinity approximately <strong>200-250 times greater</strong> than oxygen. The resulting carboxyhemoglobin (HbCO) cannot carry oxygen, and the binding is nearly irreversible under normal conditions. Even 0.1% CO in air can be lethal because it rapidly saturates hemoglobin.</p><p>Additionally, CO binding to one subunit of hemoglobin shifts the remaining subunits to a high-affinity state (left-shifting the oxygen-hemoglobin dissociation curve), making it harder for the remaining O₂ molecules to be released to tissues.</p><h4>Why the other choices are wrong:</h4><p><strong>A. CO binds about 2 times more strongly than O₂:</strong> A 2-fold difference would make CO only mildly dangerous and easily displaced by breathing normal air. In reality, the 200-250 fold affinity difference explains why CO poisoning is so dangerous and why treatment requires 100% oxygen or hyperbaric oxygen to competitively displace CO from hemoglobin.</p><p><strong>C. CO and O₂ bind with approximately equal affinity:</strong> If affinities were equal, CO at its typical low atmospheric concentration would pose no threat because O₂ (21% of air) would easily outcompete it. The extreme affinity difference is precisely why even tiny CO concentrations (< 0.1%) are dangerous.</p><p><strong>B. CO binds about 10 times more strongly than O₂:</strong> A 10-fold difference is a significant underestimate. At this level, CO would be less dangerous, and treatment with supplemental oxygen would be much more effective. The actual 200-250 fold difference is why hyperbaric oxygen therapy (2-3 atm of pure O₂) is needed for severe poisoning.</p><p class='exp-key'>Bottom Line: CO is a silent killer - odorless, colorless, and binding hemoglobin ~200-250 times more strongly than O₂. Treatment is high-flow 100% O₂ or hyperbaric oxygen. CO also inhibits cytochrome c oxidase in the electron transport chain.</p>"
+  },
+  "Q27": {
+    "id": "chem-444",
+    "subject": "chemistry",
+    "topic": "Enzyme Classification",
+    "question": "An enzyme catalyzes the transfer of an amino group from alanine to α-ketoglutarate, producing pyruvate and glutamate. To which EC class does this enzyme belong?",
+    "options": [
+      "EC 1 - Oxidoreductases",
+      "EC 4 - Lyases",
+      "EC 3 - Hydrolases",
+      "EC 2 - Transferases"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: EC 2 - Transferases</h4><p>This enzyme is <strong>alanine aminotransferase (ALT)</strong>, also known as alanine transaminase. It transfers an amino group from one molecule (alanine) to another (α-ketoglutarate). All enzymes that transfer functional groups between molecules belong to <strong>EC class 2 (Transferases)</strong>.</p><table class='exp-table'><tr><th>EC Class</th><th>Name</th><th>Reaction Type</th></tr><tr><td>EC 1</td><td>Oxidoreductases</td><td>Electron/H transfer (redox)</td></tr><tr><td>EC 2</td><td>Transferases</td><td>Group transfer</td></tr><tr><td>EC 3</td><td>Hydrolases</td><td>Hydrolysis (bond cleavage by water)</td></tr><tr><td>EC 4</td><td>Lyases</td><td>Non-hydrolytic bond cleavage/formation</td></tr><tr><td>EC 5</td><td>Isomerases</td><td>Structural rearrangement</td></tr><tr><td>EC 6</td><td>Ligases</td><td>Bond formation coupled to ATP hydrolysis</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. EC 1 - Oxidoreductases:</strong> These catalyze oxidation-reduction reactions involving electron transfer. Examples include dehydrogenases (lactate dehydrogenase), oxidases, and peroxidases. While aminotransferases use pyridoxal phosphate (PLP), the overall reaction is a group transfer, not a net change in oxidation state.</p><p><strong>C. EC 3 - Hydrolases:</strong> These cleave bonds using water (hydrolysis). Proteases, lipases, and phosphatases are classic examples. In the ALT reaction, no water molecule participates in the transfer of the amino group.</p><p><strong>B. EC 4 - Lyases:</strong> These catalyze bond cleavage without hydrolysis or oxidation (e.g., decarboxylases, aldolases, dehydratases). The ALT reaction does not involve elimination or non-hydrolytic cleavage but rather a transfer of a functional group.</p><p class='exp-key'>Bottom Line: Aminotransferases (transaminases) are transferases (EC 2). ALT is clinically important: elevated serum ALT is a sensitive marker for hepatocellular damage, used to diagnose liver disease.</p>"
+  },
+  "Q28": {
+    "id": "chem-445",
+    "subject": "chemistry",
+    "topic": "Enzyme Classification",
+    "question": "Pepsin is a digestive enzyme secreted by chief cells in the stomach. What is its substrate specificity and optimal pH?",
+    "options": [
+      "Cleaves starch at α-1,4 glycosidic bonds; optimal pH 7.0",
+      "Cleaves proteins at peptide bonds (preferring hydrophobic residues); optimal pH 1.5-2.5",
+      "Cleaves triglycerides at ester bonds; optimal pH 8.0",
+      "Cleaves nucleic acids at phosphodiester bonds; optimal pH 5.0"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Cleaves proteins at peptide bonds (preferring hydrophobic residues); optimal pH 1.5-2.5</h4><p>Pepsin is an <strong>aspartyl protease</strong> that functions in the highly acidic environment of the stomach (pH 1.5-2.5). It is secreted as the inactive zymogen <strong>pepsinogen</strong> by gastric chief cells and activated by HCl secreted by parietal cells. Pepsin preferentially cleaves peptide bonds adjacent to hydrophobic amino acids (Phe, Tyr, Trp, Leu).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Cleaves starch at α-1,4 glycosidic bonds; optimal pH 7.0:</strong> This describes salivary α-amylase (ptyalin), which begins starch digestion in the mouth at near-neutral pH. Amylase is inactivated by stomach acid. Pancreatic amylase later continues starch digestion in the duodenum at pH ~7-8.</p><p><strong>C. Cleaves triglycerides at ester bonds; optimal pH 8.0:</strong> This describes pancreatic lipase, which works in the duodenum at alkaline pH (~8.0). Lipase requires bile salts for emulsification of fats and colipase as a cofactor. Gastric lipase exists but works at acidic pH and plays a minor digestive role compared to pancreatic lipase.</p><p><strong>D. Cleaves nucleic acids at phosphodiester bonds; optimal pH 5.0:</strong> This partially describes DNases or RNases, but their optimal pH varies. Pancreatic DNase and RNase work at alkaline pH in the duodenum. No major digestive nuclease operates at pH 5.0 as its primary optimum.</p><p class='exp-key'>Bottom Line: Key digestive enzymes and their pH optima: pepsin (stomach, pH 2), trypsin/chymotrypsin (duodenum, pH 8), pancreatic lipase (duodenum, pH 8), salivary amylase (mouth, pH 7). Pepsin is secreted as inactive pepsinogen to prevent self-digestion.</p>"
+  },
+  "Q29": {
+    "id": "chem-446",
+    "subject": "chemistry",
+    "topic": "Enzyme Classification",
+    "question": "Which coenzyme is required by all aminotransferase (transaminase) enzymes?",
+    "options": [
+      "NAD⁺ (derived from niacin/vitamin B₃)",
+      "Pyridoxal phosphate / PLP (derived from vitamin B₆)",
+      "Thiamine pyrophosphate / TPP (derived from vitamin B₁)",
+      "Coenzyme A (derived from pantothenic acid/vitamin B₅)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Pyridoxal phosphate / PLP (derived from vitamin B₆)</h4><p>Pyridoxal phosphate (PLP) is the essential coenzyme for <strong>all aminotransferases</strong> as well as many other enzymes of amino acid metabolism (decarboxylases, racemases, dehydratases). PLP forms a Schiff base with the amino group of the substrate, acting as an electron sink to facilitate the transfer of the amino group.</p><h4>Why the other choices are wrong:</h4><p><strong>A. NAD⁺ (derived from niacin/vitamin B₃):</strong> NAD⁺ and NADH are coenzymes for oxidoreductases (dehydrogenases). They carry electrons as hydride ions (H⁻). Examples include lactate dehydrogenase and malate dehydrogenase. NAD⁺ is not involved in amino group transfer reactions.</p><p><strong>C. Thiamine pyrophosphate / TPP (derived from vitamin B₁):</strong> TPP is required for oxidative decarboxylation reactions, particularly by pyruvate dehydrogenase, α-ketoglutarate dehydrogenase, and branched-chain α-keto acid dehydrogenase. It is also used by transketolase in the pentose phosphate pathway. TPP deficiency causes beriberi and Wernicke-Korsakoff syndrome.</p><p><strong>D. Coenzyme A (derived from pantothenic acid/vitamin B₅):</strong> CoA carries acyl groups (as thioester bonds) and is central to fatty acid metabolism (acetyl-CoA), the citric acid cycle, and fatty acid synthesis. It is not involved in aminotransferase reactions.</p><p class='exp-key'>Bottom Line: PLP (vitamin B₆) is the universal coenzyme for amino acid metabolism - required by transaminases, decarboxylases, and other enzymes. A clinical pearl: isoniazid (TB drug) can cause peripheral neuropathy by depleting PLP, treated with B₆ supplementation.</p>"
+  },
+  "Q30": {
+    "id": "chem-447",
+    "subject": "chemistry",
+    "topic": "Enzyme Classification",
+    "question": "Aldolase catalyzes the cleavage of fructose-1,6-bisphosphate into dihydroxyacetone phosphate (DHAP) and glyceraldehyde-3-phosphate (G<sub>3</sub>P) during glycolysis. To which enzyme class does aldolase belong?",
+    "options": [
+      "EC 4 - Lyases",
+      "EC 3 - Hydrolases",
+      "EC 2 - Transferases",
+      "EC 5 - Isomerases"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: EC 4 - Lyases</h4><p>Aldolase cleaves a carbon-carbon bond <strong>without hydrolysis and without oxidation-reduction</strong>. It performs an aldol cleavage (the reverse of an aldol condensation). Enzymes that catalyze bond cleavage by mechanisms other than hydrolysis or oxidation belong to <strong>EC class 4 - Lyases</strong>.</p><p>The reaction: <strong>Fructose-1,6-bisphosphate → DHAP + G3P</strong></p><h4>Why the other choices are wrong:</h4><p><strong>C. EC 2 - Transferases:</strong> Transferases move functional groups from one substrate to another. Aldolase does not transfer a group; it cleaves a C-C bond within a single substrate to produce two smaller molecules. Kinases (e.g., hexokinase, phosphofructokinase) are transferases that transfer phosphate groups.</p><p><strong>B. EC 3 - Hydrolases:</strong> Hydrolases cleave bonds using water as a co-substrate (e.g., proteases, lipases, phosphatases). In the aldolase reaction, no water molecule participates. The C-C bond is cleaved through an aldol mechanism, not hydrolysis.</p><p><strong>D. EC 5 - Isomerases:</strong> Isomerases rearrange atoms within a single molecule to form an isomer. The next step after aldolase in glycolysis does involve an isomerase: triose phosphate isomerase converts DHAP to G<sub>3</sub>P. But aldolase itself breaks a molecule into two products, which is not isomerization.</p><p class='exp-key'>Bottom Line: Lyases (EC 4) cleave bonds non-hydrolytically or form new bonds by elimination. Key examples in metabolism: aldolase (glycolysis), fumarase (citric acid cycle), carbonic anhydrase (CO₂ + H₂O ⇌ H₂CO₃), and citrate synthase (in the synthetic direction).</p>"
+  },
+  "Q31": {
+    "id": "chem-448",
+    "subject": "chemistry",
+    "topic": "Enzyme Classification",
+    "question": "Trypsin and chymotrypsin are both serine proteases of the pancreas but differ in substrate specificity. Which statement correctly distinguishes them?",
+    "options": [
+      "Trypsin cleaves after hydrophobic residues (Phe, Trp, Tyr); chymotrypsin cleaves after basic residues (Arg, Lys)",
+      "Trypsin is an exopeptidase; chymotrypsin is an endopeptidase",
+      "Both cleave only after acidic residues (Asp, Glu)",
+      "Trypsin cleaves after basic residues (Arg, Lys); chymotrypsin cleaves after hydrophobic residues (Phe, Trp, Tyr)"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Trypsin cleaves after basic residues (Arg, Lys); chymotrypsin cleaves after hydrophobic residues (Phe, Trp, Tyr)</h4><p>Both are serine endopeptidases secreted as zymogens (trypsinogen, chymotrypsinogen) by the pancreas. Their specificity depends on the structure of the substrate-binding pocket (S1 pocket):</p><ul><li><strong>Trypsin:</strong> Has an aspartate (negatively charged) at the bottom of its S1 pocket, attracting positively charged basic amino acids (Arg, Lys).</li><li><strong>Chymotrypsin:</strong> Has a hydrophobic S1 pocket that accommodates bulky aromatic/hydrophobic side chains (Phe, Trp, Tyr).</li></ul><h4>Why the other choices are wrong:</h4><p><strong>A. Trypsin cleaves after hydrophobic residues; chymotrypsin cleaves after basic residues:</strong> This swaps the specificities. The structure of the S1 binding pocket dictates specificity - trypsin's negatively charged pocket attracts positive (basic) residues, while chymotrypsin's hydrophobic pocket attracts hydrophobic residues.</p><p><strong>C. Both cleave only after acidic residues (Asp, Glu):</strong> Neither trypsin nor chymotrypsin preferentially cleaves after acidic residues. Cleavage after acidic residues (Asp, Glu) is characteristic of endoproteinase Glu-C (V8 protease) from Staphylococcus aureus, not pancreatic proteases.</p><p><strong>B. Trypsin is an exopeptidase; chymotrypsin is an endopeptidase:</strong> Both trypsin and chymotrypsin are endopeptidases - they cleave internal peptide bonds within polypeptide chains. Exopeptidases (carboxypeptidases A and B, aminopeptidases) remove amino acids from the ends of chains. Carboxypeptidase B, interestingly, also targets basic residues at the C-terminus.</p><p class='exp-key'>Bottom Line: Trypsin → basic residues (Arg, Lys); Chymotrypsin → hydrophobic residues (Phe, Trp, Tyr); Elastase → small residues (Ala, Gly, Ser). All three are serine proteases with the catalytic triad: Ser-His-Asp.</p>"
+  },
+  "Q32": {
+    "id": "chem-449",
+    "subject": "chemistry",
+    "topic": "β-Oxidation and Metabolic Pathways",
+    "question": "How many cycles of β-oxidation are required to completely degrade palmitoyl-CoA (C16:0) to acetyl-CoA units?",
+    "options": [
+      "8 cycles, producing 8 acetyl-CoA",
+      "7 cycles, producing 8 acetyl-CoA",
+      "16 cycles, producing 16 acetyl-CoA",
+      "7 cycles, producing 7 acetyl-CoA"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 7 cycles, producing 8 acetyl-CoA</h4><p>Palmitate has 16 carbons. Each cycle of β-oxidation removes a 2-carbon acetyl-CoA unit from the fatty acyl chain. The last cycle cleaves a 4-carbon unit into <strong>two</strong> acetyl-CoA molecules. Therefore:</p><p><strong>Number of cycles = (n/2) - 1 = (16/2) - 1 = 7 cycles</strong></p><p><strong>Number of acetyl-CoA = n/2 = 16/2 = 8 acetyl-CoA</strong></p><p>Each cycle produces: 1 FADH₂ + 1 NADH + 1 acetyl-CoA (except the last cycle, which produces 2 acetyl-CoA).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 8 cycles, producing 8 acetyl-CoA:</strong> This overcounts the cycles. The common mistake is dividing 16 by 2 to get 8 cycles, but the final cycle cleaves a 4-carbon unit (butyryl-CoA) into 2 acetyl-CoA molecules. So only 7 cleavage events are needed, not 8.</p><p><strong>C. 16 cycles, producing 16 acetyl-CoA:</strong> This incorrectly assumes one cycle per carbon atom. Each cycle of β-oxidation removes a 2-carbon unit, not a 1-carbon unit. The acetyl-CoA product always contains 2 carbons.</p><p><strong>D. 7 cycles, producing 7 acetyl-CoA:</strong> The number of cycles (7) is correct, but the acetyl-CoA count is wrong. Seven cycles produce 7 acetyl-CoA from the first 7 cleavages, plus 1 more acetyl-CoA from the remaining 2-carbon fragment, totaling 8 acetyl-CoA.</p><p class='exp-key'>Bottom Line: For a saturated fatty acid with n carbons: cycles = (n/2) - 1, acetyl-CoA produced = n/2, FADH₂ = n/2 - 1, NADH = n/2 - 1. The formula gives 7 cycles, 7 FADH₂, 7 NADH, and 8 acetyl-CoA for palmitate (C16).</p>"
+  },
+  "Q33": {
+    "id": "chem-450",
+    "subject": "chemistry",
+    "topic": "β-Oxidation and Metabolic Pathways",
+    "question": "What is the total net ATP yield from the complete oxidation of one molecule of palmitate (C16:0) to CO₂ and H₂O? (Assume 2.5 ATP per NADH, 1.5 ATP per FADH₂, and 10 ATP per acetyl-CoA through the citric acid cycle.)",
+    "options": [
+      "106 ATP",
+      "129 ATP",
+      "108 ATP",
+      "131 ATP"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 106 ATP</h4><p>Step-by-step calculation for complete oxidation of palmitate:</p><p><strong>Step 1: Activation cost</strong><br>Palmitate → Palmitoyl-CoA costs 2 ATP equivalents (ATP → AMP + PPᵢ, and PPᵢ is hydrolyzed to 2Pᵢ).</p><p><strong>Step 2: β-Oxidation (7 cycles)</strong><br>7 FADH₂ × 1.5 ATP = 10.5 ATP<br>7 NADH × 2.5 ATP = 17.5 ATP<br>Subtotal from β-oxidation: 28 ATP</p><p><strong>Step 3: Citric acid cycle (8 acetyl-CoA)</strong><br>Each acetyl-CoA through TCA + oxidative phosphorylation yields: 3 NADH (× 2.5) + 1 FADH₂ (× 1.5) + 1 GTP = 10 ATP<br>8 × 10 = 80 ATP</p><p><strong>Total: 28 + 80 - 2 = 106 ATP</strong></p><h4>Why the other choices are wrong:</h4><p><strong>B. 129 ATP:</strong> This value can result from using older ATP equivalents (3 ATP/NADH, 2 ATP/FADH₂), which are no longer considered accurate. Modern biochemistry uses 2.5 ATP/NADH and 1.5 ATP/FADH₂ based on the actual H⁺/ATP ratio of ATP synthase.</p><p><strong>C. 108 ATP:</strong> This may result from forgetting to subtract the 2 ATP activation cost, but then miscounting elsewhere. The activation cost (ATP → AMP + PPᵢ) must always be deducted: it costs the equivalent of 2 ATP.</p><p><strong>D. 131 ATP:</strong> This value results from using older ATP equivalents AND forgetting the activation cost. Both errors combined give an inflated number.</p><p class='exp-key'>Bottom Line: Palmitate complete oxidation: 7 FADH₂ + 7 NADH (from β-oxidation) + 8 × (3 NADH + 1 FADH₂ + 1 GTP) from TCA − 2 ATP activation = 106 net ATP. Fat provides more energy per gram than carbohydrates (~9 kcal/g vs. ~4 kcal/g).</p>"
+  },
+  "Q34": {
+    "id": "chem-451",
+    "subject": "chemistry",
+    "topic": "β-Oxidation and Metabolic Pathways",
+    "question": "In the citric acid cycle, which step directly produces GTP (or ATP in some organisms) by substrate-level phosphorylation?",
+    "options": [
+      "Citrate → Isocitrate (aconitase)",
+      "Isocitrate → α-Ketoglutarate (isocitrate dehydrogenase)",
+      "Succinyl-CoA → Succinate (succinyl-CoA synthetase)",
+      "Malate → Oxaloacetate (malate dehydrogenase)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Succinyl-CoA → Succinate (succinyl-CoA synthetase)</h4><p>Succinyl-CoA synthetase (also called succinate thiokinase) catalyzes the only <strong>substrate-level phosphorylation</strong> in the citric acid cycle:</p><p><strong>Succinyl-CoA + GDP + Pᵢ → Succinate + CoA + GTP</strong></p><p>The energy released from cleaving the high-energy thioester bond of succinyl-CoA drives the phosphorylation of GDP to GTP. This GTP can be converted to ATP by nucleoside diphosphate kinase.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Citrate → Isocitrate (aconitase):</strong> Aconitase catalyzes an isomerization reaction (via dehydration then rehydration) converting citrate to isocitrate through the intermediate cis-aconitate. No phosphorylation or energy-producing step is involved. Aconitase contains an iron-sulfur [4Fe-4S] cluster.</p><p><strong>B. Isocitrate → α-Ketoglutarate (isocitrate dehydrogenase):</strong> This step produces NADH and CO₂ through oxidative decarboxylation. It is the first CO₂-releasing step and the primary regulatory point of the TCA cycle (allosterically activated by ADP, inhibited by ATP and NADH). However, it does not produce GTP or ATP directly.</p><p><strong>D. Malate → Oxaloacetate (malate dehydrogenase):</strong> This step produces NADH by oxidizing the hydroxyl group of malate to the ketone of oxaloacetate. The equilibrium strongly favors malate, but the reaction is pulled forward by the highly exergonic citrate synthase reaction that removes oxaloacetate.</p><p class='exp-key'>Bottom Line: One turn of the TCA cycle produces: 3 NADH, 1 FADH₂, 1 GTP, and 2 CO₂. The only substrate-level phosphorylation is at succinyl-CoA synthetase. The rest of ATP generation occurs via oxidative phosphorylation.</p>"
+  },
+  "Q35": {
+    "id": "chem-452",
+    "subject": "chemistry",
+    "topic": "β-Oxidation and Metabolic Pathways",
+    "question": "Under anaerobic conditions, pyruvate is converted to lactate in human muscle. What is the net ATP yield from the anaerobic degradation of one glucose molecule to two lactate molecules?",
+    "options": [
+      "2 ATP",
+      "36 ATP",
+      "4 ATP",
+      "38 ATP"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 2 ATP</h4><p>Anaerobic glycolysis: <strong>Glucose → 2 Pyruvate → 2 Lactate</strong></p><p>The calculation:</p><ul><li>ATP invested in preparatory phase: -2 ATP (hexokinase and phosphofructokinase steps)</li><li>ATP produced in payoff phase: +4 ATP (2 from each of two triose molecules, at phosphoglycerate kinase and pyruvate kinase steps)</li><li><strong>Net yield: 4 - 2 = 2 ATP</strong></li></ul><p>The 2 NADH produced in glycolysis (at glyceraldehyde-3-phosphate dehydrogenase) are reoxidized by lactate dehydrogenase (pyruvate → lactate), regenerating NAD⁺ so glycolysis can continue. No additional ATP is produced from these NADH under anaerobic conditions.</p><h4>Why the other choices are wrong:</h4><p><strong>C. 4 ATP:</strong> This is the gross ATP production, not the net yield. Two ATP molecules are consumed in the preparatory phase (hexokinase and PFK-1 reactions), so the net yield is 4 - 2 = 2 ATP. Always report the net yield when asked about ATP production.</p><p><strong>B. 36 ATP:</strong> This is approximately the net ATP yield from complete aerobic oxidation of glucose (via glycolysis + pyruvate dehydrogenase + TCA cycle + oxidative phosphorylation, using the malate-aspartate shuttle). Anaerobic glycolysis produces far less ATP because NADH cannot be oxidized via the electron transport chain.</p><p><strong>D. 38 ATP:</strong> This older textbook value for aerobic glucose oxidation used 3 ATP/NADH and 2 ATP/FADH₂. Modern values give approximately 30-32 ATP. In either case, this is the aerobic yield, not the anaerobic yield of 2 ATP.</p><p class='exp-key'>Bottom Line: Anaerobic glycolysis yields only 2 net ATP per glucose. This is 15-16 times less efficient than aerobic metabolism (~30-32 ATP), but it is crucial for tissues with high energy demands during oxygen deprivation (exercising skeletal muscle, erythrocytes).</p>"
+  },
+  "Q36": {
+    "id": "chem-453",
+    "subject": "chemistry",
+    "topic": "β-Oxidation and Metabolic Pathways",
+    "question": "In β-oxidation, the four sequential enzymatic steps per cycle are, in order:",
+    "options": [
+      "Hydration → Oxidation → Thiolysis → Dehydrogenation",
+      "Reduction → Dehydration → Reduction → Condensation",
+      "Thiolysis → Dehydrogenation → Hydration → Oxidation",
+      "Oxidation (FAD) → Hydration → Oxidation (NAD⁺) → Thiolytic cleavage"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Oxidation (FAD) → Hydration → Oxidation (NAD⁺) → Thiolytic cleavage</h4><p>Each cycle of β-oxidation involves four sequential steps:</p><ol><li><strong>Oxidation (Acyl-CoA dehydrogenase, FAD):</strong> Creates a trans-Δ² double bond (enoyl-CoA), producing FADH₂</li><li><strong>Hydration (Enoyl-CoA hydratase):</strong> Adds H₂O across the double bond to form L-3-hydroxyacyl-CoA</li><li><strong>Oxidation (3-Hydroxyacyl-CoA dehydrogenase, NAD⁺):</strong> Oxidizes the hydroxyl to a ketone (3-ketoacyl-CoA), producing NADH</li><li><strong>Thiolytic cleavage (Thiolase/β-ketothiolase):</strong> CoA-SH attacks the β-carbon, releasing acetyl-CoA and a shortened acyl-CoA</li></ol><h4>Why the other choices are wrong:</h4><p><strong>A. Hydration → Oxidation → Thiolysis → Dehydrogenation:</strong> This places hydration first, but you cannot hydrate without first introducing a double bond. The initial FAD-dependent oxidation (dehydrogenation) must occur first to create the enoyl-CoA substrate for hydration.</p><p><strong>C. Thiolysis → Dehydrogenation → Hydration → Oxidation:</strong> Thiolysis is the final step that releases acetyl-CoA, not the first. Starting with thiolysis would require a 3-ketoacyl-CoA substrate that has not yet been formed. The sequence must prepare the β-carbon for cleavage through the prior three steps.</p><p><strong>B. Reduction → Dehydration → Reduction → Condensation:</strong> This describes the reverse process - fatty acid synthesis - which is essentially β-oxidation in reverse but uses different enzymes and NADPH instead of NAD⁺/FAD. β-Oxidation is catabolic (oxidative), not reductive.</p><p class='exp-key'>Bottom Line: Remember β-oxidation as: Oxidize (FAD) → Hydrate → Oxidize (NAD⁺) → Thiolyze. The mnemonic: \"Old Horses Often Trot\" matches Oxidation-Hydration-Oxidation-Thiolysis.</p>"
+  },
+  "Q37": {
+    "id": "chem-454",
+    "subject": "chemistry",
+    "topic": "Calculation Problems",
+    "question": "What volume (in liters) of CO₂ gas at STP (0 °C, 1 atm) is produced when 10.0 g of CaCO₃ is completely decomposed by heating? (Molar masses: Ca = 40.1, C = 12.0, O = 16.0 g/mol; molar volume at STP = 22.4 L/mol)",
+    "options": [
+      "1.12 L",
+      "2.24 L",
+      "3.36 L",
+      "4.48 L"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2.24 L</h4><p><strong>Full worked solution:</strong></p><p><strong>Step 1:</strong> Write the balanced equation:<br>CaCO₃(s) → CaO(s) + CO₂(g)</p><p><strong>Step 2:</strong> Calculate the molar mass of CaCO₃:<br>M(CaCO₃) = 40.1 + 12.0 + 3(16.0) = 100.1 g/mol</p><p><strong>Step 3:</strong> Calculate moles of CaCO₃:<br>n = mass / M = 10.0 g / 100.1 g/mol = 0.0999 mol ≈ 0.100 mol</p><p><strong>Step 4:</strong> From stoichiometry (1:1 ratio):<br>n(CO₂) = n(CaCO₃) = 0.100 mol</p><p><strong>Step 5:</strong> Calculate volume at STP:<br>V = n × 22.4 L/mol = 0.100 × 22.4 = <strong>2.24 L</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. 1.12 L:</strong> This would correspond to 0.050 mol of CO₂, which is half the correct amount. This error could arise from incorrectly doubling the molar mass of CaCO₃ (e.g., using Ca₂CO₃) or from a stoichiometric error assuming 2 mol CaCO₃ produce 1 mol CO₂.</p><p><strong>C. 3.36 L:</strong> This corresponds to 0.150 mol of CO₂. No simple stoichiometric error gives this value, but it might arise from an incorrect molar mass calculation for CaCO₃ (e.g., using ~67 g/mol instead of 100.1 g/mol).</p><p><strong>D. 4.48 L:</strong> This corresponds to 0.200 mol of CO₂, which is double the correct answer. This could result from assuming a 1:2 stoichiometry (1 CaCO₃ → 2 CO₂) or from using an incorrect molar mass of 50 g/mol for CaCO₃.</p><p class='exp-key'>Bottom Line: For gas volume calculations at STP: (1) Balance the equation, (2) Convert mass to moles, (3) Use stoichiometry to find moles of gas, (4) Multiply by 22.4 L/mol. Always verify that the molar ratio from the balanced equation is correct.</p>"
+  },
+  "Q38": {
+    "id": "chem-455",
+    "subject": "chemistry",
+    "topic": "Calculation Problems",
+    "question": "What is the pH of a 0.0050 M HCl solution at 25 °C? (Assume complete dissociation; log 2 = 0.30, log 5 = 0.70)",
+    "options": [
+      "2.00",
+      "2.30",
+      "3.00",
+      "2.70"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2.30</h4><p><strong>Full worked solution:</strong></p><p><strong>Step 1:</strong> HCl is a strong acid - it dissociates completely:<br>HCl → H⁺ + Cl⁻<br>[H⁺] = 0.0050 M = 5.0 × 10⁻³ M</p><p><strong>Step 2:</strong> Calculate pH:<br>pH = -log[H⁺] = -log(5.0 × 10⁻³)<br>pH = -(log 5.0 + log 10⁻³)<br>pH = -(0.70 + (-3))<br>pH = -(0.70 - 3)<br>pH = -(-2.30)<br>pH = <strong>2.30</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. 2.00:</strong> This would correspond to [H⁺] = 0.010 M (10⁻² M), which is a different concentration than what was given. The error may arise from rounding 0.0050 to 0.010 or from ignoring the mantissa in the logarithm calculation.</p><p><strong>C. 3.00:</strong> This would correspond to [H⁺] = 0.0010 M (10⁻³ M). This error comes from treating 0.0050 as approximately 10⁻³ by ignoring the factor of 5. The log of the coefficient (log 5 = 0.70) must not be neglected.</p><p><strong>D. 2.70:</strong> This would correspond to [H⁺] = 2.0 × 10⁻³ M. This might arise from miscalculating: pH = 3 - log(5) = 3 - 0.70 = 2.30 but erroneously computing 3 - 0.30 = 2.70, confusing log 2 with log 5.</p><p class='exp-key'>Bottom Line: pH = -log[H⁺]. For scientific notation: pH = -log(a × 10⁻ᵇ) = b - log(a). Remember that log 2 ≈ 0.30 and log 5 ≈ 0.70 (they must sum to 1.00 since log 10 = 1).</p>"
+  },
+  "Q39": {
+    "id": "chem-456",
+    "subject": "chemistry",
+    "topic": "Calculation Problems",
+    "question": "How many grams of NaOH are needed to completely neutralize 50.0 mL of 0.200 M H₂SO₄? (Molar mass of NaOH = 40.0 g/mol)",
+    "options": [
+      "0.40 g",
+      "0.20 g",
+      "0.80 g",
+      "1.60 g"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 0.80 g</h4><p><strong>Full worked solution:</strong></p><p><strong>Step 1:</strong> Write the balanced equation:<br>H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O</p><p><strong>Step 2:</strong> Calculate moles of H₂SO₄:<br>n(H₂SO₄) = C × V = 0.200 mol/L × 0.0500 L = 0.0100 mol</p><p><strong>Step 3:</strong> Use stoichiometry (1:2 ratio):<br>n(NaOH) = 2 × n(H₂SO₄) = 2 × 0.0100 = 0.0200 mol</p><p><strong>Step 4:</strong> Calculate mass:<br>m(NaOH) = n × M = 0.0200 mol × 40.0 g/mol = <strong>0.80 g</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. 0.40 g:</strong> This corresponds to 0.010 mol NaOH, which assumes a 1:1 molar ratio between H₂SO₄ and NaOH. The critical point is that H₂SO₄ is a <em>diprotic</em> acid - each molecule provides 2 H⁺ ions, so 2 moles of NaOH are needed per mole of H₂SO₄.</p><p><strong>B. 0.20 g:</strong> This corresponds to 0.005 mol NaOH, which is half of the 1:1 ratio. This could arise from both ignoring the diprotic nature and making an additional factor-of-2 error in the molarity calculation.</p><p><strong>D. 1.60 g:</strong> This corresponds to 0.040 mol NaOH, which is double the correct answer. This could result from using 0.200 mol instead of 0.200 M (forgetting to multiply by the volume in liters), or from incorrectly assuming a 1:4 ratio.</p><p class='exp-key'>Bottom Line: Always check if the acid is monoprotic (HCl), diprotic (H₂SO₄), or triprotic (H₃PO₄) when doing neutralization calculations. Write the balanced equation first to establish the correct mole ratio.</p>"
+  },
+  "Q40": {
+    "id": "chem-457",
+    "subject": "chemistry",
+    "topic": "Calculation Problems",
+    "question": "A chemist dilutes 25.0 mL of a 6.00 M HCl stock solution to a final volume of 500.0 mL. What is the molarity of the diluted solution?",
+    "options": [
+      "0.150 M",
+      "0.600 M",
+      "0.500 M",
+      "0.300 M"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 0.300 M</h4><p><strong>Full worked solution:</strong></p><p>Using the dilution equation: <strong>C₁V₁ = C₂V₂</strong></p><p>C₁ = 6.00 M (initial concentration)<br>V₁ = 25.0 mL (initial volume)<br>V₂ = 500.0 mL (final volume)<br>C₂ = ? (final concentration)</p><p>C₂ = C₁V₁ / V₂ = (6.00 M × 25.0 mL) / 500.0 mL</p><p>C₂ = 150.0 / 500.0 = <strong>0.300 M</strong></p><p>The solution was diluted by a factor of 20 (500/25), so the concentration decreases by a factor of 20: 6.00/20 = 0.300 M.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 0.150 M:</strong> This would result from using V₂ = 1000 mL instead of 500 mL, or from an arithmetic error dividing 150 by 1000 instead of 500. Always double-check the final volume used in the dilution formula.</p><p><strong>C. 0.500 M:</strong> This could arise from dividing 25 by 500 to get a dilution factor of 0.05, then multiplying incorrectly. It does not correspond to any simple application of C₁V₁ = C₂V₂ with the given values.</p><p><strong>B. 0.600 M:</strong> This would result from dividing 6.00 by 10 instead of 20, perhaps by confusing the dilution factor. The actual dilution factor is 500/25 = 20, not 10.</p><p class='exp-key'>Bottom Line: C₁V₁ = C₂V₂ applies to all dilutions where the amount of solute (in moles) remains constant. The units of volume must match on both sides but can be in mL or L. Always verify that C₂ < C₁ (dilution reduces concentration).</p>"
+  },
+  "Q41": {
+    "id": "chem-458",
+    "subject": "chemistry",
+    "topic": "Calculation Problems",
+    "question": "Given the following enthalpy data:\n\nC(s) + O₂(g) → CO₂(g), ΔH₁ = -393.5 kJ/mol\nH₂(g) + ½O₂(g) → H₂O(l), ΔH₂ = -285.8 kJ/mol\nCH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l), ΔH₃ = -890.4 kJ/mol\n\nUsing Hess's law, what is ΔH for the reaction: C(s) + 2H₂(g) → CH₄(g)?",
+    "options": [
+      "-74.7 kJ/mol",
+      "+74.7 kJ/mol",
+      "-1569.7 kJ/mol",
+      "-496.9 kJ/mol"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: -74.7 kJ/mol</h4><p><strong>Full worked solution using Hess's law:</strong></p><p>Target reaction: C(s) + 2H₂(g) → CH₄(g)</p><p>We need to combine the given reactions to obtain the target:</p><p><strong>Use reaction 1 as written:</strong><br>C(s) + O₂(g) → CO₂(g), ΔH₁ = -393.5 kJ</p><p><strong>Use reaction 2 × 2:</strong><br>2H₂(g) + O₂(g) → 2H₂O(l), 2 × ΔH₂ = 2 × (-285.8) = -571.6 kJ</p><p><strong>Reverse reaction 3:</strong><br>CO₂(g) + 2H₂O(l) → CH₄(g) + 2O₂(g), -ΔH₃ = +890.4 kJ</p><p><strong>Add all three:</strong><br>C(s) + O₂(g) + 2H₂(g) + O₂(g) + CO₂(g) + 2H₂O(l) → CO₂(g) + 2H₂O(l) + CH₄(g) + 2O₂(g)</p><p>Cancel common species on both sides: CO₂, 2H₂O, 2O₂</p><p><strong>Result: C(s) + 2H₂(g) → CH₄(g)</strong></p><p>ΔH = -393.5 + (-571.6) + 890.4 = <strong>-74.7 kJ/mol</strong></p><h4>Why the other choices are wrong:</h4><p><strong>B. +74.7 kJ/mol:</strong> This has the correct magnitude but the wrong sign, which would arise from reversing the target reaction or from forgetting to reverse reaction 3 (i.e., subtracting ΔH₃ as negative instead of adding its positive reverse).</p><p><strong>C. -1569.7 kJ/mol:</strong> This results from adding all three ΔH values directly without reversing reaction 3: (-393.5) + (-571.6) + (-890.4) = -1855.5 kJ (actually this sum is different, so this value likely comes from a different combination error).</p><p><strong>D. -496.9 kJ/mol:</strong> This could result from using reaction 2 only once instead of twice: -393.5 + (-285.8) + 890.4 = +211.1 (which doesn't match either), suggesting a different arithmetic error in applying Hess's law.</p><p class='exp-key'>Bottom Line: Hess's law: ΔH is path-independent. To use it: (1) Write the target reaction, (2) Manipulate given reactions (reverse = change sign, multiply = multiply ΔH), (3) Add manipulated ΔH values. Always verify that intermediate species cancel.</p>"
+  },
+  "Q42": {
+    "id": "chem-459",
+    "subject": "chemistry",
+    "topic": "Naming and Nomenclature",
+    "question": "What is the correct IUPAC name for the compound with the formula KMnO₄?",
+    "options": [
+      "Potassium manganite",
+      "Potassium manganate",
+      "Potassium permanganate",
+      "Potassium manganese oxide"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Potassium permanganate</h4><p>KMnO₄ is <strong>potassium permanganate</strong>. In this compound, manganese is in the +7 oxidation state (its highest common oxidation state). The prefix \"per-\" combined with the suffix \"-ate\" indicates the highest oxidation state of the central atom in the oxoanion (MnO₄⁻).</p><p>The naming pattern for manganese oxoanions:</p><table class='exp-table'><tr><th>Formula</th><th>Mn Oxidation State</th><th>Name</th></tr><tr><td>MnO₄²⁻</td><td>+6</td><td>Manganate</td></tr><tr><td>MnO₄⁻</td><td>+7</td><td>Permanganate</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Potassium manganite:</strong> The suffix \"-ite\" is used for oxoanions with a lower oxidation state of the central atom (e.g., sulfite SO₃²⁻ vs. sulfate SO₄²⁻). There is no commonly used \"manganite\" ion in standard chemistry nomenclature in this context.</p><p><strong>B. Potassium manganate:</strong> Potassium manganate is K₂MnO₄, where manganese is in the +6 oxidation state. The manganate ion (MnO₄²⁻) is green, while the permanganate ion (MnO₄⁻) is deep purple. These are different compounds with different properties.</p><p><strong>D. Potassium manganese oxide:</strong> This is not a valid IUPAC or common name. Oxoanion salts are named using the polyatomic ion name (permanganate), not by listing the elements separately. \"Potassium manganese oxide\" would be ambiguous as it does not specify the stoichiometry or oxidation state.</p><p class='exp-key'>Bottom Line: Oxoanion naming follows the pattern: per-...-ate (highest), -ate, -ite, hypo-...-ite (lowest). KMnO₄ is a powerful oxidizing agent used in titrations, water purification, and organic synthesis.</p>"
+  },
+  "Q43": {
+    "id": "chem-460",
+    "subject": "chemistry",
+    "topic": "Naming and Nomenclature",
+    "question": "Which formula corresponds to the compound named \"iron(III) sulfate\"?",
+    "options": [
+      "FeSO₄",
+      "Fe₃(SO₄)₂",
+      "Fe₂S₃",
+      "Fe₂(SO₄)₃"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Fe₂(SO₄)₃</h4><p>Iron(III) indicates Fe³⁺ ions. The sulfate ion is SO₄²⁻. To balance charges:</p><p>2 × Fe³⁺ = +6 charge<br>3 × SO₄²⁻ = -6 charge<br>Total charge = 0 (neutral compound)</p><p>Therefore the formula is <strong>Fe₂(SO₄)₃</strong>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. FeSO₄:</strong> This is <em>iron(II) sulfate</em> (ferrous sulfate), where iron is in the +2 oxidation state. Fe²⁺ (one iron) balances with one SO₄²⁻. FeSO₄ is used as an iron supplement to treat iron-deficiency anemia. The Roman numeral (III) in the question specifies Fe³⁺, not Fe²⁺.</p><p><strong>C. Fe₂S₃:</strong> This would be \"iron(III) sulfide\" - containing S²⁻ (sulfide) ions, not SO₄²⁻ (sulfate) ions. Sulfide (S²⁻) and sulfate (SO₄²⁻) are completely different anions. Fe₂S₃ is actually unstable and decomposes to FeS and FeS₂.</p><p><strong>B. Fe₃(SO₄)₂:</strong> This formula implies a charge imbalance: 3 × Fe³⁺ = +9 and 2 × SO₄²⁻ = -4, giving a net charge of +5. To be a valid neutral compound, the total positive and negative charges must be equal. If the iron were Fe²⁺ instead, the formula Fe₃(SO₄)₂ would still not balance (3×2 = 6 ≠ 2×2 = 4).</p><p class='exp-key'>Bottom Line: To write a formula from a name: (1) Identify the cation and its charge, (2) Identify the anion and its charge, (3) Find the ratio that gives a neutral compound using the cross-multiplication method (swap the charge magnitudes as subscripts).</p>"
+  },
+  "Q44": {
+    "id": "chem-461",
+    "subject": "chemistry",
+    "topic": "Naming and Nomenclature",
+    "question": "In organic chemistry, the acyl group CH₃CO- is derived from which carboxylic acid?",
+    "options": [
+      "Formic acid (methanoic acid)",
+      "Acetic acid (ethanoic acid)",
+      "Propionic acid (propanoic acid)",
+      "Butyric acid (butanoic acid)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Acetic acid (ethanoic acid)</h4><p>The acyl group CH₃CO- (also written as CH₃-C(=O)-) is the <strong>acetyl group</strong>, derived from acetic acid (CH₃COOH / ethanoic acid) by removing the -OH. Acyl groups are named by replacing the \"-ic acid\" ending with \"-yl\":</p><table class='exp-table'><tr><th>Carboxylic Acid</th><th>Formula</th><th>Acyl Group</th><th>Acyl Name</th></tr><tr><td>Formic (methanoic)</td><td>HCOOH</td><td>HCO-</td><td>Formyl (methanoyl)</td></tr><tr><td>Acetic (ethanoic)</td><td>CH₃COOH</td><td>CH₃CO-</td><td>Acetyl (ethanoyl)</td></tr><tr><td>Propionic (propanoic)</td><td>C₂H₅COOH</td><td>C₂H₅CO-</td><td>Propionyl (propanoyl)</td></tr></table><p>The acetyl group is biologically crucial - acetyl-CoA is the central metabolite linking glycolysis, β-oxidation, and the citric acid cycle.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Formic acid (methanoic acid):</strong> Formic acid (HCOOH) gives the formyl group (HCO-), which has only one carbon. The acyl group in the question (CH₃CO-) has two carbons (the CH₃ plus the carbonyl C), so it comes from the two-carbon acid, acetic acid.</p><p><strong>C. Propionic acid (propanoic acid):</strong> Propionic acid (CH₃CH₂COOH) gives the propionyl group (CH₃CH₂CO-), which has three carbons. This has one more CH₂ group than the acetyl group. Propionyl-CoA is an intermediate in odd-chain fatty acid and branched-chain amino acid metabolism.</p><p><strong>D. Butyric acid (butanoic acid):</strong> Butyric acid (CH₃CH₂CH₂COOH) gives the butyryl group (CH₃CH₂CH₂CO-), with four carbons. Butyrate is a short-chain fatty acid produced by gut bacteria during fiber fermentation and is important for colonocyte health.</p><p class='exp-key'>Bottom Line: The acetyl group (CH₃CO-) derives from acetic acid. Acetyl-CoA is arguably the most important acyl-CoA in metabolism, feeding into the TCA cycle, ketogenesis, fatty acid synthesis, and cholesterol synthesis.</p>"
+  },
+  "Q45": {
+    "id": "chem-462",
+    "subject": "chemistry",
+    "topic": "Naming and Nomenclature",
+    "question": "What is the common name for the simplest dicarboxylic acid, HOOC-COOH?",
+    "options": [
+      "Malonic acid",
+      "Succinic acid",
+      "Oxalic acid",
+      "Fumaric acid"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Oxalic acid</h4><p>Oxalic acid (HOOC-COOH or C₂H₂O₄) is the simplest dicarboxylic acid, containing two directly bonded carboxyl groups with no intervening CH₂ groups. Its IUPAC name is <strong>ethanedioic acid</strong>. Oxalic acid is found in rhubarb leaves, spinach, and other plants, and its calcium salt (calcium oxalate) is a major component of kidney stones.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Malonic acid:</strong> Malonic acid is HOOC-CH₂-COOH (propanedioic acid), with one CH₂ group between the two carboxyl groups. It has 3 carbons total. Malonyl-CoA is the building block for fatty acid synthesis and also inhibits carnitine palmitoyltransferase I (CPT-I), regulating β-oxidation.</p><p><strong>B. Succinic acid:</strong> Succinic acid is HOOC-CH₂-CH₂-COOH (butanedioic acid), with two CH₂ groups between the carboxyls (4 carbons total). Succinate is an intermediate of the citric acid cycle, formed from succinyl-CoA and oxidized to fumarate by succinate dehydrogenase (Complex II).</p><p><strong>D. Fumaric acid:</strong> Fumaric acid is the trans-isomer of butenedioic acid (HOOC-CH=CH-COOH). It is also a TCA cycle intermediate, formed by oxidation of succinate and converted to malate by fumarase. Fumaric acid has 4 carbons. Its cis-isomer is maleic acid.</p><p class='exp-key'>Bottom Line: Dicarboxylic acids by carbon number: oxalic (C₂), malonic (C₃), succinic (C₄), glutaric (C₅), adipic (C₆). Several are TCA cycle intermediates. Memorize the mnemonic: \"Oh My, Such Good Apples\" for the series.</p>"
+  },
+  "Q46": {
+    "id": "chem-463",
+    "subject": "chemistry",
+    "topic": "Porphin, Steroids, Vitamins",
+    "question": "The porphyrin ring system in hemoglobin coordinates a central metal ion. Which metal ion is present in the heme group of hemoglobin, and what oxidation state must it remain in to bind oxygen reversibly?",
+    "options": [
+      "Fe²⁺; must remain as Fe²⁺ (ferrous) for reversible O₂ binding",
+      "Fe³⁺; must remain as Fe³⁺ for oxygen binding",
+      "Mg²⁺; must remain as Mg²⁺",
+      "Cu²⁺; must remain as Cu²⁺"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Fe²⁺; must remain as Fe²⁺ (ferrous) for reversible O₂ binding</h4><p>Hemoglobin contains four heme groups, each consisting of a protoporphyrin IX ring coordinating a central <strong>Fe²⁺ (ferrous iron)</strong> ion. The Fe²⁺ forms six coordination bonds: four to nitrogen atoms of the porphyrin ring, one to a proximal histidine of the globin chain, and the sixth to O₂ (when oxygenated) or remains empty (when deoxygenated).</p><p>Crucially, iron must stay in the Fe²⁺ state to bind O₂ reversibly. If iron is oxidized to Fe³⁺, the resulting <strong>methemoglobin</strong> cannot bind O₂ and is clinically non-functional.</p><h4>Why the other choices are wrong:</h4><p><strong>C. Mg²⁺; must remain as Mg²⁺:</strong> Magnesium is the central metal ion in <em>chlorophyll</em>, not hemoglobin. Chlorophyll uses Mg²⁺ coordinated by a modified porphyrin (chlorin) ring to absorb light for photosynthesis. The Mg²⁺ in chlorophyll and Fe²⁺ in heme illustrate how the same porphyrin scaffold can serve different functions with different metals.</p><p><strong>B. Fe³⁺; must remain as Fe³⁺:</strong> Fe³⁺ (ferric iron) in hemoglobin creates methemoglobin, which <em>cannot</em> bind oxygen. Methemoglobinemia (>1% methemoglobin) causes cyanosis and tissue hypoxia. The enzyme methemoglobin reductase uses NADH to reduce Fe³⁺ back to Fe²⁺. Treatment for severe methemoglobinemia includes methylene blue.</p><p><strong>D. Cu²⁺; must remain as Cu²⁺:</strong> Copper is found in hemocyanin (the oxygen-carrying protein in arthropods and mollusks) and in cytochrome c oxidase (Complex IV of the electron transport chain), but not in human hemoglobin. Copper-based oxygen carriers give blood a blue color, unlike the red of iron-based hemoglobin.</p><p class='exp-key'>Bottom Line: Heme = protoporphyrin IX + Fe²⁺. Iron must remain ferrous (Fe²⁺) for O₂ binding. Oxidation to Fe³⁺ → methemoglobin (non-functional). Related porphyrin complexes: chlorophyll (Mg²⁺), vitamin B₁₂ (Co³⁺), cytochromes (Fe²⁺/Fe³⁺).</p>"
+  },
+  "Q47": {
+    "id": "chem-464",
+    "subject": "chemistry",
+    "topic": "Porphin, Steroids, Vitamins",
+    "question": "The steroid ring system consists of fused carbon rings. What is the correct arrangement of rings in the steroid nucleus (cyclopentanoperhydrophenanthrene)?",
+    "options": [
+      "Four 6-membered rings arranged in a line",
+      "Three 6-membered rings (A, B, C) and one 5-membered ring (D)",
+      "Two 6-membered rings and two 5-membered rings",
+      "One 6-membered ring and three 5-membered rings"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Three 6-membered rings (A, B, C) and one 5-membered ring (D)</h4><p>The steroid nucleus (also called the sterane skeleton or cyclopentanoperhydrophenanthrene) consists of <strong>17 carbon atoms</strong> arranged in four fused rings:</p><ul><li><strong>Ring A:</strong> 6-membered (cyclohexane)</li><li><strong>Ring B:</strong> 6-membered (cyclohexane)</li><li><strong>Ring C:</strong> 6-membered (cyclohexane)</li><li><strong>Ring D:</strong> 5-membered (cyclopentane)</li></ul><p>This rigid, planar ring system is the structural foundation for cholesterol, bile acids, steroid hormones (cortisol, aldosterone, testosterone, estradiol, progesterone), and vitamin D.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Four 6-membered rings arranged in a line:</strong> This would describe a linear arrangement of four cyclohexane rings, which is not the steroid structure. The steroid nucleus has three 6-membered rings fused in a non-linear (angular) arrangement, plus one 5-membered ring. Four equal rings would contain too many carbons.</p><p><strong>C. Two 6-membered rings and two 5-membered rings:</strong> This incorrect ratio gives the wrong carbon count. The steroid skeleton has a characteristic 6-6-6-5 ring pattern. The single 5-membered ring (D ring) is a defining feature that distinguishes steroids from other polycyclic compounds.</p><p><strong>D. One 6-membered ring and three 5-membered rings:</strong> This would represent a different class of molecules entirely. The 6-6-6-5 pattern is essential for the biological activity of steroids, as the shape determines how they interact with steroid receptors. Altering the ring sizes would eliminate hormonal activity.</p><p class='exp-key'>Bottom Line: The steroid skeleton = 3 cyclohexane rings (A, B, C) + 1 cyclopentane ring (D), fused together (6-6-6-5 pattern). All steroid hormones, cholesterol, bile acids, and vitamin D share this core structure with different functional group modifications.</p>"
+  },
+  "Q48": {
+    "id": "chem-465",
+    "subject": "chemistry",
+    "topic": "Porphin, Steroids, Vitamins",
+    "question": "Which vitamin's chemical name is ascorbic acid, and what is its primary biochemical function?",
+    "options": [
+      "Vitamin A (retinol) - required for vision in dim light",
+      "Vitamin B₁₂ (cobalamin) - required for methyl group transfer",
+      "Vitamin C (ascorbic acid) - required as a cofactor for collagen hydroxylation",
+      "Vitamin E (tocopherol) - required as a lipid-soluble antioxidant"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Vitamin C (ascorbic acid) - required as a cofactor for collagen hydroxylation</h4><p>Ascorbic acid is <strong>vitamin C</strong>. Its primary biochemical role is as a cofactor for <strong>prolyl hydroxylase and lysyl hydroxylase</strong>, enzymes that hydroxylate proline and lysine residues in collagen. These hydroxylated residues are essential for the stability of the collagen triple helix through hydrogen bonding.</p><p>Vitamin C deficiency causes <strong>scurvy</strong> - characterized by weakened connective tissue leading to bleeding gums, poor wound healing, petechiae, and loosened teeth, all due to defective collagen synthesis.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Vitamin A (retinol) - required for vision in dim light:</strong> While this statement about vitamin A is true (retinal is the chromophore in rhodopsin for scotopic vision), its chemical name is retinol, not ascorbic acid. Vitamin A deficiency causes night blindness (nyctalopia) and xerophthalmia.</p><p><strong>B. Vitamin B₁₂ (cobalamin) - required for methyl group transfer:</strong> Cobalamin is vitamin B₁₂, not ascorbic acid. B₁₂ contains a cobalt-centered corrin ring and is a cofactor for methionine synthase (methyl transfer) and methylmalonyl-CoA mutase. B₁₂ deficiency causes megaloblastic anemia and neurological damage.</p><p><strong>D. Vitamin E (tocopherol) - required as a lipid-soluble antioxidant:</strong> Tocopherol is vitamin E, a fat-soluble antioxidant that protects cell membranes from lipid peroxidation by scavenging free radicals. Its chemical name is tocopherol, not ascorbic acid. Vitamin C is water-soluble and can regenerate oxidized vitamin E.</p><p class='exp-key'>Bottom Line: Key vitamin-chemical name pairs: A = retinol, B₁ = thiamine, B₂ = riboflavin, B₃ = niacin, B₆ = pyridoxine, B₁₂ = cobalamin, C = ascorbic acid, D = cholecalciferol, E = tocopherol, K = phylloquinone.</p>"
+  },
+  "Q49": {
+    "id": "chem-466",
+    "subject": "chemistry",
+    "topic": "Nitrogen Waste Products",
+    "question": "In humans, the urea cycle converts toxic ammonia into urea for excretion. Where does the urea cycle primarily take place?",
+    "options": [
+      "Kidney cortex exclusively",
+      "Skeletal muscle mitochondria",
+      "Liver (beginning in mitochondria, completing in cytosol of hepatocytes)",
+      "Red blood cells"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Liver (beginning in mitochondria, completing in cytosol of hepatocytes)</h4><p>The urea cycle occurs primarily in <strong>hepatocytes (liver cells)</strong> and is distributed between two compartments:</p><ul><li><strong>Mitochondrial matrix:</strong> The first two steps - carbamoyl phosphate synthesis (by carbamoyl phosphate synthetase I, the rate-limiting enzyme) and citrulline formation (by ornithine transcarbamylase).</li><li><strong>Cytosol:</strong> The remaining three steps - argininosuccinate synthesis, argininosuccinate cleavage to arginine and fumarate, and hydrolysis of arginine to urea and ornithine (by arginase).</li></ul><p>Urea is then released into the blood, filtered by the kidneys, and excreted in urine.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Kidney cortex exclusively:</strong> The kidneys excrete urea but do not synthesize it via the urea cycle. The kidneys do express some urea cycle enzymes (particularly arginase II) for local arginine metabolism, but the complete functional urea cycle for nitrogen disposal operates in the liver.</p><p><strong>B. Skeletal muscle mitochondria:</strong> Skeletal muscle does not have a complete urea cycle. Instead, muscle disposes of amino group nitrogen by transamination to form alanine (glucose-alanine cycle) or glutamine, which are transported to the liver for urea synthesis.</p><p><strong>D. Red blood cells:</strong> Mature red blood cells lack mitochondria and a nucleus, so they cannot perform the urea cycle or any mitochondrial metabolic pathways. RBCs rely entirely on anaerobic glycolysis for energy production.</p><p class='exp-key'>Bottom Line: The urea cycle is a liver-specific pathway spanning mitochondria (first 2 steps) and cytosol (last 3 steps). Severe liver disease impairs urea synthesis, leading to hyperammonemia - a medical emergency that can cause cerebral edema and coma.</p>"
+  },
+  "Q50": {
+    "id": "chem-467",
+    "subject": "chemistry",
+    "topic": "Nitrogen Waste Products",
+    "question": "Gout is a clinical condition caused by the deposition of crystals in joints. Which metabolic end product accumulates in gout, and what is its biochemical origin?",
+    "options": [
+      "Urea crystals from protein catabolism",
+      "Uric acid (monosodium urate) crystals from purine degradation",
+      "Creatinine crystals from muscle creatine phosphate breakdown",
+      "Calcium oxalate crystals from vitamin C metabolism"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Uric acid (monosodium urate) crystals from purine degradation</h4><p>Gout results from <strong>hyperuricemia</strong> - elevated blood uric acid levels (>6.8 mg/dL) leading to deposition of monosodium urate (MSU) crystals in joints and soft tissues. Uric acid is the final degradation product of <strong>purine nucleotides</strong> (adenine and guanine, from DNA/RNA turnover and dietary purines).</p><p>The pathway: Purines → Hypoxanthine → Xanthine → <strong>Uric acid</strong> (catalyzed by xanthine oxidase). Treatment includes allopurinol (xanthine oxidase inhibitor) and colchicine (anti-inflammatory).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Urea crystals from protein catabolism:</strong> Urea is highly water-soluble (up to ~1000 g/L) and does not form crystals under physiological conditions. Urea is the primary nitrogen waste product in humans (ureotelic organisms), but its high solubility means it is efficiently excreted by the kidneys without crystallization.</p><p><strong>C. Creatinine crystals from muscle creatine phosphate breakdown:</strong> Creatinine is a waste product of muscle creatine metabolism and is freely filtered by the kidneys. It is used as a clinical marker of kidney function (GFR estimation). Creatinine does not form crystals in joints and is not associated with gout.</p><p><strong>D. Calcium oxalate crystals from vitamin C metabolism:</strong> Calcium oxalate crystals can form in kidneys (kidney stones), not in joints. While excessive vitamin C can be metabolized to oxalate, this causes nephrolithiasis (kidney stones), not gout. Gout specifically involves urate crystals in synovial joints.</p><p class='exp-key'>Bottom Line: Gout = uric acid (urate) crystals in joints, from purine metabolism. Uric acid = end product of purine degradation by xanthine oxidase. Allopurinol (xanthine oxidase inhibitor) lowers uric acid levels. Risk factors: high-purine diet, alcohol, kidney disease.</p>"
+  },
+  "Q51": {
+    "id": "chem-468",
+    "subject": "chemistry",
+    "topic": "Nitrogen Waste Products",
+    "question": "Which of the following correctly distinguishes the three major nitrogen waste products in human clinical chemistry?",
+    "options": [
+      "Urea is derived from pyrimidine degradation; uric acid from the urea cycle; creatinine from amino acid transamination",
+      "Urea is the primary waste from amino acid nitrogen; uric acid from purine degradation; creatinine from spontaneous cyclization of creatine phosphate in muscle",
+      "All three are products of the urea cycle, differing only in their site of production",
+      "Urea is produced only in the kidneys; uric acid only in the liver; creatinine only in the brain"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Urea is the primary waste from amino acid nitrogen; uric acid from purine degradation; creatinine from spontaneous cyclization of creatine phosphate in muscle</h4><table class='exp-table'><tr><th>Parameter</th><th>Urea</th><th>Uric Acid</th><th>Creatinine</th></tr><tr><td>Source</td><td>Amino acid deamination (urea cycle)</td><td>Purine nucleotide degradation</td><td>Non-enzymatic cyclization of creatine/creatine-P</td></tr><tr><td>Site of production</td><td>Liver</td><td>Liver (mainly)</td><td>Muscle</td></tr><tr><td>Normal serum level</td><td>7-20 mg/dL (BUN: 7-20)</td><td>3.5-7.0 mg/dL</td><td>0.7-1.3 mg/dL</td></tr><tr><td>Clinical significance</td><td>Elevated in kidney failure, dehydration</td><td>Elevated in gout, tumor lysis</td><td>Gold standard for GFR estimation</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Urea from pyrimidine degradation; uric acid from urea cycle; creatinine from transamination:</strong> This reverses the sources of urea and uric acid. Urea comes from the urea cycle (amino acid nitrogen disposal), not from pyrimidine degradation. Pyrimidine degradation produces β-alanine (from cytosine/uracil) and β-aminoisobutyrate (from thymine), not urea. Uric acid comes from purine degradation, not the urea cycle.</p><p><strong>C. All three are products of the urea cycle:</strong> Only urea is a product of the urea cycle. Uric acid is produced by xanthine oxidase in purine catabolism, and creatinine is produced non-enzymatically from creatine phosphate in muscle. These three pathways are completely distinct.</p><p><strong>D. Urea only in kidneys; uric acid only in liver; creatinine only in brain:</strong> The organ localizations are wrong. Urea is synthesized in the liver (not kidneys - kidneys only excrete it). Creatinine is produced primarily in skeletal muscle (not brain), proportional to muscle mass. While uric acid production does occur largely in the liver, the other assignments are incorrect.</p><p class='exp-key'>Bottom Line: Three key nitrogen waste products: Urea (from amino acids, via urea cycle in liver), Uric acid (from purines, via xanthine oxidase), Creatinine (from muscle creatine, non-enzymatic). Each has distinct clinical significance in kidney function, gout, and muscle mass assessment.</p>"
+  },
+  "Q52": {
+    "id": "chem-469",
+    "subject": "chemistry",
+    "topic": "Salt Hydrolysis",
+    "question": "When sodium acetate (CH3COONa) is dissolved in water, the resulting solution is:",
+    "options": [
+      "Acidic, because the sodium ion undergoes hydrolysis",
+      "Neutral, because both ions come from strong electrolytes",
+      "Alkaline, because the acetate ion undergoes hydrolysis to produce OH- ions",
+      "Acidic, because acetic acid is released and lowers the pH"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Alkaline, because the acetate ion undergoes hydrolysis to produce OH- ions</h4><p>Sodium acetate is the salt of a <strong>strong base (NaOH)</strong> and a <strong>weak acid (CH3COOH)</strong>. When dissolved in water, it dissociates completely into Na+ and CH3COO- ions. The <strong>acetate ion</strong> (conjugate base of the weak acid) undergoes hydrolysis:</p><p style='text-align:center'><strong>CH3COO- + H<sub>2</sub>O ⇌ CH3COOH + OH-</strong></p><p>This reaction produces hydroxide ions, making the solution <strong>alkaline (pH > 7)</strong>. The sodium ion, being the conjugate of a strong base, does not undergo hydrolysis.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Acidic, because the sodium ion undergoes hydrolysis:</strong> Sodium ion (Na+) is the conjugate acid of the strong base NaOH. Cations derived from strong bases have <strong>negligible tendency to hydrolyze</strong> because they would need to react with water to reform the strong base, which is thermodynamically unfavorable. Na+ remains fully hydrated but does not alter pH.</p><p><strong>B. Neutral, because both ions come from strong electrolytes:</strong> This would be correct for a salt like NaCl (strong acid HCl + strong base NaOH), where neither ion hydrolyzes. However, sodium acetate comes from a strong base and a <strong>weak acid</strong>. The acetate ion does hydrolyze, so the solution is not neutral.</p><p><strong>D. Acidic, because acetic acid is released and lowers the pH:</strong> While acetic acid is indeed formed during acetate hydrolysis, the net effect of the hydrolysis reaction is the production of OH- ions, which makes the solution <strong>alkaline</strong>, not acidic. The acetic acid formed is a weak acid that remains largely undissociated.</p><h4>Key Educational Points:</h4><ul><li><strong>Salt hydrolysis rules:</strong> Strong acid + strong base salt = neutral; strong base + weak acid salt = alkaline; weak base + strong acid salt = acidic; weak acid + weak base salt = depends on Ka vs Kb.</li><li>The ion that hydrolyzes is always the one from the <strong>weak</strong> parent acid or base.</li><li>Examples: NH4Cl (acidic, from weak base NH3 + strong acid HCl); Na<sub>2</sub>CO<sub>3</sub> (alkaline, from strong base NaOH + weak acid H<sub>2</sub>CO<sub>3</sub>); NaCl (neutral).</li></ul><p class='exp-key'>Bottom Line: Sodium acetate solution is alkaline because acetate (from weak acetic acid) hydrolyzes to produce OH-. Rule of thumb: salt of strong base + weak acid = alkaline solution; salt of weak base + strong acid = acidic solution.</p>"
+  },
+  "Q53": {
+    "id": "chem-470",
+    "subject": "chemistry",
+    "topic": "Salt Hydrolysis Calculation",
+    "question": "A 0.1 M solution of ammonium chloride (NH4Cl) is prepared. Given that the Kb of ammonia (NH3) is 1.8 x 10<sup>-5</sup>, what is the approximate pH of this solution?",
+    "options": [
+      "pH ≈ 9.13 (alkaline)",
+      "pH ≈ 5.13 (acidic)",
+      "pH ≈ 7.00 (neutral)",
+      "pH ≈ 2.87 (strongly acidic)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: pH ≈ 5.13 (acidic)</h4><p>NH4Cl is the salt of a <strong>weak base (NH3, Kb = 1.8 x 10<sup>-5</sup>)</strong> and a <strong>strong acid (HCl)</strong>. The ammonium ion (NH4+) undergoes hydrolysis:</p><p style='text-align:center'><strong>NH4+ + H<sub>2</sub>O ⇌ NH3 + H<sub>3</sub>O+</strong></p><p><strong>Step-by-step calculation:</strong></p><p>1. Find Ka of NH4+: Ka = Kw/Kb = (1.0 x 10<sup>-14</sup>)/(1.8 x 10<sup>-5</sup>) = 5.56 x 10<sup>-10</sup></p><p>2. Set up the equilibrium: Ka = [NH3][H<sub>3</sub>O+]/[NH4+] = x<sup>2</sup>/0.1</p><p>3. Solve for x: x = sqrt(5.56 x 10<sup>-10</sup> x 0.1) = sqrt(5.56 x 10<sup>-11</sup>) = 7.45 x 10<sup>-6</sup> M</p><p>4. pH = -log(7.45 x 10<sup>-6</sup>) ≈ <strong>5.13</strong></p><h4>Why the other choices are wrong:</h4><p><strong>A. pH ≈ 9.13 (alkaline):</strong> This would be the pH if you calculated the pOH instead of pH and then forgot to convert, or if you mistakenly treated the salt as coming from a strong acid + weak acid combination that produces an alkaline solution. NH4Cl produces an <strong>acidic</strong> solution because NH4+ donates a proton to water.</p><p><strong>C. pH ≈ 7.00 (neutral):</strong> A neutral pH would result from a salt of a strong acid and a strong base (like NaCl). Since NH4Cl comes from a weak base, the NH4+ ion hydrolyzes to produce H<sub>3</sub>O+, shifting the pH below 7.</p><p><strong>D. pH ≈ 2.87 (strongly acidic):</strong> This pH would correspond to a much stronger acid or a much higher concentration. The Ka of NH4+ is very small (5.56 x 10<sup>-10</sup>), so the hydrolysis produces only a mildly acidic solution, not a strongly acidic one.</p><h4>Key Educational Points:</h4><ul><li>The relationship Ka x Kb = Kw = 1.0 x 10<sup>-14</sup> (at 25 degrees C) connects the dissociation constants of a conjugate acid-base pair.</li><li>For salt hydrolysis pH calculations, always identify which ion hydrolyzes and whether it acts as an acid or a base.</li><li>A useful shortcut: pH of a weak base salt ≈ 7 - (1/2)(pKb) - (1/2)(log C), where C is the salt concentration.</li></ul><p class='exp-key'>Bottom Line: NH4Cl solution is acidic (pH ≈ 5.13) because NH4+ hydrolyzes to release H<sub>3</sub>O+. Calculate by finding Ka from Kw/Kb, then solve the equilibrium expression. The Ka x Kb = Kw relationship is essential for salt hydrolysis problems.</p>"
+  },
+  "Q54": {
+    "id": "chem-471",
+    "subject": "chemistry",
+    "topic": "Ionic Hydrides",
+    "question": "When sodium hydride (NaH) reacts with water, the products are:",
+    "options": [
+      "Sodium hydroxide and hydrogen gas",
+      "Sodium oxide and water vapor",
+      "Sodium metal and hydrogen peroxide",
+      "Sodium chloride and hydroxide ions"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Sodium hydroxide and hydrogen gas</h4><p>Sodium hydride is an <strong>ionic (saline) hydride</strong> containing Na+ and H- ions. When it reacts with water, the hydride ion (H-) acts as a <strong>strong base</strong>, abstracting a proton from water:</p><p style='text-align:center'><strong>NaH + H<sub>2</sub>O → NaOH + H2 ↑</strong></p><p>The H- ion combines with H+ from water to produce H2 gas, while Na+ and OH- remain in solution as sodium hydroxide. This reaction is <strong>vigorous and exothermic</strong>.</p><h4>Why the other choices are wrong:</h4><p><strong>B. Sodium oxide and water vapor:</strong> Sodium oxide (Na<sub>2</sub>O) forms when sodium metal burns in limited oxygen (4Na + O2 → 2Na<sub>2</sub>O), not when NaH reacts with water. NaH reacting with water is a hydrolysis/acid-base reaction, not a combustion or dehydration reaction.</p><p><strong>C. Sodium metal and hydrogen peroxide:</strong> This is chemically implausible. Sodium metal is highly reactive and would itself immediately react with water. Additionally, hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) is not a product of simple hydride hydrolysis. The H- ion from NaH is a strong reducing agent, so it would reduce any oxidizing agent present rather than forming peroxide.</p><p><strong>D. Sodium chloride and hydroxide ions:</strong> There is no source of chloride ions in this reaction. Only Na, H, and O atoms are involved. This answer confuses NaH with NaCl or introduces a non-existent chlorine atom.</p><h4>Key Educational Points:</h4><ul><li><strong>Ionic hydrides</strong> are formed by alkali metals and heavier alkaline earth metals (NaH, KH, CaH2). They contain the hydride ion (H-) with hydrogen in the <strong>-1 oxidation state</strong>.</li><li>All ionic hydrides react vigorously with water to produce the metal hydroxide and H2 gas. This makes them useful as strong bases and drying agents in organic chemistry.</li><li>Contrast with <strong>covalent hydrides</strong> (e.g., CH4, NH3, H<sub>2</sub>O) which have shared electron pairs, and <strong>metallic hydrides</strong> (e.g., PdH, TiH2) used in hydrogen storage.</li><li>NaH is widely used in organic synthesis as a base to deprotonate weakly acidic compounds (alcohols, amines).</li></ul><p class='exp-key'>Bottom Line: NaH + H<sub>2</sub>O → NaOH + H2. Ionic hydrides contain H- (hydrogen with oxidation state -1), which is a powerful base that reacts with water to liberate hydrogen gas and form the corresponding metal hydroxide.</p>"
+  },
+  "Q55": {
+    "id": "chem-472",
+    "subject": "chemistry",
+    "topic": "Carbide Chemistry",
+    "question": "When calcium carbide (CaC2) reacts with water, the gas produced is:",
+    "options": [
+      "Methane (CH4)",
+      "Ethylene (C<sub>2</sub>H<sub>4</sub>)",
+      "Acetylene (C<sub>2</sub>H<sub>2</sub>)",
+      "Carbon dioxide (CO2)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Acetylene (C<sub>2</sub>H<sub>2</sub>)</h4><p>Calcium carbide reacts with water to produce <strong>acetylene gas</strong> and calcium hydroxide:</p><p style='text-align:center'><strong>CaC2 + 2H<sub>2</sub>O → C<sub>2</sub>H<sub>2</sub> ↑ + Ca(OH)2</strong></p><p>Calcium carbide contains the <strong>carbide ion (C2<sup>2</sup>-)</strong>, which is the conjugate base of acetylene. The C2<sup>2</sup>- ion contains a carbon-carbon triple bond ([:C≡C:]<sup>2</sup>-). When it encounters water, it abstracts protons to form acetylene (H-C≡C-H).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Methane (CH4):</strong> Methane is produced when <strong>aluminum carbide (Al<sub>4</sub>C<sub>3</sub>)</strong> reacts with water: Al<sub>4</sub>C<sub>3</sub> + 12H<sub>2</sub>O → 4Al(OH)3 + 3CH4. Al<sub>4</sub>C<sub>3</sub> contains the methanide ion (C<sup>4</sup>-), not the acetylide ion. Different types of carbides produce different hydrocarbons.</p><p><strong>B. Ethylene (C<sub>2</sub>H<sub>4</sub>):</strong> Ethylene has a carbon-carbon <strong>double bond</strong>, not a triple bond. No common carbide produces ethylene upon hydrolysis. Acetylene (triple bond) can be partially hydrogenated to ethylene using Lindlar's catalyst, but that is a separate reaction.</p><p><strong>D. Carbon dioxide (CO2):</strong> CO2 is produced when <strong>carbonates</strong> (e.g., CaCO3) react with acids, not when carbides react with water. The reaction CaCO3 + 2HCl → CaCl2 + H<sub>2</sub>O + CO2 involves a carbonate, which is chemically distinct from a carbide.</p><h4>Key Educational Points:</h4><ul><li>Carbides are classified by their hydrolysis products: <strong>acetylides</strong> (CaC2, Na<sub>2</sub>C<sub>2</sub>) yield acetylene; <strong>methanides</strong> (Al<sub>4</sub>C<sub>3</sub>, Be<sub>2</sub>C) yield methane; <strong>interstitial carbides</strong> (WC, TiC) are extremely hard and chemically inert.</li><li>This reaction was historically important for producing acetylene for welding torches and acetylene lamps (used by miners and in early automobiles).</li><li>Acetylene is the simplest alkyne (C<sub>2</sub>H<sub>2</sub>) with a linear geometry and sp hybridization at each carbon.</li></ul><p class='exp-key'>Bottom Line: CaC2 + 2H<sub>2</sub>O → C<sub>2</sub>H<sub>2</sub> + Ca(OH)2. Calcium carbide contains the acetylide ion (C2<sup>2</sup>-) with a triple bond. Hydrolysis produces acetylene gas. Remember: calcium carbide = acetylene, aluminum carbide = methane.</p>"
+  },
+  "Q56": {
+    "id": "chem-473",
+    "subject": "chemistry",
+    "topic": "Stoichiometry",
+    "question": "When the combustion reaction of propane is balanced: C<sub>3</sub>H<sub>8</sub> + O2 → CO2 + H<sub>2</sub>O, what is the coefficient of O2?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "7"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 5</h4><p>The balanced combustion equation for propane is:</p><p style='text-align:center'><strong>C3H8 + 5O2 → 3CO2 + 4H2O</strong></p><p><strong>Balancing step by step:</strong></p><p>1. <strong>Carbon:</strong> 3 carbons on the left → need 3CO2 on the right</p><p>2. <strong>Hydrogen:</strong> 8 hydrogens on the left → need 4H<sub>2</sub>O on the right (providing 8 H atoms)</p><p>3. <strong>Oxygen:</strong> Right side has 3(2) + 4(1) = 6 + 4 = 10 oxygen atoms → need 10/2 = <strong>5 O2</strong> on the left</p><p>4. <strong>Verify:</strong> Left: 3C, 8H, 10O. Right: 3C (in 3CO2), 8H (in 4H<sub>2</sub>O), 10O (6 in CO2 + 4 in H<sub>2</sub>O). Balanced.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 3:</strong> With only 3O2 (6 oxygen atoms), you could form 3CO2 (using 6 O atoms), but then zero oxygen atoms remain for H<sub>2</sub>O. Hydrogen would be unbalanced. This coefficient is too small.</p><p><strong>B. 4:</strong> With 4O2 (8 oxygen atoms), you could form 3CO2 + 1H<sub>2</sub>O (using 6 + 1 = 7 oxygen atoms), leaving 1 oxygen atom unaccounted for and hydrogen unbalanced (only 2 of 8 H atoms would be in water). Still insufficient.</p><p><strong>D. 7:</strong> With 7O2 (14 oxygen atoms), the right side would need to contain 14 oxygen atoms total. But 3CO2 + 4H<sub>2</sub>O only requires 10 oxygen atoms. The excess 4 oxygen atoms would have no place, making the equation unbalanced.</p><h4>Key Educational Points:</h4><ul><li>The general formula for complete combustion of an alkane: CnH(2n+2) + (3n+1)/2 O2 → nCO2 + (n+1)H<sub>2</sub>O. For propane (n=3): coefficient of O2 = (3x3+1)/2 = 10/2 = 5.</li><li>Always balance C first, then H, then O last (since O appears in both products).</li><li>Combustion reactions are exothermic and are the basis for energy production from fossil fuels.</li></ul><p class='exp-key'>Bottom Line: C<sub>3</sub>H<sub>8</sub> + 5O2 → 3CO2 + 4H<sub>2</sub>O. Balance carbon first (3 CO2), then hydrogen (4 H<sub>2</sub>O), then count oxygen atoms needed on the right (10 total) and divide by 2 to get the O2 coefficient (5).</p>"
+  },
+  "Q57": {
+    "id": "chem-474",
+    "subject": "chemistry",
+    "topic": "Biochemistry Nomenclature",
+    "question": "Insulin and inulin are two distinct biological substances. Which statement correctly distinguishes them?",
+    "options": [
+      "Insulin is a polysaccharide stored in the liver; inulin is a peptide hormone from the pancreas",
+      "Insulin is a peptide hormone regulating blood glucose; inulin is a polysaccharide used to measure glomerular filtration rate",
+      "Both are peptide hormones secreted by different endocrine glands",
+      "Both are polysaccharides with identical chemical formulas but different structures"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Insulin is a peptide hormone regulating blood glucose; inulin is a polysaccharide used to measure glomerular filtration rate</h4><p><strong>Insulin</strong> is a 51-amino acid peptide hormone produced by the <strong>β cells of the pancreatic islets of Langerhans</strong>. It promotes glucose uptake into cells, glycogen synthesis, and lipogenesis, thereby lowering blood glucose levels.</p><p><strong>Inulin</strong> is a naturally occurring <strong>polysaccharide</strong> (a fructan, polymer of fructose) found in plants such as chicory, dahlia tubers, and Jerusalem artichokes. In medicine, it is used as the <strong>gold standard for measuring glomerular filtration rate (GFR)</strong> because it is freely filtered at the glomerulus and is neither reabsorbed, secreted, nor metabolized by the tubules.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Insulin is a polysaccharide stored in the liver; inulin is a peptide hormone from the pancreas:</strong> This reverses the identities completely. The polysaccharide stored in the liver is <strong>glycogen</strong>, not insulin. Insulin is a protein hormone, and inulin is a polysaccharide. This swap is a common exam trap.</p><p><strong>C. Both are peptide hormones secreted by different endocrine glands:</strong> Only insulin is a peptide hormone. Inulin is a plant-derived carbohydrate with no hormonal activity. It is not produced by any endocrine gland.</p><p><strong>D. Both are polysaccharides with identical chemical formulas but different structures:</strong> They are not both polysaccharides (insulin is a protein), and they do not share the same chemical formula. They are entirely different classes of biomolecules: one is a protein, the other a carbohydrate.</p><h4>Key Educational Points:</h4><ul><li>The similar names (insulin vs. inulin) are a notorious source of confusion in exams. Remember: insul<strong>in</strong> = hormone from the pancreas; inul<strong>in</strong> = plant polysaccharide for GFR measurement.</li><li>Inulin clearance equals GFR because it is handled only by filtration. Creatinine clearance is used clinically as an approximation of GFR since inulin clearance is cumbersome to measure.</li><li>Insulin has two polypeptide chains (A chain: 21 amino acids, B chain: 30 amino acids) linked by disulfide bonds.</li></ul><p class='exp-key'>Bottom Line: Insulin = peptide hormone (pancreatic β cells, regulates glucose). Inulin = polysaccharide (plant fructan, gold standard for GFR measurement). Despite nearly identical names, they are completely different substances.</p>"
+  },
+  "Q58": {
+    "id": "chem-475",
+    "subject": "chemistry",
+    "topic": "Noble Gases",
+    "question": "Which noble gas is the most abundant in Earth's atmosphere?",
+    "options": [
+      "Helium (He)",
+      "Neon (Ne)",
+      "Argon (Ar)",
+      "Xenon (Xe)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Argon (Ar)</h4><p>Argon constitutes approximately <strong>0.93% of Earth's atmosphere</strong> by volume, making it the <strong>most abundant noble gas</strong> and the <strong>third most abundant gas overall</strong> (after nitrogen at 78% and oxygen at 21%). Atmospheric argon is predominantly the isotope <strong>Ar-40</strong>, produced by the radioactive decay of potassium-40 (K-40) in the Earth's crust over geological time.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Helium (He):</strong> Helium is the <strong>second most abundant element in the universe</strong> (after hydrogen), but it constitutes only about <strong>0.000524%</strong> of Earth's atmosphere. Being very light (atomic mass 4), helium has a high thermal velocity that allows it to escape Earth's gravitational field over time. Commercial helium is extracted from natural gas deposits.</p><p><strong>B. Neon (Ne):</strong> Neon is present in the atmosphere at about <strong>0.0018%</strong> by volume, roughly 500 times less abundant than argon. Neon is obtained by fractional distillation of liquid air and is best known for its use in neon signs, where it produces a characteristic red-orange glow.</p><p><strong>D. Xenon (Xe):</strong> Xenon is extremely rare in the atmosphere at about <strong>0.0000087%</strong> (87 parts per billion). It is the heaviest stable noble gas and is notably expensive. Xenon is used in high-intensity lamps, anesthesia, and ion propulsion engines for spacecraft.</p><h4>Key Educational Points:</h4><ul><li>Noble gas atmospheric abundance order: <strong>Ar >> Ne >> He >> Kr >> Xe >> Rn</strong>.</li><li>Argon's abundance is due to K-40 decay (half-life 1.25 billion years): ⁴⁰K → ⁴⁰Ar via electron capture. This decay is also used in potassium-argon radiometric dating of rocks.</li><li>Noble gases have completely filled outer electron shells, making them chemically inert under normal conditions. However, heavier noble gases (Xe, Kr) can form compounds with highly electronegative elements like fluorine and oxygen (e.g., XeF2, XeF4).</li></ul><p class='exp-key'>Bottom Line: Argon is the most abundant noble gas in Earth's atmosphere (0.93%), produced by radioactive decay of potassium-40. It is the third most abundant atmospheric gas overall, after N2 and O2.</p>"
+  },
+  "Q59": {
+    "id": "chem-476",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Which of the following is an example of an amorphous solid?",
+    "options": [
+      "Sodium chloride (NaCl)",
+      "Diamond",
+      "Glass (silicate)",
+      "Quartz (crystalline SiO₂)"
+    ],
+    "correct": 2,
+    "explanation": "Amorphous solids lack the long-range ordered crystal lattice that defines crystalline solids. Glass is a supercooled liquid: its silicon–oxygen network is rigid but disordered, with no repeating unit cell. NaCl, diamond, and quartz are all crystalline—even though glass and quartz share the same SiO₂ chemistry, only quartz has a regular lattice.",
+    "free": true
+  },
+  "Q60": {
+    "id": "chem-477",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Sodium chloride (NaCl) is best classified as which type of crystalline solid?",
+    "options": [
+      "Ionic crystal",
+      "Molecular crystal",
+      "Metallic crystal",
+      "Covalent network solid"
+    ],
+    "correct": 0,
+    "explanation": "NaCl is held together by electrostatic attraction between Na⁺ and Cl⁻ ions arranged in a face-centered cubic lattice (each ion surrounded by 6 of the opposite charge). This defines an ionic crystal: high melting point (801 °C), brittle, and electrically insulating in the solid state but conductive when molten or dissolved (ions become mobile).",
+    "free": true
+  }
+}

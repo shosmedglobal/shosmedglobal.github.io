@@ -237,8 +237,8 @@ section('3. Nothing outside the pack moved');
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
 ok(nBio === 629, `${nBio} untouched biology hashes, expected 629`);
-ok(nChem === 66, `${nChem} untouched chemistry hashes, expected 66 after the chemistry batch 7 prune`);
-ok(nChem + 60 + 60 + 59 + 60 + 60 + 60 + 60 === 485, 'the untouched set, this pack and chemistry batches 2, 3, 4, 5, 6 and 7 should account for all 485');
+ok(nChem === 10, `${nChem} untouched chemistry hashes, expected 10 after the chemistry batch 8 prune`);
+ok(nChem + 60 + 60 + 59 + 60 + 60 + 60 + 60 + 56 === 485, 'the untouched set, this pack and the new ids of chemistry batches 2 to 8 should account for all 485');
 ok(data.biology.length === 629, `biology holds ${data.biology.length} questions, expected 629`);
 ok(data.chemistry.length === 485, `chemistry holds ${data.chemistry.length} questions, expected 485`);
 
@@ -745,7 +745,7 @@ for (const q of ['Q20', 'Q49']) {
 // the pack must not reintroduce an em dash anywhere, and chemistry as a whole
 // should now carry fewer of them than before this pass
 const emNow = data.chemistry.reduce((n, q) => n + (text(q).match(/—/g) || []).length, 0);
-ok(emNow === 4, `${emNow} em dashes remain in the chemistry bank, expected 4 (all outside this pack)`);
+ok(emNow === 3, `${emNow} em dashes remain in the chemistry bank, expected 3 (all outside this pack; the chemistry batch 8 pass removed one)`);
 for (const id of IDS) ok(!text(BY[id]).includes('—'), `${disp(id)} ${id}: em dash`);
 
 // coverage block is internally consistent

@@ -181,8 +181,8 @@ ok(nChem + 60 === 485, 'the partition adds up: 425 outside + 60 in the pack = 48
 /* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
    from this fixture, so the hash count below steps down by 60. nChem counts LIVE
    out-of-pack records and is unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 305,
-  'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (365 after the batch 6 prune)');
+ok(Object.keys(untouched.chemistry).length === 249,
+  'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (249 after the batch 8 prune)');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts are still 629 / 485');
 
 /* ------------------------------------------------------------------ */

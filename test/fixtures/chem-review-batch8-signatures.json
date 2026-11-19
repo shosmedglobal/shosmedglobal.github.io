@@ -1,0 +1,791 @@
+{
+  "keyBlock": "BCCADCCBDBDBACDCDADACBADADDBBADBACADBBCDACDBCABCCBBCBACCBCCA",
+  "tally": {
+    "A": 13,
+    "B": 16,
+    "C": 18,
+    "D": 13
+  },
+  "sigs": {
+    "Q1": {
+      "q": "Q1",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": "chem-369",
+      "stem": "In human cells, most enzymes of the citric acid cycle are located in the:",
+      "options": [
+        "Cytoplasm",
+        "Mitochondrial matrix",
+        "Inner mitochondrial membrane",
+        "Endoplasmic reticulum"
+      ]
+    },
+    "Q2": {
+      "q": "Q2",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": "chem-382",
+      "stem": "Two molecules with the same molecular formula but differing in the connectivity (order of bonding) of their atoms are called:",
+      "options": [
+        "Enantiomers",
+        "Geometric (cis-trans) isomers",
+        "Structural (constitutional) isomers",
+        "Conformational isomers"
+      ]
+    },
+    "Q3": {
+      "q": "Q3",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": "chem-396",
+      "stem": "Which formula correctly represents calcium phosphate?",
+      "options": [
+        "CaPO₄",
+        "Ca₂(PO₄)₃",
+        "Ca₃(PO₄)₂",
+        "Ca₃PO₄"
+      ]
+    },
+    "Q4": {
+      "q": "Q4",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": "chem-409",
+      "stem": "Guanidine [HN=C(NH₂)₂] is a strong organic base in water. Why is its conjugate acid, the guanidinium ion, especially stable?",
+      "options": [
+        "The positive charge is stabilized by resonance delocalization over three equivalent nitrogen atoms",
+        "It contains an aromatic ring that stabilizes the positive charge",
+        "The sulfur atom in guanidine donates electrons to stabilize the cation",
+        "Guanidinium is stabilized by intramolecular hydrogen bonding with a carbonyl group"
+      ]
+    },
+    "Q5": {
+      "q": "Q5",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Mutarotation refers to the change in optical rotation that occurs when:",
+      "options": [
+        "A sugar is heated and undergoes caramelization",
+        "A sugar is reduced to its corresponding sugar alcohol",
+        "A polysaccharide is hydrolyzed into monosaccharides",
+        "The α and β anomers of a sugar interconvert in solution through the open-chain form"
+      ]
+    },
+    "Q6": {
+      "q": "Q6",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In a Haworth projection of β-D-glucopyranose, the hydroxyl group at C1 is oriented:",
+      "options": [
+        "Below the plane of the ring (axial, same side as the ring oxygen reference)",
+        "Above the plane of the ring (equatorial, opposite the reference carbon C6 on the right)",
+        "Above the plane of the ring (on the same side as the CH₂OH group at C5)",
+        "To the right in the Fischer projection, which corresponds to below in Haworth"
+      ]
+    },
+    "Q7": {
+      "q": "Q7",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "A molecule has 3 chiral centers and no internal plane of symmetry. How many stereoisomers does this molecule have?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "16"
+      ]
+    },
+    "Q8": {
+      "q": "Q8",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Tartaric acid has two chiral centers, yet only three stereoisomers exist instead of four. This is because one form is a:",
+      "options": [
+        "Racemic mixture that counts as a single stereoisomer",
+        "Meso compound with an internal plane of symmetry, making it achiral despite having chiral centers",
+        "Geometric (cis-trans) isomer that cannot be separated",
+        "Structural isomer rather than a stereoisomer"
+      ]
+    },
+    "Q9": {
+      "q": "Q9",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Two molecules are non-superimposable mirror images of each other. They are best described as:",
+      "options": [
+        "Diastereomers",
+        "Conformational isomers",
+        "Constitutional (structural) isomers",
+        "Enantiomers"
+      ]
+    },
+    "Q10": {
+      "q": "Q10",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Using Cahn-Ingold-Prelog priority rules, what is the configuration of the following chiral center: a carbon bonded to -OH (highest priority), -NH₂, -CH₃, and -H (lowest priority), where viewing from opposite the -H shows the remaining three groups decreasing in priority counterclockwise?",
+      "options": [
+        "R configuration",
+        "S configuration",
+        "Z configuration",
+        "E configuration"
+      ]
+    },
+    "Q11": {
+      "q": "Q11",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "2-butene exists as cis and trans isomers. Using E/Z nomenclature, trans-2-butene is designated as:",
+      "options": [
+        "(Z)-2-butene",
+        "(S)-2-butene",
+        "(R)-2-butene",
+        "(E)-2-butene"
+      ]
+    },
+    "Q12": {
+      "q": "Q12",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Given the following data: C(s) + O₂(g) → CO₂(g), ΔH = −393 kJ/mol H₂(g) + ½O₂(g) → H₂O(l), ΔH = −286 kJ/mol CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l), ΔH = −890 kJ/mol Using Hess's law, what is the enthalpy of formation of methane (ΔHf for CH₄(g))?",
+      "options": [
+        "+75 kJ/mol",
+        "−75 kJ/mol",
+        "+890 kJ/mol",
+        "−890 kJ/mol"
+      ]
+    },
+    "Q13": {
+      "q": "Q13",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "The bond energies are: H−H = 436 kJ/mol, Cl−Cl = 242 kJ/mol, H−Cl = 431 kJ/mol. What is the enthalpy change for the reaction H₂(g) + Cl₂(g) → 2HCl(g)?",
+      "options": [
+        "−184 kJ",
+        "+184 kJ",
+        "−247 kJ",
+        "−862 kJ"
+      ]
+    },
+    "Q14": {
+      "q": "Q14",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "The standard enthalpy of formation (ΔH°f) of O₂(g) is:",
+      "options": [
+        "−249 kJ/mol",
+        "+249 kJ/mol",
+        "0 kJ/mol",
+        "−498 kJ/mol"
+      ]
+    },
+    "Q15": {
+      "q": "Q15",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "A reaction has ΔH = −100 kJ and ΔS = −200 J/K. At what temperature does this reaction change from spontaneous to non-spontaneous?",
+      "options": [
+        "200 K",
+        "The reaction is never spontaneous",
+        "0.5 K",
+        "500 K"
+      ]
+    },
+    "Q16": {
+      "q": "Q16",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which of the following processes results in an INCREASE in entropy (ΔS > 0)?",
+      "options": [
+        "Water freezing at 0°C",
+        "Synthesis of a protein from amino acids",
+        "Dissolution of NaCl in water",
+        "Gas compression from 10 L to 1 L at constant temperature"
+      ]
+    },
+    "Q17": {
+      "q": "Q17",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "When metallic sodium is placed in water, a vigorous reaction occurs. Which of the following correctly describes the products and observations of this reaction?",
+      "options": [
+        "Na₂O is formed and the solution turns acidic",
+        "Na₂O₂ is formed and the solution remains neutral",
+        "NaCl is formed and chlorine gas is released",
+        "NaOH and H₂ gas are formed; the solution turns strongly basic"
+      ]
+    },
+    "Q18": {
+      "q": "Q18",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "A chemist performs flame tests on several unknown salts. One sample produces a lilac (pale violet) flame. Which metal ion is most likely present?",
+      "options": [
+        "Potassium (K⁺)",
+        "Calcium (Ca²⁺)",
+        "Sodium (Na⁺)",
+        "Copper (Cu²⁺)"
+      ]
+    },
+    "Q19": {
+      "q": "Q19",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Calcium carbonate (CaCO₃) is heated strongly in a kiln. Which products are formed?",
+      "options": [
+        "Ca(OH)₂ and CO₂",
+        "Ca and CO₂",
+        "CaO and CO",
+        "CaO and CO₂"
+      ]
+    },
+    "Q20": {
+      "q": "Q20",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Iron(III) chloride solution is treated with potassium thiocyanate (KSCN). What observation confirms the presence of Fe³⁺ ions?",
+      "options": [
+        "A blood-red coloration develops in solution",
+        "A deep blue precipitate appears (Prussian blue)",
+        "A white precipitate forms",
+        "Effervescence with a colorless, odorless gas"
+      ]
+    },
+    "Q21": {
+      "q": "Q21",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "The Statue of Liberty has a characteristic green color due to the patina on its copper surface. Which compound is primarily responsible for this green patina?",
+      "options": [
+        "Copper(I) oxide (Cu₂O)",
+        "Copper(II) sulfate pentahydrate (CuSO₄·5H₂O)",
+        "Basic copper(II) carbonate (Cu₂(OH)₂CO₃)",
+        "Copper(II) chloride (CuCl₂)"
+      ]
+    },
+    "Q22": {
+      "q": "Q22",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Aluminum is described as an amphoteric metal because its oxide reacts with both acids and bases. What is the product when Al₂O₃ reacts with excess NaOH solution?",
+      "options": [
+        "Al(OH)₃ and Na₂O",
+        "NaAlO₂ (sodium aluminate) and H₂O",
+        "AlCl₃ and NaOH",
+        "Na₂O and Al"
+      ]
+    },
+    "Q23": {
+      "q": "Q23",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Zinc hydroxide, Zn(OH)₂, is treated with excess hydrochloric acid. Which product forms?",
+      "options": [
+        "ZnCl₂ and H₂O",
+        "Na₂ZnO₂ and H₂O",
+        "ZnO and HCl",
+        "Zn and Cl₂"
+      ]
+    },
+    "Q24": {
+      "q": "Q24",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which of the following correctly ranks the halogens in order of DECREASING oxidizing power?",
+      "options": [
+        "I₂ > Br₂ > Cl₂ > F₂",
+        "F₂ > I₂ > Br₂ > Cl₂",
+        "Cl₂ > F₂ > Br₂ > I₂",
+        "F₂ > Cl₂ > Br₂ > I₂"
+      ]
+    },
+    "Q25": {
+      "q": "Q25",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In the industrial Haber process, nitrogen and hydrogen react to form ammonia. Which conditions favor the highest yield of NH₃ at equilibrium?",
+      "options": [
+        "Low temperature and high pressure",
+        "Low temperature and low pressure",
+        "High temperature and low pressure",
+        "High temperature and high pressure"
+      ]
+    },
+    "Q26": {
+      "q": "Q26",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Carbon monoxide (CO) is highly toxic because it binds to hemoglobin. What is the approximate relative affinity of CO for hemoglobin compared to oxygen (O₂)?",
+      "options": [
+        "CO binds about 2 times more strongly than O₂",
+        "CO binds about 10 times more strongly than O₂",
+        "CO and O₂ bind with approximately equal affinity",
+        "CO binds about 200-250 times more strongly than O₂"
+      ]
+    },
+    "Q27": {
+      "q": "Q27",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "An enzyme catalyzes the transfer of an amino group from alanine to α-ketoglutarate, producing pyruvate and glutamate. To which EC class does this enzyme belong?",
+      "options": [
+        "EC 1 - Oxidoreductases",
+        "EC 4 - Lyases",
+        "EC 3 - Hydrolases",
+        "EC 2 - Transferases"
+      ]
+    },
+    "Q28": {
+      "q": "Q28",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Pepsin is a digestive enzyme secreted by chief cells in the stomach. What is its substrate specificity and optimal pH?",
+      "options": [
+        "Cleaves starch at α-1,4 glycosidic bonds; optimal pH 7.0",
+        "Cleaves proteins at peptide bonds (preferring hydrophobic residues); optimal pH 1.5-2.5",
+        "Cleaves triglycerides at ester bonds; optimal pH 8.0",
+        "Cleaves nucleic acids at phosphodiester bonds; optimal pH 5.0"
+      ]
+    },
+    "Q29": {
+      "q": "Q29",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which coenzyme is required by all aminotransferase (transaminase) enzymes?",
+      "options": [
+        "NAD⁺ (derived from niacin/vitamin B₃)",
+        "Pyridoxal phosphate / PLP (derived from vitamin B₆)",
+        "Thiamine pyrophosphate / TPP (derived from vitamin B₁)",
+        "Coenzyme A (derived from pantothenic acid/vitamin B₅)"
+      ]
+    },
+    "Q30": {
+      "q": "Q30",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Aldolase catalyzes the cleavage of fructose-1,6-bisphosphate into dihydroxyacetone phosphate (DHAP) and glyceraldehyde-3-phosphate (G3P) during glycolysis. To which enzyme class does aldolase belong?",
+      "options": [
+        "EC 4 - Lyases",
+        "EC 3 - Hydrolases",
+        "EC 2 - Transferases",
+        "EC 5 - Isomerases"
+      ]
+    },
+    "Q31": {
+      "q": "Q31",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Trypsin and chymotrypsin are both serine proteases of the pancreas but differ in substrate specificity. Which statement correctly distinguishes them?",
+      "options": [
+        "Trypsin cleaves after hydrophobic residues (Phe, Trp, Tyr); chymotrypsin cleaves after basic residues (Arg, Lys)",
+        "Trypsin is an exopeptidase; chymotrypsin is an endopeptidase",
+        "Both cleave only after acidic residues (Asp, Glu)",
+        "Trypsin cleaves after basic residues (Arg, Lys); chymotrypsin cleaves after hydrophobic residues (Phe, Trp, Tyr)"
+      ]
+    },
+    "Q32": {
+      "q": "Q32",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "How many cycles of β-oxidation are required to completely degrade palmitoyl-CoA (C16:0) to acetyl-CoA units?",
+      "options": [
+        "8 cycles, producing 8 acetyl-CoA",
+        "7 cycles, producing 8 acetyl-CoA",
+        "16 cycles, producing 16 acetyl-CoA",
+        "7 cycles, producing 7 acetyl-CoA"
+      ]
+    },
+    "Q33": {
+      "q": "Q33",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "What is the total net ATP yield from the complete oxidation of one molecule of palmitate (C16:0) to CO₂ and H₂O? (Assume 2.5 ATP per NADH, 1.5 ATP per FADH₂, and 10 ATP per acetyl-CoA through the citric acid cycle.)",
+      "options": [
+        "106 ATP",
+        "129 ATP",
+        "108 ATP",
+        "131 ATP"
+      ]
+    },
+    "Q34": {
+      "q": "Q34",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In the citric acid cycle, which step directly produces GTP (or ATP in some organisms) by substrate-level phosphorylation?",
+      "options": [
+        "Citrate → Isocitrate (aconitase)",
+        "Isocitrate → α-Ketoglutarate (isocitrate dehydrogenase)",
+        "Succinyl-CoA → Succinate (succinyl-CoA synthetase)",
+        "Malate → Oxaloacetate (malate dehydrogenase)"
+      ]
+    },
+    "Q35": {
+      "q": "Q35",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Under anaerobic conditions, pyruvate is converted to lactate in human muscle. What is the net ATP yield from the anaerobic degradation of one glucose molecule to two lactate molecules?",
+      "options": [
+        "2 ATP",
+        "36 ATP",
+        "4 ATP",
+        "38 ATP"
+      ]
+    },
+    "Q36": {
+      "q": "Q36",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In β-oxidation, the four sequential enzymatic steps per cycle are, in order:",
+      "options": [
+        "Hydration → Oxidation → Thiolysis → Dehydrogenation",
+        "Reduction → Dehydration → Reduction → Condensation",
+        "Thiolysis → Dehydrogenation → Hydration → Oxidation",
+        "Oxidation (FAD) → Hydration → Oxidation (NAD⁺) → Thiolytic cleavage"
+      ]
+    },
+    "Q37": {
+      "q": "Q37",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "What volume (in liters) of CO₂ gas at STP (0 °C, 1 atm) is produced when 10.0 g of CaCO₃ is completely decomposed by heating? (Molar masses: Ca = 40.1, C = 12.0, O = 16.0 g/mol; molar volume at STP = 22.4 L/mol)",
+      "options": [
+        "1.12 L",
+        "2.24 L",
+        "3.36 L",
+        "4.48 L"
+      ]
+    },
+    "Q38": {
+      "q": "Q38",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "What is the pH of a 0.0050 M HCl solution at 25 °C? (Assume complete dissociation; log 2 = 0.30, log 5 = 0.70)",
+      "options": [
+        "2.00",
+        "2.30",
+        "3.00",
+        "2.70"
+      ]
+    },
+    "Q39": {
+      "q": "Q39",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "How many grams of NaOH are needed to completely neutralize 50.0 mL of 0.200 M H₂SO₄? (Molar mass of NaOH = 40.0 g/mol)",
+      "options": [
+        "0.40 g",
+        "0.20 g",
+        "0.80 g",
+        "1.60 g"
+      ]
+    },
+    "Q40": {
+      "q": "Q40",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "A chemist dilutes 25.0 mL of a 6.00 M HCl stock solution to a final volume of 500.0 mL. What is the molarity of the diluted solution?",
+      "options": [
+        "0.150 M",
+        "0.600 M",
+        "0.500 M",
+        "0.300 M"
+      ]
+    },
+    "Q41": {
+      "q": "Q41",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Given the following enthalpy data: C(s) + O₂(g) → CO₂(g), ΔH₁ = -393.5 kJ/mol H₂(g) + ½O₂(g) → H₂O(l), ΔH₂ = -285.8 kJ/mol CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l), ΔH₃ = -890.4 kJ/mol Using Hess's law, what is ΔH for the reaction: C(s) + 2H₂(g) → CH₄(g)?",
+      "options": [
+        "-74.7 kJ/mol",
+        "+74.7 kJ/mol",
+        "-1569.7 kJ/mol",
+        "-496.9 kJ/mol"
+      ]
+    },
+    "Q42": {
+      "q": "Q42",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "What is the correct IUPAC name for the compound with the formula KMnO₄?",
+      "options": [
+        "Potassium manganite",
+        "Potassium manganate",
+        "Potassium permanganate",
+        "Potassium manganese oxide"
+      ]
+    },
+    "Q43": {
+      "q": "Q43",
+      "key": "D",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which formula corresponds to the compound named \"iron(III) sulfate\"?",
+      "options": [
+        "FeSO₄",
+        "Fe₃(SO₄)₂",
+        "Fe₂S₃",
+        "Fe₂(SO₄)₃"
+      ]
+    },
+    "Q44": {
+      "q": "Q44",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In organic chemistry, the acyl group CH₃CO- is derived from which carboxylic acid?",
+      "options": [
+        "Formic acid (methanoic acid)",
+        "Acetic acid (ethanoic acid)",
+        "Propionic acid (propanoic acid)",
+        "Butyric acid (butanoic acid)"
+      ]
+    },
+    "Q45": {
+      "q": "Q45",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "What is the common name for the simplest dicarboxylic acid, HOOC-COOH?",
+      "options": [
+        "Malonic acid",
+        "Succinic acid",
+        "Oxalic acid",
+        "Fumaric acid"
+      ]
+    },
+    "Q46": {
+      "q": "Q46",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "The porphyrin ring system in hemoglobin coordinates a central metal ion. Which metal ion is present in the heme group of hemoglobin, and what oxidation state must it remain in to bind oxygen reversibly?",
+      "options": [
+        "Fe²⁺; must remain as Fe²⁺ (ferrous) for reversible O₂ binding",
+        "Fe³⁺; must remain as Fe³⁺ for oxygen binding",
+        "Mg²⁺; must remain as Mg²⁺",
+        "Cu²⁺; must remain as Cu²⁺"
+      ]
+    },
+    "Q47": {
+      "q": "Q47",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "The steroid ring system consists of fused carbon rings. What is the correct arrangement of rings in the steroid nucleus (cyclopentanoperhydrophenanthrene)?",
+      "options": [
+        "Four 6-membered rings arranged in a line",
+        "Three 6-membered rings (A, B, C) and one 5-membered ring (D)",
+        "Two 6-membered rings and two 5-membered rings",
+        "One 6-membered ring and three 5-membered rings"
+      ]
+    },
+    "Q48": {
+      "q": "Q48",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which vitamin's chemical name is ascorbic acid, and what is its primary biochemical function?",
+      "options": [
+        "Vitamin A (retinol) - required for vision in dim light",
+        "Vitamin B₁₂ (cobalamin) - required for methyl group transfer",
+        "Vitamin C (ascorbic acid) - required as a cofactor for collagen hydroxylation",
+        "Vitamin E (tocopherol) - required as a lipid-soluble antioxidant"
+      ]
+    },
+    "Q49": {
+      "q": "Q49",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "In humans, the urea cycle converts toxic ammonia into urea for excretion. Where does the urea cycle primarily take place?",
+      "options": [
+        "Kidney cortex exclusively",
+        "Skeletal muscle mitochondria",
+        "Liver (beginning in mitochondria, completing in cytosol of hepatocytes)",
+        "Red blood cells"
+      ]
+    },
+    "Q50": {
+      "q": "Q50",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Gout is a clinical condition caused by the deposition of crystals in joints. Which metabolic end product accumulates in gout, and what is its biochemical origin?",
+      "options": [
+        "Urea crystals from protein catabolism",
+        "Uric acid (monosodium urate) crystals from purine degradation",
+        "Creatinine crystals from muscle creatine phosphate breakdown",
+        "Calcium oxalate crystals from vitamin C metabolism"
+      ]
+    },
+    "Q51": {
+      "q": "Q51",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which of the following correctly distinguishes the three major nitrogen waste products in human clinical chemistry?",
+      "options": [
+        "Urea is derived from pyrimidine degradation; uric acid from the urea cycle; creatinine from amino acid transamination",
+        "Urea is the primary waste from amino acid nitrogen; uric acid from purine degradation; creatinine from spontaneous cyclization of creatine phosphate in muscle",
+        "All three are products of the urea cycle, differing only in their site of production",
+        "Urea is produced only in the kidneys; uric acid only in the liver; creatinine only in the brain"
+      ]
+    },
+    "Q52": {
+      "q": "Q52",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "When sodium acetate (CH3COONa) is dissolved in water, the resulting solution is:",
+      "options": [
+        "Acidic, because the sodium ion undergoes hydrolysis",
+        "Neutral, because both ions come from strong electrolytes",
+        "Alkaline, because the acetate ion undergoes hydrolysis to produce OH- ions",
+        "Acidic, because acetic acid is released and lowers the pH"
+      ]
+    },
+    "Q53": {
+      "q": "Q53",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "A 0.1 M solution of ammonium chloride (NH4Cl) is prepared. Given that the Kb of ammonia (NH3) is 1.8 x 10-5, what is the approximate pH of this solution?",
+      "options": [
+        "pH ≈ 9.13 (alkaline)",
+        "pH ≈ 5.13 (acidic)",
+        "pH ≈ 7.00 (neutral)",
+        "pH ≈ 2.87 (strongly acidic)"
+      ]
+    },
+    "Q54": {
+      "q": "Q54",
+      "key": "A",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "When sodium hydride (NaH) reacts with water, the products are:",
+      "options": [
+        "Sodium hydroxide and hydrogen gas",
+        "Sodium oxide and water vapor",
+        "Sodium metal and hydrogen peroxide",
+        "Sodium chloride and hydroxide ions"
+      ]
+    },
+    "Q55": {
+      "q": "Q55",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "When calcium carbide (CaC2) reacts with water, the gas produced is:",
+      "options": [
+        "Methane (CH4)",
+        "Ethylene (C2H4)",
+        "Acetylene (C2H2)",
+        "Carbon dioxide (CO2)"
+      ]
+    },
+    "Q56": {
+      "q": "Q56",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "When the combustion reaction of propane is balanced: C3H8 + O2 → CO2 + H2O, what is the coefficient of O2?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ]
+    },
+    "Q57": {
+      "q": "Q57",
+      "key": "B",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Insulin and inulin are two distinct biological substances. Which statement correctly distinguishes them?",
+      "options": [
+        "Insulin is a polysaccharide stored in the liver; inulin is a peptide hormone from the pancreas",
+        "Insulin is a peptide hormone regulating blood glucose; inulin is a polysaccharide used to measure glomerular filtration rate",
+        "Both are peptide hormones secreted by different endocrine glands",
+        "Both are polysaccharides with identical chemical formulas but different structures"
+      ]
+    },
+    "Q58": {
+      "q": "Q58",
+      "key": "C",
+      "keySource": "from exported answer heading",
+      "overlap": null,
+      "stem": "Which noble gas is the most abundant in Earth's atmosphere?",
+      "options": [
+        "Helium (He)",
+        "Neon (Ne)",
+        "Argon (Ar)",
+        "Xenon (Xe)"
+      ]
+    },
+    "Q59": {
+      "q": "Q59",
+      "key": "C",
+      "keySource": "scientifically determined, verify stored key",
+      "overlap": null,
+      "stem": "Which of the following is an example of an amorphous solid?",
+      "options": [
+        "Sodium chloride (NaCl)",
+        "Diamond",
+        "Glass (silicate)",
+        "Quartz (crystalline SiO₂)"
+      ]
+    },
+    "Q60": {
+      "q": "Q60",
+      "key": "A",
+      "keySource": "scientifically determined, verify stored key",
+      "overlap": null,
+      "stem": "Sodium chloride (NaCl) is best classified as which type of crystalline solid?",
+      "options": [
+        "Ionic crystal",
+        "Molecular crystal",
+        "Metallic crystal",
+        "Covalent network solid"
+      ]
+    }
+  }
+}

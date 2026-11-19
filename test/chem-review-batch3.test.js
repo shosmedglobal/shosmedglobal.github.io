@@ -266,8 +266,8 @@ for (const q of data.chemistry) {
 }
 checks++; if (chemDrift) failures++;
 const nChem = Object.keys(untouched.chemistry).length;
-ok(nChem === 185, `${nChem} out-of-pack chemistry hashes, expected 185 after the chemistry batch 7 prune`);
-ok(nChem + 60 + 60 + 60 + 60 + 60 === 485, 'the out-of-pack set, this pack and chemistry batches 4, 5, 6 and 7 should be the whole chemistry bank');
+ok(nChem === 129, `${nChem} out-of-pack chemistry hashes, expected 129 after the chemistry batch 8 prune`);
+ok(nChem + 60 + 60 + 60 + 60 + 60 + 56 === 485, 'the out-of-pack set, this pack and the new ids of chemistry batches 4 to 8 should be the whole chemistry bank');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts should be 629 and 485');
 for (const id of IDS) ok(!(id in untouched.chemistry), `${id} is both in the pack and in the untouched set`);
 
