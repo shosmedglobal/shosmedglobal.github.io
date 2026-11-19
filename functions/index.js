@@ -125,11 +125,13 @@ const TIERS = {
   // $99 Price so a med-school buyer's receipt does not read
   // "Match Mentorship Add-On".
   //
-  // LF3 Application Fee Payment is also $99 but deliberately does NOT share
-  // 'application-addon'. Roughly $91 of its $99 is the faculty's 2,000 CZK
+  // LF3 Application Fee Payment deliberately does NOT share
+  // 'application-addon'. Roughly $91 of its $149 is the faculty's 2,000 CZK
   // admission fee passing through us, not revenue, so it needs its own line
   // in Stripe reporting. Sharing a Price would make the two impossible to
-  // separate at reconciliation or at tax time.
+  // separate at reconciliation or at tax time. It was $99 until 2026-11-18;
+  // the amount lives on the Stripe Price, so a repricing never touches this
+  // file beyond the comments.
   //
   // Every lookup key here must exist on an ACTIVE Price in Stripe or checkout
   // fails at click time with "No active Stripe price found for lookup_key".
@@ -148,7 +150,7 @@ const TIERS = {
   // Sold only to applicants who already hold 'apply-lf3-service'. The store
   // enforces that in the UI; this map stays permissive so an admin can still
   // record the purchase manually for someone who registered off-site.
-  'lf3-application-fee': {       // LF3 Application Fee Payment — $99
+  'lf3-application-fee': {       // LF3 Application Fee Payment — $149
     field: 'lf3-application-fee', priceKey: 'lf3-application-fee', plan: null, expiryDays: null,
   },
 };

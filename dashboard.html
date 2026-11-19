@@ -1226,7 +1226,7 @@
                       <span class="addon-icon" aria-hidden="true">&#9432;</span>
                     </div>
                     <div class="addon-detail">
-                      <span class="addon-price">$99</span>
+                      <span class="addon-price">$149</span>
                       <p class="addon-desc">We pay the 2,000 CZK admission fee to Charles University, Third Faculty of Medicine on your behalf and send you the faculty's confirmation. <span id="lf3FeeAddonNote">Available only to applicants who have already registered with us for the LF3 entrance examination.</span></p>
                     </div>
                   </li>
@@ -1505,7 +1505,7 @@
                     <optgroup label="Med School Application">
                       <option value="full-qbank">Full QBank Access &middot; $99</option>
                       <option value="apply-lf3-service">LF3 Entrance Exam Registration &middot; $199</option>
-                      <option value="lf3-application-fee">LF3 Application Fee Payment &middot; $99</option>
+                      <option value="lf3-application-fee">LF3 Application Fee Payment &middot; $149</option>
                       <option value="mock-exam-interview">Mock Interview + Feedback &middot; $99</option>
                       <option value="life-in-prague">Life in Prague &middot; $99</option>
                       <option value="applicant-mentor">1-on-1 Mentor Session (applicant) &middot; $99</option>
@@ -5418,7 +5418,7 @@
       const registered = paid || isStaff === true;
       opt.disabled = !registered;
       opt.textContent = registered
-        ? 'LF3 Application Fee Payment · $99'
+        ? 'LF3 Application Fee Payment · $149'
         : 'LF3 Application Fee Payment · requires exam registration';
       if (note) {
         note.textContent = !paid && isStaff

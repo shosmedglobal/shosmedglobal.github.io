@@ -34,7 +34,8 @@ const TIERS = new Function(indexSrc.match(/const TIERS = (\{[\s\S]*?\n\});/)[0] 
 // in Stripe and added here in the same change.
 const STRIPE_LOOKUP_KEYS = new Set([
   'full-access', 'strategy-session', 'mentorship-addon', 'apply-lf3', 'application-addon',
-  // Product prod_VcL9FhGaEpiHbw, $99. Its Price must carry this lookup_key:
+  // Product prod_VcL9FhGaEpiHbw, $149 since 2026-11-18. Its ACTIVE Price must
+  // carry this lookup_key, and only one active price may carry it:
   // checkout resolves by lookup_key, never by product id, so a price created
   // without one fails at click time however correct the product looks.
   'lf3-application-fee',
@@ -312,6 +313,28 @@ const RESTRICTION = 'Available only to applicants who have already registered '
 check('7m the dashboard store lists the add-on', html.includes('LF3 Application Fee Payment'));
 check('7n it names the 2,000 CZK fee it covers', html.includes('2,000 CZK admission fee'));
 check('7o it states who it is for', html.includes(RESTRICTION));
+
+// The price is shown in three places that can drift apart: the add-on card,
+// the admin's manual-record select, and the JS label the gate writes when it
+// unlocks the option. The real amount lives on the Stripe Price, so these are
+// display copy only -- which is exactly why nothing else would catch a stale
+// one. They must agree with each other and name the current price.
+{
+  const LF3_FEE_PRICE = '$149';            // keep in step with the Stripe Price
+  const cardAt = html.indexOf('id="lf3FeeAddonItem"');
+  const card = cardAt === -1 ? '' : html.slice(cardAt, html.indexOf('</li>', cardAt));
+  const cardPrice = (card.match(/<span class="addon-price">(\$\d+)<\/span>/) || [])[1];
+  check('7r the add-on card names the price', cardPrice === LF3_FEE_PRICE, cardPrice);
+
+  const adminOpt = (html.match(/<option value="lf3-application-fee">LF3 Application Fee Payment &middot; (\$\d+)<\/option>/) || [])[1];
+  check('7s the admin manual-record option names the same price', adminOpt === LF3_FEE_PRICE, adminOpt);
+
+  const gateLabel = (html.match(/\?\s*'LF3 Application Fee Payment · (\$\d+)'/) || [])[1];
+  check('7t the unlocked select label names the same price', gateLabel === LF3_FEE_PRICE, gateLabel);
+
+  // And no stale copy survives anywhere near the product.
+  check('7u no stale price is left in the add-on card', !/\$99/.test(card), card.slice(0, 200));
+}
 
 // The public page must NOT, and this is load-bearing rather than cosmetic:
 // only a signed-in page can check the entitlement, so listing it publicly
