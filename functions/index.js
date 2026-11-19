@@ -150,8 +150,18 @@ const TIERS = {
   // Sold only to applicants who already hold 'apply-lf3-service'. The store
   // enforces that in the UI; this map stays permissive so an admin can still
   // record the purchase manually for someone who registered off-site.
+  // NOTE the two different identifiers here, which must not be conflated:
+  //   the TIER KEY 'lf3-application-fee' is ours. It is the Firestore
+  //     entitlement field, the ledger `tier` and the product-catalog.js key.
+  //     Renaming it would orphan every purchase already recorded, so it is
+  //     fixed forever.
+  //   the PRICE KEY is Stripe's lookup_key, and is free to change. It moved to
+  //     'lf3-application-fee-v2' on 2026-11-18 with the repricing: Stripe
+  //     keeps a lookup_key attached to a price even after that price is
+  //     archived, so the retired $99 price still holds the original
+  //     'lf3-application-fee' and it cannot be reused.
   'lf3-application-fee': {       // LF3 Application Fee Payment — $149
-    field: 'lf3-application-fee', priceKey: 'lf3-application-fee', plan: null, expiryDays: null,
+    field: 'lf3-application-fee', priceKey: 'lf3-application-fee-v2', plan: null, expiryDays: null,
   },
 };
 

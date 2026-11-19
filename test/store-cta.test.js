@@ -34,11 +34,16 @@ const TIERS = new Function(indexSrc.match(/const TIERS = (\{[\s\S]*?\n\});/)[0] 
 // in Stripe and added here in the same change.
 const STRIPE_LOOKUP_KEYS = new Set([
   'full-access', 'strategy-session', 'mentorship-addon', 'apply-lf3', 'application-addon',
-  // Product prod_VcL9FhGaEpiHbw, $149 since 2026-11-18. Its ACTIVE Price must
-  // carry this lookup_key, and only one active price may carry it:
-  // checkout resolves by lookup_key, never by product id, so a price created
-  // without one fails at click time however correct the product looks.
-  'lf3-application-fee',
+  // Product prod_VcL9FhGaEpiHbw, $149 since 2026-11-18. Checkout resolves by
+  // lookup_key, never by product id, so a price created without one fails at
+  // click time however correct the product looks.
+  //
+  // The key is '-v2' because Stripe keeps a lookup_key attached to a price
+  // even after that price is archived: the retired $99 price still holds
+  // 'lf3-application-fee', and Stripe refuses to reuse it on a new price.
+  // Listing the retired key here would be wrong, since no ACTIVE price
+  // carries it.
+  'lf3-application-fee-v2',
 ]);
 
 // createCheckoutSession asks Stripe for `tierConfig.priceKey || tier`, so a
@@ -273,18 +278,30 @@ check('7c its locked label says why', /requires exam registration/.test(feeOpt))
 check('7d it buys the lf3-application-fee tier', /value="lf3-application-fee"/.test(feeOpt));
 
 check('7e the tier exists in functions/index.js', TIERS['lf3-application-fee'] !== undefined);
+// Its own price, not the shared one. This is the only tier whose priceKey is
+// not simply its tier name, so it is spelled out rather than inferred.
+const LF3_FEE_PRICE_KEY = 'lf3-application-fee-v2';
 check('7f it does not share the generic application-addon price',
-  lookupKey('lf3-application-fee') === 'lf3-application-fee', lookupKey('lf3-application-fee'));
+  lookupKey('lf3-application-fee') === LF3_FEE_PRICE_KEY, lookupKey('lf3-application-fee'));
+// The retired $99 price keeps the original key forever, so pointing at it
+// again would resolve nothing: prices.list filters on active: true.
+check('7f1 it does not point back at the retired price key',
+  lookupKey('lf3-application-fee') !== 'lf3-application-fee', lookupKey('lf3-application-fee'));
 // Exclusivity, the other way round: nothing else may point at this price.
 // The other $99 med-school add-ons deliberately share 'application-addon',
 // so adding one here would be an easy and invisible mistake. It matters
-// because most of this product's $99 is the faculty's fee passing through
+// because most of this product's $149 is the faculty's fee passing through
 // us, and a second item on the same price would mix real revenue into it.
 {
-  const sharers = Object.keys(TIERS).filter(t => lookupKey(t) === 'lf3-application-fee');
+  const sharers = Object.keys(TIERS).filter(t => lookupKey(t) === LF3_FEE_PRICE_KEY);
   check('7f2 no other store item is sold on the lf3-application-fee price',
     sharers.length === 1 && sharers[0] === 'lf3-application-fee', sharers);
 }
+// The tier key itself is ours and is load-bearing: it is the Firestore
+// entitlement field and the ledger `tier`. Changing the Stripe price key
+// must never drag it along, or every recorded purchase is orphaned.
+check('7f3 the tier key is unchanged by the repricing',
+  TIERS['lf3-application-fee'] !== undefined && TIERS['lf3-application-fee'].field === 'lf3-application-fee');
 check('7g its lookup_key is one Stripe carries',
   STRIPE_LOOKUP_KEYS.has(lookupKey('lf3-application-fee')));
 check('7h it records its own entitlement field',
