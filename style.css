@@ -4278,3 +4278,37 @@ a {
     padding: 16px;
   }
 }
+
+/* ---- Exponents and indices inside question content ----------------------
+ * Nothing in the card layout separates a superscript from its base: the
+ * option row is a flex container, but its two children are the letter circle
+ * and a single text span, so `gap: 14px` never falls between a unit and its
+ * exponent, and the measured horizontal distance between them is 0.
+ *
+ * The separation is vertical and comes from the browser defaults, which no
+ * stylesheet here overrode. `font-size: smaller` makes an exponent 0.83em,
+ * and `vertical-align: super` lifts it about 0.46em above the baseline; at
+ * that height a glyph that large clears the top of the letter it belongs to
+ * and reads as a detached character. The lift is also a fraction of the
+ * surrounding font size, so the same formula sat at 0.40em in a Key Concept,
+ * 0.465em in an option and 0.46em in a keyed heading.
+ *
+ * These rules give every exponent and index one relative size and one
+ * relative offset wherever question content is rendered: the QBank card, the
+ * end-of-quiz review, the practice exam and the admin question viewer.
+ * `line-height: 0` keeps them out of the line box, so a formula no longer
+ * opens up the leading around its own line, and `white-space: nowrap` keeps a
+ * two-character exponent such as the minus and digit of s<sup>-2</sup>
+ * together. Surrounding prose is untouched and still wraps normally.
+ *
+ * Scoped to those four containers on purpose: the marketing pages use <sup>
+ * for footnote daggers with their own inline sizes and offsets. */
+:is(.quiz-mainbox, #reviewContainer, .exam-app, #qviewOverlay) :is(sup, sub) {
+  font-size: 0.72em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+:is(.quiz-mainbox, #reviewContainer, .exam-app, #qviewOverlay) sup { top: -0.42em; }
+:is(.quiz-mainbox, #reviewContainer, .exam-app, #qviewOverlay) sub { bottom: -0.20em; }
