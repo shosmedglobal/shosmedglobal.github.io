@@ -34,9 +34,14 @@ const TIERS = new Function(indexSrc.match(/const TIERS = (\{[\s\S]*?\n\});/)[0] 
 // in Stripe and added here in the same change.
 const STRIPE_LOOKUP_KEYS = new Set([
   'full-access', 'strategy-session', 'mentorship-addon', 'apply-lf3', 'application-addon',
-  // Product prod_VcL9FhGaEpiHbw, $149 since 2026-11-18. Checkout resolves by
-  // lookup_key, never by product id, so a price created without one fails at
-  // click time however correct the product looks.
+  // LF3 Application Fee Payment, $149 one-off since 2026-11-18.
+  //
+  // No product id is recorded here on purpose: checkout resolves by
+  // lookup_key alone, never by product, so the lookup_key IS the contract and
+  // a product id in a comment only goes stale. For reconciling older
+  // payments: the $99 version lived on product prod_VcL9FhGaEpiHbw, which is
+  // retired; the $149 price sits on a separate product of the same name, so
+  // Stripe reporting shows the two eras as two product lines.
   //
   // The key is '-v2' because Stripe keeps a lookup_key attached to a price
   // even after that price is archived: the retired $99 price still holds
