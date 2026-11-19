@@ -1,0 +1,197 @@
+{
+  "A1": {
+    "id": "chem-478",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Which of the following is a covalent network solid in which every atom is bonded to its neighbors by strong covalent bonds in a continuous 3D lattice?",
+    "options": [
+      "Iodine (I₂)",
+      "Diamond (C)",
+      "Iron (Fe)",
+      "Solid carbon dioxide (CO₂)"
+    ],
+    "correct": 1,
+    "explanation": "In diamond, each carbon atom is sp³-hybridized and covalently bonded to four other carbons in a tetrahedral 3D network. Because melting requires breaking covalent bonds throughout the entire lattice, diamond has an extremely high melting point (~3550 °C) and is the hardest naturally occurring substance. Iodine and CO₂ are molecular crystals; iron is metallic.",
+    "free": false
+  },
+  "A2": {
+    "id": "chem-479",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "How many atoms are effectively contained within a simple cubic unit cell?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "8"
+    ],
+    "correct": 0,
+    "explanation": "A simple cubic unit cell has 8 atoms positioned at its 8 corners. Each corner atom is shared among 8 adjacent unit cells, so it contributes only 1/8 of an atom to any given cell. Total = 8 corners × 1/8 = 1 atom per unit cell. This makes simple cubic the least efficient cubic packing (~52% packing fraction).",
+    "free": false
+  },
+  "A3": {
+    "id": "chem-480",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "A body-centered cubic (BCC) unit cell contains how many atoms?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "A BCC unit cell has 8 atoms at the corners (each shared with 8 cells, contributing 8 × 1/8 = 1 atom) plus 1 atom at the body center entirely inside the cell (contributing 1 full atom). Total = 1 + 1 = 2 atoms per unit cell. Examples include alpha-iron, chromium, and tungsten. Packing fraction is ~68%.",
+    "free": false
+  },
+  "A4": {
+    "id": "chem-481",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "What is the coordination number of an atom in a face-centered cubic (FCC) crystal structure?",
+    "options": [
+      "4",
+      "6",
+      "8",
+      "12"
+    ],
+    "correct": 3,
+    "explanation": "In FCC packing each atom is in direct contact with 12 nearest neighbors: 4 in its own plane, 4 in the plane above, and 4 in the plane below. This is the maximum possible coordination number for identical spheres and is shared with hexagonal close-packed (HCP). FCC metals (e.g., Cu, Al, Au, Ag, Ni) achieve 74% packing efficiency, the highest possible for equal spheres.",
+    "free": true
+  },
+  "A5": {
+    "id": "chem-482",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Diamond and graphite are both made of pure carbon but have very different physical properties. They are best described as:",
+    "options": [
+      "Isomers",
+      "Allotropes",
+      "Isotopes",
+      "Polymorphs of an alloy"
+    ],
+    "correct": 1,
+    "explanation": "Allotropes are different structural forms of the same element. Diamond uses sp³ hybridization in a 3D tetrahedral network, making it hard, transparent, and an electrical insulator. Graphite uses sp² hybridization in stacked hexagonal layers held together by weak London forces, making it soft, opaque, and electrically conductive along the layers. Other carbon allotropes include fullerenes, carbon nanotubes, and graphene.",
+    "free": false
+  },
+  "A6": {
+    "id": "chem-483",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Which type of crystalline solid typically has the LOWEST melting point?",
+    "options": [
+      "Ionic crystal",
+      "Molecular crystal",
+      "Covalent network solid",
+      "Metallic crystal"
+    ],
+    "correct": 1,
+    "explanation": "Molecular crystals (e.g., ice, solid CO₂, iodine, naphthalene) are held together only by relatively weak intermolecular forces — hydrogen bonds, dipole-dipole, or London dispersion. Melting only disrupts these weak interactions, not the strong covalent bonds within molecules, so most molecular solids melt below 200 °C. Ionic, metallic, and covalent network solids all require breaking much stronger interactions and melt at far higher temperatures.",
+    "free": false
+  },
+  "A7": {
+    "id": "chem-484",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Which of the following substances sublimes at standard atmospheric pressure (changes directly from solid to gas without melting)?",
+    "options": [
+      "Water (H₂O)",
+      "Sodium chloride (NaCl)",
+      "Carbon dioxide (CO₂) — \"dry ice\"",
+      "Iron (Fe)"
+    ],
+    "correct": 2,
+    "explanation": "Dry ice (solid CO₂) sublimes at −78.5 °C at 1 atm because the triple point of CO₂ sits at 5.1 atm — below that pressure, no liquid phase is thermodynamically stable, so the solid passes directly to gas. Water, NaCl, and iron all have stable liquid phases at 1 atm and melt before vaporizing.",
+    "free": false
+  },
+  "A8": {
+    "id": "chem-485",
+    "subject": "chemistry",
+    "topic": "Solid State",
+    "question": "Why are most metallic solids good conductors of electricity in the solid state?",
+    "options": [
+      "Their lattice contains free-moving anions",
+      "They have a \"sea\" of delocalized electrons that move freely throughout the lattice",
+      "Their cations vibrate and physically carry charge",
+      "They contain hydrogen bonds that conduct electrons"
+    ],
+    "correct": 1,
+    "explanation": "In the metallic-bond model, the valence electrons of each atom are not bound to individual nuclei but are delocalized across the entire crystal as an \"electron sea\" surrounding a lattice of metal cations. When a potential difference is applied, this mobile electron cloud drifts and carries current. By contrast, ionic solids only conduct when molten or dissolved (mobile ions), and covalent network solids generally do not conduct because their electrons are localized in covalent bonds.",
+    "free": false
+  },
+  "B1": {
+    "id": "chem-61",
+    "subject": "chemistry",
+    "topic": "States of Matter & Gas Laws",
+    "question": "A sealed container holds 2.0 mol of an ideal gas at 300 K and 1.0 atm. If the temperature is increased to 600 K at constant volume, what is the new pressure?",
+    "options": [
+      "0.5 atm",
+      "2.0 atm",
+      "1.0 atm",
+      "4.0 atm"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B. 2.0 atm</h4><p>At constant volume and constant moles, Gay-Lussac's law applies: P1/T1 = P2/T2. Substituting: 1.0/300 = P2/600, so P2 = 2.0 atm.</p><p>Doubling the absolute temperature at constant volume doubles the pressure because gas molecules move faster and collide with walls more frequently.</p><h4>Why the other choices are wrong:</h4><p><strong>A. 0.5 atm:</strong> Getting 0.5 atm would imply an inverse relationship between pressure and temperature, but Gay-Lussac's law states they are directly proportional at constant volume: P1/T1 = P2/T2. Doubling temperature (300K to 600K) doubles the pressure (1.0 to 2.0 atm).</p>\n<p><strong>C. 1.0 atm:</strong> The pressure cannot remain at 1.0 atm when temperature doubles in a sealed container. Higher temperature means gas molecules move faster and strike the container walls more forcefully and frequently, increasing the pressure proportionally.</p>\n<p><strong>D. 4.0 atm:</strong> Getting 4.0 atm would mean quadrupling the pressure, which would require quadrupling the absolute temperature (to 1200 K). Doubling temperature from 300K to 600K only doubles the pressure to 2.0 atm. Remember to always use Kelvin, not Celsius.</p><h4>Key Educational Points:</h4><ul><li>At constant volume and amount of gas, pressure is directly proportional to absolute temperature (Gay-Lussac's law): P₁/T₁ = P₂/T₂.</li><li>Temperature must be in kelvin, because the proportionality is to absolute temperature - using Celsius gives a wrong answer.</li><li>Here T doubles from 300 K to 600 K, so the pressure doubles from 1.0 to 2.0 atm.</li><li>The molecular reason is that hotter molecules move faster, so wall collisions become both more frequent and more forceful.</li><li>A sealed rigid container fixes both the volume and the number of moles, which is what allows the simple two-variable relationship.</li></ul><p class='exp-key'>Bottom Line: At constant volume, pressure is directly proportional to absolute temperature (Gay-Lussac's Law).</p>",
+    "free": true
+  },
+  "B2": {
+    "id": "chem-19",
+    "subject": "chemistry",
+    "topic": "Isomerism",
+    "question": "Which type of isomerism is exhibited by a pair of molecules that are non-superimposable mirror images of each other?",
+    "options": [
+      "Structural (constitutional) isomerism",
+      "Geometric (cis-trans) isomerism",
+      "Optical isomerism (enantiomerism)",
+      "Tautomerism"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Optical isomerism (enantiomerism)</h4><p>Enantiomers are stereoisomers that are non-superimposable mirror images, like left and right hands (hence the term \"chirality\" from Greek cheir = hand).</p><table class='exp-table'><tr><th>Type of Isomerism</th><th>Definition</th><th>Example</th></tr><tr><td>Structural</td><td>Same formula, different connectivity</td><td>Butane vs. isobutane</td></tr><tr><td>Geometric (cis-trans)</td><td>Same connectivity, different spatial arrangement around double bond</td><td>cis-2-butene vs. trans-2-butene</td></tr><tr><td><strong>Optical (enantiomers)</strong></td><td><strong>Non-superimposable mirror images</strong></td><td><strong>D-alanine vs. L-alanine</strong></td></tr><tr><td>Tautomerism</td><td>Dynamic equilibrium between structural isomers</td><td>Keto-enol forms</td></tr></table><p>A chiral center (usually a carbon with 4 different substituents) is the most common source of optical isomerism. Enantiomers rotate plane-polarized light by equal amounts in opposite directions, labelled (+) for dextrorotatory and (−) for levorotatory. This is a different labelling system from D/L, which describes configuration relative to glyceraldehyde. A D-sugar or an L-amino acid may be either (+) or (−), and neither label can be predicted from the other.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Structural (constitutional) isomerism:</strong> Structural (constitutional) isomers have the same molecular formula but different connectivity of atoms -- different bonding arrangements. For example, butane and isobutane both have the formula C<sub>4</sub>H<sub>10</sub> but different carbon chain arrangements. They are not mirror images of each other.</p>\n<p><strong>B. Geometric (cis-trans) isomerism:</strong> Geometric (cis-trans) isomers have the same connectivity but differ in the spatial arrangement of groups around a rigid structure like a double bond or ring. Cis means same side, trans means opposite sides. These are superimposable on their mirror images and are not enantiomers.</p>\n<p><strong>D. Tautomerism:</strong> L-alaninetautomerismdynamic equilibrium between structural isomersketo-enol formsa chiral center (usually a carbon with 4 different substituents) is the most common source of optical isomerism.</p><h4>Key Educational Points:</h4><ul><li>Enantiomers are stereoisomers that are non-superimposable mirror images; the underlying property is called chirality.</li><li>The usual source of chirality is a carbon bearing four different groups - a stereocentre.</li><li>Enantiomers have identical melting point, boiling point, and solubility; they differ only in the direction they rotate plane-polarised light and in how they interact with other chiral molecules.</li><li>That last difference matters biologically, because enzymes and receptors are themselves chiral - two enantiomers of a drug can differ completely in effect.</li><li>D/L and (+)/(−) are separate systems and must not be equated: D/L describes configuration by comparison with glyceraldehyde, while (+)/(−) is the experimentally measured direction of rotation. Neither can be predicted from the other.</li></ul><p class='exp-key'>Bottom Line: Enantiomers have identical physical properties (melting point, boiling point) except for the direction of optical rotation. In biology, enzymes are stereospecific: the body uses L-amino acids and D-sugars almost exclusively.</p>",
+    "free": true
+  },
+  "B3": {
+    "id": "bio-12",
+    "subject": "biology",
+    "topic": "Virology",
+    "question": "During the lysogenic cycle of a bacteriophage, what happens to the viral DNA?",
+    "options": [
+      "It immediately destroys the host cell",
+      "It integrates into the host chromosome as a prophage",
+      "It remains in the cytoplasm as an independent plasmid",
+      "It is degraded by host restriction enzymes"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: It integrates into the host chromosome as a prophage</h4><p>Bacteriophages can follow two distinct life cycles after infecting a bacterial cell:</p><table class='exp-table'><tr><th>Feature</th><th>Lytic Cycle</th><th>Lysogenic Cycle</th></tr><tr><td>Viral DNA fate</td><td>Replicates independently</td><td>Integrates into host chromosome</td></tr><tr><td>Host cell fate</td><td>Lysed (destroyed)</td><td>Survives and divides</td></tr><tr><td>Viral term</td><td>Virulent phage</td><td>Temperate phage</td></tr><tr><td>Integrated DNA name</td><td>N/A</td><td><strong>Prophage</strong></td></tr></table><div class='exp-diagram'><p><strong>Lysogenic Cycle:</strong></p><p>Phage infects cell -> Viral DNA integrates into host DNA (prophage) -> Host cell replicates normally, copying prophage with each division -> Environmental stress can trigger switch to lytic cycle</p></div><h4>Why the other choices are wrong:</h4><p><strong>A. It immediately destroys the host cell:</strong> Immediate host cell destruction (lysis) is characteristic of the <em>lytic</em> cycle, not the lysogenic cycle. In the lytic cycle, the phage hijacks host machinery to produce new virions, then lyses the cell to release them. The lysogenic cycle is specifically defined by the phage DNA integrating quietly into the host genome without immediate damage.</p>\n<p><strong>C. It remains in the cytoplasm as an independent plasmid:</strong> While some genetic elements do persist as independent plasmids in the cytoplasm (such as F plasmids in bacteria), the lysogenic cycle specifically involves integration of viral DNA into the host chromosome. The integrated form is called a prophage, and it replicates passively every time the host cell divides.</p>\n<p><strong>D. It is degraded by host restriction enzymes:</strong> Restriction enzymes are a bacterial defense mechanism that cuts foreign DNA at specific recognition sequences. While some phage DNA is indeed destroyed this way, successful lysogenic phages evade restriction enzymes (often through DNA methylation). If the DNA were degraded, no lysogeny could be established.</p><h4>Key Educational Points:</h4><ul><li>Viruses are obligate intracellular parasites consisting of nucleic acid (DNA or RNA) enclosed in a protein coat (capsid); they cannot reproduce independently.</li><li>Viral replication strategies vary: lytic cycle (immediate reproduction and cell lysis) vs. lysogenic cycle (genome integration as prophage with delayed lysis).</li><li>Retroviruses (like HIV) use reverse transcriptase to convert their RNA genome into DNA, which integrates into the host chromosome as a provirus.</li></ul><p class='exp-key'>Bottom Line: In lysogeny, the viral genome (prophage) is silently replicated with the host DNA. Stress signals (UV radiation, chemicals) can induce the prophage to excise and enter the lytic cycle, producing new phages and lysing the cell.</p>",
+    "free": true
+  },
+  "B4": {
+    "id": "bio-518",
+    "subject": "biology",
+    "topic": "Skeletal System",
+    "question": "A histological section of bone reveals tightly packed cylindrical units called osteons (Haversian systems), each with concentric lamellae surrounding a central canal. This tissue is MOST characteristic of:",
+    "options": [
+      "Spongy (cancellous) bone in the epiphysis",
+      "Hyaline cartilage in the articular surface",
+      "Fibrocartilage in the intervertebral disc",
+      "Compact (cortical) bone in the diaphysis"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Compact (cortical) bone in the diaphysis</h4><p>Compact bone is characterized by a highly organized structure of osteons (Haversian systems). Each osteon consists of concentric lamellae of bone matrix surrounding a central Haversian canal that contains blood vessels and nerves. This dense organization provides the mechanical strength needed in the shaft (diaphysis) of long bones.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Spongy (cancellous) bone in the epiphysis:</strong> Spongy bone consists of a network of bony spicules called trabeculae arranged along lines of stress. It lacks the organized osteon structure and is found in the interior of bones, especially at the ends (epiphyses).</p><p><strong>B. Hyaline cartilage in the articular surface:</strong> Hyaline cartilage is an avascular connective tissue composed of chondrocytes within lacunae surrounded by a matrix rich in type II collagen and proteoglycans. It does not contain osteons.</p><p><strong>C. Fibrocartilage in the intervertebral disc:</strong> Fibrocartilage contains dense type I collagen fibers and is found in areas requiring both tensile strength and compressive resistance, such as intervertebral discs. It has no osteon organization.</p><h4>Key Educational Points:</h4><ul><li>Compact bone = osteons with concentric lamellae; spongy bone = trabeculae</li><li>The Haversian canal carries the blood supply within compact bone</li></ul><p class='exp-key'>Bottom Line: Osteons (Haversian systems) are the defining structural feature of compact bone, providing organized strength to the diaphysis of long bones.</p>",
+    "free": true
+  },
+  "B5": {
+    "id": "bio-346",
+    "subject": "biology",
+    "topic": "Histology",
+    "question": "Which type of epithelium lines the urinary bladder and allows it to stretch?",
+    "options": [
+      "Simple squamous epithelium",
+      "Stratified squamous epithelium",
+      "Transitional epithelium (urothelium)",
+      "Pseudostratified columnar epithelium"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C. Transitional epithelium (urothelium)</h4><p>Transitional epithelium is a specialized stratified epithelium found exclusively in the urinary tract (renal pelvis, ureters, urinary bladder, and proximal urethra). Its unique feature is the ability to stretch and recoil. When relaxed, the surface cells appear dome-shaped (umbrella cells); when stretched, they flatten. This allows the bladder to accommodate varying volumes of urine.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Simple squamous epithelium:</strong> Simple squamous epithelium consists of a single layer of flat cells optimized for diffusion and filtration. You find it lining the alveoli of the lungs (for gas exchange), Bowman's capsule in the kidney (for filtration), and the endothelium of blood vessels. It is too thin and fragile to withstand the stretching that occurs in the bladder.</p>\n<p><strong>B. Stratified squamous epithelium:</strong> Stratified squamous epithelium consists of multiple layers of flat cells that provide excellent protection against mechanical abrasion. It lines the skin (keratinized form), the esophagus, mouth, and vagina (non-keratinized form). While it is tough, it does not have the ability to stretch and recoil the way transitional epithelium does.</p>\n<p><strong>D. Pseudostratified columnar epithelium:</strong> Pseudostratified columnar epithelium appears to be multi-layered but is actually a single layer of cells of varying heights, all attached to the basement membrane. It is found primarily in the trachea and upper respiratory tract, where ciliated forms help move mucus and trapped particles upward (mucociliary escalator). It does not have the stretching capacity needed for the urinary bladder.</p><h4>Key Educational Points:</h4><ul><li>Transitional epithelium (urothelium) is specialised for stretch: its surface cells change from dome-shaped to flat as the organ fills.</li><li>The superficial layer is made of large umbrella cells whose apical membrane carries rigid uroplakin plaques, with spare membrane held in cytoplasmic vesicles and inserted as the bladder distends.</li><li>Tight junctions between umbrella cells, together with those plaques, form the blood-urine barrier that stops hypertonic, acidic urine leaking back into the tissue.</li><li>Urothelium lines the urinary tract continuously - renal calyces and pelvis, ureters, bladder, and proximal urethra.</li><li>The layers appear to change in number as the bladder fills, which is where the name transitional came from, but no cells are actually gained or lost.</li></ul>",
+    "free": true
+  }
+}

@@ -353,10 +353,13 @@ for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemi
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
 for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
 // 569 unowned + the 60 in this pack = 629
-ok(Object.keys(untouched.biology).length === 243, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 243`);
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(Object.keys(untouched.biology).length === 240, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 240 after the final-pack prune`);
 // 509 unowned + 60 (review batch 6, handed off when that batch was approved)
 // + the 60 in this batch's own pack = 629
-ok(Object.keys(untouched.biology).length + 60 + 60 + 60 + 60 + 60 + 26 + IDS.length === 629, 'fixtures do not partition the biology bank');
+ok(Object.keys(untouched.biology).length + 60 + 60 + 60 + 60 + 60 + 26 + 3 + IDS.length === 629, 'fixtures do not partition the biology bank');
 
 console.log(`\n${checks} checks, ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);

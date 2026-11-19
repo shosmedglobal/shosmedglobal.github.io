@@ -228,8 +228,10 @@ for (const Q of QS) {
 section('3. nothing outside the pack moved');
 
 let bioBad = 0, chemBad = 0;
-for (const q of data.biology) if (untouched.biology[q.id] !== hash(q)) bioBad++;
-ok(Object.keys(untouched.biology).length === 629, `the untouched fixture holds ${Object.keys(untouched.biology).length} biology hashes`);
+for (const q of data.biology) { /* the final pack reviewed bio-12, bio-346 and bio-518, pruned from this fixture */
+  if (untouched.biology[q.id] === undefined) continue;
+  if (untouched.biology[q.id] !== hash(q)) bioBad++; }
+ok(Object.keys(untouched.biology).length === 626, `the untouched fixture holds ${Object.keys(untouched.biology).length} biology hashes, 626 after the final-pack prune`);
 ok(bioBad === 0, `${bioBad} biology records changed`);
 for (const q of data.chemistry) {
   if (PACK.has(q.id)) continue;
@@ -239,10 +241,13 @@ for (const q of data.chemistry) {
 /* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
    from this fixture, so the hash count below steps down by 60. nChem counts LIVE
    out-of-pack records and is unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 189, `the untouched fixture holds ${Object.keys(untouched.chemistry).length} out-of-pack chemistry hashes (189 after the batch 8 prune)`);
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(Object.keys(untouched.chemistry).length === 179, `the untouched fixture holds ${Object.keys(untouched.chemistry).length} out-of-pack chemistry hashes (179 after the final-pack prune)`);
 ok(chemBad === 0, `${chemBad} chemistry records outside the pack changed`);
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts changed');
-ok(Object.keys(untouched.chemistry).length + 60 + 60 + 60 + 60 + 56 === 485, 'the untouched chemistry hashes, this 60-item pack and the new ids of chemistry batches 5 to 8 should be the whole chemistry bank');
+ok(Object.keys(untouched.chemistry).length + 60 + 60 + 60 + 60 + 56 + 10 === 485, 'the untouched chemistry hashes, this 60-item pack, the new ids of chemistry batches 5 to 8 and the final pack should be the whole chemistry bank');
 
 // ---------------------------------------------------------------------------
 section('4. the specific science and feedback repairs the review names');

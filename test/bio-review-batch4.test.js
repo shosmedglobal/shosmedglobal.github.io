@@ -265,7 +265,10 @@ for (const id of idmap.skipped_already_reviewed) ok(untouched.biology[id] === ha
 // Review batches 5, 6 and 7 have each taken 60 of these ids, so 569 - 180.
 // Each approved batch hands its ids to its own test, so the sweeps partition
 // the bank.
-ok(Object.keys(untouched.biology).length === 183, 'untouched biology hash count unexpected');
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(Object.keys(untouched.biology).length === 180, 'untouched biology hash count unexpected (180 after the final-pack prune)');
 
 // ===========================================================================
 section('7. Structural invariants across the pack');

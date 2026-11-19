@@ -246,16 +246,17 @@ ok(idmap.scope.items_edited === 48 && idmap.scope.keep_unchanged.length === 12,
 section('3. nothing outside the pack moved');
 
 let bioSame = 0, chemSame = 0, outside = [];
-for (const q of data.biology) { if (untouched.biology[q.id] === hash(q)) bioSame++; else outside.push(q.id); }
+for (const q of data.biology) { if (untouched.biology[q.id] === undefined) continue; /* reviewed by the final pack, pruned */
+  if (untouched.biology[q.id] === hash(q)) bioSame++; else outside.push(q.id); }
 for (const q of data.chemistry) {
-  if (PACK.has(q.id)) continue;
+  if (PACK.has(q.id) || untouched.chemistry[q.id] === undefined) continue; /* the final pack reviewed ten more */
   if (untouched.chemistry[q.id] === hash(q)) chemSame++; else outside.push(q.id);
 }
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'the bank still holds 629 biology and 485 chemistry records');
-ok(bioSame === 629, 'all 629 biology records are byte-identical (got ' + bioSame + ')');
-ok(chemSame === 425, 'all 425 out-of-pack chemistry records are byte-identical (got ' + chemSame + ')');
+ok(bioSame === 626, 'all 626 out-of-pack biology records are byte-identical (got ' + bioSame + ')');
+ok(chemSame === 415, 'all 415 out-of-pack chemistry records are byte-identical (got ' + chemSame + ')');
 ok(outside.length === 0, 'no record outside the pack changed' + (outside.length ? ': ' + outside.slice(0, 6).join(', ') : ''));
-ok(Object.keys(untouched.chemistry).length === 425, 'the untouched fixture covers the 425 out-of-pack chemistry records');
+ok(Object.keys(untouched.chemistry).length === 415, 'the untouched fixture covers 415 out-of-pack chemistry records (10 pruned by the final pack)');
 
 /* ------------------------------------------------------------------ */
 section('4. the review\'s content repairs, each paired with a non-vacuity check');

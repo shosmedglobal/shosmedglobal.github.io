@@ -226,13 +226,15 @@ for (const Q of QS) {
 section('3. nothing outside the pack moved');
 
 let bioBad = 0, chemBad = 0, nChem = 0;
-ok(Object.keys(untouched.biology).length === 629, 'the untouched fixture covers 629 biology records');
+ok(Object.keys(untouched.biology).length === 626, 'the untouched fixture covers 626 biology records after the final-pack prune');
 /* NOTE: the chemistry batch 8 pass added 56 new ids (chem-422 .. chem-477),
    pruned from this fixture, so the hash count below steps down by 56. Live
    out-of-pack counts are unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 369, 'the untouched fixture covers 369 out-of-pack chemistry records (56 pruned by the chemistry batch 8 pass)');
-for (const q of data.biology) if (untouched.biology[q.id] !== hash(q)) { bioBad++; console.error('    changed: ' + q.id); }
-ok(bioBad === 0, 'every biology record is unchanged');
+ok(Object.keys(untouched.chemistry).length === 359, 'the untouched fixture covers 359 out-of-pack chemistry records (10 more pruned by the final pack)');
+for (const q of data.biology) { /* the final pack reviewed bio-12, bio-346 and bio-518, pruned from this fixture */
+  if (untouched.biology[q.id] === undefined) continue;
+  if (untouched.biology[q.id] !== hash(q)) { bioBad++; console.error('    changed: ' + q.id); } }
+ok(bioBad === 0, 'every out-of-pack biology record is unchanged');
 for (const q of data.chemistry) {
   if (PACK.has(q.id)) continue;
   nChem++;

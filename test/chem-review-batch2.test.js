@@ -255,9 +255,12 @@ ok(bioDrift === 0, `${bioDrift} biology records changed`);
 ok(chemDrift === 0, `${chemDrift} out-of-pack chemistry records changed`);
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
-ok(nBio === 629, `${nBio} biology hashes in the untouched fixture, expected 629`);
-ok(nChem === 70, `${nChem} out-of-pack chemistry hashes, expected 70 after the chemistry batch 8 prune`);
-ok(nChem + 60 + 59 + 60 + 60 + 60 + 60 + 56 === 485, 'the untouched chemistry set, this pack and the new ids of chemistry batches 3 to 8 should be the whole chemistry bank');
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(nBio === 626, `${nBio} biology hashes in the untouched fixture, expected 626 after the final-pack prune`);
+ok(nChem === 60, `${nChem} out-of-pack chemistry hashes, expected 60 after the final-pack prune`);
+ok(nChem + 60 + 59 + 60 + 60 + 60 + 60 + 56 + 10 === 485, 'the untouched chemistry set, this pack, the new ids of chemistry batches 3 to 8 and the final pack should be the whole chemistry bank');
 ok(data.biology.length === 629 && data.chemistry.length === 485,
   `bank is ${data.biology.length} biology / ${data.chemistry.length} chemistry, expected 629 / 485`);
 

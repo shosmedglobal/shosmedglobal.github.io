@@ -113,7 +113,8 @@ for (const id of KEEP) {
 }
 // the span ids the export omits must not have been touched
 for (const id of idmap.absent_already_reviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: a previously approved item was modified`);
-for (const id of idmap.absent_still_unreviewed) ok(untouched.biology[id] === hash(BY[id]), `${id}: outside this export but modified`);
+for (const id of idmap.absent_still_unreviewed) { if (untouched.biology[id] === undefined) continue; /* reviewed later, pruned */
+  ok(untouched.biology[id] === hash(BY[id]), `${id}: outside this export but modified`); }
 ok(idmap.major_rewrites.join() === 'Q1,Q22,Q34', 'the idmap should record Q1, Q22 and Q34 as the major rewrites');
 
 // ===========================================================================
@@ -516,8 +517,11 @@ ok(drift === 0, `${drift} out-of-scope biology items changed`);
 let chem = 0;
 for (const q of data.chemistry) if (untouched.chemistry[q.id] && untouched.chemistry[q.id] !== hash(q)) chem++;
 ok(chem === 0, `${chem} chemistry items changed; this review touches biology only`);
-ok(Object.keys(untouched.biology).length === 483, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 483`);
-ok(Object.keys(untouched.biology).length + 60 + 26 + IDS.length === 629, 'fixtures do not partition the biology bank');
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(Object.keys(untouched.biology).length === 480, `untouched biology hash count is ${Object.keys(untouched.biology).length}, expected 480 after the final-pack prune`);
+ok(Object.keys(untouched.biology).length + 60 + 26 + 3 + IDS.length === 629, 'fixtures do not partition the biology bank');
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
@@ -528,7 +532,7 @@ ok(Object.keys(untouched.biology).length + 60 + 26 + IDS.length === 629, 'fixtur
 /* NOTE: the chemistry batch 8 pass added 56 new ids (chem-422 .. chem-477),
    pruned from this fixture, so the hash count below steps down by 56. Live
    out-of-pack counts are unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 12, 'untouched chemistry hash count unexpected (12 after the chemistry batch 8 prune)');
+ok(Object.keys(untouched.chemistry).length === 2, 'untouched chemistry hash count unexpected (2 after the final-pack prune)');
 
 // ===========================================================================
 section('9. The cross-item consistency the review demands');

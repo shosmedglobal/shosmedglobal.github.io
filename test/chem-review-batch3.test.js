@@ -255,8 +255,10 @@ for (const s of EDITS) ok(!KEEP.has(s.id), `${s.q}: a keep-unchanged id should h
 // ---------------------------------------------------------------------------
 section('3. nothing outside the pack changed');
 let bioDrift = 0;
-ok(Object.keys(untouched.biology).length === 629, 'the fixture should hash all 629 biology items');
-for (const q of data.biology) if (untouched.biology[q.id] !== hash(q)) { bioDrift++; console.error('  FAIL biology ' + q.id + ' changed'); }
+ok(Object.keys(untouched.biology).length === 626, 'the fixture should hash the 626 biology items the final pack did not review');
+for (const q of data.biology) { /* the final pack reviewed bio-12, bio-346 and bio-518, pruned from this fixture */
+  if (untouched.biology[q.id] === undefined) continue;
+  if (untouched.biology[q.id] !== hash(q)) { bioDrift++; console.error('  FAIL biology ' + q.id + ' changed'); } }
 checks++; if (bioDrift) failures++;
 let chemDrift = 0;
 for (const q of data.chemistry) {
@@ -266,8 +268,11 @@ for (const q of data.chemistry) {
 }
 checks++; if (chemDrift) failures++;
 const nChem = Object.keys(untouched.chemistry).length;
-ok(nChem === 129, `${nChem} out-of-pack chemistry hashes, expected 129 after the chemistry batch 8 prune`);
-ok(nChem + 60 + 60 + 60 + 60 + 60 + 56 === 485, 'the out-of-pack set, this pack and the new ids of chemistry batches 4 to 8 should be the whole chemistry bank');
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(nChem === 119, `${nChem} out-of-pack chemistry hashes, expected 119 after the final-pack prune`);
+ok(nChem + 60 + 60 + 60 + 60 + 60 + 56 + 10 === 485, 'the out-of-pack set, this pack, the new ids of chemistry batches 4 to 8 and the final pack should be the whole chemistry bank');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts should be 629 and 485');
 for (const id of IDS) ok(!(id in untouched.chemistry), `${id} is both in the pack and in the untouched set`);
 

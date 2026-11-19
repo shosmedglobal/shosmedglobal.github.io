@@ -162,9 +162,11 @@ for (const Q of ['Q7', 'Q29', 'Q38']) {
 section('3. nothing outside the pack moved');
 
 let bioBad = 0;
-for (const q of data.biology) if (untouched.biology[q.id] !== hash(q)) { bioBad++; console.error('    changed: ' + q.id); }
-ok(bioBad === 0, 'all 629 biology records are unchanged');
-ok(Object.keys(untouched.biology).length === 629, 'the untouched fixture covers 629 biology records');
+for (const q of data.biology) { /* the final pack reviewed bio-12, bio-346 and bio-518, pruned from this fixture */
+  if (untouched.biology[q.id] === undefined) continue;
+  if (untouched.biology[q.id] !== hash(q)) { bioBad++; console.error('    changed: ' + q.id); } }
+ok(bioBad === 0, 'all 626 out-of-pack biology records are unchanged');
+ok(Object.keys(untouched.biology).length === 626, 'the untouched fixture covers 626 biology records after the final-pack prune');
 let chemBad = 0, nChem = 0;
 for (const q of data.chemistry) {
   if (PACK.has(q.id)) continue;
@@ -181,8 +183,11 @@ ok(nChem + 60 === 485, 'the partition adds up: 425 outside + 60 in the pack = 48
 /* NOTE: the chemistry batch 7 pass (chem-362 .. chem-421) pruned those 60 ids
    from this fixture, so the hash count below steps down by 60. nChem counts LIVE
    out-of-pack records and is unaffected by pruning. */
-ok(Object.keys(untouched.chemistry).length === 249,
-  'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (249 after the batch 8 prune)');
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(Object.keys(untouched.chemistry).length === 239,
+  'the untouched fixture holds ' + Object.keys(untouched.chemistry).length + ' out-of-pack chemistry hashes (239 after the final-pack prune)');
 ok(data.biology.length === 629 && data.chemistry.length === 485, 'bank counts are still 629 / 485');
 
 /* ------------------------------------------------------------------ */

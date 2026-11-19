@@ -176,21 +176,25 @@ section('3. Nothing outside the pack changed');
 let drift = 0;
 for (const q of data.biology) {
   if (PACK.has(q.id)) continue;
+  if (untouched.biology[q.id] === undefined) continue; /* reviewed by a later pack, pruned from this fixture */
   if (untouched.biology[q.id] !== hash(q)) { drift++; console.error('  FAIL ' + q.id + ' changed but is outside the pack'); }
 }
 checks++; if (drift) failures++;
 
 const nBio = Object.keys(untouched.biology).length;
 const nChem = Object.keys(untouched.chemistry).length;
-ok(nBio === 603, `${nBio} untouched biology hashes, expected 603`);
+/* NOTE: the final review pack (chem-19, chem-61, chem-478..chem-485, bio-12,
+   bio-346, bio-518) was pruned from this fixture, so its hash counts step down.
+   Drift sweeps skip ids the fixture no longer holds. */
+ok(nBio === 600, `${nBio} untouched biology hashes, expected 600 after the final-pack prune`);
 // Chemistry review batch 1 owns 58 chemistry ids (chem-1..chem-18,
 // chem-20..chem-36, chem-38..chem-60), so this sweep covers the 248 chemistry
 // items no reviewed chemistry batch owns; those 58 are checked by
 // test/chem-review-batch1.test.js.
-ok(nChem === 12, `${nChem} untouched chemistry hashes, expected 12 after the chemistry batch 8 prune`);
-ok(nBio + 26 === 629, 'the untouched biology set plus the 26 pack ids should account for all 629');
-ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 + 60 + 60 + 60 + 56 === 629 + 485,
-  'the untouched set, this pack and chemistry batches 1 to 8 should partition the whole bank');
+ok(nChem === 2, `${nChem} untouched chemistry hashes, expected 2 after the final-pack prune`);
+ok(nBio + 26 + 3 === 629, 'the untouched biology set, the 26 pack ids and the 3 biology ids of the final pack should account for all 629');
+ok(nBio + nChem + 26 + 58 + 60 + 59 + 60 + 60 + 60 + 60 + 56 + 13 === 629 + 485,
+  'the untouched set, this pack, chemistry batches 1 to 8 and the final pack should partition the whole bank');
 for (const id of IDS) ok(!(id in untouched.biology), `${id} is both in the pack and in the untouched set`);
 
 // chemistry is wholly untouched

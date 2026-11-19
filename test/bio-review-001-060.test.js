@@ -286,8 +286,10 @@ for (const id of PRESERVE) {
     JSON.stringify(BY[id]) === JSON.stringify(BEFORE[id]));
 }
 check('6b bio-12 was never part of the reviewed block', !REVIEWED.includes('bio-12'));
-check('6c bio-12 is still the lysogenic-cycle question, unreviewed',
-  /lysogenic cycle/i.test(BY['bio-12'].question));
+// bio-12 was finally reviewed by the final review pack, which rewrote it as a
+// lambda-specific lysogeny question; see test/review-final-pack.test.js.
+check('6c bio-12 is still the lysogeny question, now owned by the final pack',
+  /lysogen/i.test(BY['bio-12'].question));
 
 // ================================================ 7. rendering and house style
 for (const id of REVIEWED) {
