@@ -1,0 +1,726 @@
+{
+  "originalKeys": "BBABBCABDDDBCBCBCBBCDDAAADAAAADADDDDDDDDABDACDBCCBBCCACBCBCC",
+  "correctedKeys": "BBABBCABDDDBCBCBCBBCDDAAADAAAABADDDDDDDDABDACDBCCBBCCACBCBCC",
+  "sigs": {
+    "Q1": {
+      "q": "Q1",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "Which of the following groups contains ONLY SI base units?",
+      "options": [
+        "kilogram, candela, volt",
+        "kelvin, candela, second",
+        "meter, joule, ampere",
+        "second, newton, mole"
+      ]
+    },
+    "Q2": {
+      "q": "Q2",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A ball is dropped from rest from a height of 20 meters. Ignoring air resistance, approximately how long does it take to reach the ground? (g = 10 m/s2)",
+      "options": [
+        "1 second",
+        "2 seconds",
+        "4 seconds",
+        "10 seconds"
+      ]
+    },
+    "Q3": {
+      "q": "Q3",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "Two resistors of 6 ohms and 3 ohms are connected in parallel. What is the equivalent resistance?",
+      "options": [
+        "2 ohms",
+        "3 ohms",
+        "4.5 ohms",
+        "9 ohms"
+      ]
+    },
+    "Q4": {
+      "q": "Q4",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "When light passes from air into water (a denser medium), what happens to its speed and wavelength?",
+      "options": [
+        "Speed increases, wavelength increases",
+        "Speed decreases, wavelength decreases",
+        "Speed decreases, wavelength increases",
+        "Speed increases, wavelength decreases"
+      ]
+    },
+    "Q5": {
+      "q": "Q5",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "What is the temperature in Kelvin when the Celsius temperature is -73 degrees C?",
+      "options": [
+        "100 K",
+        "200 K",
+        "346 K",
+        "373 K"
+      ]
+    },
+    "Q6": {
+      "q": "Q6",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "According to Newton's third law, when you push against a wall with a force of 50 N, the wall pushes back on you with a force of:",
+      "options": [
+        "0 N",
+        "25 N",
+        "50 N",
+        "100 N"
+      ]
+    },
+    "Q7": {
+      "q": "Q7",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "A sound wave has a frequency of 440 Hz and travels at 340 m/s in air. What is its wavelength?",
+      "options": [
+        "0.77 m",
+        "1.29 m",
+        "149,600 m",
+        "340 m"
+      ]
+    },
+    "Q8": {
+      "q": "Q8",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A solid object floats in water with 70% of its volume submerged. What is the density of the object? (Density of water = 1000 kg/m3)",
+      "options": [
+        "300 kg/m 3",
+        "700 kg/m 3",
+        "1000 kg/m 3",
+        "1400 kg/m 3"
+      ]
+    },
+    "Q9": {
+      "q": "Q9",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A 2 kg ball is thrown upward with an initial velocity of 10 m/s. What is its kinetic energy at the moment of release? (Ignore air resistance)",
+      "options": [
+        "10 J",
+        "20 J",
+        "50 J",
+        "100 J"
+      ]
+    },
+    "Q10": {
+      "q": "Q10",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A hydraulic press has a small piston with area 5 cm2 and a large piston with area 100 cm2. If a force of 20 N is applied to the small piston, what force is exerted by the large piston?",
+      "options": [
+        "1 N",
+        "20 N",
+        "100 N",
+        "400 N"
+      ]
+    },
+    "Q11": {
+      "q": "Q11",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "Which type of electromagnetic radiation has the shortest wavelength?",
+      "options": [
+        "Radio waves",
+        "Visible light",
+        "Ultraviolet radiation",
+        "Γ rays"
+      ]
+    },
+    "Q12": {
+      "q": "Q12",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "During β-minus decay, a neutron in the nucleus is converted into a proton and emits:",
+      "options": [
+        "An α particle and a γ ray",
+        "An electron and an antineutrino",
+        "A positron and a neutrino",
+        "Two protons and a neutron"
+      ]
+    },
+    "Q13": {
+      "q": "Q13",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A crane lifts a 500 kg load vertically by 10 meters in 25 seconds. What is the power output of the crane? (g = 10 m/s2)",
+      "options": [
+        "200 W",
+        "500 W",
+        "2000 W",
+        "5000 W"
+      ]
+    },
+    "Q14": {
+      "q": "Q14",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A 1000 kg car traveling at 20 m/s collides head-on with a stationary 2000 kg truck. If they stick together after the collision, what is their common velocity immediately after impact?",
+      "options": [
+        "5.0 m/s",
+        "6.67 m/s",
+        "10 m/s",
+        "20 m/s"
+      ]
+    },
+    "Q15": {
+      "q": "Q15",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A charged particle moving through a uniform magnetic field experiences a force. In which direction is this magnetic force relative to the particle's velocity?",
+      "options": [
+        "Parallel to the velocity (same direction)",
+        "Antiparallel to the velocity (opposite direction)",
+        "Perpendicular to both the velocity and the magnetic field",
+        "At a 45-degree angle to the velocity"
+      ]
+    },
+    "Q16": {
+      "q": "Q16",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A car accelerates uniformly from 10 m/s to 30 m/s over a distance of 200 m. What is the acceleration?",
+      "options": [
+        "1 m/s 2",
+        "2 m/s 2",
+        "4 m/s 2",
+        "5 m/s 2"
+      ]
+    },
+    "Q17": {
+      "q": "Q17",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "An ambulance siren sounds at 800 Hz. As it approaches you at high speed, you perceive a frequency that is:",
+      "options": [
+        "Lower than 800 Hz",
+        "Exactly 800 Hz",
+        "Higher than 800 Hz",
+        "Alternating between higher and lower"
+      ]
+    },
+    "Q18": {
+      "q": "Q18",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A converging (convex) lens has a focal length of 10 cm. An object is placed 30 cm from the lens. Where does the image form?",
+      "options": [
+        "7.5 cm on the same side as the object",
+        "15 cm on the opposite side",
+        "30 cm on the opposite side",
+        "At infinity"
+      ]
+    },
+    "Q19": {
+      "q": "Q19",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A 12V battery is connected to a 4Ω resistor. What is the current flowing through the circuit?",
+      "options": [
+        "0.33 A",
+        "3 A",
+        "48 A",
+        "16 A"
+      ]
+    },
+    "Q20": {
+      "q": "Q20",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A radioactive isotope has a half-life of 6 hours. If you start with 80 g, how much remains after 18 hours?",
+      "options": [
+        "40 g",
+        "20 g",
+        "10 g",
+        "5 g"
+      ]
+    },
+    "Q21": {
+      "q": "Q21",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "In a CT scanner, the X-ray tube rotates around the patient and produces images at multiple angles. If the tube completes one full rotation in 0.5 s and the detector array has 1000 elements, approximately how many projections per second does the system acquire?",
+      "options": [
+        "500 projections/s",
+        "1000 projections/s",
+        "5000 projections/s",
+        "2000 projections/s"
+      ]
+    },
+    "Q22": {
+      "q": "Q22",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "An MRI machine operates at a magnetic field strength of 3.0 T. The gyromagnetic ratio of hydrogen protons is 42.58 MHz/T. What is the Larmor precession frequency of hydrogen nuclei in this scanner?",
+      "options": [
+        "63.87 MHz",
+        "85.16 MHz",
+        "170.32 MHz",
+        "127.74 MHz"
+      ]
+    },
+    "Q23": {
+      "q": "Q23",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "Ultrasound waves travel through soft tissue at approximately 1540 m/s. If an echo returns 26 microseconds after the pulse was emitted, what is the depth of the reflecting structure?",
+      "options": [
+        "2.0 cm",
+        "1.0 cm",
+        "4.0 cm",
+        "8.0 cm"
+      ]
+    },
+    "Q24": {
+      "q": "Q24",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "In radiation therapy, a patient receives a prescribed dose of 2 Gy to a tumor. If the tumor mass is 0.5 kg, how much energy is deposited in the tumor?",
+      "options": [
+        "1.0 J",
+        "0.5 J",
+        "2.0 J",
+        "4.0 J"
+      ]
+    },
+    "Q25": {
+      "q": "Q25",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "An X-ray tube operates at a potential difference of 80 kV. What is the minimum wavelength (cutoff wavelength) of the X-rays produced? (h = 6.63 x 10-34 J-s, c = 3 x 108 m/s, e = 1.6 x 10-19 C)",
+      "options": [
+        "0.0155 nm",
+        "0.0311 nm",
+        "0.155 nm",
+        "0.311 nm"
+      ]
+    },
+    "Q26": {
+      "q": "Q26",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A diagnostic ultrasound transducer operates at 5 MHz. What is the approximate wavelength in soft tissue (speed of sound = 1540 m/s)?",
+      "options": [
+        "0.077 mm",
+        "0.154 mm",
+        "0.616 mm",
+        "0.308 mm"
+      ]
+    },
+    "Q27": {
+      "q": "Q27",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "In MRI, the T1 relaxation time of a tissue is 800 ms. After an initial 90-degree RF pulse, what fraction of the longitudinal magnetization has recovered after 1600 ms?",
+      "options": [
+        "86%",
+        "63%",
+        "95%",
+        "98%"
+      ]
+    },
+    "Q28": {
+      "q": "Q28",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "A cobalt-60 source used in radiation therapy has a half-life of 5.27 years. If the initial activity is 400 TBq, what will the activity be after approximately 10.54 years?",
+      "options": [
+        "100 TBq",
+        "200 TBq",
+        "50 TBq",
+        "25 TBq"
+      ]
+    },
+    "Q29": {
+      "q": "Q29",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "A straight wire carries a current of 10 A. What is the magnitude of the magnetic field at a distance of 5 cm from the wire? (μ0 = 4π x 10-7 T-m/A)",
+      "options": [
+        "4 x 10 -5 T",
+        "2 x 10 -5 T",
+        "8 x 10 -5 T",
+        "2 x 10 -4 T"
+      ]
+    },
+    "Q30": {
+      "q": "Q30",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "A proton (mass = 1.67 x 10-27 kg, charge = 1.6 x 10-19 C) moves at 2 x 106 m/s perpendicular to a uniform magnetic field of 0.5 T. What is the radius of its circular path?",
+      "options": [
+        "4.18 cm",
+        "2.09 cm",
+        "8.35 cm",
+        "16.7 cm"
+      ]
+    },
+    "Q31": {
+      "q": "Q31",
+      "originalKey": "D",
+      "correctedKey": "B",
+      "stem": "A rectangular coil of 50 turns with dimensions 20 cm x 10 cm rotates in a uniform magnetic field of 0.4 T at 60 revolutions per second. What is the peak EMF generated?",
+      "options": [
+        "75.4 V",
+        "150.8 V",
+        "301.6 V",
+        "753.9 V"
+      ]
+    },
+    "Q32": {
+      "q": "Q32",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "An electron enters a region where both an electric field E = 3000 V/m and a magnetic field B = 0.01 T are perpendicular to each other and to the electron's velocity. For the electron to pass through undeflected, what must its velocity be?",
+      "options": [
+        "3 x 10 5 m/s",
+        "3 x 10 4 m/s",
+        "3 x 10 6 m/s",
+        "3 x 10 7 m/s"
+      ]
+    },
+    "Q33": {
+      "q": "Q33",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A solenoid has 2000 turns per meter and carries a current of 3 A. What is the magnetic field inside the solenoid? (μ0 = 4π x 10-7 T-m/A)",
+      "options": [
+        "1.88 x 10 -3 T",
+        "3.77 x 10 -3 T",
+        "1.51 x 10 -2 T",
+        "7.54 x 10 -3 T"
+      ]
+    },
+    "Q34": {
+      "q": "Q34",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A circular loop of wire with radius 8 cm is placed in a magnetic field that increases uniformly from 0.2 T to 0.8 T in 0.3 s. What is the magnitude of the induced EMF in the loop?",
+      "options": [
+        "0.010 V",
+        "0.020 V",
+        "0.080 V",
+        "0.040 V"
+      ]
+    },
+    "Q35": {
+      "q": "Q35",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "Two parallel wires separated by 10 cm each carry a current of 5 A in opposite directions. What is the force per meter between the wires, and is it attractive or repulsive?",
+      "options": [
+        "5 x 10 -5 N/m, attractive",
+        "1 x 10 -4 N/m, repulsive",
+        "1 x 10 -4 N/m, attractive",
+        "5 x 10 -5 N/m, repulsive"
+      ]
+    },
+    "Q36": {
+      "q": "Q36",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A transformer has 500 turns on the primary coil and 50 turns on the secondary coil. If the input voltage is 220 V AC, what is the output voltage?",
+      "options": [
+        "2.2 V",
+        "2200 V",
+        "440 V",
+        "22 V"
+      ]
+    },
+    "Q37": {
+      "q": "Q37",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "Light with a wavelength of 400 nm strikes a metal surface with a work function of 2.0 eV. What is the maximum kinetic energy of the emitted photoelectrons? (h = 6.63 x 10-34 J-s, c = 3 x 108 m/s, 1 eV = 1.6 x 10-19 J)",
+      "options": [
+        "0.5 eV",
+        "3.1 eV",
+        "2.0 eV",
+        "1.1 eV"
+      ]
+    },
+    "Q38": {
+      "q": "Q38",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "What is the de Broglie wavelength of an electron (mass = 9.11 x 10-31 kg) accelerated through a potential difference of 100 V? (h = 6.63 x 10-34 J-s, e = 1.6 x 10-19 C)",
+      "options": [
+        "0.0123 nm",
+        "0.0388 nm",
+        "0.388 nm",
+        "0.123 nm"
+      ]
+    },
+    "Q39": {
+      "q": "Q39",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "In the Compton effect, an X-ray photon with wavelength 0.071 nm scatters off an electron at an angle of 90 degrees. What is the wavelength shift? (Compton wavelength of electron = 0.00243 nm)",
+      "options": [
+        "0.00122 nm",
+        "0.00729 nm",
+        "0.00486 nm",
+        "0.00243 nm"
+      ]
+    },
+    "Q40": {
+      "q": "Q40",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "An atom makes a transition from an energy level at -1.5 eV to one at -3.4 eV. What is the wavelength of the emitted photon? (h = 6.63 x 10-34 J-s, c = 3 x 108 m/s, 1 eV = 1.6 x 10-19 J)",
+      "options": [
+        "328 nm",
+        "490 nm",
+        "980 nm",
+        "654 nm"
+      ]
+    },
+    "Q41": {
+      "q": "Q41",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "According to the Heisenberg uncertainty principle, if the position of an electron is measured with an uncertainty of 0.1 nm, what is the minimum uncertainty in its momentum? (h-bar = 1.055 x 10-34 J-s)",
+      "options": [
+        "5.28 x 10 -25 kg-m/s",
+        "1.055 x 10 -24 kg-m/s",
+        "5.28 x 10 -24 kg-m/s",
+        "1.055 x 10 -23 kg-m/s"
+      ]
+    },
+    "Q42": {
+      "q": "Q42",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "The threshold frequency for a photoemissive surface is 5.0 x 1014 Hz. What is the work function of the material in electron volts? (h = 6.63 x 10-34 J-s, 1 eV = 1.6 x 10-19 J)",
+      "options": [
+        "1.04 eV",
+        "2.07 eV",
+        "3.31 eV",
+        "4.14 eV"
+      ]
+    },
+    "Q43": {
+      "q": "Q43",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "Blood flows through an artery of radius 4 mm at a velocity of 0.3 m/s. If the artery narrows to a radius of 2 mm due to plaque buildup, what is the velocity of blood in the narrowed section? (Assume incompressible flow.)",
+      "options": [
+        "0.6 m/s",
+        "0.9 m/s",
+        "2.4 m/s",
+        "1.2 m/s"
+      ]
+    },
+    "Q44": {
+      "q": "Q44",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "Water flows through a horizontal pipe that narrows from a cross-section of 40 cm2 to 10 cm2. If the pressure in the wider section is 200 kPa and the flow speed there is 2 m/s, what is the pressure in the narrow section? (Density of water = 1000 kg/m3)",
+      "options": [
+        "170 kPa",
+        "176 kPa",
+        "185 kPa",
+        "188 kPa"
+      ]
+    },
+    "Q45": {
+      "q": "Q45",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A fluid with viscosity 0.004 Pa-s flows through a tube of radius 3 mm and length 0.5 m under a pressure difference of 800 Pa. What is the volume flow rate according to Poiseuille's law?",
+      "options": [
+        "1.27 x 10 -6 m 3 /s",
+        "5.09 x 10 -6 m 3 /s",
+        "1.27 x 10 -5 m 3 /s",
+        "5.09 x 10 -5 m 3 /s"
+      ]
+    },
+    "Q46": {
+      "q": "Q46",
+      "originalKey": "D",
+      "correctedKey": "D",
+      "stem": "A steel ball of density 7800 kg/m3 and radius 1 mm falls through glycerin (density 1260 kg/m3, viscosity 1.5 Pa-s). What is the terminal velocity of the ball? (g = 10 m/s2)",
+      "options": [
+        "0.97 mm/s",
+        "4.84 mm/s",
+        "19.4 mm/s",
+        "9.69 mm/s"
+      ]
+    },
+    "Q47": {
+      "q": "Q47",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "The Reynolds number for blood flow in the aorta is approximately 2000. If the aorta has a diameter of 2.5 cm, blood density is 1060 kg/m3 and viscosity is 3.5 x 10-3 Pa-s, what is the average flow velocity?",
+      "options": [
+        "0.13 m/s",
+        "0.26 m/s",
+        "0.53 m/s",
+        "1.06 m/s"
+      ]
+    },
+    "Q48": {
+      "q": "Q48",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A manometer connected to a patient's artery reads a gauge pressure of 120 mmHg. What is this pressure in pascals? (Density of mercury = 13600 kg/m3, g = 10 m/s2)",
+      "options": [
+        "8160 Pa",
+        "12000 Pa",
+        "16320 Pa",
+        "24000 Pa"
+      ]
+    },
+    "Q49": {
+      "q": "Q49",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A Carnot engine operates between a hot reservoir at 600 K and a cold reservoir at 300 K. What is the efficiency of this engine?",
+      "options": [
+        "25%",
+        "33%",
+        "50%",
+        "67%"
+      ]
+    },
+    "Q50": {
+      "q": "Q50",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "During an isothermal expansion of an ideal gas at 400 K, the volume doubles. If the gas contains 2 moles, how much work does the gas do? (R = 8.314 J/(mol-K), ln 2 = 0.693)",
+      "options": [
+        "2310 J",
+        "4610 J",
+        "6920 J",
+        "9240 J"
+      ]
+    },
+    "Q51": {
+      "q": "Q51",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "The entropy change when 1 kg of water at 100 degrees C is converted entirely to steam at 100 degrees C and 1 atm is closest to which value? (Lv = 2260 kJ/kg)",
+      "options": [
+        "3050 J/K",
+        "6060 J/K",
+        "8480 J/K",
+        "22600 J/K"
+      ]
+    },
+    "Q52": {
+      "q": "Q52",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "An ideal gas undergoes an adiabatic process where the volume is compressed to 1/8 of its original volume. If the initial temperature is 300 K and γ = 5/3 (monatomic gas), what is the final temperature?",
+      "options": [
+        "600 K",
+        "900 K",
+        "1200 K",
+        "2400 K"
+      ]
+    },
+    "Q53": {
+      "q": "Q53",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "At the triple point of water (273.16 K, 611.73 Pa), which statement is correct?",
+      "options": [
+        "Only ice and liquid water coexist in equilibrium",
+        "Only liquid water and water vapor coexist in equilibrium",
+        "Ice, liquid water, and water vapor coexist in equilibrium",
+        "Water can only exist as a liquid at the triple point"
+      ]
+    },
+    "Q54": {
+      "q": "Q54",
+      "originalKey": "A",
+      "correctedKey": "A",
+      "stem": "A converging lens with a focal length of 20 cm forms an image of an object placed 30 cm from the lens. What is the image distance and magnification?",
+      "options": [
+        "v = 60 cm, m = -2",
+        "v = 40 cm, m = -1",
+        "v = 60 cm, m = +2",
+        "v = 40 cm, m = -2"
+      ]
+    },
+    "Q55": {
+      "q": "Q55",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A concave mirror has a radius of curvature of 40 cm. An object is placed 15 cm from the mirror. Where is the image formed?",
+      "options": [
+        "60 cm in front of the mirror",
+        "30 cm behind the mirror",
+        "60 cm behind the mirror",
+        "30 cm in front of the mirror"
+      ]
+    },
+    "Q56": {
+      "q": "Q56",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "Two thin lenses of focal lengths +10 cm and -15 cm are placed in contact. What is the focal length of the combination?",
+      "options": [
+        "+6 cm",
+        "+30 cm",
+        "-30 cm",
+        "-6 cm"
+      ]
+    },
+    "Q57": {
+      "q": "Q57",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "A microscope has an objective lens with focal length 5 mm and an eyepiece with focal length 25 mm. If the tube length (distance between lenses) is 160 mm, what is the total magnification for a near point of 250 mm?",
+      "options": [
+        "100x",
+        "200x",
+        "320x",
+        "640x"
+      ]
+    },
+    "Q58": {
+      "q": "Q58",
+      "originalKey": "B",
+      "correctedKey": "B",
+      "stem": "A ray of light enters a glass slab (refractive index 1.5) from air at an angle of incidence of 30 degrees. What is the angle of refraction inside the glass?",
+      "options": [
+        "14.5 degrees",
+        "19.5 degrees",
+        "22.0 degrees",
+        "33.3 degrees"
+      ]
+    },
+    "Q59": {
+      "q": "Q59",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "The critical angle for total internal reflection at a glass-air interface is 42 degrees. What is the refractive index of the glass?",
+      "options": [
+        "1.33",
+        "1.41",
+        "1.49",
+        "1.62"
+      ]
+    },
+    "Q60": {
+      "q": "Q60",
+      "originalKey": "C",
+      "correctedKey": "C",
+      "stem": "Which of the following is a base SI unit?",
+      "options": [
+        "Newton",
+        "Joule",
+        "Ampere",
+        "Watt"
+      ]
+    }
+  }
+}

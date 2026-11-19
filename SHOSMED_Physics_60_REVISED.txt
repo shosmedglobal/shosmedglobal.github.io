@@ -1,0 +1,1468 @@
+SHOSMED PHYSICS: REVISED 60-QUESTION EXPORT
+Implemented 18 November 2026 from SHOSMED_Physics_60_Review_and_Claude_Prompt.txt
+For the final scientific reread. Implementation checks establish scope, structure
+and consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  The review supplied ORIGINAL IDENTIFICATION SIGNATURES, so the map was derived
+  by FULL CONTENT MATCH rather than from display numbering, topic, contiguity or
+  the answer sequence:
+    1. Each original stem plus all four original option texts was matched against
+       all 280 physics records, on a canonical form that decodes the named HTML
+       entities this bank stores, strips tags, folds sub/superscripts to plain
+       digits and normalises dashes, Greek letters and arrows.
+    2. 52 matched exactly. The remaining 8 matched once whitespace was ignored.
+       Those eight are precisely the items whose OPTION texts carry <sup> markup,
+       which the export flattened into line breaks inside the exponents. No
+       stored record was wrong.
+    3. No two of the 280 records share a signature under either form, so no match
+       was ambiguous and none needed a tie-break on the explanation.
+    4. All 60 stored answer letters equalled the review ORIGINAL key block.
+  Display Q1-Q60 map to phys-1 .. phys-60. Contiguity is a RESULT of that
+  verification, not an assumption. 220 further physics records lie outside this
+  block and were not touched.
+
+  Original key block : BBABBCABDD DBCBCBCBBC DDAAADAAAA DADDDDDDDD ABDACDBCCB BCCACBCBCC
+  Corrected key block: BBABBCABDD DBCBCBCBBC DDAAADAAAA BADDDDDDDD ABDACDBCCB BCCACBCBCC
+  Corrected tally    : A=13, B=17, C=14, D=16
+
+THE ANSWER-KEY CORRECTION
+  Q31 (phys-31): D -> B, the only key change in the block.
+  Recomputed independently rather than taken on trust: with A = 0.20 x 0.10 =
+  0.020 m^2 and w = 2*pi*60 = 376.99 rad/s, eps_peak = NBAw = 50 x 0.4 x 0.020 x
+  376.99 = 150.8 V, which is option B. The stored 753.9 V was exactly five times
+  that. The keyed heading now reads "B) 150.8 V", keeping this item's lettered
+  heading style, and the superseded option D receives its own feedback paragraph.
+
+WHAT CHANGED
+  Items edited             : 60 (every item gains distractor feedback)
+  Stems replaced           : 38
+  Main explanations        : 19 replaced
+  Key Concepts             : 38 replaced, 22 retained
+  Targeted retained edits  : 12 items
+  Distractor feedback      : 0 before, 180 now (three per item)
+  Option texts             : 0 changed
+  Answer letters           : 1 changed (Q31)
+  MAJOR QUESTION REWRITES  : Q21, Q57
+  SUBSTANTIAL CLARIFICATION: Q48
+  SUBSTANTIAL REPAIRS      : Q22, Q41, Q50, Q52, Q54, Q55
+
+PRESENTATION PRESERVED
+  18 tables, in Q1, Q3, Q4-Q9, Q11-Q20, and no table was added or removed.
+  One Key Concept per item, 60 in total. No Key Educational Points block and no
+  Bottom Line was invented.
+  Keyed-heading style is per item and unchanged: Q1-Q20 and Q60 unlettered,
+  Q21-Q59 lettered as "X) ". Only Q31's heading changed, because its key moved.
+  Feedback is placed after the main explanation and any table, before the Key
+  Concept, and follows the convention the 25 physics records that already carry
+  feedback use. Each heading reproduces that item's own stored option text.
+  Q3 and Q19 keep their pre-existing empty trailing div byte for byte.
+  The block stores no em dash and no curly quote, and no new kind of HTML entity
+  was introduced.
+
+THINGS THE REVIEW ASKED TO CHECK RATHER THAN ASSUME
+  Q28: the stored markup already held "2<sup>2</sup> = 4", so the flattened "22"
+  in the export was an export artifact. Nothing was changed there.
+  Q12: the stored isotope layout already used real upper-left A and lower-left Z,
+  "<sup>14</sup><sub>6</sub>C", so "AZX" and "146C" were export artifacts too. The
+  named repairs were applied: electron antineutrino and electron neutrino in the
+  beta rows, an unambiguous 4-2 He alpha nucleus, and the equations now show the
+  antineutrino symbol.
+  Q19: the ohm sign is stored as the &Omega; entity and renders correctly as the
+  ohm symbol. It was never a defect.
+  Q45: its fourth power was already a real superscript and is kept.
+
+CHECKS ACTUALLY PERFORMED
+  A result-verifying suite of 2,348 checks, 0 failures, with every "claim removed"
+  assertion paired with a check that the claim really was there before.
+  21 of 21 targeted mutations caught, with questions-physics.json restored byte
+  for byte afterwards.
+  35 suites and 85,226 checks across the repository, 0 failures.
+  An independent diff against both a pre-edit copy and git HEAD: exactly 60
+  records, fields {explanation: 60, question: 38, correct: 1}, nothing outside the
+  block.
+  A sanitizer pass over all 360 fields: 60 divergences, every one escaping or
+  attribute normalisation, none changing content and none new.
+  A real-DOM render through the actual sanitizer at desktop width and at 375px
+  phone width: 240 of 240 headings agree with their options, 18 tables, 60 Key
+  Concepts, 180 feedback paragraphs, no horizontal overflow, no clipped exponent,
+  and the entities render as the half, ohm and h-bar symbols rather than as text.
+  Independently recomputed: Q31 = 150.8 V, Q48 = 16,320 Pa, Q50 = 4609 J,
+  Q51 = 6057 J/K, Q52 = 1200 K, Q57 = 320x.
+
+COVERAGE, FROM UNIQUE VERIFIED PHYSICS IDS
+  This block                : 60 ids, phys-1 .. phys-60
+  Physics records outside it: 220, untouched
+  Physics bank size         : 280
+  This is one reviewed block, not a claim about the rest of the physics bank.
+
+DEVIATIONS
+  none.
+
+==============================================================================
+
+Q1  [phys-1]  Units and Measurements  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which of the following groups contains ONLY SI base units?
+
+  A. kilogram, candela, volt
+  B. kelvin, candela, second   <= key
+  C. meter, joule, ampere
+  D. second, newton, mole
+
+EXPLANATION:
+Correct Answer: kelvin, candela, second
+The SI has seven base units. Other SI units are derived from them.
+| Base Unit | Symbol | Measures |
+| Meter | m | Length |
+| Kilogram | kg | Mass |
+| Second | s | Time |
+| Ampere | A | Electric current |
+| Kelvin | K | Thermodynamic temperature |
+| Mole | mol | Amount of substance |
+| Candela | cd | Luminous intensity |
+The other options contain derived units: volt (V = kg.m^2.s^-3.A^-1), joule (J = kg.m^2.s^-2), newton (N = kg.m.s^-2).
+Why the other choices are wrong:
+A. kilogram, candela, volt: The kilogram and candela are SI base units, but the volt is derived: V = kg·m^2·s^-3·A^-1. A group must contain only base units to satisfy the question.
+C. meter, joule, ampere: The meter and ampere are base units. The joule is the derived SI unit of energy, equivalent to kg·m^2·s^-2.
+D. second, newton, mole: The second and mole are base units. The newton is the derived SI unit of force, equivalent to kg·m·s^-2.
+Key Concept: The seven SI base units are m, kg, s, A, K, mol and cd. Derived SI units are formed from products of powers of these units. Non-SI units, such as the minute, form a separate category.
+
+==============================================================================
+
+Q2  [phys-2]  Mechanics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A ball is dropped from rest from a height of 20 meters. Ignoring air resistance, approximately how long does it take to reach the ground? (g = 10 m/s^2)
+
+  A. 1 second
+  B. 2 seconds   <= key
+  C. 4 seconds
+  D. 10 seconds
+
+EXPLANATION:
+Correct Answer: 2 seconds
+For an object in free fall starting from rest (v_0 = 0):
+h = 1/2 x g x t^2
+20 = 1/2 x 10 x t^2
+20 = 5t^2
+t^2 = 4
+t = 2 seconds
+We can verify: in 2 seconds, the ball reaches velocity v = g x t = 10 x 2 = 20 m/s. Average velocity = (0 + 20)/2 = 10 m/s. Distance = 10 m/s x 2 s = 20 m.
+Why the other choices are wrong:
+A. 1 second: In 1 s, a ball dropped from rest falls 1/2 x 10 x 1^2 = 5 m. It has not yet covered the 20 m to the ground.
+C. 4 seconds: In 4 s of uninterrupted free fall from rest, the distance would be 1/2 x 10 x 4^2 = 80 m. This ball reaches the ground sooner.
+D. 10 seconds: Dividing height by acceleration does not give a time: its units are s^2. Use t = sqrt(2h/g), which gives 2 s.
+Key Concept: For free fall from rest: h = 1/2gt^2, v = gt, and v^2 = 2gh. These three equations solve most free fall problems. Objects fall with the same acceleration regardless of mass (in vacuum).
+
+==============================================================================
+
+Q3  [phys-3]  Electricity  correct answer: A
+------------------------------------------------------------------------------
+STEM: Two resistors of 6 ohms and 3 ohms are connected in parallel. What is the equivalent resistance?
+
+  A. 2 ohms   <= key
+  B. 3 ohms
+  C. 4.5 ohms
+  D. 9 ohms
+
+EXPLANATION:
+Correct Answer: 2 ohms
+For resistors in parallel, the reciprocal formula is used:
+1/R_eq = 1/R_1 + 1/R_2
+1/R_eq = 1/6 + 1/3
+1/R_eq = 1/6 + 2/6
+1/R_eq = 3/6 = 1/2
+R_eq = 2 ohms
+
+  | Connection | Formula | Result vs Individual |
+| Series | R_eq = R_1 + R_2 | Always larger than largest |
+| Parallel | 1/R_eq = 1/R_1 + 1/R_2 | Always smaller than smallest |
+Shortcut for two resistors in parallel: R_eq = (R_1 x R_2) / (R_1 + R_2) = (6 x 3)/(6 + 3) = 18/9 = 2
+Why the other choices are wrong:
+B. 3 ohms: The 3 ohm branch already provides a path for current. Adding a second positive-resistance branch in parallel increases total current at the same voltage, so the equivalent resistance is below 3 ohms.
+C. 4.5 ohms: 4.5 ohms is the arithmetic mean of 6 ohms and 3 ohms. Parallel resistance is found by adding conductances, 1/R, rather than averaging the resistances.
+D. 9 ohms: 9 ohms is the series result, 6 + 3. In parallel, both resistors have the same voltage across them and their currents add.
+Key Concept: Parallel resistance is always LESS than the smallest individual resistor. For two resistors, use the product-over-sum shortcut. For equal resistors in parallel: R_eq = R/n.
+
+==============================================================================
+
+Q4  [phys-4]  Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: When light passes from air into water, which has a higher refractive index, what happens to its speed and wavelength?
+
+  A. Speed increases, wavelength increases
+  B. Speed decreases, wavelength decreases   <= key
+  C. Speed decreases, wavelength increases
+  D. Speed increases, wavelength decreases
+
+EXPLANATION:
+Correct Answer: Speed decreases, wavelength decreases
+At a stationary boundary, light keeps the same frequency. Water has a higher refractive index than air, so the speed falls. The relation v = fλ then shows that the wavelength also falls.
+| Property | In air (n_air ≈ 1) | In water (n_water ≈ 1.33) | Change |
+| Speed | v_air ≈ c = 3.0 × 10^8 m/s | v_water = c/n_water ≈ 2.26 × 10^8 m/s | Decreases |
+| Frequency | f | f | Unchanged |
+| Wavelength | λ_air | λ_air × n_air/n_water ≈ λ_air/1.33 | Decreases |
+Why the other choices are wrong:
+A. Speed increases, wavelength increases: Water has a higher refractive index than air, so light travels more slowly in water. With frequency unchanged, its wavelength also becomes shorter.
+C. Speed decreases, wavelength increases: Frequency remains unchanged at the stationary boundary. Because v = fλ, a lower speed at the same frequency requires a shorter wavelength, not a longer one.
+D. Speed increases, wavelength decreases: At unchanged frequency, speed and wavelength change in the same proportion. Light entering water from air slows down and its wavelength decreases.
+Key Concept: Refractive index is n = c/v = λ_vacuum/λ_medium. Entering a higher-index medium reduces speed and wavelength while frequency stays unchanged. At oblique incidence, the ray bends toward the normal according to Snell's law; at normal incidence, its direction does not change.
+
+==============================================================================
+
+Q5  [phys-5]  Thermodynamics  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is −73 °C in kelvins, rounded to the nearest kelvin?
+
+  A. 100 K
+  B. 200 K   <= key
+  C. 346 K
+  D. 373 K
+
+EXPLANATION:
+Correct Answer: 200 K
+Convert Celsius temperature t to absolute temperature T using T(K) = t(°C) + 273.15. Thus T = −73 + 273.15 = 200.15 K, which rounds to 200 K.
+| Reference point | Celsius | Kelvin |
+| Absolute zero | −273.15 °C | 0 K |
+| Water freezes, approximately at 1 atm | 0 °C | 273.15 K |
+| Example body temperature | 37 °C | 310.15 K |
+| Water boils, approximately at 1 atm | 100 °C | 373.15 K |
+One kelvin is the same temperature interval as one degree Celsius. The kelvin scale starts at absolute zero; this does not mean that all microscopic motion disappears.
+Why the other choices are wrong:
+A. 100 K: 100 K corresponds to −173.15 °C. Converting −73 °C requires adding 273.15, giving 200.15 K before rounding.
+C. 346 K: 346 K would be about +72.85 °C. This answer can result from dropping the minus sign on the given Celsius temperature.
+D. 373 K: 373 K is about 100 °C, close to the boiling point of water at 1 atm. It is not the conversion of −73 °C.
+Key Concept: Use T(K) = t(°C) + 273.15, or +273 when that rounding is appropriate. Gas-law and thermodynamic temperature ratios require absolute temperatures in kelvins. Write the unit as K, without a degree sign.
+
+==============================================================================
+
+Q6  [phys-6]  Dynamics  correct answer: C
+------------------------------------------------------------------------------
+STEM: According to Newton's third law, when you push against a wall with a force of 50 N, the wall pushes back on you with a force of:
+
+  A. 0 N
+  B. 25 N
+  C. 50 N   <= key
+  D. 100 N
+
+EXPLANATION:
+Correct Answer: 50 N
+Newton's Third Law states: For every action, there is an equal and opposite reaction.
+When you push the wall with 50 N, the wall pushes back on you with exactly 50 N in the opposite direction. These are called action-reaction pairs.
+| Newton's Law | Statement |
+| First Law (Inertia) | When the net external force is zero, a body remains at rest or moves at constant velocity in a straight line. |
+| Second Law | F_net = ma for a constant-mass body. |
+| Third Law | F_AB = −F_BA: equal magnitude, opposite direction, different bodies. |
+Your push acts on the wall; the wall's push acts on you. Only one member of the pair acts on each body, so the pair does not cancel in that body's force balance.
+Why the other choices are wrong:
+A. 0 N: The wall can exert a force even though it does not move. Lack of acceleration means its forces balance; it does not mean that each individual force is zero.
+B. 25 N: A third-law pair has equal magnitudes. The wall does not return only half of your 50 N push.
+D. 100 N: The 50 N force on the wall and the 50 N force on you act on different bodies. Adding their magnitudes does not make the force on you 100 N.
+Key Concept: Third-law forces have equal magnitudes and opposite directions and act on different bodies. They do not cancel in the force balance for one body. If both bodies are included in one system, the pair cancels as internal forces.
+
+==============================================================================
+
+Q7  [phys-7]  Waves and Sound  correct answer: A
+------------------------------------------------------------------------------
+STEM: A sound wave has a frequency of 440 Hz and travels at 340 m/s in air. What is its wavelength?
+
+  A. 0.77 m   <= key
+  B. 1.29 m
+  C. 149,600 m
+  D. 340 m
+
+EXPLANATION:
+Correct Answer: 0.77 m
+The wave equation relates velocity, frequency, and wavelength:
+v = f x λ
+λ = v / f
+λ = 340 / 440
+λ = 0.77 m (approximately)
+This is the wavelength of the note A4 (the standard tuning pitch for musical instruments).
+| Sound Property | Typical value or range |
+| Frequency (hearing) | 20 Hz - 20,000 Hz |
+| Speed in air (20 C) | ~340 m/s |
+| Speed in water | ~1500 m/s |
+| Speed in steel | ~5000 m/s |
+Why the other choices are wrong:
+B. 1.29 m: 440/340 gives frequency divided by speed, the reciprocal of wavelength. Wavelength is v/f = 340/440 ≈ 0.77 m.
+C. 149,600 m: 149,600 is the product of speed and frequency. From v = fλ, wavelength is found by division; multiplying does not give units of length.
+D. 340 m: 340 m/s is the wave speed, not its wavelength. In one second, 440 cycles pass, so each cycle occupies about 340/440 m.
+Key Concept: For a wave, v = f x λ. Sound in air is a longitudinal pressure wave. Sound speed depends on the medium's elastic properties and density, and in gases on temperature; greater density alone does not imply greater speed.
+
+==============================================================================
+
+Q8  [phys-8]  Fluid Mechanics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A solid object floats in water with 70% of its volume submerged. What is the density of the object? (Density of water = 1000 kg/m^3)
+
+  A. 300 kg/m^3
+  B. 700 kg/m^3   <= key
+  C. 1000 kg/m^3
+  D. 1400 kg/m^3
+
+EXPLANATION:
+Correct Answer: 700 kg/m^3
+For an unsupported object floating at rest, buoyant force balances weight. Neglecting air buoyancy and surface tension, the submerged volume fraction equals the object's average density divided by the water density.
+Fraction submerged = ρ_object / ρ_fluid
+0.70 = ρ_object / 1000
+ρ_object = 0.70 x 1000 = 700 kg/m^3
+
+  | Material | Density (kg/m^3) | Floats in Water? |
+| Cork | ~120 | Yes (88% above) |
+| Wood (oak) | ~700 | Yes (30% above) |
+| Ice | ~917 | Yes (8.3% above) |
+| Iron | ~7,870 | No (sinks) |
+Why the other choices are wrong:
+A. 300 kg/m^3: 300 kg/m^3 uses the 30% above water. Buoyant force depends on the displaced water, so use the 70% submerged fraction.
+C. 1000 kg/m^3: An object with the same average density as water can be neutrally buoyant when fully submerged. The stated object floats with part of its volume above the surface.
+D. 1400 kg/m^3: An unsupported object with average density 1400 kg/m^3 is denser than water and would sink under this model, rather than float with 70% submerged.
+Key Concept: For an unsupported object floating at rest, neglecting air buoyancy and surface tension, V_submerged/V_total = ρ_object,average/ρ_fluid. A lower average density permits floating; equal density gives neutral buoyancy when fully submerged.
+
+==============================================================================
+
+Q9  [phys-9]  Energy  correct answer: D
+------------------------------------------------------------------------------
+STEM: A 2 kg ball is thrown vertically upward with an initial speed of 10 m/s. What is its kinetic energy at the moment of release? (Ignore air resistance.)
+
+  A. 10 J
+  B. 20 J
+  C. 50 J
+  D. 100 J   <= key
+
+EXPLANATION:
+Correct Answer: 100 J
+Kinetic energy is calculated using:
+KE = 1/2 x m x v^2
+KE = 1/2 x 2 x 10^2
+KE = 1/2 x 2 x 100
+KE = 100 J
+For the subsequent vertical flight, take g = 10 m/s^2 and gravitational potential energy to be zero at release. At the highest point the speed is zero, so the 100 J has become gravitational potential energy. The rise above release is h = 100/(2 × 10) = 5 m.
+| Position | KE | PE | Total Energy |
+| Release (v=10 m/s) | 100 J | 0 J | 100 J |
+| Halfway to the maximum height | 50 J | 50 J | 100 J |
+| Top (v=0) | 0 J | 100 J | 100 J |
+Why the other choices are wrong:
+A. 10 J: 10 is the speed in m/s, not the kinetic energy in joules. Energy requires both mass and the square of speed: 1/2mv^2.
+B. 20 J: 20 is the numerical value of mv, which is momentum in kg·m/s. Kinetic energy uses 1/2mv^2 and is 100 J.
+C. 50 J: 50 J would be the kinetic energy of a 1 kg object at 10 m/s. The given ball has mass 2 kg.
+Key Concept: Kinetic energy is 1/2mv^2, so doubling speed quadruples kinetic energy. During this vertical flight under gravity alone, kinetic energy plus gravitational potential energy stays constant.
+
+==============================================================================
+
+Q10  [phys-10]  Pressure  correct answer: D
+------------------------------------------------------------------------------
+STEM: An ideal hydraulic press has piston areas of 5 cm^2 and 100 cm^2. Neglect friction, piston weights and the height difference between the pistons. If 20 N is applied to the small piston, what output force does the large piston exert?
+
+  A. 1 N
+  B. 20 N
+  C. 100 N
+  D. 400 N   <= key
+
+EXPLANATION:
+Correct Answer: 400 N
+Pascal's principle states that an applied pressure increase is transmitted undiminished through a confined fluid. The pressure increase is ΔP = F_1/A_1, so F_2 = F_1(A_2/A_1) = 20 × (100/5) = 400 N.
+Both areas are in the same units, so their ratio is dimensionless. If pressure itself is calculated in pascals, 5 cm^2 = 5 × 10^-4 m^2 and ΔP = 20/(5 × 10^-4) = 4.0 × 10^4 Pa.
+For an incompressible fluid, A_1d_1 = A_2d_2. The larger piston therefore moves only one-twentieth as far. In this ideal, lossless press, F_1d_1 = F_2d_2.
+Why the other choices are wrong:
+A. 1 N: 1 N results from reversing the area ratio. The larger piston has 20 times the area, so the same pressure increase produces 20 times the force.
+B. 20 N: 20 N would be the output if the piston areas were equal. The larger output area multiplies the applied force.
+C. 100 N: The force ratio equals 100/5 = 20, not 5. Multiplying the 20 N input by 20 gives 400 N.
+Key Concept: An ideal hydraulic press multiplies force by the piston-area ratio: F_2/F_1 = A_2/A_1. The output displacement decreases by the same factor, so the machine does not multiply energy.
+
+==============================================================================
+
+Q11  [phys-11]  Electromagnetic Radiation  correct answer: D
+------------------------------------------------------------------------------
+STEM: In the usual ordering of the electromagnetic spectrum from long to short wavelengths, which of these categories is placed at the shortest-wavelength end?
+
+  A. Radio waves
+  B. Visible light
+  C. Ultraviolet radiation
+  D. Γ rays   <= key
+
+EXPLANATION:
+Correct Answer: Γ rays
+The conventional spectrum ordering places gamma rays at the shortest-wavelength end. In vacuum, shorter wavelength means higher frequency and greater energy per photon.
+| EM Radiation Type | Approximate conventional wavelength range | Typical photon energy |
+| Radio waves excluding the microwave band shown below | > 1 m | Lowest |
+| Microwaves | 1 mm - 1 m | Low |
+| Infrared | 700 nm - 1 mm | Medium-low |
+| Visible light | 400-700 nm | Medium |
+| Ultraviolet | 10-400 nm | Medium-high |
+| X-rays | 0.01-10 nm | High |
+| Γ rays |  | Highest |
+These bands are a learning guide rather than strict boundaries. X-ray and gamma-ray energies can overlap; the names may also distinguish how the radiation is produced.
+Key Relationships:
+c = f x λ (c = 3 x 10^8 m/s for all EM waves in vacuum)
+E = hf = hc/lambda (energy is inversely proportional to wavelength)
+Why the other choices are wrong:
+A. Radio waves: Radio waves occupy the long-wavelength, low-frequency end of the electromagnetic spectrum. They do not have the shortest wavelengths among these choices.
+B. Visible light: Visible wavelengths are roughly 400-700 nm. Ultraviolet and the conventional gamma-ray region lie at shorter wavelengths.
+C. Ultraviolet radiation: Ultraviolet wavelengths are shorter than visible wavelengths, but the gamma-ray region is conventionally placed at still shorter wavelengths.
+Key Concept: All electromagnetic waves travel at the speed of light in vacuum. The energy of a photon is E = hf, where h is Planck's constant (6.626 x 10^-34 J.s). Higher frequency = higher energy = shorter wavelength.
+
+==============================================================================
+
+Q12  [phys-12]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: During β-minus decay, a neutron in the nucleus is converted into a proton and emits:
+
+  A. An α particle and a γ ray
+  B. An electron and an antineutrino   <= key
+  C. A positron and a neutrino
+  D. Two protons and a neutron
+
+EXPLANATION:
+Correct Answer: An electron and an antineutrino
+In β-minus (β^-) decay, a neutron transforms into a proton, emitting a high-energy electron (β particle) and an electron antineutrino to conserve lepton number.
+| Decay Type | Process | Emitted Particle(s) | Change in Nucleus |
+| Α (α) | Nucleus ejects He-4 nucleus | Α particle (^4_2He) | Z-2, A-4 |
+| Β-minus (β^-) | n -> p | Electron + electron antineutrino | Z+1, A unchanged |
+| Β-plus (β^+) | p -> n | Positron + electron neutrino | Z-1, A unchanged |
+| Γ (γ) | Excited nucleus relaxes | Γ photon | No change in Z or A |
+Β-minus decay equation:
+^A_ZX → ^A_Z+1Y + e^- + ν̄_e
+Example: ^14_6C → ^14_7N + e^- + ν̄_e (carbon-14 dating)
+Why the other choices are wrong:
+A. An α particle and a γ ray: An alpha particle contains two protons and two neutrons. Alpha emission reduces the daughter's mass number by 4 and atomic number by 2; that is not beta-minus decay.
+C. A positron and a neutrino: A positron and an electron neutrino are emitted in beta-plus decay, in which a proton converts to a neutron. Beta-minus decay has the opposite nucleon conversion.
+D. Two protons and a neutron: Beta-minus decay converts one neutron into a proton within the nucleus. It does not eject two protons and a neutron as the emitted particles.
+Key Concept: In beta-minus decay, a neutron becomes a proton, so the daughter has Z increased by 1 and the same A. Total electric charge is conserved when the emitted electron is included. Nuclear-decay equations conserve total energy, not the sum of rest masses.
+
+==============================================================================
+
+Q13  [phys-13]  Work and Power  correct answer: C
+------------------------------------------------------------------------------
+STEM: A crane raises a 500 kg load by 10 m in 25 s. What is the average useful power associated with increasing the load's gravitational potential energy? (g = 10 m/s^2)
+
+  A. 200 W
+  B. 500 W
+  C. 2000 W   <= key
+  D. 5000 W
+
+EXPLANATION:
+Correct Answer: 2000 W
+Power is the rate of doing work. First calculate the work done, then divide by time:
+Work = Force x distance = mgh = 500 x 10 x 10 = 50,000 J
+Power = Work / time = 50,000 / 25 = 2000 W = 2 kW
+
+  | Quantity | Formula | SI Unit |
+| Work | W = F x d x cos(θ) | Joule (J) |
+| Power | P_average = W/Δt; instantaneous P = Fv cosθ | Watt (W = J/s) |
+| Kinetic energy | KE = 1/2 mv^2 | Joule (J) |
+| Potential energy | PE = mgh, gravitational potential energy near Earth's surface | Joule (J) |
+The useful lifting force against gravity is mg = 5000 N. Multiplying it by the average upward speed, 10/25 = 0.4 m/s, also gives the average useful power of 2000 W.
+Why the other choices are wrong:
+A. 200 W: 200 W would supply only 5000 J in 25 s. Raising this load requires mgh = 50,000 J.
+B. 500 W: The mass is 500 kg, but mass is not power. Divide the 50,000 J increase in gravitational potential energy by 25 s.
+D. 5000 W: 5000 N is the load's weight. Power also depends on lifting speed; using the average speed 10/25 = 0.4 m/s gives 2000 W.
+Key Concept: Average power is work divided by elapsed time; 1 W = 1 J/s. One mechanical horsepower is approximately 746 W. Holding a load stationary does no mechanical work on that load, although supporting muscles still consume metabolic energy.
+
+==============================================================================
+
+Q14  [phys-14]  Momentum and Collisions  correct answer: B
+------------------------------------------------------------------------------
+STEM: A 1000 kg car traveling at 20 m/s collides with a stationary 2000 kg truck, and they stick together. Neglect external impulse during the collision. What is their common speed immediately afterward?
+
+  A. 5.0 m/s
+  B. 6.67 m/s   <= key
+  C. 10 m/s
+  D. 20 m/s
+
+EXPLANATION:
+Correct Answer: 6.67 m/s
+This is a perfectly inelastic collision (objects stick together). Conservation of momentum applies:
+m_1v_1 + m_2v_2 = (m_1 + m_2)v_f
+1000 x 20 + 2000 x 0 = (1000 + 2000) x v_f
+20,000 = 3000 x v_f
+v_f = 20,000 / 3000 = 6.67 m/s
+They move in the car's original direction.
+For a system with negligible external impulse:
+| Collision Type | Momentum Conserved? | Kinetic Energy Conserved? |
+| Elastic | Yes | Yes |
+| Perfectly inelastic | Yes | No; bodies stick together |
+| Inelastic | Yes | No; kinetic energy is converted to other forms |
+KE before = 1/2 x 1000 x 20^2 = 200,000 J. KE after ≈ 6.67 × 10^4 J, calculated from the unrounded final speed. About 2/3 of the kinetic energy was converted to heat, sound, and deformation.
+Why the other choices are wrong:
+A. 5.0 m/s: The final speed follows total initial momentum divided by the combined mass: 20,000/3000 m/s. A speed of 5.0 m/s would give too little final momentum.
+C. 10 m/s: 10 m/s can result from averaging 20 and 0 without accounting for the unequal masses. Momentum conservation requires weighting each initial velocity by its mass.
+D. 20 m/s: 20 m/s would leave the initial car's speed unchanged while adding a stationary truck to the moving mass. That would triple the system's momentum.
+Key Concept: Total momentum is conserved when external impulse is negligible. Elastic collisions also conserve total kinetic energy. In a perfectly inelastic collision the bodies stick together; the lost kinetic energy becomes other forms of energy.
+
+==============================================================================
+
+Q15  [phys-15]  Magnetic Fields  correct answer: C
+------------------------------------------------------------------------------
+STEM: A charged particle moving through a uniform magnetic field experiences a force. In which direction is this magnetic force relative to the particle's velocity?
+
+  A. Parallel to the velocity (same direction)
+  B. Antiparallel to the velocity (opposite direction)
+  C. Perpendicular to both the velocity and the magnetic field   <= key
+  D. At a 45-degree angle to the velocity
+
+EXPLANATION:
+Correct Answer: Perpendicular to both the velocity and the magnetic field
+For a moving point charge, the magnetic force is F_B = q(v × B). When nonzero, it is perpendicular to both v and B. Its magnitude is |F_B| = |q|vB sinθ, where θ is the angle between v and B.
+| Property | Electric force | Magnetic force |
+| Direction | Along E for a positive charge; opposite E for a negative charge | Perpendicular to v and B when nonzero |
+| Acts on a stationary charge? | Yes, if E is nonzero | No |
+| Does work on the charge? | Can do work | Does no work |
+| Changes speed? | Can change speed | Does not change speed by itself |
+The magnetic force is largest for perpendicular motion and zero for parallel or antiparallel motion. With only a uniform, static magnetic field acting, perpendicular motion is circular. Adding a velocity component along the field gives a helix; motion entirely along the field remains straight.
+Why the other choices are wrong:
+A. Parallel to the velocity (same direction): A force parallel to velocity would do positive work and increase the particle's kinetic energy. A magnetic force on a moving point charge is perpendicular to its velocity.
+B. Antiparallel to the velocity (opposite direction): A force opposite to velocity would do negative work and reduce kinetic energy. The magnetic part of the Lorentz force does no work.
+D. At a 45-degree angle to the velocity: A nonzero magnetic force is at 90° to velocity, not 45°. Its direction follows the cross product q(v × B).
+Key Concept: Magnetic force does no work on a moving point charge and therefore does not change its speed by itself. Use the right-hand rule for v × B for a positive charge; reverse that direction for a negative charge.
+
+==============================================================================
+
+Q16  [phys-16]  Kinematics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A car accelerates uniformly from 10 m/s to 30 m/s over a distance of 200 m. What is the acceleration?
+
+  A. 1 m/s^2
+  B. 2 m/s^2   <= key
+  C. 4 m/s^2
+  D. 5 m/s^2
+
+EXPLANATION:
+Correct Answer: 2 m/s^2
+Using v^2 = u^2 + 2as:
+30^2 = 10^2 + 2a(200)
+900 = 100 + 400a
+800 = 400a
+a = 2 m/s^2
+
+  | Equation | Variables |
+| v = u + at | No distance |
+| s = ut + ½at^2 | No final velocity |
+| v^2 = u^2 + 2as | No time |
+Why the other choices are wrong:
+A. 1 m/s^2: Use the change in squared speed: 30^2 − 10^2 = 800 m^2/s^2. Dividing by 2 × 200 m gives 2 m/s^2, not 1 m/s^2.
+C. 4 m/s^2: 4 m/s^2 results from dividing v^2 − u^2 by s instead of 2s. The equation is v^2 = u^2 + 2as.
+D. 5 m/s^2: At 5 m/s^2 over 200 m, the final speed would satisfy v^2 = 100 + 2000 = 2100 m^2/s^2, exceeding the stated 30 m/s.
+Key Concept: For straight-line motion with constant acceleration, v^2 = u^2 + 2as is useful when time is not given. The other standard relations are v = u + at and s = ut + ½at^2. Use a consistent sign convention.
+
+==============================================================================
+
+Q17  [phys-17]  Waves and Sound  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ambulance emits an 800 Hz siren while moving toward you through still air at a speed below the speed of sound. You are stationary relative to the air. What frequency do you perceive?
+
+  A. Lower than 800 Hz
+  B. Exactly 800 Hz
+  C. Higher than 800 Hz   <= key
+  D. Alternating between higher and lower
+
+EXPLANATION:
+Correct Answer: Higher than 800 Hz
+This is the Doppler effect: when a sound source approaches, wavefronts are compressed, increasing the observed frequency.
+| Source Motion | Observed Frequency | Observed Wavelength |
+| Approaching | Higher | Shorter |
+| Stationary | Same as emitted | Same |
+| Receding | Lower | Longer |
+Why the other choices are wrong:
+A. Lower than 800 Hz: A lower frequency is expected for a source moving away from a stationary listener. An approaching subsonic source sends successive wavefronts closer together.
+B. Exactly 800 Hz: 800 Hz is the emitted frequency. A stationary listener would hear it unchanged if the source were also stationary relative to the air.
+D. Alternating between higher and lower: A source steadily approaching the listener does not alternate between approaching and receding. The perceived frequency stays above the emitted frequency while it approaches.
+Key Concept: For a stationary listener in still air, an approaching subsonic sound source is heard at a higher frequency; a receding source is heard at a lower frequency. Doppler ultrasound uses frequency shifts from moving blood cells to estimate their velocity component along the ultrasound beam.
+
+==============================================================================
+
+Q18  [phys-18]  Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A thin converging lens in air has a focal length of 10 cm. An object is placed 30 cm from the lens. Where does the image form?
+
+  A. 7.5 cm on the same side as the object
+  B. 15 cm on the opposite side   <= key
+  C. 30 cm on the opposite side
+  D. At infinity
+
+EXPLANATION:
+Correct Answer: 15 cm on the opposite side
+Using the thin lens equation: 1/f = 1/d_o + 1/d_i
+1/10 = 1/30 + 1/d_i
+1/d_i = 1/10 - 1/30 = 3/30 - 1/30 = 2/30
+d_i = 30/2 = 15 cm (positive = real image on opposite side)
+
+  | Object Position | Image Properties |
+| Beyond 2f | Real, inverted, diminished |
+| At 2f | Real, inverted, same size |
+| Between f and 2f | Real, inverted, magnified |
+| At f | Image at infinity |
+| Inside f | Virtual, upright, magnified |
+Why the other choices are wrong:
+A. 7.5 cm on the same side as the object: The calculated image distance is +15 cm. Under the stated real-is-positive convention, this is a real image on the opposite side of the lens, not a virtual image on the object side.
+C. 30 cm on the opposite side: Equal object and image distances occur when the object is at 2f. Here 2f is 20 cm, while the object is 30 cm away.
+D. At infinity: An image at infinity is obtained when the object is at the focal point. This object is at 30 cm, not f = 10 cm.
+Key Concept: 1/f = 1/d_o + 1/d_i. Positive d_i = real image (opposite side). Negative d_i = virtual image (same side). Magnification = -d_i/d_o.
+
+==============================================================================
+
+Q19  [phys-19]  Electricity  correct answer: B
+------------------------------------------------------------------------------
+STEM: An ideal 12 V battery is connected to a 4 Ω resistor with negligible wire resistance. What current flows in the circuit?
+
+  A. 0.33 A
+  B. 3 A   <= key
+  C. 48 A
+  D. 16 A
+
+EXPLANATION:
+Correct Answer: 3 A
+Ohm's law: V = IR
+I = V/R = 12/4 = 3 A
+
+  | Quantity | Symbol | Unit | Formula |
+| Voltage | V | Volts (V) | V = IR |
+| Current | I | Amperes (A) | I = V/R |
+| Resistance | R | Ohms (Ω) | R = V/I |
+| Power | P | Watts (W) | P = VI = I^2R |
+Why the other choices are wrong:
+A. 0.33 A: 0.33 is approximately R/V, which is the reciprocal of the current expression. Ohm's law gives I = V/R, not R/V.
+C. 48 A: 48 is the product of 12 and 4. Current is found by dividing voltage by resistance, giving 3 A.
+D. 16 A: Adding 12 V and 4 Ω is not a valid operation because their units differ. Use I = V/R.
+Key Concept: Ohm's law (V = IR) is the foundation of circuit analysis. Power dissipated: P = VI = I^2R = V^2/R. In this circuit, P = 12 × 3 = 36 W.
+
+==============================================================================
+
+Q20  [phys-20]  Nuclear Physics  correct answer: C
+------------------------------------------------------------------------------
+STEM: A radioactive isotope has a half-life of 6 h. Starting with 80 g of that isotope, what mass of the original isotope remains undecayed after 18 h?
+
+  A. 40 g
+  B. 20 g
+  C. 10 g   <= key
+  D. 5 g
+
+EXPLANATION:
+Correct Answer: 10 g
+Number of half-lives = 18 hours / 6 hours = 3
+After 1 half-life: 80/2 = 40 g
+After 2 half-lives: 40/2 = 20 g
+After 3 half-lives: 20/2 = 10 g
+General formula: m_parent = m_initial × (1/2)^3 = 80/8 = 10 g
+The missing parent isotope has decayed; this does not mean that 70 g of material simply disappears.
+
+  | Half-lives | Fraction Remaining | Undecayed parent mass, initially 80 g |
+| 0 | 1 | 80 g |
+| 1 | 1/2 | 40 g |
+| 2 | 1/4 | 20 g |
+| 3 | 1/8 | 10 g |
+Why the other choices are wrong:
+A. 40 g: 40 g remains after one half-life, or 6 h. The elapsed time is 18 h, which is three half-lives.
+B. 20 g: 20 g remains after two half-lives, or 12 h. One further half-life reduces the undecayed isotope to 10 g.
+D. 5 g: 5 g remains after four half-lives, or 24 h. Only three half-lives have elapsed.
+Key Concept: The undecayed parent isotope halves after each half-life: m_parent = m_initial × (1/2)^t/T½. This tracks the parent isotope, not the mass of all decay products that may remain in the sample.
+
+==============================================================================
+
+Q21  [phys-21]  Medical Physics Applications  correct answer: D
+------------------------------------------------------------------------------
+STEM: A CT scanner acquires 1000 angular projections during each full rotation of its X-ray tube. Each rotation takes 0.5 s. What is the average acquisition rate in projections per second?
+
+  A. 500 projections/s
+  B. 1000 projections/s
+  C. 5000 projections/s
+  D. 2000 projections/s   <= key
+
+EXPLANATION:
+Correct Answer: D) 2000 projections/s
+The rate is the number of angular projections divided by the acquisition time: 1000/0.5 = 2000 projections/s. Equivalently, two rotations per second × 1000 projections per rotation gives 2000 projections/s.
+An angular projection, or view, contains measurements taken at one angular position. It can include readings from many detector elements. The number of detector elements alone therefore does not tell us how many angular projections are acquired per second.
+Why the other choices are wrong:
+A. 500 projections/s: 500 projections/s would mean acquiring 1000 projections in 2 s. The stated acquisition takes only 0.5 s.
+B. 1000 projections/s: 1000 is the number acquired per rotation, not per second. The scanner completes two rotations each second.
+C. 5000 projections/s: The rate is 1000 divided by 0.5, which is 2000 projections/s. A rate of 5000 would require more projections per rotation or a shorter rotation time.
+Key Concept: CT combines X-ray measurements from many viewing angles. Projection rate is the number of angular views acquired per unit time, rather than simply the number of detector elements.
+
+==============================================================================
+
+Q22  [phys-22]  Medical Physics Applications  correct answer: D
+------------------------------------------------------------------------------
+STEM: An MRI scanner has a magnetic field of 3.0 T. For hydrogen protons, use γ/(2π) = 42.58 MHz/T. What is their Larmor precession frequency f?
+
+  A. 63.87 MHz
+  B. 85.16 MHz
+  C. 170.32 MHz
+  D. 127.74 MHz   <= key
+
+EXPLANATION:
+Correct Answer: D) 127.74 MHz
+The Larmor frequency in cycles per second is f = [γ/(2π)]B. Using the supplied value, f = 42.58 MHz/T × 3.0 T = 127.74 MHz. The angular-frequency form is ω = γB; the factor 2π distinguishes angular frequency from frequency in hertz.
+Why the other choices are wrong:
+A. 63.87 MHz: 63.87 MHz is the result at 1.5 T using the stated frequency-to-field ratio. The scanner in this question operates at 3.0 T.
+B. 85.16 MHz: 85.16 MHz is the result at 2.0 T. Multiplying 42.58 MHz/T by the given 3.0 T gives 127.74 MHz.
+C. 170.32 MHz: 170.32 MHz corresponds to 4.0 T. Larmor frequency is proportional to the field strength for the same nucleus.
+Key Concept: For a given nucleus, Larmor frequency increases in proportion to magnetic field strength. MRI excitation uses radiofrequency pulses near this resonance frequency.
+
+==============================================================================
+
+Q23  [phys-23]  Medical Physics Applications  correct answer: A
+------------------------------------------------------------------------------
+STEM: Ultrasound waves travel through soft tissue at approximately 1540 m/s. If an echo returns 26 microseconds after the pulse was emitted, what is the depth of the reflecting structure?
+
+  A. 2.0 cm   <= key
+  B. 1.0 cm
+  C. 4.0 cm
+  D. 8.0 cm
+
+EXPLANATION:
+Correct Answer: A) 2.0 cm
+The total distance traveled by the sound is d_total = v x t = 1540 m/s x 26 x 10^-6 s = 0.04004 m = 4.0 cm. Since the ultrasound pulse travels to the structure and back, the actual depth is half this distance: depth = 4.0 cm / 2 = 2.0 cm.
+Why the other choices are wrong:
+B. 1.0 cm: 1.0 cm would halve the travel distance twice. The measured time covers one outward and one return trip, so divide vt by 2 only once.
+C. 4.0 cm: 4.0 cm is the total round-trip path length. The reflecting structure is only halfway along that path.
+D. 8.0 cm: 8.0 cm doubles the round-trip distance rather than halving it. Depth is vt/2, approximately 2.0 cm.
+Key Concept: In pulse-echo ultrasound, the round-trip time must be halved to determine the actual depth of a reflector.
+
+==============================================================================
+
+Q24  [phys-24]  Medical Physics Applications  correct answer: A
+------------------------------------------------------------------------------
+STEM: A tumor of mass 0.5 kg receives a mean absorbed radiation dose of 2 Gy. How much energy is deposited in the tumor?
+
+  A. 1.0 J   <= key
+  B. 0.5 J
+  C. 2.0 J
+  D. 4.0 J
+
+EXPLANATION:
+Correct Answer: A) 1.0 J
+The absorbed dose D is defined as energy deposited per unit mass: D = E/m. Rearranging: E = D x m = 2 Gy x 0.5 kg = 2 J/kg x 0.5 kg = 1.0 J.
+Why the other choices are wrong:
+B. 0.5 J: 0.5 is the mass in kilograms. Energy is dose multiplied by mass: 2 J/kg × 0.5 kg = 1.0 J.
+C. 2.0 J: 2 Gy is 2 J per kilogram, not a total of 2 J for every mass. The tumor has a mass of only 0.5 kg.
+D. 4.0 J: Dividing dose by mass gives neither the required value nor energy units. Rearranging D = E/m gives E = Dm.
+Key Concept: 1 Gray (Gy) equals 1 joule of energy absorbed per kilogram of tissue.
+
+==============================================================================
+
+Q25  [phys-25]  Medical Physics Applications  correct answer: A
+------------------------------------------------------------------------------
+STEM: An X-ray tube operates at a potential difference of 80 kV. What is the minimum wavelength (cutoff wavelength) of the X-rays produced? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, e = 1.6 x 10^-19 C)
+
+  A. 0.0155 nm   <= key
+  B. 0.0311 nm
+  C. 0.155 nm
+  D. 0.311 nm
+
+EXPLANATION:
+Correct Answer: A) 0.0155 nm
+The minimum wavelength corresponds to maximum photon energy, where all kinetic energy of the electron converts to a single photon: eV = hc/λ_min. Thus λ_min = hc/(eV) = (6.63 x 10^-34 x 3 x 10^8) / (1.6 x 10^-19 x 80000) = 1.989 x 10^-25 / 1.28 x 10^-14 = 1.554 x 10^-11 m = 0.0155 nm.
+Why the other choices are wrong:
+B. 0.0311 nm: 0.0311 nm is about twice the cutoff wavelength and would correspond to half the maximum photon energy. It is not the minimum wavelength at 80 kV.
+C. 0.155 nm: 0.155 nm is ten times too large. Convert 80 kV to 80,000 V before using λ_min = hc/(eV).
+D. 0.311 nm: 0.311 nm is twenty times the minimum wavelength. The maximum photon energy is the full 80 keV gained by an electron across the tube voltage.
+Key Concept: The Duane-Hunt law gives the minimum wavelength of X-rays, determined by the accelerating voltage of the X-ray tube.
+
+==============================================================================
+
+Q26  [phys-26]  Medical Physics Applications  correct answer: D
+------------------------------------------------------------------------------
+STEM: A diagnostic ultrasound transducer operates at 5 MHz. What is the approximate wavelength in soft tissue (speed of sound = 1540 m/s)?
+
+  A. 0.077 mm
+  B. 0.154 mm
+  C. 0.616 mm
+  D. 0.308 mm   <= key
+
+EXPLANATION:
+Correct Answer: D) 0.308 mm
+Wavelength = v/f = 1540 m/s / (5 x 10^6 Hz) = 3.08 x 10^-4 m = 0.308 mm.
+Why the other choices are wrong:
+A. 0.077 mm: 0.077 mm is approximately the wavelength at 20 MHz in this tissue. The given frequency is four times lower, so the wavelength is four times longer.
+B. 0.154 mm: 0.154 mm corresponds to 10 MHz. At 5 MHz, wavelength is twice as long because λ = v/f.
+C. 0.616 mm: 0.616 mm corresponds to 2.5 MHz. The stated 5 MHz frequency gives half that wavelength.
+Key Concept: At a fixed sound speed, higher frequency means shorter wavelength. With comparable pulse and beam design, this can improve resolution, but higher-frequency ultrasound generally attenuates more strongly in soft tissue, limiting penetration.
+
+==============================================================================
+
+Q27  [phys-27]  Medical Physics Applications  correct answer: A
+------------------------------------------------------------------------------
+STEM: A tissue starts at equilibrium longitudinal magnetization M₀ and receives an ideal 90° RF pulse, making its longitudinal magnetization zero. If T1 = 800 ms and no further RF pulses are applied, approximately what percentage of M₀ has recovered after 1600 ms?
+
+  A. 86%   <= key
+  B. 63%
+  C. 95%
+  D. 98%
+
+EXPLANATION:
+Correct Answer: A) 86%
+Longitudinal recovery from zero follows M_z(t) = M₀[1 − exp(−t/T1)]. Here t/T1 = 1600/800 = 2, so M_z/M₀ = 1 − e^-2 ≈ 0.8647, or about 86%.
+Why the other choices are wrong:
+B. 63%: About 63% recovery occurs after one T1 time constant. Here 1600 ms is twice the 800 ms T1.
+C. 95%: About 95% recovery occurs after three T1 time constants. This question allows only two.
+D. 98%: About 98% recovery occurs after four T1 time constants. At two time constants, about 13.5% remains unrecovered.
+Key Concept: After an ideal 90° pulse from equilibrium, longitudinal magnetization recovers toward M₀ with time constant T1. At one T1 it has recovered about 63%; at two T1, about 86%.
+
+==============================================================================
+
+Q28  [phys-28]  Medical Physics Applications  correct answer: A
+------------------------------------------------------------------------------
+STEM: A cobalt-60 source used in radiation therapy has a half-life of 5.27 years. If the initial activity is 400 TBq, what will the activity be after approximately 10.54 years?
+
+  A. 100 TBq   <= key
+  B. 200 TBq
+  C. 50 TBq
+  D. 25 TBq
+
+EXPLANATION:
+Correct Answer: A) 100 TBq
+After 10.54 years = 2 half-lives, the activity reduces by a factor of 2^2 = 4. A = 400 / 4 = 100 TBq.
+Why the other choices are wrong:
+B. 200 TBq: 200 TBq is the activity after one half-life, 5.27 years. The elapsed time is two half-lives.
+C. 50 TBq: 50 TBq would follow three half-lives. At two half-lives, the source retains one quarter of its initial activity.
+D. 25 TBq: 25 TBq would follow four half-lives. The activity halves twice here: 400 → 200 → 100 TBq.
+Key Concept: Radioactive decay follows an exponential pattern where the activity halves with each half-life period.
+
+==============================================================================
+
+Q29  [phys-29]  Electromagnetism  correct answer: A
+------------------------------------------------------------------------------
+STEM: A long straight wire in air carries a current of 10 A. Far from the wire's ends, what is the magnetic field magnitude 5 cm from the wire? Use μ_0 ≈ 4π x 10^-7 T·m/A.
+
+  A. 4 x 10^-5 T   <= key
+  B. 2 x 10^-5 T
+  C. 8 x 10^-5 T
+  D. 2 x 10^-4 T
+
+EXPLANATION:
+Correct Answer: A) 4 x 10^-5 T
+Using Ampere's law for an infinite straight wire: B = μ_0 I / (2π r) = (4π x 10^-7 x 10) / (2π x 0.05) = (4 x 10^-6) / (0.1) = 4 x 10^-5 T.
+Why the other choices are wrong:
+B. 2 x 10^-5 T: For this current, 2 × 10^-5 T would be the field at 10 cm. At the stated 5 cm, the field is twice as large.
+C. 8 x 10^-5 T: 8 × 10^-5 T would occur at 2.5 cm for this current. The field varies inversely with distance from a long straight wire.
+D. 2 x 10^-4 T: 2 × 10^-4 T would occur at 1 cm. Convert the stated 5 cm to 0.05 m before substitution.
+Key Concept: The magnetic field around a long straight conductor decreases inversely with distance from the wire.
+
+==============================================================================
+
+Q30  [phys-30]  Electromagnetism  correct answer: A
+------------------------------------------------------------------------------
+STEM: A proton (mass = 1.67 x 10^-27 kg, charge = 1.6 x 10^-19 C) moves at 2 x 10^6 m/s perpendicular to a uniform magnetic field of 0.5 T. What is the radius of its circular path?
+
+  A. 4.18 cm   <= key
+  B. 2.09 cm
+  C. 8.35 cm
+  D. 16.7 cm
+
+EXPLANATION:
+Correct Answer: A) 4.18 cm
+The Lorentz force provides the centripetal force: qvB = mv^2/r, so r = mv/(qB) = (1.67 x 10^-27 x 2 x 10^6) / (1.6 x 10^-19 x 0.5) = 3.34 x 10^-21 / 8 x 10^-20 = 0.04175 m = 4.18 cm.
+Why the other choices are wrong:
+B. 2.09 cm: 2.09 cm is half the calculated radius. From r = mv/(|q|B), it would require half the momentum or twice the magnetic field.
+C. 8.35 cm: 8.35 cm is twice the calculated radius. The stated values instead give 0.04175 m, or 4.18 cm.
+D. 16.7 cm: 16.7 cm is four times the calculated radius. Use the given 0.5 T field and convert the resulting radius from meters to centimeters.
+Key Concept: When velocity is perpendicular to a uniform magnetic field and only the magnetic force acts, the path is circular with r = p/(|q|B). A velocity component along the field adds motion along the field, producing a helix.
+
+==============================================================================
+
+Q31  [phys-31]  Electromagnetism  correct answer: B   (ANSWER KEY CORRECTED: D -> B)
+------------------------------------------------------------------------------
+STEM: A 50-turn rectangular coil, 20 cm by 10 cm, rotates at 60 revolutions per second in a uniform 0.4 T magnetic field. Its rotation axis lies in the coil's plane and is perpendicular to the field. What is the peak induced EMF?
+
+  A. 75.4 V
+  B. 150.8 V   <= key
+  C. 301.6 V
+  D. 753.9 V
+
+EXPLANATION:
+Correct Answer: B) 150.8 V
+For this generator geometry, ε_peak = NBAω. The area of each turn is A = 0.20 × 0.10 = 0.020 m^2. Convert rotations per second to angular speed: ω = 2πf = 2π × 60 ≈ 376.99 rad/s.
+Therefore ε_peak = 50 × 0.4 × 0.020 × 376.99 = 150.8 V. This is option B. The expression gives the peak voltage, not the RMS voltage.
+Why the other choices are wrong:
+A. 75.4 V: 75.4 V is half the correct peak value. Using 50 turns, 0.020 m^2 area, 0.4 T and ω = 2π × 60 rad/s gives 150.8 V.
+C. 301.6 V: 301.6 V is twice the correct peak value. This would require doubling one factor in NBAω, such as the turn count or rotation frequency.
+D. 753.9 V: 753.9 V is about five times too large. Recheck the product: 50 × 0.4 × 0.020 = 0.4, and 0.4 × 376.99 = 150.8 V.
+Key Concept: For a coil rotating in the stated generator geometry, ε_peak = NBAω with ω = 2πf. Convert both lengths to meters before calculating the area.
+
+==============================================================================
+
+Q32  [phys-32]  Electromagnetism  correct answer: A
+------------------------------------------------------------------------------
+STEM: An electron enters crossed electric and magnetic fields of 3000 V/m and 0.01 T. Its velocity is perpendicular to both fields and directed so the electric and magnetic forces oppose each other. What speed allows it to pass undeflected?
+
+  A. 3 x 10^5 m/s   <= key
+  B. 3 x 10^4 m/s
+  C. 3 x 10^6 m/s
+  D. 3 x 10^7 m/s
+
+EXPLANATION:
+Correct Answer: A) 3 x 10^5 m/s
+For no deflection, the opposed forces must have equal magnitudes: |q|E = |q|vB. The charge magnitude cancels, giving v = E/B = 3000/0.01 = 3 × 10^5 m/s.
+Why the other choices are wrong:
+B. 3 x 10^4 m/s: 3 × 10^4 m/s gives a magnetic-force magnitude only one tenth of the electric force. It cannot balance the fields given.
+C. 3 x 10^6 m/s: 3 × 10^6 m/s gives a magnetic-force magnitude ten times the electric force. The particle would be deflected.
+D. 3 x 10^7 m/s: 3 × 10^7 m/s gives a magnetic-force magnitude one hundred times the electric force. The required speed is E/B = 3 × 10^5 m/s.
+Key Concept: A velocity selector transmits particles traveling in the appropriate direction at speed v = E/B. Both force direction and force magnitude must be correct for the net force to be zero.
+
+==============================================================================
+
+Q33  [phys-33]  Electromagnetism  correct answer: D
+------------------------------------------------------------------------------
+STEM: A long air-core solenoid has 2000 turns per meter and carries 3 A. Neglecting end effects, what is the magnetic field near its center? Use μ_0 ≈ 4π x 10^-7 T·m/A.
+
+  A. 1.88 x 10^-3 T
+  B. 3.77 x 10^-3 T
+  C. 1.51 x 10^-2 T
+  D. 7.54 x 10^-3 T   <= key
+
+EXPLANATION:
+Correct Answer: D) 7.54 x 10^-3 T
+The magnetic field inside a solenoid is B = μ_0 x n x I = 4π x 10^-7 x 2000 x 3 = 4π x 6 x 10^-4 = 24π x 10^-4 = 7.54 x 10^-3 T.
+Why the other choices are wrong:
+A. 1.88 x 10^-3 T: 1.88 × 10^-3 T is about one quarter of the correct field. The given product of turns per meter and current is 2000 × 3 = 6000 A/m.
+B. 3.77 x 10^-3 T: 3.77 × 10^-3 T is about half the correct field. Use the stated 3 A current with all 2000 turns per meter.
+C. 1.51 x 10^-2 T: 1.51 × 10^-2 T is about twice the correct field. The long-solenoid expression is B ≈ μ_0nI, without an additional factor of two.
+Key Concept: Inside a sufficiently long air-core solenoid, away from the ends, B ≈ μ_0nI and the field is approximately uniform. Here n = N/L is turns per unit length, so length still matters if the total number of turns is fixed.
+
+==============================================================================
+
+Q34  [phys-34]  Electromagnetism  correct answer: D
+------------------------------------------------------------------------------
+STEM: A stationary single circular loop of radius 8 cm lies perpendicular to a spatially uniform magnetic field. The field increases linearly from 0.2 T to 0.8 T in 0.3 s. What is the magnitude of the induced EMF?
+
+  A. 0.010 V
+  B. 0.020 V
+  C. 0.080 V
+  D. 0.040 V   <= key
+
+EXPLANATION:
+Correct Answer: D) 0.040 V
+The flux through this fixed loop is Φ = BA. Its area is A = π(0.08)^2 ≈ 0.02011 m^2. The field-change rate is ΔB/Δt = (0.8 − 0.2)/0.3 = 2.0 T/s. Thus |ε| = A|ΔB/Δt| = 0.02011 × 2.0 ≈ 0.040 V. The minus sign in ε = −dΦ/dt describes the induced EMF's direction; it does not make its magnitude negative.
+Why the other choices are wrong:
+A. 0.010 V: 0.010 V is about one quarter of the correct EMF. Treating 8 cm as the diameter instead of the stated radius would reduce the area by a factor of four.
+B. 0.020 V: 0.020 V is about half the correct result. The field-change rate is (0.8 − 0.2)/0.3 = 2.0 T/s, not 1.0 T/s.
+C. 0.080 V: 0.080 V is about twice the correct result. The stem specifies a single loop, so no factor of two for the number of turns is needed.
+Key Concept: An induced EMF comes from changing magnetic flux. For a single loop, ε = −dΦ/dt; flux can change because of field strength, loop area or orientation. Here only the field strength changes.
+
+==============================================================================
+
+Q35  [phys-35]  Electromagnetism  correct answer: D
+------------------------------------------------------------------------------
+STEM: Two long, straight, parallel wires in air are separated by 10 cm and each carries 5 A, in opposite directions. Neglect end effects. What is the force per meter between the wires, and is it attractive or repulsive? Use μ_0 ≈ 4π x 10^-7 T·m/A.
+
+  A. 5 x 10^-5 N/m, attractive
+  B. 1 x 10^-4 N/m, repulsive
+  C. 1 x 10^-4 N/m, attractive
+  D. 5 x 10^-5 N/m, repulsive   <= key
+
+EXPLANATION:
+Correct Answer: D) 5 x 10^-5 N/m, repulsive
+F/L = μ_0 I_1 I_2 / (2π d) = (4π x 10^-7 x 5 x 5) / (2π x 0.1) = (100π x 10^-7) / (0.2π) = 5 x 10^-5 N/m. Currents in opposite directions produce a repulsive force.
+Why the other choices are wrong:
+A. 5 x 10^-5 N/m, attractive: The magnitude is correct, but the direction is not. Parallel currents in opposite directions repel; currents in the same direction attract.
+B. 1 x 10^-4 N/m, repulsive: The repulsive direction is correct, but the magnitude is twice too large. Use F/L = μ_0I_1I_2/(2πd) with d = 0.10 m.
+C. 1 x 10^-4 N/m, attractive: Both parts are wrong: the magnitude is twice too large, and opposite-direction currents repel rather than attract.
+Key Concept: Parallel wires with currents in the same direction attract each other, while opposite currents repel.
+
+==============================================================================
+
+Q36  [phys-36]  Electromagnetism  correct answer: D
+------------------------------------------------------------------------------
+STEM: An ideal transformer has 500 primary turns and 50 secondary turns. If the primary voltage is 220 V AC RMS, what is the secondary RMS voltage?
+
+  A. 2.2 V
+  B. 2200 V
+  C. 440 V
+  D. 22 V   <= key
+
+EXPLANATION:
+Correct Answer: D) 22 V
+Using the transformer equation: V_s/V_p = N_s/N_p. Therefore V_s = V_p x (N_s/N_p) = 220 x (50/500) = 220 x 0.1 = 22 V. This is a step-down transformer.
+Why the other choices are wrong:
+A. 2.2 V: 2.2 V is a hundredfold reduction. The secondary has one tenth as many turns as the primary, so the voltage falls by a factor of ten.
+B. 2200 V: 2200 V reverses the turns ratio. A secondary with fewer turns makes this a step-down transformer.
+C. 440 V: 440 V would double the primary voltage. The given secondary winding has fewer turns, so its voltage is lower than 220 V.
+Key Concept: The voltage ratio in an ideal transformer equals the turns ratio, allowing voltage to be stepped up or down.
+
+==============================================================================
+
+Q37  [phys-37]  Modern Physics  correct answer: D
+------------------------------------------------------------------------------
+STEM: Light with a wavelength of 400 nm strikes a metal surface with a work function of 2.0 eV. What is the maximum kinetic energy of the emitted photoelectrons? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, 1 eV = 1.6 x 10^-19 J)
+
+  A. 0.5 eV
+  B. 3.1 eV
+  C. 2.0 eV
+  D. 1.1 eV   <= key
+
+EXPLANATION:
+Correct Answer: D) 1.1 eV
+Photon energy E = hc/lambda = (6.63 x 10^-34 x 3 x 10^8) / (400 x 10^-9) = 4.97 x 10^-19 J = 3.1 eV. Maximum KE = E - work function = 3.1 - 2.0 = 1.1 eV.
+Why the other choices are wrong:
+A. 0.5 eV: The photon supplies about 3.1 eV. After paying the 2.0 eV work function, the maximum remaining kinetic energy is about 1.1 eV.
+B. 3.1 eV: 3.1 eV is the incident photon energy. Not all of it becomes electron kinetic energy because 2.0 eV is needed to release an electron from the metal.
+C. 2.0 eV: 2.0 eV is the work function, the minimum energy needed for release. It is not the outgoing electron's maximum kinetic energy.
+Key Concept: The photoelectric equation KE_max = hf - φ shows that kinetic energy of emitted electrons depends on photon energy minus the work function.
+
+==============================================================================
+
+Q38  [phys-38]  Modern Physics  correct answer: D
+------------------------------------------------------------------------------
+STEM: An electron initially at rest is accelerated through a potential difference of 100 V. What is its de Broglie wavelength? Use m = 9.11 x 10^-31 kg, h = 6.63 x 10^-34 J·s and e = 1.6 x 10^-19 C.
+
+  A. 0.0123 nm
+  B. 0.0388 nm
+  C. 0.388 nm
+  D. 0.123 nm   <= key
+
+EXPLANATION:
+Correct Answer: D) 0.123 nm
+KE = eV = 1.6 x 10^-19 x 100 = 1.6 x 10^-17 J. Speed: v = sqrt(2KE/m) = sqrt(2 x 1.6 x 10^-17 / 9.11 x 10^-31) = sqrt(3.513 x 10^13) = 5.93 x 10^6 m/s. Λ = h/(mv) = 6.63 x 10^-34 / (9.11 x 10^-31 x 5.93 x 10^6) = 1.23 x 10^-10 m = 0.123 nm.
+Why the other choices are wrong:
+A. 0.0123 nm: 0.0123 nm is ten times too small. Because λ = h/sqrt(2meV), a tenfold decrease in wavelength would require a hundredfold increase in accelerating voltage.
+B. 0.0388 nm: 0.0388 nm is approximately the result for 1000 V. The stated 100 V gives a wavelength larger by a factor of sqrt(10).
+C. 0.388 nm: 0.388 nm is approximately the result for 10 V. The stated 100 V gives a wavelength smaller by a factor of sqrt(10).
+Key Concept: The de Broglie wavelength demonstrates wave-particle duality, showing that accelerated electrons have wavelengths comparable to atomic spacings.
+
+==============================================================================
+
+Q39  [phys-39]  Modern Physics  correct answer: D
+------------------------------------------------------------------------------
+STEM: An X-ray photon of wavelength 0.071 nm scatters from a free electron initially at rest. The photon is deflected by 90° from its original direction. What is its wavelength shift? Use an electron Compton wavelength of 0.00243 nm.
+
+  A. 0.00122 nm
+  B. 0.00729 nm
+  C. 0.00486 nm
+  D. 0.00243 nm   <= key
+
+EXPLANATION:
+Correct Answer: D) 0.00243 nm
+The Compton wavelength shift is δ_λ = (h/m_e c)(1 - cos θ) = 0.00243 nm x (1 - cos 90) = 0.00243 nm x (1 - 0) = 0.00243 nm.
+Why the other choices are wrong:
+A. 0.00122 nm: A shift of 0.00122 nm is about half the Compton wavelength and corresponds to a photon scattering angle of 60°, not 90°.
+B. 0.00729 nm: 0.00729 nm is three times the electron Compton wavelength. It exceeds the maximum shift of twice that wavelength in the stated free-electron model.
+C. 0.00486 nm: 0.00486 nm is the maximum shift, obtained at 180° backscattering. At 90°, the shift equals one electron Compton wavelength.
+Key Concept: The Compton shift is maximum at 180 degrees (backscattering) and equals the Compton wavelength at 90 degrees.
+
+==============================================================================
+
+Q40  [phys-40]  Modern Physics  correct answer: D
+------------------------------------------------------------------------------
+STEM: An atom makes a transition from an energy level at -1.5 eV to one at -3.4 eV. What is the wavelength of the emitted photon? (h = 6.63 x 10^-34 J-s, c = 3 x 10^8 m/s, 1 eV = 1.6 x 10^-19 J)
+
+  A. 328 nm
+  B. 490 nm
+  C. 980 nm
+  D. 654 nm   <= key
+
+EXPLANATION:
+Correct Answer: D) 654 nm
+Energy of the photon = |-1.5 - (-3.4)| = 1.9 eV = 1.9 x 1.6 x 10^-19 = 3.04 x 10^-19 J. Wavelength = hc/E = (6.63 x 10^-34 x 3 x 10^8) / (3.04 x 10^-19) = 6.54 x 10^-7 m = 654 nm (red light).
+Why the other choices are wrong:
+A. 328 nm: 328 nm would require about twice the actual 1.9 eV energy difference. Use the change between the two levels, not twice that change.
+B. 490 nm: 490 nm corresponds to about 2.54 eV. The stated transition releases only 1.9 eV, so its wavelength is longer.
+C. 980 nm: 980 nm corresponds to about 1.27 eV. The stated transition releases 1.9 eV, giving a shorter wavelength of about 654 nm.
+Key Concept: The energy of an emitted photon equals the difference between the initial and final energy levels of the atomic transition.
+
+==============================================================================
+
+Q41  [phys-41]  Modern Physics  correct answer: A
+------------------------------------------------------------------------------
+STEM: An electron's position along the x-axis has a quantum uncertainty Δx = 0.1 nm. Treat uncertainty as the standard deviation, or spread, of possible measurement results. What is the smallest momentum uncertainty Δp_x allowed by the Heisenberg relation? Use ħ = 1.055 x 10^-34 J·s.
+
+  A. 5.28 x 10^-25 kg-m/s   <= key
+  B. 1.055 x 10^-24 kg-m/s
+  C. 5.28 x 10^-24 kg-m/s
+  D. 1.055 x 10^-23 kg-m/s
+
+EXPLANATION:
+Correct Answer: A) 5.28 x 10^-25 kg-m/s
+For position and momentum along the same axis, ΔxΔp_x ≥ ħ/2. Since 0.1 nm = 1.0 × 10^-10 m, the lower bound is Δp_x = ħ/(2Δx) = (1.055 × 10^-34)/(2 × 10^-10) ≈ 5.28 × 10^-25 kg·m/s.
+Why the other choices are wrong:
+B. 1.055 x 10^-24 kg-m/s: This result omits the factor of 2 in the denominator. The relation is ΔxΔp_x ≥ ħ/2, not ΔxΔp_x ≥ ħ.
+C. 5.28 x 10^-24 kg-m/s: This is ten times the minimum bound. Convert 0.1 nm to 1.0 × 10^-10 m before dividing ħ by 2Δx.
+D. 1.055 x 10^-23 kg-m/s: This is twenty times the minimum bound. The denominator is 2 × 10^-10 m, and the numerator is 1.055 × 10^-34 J·s.
+Key Concept: A quantum state cannot have arbitrarily small spreads in both position and the corresponding momentum component. The relation ΔxΔp_x ≥ ħ/2 is intrinsic to quantum states, not simply a defect in measuring instruments.
+
+==============================================================================
+
+Q42  [phys-42]  Modern Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: The threshold frequency for a photoemissive surface is 5.0 x 10^14 Hz. What is the work function of the material in electron volts? (h = 6.63 x 10^-34 J-s, 1 eV = 1.6 x 10^-19 J)
+
+  A. 1.04 eV
+  B. 2.07 eV   <= key
+  C. 3.31 eV
+  D. 4.14 eV
+
+EXPLANATION:
+Correct Answer: B) 2.07 eV
+The work function φ = h x f_0 = 6.63 x 10^-34 x 5.0 x 10^14 = 3.315 x 10^-19 J. Converting to eV: 3.315 x 10^-19 / 1.6 x 10^-19 = 2.07 eV.
+Why the other choices are wrong:
+A. 1.04 eV: 1.04 eV is about half the correct result. The threshold relation is φ = hf_0; no factor of 1/2 is included.
+C. 3.31 eV: The intermediate result is 3.315 × 10^-19 J. To express it in electron volts, divide by 1.6 × 10^-19 J/eV, giving 2.07 eV.
+D. 4.14 eV: 4.14 eV is twice the correct work function. One threshold-frequency photon supplies hf_0, not 2hf_0.
+Key Concept: The threshold frequency is the minimum frequency needed for photoemission, directly related to the work function by φ = hf_0.
+
+==============================================================================
+
+Q43  [phys-43]  Fluid Dynamics Advanced  correct answer: D
+------------------------------------------------------------------------------
+STEM: Assume steady, incompressible blood flow through an unbranched artery. Where its radius is 4 mm, the mean speed across the cross-section is 0.3 m/s. What is the mean speed where the radius narrows to 2 mm?
+
+  A. 0.6 m/s
+  B. 0.9 m/s
+  C. 2.4 m/s
+  D. 1.2 m/s   <= key
+
+EXPLANATION:
+Correct Answer: D) 1.2 m/s
+By the continuity equation: A_1 v_1 = A_2 v_2. Since A = π r^2: π(4)^2 x 0.3 = π(2)^2 x v_2. Therefore v_2 = (16/4) x 0.3 = 4 x 0.3 = 1.2 m/s.
+Why the other choices are wrong:
+A. 0.6 m/s: 0.6 m/s doubles speed when radius halves. Area depends on radius squared, so halving radius reduces area to one quarter and increases mean speed fourfold.
+B. 0.9 m/s: The area ratio is 4^2/2^2 = 4, not 3. Multiplying 0.3 m/s by 4 gives 1.2 m/s.
+C. 2.4 m/s: 2.4 m/s is an eightfold increase. Continuity here gives a fourfold increase because cross-sectional area, rather than volume, determines the speed ratio.
+Key Concept: For steady incompressible flow through an unbranched vessel, volume flow rate Q = Av is the same at each cross-section, where v is the mean speed. A smaller area therefore requires a higher mean speed for that same flow rate.
+
+==============================================================================
+
+Q44  [phys-44]  Fluid Dynamics Advanced  correct answer: A
+------------------------------------------------------------------------------
+STEM: Water flows steadily through a horizontal pipe that narrows from 40 cm^2 to 10 cm^2. Treat the water as incompressible and neglect viscous losses. If the pressure and speed in the wide section are 200 kPa and 2 m/s, what is the pressure in the narrow section? Use ρ = 1000 kg/m^3.
+
+  A. 170 kPa   <= key
+  B. 176 kPa
+  C. 185 kPa
+  D. 188 kPa
+
+EXPLANATION:
+Correct Answer: A) 170 kPa
+By continuity: v_2 = (A_1/A_2) x v_1 = (40/10) x 2 = 8 m/s. Applying Bernoulli's equation (horizontal pipe): P_1 + 0.5 ρ v_1^2 = P_2 + 0.5 ρ v_2^2. P_2 = P_1 + 0.5 ρ (v_1^2 - v_2^2) = 200000 + 0.5 x 1000 x (4 - 64) = 200000 - 30000 = 170000 Pa = 170 kPa.
+Why the other choices are wrong:
+B. 176 kPa: 176 kPa is not obtained from the stated areas and speeds. Continuity gives v_2 = 8 m/s, and Bernoulli gives a pressure decrease of 30 kPa.
+C. 185 kPa: 185 kPa uses only half the required pressure decrease. Evaluate 1/2ρ(8^2 − 2^2) = 30,000 Pa.
+D. 188 kPa: 188 kPa uses too small a pressure change. Bernoulli's kinetic term depends on speed squared, so use 8^2 − 2^2 rather than a simple speed difference.
+Key Concept: For steady incompressible flow with negligible viscous losses, Bernoulli's equation relates pressure, speed and height along a streamline. At equal height, an increase in speed is accompanied by a decrease in pressure under these assumptions.
+
+==============================================================================
+
+Q45  [phys-45]  Fluid Dynamics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A Newtonian fluid of viscosity 0.004 Pa·s has steady, fully developed laminar flow through a rigid circular tube of radius 3 mm and length 0.5 m. The pressure difference is 800 Pa. What volume flow rate does Poiseuille's law predict?
+
+  A. 1.27 x 10^-6 m^3/s
+  B. 5.09 x 10^-6 m^3/s
+  C. 1.27 x 10^-5 m^3/s   <= key
+  D. 5.09 x 10^-5 m^3/s
+
+EXPLANATION:
+Correct Answer: C) 1.27 x 10^-5 m^3/s
+Using Poiseuille's law: Q = π r⁴ ΔP / (8 η L)
+Q = π × (3 × 10⁻³)⁴ × 800 / (8 × 0.004 × 0.5)
+r⁴ = 8.1 × 10⁻¹¹
+Numerator: π × 8.1 × 10⁻¹¹ × 800 = π × 6.48 × 10⁻⁸
+Denominator: 0.016
+Q = π × 4.05 × 10⁻⁶ = 1.27 × 10⁻⁵ m³/s
+Why the other choices are wrong:
+A. 1.27 x 10^-6 m^3/s: This is ten times below the calculated flow rate. In SI units, r⁴ = (0.003)⁴ = 8.1 × 10⁻¹¹ m⁴; take care with the exponent.
+B. 5.09 x 10^-6 m^3/s: Substitution gives numerator π × 6.48 × 10⁻⁸ and denominator 0.016. Their quotient is 1.27 × 10⁻⁵ m³/s, not 5.09 × 10⁻⁶ m³/s.
+D. 5.09 x 10^-5 m^3/s: This is four times the correct flow rate. Poiseuille's denominator is 8ηL; omitting part of that factor overestimates the flow.
+Key Concept: For the stated laminar-flow model, Q = πr⁴ΔP/(8ηL). Holding pressure difference, viscosity and length fixed, doubling radius increases flow sixteenfold. Real blood vessels may require more complex models.
+
+==============================================================================
+
+Q46  [phys-46]  Fluid Dynamics Advanced  correct answer: D
+------------------------------------------------------------------------------
+STEM: A steel sphere of density 7800 kg/m^3 and radius 1 mm falls through a wide column of glycerin with density 1260 kg/m^3 and viscosity 1.5 Pa·s. Use Stokes' drag law and neglect wall effects. What is its terminal speed? Use g = 10 m/s^2.
+
+  A. 0.97 mm/s
+  B. 4.84 mm/s
+  C. 19.4 mm/s
+  D. 9.69 mm/s   <= key
+
+EXPLANATION:
+Correct Answer: D) 9.69 mm/s
+At terminal velocity, gravity equals buoyancy plus drag (Stokes' law): v_t = 2r^2(ρ_s - ρ_f)g / (9 η) = 2 x (10^-3)^2 x (7800 - 1260) x 10 / (9 x 1.5) = 2 x 10^-6 x 65400 / 13.5 = 0.1308 / 13.5 = 9.69 x 10^-3 m/s = 9.69 mm/s.
+Why the other choices are wrong:
+A. 0.97 mm/s: 0.97 mm/s is ten times too small. After calculating v_t ≈ 9.69 × 10^-3 m/s, multiply by 1000 to express it in mm/s.
+B. 4.84 mm/s: 4.84 mm/s is about half the correct value. The terminal-speed formula includes the numerator factor 2: v_t = 2r^2(ρ_s − ρ_f)g/(9η).
+C. 19.4 mm/s: 19.4 mm/s is about twice the correct value. Balance the sphere's weight minus buoyancy against Stokes drag, without an additional factor of two.
+Key Concept: At terminal speed, acceleration is zero and weight equals buoyancy plus drag. In the low-Reynolds-number regime for a sphere, Stokes drag is 6πηrv, giving v_t = 2r^2(ρ_s − ρ_f)g/(9η).
+
+==============================================================================
+
+Q47  [phys-47]  Fluid Dynamics Advanced  correct answer: B
+------------------------------------------------------------------------------
+STEM: The Reynolds number for blood flow in the aorta is approximately 2000. If the aorta has a diameter of 2.5 cm, blood density is 1060 kg/m^3 and viscosity is 3.5 x 10^-3 Pa-s, what is the average flow velocity?
+
+  A. 0.13 m/s
+  B. 0.26 m/s   <= key
+  C. 0.53 m/s
+  D. 1.06 m/s
+
+EXPLANATION:
+Correct Answer: B) 0.26 m/s
+Re = ρ v D / η, so v = Re x η / (ρ x D) = 2000 x 3.5 x 10^-3 / (1060 x 0.025) = 7.0 / 26.5 = 0.264 m/s, approximately 0.26 m/s.
+Why the other choices are wrong:
+A. 0.13 m/s: 0.13 m/s is about half the stated-model result. Use the given diameter D = 0.025 m in v = Re·η/(ρD).
+C. 0.53 m/s: 0.53 m/s results approximately from using the radius instead of the diameter in this definition of Reynolds number. Here D is the full 2.5 cm diameter.
+D. 1.06 m/s: 1.06 m/s is about four times the required speed. With the given density, viscosity and diameter, Re = 2000 gives v ≈ 0.264 m/s.
+Key Concept: Reynolds number compares inertial and viscous effects. Common laminar/transition/turbulent thresholds are guides for steady flow in straight pipes; aortic flow is pulsatile, so its behavior cannot be classified from those thresholds alone.
+
+==============================================================================
+
+Q48  [phys-48]  Fluid Dynamics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A mercury manometer has a vertical height difference of 120 mm between its mercury levels. Estimate the pressure difference using ρ_mercury = 13,600 kg/m^3 and the rounded value g = 10 m/s^2.
+
+  A. 8160 Pa
+  B. 12000 Pa
+  C. 16320 Pa   <= key
+  D. 24000 Pa
+
+EXPLANATION:
+Correct Answer: C) 16320 Pa
+The pressure difference is ΔP = ρgh. Convert the height: 120 mm = 0.120 m. Using the stipulated rounded values gives ΔP = 13,600 × 10 × 0.120 = 16,320 Pa. This is a column-pressure estimate using the supplied g. For a conventional unit conversion, 1 mmHg ≈ 133.322 Pa, so 120 mmHg ≈ 16,000 Pa.
+Why the other choices are wrong:
+A. 8160 Pa: 8160 Pa is half the result. The full mercury-level difference is 0.120 m, so no factor of 1/2 belongs in ΔP = ρgh.
+B. 12000 Pa: 12,000 Pa does not use the supplied mercury density. Substitute 13,600 kg/m^3, 10 m/s^2 and 0.120 m.
+D. 24000 Pa: 24,000 Pa is not the product of the supplied values. Pressure difference is proportional to column height, with proportionality factor ρg.
+Key Concept: Hydrostatic pressure difference is ΔP = ρgh. Use meters for the height when calculating in SI units. Distinguish a calculation with rounded physical values from conversion of the conventional pressure unit mmHg.
+
+==============================================================================
+
+Q49  [phys-49]  Thermodynamics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A Carnot engine operates between a hot reservoir at 600 K and a cold reservoir at 300 K. What is the efficiency of this engine?
+
+  A. 25%
+  B. 33%
+  C. 50%   <= key
+  D. 67%
+
+EXPLANATION:
+Correct Answer: C) 50%
+Carnot efficiency = 1 - T_cold/T_hot = 1 - 300/600 = 1 - 0.5 = 0.5 = 50%.
+Why the other choices are wrong:
+A. 25%: 25% is too low for this Carnot engine. Substituting the reservoir temperatures gives 1 − 300/600 = 0.5.
+B. 33%: 33% can result from dividing the temperature difference by the sum of temperatures. Carnot efficiency divides by the hot-reservoir temperature only.
+D. 67%: 67% does not follow the given temperature ratio. A Carnot engine between 600 K and 300 K has efficiency 50%.
+Key Concept: The Carnot efficiency represents the maximum possible efficiency for any heat engine operating between two temperature reservoirs.
+
+==============================================================================
+
+Q50  [phys-50]  Thermodynamics Advanced  correct answer: B
+------------------------------------------------------------------------------
+STEM: Two moles of an ideal gas expand reversibly and isothermally at 400 K until their volume doubles. How much work is done by the gas? Use R = 8.314 J/(mol·K) and ln 2 = 0.693.
+
+  A. 2310 J
+  B. 4610 J   <= key
+  C. 6920 J
+  D. 9240 J
+
+EXPLANATION:
+Correct Answer: B) 4610 J
+For reversible isothermal expansion of an ideal gas, W_by = nRT ln(V_2/V_1). Therefore W_by = 2 × 8.314 × 400 × 0.693 = 4609.3 J ≈ 4610 J. The work done by the expanding gas is positive under this convention.
+Why the other choices are wrong:
+A. 2310 J: 2310 J is approximately the work for one mole under the same conditions. The question specifies two moles.
+C. 6920 J: 6920 J is approximately the result for three moles. Work is proportional to the given amount of gas, which is two moles.
+D. 9240 J: 9240 J is approximately twice the correct result. The volume ratio enters as ln(2), not as an extra factor of two.
+Key Concept: The formula W_by = nRT ln(V_2/V_1) requires reversible isothermal expansion or compression of an ideal gas. An ideal gas has no internal-energy change at constant temperature; work still depends on the process followed.
+
+==============================================================================
+
+Q51  [phys-51]  Thermodynamics Advanced  correct answer: B
+------------------------------------------------------------------------------
+STEM: The entropy change when 1 kg of water at 100 degrees C is converted entirely to steam at 100 degrees C and 1 atm is closest to which value? (L_v = 2260 kJ/kg)
+
+  A. 3050 J/K
+  B. 6060 J/K   <= key
+  C. 8480 J/K
+  D. 22600 J/K
+
+EXPLANATION:
+Correct Answer: B) 6060 J/K
+Calculate the water's entropy change using a reversible phase-change path at the stated boiling temperature: ΔS = Q_rev/T = mL_v/T. Here T = 100 + 273.15 = 373.15 K, so ΔS = (1 × 2,260,000)/373.15 ≈ 6056.5 J/K, closest to 6060 J/K.
+Why the other choices are wrong:
+A. 3050 J/K: 3050 J/K is roughly half the required entropy change. The question vaporizes the full 1 kg, requiring the supplied 2.26 × 10^6 J.
+C. 8480 J/K: 8480 J/K does not follow from the given heat and temperature. Divide 2.26 × 10^6 J by 373.15 K.
+D. 22600 J/K: 22,600 J/K results from dividing by 100, the Celsius temperature. Entropy calculations require absolute temperature in kelvins.
+Key Concept: Vaporization increases the water's entropy. At the phase-change temperature, ΔS = mL_v/T, with T in kelvins. The vapor has many more accessible molecular arrangements than the liquid.
+
+==============================================================================
+
+Q52  [phys-52]  Thermodynamics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A monatomic ideal gas is compressed reversibly and adiabatically to one-eighth of its original volume. Its initial temperature is 300 K and γ = 5/3 is constant. What is its final temperature?
+
+  A. 600 K
+  B. 900 K
+  C. 1200 K   <= key
+  D. 2400 K
+
+EXPLANATION:
+Correct Answer: C) 1200 K
+For a reversible adiabatic ideal-gas process with constant γ, T_1V_1^γ−1 = T_2V_2^γ−1. Thus T_2 = 300 × 8^2/3 = 300 × 4 = 1200 K. The temperature rises because work is done on the gas without heat transfer.
+Why the other choices are wrong:
+A. 600 K: 600 K is only a twofold temperature increase. The volume ratio 8 is raised to γ − 1 = 2/3, giving a factor of four.
+B. 900 K: 900 K is a threefold increase. Evaluate 8^2/3 as the square of the cube root of 8: 2^2 = 4.
+D. 2400 K: 2400 K multiplies temperature by the full volume ratio 8. The temperature relation instead uses that ratio raised to the power 2/3.
+Key Concept: Adiabatic means no heat transfer. For a reversible adiabatic ideal-gas process with constant γ, TV^γ−1 stays constant. Compression raises the temperature because work increases the gas's internal energy.
+
+==============================================================================
+
+Q53  [phys-53]  Thermodynamics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: At the solid–liquid–vapor triple point of water, approximately 273.16 K and 611.7 Pa, which statement is correct?
+
+  A. Only ice and liquid water coexist in equilibrium
+  B. Only liquid water and water vapor coexist in equilibrium
+  C. Ice, liquid water, and water vapor coexist in equilibrium   <= key
+  D. Water can only exist as a liquid at the triple point
+
+EXPLANATION:
+Correct Answer: C) Ice, liquid water, and water vapor coexist in equilibrium
+At this triple point of water, ice, liquid water and water vapor can coexist in thermodynamic equilibrium at the same temperature and pressure. It is where the boundaries separating these three phases meet on the phase diagram.
+Why the other choices are wrong:
+A. Only ice and liquid water coexist in equilibrium: Ice and liquid water can coexist along a melting boundary, but the stated triple point also permits water vapor in equilibrium.
+B. Only liquid water and water vapor coexist in equilibrium: Liquid water and vapor can coexist along a boiling boundary, but the triple point also includes ice.
+D. Water can only exist as a liquid at the triple point: The defining feature is coexistence of all three stated phases. Water is not restricted to the liquid phase at this point.
+Key Concept: The triple point is a fixed point on a phase diagram where three phase boundaries meet, and it serves as a fundamental calibration point in thermometry.
+
+==============================================================================
+
+Q54  [phys-54]  Geometric Optics Advanced  correct answer: A
+------------------------------------------------------------------------------
+STEM: A thin converging lens in air has a focal length of 20 cm. An object is placed 30 cm from the lens. What are the image distance v and lateral magnification m?
+
+  A. v = 60 cm, m = -2   <= key
+  B. v = 40 cm, m = -1
+  C. v = 60 cm, m = +2
+  D. v = 40 cm, m = -2
+
+EXPLANATION:
+Correct Answer: A) v = 60 cm, m = -2
+Use the real-is-positive convention: u = +30 cm for the real object, f = +20 cm for the converging lens, and v > 0 for a real image. Then 1/f = 1/u + 1/v gives 1/v = 1/20 − 1/30 = 1/60, so v = +60 cm on the opposite side of the lens. The lateral magnification is m = −v/u = −60/30 = −2. The image is inverted and twice the object's height.
+Why the other choices are wrong:
+B. v = 40 cm, m = -1: At an object distance of 30 cm, the lens equation gives an image distance of 60 cm. Equal-size imaging, m = −1, would occur at object distance 2f = 40 cm.
+C. v = 60 cm, m = +2: The image distance and magnification magnitude are correct, but the sign is not. A real image from this converging lens is inverted, so m is negative.
+D. v = 40 cm, m = -2: The image distance is incorrect and the pair is inconsistent: with u = 30 cm and v = 40 cm, m would be −40/30, not −2.
+Key Concept: When an object is between f and 2f of a converging lens, the image is real, inverted, and magnified.
+
+==============================================================================
+
+Q55  [phys-55]  Geometric Optics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A concave spherical mirror has a radius of curvature of 40 cm. An object is on its axis, 15 cm in front of the mirror. Using the paraxial approximation, where is the image formed?
+
+  A. 60 cm in front of the mirror
+  B. 30 cm behind the mirror
+  C. 60 cm behind the mirror   <= key
+  D. 30 cm in front of the mirror
+
+EXPLANATION:
+Correct Answer: C) 60 cm behind the mirror
+Use the real-is-positive convention for mirrors: the real object has u = +15 cm, and this concave mirror has f = R/2 = +20 cm. The mirror equation gives 1/v = 1/f − 1/u = 1/20 − 1/15 = −1/60, so v = −60 cm. A negative image distance in this convention means a virtual image behind the mirror. Its magnification is m = −v/u = +4, so it is upright and enlarged.
+Why the other choices are wrong:
+A. 60 cm in front of the mirror: 60 cm is the correct distance magnitude, but the side is wrong. An object inside a concave mirror's focal length produces a virtual image behind the mirror.
+B. 30 cm behind the mirror: The image is behind the mirror, but its distance is 60 cm, found from 1/v = 1/20 − 1/15 = −1/60.
+D. 30 cm in front of the mirror: Both the side and distance are incorrect. Since the object lies inside f = 20 cm, the image is virtual and behind the mirror, at 60 cm.
+Key Concept: When an object is between the focal point and a concave mirror, a virtual, erect, and magnified image forms behind the mirror.
+
+==============================================================================
+
+Q56  [phys-56]  Geometric Optics Advanced  correct answer: B
+------------------------------------------------------------------------------
+STEM: Two thin lenses of focal lengths +10 cm and -15 cm are placed in contact. What is the focal length of the combination?
+
+  A. +6 cm
+  B. +30 cm   <= key
+  C. -30 cm
+  D. -6 cm
+
+EXPLANATION:
+Correct Answer: B) +30 cm
+For thin lenses in contact: 1/f = 1/f_1 + 1/f_2 = 1/10 + 1/(-15) = 3/30 - 2/30 = 1/30. Therefore f = +30 cm (converging combination).
+Why the other choices are wrong:
+A. +6 cm: Adding the magnitudes of the two lens powers would give 1/6 cm^-1, but the second lens is diverging and has negative power. Its sign must be retained.
+C. -30 cm: The magnitude is correct but the sign is wrong. The +10 cm lens has greater positive power than the magnitude of the −15 cm lens's negative power.
+D. -6 cm: The combination has positive, not negative, power. Add 1/10 and −1/15 to obtain +1/30 cm^-1.
+Key Concept: The combined power of thin lenses in contact is the sum of their individual powers, and the effective focal length is the reciprocal of this sum.
+
+==============================================================================
+
+Q57  [phys-57]  Geometric Optics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: A compound microscope uses a 5 mm focal-length objective and a 25 mm focal-length eyepiece. It is adjusted for a final image at infinity, so the eye is relaxed. The optical tube length L, measured from the objective's rear focal plane to the eyepiece's front focal plane, is 160 mm. Using a reference near-point distance D = 250 mm, what is the magnitude of its total angular magnification?
+
+  A. 100x
+  B. 200x
+  C. 320x   <= key
+  D. 640x
+
+EXPLANATION:
+Correct Answer: C) 320x
+For this thin-lens, relaxed-eye model, the magnitude of the objective's linear magnification is L/f_obj = 160/5 = 32. The eyepiece's angular magnification is D/f_eye = 250/25 = 10. Their product gives |M| = 32 × 10 = 320.
+L here is the stated focal-plane separation, not the physical distance between the lenses. The 250 mm near point is the reference distance for comparison with unaided viewing; the final image in this question is at infinity.
+Why the other choices are wrong:
+A. 100x: 100× does not follow from either stage of this microscope. The objective gives a magnitude of 160/5 = 32, and the eyepiece gives 250/25 = 10.
+B. 200x: 200× would require a different objective or eyepiece magnification. The given values produce 32 × 10 = 320.
+D. 640x: 640× is twice the magnification. No additional factor of two appears when multiplying the objective magnification by the eyepiece's angular magnification.
+Key Concept: A compound microscope magnifies in two stages: the objective forms an enlarged, inverted real intermediate image, and the eyepiece provides angular magnification. For the stated relaxed-eye arrangement, |M| = (L/f_obj)(D/f_eye).
+
+==============================================================================
+
+Q58  [phys-58]  Geometric Optics Advanced  correct answer: B
+------------------------------------------------------------------------------
+STEM: A ray passes from air (n ≈ 1.0) into a glass slab (n = 1.5) at an incidence angle of 30° measured from the normal. What is the refraction angle inside the glass?
+
+  A. 14.5 degrees
+  B. 19.5 degrees   <= key
+  C. 22.0 degrees
+  D. 33.3 degrees
+
+EXPLANATION:
+Correct Answer: B) 19.5 degrees
+By Snell's law: n_1 sin θ_1 = n_2 sin θ_2. 1.0 x sin 30 = 1.5 x sin θ_2. sin θ_2 = 0.5 / 1.5 = 0.333. θ_2 = arcsin(0.333) = 19.47 degrees, approximately 19.5 degrees.
+Why the other choices are wrong:
+A. 14.5 degrees: 14.5° is too small: 1.5 sin(14.5°) is about 0.376, not the required sin(30°) = 0.5.
+C. 22.0 degrees: 22.0° gives 1.5 sin(22.0°) ≈ 0.562. Snell's law requires this product to equal 0.5.
+D. 33.3 degrees: 33.3° would bend the ray away from the normal. Entering higher-index glass from air bends this obliquely incident ray toward the normal.
+Key Concept: Snell's law is n_1sinθ_1 = n_2sinθ_2, with both angles measured from the normal. At oblique incidence, light bends toward the normal when it enters a higher-refractive-index medium.
+
+==============================================================================
+
+Q59  [phys-59]  Geometric Optics Advanced  correct answer: C
+------------------------------------------------------------------------------
+STEM: For light traveling from glass into air (n_air ≈ 1.0), the critical angle measured from the normal is 42°. What is the refractive index of the glass?
+
+  A. 1.33
+  B. 1.41
+  C. 1.49   <= key
+  D. 1.62
+
+EXPLANATION:
+Correct Answer: C) 1.49
+At the critical angle: sin θ_c = n_air / n_glass. Therefore n_glass = n_air / sin θ_c = 1.0 / sin 42 = 1.0 / 0.6691 = 1.494, approximately 1.49.
+Why the other choices are wrong:
+A. 1.33: A refractive index of 1.33 would give a critical angle of about 48.8° for transmission into air, rather than 42°.
+B. 1.41: A refractive index of 1.41 would give a critical angle of about 45.2°. The stated 42° requires a larger index.
+D. 1.62: A refractive index of 1.62 would give a critical angle of about 38.1°. Use n_glass = 1/sin42° ≈ 1.49.
+Key Concept: Total internal reflection requires light to travel from higher to lower refractive index with incidence angle greater than θ_c. The critical angle satisfies sinθ_c = n_lower/n_higher. This principle is used in optical fibers.
+
+==============================================================================
+
+Q60  [phys-60]  SI System & Units  correct answer: C
+------------------------------------------------------------------------------
+STEM: Which of the following is a base SI unit?
+
+  A. Newton
+  B. Joule
+  C. Ampere   <= key
+  D. Watt
+
+EXPLANATION:
+Correct Answer: Ampere
+The seven base SI units are: meter (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), and candela (cd). Newton (force), Joule (energy), and Watt (power) are all derived units.
+Why the other choices are wrong:
+A. Newton: The newton is the derived SI unit of force: 1 N = 1 kg·m·s^-2. It is not one of the seven base units.
+B. Joule: The joule is the derived SI unit of energy: 1 J = 1 kg·m^2·s^-2.
+D. Watt: The watt is the derived SI unit of power: 1 W = 1 J/s = 1 kg·m^2·s^-3.
+Key Concept: The SI classifies the ampere as a base unit for electric current. The seven base units are m, kg, s, A, K, mol and cd; derived SI units are formed from their products and powers.
+
+==============================================================================

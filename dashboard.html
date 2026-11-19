@@ -4951,7 +4951,7 @@
           if (!window._qbankCounts) {
             const [qRes, pRes] = await Promise.all([
               fetch('questions.json?v=20261118g-final').then(r => r.json()),
-              fetch('questions-physics.json?v=20260423a').then(r => r.json()).catch(() => ({ physics: [] })),
+              fetch('questions-physics.json?v=20261118h-phys60').then(r => r.json()).catch(() => ({ physics: [] })),
             ]);
             window._qbankCounts = {
               biology:   (qRes.biology   || []).length,
@@ -7163,7 +7163,7 @@
       try {
         const [qRes, pRes] = await Promise.all([
           fetch('questions.json?v=20261118g-final').then(r => r.json()),
-          fetch('questions-physics.json?v=20260423a').then(r => r.json()).catch(() => ({ physics: [] })),
+          fetch('questions-physics.json?v=20261118h-phys60').then(r => r.json()).catch(() => ({ physics: [] })),
         ]);
         const all = {};
         const ingest = (arr) => { (arr || []).forEach(q => { if (q && q.id) all[q.id] = q; }); };

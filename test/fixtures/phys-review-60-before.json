@@ -1,0 +1,842 @@
+{
+  "Q1": {
+    "id": "phys-1",
+    "subject": "physics",
+    "topic": "Units and Measurements",
+    "question": "Which of the following groups contains ONLY SI base units?",
+    "options": [
+      "kilogram, candela, volt",
+      "kelvin, candela, second",
+      "meter, joule, ampere",
+      "second, newton, mole"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: kelvin, candela, second</h4><p>The SI system has exactly <strong>7 base units</strong>. All other units are derived from these:</p><table class='exp-table'><tr><th>Base Unit</th><th>Symbol</th><th>Measures</th></tr><tr><td>Meter</td><td>m</td><td>Length</td></tr><tr><td>Kilogram</td><td>kg</td><td>Mass</td></tr><tr><td>Second</td><td>s</td><td>Time</td></tr><tr><td>Ampere</td><td>A</td><td>Electric current</td></tr><tr><td>Kelvin</td><td>K</td><td>Temperature</td></tr><tr><td>Mole</td><td>mol</td><td>Amount of substance</td></tr><tr><td>Candela</td><td>cd</td><td>Luminous intensity</td></tr></table><p>The other options contain derived units: volt (V = kg.m<sup>2</sup>.s<sup>-3</sup>.A<sup>-1</sup>), joule (J = kg.m<sup>2</sup>.s<sup>-2</sup>), newton (N = kg.m.s<sup>-2</sup>).</p><p class='exp-key'>Key Concept: Remember the 7 SI base units: m, kg, s, A, K, mol, cd. Any unit not in this list (joule, newton, volt, pascal, etc.) is a derived unit expressed as a combination of base units.</p>"
+  },
+  "Q2": {
+    "id": "phys-2",
+    "subject": "physics",
+    "topic": "Mechanics",
+    "question": "A ball is dropped from rest from a height of 20 meters. Ignoring air resistance, approximately how long does it take to reach the ground? (g = 10 m/s<sup>2</sup>)",
+    "options": [
+      "1 second",
+      "2 seconds",
+      "4 seconds",
+      "10 seconds"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2 seconds</h4><p>For an object in free fall starting from rest (v<sub>0</sub> = 0):</p><div class='exp-diagram'><p>h = 1/2 x g x t<sup>2</sup></p><p>20 = 1/2 x 10 x t<sup>2</sup></p><p>20 = 5t<sup>2</sup></p><p>t<sup>2</sup> = 4</p><p>t = <strong>2 seconds</strong></p></div><p>We can verify: in 2 seconds, the ball reaches velocity v = g x t = 10 x 2 = 20 m/s. Average velocity = (0 + 20)/2 = 10 m/s. Distance = 10 m/s x 2 s = 20 m.</p><p class='exp-key'>Key Concept: For free fall from rest: h = 1/2gt<sup>2</sup>, v = gt, and v<sup>2</sup> = 2gh. These three equations solve most free fall problems. Objects fall with the same acceleration regardless of mass (in vacuum).</p>"
+  },
+  "Q3": {
+    "id": "phys-3",
+    "subject": "physics",
+    "topic": "Electricity",
+    "question": "Two resistors of 6 ohms and 3 ohms are connected in parallel. What is the equivalent resistance?",
+    "options": [
+      "2 ohms",
+      "3 ohms",
+      "4.5 ohms",
+      "9 ohms"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 2 ohms</h4><p>For resistors in parallel, the reciprocal formula is used:</p><div class='exp-diagram'><p>1/R<sub>eq</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub></p><p>1/R<sub>eq</sub> = 1/6 + 1/3</p><p>1/R<sub>eq</sub> = 1/6 + 2/6</p><p>1/R<sub>eq</sub> = 3/6 = 1/2</p><p>R<sub>eq</sub> = <strong>2 ohms</strong></p></div><table class='exp-table'><tr><th>Connection</th><th>Formula</th><th>Result vs Individual</th></tr><tr><td>Series</td><td>R<sub>eq</sub> = R<sub>1</sub> + R<sub>2</sub></td><td>Always larger than largest</td></tr><tr><td>Parallel</td><td>1/R<sub>eq</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub></td><td>Always smaller than smallest</td></tr></table><p>Shortcut for two resistors in parallel: R<sub>eq</sub> = (R<sub>1</sub> x R<sub>2</sub>) / (R<sub>1</sub> + R<sub>2</sub>) = (6 x 3)/(6 + 3) = 18/9 = 2</p><p class='exp-key'>Key Concept: Parallel resistance is always LESS than the smallest individual resistor. For two resistors, use the product-over-sum shortcut. For equal resistors in parallel: R<sub>eq</sub> = R/n.</p><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "Q4": {
+    "id": "phys-4",
+    "subject": "physics",
+    "topic": "Optics",
+    "question": "When light passes from air into water (a denser medium), what happens to its speed and wavelength?",
+    "options": [
+      "Speed increases, wavelength increases",
+      "Speed decreases, wavelength decreases",
+      "Speed decreases, wavelength increases",
+      "Speed increases, wavelength decreases"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Speed decreases, wavelength decreases</h4><p>When light enters a denser medium (higher refractive index), it slows down. Since the frequency stays constant, the wavelength must also decrease:</p><table class='exp-table'><tr><th>Property</th><th>In Air</th><th>In Water (n=1.33)</th><th>Change</th></tr><tr><td>Speed</td><td>c = 3x10<sup>8</sup> m/s</td><td>v = c/n = 2.26x10<sup>8</sup> m/s</td><td>Decreases</td></tr><tr><td>Frequency</td><td>f</td><td>f (unchanged)</td><td>No change</td></tr><tr><td>Wavelength</td><td>λ</td><td>λ/n</td><td>Decreases</td></tr></table><p>The relationship: v = f x λ. Since v decreases and f stays constant, λ must decrease proportionally.</p><p class='exp-key'>Key Concept: When light enters a denser medium: speed decreases, wavelength decreases, frequency stays the same. The refractive index n = c/v = λ<sub>air</sub>/lambda<sub>medium</sub>. This bending of light (refraction) is described by Snell's law: n<sub>1</sub>sin(θ<sub>1</sub>) = n<sub>2</sub>sin(θ<sub>2</sub>).</p>"
+  },
+  "Q5": {
+    "id": "phys-5",
+    "subject": "physics",
+    "topic": "Thermodynamics",
+    "question": "What is the temperature in Kelvin when the Celsius temperature is -73 degrees C?",
+    "options": [
+      "100 K",
+      "200 K",
+      "346 K",
+      "373 K"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 200 K</h4><p>The conversion between Celsius and Kelvin is straightforward:</p><div class='exp-diagram'><p>T(K) = T(C) + 273</p><p>T(K) = -73 + 273 = <strong>200 K</strong></p></div><table class='exp-table'><tr><th>Reference Point</th><th>Celsius</th><th>Kelvin</th></tr><tr><td>Absolute zero</td><td>-273 C</td><td>0 K</td></tr><tr><td>Water freezes</td><td>0 C</td><td>273 K</td></tr><tr><td>Body temperature</td><td>37 C</td><td>310 K</td></tr><tr><td>Water boils</td><td>100 C</td><td>373 K</td></tr></table><p>The Kelvin scale starts at absolute zero (the lowest possible temperature where molecular motion theoretically stops). One Kelvin degree is the same size as one Celsius degree.</p><p class='exp-key'>Key Concept: K = C + 273. The Kelvin scale has no negative values. Always use Kelvin in gas law calculations (PV = nRT) and thermodynamic equations.</p>"
+  },
+  "Q6": {
+    "id": "phys-6",
+    "subject": "physics",
+    "topic": "Dynamics",
+    "question": "According to Newton's third law, when you push against a wall with a force of 50 N, the wall pushes back on you with a force of:",
+    "options": [
+      "0 N",
+      "25 N",
+      "50 N",
+      "100 N"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 50 N</h4><p>Newton's Third Law states: <strong>For every action, there is an equal and opposite reaction.</strong></p><p>When you push the wall with 50 N, the wall pushes back on you with exactly 50 N in the opposite direction. These are called <strong>action-reaction pairs</strong>.</p><table class='exp-table'><tr><th>Newton's Law</th><th>Statement</th></tr><tr><td>First Law (Inertia)</td><td>Object at rest stays at rest; object in motion stays in motion (unless acted on by external force)</td></tr><tr><td>Second Law</td><td>F = ma (force equals mass times acceleration)</td></tr><tr><td><strong>Third Law</strong></td><td><strong>F<sub>AB</sub> = -F<sub>BA</sub> (equal magnitude, opposite direction)</strong></td></tr></table><p>Important: The action-reaction forces act on <strong>different objects</strong>. Your push acts on the wall; the wall's push acts on you. They don't cancel out because they're on different objects.</p><p class='exp-key'>Key Concept: Action-reaction pairs are always equal in magnitude, opposite in direction, and act on different objects. They never cancel each other because they're applied to different bodies.</p>"
+  },
+  "Q7": {
+    "id": "phys-7",
+    "subject": "physics",
+    "topic": "Waves and Sound",
+    "question": "A sound wave has a frequency of 440 Hz and travels at 340 m/s in air. What is its wavelength?",
+    "options": [
+      "0.77 m",
+      "1.29 m",
+      "149,600 m",
+      "340 m"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 0.77 m</h4><p>The wave equation relates velocity, frequency, and wavelength:</p><div class='exp-diagram'><p>v = f x λ</p><p>λ = v / f</p><p>λ = 340 / 440</p><p>λ = <strong>0.77 m</strong> (approximately)</p></div><p>This is the wavelength of the note A4 (the standard tuning pitch for musical instruments).</p><table class='exp-table'><tr><th>Sound Property</th><th>Human Range</th></tr><tr><td>Frequency (hearing)</td><td>20 Hz - 20,000 Hz</td></tr><tr><td>Speed in air (20 C)</td><td>~340 m/s</td></tr><tr><td>Speed in water</td><td>~1500 m/s</td></tr><tr><td>Speed in steel</td><td>~5000 m/s</td></tr></table><p class='exp-key'>Key Concept: v = f x λ works for all waves (sound, light, water). Sound is a longitudinal (compression) wave. Sound travels faster in denser media (solids > liquids > gases), which is opposite to light.</p>"
+  },
+  "Q8": {
+    "id": "phys-8",
+    "subject": "physics",
+    "topic": "Fluid Mechanics",
+    "question": "A solid object floats in water with 70% of its volume submerged. What is the density of the object? (Density of water = 1000 kg/m<sup>3</sup>)",
+    "options": [
+      "300 kg/m<sup>3</sup>",
+      "700 kg/m<sup>3</sup>",
+      "1000 kg/m<sup>3</sup>",
+      "1400 kg/m<sup>3</sup>"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 700 kg/m<sup>3</sup></h4><p>When an object floats, the buoyant force equals its weight (Archimedes' principle). The fraction submerged equals the ratio of the object's density to the fluid's density:</p><div class='exp-diagram'><p>Fraction submerged = ρ<sub>object</sub> / ρ<sub>fluid</sub></p><p>0.70 = ρ<sub>object</sub> / 1000</p><p>ρ<sub>object</sub> = 0.70 x 1000 = <strong>700 kg/m<sup>3</sup></strong></p></div><table class='exp-table'><tr><th>Material</th><th>Density (kg/m<sup>3</sup>)</th><th>Floats in Water?</th></tr><tr><td>Cork</td><td>~120</td><td>Yes (88% above)</td></tr><tr><td>Wood (oak)</td><td>~700</td><td>Yes (30% above)</td></tr><tr><td>Ice</td><td>~917</td><td>Yes (8.3% above)</td></tr><tr><td>Iron</td><td>~7,870</td><td>No (sinks)</td></tr></table><p class='exp-key'>Key Concept: Fraction submerged = object density / fluid density. If density < fluid: floats. If density > fluid: sinks. If density = fluid: neutrally buoyant (fully submerged but doesn't sink).</p>"
+  },
+  "Q9": {
+    "id": "phys-9",
+    "subject": "physics",
+    "topic": "Energy",
+    "question": "A 2 kg ball is thrown upward with an initial velocity of 10 m/s. What is its kinetic energy at the moment of release? (Ignore air resistance)",
+    "options": [
+      "10 J",
+      "20 J",
+      "50 J",
+      "100 J"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 100 J</h4><p>Kinetic energy is calculated using:</p><div class='exp-diagram'><p>KE = 1/2 x m x v<sup>2</sup></p><p>KE = 1/2 x 2 x 10<sup>2</sup></p><p>KE = 1/2 x 2 x 100</p><p>KE = <strong>100 J</strong></p></div><p>At the highest point, all kinetic energy converts to potential energy: PE = mgh. So the maximum height is h = KE/(mg) = 100/(2x10) = 5 meters.</p><table class='exp-table'><tr><th>Position</th><th>KE</th><th>PE</th><th>Total Energy</th></tr><tr><td>Release (v=10 m/s)</td><td>100 J</td><td>0 J</td><td>100 J</td></tr><tr><td>Halfway up</td><td>50 J</td><td>50 J</td><td>100 J</td></tr><tr><td>Top (v=0)</td><td>0 J</td><td>100 J</td><td>100 J</td></tr></table><p class='exp-key'>Key Concept: KE = 1/2mv<sup>2</sup>. Note that kinetic energy depends on v<sup>2</sup>, so doubling velocity quadruples KE. Conservation of energy: KE + PE = constant (when no friction/air resistance).</p>"
+  },
+  "Q10": {
+    "id": "phys-10",
+    "subject": "physics",
+    "topic": "Pressure",
+    "question": "A hydraulic press has a small piston with area 5 cm<sup>2</sup> and a large piston with area 100 cm<sup>2</sup>. If a force of 20 N is applied to the small piston, what force is exerted by the large piston?",
+    "options": [
+      "1 N",
+      "20 N",
+      "100 N",
+      "400 N"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 400 N</h4><p>Pascal's law states that pressure applied to an enclosed fluid is transmitted equally in all directions. In a hydraulic press:</p><div class='exp-diagram'><p>P<sub>1</sub> = P<sub>2</sub></p><p>F<sub>1</sub>/A<sub>1</sub> = F<sub>2</sub>/A<sub>2</sub></p><p>20/5 = F<sub>2</sub>/100</p><p>4 = F<sub>2</sub>/100</p><p>F<sub>2</sub> = <strong>400 N</strong></p></div><p>The force is multiplied by the ratio of the areas: 100/5 = 20. So the output force is 20 x 20 = 400 N.</p><p>Note: While the force is multiplied by 20, the distance the large piston moves is divided by 20 (conservation of energy: work in = work out).</p><p class='exp-key'>Key Concept: Hydraulic press: F<sub>1</sub>/A<sub>1</sub> = F<sub>2</sub>/A<sub>2</sub>. Force multiplication = A<sub>2</sub>/A<sub>1</sub>. Energy is conserved: what you gain in force, you lose in distance (F<sub>1</sub>d<sub>1</sub> = F<sub>2</sub>d<sub>2</sub>).</p>"
+  },
+  "Q11": {
+    "id": "phys-11",
+    "subject": "physics",
+    "topic": "Electromagnetic Radiation",
+    "question": "Which type of electromagnetic radiation has the shortest wavelength?",
+    "options": [
+      "Radio waves",
+      "Visible light",
+      "Ultraviolet radiation",
+      "Γ rays"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: Γ rays</h4><p>Electromagnetic radiation ranges from very long wavelength (radio waves) to very short wavelength (γ rays). Shorter wavelength means higher frequency and higher energy.</p><table class='exp-table'><tr><th>EM Radiation Type</th><th>Wavelength Range</th><th>Energy</th></tr><tr><td>Radio waves</td><td>> 1 m</td><td>Lowest</td></tr><tr><td>Microwaves</td><td>1 mm - 1 m</td><td>Low</td></tr><tr><td>Infrared</td><td>700 nm - 1 mm</td><td>Medium-low</td></tr><tr><td>Visible light</td><td>400-700 nm</td><td>Medium</td></tr><tr><td>Ultraviolet</td><td>10-400 nm</td><td>Medium-high</td></tr><tr><td>X-rays</td><td>0.01-10 nm</td><td>High</td></tr><tr><td><strong>Γ rays</strong></td><td><strong>< 0.01 nm</strong></td><td><strong>Highest</strong></td></tr></table><div class='exp-diagram'><p><strong>Key Relationships:</strong></p><p>c = f x λ (c = 3 x 10<sup>8</sup> m/s for all EM waves in vacuum)</p><p>E = hf = hc/lambda (energy is inversely proportional to wavelength)</p></div><p class='exp-key'>Key Concept: All electromagnetic waves travel at the speed of light in vacuum. The energy of a photon is E = hf, where h is Planck's constant (6.626 x 10<sup>-34</sup> J.s). Higher frequency = higher energy = shorter wavelength.</p>"
+  },
+  "Q12": {
+    "id": "phys-12",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "During β-minus decay, a neutron in the nucleus is converted into a proton and emits:",
+    "options": [
+      "An α particle and a γ ray",
+      "An electron and an antineutrino",
+      "A positron and a neutrino",
+      "Two protons and a neutron"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: An electron and an antineutrino</h4><p>In β-minus (β<sup>-</sup>) decay, a neutron transforms into a proton, emitting a high-energy electron (β particle) and an electron antineutrino to conserve lepton number.</p><table class='exp-table'><tr><th>Decay Type</th><th>Process</th><th>Emitted Particle(s)</th><th>Change in Nucleus</th></tr><tr><td>Α (α)</td><td>Nucleus ejects He-4 nucleus</td><td>Α particle (<sup>4</sup>He)</td><td>Z-2, A-4</td></tr><tr><td><strong>Β-minus (β<sup>-</sup>)</strong></td><td><strong>n -> p</strong></td><td><strong>Electron + antineutrino</strong></td><td><strong>Z+1, A unchanged</strong></td></tr><tr><td>Β-plus (β<sup>+</sup>)</td><td>p -> n</td><td>Positron + neutrino</td><td>Z-1, A unchanged</td></tr><tr><td>Γ (γ)</td><td>Excited nucleus relaxes</td><td>Γ photon</td><td>No change in Z or A</td></tr></table><div class='exp-diagram'><p><strong>Β-minus decay equation:</strong></p><p><sup>A</sup><sub>Z</sub>X -> <sup>A</sup><sub>Z+1</sub>Y + e<sup>-</sup> + antineutrino</p><p>Example: <sup>14</sup><sub>6</sub>C -> <sup>14</sup><sub>7</sub>N + e<sup>-</sup> + antineutrino (carbon-14 dating)</p></div><p class='exp-key'>Key Concept: In all nuclear decays, mass number (A), charge (Z), and lepton number are conserved. Β decay is mediated by the weak nuclear force. The continuous energy spectrum of β particles led to the prediction of the neutrino by Pauli.</p>"
+  },
+  "Q13": {
+    "id": "phys-13",
+    "subject": "physics",
+    "topic": "Work and Power",
+    "question": "A crane lifts a 500 kg load vertically by 10 meters in 25 seconds. What is the power output of the crane? (g = 10 m/s<sup>2</sup>)",
+    "options": [
+      "200 W",
+      "500 W",
+      "2000 W",
+      "5000 W"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 2000 W</h4><p>Power is the rate of doing work. First calculate the work done, then divide by time:</p><div class='exp-diagram'><p>Work = Force x distance = mgh = 500 x 10 x 10 = 50,000 J</p><p>Power = Work / time = 50,000 / 25 = <strong>2000 W = 2 kW</strong></p></div><table class='exp-table'><tr><th>Quantity</th><th>Formula</th><th>SI Unit</th></tr><tr><td>Work</td><td>W = F x d x cos(θ)</td><td>Joule (J)</td></tr><tr><td>Power</td><td>P = W/t = F x v</td><td>Watt (W = J/s)</td></tr><tr><td>Kinetic energy</td><td>KE = 1/2 mv<sup>2</sup></td><td>Joule (J)</td></tr><tr><td>Potential energy</td><td>PE = mgh</td><td>Joule (J)</td></tr></table><p>Alternative approach: P = Fv = mg x (h/t) = 500 x 10 x (10/25) = 5000 x 0.4 = 2000 W.</p><p class='exp-key'>Key Concept: Power = Work/Time. 1 Watt = 1 Joule per second. 1 horsepower (hp) = 746 W. Work requires both force and displacement in the direction of the force; holding a heavy object stationary requires zero work (but does require energy expenditure by muscles).</p>"
+  },
+  "Q14": {
+    "id": "phys-14",
+    "subject": "physics",
+    "topic": "Momentum and Collisions",
+    "question": "A 1000 kg car traveling at 20 m/s collides head-on with a stationary 2000 kg truck. If they stick together after the collision, what is their common velocity immediately after impact?",
+    "options": [
+      "5.0 m/s",
+      "6.67 m/s",
+      "10 m/s",
+      "20 m/s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 6.67 m/s</h4><p>This is a perfectly inelastic collision (objects stick together). Conservation of momentum applies:</p><div class='exp-diagram'><p>m<sub>1</sub>v<sub>1</sub> + m<sub>2</sub>v<sub>2</sub> = (m<sub>1</sub> + m<sub>2</sub>)v<sub>f</sub></p><p>1000 x 20 + 2000 x 0 = (1000 + 2000) x v<sub>f</sub></p><p>20,000 = 3000 x v<sub>f</sub></p><p>v<sub>f</sub> = 20,000 / 3000 = <strong>6.67 m/s</strong></p></div><table class='exp-table'><tr><th>Collision Type</th><th>Momentum Conserved?</th><th>Kinetic Energy Conserved?</th></tr><tr><td>Elastic</td><td>Yes</td><td>Yes</td></tr><tr><td><strong>Perfectly inelastic</strong></td><td><strong>Yes</strong></td><td><strong>No (maximum KE loss)</strong></td></tr><tr><td>Inelastic</td><td>Yes</td><td>No (some KE lost)</td></tr></table><p>KE before = 1/2 x 1000 x 20<sup>2</sup> = 200,000 J. KE after = 1/2 x 3000 x 6.67<sup>2</sup> = 66,700 J. About 2/3 of the kinetic energy was converted to heat, sound, and deformation.</p><p class='exp-key'>Key Concept: Momentum (p = mv) is ALWAYS conserved in collisions (in the absence of external forces). Kinetic energy is only conserved in perfectly elastic collisions. Perfectly inelastic collisions (objects stick) lose the maximum amount of kinetic energy.</p>"
+  },
+  "Q15": {
+    "id": "phys-15",
+    "subject": "physics",
+    "topic": "Magnetic Fields",
+    "question": "A charged particle moving through a uniform magnetic field experiences a force. In which direction is this magnetic force relative to the particle's velocity?",
+    "options": [
+      "Parallel to the velocity (same direction)",
+      "Antiparallel to the velocity (opposite direction)",
+      "Perpendicular to both the velocity and the magnetic field",
+      "At a 45-degree angle to the velocity"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Perpendicular to both the velocity and the magnetic field</h4><p>The magnetic force on a moving charge is given by the Lorentz force law: F = qv x B. The cross product means the force is always perpendicular to both the velocity and the magnetic field direction.</p><table class='exp-table'><tr><th>Property</th><th>Electric Force</th><th>Magnetic Force</th></tr><tr><td>Direction</td><td>Along field lines</td><td>Perpendicular to v and B</td></tr><tr><td>Acts on stationary charges?</td><td>Yes</td><td>No (v=0 means F=0)</td></tr><tr><td>Does work on charge?</td><td>Yes</td><td>No (force perpendicular to motion)</td></tr><tr><td>Changes speed?</td><td>Yes</td><td>No (only changes direction)</td></tr></table><div class='exp-diagram'><p><strong>Magnetic Force: F = qvB sin(θ)</strong></p><p>where θ is the angle between v and B</p><p>Maximum force when v is perpendicular to B (θ = 90 degrees)</p><p>Zero force when v is parallel to B (θ = 0 degrees)</p></div><p>Because the force is always perpendicular to velocity, it acts as a centripetal force, causing the charged particle to move in a circular or helical path.</p><p class='exp-key'>Key Concept: The magnetic force never does work on a charged particle because it is always perpendicular to displacement. It changes the direction of motion but not the speed. Use the right-hand rule to determine the direction: point fingers along v, curl toward B; the thumb gives the force direction (for positive charges).</p>"
+  },
+  "Q16": {
+    "id": "phys-16",
+    "subject": "physics",
+    "topic": "Kinematics",
+    "question": "A car accelerates uniformly from 10 m/s to 30 m/s over a distance of 200 m. What is the acceleration?",
+    "options": [
+      "1 m/s<sup>2</sup>",
+      "2 m/s<sup>2</sup>",
+      "4 m/s<sup>2</sup>",
+      "5 m/s<sup>2</sup>"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2 m/s<sup>2</sup></h4><div class='exp-diagram'><p>Using v<sup>2</sup> = u<sup>2</sup> + 2as:</p><p>30<sup>2</sup> = 10<sup>2</sup> + 2a(200)</p><p>900 = 100 + 400a</p><p>800 = 400a</p><p>a = <strong>2 m/s<sup>2</sup></strong></p></div><table class='exp-table'><tr><th>Equation</th><th>Variables</th></tr><tr><td>v = u + at</td><td>No distance</td></tr><tr><td>s = ut + &frac12;at<sup>2</sup></td><td>No final velocity</td></tr><tr><td>v<sup>2</sup> = u<sup>2</sup> + 2as</td><td>No time</td></tr></table><p class='exp-key'>Key Concept: Use v<sup>2</sup> = u<sup>2</sup> + 2as when time is not given. The three kinematic equations solve all constant-acceleration problems.</p>"
+  },
+  "Q17": {
+    "id": "phys-17",
+    "subject": "physics",
+    "topic": "Waves and Sound",
+    "question": "An ambulance siren sounds at 800 Hz. As it approaches you at high speed, you perceive a frequency that is:",
+    "options": [
+      "Lower than 800 Hz",
+      "Exactly 800 Hz",
+      "Higher than 800 Hz",
+      "Alternating between higher and lower"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Higher than 800 Hz</h4><p>This is the <strong>Doppler effect</strong>: when a sound source approaches, wavefronts are compressed, increasing the observed frequency.</p><table class='exp-table'><tr><th>Source Motion</th><th>Observed Frequency</th><th>Observed Wavelength</th></tr><tr><td><strong>Approaching</strong></td><td><strong>Higher (blue shift)</strong></td><td><strong>Shorter</strong></td></tr><tr><td>Stationary</td><td>Same as emitted</td><td>Same</td></tr><tr><td>Receding</td><td>Lower (red shift)</td><td>Longer</td></tr></table><p class='exp-key'>Key Concept: The Doppler effect applies to all waves, including light. In astronomy, redshift of starlight indicates galaxies moving away (expanding universe). In medicine, Doppler ultrasound measures blood flow velocity.</p>"
+  },
+  "Q18": {
+    "id": "phys-18",
+    "subject": "physics",
+    "topic": "Optics",
+    "question": "A converging (convex) lens has a focal length of 10 cm. An object is placed 30 cm from the lens. Where does the image form?",
+    "options": [
+      "7.5 cm on the same side as the object",
+      "15 cm on the opposite side",
+      "30 cm on the opposite side",
+      "At infinity"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 15 cm on the opposite side</h4><div class='exp-diagram'><p>Using the thin lens equation: 1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub></p><p>1/10 = 1/30 + 1/d<sub>i</sub></p><p>1/d<sub>i</sub> = 1/10 - 1/30 = 3/30 - 1/30 = 2/30</p><p>d<sub>i</sub> = 30/2 = <strong>15 cm</strong> (positive = real image on opposite side)</p></div><table class='exp-table'><tr><th>Object Position</th><th>Image Properties</th></tr><tr><td>Beyond 2f</td><td>Real, inverted, diminished</td></tr><tr><td>At 2f</td><td>Real, inverted, same size</td></tr><tr><td>Between f and 2f</td><td>Real, inverted, magnified</td></tr><tr><td>At f</td><td>Image at infinity</td></tr><tr><td>Inside f</td><td>Virtual, upright, magnified</td></tr></table><p class='exp-key'>Key Concept: 1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub>. Positive d<sub>i</sub> = real image (opposite side). Negative d<sub>i</sub> = virtual image (same side). Magnification = -d<sub>i</sub>/d<sub>o</sub>.</p>"
+  },
+  "Q19": {
+    "id": "phys-19",
+    "subject": "physics",
+    "topic": "Electricity",
+    "question": "A 12V battery is connected to a 4&Omega; resistor. What is the current flowing through the circuit?",
+    "options": [
+      "0.33 A",
+      "3 A",
+      "48 A",
+      "16 A"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 3 A</h4><div class='exp-diagram'><p>Ohm's law: V = IR</p><p>I = V/R = 12/4 = <strong>3 A</strong></p></div><table class='exp-table'><tr><th>Quantity</th><th>Symbol</th><th>Unit</th><th>Formula</th></tr><tr><td>Voltage</td><td>V</td><td>Volts (V)</td><td>V = IR</td></tr><tr><td>Current</td><td>I</td><td>Amperes (A)</td><td>I = V/R</td></tr><tr><td>Resistance</td><td>R</td><td>Ohms (&Omega;)</td><td>R = V/I</td></tr><tr><td>Power</td><td>P</td><td>Watts (W)</td><td>P = VI = I<sup>2</sup>R</td></tr></table><p class='exp-key'>Key Concept: Ohm's law (V = IR) is the foundation of circuit analysis. Power dissipated: P = VI = I<sup>2</sup>R = V<sup>2</sup>/R. In this circuit, P = 12 × 3 = 36 W.</p><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "Q20": {
+    "id": "phys-20",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "A radioactive isotope has a half-life of 6 hours. If you start with 80 g, how much remains after 18 hours?",
+    "options": [
+      "40 g",
+      "20 g",
+      "10 g",
+      "5 g"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 10 g</h4><div class='exp-diagram'><p>Number of half-lives = 18 hours / 6 hours = 3</p><p>After 1 half-life: 80/2 = 40 g</p><p>After 2 half-lives: 40/2 = 20 g</p><p>After 3 half-lives: 20/2 = <strong>10 g</strong></p><p>General formula: N = N<sub>0</sub> × (1/2)<sup>n</sup> = 80 × (1/2)<sup>3</sup> = 80/8 = 10 g</p></div><table class='exp-table'><tr><th>Half-lives</th><th>Fraction Remaining</th><th>Mass (from 80 g)</th></tr><tr><td>0</td><td>1</td><td>80 g</td></tr><tr><td>1</td><td>1/2</td><td>40 g</td></tr><tr><td>2</td><td>1/4</td><td>20 g</td></tr><tr><td>3</td><td>1/8</td><td>10 g</td></tr></table><p class='exp-key'>Key Concept: After n half-lives, the remaining fraction = (1/2)<sup>n</sup>. Half-life is independent of the initial amount. Carbon-14 dating uses the 5,730-year half-life of <sup>14</sup>C.</p>"
+  },
+  "Q21": {
+    "id": "phys-21",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "In a CT scanner, the X-ray tube rotates around the patient and produces images at multiple angles. If the tube completes one full rotation in 0.5 s and the detector array has 1000 elements, approximately how many projections per second does the system acquire?",
+    "options": [
+      "500 projections/s",
+      "1000 projections/s",
+      "5000 projections/s",
+      "2000 projections/s"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 2000 projections/s</h4><p>The tube completes 1 rotation in 0.5 s, meaning 2 rotations per second. With 1000 detector elements sampling per rotation, the system acquires 1000 projections per rotation. At 2 rotations/s, that gives 2000 projections/s.</p><p class='exp-key'>Key Concept: CT imaging relies on acquiring multiple angular projections rapidly to reconstruct cross-sectional images.</p>"
+  },
+  "Q22": {
+    "id": "phys-22",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "An MRI machine operates at a magnetic field strength of 3.0 T. The gyromagnetic ratio of hydrogen protons is 42.58 MHz/T. What is the Larmor precession frequency of hydrogen nuclei in this scanner?",
+    "options": [
+      "63.87 MHz",
+      "85.16 MHz",
+      "170.32 MHz",
+      "127.74 MHz"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 127.74 MHz</h4><p>The Larmor frequency is calculated as f = γ x B, where γ is the gyromagnetic ratio and B is the magnetic field strength. f = 42.58 MHz/T x 3.0 T = 127.74 MHz.</p><p class='exp-key'>Key Concept: The Larmor frequency determines the radiofrequency pulse needed to excite hydrogen protons in MRI imaging.</p>"
+  },
+  "Q23": {
+    "id": "phys-23",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "Ultrasound waves travel through soft tissue at approximately 1540 m/s. If an echo returns 26 microseconds after the pulse was emitted, what is the depth of the reflecting structure?",
+    "options": [
+      "2.0 cm",
+      "1.0 cm",
+      "4.0 cm",
+      "8.0 cm"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 2.0 cm</h4><p>The total distance traveled by the sound is d<sub>total</sub> = v x t = 1540 m/s x 26 x 10<sup>-6</sup> s = 0.04004 m = 4.0 cm. Since the ultrasound pulse travels to the structure and back, the actual depth is half this distance: depth = 4.0 cm / 2 = 2.0 cm.</p><p class='exp-key'>Key Concept: In pulse-echo ultrasound, the round-trip time must be halved to determine the actual depth of a reflector.</p>"
+  },
+  "Q24": {
+    "id": "phys-24",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "In radiation therapy, a patient receives a prescribed dose of 2 Gy to a tumor. If the tumor mass is 0.5 kg, how much energy is deposited in the tumor?",
+    "options": [
+      "1.0 J",
+      "0.5 J",
+      "2.0 J",
+      "4.0 J"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 1.0 J</h4><p>The absorbed dose D is defined as energy deposited per unit mass: D = E/m. Rearranging: E = D x m = 2 Gy x 0.5 kg = 2 J/kg x 0.5 kg = 1.0 J.</p><p class='exp-key'>Key Concept: 1 Gray (Gy) equals 1 joule of energy absorbed per kilogram of tissue.</p>"
+  },
+  "Q25": {
+    "id": "phys-25",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "An X-ray tube operates at a potential difference of 80 kV. What is the minimum wavelength (cutoff wavelength) of the X-rays produced? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, e = 1.6 x 10<sup>-19</sup> C)",
+    "options": [
+      "0.0155 nm",
+      "0.0311 nm",
+      "0.155 nm",
+      "0.311 nm"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 0.0155 nm</h4><p>The minimum wavelength corresponds to maximum photon energy, where all kinetic energy of the electron converts to a single photon: eV = hc/λ<sub>min</sub>. Thus λ<sub>min</sub> = hc/(eV) = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (1.6 x 10<sup>-19</sup> x 80000) = 1.989 x 10<sup>-25</sup> / 1.28 x 10<sup>-14</sup> = 1.554 x 10<sup>-11</sup> m = 0.0155 nm.</p><p class='exp-key'>Key Concept: The Duane-Hunt law gives the minimum wavelength of X-rays, determined by the accelerating voltage of the X-ray tube.</p>"
+  },
+  "Q26": {
+    "id": "phys-26",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "A diagnostic ultrasound transducer operates at 5 MHz. What is the approximate wavelength in soft tissue (speed of sound = 1540 m/s)?",
+    "options": [
+      "0.077 mm",
+      "0.154 mm",
+      "0.616 mm",
+      "0.308 mm"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 0.308 mm</h4><p>Wavelength = v/f = 1540 m/s / (5 x 10<sup>6</sup> Hz) = 3.08 x 10<sup>-4</sup> m = 0.308 mm.</p><p class='exp-key'>Key Concept: Higher frequency ultrasound gives better resolution (shorter wavelength) but less tissue penetration depth.</p>"
+  },
+  "Q27": {
+    "id": "phys-27",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "In MRI, the T1 relaxation time of a tissue is 800 ms. After an initial 90-degree RF pulse, what fraction of the longitudinal magnetization has recovered after 1600 ms?",
+    "options": [
+      "86%",
+      "63%",
+      "95%",
+      "98%"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 86%</h4><p>T1 recovery follows M(t) = M<sub>0</sub>(1 - e^(-t/T1)). At t = 1600 ms = 2 x T1: M/M<sub>0</sub> = 1 - e^(-2) = 1 - 0.135 = 0.865, approximately 86%.</p><p class='exp-key'>Key Concept: After two T1 time constants, approximately 86% of the longitudinal magnetization recovers in MRI.</p>"
+  },
+  "Q28": {
+    "id": "phys-28",
+    "subject": "physics",
+    "topic": "Medical Physics Applications",
+    "question": "A cobalt-60 source used in radiation therapy has a half-life of 5.27 years. If the initial activity is 400 TBq, what will the activity be after approximately 10.54 years?",
+    "options": [
+      "100 TBq",
+      "200 TBq",
+      "50 TBq",
+      "25 TBq"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 100 TBq</h4><p>After 10.54 years = 2 half-lives, the activity reduces by a factor of 2<sup>2</sup> = 4. A = 400 / 4 = 100 TBq.</p><p class='exp-key'>Key Concept: Radioactive decay follows an exponential pattern where the activity halves with each half-life period.</p>"
+  },
+  "Q29": {
+    "id": "phys-29",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A straight wire carries a current of 10 A. What is the magnitude of the magnetic field at a distance of 5 cm from the wire? (μ<sub>0</sub> = 4π x 10<sup>-7</sup> T-m/A)",
+    "options": [
+      "4 x 10<sup>-5</sup> T",
+      "2 x 10<sup>-5</sup> T",
+      "8 x 10<sup>-5</sup> T",
+      "2 x 10<sup>-4</sup> T"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 4 x 10<sup>-5</sup> T</h4><p>Using Ampere's law for an infinite straight wire: B = μ<sub>0</sub> I / (2π r) = (4π x 10<sup>-7</sup> x 10) / (2π x 0.05) = (4 x 10<sup>-6</sup>) / (0.1) = 4 x 10<sup>-5</sup> T.</p><p class='exp-key'>Key Concept: The magnetic field around a long straight conductor decreases inversely with distance from the wire.</p>"
+  },
+  "Q30": {
+    "id": "phys-30",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A proton (mass = 1.67 x 10<sup>-27</sup> kg, charge = 1.6 x 10<sup>-19</sup> C) moves at 2 x 10<sup>6</sup> m/s perpendicular to a uniform magnetic field of 0.5 T. What is the radius of its circular path?",
+    "options": [
+      "4.18 cm",
+      "2.09 cm",
+      "8.35 cm",
+      "16.7 cm"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 4.18 cm</h4><p>The Lorentz force provides the centripetal force: qvB = mv<sup>2</sup>/r, so r = mv/(qB) = (1.67 x 10<sup>-27</sup> x 2 x 10<sup>6</sup>) / (1.6 x 10<sup>-19</sup> x 0.5) = 3.34 x 10<sup>-21</sup> / 8 x 10<sup>-20</sup> = 0.04175 m = 4.18 cm.</p><p class='exp-key'>Key Concept: A charged particle in a uniform magnetic field follows a circular path with radius proportional to its momentum and inversely proportional to the field strength.</p>"
+  },
+  "Q31": {
+    "id": "phys-31",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A rectangular coil of 50 turns with dimensions 20 cm x 10 cm rotates in a uniform magnetic field of 0.4 T at 60 revolutions per second. What is the peak EMF generated?",
+    "options": [
+      "75.4 V",
+      "150.8 V",
+      "301.6 V",
+      "753.9 V"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 753.9 V</h4><p>Peak EMF = NBAw, where w = 2π f. Area = 0.20 x 0.10 = 0.02 m<sup>2</sup>. Angular frequency w = 2π x 60 = 376.99 rad/s. EMF<sub>max</sub> = 50 x 0.4 x 0.02 x 376.99 = 753.98 V, approximately 753.9 V.</p><p class='exp-key'>Key Concept: The peak EMF in an AC generator is proportional to the number of turns, magnetic field, area, and angular frequency.</p>"
+  },
+  "Q32": {
+    "id": "phys-32",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "An electron enters a region where both an electric field E = 3000 V/m and a magnetic field B = 0.01 T are perpendicular to each other and to the electron's velocity. For the electron to pass through undeflected, what must its velocity be?",
+    "options": [
+      "3 x 10<sup>5</sup> m/s",
+      "3 x 10<sup>4</sup> m/s",
+      "3 x 10<sup>6</sup> m/s",
+      "3 x 10<sup>7</sup> m/s"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 3 x 10<sup>5</sup> m/s</h4><p>For the electron to be undeflected, the electric and magnetic forces must balance: qE = qvB, so v = E/B = 3000 / 0.01 = 3 x 10<sup>5</sup> m/s. This is the principle of a velocity selector.</p><p class='exp-key'>Key Concept: A velocity selector uses perpendicular electric and magnetic fields to filter charged particles by speed, with v = E/B.</p>"
+  },
+  "Q33": {
+    "id": "phys-33",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A solenoid has 2000 turns per meter and carries a current of 3 A. What is the magnetic field inside the solenoid? (μ<sub>0</sub> = 4π x 10<sup>-7</sup> T-m/A)",
+    "options": [
+      "1.88 x 10<sup>-3</sup> T",
+      "3.77 x 10<sup>-3</sup> T",
+      "1.51 x 10<sup>-2</sup> T",
+      "7.54 x 10<sup>-3</sup> T"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 7.54 x 10<sup>-3</sup> T</h4><p>The magnetic field inside a solenoid is B = μ<sub>0</sub> x n x I = 4π x 10<sup>-7</sup> x 2000 x 3 = 4π x 6 x 10<sup>-4</sup> = 24π x 10<sup>-4</sup> = 7.54 x 10<sup>-3</sup> T.</p><p class='exp-key'>Key Concept: The magnetic field inside a solenoid is uniform and depends on the turn density and current, not the solenoid's length or radius.</p>"
+  },
+  "Q34": {
+    "id": "phys-34",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A circular loop of wire with radius 8 cm is placed in a magnetic field that increases uniformly from 0.2 T to 0.8 T in 0.3 s. What is the magnitude of the induced EMF in the loop?",
+    "options": [
+      "0.010 V",
+      "0.020 V",
+      "0.080 V",
+      "0.040 V"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 0.040 V</h4><p>By Faraday's law, EMF = -dPhi/dt = -A x dB/dt. Area A = π r<sup>2</sup> = π x (0.08)<sup>2</sup> = 0.02011 m<sup>2</sup>. Rate of change dB/dt = (0.8 - 0.2)/0.3 = 2.0 T/s. EMF = 0.02011 x 2.0 = 0.04022 V, approximately 0.040 V.</p><p class='exp-key'>Key Concept: Faraday's law states that the induced EMF equals the rate of change of magnetic flux through the loop.</p>"
+  },
+  "Q35": {
+    "id": "phys-35",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "Two parallel wires separated by 10 cm each carry a current of 5 A in opposite directions. What is the force per meter between the wires, and is it attractive or repulsive?",
+    "options": [
+      "5 x 10<sup>-5</sup> N/m, attractive",
+      "1 x 10<sup>-4</sup> N/m, repulsive",
+      "1 x 10<sup>-4</sup> N/m, attractive",
+      "5 x 10<sup>-5</sup> N/m, repulsive"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 5 x 10<sup>-5</sup> N/m, repulsive</h4><p>F/L = μ<sub>0</sub> I<sub>1</sub> I<sub>2</sub> / (2π d) = (4π x 10<sup>-7</sup> x 5 x 5) / (2π x 0.1) = (100π x 10<sup>-7</sup>) / (0.2π) = 5 x 10<sup>-5</sup> N/m. Currents in opposite directions produce a repulsive force.</p><p class='exp-key'>Key Concept: Parallel wires with currents in the same direction attract each other, while opposite currents repel.</p>"
+  },
+  "Q36": {
+    "id": "phys-36",
+    "subject": "physics",
+    "topic": "Electromagnetism",
+    "question": "A transformer has 500 turns on the primary coil and 50 turns on the secondary coil. If the input voltage is 220 V AC, what is the output voltage?",
+    "options": [
+      "2.2 V",
+      "2200 V",
+      "440 V",
+      "22 V"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 22 V</h4><p>Using the transformer equation: V<sub>s</sub>/V<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub>. Therefore V<sub>s</sub> = V<sub>p</sub> x (N<sub>s</sub>/N<sub>p</sub>) = 220 x (50/500) = 220 x 0.1 = 22 V. This is a step-down transformer.</p><p class='exp-key'>Key Concept: The voltage ratio in an ideal transformer equals the turns ratio, allowing voltage to be stepped up or down.</p>"
+  },
+  "Q37": {
+    "id": "phys-37",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "Light with a wavelength of 400 nm strikes a metal surface with a work function of 2.0 eV. What is the maximum kinetic energy of the emitted photoelectrons? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
+    "options": [
+      "0.5 eV",
+      "3.1 eV",
+      "2.0 eV",
+      "1.1 eV"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 1.1 eV</h4><p>Photon energy E = hc/lambda = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (400 x 10<sup>-9</sup>) = 4.97 x 10<sup>-19</sup> J = 3.1 eV. Maximum KE = E - work function = 3.1 - 2.0 = 1.1 eV.</p><p class='exp-key'>Key Concept: The photoelectric equation KE<sub>max</sub> = hf - φ shows that kinetic energy of emitted electrons depends on photon energy minus the work function.</p>"
+  },
+  "Q38": {
+    "id": "phys-38",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "What is the de Broglie wavelength of an electron (mass = 9.11 x 10<sup>-31</sup> kg) accelerated through a potential difference of 100 V? (h = 6.63 x 10<sup>-34</sup> J-s, e = 1.6 x 10<sup>-19</sup> C)",
+    "options": [
+      "0.0123 nm",
+      "0.0388 nm",
+      "0.388 nm",
+      "0.123 nm"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 0.123 nm</h4><p>KE = eV = 1.6 x 10<sup>-19</sup> x 100 = 1.6 x 10<sup>-17</sup> J. Speed: v = sqrt(2KE/m) = sqrt(2 x 1.6 x 10<sup>-17</sup> / 9.11 x 10<sup>-31</sup>) = sqrt(3.513 x 10<sup>13</sup>) = 5.93 x 10<sup>6</sup> m/s. Λ = h/(mv) = 6.63 x 10<sup>-34</sup> / (9.11 x 10<sup>-31</sup> x 5.93 x 10<sup>6</sup>) = 1.23 x 10<sup>-10</sup> m = 0.123 nm.</p><p class='exp-key'>Key Concept: The de Broglie wavelength demonstrates wave-particle duality, showing that accelerated electrons have wavelengths comparable to atomic spacings.</p>"
+  },
+  "Q39": {
+    "id": "phys-39",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "In the Compton effect, an X-ray photon with wavelength 0.071 nm scatters off an electron at an angle of 90 degrees. What is the wavelength shift? (Compton wavelength of electron = 0.00243 nm)",
+    "options": [
+      "0.00122 nm",
+      "0.00729 nm",
+      "0.00486 nm",
+      "0.00243 nm"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 0.00243 nm</h4><p>The Compton wavelength shift is δ<sub>λ</sub> = (h/m<sub>e</sub> c)(1 - cos θ) = 0.00243 nm x (1 - cos 90) = 0.00243 nm x (1 - 0) = 0.00243 nm.</p><p class='exp-key'>Key Concept: The Compton shift is maximum at 180 degrees (backscattering) and equals the Compton wavelength at 90 degrees.</p>"
+  },
+  "Q40": {
+    "id": "phys-40",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "An atom makes a transition from an energy level at -1.5 eV to one at -3.4 eV. What is the wavelength of the emitted photon? (h = 6.63 x 10<sup>-34</sup> J-s, c = 3 x 10<sup>8</sup> m/s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
+    "options": [
+      "328 nm",
+      "490 nm",
+      "980 nm",
+      "654 nm"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 654 nm</h4><p>Energy of the photon = |-1.5 - (-3.4)| = 1.9 eV = 1.9 x 1.6 x 10<sup>-19</sup> = 3.04 x 10<sup>-19</sup> J. Wavelength = hc/E = (6.63 x 10<sup>-34</sup> x 3 x 10<sup>8</sup>) / (3.04 x 10<sup>-19</sup>) = 6.54 x 10<sup>-7</sup> m = 654 nm (red light).</p><p class='exp-key'>Key Concept: The energy of an emitted photon equals the difference between the initial and final energy levels of the atomic transition.</p>"
+  },
+  "Q41": {
+    "id": "phys-41",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "According to the Heisenberg uncertainty principle, if the position of an electron is measured with an uncertainty of 0.1 nm, what is the minimum uncertainty in its momentum? (h-bar = 1.055 x 10<sup>-34</sup> J-s)",
+    "options": [
+      "5.28 x 10<sup>-25</sup> kg-m/s",
+      "1.055 x 10<sup>-24</sup> kg-m/s",
+      "5.28 x 10<sup>-24</sup> kg-m/s",
+      "1.055 x 10<sup>-23</sup> kg-m/s"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 5.28 x 10<sup>-25</sup> kg-m/s</h4><p>From the uncertainty principle: δ<sub>x</sub> x δ<sub>p</sub> >= h-bar/2. Therefore δ<sub>p</sub> >= h-bar/(2 x δ<sub>x</sub>) = 1.055 x 10<sup>-34</sup> / (2 x 0.1 x 10<sup>-9</sup>) = 1.055 x 10<sup>-34</sup> / (2 x 10<sup>-10</sup>) = 5.275 x 10<sup>-25</sup> kg-m/s.</p><p class='exp-key'>Key Concept: The Heisenberg uncertainty principle sets a fundamental limit on the precision of simultaneous measurements of position and momentum.</p>"
+  },
+  "Q42": {
+    "id": "phys-42",
+    "subject": "physics",
+    "topic": "Modern Physics",
+    "question": "The threshold frequency for a photoemissive surface is 5.0 x 10<sup>14</sup> Hz. What is the work function of the material in electron volts? (h = 6.63 x 10<sup>-34</sup> J-s, 1 eV = 1.6 x 10<sup>-19</sup> J)",
+    "options": [
+      "1.04 eV",
+      "2.07 eV",
+      "3.31 eV",
+      "4.14 eV"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) 2.07 eV</h4><p>The work function φ = h x f<sub>0</sub> = 6.63 x 10<sup>-34</sup> x 5.0 x 10<sup>14</sup> = 3.315 x 10<sup>-19</sup> J. Converting to eV: 3.315 x 10<sup>-19</sup> / 1.6 x 10<sup>-19</sup> = 2.07 eV.</p><p class='exp-key'>Key Concept: The threshold frequency is the minimum frequency needed for photoemission, directly related to the work function by φ = hf<sub>0</sub>.</p>"
+  },
+  "Q43": {
+    "id": "phys-43",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "Blood flows through an artery of radius 4 mm at a velocity of 0.3 m/s. If the artery narrows to a radius of 2 mm due to plaque buildup, what is the velocity of blood in the narrowed section? (Assume incompressible flow.)",
+    "options": [
+      "0.6 m/s",
+      "0.9 m/s",
+      "2.4 m/s",
+      "1.2 m/s"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 1.2 m/s</h4><p>By the continuity equation: A<sub>1</sub> v<sub>1</sub> = A<sub>2</sub> v<sub>2</sub>. Since A = π r<sup>2</sup>: π(4)<sup>2</sup> x 0.3 = π(2)<sup>2</sup> x v<sub>2</sub>. Therefore v<sub>2</sub> = (16/4) x 0.3 = 4 x 0.3 = 1.2 m/s.</p><p class='exp-key'>Key Concept: The continuity equation for incompressible fluids shows that velocity increases when the cross-sectional area decreases, which is clinically relevant in arterial stenosis.</p>"
+  },
+  "Q44": {
+    "id": "phys-44",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "Water flows through a horizontal pipe that narrows from a cross-section of 40 cm<sup>2</sup> to 10 cm<sup>2</sup>. If the pressure in the wider section is 200 kPa and the flow speed there is 2 m/s, what is the pressure in the narrow section? (Density of water = 1000 kg/m<sup>3</sup>)",
+    "options": [
+      "170 kPa",
+      "176 kPa",
+      "185 kPa",
+      "188 kPa"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) 170 kPa</h4><p>By continuity: v<sub>2</sub> = (A<sub>1</sub>/A<sub>2</sub>) x v<sub>1</sub> = (40/10) x 2 = 8 m/s. Applying Bernoulli's equation (horizontal pipe): P<sub>1</sub> + 0.5 ρ v<sub>1</sub>^2 = P<sub>2</sub> + 0.5 ρ v<sub>2</sub>^2. P<sub>2</sub> = P<sub>1</sub> + 0.5 ρ (v<sub>1</sub>^2 - v<sub>2</sub>^2) = 200000 + 0.5 x 1000 x (4 - 64) = 200000 - 30000 = 170000 Pa = 170 kPa.</p><p class='exp-key'>Key Concept: Bernoulli's principle states that in a flowing fluid, an increase in velocity leads to a decrease in pressure.</p>"
+  },
+  "Q45": {
+    "id": "phys-45",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "A fluid with viscosity 0.004 Pa-s flows through a tube of radius 3 mm and length 0.5 m under a pressure difference of 800 Pa. What is the volume flow rate according to Poiseuille's law?",
+    "options": [
+      "1.27 x 10<sup>-6</sup> m<sup>3</sup>/s",
+      "5.09 x 10<sup>-6</sup> m<sup>3</sup>/s",
+      "1.27 x 10<sup>-5</sup> m<sup>3</sup>/s",
+      "5.09 x 10<sup>-5</sup> m<sup>3</sup>/s"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 1.27 x 10<sup>-5</sup> m<sup>3</sup>/s</h4><p>Using Poiseuille's law: Q = π r⁴ ΔP / (8 η L)</p><p>Q = π × (3 × 10⁻³)⁴ × 800 / (8 × 0.004 × 0.5)</p><p>r⁴ = 8.1 × 10⁻¹¹</p><p>Numerator: π × 8.1 × 10⁻¹¹ × 800 = π × 6.48 × 10⁻⁸</p><p>Denominator: 0.016</p><p>Q = π × 4.05 × 10⁻⁶ = 1.27 × 10⁻⁵ m³/s</p><p class='exp-key'>Key Concept: Poiseuille's law shows that flow rate depends on the fourth power of radius, making small changes in vessel diameter critically important in blood circulation.</p>"
+  },
+  "Q46": {
+    "id": "phys-46",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "A steel ball of density 7800 kg/m<sup>3</sup> and radius 1 mm falls through glycerin (density 1260 kg/m<sup>3</sup>, viscosity 1.5 Pa-s). What is the terminal velocity of the ball? (g = 10 m/s<sup>2</sup>)",
+    "options": [
+      "0.97 mm/s",
+      "4.84 mm/s",
+      "19.4 mm/s",
+      "9.69 mm/s"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: D) 9.69 mm/s</h4><p>At terminal velocity, gravity equals buoyancy plus drag (Stokes' law): v<sub>t</sub> = 2r<sup>2</sup>(ρ<sub>s</sub> - ρ<sub>f</sub>)g / (9 η) = 2 x (10<sup>-3</sup>)<sup>2</sup> x (7800 - 1260) x 10 / (9 x 1.5) = 2 x 10<sup>-6</sup> x 65400 / 13.5 = 0.1308 / 13.5 = 9.69 x 10<sup>-3</sup> m/s = 9.69 mm/s.</p><p class='exp-key'>Key Concept: Terminal velocity in a viscous fluid is reached when the net downward force (gravity minus buoyancy) equals the viscous drag described by Stokes' law.</p>"
+  },
+  "Q47": {
+    "id": "phys-47",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "The Reynolds number for blood flow in the aorta is approximately 2000. If the aorta has a diameter of 2.5 cm, blood density is 1060 kg/m<sup>3</sup> and viscosity is 3.5 x 10<sup>-3</sup> Pa-s, what is the average flow velocity?",
+    "options": [
+      "0.13 m/s",
+      "0.26 m/s",
+      "0.53 m/s",
+      "1.06 m/s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) 0.26 m/s</h4><p>Re = ρ v D / η, so v = Re x η / (ρ x D) = 2000 x 3.5 x 10<sup>-3</sup> / (1060 x 0.025) = 7.0 / 26.5 = 0.264 m/s, approximately 0.26 m/s.</p><p class='exp-key'>Key Concept: The Reynolds number predicts whether flow is laminar (Re < 2000) or turbulent (Re > 4000), with transitional flow in between. Blood flow in the aorta is near the critical transition point.</p>"
+  },
+  "Q48": {
+    "id": "phys-48",
+    "subject": "physics",
+    "topic": "Fluid Dynamics Advanced",
+    "question": "A manometer connected to a patient's artery reads a gauge pressure of 120 mmHg. What is this pressure in pascals? (Density of mercury = 13600 kg/m<sup>3</sup>, g = 10 m/s<sup>2</sup>)",
+    "options": [
+      "8160 Pa",
+      "12000 Pa",
+      "16320 Pa",
+      "24000 Pa"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 16320 Pa</h4><p>P = ρ g h = 13600 x 10 x 0.120 = 16320 Pa. (Note: 120 mmHg = 0.120 m of mercury.)</p><p class='exp-key'>Key Concept: Blood pressure is traditionally measured in mmHg, which can be converted to SI units using the hydrostatic pressure formula P = ρ g h.</p>"
+  },
+  "Q49": {
+    "id": "phys-49",
+    "subject": "physics",
+    "topic": "Thermodynamics Advanced",
+    "question": "A Carnot engine operates between a hot reservoir at 600 K and a cold reservoir at 300 K. What is the efficiency of this engine?",
+    "options": [
+      "25%",
+      "33%",
+      "50%",
+      "67%"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 50%</h4><p>Carnot efficiency = 1 - T<sub>cold</sub>/T<sub>hot</sub> = 1 - 300/600 = 1 - 0.5 = 0.5 = 50%.</p><p class='exp-key'>Key Concept: The Carnot efficiency represents the maximum possible efficiency for any heat engine operating between two temperature reservoirs.</p>"
+  },
+  "Q50": {
+    "id": "phys-50",
+    "subject": "physics",
+    "topic": "Thermodynamics Advanced",
+    "question": "During an isothermal expansion of an ideal gas at 400 K, the volume doubles. If the gas contains 2 moles, how much work does the gas do? (R = 8.314 J/(mol-K), ln 2 = 0.693)",
+    "options": [
+      "2310 J",
+      "4610 J",
+      "6920 J",
+      "9240 J"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) 4610 J</h4><p>For isothermal expansion: W = nRT ln(V<sub>2</sub>/V<sub>1</sub>) = 2 x 8.314 x 400 x ln(2) = 2 x 8.314 x 400 x 0.693 = 4610 J.</p><p class='exp-key'>Key Concept: In an isothermal process for an ideal gas, the work done equals nRT ln(V<sub>2</sub>/V<sub>1</sub>), and the internal energy remains constant.</p>"
+  },
+  "Q51": {
+    "id": "phys-51",
+    "subject": "physics",
+    "topic": "Thermodynamics Advanced",
+    "question": "The entropy change when 1 kg of water at 100 degrees C is converted entirely to steam at 100 degrees C and 1 atm is closest to which value? (L<sub>v</sub> = 2260 kJ/kg)",
+    "options": [
+      "3050 J/K",
+      "6060 J/K",
+      "8480 J/K",
+      "22600 J/K"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) 6060 J/K</h4><p>For a phase change at constant temperature: δ<sub>S</sub> = Q/T = mL<sub>v</sub>/T = 1 x 2260000 / 373 = 6057 J/K, approximately 6060 J/K. (T must be in Kelvin: 100 + 273 = 373 K.)</p><p class='exp-key'>Key Concept: Entropy increases significantly during vaporization because the disorder of the system greatly increases as molecules transition from liquid to gas phase.</p>"
+  },
+  "Q52": {
+    "id": "phys-52",
+    "subject": "physics",
+    "topic": "Thermodynamics Advanced",
+    "question": "An ideal gas undergoes an adiabatic process where the volume is compressed to 1/8 of its original volume. If the initial temperature is 300 K and γ = 5/3 (monatomic gas), what is the final temperature?",
+    "options": [
+      "600 K",
+      "900 K",
+      "1200 K",
+      "2400 K"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 1200 K</h4><p>For an adiabatic process: T<sub>1</sub> V<sub>1</sub>^(γ-1) = T<sub>2</sub> V<sub>2</sub>^(γ-1). T<sub>2</sub> = T<sub>1</sub> x (V<sub>1</sub>/V<sub>2</sub>)^(γ-1) = 300 x 8^(2/3) = 300 x (2<sup>3</sup>)^(2/3) = 300 x 2<sup>2</sup> = 300 x 4 = 1200 K.</p><p class='exp-key'>Key Concept: In an adiabatic compression, the temperature rises because work is done on the gas with no heat exchange with the surroundings.</p>"
+  },
+  "Q53": {
+    "id": "phys-53",
+    "subject": "physics",
+    "topic": "Thermodynamics Advanced",
+    "question": "At the triple point of water (273.16 K, 611.73 Pa), which statement is correct?",
+    "options": [
+      "Only ice and liquid water coexist in equilibrium",
+      "Only liquid water and water vapor coexist in equilibrium",
+      "Ice, liquid water, and water vapor coexist in equilibrium",
+      "Water can only exist as a liquid at the triple point"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) Ice, liquid water, and water vapor coexist in equilibrium</h4><p>By definition, the triple point is the unique temperature and pressure at which all three phases of a substance (solid, liquid, and gas) coexist in thermodynamic equilibrium.</p><p class='exp-key'>Key Concept: The triple point is a fixed point on a phase diagram where three phase boundaries meet, and it serves as a fundamental calibration point in thermometry.</p>"
+  },
+  "Q54": {
+    "id": "phys-54",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "A converging lens with a focal length of 20 cm forms an image of an object placed 30 cm from the lens. What is the image distance and magnification?",
+    "options": [
+      "v = 60 cm, m = -2",
+      "v = 40 cm, m = -1",
+      "v = 60 cm, m = +2",
+      "v = 40 cm, m = -2"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A) v = 60 cm, m = -2</h4><p>Using the thin lens equation: 1/f = 1/v - 1/u (with sign convention u = -30 cm): 1/20 = 1/v + 1/30. 1/v = 1/20 - 1/30 = 3/60 - 2/60 = 1/60. v = 60 cm. Magnification m = -v/u = -60/30 = -2 (inverted, magnified image).</p><p class='exp-key'>Key Concept: When an object is between f and 2f of a converging lens, the image is real, inverted, and magnified.</p>"
+  },
+  "Q55": {
+    "id": "phys-55",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "A concave mirror has a radius of curvature of 40 cm. An object is placed 15 cm from the mirror. Where is the image formed?",
+    "options": [
+      "60 cm in front of the mirror",
+      "30 cm behind the mirror",
+      "60 cm behind the mirror",
+      "30 cm in front of the mirror"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 60 cm behind the mirror</h4><p>Focal length f = R/2 = 20 cm. Using mirror equation: 1/f = 1/v + 1/u. With u = -15 cm (in front of mirror), f = -20 cm (concave): 1/v = 1/f - 1/u = -1/20 - (-1/15) = -1/20 + 1/15 = (-3 + 4)/60 = 1/60. v = 60 cm. Positive v means the image is behind the mirror (virtual, erect, magnified).</p><p class='exp-key'>Key Concept: When an object is between the focal point and a concave mirror, a virtual, erect, and magnified image forms behind the mirror.</p>"
+  },
+  "Q56": {
+    "id": "phys-56",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "Two thin lenses of focal lengths +10 cm and -15 cm are placed in contact. What is the focal length of the combination?",
+    "options": [
+      "+6 cm",
+      "+30 cm",
+      "-30 cm",
+      "-6 cm"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) +30 cm</h4><p>For thin lenses in contact: 1/f = 1/f<sub>1</sub> + 1/f<sub>2</sub> = 1/10 + 1/(-15) = 3/30 - 2/30 = 1/30. Therefore f = +30 cm (converging combination).</p><p class='exp-key'>Key Concept: The combined power of thin lenses in contact is the sum of their individual powers, and the effective focal length is the reciprocal of this sum.</p>"
+  },
+  "Q57": {
+    "id": "phys-57",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "A microscope has an objective lens with focal length 5 mm and an eyepiece with focal length 25 mm. If the tube length (distance between lenses) is 160 mm, what is the total magnification for a near point of 250 mm?",
+    "options": [
+      "100x",
+      "200x",
+      "320x",
+      "640x"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 320x</h4><p>The magnification of a compound microscope: M = (L/f<sub>o</sub>) x (D/f<sub>e</sub>), where L is the tube length, D is the near point distance. M = (160/5) x (250/25) = 32 x 10 = 320x.</p><p class='exp-key'>Key Concept: A compound microscope achieves high magnification through two stages: the objective creates a magnified real image, and the eyepiece further magnifies it as a virtual image.</p>"
+  },
+  "Q58": {
+    "id": "phys-58",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "A ray of light enters a glass slab (refractive index 1.5) from air at an angle of incidence of 30 degrees. What is the angle of refraction inside the glass?",
+    "options": [
+      "14.5 degrees",
+      "19.5 degrees",
+      "22.0 degrees",
+      "33.3 degrees"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: B) 19.5 degrees</h4><p>By Snell's law: n<sub>1</sub> sin θ<sub>1</sub> = n<sub>2</sub> sin θ<sub>2</sub>. 1.0 x sin 30 = 1.5 x sin θ<sub>2</sub>. sin θ<sub>2</sub> = 0.5 / 1.5 = 0.333. θ<sub>2</sub> = arcsin(0.333) = 19.47 degrees, approximately 19.5 degrees.</p><p class='exp-key'>Key Concept: Snell's law governs refraction at interfaces, with light bending toward the normal when entering a denser medium.</p>"
+  },
+  "Q59": {
+    "id": "phys-59",
+    "subject": "physics",
+    "topic": "Geometric Optics Advanced",
+    "question": "The critical angle for total internal reflection at a glass-air interface is 42 degrees. What is the refractive index of the glass?",
+    "options": [
+      "1.33",
+      "1.41",
+      "1.49",
+      "1.62"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: C) 1.49</h4><p>At the critical angle: sin θ<sub>c</sub> = n<sub>air</sub> / n<sub>glass</sub>. Therefore n<sub>glass</sub> = n<sub>air</sub> / sin θ<sub>c</sub> = 1.0 / sin 42 = 1.0 / 0.6691 = 1.494, approximately 1.49.</p><p class='exp-key'>Key Concept: Total internal reflection occurs when light travels from a denser to a rarer medium at angles exceeding the critical angle, which is used in fiber optics and endoscopy.</p>"
+  },
+  "Q60": {
+    "id": "phys-60",
+    "subject": "physics",
+    "topic": "SI System & Units",
+    "question": "Which of the following is a base SI unit?",
+    "options": [
+      "Newton",
+      "Joule",
+      "Ampere",
+      "Watt"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Ampere</h4><p>The seven base SI units are: meter (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), and candela (cd). Newton (force), Joule (energy), and Watt (power) are all <strong>derived units</strong>.</p><p class='exp-key'>Key Concept: Base SI units are independently defined and cannot be expressed in terms of other SI units.</p>"
+  }
+}
