@@ -1749,7 +1749,18 @@ function showReview() {
       if (!isUnanswered && j === userAnswer && !isCorrect) cls = 'wrong-answer';
       // Allowlist-sanitize each option so <sub>/<sup>/<b>/etc. render
       // and nothing else (no raw tags shown, no XSS).
-      answersHtml += `<div class="review-answer ${cls}">${prefix} ${qbSanitizeHtml(opt)}</div>`;
+      //
+      // The letter and the option each get their own span. .review-answer is
+      // a flex container, so without them every <sup> and <sub> in the option
+      // becomes a flex item of its own: blockified, pushed 10px away from the
+      // unit it belongs to by the row's gap, and top-aligned instead of
+      // sitting on the baseline. Two children keep the option one inline
+      // formula and leave the gap where it is meant to be, between the letter
+      // and the formula. The live question card already does this with
+      // .option-letter and .option-text.
+      answersHtml += `<div class="review-answer ${cls}">` +
+        `<span class="review-answer-letter">${prefix}</span>` +
+        `<span class="review-answer-text">${qbSanitizeHtml(opt)}</span></div>`;
     });
 
     const statusClass = isUnanswered ? 'wrong' : (isCorrect ? 'correct' : 'wrong');

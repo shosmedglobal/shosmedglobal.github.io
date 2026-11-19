@@ -134,6 +134,46 @@ check('6b the letter circle is still 32px and does not shrink',
 check('6c the new rule changes no spacing of its own',
   !/margin/.test(block) && !/padding/.test(block) && !/\bgap:/.test(block));
 
+/* ------------- 7. an option must never be bare inside a flex row */
+
+/* The end-of-quiz review row is a flex container with a 10px gap. While the
+   option was dropped into it as bare markup, every <sup> and <sub> in it
+   became a flex item of its own: blockified, top-aligned instead of sitting
+   on the baseline, and pushed a full 10px away from the unit it belongs to.
+   The exponent rules above cannot reach that, because vertical-align does
+   nothing to a flex item. The option has to arrive as ONE element. */
+
+const qbankJs = read('qbank.js');
+const reviewRow = qbankJs.slice(qbankJs.indexOf('answersHtml +='), qbankJs.indexOf('answersHtml +=') + 400);
+check('7a the review row wraps its letter', /class="review-answer-letter"/.test(reviewRow));
+check('7b the review row wraps its option', /class="review-answer-text"/.test(reviewRow));
+check('7c the option is not dropped into the flex row bare',
+  !/review-answer \$\{cls\}">\$\{prefix\}/.test(qbankJs));
+check('7d the sanitized option goes inside the wrapper',
+  /review-answer-text">\$\{qbSanitizeHtml\(opt\)\}/.test(reviewRow));
+
+const qcss2 = read('qbank.css');
+check('7e the letter does not shrink', /\.review-answer-letter\s*\{[^}]*flex-shrink:\s*0/.test(qcss2));
+check('7f the formula takes the rest of the row',
+  /\.review-answer-text\s*\{[^}]*flex:\s*1/.test(qcss2) && /\.review-answer-text\s*\{[^}]*min-width:\s*0/.test(qcss2));
+check('7g the wrappers add no size, weight or colour of their own',
+  !/\.review-answer-(letter|text)\s*\{[^}]*(font-size|font-weight|color)\s*:/.test(qcss2));
+
+const rowRule = qcss2.slice(qcss2.indexOf('.review-answer {'), qcss2.indexOf('.review-answer-letter'));
+check('7h the row still separates the letter from the formula by 10px',
+  /display:\s*flex/.test(rowRule) && /gap:\s*10px/.test(rowRule), rowRule.match(/gap:[^;]*/));
+
+/* The other three places that render an option already wrap it. If one ever
+   stops, it inherits the same defect, so each is pinned here. */
+const dash = read('dashboard.html');
+check('7i the admin viewer wraps its option in a span',
+  /<span class="letter">\$\{letters\[i\] \|\| ''\}<\/span>\s*<span>\$\{opt\}/.test(dash));
+const exam = read('practice-exam.html');
+check('7j the practice exam puts its option inside a label',
+  /<label for="opt-'[^]*?q-option-letter[^]*?q\.options\[letter\]/.test(exam.replace(/\n/g, '')));
+check('7k the practice-exam review wraps its option in .opt-content',
+  /<span class="opt-content"><span class="q-option-letter">/.test(exam));
+
 console.log('sup-sub-presentation: ' + passed + ' passed, ' + failures.length + ' failed');
 if (failures.length) {
   console.log();

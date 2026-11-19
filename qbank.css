@@ -1034,6 +1034,21 @@
   gap: 10px;
 }
 
+/* The two children of a review row. .review-answer is a flex container, so
+   the option must arrive as ONE element: left bare, its <sup> and <sub> each
+   become a flex item, blockified and pushed away from their own base by the
+   row's 10px gap. These spans keep that gap where it belongs, between the
+   letter and the formula, and leave the formula a single inline run. They add
+   no size, weight or colour of their own. */
+.review-answer-letter {
+  flex-shrink: 0;
+}
+
+.review-answer-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .review-answer.correct-answer {
   background: rgba(45, 134, 89, 0.06);
   color: var(--green);
