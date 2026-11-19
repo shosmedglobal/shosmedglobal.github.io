@@ -152,6 +152,55 @@
     "Q12 and Q41 remain near-duplicate Hess's-law items with different rounding, as the review instructs; no deduplication was done.",
     "Structural and consistency checks establish scope and presentation. They do not establish scientific accuracy, which rests on the content review itself."
   ],
+  "followup_corrections": {
+    "applied": "2026-11-18",
+    "summary": "Two final content corrections, explanation fields only. Each id was reconfirmed against its CURRENT stem, options and stored answer letter before editing, and nothing was written until every anchor and pack invariant checked out.",
+    "items": [
+      {
+        "q": "Q41",
+        "id": "chem-458",
+        "key": "A",
+        "field": "option D feedback, first sentence only",
+        "change": "The reaction used twice is named correctly and the stoichiometry is stated per mole of methane.",
+        "from": "The hydrogen-formation data must be used twice because the target consumes two H₂ molecules.",
+        "to": "The water-formation reaction must be used twice because the target reaction consumes two moles of H₂ per mole of CH₄.",
+        "preserved": "option D's heading, the rest of its paragraph including the retained calculation -393.5 + 2(-285.8) + 890.4, and every other part of the item"
+      },
+      {
+        "q": "Q49",
+        "id": "chem-466",
+        "key": "C",
+        "field": "option B feedback body",
+        "change": "The muscle nitrogen-export routes are given explicitly: alanine by transamination of pyruvate, glutamine by glutamine synthetase at an ATP cost.",
+        "from": "Skeletal muscle does not have a complete urea cycle. Instead, muscle disposes of amino group nitrogen by transamination to form alanine (glucose-alanine cycle) or glutamine, which are transported to the liver for urea synthesis.",
+        "to": "Skeletal muscle does not have a complete urea cycle. It exports nitrogen mainly as alanine and glutamine. Alanine is formed by transamination of pyruvate; glutamine is formed from glutamate and ammonia by glutamine synthetase in a reaction that uses ATP. These molecules carry nitrogen to other organs, including the liver, where it can be converted to urea.",
+        "preserved": "the heading \"B. Skeletal muscle mitochondria:\" byte for byte, the stem, all four options, the main explanation and its compartment list, options A and D feedback, and the Bottom Line",
+        "note": "This follow-up explicitly SUPERSEDES Q49's KEEP instruction, solely for option B's feedback body. Q49 is otherwise still a KEEP item, and the batch 8 pass itself left it byte-identical."
+      }
+    ],
+    "invariants_held": {
+      "records_changed": 2,
+      "fields_changed": "explanation only",
+      "other_items_in_pack_unchanged": 58,
+      "stems_changed": 0,
+      "option_texts_changed": 0,
+      "answer_letters_moved": 0,
+      "ids_moved": 0,
+      "topics_moved": 0,
+      "headings_changed": 0,
+      "educational_points": 65,
+      "point_blocks": 21,
+      "bottom_lines": 58,
+      "tables": 5,
+      "feedback_paragraphs": 180
+    },
+    "coverage_unchanged": true,
+    "deviations": [],
+    "notes": [
+      "The follow-up adds no newly reviewed id, so chemistry coverage stays 475 of 485 with the same ten remaining ids.",
+      "Earlier batches keep whatever approval status they already had; nothing here reopens them."
+    ]
+  },
   "coverage": {
     "reviewed_before_this_batch": 419,
     "displays_in_this_pack": 60,

@@ -25,6 +25,7 @@ const idmap = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/chem-review-ba
 const before = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch8-before.json'), 'utf8'));
 const untouched = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch8-untouched.json'), 'utf8'));
 const SIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch8-signatures.json'), 'utf8'));
+const fuBefore = JSON.parse(fs.readFileSync(path.join(ROOT, 'test/fixtures/chem-review-batch8-followup-before.json'), 'utf8'));
 
 const MAP = idmap.map;
 const QS = Object.keys(MAP);
@@ -184,9 +185,17 @@ for (const Q of QS) {
   if (touched) changed.push(Q); else same.push(Q);
   ok(a.id === b.id && a.correct === b.correct && a.topic === b.topic, Q + ': id, answer letter and topic unchanged');
 }
-ok(changed.length === 48, '48 items changed (got ' + changed.length + ')');
-ok(JSON.stringify(same) === JSON.stringify(KEEP), 'the untouched set is exactly the twelve KEEP items (got ' + same.join(',') + ')');
-for (const Q of KEEP) ok(JSON.stringify(pre(Q)) === JSON.stringify(rec(Q)), Q + ': KEEP item byte-identical in every field');
+/* The follow-up (section 11) explicitly supersedes Q49's KEEP status, for option
+   B's feedback body alone. The batch 8 pass itself still left Q49 untouched,
+   which is proved below against the follow-up baseline rather than assumed. */
+const FU_TOUCHED = ['Q49'];
+const KEEP_STILL = KEEP.filter(Q => !FU_TOUCHED.includes(Q));
+ok(changed.length === 49, '48 items changed in the batch 8 pass plus Q49 in the follow-up (got ' + changed.length + ')');
+ok(JSON.stringify(same) === JSON.stringify(KEEP_STILL),
+  'the untouched set is the eleven KEEP items the follow-up did not reopen (got ' + same.join(',') + ')');
+for (const Q of KEEP_STILL) ok(JSON.stringify(pre(Q)) === JSON.stringify(rec(Q)), Q + ': KEEP item byte-identical in every field');
+ok(JSON.stringify(pre('Q49')) === JSON.stringify(fuBefore.records.Q49),
+  'Q49: the batch 8 pass itself left it byte-identical; only the follow-up touched it');
 ok(JSON.stringify(stems) === JSON.stringify(idmap.stem_changes),
   '24 stems replaced, exactly the ones the review lists (got ' + stems.length + ')');
 ok(stems.length === 24, 'the stem count is 24');
@@ -198,7 +207,7 @@ for (const slot of Object.keys(idmap.option_changes)) {
   const [Q, letter] = slot.split(' ');
   ok(rec(Q).options[L.indexOf(letter)] === idmap.option_changes[slot], slot + ': stored option text is the replacement the review supplies');
 }
-ok(expls.length === 47, '47 explanations changed; Q10 is stem-only (got ' + expls.length + ')');
+ok(expls.length === 48, '47 explanations changed in the batch 8 pass, Q10 being stem-only, plus Q49 in the follow-up (got ' + expls.length + ')');
 ok(pre('Q10').explanation === rec('Q10').explanation && JSON.stringify(pre('Q10').options) === JSON.stringify(rec('Q10').options),
   'Q10: stem only, its explanation and options are byte-identical');
 
@@ -735,6 +744,111 @@ ok(idmap.deviations.length === 0, 'the id map records no deviation');
 ok(idmap.notes.join(' ').indexOf('not establish scientific accuracy') >= 0 ||
    idmap.notes.join(' ').indexOf('do not establish scientific accuracy') >= 0,
   'the id map states that these checks are not scientific approval');
+
+/* ------------------------------------------------------------------ */
+section('11. the final follow-up: two explanation-level corrections');
+
+/* Baseline is the POST-batch-8 state, not the pre-batch-8 fixture, because the
+   follow-up lands after the pass. */
+const fuPre = Q => fuBefore.records[Q];
+const FU = ['Q41', 'Q49'];
+ok(Object.keys(fuBefore.hashes).length === 60, 'the follow-up baseline hashes all 60 pack records');
+ok(Object.keys(fuBefore.records).length === 2, 'the follow-up baseline keeps the two full records it edits');
+
+const fuMoved = QS.filter(Q => hash(rec(Q)) !== fuBefore.hashes[Q]);
+ok(JSON.stringify(fuMoved) === JSON.stringify(FU),
+  'exactly Q41 and Q49 moved in the follow-up (got ' + (fuMoved.join(', ') || 'none') + ')');
+for (const Q of QS) {
+  if (FU.includes(Q)) continue;
+  ok(hash(rec(Q)) === fuBefore.hashes[Q], Q + ': byte-identical through the follow-up');
+}
+for (const Q of FU) {
+  const a = fuPre(Q), b = rec(Q);
+  ok(a.question === b.question, Q + ': its stem is unchanged');
+  ok(JSON.stringify(a.options) === JSON.stringify(b.options), Q + ': all four option texts are unchanged');
+  ok(a.correct === b.correct && a.id === b.id && a.topic === b.topic, Q + ': answer letter, id and topic are unchanged');
+  ok(keyedOf(a.explanation) === keyedOf(b.explanation), Q + ': its keyed heading is unchanged');
+  ok(pointLines(a.explanation).join('|') === pointLines(b.explanation).join('|'), Q + ': its educational points are unchanged');
+  ok(blOf(a.explanation) === blOf(b.explanation), Q + ': its Bottom Line is unchanged');
+  ok(tableOf(a.explanation) === tableOf(b.explanation), Q + ': it gained or lost no table content');
+  const ha = fbParts(a.explanation), hb = fbParts(b.explanation);
+  for (const letter of Object.keys(hb)) ok(ha[letter].head === hb[letter].head, Q + ' ' + letter + ': its heading is byte-identical');
+}
+
+/* Q41: only option D's feedback paragraph moved, and only its first sentence */
+{
+  const a = fuPre('Q41').explanation, b = rec('Q41').explanation;
+  const blank = s => s.replace(/<p><strong>D\. [\s\S]*?<\/p>/, '<FB-D>');
+  ok(blank(a) === blank(b), "Q41: nothing outside option D's feedback paragraph changed");
+  const bodyA = fbParts(a).D.body, bodyB = fbParts(b).D.body;
+  ok(bodyA !== bodyB, "Q41: option D's body really did change");
+  const tailA = bodyA.slice(bodyA.indexOf('Reaction 3 must then be reversed'));
+  const tailB = bodyB.slice(bodyB.indexOf('Reaction 3 must then be reversed'));
+  ok(tailA.length > 0 && tailA === tailB, 'Q41: the rest of option D, including its calculation, is byte-identical');
+  ok(/The water-formation reaction must be used twice because the target reaction consumes two moles of H₂ per mole of CH₄\./.test(bodyB),
+    'Q41 D: the replacement sentence is present verbatim');
+  ok(!/The hydrogen-formation data must be used twice/.test(bodyB), 'Q41 D: the superseded sentence is gone');
+  ok(/The hydrogen-formation data must be used twice/.test(bodyA),
+    'Q41 D: it really was there before, so that check is not vacuous');
+  ok(/This gives -393\.5 \+ 2\(-285\.8\) \+ 890\.4, not -496\.9 kJ\/mol\./.test(bodyB),
+    'Q41 D: the retained calculation is intact');
+  ok((bodyB.match(/\.(?:\s|$)/g) || []).length === 3, 'Q41 D: the paragraph is three sentences');
+}
+
+/* Q49: only option B's feedback body moved; its KEEP status is superseded there alone */
+{
+  const a = fuPre('Q49').explanation, b = rec('Q49').explanation;
+  const blank = s => s.replace(/<p><strong>B\. [\s\S]*?<\/p>/, '<FB-B>');
+  ok(blank(a) === blank(b), "Q49: nothing outside option B's feedback paragraph changed");
+  ok(fbParts(b).B.head === 'Skeletal muscle mitochondria', 'Q49 B: the heading is unchanged, as the brief requires');
+  const body = fbParts(b).B.body;
+  ok(/^ Skeletal muscle does not have a complete urea cycle\./.test(body), 'Q49 B: the body opens as supplied');
+  ok(/It exports nitrogen mainly as alanine and glutamine\./.test(body), 'Q49 B: the export route is stated');
+  ok(/Alanine is formed by transamination of pyruvate/.test(body), 'Q49 B: alanine comes from transamination of pyruvate');
+  ok(/glutamine synthetase in a reaction that uses ATP/.test(body), 'Q49 B: glutamine synthetase and its ATP cost are stated');
+  ok(/carry nitrogen to other organs, including the liver, where it can be converted to urea\.$/.test(body),
+    'Q49 B: the body closes as supplied');
+  ok(!/glucose-alanine cycle/.test(body), 'Q49 B: the superseded wording is gone');
+  ok(/glucose-alanine cycle/.test(fbParts(a).B.body), 'Q49 B: it really was there before, so that check is not vacuous');
+  ok((body.match(/\.(?:\s|$)/g) || []).length === 4, 'Q49 B: the paragraph is four sentences');
+  ok(fbParts(b).A.body === fbParts(a).A.body && fbParts(b).D.body === fbParts(a).D.body,
+    "Q49: options A and D feedback bodies are byte-identical, so the KEEP exception is confined to option B");
+  ok(headOf(b) === headOf(a), 'Q49: its main explanation and compartment list are byte-identical');
+}
+
+/* pack invariants the follow-up must preserve */
+{
+  let fuPts = 0, fuBlocks = 0, fuBls = 0, fuTables = 0, fuFb = 0;
+  for (const Q of QS) {
+    const e = rec(Q).explanation;
+    const p = pointLines(e);
+    if (p.length) { fuBlocks++; fuPts += p.length; }
+    if (e.indexOf(BLOPEN) >= 0) fuBls++;
+    fuTables += (e.match(/<table/g) || []).length;
+    fuFb += (fbOf(e).match(/<p[ >]/g) || []).length;
+  }
+  ok(fuPts === 65 && fuBlocks === 21, 'the follow-up preserves 65 points in 21 blocks (got ' + fuPts + '/' + fuBlocks + ')');
+  ok(fuBls === 58, 'the follow-up preserves 58 Bottom Lines (got ' + fuBls + ')');
+  ok(fuTables === 5, 'the follow-up preserves 5 tables (got ' + fuTables + ')');
+  ok(fuFb === 180, 'the follow-up preserves 180 distractor paragraphs (got ' + fuFb + ')');
+  ok(QS.map(Q => L[rec(Q).correct]).join('') === KEYS, 'every answer letter in the pack is unchanged by the follow-up');
+  for (const Q of FU) {
+    ok(curly(allText(rec(Q))) <= curly(allText(fuPre(Q))), Q + ': the curly-quote count did not rise');
+    ok(!/—/.test(allText(rec(Q))), Q + ': no em dash');
+    ok(!/�/.test(allText(rec(Q))), Q + ': no replacement character');
+    ok(!/<p><p>|<\/p><\/p>/.test(rec(Q).explanation), Q + ': no doubled paragraph tag');
+    let depth = 0, maxDepth = 0;
+    for (const m of rec(Q).explanation.matchAll(/<(\/?)p[ >]/g)) { if (m[1]) depth--; else { depth++; maxDepth = Math.max(maxDepth, depth); } }
+    ok(depth === 0 && maxDepth === 1, Q + ': paragraph nesting depth is 1');
+  }
+}
+ok(idmap.followup_corrections && idmap.followup_corrections.items.length === 2,
+  'the id map records the two follow-up corrections');
+ok(idmap.followup_corrections.coverage_unchanged === true && idmap.coverage.reviewed_after_this_batch === 475,
+  'the follow-up adds no newly reviewed id: coverage stays 475 of 485');
+ok(idmap.followup_corrections.deviations.length === 0, 'the follow-up records no deviation');
+ok(/supersedes/i.test(JSON.stringify(idmap.followup_corrections)),
+  "the id map records that Q49's KEEP status was explicitly superseded for option B's body");
 
 console.log('\n' + n + ' checks, ' + bad + ' failure(s)');
 if (bad) process.exit(1);
