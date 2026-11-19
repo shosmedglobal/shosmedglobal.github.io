@@ -186,13 +186,18 @@ for (const Q of idmap.scope.feedback_only_items) {
 /* ------------------------------------------------------------------ */
 section('3. nothing outside the block moved');
 
+/* The second physics review block (phys-61..phys-120) was pruned from this
+   fixture when it was implemented, so the records this suite still guards are
+   the 160 outside BOTH reviewed blocks. Those 60 are guarded by
+   test/phys-review-b2.test.js and its own before-fixture instead. */
 let outSame = 0;
 const outside = [];
 for (const q of BANK) {
   if (PACK.has(q.id)) continue;
+  if (untouched.physics[q.id] === undefined) continue;
   if (untouched.physics[q.id] === hash(q)) outSame++; else outside.push(q.id);
 }
-ok(outSame === 220, 'all 220 out-of-block physics records are byte-identical (got ' + outSame + ')');
+ok(outSame === 160, 'all 160 records outside both reviewed physics blocks are byte-identical (got ' + outSame + ')');
 ok(outside.length === 0, 'no record outside the block changed' + (outside.length ? ': ' + outside.slice(0, 6).join(', ') : ''));
 ok(BANK.length === 280, 'the physics bank still holds 280 records');
 

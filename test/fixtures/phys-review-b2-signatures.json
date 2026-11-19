@@ -1,0 +1,786 @@
+{
+  "originalKeys": "BCBBAACBBCBCCBBCBBCBBBBCBCBCCCBCABBABBCCCBABCCBCCCCBCCBCBABC",
+  "retainedKeys": "BCBBAACBBCBCCBBCBBCBBBBCBCBCCCBCABBABBCCCBABCCBCCCCBCCBCBABC",
+  "sigs": {
+    "Q1": {
+      "q": "Q1",
+      "topic": "SI System & Units",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A nanoparticle has a diameter of 50 nm. What is this diameter in meters?",
+      "options": [
+        "5 × 10 −7 m",
+        "5 × 10 −8 m",
+        "5 × 10 −9 m",
+        "5 × 10 −6 m"
+      ]
+    },
+    "Q2": {
+      "q": "Q2",
+      "topic": "SI System & Units",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Which of the following quantities is a vector?",
+      "options": [
+        "Temperature",
+        "Mass",
+        "Displacement",
+        "Speed"
+      ]
+    },
+    "Q3": {
+      "q": "Q3",
+      "topic": "SI System & Units",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Using dimensional analysis, determine which expression could represent pressure (SI unit: Pa = kg·m−1·s−2).",
+      "options": [
+        "Force × Area",
+        "Force / Area",
+        "Force × Velocity",
+        "Energy × Volume"
+      ]
+    },
+    "Q4": {
+      "q": "Q4",
+      "topic": "SI System & Units",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "How many microliters (μL) are in 0.25 mL?",
+      "options": [
+        "25 μL",
+        "250 μL",
+        "2500 μL",
+        "0.025 μL"
+      ]
+    },
+    "Q5": {
+      "q": "Q5",
+      "topic": "SI System & Units",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "The SI unit of energy (Joule) can be expressed as:",
+      "options": [
+        "kg·m 2 ·s −2",
+        "kg·m·s −2",
+        "kg·m 2 ·s −1",
+        "kg·m −1 ·s −2"
+      ]
+    },
+    "Q6": {
+      "q": "Q6",
+      "topic": "Kinematics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A car travels 120 km in 1.5 hours, then 80 km in 1 hour. What is the average speed for the entire trip?",
+      "options": [
+        "80 km/h",
+        "100 km/h",
+        "90 km/h",
+        "75 km/h"
+      ]
+    },
+    "Q7": {
+      "q": "Q7",
+      "topic": "Kinematics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An object starts from rest and accelerates uniformly at 4 m/s². What is its velocity after 5 seconds?",
+      "options": [
+        "10 m/s",
+        "15 m/s",
+        "20 m/s",
+        "25 m/s"
+      ]
+    },
+    "Q8": {
+      "q": "Q8",
+      "topic": "Kinematics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A ball is dropped from a height of 45 m. How long does it take to reach the ground? (g = 10 m/s²)",
+      "options": [
+        "2 s",
+        "3 s",
+        "4 s",
+        "4.5 s"
+      ]
+    },
+    "Q9": {
+      "q": "Q9",
+      "topic": "Kinematics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A stone is thrown vertically upward with an initial velocity of 30 m/s. What maximum height does it reach? (g = 10 m/s²)",
+      "options": [
+        "30 m",
+        "45 m",
+        "60 m",
+        "90 m"
+      ]
+    },
+    "Q10": {
+      "q": "Q10",
+      "topic": "Kinematics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A projectile is launched at 45° with an initial speed of 40 m/s. What is the horizontal range? (g = 10 m/s²)",
+      "options": [
+        "80 m",
+        "120 m",
+        "160 m",
+        "200 m"
+      ]
+    },
+    "Q11": {
+      "q": "Q11",
+      "topic": "Kinematics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A wheel rotates at 600 revolutions per minute. What is the period of rotation?",
+      "options": [
+        "0.01 s",
+        "0.1 s",
+        "0.5 s",
+        "1 s"
+      ]
+    },
+    "Q12": {
+      "q": "Q12",
+      "topic": "Kinematics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An object moves in a circle of radius 2 m at a constant speed of 6 m/s. What is the centripetal acceleration?",
+      "options": [
+        "3 m/s²",
+        "12 m/s²",
+        "18 m/s²",
+        "36 m/s²"
+      ]
+    },
+    "Q13": {
+      "q": "Q13",
+      "topic": "Kinematics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A projectile is launched horizontally from a cliff 80 m high with an initial speed of 15 m/s. How far from the base of the cliff does it land? (g = 10 m/s²)",
+      "options": [
+        "30 m",
+        "45 m",
+        "60 m",
+        "75 m"
+      ]
+    },
+    "Q14": {
+      "q": "Q14",
+      "topic": "Kinematics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A body undergoes uniform acceleration and covers 20 m in the 3rd second. If it started from rest, what is the acceleration?",
+      "options": [
+        "6 m/s²",
+        "8 m/s²",
+        "10 m/s²",
+        "12 m/s²"
+      ]
+    },
+    "Q15": {
+      "q": "Q15",
+      "topic": "Kinematics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The angular velocity of a rotating disc is 4π rad/s. What is the frequency of rotation?",
+      "options": [
+        "1 Hz",
+        "2 Hz",
+        "4 Hz",
+        "0.5 Hz"
+      ]
+    },
+    "Q16": {
+      "q": "Q16",
+      "topic": "Kinematics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A ball is thrown upward at 20 m/s. What is the total time it spends in the air? (g = 10 m/s²)",
+      "options": [
+        "2 s",
+        "3 s",
+        "4 s",
+        "5 s"
+      ]
+    },
+    "Q17": {
+      "q": "Q17",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 5 kg object is accelerated at 3 m/s². What net force acts on it?",
+      "options": [
+        "8 N",
+        "15 N",
+        "1.67 N",
+        "20 N"
+      ]
+    },
+    "Q18": {
+      "q": "Q18",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 60 kg person stands in an elevator accelerating upward at 2 m/s². What is the apparent weight (normal force)? (g = 10 m/s²)",
+      "options": [
+        "600 N",
+        "720 N",
+        "480 N",
+        "660 N"
+      ]
+    },
+    "Q19": {
+      "q": "Q19",
+      "topic": "Dynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 10 kg block is on a surface with coefficient of kinetic friction μk = 0.3. What horizontal force is needed to move it at constant velocity? (g = 10 m/s²)",
+      "options": [
+        "10 N",
+        "20 N",
+        "30 N",
+        "40 N"
+      ]
+    },
+    "Q20": {
+      "q": "Q20",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Two forces of 3 N and 4 N act perpendicular to each other on an object. What is the magnitude of the resultant force?",
+      "options": [
+        "1 N",
+        "5 N",
+        "7 N",
+        "12 N"
+      ]
+    },
+    "Q21": {
+      "q": "Q21",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Newton's third law states that when object A exerts a force on object B, B exerts an equal and opposite force on A. These two forces:",
+      "options": [
+        "Cancel each other out",
+        "Act on different objects",
+        "Always produce zero acceleration",
+        "Must be contact forces"
+      ]
+    },
+    "Q22": {
+      "q": "Q22",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 2 kg block and a 3 kg block are connected by a string and pulled by a force of 25 N on a frictionless surface. What is the tension in the string between the blocks?",
+      "options": [
+        "5 N",
+        "10 N",
+        "15 N",
+        "20 N"
+      ]
+    },
+    "Q23": {
+      "q": "Q23",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 4 kg object on a frictionless incline at 30° slides down. What is its acceleration? (g = 10 m/s²)",
+      "options": [
+        "2.5 m/s²",
+        "5 m/s²",
+        "7.5 m/s²",
+        "10 m/s²"
+      ]
+    },
+    "Q24": {
+      "q": "Q24",
+      "topic": "Dynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A box is pushed across a floor with a horizontal force of 50 N. If the box moves at constant velocity and weighs 200 N, what is the coefficient of kinetic friction?",
+      "options": [
+        "0.15",
+        "0.20",
+        "0.25",
+        "0.30"
+      ]
+    },
+    "Q25": {
+      "q": "Q25",
+      "topic": "Dynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 1000 kg car brakes from 20 m/s to rest in 4 s. What is the braking force?",
+      "options": [
+        "2500 N",
+        "5000 N",
+        "7500 N",
+        "10000 N"
+      ]
+    },
+    "Q26": {
+      "q": "Q26",
+      "topic": "Dynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An object at rest stays at rest unless acted upon by an external net force. This describes:",
+      "options": [
+        "Newton's second law",
+        "Newton's third law",
+        "Newton's first law (inertia)",
+        "The law of conservation of momentum"
+      ]
+    },
+    "Q27": {
+      "q": "Q27",
+      "topic": "Work, Energy & Power",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A force of 40 N pulls a sled 10 m along the ground at an angle of 60° above the horizontal. What work is done by the force?",
+      "options": [
+        "100 J",
+        "200 J",
+        "346 J",
+        "400 J"
+      ]
+    },
+    "Q28": {
+      "q": "Q28",
+      "topic": "Work, Energy & Power",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 3 kg ball moves at 8 m/s. What is its kinetic energy?",
+      "options": [
+        "24 J",
+        "48 J",
+        "96 J",
+        "192 J"
+      ]
+    },
+    "Q29": {
+      "q": "Q29",
+      "topic": "Work, Energy & Power",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 2 kg object is lifted 15 m vertically. What is the increase in gravitational potential energy? (g = 10 m/s²)",
+      "options": [
+        "150 J",
+        "200 J",
+        "300 J",
+        "30 J"
+      ]
+    },
+    "Q30": {
+      "q": "Q30",
+      "topic": "Work, Energy & Power",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 0.5 kg ball is dropped from 20 m. What is its speed just before hitting the ground? (g = 10 m/s², no air resistance)",
+      "options": [
+        "10 m/s",
+        "15 m/s",
+        "20 m/s",
+        "25 m/s"
+      ]
+    },
+    "Q31": {
+      "q": "Q31",
+      "topic": "Work, Energy & Power",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A motor lifts a 200 kg load 10 m in 5 seconds. What power does the motor deliver? (g = 10 m/s²)",
+      "options": [
+        "2000 W",
+        "4000 W",
+        "400 W",
+        "1000 W"
+      ]
+    },
+    "Q32": {
+      "q": "Q32",
+      "topic": "Work, Energy & Power",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A lever has an effort arm of 2 m and a load arm of 0.5 m. What is the mechanical advantage?",
+      "options": [
+        "0.25",
+        "2.5",
+        "4",
+        "1"
+      ]
+    },
+    "Q33": {
+      "q": "Q33",
+      "topic": "Work, Energy & Power",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A 4 kg ball moving at 5 m/s collides with a wall and bounces back at 3 m/s. What is the change in kinetic energy?",
+      "options": [
+        "−32 J",
+        "−50 J",
+        "32 J",
+        "−18 J"
+      ]
+    },
+    "Q34": {
+      "q": "Q34",
+      "topic": "Work, Energy & Power",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An object is in stable equilibrium when its center of gravity is:",
+      "options": [
+        "As high as possible",
+        "As low as possible",
+        "Moving upward",
+        "Outside the base of support"
+      ]
+    },
+    "Q35": {
+      "q": "Q35",
+      "topic": "Work, Energy & Power",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A crane lifts a 500 kg beam through 12 m in 20 s. The motor has an efficiency of 75%. What is the electrical power input? (g = 10 m/s²)",
+      "options": [
+        "3000 W",
+        "4000 W",
+        "4500 W",
+        "6000 W"
+      ]
+    },
+    "Q36": {
+      "q": "Q36",
+      "topic": "Work, Energy & Power",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A spring with spring constant k = 200 N/m is compressed by 0.3 m. How much elastic potential energy is stored?",
+      "options": [
+        "9 J",
+        "18 J",
+        "30 J",
+        "60 J"
+      ]
+    },
+    "Q37": {
+      "q": "Q37",
+      "topic": "Fluids",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A force of 600 N is applied to a piston of area 0.02 m². What is the pressure exerted?",
+      "options": [
+        "12,000 Pa",
+        "30,000 Pa",
+        "3,000 Pa",
+        "120 Pa"
+      ]
+    },
+    "Q38": {
+      "q": "Q38",
+      "topic": "Fluids",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "What is the hydrostatic pressure at the bottom of a 5 m deep swimming pool? (ρwater = 1000 kg/m³, g = 10 m/s²)",
+      "options": [
+        "5,000 Pa",
+        "50,000 Pa",
+        "500 Pa",
+        "500,000 Pa"
+      ]
+    },
+    "Q39": {
+      "q": "Q39",
+      "topic": "Fluids",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A solid cube of side 0.1 m and density 600 kg/m³ is placed in water. What fraction of the cube is submerged?",
+      "options": [
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.8"
+      ]
+    },
+    "Q40": {
+      "q": "Q40",
+      "topic": "Fluids",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An object weighs 80 N in air and 50 N when fully submerged in water. What is the buoyant force?",
+      "options": [
+        "130 N",
+        "50 N",
+        "30 N",
+        "80 N"
+      ]
+    },
+    "Q41": {
+      "q": "Q41",
+      "topic": "Fluids",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Water flows through a pipe that narrows from a cross-sectional area of 0.04 m² to 0.01 m². If the speed in the wider section is 2 m/s, what is the speed in the narrow section?",
+      "options": [
+        "4 m/s",
+        "6 m/s",
+        "8 m/s",
+        "0.5 m/s"
+      ]
+    },
+    "Q42": {
+      "q": "Q42",
+      "topic": "Fluids",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "According to Bernoulli's principle, as the speed of a fluid increases, the pressure:",
+      "options": [
+        "Increases",
+        "Decreases",
+        "Stays the same",
+        "Becomes negative"
+      ]
+    },
+    "Q43": {
+      "q": "Q43",
+      "topic": "Fluids",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A metal block has a mass of 540 g and a volume of 200 cm³. What is its density?",
+      "options": [
+        "2.7 g/cm³",
+        "0.37 g/cm³",
+        "2700 g/cm³",
+        "27 g/cm³"
+      ]
+    },
+    "Q44": {
+      "q": "Q44",
+      "topic": "Fluids",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Standard atmospheric pressure is approximately:",
+      "options": [
+        "1.01 × 10 3 Pa",
+        "1.01 × 10 5 Pa",
+        "1.01 × 10 7 Pa",
+        "1.01 × 10 4 Pa"
+      ]
+    },
+    "Q45": {
+      "q": "Q45",
+      "topic": "Fluids",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Laminar flow transitions to turbulent flow when the Reynolds number exceeds approximately:",
+      "options": [
+        "500",
+        "1000",
+        "2000",
+        "5000"
+      ]
+    },
+    "Q46": {
+      "q": "Q46",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Convert 37°C (normal body temperature) to Kelvin.",
+      "options": [
+        "236 K",
+        "273 K",
+        "310 K",
+        "373 K"
+      ]
+    },
+    "Q47": {
+      "q": "Q47",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "How much heat is needed to raise the temperature of 2 kg of water from 20°C to 70°C? (cwater = 4200 J/(kg·°C))",
+      "options": [
+        "210,000 J",
+        "420,000 J",
+        "840,000 J",
+        "168,000 J"
+      ]
+    },
+    "Q48": {
+      "q": "Q48",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An iron rod of length 2 m is heated from 20°C to 120°C. If the coefficient of linear expansion is 12 × 10−6 /°C, what is the increase in length?",
+      "options": [
+        "0.24 mm",
+        "1.2 mm",
+        "2.4 mm",
+        "12 mm"
+      ]
+    },
+    "Q49": {
+      "q": "Q49",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Which method of heat transfer can occur through a vacuum?",
+      "options": [
+        "Conduction only",
+        "Convection only",
+        "Radiation only",
+        "Both conduction and convection"
+      ]
+    },
+    "Q50": {
+      "q": "Q50",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "3 moles of an ideal gas are at 300 K in a 0.1 m³ container. What is the pressure? (R = 8.3 J/(mol·K))",
+      "options": [
+        "24,900 Pa",
+        "49,800 Pa",
+        "74,700 Pa",
+        "99,600 Pa"
+      ]
+    },
+    "Q51": {
+      "q": "Q51",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "According to the first law of thermodynamics, if 500 J of heat is added to a gas and the gas does 200 J of work, what is the change in internal energy?",
+      "options": [
+        "700 J",
+        "500 J",
+        "300 J",
+        "200 J"
+      ]
+    },
+    "Q52": {
+      "q": "Q52",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "How much heat is required to melt 0.5 kg of ice at 0°C? (Latent heat of fusion of ice = 3.34 × 105 J/kg)",
+      "options": [
+        "83,500 J",
+        "167,000 J",
+        "334,000 J",
+        "668,000 J"
+      ]
+    },
+    "Q53": {
+      "q": "Q53",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In an isothermal process for an ideal gas:",
+      "options": [
+        "Temperature changes while volume stays constant",
+        "Pressure stays constant",
+        "Internal energy remains constant",
+        "No heat is exchanged"
+      ]
+    },
+    "Q54": {
+      "q": "Q54",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The second law of thermodynamics implies that:",
+      "options": [
+        "Energy can be created in an isolated system",
+        "Heat spontaneously flows from cold to hot objects",
+        "The entropy of an isolated system tends to increase",
+        "Perpetual motion machines of the first kind are impossible"
+      ]
+    },
+    "Q55": {
+      "q": "Q55",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An ideal gas at 200 kPa occupies 3 L. If the gas expands isobarically to 5 L, how much work does it do?",
+      "options": [
+        "200 J",
+        "400 J",
+        "600 J",
+        "1000 J"
+      ]
+    },
+    "Q56": {
+      "q": "Q56",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 200 g aluminum block (c = 900 J/(kg·°C)) at 100°C is placed in 500 g of water (c = 4200 J/(kg·°C)) at 20°C. What is the equilibrium temperature approximately?",
+      "options": [
+        "22.7°C",
+        "25.4°C",
+        "27.0°C",
+        "30.2°C"
+      ]
+    },
+    "Q57": {
+      "q": "Q57",
+      "topic": "Heat & Thermodynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In an adiabatic process:",
+      "options": [
+        "Heat is exchanged but no work is done",
+        "No heat is exchanged with the surroundings",
+        "Temperature remains constant",
+        "Volume remains constant"
+      ]
+    },
+    "Q58": {
+      "q": "Q58",
+      "topic": "Gravitation",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "Two masses of 4 kg and 9 kg are separated by 3 m. What is the gravitational force between them? (G = 6.67 × 10−11 N·m²/kg²)",
+      "options": [
+        "2.67 × 10 −10 N",
+        "8.0 × 10 −10 N",
+        "2.4 × 10 −9 N",
+        "8.0 × 10 −11 N"
+      ]
+    },
+    "Q59": {
+      "q": "Q59",
+      "topic": "Gravitation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "At what height above Earth's surface does the gravitational acceleration become g/4? (R = radius of Earth)",
+      "options": [
+        "R/2",
+        "R",
+        "2R",
+        "4R"
+      ]
+    },
+    "Q60": {
+      "q": "Q60",
+      "topic": "Gravitation",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "If the distance between two objects is doubled, the gravitational force between them:",
+      "options": [
+        "Is halved",
+        "Is doubled",
+        "Becomes one-quarter",
+        "Becomes four times as large"
+      ]
+    }
+  }
+}
