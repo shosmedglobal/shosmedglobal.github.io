@@ -1,0 +1,1524 @@
+SHOSMED PHYSICS: REVISED FOURTH 60-QUESTION EXPORT
+Implemented 19 November 2026 from SHOSMED_Physics_Batch4_Review_and_Claude_Prompt.txt
+For the final scientific read. Implementation checks establish scope, structure
+and consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  The review warned against assuming a phys-181..phys-240 run or zero overlap, so
+  the map was derived by FULL CONTENT MATCH rather than from display numbering,
+  topic or the answer sequence:
+    1. Each original stem plus all four original option texts was matched against
+       all 280 physics records, on a canonical form that decodes named HTML
+       entities, strips tags, folds sub/superscripts to plain digits and
+       normalises dashes, Greek letters and arrows.
+    2. All 60 matched EXACTLY. No match was ambiguous and none needed a tie-break
+       on the explanation.
+    3. Q34's export carries an "Unanswered" line before its stem. That string
+       appears in NO stored field anywhere in the physics bank, so it is interface
+       text; it was dropped from the signature and Q34 still matched uniquely.
+       "Back to Dashboard" and "Report an issue" are absent from storage too.
+    4. Every stored topic equalled the signature topic.
+    5. All 60 stored answer letters equalled the review key block, and the review
+       changes no letter, so NO key was changed.
+  Display Q1-Q60 map to phys-181 .. phys-240. Contiguity is a RESULT of that
+  verification, not an assumption. The block overlaps NONE of the three earlier
+  blocks (phys-1 .. phys-180), so all 60 are newly reviewed ids. 40 further
+  physics records lie outside all four blocks and were not touched.
+
+  Key block (unchanged): CACBBABBBC BCABBCCBBC CCBBBCCDDB ACCBBBDCBB ACCBDBCBBB CCCCCCBBCC
+  Tally                : A=5, B=26, C=25, D=4
+
+WHAT CHANGED
+  Items edited             : 56. KEEP, byte-identical in every field: Q3, Q8, Q20, Q23
+  Stems replaced           : 39
+  Complete main blocks     : 22
+  Scoped main passages     : 6 (Q9.1, Q40.1, Q55.1, Q55.2, Q59.1, Q60.1)
+  Key Concepts             : 32 replaced of 45
+  Educational points       : 4 whole blocks (Q52, Q53, Q54, Q60), 12 individual points
+  Bottom Lines             : 11 replaced of 15
+  Option texts             : 4
+  Distractor bodies        : 83 replaced, 97 retained, 180 in all; none added
+  Answer letters           : 0 changed
+  Keyed headings           : 2 re-synchronized (Q4, Q18), the two whose keyed option text changed
+  Feedback headings        : 168 synchronized across the 56 edited items, each carrying its A/B/C/D label
+
+  The four replaced option texts:
+    Q4 B     Sound with a frequency below 20 Hz, below the usual human hearing range
+    Q13 D    Lens that forms the first real image directly from the specimen
+    Q18 B    An insulating barrier that strongly limits current flow
+    Q19 C    The coil remains stationary in a uniform, steady magnetic field
+
+THE ITEMS NEEDING PARTICULAR ATTENTION ON REREAD
+  Q34 (phys-214) is the MAJOR SCENARIO REPAIR. As stored, E pointed upward and B
+  into the page with the electron moving right. The electron is negative, so the
+  upward E gave a DOWNWARD electric force, while v x B pointing up gave a
+  DOWNWARD magnetic force as well: both forces pointed the same way and the keyed
+  equation could not make them cancel. E now points downward, B stays into the
+  page, the electron still moves right, all four options and answer B are
+  unchanged, and the explanation states the upward electric force and downward
+  magnetic force before equating magnitudes.
+
+  Q13 (phys-193) is the COMPETING-ANSWER REPAIR. Its stored option D, a
+  collimating lens, really is an eyepiece function when the final image is at
+  infinity, so a student choosing it was not simply wrong. Option D is replaced
+  with a genuinely incorrect statement, and the explanation now says that an
+  eyepiece used for relaxed-eye viewing does emit parallel rays. The key stays A.
+
+  Q60 (phys-240) carries the CRITICAL PHYSICS CORRECTION of this block: the
+  stored point said a wider depletion layer "increases the diode's capacitance
+  area". Widening the depletion layer LOWERS junction capacitance, approximately
+  C_j = eps A / W. The replacement point says so and keeps the varactor example.
+
+  Q12 (phys-192) now justifies 400x explicitly from relaxed-eye adjustment and
+  the optical interval measured between the specified focal points, rather than
+  an unqualified tube length and a near point treated as exactly 25 cm.
+
+  Distractor arithmetic corrected, each recomputed independently:
+    Q5 A : a source receding at 40 m/s gives 600 x 340/380 = 537 Hz, not 548 Hz.
+    Q6 C : approach at 20 m/s gives 400 x 340/320 = 425 Hz, not the offered 424.
+    Q21 A: the per-turn rate is 0.04/0.02 = 2 Wb/s, so ignoring the 200 turns
+           gives 2 V and dividing by them gives 0.01 V; neither is 4 V or 0.4 V.
+    Q27 D: 1/sqrt(LC) = 1000 is the ANGULAR resonant frequency in rad/s.
+    Q30 D: 30 + 100 - 60/2 is 100, not the 110 the old feedback claimed.
+
+PRESENTATION PRESERVED
+  The two bands are intact and were confirmed in storage rather than assumed:
+    Q1-Q45 : 45 Key Concepts, no educational points, no Bottom Line.
+    Q46-Q60: 48 educational points in 15 blocks and 15 Bottom Lines, no Key
+             Concept. The per-item counts are unchanged at
+             3,4,3,4,3,3,3,3,3,3,3,3,4,3,3.
+  Seven tables remain, in Q1, Q4, Q9, Q15, Q39, Q54 and Q55. Q9, Q15 and Q39 are
+  byte-identical; Q1, Q4 and Q54 came with their replacement main blocks; Q55
+  differs in exactly the one named cell. No table was added.
+  Q59 and Q60 keep their four mechanism/result bullets, with only the fourth
+  bullet replaced in each.
+  All 60 keyed headings are UNLETTERED and reproduce their keyed option, which is
+  this block's own stored convention.
+  The A/B/C/D labels were added INSIDE the stored containers, so Q1-Q45 keep
+  their list and Q46-Q60 their paragraphs. The four KEEP items are exempt and so
+  still carry unlettered lead-ins, exactly as the review requires.
+  No em dash and no HTML entity was introduced anywhere in the block.
+
+NOTATION, INSPECTED RATHER THAN ASSUMED
+  Q7, Q23, Q24, Q27, Q30, Q31, Q37, Q39, Q41, Q42 and Q46-Q53 all already store
+  <sup>/<sub> markup, with no Unicode exponent anywhere in the block, so nothing
+  was "corrected".
+  Q53 stores 10<sup>0</sup> and 10<sup>-12</sup>: the export's "100" was a
+  flattening artifact, not a defect.
+  Q46 and Q47 store the letter w for angular frequency and never a flattened
+  omega, so w is kept throughout, including in their new stems.
+  The one real notation defect was Q41's Key Concept, which used the UPPERCASE
+  Greek letters U+0391, U+0392 and U+0393 for the particle symbols. Its
+  replacement uses the conventional lowercase forms.
+  New text uses <sup>/<sub> markup with the ASCII hyphen this block stores inside
+  an exponent, and literal Greek characters. Retained passages keep whatever they
+  already store, including named entities such as &rho; and &radic;.
+
+CHECKS ACTUALLY PERFORMED
+  A focused result-verifying suite of 4,847 checks, 0 failures, re-deriving the
+  id map from the signatures and pairing every "claim removed" assertion with a
+  check that the claim really was there before.
+  20 of 20 targeted mutations caught, with questions-physics.json restored byte
+  for byte afterwards. They included moving an answer letter, touching a KEEP
+  item, leaving Q34's field pointing upward, reverting a replaced body, quietly
+  rewording a retained one, dropping or silently changing an educational point,
+  altering a table the review keeps intact, flattening valid markup and swapping
+  Q46's w for omega.
+  39 suites and 105,789 checks across the repository, 0 failures.
+  An independent diff against a pre-edit copy: exactly 56 records, fields
+  {explanation: 56, question: 39, options: 4}, 1,116 of 1,120 option texts
+  unchanged, 0 answer indices moved, 0 topics moved, nothing outside the block,
+  and the four KEEP items byte-identical.
+  A real-DOM render of Q4, Q9-Q13, Q18, Q21, Q27, Q30, Q34, Q41, Q46-Q54 and Q60
+  through the actual sanitizer, in BOTH the question card and the end-of-quiz
+  review, at 1280 px and 375 px: 128 exponents and indices per view, none a flex
+  or grid item, base-to-exponent gap 0 everywhere, 0 split across lines, 0 literal
+  tags or visible entities, 0 overflow and 0 horizontal page scroll. The three
+  tables in that set were unclipped at both widths. 66 of 66 lettered feedback
+  headings rendered, and the option wrappers, the 32 px letter circles, the 14 px
+  card gap and the 10 px review-row gap are all intact.
+  Independently recomputed: every row of the review's arithmetic table, plus the
+  corrected distractor values for Q5, Q6, Q21, Q27 and Q30, and the dB, decay and
+  impedance figures quoted inside the new bodies.
+
+COVERAGE, FROM UNIQUE VERIFIED PHYSICS IDS
+  Reviewed before this block : 180 ids, phys-1 .. phys-180
+  New unique ids this block  : 60, phys-181 .. phys-240, zero overlap
+  Reviewed after this block  : 240 of 280
+  Still unreviewed           : 40, untouched
+  Earlier subject approvals are not reopened, and this is not a claim about the
+  remaining 40 physics records. Chemistry and biology are outside this pass.
+
+DEVIATIONS
+  1. The four KEEP items (Q3, Q8, Q20, Q23) are exempt from the heading rule, 
+     so they alone still carry unlettered <li> lead-ins while the other 41 
+     first-band items now carry A/B/C/D labels. The review requires exactly 
+     this ("No edits, including no heading normalization"), so the block ends 
+     mixed by design.
+  2. The A/B/C/D labels were added INSIDE the stored containers rather than 
+     converting Q1-Q45 to paragraphs. The review asks only for the labels and 
+     says not to rewrite these items to standardize headings, so the <ul> list 
+     of Q1-Q45 and the paragraphs of Q46-Q60 both stay as stored. This differs 
+     from the first three physics blocks, which use lettered paragraphs 
+     throughout.
+  3. Where a complete main block is replaced, the stored exp-diagram or 
+     centred formula container goes with it, because the review's instruction 
+     to preserve useful formula layout applies only "unless its contents are 
+     explicitly replaced". That is why 10 items lose paragraphs on balance; no 
+     table was lost, and Q1, Q4 and Q54 received their replacement tables.
+
+==============================================================================
+
+Q1  [phys-181]  Acoustics  correct answer: C
+------------------------------------------------------------------------------
+STEM: Sound travels fastest through which of the following media?
+
+  A. Air at room temperature
+  B. Water at room temperature
+  C. Steel at room temperature   <= key
+  D. Vacuum
+
+EXPLANATION:
+Correct Answer: Steel at room temperature
+Among these choices, longitudinal sound travels fastest in steel. Sound speed depends on both the material's elastic stiffness and its density; density alone does not determine the speed.
+Medium | Approximate sound speed | Steel | About 5000–6000 m/s for longitudinal sound, depending on the steel and wave mode | Water at room temperature | About 1480 m/s | Air at 20 °C | About 343 m/s | Vacuum | Not applicable: sound cannot propagate | Why the other answers are wrong:
+  - A. Air at room temperature: Sound in air (~343 m/s) is much slower than in steel or water.
+  - B. Water at room temperature: Water transmits sound faster than air but slower than the longitudinal sound considered here in steel. Compare elastic stiffness relative to density, rather than particle spacing alone.
+  - D. Vacuum: Sound is a mechanical wave and requires a medium. It cannot travel through a vacuum at all.
+Key Concept: Sound requires a material medium. Its speed depends on elastic stiffness relative to density. For these examples, longitudinal sound is fastest in steel, then water, then air; sound cannot propagate in a vacuum.
+
+==============================================================================
+
+Q2  [phys-182]  Acoustics  correct answer: A
+------------------------------------------------------------------------------
+STEM: Using the reference intensity I_0 = 10^-12 W/m^2, what is the sound intensity level of a sound whose intensity is also 10^-12 W/m^2?
+
+  A. 0 dB   <= key
+  B. 1 dB
+  C. 10 dB
+  D. -12 dB
+
+EXPLANATION:
+Correct Answer: 0 dB
+The sound intensity level is L = 10 log_10(I/I_0). Here I/I_0 = 1, so L = 10 log_10(1) = 0 dB. This means the intensity equals the chosen reference, not that there is no sound. Actual hearing sensitivity depends on frequency and the listener.
+Why the other answers are wrong:
+  - B. 1 dB: A level of 1 dB would require I/I_0 = 10^0.1, about 1.26. Here the ratio is exactly 1, whose logarithm is zero.
+  - C. 10 dB: A level of 10 dB corresponds to an intensity ten times the reference. Here the intensity equals the reference.
+  - D. -12 dB: The −12 is the exponent in the reference intensity, not its decibel level. Divide I by I_0 before taking the logarithm.
+Key Concept: Sound intensity level compares I with a reference: L = 10 log_10(I/I_0). An intensity equal to I_0 gives 0 dB. Increasing intensity tenfold adds 10 dB; doubling it adds about 3 dB.
+
+==============================================================================
+
+Q3  [phys-183]  Acoustics  correct answer: C   (KEEP: byte-identical in every field, heading normalization included)
+------------------------------------------------------------------------------
+STEM: If the intensity of a sound is increased by a factor of 100, by how many decibels does the sound level increase?
+
+  A. 2 dB
+  B. 10 dB
+  C. 20 dB   <= key
+  D. 100 dB
+
+EXPLANATION:
+Correct Answer: 20 dB
+Using the decibel formula:
+ΔL = 10 log_10(I_2 / I_1)
+ΔL = 10 log_10(100) = 10 x 2 = 20 dB
+Why the other answers are wrong:
+  - 2 dB: This is just log_10(100) = 2 without the factor of 10.
+  - 10 dB: This corresponds to a 10-fold intensity increase, not 100-fold.
+  - 100 dB: The decibel scale is logarithmic, so a 100-fold increase is only 20 dB, not 100 dB.
+Key Concept: The decibel scale compresses large intensity ranges into manageable numbers. A factor of 10 in intensity = 10 dB. A factor of 100 = 20 dB. A factor of 1000 = 30 dB. This logarithmic pattern is essential for exam calculations.
+
+==============================================================================
+
+Q4  [phys-184]  Acoustics  correct answer: B   (option B renamed; keyed heading re-synchronized)
+------------------------------------------------------------------------------
+STEM: Which of the following correctly describes infrasound?
+
+  A. Sound with frequency above 20,000 Hz, used in medical imaging
+  B. Sound with a frequency below 20 Hz, below the usual human hearing range   <= key
+  C. Sound at the threshold of pain, approximately 120 dB
+  D. Sound that can only travel through solids
+
+EXPLANATION:
+Correct Answer: Sound with a frequency below 20 Hz, below the usual human hearing range
+Infrasound means sound with a frequency below 20 Hz. It is below the usual human hearing range, although sufficiently intense infrasound can be perceived.
+Type | Conventional frequency range | Examples | Infrasound | Below 20 Hz | Earthquakes, elephants, wind turbines | Audible sound | Approximately 20 Hz–20 kHz for a typical young listener | Speech and music | Ultrasound | Above 20 kHz | Medical imaging, bats, ultrasonic cleaning | Why the other answers are wrong:
+  - A. Sound with frequency above 20,000 Hz, used in medical imaging: That describes ultrasound, not infrasound.
+  - C. Sound at the threshold of pain, approximately 120 dB: This describes a sound level rather than a frequency range. Infrasound is defined by frequency, regardless of whether the sound is faint or intense.
+  - D. Sound that can only travel through solids: Infrasound is not restricted to solids. It can also propagate through media such as air and water.
+Key Concept: Infrasound is below 20 Hz and ultrasound is above 20 kHz. These are conventional frequency categories; an individual listener does not have an exact, universal hearing cutoff.
+
+==============================================================================
+
+Q5  [phys-185]  Doppler Effect  correct answer: B   (distractor arithmetic: a receding source gives 537 Hz, not 548)
+------------------------------------------------------------------------------
+STEM: A siren emits sound at 600 Hz while moving directly toward an observer at 40 m/s. The observer is stationary relative to still air, where sound travels at 340 m/s. What frequency does the observer hear?
+
+  A. 548 Hz
+  B. 680 Hz   <= key
+  C. 600 Hz
+  D. 706 Hz
+
+EXPLANATION:
+Correct Answer: 680 Hz
+When a source approaches a stationary observer, use the Doppler formula:
+f_obs = f_source x v_sound / (v_sound - v_source)
+f_obs = 600 x 340 / (340 - 40)
+f_obs = 600 x 340 / 300
+f_obs = 204,000 / 300 = 680 Hz
+The observed frequency is higher than the emitted frequency because the source is approaching.
+Why the other answers are wrong:
+  - A. 548 Hz: An approaching source raises the received frequency, so 548 Hz is too low. A source receding at 40 m/s would instead give 600 × 340/(340 + 40) ≈ 537 Hz, not 548 Hz.
+  - C. 600 Hz: 600 Hz is the emitted frequency. The approaching source compresses the wavefront spacing ahead of it, so the stationary observer receives a higher frequency.
+  - D. 706 Hz: Substitute the stated speeds into 600 × 340/(340 − 40). The denominator is 300 m/s and the result is 680 Hz, not 706 Hz.
+Key Concept: For a source moving directly toward a stationary observer through still air, f' = fv/(v − v_s). For direct recession, use v + v_s in the denominator. The observer and sound speed are defined relative to the air.
+
+==============================================================================
+
+Q6  [phys-186]  Doppler Effect  correct answer: A   (distractor arithmetic: approach gives 425 Hz, not 424)
+------------------------------------------------------------------------------
+STEM: A source emits sound at 400 Hz while moving directly away from an observer at 20 m/s. The observer is stationary relative to still air, where sound travels at 340 m/s. Approximately what frequency does the observer hear?
+
+  A. 378 Hz   <= key
+  B. 400 Hz
+  C. 424 Hz
+  D. 422 Hz
+
+EXPLANATION:
+Correct Answer: 378 Hz
+For a source receding directly from a stationary observer, f' = fv/(v + v_s). Thus f' = 400 × 340/(340 + 20) = 136000/360 ≈ 377.8 Hz, which rounds to 378 Hz. The receding source increases the wavefront spacing reaching the observer.
+Why the other answers are wrong:
+  - B. 400 Hz: 400 Hz is the emitted frequency. Direct recession makes the received frequency lower.
+  - C. 424 Hz: 424 Hz is higher than the emitted frequency, so it has the wrong direction of change. If the source were approaching at 20 m/s, the calculation would give 400 × 340/(340 − 20) = 425 Hz, not 424 Hz.
+  - D. 422 Hz: 422 Hz is also an increase, whereas this source is receding. Use the larger denominator 340 + 20 = 360 m/s, giving about 378 Hz.
+Key Concept: A source receding directly from an observer stationary in still air gives f' = fv/(v + v_s), so the observed frequency is lower than the emitted frequency.
+
+==============================================================================
+
+Q7  [phys-187]  Acoustics  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the relationship between the frequency (f) and the period (T) of a sound wave?
+
+  A. f = T
+  B. f = 1/T   <= key
+  C. f = 2πT
+  D. f = T^2
+
+EXPLANATION:
+Correct Answer: f = 1/T
+Frequency and period are reciprocals of each other:
+f = 1/T    and    T = 1/f
+If a wave has a period of 0.002 seconds (the time for one complete cycle), then its frequency is 1/0.002 = 500 Hz (500 cycles per second).
+Why the other answers are wrong:
+  - A. f = T: This would mean a wave with period 0.5 seconds has frequency 0.5 Hz, but it actually has frequency 2 Hz.
+  - C. f = 2πT: The factor 2π appears in angular frequency: ω = 2πf = 2π/T. It does not give f = 2πT; ordinary frequency is the reciprocal of period.
+  - D. f = T^2: There is no squared relationship between frequency and period.
+Key Concept: f = 1/T is one of the most fundamental relationships in wave physics. The period T is measured in seconds, frequency f in hertz (Hz = 1/s). Combined with v = fλ, you can relate wave speed, wavelength, frequency, and period.
+
+==============================================================================
+
+Q8  [phys-188]  Acoustics  correct answer: B   (KEEP: byte-identical in every field, heading normalization included)
+------------------------------------------------------------------------------
+STEM: A sound wave in air has a frequency of 680 Hz. If the speed of sound in air is 340 m/s, what is the wavelength?
+
+  A. 0.25 m
+  B. 0.5 m   <= key
+  C. 1.0 m
+  D. 2.0 m
+
+EXPLANATION:
+Correct Answer: 0.5 m
+Using the wave equation:
+v = f x λ
+λ = v / f = 340 / 680 = 0.5 m
+Why the other answers are wrong:
+  - 0.25 m: This would correspond to a frequency of 1360 Hz (340/0.25).
+  - 1.0 m: This corresponds to 340 Hz, not 680 Hz.
+  - 2.0 m: This corresponds to 170 Hz.
+Key Concept: v = fλ applies to all waves. For sound in air, v ≈ 340 m/s. Higher frequency means shorter wavelength. Audible sound wavelengths range from about 17 mm (20 kHz) to 17 m (20 Hz).
+
+==============================================================================
+
+Q9  [phys-189]  Microscope Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: In the standard two-converging-lens model of a compound microscope, the specimen is just beyond the objective focal point. The objective lens creates:
+
+  A. A virtual, upright, magnified image
+  B. A real, inverted, magnified image   <= key
+  C. A virtual, inverted, reduced image
+  D. A real, upright, reduced image
+
+EXPLANATION:
+Correct Answer: A real, inverted, magnified image
+In this simplified compound-microscope model, two converging lenses work in series:
+Lens | Image Type | Purpose | Objective | Real, inverted, magnified | Creates a magnified intermediate image inside the tube | Eyepiece | Virtual, upright (relative to intermediate), magnified | Further magnifies the intermediate image for the eye | The specimen is placed just outside the focal point of the objective, so it produces a real, inverted, and enlarged image at the other end of the tube.
+Why the other answers are wrong:
+  - A. A virtual, upright, magnified image: This describes the image from a simple magnifying glass, not from the objective of a compound microscope.
+  - C. A virtual, inverted, reduced image: For the real specimen in this setup, the objective forms a real, inverted, enlarged image. A virtual image produced by a single converging lens viewing a real object inside its focal length would be upright.
+  - D. A real, upright, reduced image: With this real specimen just beyond its focal point, the objective forms an inverted, enlarged image. It does not form an upright, reduced real image.
+Key Concept: The objective creates a real image (which can be projected) that the eyepiece then magnifies. Total magnification = M_objective x M_eyepiece. The final image seen by the eye is virtual, inverted relative to the original specimen, and highly magnified.
+
+==============================================================================
+
+Q10  [phys-190]  Microscope Optics  correct answer: C
+------------------------------------------------------------------------------
+STEM: For a conventional light microscope with a fixed numerical aperture, which quantity sets the diffraction-limited separation of two points that can be resolved?
+
+  A. The magnification of the eyepiece
+  B. The thickness of the glass lenses
+  C. The wavelength of light used   <= key
+  D. The brightness of the light source
+
+EXPLANATION:
+Correct Answer: The wavelength of light used
+A common estimate for the diffraction-limited separation is d_min ≈ 0.61λ/NA. Here λ is the wavelength in vacuum, and NA = n sinα, where n is the refractive index of the imaging medium and α is the collection half-angle. At fixed NA, shorter wavelengths allow smaller separations to be resolved. With visible light and a high-NA objective, this separation is roughly a few tenths of a micrometer; it is not a universal limit for every microscopy technique.
+Why the other answers are wrong:
+  - A. The magnification of the eyepiece: Higher magnification beyond the resolution limit only produces larger but blurrier images ('empty magnification'). It does not reveal finer detail.
+  - B. The thickness of the glass lenses: While lens quality matters, the fundamental limit is diffraction, which depends on wavelength.
+  - D. The brightness of the light source: Adequate illumination helps make details visible. However, increasing brightness alone does not change the diffraction limit at fixed wavelength and numerical aperture.
+Key Concept: Resolution distinguishes nearby details; magnification only enlarges the image. In the conventional diffraction-limited model, shorter wavelength or higher numerical aperture reduces the minimum resolvable separation.
+
+==============================================================================
+
+Q11  [phys-191]  Microscope Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Why is immersion oil placed between the specimen cover glass and an objective lens designed for oil immersion?
+
+  A. To reduce the brightness of the light
+  B. To increase the numerical aperture and improve resolution   <= key
+  C. To magnify the specimen before it reaches the objective
+  D. To protect the objective lens from scratches
+
+EXPLANATION:
+Correct Answer: To increase the numerical aperture and improve resolution
+Immersion oil has a refractive index close to that of glass, about 1.5. Replacing the air gap with the appropriate oil allows more high-angle light to reach an oil-immersion objective. This permits a higher numerical aperture, NA = n sinα, and a smaller diffraction-limited separation, d_min ≈ 0.61λ/NA. The improvement depends on the objective and its design; simply adding oil to any objective does not guarantee a fixed 1.5-fold gain.
+Why the other answers are wrong:
+  - A. To reduce the brightness of the light: The intended effect is to collect useful high-angle light, not to dim the image. Oil reduces the loss of these rays at the glass-to-air boundary.
+  - C. To magnify the specimen before it reaches the objective: Oil is not a separate magnifying lens. Its role here is to improve light collection and numerical aperture with the appropriate objective.
+  - D. To protect the objective lens from scratches: The oil bridges the optical gap; the objective glass should not need to touch the cover glass. Its purpose is improved imaging, not scratch protection.
+Key Concept: Use the specified immersion medium with an objective designed for it. Oil reduces the refractive-index mismatch with glass, allowing higher numerical aperture and better resolution.
+
+==============================================================================
+
+Q12  [phys-192]  Microscope Optics  correct answer: C   (relaxed-eye adjustment and the optical interval now justify 400x)
+------------------------------------------------------------------------------
+STEM: In an ideal two-lens compound microscope adjusted for relaxed-eye viewing (final image at infinity), the objective focal length is 4 mm and the eyepiece focal length is 25 mm. The optical interval, measured from the objective’s rear focal point to the eyepiece’s front focal point, is 160 mm. Using the conventional reference distance D = 250 mm, what is the magnitude of the total magnification?
+
+  A. 100x
+  B. 200x
+  C. 400x   <= key
+  D. 40x
+
+EXPLANATION:
+Correct Answer: 400x
+For this optical interval L and relaxed-eye adjustment, the objective magnification has magnitude L/f_o = 160/4 = 40. The eyepiece angular magnification is D/f_e = 250/25 = 10. Their product is M = 40 × 10 = 400. The objective inverts the intermediate image; the question asks for the positive magnitude of magnification.
+Why the other answers are wrong:
+  - A. 100x: 100× is one-quarter of the required product. The objective gives 40× and the eyepiece gives 10×, so multiply them to obtain 400×.
+  - B. 200x: 200× is half the required magnification. Both focal-length ratios must be included: (160/4)(250/25) = 400.
+  - D. 40x: 40× is only the objective magnification. The eyepiece provides another factor of 10.
+Key Concept: For this ideal microscope adjusted to a final image at infinity, the magnification magnitude is M = (L/f_o)(D/f_e). L is the optical interval between the specified focal points, and D = 25 cm is the conventional reference distance.
+
+==============================================================================
+
+Q13  [phys-193]  Microscope Optics  correct answer: A   (COMPETING-ANSWER REPAIR: option D replaced; collimation is a real eyepiece function)
+------------------------------------------------------------------------------
+STEM: In a compound microscope, the eyepiece functions as a:
+
+  A. Simple magnifying glass viewing the intermediate image   <= key
+  B. Projector that casts the image on a screen
+  C. Filter that selects specific wavelengths of light
+  D. Lens that forms the first real image directly from the specimen
+
+EXPLANATION:
+Correct Answer: Simple magnifying glass viewing the intermediate image
+The eyepiece acts as a magnifying glass for the intermediate image formed by the objective. If that image is just inside the eyepiece focal plane, the eyepiece forms a magnified virtual image at a finite distance. If it lies in the focal plane, rays from each image point emerge parallel, allowing relaxed-eye viewing with the final image at infinity. Both arrangements use the eyepiece as a magnifier.
+Why the other answers are wrong:
+  - B. Projector that casts the image on a screen: A projector casts real images. The eyepiece creates a virtual image for the eye to view directly.
+  - C. Filter that selects specific wavelengths of light: The eyepiece does not filter light. Separate filters can be added to a microscope for this purpose, but that is not the eyepiece's function.
+  - D. Lens that forms the first real image directly from the specimen: Forming the first real image directly from the specimen is the objective's role. The eyepiece magnifies the intermediate image that has already been formed.
+Key Concept: The microscope's optical chain is: specimen → objective (creates real magnified image) → eyepiece (magnifies that image again as a virtual image for the eye). The eyepiece is essentially a magnifying glass for the intermediate image.
+
+==============================================================================
+
+Q14  [phys-194]  Semiconductor Diodes  correct answer: B
+------------------------------------------------------------------------------
+STEM: In an ordinary PN junction diode under appreciable forward bias, the depletion region:
+
+  A. Widens, and no current flows
+  B. Narrows, and current flows easily   <= key
+  C. Disappears completely, and the diode behaves like a superconductor
+  D. Stays the same width, and a small leakage current flows
+
+EXPLANATION:
+Correct Answer: Narrows, and current flows easily
+In forward bias, the positive terminal of the battery is connected to the P-type side and the negative terminal to the N-type side. This pushes majority carriers (holes in P, electrons in N) toward the junction, shrinking the depletion region and allowing current to flow.
+Why the other answers are wrong:
+  - A. Widens, and no current flows: Reverse bias widens the depletion region. Below breakdown it strongly limits current, but a small leakage current can still flow.
+  - C. Disappears completely, and the diode behaves like a superconductor: Forward bias reduces the barrier and narrows the depletion region; it does not turn the diode into a zero-resistance superconductor. A conducting diode still has a forward voltage drop.
+  - D. Stays the same width, and a small leakage current flows: Forward bias changes the depletion width, so it does not stay the same. Small reverse leakage describes a different operating condition.
+Key Concept: Forward bias lowers the junction barrier and narrows the depletion region. Current increases continuously and strongly with forward voltage. A 0.6–0.7 V silicon drop is a useful approximate circuit model at some operating currents, not a universal turn-on threshold.
+
+==============================================================================
+
+Q15  [phys-195]  Semiconductor Diodes  correct answer: B
+------------------------------------------------------------------------------
+STEM: An N-type semiconductor is created by doping silicon with:
+
+  A. An element with 3 valence electrons (e.g., boron)
+  B. An element with 5 valence electrons (e.g., phosphorus)   <= key
+  C. A metal such as copper or gold
+  D. An element with 4 valence electrons (e.g., germanium)
+
+EXPLANATION:
+Correct Answer: An element with 5 valence electrons (e.g., phosphorus)
+Silicon has 4 valence electrons. Doping with a Group V element (5 valence electrons) introduces extra electrons as majority carriers, creating N-type material:
+Dopant Type | Valence Electrons | Example | Result | Majority Carrier | Donor (Group V) | 5 | Phosphorus, arsenic | N-type | Electrons | Acceptor (Group III) | 3 | Boron, gallium | P-type | Holes | Why the other answers are wrong:
+  - A. An element with 3 valence electrons (e.g., boron): This creates P-type, not N-type. Boron accepts an electron, creating a hole.
+  - C. A metal such as copper or gold: Copper and gold can occur as impurities in silicon, but they are not the standard shallow donors used to create the N-type material described here. Phosphorus has five valence electrons and supplies the intended extra conduction electron.
+  - D. An element with 4 valence electrons (e.g., germanium): Germanium has the same number of valence electrons as silicon and would just replace a silicon atom without creating extra carriers.
+Key Concept: N-type = extra Negative charge carriers (electrons) from a 5-electron dopant. P-type = extra Positive charge carriers (holes) from a 3-electron dopant. The 'N' and 'P' refer to the majority carrier, not the overall charge (the material is still electrically neutral).
+
+==============================================================================
+
+Q16  [phys-196]  Semiconductor Diodes  correct answer: C
+------------------------------------------------------------------------------
+STEM: In the usual approximate constant-voltage-drop model for an ordinary silicon PN diode at room temperature and moderate forward current, which value is most appropriate?
+
+  A. 0.1 V
+  B. 0.3 V
+  C. 0.6 V   <= key
+  D. 1.5 V
+
+EXPLANATION:
+Correct Answer: 0.6 V
+A value around 0.6–0.7 V is commonly used to approximate the forward drop of an ordinary silicon PN diode at moderate current. Among these choices, 0.6 V is the best answer. The actual drop depends on the diode, current and temperature; conduction does not suddenly begin at one universal voltage.
+Why the other answers are wrong:
+  - A. 0.1 V: 0.1 V is below the usual constant-drop approximation for an ordinary silicon PN diode at moderate current. This does not mean that all diode types or all operating currents must have a larger drop.
+  - B. 0.3 V: 0.3 V is often used as an approximate germanium-diode value. It is not the usual model value for the ordinary silicon PN diode specified here.
+  - D. 1.5 V: 1.5 V is too high for the usual single silicon PN-diode approximation under these conditions. Forward drops differ across device types and operating currents.
+Key Concept: Use about 0.6–0.7 V only as a simplified silicon PN-diode model under suitable operating conditions. The real forward current–voltage curve is continuous, and the voltage drop depends on current and temperature.
+
+==============================================================================
+
+Q17  [phys-197]  Semiconductor Diodes  correct answer: C
+------------------------------------------------------------------------------
+STEM: A half-wave rectifier has one ideal diode, a resistive load and no smoothing capacitor. For a sinusoidal AC input, what fraction of each cycle has nonzero load voltage?
+
+  A. The full cycle (100%)
+  B. Three-quarters of the cycle (75%)
+  C. Half the cycle (50%)   <= key
+  D. One-quarter of the cycle (25%)
+
+EXPLANATION:
+Correct Answer: Half the cycle (50%)
+The ideal diode conducts during one half of the sinusoidal cycle and blocks during the other, so the load voltage is nonzero for half the cycle: 50%. With the diode oriented to pass the positive half, the output is a sequence of positive pulses and its average is V_peak/π. Reversing the diode passes the negative half instead.
+Why the other answers are wrong:
+  - A. The full cycle (100%): Using both half-cycles requires full-wave rectification, such as a four-diode bridge or a suitable two-diode, center-tapped arrangement. One diode in this circuit passes only one half.
+  - B. Three-quarters of the cycle (75%): The sinusoidal input has equal positive and negative half-cycles. Under the stated ideal conditions, one half conducts and one half is blocked, not a 75%/25% split.
+  - D. One-quarter of the cycle (25%): One-quarter would be too short. With an ideal diode and no smoothing capacitor, the conducting half-cycle lasts one-half of the full period.
+Key Concept: Half-wave rectification passes only positive (or only negative) half-cycles. Full-wave rectification (using a diode bridge) flips the negative half-cycles to positive, using the entire AC cycle. A smoothing capacitor can then be added to reduce the ripple.
+
+==============================================================================
+
+Q18  [phys-198]  Semiconductor Diodes  correct answer: B   (option B renamed; keyed heading re-synchronized)
+------------------------------------------------------------------------------
+STEM: In an ordinary reverse-biased PN junction below its breakdown voltage, the depletion region acts primarily as:
+
+  A. A conductor with very low resistance
+  B. An insulating barrier that strongly limits current flow   <= key
+  C. A source of free electrons
+  D. A region of very high current density
+
+EXPLANATION:
+Correct Answer: An insulating barrier that strongly limits current flow
+Reverse bias pulls majority carriers away from the junction and widens the depletion region. This region has very few mobile majority carriers and acts as a barrier to their flow. A small reverse leakage current can still arise from thermally generated carriers, including generation in the depletion region.
+Why the other answers are wrong:
+  - A. A conductor with very low resistance: A reverse-biased junction below breakdown does not provide a low-resistance path. The widened depletion region strongly limits current.
+  - C. A source of free electrons: The important feature is the shortage of mobile majority carriers, not an abundant supply of free electrons. Thermal generation can still contribute to the small leakage current.
+  - D. A region of very high current density: A large reverse current is not the ordinary behavior below breakdown. Leakage magnitude depends on the device and temperature.
+Key Concept: The depletion region is depleted of mobile majority carriers, not absolutely empty of carriers. Reverse bias widens it and strongly limits current below breakdown; at sufficiently large reverse voltage, Zener or avalanche breakdown can allow much larger current.
+
+==============================================================================
+
+Q19  [phys-199]  Electromagnetic Induction  correct answer: B   (option C renamed)
+------------------------------------------------------------------------------
+STEM: According to Faraday's law, an EMF is induced in a coil when:
+
+  A. A constant magnetic flux passes through the coil
+  B. The magnetic flux through the coil changes with time   <= key
+  C. The coil remains stationary in a uniform, steady magnetic field
+  D. The coil carries a constant direct current
+
+EXPLANATION:
+Correct Answer: The magnetic flux through the coil changes with time
+Faraday's law states:
+EMF = -N dΦ/dt
+An EMF is induced only when the magnetic flux (Φ = B x A x cosθ) is changing. This can happen by changing B (field strength), A (area of the loop), or θ (angle between field and loop normal).
+Why the other answers are wrong:
+  - A. A constant magnetic flux passes through the coil: If the flux is constant, dΦ/dt = 0, and no EMF is induced.
+  - C. The coil remains stationary in a uniform, steady magnetic field: A coil sitting still in a steady, uniform field has constant flux and no induced EMF.
+  - D. The coil carries a constant direct current: A constant direct current in a fixed-shape coil does not by itself change the coil's self-generated magnetic flux. A changing current would produce a self-induced emf.
+Key Concept: Magnetic induction depends on changing flux through the coil, not simply on field strength. A stationary, fixed-shape coil in a steady field has no induced emf; motion or rotation can change the flux even when the field itself is steady.
+
+==============================================================================
+
+Q20  [phys-200]  Electromagnetic Induction  correct answer: C   (KEEP: byte-identical in every field, heading normalization included)
+------------------------------------------------------------------------------
+STEM: Lenz's law states that the direction of an induced current is such that it:
+
+  A. Enhances the change in magnetic flux that caused it
+  B. Is always clockwise when viewed from above
+  C. Opposes the change in magnetic flux that caused it   <= key
+  D. Is parallel to the magnetic field lines
+
+EXPLANATION:
+Correct Answer: Opposes the change in magnetic flux that caused it
+Lenz's law is the reason for the negative sign in Faraday's law (EMF = -N dΦ/dt). The induced current creates its own magnetic field that opposes whatever change in flux triggered the induction.
+For example: if a magnet approaches a coil (flux increasing), the induced current flows in a direction that creates a field opposing the magnet, effectively trying to push it away.
+Why the other answers are wrong:
+  - Enhances the change: This would violate conservation of energy. If the induced current increased the flux change, it would induce more current, creating a runaway effect (perpetual motion).
+  - Always clockwise: The direction depends on the situation. It could be clockwise or counterclockwise depending on which way the flux is changing.
+  - Parallel to field lines: Induced current flows in a loop, not along field lines.
+Key Concept: Lenz's law is a consequence of conservation of energy. The induced current always acts to maintain the status quo of the magnetic flux. This opposition is what makes generators require mechanical work to produce electrical energy.
+
+==============================================================================
+
+Q21  [phys-201]  Electromagnetic Induction  correct answer: C   (distractor arithmetic: 2 V per turn, so neither 4 V nor 0.4 V follows)
+------------------------------------------------------------------------------
+STEM: The magnetic flux through each turn of a 200-turn coil changes from 0.05 Wb to 0.01 Wb in 0.02 s. What is the magnitude of the average induced emf?
+
+  A. 4 V
+  B. 40 V
+  C. 400 V   <= key
+  D. 0.4 V
+
+EXPLANATION:
+Correct Answer: 400 V
+Using Faraday's law:
+|EMF| = N x |ΔΦ/Δt|
+|EMF| = 200 x |0.01 - 0.05| / 0.02
+|EMF| = 200 x 0.04 / 0.02
+|EMF| = 200 x 2 = 400 V
+Why the other answers are wrong:
+  - A. 4 V: 4 V is 100 times too small. The flux-change rate per turn has magnitude 0.04/0.02 = 2 Wb/s, giving 2 V per turn and 400 V for 200 turns.
+  - B. 40 V: 40 V would result from using 20 turns rather than 200. The stated coil has 200 turns, so the 2 V contribution from each turn adds to 400 V.
+  - D. 0.4 V: 0.4 V is 1000 times too small. Multiply the per-turn flux-change rate by 200; do not divide by the number of turns.
+Key Concept: The magnitude of the average induced emf is N|ΔΦ|/Δt when each of the N turns has the same flux change. The instantaneous form is |ε| = N|dΦ/dt|; the average equals the instantaneous magnitude if the rate is constant.
+
+==============================================================================
+
+Q22  [phys-202]  Electromagnetic Induction  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ideal transformer has 100 primary turns and 2000 secondary turns. If the primary AC voltage is 12 V RMS, what is the secondary RMS voltage?
+
+  A. 0.6 V
+  B. 24 V
+  C. 240 V   <= key
+  D. 2400 V
+
+EXPLANATION:
+Correct Answer: 240 V
+The transformer equation relates voltages and turns:
+V_s / V_p = N_s / N_p
+V_s = V_p x N_s / N_p
+V_s = 12 x 2000 / 100 = 12 x 20 = 240 V
+This is a step-up transformer (N_s > N_p), increasing voltage by a factor of 20.
+Why the other answers are wrong:
+  - A. 0.6 V: This uses the inverse ratio (N_p/N_s), as if it were stepping down.
+  - B. 24 V: This only doubles the voltage, not multiplying by the turns ratio of 20.
+  - D. 2400 V: This multiplies by 200 instead of 20, confusing the turns ratio.
+Key Concept: V_s/V_p = N_s/N_p. More secondary turns = higher secondary voltage (step-up). Power is conserved: if voltage goes up, current goes down proportionally (ideal transformer).
+
+==============================================================================
+
+Q23  [phys-203]  Electromagnetic Induction  correct answer: B   (KEEP: byte-identical in every field, heading normalization included)
+------------------------------------------------------------------------------
+STEM: The energy stored in an inductor carrying current I is given by:
+
+  A. E = L x I
+  B. E = 1/2 x L x I^2   <= key
+  C. E = L x I^2
+  D. E = 1/2 x L^2 x I
+
+EXPLANATION:
+Correct Answer: E = 1/2 x L x I^2
+The energy stored in the magnetic field of an inductor is:
+E = 1/2 L I^2
+This is analogous to the energy stored in a capacitor (E = 1/2 CV^2) and the kinetic energy formula (KE = 1/2 mv^2).
+Why the other answers are wrong:
+  - E = LI: Missing the 1/2 factor and the square on I. Energy has a quadratic dependence on current.
+  - E = LI^2: Missing the 1/2 factor.
+  - E = 1/2 L^2 I: The inductance should not be squared, and the current should be squared.
+Key Concept: E = 1/2 LI^2 for inductors, E = 1/2 CV^2 for capacitors. In an LC oscillating circuit, energy swings back and forth between these two forms, analogous to kinetic and potential energy in a pendulum.
+
+==============================================================================
+
+Q24  [phys-204]  AC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: For a series RLC circuit in sinusoidal steady state with R > 0, the impedance magnitude is Z = √[R^2 + (X_L − X_C)^2]. At resonance (X_L = X_C), Z equals:
+
+  A. Zero
+  B. R   <= key
+  C. X_L + X_C
+  D. Infinity
+
+EXPLANATION:
+Correct Answer: R
+At resonance, the inductive reactance equals the capacitive reactance (X_L = X_C), so their difference is zero:
+Z = √(R^2 + (X_L - X_C)^2)
+Z = √(R^2 + 0) = R
+Why the other answers are wrong:
+  - A. Zero: The reactances cancel, but the stated resistance is positive. The remaining impedance magnitude is R, not zero.
+  - C. X_L + X_C: The formula uses the difference (X_L - X_C), not the sum. At resonance, this difference is zero.
+  - D. Infinity: The impedance magnitude is at its minimum, R. For a fixed source voltage and resistance, this gives the maximum current.
+Key Concept: At series resonance, the inductive and capacitive reactances cancel at the input, leaving Z = R and source voltage in phase with current. For fixed source RMS voltage and R, current and average power are greatest. The inductor and capacitor still store and exchange energy.
+
+==============================================================================
+
+Q25  [phys-205]  AC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: The capacitive reactance X_C of a capacitor in an AC circuit is given by X_C = 1/(ωC). If the frequency of the AC source is doubled, what happens to X_C?
+
+  A. It doubles
+  B. It is halved   <= key
+  C. It quadruples
+  D. It stays the same
+
+EXPLANATION:
+Correct Answer: It is halved
+Since X_C = 1/(ωC) and ω = 2πf:
+X_C = 1/(2πfC)
+If f doubles: X_C,new = 1/(2π(2f)C) = 1/(2 x 2πfC) = X_C/2
+Capacitive reactance is inversely proportional to frequency.
+Why the other answers are wrong:
+  - A. It doubles: This would be true for inductive reactance (X_L = ωL), which is directly proportional to frequency.
+  - C. It quadruples: No squared relationship exists here.
+  - D. It stays the same: An ideal capacitor's reactance depends on frequency, so it cannot stay the same here. With C fixed, doubling f halves 1/(2πfC).
+Key Concept: For ideal components of fixed C and L, X_C = 1/(2πfC) decreases with frequency and X_L = 2πfL increases. An ideal capacitor carries no steady DC current; an ideal inductor has no voltage drop when its current is constant.
+
+==============================================================================
+
+Q26  [phys-206]  AC Circuits  correct answer: C
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state, an AC circuit contains only an ideal inductor, with no resistance or DC current component. The current:
+
+  A. Is in phase with the voltage
+  B. Leads the voltage by 90 degrees
+  C. Lags behind the voltage by 90 degrees   <= key
+  D. Lags behind the voltage by 180 degrees
+
+EXPLANATION:
+Correct Answer: Lags behind the voltage by 90 degrees
+In a purely inductive circuit, the voltage across the inductor leads the current by 90 degrees (equivalently, the current lags the voltage by 90 degrees).
+This happens because the inductor opposes changes in current. When voltage is at its peak, the current is still at zero and rising. The current reaches its peak one-quarter cycle later.
+Memory aid: 'ELI the ICE man'
+  - ELI: In an inductor (L), EMF (E) leads current (I)
+  - ICE: In a capacitor (C), current (I) leads EMF (E)
+Why the other answers are wrong:
+  - A. Is in phase with the voltage: In-phase source voltage and current indicate zero net reactance, as in an ideal resistor or a series RLC circuit at resonance. An ideal inductor alone has a 90° phase difference.
+  - B. Leads the voltage by 90 degrees: This describes a capacitive circuit, not an inductive one.
+  - D. Lags behind the voltage by 180 degrees: 180 degrees would mean the current is exactly opposite (anti-phase), which does not occur in a simple inductor.
+Key Concept: For sinusoidal steady-state signals: in an ideal inductor, voltage leads current by 90°; in an ideal capacitor, current leads voltage by 90°; in an ideal resistor, they are in phase.
+
+==============================================================================
+
+Q27  [phys-207]  AC Circuits  correct answer: C   (distractor: 1000 is the angular resonant frequency in rad/s)
+------------------------------------------------------------------------------
+STEM: The resonant frequency of a series RLC circuit with L = 0.1 H and C = 10 μF is approximately:
+
+  A. 16 Hz
+  B. 50 Hz
+  C. 159 Hz   <= key
+  D. 1000 Hz
+
+EXPLANATION:
+Correct Answer: 159 Hz
+The resonant frequency of an RLC circuit is:
+f_0 = 1 / (2π√(LC))
+f_0 = 1 / (2 x 3.14 x √(0.1 x 10 x 10^-6))
+f_0 = 1 / (6.28 x √(10^-6))
+f_0 = 1 / (6.28 x 10^-3)
+f_0 = 159 Hz
+Why the other answers are wrong:
+  - A. 16 Hz: Likely from a calculation error involving incorrect unit conversion of the capacitance.
+  - B. 50 Hz: This is the mains frequency in many countries, but it is not the resonant frequency here.
+  - D. 1000 Hz: 1/√(LC) = 1000 is the angular resonant frequency in rad/s. Divide by 2π to obtain the ordinary frequency, about 159 Hz.
+Key Concept: For the ideal series RLC model, f_0 = 1/(2π√LC). At this frequency X_L = X_C; with fixed R > 0 and source voltage, impedance magnitude is smallest and current is largest. Convert 10 μF to 10 × 10^-6 F before substituting.
+
+==============================================================================
+
+Q28  [phys-208]  AC Circuits  correct answer: D
+------------------------------------------------------------------------------
+STEM: For sinusoidal voltage and current, the average power is P = V_rmsI_rms cosφ. What is the power factor cosφ for an ideal resistor?
+
+  A. 0
+  B. 0.5
+  C. 0.707
+  D. 1   <= key
+
+EXPLANATION:
+Correct Answer: 1
+In a purely resistive circuit, voltage and current are perfectly in phase, meaning the phase angle φ = 0:
+cos(φ) = cos(0) = 1
+P = V_rms x I_rms x 1 = V_rms x I_rms
+Why the other answers are wrong:
+  - A. 0: cos(φ) = 0 means φ = 90°, which occurs in a purely reactive circuit (only inductor or only capacitor). No power is dissipated in that case.
+  - B. 0.5: cos(φ) = 0.5 means φ = 60°, which would be a specific RLC combination but not a pure resistor.
+  - C. 0.707: cos(φ) = 0.707 means φ = 45°, occurring when R = |X_L - X_C|.
+Key Concept: For sinusoidal steady-state operation of a passive RLC circuit, cosφ ranges from 0 to 1. It is 1 for an ideal resistor and 0 for an ideal inductor or capacitor alone. Ideal reactive components store and return energy without net dissipation over a cycle.
+
+==============================================================================
+
+Q29  [phys-209]  AC Circuits  correct answer: D
+------------------------------------------------------------------------------
+STEM: A sinusoidal AC supply at 50 Hz has an RMS voltage of 230 V. Using V_rms = V_peak/√2, what is its approximate peak voltage?
+
+  A. 115 V
+  B. 163 V
+  C. 230 V
+  D. 325 V   <= key
+
+EXPLANATION:
+Correct Answer: 325 V
+Rearranging the RMS relationship:
+V_peak = V_rms x √2 = 230 x 1.414 ≈ 325 V
+The quoted mains voltage (230 V) is the RMS value. The actual voltage oscillates between +325 V and -325 V fifty times per second (at 50 Hz).
+Why the other answers are wrong:
+  - A. 115 V: This is 230/2, which would be dividing by 2 instead of multiplying by √2.
+  - B. 163 V: This divides 230 by √2. For this sinusoidal waveform, peak voltage is greater than RMS voltage, so multiply by √2 instead.
+  - C. 230 V: This is the RMS value itself, not the peak.
+Key Concept: For a sine wave, V_rms = V_peak/√2. Thus 230 V RMS corresponds to a peak magnitude of about 325 V. Other waveforms can have different peak-to-RMS ratios.
+
+==============================================================================
+
+Q30  [phys-210]  AC Circuits  correct answer: B   (distractor arithmetic: 30 + 100 - 60/2 is 100, not 110)
+------------------------------------------------------------------------------
+STEM: At the operating frequency of a sinusoidal source, an inductor has reactance X_L = 100 Ω and a capacitor has reactance X_C = 60 Ω. They are in series with R = 30 Ω. What is the circuit's impedance magnitude?
+
+  A. 190 Ω
+  B. 50 Ω   <= key
+  C. 70 Ω
+  D. 110 Ω
+
+EXPLANATION:
+Correct Answer: 50 Ω
+The impedance of a series RLC circuit is:
+Z = √(R^2 + (X_L - X_C)^2)
+Z = √(30^2 + (100 - 60)^2)
+Z = √(900 + 1600)
+Z = √2500 = 50 Ω
+Why the other answers are wrong:
+  - A. 190 Ω: This adds all three values (R + X_L + X_C), ignoring that reactances partially cancel and that impedance is calculated using the Pythagorean theorem.
+  - C. 70 Ω: This adds R + (X_L - X_C) directly instead of using the square root of the sum of squares.
+  - D. 110 Ω: The net reactance is 100 − 60 = 40 Ω. Combine this with 30 Ω resistance as √(30^2 + 40^2) = 50 Ω. A value of 110 Ω does not follow from the series-impedance formula.
+Key Concept: Impedance combines R and net reactance (X_L - X_C) using the Pythagorean theorem because R and the net reactance are 90° out of phase. You cannot simply add them. X_L and X_C do subtract directly because they are 180° apart.
+
+==============================================================================
+
+Q31  [phys-211]  Lorentz Force  correct answer: A
+------------------------------------------------------------------------------
+STEM: An electron moves at 2 x 10^6 m/s perpendicular to a magnetic field of 0.5 T. What is the magnitude of the magnetic force on the electron? (e = 1.6 x 10^-19 C)
+
+  A. 1.6 x 10^-13 N   <= key
+  B. 1.6 x 10^-14 N
+  C. 3.2 x 10^-13 N
+  D. 8 x 10^-14 N
+
+EXPLANATION:
+Correct Answer: 1.6 x 10^-13 N
+The magnetic-force magnitude is F = |q|vB sinθ. For an electron, |q| = e = 1.6 × 10^-19 C. With θ = 90°, F = (1.6 × 10^-19)(2 × 10^6)(0.5) = 1.6 × 10^-13 N. The negative electron charge changes the force direction, not this positive magnitude.
+Why the other answers are wrong:
+  - B. 1.6 x 10^-14 N: Off by a factor of 10, likely from a calculation error in handling the exponents.
+  - C. 3.2 x 10^-13 N: This is the result if the factor B = 0.5 T is omitted. Including it halves 3.2 × 10^-13 N to 1.6 × 10^-13 N.
+  - D. 8 x 10^-14 N: This is half the correct result. The factor 0.5 from the magnetic field has already been used once; sin90° is 1, not another factor of one-half.
+Key Concept: Magnetic-force magnitude is F = |q|vB sinθ. It is greatest for perpendicular motion and zero for parallel or antiparallel motion. The magnetic force is perpendicular to velocity and does no work; for an electron its direction is opposite to v × B.
+
+==============================================================================
+
+Q32  [phys-212]  Lorentz Force  correct answer: C
+------------------------------------------------------------------------------
+STEM: A nonrelativistic charged particle moves perpendicular to a uniform magnetic field in a circle of radius r. If its speed doubles while the field and the particle's mass and charge remain unchanged, and the motion remains nonrelativistic, the radius:
+
+  A. Is halved
+  B. Stays the same
+  C. Doubles   <= key
+  D. Quadruples
+
+EXPLANATION:
+Correct Answer: Doubles
+Balancing magnetic and centripetal force gives |q|vB = mv^2/r, so r = mv/(|q|B). For fixed mass, charge magnitude and field, r is proportional to v. Doubling the speed therefore doubles the radius.
+Why the other answers are wrong:
+  - A. Is halved: This would be the case if r were inversely proportional to v, but it is directly proportional.
+  - B. Stays the same: In this nonrelativistic model, the period T = 2πm/(|q|B) is independent of speed, but the radius is not. A faster particle covers a larger circle in the same period.
+  - D. Quadruples: This would require r to be proportional to v^2, but the relationship is linear.
+Key Concept: For nonrelativistic circular motion perpendicular to uniform B, r = mv/(|q|B) and T = 2πm/(|q|B). Radius grows with speed, while the period remains constant in this model.
+
+==============================================================================
+
+Q33  [phys-213]  Lorentz Force  correct answer: C
+------------------------------------------------------------------------------
+STEM: In a classical cyclotron with a uniform magnetic field, a proton spirals outward while its motion remains nonrelativistic. The frequency of the alternating voltage applied to the dees must:
+
+  A. Increase as the proton speeds up
+  B. Decrease as the proton speeds up
+  C. Remain constant throughout the acceleration   <= key
+  D. Alternate between two different values
+
+EXPLANATION:
+Correct Answer: Remain constant throughout the acceleration
+The cyclotron frequency depends only on the charge-to-mass ratio and the magnetic field:
+f = qB / (2πm)
+Since q, B, and m are all constant, the frequency does not change even as the proton gains speed and orbits at larger radii.
+Why the other answers are wrong:
+  - A. Increase as the proton speeds up: A faster proton does travel a larger circle, but it completes each revolution in the same time, so no frequency change is needed.
+  - B. Decrease as the proton speeds up: Same reasoning. The period is constant.
+  - D. Alternate between two different values: The voltage alternates in polarity (positive/negative), but the frequency stays the same.
+Key Concept: In the nonrelativistic cyclotron model, T = 2πm/(qB) for a proton is independent of speed, so the accelerating voltage can have fixed frequency. At relativistic speeds the orbital period increases even though rest mass is unchanged, so this fixed-frequency model no longer stays synchronized.
+
+==============================================================================
+
+Q34  [phys-214]  Lorentz Force  correct answer: B   (MAJOR SCENARIO REPAIR: E reversed to downward; answer B and all four options unchanged)
+------------------------------------------------------------------------------
+STEM: An electron enters a region with an electric field E pointing downward and a magnetic field B pointing into the page. The electron moves to the right. For it to travel in a straight line without deflection, the field magnitudes must satisfy:
+
+  A. E = B
+  B. E = vB   <= key
+  C. E = v/B
+  D. E = qvB
+
+EXPLANATION:
+Correct Answer: E = vB
+The electron is negatively charged, so the downward electric field exerts an upward electric force. For motion to the right with B into the page, v × B points upward; the electron's magnetic force therefore points downward. The forces cancel when their magnitudes are equal: eE = evB, giving E = vB or v = E/B. Equal magnitudes alone would not be enough if the forces pointed in the same direction.
+Why the other answers are wrong:
+  - A. E = B: This ignores the velocity and has mismatched units (V/m vs T).
+  - C. E = v/B: This inverts the relationship. Rearranging gives v = EB, which is wrong.
+  - D. E = qvB: This keeps the charge in the equation, but it cancels when equating forces (qE = qvB).
+Key Concept: A velocity selector requires electric and magnetic forces that are opposite in direction as well as equal in magnitude. With the fields arranged correctly, particles traveling in the selected direction pass undeflected at speed v = E/B.
+
+==============================================================================
+
+Q35  [phys-215]  Lorentz Force  correct answer: B
+------------------------------------------------------------------------------
+STEM: A proton and an α particle (charge 2e, mass 4m_p) enter the same uniform magnetic field perpendicular to the field, with the same nonrelativistic speed. What is the ratio of the α particle's path radius to the proton's?
+
+  A. 1:1
+  B. 2:1   <= key
+  C. 4:1
+  D. 1:2
+
+EXPLANATION:
+Correct Answer: 2:1
+The radius formula is r = mv/(qB):
+r_proton = m_p v / (eB)
+r_α = 4m_p v / (2eB) = 2m_p v / (eB)
+r_α / r_proton = 2m_pv/(eB) ÷ m_pv/(eB) = 2
+The α particle has 4 times the mass but 2 times the charge, so its radius is 4/2 = 2 times larger.
+Why the other answers are wrong:
+  - A. 1:1: This would require the same m/q ratio, but 4m/2e = 2m/e, not m/e.
+  - C. 4:1: This would be the ratio if only mass mattered and charge were equal.
+  - D. 1:2: This reverses the requested ratio. The α particle's mass-to-charge ratio is (4m_p)/(2e), twice the proton's m_p/e, so its radius is twice as large.
+Key Concept: The radius depends on the mass-to-charge ratio (m/q). A particle with a larger m/q follows a larger circle at the same speed and field strength. This principle is used in mass spectrometry to separate isotopes and ions by their m/q ratios.
+
+==============================================================================
+
+Q36  [phys-216]  Black Body Radiation  correct answer: B
+------------------------------------------------------------------------------
+STEM: According to Wien's displacement law, if a black body's absolute temperature in kelvin doubles, the wavelength at the peak of its emission spectrum:
+
+  A. Doubles
+  B. Is halved   <= key
+  C. Stays the same
+  D. Quadruples
+
+EXPLANATION:
+Correct Answer: Is halved
+Wien's displacement law states:
+λ_max x T = b (constant)
+λ_max = b / T
+The peak wavelength is inversely proportional to temperature. Doubling T means λ_max is halved.
+For example, an object at 3000 K has λ_max ≈ 966 nm (infrared). At 6000 K, λ_max ≈ 483 nm (visible blue-green).
+Why the other answers are wrong:
+  - A. Doubles: This reverses the inverse relationship.
+  - C. Stays the same: The peak wavelength definitely shifts with temperature.
+  - D. Quadruples: No squared relationship exists in Wien's law.
+Key Concept: For the blackbody spectrum expressed per unit wavelength, λ_maxT = 2.898 × 10^-3 m·K. Increasing the absolute temperature shifts the peak to shorter wavelengths. A 5800 K black body peaks near 500 nm, but its overall appearance depends on its broad spectrum, not that wavelength alone.
+
+==============================================================================
+
+Q37  [phys-217]  Black Body Radiation  correct answer: D
+------------------------------------------------------------------------------
+STEM: A black body's emitting surface area stays fixed while its temperature rises from 300 K to 600 K. By the Stefan–Boltzmann law, by what factor does its total emitted power increase?
+
+  A. 2
+  B. 4
+  C. 8
+  D. 16   <= key
+
+EXPLANATION:
+Correct Answer: 16
+The Stefan-Boltzmann law states P ∝ T^4:
+P_2/P_1 = (T_2/T_1)^4 = (600/300)^4 = 2^4 = 16
+Why the other answers are wrong:
+  - A. 2: This would apply if power were proportional to T (first power), not T^4.
+  - B. 4: This would apply if power were proportional to T^2.
+  - C. 8: This would apply if power were proportional to T^3.
+Key Concept: A black body emits P = σAT^4, with T in kelvin. At fixed area, doubling T multiplies emitted power by 16. This is emitted power, not net radiative heat loss, which also depends on radiation absorbed from the surroundings.
+
+==============================================================================
+
+Q38  [phys-218]  Black Body Radiation  correct answer: C
+------------------------------------------------------------------------------
+STEM: The 'ultraviolet catastrophe' refers to the failure of classical physics to explain:
+
+  A. Why UV light causes sunburn
+  B. Why hot objects emit radiation at all frequencies
+  C. Why classical theory predicted infinite energy emission at short wavelengths from a black body   <= key
+  D. Why ultraviolet light is invisible to the human eye
+
+EXPLANATION:
+Correct Answer: Why classical theory predicted infinite energy emission at short wavelengths from a black body
+The Rayleigh-Jeans law (classical physics) predicted that the energy radiated by a black body should increase without limit as wavelength decreases (toward the ultraviolet and beyond). This prediction of infinite total energy was clearly wrong and was called the 'ultraviolet catastrophe.'
+Max Planck resolved this in 1900 by proposing that energy is emitted in discrete packets (quanta) with E = hf. At high frequencies, the energy per quantum is so large that fewer quanta are emitted, preventing the infinite energy prediction.
+Why the other answers are wrong:
+  - A. Why UV light causes sunburn: This is a biological effect explained by photon energy damaging DNA, not the ultraviolet catastrophe.
+  - B. Why hot objects emit radiation at all frequencies: Black bodies do emit at all frequencies, and that is not a problem. The problem was the predicted intensity distribution.
+  - D. Why ultraviolet light is invisible to the human eye: Ultraviolet light lies outside the usual visible band. The ultraviolet catastrophe concerns the incorrect classical prediction for blackbody radiation, not why a particular wavelength is visible.
+Key Concept: Planck resolved the blackbody-radiation problem by quantizing energy exchange in amounts hf. Einstein later used light quanta of energy hf to explain the photoelectric effect. These are related ideas in the development of quantum physics.
+
+==============================================================================
+
+Q39  [phys-219]  Radioactive Decay  correct answer: B
+------------------------------------------------------------------------------
+STEM: A particular radioactive isotope in a sample has an initial activity of 800 Bq and a half-life of 4 hours. Ignoring any activity from daughter products, what is this isotope's activity after 12 hours?
+
+  A. 200 Bq
+  B. 100 Bq   <= key
+  C. 50 Bq
+  D. 400 Bq
+
+EXPLANATION:
+Correct Answer: 100 Bq
+First, find how many half-lives have elapsed:
+Number of half-lives = 12 / 4 = 3
+A = A_0 x (1/2)^3 = 800 x 1/8 = 100 Bq
+Time (hours) | Half-lives | Activity (Bq) | 0 | 0 | 800 | 4 | 1 | 400 | 8 | 2 | 200 | 12 | 3 | 100 | Why the other answers are wrong:
+  - A. 200 Bq: This is the activity after 2 half-lives (8 hours), not 3.
+  - C. 50 Bq: This would be the activity after 4 half-lives (16 hours).
+  - D. 400 Bq: This is the activity after only 1 half-life (4 hours).
+Key Concept: After n half-lives, 2^-n of the original radioactive nuclei remain undecayed. Their activity and the mass of that parent isotope decrease by the same factor. This does not mean that the total mass of a sample containing decay products halves each time.
+
+==============================================================================
+
+Q40  [phys-220]  Radioactive Decay  correct answer: B
+------------------------------------------------------------------------------
+STEM: The decay constant λ of a radioactive isotope with a half-life of 10 days is approximately:
+
+  A. 0.1 per day
+  B. 0.069 per day   <= key
+  C. 0.693 per day
+  D. 10 per day
+
+EXPLANATION:
+Correct Answer: 0.069 per day
+The decay constant is related to the half-life by:
+λ = ln(2) / t_1/2 = 0.693 / 10 = 0.0693 per day
+This is the decay rate per surviving nucleus: a larger λ means faster decay. It is not exactly the probability of decay over a full one-day interval.
+Why the other answers are wrong:
+  - A. 0.1 per day: This would correspond to a half-life of ln(2)/0.1 = 6.93 days, not 10 days.
+  - C. 0.693 per day: This uses ln(2) directly without dividing by the half-life. It would correspond to a half-life of 1 day.
+  - D. 10 per day: This is just the half-life value, not the decay constant.
+Key Concept: The decay constant is λ = ln2/t_1/2, with units of inverse time. Over a sufficiently short interval Δt, a surviving nucleus has decay probability approximately λΔt. A shorter half-life gives a larger λ.
+
+==============================================================================
+
+Q41  [phys-221]  Radioactive Decay  correct answer: A   (Key Concept: uppercase Greek particle symbols corrected to lowercase)
+------------------------------------------------------------------------------
+STEM: In α decay, a nucleus emits an α particle (helium-4 nucleus). If uranium-238 undergoes α decay, what is the resulting daughter nucleus?
+
+  A. Thorium-234 (Z=90, A=234)   <= key
+  B. Radium-234 (Z=88, A=234)
+  C. Protactinium-234 (Z=91, A=234)
+  D. Thorium-236 (Z=90, A=236)
+
+EXPLANATION:
+Correct Answer: Thorium-234 (Z=90, A=234)
+In α decay, the parent nucleus loses 2 protons and 2 neutrons (an α particle = He-4):
+^238_92U → ^234_90Th + ^4_2He
+Mass number: 238 - 4 = 234
+Atomic number: 92 - 2 = 90 (thorium)
+Why the other answers are wrong:
+  - B. Radium-234 (Z=88, A=234): This would mean losing 4 protons instead of 2, which does not happen in α decay.
+  - C. Protactinium-234 (Z=91, A=234): Alpha decay lowers Z by 2 and A by 4, giving Z = 90 and A = 234. Protactinium has Z = 91, so Pa-234 is not the direct alpha-decay daughter. Beta-plus decay would lower Z by 1 but leave A unchanged, so it would not give this option either.
+  - D. Thorium-236 (Z=90, A=236): The mass number should decrease by 4 (from 238), giving 234, not 236.
+Key Concept: In α decay, the daughter has Z lower by 2 and A lower by 4. In β^- decay, Z increases by 1; in β^+ decay, Z decreases by 1; A is unchanged in both. Gamma emission changes neither. Balance total charge and nucleon number across the complete nuclear equation, including emitted particles.
+
+==============================================================================
+
+Q42  [phys-222]  Radioactive Decay  correct answer: C
+------------------------------------------------------------------------------
+STEM: A sample initially contains 6.4 × 10^8 nuclei of a radioactive isotope. After five half-lives, approximately how many of these original nuclei remain undecayed?
+
+  A. 1.28 x 10^8
+  B. 3.2 x 10^7
+  C. 2 x 10^7   <= key
+  D. 6.4 x 10^3
+
+EXPLANATION:
+Correct Answer: 2 x 10^7
+After n half-lives, the number of remaining atoms is:
+N = N_0 x (1/2)^n
+N = 6.4 x 10^8 x (1/2)^5
+N = 6.4 x 10^8 x 1/32
+N = 2 x 10^7
+Why the other answers are wrong:
+  - A. 1.28 x 10^8: This is 6.4 x 10^8 / 5, dividing by the number of half-lives instead of by 2^5 = 32.
+  - B. 3.2 x 10^7: This is 6.4 x 10^8 / 20, not dividing by the correct power of 2.
+  - D. 6.4 x 10^3: This divides by 10^5 instead of 2^5.
+Key Concept: After n half-lives: remaining fraction = (1/2)^n = 1/2^n. After 5 half-lives: 1/32 remains (3.125%). The most common error is dividing by n instead of by 2^n. Always calculate 2^n first: 2^1=2, 2^2=4, 2^3=8, 2^4=16, 2^5=32.
+
+==============================================================================
+
+Q43  [phys-223]  Polarization of Dielectrics  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ordinary insulating dielectric with static dielectric constant κ > 1 completely fills the vacuum gap of a parallel-plate capacitor. The plate area and separation stay fixed. Neglecting edge effects, the capacitance:
+
+  A. Decreases
+  B. Stays the same
+  C. Increases   <= key
+  D. Becomes zero
+
+EXPLANATION:
+Correct Answer: Increases
+For this parallel-plate model, C = κε_0A/d = κC_0. Because the specified κ is greater than 1, capacitance increases. Polarization reduces the field and voltage for a fixed free charge on the plates. If a battery instead holds the voltage fixed, more charge flows onto the plates; the voltage does not decrease.
+Why the other answers are wrong:
+  - A. Decreases: At fixed plate charge, polarization lowers the voltage. Since C = Q/V, that means greater capacitance, not smaller capacitance.
+  - B. Stays the same: The capacitance would stay at C_0 if the gap retained κ = 1. The question specifies a replacement dielectric with κ > 1.
+  - D. Becomes zero: In this model κ, ε_0, A and d are positive, so C = κε_0A/d is positive. Inserting the specified insulator does not make it zero.
+Key Concept: At fixed parallel-plate geometry, filling the vacuum gap with the specified dielectric gives C = κC_0. At fixed Q, voltage falls; at fixed V, charge rises. Do not claim that the voltage falls while a battery keeps it fixed.
+
+==============================================================================
+
+Q44  [phys-224]  Polarization of Dielectrics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which statement best explains the large static dielectric constant of liquid water, about 80 near room temperature?
+
+  A. Water molecules are nonpolar and easily deformed
+  B. Water molecules are strongly polar and align readily in an electric field   <= key
+  C. Water is an excellent electrical conductor
+  D. Water molecules are very large compared to other molecules
+
+EXPLANATION:
+Correct Answer: Water molecules are strongly polar and align readily in an electric field
+A water molecule has a permanent electric dipole because of its bent shape and unequal sharing of electrons between oxygen and hydrogen. An applied electric field biases the orientation of these dipoles, producing strong polarization. Thermal motion prevents perfect alignment. This response accounts for much of water's large static dielectric constant; the value also depends on temperature and frequency.
+Why the other answers are wrong:
+  - A. Water molecules are nonpolar and easily deformed: Water is polar, so this option starts with the wrong description. Induced polarization can occur in nonpolar molecules, but water's permanent dipoles are central to the explanation here.
+  - C. Water is an excellent electrical conductor: Pure water is actually a poor conductor. A high dielectric constant and electrical conductivity are different properties.
+  - D. Water molecules are very large compared to other molecules: Water molecules are actually quite small (molecular weight 18). The high dielectric constant comes from polarity, not size.
+Key Concept: A dielectric constant describes a material's polarization response. In liquid water, partial orientation of permanent molecular dipoles strongly contributes to the large low-frequency value. Dielectric constant and electrical conductivity are different properties.
+
+==============================================================================
+
+Q45  [phys-225]  Polarization of Dielectrics  correct answer: D
+------------------------------------------------------------------------------
+STEM: If a parallel-plate capacitor without a dielectric has capacitance C_0 = 5 μF, and a dielectric with κ = 4 is inserted to fill the entire space between the plates, what is the new capacitance?
+
+  A. 1.25 μF
+  B. 5 μF
+  C. 9 μF
+  D. 20 μF   <= key
+
+EXPLANATION:
+Correct Answer: 20 μF
+The dielectric multiplies the capacitance by κ:
+C = κ x C_0 = 4 x 5 = 20 μF
+Why the other answers are wrong:
+  - A. 1.25 μF: This divides by κ instead of multiplying. The dielectric increases capacitance, not decreases it.
+  - B. 5 μF: This ignores the dielectric entirely.
+  - C. 9 μF: This adds κ to C_0 (5 + 4 = 9) instead of multiplying.
+Key Concept: With unchanged geometry and complete filling of the gap, C = κC_0, so κ = 4 changes 5 μF to 20 μF. At fixed voltage, both stored charge and energy increase fourfold. At fixed charge instead, U = Q^2/(2C) decreases to one-quarter.
+
+==============================================================================
+
+Q46  [phys-226]  AC Circuits - Inductive Reactance  correct answer: B
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state, the inductive reactance of an ideal inductor with inductance L at angular frequency w is:
+
+  A. XL = 1/(wL)
+  B. XL = wL   <= key
+  C. XL = w^2 L
+  D. XL = L/w
+
+EXPLANATION:
+Correct Answer: XL = wL
+Inductive reactance is the opposition to current flow offered by an inductor in an AC circuit. It is directly proportional to both the angular frequency (w = 2 π f) and the inductance (L):
+XL = wL = 2 π f L
+The unit of inductive reactance is the ohm (Ω), the same as resistance. As frequency increases, the inductor opposes current more strongly because the changing current produces a larger back-EMF.
+Why the other choices are wrong:
+A. XL = 1/(wL): This is the reciprocal of the inductive reactance and has units of siemens, not ohms. Capacitive reactance is 1/(wC), with capacitance C rather than inductance L.
+C. XL = w^2 L: Inductive reactance is proportional to w, not w^2. The expression w^2L also has the wrong units for reactance.
+D. XL = L/w: This inverts the frequency dependence. It would imply that higher frequencies lead to lower reactance, which is the opposite of how inductors behave. Inductors resist rapid changes in current, so higher frequencies mean greater opposition.
+Key Educational Points:
+  - At DC (w = 0), XL = 0, meaning an ideal inductor behaves like a short circuit (zero resistance to steady current).
+  - In the ideal-inductor model, increasing frequency increases reactance. At the same applied voltage amplitude, the AC current amplitude is therefore smaller.
+  - An inductor stores energy in its magnetic field: E = (1/2)LI^2.
+Bottom Line: For an ideal inductor in sinusoidal steady state, X_L = wL = 2πfL. Increasing frequency or inductance increases its reactance.
+
+==============================================================================
+
+Q47  [phys-227]  AC Circuits - Capacitive Reactance  correct answer: C
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state, the capacitive reactance of an ideal capacitor with capacitance C at angular frequency w is:
+
+  A. XC = wC
+  B. XC = w/C
+  C. XC = 1/(wC)   <= key
+  D. XC = C/w
+
+EXPLANATION:
+Correct Answer: XC = 1/(wC)
+Capacitive reactance is X_C = 1/(wC) = 1/(2πfC). The current satisfies i = C(dv/dt). At the same sinusoidal voltage amplitude, a higher frequency changes the voltage more rapidly and produces a larger current amplitude, so the voltage-to-current ratio X_C is smaller.
+Why the other choices are wrong:
+A. XC = wC: wC is the reciprocal of capacitive reactance and has units of siemens. The requested reactance is 1/(wC), in ohms.
+B. XC = w/C: This shows reactance increasing with frequency, which is wrong for a capacitor. Additionally, the dimensional analysis fails: (rad/s)/F does not yield ohms.
+D. XC = C/w: This has the correct inverse relationship with w but incorrectly places C in the numerator. Larger capacitance should mean lower reactance (easier for current to flow), so C must be in the denominator.
+Key Educational Points:
+  - At DC (w = 0), XC approaches infinity, meaning a capacitor blocks DC completely (acts as an open circuit after fully charging).
+  - In the ideal-capacitor model, X_C approaches zero as frequency increases without limit. This is an ideal-model limit, not a universal statement about real capacitors at every frequency.
+  - A capacitor stores energy in its electric field: E = (1/2)CV^2.
+  - The contrasting behavior of inductors (block high f) and capacitors (block low f) is the basis for electronic filters.
+Bottom Line: For an ideal capacitor in sinusoidal steady state, X_C = 1/(wC). At fixed C, higher frequency means lower reactance; after a DC charging transient, an ideal capacitor carries no steady current.
+
+==============================================================================
+
+Q48  [phys-228]  AC Circuits - Series RLC Impedance  correct answer: B
+------------------------------------------------------------------------------
+STEM: For a series circuit containing ideal R, L and C in sinusoidal steady state, with R > 0, which expression gives the impedance magnitude Z in terms of R, X_L and X_C?
+
+  A. Z = R + XL + XC
+  B. Z = sqrt(R^2 + (XL - XC)^2)   <= key
+  C. Z = sqrt(R^2 + (XL + XC)^2)
+  D. Z = R + (XL - XC)
+
+EXPLANATION:
+Correct Answer: Z = sqrt(R^2 + (XL - XC)^2)
+In a series RLC circuit, the impedance combines resistance and net reactance using vector (phasor) addition. The resistance R is along the real axis, while the net reactance (XL - XC) is along the imaginary axis. The magnitude of impedance is:
+Z = sqrt(R^2 + (XL - XC)^2)
+This is because the voltage across the resistor is in phase with the current, while the voltages across L and C are 90 degrees out of phase (and opposite to each other).
+Why the other choices are wrong:
+A. Z = R + XL + XC: Simple arithmetic addition is incorrect because R, XL, and XC are not in phase with each other. The voltage across the inductor leads the current by 90 degrees, the voltage across the capacitor lags by 90 degrees, and the voltage across the resistor is in phase. They must be combined as phasors, not scalars.
+C. Z = sqrt(R^2 + (XL + XC)^2): The reactances of L and C should be subtracted, not added. Since the inductor voltage leads by +90 degrees and the capacitor voltage lags by -90 degrees, they are 180 degrees apart and partially cancel each other. The net reactance is their difference.
+D. Z = R + (XL - XC): While (XL - XC) correctly represents the net reactance, you cannot simply add it arithmetically to R because they are perpendicular in the impedance phasor diagram. The Pythagorean theorem (vector addition) must be used.
+Key Educational Points:
+  - The phase angle between voltage and current: tan(φ) = (XL - XC)/R. If XL > XC, the circuit is inductive (voltage leads current). If XC > XL, the circuit is capacitive (current leads voltage).
+  - At series resonance, X_L = X_C and the impedance magnitude is R. For fixed source voltage and R > 0, current is then greatest.
+  - Complex impedance is R + j(X_L − X_C), where j^2 = −1. The square-root expression in this question is its magnitude, not the complex impedance itself.
+Bottom Line: Z = sqrt(R^2 + (XL - XC)^2). The reactances subtract (they oppose each other), and the net reactance combines with resistance by the Pythagorean theorem because they are 90 degrees out of phase.
+
+==============================================================================
+
+Q49  [phys-229]  AC Circuits - Resonance  correct answer: B
+------------------------------------------------------------------------------
+STEM: For a series circuit of ideal R, L and C driven by a sinusoidal source of fixed voltage amplitude, with R > 0, electrical resonance occurs when:
+
+  A. The resistance equals the total reactance (R = XL + XC)
+  B. The inductive reactance equals the capacitive reactance (XL = XC)   <= key
+  C. The current and voltage are 90 degrees out of phase
+  D. The impedance reaches its maximum value
+
+EXPLANATION:
+Correct Answer: The inductive reactance equals the capacitive reactance (XL = XC)
+Resonance in a series RLC circuit occurs at the angular frequency w0 where XL = XC. At this condition:
+w0 L = 1/(w0 C)
+Solving: w0 = 1/sqrt(LC)
+At resonance, the net reactance is zero (XL - XC = 0), so the impedance equals Z = R (its minimum value). This means the current reaches its maximum amplitude and is exactly in phase with the applied voltage.
+Why the other choices are wrong:
+A. The resistance equals the total reactance (R = XL + XC): The resonance condition is cancellation of inductive and capacitive reactance: X_L = X_C. It does not require R to equal their sum.
+C. The current and voltage are 90 degrees out of phase: At resonance, current and voltage are in phase (phase angle = 0), not 90 degrees out of phase. A 90-degree phase difference occurs in purely reactive circuits (containing only an inductor or only a capacitor), not at resonance.
+D. The impedance reaches its maximum value: In this series circuit, resonance gives minimum impedance magnitude, Z = R. The familiar high-impedance resonance belongs to an appropriate parallel-resonant circuit instead.
+Key Educational Points:
+  - The resonant frequency f0 = 1/(2 π sqrt(LC)) depends only on L and C, not on R.
+  - For a series RLC circuit, Q = w_0L/R = 1/(w_0CR). A higher Q means a narrower resonance relative to its resonant frequency. Peak current is V/R, so its height also depends on source voltage and resistance.
+  - At resonance, the voltages across L and C can individually be much larger than the source voltage (voltage magnification), but they are equal and opposite and cancel each other.
+  - Resonance is exploited in radio tuning circuits to select specific frequencies.
+Bottom Line: Series resonance occurs at X_L = X_C, or f_0 = 1/(2π√LC). The input is then purely resistive. With fixed source voltage and resistance, current is greatest and voltage and current are in phase.
+
+==============================================================================
+
+Q50  [phys-230]  AC Circuits - Inductor Phase  correct answer: B   (phase causality repaired via v = L di/dt)
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state for an ideal inductor, what is the phase relationship between its voltage and current?
+
+  A. Voltage and current are in phase
+  B. Voltage leads current by 90 degrees   <= key
+  C. Current leads voltage by 90 degrees
+  D. Voltage leads current by 180 degrees
+
+EXPLANATION:
+Correct Answer: Voltage leads current by 90 degrees
+The voltage across an ideal inductor is v = L(di/dt). For a sinusoidal current, its rate of change is one-quarter cycle ahead of the current itself. Thus voltage leads current by 90°. The positive voltage peak occurs as current crosses zero while increasing; current reaches its positive peak one-quarter cycle later, when voltage is zero.
+Why the other choices are wrong:
+A. Voltage and current are in phase: This describes a purely resistive circuit. In a resistor, V = IR at every instant, so voltage and current rise and fall together with zero phase difference.
+C. Current leads voltage by 90 degrees: This describes a purely capacitive circuit, not an inductive one. In a capacitor, current flows in response to voltage changes (I = C dV/dt), so current peaks before voltage. The mnemonic is "ELI the ICE man": E (voltage) Leads I (current) in an Inductor; I (current) leads E (voltage) in a Capacitor.
+D. Voltage leads current by 180 degrees: A 180° difference would make the two sinusoids opposite in sign at corresponding times. The derivative relation for an ideal inductor gives a quarter-cycle, or 90°, difference instead.
+Key Educational Points:
+  - Mnemonic: "ELI the ICE man" -- In an inductor (L), E leads I. In a capacitor (C), I leads E.
+  - The 90-degree phase difference means that in a pure inductor, the average power dissipated is zero (reactive power only). Energy oscillates between the circuit and the inductor's magnetic field.
+  - A real coil has winding resistance. In the simple series R–L model, its current lags the total applied voltage by an angle between 0° and 90°, rather than exactly 90°.
+Bottom Line: For an ideal inductor with sinusoidal current, voltage leads current by 90° because v = L(di/dt). Remember ELI: E (voltage) leads I (current) in L (an inductor).
+
+==============================================================================
+
+Q51  [phys-231]  AC Circuits - Capacitor Phase  correct answer: C
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state, an ideal capacitor is connected to an AC voltage source. Which statement about its current is correct?
+
+  A. The current lags the voltage by 90 degrees
+  B. The current is in phase with the voltage
+  C. The current leads the voltage by 90 degrees   <= key
+  D. The current leads the voltage by 45 degrees
+
+EXPLANATION:
+Correct Answer: The current leads the voltage by 90 degrees
+For an ideal capacitor, i = C(dv/dt). Differentiating a sine-wave voltage gives a current one-quarter cycle ahead, so current leads voltage by 90°. Current magnitude is greatest when voltage crosses zero, where the voltage changes most rapidly. Current is zero at either the positive or negative voltage peak.
+Why the other choices are wrong:
+A. The current lags the voltage by 90 degrees: This describes the behavior of a purely inductive circuit, where voltage leads current. In a capacitor, the relationship is reversed: current leads voltage. Confusing the two is a very common exam error.
+B. The current is in phase with the voltage: An ideal resistor has in-phase voltage and current. An ideal capacitor alone instead has the 90° phase difference set by i = C(dv/dt). A complete RLC circuit can have in-phase source voltage and current when its net reactance is zero.
+D. The current leads the voltage by 45 degrees: A 45-degree phase angle occurs in a circuit where the resistance equals the capacitive reactance (R = XC), not in a purely capacitive circuit. The 45-degree case represents equal resistive and reactive components in a series RC circuit.
+Key Educational Points:
+  - Recall "ICE": I (current) leads E (voltage) in a Capacitor. Combined with "ELI": E leads I in an Inductor.
+  - Since current leads voltage by 90 degrees, and instantaneous power = VI, the average power over a full cycle is zero. The capacitor alternately stores and returns energy to the circuit.
+  - This 90-degree lead can be visualized: imagine applying a sine wave voltage. At t=0, V=0 but dV/dt is maximum, so I = C(dV/dt) is maximum. When V reaches its peak, dV/dt = 0, so I = 0.
+Bottom Line: For sinusoidal signals in an ideal capacitor, current leads voltage by 90° (ICE). Current magnitude is greatest at voltage zero crossings and current is zero at voltage extrema.
+
+==============================================================================
+
+Q52  [phys-232]  AC Circuits - Ohm's Law  correct answer: C   (units repair: A/Ω is not siemens)
+------------------------------------------------------------------------------
+STEM: In sinusoidal steady state in a linear circuit, let V and I be either both peak amplitudes or both RMS values, and let Z denote impedance magnitude. Which expression is the generalized form of Ohm's law?
+
+  A. V = IR, where R is the resistance only
+  B. V = I x XL, where XL is the inductive reactance only
+  C. V = IZ, where Z is the total impedance of the circuit   <= key
+  D. V = I/(XL - XC), where the reactances determine the current
+
+EXPLANATION:
+Correct Answer: V = IZ, where Z is the total impedance of the circuit
+The amplitude relationship is V = IZ when Z denotes the impedance magnitude. V and I must use the same convention: both peak or both RMS. For a series RLC circuit, Z = √[R^2 + (X_L − X_C)^2]. This combines resistance with net reactance; the voltage and current need not be in phase.
+Why the other choices are wrong:
+A. V = IR, where R is the resistance only: V = IR is valid across an ideal resistor in AC as well as DC. It also describes a circuit whose total impedance is purely resistive, but resistance alone does not cover a general circuit with net reactance.
+B. V = I x XL, where XL is the inductive reactance only: V_L = IX_L gives the voltage amplitude across an ideal inductor at the specified frequency. For a more general circuit, use its total impedance magnitude.
+D. V = I/(XL - XC), where the reactances determine the current: I/(X_L − X_C) has units A/Ω, not volts and not siemens. Voltage is current multiplied by impedance. In the series RLC case, that magnitude is √[R^2 + (X_L − X_C)^2].
+Key Educational Points:
+  - For a sine wave, V_rms = V_peak/√2 and I_rms = I_peak/√2. Keep the voltage and current conventions consistent.
+  - For sinusoidal signals in a passive RLC circuit, average power is V_rmsI_rms cosφ. Ideal inductors and capacitors return their stored energy; resistance dissipates energy.
+  - In a series RLC circuit, the same current passes through all three elements: V_R = IR, V_L = IX_L and V_C = IX_C. Their voltage amplitudes cannot simply be added because their phases differ.
+Bottom Line: For sinusoidal steady-state amplitudes, V = IZ with Z the impedance magnitude. For a series RLC circuit specifically, Z = √[R^2 + (X_L − X_C)^2]. Use both peak quantities or both RMS quantities.
+
+==============================================================================
+
+Q53  [phys-233]  Acoustics - Hearing Thresholds  correct answer: C   (120 dB retained as the conventional approximate answer, with qualifications)
+------------------------------------------------------------------------------
+STEM: Which of the following is a commonly quoted approximate sound level for the threshold of pain in introductory physics?
+
+  A. 60 dB
+  B. 90 dB
+  C. 120 dB   <= key
+  D. 160 dB
+
+EXPLANATION:
+Correct Answer: 120 dB
+About 120 dB is commonly used as an approximate textbook value for the threshold of pain. It is not a fixed boundary for every listener or sound: discomfort and pain depend on factors such as frequency and the individual. Using I_0 = 10^-12 W/m^2, a sound intensity level of 120 dB corresponds to I/I_0 = 10^12, so I = 1 W/m^2. The 0 dB reference is not a universal hearing threshold, and sound can harm hearing before it becomes painful.
+Why the other choices are wrong:
+A. 60 dB: 60 dB corresponds to I/I_0 = 10^6, or I = 10^-6 W/m^2 with the stated reference. It is well below the conventional approximate 120 dB value asked for here.
+B. 90 dB: 90 dB is 30 dB below 120 dB, meaning one-thousandth of its intensity. It is not the conventional approximate pain-threshold value; absence of pain does not mean a sound cannot damage hearing.
+D. 160 dB: 160 dB is 40 dB above 120 dB, corresponding to 10,000 times its intensity. It is far above the conventional approximate value, not the best answer.
+Key Educational Points:
+  - Sound intensity level is L = 10 log_10(I/I_0); each additional 10 dB means ten times the intensity.
+  - With I_0 = 10^-12 W/m^2, 120 dB corresponds to 1 W/m^2, a factor of 10^12 above the reference.
+  - The reference level, a person's hearing threshold, a pain threshold and the risk of hearing damage are different concepts. Biological thresholds vary.
+Bottom Line: For this introductory question, 120 dB is the conventional approximate pain-threshold answer. It is not a universal biological cutoff or a boundary below which sound is necessarily harmless.
+
+==============================================================================
+
+Q54  [phys-234]  Acoustics - Sound Velocity  correct answer: C
+------------------------------------------------------------------------------
+STEM: The speed of sound is fastest in which of the following media?
+
+  A. Air at room temperature
+  B. Distilled water at room temperature
+  C. A steel rail   <= key
+  D. A vacuum
+
+EXPLANATION:
+Correct Answer: A steel rail
+Among the listed media, longitudinal sound travels fastest in steel. Speed depends on elastic stiffness relative to density, not on density alone.
+Medium | Approximate sound speed | Steel | About 5000–6000 m/s for longitudinal sound, depending on the steel and wave mode | Water at room temperature | About 1480 m/s | Air at 20 °C | About 343 m/s | Vacuum | Not applicable: sound cannot propagate | Steel's large elastic stiffness allows longitudinal disturbances to travel faster than in water or air. A vacuum cannot support an ordinary sound wave because it has no material medium.
+Why the other choices are wrong:
+A. Air at room temperature: Air has much lower elastic stiffness than steel. Considering stiffness together with density gives a sound speed around 343 m/s at 20 °C, well below the longitudinal speed in steel. Low density alone is not an explanation for a low speed.
+B. Distilled water at room temperature: Water is much less compressible than air. Its stiffness relative to density gives a speed around 1480 m/s at room temperature, faster than air but slower than longitudinal sound in steel.
+D. A vacuum: A vacuum has no material medium to carry sound. Its sound speed is therefore not assigned a value of zero; sound does not propagate there. Light can cross a vacuum because it is an electromagnetic wave.
+Key Educational Points:
+  - For the listed examples, longitudinal sound travels faster in steel than in water or air. This is not a universal ordering for every solid, liquid, gas and wave mode.
+  - Near ordinary temperatures, the speed of sound in air is approximately v = 331 + 0.6T m/s, where T is in degrees Celsius.
+  - If sound travels equal distances through a steel rail and through air, the longitudinal disturbance in the rail arrives sooner because its speed is greater.
+Bottom Line: For these examples: longitudinal sound in steel is faster than sound in water, which is faster than sound in air. Sound needs a material medium and cannot propagate in a vacuum.
+
+==============================================================================
+
+Q55  [phys-235]  Acoustics - Frequency Ranges  correct answer: C
+------------------------------------------------------------------------------
+STEM: Ultrasound is defined as sound with a frequency:
+
+  A. Below 20 Hz
+  B. Between 20 Hz and 20,000 Hz
+  C. Above 20,000 Hz (20 kHz)   <= key
+  D. Above 1,000,000 Hz (1 MHz) only
+
+EXPLANATION:
+Correct Answer: Above 20,000 Hz (20 kHz)
+The conventional frequency categories use the approximate hearing range of a typical young listener:
+Category | Frequency Range | Examples | Infrasound | Below 20 Hz | Earthquakes, elephants, volcanoes | Audible sound | Approximately 20 Hz–20 kHz | Speech, music, most environmental sounds | Ultrasound | Above 20 kHz | Medical imaging, bat echolocation, dog whistles | Why the other choices are wrong:
+A. Below 20 Hz: This defines infrasound, not ultrasound. Infrasonic waves are produced by phenomena like earthquakes, volcanic eruptions, and ocean waves. Some animals (elephants, whales) communicate using infrasound because these low-frequency waves travel long distances with little attenuation.
+B. Between 20 Hz and 20,000 Hz: Approximately 20 Hz to 20 kHz is the conventional audible band for a typical young listener. Individual limits vary, and the upper limit commonly decreases with age.
+D. Above 1,000,000 Hz (1 MHz) only: While medical diagnostic ultrasound typically uses frequencies in the 1-20 MHz range, ultrasound by definition begins at 20 kHz (0.02 MHz). Frequencies between 20 kHz and 1 MHz are also ultrasound and are used in applications like industrial cleaning, sonar, and pest deterrent devices.
+Key Educational Points:
+  - Medical ultrasound uses high frequencies (1-20 MHz) because higher frequency means shorter wavelength and better resolution, though at the cost of reduced penetration depth.
+  - Bats use ultrasound echolocation (20-200 kHz) to navigate and hunt insects in darkness.
+  - The Doppler effect in ultrasound is used to measure blood flow velocity in clinical settings.
+Bottom Line: Conventionally, infrasound is below 20 Hz and ultrasound is above 20 kHz. The intervening band approximates typical young human hearing; 20 kHz is not every person's exact hearing limit.
+
+==============================================================================
+
+Q56  [phys-236]  Acoustics - Doppler Effect  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ambulance travels directly toward an observer who is stationary relative to still air. Its speed is less than the speed of sound, and its siren emits a constant frequency. The observer hears a frequency that is:
+
+  A. Lower than the actual frequency emitted by the siren
+  B. Equal to the actual frequency emitted by the siren
+  C. Higher than the actual frequency emitted by the siren   <= key
+  D. Alternating between higher and lower than the actual frequency
+
+EXPLANATION:
+Correct Answer: Higher than the actual frequency emitted by the siren
+The Doppler effect states that when a sound source moves toward an observer, the observed frequency is higher than the emitted frequency. This occurs because each successive wavefront is emitted from a position closer to the observer, effectively compressing the wavelength and increasing the frequency perceived.
+f_observed = f_source x (v_sound)/(v_sound - v_source)
+Since v_source is subtracted in the denominator (source approaching), the denominator is smaller than the numerator, making f_observed > f_source.
+Why the other choices are wrong:
+A. Lower than the actual frequency emitted by the siren: A lower perceived frequency (redshift in sound) occurs when the source is moving away from the observer. As the ambulance passes and recedes, the observer would then perceive a drop in frequency. This explains the familiar pitch change as an ambulance drives by.
+B. Equal to the actual frequency emitted by the siren: For a source and observer both stationary in the air, the received and emitted frequencies would match. Here the approaching source compresses the spacing between arriving wavefronts, so the received frequency is higher.
+D. Alternating between higher and lower than the actual frequency: During the stated direct approach, the received frequency stays above the emitted frequency. Nothing in the question describes repeated changes between approaching and receding motion.
+Key Educational Points:
+  - The Doppler effect applies to all waves, not just sound. In light, approaching sources appear blueshifted (higher frequency) and receding sources appear redshifted (lower frequency).
+  - In medicine, Doppler ultrasound uses this principle to measure blood flow velocity: blood flowing toward the transducer reflects higher-frequency echoes.
+  - The moving source changes the wavefront spacing in the air. The sound speed relative to that air remains set by the medium, while the stationary observer receives a higher frequency during approach.
+Bottom Line: Approaching source = higher perceived frequency (wavefronts compressed). Receding source = lower perceived frequency (wavefronts stretched). This is the Doppler effect, used in medical ultrasound, radar, and astronomy.
+
+==============================================================================
+
+Q57  [phys-237]  Acoustics - Frequency and Period  correct answer: B
+------------------------------------------------------------------------------
+STEM: If the frequency of a sound wave is doubled, what happens to its period?
+
+  A. The period doubles
+  B. The period is halved   <= key
+  C. The period remains unchanged
+  D. The period is quadrupled
+
+EXPLANATION:
+Correct Answer: The period is halved
+Frequency (f) and period (T) are inversely related:
+T = 1/f   or equivalently   f = 1/T
+If frequency doubles (f → 2f), the period becomes: T' = 1/(2f) = T/2. The period is halved.
+Why the other choices are wrong:
+A. The period doubles: This would require a direct proportionality between frequency and period, which contradicts their inverse relationship. If frequency increases, period must decrease. Doubling the period would actually require halving the frequency.
+C. The period remains unchanged: Period and frequency are reciprocals. If frequency changes from f to 2f, the period must change from 1/f to 1/(2f), so it cannot remain unchanged.
+D. The period is quadrupled: This would imply T is proportional to f^2, which is not the case. The inverse relationship means if f is multiplied by any factor n, T is divided by the same factor n.
+Key Educational Points:
+  - Period is the time for one complete oscillation (measured in seconds). Frequency is the number of complete oscillations per second (measured in hertz, Hz).
+  - The wave equation connects frequency, wavelength, and speed: v = f x λ. If frequency doubles in the same medium (constant v), the wavelength is halved.
+  - This inverse relationship applies to all periodic phenomena: sound waves, electromagnetic waves, pendulums, and any oscillatory motion.
+Bottom Line: T = 1/f. Doubling frequency halves the period. Tripling frequency gives one-third the period. Frequency and period are always inversely proportional -- they are reciprocals of each other.
+
+==============================================================================
+
+Q58  [phys-238]  Semiconductors - Doping  correct answer: B
+------------------------------------------------------------------------------
+STEM: An N-type semiconductor is created by doping a silicon crystal with atoms from which group of the periodic table?
+
+  A. Group IIIA (e.g., boron, gallium)
+  B. Group VA (e.g., phosphorus, arsenic)   <= key
+  C. Group IA (e.g., sodium, potassium)
+  D. Group VIIA (e.g., chlorine, bromine)
+
+EXPLANATION:
+Correct Answer: Group VA (e.g., phosphorus, arsenic)
+N-type semiconductors are produced by doping silicon (Group IVA, 4 valence electrons) with elements from Group VA (5 valence electrons), such as phosphorus, arsenic, or antimony. These donor atoms contribute four electrons to covalent bonds with silicon and have one extra electron that is loosely bound and easily freed to become a conduction electron. The "N" stands for negative, referring to the excess negative charge carriers (electrons).
+Why the other choices are wrong:
+A. Group IIIA (e.g., boron, gallium): Group IIIA elements have only 3 valence electrons. When they substitute for silicon, they create an electron deficiency (a "hole") in the crystal lattice. This produces a P-type semiconductor, where the majority charge carriers are positive holes. These dopants are called acceptors because they accept electrons from neighboring bonds.
+C. Group IA (e.g., sodium, potassium): Sodium and potassium are not the standard substitutional donor dopants used to make the N-type silicon described here. The intended mechanism uses a five-valence-electron atom such as phosphorus, with four electrons involved in bonding and one available as a donor electron.
+D. Group VIIA (e.g., chlorine, bromine): Chlorine and bromine are not the standard donor dopants for this silicon question. Phosphorus and arsenic provide the required five-valence-electron substitutional donor mechanism.
+Key Educational Points:
+  - N-type: Group VA dopant (donor) → extra electron → majority carriers are electrons.
+  - P-type: Group IIIA dopant (acceptor) → electron hole → majority carriers are holes.
+  - Doping changes the concentration of mobile carriers. N-type and P-type describe the majority carrier, not a net bulk charge: the semiconductor remains electrically neutral overall.
+  - Joining N-type and P-type regions forms a PN junction, used in junction diodes and bipolar transistors.
+Bottom Line: N-type = Group VA dopant (5 valence electrons, 1 extra → donor → excess electrons). P-type = Group IIIA dopant (3 valence electrons, 1 missing → acceptor → excess holes). Silicon is Group IVA with 4 valence electrons.
+
+==============================================================================
+
+Q59  [phys-239]  Semiconductors - Forward Bias  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ordinary PN junction diode is given enough forward bias to carry appreciable current. Which of the following occurs?
+
+  A. The depletion region widens and current flow is negligible
+  B. The diode has high resistance and blocks current flow
+  C. The depletion region narrows and a relatively large current flows   <= key
+  D. Only holes can cross the junction while electrons are blocked
+
+EXPLANATION:
+Correct Answer: The depletion region narrows and a relatively large current flows
+In forward bias, the positive terminal of the battery is connected to the P-side and the negative terminal to the N-side. This arrangement:
+  - Pushes holes from the P-side toward the junction
+  - Pushes electrons from the N-side toward the junction
+  - Narrows the depletion region by reducing the potential barrier
+  - Allows forward current to increase continuously and strongly with applied voltage; the actual current depends on the diode, temperature and external circuit
+Why the other choices are wrong:
+A. The depletion region widens and current flow is negligible: Reverse bias widens the depletion region and strongly limits current below breakdown. Forward bias instead lowers the barrier and narrows the depletion region.
+B. The diode has high resistance and blocks current flow: Forward current rises strongly as the forward voltage increases. There is no abrupt universal threshold at which a previously perfect insulator switches on; a constant forward drop is a simplified circuit model.
+D. Only holes can cross the junction while electrons are blocked: In forward bias, both charge carriers contribute to current flow. Holes move from P to N across the junction, while electrons simultaneously move from N to P. The conventional current direction is from P to N (anode to cathode).
+Key Educational Points:
+  - Forward bias reduces the junction barrier and depletion width, allowing appreciable forward current under suitable bias.
+  - Reverse bias widens the depletion region. Below breakdown, only a relatively small leakage current flows.
+  - A diode preferentially conducts in one direction under ordinary operating conditions, which makes it useful for rectification. Reverse leakage and breakdown are limits to the ideal one-way-valve model.
+Bottom Line: Forward bias connects P to + and N to −, lowering the barrier and narrowing the depletion region. A silicon drop around 0.6–0.7 V is an approximate operating model, not a universal threshold; current also depends on temperature and the circuit.
+
+==============================================================================
+
+Q60  [phys-240]  Semiconductors - Reverse Bias  correct answer: C   (CRITICAL: a wider depletion layer LOWERS junction capacitance)
+------------------------------------------------------------------------------
+STEM: An ordinary PN junction diode under reverse bias, below its breakdown voltage, exhibits:
+
+  A. Low resistance and large forward current
+  B. A narrowed depletion region and increased conductivity
+  C. High resistance and only a very small leakage current   <= key
+  D. Zero resistance due to quantum tunneling effects
+
+EXPLANATION:
+Correct Answer: High resistance and only a very small leakage current
+In reverse bias, the positive terminal is connected to the N-side and the negative terminal to the P-side. This pulls majority carriers away from the junction: electrons in the N-region are pulled toward the positive terminal, and holes in the P-region are pulled toward the negative terminal. The result:
+  - The depletion region widens substantially
+  - The potential barrier increases
+  - The diode presents very high resistance
+  - Only a small leakage current flows, associated with thermally generated carriers; its magnitude depends on the device and temperature
+Why the other choices are wrong:
+A. Low resistance and large forward current: Large forward current requires forward bias. Under the stated reverse bias below breakdown, the junction instead strongly limits current.
+B. A narrowed depletion region and increased conductivity: The depletion region widens under reverse bias, not narrows. The widened depletion region acts as an insulating layer, decreasing conductivity rather than increasing it.
+D. Zero resistance due to quantum tunneling effects: Tunneling can contribute to Zener breakdown in a sufficiently reverse-biased, heavily doped junction, but that does not make the junction a zero-resistance conductor. This question specifies operation below breakdown.
+Key Educational Points:
+  - Above the reverse breakdown voltage, Zener or avalanche mechanisms can allow a much larger reverse current. Excess current or power can damage a diode; devices intended for breakdown operation still require suitable current and power limits.
+  - Reverse leakage generally increases as temperature rises, but a fixed doubling for every 10 °C is not a universal law for all diodes and operating conditions.
+  - Increasing reverse bias widens the depletion layer and lowers junction capacitance. Approximately, C_j = εA/W: a larger depletion width W gives smaller capacitance. Varactor diodes use this voltage-dependent capacitance for tuning.
+Bottom Line: Below breakdown, reverse bias widens the depletion region and strongly limits current, while allowing some leakage. The wider depletion layer also reduces junction capacitance.
+
+==============================================================================
