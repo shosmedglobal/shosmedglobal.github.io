@@ -1,0 +1,1396 @@
+SHOSMED PHYSICS: REVISED THIRD 60-QUESTION EXPORT
+Implemented 19 November 2026 from SHOSMED_Physics_Batch3_Review_and_Claude_Prompt.txt
+For the final scientific reread. Implementation checks establish scope, structure
+and consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  The review warned against assuming phys-121..phys-180, contiguity or zero
+  overlap, so the map was derived by FULL CONTENT MATCH rather than from display
+  numbering, topic or the answer sequence:
+    1. Each original stem plus all four original option texts was matched against
+       all 280 physics records, on a canonical form that decodes named HTML
+       entities, strips tags, folds sub/superscripts to plain digits and
+       normalises dashes, Greek letters and arrows.
+    2. All 60 matched EXACTLY. None needed the whitespace-insensitive fallback
+       that four items of the previous block required.
+    3. No two of the 280 records share a signature under either form, so no match
+       was ambiguous and none needed a tie-break on the explanation.
+    4. Every stored topic equalled the signature topic.
+    5. All 60 stored answer letters equalled the review key block, and the review
+       changes no letter, so NO key was changed and there is no disagreement to
+       report.
+  Display Q1-Q60 map to phys-121 .. phys-180. Contiguity is a RESULT of that
+  verification, not an assumption. The block overlaps NEITHER earlier block
+  (phys-1 .. phys-120), so all 60 are newly reviewed ids. 100 further physics
+  records lie outside all three blocks and were not touched.
+
+  The review's Q56 caution, checked: this Q56 is phys-176; the previous block's
+  Q41 is phys-101. They share the area and speed data but are different records
+  with different option sets. phys-101 was not touched in this pass.
+
+  Key block (unchanged): ACCBAABBCC BBDCBBBDBB BBBCCBBBBA ACBBBCCACB CCCCBBCCAC CCCBBBBABB
+  Tally                : A=8, B=29, C=21, D=2
+
+WHAT CHANGED
+  Items edited        : 60 (every item ends with three lettered feedback paragraphs)
+  Stems replaced      : 34
+  Main explanations   : 20 replaced, 40 retained
+  Key Concepts        : 33 replaced, 27 retained
+  Option texts        : 5 replaced, across 3 questions
+  Keyed headings      : 3 re-synchronized (Q19, Q39, Q48)
+  Answer letters      : 0 changed
+  Distractor feedback : 180 paragraphs now, one per incorrect option
+      new in Q1-Q55  : 165 (none of those 55 carried any before)
+      retained in Q56-Q60 : 7 (Q56 A, Q56 C, Q57 A, Q57 C, Q58 C, Q58 D, Q59 D)
+      replaced in Q56-Q60 : 8 (Q56 D, Q57 D, Q58 B, Q59 A, Q59 C, Q60 A, Q60 C, Q60 D)
+  Core content kept   : 13 items (Q1, Q4, Q6, Q7, Q8, Q11, Q12, Q15, Q22, Q27, Q29, Q45, Q49), feedback only
+  Key-Concept only    : Q14, Q53, Q55
+  MAJOR REWRITE       : Q48
+  SUBSTANTIAL REPAIRS : Q10, Q19, Q39, Q50, Q53, Q56, Q57, Q58, Q59, Q60
+
+  The five replaced option texts:
+    Q19 B     The driving frequency is close to the natural frequency
+    Q39 C     Strong magnetization in an applied field, with the ability to retain magnetization
+    Q48 A     α particles
+    Q48 B     β particles
+    Q48 C     γ rays
+
+HOW THE Q56-Q60 FEEDBACK WAS HANDLED
+  Those five items already carried three bodies each, stored NOT as paragraphs but
+  as a <ul> of three <li> items with option-text lead-ins and no option letters,
+  sitting at the end of the main explanation. Each of those five blocks was
+  reconstructed byte for byte from the edit spec and refused to proceed unless it
+  was exactly what was stored. The seven bodies the review retains were carried
+  over verbatim, markup included, which is why Q58 D still reads 1/2 rho v^2 in
+  real markup although the plain-text review flattened it. The eight bodies the
+  review names were replaced. The list then became one paragraph per incorrect
+  option with the option letter added, which is the form the review asks for and
+  the form the rest of the bank uses. Nothing was duplicated: the five lists and
+  their 15 items are gone, replaced by 15 paragraphs.
+
+THE ITEMS NEEDING PARTICULAR ATTENTION ON REREAD
+  Q48 (phys-168) is the MAJOR REWRITE. The stem, options A/B/C, the main
+  explanation and the Key Concept were replaced. It now asks which listed
+  radiation consists of high-energy photons, for which thick lead or concrete is
+  commonly used, instead of ranking penetrating power against unspecified-energy
+  protons. The key stays C, now reading "gamma rays" in lower case, and the keyed
+  heading was re-synchronized. This item also carried the ONE genuine stored
+  notation defect in the block: its options and explanation used the UPPERCASE
+  Greek letters U+0391, U+0392 and U+0393 for the particle symbols. The option
+  replacements and the replacement prose remove all three.
+
+  Q56, Q58 and Q59 carry the DISTRACTOR ARITHMETIC CORRECTIONS, each recomputed
+  independently rather than taken on trust:
+    Q56 D: 2 x (0.04/0.01)^2 = 32 m/s, not 16 m/s. The old body claimed this
+           option squares the area ratio; it does not.
+    Q58 B: 1/2 x 1000 x (3-1)^2 = 2000 Pa, while 1/2 x 1000 x (9-1) = 4000 Pa.
+           The new body gives both and names which operation is required.
+    Q59 A: sqrt(gh) = sqrt(50) = 7.07 m/s, not 5 m/s. The new body instead gives
+           the depth 5 m/s would correspond to, 25/20 = 1.25 m.
+    Q59 C: gh = 50 m^2/s^2, which is not a speed at all. The old body attributed
+           50 m/s to v = 2gh, which gives 100.
+
+  Q50 (phys-170) keeps Fe-56 as the offered answer, which is correct for this
+  list, while stating that Ni-62 has the slightly higher binding energy per
+  nucleon. The claim that Fe-56 is "the most stable nucleus" is gone from both the
+  explanation and the Key Concept.
+
+  Q19 (phys-139) replaces exact-frequency resonance with a large response near the
+  natural frequency for a lightly damped oscillator, in the stem, option B, the
+  explanation and the Key Concept. Q39 (phys-159) permits retained magnetization
+  rather than making every ferromagnetic object a permanent magnet, and says an
+  unmagnetized piece can still be ferromagnetic. Q10 (phys-130) now asks for the
+  electric potential-energy increase and gives the field work the opposite sign.
+  Q53 (phys-173) balances nucleon number and charge without claiming nuclear
+  atomic number is unchanged in every reaction.
+
+PRESENTATION PRESERVED
+  No tables, Key Educational Points blocks or Bottom Lines exist anywhere in this
+  block, and none was added.
+  One Key Concept per item, 60 in total.
+  All 60 keyed headings are UNLETTERED, which is this block's own convention, and
+  that style is preserved throughout. Only Q19, Q39 and Q48 changed, because their
+  keyed OPTION TEXT changed; no answer position moved.
+  Feedback sits after the main explanation and before the Key Concept. Each
+  heading reproduces that item's own stored option text, so a renamed option
+  carries its new text into its heading automatically.
+  No em dash and no curly quote exists in the block, and none was introduced. No
+  HTML entity was introduced either; the entity count fell, because two of them
+  sat in Q57's replaced main explanation and Q59's replaced bodies.
+  The review prints exponents and indices as Unicode (10^-6, q_1, epsilon_0). New
+  text carries them as <sup>/<sub> markup, the form this block's own stems already
+  use and the form the approved scoped CSS renders. Retained text keeps whatever
+  it already stored.
+
+THINGS THE REVIEW ASKED TO CHECK RATHER THAN ASSUME
+  Q47 already stored "A_0/2<sup>n</sup>", Q52 "(1/2)<sup>n</sup>" and Q53
+  "<sup>235</sup><sub>92</sub>U + <sup>1</sup><sub>0</sub>n -> ...". All three are
+  correct markup that the plain-text export flattened, so none was changed. The
+  exported 2n, (1/2)n and 23592U were extraction artifacts, not stored defects.
+  Q48 was the one real stored notation defect, described above.
+  "Back to Dashboard", "Unanswered" and "Report an issue" appear in no stored field
+  anywhere in the physics bank, so they are interface text and were not counted as
+  content corrections.
+  No CSS was changed. The approved review-option wrappers and the scoped sup/sub
+  rule are untouched, and no bank-wide Unicode normalization was applied.
+
+CHECKS ACTUALLY PERFORMED
+  A focused result-verifying suite of 4,355 checks, 0 failures, re-deriving the id
+  map from the signatures and pairing every "claim removed" assertion with a check
+  that the claim really was there before.
+  16 of 16 targeted mutations caught, with questions-physics.json restored byte
+  for byte afterwards. They included moving an answer letter, restoring an
+  uppercase Greek symbol, altering a retained body's markup, dropping a feedback
+  paragraph, leaving the old <ul> heading behind, 'repairing' Q47's and Q53's
+  already-correct notation, and dropping a stored worked formula.
+  38 suites and 100,941 checks across the repository, 0 failures.
+  An independent diff against a pre-edit copy: exactly 60 records, fields
+  {explanation: 60, question: 34, options: 3}, 1,115 of 1,120 option texts
+  unchanged, 0 answer indices moved, 0 topics moved, nothing outside the block.
+  A real-DOM render of Q19, Q39, Q42, Q44, Q47, Q48, Q50, Q52, Q53 and Q56-Q60
+  through the actual sanitizer, in BOTH the question card and the end-of-quiz
+  review, at 1280 px and 375 px: 62 exponents and indices per view, none a flex or
+  grid item, base-to-exponent gap 0 everywhere, 0 split across lines, 0 literal
+  tags on screen, 0 overflow and 0 horizontal page scroll. The option wrappers,
+  the 32 px letter circles, the 14 px card gap and the 10 px review-row gap are
+  all intact, and 42 of 42 lettered feedback headings render.
+  Independently recomputed: every numerical row in the review's check table, plus
+  the distractor arithmetic for Q56 (32 m/s), Q58 (2000 against 4000 Pa) and Q59
+  (7.07 m/s and 50 m^2/s^2), and the values cited inside the new feedback bodies.
+
+COVERAGE, FROM UNIQUE VERIFIED PHYSICS IDS
+  Reviewed before this block : 120 ids, phys-1 .. phys-120
+  New unique ids this block  : 60, phys-121 .. phys-180, zero overlap
+  Reviewed after this block  : 180 of 280
+  Still unreviewed           : 100, untouched
+  Earlier subject approvals are not reopened, and this is not a claim about the
+  remaining 100 physics records.
+
+DEVIATIONS
+  1. Q17 stores an EMPTY styled div, <div style="text-align:center;margin:12px 
+     0"></div>, after its Key Concept. It holds no content and is invisible 
+     apart from a 12px gap. The review's inventory names no change to it and 
+     instruction 6 says to report rather than delete what the export did not 
+     show, so it was left exactly as stored and is reported here.
+  2. Q56, Q58 and Q59 keep an 'exp-diagram' div holding their worked formula, 
+     because the review retains their main explanations. Q57's main 
+     explanation is one of the 20 replaced, and the review's replacement prose 
+     carries its formula inline, so that item's exp-diagram div is gone. Divs 
+     in the block therefore go from 5 to 4. No div was added.
+  3. The existing Q56..Q60 feedback was stored as a <ul> of three <li> items 
+     with option-text lead-ins, not as paragraphs. Converting it to one 
+     paragraph per incorrect option with the option letters added is what the 
+     review's instruction 4 asks for, so the five <ul> lists and their 15 <li> 
+     items are gone from the block.
+
+==============================================================================
+
+Q1  [phys-121]  Gravitation  correct answer: A
+------------------------------------------------------------------------------
+STEM: A planet has twice the mass and twice the radius of Earth. What is the gravitational acceleration on its surface compared to Earth's g?
+
+  A. g/2   <= key
+  B. g
+  C. 2g
+  D. 4g
+
+EXPLANATION:
+Correct Answer: g/2
+g' = GM'/R'² = G(2M)/(2R)² = 2GM/4R² = (1/2)(GM/R²) = g/2.
+Why the other choices are wrong:
+B. g: Doubling the mass alone would double the gravitational acceleration, but the radius also doubles. Its square appears in the denominator, giving an overall factor of 2/4.
+C. 2g: This includes the doubled mass but ignores the doubled radius. Use both changes in g = GM/R^2.
+D. 4g: This is the factor by which R^2 increases. It belongs in the denominator, so it reduces the effect of the increased mass rather than multiplying it.
+Key Concept: Surface gravity g = GM/R²; it depends on both mass and radius.
+
+==============================================================================
+
+Q2  [phys-122]  Electricity & DC Circuits  correct answer: C
+------------------------------------------------------------------------------
+STEM: Two point charges of +3 μC and −6 μC are 0.3 m apart. What is the magnitude of the electrostatic force? (k = 9 × 10^9 N·m²/C²)
+
+  A. 0.6 N
+  B. 1.2 N
+  C. 1.8 N   <= key
+  D. 5.4 N
+
+EXPLANATION:
+Correct Answer: 1.8 N
+The magnitude is F = k|q_1q_2|/r^2 = (9 × 10^9)(3 × 10^−6)(6 × 10^−6)/(0.3)^2 = 0.162/0.09 = 1.8 N. The force is attractive because the charges have opposite signs.
+Why the other choices are wrong:
+A. 0.6 N: This is one-third of the correct force. The numerator k|q_1q_2| is 0.162 N·m^2, and dividing by r^2 = 0.09 m^2 gives 1.8 N.
+B. 1.2 N: At the stated separation, 1.2 N would result if the second charge had magnitude 4 μC. Its actual magnitude is 6 μC, giving 1.8 N.
+D. 5.4 N: This is three times the correct force. Multiply the charge magnitudes once and divide by the squared separation; no additional factor of 3 is needed.
+Key Concept: Coulomb force magnitude is F = k|q_1q_2|/r^2. Like charges repel and opposite charges attract.
+
+==============================================================================
+
+Q3  [phys-123]  Electricity & DC Circuits  correct answer: C
+------------------------------------------------------------------------------
+STEM: What is the magnitude of the electric field 0.5 m from a point charge of +2 × 10^−6 C? (k = 9 × 10^9 N·m^2/C^2)
+
+  A. 18,000 N/C
+  B. 36,000 N/C
+  C. 72,000 N/C   <= key
+  D. 144,000 N/C
+
+EXPLANATION:
+Correct Answer: 72,000 N/C
+The field magnitude is E = k|q|/r^2 = (9 × 10^9)(2 × 10^−6)/(0.5)^2 = 18,000/0.25 = 72,000 N/C. The field points radially away from this positive charge.
+Why the other choices are wrong:
+A. 18,000 N/C: This is the field at 1 m from the same charge. At 0.5 m, the inverse-square relationship makes the field four times larger.
+B. 36,000 N/C: This comes from dividing 18,000 by 0.5 rather than by (0.5)^2. Electric field from a point charge varies as 1/r^2, not 1/r.
+D. 144,000 N/C: This is twice the correct field. The distance contributes a factor of four relative to 1 m, giving 72,000 N/C, not a factor of eight.
+Key Concept: A point charge produces a field of magnitude E = k|q|/r^2, directed away from a positive charge and toward a negative charge.
+
+==============================================================================
+
+Q4  [phys-124]  Electricity & DC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is the equivalent resistance?
+
+  A. 0.5 Ω
+  B. 1 Ω   <= key
+  C. 3.67 Ω
+  D. 11 Ω
+
+EXPLANATION:
+Correct Answer: 1 Ω
+1/R_eq = 1/2 + 1/3 + 1/6 = 3/6 + 2/6 + 1/6 = 6/6 = 1. So R_eq = 1 Ω.
+Why the other choices are wrong:
+A. 0.5 Ω: The reciprocal sum is 1 Ω^−1, whose reciprocal is 1 Ω. A resistance of 0.5 Ω would require a total conductance of 2 Ω^−1.
+C. 3.67 Ω: This is approximately the arithmetic mean of 2, 3 and 6 Ω. Parallel resistance is found by adding reciprocals, and must be less than the smallest branch resistance.
+D. 11 Ω: This is 2 + 3 + 6 Ω, the equivalent resistance of the three resistors in series. The question specifies parallel branches.
+Key Concept: For parallel resistors: 1/R_eq = Σ(1/R_i).
+
+==============================================================================
+
+Q5  [phys-125]  Electricity & DC Circuits  correct answer: A
+------------------------------------------------------------------------------
+STEM: An ideal parallel-plate capacitor has vacuum between plates of area 0.02 m^2 separated by 0.001 m. Neglecting edge effects, what is its capacitance? (ε_0 = 8.85 × 10^−12 F/m)
+
+  A. 1.77 × 10^−10 F   <= key
+  B. 8.85 × 10^−10 F
+  C. 1.77 × 10^−11 F
+  D. 8.85 × 10^−11 F
+
+EXPLANATION:
+Correct Answer: 1.77 × 10^−10 F
+C = ε_0A/d = 8.85×10^−12 × 0.02 / 0.001 = 8.85×10^−12 × 20 = 1.77 × 10^−10 F ≈ 177 pF.
+Why the other choices are wrong:
+B. 8.85 × 10^−10 F: This is five times the correct capacitance. The geometric factor is A/d = 0.02/0.001 = 20 m, not 100 m.
+C. 1.77 × 10^−11 F: This is ten times too small. Dividing the plate area by the separation gives 20 m, so multiplying by 8.85 × 10^−12 F/m gives 1.77 × 10^−10 F.
+D. 8.85 × 10^−11 F: This is half the correct capacitance. The parallel-plate formula has no factor of ½; that factor appears in the capacitor energy formula, ½CV^2.
+Key Concept: For a parallel-plate capacitor with vacuum between the plates and negligible edge effects, C = ε_0A/d. Larger area increases capacitance; larger separation decreases it.
+
+==============================================================================
+
+Q6  [phys-126]  Electricity & DC Circuits  correct answer: A
+------------------------------------------------------------------------------
+STEM: Two capacitors of 4 μF and 6 μF are connected in series. What is the equivalent capacitance?
+
+  A. 2.4 μF   <= key
+  B. 5 μF
+  C. 10 μF
+  D. 1.2 μF
+
+EXPLANATION:
+Correct Answer: 2.4 μF
+1/C_eq = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 → C_eq = 12/5 = 2.4 μF.
+Why the other choices are wrong:
+B. 5 μF: This is the arithmetic mean of 4 and 6 μF. For series capacitors, add reciprocal capacitances rather than averaging them.
+C. 10 μF: Adding the capacitances gives 10 μF for a parallel connection. In series, the equivalent capacitance is smaller than either individual capacitance.
+D. 1.2 μF: This is half of the correct result. The reciprocal sum is 5/12 μF^−1, so its reciprocal is 12/5 = 2.4 μF, with no further division by two.
+Key Concept: Capacitors in series: 1/C_eq = Σ(1/C_i).
+
+==============================================================================
+
+Q7  [phys-127]  Electricity & DC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: A 10 Ω resistor carries a current of 3 A. What power is dissipated?
+
+  A. 30 W
+  B. 90 W   <= key
+  C. 300 W
+  D. 9 W
+
+EXPLANATION:
+Correct Answer: 90 W
+P = I²R = 9 × 10 = 90 W.
+Why the other choices are wrong:
+A. 30 W: The product IR is 30 V, the voltage across the resistor. Power requires another factor of current: P = I(IR) = 90 W.
+C. 300 W: This value would correspond to a larger current, about √(300/10) = 5.48 A. With the stated 3 A, I^2R gives 90 W.
+D. 9 W: This is the numerical value of 3^2, but the resistance still has to be included. Multiply 9 A^2 by 10 Ω to obtain 90 W.
+Key Concept: Power in a resistor: P = I²R = V²/R = IV.
+
+==============================================================================
+
+Q8  [phys-128]  Electricity & DC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: A wire of resistivity 1.7 × 10^−8 Ω·m has a length of 10 m and cross-sectional area of 1 × 10^−6 m². What is its resistance?
+
+  A. 0.017 Ω
+  B. 0.17 Ω   <= key
+  C. 1.7 Ω
+  D. 17 Ω
+
+EXPLANATION:
+Correct Answer: 0.17 Ω
+R = ρL/A = 1.7×10^−8 × 10 / 1×10^−6 = 1.7×10^−7 / 10^−6 = 0.17 Ω.
+Why the other choices are wrong:
+A. 0.017 Ω: This is the resistance of a 1 m length of the same wire. The actual length is 10 m, so the resistance is ten times larger.
+C. 1.7 Ω: This is ten times too large. The powers of ten give 10^−8 × 10^1/10^−6 = 10^−1, so the result is 1.7 × 10^−1 Ω.
+D. 17 Ω: This is 100 times too large. Keep the cross-sectional area in square meters and use R = ρL/A without an extra area conversion.
+Key Concept: R = ρL/A, where ρ is resistivity.
+
+==============================================================================
+
+Q9  [phys-129]  Electricity & DC Circuits  correct answer: C
+------------------------------------------------------------------------------
+STEM: Two resistors of 3 Ω and 6 Ω are connected in series across an ideal 12 V battery. What is the voltage across the 6 Ω resistor?
+
+  A. 4 V
+  B. 6 V
+  C. 8 V   <= key
+  D. 12 V
+
+EXPLANATION:
+Correct Answer: 8 V
+Total resistance = 3 + 6 = 9 Ω. Current = 12/9 = 4/3 A. Voltage across 6 Ω: V = IR = (4/3) × 6 = 8 V.
+Why the other choices are wrong:
+A. 4 V: This is the voltage across the 3 Ω resistor: (12/9) × 3 = 4 V. The 6 Ω resistor takes twice that voltage because the same current passes through both.
+B. 6 V: An equal 6 V split would require equal resistances. In series, voltage divides in proportion to resistance, here in a 1:2 ratio.
+D. 12 V: The full 12 V is across both resistors together. Only a resistor directly across the battery terminals would have that entire voltage across it.
+Key Concept: Voltage divider: in series, V across each resistor is proportional to its resistance.
+
+==============================================================================
+
+Q10  [phys-130]  Electricity & DC Circuits  correct answer: C   (now asks for the electric potential-energy increase)
+------------------------------------------------------------------------------
+STEM: A positive charge of +5 C is moved to a point whose electric potential is 24 V higher. What is the increase in its electric potential energy?
+
+  A. 4.8 J
+  B. 29 J
+  C. 120 J   <= key
+  D. 0.21 J
+
+EXPLANATION:
+Correct Answer: 120 J
+The change in electric potential energy is ΔU = qΔV = (5 C)(24 V) = 120 J. A positive charge gains potential energy when moved to a higher potential. The electric field does −120 J of work during this displacement.
+Why the other choices are wrong:
+A. 4.8 J: Dividing 24 by 5 gives 4.8, but voltage is already energy per unit charge. Multiply the potential difference by the charge to obtain an energy.
+B. 29 J: This adds 5 and 24. Charge and voltage have different units and cannot be added; their product has units of joules.
+D. 0.21 J: This is approximately 5/24. Dividing charge by voltage has units of capacitance, not energy; the required operation is qΔV.
+Key Concept: Electric potential difference is potential-energy change per unit charge: ΔU = qΔV. Work done by the electric field is −ΔU.
+
+==============================================================================
+
+Q11  [phys-131]  Electricity & DC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: A 100 μF capacitor is charged to 50 V. How much energy is stored?
+
+  A. 0.0625 J
+  B. 0.125 J   <= key
+  C. 0.25 J
+  D. 2.5 J
+
+EXPLANATION:
+Correct Answer: 0.125 J
+E = ½CV² = ½ × 100×10^−6 × 2500 = ½ × 0.25 = 0.125 J.
+Why the other choices are wrong:
+A. 0.0625 J: This is half the correct energy. The factor of ½ in E = ½CV^2 is used only once.
+C. 0.25 J: This is CV^2 = 0.25 J without the required factor of ½. The voltage rises as the capacitor charges, so the stored energy is ½CV^2.
+D. 2.5 J: This is twenty times too large. Convert 100 μF to 1 × 10^−4 F, square 50 V, and include the factor of ½.
+Key Concept: Energy stored in a capacitor: E = ½CV².
+
+==============================================================================
+
+Q12  [phys-132]  Electricity & DC Circuits  correct answer: B
+------------------------------------------------------------------------------
+STEM: According to Kirchhoff's junction rule, at any junction in a circuit:
+
+  A. The sum of voltages is zero
+  B. The sum of currents entering equals the sum leaving   <= key
+  C. The total resistance is conserved
+  D. Power input equals power output
+
+EXPLANATION:
+Correct Answer: The sum of currents entering equals the sum leaving
+Kirchhoff's junction rule (current law) states that the total current flowing into a junction equals the total current flowing out. This is based on conservation of charge.
+Why the other choices are wrong:
+A. The sum of voltages is zero: The algebraic sum of potential differences around a closed circuit loop is the voltage rule. The junction rule concerns charge flow into and out of a junction.
+C. The total resistance is conserved: Resistance is a circuit property, not a quantity conserved at a junction. Kirchhoff's junction rule follows from conservation of electric charge.
+D. Power input equals power output: Power balance concerns energy conservation. It is not the statement of the junction rule, which equates incoming and outgoing currents.
+Key Concept: Kirchhoff's current law: ΣI_in = ΣI_out at any junction.
+
+==============================================================================
+
+Q13  [phys-133]  Electricity & DC Circuits  correct answer: D
+------------------------------------------------------------------------------
+STEM: An incandescent light bulb is rated 60 W at 120 V. What is the resistance of its filament at normal operating temperature?
+
+  A. 2 Ω
+  B. 60 Ω
+  C. 120 Ω
+  D. 240 Ω   <= key
+
+EXPLANATION:
+Correct Answer: 240 Ω
+P = V²/R → R = V²/P = (120)²/60 = 14400/60 = 240 Ω.
+Why the other choices are wrong:
+A. 2 Ω: The numerical ratio 120/60 is 2, but V/P has units of inverse current, not resistance. The required ratio is V^2/P.
+B. 60 Ω: This repeats the power rating as a resistance. Watts and ohms measure different quantities; use both the voltage and the power.
+C. 120 Ω: This repeats the voltage as a resistance. Squaring 120 V and dividing by 60 W gives 240 Ω.
+Key Concept: For a resistive filament at its operating condition, R = V^2/P. The filament resistance changes with temperature, so its cold resistance can differ.
+
+==============================================================================
+
+Q14  [phys-134]  Electricity & DC Circuits  correct answer: C
+------------------------------------------------------------------------------
+STEM: Four identical resistors of 8 Ω each are connected: two in series forming a branch, and two such branches in parallel. What is the total resistance?
+
+  A. 2 Ω
+  B. 4 Ω
+  C. 8 Ω   <= key
+  D. 16 Ω
+
+EXPLANATION:
+Correct Answer: 8 Ω
+Each series branch: 8 + 8 = 16 Ω. Two branches in parallel: 1/R = 1/16 + 1/16 = 2/16 → R = 8 Ω.
+Why the other choices are wrong:
+A. 2 Ω: Four 8 Ω resistors all in parallel would give 2 Ω. Here they are arranged as two series pairs, so that shortcut does not apply.
+B. 4 Ω: Two individual 8 Ω resistors in parallel would give 4 Ω. Each branch in this circuit contains two resistors in series and therefore has 16 Ω.
+D. 16 Ω: This is the resistance of one series branch. Adding an identical parallel branch halves that equivalent resistance to 8 Ω.
+Key Concept: Identify which components actually form series or parallel groups. Here each series pair gives 16 Ω, and the two equal parallel branches give 8 Ω.
+
+==============================================================================
+
+Q15  [phys-135]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: A mass on a spring oscillates with a period of 0.4 s. What is the frequency?
+
+  A. 0.4 Hz
+  B. 2.5 Hz   <= key
+  C. 4 Hz
+  D. 25 Hz
+
+EXPLANATION:
+Correct Answer: 2.5 Hz
+f = 1/T = 1/0.4 = 2.5 Hz.
+Why the other choices are wrong:
+A. 0.4 Hz: This copies the period's numerical value into the frequency. Period is seconds per cycle, while frequency is cycles per second, so they are reciprocals.
+C. 4 Hz: Four oscillations per second would have a period of 0.25 s. A period of 0.4 s gives 1/0.4 = 2.5 oscillations per second.
+D. 25 Hz: This would be correct for a period of 0.04 s. The stated period is ten times longer, so the frequency is ten times smaller.
+Key Concept: Frequency and period are reciprocals: f = 1/T.
+
+==============================================================================
+
+Q16  [phys-136]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: An ideal simple pendulum of length 1 m oscillates through a small angle. What is its period? (g = 10 m/s^2, π^2 ≈ 10)
+
+  A. 1 s
+  B. 2 s   <= key
+  C. π s
+  D. 0.5 s
+
+EXPLANATION:
+Correct Answer: 2 s
+T = 2π√(L/g) = 2π√(1/10) = 2π/√10. Since π² ≈ 10, √10 ≈ π, so T ≈ 2π/π = 2 s.
+Why the other choices are wrong:
+A. 1 s: This is half the full period. It is the time to travel from one extreme to the other, not to return to the same position and direction of motion.
+C. π s: Use the full factor √(L/g). With L/g = 1/10 and π^2 ≈ 10, the π factors cancel to give about 2 s.
+D. 0.5 s: This is one-quarter of the period, the time from equilibrium to one extreme in the small-angle model. A full oscillation takes four such intervals.
+Key Concept: For small-angle oscillations of an ideal simple pendulum, T = 2π√(L/g). It depends on length and g, but not on the bob's mass.
+
+==============================================================================
+
+Q17  [phys-137]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: A wave has a frequency of 500 Hz and a wavelength of 0.68 m. What is its speed?
+
+  A. 170 m/s
+  B. 340 m/s   <= key
+  C. 500 m/s
+  D. 735 m/s
+
+EXPLANATION:
+Correct Answer: 340 m/s
+The speed is v = fλ = 500 × 0.68 = 340 m/s. This is approximately the speed of sound in air at ordinary temperatures.
+Why the other choices are wrong:
+A. 170 m/s: This halves fλ without justification. In one period, the wave pattern advances one full wavelength, so v = fλ.
+C. 500 m/s: This repeats the frequency as a speed. Frequency has units of s^−1; multiplying it by wavelength in meters gives m/s.
+D. 735 m/s: This is approximately 500/0.68. Dividing frequency by wavelength does not have the units of speed; multiply them instead.
+Key Concept: Wave speed v = fλ.
+
+==============================================================================
+
+Q18  [phys-138]  Vibrations, Waves & Sound  correct answer: D
+------------------------------------------------------------------------------
+STEM: An ambulance travels at 34 m/s directly toward an observer who is stationary relative to still air. Its siren emits sound at 800 Hz. What frequency does the observer hear? (Speed of sound in the air = 340 m/s)
+
+  A. 720 Hz
+  B. 800 Hz
+  C. 880 Hz
+  D. 889 Hz   <= key
+
+EXPLANATION:
+Correct Answer: 889 Hz
+Doppler effect (source approaching): f' = f × v/(v − v_s) = 800 × 340/(340 − 34) = 800 × 340/306 ≈ 889 Hz.
+Why the other choices are wrong:
+A. 720 Hz: An approaching source raises the observed frequency, so 720 Hz is too low. This value would arise for an observer moving away at 34 m/s from a stationary 800 Hz source.
+B. 800 Hz: This is the emitted frequency. The moving source compresses the wavefront spacing ahead of it, so a stationary observer in front hears a higher frequency.
+C. 880 Hz: This uses 800(340 + 34)/340, the formula for an observer moving toward a stationary source. Here the source moves, so use 800 × 340/(340 − 34).
+Key Concept: For a source approaching a stationary observer through still air, f' = fv/(v − v_s). The shorter arriving wavelength gives a higher observed frequency.
+
+==============================================================================
+
+Q19  [phys-139]  Vibrations, Waves & Sound  correct answer: B   (option B and the resonance condition relaxed to "close to")
+------------------------------------------------------------------------------
+STEM: A lightly damped mechanical oscillator is driven periodically. A large resonant response occurs when:
+
+  A. A system is damped heavily
+  B. The driving frequency is close to the natural frequency   <= key
+  C. Two waves cancel completely
+  D. The amplitude is zero
+
+EXPLANATION:
+Correct Answer: The driving frequency is close to the natural frequency
+A lightly damped oscillator responds strongly when the driving frequency is close to its natural frequency. Repeated pushes then sustain a large oscillation amplitude. Damping removes energy and limits the response; resonance does not mean unlimited growth in a real system.
+Why the other choices are wrong:
+A. A system is damped heavily: Heavy damping removes energy rapidly and suppresses the large amplitude associated with a sharp resonance. It is not the condition that produces resonance.
+C. Two waves cancel completely: Cancellation of overlapping waves is destructive interference. Resonance concerns the response of an oscillator to a periodic driving force.
+D. The amplitude is zero: Zero amplitude means no oscillation. A large resonant response has substantial amplitude; passing through zero displacement is not the same as having zero amplitude.
+Key Concept: A lightly damped oscillator shows a large response when driven near its natural frequency. Damping limits the amplitude.
+
+==============================================================================
+
+Q20  [phys-140]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: Two sinusoidal waves of the same frequency and amplitude travel in opposite directions along the same string, with their transverse displacements in the same plane. Their superposition produces:
+
+  A. A traveling wave with double amplitude
+  B. A standing wave   <= key
+  C. Complete cancellation at all points
+  D. A wave with half the frequency
+
+EXPLANATION:
+Correct Answer: A standing wave
+When two waves of equal frequency and amplitude travel in opposite directions, they produce a standing wave with nodes (zero displacement) and antinodes (maximum displacement).
+Why the other choices are wrong:
+A. A traveling wave with double amplitude: The two equal opposite-traveling waves form a stationary pattern of nodes and antinodes. The amplitude is doubled at antinodes, but the resulting pattern is not one traveling wave.
+C. Complete cancellation at all points: Destructive interference fixes the nodes at zero displacement, but other points oscillate. At antinodes the two waves can reinforce to give twice the amplitude of either wave.
+D. A wave with half the frequency: The points between nodes oscillate at the original wave frequency. Superposition changes the spatial amplitude pattern, not the frequency to half its value.
+Key Concept: Standing waves form from superposition of two identical waves traveling in opposite directions.
+
+==============================================================================
+
+Q21  [phys-141]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: What is the period of an ideal simple pendulum of length 0.25 m oscillating through a small angle? (g = 10 m/s^2, π^2 ≈ 10)
+
+  A. 0.5 s
+  B. 1 s   <= key
+  C. 1.5 s
+  D. 2 s
+
+EXPLANATION:
+Correct Answer: 1 s
+T = 2π√(L/g) = 2π√(0.25/10) = 2π√(0.025) = 2π × 0.158 ≈ 1 s. Alternatively: T = 2π/√(g/L) = 2π/√40; since √40 ≈ 2π, T ≈ 1 s.
+Why the other choices are wrong:
+A. 0.5 s: A length of 0.25 m is one-quarter of 1 m, but the period depends on √L. The 2 s period of the 1 m pendulum therefore halves to 1 s, rather than becoming 0.5 s.
+C. 1.5 s: With the stated g and approximation, T ≈ 2√L when L is in meters and T in seconds. Substituting L = 0.25 gives 1 s; 1.5 s would require about 0.5625 m.
+D. 2 s: This is the period for a 1 m pendulum under the stated approximation. The shorter 0.25 m pendulum has half that period.
+Key Concept: For small-angle pendulum motion, T = 2π√(L/g). Reducing the length to one-quarter halves the period.
+
+==============================================================================
+
+Q22  [phys-142]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: When two sound waves of frequencies 256 Hz and 260 Hz are played simultaneously, the beat frequency is:
+
+  A. 2 Hz
+  B. 4 Hz   <= key
+  C. 258 Hz
+  D. 516 Hz
+
+EXPLANATION:
+Correct Answer: 4 Hz
+Beat frequency = |f_1 − f_2| = |256 − 260| = 4 Hz. You hear 4 beats per second.
+Why the other choices are wrong:
+A. 2 Hz: This is half the frequency difference. The audible loudness maxima recur at |260 − 256| = 4 times per second, not twice per second.
+C. 258 Hz: This is the mean of the two frequencies and describes the rapid oscillation around which the beat pattern is heard. The beat frequency itself is their difference.
+D. 516 Hz: This is the sum of the frequencies. Beats come from the slow change between constructive and destructive interference, governed by the frequency difference.
+Key Concept: Beat frequency = |f₁ − f₂|.
+
+==============================================================================
+
+Q23  [phys-143]  Vibrations, Waves & Sound  correct answer: B
+------------------------------------------------------------------------------
+STEM: In simple harmonic motion, the maximum speed occurs at:
+
+  A. Maximum displacement
+  B. The equilibrium position   <= key
+  C. Half the amplitude
+  D. The turning points
+
+EXPLANATION:
+Correct Answer: The equilibrium position
+In SHM, the speed is greatest at the equilibrium position, where displacement is zero. It is zero at the turning points, where the magnitude of displacement is the amplitude A. The maximum speed is v_max = ωA.
+Why the other choices are wrong:
+A. Maximum displacement: At maximum displacement the object is at a turning point and momentarily at rest. Its potential energy is greatest and its kinetic energy is zero.
+C. Half the amplitude: Halfway between equilibrium and a turning point, the speed is nonzero but below its maximum. Some of the mechanical energy is still stored as potential energy.
+D. The turning points: At either turning point the object reverses direction and its speed is momentarily zero. It reaches its maximum speed when it passes through equilibrium.
+Key Concept: In SHM, KE is maximum (and PE minimum) at the equilibrium position.
+
+==============================================================================
+
+Q24  [phys-144]  Vibrations, Waves & Sound  correct answer: C
+------------------------------------------------------------------------------
+STEM: A string under tension is fixed at both ends and vibrates in its second harmonic. How many nodes are there, including the endpoints?
+
+  A. 1
+  B. 2
+  C. 3   <= key
+  D. 4
+
+EXPLANATION:
+Correct Answer: 3
+The second harmonic (first overtone) has 2 antinodes and 3 nodes: one at each fixed end and one in the middle.
+Why the other choices are wrong:
+A. 1: There is one internal node in the second harmonic, but the question also counts the two fixed endpoints. The total is three.
+B. 2: This counts only the fixed endpoints. The second harmonic also has a node at the midpoint of the string.
+D. 4: Four nodes would occur in the third harmonic of a string fixed at both ends. The second harmonic has two loops and three nodes.
+Key Concept: On a string fixed at both ends, the nth harmonic has n antinodes and n + 1 nodes, including the endpoints.
+
+==============================================================================
+
+Q25  [phys-145]  Light & Optics  correct answer: C
+------------------------------------------------------------------------------
+STEM: A light ray travels from water (n = 1.33) into air (n = 1.00). Its angle of incidence is 30° to the normal. What is the angle of refraction in air, also measured from the normal? (sin 30° = 0.5)
+
+  A. 22°
+  B. 30°
+  C. 41.7°   <= key
+  D. 48.6°
+
+EXPLANATION:
+Correct Answer: 41.7°
+Snell's law gives n_1sinθ_1 = n_2sinθ_2. Thus sinθ_2 = 1.33 × 0.5/1.00 = 0.665, so θ_2 ≈ 41.7°. The ray bends away from the normal because it enters a medium with a lower refractive index.
+Why the other choices are wrong:
+A. 22°: About 22° would result for the reverse situation: light entering water from air at 30° to the normal. Here the ray leaves water, so its angle increases.
+B. 30°: The indices differ and the ray is not normally incident, so its direction changes. An unchanged angle would not satisfy 1.33sin30° = sinθ_2.
+D. 48.6°: This is close to the water-to-air critical angle, about 48.8° using n = 1.33. The critical angle is an incident angle producing a 90° refracted ray, not the refracted angle for this question.
+Key Concept: Snell's law is n_1sinθ_1 = n_2sinθ_2, with both angles measured from the normal. Entering a lower-index medium bends the transmitted ray away from the normal.
+
+==============================================================================
+
+Q26  [phys-146]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A real object is placed 30 cm in front of a thin converging lens of focal length +10 cm in air. What is the distance from the lens to the image?
+
+  A. 7.5 cm
+  B. 15 cm   <= key
+  C. 20 cm
+  D. 30 cm
+
+EXPLANATION:
+Correct Answer: 15 cm
+Using the thin lens equation: 1/f = 1/d_o + 1/d_i. 1/10 = 1/30 + 1/d_i. 1/d_i = 1/10 − 1/30 = 3/30 − 1/30 = 2/30. d_i = 15 cm.
+Why the other choices are wrong:
+A. 7.5 cm: This results from adding 1/10 and 1/30 to obtain 1/d_i. Rearranging the lens equation requires subtraction: 1/d_i = 1/f − 1/d_o.
+C. 20 cm: Subtracting the focal length directly from the object distance gives 20 cm, but the lens equation relates reciprocals of distances, not their direct difference.
+D. 30 cm: Equal object and image distances occur when the object is at twice the focal length. Here the object is at 3f, and the real image forms at 1.5f = 15 cm.
+Key Concept: For a thin lens, 1/f = 1/d_o + 1/d_i. With a real object taken as d_o > 0, a positive d_i describes a real image on the opposite side of the lens.
+
+==============================================================================
+
+Q27  [phys-147]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A concave mirror has a focal length of 20 cm. An object placed at the center of curvature (40 cm) produces an image that is:
+
+  A. Virtual, upright, magnified
+  B. Real, inverted, same size   <= key
+  C. Real, inverted, diminished
+  D. Virtual, upright, same size
+
+EXPLANATION:
+Correct Answer: Real, inverted, same size
+When an object is placed at the center of curvature (C = 2f), the image forms at C as well. It is real, inverted, and the same size as the object.
+Why the other choices are wrong:
+A. Virtual, upright, magnified: A concave mirror gives a virtual, upright, magnified image when a real object is between the mirror and its focus. This object is farther away, at 2f.
+C. Real, inverted, diminished: A real, inverted, diminished image occurs when the object is beyond the center of curvature. At the center itself, the image and object have equal size.
+D. Virtual, upright, same size: A plane mirror produces a virtual upright image of the same size. This concave mirror instead forms a real inverted image for an object at its center of curvature.
+Key Concept: Object at C → image at C, real, inverted, same size.
+
+==============================================================================
+
+Q28  [phys-148]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which lens type corrects blurred distance vision in a person with myopia (nearsightedness) and no astigmatism?
+
+  A. Converging (convex) lens
+  B. Diverging (concave) lens   <= key
+  C. Cylindrical lens
+  D. Bifocal lens only
+
+EXPLANATION:
+Correct Answer: Diverging (concave) lens
+In an uncorrected myopic eye with accommodation relaxed, light from a distant object focuses in front of the retina. A diverging lens reduces the convergence of the incoming rays so that the eye focuses them on the retina.
+Why the other choices are wrong:
+A. Converging (convex) lens: A converging lens adds positive optical power. The usual correction for myopia requires negative power to move the focus of distant light back onto the retina.
+C. Cylindrical lens: A cylindrical component supplies different optical power in different directions and is used to correct astigmatism. The stem excludes astigmatism.
+D. Bifocal lens only: Bifocal lenses provide separate powers for different viewing distances. They are not required solely because someone has myopia; the distance correction still uses diverging power.
+Key Concept: Myopia → diverging lens; hyperopia → converging lens.
+
+==============================================================================
+
+Q29  [phys-149]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: The angle of incidence equals the angle of reflection. This is known as:
+
+  A. Snell's law
+  B. The law of reflection   <= key
+  C. Brewster's law
+  D. Huygens' principle
+
+EXPLANATION:
+Correct Answer: The law of reflection
+The law of reflection states that the angle of incidence equals the angle of reflection, both measured from the normal to the surface.
+Why the other choices are wrong:
+A. Snell's law: Snell's law relates incident and refracted angles when light passes between media with different refractive indices. This question concerns a reflected ray.
+C. Brewster's law: Brewster's law identifies the incidence angle at which the reflected light is fully polarized for an ideal dielectric interface. It is not the name of the equal-angle reflection rule.
+D. Huygens' principle: Huygens' principle describes wavefront propagation and can be used to derive reflection and refraction. The specific equal-angle statement is called the law of reflection.
+Key Concept: Law of reflection: θ_i = θ_r.
+
+==============================================================================
+
+Q30  [phys-150]  Light & Optics  correct answer: A
+------------------------------------------------------------------------------
+STEM: White light passing through a glass prism separates into colors because:
+
+  A. Different colors travel at different speeds in the prism   <= key
+  B. The prism absorbs certain wavelengths
+  C. All colors reflect at different angles
+  D. The prism creates new wavelengths
+
+EXPLANATION:
+Correct Answer: Different colors travel at different speeds in the prism
+In ordinary transparent glass over the visible range, the refractive index varies with the color of light. Violet light travels more slowly in the glass and is usually bent more than red light by the prism. The white light already contains the colors; the prism separates them.
+Why the other choices are wrong:
+B. The prism absorbs certain wavelengths: Selective absorption removes colors from a beam. A transparent prism produces a spectrum mainly by refracting its existing colors through different angles.
+C. All colors reflect at different angles: The transmitted spectrum forms mainly by refraction at the prism's surfaces, not by reflecting each color through a different angle.
+D. The prism creates new wavelengths: The prism does not create new light frequencies to make the spectrum. Each component keeps its frequency during refraction, although its wavelength changes while it travels in the glass.
+Key Concept: Dispersion - different wavelengths have different refractive indices in glass.
+
+==============================================================================
+
+Q31  [phys-151]  Light & Optics  correct answer: A
+------------------------------------------------------------------------------
+STEM: A real object is placed 15 cm in front of a thin diverging lens of focal length −30 cm in air. What is the image distance, taking a virtual image on the object side as negative?
+
+  A. −10 cm   <= key
+  B. −30 cm
+  C. 10 cm
+  D. 30 cm
+
+EXPLANATION:
+Correct Answer: −10 cm
+1/f = 1/d_o + 1/d_i. 1/(−30) = 1/15 + 1/d_i. 1/d_i = −1/30 − 1/15 = −1/30 − 2/30 = −3/30 = −1/10. d_i = −10 cm (virtual image).
+Why the other choices are wrong:
+B. −30 cm: The virtual image approaches the focal point for a very distant object. With the object only 15 cm away, the lens equation instead gives −10 cm.
+C. 10 cm: The magnitude is correct, but the positive sign would describe a real image on the other side. The image here is virtual and on the object side.
+D. 30 cm: This has both the wrong distance and the wrong sign. Using f = −30 cm and d_o = +15 cm gives 1/d_i = −1/10 cm^−1.
+Key Concept: For a real object in front of a single thin diverging lens in air, the image is virtual, upright and diminished, on the same side as the object.
+
+==============================================================================
+
+Q32  [phys-152]  Light & Optics  correct answer: C
+------------------------------------------------------------------------------
+STEM: The optical power of a lens with focal length +0.25 m is:
+
+  A. 0.25 D
+  B. 2.5 D
+  C. 4 D   <= key
+  D. 25 D
+
+EXPLANATION:
+Correct Answer: 4 D
+Power P = 1/f = 1/0.25 = 4 diopters (D).
+Why the other choices are wrong:
+A. 0.25 D: This repeats the focal length as the power. Power in diopters is the reciprocal of focal length in meters, not the same numerical value.
+B. 2.5 D: A power of 2.5 D corresponds to a focal length of 0.4 m. The stated focal length is 0.25 m, whose reciprocal is 4 D.
+D. 25 D: This would correspond to a focal length of 0.04 m. Do not confuse the focal length of 25 cm with a power of 25 diopters.
+Key Concept: Lens power (in diopters) = 1/f (in meters). Converging lenses have positive power.
+
+==============================================================================
+
+Q33  [phys-153]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which phenomenon demonstrates the wave nature of light?
+
+  A. The photoelectric effect
+  B. Diffraction through a narrow slit   <= key
+  C. Compton scattering
+  D. Blackbody radiation
+
+EXPLANATION:
+Correct Answer: Diffraction through a narrow slit
+Diffraction is the spreading of light at an opening or around an obstacle. A narrow slit produces a pattern explained by interference of light waves. This demonstrates wave behavior; the photoelectric effect and Compton scattering instead provide evidence for quantized light energy and momentum.
+Why the other choices are wrong:
+A. The photoelectric effect: The photoelectric effect reveals that light transfers energy in quanta, with photon energy hf. Its threshold-frequency behavior is not explained by a purely classical wave model.
+C. Compton scattering: Compton scattering is explained by energy and momentum transfer between photons and electrons. It is evidence for photon momentum rather than the slit-interference behavior asked about here.
+D. Blackbody radiation: The spectrum of blackbody radiation led to the introduction of energy quantization. Diffraction is the more direct demonstration of spatial wave interference among these choices.
+Key Concept: Diffraction and interference demonstrate wave nature; photoelectric effect demonstrates particle nature.
+
+==============================================================================
+
+Q34  [phys-154]  Light & Optics  correct answer: B
+------------------------------------------------------------------------------
+STEM: The visible spectrum ranges approximately from:
+
+  A. 100–400 nm
+  B. 400–700 nm   <= key
+  C. 700–1000 nm
+  D. 1000–1500 nm
+
+EXPLANATION:
+Correct Answer: 400–700 nm
+A common rounded range for visible light is about 400 nm at the violet end to 700 nm at the red end. The limits are not sharp and depend on viewing conditions. Shorter wavelengths lie toward the ultraviolet region and longer wavelengths toward the infrared region.
+Why the other choices are wrong:
+A. 100–400 nm: This interval is mainly ultraviolet. Its upper end approaches visible violet, but it omits almost the whole visible range.
+C. 700–1000 nm: This interval begins near the red edge of visibility and extends into the near infrared. It omits the shorter visible wavelengths.
+D. 1000–1500 nm: This interval is infrared, well beyond the usual visible red limit. It is not the range normally detected as visible light by the human eye.
+Key Concept: Visible light: ~400 nm (violet) to ~700 nm (red).
+
+==============================================================================
+
+Q35  [phys-155]  AC Electricity & Magnetism  correct answer: B
+------------------------------------------------------------------------------
+STEM: A sinusoidal AC voltage has a peak value of 170 V. What is its RMS (effective) voltage?
+
+  A. 85 V
+  B. 120 V   <= key
+  C. 170 V
+  D. 240 V
+
+EXPLANATION:
+Correct Answer: 120 V
+V_RMS = V_peak/√2 = 170/1.414 ≈ 120 V.
+Why the other choices are wrong:
+A. 85 V: This divides the peak by 2. For a sinusoid, the mean of the squared voltage is V_peak^2/2, so taking the square root divides the peak by √2.
+C. 170 V: This is the peak voltage itself. The sinusoidal voltage is below its peak magnitude during most of each cycle, so its RMS value is smaller.
+D. 240 V: This multiplies the peak by √2 instead of dividing. That operation converts RMS to peak for a sinusoid, not peak to RMS.
+Key Concept: For a sinusoidal voltage, V_rms = V_peak/√2 ≈ 0.707V_peak. Other waveforms can have different peak-to-RMS relationships.
+
+==============================================================================
+
+Q36  [phys-156]  Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: A straight 2 m length of wire carrying 4 A lies entirely in a uniform magnetic field of 0.5 T, perpendicular to the field. What is the magnitude of the magnetic force on that length?
+
+  A. 1 N
+  B. 2 N
+  C. 4 N   <= key
+  D. 8 N
+
+EXPLANATION:
+Correct Answer: 4 N
+F = BIL sin θ = 0.5 × 4 × 2 × sin 90° = 4 N.
+Why the other choices are wrong:
+A. 1 N: This is one-quarter of the correct force. All three factors are required: 0.5 T × 4 A × 2 m = 4 N.
+B. 2 N: This would be the force on a 1 m segment under the same conditions. The stated segment is 2 m long, so its force is twice as large.
+D. 8 N: This would result if B were 1 T. The given field is 0.5 T, so multiplying I by L alone overstates the result by a factor of two.
+Key Concept: For a straight wire segment in a uniform magnetic field, the force magnitude is F = BILsinθ, where θ is the angle between the current direction and the field.
+
+==============================================================================
+
+Q37  [phys-157]  AC Electricity & Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: Faraday's law of electromagnetic induction states that the induced EMF in a loop is proportional to:
+
+  A. The magnetic field strength
+  B. The area of the loop
+  C. The rate of change of magnetic flux through the loop   <= key
+  D. The resistance of the loop
+
+EXPLANATION:
+Correct Answer: The rate of change of magnetic flux through the loop
+Faraday's law for one loop is ε = −dΦ/dt: the induced emf depends on how quickly magnetic flux changes. For a flat loop in a uniform field, Φ = BAcosθ, with θ measured between the field and the normal to the loop. Flux can change because the field, area or orientation changes.
+Why the other choices are wrong:
+A. The magnetic field strength: A field can be strong yet produce no induced emf if the flux remains constant. Changing the field is one way to change flux, but its strength alone does not determine the emf.
+B. The area of the loop: Area affects magnetic flux, but a fixed area alone does not generate an emf. What matters is the rate of change of the flux through the loop.
+D. The resistance of the loop: Resistance affects the current that flows in a closed circuit for a given induced emf. Faraday's law determines the emf from the changing flux, not from resistance.
+Key Concept: For N turns with the same flux per turn, average induced emf is ε_av = −NΔΦ/Δt. The minus sign represents Lenz's law. Constant flux produces no emf by this induction mechanism.
+
+==============================================================================
+
+Q38  [phys-158]  Lorentz Force  correct answer: A
+------------------------------------------------------------------------------
+STEM: A proton (charge = +1.6 × 10^−19 C) moves at 2 × 10^6 m/s perpendicular to a magnetic field of 0.5 T. What is the magnitude of the magnetic force on it?
+
+  A. 1.6 × 10^−13 N   <= key
+  B. 3.2 × 10^−13 N
+  C. 1.6 × 10^−14 N
+  D. 3.2 × 10^−14 N
+
+EXPLANATION:
+Correct Answer: 1.6 × 10^−13 N
+F = qvB sin θ = 1.6×10^−19 × 2×10^6 × 0.5 × 1 = 1.6 × 10^−13 N.
+Why the other choices are wrong:
+B. 3.2 × 10^−13 N: This is qv for the given numerical values without the factor of 0.5 T. Including the field strength halves that numerical result.
+C. 1.6 × 10^−14 N: This is ten times too small. The powers of ten give 10^−19 × 10^6 = 10^−13, and the coefficient is 1.6 × 2 × 0.5 = 1.6.
+D. 3.2 × 10^−14 N: This combines an incorrect power of ten with omission of the factor 0.5. Use every factor in |q|vB, with sin90° = 1.
+Key Concept: The magnetic-force magnitude on a moving charge is F = |q|vBsinθ. It is largest for perpendicular motion and zero for motion parallel to the field.
+
+==============================================================================
+
+Q39  [phys-159]  Magnetism  correct answer: C   (option C: permanent magnetization becomes retained magnetization)
+------------------------------------------------------------------------------
+STEM: Ferromagnetic materials are characterized by:
+
+  A. Weak repulsion from magnetic fields
+  B. No response to magnetic fields
+  C. Strong magnetization in an applied field, with the ability to retain magnetization   <= key
+  D. Weak attraction that disappears when the field is removed
+
+EXPLANATION:
+Correct Answer: Strong magnetization in an applied field, with the ability to retain magnetization
+Ferromagnetic materials such as iron, nickel and cobalt at room temperature can become strongly magnetized in an applied field. Their magnetic domains become more aligned. Some alignment can remain after the field is removed, but the retained magnetization depends on the material and its magnetic history. An unmagnetized piece can still be ferromagnetic.
+Why the other choices are wrong:
+A. Weak repulsion from magnetic fields: Weak repulsion is characteristic of diamagnetic behavior. An initially unmagnetized ferromagnetic specimen is typically strongly attracted toward a stronger applied field.
+B. No response to magnetic fields: Ferromagnetic materials respond strongly to an applied magnetic field. Lack of a net magnetization before applying the field does not mean there is no response.
+D. Weak attraction that disappears when the field is removed: This describes ordinary paramagnetic behavior. Ferromagnetic behavior is much stronger and can leave retained magnetization after removal of the applied field.
+Key Concept: Ferromagnets respond strongly and can retain magnetization. Paramagnets have a weak positive response; diamagnets have a weak opposing response.
+
+==============================================================================
+
+Q40  [phys-160]  AC Electricity & Magnetism  correct answer: B
+------------------------------------------------------------------------------
+STEM: For an ideal capacitor connected to a sinusoidal AC voltage source in steady operation, the current:
+
+  A. Is in phase with the voltage
+  B. Leads the voltage by 90°   <= key
+  C. Lags the voltage by 90°
+  D. Leads the voltage by 180°
+
+EXPLANATION:
+Correct Answer: Leads the voltage by 90°
+In a purely capacitive circuit, the current leads the voltage by 90° (π/2). The mnemonic 'ICE' helps: In a Capacitor, current (I) leads EMF (E).
+Why the other choices are wrong:
+A. Is in phase with the voltage: Current and voltage are in phase for a pure resistor. In a capacitor, current depends on how quickly the voltage changes, producing a quarter-cycle phase difference.
+C. Lags the voltage by 90°: A 90° current lag describes an ideal inductor. For an ideal capacitor, current leads the voltage by 90°.
+D. Leads the voltage by 180°: A 180° shift would mean opposite signs at corresponding phases. A capacitor instead gives a 90° lead, with current maximal when the sinusoidal voltage is rising most rapidly.
+Key Concept: With sinusoidal AC, current leads voltage by 90° in an ideal capacitor and lags voltage by 90° in an ideal inductor. Mnemonics: ICE and ELI.
+
+==============================================================================
+
+Q41  [phys-161]  AC Electricity & Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: What is the capacitive reactance of an ideal 10 μF capacitor at a sinusoidal AC frequency of 50 Hz, approximately?
+
+  A. 31.8 Ω
+  B. 100 Ω
+  C. 318 Ω   <= key
+  D. 3180 Ω
+
+EXPLANATION:
+Correct Answer: 318 Ω
+X_C = 1/(2πfC) = 1/(2π × 50 × 10×10^−6) = 1/(π × 10^−3) = 1000/π ≈ 318 Ω.
+Why the other choices are wrong:
+A. 31.8 Ω: This is ten times too small. At 50 Hz, 31.8 Ω would correspond to 100 μF, whereas the stated capacitance is 10 μF.
+B. 100 Ω: Substitution gives 1/(π × 10^−3), not 100 Ω. Taking the reciprocal gives 1000/π ≈ 318 Ω.
+D. 3180 Ω: This is ten times too large. At 50 Hz it would correspond to 1 μF; use 10 μF = 10 × 10^−6 F.
+Key Concept: Capacitive reactance X_C = 1/(2πfC); decreases with frequency.
+
+==============================================================================
+
+Q42  [phys-162]  AC Electricity & Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: An ideal LC circuit with negligible resistance has L = 0.1 H and C = 10 μF. What is its natural oscillation frequency? (Use π ≈ 3.14)
+
+  A. 50 Hz
+  B. 100 Hz
+  C. 159 Hz   <= key
+  D. 500 Hz
+
+EXPLANATION:
+Correct Answer: 159 Hz
+f = 1/(2π√(LC)) = 1/(2π√(0.1 × 10^−5)) = 1/(2π × 10^−3) = 1000/(2π) ≈ 159 Hz.
+Why the other choices are wrong:
+A. 50 Hz: This is too low for the given components. Their product is LC = 10^−6 s^2, so √(LC) = 10^−3 s and f ≈ 159 Hz.
+B. 100 Hz: A frequency of 100 Hz would require a larger LC product. Substituting the given values gives 1/(2π × 0.001 s), about 159 Hz.
+D. 500 Hz: This omits π from the denominator: 1/(2 × 0.001) = 500. The frequency formula contains 2π, not just 2.
+Key Concept: An ideal LC circuit exchanges energy between the capacitor's electric field and the inductor's magnetic field, at frequency f = 1/(2π√(LC)).
+
+==============================================================================
+
+Q43  [phys-163]  AC Electricity & Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: In a series RLC circuit with R > 0, driven by a sinusoidal voltage of fixed amplitude, what is true at resonance in steady operation?
+
+  A. Impedance is maximum
+  B. Current is minimum
+  C. Impedance equals the resistance R only   <= key
+  D. The circuit is purely inductive
+
+EXPLANATION:
+Correct Answer: Impedance equals the resistance R only
+At series resonance, the inductive and capacitive reactances are equal: X_L = X_C. Their opposite phase contributions cancel, so the impedance magnitude is Z = √[R^2 + (X_L − X_C)^2] = R. With the source voltage amplitude fixed, the current amplitude is greatest at this frequency.
+Why the other choices are wrong:
+A. Impedance is maximum: In a series RLC circuit, cancellation of the reactances makes the impedance magnitude minimum, equal to R. A maximum-impedance resonance belongs to a different circuit arrangement.
+B. Current is minimum: With source voltage amplitude fixed, I = V/Z is greatest when Z is smallest. At series resonance it is R, not a large reactance, that limits the current.
+D. The circuit is purely inductive: The inductive and capacitive contributions cancel at resonance. The overall circuit is purely resistive at that frequency, although both the inductor and capacitor are still present.
+Key Concept: For an ideal series RLC circuit at resonance, X_L = X_C and Z = R. The current is in phase with the source voltage and is maximal for a fixed source voltage amplitude.
+
+==============================================================================
+
+Q44  [phys-164]  AC Electricity & Magnetism  correct answer: C
+------------------------------------------------------------------------------
+STEM: The magnetic flux through each turn of a 200-turn coil changes by 0.05 Wb in 0.1 s. What is the magnitude of the average induced emf?
+
+  A. 10 V
+  B. 50 V
+  C. 100 V   <= key
+  D. 1000 V
+
+EXPLANATION:
+Correct Answer: 100 V
+EMF = N × ΔΦ/Δt = 200 × 0.05/0.1 = 200 × 0.5 = 100 V.
+Why the other choices are wrong:
+A. 10 V: This is ten times too small. The flux-change rate is 0.05/0.1 = 0.5 Wb/s per turn, which is multiplied by 200 turns.
+B. 50 V: This would correspond to 100 turns with the same flux change and time. The coil has 200 turns, giving twice that emf.
+D. 1000 V: This is ten times too large. Dividing 0.05 Wb by 0.1 s gives 0.5 Wb/s, not 5 Wb/s.
+Key Concept: If each of N turns experiences the same flux change, the magnitude of the average induced emf is N|ΔΦ|/Δt. Here Φ is flux per turn, not total flux linkage.
+
+==============================================================================
+
+Q45  [phys-165]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: The atomic number of an element represents the number of:
+
+  A. Neutrons in the nucleus
+  B. Protons in the nucleus   <= key
+  C. Nucleons in the nucleus
+  D. Electrons in the outer shell
+
+EXPLANATION:
+Correct Answer: Protons in the nucleus
+The atomic number (Z) equals the number of protons. The mass number (A) equals protons + neutrons. The number of neutrons = A − Z.
+Why the other choices are wrong:
+A. Neutrons in the nucleus: The neutron number is A − Z. It can vary between isotopes of the same element without changing the atomic number.
+C. Nucleons in the nucleus: The total number of protons and neutrons is the mass number A. Atomic number Z counts only the protons.
+D. Electrons in the outer shell: Outer-shell electrons influence chemical bonding, but they do not define atomic number. Z is the proton count in the nucleus, even for an ion.
+Key Concept: Z = number of protons; A = protons + neutrons; neutrons = A − Z.
+
+==============================================================================
+
+Q46  [phys-166]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: In alpha (α) decay, the parent nucleus emits:
+
+  A. An electron
+  B. A helium-4 nucleus   <= key
+  C. A photon
+  D. A neutron
+
+EXPLANATION:
+Correct Answer: A helium-4 nucleus
+An α particle consists of 2 protons and 2 neutrons (a helium-4 nucleus). After α decay, the atomic number decreases by 2 and mass number decreases by 4.
+Why the other choices are wrong:
+A. An electron: An electron is emitted in beta-minus decay. Alpha decay instead emits a composite nucleus containing two protons and two neutrons.
+C. A photon: A photon is emitted in gamma decay. Gamma emission changes the nuclear energy state without changing the proton or nucleon count.
+D. A neutron: A neutron contains neither the two protons nor the two neutrons of an alpha particle. Neutron emission reduces mass number by one and leaves atomic number unchanged.
+Key Concept: α decay: Z → Z−2, A → A−4.
+
+==============================================================================
+
+Q47  [phys-167]  Nuclear Physics  correct answer: C
+------------------------------------------------------------------------------
+STEM: A radioactive isotope has a half-life of 6 hours and an initial activity of 800 Bq. What is the activity of this isotope after 18 hours?
+
+  A. 400 Bq
+  B. 200 Bq
+  C. 100 Bq   <= key
+  D. 50 Bq
+
+EXPLANATION:
+Correct Answer: 100 Bq
+18 hours = 3 half-lives. After 3 half-lives: 800 → 400 → 200 → 100 Bq. Activity halves with each half-life.
+Why the other choices are wrong:
+A. 400 Bq: This is the activity after one half-life, or 6 hours. Eighteen hours contains three half-lives.
+B. 200 Bq: This is the activity after two half-lives, or 12 hours. One more half-life reduces it to 100 Bq.
+D. 50 Bq: This is the activity after four half-lives, or 24 hours. Only three half-lives have passed.
+Key Concept: After n half-lives, activity = A₀/2^n.
+
+==============================================================================
+
+Q48  [phys-168]  Nuclear Physics  correct answer: C   (MAJOR REWRITE: stem, options A/B/C, explanation and Key Concept; uppercase Greek corrected)
+------------------------------------------------------------------------------
+STEM: Which listed type of radiation consists of high-energy photons, for which thick lead or concrete is commonly used to reduce exposure?
+
+  A. α particles
+  B. β particles
+  C. γ rays   <= key
+  D. Protons
+
+EXPLANATION:
+Correct Answer: γ rays
+Gamma rays are photons with no electric charge and zero rest mass. They can penetrate barriers that stop many alpha and beta particles, so dense or thick shielding is used to reduce their intensity. Penetration depends on photon energy and the material; there is no universal statement that every gamma ray penetrates farther than every charged particle.
+Why the other choices are wrong:
+A. α particles: Alpha particles are helium-4 nuclei with charge +2. They produce dense ionization over a short path and are not photons.
+B. β particles: Beta particles are electrons or positrons. They have nonzero rest mass and electric charge, unlike gamma photons.
+D. Protons: Protons are positively charged massive particles, not photons. Their range depends strongly on their energy and the material, so they cannot be ranked against all gamma rays without further information.
+Key Concept: Gamma rays are uncharged photons. Shielding reduces their intensity, with the reduction depending on energy, material and thickness.
+
+==============================================================================
+
+Q49  [phys-169]  Nuclear Physics  correct answer: A
+------------------------------------------------------------------------------
+STEM: In β-minus (β^−) decay, a neutron transforms into:
+
+  A. A proton, an electron, and an antineutrino   <= key
+  B. A proton and a positron
+  C. Two protons and an electron
+  D. A neutron and a photon
+
+EXPLANATION:
+Correct Answer: A proton, an electron, and an antineutrino
+In β^− decay: n → p + e^− + ν̄_e. The atomic number increases by 1, mass number stays the same.
+Why the other choices are wrong:
+B. A proton and a positron: This does not conserve electric charge for neutron decay: a proton and positron together have charge +2, while a neutron is neutral. Positron emission instead involves a proton converting to a neutron, with a neutrino also emitted.
+C. Two protons and an electron: This would increase the nucleon count from one to two and leave a net positive charge. In beta-minus decay, one neutron becomes one proton, with an electron and electron antineutrino emitted.
+D. A neutron and a photon: A neutron plus a photon is not the beta-minus transformation. In beta-minus decay the neutron changes into a proton, and the emitted beta particle is an electron.
+Key Concept: β^−: Z → Z+1, A unchanged; β^+: Z → Z−1, A unchanged.
+
+==============================================================================
+
+Q50  [phys-170]  Nuclear Physics  correct answer: C   (Fe-56 kept as the answer; Ni-62 named as the slightly higher value)
+------------------------------------------------------------------------------
+STEM: Nuclear binding energy per nucleon is highest for elements near:
+
+  A. Hydrogen
+  B. Helium
+  C. Iron (Fe-56)   <= key
+  D. Uranium
+
+EXPLANATION:
+Correct Answer: Iron (Fe-56)
+The binding-energy-per-nucleon curve reaches its highest region among iron and nickel nuclei, at about 8.8 MeV per nucleon. Iron-56 is therefore the correct nearby choice in this list, although nickel-62 has a slightly higher value. Fusion of suitable light nuclei and fission of suitable heavy nuclei can release energy by producing more tightly bound products.
+Why the other choices are wrong:
+A. Hydrogen: A hydrogen-1 nucleus is a single proton and has no binding between nucleons. Suitable fusion reactions involving hydrogen can release energy by forming more tightly bound nuclei.
+B. Helium: Helium-4 is tightly bound for a light nucleus, but its binding energy per nucleon is lower than that of nuclei in the iron-nickel peak region.
+D. Uranium: Uranium nuclei are heavy and have lower binding energy per nucleon than the peak region. Their fission can release energy when the products are more tightly bound per nucleon.
+Key Concept: Binding energy per nucleon peaks in the iron-nickel region. Fe-56 is near the peak; Ni-62 has the highest value.
+
+==============================================================================
+
+Q51  [phys-171]  Nuclear Physics  correct answer: C
+------------------------------------------------------------------------------
+STEM: Carbon-12 and Carbon-14 are isotopes because they have:
+
+  A. Different numbers of protons
+  B. The same mass number
+  C. The same number of protons but different numbers of neutrons   <= key
+  D. Different chemical properties
+
+EXPLANATION:
+Correct Answer: The same number of protons but different numbers of neutrons
+Isotopes have the same atomic number Z but different mass numbers A. Carbon-12 has 6 protons and 6 neutrons; carbon-14 has 6 protons and 8 neutrons. Their electron arrangements and chemical behavior are very similar, although their masses and nuclear stability differ.
+Why the other choices are wrong:
+A. Different numbers of protons: Changing the proton number changes the element. Both carbon isotopes have six protons.
+B. The same mass number: Their mass numbers are different, 12 and 14. The shared quantity is atomic number, not mass number.
+D. Different chemical properties: A difference in chemical properties is not the definition of isotopes. Isotopes have the same proton count and usually very similar chemistry; mass-related isotope effects can cause small differences.
+Key Concept: Isotopes = same Z (protons), different A (different neutrons).
+
+==============================================================================
+
+Q52  [phys-172]  Nuclear Physics  correct answer: C
+------------------------------------------------------------------------------
+STEM: A radioactive isotope has a half-life of 10 days. What fraction of its original nuclei remains undecayed after 30 days?
+
+  A. 1/2
+  B. 1/4
+  C. 1/8   <= key
+  D. 1/16
+
+EXPLANATION:
+Correct Answer: 1/8
+30 days = 3 half-lives. Fraction remaining = (1/2)^3 = 1/8.
+Why the other choices are wrong:
+A. 1/2: One-half remains after one half-life, or 10 days. Thirty days represents three half-lives.
+B. 1/4: One-quarter remains after two half-lives, or 20 days. A third half-life reduces that fraction to one-eighth.
+D. 1/16: One-sixteenth remains after four half-lives, or 40 days. The stated time is only 30 days.
+Key Concept: Fraction remaining after n half-lives = (1/2)^n.
+
+==============================================================================
+
+Q53  [phys-173]  Nuclear Physics  correct answer: C   (Key Concept: nucleon and charge balance, not a universal Z claim)
+------------------------------------------------------------------------------
+STEM: In the nuclear reaction: ^235_92U + ^1_0n → ^141_56Ba + ^92_36Kr + X, what is X?
+
+  A. 1 neutron
+  B. 2 neutrons
+  C. 3 neutrons   <= key
+  D. 1 proton
+
+EXPLANATION:
+Correct Answer: 3 neutrons
+Conservation of mass number: 235 + 1 = 141 + 92 + x → x = 3. Conservation of atomic number: 92 + 0 = 56 + 36 + 0 ✓. So X = 3 neutrons.
+Why the other choices are wrong:
+A. 1 neutron: One neutron would give 141 + 92 + 1 = 234 nucleons on the product side. The reactants contain 235 + 1 = 236.
+B. 2 neutrons: Two neutrons would give 235 nucleons in the products. Remember that the incident neutron adds one nucleon to the original uranium-235 nucleus.
+D. 1 proton: An emitted proton would add positive charge, even though 56 + 36 already equals the original 92 protons. It would also fail to supply the three missing nucleons.
+Key Concept: Balance nucleon number and electric charge in a nuclear equation. Here 236 nucleons become 141 + 92 + 3, and proton numbers balance as 92 = 56 + 36.
+
+==============================================================================
+
+Q54  [phys-174]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: The mass defect of a nucleus is:
+
+  A. The mass of the electrons
+  B. The difference between the mass of individual nucleons and the actual nuclear mass   <= key
+  C. The mass of the neutrons only
+  D. Always zero for stable nuclei
+
+EXPLANATION:
+Correct Answer: The difference between the mass of individual nucleons and the actual nuclear mass
+The mass defect Δm is the total mass of the separated protons and neutrons minus the mass of the bound nucleus. The bound state has lower rest energy by Δmc^2. This is the binding energy released when that nucleus forms from separated nucleons, and the energy required to separate it again.
+Why the other choices are wrong:
+A. The mass of the electrons: Electron masses are not what nuclear mass defect measures. Compare the nucleus with the same number of separate protons and neutrons.
+C. The mass of the neutrons only: Neutron masses contribute to the mass of the separated nucleons, but the mass defect is the difference between that total and the actual nuclear mass.
+D. Always zero for stable nuclei: A stable bound nucleus generally has a positive mass defect. Its lower rest energy is evidence of binding, not an error or instability.
+Key Concept: Nuclear binding energy is E_b = Δmc^2, where Δm is the mass of separated nucleons minus the mass of the bound nucleus.
+
+==============================================================================
+
+Q55  [phys-175]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Which process powers the Sun?
+
+  A. Nuclear fission of uranium
+  B. Nuclear fusion of hydrogen into helium   <= key
+  C. Chemical combustion of hydrogen
+  D. Radioactive decay of heavy elements
+
+EXPLANATION:
+Correct Answer: Nuclear fusion of hydrogen into helium
+The Sun is powered by nuclear fusion, primarily the proton-proton chain, where hydrogen nuclei fuse into helium, releasing enormous energy according to E = mc².
+Why the other choices are wrong:
+A. Nuclear fission of uranium: Fission splits heavy nuclei. The Sun's main energy source is fusion involving light hydrogen nuclei, not uranium fission.
+C. Chemical combustion of hydrogen: Combustion is a chemical reaction involving electrons and bonds. It releases far less energy per unit mass than nuclear fusion and cannot explain the Sun's sustained output.
+D. Radioactive decay of heavy elements: Radioactive decay can release energy, but decay of heavy elements is not the Sun's main source. The dominant process in its core is hydrogen fusion.
+Key Concept: The Sun is powered mainly by hydrogen fusion into helium. The products have less total rest mass than the reactants, and the difference supplies released energy.
+
+==============================================================================
+
+Q56  [phys-176]  Bernoulli's Equation  correct answer: B   (distractor D arithmetic corrected: the squared ratio gives 32 m/s)
+------------------------------------------------------------------------------
+STEM: Water flows steadily through a pipe with no leaks, narrowing from a cross-sectional area of 0.04 m^2 to 0.01 m^2. Treat water as incompressible. If the average speed in the wider section is 2 m/s, what is the average speed in the narrower section?
+
+  A. 4 m/s
+  B. 8 m/s   <= key
+  C. 0.5 m/s
+  D. 16 m/s
+
+EXPLANATION:
+Correct Answer: 8 m/s
+This is a direct application of the equation of continuity for an incompressible fluid:
+A_1 v_1 = A_2 v_2
+0.04 x 2 = 0.01 x v_2
+v_2 = 0.08 / 0.01 = 8 m/s
+Why the other choices are wrong:
+A. 4 m/s: This would be the result if the area halved (ratio of 2), but the area decreased by a factor of 4.
+C. 0.5 m/s: This reverses the relationship. When the area decreases, speed increases, not decreases.
+D. 16 m/s: This is twice the correct speed. The area ratio is 0.04/0.01 = 4, so the speed is 4 × 2 = 8 m/s. Squaring that ratio would give 32 m/s, not this option.
+Key Concept: For steady incompressible flow with no leaks, A_1v_1 = A_2v_2. Here v is the average speed across each section, and Av is the constant volume flow rate.
+
+==============================================================================
+
+Q57  [phys-177]  Bernoulli's Equation  correct answer: B   (Bernoulli assumptions stated; distractor D replaced)
+------------------------------------------------------------------------------
+STEM: An incompressible fluid flows steadily along a horizontal pipe. Neglect friction and assume no pump or turbine lies between the two points considered. Along the same streamline, if the speed is higher at the second point, how does its static pressure compare?
+
+  A. Pressure increases
+  B. Pressure decreases   <= key
+  C. Pressure stays the same
+  D. Pressure first increases then decreases
+
+EXPLANATION:
+Correct Answer: Pressure decreases
+Under the stated assumptions, Bernoulli's equation along a horizontal streamline is P + ½ρv^2 = constant. The faster point has a larger kinetic-energy term per unit volume, so its static pressure P is lower. This comparison depends on the stated flow conditions; it is not a rule for every pair of points in every moving fluid.
+Why the other choices are wrong:
+A. Pressure increases: This contradicts Bernoulli's equation. Many students assume faster flow means 'more force' and thus more pressure, but it is the opposite.
+C. Pressure stays the same: Pressure only stays the same if speed stays the same. Changing speed requires a pressure change.
+D. Pressure first increases then decreases: The question compares two locations under the stated conditions, not a compulsory two-stage process. The location with greater speed has lower static pressure.
+Key Concept: For steady, incompressible flow with negligible friction and no added or extracted mechanical energy, P + ½ρv^2 + ρgh is constant along a streamline. At equal height, higher speed then means lower static pressure.
+
+==============================================================================
+
+Q58  [phys-178]  Bernoulli's Equation  correct answer: A   (distractor B arithmetic corrected: 2000 Pa against 4000 Pa)
+------------------------------------------------------------------------------
+STEM: Water of density 1000 kg/m^3 flows steadily along a horizontal pipe. Neglect friction and assume no pump or turbine between two points on the same streamline. At A the pressure is 200,000 Pa and speed is 1 m/s; at B the speed is 3 m/s. What is the pressure at B?
+
+  A. 196,000 Pa   <= key
+  B. 198,000 Pa
+  C. 204,000 Pa
+  D. 192,000 Pa
+
+EXPLANATION:
+Correct Answer: 196,000 Pa
+Using Bernoulli's equation for a horizontal pipe:
+P_A + 1/2 ρv_A^2 = P_B + 1/2 ρv_B^2
+200,000 + 1/2(1000)(1)^2 = P_B + 1/2(1000)(3)^2
+200,000 + 500 = P_B + 4,500
+P_B = 200,500 - 4,500 = 196,000 Pa
+Why the other choices are wrong:
+B. 198,000 Pa: This gives a 2000 Pa drop, which would result from ½ρ(v_B − v_A)^2 = ½(1000)(3 − 1)^2. The required difference is ½ρ(v_B^2 − v_A^2) = ½(1000)(9 − 1) = 4000 Pa.
+C. 204,000 Pa: This adds the pressure difference instead of subtracting it, contradicting Bernoulli's principle.
+D. 192,000 Pa: This doubles the pressure drop, possibly by forgetting the factor of 1/2 in 1/2ρv^2.
+Key Concept: In this horizontal Bernoulli comparison, P_B = P_A − ½ρ(v_B^2 − v_A^2). Use the difference of the squared speeds, not the square of their difference.
+
+==============================================================================
+
+Q59  [phys-179]  Bernoulli's Equation  correct answer: B   (distractors A and C arithmetic corrected)
+------------------------------------------------------------------------------
+STEM: A large open tank contains water. A small hole is 5 m below the water surface and discharges into the same atmospheric pressure as the surface. Neglect frictional losses and the speed of the falling water surface. What is the water's exit speed? (g = 10 m/s^2)
+
+  A. 5 m/s
+  B. 10 m/s   <= key
+  C. 50 m/s
+  D. 100 m/s
+
+EXPLANATION:
+Correct Answer: 10 m/s
+This is Torricelli's theorem, a special case of Bernoulli's equation. The speed of efflux from a hole at depth h below the surface is:
+v = √(2gh)
+v = √(2 x 10 x 5) = √100 = 10 m/s
+This is exactly the same speed as an object would have if it fell freely from height h. Bernoulli's equation reduces to this when the tank surface moves negligibly slowly.
+Why the other choices are wrong:
+A. 5 m/s: An exit speed of 5 m/s would correspond to a depth v^2/(2g) = 25/20 = 1.25 m under this model. The stated depth is 5 m, giving 10 m/s.
+C. 50 m/s: The product gh is 50 m^2/s^2, which is not a speed. Use v = √(2gh) = √100 = 10 m/s.
+D. 100 m/s: This uses v = 2gh directly (2 x 10 x 5 = 100) without the square root.
+Key Concept: For a large open tank discharging to the same atmospheric pressure, negligible surface speed and negligible losses give v = √(2gh). Under these conditions the exit speed equals the free-fall speed from height h.
+
+==============================================================================
+
+Q60  [phys-180]  Bernoulli's Equation  correct answer: B   (lift explanation made conditional; all three distractor bodies replaced)
+------------------------------------------------------------------------------
+STEM: In a simplified model of steady airflow around a wing at low speed, assume constant density, negligible friction and the same total pressure on both sides. At comparable heights, air flows faster over the upper surface. Which statement describes the resulting pressure contribution to lift?
+
+  A. Pressure is higher above the wing, pushing it upward
+  B. Pressure is lower above the wing, creating a net upward force   <= key
+  C. The air above the wing is denser, creating more downward pressure
+  D. The air below the wing moves faster, creating higher pressure below
+
+EXPLANATION:
+Correct Answer: Pressure is lower above the wing, creating a net upward force
+In this model, total pressure is P + ½ρv^2. Faster flow above the wing therefore corresponds to lower static pressure P there. The pressure distribution over the wing produces a net upward force. The wing also turns airflow downward, consistent with momentum conservation. Bernoulli's equation relates a known flow pattern to pressure; it does not by itself determine that pattern or require air parcels above and below the wing to meet at the trailing edge.
+Why the other choices are wrong:
+A. Pressure is higher above the wing, pushing it upward: Higher pressure above would contribute a downward force. In the stated model, the faster upper flow instead has lower static pressure.
+C. The air above the wing is denser, creating more downward pressure: Density is approximately constant in this model. The force is explained by the pressure distribution, not by a denser layer of air above the wing.
+D. The air below the wing moves faster, creating higher pressure below: The stem specifies faster flow above, not below. It also uses a model in which, at the same height and total pressure, greater speed corresponds to lower static pressure.
+Key Concept: Lift is associated with the pressure distribution over a wing and the downward turning of airflow. In the stated Bernoulli model, faster upper-surface flow corresponds to lower static pressure.
+
+==============================================================================
