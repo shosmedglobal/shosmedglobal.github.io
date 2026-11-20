@@ -445,7 +445,7 @@
         .then(r => r.ok ? r.json() : null)
         .catch(err => { console.error('questions.json fetch failed:', err); return null; });
 
-      const physicsPromise = fetch('questions-physics.json?v=20261120a-physfinal')
+      const physicsPromise = fetch('questions-physics.json?v=20261120b-phys258')
         .then(r => r.ok ? r.json() : null)
         .catch(() => null);
 

@@ -20,6 +20,11 @@ module.exports = [
   { q: 'Q19', id: 'phys-258', key: 'C',
     stemWas: 'A solenoid has 2000 turns wound uniformly over a length of 0.4 m and carries a current of 3 A. What is the magnetic field inside the solenoid? (&mu;<sub>0</sub> = 4&pi; × 10<sup>−7</sup> T·m/A)',
     stem: 'A long air-core solenoid has 2000 turns wound uniformly over 0.4 m and carries a current of 3 A. Neglecting end effects, what is the magnetic field inside near its center? Use μ<sub>0</sub> ≈ 4π × 10<sup>−7</sup> T·m/A.',
+    /* Post-review correction, 20 November 2026: the stored derivation carried
+       four intermediate lines that substituted 3.14 for pi. The scientific
+       review asked for the substitution and the result alone. */
+    headEdits: [['<p>B = 4&pi; × 10<sup>−7</sup> × 5000 × 3</p><p>B = 4 × 3.14 × 10<sup>−7</sup> × 15000</p><p>B = 12.56 × 10<sup>−7</sup> × 15000</p><p>B = 188400 × 10<sup>−7</sup></p><p>B = 1.884 × 10<sup>−2</sup> T = <strong>18.85 mT</strong></p>',
+      '<p>B = (4&pi; × 10<sup>−7</sup>) × 5000 × 3</p><p>B ≈ 0.01885 T = <strong>18.85 mT</strong></p>']],
     fb: [
       ['A', ' 1.88 mT is about ten times too small. The turn density is 2000/0.4 = 5000 m<sup>−1</sup>, and B ≈ 0.01885 T = 18.85 mT.'],
       ['B', ' 6.28 mT is approximately the field this solenoid would produce at 1 A. The stated current is 3 A, so the field is three times as large.'],

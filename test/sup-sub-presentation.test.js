@@ -113,7 +113,9 @@ check('5d no option was flattened to plain text', q5 && q5.options.every(o => /<
 /* A text workaround would show up as the markup disappearing from the banks
    in bulk, so these counts are pinned. questions-physics.json rose from
    667 sup / 651 sub to 736 / 677 with the third 60-question physics review,
-   to 740 / 712 with the fourth, and to 795 / 735 with the final block. Each
+   to 740 / 712 with the fourth, and to 795 / 735 with the final block.
+   791 / 735 after one post-review correction removed four intermediate
+   lines from Q19 (phys-258). Each
    review WRITES exponent markup rather than removing it. Raise these numbers
    only alongside such an addition; a drop is the thing this check exists to
    catch. */
@@ -124,8 +126,8 @@ for (const f of ['questions.json', 'questions-physics.json']) {
 }
 check('5e questions.json keeps its 357 superscripts and 409 subscripts',
   counts['questions.json'].sup === 357 && counts['questions.json'].sub === 409, counts['questions.json']);
-check('5f questions-physics.json keeps its 795 superscripts and 735 subscripts',
-  counts['questions-physics.json'].sup === 795 && counts['questions-physics.json'].sub === 735,
+check('5f questions-physics.json keeps its 791 superscripts and 735 subscripts',
+  counts['questions-physics.json'].sup === 791 && counts['questions-physics.json'].sub === 735,
   counts['questions-physics.json']);
 
 /* ------------------------------ 6. the card design is left as it was */

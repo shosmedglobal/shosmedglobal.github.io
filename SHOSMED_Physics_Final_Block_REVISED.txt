@@ -32,7 +32,7 @@ WHAT CHANGED
   Stems replaced           : 25
   Option texts             : 4
   Complete main blocks     : 11
-  Scoped main passages     : 7 (Q12.1, Q16.1, Q16.2, Q20.1, Q28.1, Q29.1, Q32.1)
+  Scoped main passages     : 8 (Q12.1, Q16.1, Q16.2, Q19.1, Q20.1, Q28.1, Q29.1, Q32.1)
   Key Concepts             : 17 replaced of 31
   Educational points       : 2 whole blocks (Q4, Q11), 11 individual points
   Bottom Lines             : 5 replaced of 10
@@ -631,11 +631,8 @@ EXPLANATION:
 Correct Answer: 18.85 mT
 The magnetic field inside a solenoid is B = μ_0 × n × I, where n = N/L:
 n = N/L = 2000/0.4 = 5000 turns/m
-B = 4π × 10^−7 × 5000 × 3
-B = 4 × 3.14 × 10^−7 × 15000
-B = 12.56 × 10^−7 × 15000
-B = 188400 × 10^−7
-B = 1.884 × 10^−2 T = 18.85 mT
+B = (4π × 10^−7) × 5000 × 3
+B ≈ 0.01885 T = 18.85 mT
 Why the other choices are wrong:
 A. 1.88 mT: 1.88 mT is about ten times too small. The turn density is 2000/0.4 = 5000 m^−1, and B ≈ 0.01885 T = 18.85 mT.
 B. 6.28 mT: 6.28 mT is approximately the field this solenoid would produce at 1 A. The stated current is 3 A, so the field is three times as large.

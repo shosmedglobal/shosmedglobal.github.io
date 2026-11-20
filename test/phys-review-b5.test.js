@@ -222,9 +222,9 @@ section('3. the declared edit inventory, recomputed from the bank');
   ok(stems.length === 25, 'the stem count is 25');
   const mainItems = [...new Set([...idmap.scope.main_block_changes, ...idmap.scope.scoped_main_edits.map(x => x.split('.')[0])])]
     .sort((x, y) => Number(x.slice(1)) - Number(y.slice(1)));
-  ok(JSON.stringify(heads) === JSON.stringify(mainItems), 'main explanations changed in exactly the 11 whole-block plus 6 scoped items (got ' + heads.length + ')');
+  ok(JSON.stringify(heads) === JSON.stringify(mainItems), 'main explanations changed in exactly the 11 whole-block plus 7 scoped items (got ' + heads.length + ')');
   ok(idmap.scope.main_block_changes.length === 11, '11 complete main blocks are declared');
-  ok(idmap.scope.scoped_main_edits.length === 7, 'and 7 scoped main passages');
+  ok(idmap.scope.scoped_main_edits.length === 8, 'and 8 scoped main passages');
   ok(JSON.stringify(kcs) === JSON.stringify(idmap.scope.key_concept_changes), '17 Key Concepts changed, exactly the declared list (got ' + kcs.length + ')');
   ok(kcs.length === 17, 'the Key Concept count is 17');
   ok(JSON.stringify(bls) === JSON.stringify(idmap.scope.bottom_line_changes), '5 Bottom Lines changed, exactly the declared list (got ' + bls.length + ')');
@@ -260,7 +260,7 @@ for (const Q of QS) {
     else ok(a[i] === b[i], Q + '.' + (i + 1) + ': an unnamed educational point is untouched');
   }
 }
-/* the seven scoped anchors were real stored text, not the flattened export */
+/* the eight scoped anchors were real stored text, not the flattened export */
 for (const slot of idmap.scope.scoped_main_edits) {
   const Q = slot.split('.')[0], i = Number(slot.split('.')[1]) - 1;
   const spec = specOf(Q), [from, to] = spec.headEdits[i];
@@ -445,7 +445,7 @@ for (const Q of QS) {
   const t = rec(Q).question + rec(Q).options.join('') + rec(Q).explanation;
   SUPSUB[Q] = [count(t, /<sup>/g), count(t, /<sub>/g)];
 }
-ok(JSON.stringify(SUPSUB) === JSON.stringify({"Q1":[0,0],"Q2":[0,3],"Q3":[0,0],"Q4":[7,0],"Q5":[2,2],"Q6":[0,0],"Q7":[5,0],"Q8":[1,4],"Q9":[3,1],"Q10":[5,0],"Q11":[0,0],"Q12":[14,16],"Q13":[0,0],"Q14":[0,0],"Q15":[8,0],"Q16":[3,2],"Q17":[0,0],"Q18":[3,0],"Q19":[8,4],"Q20":[0,11],"Q21":[0,5],"Q22":[0,3],"Q23":[5,1],"Q24":[38,0],"Q25":[0,11],"Q26":[1,15],"Q27":[2,2],"Q28":[4,22],"Q29":[9,0],"Q30":[6,8],"Q31":[4,32],"Q32":[0,2],"Q33":[0,0],"Q34":[5,1],"Q35":[4,1],"Q36":[0,0],"Q37":[1,0],"Q38":[0,0],"Q39":[0,0],"Q40":[0,0],"Q41":[0,0]}),
+ok(JSON.stringify(SUPSUB) === JSON.stringify({"Q1":[0,0],"Q2":[0,3],"Q3":[0,0],"Q4":[7,0],"Q5":[2,2],"Q6":[0,0],"Q7":[5,0],"Q8":[1,4],"Q9":[3,1],"Q10":[5,0],"Q11":[0,0],"Q12":[14,16],"Q13":[0,0],"Q14":[0,0],"Q15":[8,0],"Q16":[3,2],"Q17":[0,0],"Q18":[3,0],"Q19":[4,4],"Q20":[0,11],"Q21":[0,5],"Q22":[0,3],"Q23":[5,1],"Q24":[38,0],"Q25":[0,11],"Q26":[1,15],"Q27":[2,2],"Q28":[4,22],"Q29":[9,0],"Q30":[6,8],"Q31":[4,32],"Q32":[0,2],"Q33":[0,0],"Q34":[5,1],"Q35":[4,1],"Q36":[0,0],"Q37":[1,0],"Q38":[0,0],"Q39":[0,0],"Q40":[0,0],"Q41":[0,0]}),
   'every item keeps its pinned exponent and index markup: ' + JSON.stringify(SUPSUB));
 
 /* ------------------------------------------------------------------ */
