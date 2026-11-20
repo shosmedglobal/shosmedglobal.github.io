@@ -1,0 +1,505 @@
+{
+  "_comment": [
+    "The ORIGINAL identification signatures from the final-block review appendix,",
+    "extracted verbatim from SHOSMED_Physics_Final_Block_Review_and_Claude_Prompt.txt.",
+    "These are the PRE-EDIT stems and option texts, with the plain-text export flattening",
+    "preserved, so the test suite can re-derive the id map by full content match rather",
+    "than trusting it."
+  ],
+  "originalKeys": "BBBBBCBCCBBCBBBBCBCCBBCBBCBBBAACBABBCCBCB",
+  "retainedKeys": "BBBBBCBCCBBCBBBBCBCCBBCBBCBBBAACBABBCCBCB",
+  "sigs": {
+    "Q1": {
+      "topic": "Lorentz Force",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An electron enters a region with an electric field E pointing downward and a magnetic field B pointing into the page. The electron moves to the right. For it to travel in a straight line without deflection, the field magnitudes must satisfy:",
+      "options": [
+        "E = B",
+        "E = vB",
+        "E = v/B",
+        "E = qvB"
+      ]
+    },
+    "Q2": {
+      "topic": "Semiconductors - Half-Wave Rectifier",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A half-wave rectifier converts an AC input into a DC output by:",
+      "options": [
+        "Allowing both positive and negative half-cycles to pass through",
+        "Allowing only one half-cycle (positive or negative) to pass while blocking the other",
+        "Doubling the frequency of the input signal",
+        "Inverting the negative half-cycle to produce a smooth constant voltage"
+      ]
+    },
+    "Q3": {
+      "topic": "Semiconductors - Depletion Region",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The depletion region at a PN junction forms because:",
+      "options": [
+        "External voltage is applied to the junction",
+        "Majority carriers diffuse across the junction, leaving behind immobile ionized dopant atoms",
+        "Photons are absorbed at the junction, creating electron-hole pairs",
+        "The temperature gradient across the junction drives carriers apart"
+      ]
+    },
+    "Q4": {
+      "topic": "Fluid Dynamics - Bernoulli Equation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The Bernoulli equation for an ideal fluid flowing in a horizontal pipe states that the sum of which quantities remains constant along a streamline?",
+      "options": [
+        "Pressure energy, kinetic energy, and thermal energy",
+        "Static pressure, dynamic pressure (1/2 ρ v2), and hydrostatic pressure (ρ g h)",
+        "Pressure, velocity, and viscous shear stress",
+        "Gravitational potential energy, surface tension energy, and kinetic energy"
+      ]
+    },
+    "Q5": {
+      "topic": "Particle Accelerators - Cyclotron",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A cyclotron cannot accelerate neutrons because:",
+      "options": [
+        "Neutrons are too heavy to reach relativistic speeds",
+        "Neutrons have no electric charge and cannot be deflected by magnetic or accelerated by electric fields",
+        "Neutrons decay too quickly to complete a full revolution",
+        "The magnetic field of a cyclotron repels neutral particles"
+      ]
+    },
+    "Q6": {
+      "topic": "Electromagnetism - Lorentz Force",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A positive charge moves to the right in a magnetic field directed into the page. The Lorentz force on the charge is directed:",
+      "options": [
+        "Into the page",
+        "Out of the page",
+        "Upward (toward the top of the page)",
+        "Downward (toward the bottom of the page)"
+      ]
+    },
+    "Q7": {
+      "topic": "Thermal Radiation - Black Body",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A perfect black body is an object that:",
+      "options": [
+        "Absorbs all incident radiation but emits none",
+        "Absorbs all incident radiation and is also the most efficient emitter of thermal radiation",
+        "Reflects all incident radiation perfectly",
+        "Emits radiation only at a single specific wavelength"
+      ]
+    },
+    "Q8": {
+      "topic": "Thermal Radiation - Wien's Law",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "According to Wien's displacement law, as the temperature of a black body increases, the wavelength at which it emits maximum radiation:",
+      "options": [
+        "Increases (shifts toward longer wavelengths / red shift)",
+        "Remains constant regardless of temperature",
+        "Decreases (shifts toward shorter wavelengths / blue shift)",
+        "First increases then decreases as temperature rises"
+      ]
+    },
+    "Q9": {
+      "topic": "Nuclear Physics - Radioactive Decay",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The activity of a radioactive sample as a function of time follows which mathematical relationship?",
+      "options": [
+        "Linear decrease: A(t) = A0 - kt",
+        "Quadratic decrease: A(t) = A0 - kt2",
+        "Exponential decrease: A(t) = A0 e^(-λ t)",
+        "Logarithmic decrease: A(t) = A0 ln(t)"
+      ]
+    },
+    "Q10": {
+      "topic": "Nuclear Physics - Half-Life Calculation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A radioactive isotope has a decay constant of λ = 0.0693 per day. Its half-life is approximately:",
+      "options": [
+        "5 days",
+        "10 days",
+        "14.4 days",
+        "69.3 days"
+      ]
+    },
+    "Q11": {
+      "topic": "Material Properties - Isotropy",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A substance is described as isotropic. This means that its physical properties are:",
+      "options": [
+        "Different in different directions",
+        "The same in all directions",
+        "Dependent on the temperature but not direction",
+        "Uniform only along one specific crystal axis"
+      ]
+    },
+    "Q12": {
+      "topic": "Adiabatic Processes",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An ideal gas with adiabatic index γ = 5/3 is compressed adiabatically from volume 8 L to 1 L. If the initial pressure is 100 kPa, what is the final pressure?",
+      "options": [
+        "800 kPa",
+        "1600 kPa",
+        "3200 kPa",
+        "6400 kPa"
+      ]
+    },
+    "Q13": {
+      "topic": "Adiabatic Processes",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In an adiabatic expansion of an ideal gas, which of the following is TRUE?",
+      "options": [
+        "The gas absorbs heat from the surroundings and cools down",
+        "The temperature of the gas decreases because it does work at the expense of internal energy",
+        "The temperature remains constant because no heat is exchanged",
+        "The internal energy increases because no heat is lost"
+      ]
+    },
+    "Q14": {
+      "topic": "Harmonic Oscillation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 2 kg mass oscillates on a spring with spring constant k = 800 N/m. What is the period of oscillation?",
+      "options": [
+        "0.157 s",
+        "0.314 s",
+        "0.628 s",
+        "1.257 s"
+      ]
+    },
+    "Q15": {
+      "topic": "Harmonic Oscillation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A simple pendulum has a period of 2 seconds on Earth (g = 10 m/s2). What is the length of the pendulum?",
+      "options": [
+        "0.5 m",
+        "1.0 m",
+        "1.5 m",
+        "2.0 m"
+      ]
+    },
+    "Q16": {
+      "topic": "Harmonic Oscillation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In simple harmonic motion, at which position is the kinetic energy of the oscillator at its maximum?",
+      "options": [
+        "At maximum displacement (amplitude)",
+        "At the equilibrium position",
+        "Halfway between equilibrium and amplitude",
+        "Kinetic energy is constant throughout the motion"
+      ]
+    },
+    "Q17": {
+      "topic": "Surface Tension",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A soap bubble has a radius of 5 cm. If the surface tension of the soap solution is 0.04 N/m, what is the excess pressure inside the bubble compared to outside?",
+      "options": [
+        "0.8 Pa",
+        "1.6 Pa",
+        "3.2 Pa",
+        "6.4 Pa"
+      ]
+    },
+    "Q18": {
+      "topic": "Surface Tension",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Water (surface tension 0.073 N/m, density 1000 kg/m3, contact angle 0°) rises in a glass capillary tube to a height of 3 cm. What is the approximate inner radius of the tube? (g = 10 m/s2)",
+      "options": [
+        "0.24 mm",
+        "0.49 mm",
+        "0.73 mm",
+        "1.46 mm"
+      ]
+    },
+    "Q19": {
+      "topic": "Solenoid Magnetic Field",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A solenoid has 2000 turns wound uniformly over a length of 0.4 m and carries a current of 3 A. What is the magnetic field inside the solenoid? (μ0 = 4π × 10−7 T·m/A)",
+      "options": [
+        "1.88 mT",
+        "6.28 mT",
+        "18.85 mT",
+        "62.8 mT"
+      ]
+    },
+    "Q20": {
+      "topic": "Solenoid Magnetic Field",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A solenoid produces a magnetic field of 10 mT when carrying 2 A. If the current is increased to 5 A (with no other changes), the magnetic field becomes:",
+      "options": [
+        "4 mT",
+        "10 mT",
+        "25 mT",
+        "50 mT"
+      ]
+    },
+    "Q21": {
+      "topic": "Photoelectric Effect",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Light of wavelength 310 nm strikes a metal surface with work function W = 3.0 eV. What is the maximum kinetic energy of the emitted electrons? (Use E(eV) = 1240/λ(nm))",
+      "options": [
+        "0.5 eV",
+        "1.0 eV",
+        "2.0 eV",
+        "4.0 eV"
+      ]
+    },
+    "Q22": {
+      "topic": "Photoelectric Effect",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In the photoelectric effect, if the intensity of light (above threshold frequency) is doubled while keeping the frequency unchanged, what happens?",
+      "options": [
+        "The maximum kinetic energy of electrons doubles",
+        "The number of emitted electrons doubles but their maximum kinetic energy stays the same",
+        "Both the number and maximum kinetic energy of electrons double",
+        "No additional electrons are emitted"
+      ]
+    },
+    "Q23": {
+      "topic": "Theory of Relativity",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A muon has a half-life of 1.5 μs in its own rest frame. If it travels at 0.6c relative to Earth, what is its half-life as measured by an Earth observer?",
+      "options": [
+        "1.2 μs",
+        "1.5 μs",
+        "1.875 μs",
+        "2.5 μs"
+      ]
+    },
+    "Q24": {
+      "topic": "Theory of Relativity",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "How much energy is released if 1 gram of matter is completely converted to energy? (c = 3 × 108 m/s)",
+      "options": [
+        "9 × 1010 J",
+        "9 × 1013 J",
+        "3 × 1011 J",
+        "3 × 1013 J"
+      ]
+    },
+    "Q25": {
+      "topic": "Torque",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A uniform 4 m beam of negligible weight is supported at its center. A 40 N weight hangs 1.5 m to the left of the fulcrum. How far to the right of the fulcrum should a 60 N weight be placed to balance the beam?",
+      "options": [
+        "0.5 m",
+        "1.0 m",
+        "1.5 m",
+        "2.0 m"
+      ]
+    },
+    "Q26": {
+      "topic": "Torque",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A 60 kg adult sits 1.5 m from the fulcrum of a seesaw. At what distance from the fulcrum should a 30 kg child sit to balance the seesaw? (g = 10 m/s2)",
+      "options": [
+        "0.75 m",
+        "1.5 m",
+        "3.0 m",
+        "4.5 m"
+      ]
+    },
+    "Q27": {
+      "topic": "Faraday's Law of Electrolysis",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "How long must a current of 10 A flow through a solution of AgNO3 to deposit 5.4 g of silver? (MAg = 108 g/mol, z = 1, F = 96500 C/mol)",
+      "options": [
+        "241 s",
+        "483 s",
+        "965 s",
+        "4825 s"
+      ]
+    },
+    "Q28": {
+      "topic": "Faraday's Law of Electrolysis",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The same quantity of electric charge is passed through solutions of CuSO4 and AgNO3 connected in series. If 2.16 g of silver is deposited, how much copper is deposited? (MAg = 108, zAg = 1; MCu = 64, zCu = 2)",
+      "options": [
+        "0.32 g",
+        "0.64 g",
+        "1.28 g",
+        "2.16 g"
+      ]
+    },
+    "Q29": {
+      "topic": "De Broglie Waves",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An electron is accelerated from rest through a potential difference of 400 V. What is its de Broglie wavelength? (Use the shortcut: λ(nm) = 1.226/√V for electrons)",
+      "options": [
+        "0.0307 nm",
+        "0.0613 nm",
+        "0.1226 nm",
+        "0.245 nm"
+      ]
+    },
+    "Q30": {
+      "topic": "Compton Scattering and X-rays",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "An X-ray tube operates at 40 kV. What is the shortest wavelength X-ray it can produce? (Use: λmin(nm) = 1.240/V(kV))",
+      "options": [
+        "0.031 nm",
+        "0.062 nm",
+        "0.124 nm",
+        "0.310 nm"
+      ]
+    },
+    "Q31": {
+      "topic": "AC Circuits - Capacitor",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A 10 μF capacitor is connected to a 50 Hz AC source with peak voltage V0 = 100 V. What is the capacitive reactance and the peak current?",
+      "options": [
+        "XC = 318 Ω, I0 = 0.314 A",
+        "XC = 159 Ω, I0 = 0.628 A",
+        "XC = 318 Ω, I0 = 0.628 A",
+        "XC = 159 Ω, I0 = 0.314 A"
+      ]
+    },
+    "Q32": {
+      "topic": "Thermodynamics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "At 25 degrees C, the saturation vapor pressure of water is 3.17 kPa. If the actual water vapor pressure in the air is 1.90 kPa, what is the relative humidity?",
+      "options": [
+        "40%",
+        "50%",
+        "60%",
+        "80%"
+      ]
+    },
+    "Q33": {
+      "topic": "Thermodynamics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "What happens when air is cooled below its dew point temperature?",
+      "options": [
+        "The relative humidity drops below 100%",
+        "Water vapor condenses into liquid droplets",
+        "The absolute humidity increases",
+        "The air pressure drops sharply"
+      ]
+    },
+    "Q34": {
+      "topic": "Magnetism",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "Two long parallel wires are 0.2 m apart, each carrying a current of 5 A in the same direction. What is the force per unit length between them?",
+      "options": [
+        "2.5 × 10⁻⁵ N/m, attractive",
+        "2.5 × 10⁻⁵ N/m, repulsive",
+        "5.0 × 10⁻⁵ N/m, attractive",
+        "1.0 × 10⁻⁴ N/m, repulsive"
+      ]
+    },
+    "Q35": {
+      "topic": "Magnetism",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The SI unit ampere was historically defined using which physical setup?",
+      "options": [
+        "Force between two charged spheres",
+        "Force between two parallel current-carrying conductors",
+        "Deflection of an electron in a magnetic field",
+        "EMF produced by a changing magnetic flux"
+      ]
+    },
+    "Q36": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A straight conductor of length 0.4 m moves at 3 m/s perpendicular to a uniform magnetic field of 0.5 T. What EMF is induced across its ends?",
+      "options": [
+        "0.2 V",
+        "0.6 V",
+        "1.2 V",
+        "0.15 V"
+      ]
+    },
+    "Q37": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The mass of a helium-4 nucleus is 4.0026 u, while the total mass of 2 free protons and 2 free neutrons is 4.0320 u. What does this mass difference represent?",
+      "options": [
+        "Experimental measurement error",
+        "Energy absorbed when the nucleus formed",
+        "Mass converted to nuclear binding energy via E = mc²",
+        "Energy lost to radiation during measurement"
+      ]
+    },
+    "Q38": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Which nucleus has the highest binding energy per nucleon and is therefore the most stable?",
+      "options": [
+        "Hydrogen-1",
+        "Helium-4",
+        "Iron-56",
+        "Uranium-238"
+      ]
+    },
+    "Q39": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a nuclear fission reactor, what is the primary function of the moderator?",
+      "options": [
+        "To absorb excess neutrons and prevent supercriticality",
+        "To slow fast neutrons to thermal speeds so they can trigger further fission",
+        "To shield workers from γ radiation",
+        "To cool the reactor core and prevent overheating"
+      ]
+    },
+    "Q40": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Which material is most effective at shielding against neutron radiation?",
+      "options": [
+        "Lead",
+        "Steel",
+        "Water or paraffin",
+        "Aluminum"
+      ]
+    },
+    "Q41": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A specific nuclear species defined by its atomic number Z and mass number A is called a:",
+      "options": [
+        "Nucleon",
+        "Nuclide",
+        "Isotope",
+        "Nucleotide"
+      ]
+    }
+  }
+}

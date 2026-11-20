@@ -186,11 +186,13 @@ for (const Q of idmap.scope.feedback_only_items) {
 /* ------------------------------------------------------------------ */
 section('3. nothing outside the block moved');
 
-/* The later physics review blocks (phys-61..phys-240) were pruned from this
-   fixture as each was implemented, so the records this suite still guards are
-   the 40 outside ALL FOUR reviewed blocks. Those 180 are guarded by
-   test/phys-review-b2.test.js, test/phys-review-b3.test.js and
-   test/phys-review-b4.test.js and their own before-fixtures instead. */
+/* The later physics review blocks were pruned from this fixture as each was
+   implemented. With the final block (phys-241..phys-280) done, every physics
+   record now belongs to some reviewed block, so this fixture guards none and
+   the count is 0 by construction. The other 220 records are guarded by
+   test/phys-review-b2.test.js, test/phys-review-b3.test.js,
+   test/phys-review-b4.test.js and test/phys-review-b5.test.js, each against
+   its own before-fixture. */
 let outSame = 0;
 const outside = [];
 for (const q of BANK) {
@@ -198,7 +200,7 @@ for (const q of BANK) {
   if (untouched.physics[q.id] === undefined) continue;
   if (untouched.physics[q.id] === hash(q)) outSame++; else outside.push(q.id);
 }
-ok(outSame === 40, 'all 40 records outside all four reviewed physics blocks are byte-identical (got ' + outSame + ')');
+ok(outSame === 0, 'no physics record now lies outside every reviewed block, so this fixture guards none (got ' + outSame + ')');
 ok(outside.length === 0, 'no record outside the block changed' + (outside.length ? ': ' + outside.slice(0, 6).join(', ') : ''));
 ok(BANK.length === 280, 'the physics bank still holds 280 records');
 
