@@ -1,0 +1,733 @@
+{
+  "_comment": [
+    "The ORIGINAL identification signatures from the batch-3 review appendix,",
+    "extracted verbatim from SHOSMED_Physics_Batch3_Review_and_Claude_Prompt.txt.",
+    "These are the PRE-EDIT stems and option texts, with the plain-text export's",
+    "flattened exponents preserved, and they exist so the test suite can",
+    "re-derive the id map by full content match rather than trusting it."
+  ],
+  "originalKeys": "ACCBAABBCCBBDCBBBDBBBBBCCBBBBAACBBBCCACBCCCCBBCCACCCCBBBBABB",
+  "retainedKeys": "ACCBAABBCCBBDCBBBDBBBBBCCBBBBAACBBBCCACBCCCCBBCCACCCCBBBBABB",
+  "sigs": {
+    "Q1": {
+      "topic": "Gravitation",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A planet has twice the mass and twice the radius of Earth. What is the gravitational acceleration on its surface compared to Earth's g?",
+      "options": [
+        "g/2",
+        "g",
+        "2g",
+        "4g"
+      ]
+    },
+    "Q2": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Two point charges of +3 μC and −6 μC are 0.3 m apart. What is the magnitude of the electrostatic force? (k = 9 × 109 N·m²/C²)",
+      "options": [
+        "0.6 N",
+        "1.2 N",
+        "1.8 N",
+        "5.4 N"
+      ]
+    },
+    "Q3": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "What is the electric field at a distance of 0.5 m from a point charge of 2 × 10−6 C? (k = 9 × 109 N·m²/C²)",
+      "options": [
+        "18,000 N/C",
+        "36,000 N/C",
+        "72,000 N/C",
+        "144,000 N/C"
+      ]
+    },
+    "Q4": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is the equivalent resistance?",
+      "options": [
+        "0.5 Ω",
+        "1 Ω",
+        "3.67 Ω",
+        "11 Ω"
+      ]
+    },
+    "Q5": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A parallel plate capacitor has plates of area 0.02 m² separated by 0.001 m. What is its capacitance? (ε0 = 8.85 × 10−12 F/m)",
+      "options": [
+        "1.77 × 10−10 F",
+        "8.85 × 10−10 F",
+        "1.77 × 10−11 F",
+        "8.85 × 10−11 F"
+      ]
+    },
+    "Q6": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "Two capacitors of 4 μF and 6 μF are connected in series. What is the equivalent capacitance?",
+      "options": [
+        "2.4 μF",
+        "5 μF",
+        "10 μF",
+        "1.2 μF"
+      ]
+    },
+    "Q7": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 10 Ω resistor carries a current of 3 A. What power is dissipated?",
+      "options": [
+        "30 W",
+        "90 W",
+        "300 W",
+        "9 W"
+      ]
+    },
+    "Q8": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A wire of resistivity 1.7 × 10−8 Ω·m has a length of 10 m and cross-sectional area of 1 × 10−6 m². What is its resistance?",
+      "options": [
+        "0.017 Ω",
+        "0.17 Ω",
+        "1.7 Ω",
+        "17 Ω"
+      ]
+    },
+    "Q9": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In a series circuit with a 12 V battery and two resistors (3 Ω and 6 Ω), what is the voltage across the 6 Ω resistor?",
+      "options": [
+        "4 V",
+        "6 V",
+        "8 V",
+        "12 V"
+      ]
+    },
+    "Q10": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "How much work is done in moving a charge of 5 C through a potential difference of 24 V?",
+      "options": [
+        "4.8 J",
+        "29 J",
+        "120 J",
+        "0.21 J"
+      ]
+    },
+    "Q11": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A 100 μF capacitor is charged to 50 V. How much energy is stored?",
+      "options": [
+        "0.0625 J",
+        "0.125 J",
+        "0.25 J",
+        "2.5 J"
+      ]
+    },
+    "Q12": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "According to Kirchhoff's junction rule, at any junction in a circuit:",
+      "options": [
+        "The sum of voltages is zero",
+        "The sum of currents entering equals the sum leaving",
+        "The total resistance is conserved",
+        "Power input equals power output"
+      ]
+    },
+    "Q13": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "A 60 W light bulb operates at 120 V. What is the resistance of the filament?",
+      "options": [
+        "2 Ω",
+        "60 Ω",
+        "120 Ω",
+        "240 Ω"
+      ]
+    },
+    "Q14": {
+      "topic": "Electricity & DC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Four identical resistors of 8 Ω each are connected: two in series forming a branch, and two such branches in parallel. What is the total resistance?",
+      "options": [
+        "2 Ω",
+        "4 Ω",
+        "8 Ω",
+        "16 Ω"
+      ]
+    },
+    "Q15": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A mass on a spring oscillates with a period of 0.4 s. What is the frequency?",
+      "options": [
+        "0.4 Hz",
+        "2.5 Hz",
+        "4 Hz",
+        "25 Hz"
+      ]
+    },
+    "Q16": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A simple pendulum has a length of 1 m. What is its period? (g = 10 m/s², π² ≈ 10)",
+      "options": [
+        "1 s",
+        "2 s",
+        "π s",
+        "0.5 s"
+      ]
+    },
+    "Q17": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A wave has a frequency of 500 Hz and a wavelength of 0.68 m. What is its speed?",
+      "options": [
+        "170 m/s",
+        "340 m/s",
+        "500 m/s",
+        "735 m/s"
+      ]
+    },
+    "Q18": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "An ambulance siren emits sound at 800 Hz. As the ambulance approaches you at 34 m/s, what frequency do you hear? (vsound = 340 m/s)",
+      "options": [
+        "720 Hz",
+        "800 Hz",
+        "880 Hz",
+        "889 Hz"
+      ]
+    },
+    "Q19": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Resonance occurs when:",
+      "options": [
+        "A system is damped heavily",
+        "The driving frequency equals the natural frequency",
+        "Two waves cancel completely",
+        "The amplitude is zero"
+      ]
+    },
+    "Q20": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Two waves of the same frequency and amplitude travel in opposite directions in a string. The result is:",
+      "options": [
+        "A traveling wave with double amplitude",
+        "A standing wave",
+        "Complete cancellation at all points",
+        "A wave with half the frequency"
+      ]
+    },
+    "Q21": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "What is the period of a simple pendulum of length 0.25 m? (g = 10 m/s², π² ≈ 10)",
+      "options": [
+        "0.5 s",
+        "1 s",
+        "1.5 s",
+        "2 s"
+      ]
+    },
+    "Q22": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "When two sound waves of frequencies 256 Hz and 260 Hz are played simultaneously, the beat frequency is:",
+      "options": [
+        "2 Hz",
+        "4 Hz",
+        "258 Hz",
+        "516 Hz"
+      ]
+    },
+    "Q23": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In simple harmonic motion, the maximum velocity occurs at:",
+      "options": [
+        "Maximum displacement",
+        "The equilibrium position",
+        "Half the amplitude",
+        "The turning points"
+      ]
+    },
+    "Q24": {
+      "topic": "Vibrations, Waves & Sound",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A string under tension vibrates in its second harmonic. How many nodes are there (including the endpoints)?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "Q25": {
+      "topic": "Light & Optics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A light ray travels from water (n = 1.33) into air (n = 1.00). If the angle of incidence in water is 30°, what is the angle of refraction in air? (sin 30° = 0.5)",
+      "options": [
+        "22°",
+        "30°",
+        "41.7°",
+        "48.6°"
+      ]
+    },
+    "Q26": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An object is placed 30 cm from a converging lens of focal length 10 cm. Where is the image formed?",
+      "options": [
+        "7.5 cm",
+        "15 cm",
+        "20 cm",
+        "30 cm"
+      ]
+    },
+    "Q27": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A concave mirror has a focal length of 20 cm. An object placed at the center of curvature (40 cm) produces an image that is:",
+      "options": [
+        "Virtual, upright, magnified",
+        "Real, inverted, same size",
+        "Real, inverted, diminished",
+        "Virtual, upright, same size"
+      ]
+    },
+    "Q28": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A myopic (near-sighted) person needs what type of corrective lens?",
+      "options": [
+        "Converging (convex) lens",
+        "Diverging (concave) lens",
+        "Cylindrical lens",
+        "Bifocal lens only"
+      ]
+    },
+    "Q29": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The angle of incidence equals the angle of reflection. This is known as:",
+      "options": [
+        "Snell's law",
+        "The law of reflection",
+        "Brewster's law",
+        "Huygens' principle"
+      ]
+    },
+    "Q30": {
+      "topic": "Light & Optics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "White light passing through a glass prism separates into colors because:",
+      "options": [
+        "Different colors travel at different speeds in the prism",
+        "The prism absorbs certain wavelengths",
+        "All colors reflect at different angles",
+        "The prism creates new wavelengths"
+      ]
+    },
+    "Q31": {
+      "topic": "Light & Optics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "An object is placed 15 cm from a diverging lens of focal length −30 cm. What is the image distance?",
+      "options": [
+        "−10 cm",
+        "−30 cm",
+        "10 cm",
+        "30 cm"
+      ]
+    },
+    "Q32": {
+      "topic": "Light & Optics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The power of a lens with focal length 0.25 m is:",
+      "options": [
+        "0.25 D",
+        "2.5 D",
+        "4 D",
+        "25 D"
+      ]
+    },
+    "Q33": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Which phenomenon demonstrates the wave nature of light?",
+      "options": [
+        "The photoelectric effect",
+        "Diffraction through a narrow slit",
+        "Compton scattering",
+        "Blackbody radiation"
+      ]
+    },
+    "Q34": {
+      "topic": "Light & Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The visible spectrum ranges approximately from:",
+      "options": [
+        "100–400 nm",
+        "400–700 nm",
+        "700–1000 nm",
+        "1000–1500 nm"
+      ]
+    },
+    "Q35": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An AC voltage source has a peak voltage of 170 V. What is the RMS (effective) voltage?",
+      "options": [
+        "85 V",
+        "120 V",
+        "170 V",
+        "240 V"
+      ]
+    },
+    "Q36": {
+      "topic": "Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A magnetic field of 0.5 T acts on a wire carrying 4 A of current. If the wire is 2 m long and perpendicular to the field, what is the force on the wire?",
+      "options": [
+        "1 N",
+        "2 N",
+        "4 N",
+        "8 N"
+      ]
+    },
+    "Q37": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Faraday's law of electromagnetic induction states that the induced EMF in a loop is proportional to:",
+      "options": [
+        "The magnetic field strength",
+        "The area of the loop",
+        "The rate of change of magnetic flux through the loop",
+        "The resistance of the loop"
+      ]
+    },
+    "Q38": {
+      "topic": "Lorentz Force",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A proton (charge = 1.6 × 10−19 C) moves at 2 × 106 m/s perpendicular to a magnetic field of 0.5 T. What is the magnetic force on it?",
+      "options": [
+        "1.6 × 10−13 N",
+        "3.2 × 10−13 N",
+        "1.6 × 10−14 N",
+        "3.2 × 10−14 N"
+      ]
+    },
+    "Q39": {
+      "topic": "Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Ferromagnetic materials are characterized by:",
+      "options": [
+        "Weak repulsion from magnetic fields",
+        "No response to magnetic fields",
+        "Strong attraction to magnetic fields and permanent magnetization",
+        "Weak attraction that disappears when the field is removed"
+      ]
+    },
+    "Q40": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a purely capacitive AC circuit, the current:",
+      "options": [
+        "Is in phase with the voltage",
+        "Leads the voltage by 90°",
+        "Lags the voltage by 90°",
+        "Leads the voltage by 180°"
+      ]
+    },
+    "Q41": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The capacitive reactance of a 10 μF capacitor at a frequency of 50 Hz is approximately:",
+      "options": [
+        "31.8 Ω",
+        "100 Ω",
+        "318 Ω",
+        "3180 Ω"
+      ]
+    },
+    "Q42": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An LC circuit has L = 0.1 H and C = 10 μF. What is the natural oscillation frequency? (π² ≈ 10)",
+      "options": [
+        "50 Hz",
+        "100 Hz",
+        "159 Hz",
+        "500 Hz"
+      ]
+    },
+    "Q43": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In an RLC series circuit, at resonance:",
+      "options": [
+        "Impedance is maximum",
+        "Current is minimum",
+        "Impedance equals the resistance R only",
+        "The circuit is purely inductive"
+      ]
+    },
+    "Q44": {
+      "topic": "AC Electricity & Magnetism",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A magnetic flux through a coil of 200 turns changes by 0.05 Wb in 0.1 s. What is the induced EMF?",
+      "options": [
+        "10 V",
+        "50 V",
+        "100 V",
+        "1000 V"
+      ]
+    },
+    "Q45": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The atomic number of an element represents the number of:",
+      "options": [
+        "Neutrons in the nucleus",
+        "Protons in the nucleus",
+        "Nucleons in the nucleus",
+        "Electrons in the outer shell"
+      ]
+    },
+    "Q46": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In α (α) decay, the parent nucleus emits:",
+      "options": [
+        "An electron",
+        "A helium-4 nucleus",
+        "A photon",
+        "A neutron"
+      ]
+    },
+    "Q47": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A radioactive sample has a half-life of 6 hours. If the initial activity is 800 Bq, what is the activity after 18 hours?",
+      "options": [
+        "400 Bq",
+        "200 Bq",
+        "100 Bq",
+        "50 Bq"
+      ]
+    },
+    "Q48": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Which type of radiation has the highest penetrating power?",
+      "options": [
+        "Α particles",
+        "Β particles",
+        "Γ rays",
+        "Protons"
+      ]
+    },
+    "Q49": {
+      "topic": "Nuclear Physics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "In β-minus (β−) decay, a neutron transforms into:",
+      "options": [
+        "A proton, an electron, and an antineutrino",
+        "A proton and a positron",
+        "Two protons and an electron",
+        "A neutron and a photon"
+      ]
+    },
+    "Q50": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Nuclear binding energy per nucleon is highest for elements near:",
+      "options": [
+        "Hydrogen",
+        "Helium",
+        "Iron (Fe-56)",
+        "Uranium"
+      ]
+    },
+    "Q51": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Carbon-12 and Carbon-14 are isotopes because they have:",
+      "options": [
+        "Different numbers of protons",
+        "The same mass number",
+        "The same number of protons but different numbers of neutrons",
+        "Different chemical properties"
+      ]
+    },
+    "Q52": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A radioactive isotope has a half-life of 10 days. What fraction of the original sample remains after 30 days?",
+      "options": [
+        "1/2",
+        "1/4",
+        "1/8",
+        "1/16"
+      ]
+    },
+    "Q53": {
+      "topic": "Nuclear Physics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In the nuclear reaction: 23592U + 10n → 14156Ba + 9236Kr + X, what is X?",
+      "options": [
+        "1 neutron",
+        "2 neutrons",
+        "3 neutrons",
+        "1 proton"
+      ]
+    },
+    "Q54": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The mass defect of a nucleus is:",
+      "options": [
+        "The mass of the electrons",
+        "The difference between the mass of individual nucleons and the actual nuclear mass",
+        "The mass of the neutrons only",
+        "Always zero for stable nuclei"
+      ]
+    },
+    "Q55": {
+      "topic": "Nuclear Physics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Which process powers the Sun?",
+      "options": [
+        "Nuclear fission of uranium",
+        "Nuclear fusion of hydrogen into helium",
+        "Chemical combustion of hydrogen",
+        "Radioactive decay of heavy elements"
+      ]
+    },
+    "Q56": {
+      "topic": "Bernoulli's Equation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Water flows through a horizontal pipe that narrows from a cross-sectional area of 0.04 m2 to 0.01 m2. If the speed of the water in the wider section is 2 m/s, what is the speed in the narrower section?",
+      "options": [
+        "4 m/s",
+        "8 m/s",
+        "0.5 m/s",
+        "16 m/s"
+      ]
+    },
+    "Q57": {
+      "topic": "Bernoulli's Equation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "According to Bernoulli's principle, when the speed of a fluid increases in a horizontal pipe, what happens to the pressure?",
+      "options": [
+        "Pressure increases",
+        "Pressure decreases",
+        "Pressure stays the same",
+        "Pressure first increases then decreases"
+      ]
+    },
+    "Q58": {
+      "topic": "Bernoulli's Equation",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "Water flows horizontally. At point A, the pressure is 200,000 Pa and the velocity is 1 m/s. At point B, the velocity is 3 m/s. What is the pressure at point B? (density of water = 1000 kg/m3)",
+      "options": [
+        "196,000 Pa",
+        "198,000 Pa",
+        "204,000 Pa",
+        "192,000 Pa"
+      ]
+    },
+    "Q59": {
+      "topic": "Bernoulli's Equation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A tank of water has a small hole near the bottom, 5 m below the water surface. Assuming the surface area of the tank is very large compared to the hole, what is the speed of water exiting the hole? (g = 10 m/s2)",
+      "options": [
+        "5 m/s",
+        "10 m/s",
+        "50 m/s",
+        "100 m/s"
+      ]
+    },
+    "Q60": {
+      "topic": "Bernoulli's Equation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An airplane wing is designed so that air flows faster over the top surface than the bottom. According to Bernoulli's principle, which statement correctly explains the resulting lift force?",
+      "options": [
+        "Pressure is higher above the wing, pushing it upward",
+        "Pressure is lower above the wing, creating a net upward force",
+        "The air above the wing is denser, creating more downward pressure",
+        "The air below the wing moves faster, creating higher pressure below"
+      ]
+    }
+  }
+}

@@ -111,7 +111,11 @@ check('5c its exponents use a real minus, not a hyphen',
 check('5d no option was flattened to plain text', q5 && q5.options.every(o => /<sup>/.test(o)));
 
 /* A text workaround would show up as the markup disappearing from the banks
-   in bulk. These are the counts at the time the rule was added. */
+   in bulk, so these counts are pinned. questions-physics.json rose from
+   667 sup / 651 sub to 736 / 677 when the third 60-question physics review
+   added its distractor feedback, which WRITES exponent markup rather than
+   removing it. Raise these numbers only alongside such an addition; a drop is
+   the thing this check exists to catch. */
 const counts = {};
 for (const f of ['questions.json', 'questions-physics.json']) {
   const raw = read(f);
@@ -119,8 +123,8 @@ for (const f of ['questions.json', 'questions-physics.json']) {
 }
 check('5e questions.json keeps its 357 superscripts and 409 subscripts',
   counts['questions.json'].sup === 357 && counts['questions.json'].sub === 409, counts['questions.json']);
-check('5f questions-physics.json keeps its 667 superscripts and 651 subscripts',
-  counts['questions-physics.json'].sup === 667 && counts['questions-physics.json'].sub === 651,
+check('5f questions-physics.json keeps its 736 superscripts and 677 subscripts',
+  counts['questions-physics.json'].sup === 736 && counts['questions-physics.json'].sub === 677,
   counts['questions-physics.json']);
 
 /* ------------------------------ 6. the card design is left as it was */

@@ -1,0 +1,842 @@
+{
+  "Q1": {
+    "id": "phys-121",
+    "subject": "physics",
+    "topic": "Gravitation",
+    "question": "A planet has twice the mass and twice the radius of Earth. What is the gravitational acceleration on its surface compared to Earth's g?",
+    "options": [
+      "g/2",
+      "g",
+      "2g",
+      "4g"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: g/2</h4><p>g' = GM'/R'² = G(2M)/(2R)² = 2GM/4R² = (1/2)(GM/R²) = <strong>g/2</strong>.</p><p class='exp-key'>Key Concept: Surface gravity g = GM/R²; it depends on both mass and radius.</p>"
+  },
+  "Q2": {
+    "id": "phys-122",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "Two point charges of +3 μC and −6 μC are 0.3 m apart. What is the magnitude of the electrostatic force? (k = 9 × 10<sup>9</sup> N·m²/C²)",
+    "options": [
+      "0.6 N",
+      "1.2 N",
+      "1.8 N",
+      "5.4 N"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 1.8 N</h4><p>F = kq<sub>1</sub>q<sub>2</sub>/r² = 9×10<sup>9</sup> × 3×10<sup>−6</sup> × 6×10<sup>−6</sup> / (0.3)² = 9×10<sup>9</sup> × 18×10<sup>−12</sup> / 0.09 = 0.162/0.09 = <strong>1.8 N</strong>.</p><p class='exp-key'>Key Concept: Coulomb's law: F = kq₁q₂/r².</p>"
+  },
+  "Q3": {
+    "id": "phys-123",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "What is the electric field at a distance of 0.5 m from a point charge of 2 × 10<sup>−6</sup> C? (k = 9 × 10<sup>9</sup> N·m²/C²)",
+    "options": [
+      "18,000 N/C",
+      "36,000 N/C",
+      "72,000 N/C",
+      "144,000 N/C"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 72,000 N/C</h4><p>E = kq/r² = 9×10<sup>9</sup> × 2×10<sup>−6</sup> / (0.5)² = 18,000 / 0.25 = <strong>72,000 N/C</strong>.</p><p class='exp-key'>Key Concept: Electric field from a point charge: E = kq/r².</p>"
+  },
+  "Q4": {
+    "id": "phys-124",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in parallel. What is the equivalent resistance?",
+    "options": [
+      "0.5 Ω",
+      "1 Ω",
+      "3.67 Ω",
+      "11 Ω"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 1 Ω</h4><p>1/R<sub>eq</sub> = 1/2 + 1/3 + 1/6 = 3/6 + 2/6 + 1/6 = 6/6 = 1. So R<sub>eq</sub> = <strong>1 Ω</strong>.</p><p class='exp-key'>Key Concept: For parallel resistors: 1/R<sub>eq</sub> = Σ(1/R<sub>i</sub>).</p>"
+  },
+  "Q5": {
+    "id": "phys-125",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "A parallel plate capacitor has plates of area 0.02 m² separated by 0.001 m. What is its capacitance? (ε<sub>0</sub> = 8.85 × 10<sup>−12</sup> F/m)",
+    "options": [
+      "1.77 × 10<sup>−10</sup> F",
+      "8.85 × 10<sup>−10</sup> F",
+      "1.77 × 10<sup>−11</sup> F",
+      "8.85 × 10<sup>−11</sup> F"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 1.77 × 10<sup>−10</sup> F</h4><p>C = ε<sub>0</sub>A/d = 8.85×10<sup>−12</sup> × 0.02 / 0.001 = 8.85×10<sup>−12</sup> × 20 = <strong>1.77 × 10<sup>−10</sup> F</strong> ≈ 177 pF.</p><p class='exp-key'>Key Concept: Parallel plate capacitance: C = ε₀A/d.</p>"
+  },
+  "Q6": {
+    "id": "phys-126",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "Two capacitors of 4 μF and 6 μF are connected in series. What is the equivalent capacitance?",
+    "options": [
+      "2.4 μF",
+      "5 μF",
+      "10 μF",
+      "1.2 μF"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 2.4 μF</h4><p>1/C<sub>eq</sub> = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 → C<sub>eq</sub> = 12/5 = <strong>2.4 μF</strong>.</p><p class='exp-key'>Key Concept: Capacitors in series: 1/C<sub>eq</sub> = Σ(1/C<sub>i</sub>).</p>"
+  },
+  "Q7": {
+    "id": "phys-127",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "A 10 Ω resistor carries a current of 3 A. What power is dissipated?",
+    "options": [
+      "30 W",
+      "90 W",
+      "300 W",
+      "9 W"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 90 W</h4><p>P = I²R = 9 × 10 = <strong>90 W</strong>.</p><p class='exp-key'>Key Concept: Power in a resistor: P = I²R = V²/R = IV.</p>"
+  },
+  "Q8": {
+    "id": "phys-128",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "A wire of resistivity 1.7 × 10<sup>−8</sup> Ω·m has a length of 10 m and cross-sectional area of 1 × 10<sup>−6</sup> m². What is its resistance?",
+    "options": [
+      "0.017 Ω",
+      "0.17 Ω",
+      "1.7 Ω",
+      "17 Ω"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 0.17 Ω</h4><p>R = ρL/A = 1.7×10<sup>−8</sup> × 10 / 1×10<sup>−6</sup> = 1.7×10<sup>−7</sup> / 10<sup>−6</sup> = <strong>0.17 Ω</strong>.</p><p class='exp-key'>Key Concept: R = ρL/A, where ρ is resistivity.</p>"
+  },
+  "Q9": {
+    "id": "phys-129",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "In a series circuit with a 12 V battery and two resistors (3 Ω and 6 Ω), what is the voltage across the 6 Ω resistor?",
+    "options": [
+      "4 V",
+      "6 V",
+      "8 V",
+      "12 V"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 8 V</h4><p>Total resistance = 3 + 6 = 9 Ω. Current = 12/9 = 4/3 A. Voltage across 6 Ω: V = IR = (4/3) × 6 = <strong>8 V</strong>.</p><p class='exp-key'>Key Concept: Voltage divider: in series, V across each resistor is proportional to its resistance.</p>"
+  },
+  "Q10": {
+    "id": "phys-130",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "How much work is done in moving a charge of 5 C through a potential difference of 24 V?",
+    "options": [
+      "4.8 J",
+      "29 J",
+      "120 J",
+      "0.21 J"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 120 J</h4><p>W = qV = 5 × 24 = <strong>120 J</strong>.</p><p class='exp-key'>Key Concept: Work done on a charge: W = qV (voltage is energy per unit charge).</p>"
+  },
+  "Q11": {
+    "id": "phys-131",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "A 100 μF capacitor is charged to 50 V. How much energy is stored?",
+    "options": [
+      "0.0625 J",
+      "0.125 J",
+      "0.25 J",
+      "2.5 J"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 0.125 J</h4><p>E = ½CV² = ½ × 100×10<sup>−6</sup> × 2500 = ½ × 0.25 = <strong>0.125 J</strong>.</p><p class='exp-key'>Key Concept: Energy stored in a capacitor: E = ½CV².</p>"
+  },
+  "Q12": {
+    "id": "phys-132",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "According to Kirchhoff's junction rule, at any junction in a circuit:",
+    "options": [
+      "The sum of voltages is zero",
+      "The sum of currents entering equals the sum leaving",
+      "The total resistance is conserved",
+      "Power input equals power output"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The sum of currents entering equals the sum leaving</h4><p>Kirchhoff's <strong>junction rule</strong> (current law) states that the total current flowing into a junction equals the total current flowing out. This is based on conservation of charge.</p><p class='exp-key'>Key Concept: Kirchhoff's current law: ΣI<sub>in</sub> = ΣI<sub>out</sub> at any junction.</p>"
+  },
+  "Q13": {
+    "id": "phys-133",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "A 60 W light bulb operates at 120 V. What is the resistance of the filament?",
+    "options": [
+      "2 Ω",
+      "60 Ω",
+      "120 Ω",
+      "240 Ω"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 240 Ω</h4><p>P = V²/R → R = V²/P = (120)²/60 = 14400/60 = <strong>240 Ω</strong>.</p><p class='exp-key'>Key Concept: P = V²/R can be rearranged to find resistance.</p>"
+  },
+  "Q14": {
+    "id": "phys-134",
+    "subject": "physics",
+    "topic": "Electricity & DC Circuits",
+    "question": "Four identical resistors of 8 Ω each are connected: two in series forming a branch, and two such branches in parallel. What is the total resistance?",
+    "options": [
+      "2 Ω",
+      "4 Ω",
+      "8 Ω",
+      "16 Ω"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 8 Ω</h4><p>Each series branch: 8 + 8 = 16 Ω. Two branches in parallel: 1/R = 1/16 + 1/16 = 2/16 → R = <strong>8 Ω</strong>.</p><p class='exp-key'>Key Concept: Combine series resistances first, then parallel, step by step.</p>"
+  },
+  "Q15": {
+    "id": "phys-135",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "A mass on a spring oscillates with a period of 0.4 s. What is the frequency?",
+    "options": [
+      "0.4 Hz",
+      "2.5 Hz",
+      "4 Hz",
+      "25 Hz"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2.5 Hz</h4><p>f = 1/T = 1/0.4 = <strong>2.5 Hz</strong>.</p><p class='exp-key'>Key Concept: Frequency and period are reciprocals: f = 1/T.</p>"
+  },
+  "Q16": {
+    "id": "phys-136",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "A simple pendulum has a length of 1 m. What is its period? (g = 10 m/s², π² ≈ 10)",
+    "options": [
+      "1 s",
+      "2 s",
+      "π s",
+      "0.5 s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2 s</h4><p>T = 2π√(L/g) = 2π√(1/10) = 2π/√10. Since π² ≈ 10, √10 ≈ π, so T ≈ 2π/π = <strong>2 s</strong>.</p><p class='exp-key'>Key Concept: Pendulum period T = 2π√(L/g); depends on length and g, not mass.</p>"
+  },
+  "Q17": {
+    "id": "phys-137",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "A wave has a frequency of 500 Hz and a wavelength of 0.68 m. What is its speed?",
+    "options": [
+      "170 m/s",
+      "340 m/s",
+      "500 m/s",
+      "735 m/s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 340 m/s</h4><p>v = fλ = 500 × 0.68 = <strong>340 m/s</strong>. This is the speed of sound in air at room temperature.</p><p class='exp-key'>Key Concept: Wave speed v = fλ.</p><div style=\"text-align:center;margin:12px 0\"></div>"
+  },
+  "Q18": {
+    "id": "phys-138",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "An ambulance siren emits sound at 800 Hz. As the ambulance approaches you at 34 m/s, what frequency do you hear? (v<sub>sound</sub> = 340 m/s)",
+    "options": [
+      "720 Hz",
+      "800 Hz",
+      "880 Hz",
+      "889 Hz"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 889 Hz</h4><p>Doppler effect (source approaching): f' = f × v/(v − v<sub>s</sub>) = 800 × 340/(340 − 34) = 800 × 340/306 ≈ <strong>889 Hz</strong>.</p><p class='exp-key'>Key Concept: Doppler effect: approaching source → higher frequency; f' = f·v/(v − v<sub>s</sub>).</p>"
+  },
+  "Q19": {
+    "id": "phys-139",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "Resonance occurs when:",
+    "options": [
+      "A system is damped heavily",
+      "The driving frequency equals the natural frequency",
+      "Two waves cancel completely",
+      "The amplitude is zero"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The driving frequency equals the natural frequency</h4><p><strong>Resonance</strong> occurs when the frequency of an external driving force matches the natural frequency of a system, causing maximum amplitude oscillations.</p><p class='exp-key'>Key Concept: Resonance = maximum energy transfer when driving frequency equals natural frequency.</p>"
+  },
+  "Q20": {
+    "id": "phys-140",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "Two waves of the same frequency and amplitude travel in opposite directions in a string. The result is:",
+    "options": [
+      "A traveling wave with double amplitude",
+      "A standing wave",
+      "Complete cancellation at all points",
+      "A wave with half the frequency"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: A standing wave</h4><p>When two waves of equal frequency and amplitude travel in opposite directions, they produce a <strong>standing wave</strong> with nodes (zero displacement) and antinodes (maximum displacement).</p><p class='exp-key'>Key Concept: Standing waves form from superposition of two identical waves traveling in opposite directions.</p>"
+  },
+  "Q21": {
+    "id": "phys-141",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "What is the period of a simple pendulum of length 0.25 m? (g = 10 m/s², π² ≈ 10)",
+    "options": [
+      "0.5 s",
+      "1 s",
+      "1.5 s",
+      "2 s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 1 s</h4><p>T = 2π√(L/g) = 2π√(0.25/10) = 2π√(0.025) = 2π × 0.158 ≈ 1 s. Alternatively: T = 2π/√(g/L) = 2π/√40; since √40 ≈ 2π, T ≈ <strong>1 s</strong>.</p><p class='exp-key'>Key Concept: T = 2π√(L/g). Halving the pendulum length does not halve the period.</p>"
+  },
+  "Q22": {
+    "id": "phys-142",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "When two sound waves of frequencies 256 Hz and 260 Hz are played simultaneously, the beat frequency is:",
+    "options": [
+      "2 Hz",
+      "4 Hz",
+      "258 Hz",
+      "516 Hz"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 4 Hz</h4><p>Beat frequency = |f<sub>1</sub> − f<sub>2</sub>| = |256 − 260| = <strong>4 Hz</strong>. You hear 4 beats per second.</p><p class='exp-key'>Key Concept: Beat frequency = |f₁ − f₂|.</p>"
+  },
+  "Q23": {
+    "id": "phys-143",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "In simple harmonic motion, the maximum velocity occurs at:",
+    "options": [
+      "Maximum displacement",
+      "The equilibrium position",
+      "Half the amplitude",
+      "The turning points"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The equilibrium position</h4><p>In SHM, velocity is maximum when displacement is zero (at equilibrium) and zero when displacement is maximum (at the turning points). v<sub>max</sub> = ωA.</p><p class='exp-key'>Key Concept: In SHM, KE is maximum (and PE minimum) at the equilibrium position.</p>"
+  },
+  "Q24": {
+    "id": "phys-144",
+    "subject": "physics",
+    "topic": "Vibrations, Waves & Sound",
+    "question": "A string under tension vibrates in its second harmonic. How many nodes are there (including the endpoints)?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 3</h4><p>The second harmonic (first overtone) has 2 antinodes and <strong>3 nodes</strong>: one at each fixed end and one in the middle.</p><p class='exp-key'>Key Concept: The nth harmonic has (n+1) nodes and n antinodes on a fixed string.</p>"
+  },
+  "Q25": {
+    "id": "phys-145",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "A light ray travels from water (n = 1.33) into air (n = 1.00). If the angle of incidence in water is 30°, what is the angle of refraction in air? (sin 30° = 0.5)",
+    "options": [
+      "22°",
+      "30°",
+      "41.7°",
+      "48.6°"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 41.7°</h4><p>By Snell's law: n<sub>1</sub>sin θ<sub>1</sub> = n<sub>2</sub>sin θ<sub>2</sub>. 1.33 × 0.5 = 1.00 × sin θ<sub>2</sub>. sin θ<sub>2</sub> = 0.665 → θ<sub>2</sub> ≈ <strong>41.7°</strong>. Light bends away from the normal going into a less dense medium.</p><p class='exp-key'>Key Concept: Snell's law: n₁sin θ₁ = n₂sin θ₂.</p>"
+  },
+  "Q26": {
+    "id": "phys-146",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "An object is placed 30 cm from a converging lens of focal length 10 cm. Where is the image formed?",
+    "options": [
+      "7.5 cm",
+      "15 cm",
+      "20 cm",
+      "30 cm"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 15 cm</h4><p>Using the thin lens equation: 1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub>. 1/10 = 1/30 + 1/d<sub>i</sub>. 1/d<sub>i</sub> = 1/10 − 1/30 = 3/30 − 1/30 = 2/30. d<sub>i</sub> = <strong>15 cm</strong>.</p><p class='exp-key'>Key Concept: Thin lens equation: 1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub>.</p>"
+  },
+  "Q27": {
+    "id": "phys-147",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "A concave mirror has a focal length of 20 cm. An object placed at the center of curvature (40 cm) produces an image that is:",
+    "options": [
+      "Virtual, upright, magnified",
+      "Real, inverted, same size",
+      "Real, inverted, diminished",
+      "Virtual, upright, same size"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Real, inverted, same size</h4><p>When an object is placed at the center of curvature (C = 2f), the image forms at C as well. It is <strong>real, inverted, and the same size</strong> as the object.</p><p class='exp-key'>Key Concept: Object at C → image at C, real, inverted, same size.</p>"
+  },
+  "Q28": {
+    "id": "phys-148",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "A myopic (near-sighted) person needs what type of corrective lens?",
+    "options": [
+      "Converging (convex) lens",
+      "Diverging (concave) lens",
+      "Cylindrical lens",
+      "Bifocal lens only"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Diverging (concave) lens</h4><p>In <strong>myopia</strong>, the image forms in front of the retina. A diverging (concave) lens spreads the light rays so that they focus correctly on the retina.</p><p class='exp-key'>Key Concept: Myopia → diverging lens; hyperopia → converging lens.</p>"
+  },
+  "Q29": {
+    "id": "phys-149",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "The angle of incidence equals the angle of reflection. This is known as:",
+    "options": [
+      "Snell's law",
+      "The law of reflection",
+      "Brewster's law",
+      "Huygens' principle"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The law of reflection</h4><p>The <strong>law of reflection</strong> states that the angle of incidence equals the angle of reflection, both measured from the normal to the surface.</p><p class='exp-key'>Key Concept: Law of reflection: θ<sub>i</sub> = θ<sub>r</sub>.</p>"
+  },
+  "Q30": {
+    "id": "phys-150",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "White light passing through a glass prism separates into colors because:",
+    "options": [
+      "Different colors travel at different speeds in the prism",
+      "The prism absorbs certain wavelengths",
+      "All colors reflect at different angles",
+      "The prism creates new wavelengths"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Different colors travel at different speeds in the prism</h4><p>Dispersion occurs because the <strong>refractive index depends on wavelength</strong>. Shorter wavelengths (violet) are slowed more and refracted more than longer wavelengths (red).</p><p class='exp-key'>Key Concept: Dispersion - different wavelengths have different refractive indices in glass.</p>"
+  },
+  "Q31": {
+    "id": "phys-151",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "An object is placed 15 cm from a diverging lens of focal length −30 cm. What is the image distance?",
+    "options": [
+      "−10 cm",
+      "−30 cm",
+      "10 cm",
+      "30 cm"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: −10 cm</h4><p>1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub>. 1/(−30) = 1/15 + 1/d<sub>i</sub>. 1/d<sub>i</sub> = −1/30 − 1/15 = −1/30 − 2/30 = −3/30 = −1/10. d<sub>i</sub> = <strong>−10 cm</strong> (virtual image).</p><p class='exp-key'>Key Concept: Diverging lenses always produce virtual, upright, diminished images.</p>"
+  },
+  "Q32": {
+    "id": "phys-152",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "The power of a lens with focal length 0.25 m is:",
+    "options": [
+      "0.25 D",
+      "2.5 D",
+      "4 D",
+      "25 D"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 4 D</h4><p>Power P = 1/f = 1/0.25 = <strong>4 diopters (D)</strong>.</p><p class='exp-key'>Key Concept: Lens power (in diopters) = 1/f (in meters). Converging lenses have positive power.</p>"
+  },
+  "Q33": {
+    "id": "phys-153",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "Which phenomenon demonstrates the wave nature of light?",
+    "options": [
+      "The photoelectric effect",
+      "Diffraction through a narrow slit",
+      "Compton scattering",
+      "Blackbody radiation"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Diffraction through a narrow slit</h4><p><strong>Diffraction</strong> is the bending of waves around obstacles or through openings. It can only be explained by the wave model of light. The photoelectric effect and Compton scattering demonstrate the particle nature.</p><p class='exp-key'>Key Concept: Diffraction and interference demonstrate wave nature; photoelectric effect demonstrates particle nature.</p>"
+  },
+  "Q34": {
+    "id": "phys-154",
+    "subject": "physics",
+    "topic": "Light & Optics",
+    "question": "The visible spectrum ranges approximately from:",
+    "options": [
+      "100–400 nm",
+      "400–700 nm",
+      "700–1000 nm",
+      "1000–1500 nm"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 400–700 nm</h4><p>The visible spectrum extends from about <strong>400 nm</strong> (violet) to <strong>700 nm</strong> (red). Below 400 nm is ultraviolet; above 700 nm is infrared.</p><p class='exp-key'>Key Concept: Visible light: ~400 nm (violet) to ~700 nm (red).</p>"
+  },
+  "Q35": {
+    "id": "phys-155",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "An AC voltage source has a peak voltage of 170 V. What is the RMS (effective) voltage?",
+    "options": [
+      "85 V",
+      "120 V",
+      "170 V",
+      "240 V"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 120 V</h4><p>V<sub>RMS</sub> = V<sub>peak</sub>/√2 = 170/1.414 ≈ <strong>120 V</strong>.</p><p class='exp-key'>Key Concept: V<sub>RMS</sub> = V<sub>peak</sub>/√2 ≈ 0.707 × V<sub>peak</sub>.</p>"
+  },
+  "Q36": {
+    "id": "phys-156",
+    "subject": "physics",
+    "topic": "Magnetism",
+    "question": "A magnetic field of 0.5 T acts on a wire carrying 4 A of current. If the wire is 2 m long and perpendicular to the field, what is the force on the wire?",
+    "options": [
+      "1 N",
+      "2 N",
+      "4 N",
+      "8 N"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 4 N</h4><p>F = BIL sin θ = 0.5 × 4 × 2 × sin 90° = <strong>4 N</strong>.</p><p class='exp-key'>Key Concept: Force on a current-carrying wire in a magnetic field: F = BIL sin θ.</p>"
+  },
+  "Q37": {
+    "id": "phys-157",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "Faraday's law of electromagnetic induction states that the induced EMF in a loop is proportional to:",
+    "options": [
+      "The magnetic field strength",
+      "The area of the loop",
+      "The rate of change of magnetic flux through the loop",
+      "The resistance of the loop"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: The rate of change of magnetic flux through the loop</h4><p>Faraday's law: EMF = −dΦ/dt. The induced EMF depends on how quickly the <strong>magnetic flux</strong> (Φ = BA cos θ) changes, not on the static field value.</p><p class='exp-key'>Key Concept: Faraday's law: EMF = −N(ΔΦ/Δt); no change in flux = no EMF.</p>"
+  },
+  "Q38": {
+    "id": "phys-158",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "A proton (charge = 1.6 × 10<sup>−19</sup> C) moves at 2 × 10<sup>6</sup> m/s perpendicular to a magnetic field of 0.5 T. What is the magnetic force on it?",
+    "options": [
+      "1.6 × 10<sup>−13</sup> N",
+      "3.2 × 10<sup>−13</sup> N",
+      "1.6 × 10<sup>−14</sup> N",
+      "3.2 × 10<sup>−14</sup> N"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 1.6 × 10<sup>−13</sup> N</h4><p>F = qvB sin θ = 1.6×10<sup>−19</sup> × 2×10<sup>6</sup> × 0.5 × 1 = <strong>1.6 × 10<sup>−13</sup> N</strong>.</p><p class='exp-key'>Key Concept: Magnetic force on a moving charge: F = qvB sin θ.</p>"
+  },
+  "Q39": {
+    "id": "phys-159",
+    "subject": "physics",
+    "topic": "Magnetism",
+    "question": "Ferromagnetic materials are characterized by:",
+    "options": [
+      "Weak repulsion from magnetic fields",
+      "No response to magnetic fields",
+      "Strong attraction to magnetic fields and permanent magnetization",
+      "Weak attraction that disappears when the field is removed"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Strong attraction to magnetic fields and permanent magnetization</h4><p><strong>Ferromagnetic</strong> materials (iron, nickel, cobalt) are strongly attracted to magnets and can retain magnetization. Paramagnetic materials are weakly attracted; diamagnetic materials are weakly repelled.</p><p class='exp-key'>Key Concept: Ferro = strong attraction + permanent; para = weak attraction; dia = weak repulsion.</p>"
+  },
+  "Q40": {
+    "id": "phys-160",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "In a purely capacitive AC circuit, the current:",
+    "options": [
+      "Is in phase with the voltage",
+      "Leads the voltage by 90°",
+      "Lags the voltage by 90°",
+      "Leads the voltage by 180°"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Leads the voltage by 90°</h4><p>In a purely capacitive circuit, the current <strong>leads</strong> the voltage by 90° (π/2). The mnemonic 'ICE' helps: In a Capacitor, current (I) leads EMF (E).</p><p class='exp-key'>Key Concept: Capacitor: I leads V by 90°. Inductor: I lags V by 90°. Mnemonic: ICE / ELI.</p>"
+  },
+  "Q41": {
+    "id": "phys-161",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "The capacitive reactance of a 10 μF capacitor at a frequency of 50 Hz is approximately:",
+    "options": [
+      "31.8 Ω",
+      "100 Ω",
+      "318 Ω",
+      "3180 Ω"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 318 Ω</h4><p>X<sub>C</sub> = 1/(2πfC) = 1/(2π × 50 × 10×10<sup>−6</sup>) = 1/(π × 10<sup>−3</sup>) = 1000/π ≈ <strong>318 Ω</strong>.</p><p class='exp-key'>Key Concept: Capacitive reactance X<sub>C</sub> = 1/(2πfC); decreases with frequency.</p>"
+  },
+  "Q42": {
+    "id": "phys-162",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "An LC circuit has L = 0.1 H and C = 10 μF. What is the natural oscillation frequency? (π² ≈ 10)",
+    "options": [
+      "50 Hz",
+      "100 Hz",
+      "159 Hz",
+      "500 Hz"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 159 Hz</h4><p>f = 1/(2π√(LC)) = 1/(2π√(0.1 × 10<sup>−5</sup>)) = 1/(2π × 10<sup>−3</sup>) = 1000/(2π) ≈ <strong>159 Hz</strong>.</p><p class='exp-key'>Key Concept: LC oscillation frequency f = 1/(2π√(LC)).</p>"
+  },
+  "Q43": {
+    "id": "phys-163",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "In an RLC series circuit, at resonance:",
+    "options": [
+      "Impedance is maximum",
+      "Current is minimum",
+      "Impedance equals the resistance R only",
+      "The circuit is purely inductive"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Impedance equals the resistance R only</h4><p>At resonance in an RLC series circuit, X<sub>L</sub> = X<sub>C</sub>, so they cancel. The impedance Z = √(R² + (X<sub>L</sub>−X<sub>C</sub>)²) = R. Current is <strong>maximum</strong> and impedance is <strong>minimum</strong>.</p><p class='exp-key'>Key Concept: At resonance: X<sub>L</sub> = X<sub>C</sub>, Z = R (minimum), I = V/R (maximum).</p>"
+  },
+  "Q44": {
+    "id": "phys-164",
+    "subject": "physics",
+    "topic": "AC Electricity & Magnetism",
+    "question": "A magnetic flux through a coil of 200 turns changes by 0.05 Wb in 0.1 s. What is the induced EMF?",
+    "options": [
+      "10 V",
+      "50 V",
+      "100 V",
+      "1000 V"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 100 V</h4><p>EMF = N × ΔΦ/Δt = 200 × 0.05/0.1 = 200 × 0.5 = <strong>100 V</strong>.</p><p class='exp-key'>Key Concept: Faraday's law: EMF = N(ΔΦ/Δt).</p>"
+  },
+  "Q45": {
+    "id": "phys-165",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "The atomic number of an element represents the number of:",
+    "options": [
+      "Neutrons in the nucleus",
+      "Protons in the nucleus",
+      "Nucleons in the nucleus",
+      "Electrons in the outer shell"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Protons in the nucleus</h4><p>The <strong>atomic number (Z)</strong> equals the number of protons. The mass number (A) equals protons + neutrons. The number of neutrons = A − Z.</p><p class='exp-key'>Key Concept: Z = number of protons; A = protons + neutrons; neutrons = A − Z.</p>"
+  },
+  "Q46": {
+    "id": "phys-166",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "In α (α) decay, the parent nucleus emits:",
+    "options": [
+      "An electron",
+      "A helium-4 nucleus",
+      "A photon",
+      "A neutron"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: A helium-4 nucleus</h4><p>An <strong>α particle</strong> consists of 2 protons and 2 neutrons (a helium-4 nucleus). After α decay, the atomic number decreases by 2 and mass number decreases by 4.</p><p class='exp-key'>Key Concept: α decay: Z → Z−2, A → A−4.</p>"
+  },
+  "Q47": {
+    "id": "phys-167",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "A radioactive sample has a half-life of 6 hours. If the initial activity is 800 Bq, what is the activity after 18 hours?",
+    "options": [
+      "400 Bq",
+      "200 Bq",
+      "100 Bq",
+      "50 Bq"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 100 Bq</h4><p>18 hours = 3 half-lives. After 3 half-lives: 800 → 400 → 200 → <strong>100 Bq</strong>. Activity halves with each half-life.</p><p class='exp-key'>Key Concept: After n half-lives, activity = A₀/2<sup>n</sup>.</p>"
+  },
+  "Q48": {
+    "id": "phys-168",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "Which type of radiation has the highest penetrating power?",
+    "options": [
+      "Α particles",
+      "Β particles",
+      "Γ rays",
+      "Protons"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Γ rays</h4><p><strong>Γ rays</strong> are electromagnetic radiation with no charge and high energy, giving them the greatest penetrating power. They can pass through several cm of lead. Α is stopped by paper; β by aluminum.</p><p class='exp-key'>Key Concept: Penetrating power: γ > β > α. Ionizing power: α > β > γ.</p>"
+  },
+  "Q49": {
+    "id": "phys-169",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "In β-minus (β<sup>−</sup>) decay, a neutron transforms into:",
+    "options": [
+      "A proton, an electron, and an antineutrino",
+      "A proton and a positron",
+      "Two protons and an electron",
+      "A neutron and a photon"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: A proton, an electron, and an antineutrino</h4><p>In β<sup>−</sup> decay: n → p + e<sup>−</sup> + ν̄<sub>e</sub>. The atomic number increases by 1, mass number stays the same.</p><p class='exp-key'>Key Concept: β<sup>−</sup>: Z → Z+1, A unchanged; β<sup>+</sup>: Z → Z−1, A unchanged.</p>"
+  },
+  "Q50": {
+    "id": "phys-170",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "Nuclear binding energy per nucleon is highest for elements near:",
+    "options": [
+      "Hydrogen",
+      "Helium",
+      "Iron (Fe-56)",
+      "Uranium"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Iron (Fe-56)</h4><p><strong>Iron-56</strong> has the highest binding energy per nucleon (~8.8 MeV), making it the most stable nucleus. Lighter elements can release energy by fusion; heavier elements by fission.</p><p class='exp-key'>Key Concept: Iron-56 is at the peak of the binding energy curve - most stable nucleus.</p>"
+  },
+  "Q51": {
+    "id": "phys-171",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "Carbon-12 and Carbon-14 are isotopes because they have:",
+    "options": [
+      "Different numbers of protons",
+      "The same mass number",
+      "The same number of protons but different numbers of neutrons",
+      "Different chemical properties"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: The same number of protons but different numbers of neutrons</h4><p><strong>Isotopes</strong> have the same atomic number (Z) but different mass numbers (A). C-12 has 6p + 6n; C-14 has 6p + 8n. They have the same chemical properties.</p><p class='exp-key'>Key Concept: Isotopes = same Z (protons), different A (different neutrons).</p>"
+  },
+  "Q52": {
+    "id": "phys-172",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "A radioactive isotope has a half-life of 10 days. What fraction of the original sample remains after 30 days?",
+    "options": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/16"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 1/8</h4><p>30 days = 3 half-lives. Fraction remaining = (1/2)<sup>3</sup> = <strong>1/8</strong>.</p><p class='exp-key'>Key Concept: Fraction remaining after n half-lives = (1/2)<sup>n</sup>.</p>"
+  },
+  "Q53": {
+    "id": "phys-173",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "In the nuclear reaction: <sup>235</sup><sub>92</sub>U + <sup>1</sup><sub>0</sub>n → <sup>141</sup><sub>56</sub>Ba + <sup>92</sup><sub>36</sub>Kr + X, what is X?",
+    "options": [
+      "1 neutron",
+      "2 neutrons",
+      "3 neutrons",
+      "1 proton"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 3 neutrons</h4><p>Conservation of mass number: 235 + 1 = 141 + 92 + x → x = 3. Conservation of atomic number: 92 + 0 = 56 + 36 + 0 ✓. So X = <strong>3 neutrons</strong>.</p><p class='exp-key'>Key Concept: In nuclear reactions, both mass number (A) and atomic number (Z) are conserved.</p>"
+  },
+  "Q54": {
+    "id": "phys-174",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "The mass defect of a nucleus is:",
+    "options": [
+      "The mass of the electrons",
+      "The difference between the mass of individual nucleons and the actual nuclear mass",
+      "The mass of the neutrons only",
+      "Always zero for stable nuclei"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The difference between the mass of individual nucleons and the actual nuclear mass</h4><p>The <strong>mass defect</strong> (Δm) is the difference between the total mass of separated nucleons and the mass of the bound nucleus. This 'missing' mass is converted to binding energy via E = Δmc².</p><p class='exp-key'>Key Concept: Mass defect Δm → binding energy E = Δmc² (Einstein's mass-energy equivalence).</p>"
+  },
+  "Q55": {
+    "id": "phys-175",
+    "subject": "physics",
+    "topic": "Nuclear Physics",
+    "question": "Which process powers the Sun?",
+    "options": [
+      "Nuclear fission of uranium",
+      "Nuclear fusion of hydrogen into helium",
+      "Chemical combustion of hydrogen",
+      "Radioactive decay of heavy elements"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Nuclear fusion of hydrogen into helium</h4><p>The Sun is powered by <strong>nuclear fusion</strong>, primarily the proton-proton chain, where hydrogen nuclei fuse into helium, releasing enormous energy according to E = mc².</p><p class='exp-key'>Key Concept: Stellar energy comes from fusion; light nuclei combine releasing energy (mass defect).</p>"
+  },
+  "Q56": {
+    "id": "phys-176",
+    "subject": "physics",
+    "topic": "Bernoulli's Equation",
+    "question": "Water flows through a horizontal pipe that narrows from a cross-sectional area of 0.04 m<sup>2</sup> to 0.01 m<sup>2</sup>. If the speed of the water in the wider section is 2 m/s, what is the speed in the narrower section?",
+    "options": [
+      "4 m/s",
+      "8 m/s",
+      "0.5 m/s",
+      "16 m/s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 8 m/s</h4><p>This is a direct application of the <strong>equation of continuity</strong> for an incompressible fluid:</p><div class='exp-diagram'><p>A<sub>1</sub> v<sub>1</sub> = A<sub>2</sub> v<sub>2</sub></p><p>0.04 x 2 = 0.01 x v<sub>2</sub></p><p>v<sub>2</sub> = 0.08 / 0.01 = <strong>8 m/s</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>4 m/s: This would be the result if the area halved (ratio of 2), but the area decreased by a factor of 4.</li><li>0.5 m/s: This reverses the relationship. When the area decreases, speed increases, not decreases.</li><li>16 m/s: This incorrectly squares the area ratio.</li></ul><p class='exp-key'>Key Concept: The continuity equation (A<sub>1</sub>v<sub>1</sub> = A<sub>2</sub>v<sub>2</sub>) is conservation of mass for fluids. Where the pipe narrows, the fluid must speed up proportionally. The product Av = Q is the volume flow rate and stays constant.</p>"
+  },
+  "Q57": {
+    "id": "phys-177",
+    "subject": "physics",
+    "topic": "Bernoulli's Equation",
+    "question": "According to Bernoulli's principle, when the speed of a fluid increases in a horizontal pipe, what happens to the pressure?",
+    "options": [
+      "Pressure increases",
+      "Pressure decreases",
+      "Pressure stays the same",
+      "Pressure first increases then decreases"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Pressure decreases</h4><p>Bernoulli's equation for a horizontal pipe (same height h at both points) simplifies to:</p><div class='exp-diagram'><p>P + 1/2 &rho;v<sup>2</sup> = constant</p></div><p>If v increases, then P must decrease to keep the sum constant. This is the core insight of Bernoulli's principle.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Pressure increases: This contradicts Bernoulli's equation. Many students assume faster flow means 'more force' and thus more pressure, but it is the opposite.</li><li>Pressure stays the same: Pressure only stays the same if speed stays the same. Changing speed requires a pressure change.</li><li>First increases then decreases: There is no such two-stage behavior in Bernoulli flow through a constriction.</li></ul><p class='exp-key'>Key Concept: Bernoulli's principle is conservation of energy per unit volume for flowing fluid. Higher kinetic energy (faster speed) means lower pressure energy. This explains why airplane wings generate lift and why shower curtains blow inward.</p>"
+  },
+  "Q58": {
+    "id": "phys-178",
+    "subject": "physics",
+    "topic": "Bernoulli's Equation",
+    "question": "Water flows horizontally. At point A, the pressure is 200,000 Pa and the velocity is 1 m/s. At point B, the velocity is 3 m/s. What is the pressure at point B? (density of water = 1000 kg/m<sup>3</sup>)",
+    "options": [
+      "196,000 Pa",
+      "198,000 Pa",
+      "204,000 Pa",
+      "192,000 Pa"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 196,000 Pa</h4><p>Using Bernoulli's equation for a horizontal pipe:</p><div class='exp-diagram'><p>P<sub>A</sub> + 1/2 &rho;v<sub>A</sub><sup>2</sup> = P<sub>B</sub> + 1/2 &rho;v<sub>B</sub><sup>2</sup></p><p>200,000 + 1/2(1000)(1)<sup>2</sup> = P<sub>B</sub> + 1/2(1000)(3)<sup>2</sup></p><p>200,000 + 500 = P<sub>B</sub> + 4,500</p><p>P<sub>B</sub> = 200,500 - 4,500 = <strong>196,000 Pa</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>198,000 Pa: This subtracts only the velocity difference (not the kinetic energy difference).</li><li>204,000 Pa: This adds the pressure difference instead of subtracting it, contradicting Bernoulli's principle.</li><li>192,000 Pa: This doubles the pressure drop, possibly by forgetting the factor of 1/2 in 1/2&rho;v<sup>2</sup>.</li></ul><p class='exp-key'>Key Concept: Always calculate the full kinetic energy term (1/2&rho;v<sup>2</sup>) at each point separately, then apply Bernoulli's equation. Do not just use the velocity difference.</p>"
+  },
+  "Q59": {
+    "id": "phys-179",
+    "subject": "physics",
+    "topic": "Bernoulli's Equation",
+    "question": "A tank of water has a small hole near the bottom, 5 m below the water surface. Assuming the surface area of the tank is very large compared to the hole, what is the speed of water exiting the hole? (g = 10 m/s<sup>2</sup>)",
+    "options": [
+      "5 m/s",
+      "10 m/s",
+      "50 m/s",
+      "100 m/s"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 10 m/s</h4><p>This is <strong>Torricelli's theorem</strong>, a special case of Bernoulli's equation. The speed of efflux from a hole at depth h below the surface is:</p><div class='exp-diagram'><p>v = &radic;(2gh)</p><p>v = &radic;(2 x 10 x 5) = &radic;100 = <strong>10 m/s</strong></p></div><p>This is exactly the same speed as an object would have if it fell freely from height h. Bernoulli's equation reduces to this when the tank surface moves negligibly slowly.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>5 m/s: This uses v = &radic;(gh) instead of &radic;(2gh), forgetting the factor of 2.</li><li>50 m/s: This uses v = 2gh instead of &radic;(2gh), forgetting the square root.</li><li>100 m/s: This uses v = 2gh directly (2 x 10 x 5 = 100) without the square root.</li></ul><p class='exp-key'>Key Concept: Torricelli's theorem (v = &radic;(2gh)) is equivalent to converting potential energy to kinetic energy: mgh = 1/2mv<sup>2</sup>. The exit speed equals the speed of free fall from the same height.</p>"
+  },
+  "Q60": {
+    "id": "phys-180",
+    "subject": "physics",
+    "topic": "Bernoulli's Equation",
+    "question": "An airplane wing is designed so that air flows faster over the top surface than the bottom. According to Bernoulli's principle, which statement correctly explains the resulting lift force?",
+    "options": [
+      "Pressure is higher above the wing, pushing it upward",
+      "Pressure is lower above the wing, creating a net upward force",
+      "The air above the wing is denser, creating more downward pressure",
+      "The air below the wing moves faster, creating higher pressure below"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Pressure is lower above the wing, creating a net upward force</h4><p>The wing is shaped (or tilted) so that air travels faster over the top surface. By Bernoulli's principle, faster-moving air has lower pressure. The higher pressure below the wing and the lower pressure above it creates a net upward force called <strong>lift</strong>.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Pressure is higher above: This reverses the relationship. Faster air = lower pressure, so pressure is lower above, not higher.</li><li>Air above is denser: Density differences are negligible at typical flight speeds. The effect is about pressure, not density.</li><li>Air below moves faster: The air below actually moves slower. The wing shape ensures faster flow on top.</li></ul><p class='exp-key'>Key Concept: Bernoulli's principle states that where fluid speed is higher, pressure is lower. This applies to airplane wings, carburetors, perfume atomizers, and the Venturi effect. The pressure difference between the top and bottom of a wing creates lift.</p>"
+  }
+}
