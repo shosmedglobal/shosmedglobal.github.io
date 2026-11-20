@@ -1,0 +1,1158 @@
+SHOSMED PHYSICS: REVISED FINAL-BLOCK EXPORT
+Implemented 20 November 2026 from SHOSMED_Physics_Final_Block_Review_and_Claude_Prompt.txt
+For the final scientific approval. Implementation checks establish scope, structure
+and consistency; they are not scientific approval.
+
+BANK IDS AND HOW THEY WERE VERIFIED
+  This export holds 41 displays, not 40. The review warned against inferring a
+  phys-241..phys-280 mapping from the apparent order, so each display was matched
+  by FULL CONTENT MATCH of its ORIGINAL stem plus all four ORIGINAL option texts
+  against all 280 physics records, on a canonical form that decodes named HTML
+  entities, strips tags, folds sub/superscripts to plain digits and normalises
+  dashes, Greek letters and arrows.
+    1. All 41 matched EXACTLY. No match was ambiguous and none needed a tie-break
+       on the explanation.
+    2. Q1 resolved to phys-214, which is the record approved as batch 4 Q34,
+       exactly as the review states. It is frozen and adds no coverage.
+    3. Q2..Q41 resolved to phys-241..phys-280. That set was COMPUTED to equal the
+       40 physics records left unreviewed after the four earlier blocks, rather
+       than assumed from the numbering.
+    4. Every stored topic equalled the signature topic, and all 41 stored answer
+       letters equalled the review key block. No key was changed and no stored key
+       conflicts with the scientific key.
+    5. "Unanswered", "Report an issue" and "Back to Dashboard" appear in NO stored
+       field anywhere in the physics bank, so they are interface text and their
+       absence from the signatures was not treated as a stem repair.
+
+  Key block (unchanged): BBBBBCBCCB BCBBBBCBCC BBCBBCBBBA ACBABBCCBC B
+  Tally                : A=3, B=25, C=13, D=0
+
+WHAT CHANGED
+  Items edited             : 40. KEEP, byte-identical in every field: Q1 (phys-214)
+  Stems replaced           : 25
+  Option texts             : 4
+  Complete main blocks     : 11
+  Scoped main passages     : 7 (Q12.1, Q16.1, Q16.2, Q20.1, Q28.1, Q29.1, Q32.1)
+  Key Concepts             : 17 replaced of 31
+  Educational points       : 2 whole blocks (Q4, Q11), 11 individual points
+  Bottom Lines             : 5 replaced of 10
+  Distractor bodies        : 90 added, 16 replaced, 17 retained, 123 in all
+  Answer letters           : 0 changed
+  Keyed headings           : 3 re-synchronized (Q4, Q5, Q37), the three whose keyed option text changed
+  Feedback headings        : 120 synchronized across the 40 edited items
+
+  The four replaced option texts:
+    Q4 B     Static pressure, kinetic energy per unit volume (½ρv<sup>2</sup>), and gravitational potential energy per unit volume (ρgh)
+    Q5 B     Neutrons have no net electric charge, so the accelerating electric field does not exert the qE force on them
+    Q11 C    The same at all temperatures
+    Q37 C    Energy released when the bound nucleus formed, according to E = Δmc²
+
+THE MAJOR REPAIR
+  Q37 (phys-276). The stored calculation mixed the NEUTRAL HELIUM-4 ATOMIC mass,
+  4.0026 u, with free-nucleon masses. The atomic mass also includes two electrons,
+  so the comparison was inconsistent. Using consistent nuclear masses:
+    nucleus            4.0015 u
+    two p + two n      4.0319 u
+    mass defect        0.0304 u
+    binding energy     0.0304 x 931.5 = 28.3176 MeV, about 28.3 MeV
+  The old numbers do give 27.4 MeV arithmetically, so the error was the physical
+  masses, not the multiplication. Option C was reworded from "Mass converted to
+  nuclear binding energy" to "Energy released when the bound nucleus formed", so
+  it no longer implies a positive store of binding energy adding mass. The key
+  stays C and its keyed heading was re-synchronized.
+
+THE SUBSTANTIAL REPAIRS
+  Q4  Bernoulli: steady-flow conditions added, rho g h named as the gravitational
+      potential-energy term per unit volume, keyed option B renamed to match, and
+      the claims that steady means non-turbulent, that Navier-Stokes is the only
+      way to include losses, and that stenosis directly collapses vessels removed.
+  Q5  Cyclotron: neutrons have magnetic moments and can be manipulated in a
+      nonuniform magnetic field. Keyed option B now says the accelerating electric
+      field exerts no qE force, instead of denying every magnetic interaction.
+  Q11 Isotropy: the old option C described a possible isotropic material and
+      overlapped the key, so it was replaced. Isotropy is scoped to the property
+      being considered, and cubic crystals need not be elastically isotropic.
+  Q13 Adiabatic expansion: positive work against an external pressure is now
+      specified, free expansion into a vacuum is distinguished, and the table
+      states the work sign convention that agrees with the first law.
+  Q22 Photoelectric: doubling photon flux doubles emission only at unchanged
+      yield in the linear single-photon regime. Intensity is power per area, not
+      a photon count, and the table no longer says electron emission "decreases
+      slightly" at higher frequency.
+  Q36 Motional emf: v perpendicular to B alone does not give BLv. The rod, its
+      velocity and the field are now stated to be mutually perpendicular.
+  Q38 Binding energy: Fe-56 remains the right answer among those offered, but
+      Ni-62 has a slightly greater value, and the blanket fusion-below /
+      fission-above claim is scoped.
+  Q40 Neutron shielding: the question now asks which material is suitable for
+      SLOWING fast neutrons by elastic scattering. Lead is not said to be unable
+      to interact with neutrons, and moderation alone is not complete shielding.
+
+DISTRACTOR ARITHMETIC CORRECTED
+  Q10 A: 0.5/lambda gives 7.215 days, not 5. The replacement instead notes that a
+         5-day half-life would need lambda = 0.1386 per day.
+  Q10 D: the old expression with an extra factor of 100 gives about 1000 days, not
+         69.3. The replacement works from 0.693/0.0693 = 10 and keeps the units.
+
+PRESENTATION PRESERVED
+  Three structures, confirmed in storage rather than assumed:
+    Q1       the approved batch 4 record, frozen, with its three bodies still in
+             the batch 4 list form and its headings untouched.
+    Q2-Q11   31 educational points in 10 blocks and 10 Bottom Lines, no Key
+             Concept. Q9 has four points; the other nine blocks have three each.
+    Q12-Q41  one Key Concept each and, before this pass, no feedback at all.
+  31 Key Concepts in all, across Q1 and Q12-Q41.
+  Four tables: Q16 and Q17 keep their contents byte-identical, Q13 and Q22
+  received the specified replacement tables. No table was added.
+  All 41 keyed headings are UNLETTERED and reproduce their keyed option.
+  No em dash was introduced, and no HTML entity was introduced outside a heading
+  that reproduces an option text already storing one.
+
+NOTATION, INSPECTED RATHER THAN ASSUMED
+  Q12 stores p_1 V_1^gamma in real markup and 8^(5/3) as <sup>5/3</sup>; Q24
+  stores its powers of ten; Q29 keeps its full derivation with negative
+  exponents; Q31 stores subscripted reactance and current. The flattened forms in
+  the export were extraction artifacts, so nothing was "corrected".
+  Q34, Q35 and Q37 are the three records that store literal Unicode superscripts
+  rather than markup; their anchors used escapes so the stored characters were
+  unambiguous.
+  New text uses <sup>/<sub> markup with the U+2212 minus this block prefers inside
+  an exponent, and literal Greek characters. No CSS was changed and no bank-wide
+  Unicode conversion was applied.
+
+CHECKS ACTUALLY PERFORMED
+  A focused result-verifying suite of 3,238 checks, 0 failures, re-deriving the
+  id map from the signatures and pairing every "claim removed" assertion with a
+  check that the claim really was stored before.
+  18 of 18 targeted mutations caught, with questions-physics.json restored byte
+  for byte afterwards. They included moving an answer letter, touching the frozen
+  Q1, restoring the atomic mass or 27.4 MeV in Q37, dropping or reverting a body,
+  rewording a retained one, changing an unnamed educational point, inventing a
+  Bottom Line in the third band, altering a table the review keeps, flattening
+  valid markup, and changing an unnamed passage inside a scoped item.
+  40 suites and 109,028 checks across the repository, 0 failures.
+  An independent diff against a pre-edit copy: exactly 40 records, fields
+  {question: 25, explanation: 40, options: 4}, 1,116 of 1,120 option texts
+  unchanged, 0 answer indices moved, 0 topics moved, nothing outside the block,
+  and Q1 byte-identical.
+  A real-DOM render of 17 representative items, including Q12, Q13, Q22, Q24,
+  Q29, Q31, Q34, Q37 and Q40, through the actual sanitizer, in BOTH the question
+  card and the end-of-quiz review, at 1280 px and 375 px: 144 exponents and
+  indices per view, none a flex or grid item, base-to-exponent gap 0 everywhere,
+  0 split across lines, 0 literal tags or visible entities, 0 overflow and 0
+  horizontal page scroll. All four tables were unclipped at both widths, 51 of 51
+  lettered feedback headings rendered, and the option wrappers, the 32 px letter
+  circles, the 14 px card gap and the 10 px review-row gap are all intact.
+  Independently recomputed: every row of the review's arithmetic table, plus the
+  Q10 distractor values and the Q37 masses and energy.
+
+COVERAGE, FROM UNIQUE VERIFIED PHYSICS IDS
+  Reviewed before this block : 240 ids
+  Repeat in this block       : 1 (Q1 = phys-214, already approved; adds nothing)
+  New unique ids this block  : 40, phys-241 .. phys-280
+  Implementation coverage    : 280 of 280
+  Still unreviewed           : 0
+  This final block still awaits scientific approval. Chemistry stays at 485/485
+  and biology at 627/629; bio-513 and bio-583 remain outstanding. No earlier
+  approval was reopened or reset.
+
+DEVIATIONS
+  1. Q1 is a content-exact repeat of the record approved as batch 4 Q34 
+     (phys-214). It is frozen, so it alone keeps the batch 4 list form for its 
+     three bodies while Q2-Q41 use lettered paragraphs. The review requires 
+     exactly that, so the block ends mixed by design and Q1 adds no coverage.
+  2. Where a complete main block is replaced, the stored exp-diagram or 
+     centred formula container goes with it, because the review's instruction 
+     to keep the existing main/formula layout applies only "unless that main 
+     block is explicitly replaced". Q4 and Q5 therefore lose a paragraph on 
+     balance; no table was lost, and Q13 and Q22 received their replacement 
+     tables.
+  3. Three stored feedback headings in Q2-Q11 abbreviated their option text 
+     (Q6 D, Q8 A, Q8 D). They were synchronized to the full option text, as 
+     the review's heading rule directs. Because some option texts store named 
+     entities such as &mu;s and &Omega;, those entities now also appear in the 
+     matching headings; no entity was introduced into prose.
+
+==============================================================================
+
+Q1  [phys-214]  Lorentz Force  correct answer: B   (KEEP: a content-exact repeat of approved batch 4 Q34, frozen, adds no coverage)
+------------------------------------------------------------------------------
+STEM: An electron enters a region with an electric field E pointing downward and a magnetic field B pointing into the page. The electron moves to the right. For it to travel in a straight line without deflection, the field magnitudes must satisfy:
+
+  A. E = B
+  B. E = vB   <= key
+  C. E = v/B
+  D. E = qvB
+
+EXPLANATION:
+Correct Answer: E = vB
+The electron is negatively charged, so the downward electric field exerts an upward electric force. For motion to the right with B into the page, v × B points upward; the electron's magnetic force therefore points downward. The forces cancel when their magnitudes are equal: eE = evB, giving E = vB or v = E/B. Equal magnitudes alone would not be enough if the forces pointed in the same direction.
+Why the other answers are wrong:
+  - A. E = B: This ignores the velocity and has mismatched units (V/m vs T).
+  - C. E = v/B: This inverts the relationship. Rearranging gives v = EB, which is wrong.
+  - D. E = qvB: This keeps the charge in the equation, but it cancels when equating forces (qE = qvB).
+Key Concept: A velocity selector requires electric and magnetic forces that are opposite in direction as well as equal in magnitude. With the fields arranged correctly, particles traveling in the selected direction pass undeflected at speed v = E/B.
+
+==============================================================================
+
+Q2  [phys-241]  Semiconductors - Half-Wave Rectifier  correct answer: B
+------------------------------------------------------------------------------
+STEM: In a circuit with one ideal diode, a resistive load and no smoothing capacitor, a half-wave rectifier converts a sinusoidal AC input to a pulsating DC output by:
+
+  A. Allowing both positive and negative half-cycles to pass through
+  B. Allowing only one half-cycle (positive or negative) to pass while blocking the other   <= key
+  C. Doubling the frequency of the input signal
+  D. Inverting the negative half-cycle to produce a smooth constant voltage
+
+EXPLANATION:
+Correct Answer: Allowing only one half-cycle (positive or negative) to pass while blocking the other
+A half-wave rectifier uses a single diode to convert AC to pulsating DC. During the forward-biased half-cycle, the diode conducts and current flows through the load. During the reverse-biased half-cycle, the diode blocks current and the output is zero. The result is a pulsating waveform that contains only positive (or only negative) half-cycles.
+Why the other choices are wrong:
+A. Allowing both positive and negative half-cycles to pass through: If both half-cycles passed, the output would still be AC, not DC. Allowing both half-cycles (by inverting one) describes a full-wave rectifier, which uses either a center-tapped transformer with two diodes or a bridge of four diodes to utilize both halves of the AC cycle.
+C. Doubling the frequency of the input signal: A half-wave rectifier does not change the frequency. The output pulses have the same frequency as the input AC. It is the full-wave rectifier whose output pulses at twice the input frequency (because it converts both half-cycles into positive pulses).
+D. Inverting the negative half-cycle to produce a smooth constant voltage: A half-wave rectifier does not invert the blocked half-cycle; it simply eliminates it (output = 0 during that time). Producing a smooth constant voltage requires additional filtering (typically a capacitor) after rectification. Even then, some ripple remains.
+Key Educational Points:
+  - A half-wave rectifier uses one half-cycle. For the same sinusoidal input peak, its average output magnitude is lower and its ripple is greater than for an ideal full-wave rectifier.
+  - Without smoothing, the magnitude of the average output is V_DC = V_peak/π ≈ 0.318 × V_peak. The diode orientation determines whether the pulses are positive or negative.
+  - A smoothing capacitor placed in parallel with the load reduces ripple by charging during the pulse and discharging during the blocked half-cycle.
+Bottom Line: A half-wave rectifier passes one half-cycle and blocks the other. Its unfiltered output is unidirectional but pulsating; a smoothing capacitor can reduce the ripple.
+
+==============================================================================
+
+Q3  [phys-242]  Semiconductors - Depletion Region  correct answer: B
+------------------------------------------------------------------------------
+STEM: The depletion region at a PN junction forms because:
+
+  A. External voltage is applied to the junction
+  B. Majority carriers diffuse across the junction, leaving behind immobile ionized dopant atoms   <= key
+  C. Photons are absorbed at the junction, creating electron-hole pairs
+  D. The temperature gradient across the junction drives carriers apart
+
+EXPLANATION:
+Correct Answer: Majority carriers diffuse across the junction, leaving behind immobile ionized dopant atoms
+When P-type and N-type semiconductors are joined, a concentration gradient drives diffusion of majority carriers across the junction: electrons diffuse from N to P, and holes diffuse from P to N. As these mobile carriers leave their respective regions, they leave behind fixed, immobile ionized dopant atoms: positive donor ions (like P+) on the N-side and negative acceptor ions (like B-) on the P-side. This region of exposed fixed charges, depleted of mobile carriers, is the depletion region.
+The fixed charges create a built-in electric field that opposes further diffusion, establishing equilibrium.
+Why the other choices are wrong:
+A. External voltage is applied to the junction: The depletion region forms spontaneously when the PN junction is created, without any external voltage. In fact, external voltage modifies the already-existing depletion region (forward bias narrows it, reverse bias widens it), but it does not create it.
+C. Photons are absorbed at the junction, creating electron-hole pairs: Photon absorption creates electron-hole pairs in solar cells and photodiodes, but this is not the mechanism that forms the depletion region. The depletion region exists in the dark, formed purely by carrier diffusion and the resulting charge imbalance.
+D. The temperature gradient across the junction drives carriers apart: A temperature gradient is not needed: a junction at uniform temperature still develops a depletion region. The initial carrier concentration difference drives diffusion, and the resulting fixed charges create the built-in electric field.
+Key Educational Points:
+  - The built-in potential depends on the semiconductor, doping levels and temperature; it is not a universal 0.7 V or 0.3 V value.
+  - The depletion region has very few mobile majority carriers, rather than being completely empty. Its width depends on doping and applied bias: forward bias narrows it and reverse bias widens it.
+  - Equilibrium is reached when the drift current (due to the electric field) exactly balances the diffusion current (due to the concentration gradient).
+Bottom Line: The depletion region forms spontaneously by diffusion of majority carriers across the PN junction, exposing fixed ionized dopant atoms. This creates a built-in electric field that establishes equilibrium. No external voltage is needed.
+
+==============================================================================
+
+Q4  [phys-243]  Fluid Dynamics - Bernoulli Equation  correct answer: B   (SUBSTANTIAL: Bernoulli terms and conditions; keyed option B renamed)
+------------------------------------------------------------------------------
+STEM: For steady flow of an incompressible, nonviscous fluid in a horizontal pipe, with no pump or turbine adding or removing energy, which sum is constant along a streamline?
+
+  A. Pressure energy, kinetic energy, and thermal energy
+  B. Static pressure, kinetic energy per unit volume (½ρv^2), and gravitational potential energy per unit volume (ρgh)   <= key
+  C. Pressure, velocity, and viscous shear stress
+  D. Gravitational potential energy, surface tension energy, and kinetic energy
+
+EXPLANATION:
+Correct Answer: Static pressure, kinetic energy per unit volume (½ρv^2), and gravitational potential energy per unit volume (ρgh)
+Bernoulli's equation is P + ½ρv^2 + ρgh = constant along a streamline under the stated conditions. Each term is energy per unit volume and has units of pressure: P is the pressure term, ½ρv^2 is the kinetic term (often called dynamic pressure), and ρgh is the gravitational potential-energy term. In a horizontal pipe, h is constant, so P + ½ρv^2 is constant. Where the speed is greater, the static pressure is lower in this ideal model.
+Why the other choices are wrong:
+A. Pressure energy, kinetic energy, and thermal energy: The standard Bernoulli equation here describes mechanical energy per unit volume, including gravitational potential energy. It does not include a separate thermal-energy term; conversion of mechanical energy into heat through friction is excluded by the ideal model.
+C. Pressure, velocity, and viscous shear stress: Pressure, velocity and shear stress cannot simply be added: velocity has different units from pressure and stress. The kinetic term is ½ρv^2. For real viscous flow, an extended energy equation can include losses.
+D. Gravitational potential energy, surface tension energy, and kinetic energy: The equation includes pressure, kinetic and gravitational terms. Surface tension can affect pressure differences across curved interfaces, but it is not a separate term in this standard pipe-flow equation.
+Key Educational Points:
+  - For steady incompressible flow, continuity gives Av = constant. A narrower section therefore has higher speed; Bernoulli then predicts lower static pressure at the same height in the ideal model.
+  - Use Bernoulli along a streamline for steady, incompressible, nonviscous flow with no added or removed mechanical energy.
+  - Venturi devices and Pitot tubes use pressure–speed relationships. Real blood flow and other viscous flows can also involve energy losses, so the ideal equation has limits.
+Bottom Line: Bernoulli: P + ½ρv^2 + ρgh = constant along a streamline under the stated ideal conditions. At equal height, increased speed corresponds to decreased static pressure.
+
+==============================================================================
+
+Q5  [phys-244]  Particle Accelerators - Cyclotron  correct answer: B   (SUBSTANTIAL: neutrons have magnetic moments; keyed option B renamed)
+------------------------------------------------------------------------------
+STEM: Why can a conventional cyclotron not directly accelerate neutrons using its electric-field gaps and magnetic bending field?
+
+  A. Neutrons are too heavy to reach relativistic speeds
+  B. Neutrons have no net electric charge, so the accelerating electric field does not exert the qE force on them   <= key
+  C. Neutrons decay too quickly to complete a full revolution
+  D. The magnetic field of a cyclotron repels neutral particles
+
+EXPLANATION:
+Correct Answer: Neutrons have no net electric charge, so the accelerating electric field does not exert the qE force on them
+A conventional cyclotron accelerates charged particles with an electric field across the gap between its electrodes and bends their paths with a magnetic field. These charge-dependent forces are F_E = qE and F_B = qv × B. A neutron has q = 0, so it cannot be accelerated and bent by this mechanism. Neutrons do have magnetic moments and can interact with nonuniform magnetic fields; that is a different mechanism.
+Why the other choices are wrong:
+A. Neutrons are too heavy to reach relativistic speeds: The neutron mass (1.675 x 10^-27 kg) is very similar to the proton mass (1.673 x 10^-27 kg), and protons are routinely accelerated in cyclotrons. Mass is not the limiting factor; the absence of charge is.
+C. Neutrons decay too quickly to complete a full revolution: Free neutrons have a half-life of about 10 minutes, far longer than the timescale of motion in a cyclotron. Their decay is not the obstacle; the conventional cyclotron mechanism requires electric charge.
+D. The magnetic field of a cyclotron repels neutral particles: Neutral particles are not automatically repelled by a magnetic field. A neutron has a magnetic moment and can be manipulated in a suitable nonuniform magnetic field, but it does not undergo the charge-dependent cyclotron motion.
+Key Educational Points:
+  - Cyclotrons can accelerate protons, deuterons, α particles, and other charged ions.
+  - For nonrelativistic motion, the cyclotron frequency is f = |q|B/(2πm). At fixed B and particle mass, it is independent of speed and orbit radius.
+  - Accelerators can produce neutron beams by sending accelerated charged particles into a target, where nuclear reactions release neutrons.
+Bottom Line: A conventional cyclotron directly accelerates charged particles. Neutrons have no net electric charge, so this acceleration mechanism does not work for them.
+
+==============================================================================
+
+Q6  [phys-245]  Electromagnetism - Lorentz Force  correct answer: C
+------------------------------------------------------------------------------
+STEM: A positive charge moves to the right in a magnetic field directed into the page. The magnetic force on the charge is directed:
+
+  A. Into the page
+  B. Out of the page
+  C. Upward (toward the top of the page)   <= key
+  D. Downward (toward the bottom of the page)
+
+EXPLANATION:
+Correct Answer: Upward (toward the top of the page)
+The magnetic Lorentz force on a moving charge is given by F = qv x B. Using the right-hand rule for a positive charge:
+  - Point your fingers in the direction of velocity v (to the right)
+  - Curl your fingers in the direction of B (into the page)
+  - Your thumb points in the direction of F (upward)
+Alternatively: v (right) x B (into page) → using cross product rules, right x (into page) = up.
+Why the other choices are wrong:
+A. Into the page: The force must be perpendicular to both v and B. Since v is to the right (in the plane of the page) and B is into the page, the force must be in the plane of the page (either up or down), not into or out of the page.
+B. Out of the page: Out of the page is opposite to the magnetic-field direction, so it is still along the field axis. The magnetic force is perpendicular to both the velocity and the field; here it points upward in the plane of the page.
+D. Downward (toward the bottom of the page): This would be the direction if the charge were negative. For a negative charge, the force is opposite to v x B. This is a critical distinction: the sign of the charge reverses the direction of the magnetic force. Electrons moving to the right in this field would be deflected downward.
+Key Educational Points:
+  - The magnetic part of the Lorentz force is perpendicular to velocity. It can change the direction of motion but does no work and does not change the particle's kinetic energy.
+  - For a negative charge, the force direction is reversed: F = qv x B with q < 0 gives the opposite direction to the right-hand rule result.
+  - This principle underlies many technologies: mass spectrometers (separating ions by mass), cyclotrons, cathode ray tubes, and the Hall effect.
+Bottom Line: Use the right-hand rule for positive charges: fingers point along v, curl toward B, thumb gives F direction. For negative charges, reverse the result. The magnetic force is always perpendicular to velocity and does no work.
+
+==============================================================================
+
+Q7  [phys-246]  Thermal Radiation - Black Body  correct answer: B
+------------------------------------------------------------------------------
+STEM: A perfect black body is an object that:
+
+  A. Absorbs all incident radiation but emits none
+  B. Absorbs all incident radiation and is also the most efficient emitter of thermal radiation   <= key
+  C. Reflects all incident radiation perfectly
+  D. Emits radiation only at a single specific wavelength
+
+EXPLANATION:
+Correct Answer: Absorbs all incident radiation and is also the most efficient emitter of thermal radiation
+A perfect black body has two equally important properties: it absorbs all electromagnetic radiation that falls on it (no reflection, no transmission) AND it is the most efficient possible emitter of thermal radiation at every wavelength for its given temperature. These properties are linked by Kirchhoff's law of thermal radiation, which states that at thermal equilibrium, the emissivity of a body equals its absorptivity.
+Why the other choices are wrong:
+A. Absorbs all incident radiation but emits none: A black body at a temperature above absolute zero emits thermal radiation as well as absorbing it. Its emitted power is P = σAT^4, so a perfect absorber is not an object that never emits.
+C. Reflects all incident radiation perfectly: This describes a perfect mirror (or perfect reflector), which is the exact opposite of a black body. A perfect reflector has zero absorptivity and zero emissivity, while a black body has maximum absorptivity and maximum emissivity.
+D. Emits radiation only at a single specific wavelength: A black body emits a continuous thermal spectrum with a temperature-dependent peak. A narrow spectral line or laser emission is different from that broad black-body spectrum.
+Key Educational Points:
+  - The black body spectrum (Planck curve) resolved the "ultraviolet catastrophe" of classical physics and was one of the foundations of quantum mechanics.
+  - Total radiated power: P = σ A T^4 (Stefan-Boltzmann law), where σ = 5.67 x 10^-8 W/(m^2 K^4).
+  - Radiation escaping through a small opening in a heated cavity is a good laboratory approximation to black-body radiation. Stellar spectra are approximate examples; the cosmic microwave background is a close example.
+Bottom Line: A black body absorbs all incident radiation and has the maximum thermal emission per unit area at a given temperature in this model. Good absorbers are good emitters, as expressed by Kirchhoff's law.
+
+==============================================================================
+
+Q8  [phys-247]  Thermal Radiation - Wien's Law  correct answer: C
+------------------------------------------------------------------------------
+STEM: For a black body's emission spectrum plotted per unit wavelength, how does the peak wavelength change as its absolute temperature increases?
+
+  A. Increases (shifts toward longer wavelengths / red shift)
+  B. Remains constant regardless of temperature
+  C. Decreases (shifts toward shorter wavelengths / blue shift)   <= key
+  D. First increases then decreases as temperature rises
+
+EXPLANATION:
+Correct Answer: Decreases (shifts toward shorter wavelengths / blue shift)
+Wien's displacement law states that the peak emission wavelength of a black body is inversely proportional to its absolute temperature:
+λ_max = b / T
+where b = 2.898 x 10^-3 m K (Wien's displacement constant) and T is the absolute temperature in kelvin. As temperature increases, λ_max decreases (shifts to shorter wavelengths).
+Why the other choices are wrong:
+A. Increases (shifts toward longer wavelengths / red shift): Wien's law gives λ_max = b/T, so higher absolute temperature gives a shorter peak wavelength. A red-hot bar has a shorter peak wavelength than a warm radiator, although both peaks can still lie in the infrared.
+B. Remains constant regardless of temperature: The peak wavelength is strongly temperature-dependent. This would violate Wien's law and our everyday observation that heated objects change color (dark red → orange → yellow → white → blue-white) as they get hotter.
+D. First increases then decreases as temperature rises: The relationship is strictly monotonic (always decreasing with increasing temperature). There is no turning point or non-monotonic behavior in Wien's law.
+Key Educational Points:
+  - Approximate wavelength-spectrum peaks: 5800 K gives 500 nm, in the green region of visible light; 310 K gives 9.35 μm, in the infrared; 30000 K gives 97 nm, in the ultraviolet. The Sun's broad spectrum does not make it look green.
+  - This law explains why hotter stars appear blue-white and cooler stars appear red-orange.
+  - Infrared thermometers estimate temperature from detected infrared radiation in their measurement band, with calibration and emissivity assumptions. They do not generally locate the emission peak directly.
+Bottom Line: Wien's law: λ_max = b/T. Hotter objects emit at shorter (bluer) wavelengths; cooler objects emit at longer (redder) wavelengths. This is why heating metal makes it glow from red to orange to yellow to white.
+
+==============================================================================
+
+Q9  [phys-248]  Nuclear Physics - Radioactive Decay  correct answer: C
+------------------------------------------------------------------------------
+STEM: For a sample containing a single radioactive parent isotope with constant decay constant λ and no production of new parent nuclei, the expected activity of that isotope follows which relationship?
+
+  A. Linear decrease: A(t) = A0 - kt
+  B. Quadratic decrease: A(t) = A0 - kt^2
+  C. Exponential decrease: A(t) = A0 e^(-λ t)   <= key
+  D. Logarithmic decrease: A(t) = A0 ln(t)
+
+EXPLANATION:
+Correct Answer: Exponential decrease: A(t) = A0 e^(-λ t)
+Radioactive decay is a first-order process where the rate of decay is proportional to the number of undecayed nuclei present. This gives rise to an exponential decay function:
+A(t) = A0 e^(-λ t)
+where A0 is the initial activity, λ is the decay constant, and t is time. Equivalently: N(t) = N0 e^(-λ t) for the number of remaining nuclei.
+Why the other choices are wrong:
+A. Linear decrease: A(t) = A0 - kt: A linear law removes a fixed amount of activity per unit time. The decay law instead removes a fixed fraction over equal time intervals, giving an exponential curve. A straight line can approximate a very short part of that curve, but is not the general law.
+B. Quadratic decrease: A(t) = A0 - kt^2: A quadratic decrease would initially be slow, then accelerate -- the opposite of what actually occurs. In radioactive decay, the rate of decrease is fastest at the beginning (when there are the most undecayed nuclei) and progressively slows.
+D. Logarithmic decrease: A(t) = A0 ln(t): As written, ln(t) is undefined at t = 0 and increases with t, so this expression is not the stated decay law. A logarithm should also have a dimensionless argument. It is ln[A(t)/A_0], rather than A(t), that varies linearly with time.
+Key Educational Points:
+  - The half-life (t1/2) is related to the decay constant: t1/2 = ln(2)/lambda ≈ 0.693/lambda.
+  - After n half-lives, the remaining activity is: A = A0 x (1/2)^n.
+  - The exponential curve describes expected activity for a population of radioactive nuclei. Individual decays are random, and a finite sample can eventually have no parent nuclei left.
+  - Common medical isotopes: Tc-99m (t1/2 = 6 hours), I-131 (t1/2 = 8 days), Co-60 (t1/2 = 5.27 years).
+Bottom Line: Radioactive decay is exponential, not linear. A(t) = A0 e^(-λ t). Each half-life halves the remaining activity. The exponential nature is a direct consequence of the decay rate being proportional to the number of undecayed nuclei present.
+
+==============================================================================
+
+Q10  [phys-249]  Nuclear Physics - Half-Life Calculation  correct answer: B   (distractor arithmetic corrected in A and D)
+------------------------------------------------------------------------------
+STEM: A radioactive isotope has a decay constant of λ = 0.0693 per day. Its half-life is approximately:
+
+  A. 5 days
+  B. 10 days   <= key
+  C. 14.4 days
+  D. 69.3 days
+
+EXPLANATION:
+Correct Answer: 10 days
+The half-life is calculated from the decay constant using:
+t1/2 = ln(2) / λ = 0.693 / λ
+Substituting λ = 0.0693 per day:
+t1/2 = 0.693 / 0.0693 = 10 days
+Why the other choices are wrong:
+A. 5 days: A half-life of 5 days would require λ = ln(2)/5 ≈ 0.1386 day^−1, twice the stated decay constant. With λ = 0.0693 day^−1, the half-life is about 10 days.
+C. 14.4 days: This would correspond to λ = 0.693/14.4 ≈ 0.0481 per day. This error might arise from using 1/lambda instead of ln(2)/lambda. The mean lifetime (τ) = 1/lambda = 1/0.0693 = 14.4 days. Mean lifetime and half-life are related but not equal: τ = t1/2/ln(2) ≈ 1.443 x t1/2.
+D. 69.3 days: A half-life of 69.3 days would require λ ≈ 0.0100 day^−1. The given value is 0.0693 day^−1, and 0.693/0.0693 = 10. Keep the units: a dimensionless number divided by day^−1 gives days.
+Key Educational Points:
+  - Key relationships: t1/2 = ln(2)/lambda = 0.693/lambda. Mean lifetime: τ = 1/lambda = t1/2/0.693.
+  - Do not confuse half-life and mean lifetime. The mean lifetime is always longer than the half-life by a factor of 1/ln(2) ≈ 1.443.
+  - Quick check: after one half-life (10 days), 50% of the original sample remains. After two half-lives (20 days), 25% remains. After three (30 days), 12.5% remains.
+Bottom Line: t1/2 = 0.693/lambda. For λ = 0.0693/day: t1/2 = 0.693/0.0693 = 10 days. Remember the distinction between half-life (0.693/lambda) and mean lifetime (1/lambda) -- they are different quantities.
+
+==============================================================================
+
+Q11  [phys-250]  Material Properties - Isotropy  correct answer: B   (SUBSTANTIAL: overlapping option C replaced; isotropy scoped to one property)
+------------------------------------------------------------------------------
+STEM: A material is described as isotropic with respect to a particular physical property. This means that the values of that property are:
+
+  A. Different in different directions
+  B. The same in all directions   <= key
+  C. The same at all temperatures
+  D. Uniform only along one specific crystal axis
+
+EXPLANATION:
+Correct Answer: The same in all directions
+For the property being considered, isotropic means that its value does not depend on direction. For example, isotropic thermal conductivity is the same whichever direction heat flows. This does not mean the property is independent of temperature, or that every other property of the material is also isotropic.
+Why the other choices are wrong:
+A. Different in different directions: This defines an anisotropic substance. Anisotropic materials have direction-dependent properties. Examples include many crystals (calcite shows double refraction because its refractive index differs along different crystal axes), wood (stronger along the grain), and skeletal muscle (contracts along one axis).
+C. The same at all temperatures: Isotropy concerns direction, not temperature. An isotropic material can have a property whose value changes when its temperature changes.
+D. Uniform only along one specific crystal axis: Uniformity along a single direction does not establish isotropy. The relevant property must have the same value when measured in all directions.
+Key Educational Points:
+  - Ordinary unstressed glass and fluids at rest are often modeled as isotropic. Isotropy should always be tied to the property and conditions being considered.
+  - Cubic crystals can be isotropic for some properties, such as electrical conductivity, while still having direction-dependent elastic properties.
+  - Wood, muscle and bone often have direction-dependent properties. In diffusion tensor MRI, direction-dependent water diffusion helps characterize the organization of white matter.
+Bottom Line: Isotropic means independent of direction for the specified property. It does not mean independent of temperature, and crystal symmetry does not guarantee isotropy for every property.
+
+==============================================================================
+
+Q12  [phys-251]  Adiabatic Processes  correct answer: C   (the reversible condition is required for pV^gamma = constant)
+------------------------------------------------------------------------------
+STEM: An ideal gas with constant adiabatic index γ = 5/3 is compressed reversibly and adiabatically from 8 L to 1 L. If the initial pressure is 100 kPa, what is the final pressure?
+
+  A. 800 kPa
+  B. 1600 kPa
+  C. 3200 kPa   <= key
+  D. 6400 kPa
+
+EXPLANATION:
+Correct Answer: 3200 kPa
+For a reversible adiabatic process of an ideal gas with constant γ: p_1V_1^γ = p_2V_2^γ
+p_2 = p_1 × (V_1/V_2)^γ
+p_2 = 100 × (8/1)^5/3
+8^5/3 = (8^1/3)^5 = 2^5 = 32
+p_2 = 100 × 32 = 3200 kPa
+Note: In an isothermal compression by factor 8, pressure would only increase 8-fold (to 800 kPa). The adiabatic compression gives a larger pressure increase (32-fold) because the gas also heats up during compression.
+Why the other choices are wrong:
+A. 800 kPa: 800 kPa follows from p_1V_1 = p_2V_2, which describes an isothermal ideal-gas process. This compression is reversible and adiabatic, so use the exponent γ = 5/3.
+B. 1600 kPa: 1600 kPa is a factor of 16 above the initial pressure. The required factor is 8^5/3 = (8^1/3)^5 = 2^5 = 32.
+D. 6400 kPa: 6400 kPa is a factor of 64 above the initial pressure, as if the volume ratio were squared. The given exponent is 5/3, not 2.
+Key Concept: For a reversible adiabatic ideal-gas process with constant γ, pV^γ = constant. Compression raises the temperature and makes the pressure rise more steeply than in an isothermal compression. Here γ = 5/3 gives p_2/p_1 = 8^5/3 = 32.
+
+==============================================================================
+
+Q13  [phys-252]  Adiabatic Processes  correct answer: B   (SUBSTANTIAL: positive work against external pressure; free expansion distinguished)
+------------------------------------------------------------------------------
+STEM: An ideal gas expands adiabatically against an external pressure and does positive work on its surroundings. With no other energy transfers and negligible changes in bulk kinetic and gravitational energy, which statement is true?
+
+  A. The gas absorbs heat from the surroundings and cools down
+  B. The temperature of the gas decreases because it does work at the expense of internal energy   <= key
+  C. The temperature remains constant because no heat is exchanged
+  D. The internal energy increases because no heat is lost
+
+EXPLANATION:
+Correct Answer: The temperature of the gas decreases because it does work at the expense of internal energy
+Adiabatic means Q = 0. With W defined as work done by the gas, the first law is ΔU = Q − W = −W. Here W > 0, so the internal energy decreases. For an ideal gas, internal energy depends on temperature, so the gas cools. Adiabatic free expansion into a vacuum is different: W = 0 as well as Q = 0, so an ideal gas has no temperature change.
+Quantity | Adiabatic compression with work done on the gas | Adiabatic expansion with work done by the gas | Heat Q | 0 | 0 | Work done by gas W | Negative | Positive | Change in internal energy ΔU | Positive | Negative | Temperature | Rises | Falls | Why the other choices are wrong:
+A. The gas absorbs heat from the surroundings and cools down: Adiabatic excludes heat transfer, so the gas does not absorb heat from its surroundings. It cools here because it does work using its internal energy.
+C. The temperature remains constant because no heat is exchanged: No heat transfer does not by itself mean constant temperature. Here the gas does positive work, so ΔU = −W < 0 and its temperature falls.
+D. The internal energy increases because no heat is lost: The gas can lose internal energy through work even when no heat leaves it. Positive work done by the gas reduces its internal energy in this process.
+Key Concept: Adiabatic means no heat transfer. An ideal gas cools during adiabatic expansion when it does positive work; free expansion into a vacuum has no work and no temperature change.
+
+==============================================================================
+
+Q14  [phys-253]  Harmonic Oscillation  correct answer: B
+------------------------------------------------------------------------------
+STEM: A 2 kg mass oscillates on an ideal massless spring with spring constant k = 800 N/m. The spring obeys Hooke's law and damping is negligible. What is the period?
+
+  A. 0.157 s
+  B. 0.314 s   <= key
+  C. 0.628 s
+  D. 1.257 s
+
+EXPLANATION:
+Correct Answer: 0.314 s
+For a spring-mass system, the period is:
+T = 2π × √(m/k)
+T = 2 × 3.14 × √(2/800)
+T = 6.28 × √(0.0025)
+T = 6.28 × 0.05
+T = 0.314 s
+The angular frequency is ω = 2π/T = 6.28/0.314 = 20 rad/s. You can verify: ω = √(k/m) = √(800/2) = √400 = 20 rad/s.
+Why the other choices are wrong:
+A. 0.157 s: 0.157 s is half the correct period. The factor for a full cycle is 2π, giving T = 2π√(2/800) ≈ 0.314 s.
+C. 0.628 s: 0.628 s is twice the correct period. Here √(m/k) = √(2/800) = 0.05 s, so T = 2π × 0.05 s.
+D. 1.257 s: 1.257 s is about four times the correct period. The angular frequency is √(k/m) = 20 rad/s, and T = 2π/20 ≈ 0.314 s.
+Key Concept: For an ideal undamped mass–spring oscillator, T = 2π√(m/k). In this model the period is independent of amplitude: increasing mass lengthens the period, while increasing stiffness shortens it.
+
+==============================================================================
+
+Q15  [phys-254]  Harmonic Oscillation  correct answer: B
+------------------------------------------------------------------------------
+STEM: A simple pendulum undergoing small-angle oscillations has a period of 2.0 s where g = 10 m/s^2. What is its approximate length?
+
+  A. 0.5 m
+  B. 1.0 m   <= key
+  C. 1.5 m
+  D. 2.0 m
+
+EXPLANATION:
+Correct Answer: 1.0 m
+For a simple pendulum: T = 2π√(L/g). Solving for L:
+T^2 = 4π^2 × L/g
+L = g × T^2 / (4π^2)
+L = 10 × 4 / (4 × 9.87)
+L = 40 / 39.48
+L ≈ 1.0 m
+A pendulum with period of exactly 2 seconds (1 second each way) is called a "seconds pendulum" and has a length of approximately 1 meter on Earth's surface.
+Why the other choices are wrong:
+A. 0.5 m: A length of 0.5 m would give T = 2π√(0.5/10) ≈ 1.4 s. A 2.0 s period requires a longer pendulum.
+C. 1.5 m: A length of 1.5 m would give a period of about 2.4 s. Using the stated 2.0 s period gives L = gT^2/(4π^2) ≈ 1.0 m.
+D. 2.0 m: A length of 2.0 m would give a period of about 2.8 s. The length is proportional to T^2, so a period of 2.0 s does not mean a length of 2.0 m.
+Key Concept: T = 2π√(L/g) for a simple pendulum. Period depends on length and g only -- NOT on mass or amplitude (for small angles). Doubling L multiplies T by √2.
+
+==============================================================================
+
+Q16  [phys-255]  Harmonic Oscillation  correct answer: B
+------------------------------------------------------------------------------
+STEM: In simple harmonic motion, at which position is the kinetic energy of the oscillator at its maximum?
+
+  A. At maximum displacement (amplitude)
+  B. At the equilibrium position   <= key
+  C. Halfway between equilibrium and amplitude
+  D. Kinetic energy is constant throughout the motion
+
+EXPLANATION:
+Correct Answer: At the equilibrium position
+For ideal undamped SHM, choose the oscillation potential energy to be zero at equilibrium. Energy then continuously converts between kinetic and potential forms:
+Position | KE | PE | Speed | Equilibrium (y = 0) | Maximum | Zero | Maximum | Extreme (y = ±A) | Zero | Maximum | Zero | With this choice of zero, all of the oscillation energy is kinetic at equilibrium: KE_max = ½kA^2. At the extremes it is potential: PE_max = ½kA^2. The total oscillation energy E = KE + PE = ½kA^2 stays constant.
+Why the other choices are wrong:
+A. At maximum displacement (amplitude): At maximum displacement the oscillator momentarily stops before reversing direction, so its kinetic energy is zero.
+C. Halfway between equilibrium and amplitude: Between the center and a turning point, the oscillator has both kinetic and potential energy. Its speed, and therefore kinetic energy, is greatest at the center.
+D. Kinetic energy is constant throughout the motion: The total mechanical energy is constant for ideal undamped SHM, but kinetic and potential energy change throughout the cycle.
+Key Concept: In SHM, speed is maximum at equilibrium (center) and zero at the extremes (turning points). The total energy is constant, oscillating between KE and PE forms.
+
+==============================================================================
+
+Q17  [phys-256]  Surface Tension  correct answer: C
+------------------------------------------------------------------------------
+STEM: A soap bubble has a radius of 5 cm. If the surface tension of the soap solution is 0.04 N/m, what is the excess pressure inside the bubble compared to outside?
+
+  A. 0.8 Pa
+  B. 1.6 Pa
+  C. 3.2 Pa   <= key
+  D. 6.4 Pa
+
+EXPLANATION:
+Correct Answer: 3.2 Pa
+A soap bubble has two surfaces (inner and outer), so the Laplace pressure formula is:
+Δp = 4σ/r
+Δp = 4 × 0.04 / 0.05
+Δp = 0.16 / 0.05
+Δp = 3.2 Pa
+Compare: A liquid droplet of the same size would have Δp = 2σ/r = 2 × 0.04/0.05 = 1.6 Pa (half as much, since it has only one surface).
+Type | Number of Surfaces | Formula | Liquid droplet | 1 | Δp = 2σ/r | Soap bubble | 2 | Δp = 4σ/r | Why the other choices are wrong:
+A. 0.8 Pa: 0.8 Pa results from σ/r. A soap bubble has two closely spaced surfaces, so the appropriate pressure difference is 4σ/r.
+B. 1.6 Pa: 1.6 Pa is the result of 2σ/r for one spherical interface, such as a liquid droplet. A soap film has two surfaces, giving twice that value.
+D. 6.4 Pa: 6.4 Pa is twice the correct value. The factor 4 in Δp = 4σ/r already accounts for both surfaces; do not double it again.
+Key Concept: A soap bubble has TWO surfaces (inner and outer film), so excess pressure is 4σ/r (double that of a droplet). Smaller radius means higher internal pressure.
+
+==============================================================================
+
+Q18  [phys-257]  Surface Tension  correct answer: B
+------------------------------------------------------------------------------
+STEM: Water (surface tension 0.073 N/m, density 1000 kg/m^3, contact angle 0°) rises in a glass capillary tube to a height of 3 cm. What is the approximate inner radius of the tube? (g = 10 m/s^2)
+
+  A. 0.24 mm
+  B. 0.49 mm   <= key
+  C. 0.73 mm
+  D. 1.46 mm
+
+EXPLANATION:
+Correct Answer: 0.49 mm
+Using the capillary rise formula and solving for r:
+h = 2σcos(θ) / (ρgr)
+r = 2σcos(θ) / (ρgh)
+r = 2 × 0.073 × 1 / (1000 × 10 × 0.03)
+r = 0.146 / 300
+r = 4.87 × 10^−4 m
+r ≈ 0.49 mm
+With cos(0°) = 1 for perfect wetting of water on glass. Note the inverse relationship: narrower tubes produce higher capillary rise.
+Why the other choices are wrong:
+A. 0.24 mm: 0.24 mm is about half the correct radius and follows from omitting the factor 2 in r = 2σcosθ/(ρgh).
+C. 0.73 mm: With θ = 0°, cosθ = 1. Substitution gives r = 0.146/300 m ≈ 0.49 mm, not 0.73 mm.
+D. 1.46 mm: A radius of 1.46 mm would give a rise of about 1 cm under these conditions. The stated rise is 3 cm, requiring a radius three times smaller.
+Key Concept: h = 2σcos(θ)/(ρgr). Capillary height is inversely proportional to tube radius. For water on glass, cos(θ) ≈ 1. For mercury on glass, cos(θ) is negative (depression instead of rise).
+
+==============================================================================
+
+Q19  [phys-258]  Solenoid Magnetic Field  correct answer: C
+------------------------------------------------------------------------------
+STEM: A long air-core solenoid has 2000 turns wound uniformly over 0.4 m and carries a current of 3 A. Neglecting end effects, what is the magnetic field inside near its center? Use μ_0 ≈ 4π × 10^−7 T·m/A.
+
+  A. 1.88 mT
+  B. 6.28 mT
+  C. 18.85 mT   <= key
+  D. 62.8 mT
+
+EXPLANATION:
+Correct Answer: 18.85 mT
+The magnetic field inside a solenoid is B = μ_0 × n × I, where n = N/L:
+n = N/L = 2000/0.4 = 5000 turns/m
+B = 4π × 10^−7 × 5000 × 3
+B = 4 × 3.14 × 10^−7 × 15000
+B = 12.56 × 10^−7 × 15000
+B = 188400 × 10^−7
+B = 1.884 × 10^−2 T = 18.85 mT
+Why the other choices are wrong:
+A. 1.88 mT: 1.88 mT is about ten times too small. The turn density is 2000/0.4 = 5000 m^−1, and B ≈ 0.01885 T = 18.85 mT.
+B. 6.28 mT: 6.28 mT is approximately the field this solenoid would produce at 1 A. The stated current is 3 A, so the field is three times as large.
+D. 62.8 mT: 62.8 mT is too large for the given current and turn density. Use N/L = 5000 m^−1 and I = 3 A in μ_0(N/L)I.
+Key Concept: For a long air-core solenoid away from its ends, B ≈ μ_0(N/L)I. Turns per unit length and current determine the field. A magnetic core changes the result, and its response need not remain proportional to current.
+
+==============================================================================
+
+Q20  [phys-259]  Solenoid Magnetic Field  correct answer: C
+------------------------------------------------------------------------------
+STEM: An air-core solenoid produces a magnetic field of 10 mT at a fixed point when carrying 2 A. If its current is increased to 5 A with the geometry unchanged, what is the field at that point?
+
+  A. 4 mT
+  B. 10 mT
+  C. 25 mT   <= key
+  D. 50 mT
+
+EXPLANATION:
+Correct Answer: 25 mT
+Since B = μ_0nI, the field is directly proportional to the current:
+B_2/B_1 = I_2/I_1
+B_2 = B_1 × I_2/I_1
+B_2 = 10 × 5/2
+B_2 = 25 mT
+With an air core and fixed geometry, the field is proportional to the current.
+Why the other choices are wrong:
+A. 4 mT: 4 mT comes from reversing the current ratio, 10 × 2/5. Increasing the current must increase the field here.
+B. 10 mT: 10 mT would mean no change in field despite an increase in current. The field scales by the same factor as the current.
+D. 50 mT: 50 mT multiplies the original field by 5 rather than by the ratio 5/2. The current rises from 2 A to 5 A, a factor of 2.5.
+Key Concept: At a fixed point, the field of an air-core solenoid with unchanged geometry is proportional to its current. Here multiplying the current by 5/2 also multiplies the field by 5/2.
+
+==============================================================================
+
+Q21  [phys-260]  Photoelectric Effect  correct answer: B
+------------------------------------------------------------------------------
+STEM: Light of wavelength 310 nm strikes a metal surface with work function W = 3.0 eV. What is the maximum kinetic energy of the emitted electrons? (Use E(eV) = 1240/λ(nm))
+
+  A. 0.5 eV
+  B. 1.0 eV   <= key
+  C. 2.0 eV
+  D. 4.0 eV
+
+EXPLANATION:
+Correct Answer: 1.0 eV
+Using Einstein's photoelectric equation:
+E_photon = 1240/λ(nm) = 1240/310 = 4.0 eV
+KE_max = E_photon − W
+KE_max = 4.0 − 3.0 = 1.0 eV
+The photon energy (4.0 eV) exceeds the work function (3.0 eV), so electrons are emitted. The excess energy becomes kinetic energy of the fastest electrons. The stopping voltage would be 1.0 V.
+Why the other choices are wrong:
+A. 0.5 eV: 0.5 eV is too small. The photon has energy 1240/310 = 4.0 eV, leaving 1.0 eV after the 3.0 eV work function is supplied.
+C. 2.0 eV: 2.0 eV would require a photon energy of 5.0 eV for this metal. The supplied wavelength corresponds to only 4.0 eV.
+D. 4.0 eV: 4.0 eV is the photon energy before subtracting the work function. The electron must use 3.0 eV to escape the metal.
+Key Concept: In the single-photon photoelectric model, KE_max = hf − W. Use E(eV) = 1240/λ(nm). A photon must supply at least the work function; raising the number of subthreshold photons does not change their individual energies in this model.
+
+==============================================================================
+
+Q22  [phys-261]  Photoelectric Effect  correct answer: B   (SUBSTANTIAL: single-photon intensity model and repaired table)
+------------------------------------------------------------------------------
+STEM: In the single-photon photoelectric regime, light above the threshold frequency illuminates the same metal area. Assume the emission yield per incident photon stays constant and there is no saturation. If the intensity doubles at unchanged frequency, what happens over the same time interval?
+
+  A. The maximum kinetic energy of electrons doubles
+  B. The number of emitted electrons doubles but their maximum kinetic energy stays the same   <= key
+  C. Both the number and maximum kinetic energy of electrons double
+  D. No additional electrons are emitted
+
+EXPLANATION:
+Correct Answer: The number of emitted electrons doubles but their maximum kinetic energy stays the same
+At fixed frequency, each photon has the same energy hf. Doubling the intensity on the same area doubles the number of incident photons per second. Under the stated constant-yield conditions, twice as many electrons are emitted in the same time, but their maximum kinetic energy stays KE_max = hf − W.
+Change | Effect on photon arrival rate for the same area | Effect on KE_max for the same metal | Double intensity at fixed frequency | Doubles; electron emission also doubles under the stated assumptions | No change | Increase frequency at fixed intensity | Decreases because each photon carries more energy; electron emission also depends on the yield | Increases while the frequency is above threshold | Why the other choices are wrong:
+A. The maximum kinetic energy of electrons doubles: Each photon still has energy hf, so doubling intensity does not change the maximum energy available to an individual emitted electron.
+C. Both the number and maximum kinetic energy of electrons double: More electrons are emitted under the stated assumptions, but their maximum kinetic energy does not double. Increasing photon number is different from increasing photon energy.
+D. No additional electrons are emitted: The frequency is above threshold and the yield is unchanged. More incident photons therefore produce more emitted electrons in the same time interval.
+Key Concept: Intensity is energy delivered per unit area per unit time. At fixed frequency, higher intensity means more photons per second. For the same metal in the single-photon model, frequency determines KE_max; emission rate also depends on photon arrival rate and emission yield.
+
+==============================================================================
+
+Q23  [phys-262]  Theory of Relativity  correct answer: C
+------------------------------------------------------------------------------
+STEM: A muon has a half-life of 1.5 μs in its own rest frame. If it travels at 0.6c relative to Earth, what is its half-life as measured by an Earth observer?
+
+  A. 1.2 μs
+  B. 1.5 μs
+  C. 1.875 μs   <= key
+  D. 2.5 μs
+
+EXPLANATION:
+Correct Answer: 1.875 μs
+Using the time dilation formula:
+t = t_0 / √(1 − v^2/c^2)
+t = 1.5 / √(1 − 0.36)
+t = 1.5 / √(0.64)
+t = 1.5 / 0.8
+t = 1.875 μs
+The Lorentz factor γ = 1/0.8 = 1.25. The Earth observer sees the muon's clock running slower, so its measured half-life is longer. This effect is real and experimentally verified: cosmic-ray muons reach Earth's surface because their dilated lifetime is long enough for them to survive the journey through the atmosphere.
+Why the other choices are wrong:
+A. 1.2 μs: 1.2 μs comes from multiplying by √(1 − 0.6^2) = 0.8. Time dilation requires dividing the rest-frame interval by 0.8.
+B. 1.5 μs: 1.5 μs is the given half-life in the muon rest frame. An Earth observer measures a longer half-life because the muons are moving relative to Earth.
+D. 2.5 μs: 2.5 μs is too long. At 0.6c the Lorentz factor is 1.25, not 2.5/1.5, so the observed half-life is 1.875 μs.
+Key Concept: For a sample moving at constant speed relative to an observer, the observed half-life is γ times its rest-frame half-life, where γ = 1/√(1 − v^2/c^2). Here γ = 1.25, so 1.5 μs becomes 1.875 μs.
+
+==============================================================================
+
+Q24  [phys-263]  Theory of Relativity  correct answer: B
+------------------------------------------------------------------------------
+STEM: How much energy is released if 1 gram of matter is completely converted to energy? (c = 3 × 10^8 m/s)
+
+  A. 9 × 10^10 J
+  B. 9 × 10^13 J   <= key
+  C. 3 × 10^11 J
+  D. 3 × 10^13 J
+
+EXPLANATION:
+Correct Answer: 9 × 10^13 J
+Using Einstein's mass-energy equivalence:
+E = mc^2
+E = 0.001 kg × (3 × 10^8 m/s)^2
+E = 10^−3 × 9 × 10^16
+E = 9 × 10^13 J
+To put this in perspective, 9 × 10^13 J is equivalent to about 21.5 kilotons of TNT -- roughly the energy of the Nagasaki atomic bomb. This shows why nuclear reactions (which convert a tiny fraction of mass to energy) release such enormous energy.
+Why the other choices are wrong:
+A. 9 × 10^10 J: 9 × 10^10 J is 1000 times too small; it is the rest energy of 1 mg. The given 1 g is 10^−3 kg, not 10^−6 kg.
+C. 3 × 10^11 J: The speed of light must be squared in E = mc^2. With 1 g = 10^−3 kg and c^2 = 9 × 10^16 m^2/s^2, the result is 9 × 10^13 J.
+D. 3 × 10^13 J: This misses the squared numerical factor: (3 × 10^8)^2 = 9 × 10^16, not 3 × 10^16. Multiplying by 10^−3 kg gives 9 × 10^13 J.
+Key Concept: E = mc^2. Always convert mass to kg first. c^2 = 9 × 10^16 m^2/s^2. Even a tiny mass yields enormous energy because c^2 is so large.
+
+==============================================================================
+
+Q25  [phys-264]  Torque  correct answer: B
+------------------------------------------------------------------------------
+STEM: A uniform 4 m beam of negligible weight is supported at its center. A 40 N weight hangs 1.5 m to the left of the fulcrum. How far to the right of the fulcrum should a 60 N weight be placed to balance the beam?
+
+  A. 0.5 m
+  B. 1.0 m   <= key
+  C. 1.5 m
+  D. 2.0 m
+
+EXPLANATION:
+Correct Answer: 1.0 m
+For rotational equilibrium, the sum of torques about the fulcrum must equal zero:
+Counterclockwise torque = Clockwise torque
+F_1 × d_1 = F_2 × d_2
+40 × 1.5 = 60 × d_2
+60 = 60 × d_2
+d_2 = 1.0 m
+Check: Left torque = 40 × 1.5 = 60 N·m. Right torque = 60 × 1.0 = 60 N·m. They are equal, so the beam is balanced.
+The heavier weight (60 N) must be placed closer to the fulcrum than the lighter weight (40 N). This is the principle of the lever.
+Why the other choices are wrong:
+A. 0.5 m: At 0.5 m, the 60 N weight supplies only 30 N·m of clockwise torque. The other side supplies 60 N·m.
+C. 1.5 m: Equal distances would balance equal forces. Here the right-hand force is larger, so it must be closer to the pivot; 1.5 m would give 90 N·m.
+D. 2.0 m: At 2.0 m, the right-hand torque would be 60 × 2.0 = 120 N·m, twice the 60 N·m torque on the left.
+Key Concept: For balance: F_1 × d_1 = F_2 × d_2. The heavier weight sits closer to the fulcrum. Choose the pivot point wisely to simplify the equation.
+
+==============================================================================
+
+Q26  [phys-265]  Torque  correct answer: C
+------------------------------------------------------------------------------
+STEM: A 60 kg adult sits 1.5 m from the fulcrum of a horizontal seesaw. The seesaw's own weight produces no net torque about the fulcrum. How far from the fulcrum should a 30 kg child sit on the opposite side to balance it? Use g = 10 m/s^2.
+
+  A. 0.75 m
+  B. 1.5 m
+  C. 3.0 m   <= key
+  D. 4.5 m
+
+EXPLANATION:
+Correct Answer: 3.0 m
+For a balanced seesaw, the torques on each side must be equal:
+F_1 × d_1 = F_2 × d_2
+m_1g × d_1 = m_2g × d_2
+60 × 1.5 = 30 × d_2
+90 = 30 × d_2
+d_2 = 3.0 m
+Since g appears on both sides, it cancels out. The child (half the mass) must sit twice as far from the fulcrum. This is the principle of the lever: a smaller force can balance a larger force by acting at a greater distance.
+Why the other choices are wrong:
+A. 0.75 m: At 0.75 m, the child provides only 30 × 10 × 0.75 = 225 N·m, compared with the adult's 900 N·m. The lighter person needs a longer lever arm.
+B. 1.5 m: Equal distances would balance equal masses. At 1.5 m, the child produces only half the adult's torque.
+D. 4.5 m: At 4.5 m, the child produces 1350 N·m, greater than the adult's 900 N·m. The required distance is 900/(30 × 10) = 3.0 m.
+Key Concept: Balanced seesaw: m_1 × d_1 = m_2 × d_2 (g cancels). Half the weight needs double the distance. This is Archimedes' lever principle.
+
+==============================================================================
+
+Q27  [phys-266]  Faraday's Law of Electrolysis  correct answer: B
+------------------------------------------------------------------------------
+STEM: A constant current of 10 A passes through an AgNO_3 solution with 100% current efficiency for silver deposition. Approximately how long is required to deposit 5.4 g of silver? Use M_Ag = 108 g/mol, z = 1 and F = 96500 C/mol.
+
+  A. 241 s
+  B. 483 s   <= key
+  C. 965 s
+  D. 4825 s
+
+EXPLANATION:
+Correct Answer: 483 s
+Using Faraday's first law, solved for time:
+m = (M × I × t) / (z × F)
+t = (m × z × F) / (M × I)
+t = (5.4 × 1 × 96500) / (108 × 10)
+t = 521100 / 1080
+t ≈ 483 s (about 8 minutes)
+Check: moles of Ag = 5.4/108 = 0.05 mol. Since z = 1, we need 0.05 mol of electrons. Charge = 0.05 × 96500 = 4825 C. Time = Q/I = 4825/10 = 482.5 s. Consistent.
+Why the other choices are wrong:
+A. 241 s: 241 s is about half the required time and would deposit only about 2.7 g at 10 A. Depositing 5.4 g requires 4825 C.
+C. 965 s: 965 s is twice the required time. Silver deposition uses one electron per Ag^+ ion, so 0.05 mol of silver requires 0.05 mol of electrons, not 0.10 mol.
+D. 4825 s: 4825 is the required charge in coulombs, not the time in seconds. Divide by the current: t = Q/I = 4825/10 = 482.5 s.
+Key Concept: m = MIt/(zF). For Ag^+, z = 1 (one electron per ion). Always convert the formula to solve for the unknown. Total charge Q = It is the fundamental quantity in electrolysis.
+
+==============================================================================
+
+Q28  [phys-267]  Faraday's Law of Electrolysis  correct answer: B
+------------------------------------------------------------------------------
+STEM: Two electrolytic cells containing CuSO_4 and AgNO_3 solutions are connected in series, and both deposit their metals with 100% current efficiency. If 2.16 g of silver is deposited, how much copper is deposited? Use molar masses M_Ag = 108 g/mol and M_Cu = 64 g/mol; Ag^+ requires one electron and Cu^2+ requires two.
+
+  A. 0.32 g
+  B. 0.64 g   <= key
+  C. 1.28 g
+  D. 2.16 g
+
+EXPLANATION:
+Correct Answer: 0.64 g
+By Faraday's second law, when the same charge passes through different electrolytes in series:
+m_Cu/m_Ag = (M_Cu/z_Cu) / (M_Ag/z_Ag)
+m_Cu/2.16 = (64/2) / (108/1)
+m_Cu/2.16 = 32/108
+m_Cu = 2.16 × 32/108
+m_Cu = 2.16 × 0.2963
+m_Cu = 0.64 g
+For the same charge and 100% current efficiency, deposited mass is proportional to M/z. Copper has M/z = 32 g per mole of electrons, while silver has 108 g per mole of electrons, so less copper is deposited. The mass deposited per coulomb, called the electrochemical equivalent, is M/(zF).
+Why the other choices are wrong:
+A. 0.32 g: 0.32 g is half the required copper mass. The factor of two for Cu^2+ is already included in M_Cu/z_Cu = 64/2; do not divide by two again.
+C. 1.28 g: 1.28 g results from comparing molar masses while ignoring that each Cu^2+ needs two electrons. Including z_Cu = 2 halves that result to 0.64 g.
+D. 2.16 g: Equal charge does not mean equal deposited masses. Silver and copper have different masses deposited per mole of electrons.
+Key Concept: Faraday's law gives m = MQ/(zF) at 100% current efficiency. For the same charge, the deposited-mass ratio is (M_1/z_1)/(M_2/z_2). Compare both molar mass and electron requirement.
+
+==============================================================================
+
+Q29  [phys-268]  De Broglie Waves  correct answer: B
+------------------------------------------------------------------------------
+STEM: An electron is accelerated from rest through a potential difference of 400 V. What is its de Broglie wavelength? (Use the shortcut: λ(nm) = 1.226/√V for electrons)
+
+  A. 0.0307 nm
+  B. 0.0613 nm   <= key
+  C. 0.1226 nm
+  D. 0.245 nm
+
+EXPLANATION:
+Correct Answer: 0.0613 nm
+Using the electron wavelength shortcut:
+λ(nm) = 1.226 / √V
+λ = 1.226 / √400
+λ = 1.226 / 20
+λ = 0.0613 nm
+The wavelength is about 0.6 angstroms, shorter than typical interatomic spacings. Such short wavelengths make electron diffraction and high-resolution imaging possible, although an electron microscope's resolution also depends on its lenses and other design limits.
+Full derivation check: KE = eV = 1.602 × 10^−19 × 400 = 6.408 × 10^−17 J. v = √(2KE/m) = √(2 × 6.408 × 10^−17/9.109 × 10^−31) = 1.186 × 10^7 m/s. λ = h/(mv) = 6.626 × 10^−34/(9.109 × 10^−31 × 1.186 × 10^7) = 6.13 × 10^−11 m = 0.0613 nm. Matches.
+Why the other choices are wrong:
+A. 0.0307 nm: 0.0307 nm is about half the correct wavelength. Since wavelength varies as 1/√V, halving it would require four times the voltage, about 1600 V.
+C. 0.1226 nm: 0.1226 nm would correspond to 100 V using the supplied shortcut. At 400 V, the square root in the denominator is 20, not 10.
+D. 0.245 nm: 0.245 nm would correspond to approximately 25 V. For the stated 400 V, λ = 1.226/20 = 0.0613 nm.
+Key Concept: For electrons accelerated from rest at nonrelativistic speeds, λ(nm) ≈ 1.226/√V when V is in volts. Larger accelerating voltage gives shorter wavelength. At high voltages, such as 100–300 kV, use a relativistic correction; wavelength alone does not determine microscope resolution.
+
+==============================================================================
+
+Q30  [phys-269]  Compton Scattering and X-rays  correct answer: A
+------------------------------------------------------------------------------
+STEM: An X-ray tube operates at 40 kV. What is the shortest wavelength X-ray it can produce? (Use: λ_min(nm) = 1.240/V(kV))
+
+  A. 0.031 nm   <= key
+  B. 0.062 nm
+  C. 0.124 nm
+  D. 0.310 nm
+
+EXPLANATION:
+Correct Answer: 0.031 nm
+The minimum wavelength corresponds to the maximum energy photon, produced when an electron converts ALL its kinetic energy into a single photon:
+λ_min(nm) = 1.240 / V(kV)
+λ_min = 1.240 / 40
+λ_min = 0.031 nm
+Full calculation: E_max = eV = 1.602 × 10^−19 × 40000 = 6.408 × 10^−15 J. λ_min = hc/E = (6.626 × 10^−34 × 3 × 10^8)/6.408 × 10^−15 = 3.1 × 10^−11 m = 0.031 nm. Matches.
+This is called the short-wavelength cutoff. No X-ray from this tube can have a wavelength shorter than this value, because it would require more energy than the electron possesses.
+Why the other choices are wrong:
+B. 0.062 nm: 0.062 nm is twice the correct cutoff and would correspond to a tube voltage of about 20 kV. The stated voltage is 40 kV.
+C. 0.124 nm: 0.124 nm would correspond to 10 kV. Use the provided voltage in kilovolts: 1.240/40 = 0.031 nm.
+D. 0.310 nm: 0.310 nm would correspond to 4 kV, ten times below the stated voltage. Check the decimal place when dividing by 40.
+Key Concept: λ_min(nm) = 1.240/V(kV). Higher voltage produces more energetic (shorter wavelength) X-rays. The continuous spectrum (bremsstrahlung) has a sharp cutoff at λ_min.
+
+==============================================================================
+
+Q31  [phys-270]  AC Circuits - Capacitor  correct answer: A
+------------------------------------------------------------------------------
+STEM: An ideal 10 μF capacitor is connected directly to a 50 Hz sinusoidal AC source with peak voltage V_0 = 100 V. What are its capacitive reactance and peak current?
+
+  A. X_C = 318 Ω, I_0 = 0.314 A   <= key
+  B. X_C = 159 Ω, I_0 = 0.628 A
+  C. X_C = 318 Ω, I_0 = 0.628 A
+  D. X_C = 159 Ω, I_0 = 0.314 A
+
+EXPLANATION:
+Correct Answer: X_C = 318 Ω, I_0 = 0.314 A
+The capacitive reactance (opposition to AC current by a capacitor) is:
+X_C = 1 / (2πfC)
+X_C = 1 / (2 × 3.14 × 50 × 10 × 10^−6)
+X_C = 1 / (2 × 3.14 × 50 × 10^−5)
+X_C = 1 / (3.14 × 10^−3)
+X_C = 318 Ω
+The peak current:
+I_0 = V_0 / X_C = 100 / 318 = 0.314 A
+In a purely capacitive AC circuit, the current LEADS the voltage by 90° (a quarter cycle). Higher frequency or larger capacitance means lower reactance and more current.
+Why the other choices are wrong:
+B. X_C = 159 Ω, I_0 = 0.628 A: 159 Ω and 0.628 A would fit twice the stated frequency or capacitance. Here X_C = 1/(2π × 50 × 10^−5) ≈ 318 Ω.
+C. X_C = 318 Ω, I_0 = 0.628 A: The reactance is correct, but the peak current is too large. With a 100 V peak, I_0 = V_0/X_C = 100/318 ≈ 0.314 A.
+D. X_C = 159 Ω, I_0 = 0.314 A: The current matches the correct calculation, but the reactance is wrong. At X_C = 159 Ω, a 100 V peak would imply about 0.628 A, not 0.314 A.
+Key Concept: X_C = 1/(2πfC). Capacitive reactance decreases with frequency (capacitors pass high-frequency signals easily). In a capacitor, current leads voltage by 90°. Compare with inductive reactance X_L = 2πfL, which increases with frequency.
+
+==============================================================================
+
+Q32  [phys-271]  Thermodynamics  correct answer: C
+------------------------------------------------------------------------------
+STEM: At 25 degrees C, the saturation vapor pressure of water is 3.17 kPa. If the actual water vapor pressure in the air is 1.90 kPa, what is the relative humidity?
+
+  A. 40%
+  B. 50%
+  C. 60%   <= key
+  D. 80%
+
+EXPLANATION:
+Correct Answer: 60%
+Relative humidity (RH) is the ratio of the actual vapor pressure to the saturation vapor pressure at the same temperature:
+RH = (p_vapor / p_saturated) x 100%
+RH = (1.90 / 3.17) x 100% = 59.9%, rounding to 60%.
+At 100% RH, the water-vapor pressure equals the saturation vapor pressure at that temperature. Further cooling can cause condensation under ordinary conditions.
+Why the other choices are wrong:
+A. 40%: The given vapor pressure is about 60% of 3.17 kPa, not 40%. Subtracting 60% from 100% gives the percentage shortfall from saturation, not relative humidity.
+B. 50%: 50% would require a vapor pressure of half 3.17 kPa, about 1.59 kPa. The actual vapor pressure is higher, at 1.90 kPa.
+D. 80%: 80% would require a vapor pressure of 0.80 × 3.17 ≈ 2.54 kPa. The stated 1.90 kPa gives about 60%.
+Key Concept: Relative humidity is 100 × actual water-vapor pressure / saturation vapor pressure at the same temperature. Saturation vapor pressure increases with temperature; cooling moist air generally raises its relative humidity until condensation occurs.
+
+==============================================================================
+
+Q33  [phys-272]  Thermodynamics  correct answer: B
+------------------------------------------------------------------------------
+STEM: Moist air at 25 °C has a dew point of 15 °C. If it is cooled at constant pressure to just below 15 °C, what normally happens?
+
+  A. The relative humidity drops below 100%
+  B. Water vapor condenses into liquid droplets   <= key
+  C. The absolute humidity increases
+  D. The air pressure drops sharply
+
+EXPLANATION:
+Correct Answer: Water vapor condenses into liquid droplets
+The dew point is the temperature at which cooling at constant pressure brings the water vapor to saturation. Under ordinary conditions, cooling this air further causes some water vapor to condense into liquid water. Dew forms when a surface cools below the surrounding air's dew point. Cold glasses brought into warm, humid air can fog because they cool the air next to their surfaces below its dew point.
+Why the other choices are wrong:
+A. The relative humidity drops below 100%: Before condensation begins, cooling raises relative humidity toward 100%. Once condensation proceeds, relative humidity remains near saturation rather than dropping below it.
+C. The absolute humidity increases: Condensation removes water from the vapor phase into liquid droplets. It does not create additional water vapor.
+D. The air pressure drops sharply: The question specifies constant pressure. Condensation is caused here by the decrease in saturation vapor pressure as the temperature falls.
+Key Concept: Cooling moist air to its dew point reaches saturation. Further cooling normally causes condensation, keeping relative humidity close to 100% while condensation proceeds.
+
+==============================================================================
+
+Q34  [phys-273]  Magnetism  correct answer: A
+------------------------------------------------------------------------------
+STEM: Two long parallel wires in air are 0.2 m apart and each carries 5 A in the same direction. Neglect end effects and take μ_0 ≈ 4π × 10^−7 N/A^2. What is the force per unit length between them?
+
+  A. 2.5 × 10⁻⁵ N/m, attractive   <= key
+  B. 2.5 × 10⁻⁵ N/m, repulsive
+  C. 5.0 × 10⁻⁵ N/m, attractive
+  D. 1.0 × 10⁻⁴ N/m, repulsive
+
+EXPLANATION:
+Correct Answer: 2.5 × 10⁻⁵ N/m, attractive
+The force per unit length between two parallel current-carrying wires is:
+F/L = (μ₀ × I₁ × I₂) / (2πd)
+F/L = (4π × 10⁻⁷ × 5 × 5) / (2π × 0.2) = 2.5 × 10⁻⁵ N/m
+Currents in the same direction attract; currents in opposite directions repel.
+Why the other choices are wrong:
+B. 2.5 × 10⁻⁵ N/m, repulsive: The magnitude is correct, but the direction is wrong. Parallel currents in the same direction attract; opposite currents repel.
+C. 5.0 × 10⁻⁵ N/m, attractive: This is twice the correct force per length. Substitution gives (4π × 10^−7 × 25)/(2π × 0.2) = 2.5 × 10^−5 N/m.
+D. 1.0 × 10⁻⁴ N/m, repulsive: Both the magnitude and the direction are wrong. The stated separation gives 2.5 × 10^−5 N/m, and same-direction currents attract.
+Key Concept: This force between parallel conductors was historically used to define the ampere.
+
+==============================================================================
+
+Q35  [phys-274]  Magnetism  correct answer: B
+------------------------------------------------------------------------------
+STEM: The SI unit ampere was historically defined using which physical setup?
+
+  A. Force between two charged spheres
+  B. Force between two parallel current-carrying conductors   <= key
+  C. Deflection of an electron in a magnetic field
+  D. EMF produced by a changing magnetic flux
+
+EXPLANATION:
+Correct Answer: Force between two parallel current-carrying conductors
+The former SI definition, used from 1948 until 2019, related one ampere to the magnetic force between two ideal straight parallel wires. With each wire carrying 1 A, an infinite wire length, negligible cross-section and a separation of 1 m in vacuum, the force per unit length was exactly 2 × 10^−7 N/m by definition. Since 20 May 2019, the ampere has instead been defined by fixing the elementary charge at exactly 1.602176634 × 10^−19 C.
+Why the other choices are wrong:
+A. Force between two charged spheres: The force between stationary charged spheres is electrostatic and relates to electric charge, not the former magnetic wire-force definition of the ampere.
+C. Deflection of an electron in a magnetic field: Electron deflection in a magnetic field depends on charge, speed and field strength. It is not the parallel-wire arrangement used in the former SI definition.
+D. EMF produced by a changing magnetic flux: A changing magnetic flux produces an emf according to Faraday's law. The historical ampere definition instead used the force between steady currents.
+Key Concept: Historically, the ampere was defined through the force between parallel currents. The current SI definition fixes the elementary charge. The old wire-force relationship remains a useful physical law, with μ_0 approximately 4π × 10^−7 N/A^2.
+
+==============================================================================
+
+Q36  [phys-275]  Electromagnetic Induction  correct answer: B   (SUBSTANTIAL: the rod, velocity and field are mutually perpendicular)
+------------------------------------------------------------------------------
+STEM: A straight conducting rod of length 0.4 m moves at 3 m/s in a uniform magnetic field of 0.5 T. The rod, its velocity and the magnetic field are mutually perpendicular. What is the magnitude of the motional emf between its ends?
+
+  A. 0.2 V
+  B. 0.6 V   <= key
+  C. 1.2 V
+  D. 0.15 V
+
+EXPLANATION:
+Correct Answer: 0.6 V
+Charges in the moving rod experience the magnetic force qv × B along its length. Charge separation produces an emf of magnitude ε = BLv for the stated mutually perpendicular geometry. Thus ε = 0.5 × 0.4 × 3 = 0.6 V. If the rod is part of a closed conducting circuit, this emf can drive a current.
+Why the other choices are wrong:
+A. 0.2 V: 0.2 is the numerical product BL, but the speed must also be included. Multiplying by 3 m/s gives 0.6 V.
+C. 1.2 V: 1.2 V is twice the correct result. The stated mutually perpendicular arrangement gives ε = 0.5 × 0.4 × 3 = 0.6 V.
+D. 0.15 V: 0.15 V does not follow from BLv with the stated quantities. Multiply the field strength, rod length and speed to obtain 0.6 V.
+Key Concept: Motional emf across a straight rod is BLv when the rod, velocity and magnetic field are mutually perpendicular. For a sliding rod in a closed circuit, the same result follows from the changing magnetic flux.
+
+==============================================================================
+
+Q37  [phys-276]  Nuclear Physics  correct answer: C   (MAJOR REPAIR: consistent nuclear masses give 28.3 MeV, not 27.4; option C reworded)
+------------------------------------------------------------------------------
+STEM: The mass of a helium-4 nucleus is approximately 4.0015 u, while the combined mass of two free protons and two free neutrons is approximately 4.0319 u. What does the difference between these masses represent?
+
+  A. Experimental measurement error
+  B. Energy absorbed when the nucleus formed
+  C. Energy released when the bound nucleus formed, according to E = Δmc²   <= key
+  D. Energy lost to radiation during measurement
+
+EXPLANATION:
+Correct Answer: Energy released when the bound nucleus formed, according to E = Δmc²
+A bound helium-4 nucleus has less rest mass than the same two protons and two neutrons separated. Using consistent nuclear masses, Δm = 4.0319 − 4.0015 = 0.0304 u. The corresponding binding energy is E = Δmc^2 ≈ 0.0304 × 931.5 = 28.3 MeV. That much energy is released when the bound system forms from separated nucleons, and must be supplied to separate it again. The neutral atom's mass also includes its electrons, so it must not be substituted for the nuclear mass in this calculation.
+Why the other choices are wrong:
+A. Experimental measurement error: This is a real physical mass difference, not measurement error. The bound system has lower total rest energy than the same nucleons separated.
+B. Energy absorbed when the nucleus formed: Formation of this bound nucleus releases energy. Energy would have to be supplied to separate it back into free nucleons.
+D. Energy lost to radiation during measurement: The difference exists because of nuclear binding, not because the measurement caused radiation to escape. Compare the rest masses of the bound and separated systems.
+Key Concept: The mass defect represents the energy released when nucleons combined to form the nucleus. This same energy would be needed to break it apart.
+
+==============================================================================
+
+Q38  [phys-277]  Nuclear Physics  correct answer: C   (SUBSTANTIAL: Fe-56 kept; Ni-62 named as slightly higher)
+------------------------------------------------------------------------------
+STEM: Among the following nuclei, which has the greatest binding energy per nucleon?
+
+  A. Hydrogen-1
+  B. Helium-4
+  C. Iron-56   <= key
+  D. Uranium-238
+
+EXPLANATION:
+Correct Answer: Iron-56
+Among the listed choices, iron-56 has the greatest binding energy per nucleon, about 8.8 MeV. The curve has a broad maximum near iron and nickel; nickel-62 has a slightly greater value than iron-56. Binding energy per nucleon measures how tightly nucleons are bound on average, but it is not by itself a complete test of radioactive stability. Fusion of suitable light nuclei and fission of suitable heavy nuclei release energy when the products have lower total rest energy, or equivalently greater total binding energy for the same nucleons.
+Why the other choices are wrong:
+A. Hydrogen-1: Hydrogen-1 is a single proton, so there is no binding energy between nucleons within that nucleus. Its nuclear binding energy in this sense is zero.
+B. Helium-4: Helium-4 is tightly bound, but its binding energy per nucleon is about 28.3/4 ≈ 7.1 MeV, below iron-56's approximately 8.8 MeV.
+D. Uranium-238: Uranium-238 has many nucleons and a large total binding energy, but its binding energy per nucleon is lower than iron-56's. Total binding energy and binding energy per nucleon are different comparisons.
+Key Concept: Iron-56 is the most tightly bound per nucleon among these choices. The binding-energy curve peaks in the iron–nickel region, with nickel-62 slightly higher. Whether a particular nuclear reaction releases energy depends on its reactants and products.
+
+==============================================================================
+
+Q39  [phys-278]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: In a thermal-neutron fission reactor using U-235, what is the primary function of the moderator?
+
+  A. To absorb excess neutrons and prevent supercriticality
+  B. To slow fast neutrons to thermal speeds so they can trigger further fission   <= key
+  C. To shield workers from γ radiation
+  D. To cool the reactor core and prevent overheating
+
+EXPLANATION:
+Correct Answer: To slow fast neutrons to thermal speeds so they can trigger further fission
+The moderator (typically water, heavy water, or graphite) slows fast neutrons to thermal energies. Thermal neutrons are much more likely to cause fission in U-235.
+Control rods (boron/cadmium) absorb excess neutrons. Shielding blocks radiation. Coolant carries away heat.
+Why the other choices are wrong:
+A. To absorb excess neutrons and prevent supercriticality: Absorbing neutrons to control the chain reaction is the role of control materials such as control rods. The moderator's primary role is to slow neutrons while retaining enough to sustain fission.
+C. To shield workers from γ radiation: Radiation shielding reduces exposure outside the reactor. A moderator is selected primarily to slow neutrons in the core, not to serve as the main gamma shield.
+D. To cool the reactor core and prevent overheating: Removing heat is the coolant's function. Water can act as both coolant and moderator, but its moderating function specifically means slowing neutrons.
+Key Concept: Moderation slows neutrons mainly through scattering. Light nuclei transfer energy efficiently; hydrogen is particularly effective per collision, while graphite can slow neutrons through repeated collisions. A useful moderator also avoids absorbing too many neutrons.
+
+==============================================================================
+
+Q40  [phys-279]  Nuclear Physics  correct answer: C   (SUBSTANTIAL: slowing fast neutrons, not a single best shield)
+------------------------------------------------------------------------------
+STEM: Which of the following is especially suitable for slowing fast neutrons by elastic scattering as part of a radiation shield?
+
+  A. Lead
+  B. Steel
+  C. Water or paraffin   <= key
+  D. Aluminum
+
+EXPLANATION:
+Correct Answer: Water or paraffin
+Water and paraffin contain many hydrogen nuclei. Because a proton has nearly the same mass as a neutron, a neutron can transfer a large fraction of its kinetic energy in an elastic collision with hydrogen. Repeated collisions slow the neutrons. Complete shielding may also need neutron-capturing materials, such as boron-containing materials, and protection against photons produced by neutron interactions. The best arrangement depends on neutron energy and shield thickness.
+Why the other choices are wrong:
+A. Lead: Lead is useful for attenuating gamma rays, but its heavy nuclei transfer relatively little energy per elastic collision with a neutron. It is not the best choice here for slowing fast neutrons.
+B. Steel: Steel can be part of a shielding system, but its nuclei are much heavier than neutrons. Hydrogen-rich materials transfer more neutron energy per elastic collision.
+D. Aluminum: Aluminum nuclei are also much heavier than neutrons. Water or paraffin provides hydrogen nuclei, which are more effective for the slowing mechanism asked about.
+Key Concept: Hydrogen-rich materials are useful for slowing fast neutrons. Effective shielding also considers neutron capture and secondary photons; there is no single best shield independent of radiation energy and geometry.
+
+==============================================================================
+
+Q41  [phys-280]  Nuclear Physics  correct answer: B
+------------------------------------------------------------------------------
+STEM: A specific nuclear species defined by its atomic number Z and mass number A is called a:
+
+  A. Nucleon
+  B. Nuclide   <= key
+  C. Isotope
+  D. Nucleotide
+
+EXPLANATION:
+Correct Answer: Nuclide
+A nuclide is a specific nuclear species characterized by its atomic number Z and mass number A.
+Isotopes are nuclides with the same Z but different A (same element, different neutrons). A nucleon is a proton or neutron. A nucleotide is a biochemistry term (DNA/RNA building block).
+Why the other choices are wrong:
+A. Nucleon: A nucleon is one constituent of a nucleus: a proton or a neutron. It does not name the whole nuclear species characterized by Z and A.
+C. Isotope: Isotopes are nuclides of the same element that differ in neutron number. The general name for the specified nuclear species is nuclide; isotope describes its relationship to other nuclides of that element.
+D. Nucleotide: A nucleotide is a chemical building block of DNA or RNA, containing a base, sugar and phosphate. It is unrelated to the classification of nuclear species.
+Key Concept: Nuclide = specific Z and A. Isotopes = same Z, different A. Isobars = same A, different Z.
+
+==============================================================================
