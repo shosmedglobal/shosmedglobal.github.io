@@ -1,0 +1,733 @@
+{
+  "_comment": [
+    "The ORIGINAL identification signatures from the batch-4 review appendix,",
+    "extracted verbatim from SHOSMED_Physics_Batch4_Review_and_Claude_Prompt.txt.",
+    "These are the PRE-EDIT stems and option texts, with the plain-text export's",
+    "flattened exponents preserved, and they exist so the test suite can",
+    "re-derive the id map by full content match rather than trusting it."
+  ],
+  "originalKeys": "CACBBABBBCBCABBCCBBCCCBBBCCDDBACCBBBDCBBACCBDBCBBBCCCCCCBBCC",
+  "retainedKeys": "CACBBABBBCBCABBCCBBCCCBBBCCDDBACCBBBDCBBACCBDBCBBBCCCCCCBBCC",
+  "sigs": {
+    "Q1": {
+      "topic": "Acoustics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Sound travels fastest through which of the following media?",
+      "options": [
+        "Air at room temperature",
+        "Water at room temperature",
+        "Steel at room temperature",
+        "Vacuum"
+      ]
+    },
+    "Q2": {
+      "topic": "Acoustics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "The threshold of human hearing is defined as a sound intensity of 10-12 W/m2. What is the sound level in decibels (dB) at this threshold?",
+      "options": [
+        "0 dB",
+        "1 dB",
+        "10 dB",
+        "-12 dB"
+      ]
+    },
+    "Q3": {
+      "topic": "Acoustics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "If the intensity of a sound is increased by a factor of 100, by how many decibels does the sound level increase?",
+      "options": [
+        "2 dB",
+        "10 dB",
+        "20 dB",
+        "100 dB"
+      ]
+    },
+    "Q4": {
+      "topic": "Acoustics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Which of the following correctly describes infrasound?",
+      "options": [
+        "Sound with frequency above 20,000 Hz, used in medical imaging",
+        "Sound with frequency below 20 Hz, inaudible to humans",
+        "Sound at the threshold of pain, approximately 120 dB",
+        "Sound that can only travel through solids"
+      ]
+    },
+    "Q5": {
+      "topic": "Doppler Effect",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An ambulance siren emits sound at 600 Hz and approaches a stationary observer at 40 m/s. If the speed of sound is 340 m/s, what frequency does the observer hear?",
+      "options": [
+        "548 Hz",
+        "680 Hz",
+        "600 Hz",
+        "706 Hz"
+      ]
+    },
+    "Q6": {
+      "topic": "Doppler Effect",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "A car horn sounds at 400 Hz. The car moves away from a stationary observer at 20 m/s. The speed of sound is 340 m/s. What frequency does the observer hear?",
+      "options": [
+        "378 Hz",
+        "400 Hz",
+        "424 Hz",
+        "422 Hz"
+      ]
+    },
+    "Q7": {
+      "topic": "Acoustics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "What is the relationship between the frequency (f) and the period (T) of a sound wave?",
+      "options": [
+        "f = T",
+        "f = 1/T",
+        "f = 2πT",
+        "f = T2"
+      ]
+    },
+    "Q8": {
+      "topic": "Acoustics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A sound wave in air has a frequency of 680 Hz. If the speed of sound in air is 340 m/s, what is the wavelength?",
+      "options": [
+        "0.25 m",
+        "0.5 m",
+        "1.0 m",
+        "2.0 m"
+      ]
+    },
+    "Q9": {
+      "topic": "Microscope Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a compound microscope, the objective lens creates:",
+      "options": [
+        "A virtual, upright, magnified image",
+        "A real, inverted, magnified image",
+        "A virtual, inverted, reduced image",
+        "A real, upright, reduced image"
+      ]
+    },
+    "Q10": {
+      "topic": "Microscope Optics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The resolving power of a light microscope is ultimately limited by:",
+      "options": [
+        "The magnification of the eyepiece",
+        "The thickness of the glass lenses",
+        "The wavelength of light used",
+        "The brightness of the light source"
+      ]
+    },
+    "Q11": {
+      "topic": "Microscope Optics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "What is the purpose of immersion oil placed between the specimen slide and the objective lens of a microscope?",
+      "options": [
+        "To reduce the brightness of the light",
+        "To increase the numerical aperture and improve resolution",
+        "To magnify the specimen before it reaches the objective",
+        "To protect the objective lens from scratches"
+      ]
+    },
+    "Q12": {
+      "topic": "Microscope Optics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A compound microscope has an objective with focal length 4 mm, an eyepiece with focal length 25 mm, and an optical interval (tube length) of 160 mm. What is the total magnification? (Assume the near point distance D = 250 mm.)",
+      "options": [
+        "100x",
+        "200x",
+        "400x",
+        "40x"
+      ]
+    },
+    "Q13": {
+      "topic": "Microscope Optics",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "In a compound microscope, the eyepiece functions as a:",
+      "options": [
+        "Simple magnifying glass viewing the intermediate image",
+        "Projector that casts the image on a screen",
+        "Filter that selects specific wavelengths of light",
+        "Collimating lens that makes light rays parallel"
+      ]
+    },
+    "Q14": {
+      "topic": "Semiconductor Diodes",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a PN junction diode under forward bias, the depletion region:",
+      "options": [
+        "Widens, and no current flows",
+        "Narrows, and current flows easily",
+        "Disappears completely, and the diode behaves like a superconductor",
+        "Stays the same width, and a small leakage current flows"
+      ]
+    },
+    "Q15": {
+      "topic": "Semiconductor Diodes",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An N-type semiconductor is created by doping silicon with:",
+      "options": [
+        "An element with 3 valence electrons (e.g., boron)",
+        "An element with 5 valence electrons (e.g., phosphorus)",
+        "A metal such as copper or gold",
+        "An element with 4 valence electrons (e.g., germanium)"
+      ]
+    },
+    "Q16": {
+      "topic": "Semiconductor Diodes",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "What is the approximate forward voltage drop across a silicon diode when it is conducting?",
+      "options": [
+        "0.1 V",
+        "0.3 V",
+        "0.6 V",
+        "1.5 V"
+      ]
+    },
+    "Q17": {
+      "topic": "Semiconductor Diodes",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A half-wave rectifier circuit uses a single diode to convert AC to DC. What fraction of the AC input cycle produces output?",
+      "options": [
+        "The full cycle (100%)",
+        "Three-quarters of the cycle (75%)",
+        "Half the cycle (50%)",
+        "One-quarter of the cycle (25%)"
+      ]
+    },
+    "Q18": {
+      "topic": "Semiconductor Diodes",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a reverse-biased PN junction, the depletion region acts primarily as:",
+      "options": [
+        "A conductor with very low resistance",
+        "An insulator that blocks current flow",
+        "A source of free electrons",
+        "A region of very high current density"
+      ]
+    },
+    "Q19": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "According to Faraday's law, an EMF is induced in a coil when:",
+      "options": [
+        "A constant magnetic flux passes through the coil",
+        "The magnetic flux through the coil changes with time",
+        "The coil is placed in a uniform, steady magnetic field",
+        "The coil carries a constant direct current"
+      ]
+    },
+    "Q20": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Lenz's law states that the direction of an induced current is such that it:",
+      "options": [
+        "Enhances the change in magnetic flux that caused it",
+        "Is always clockwise when viewed from above",
+        "Opposes the change in magnetic flux that caused it",
+        "Is parallel to the magnetic field lines"
+      ]
+    },
+    "Q21": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A coil with 200 turns experiences a change in magnetic flux from 0.05 Wb to 0.01 Wb in 0.02 seconds. What is the magnitude of the induced EMF?",
+      "options": [
+        "4 V",
+        "40 V",
+        "400 V",
+        "0.4 V"
+      ]
+    },
+    "Q22": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A transformer has 100 primary turns and 2000 secondary turns. If the primary voltage is 12 V, what is the secondary voltage?",
+      "options": [
+        "0.6 V",
+        "24 V",
+        "240 V",
+        "2400 V"
+      ]
+    },
+    "Q23": {
+      "topic": "Electromagnetic Induction",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The energy stored in an inductor carrying current I is given by:",
+      "options": [
+        "E = L x I",
+        "E = 1/2 x L x I2",
+        "E = L x I2",
+        "E = 1/2 x L2 x I"
+      ]
+    },
+    "Q24": {
+      "topic": "AC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a series RLC circuit, the impedance is given by Z = √(R2 + (XL - XC)2). At resonance (XL = XC), the impedance equals:",
+      "options": [
+        "Zero",
+        "R",
+        "XL + XC",
+        "Infinity"
+      ]
+    },
+    "Q25": {
+      "topic": "AC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The capacitive reactance XC of a capacitor in an AC circuit is given by XC = 1/(ωC). If the frequency of the AC source is doubled, what happens to XC?",
+      "options": [
+        "It doubles",
+        "It is halved",
+        "It quadruples",
+        "It stays the same"
+      ]
+    },
+    "Q26": {
+      "topic": "AC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In an AC circuit with only an ideal inductor (no resistance), the current:",
+      "options": [
+        "Is in phase with the voltage",
+        "Leads the voltage by 90 degrees",
+        "Lags behind the voltage by 90 degrees",
+        "Lags behind the voltage by 180 degrees"
+      ]
+    },
+    "Q27": {
+      "topic": "AC Circuits",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The resonant frequency of a series RLC circuit with L = 0.1 H and C = 10 μF is approximately:",
+      "options": [
+        "16 Hz",
+        "50 Hz",
+        "159 Hz",
+        "1000 Hz"
+      ]
+    },
+    "Q28": {
+      "topic": "AC Circuits",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "The average power dissipated in an AC circuit is P = Vrms Irms cos(φ). What is the power factor cos(φ) for a purely resistive circuit?",
+      "options": [
+        "0",
+        "0.5",
+        "0.707",
+        "1"
+      ]
+    },
+    "Q29": {
+      "topic": "AC Circuits",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "The relationship Vrms = Vpeak / √2 means that for European mains voltage of 230 V (rms), the peak voltage is approximately:",
+      "options": [
+        "115 V",
+        "163 V",
+        "230 V",
+        "325 V"
+      ]
+    },
+    "Q30": {
+      "topic": "AC Circuits",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An inductor with reactance XL = 100 Ω and a capacitor with reactance XC = 60 Ω are connected in series with a resistor R = 30 Ω. What is the total impedance of the circuit?",
+      "options": [
+        "190 Ω",
+        "50 Ω",
+        "70 Ω",
+        "110 Ω"
+      ]
+    },
+    "Q31": {
+      "topic": "Lorentz Force",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "An electron moves at 2 x 106 m/s perpendicular to a magnetic field of 0.5 T. What is the magnitude of the magnetic force on the electron? (e = 1.6 x 10-19 C)",
+      "options": [
+        "1.6 x 10-13 N",
+        "1.6 x 10-14 N",
+        "3.2 x 10-13 N",
+        "8 x 10-14 N"
+      ]
+    },
+    "Q32": {
+      "topic": "Lorentz Force",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A charged particle moves in a circle of radius r in a uniform magnetic field. If the particle's speed is doubled while the field stays the same, the radius of the circular path:",
+      "options": [
+        "Is halved",
+        "Stays the same",
+        "Doubles",
+        "Quadruples"
+      ]
+    },
+    "Q33": {
+      "topic": "Lorentz Force",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In a cyclotron, a proton spirals outward as it gains energy. The frequency of the alternating voltage applied to the dees must:",
+      "options": [
+        "Increase as the proton speeds up",
+        "Decrease as the proton speeds up",
+        "Remain constant throughout the acceleration",
+        "Alternate between two different values"
+      ]
+    },
+    "Q34": {
+      "topic": "Lorentz Force",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An electron enters a region with both an electric field E pointing upward and a magnetic field B pointing into the page. The electron moves to the right. For the electron to travel in a straight line (undeflected), the magnitudes must satisfy:",
+      "options": [
+        "E = B",
+        "E = vB",
+        "E = v/B",
+        "E = qvB"
+      ]
+    },
+    "Q35": {
+      "topic": "Lorentz Force",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A proton and an α particle (charge 2e, mass 4mp) enter the same magnetic field with the same speed. The ratio of the radius of the α particle's path to the proton's path is:",
+      "options": [
+        "1:1",
+        "2:1",
+        "4:1",
+        "1:2"
+      ]
+    },
+    "Q36": {
+      "topic": "Black Body Radiation",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "According to Wien's displacement law, if the temperature of a black body is doubled, the peak emission wavelength:",
+      "options": [
+        "Doubles",
+        "Is halved",
+        "Stays the same",
+        "Quadruples"
+      ]
+    },
+    "Q37": {
+      "topic": "Black Body Radiation",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "The total power radiated by a black body is proportional to the fourth power of its absolute temperature (Stefan-Boltzmann law). If the temperature increases from 300 K to 600 K, the radiated power increases by a factor of:",
+      "options": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ]
+    },
+    "Q38": {
+      "topic": "Black Body Radiation",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The 'ultraviolet catastrophe' refers to the failure of classical physics to explain:",
+      "options": [
+        "Why UV light causes sunburn",
+        "Why hot objects emit radiation at all frequencies",
+        "Why classical theory predicted infinite energy emission at short wavelengths from a black body",
+        "Why ultraviolet light is invisible to the human eye"
+      ]
+    },
+    "Q39": {
+      "topic": "Radioactive Decay",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "A radioactive sample has an initial activity of 800 Bq and a half-life of 4 hours. What is the activity after 12 hours?",
+      "options": [
+        "200 Bq",
+        "100 Bq",
+        "50 Bq",
+        "400 Bq"
+      ]
+    },
+    "Q40": {
+      "topic": "Radioactive Decay",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The decay constant λ of a radioactive isotope with a half-life of 10 days is approximately:",
+      "options": [
+        "0.1 per day",
+        "0.069 per day",
+        "0.693 per day",
+        "10 per day"
+      ]
+    },
+    "Q41": {
+      "topic": "Radioactive Decay",
+      "originalKey": "A",
+      "retainedKey": "A",
+      "stem": "In α decay, a nucleus emits an α particle (helium-4 nucleus). If uranium-238 undergoes α decay, what is the resulting daughter nucleus?",
+      "options": [
+        "Thorium-234 (Z=90, A=234)",
+        "Radium-234 (Z=88, A=234)",
+        "Protactinium-234 (Z=91, A=234)",
+        "Thorium-236 (Z=90, A=236)"
+      ]
+    },
+    "Q42": {
+      "topic": "Radioactive Decay",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A radioactive sample initially contains 6.4 x 108 atoms. After 5 half-lives, how many atoms remain?",
+      "options": [
+        "1.28 x 108",
+        "3.2 x 107",
+        "2 x 107",
+        "6.4 x 103"
+      ]
+    },
+    "Q43": {
+      "topic": "Polarization of Dielectrics",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "When a dielectric material is placed between the plates of a parallel-plate capacitor, the capacitance:",
+      "options": [
+        "Decreases",
+        "Stays the same",
+        "Increases",
+        "Becomes zero"
+      ]
+    },
+    "Q44": {
+      "topic": "Polarization of Dielectrics",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "Which of the following best explains why water has a very high dielectric constant (~80)?",
+      "options": [
+        "Water molecules are nonpolar and easily deformed",
+        "Water molecules are strongly polar and align readily in an electric field",
+        "Water is an excellent electrical conductor",
+        "Water molecules are very large compared to other molecules"
+      ]
+    },
+    "Q45": {
+      "topic": "Polarization of Dielectrics",
+      "originalKey": "D",
+      "retainedKey": "D",
+      "stem": "If a parallel-plate capacitor without a dielectric has capacitance C0 = 5 μF, and a dielectric with κ = 4 is inserted to fill the entire space between the plates, what is the new capacitance?",
+      "options": [
+        "1.25 μF",
+        "5 μF",
+        "9 μF",
+        "20 μF"
+      ]
+    },
+    "Q46": {
+      "topic": "AC Circuits - Inductive Reactance",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The inductive reactance (XL) of a coil with inductance L in an AC circuit of angular frequency w is given by:",
+      "options": [
+        "XL = 1/(wL)",
+        "XL = wL",
+        "XL = w2 L",
+        "XL = L/w"
+      ]
+    },
+    "Q47": {
+      "topic": "AC Circuits - Capacitive Reactance",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In an AC circuit, a capacitor with capacitance C is connected to a source of angular frequency w. The capacitive reactance (XC) is:",
+      "options": [
+        "XC = wC",
+        "XC = w/C",
+        "XC = 1/(wC)",
+        "XC = C/w"
+      ]
+    },
+    "Q48": {
+      "topic": "AC Circuits - Series RLC Impedance",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "The total impedance Z of a series RLC circuit is given by:",
+      "options": [
+        "Z = R + XL + XC",
+        "Z = sqrt(R2 + (XL - XC)2)",
+        "Z = sqrt(R2 + (XL + XC)2)",
+        "Z = R + (XL - XC)"
+      ]
+    },
+    "Q49": {
+      "topic": "AC Circuits - Resonance",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a series RLC circuit, resonance occurs when:",
+      "options": [
+        "The resistance equals the total reactance (R = XL + XC)",
+        "The inductive reactance equals the capacitive reactance (XL = XC)",
+        "The current and voltage are 90 degrees out of phase",
+        "The impedance reaches its maximum value"
+      ]
+    },
+    "Q50": {
+      "topic": "AC Circuits - Inductor Phase",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "In a purely inductive AC circuit, the phase relationship between voltage and current is:",
+      "options": [
+        "Voltage and current are in phase",
+        "Voltage leads current by 90 degrees",
+        "Current leads voltage by 90 degrees",
+        "Voltage leads current by 180 degrees"
+      ]
+    },
+    "Q51": {
+      "topic": "AC Circuits - Capacitor Phase",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "When an AC voltage is applied to a purely capacitive circuit, which statement about the current is correct?",
+      "options": [
+        "The current lags the voltage by 90 degrees",
+        "The current is in phase with the voltage",
+        "The current leads the voltage by 90 degrees",
+        "The current leads the voltage by 45 degrees"
+      ]
+    },
+    "Q52": {
+      "topic": "AC Circuits - Ohm's Law",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "In an AC circuit, the generalized form of Ohm's law relates the peak (or RMS) voltage and current through:",
+      "options": [
+        "V = IR, where R is the resistance only",
+        "V = I x XL, where XL is the inductive reactance only",
+        "V = IZ, where Z is the total impedance of the circuit",
+        "V = I/(XL - XC), where the reactances determine the current"
+      ]
+    },
+    "Q53": {
+      "topic": "Acoustics - Hearing Thresholds",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The threshold of hearing for a healthy young human ear corresponds to approximately 0 dB. The threshold of pain corresponds to approximately:",
+      "options": [
+        "60 dB",
+        "90 dB",
+        "120 dB",
+        "160 dB"
+      ]
+    },
+    "Q54": {
+      "topic": "Acoustics - Sound Velocity",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "The speed of sound is fastest in which of the following media?",
+      "options": [
+        "Air at room temperature",
+        "Distilled water at room temperature",
+        "A steel rail",
+        "A vacuum"
+      ]
+    },
+    "Q55": {
+      "topic": "Acoustics - Frequency Ranges",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "Ultrasound is defined as sound with a frequency:",
+      "options": [
+        "Below 20 Hz",
+        "Between 20 Hz and 20,000 Hz",
+        "Above 20,000 Hz (20 kHz)",
+        "Above 1,000,000 Hz (1 MHz) only"
+      ]
+    },
+    "Q56": {
+      "topic": "Acoustics - Doppler Effect",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "An ambulance is approaching a stationary observer with its siren blaring. The observer perceives the siren frequency as:",
+      "options": [
+        "Lower than the actual frequency emitted by the siren",
+        "Equal to the actual frequency emitted by the siren",
+        "Higher than the actual frequency emitted by the siren",
+        "Alternating between higher and lower than the actual frequency"
+      ]
+    },
+    "Q57": {
+      "topic": "Acoustics - Frequency and Period",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "If the frequency of a sound wave is doubled, what happens to its period?",
+      "options": [
+        "The period doubles",
+        "The period is halved",
+        "The period remains unchanged",
+        "The period is quadrupled"
+      ]
+    },
+    "Q58": {
+      "topic": "Semiconductors - Doping",
+      "originalKey": "B",
+      "retainedKey": "B",
+      "stem": "An N-type semiconductor is created by doping a silicon crystal with atoms from which group of the periodic table?",
+      "options": [
+        "Group IIIA (e.g., boron, gallium)",
+        "Group VA (e.g., phosphorus, arsenic)",
+        "Group IA (e.g., sodium, potassium)",
+        "Group VIIA (e.g., chlorine, bromine)"
+      ]
+    },
+    "Q59": {
+      "topic": "Semiconductors - Forward Bias",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "When a PN junction diode is connected in forward bias, which of the following occurs?",
+      "options": [
+        "The depletion region widens and current flow is negligible",
+        "The diode has high resistance and blocks current flow",
+        "The depletion region narrows and a relatively large current flows",
+        "Only holes can cross the junction while electrons are blocked"
+      ]
+    },
+    "Q60": {
+      "topic": "Semiconductors - Reverse Bias",
+      "originalKey": "C",
+      "retainedKey": "C",
+      "stem": "A PN junction diode under reverse bias exhibits:",
+      "options": [
+        "Low resistance and large forward current",
+        "A narrowed depletion region and increased conductivity",
+        "High resistance and only a very small leakage current",
+        "Zero resistance due to quantum tunneling effects"
+      ]
+    }
+  }
+}

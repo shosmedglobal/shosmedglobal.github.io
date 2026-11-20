@@ -1,0 +1,842 @@
+{
+  "Q1": {
+    "id": "phys-181",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "Sound travels fastest through which of the following media?",
+    "options": [
+      "Air at room temperature",
+      "Water at room temperature",
+      "Steel at room temperature",
+      "Vacuum"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Steel at room temperature</h4><p>The speed of sound depends on the medium. In general, sound is fastest in solids, slower in liquids, and slowest in gases:</p><table class='exp-table'><tr><th>Medium</th><th>Approximate Speed</th></tr><tr><td>Steel</td><td>~5000 m/s</td></tr><tr><td>Water</td><td>~1480 m/s</td></tr><tr><td>Air (20°C)</td><td>~343 m/s</td></tr><tr><td>Vacuum</td><td>0 m/s (no sound)</td></tr></table><p><strong>Why the other answers are wrong:</strong></p><ul><li>Air: Sound in air (~343 m/s) is much slower than in steel or water.</li><li>Water: Faster than air but slower than steel. The molecules in water are closer than in air but less rigidly bonded than in steel.</li><li>Vacuum: Sound is a mechanical wave and requires a medium. It cannot travel through a vacuum at all.</li></ul><p class='exp-key'>Key Concept: Sound needs a medium to propagate. Speed depends on the stiffness and density of the medium: v = &radic;(elastic modulus / density). Solids are stiff, so sound is fastest in them despite their higher density.</p>"
+  },
+  "Q2": {
+    "id": "phys-182",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "The threshold of human hearing is defined as a sound intensity of 10<sup>-12</sup> W/m<sup>2</sup>. What is the sound level in decibels (dB) at this threshold?",
+    "options": [
+      "0 dB",
+      "1 dB",
+      "10 dB",
+      "-12 dB"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 0 dB</h4><p>The sound level in decibels is calculated as:</p><div class='exp-diagram'><p>L = 10 log<sub>10</sub>(I / I<sub>0</sub>)</p><p>At the threshold: I = I<sub>0</sub> = 10<sup>-12</sup> W/m<sup>2</sup></p><p>L = 10 log<sub>10</sub>(10<sup>-12</sup> / 10<sup>-12</sup>) = 10 log<sub>10</sub>(1) = 10 x 0 = <strong>0 dB</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>1 dB: There is no reason to get 1; log(1) = 0, not 0.1.</li><li>10 dB: 10 dB corresponds to an intensity 10 times the threshold.</li><li>-12 dB: This confuses the exponent in I<sub>0</sub> = 10<sup>-12</sup> with the decibel level.</li></ul><p class='exp-key'>Key Concept: The decibel scale is logarithmic and relative to the threshold of hearing. 0 dB = threshold of hearing, 120 dB = threshold of pain. Each 10 dB increase represents a tenfold increase in intensity. Each 3 dB increase roughly doubles the intensity.</p>"
+  },
+  "Q3": {
+    "id": "phys-183",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "If the intensity of a sound is increased by a factor of 100, by how many decibels does the sound level increase?",
+    "options": [
+      "2 dB",
+      "10 dB",
+      "20 dB",
+      "100 dB"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 20 dB</h4><p>Using the decibel formula:</p><div class='exp-diagram'><p>&Delta;L = 10 log<sub>10</sub>(I<sub>2</sub> / I<sub>1</sub>)</p><p>&Delta;L = 10 log<sub>10</sub>(100) = 10 x 2 = <strong>20 dB</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>2 dB: This is just log<sub>10</sub>(100) = 2 without the factor of 10.</li><li>10 dB: This corresponds to a 10-fold intensity increase, not 100-fold.</li><li>100 dB: The decibel scale is logarithmic, so a 100-fold increase is only 20 dB, not 100 dB.</li></ul><p class='exp-key'>Key Concept: The decibel scale compresses large intensity ranges into manageable numbers. A factor of 10 in intensity = 10 dB. A factor of 100 = 20 dB. A factor of 1000 = 30 dB. This logarithmic pattern is essential for exam calculations.</p>"
+  },
+  "Q4": {
+    "id": "phys-184",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "Which of the following correctly describes infrasound?",
+    "options": [
+      "Sound with frequency above 20,000 Hz, used in medical imaging",
+      "Sound with frequency below 20 Hz, inaudible to humans",
+      "Sound at the threshold of pain, approximately 120 dB",
+      "Sound that can only travel through solids"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Sound with frequency below 20 Hz, inaudible to humans</h4><p>Human hearing spans approximately 20 Hz to 20,000 Hz (20 kHz):</p><table class='exp-table'><tr><th>Category</th><th>Frequency Range</th><th>Examples</th></tr><tr><td>Infrasound</td><td>Below 20 Hz</td><td>Earthquakes, elephants, wind turbines</td></tr><tr><td>Audible sound</td><td>20 Hz – 20,000 Hz</td><td>Speech, music, everyday sounds</td></tr><tr><td>Ultrasound</td><td>Above 20,000 Hz</td><td>Medical imaging, bat echolocation, cleaning</td></tr></table><p><strong>Why the other answers are wrong:</strong></p><ul><li>Above 20,000 Hz / medical imaging: That describes ultrasound, not infrasound.</li><li>Threshold of pain at 120 dB: This describes a loudness level, not a frequency category.</li><li>Only travels through solids: Sound of any frequency can travel through gases, liquids, and solids.</li></ul><p class='exp-key'>Key Concept: Infra- means 'below' (below audible frequency). Ultra- means 'beyond' (above audible frequency). These labels refer to frequency ranges, not to loudness or medium.</p>"
+  },
+  "Q5": {
+    "id": "phys-185",
+    "subject": "physics",
+    "topic": "Doppler Effect",
+    "question": "An ambulance siren emits sound at 600 Hz and approaches a stationary observer at 40 m/s. If the speed of sound is 340 m/s, what frequency does the observer hear?",
+    "options": [
+      "548 Hz",
+      "680 Hz",
+      "600 Hz",
+      "706 Hz"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 680 Hz</h4><p>When a source approaches a stationary observer, use the Doppler formula:</p><div class='exp-diagram'><p>f<sub>obs</sub> = f<sub>source</sub> x v<sub>sound</sub> / (v<sub>sound</sub> - v<sub>source</sub>)</p><p>f<sub>obs</sub> = 600 x 340 / (340 - 40)</p><p>f<sub>obs</sub> = 600 x 340 / 300</p><p>f<sub>obs</sub> = 204,000 / 300 = <strong>680 Hz</strong></p></div><p>The observed frequency is higher than the emitted frequency because the source is approaching.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>548 Hz: This would be obtained by using (v + v<sub>source</sub>) in the denominator, as if the source were moving away (600 x 340/380 &asymp; 537 Hz, close to this).</li><li>600 Hz: The frequency would only remain at 600 Hz if there were no relative motion.</li><li>706 Hz: This might come from using an incorrect speed for the source in the formula.</li></ul><p class='exp-key'>Key Concept: When a sound source approaches, the observed frequency increases (higher pitch). When it recedes, frequency decreases (lower pitch). The Doppler formula has (v - v<sub>source</sub>) for approach and (v + v<sub>source</sub>) for recession in the denominator.</p>"
+  },
+  "Q6": {
+    "id": "phys-186",
+    "subject": "physics",
+    "topic": "Doppler Effect",
+    "question": "A car horn sounds at 400 Hz. The car moves away from a stationary observer at 20 m/s. The speed of sound is 340 m/s. What frequency does the observer hear?",
+    "options": [
+      "378 Hz",
+      "400 Hz",
+      "424 Hz",
+      "422 Hz"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 378 Hz</h4><p>When the source moves <strong>away</strong>, we use the Doppler formula with addition in the denominator:</p><div class='exp-diagram'><p>f<sub>obs</sub> = f<sub>source</sub> x v<sub>sound</sub> / (v<sub>sound</sub> + v<sub>source</sub>)</p><p>f<sub>obs</sub> = 400 x 340 / (340 + 20)</p><p>f<sub>obs</sub> = 136,000 / 360 = <strong>378 Hz</strong></p></div><p>The observed frequency decreases when the source moves away, consistent with the Doppler effect.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>400 Hz: This would be the case if the car were stationary.</li><li>424 Hz: This is what you would get if the car were approaching rather than receding.</li><li>422 Hz: Also corresponds to an approaching scenario with slightly different parameters.</li></ul><p class='exp-key'>Key Concept: Source moving away = lower pitch (denominator gets larger, so the fraction gets smaller). Source approaching = higher pitch (denominator gets smaller, so the fraction gets larger). The actual frequency emitted does not change; only the observed frequency changes.</p>"
+  },
+  "Q7": {
+    "id": "phys-187",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "What is the relationship between the frequency (f) and the period (T) of a sound wave?",
+    "options": [
+      "f = T",
+      "f = 1/T",
+      "f = 2&pi;T",
+      "f = T<sup>2</sup>"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: f = 1/T</h4><p>Frequency and period are reciprocals of each other:</p><div class='exp-diagram'><p>f = 1/T &nbsp;&nbsp; and &nbsp;&nbsp; T = 1/f</p></div><p>If a wave has a period of 0.002 seconds (the time for one complete cycle), then its frequency is 1/0.002 = 500 Hz (500 cycles per second).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>f = T: This would mean a wave with period 0.5 seconds has frequency 0.5 Hz, but it actually has frequency 2 Hz.</li><li>f = 2&pi;T: The factor 2&pi; relates angular frequency (&omega;) to regular frequency, not period to frequency.</li><li>f = T<sup>2</sup>: There is no squared relationship between frequency and period.</li></ul><p class='exp-key'>Key Concept: f = 1/T is one of the most fundamental relationships in wave physics. The period T is measured in seconds, frequency f in hertz (Hz = 1/s). Combined with v = f&lambda;, you can relate wave speed, wavelength, frequency, and period.</p>"
+  },
+  "Q8": {
+    "id": "phys-188",
+    "subject": "physics",
+    "topic": "Acoustics",
+    "question": "A sound wave in air has a frequency of 680 Hz. If the speed of sound in air is 340 m/s, what is the wavelength?",
+    "options": [
+      "0.25 m",
+      "0.5 m",
+      "1.0 m",
+      "2.0 m"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 0.5 m</h4><p>Using the wave equation:</p><div class='exp-diagram'><p>v = f x &lambda;</p><p>&lambda; = v / f = 340 / 680 = <strong>0.5 m</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>0.25 m: This would correspond to a frequency of 1360 Hz (340/0.25).</li><li>1.0 m: This corresponds to 340 Hz, not 680 Hz.</li><li>2.0 m: This corresponds to 170 Hz.</li></ul><p class='exp-key'>Key Concept: v = f&lambda; applies to all waves. For sound in air, v &asymp; 340 m/s. Higher frequency means shorter wavelength. Audible sound wavelengths range from about 17 mm (20 kHz) to 17 m (20 Hz).</p>"
+  },
+  "Q9": {
+    "id": "phys-189",
+    "subject": "physics",
+    "topic": "Microscope Optics",
+    "question": "In a compound microscope, the objective lens creates:",
+    "options": [
+      "A virtual, upright, magnified image",
+      "A real, inverted, magnified image",
+      "A virtual, inverted, reduced image",
+      "A real, upright, reduced image"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: A real, inverted, magnified image</h4><p>A compound microscope has two converging lenses working in series:</p><table class='exp-table'><tr><th>Lens</th><th>Image Type</th><th>Purpose</th></tr><tr><td>Objective</td><td>Real, inverted, magnified</td><td>Creates a magnified intermediate image inside the tube</td></tr><tr><td>Eyepiece</td><td>Virtual, upright (relative to intermediate), magnified</td><td>Further magnifies the intermediate image for the eye</td></tr></table><p>The specimen is placed just outside the focal point of the objective, so it produces a real, inverted, and enlarged image at the other end of the tube.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Virtual, upright, magnified: This describes the image from a simple magnifying glass, not from the objective of a compound microscope.</li><li>Virtual, inverted, reduced: Virtual images from a single converging lens are always upright, not inverted.</li><li>Real, upright, reduced: A converging lens only produces upright images when the object is inside the focal length, and those images are virtual.</li></ul><p class='exp-key'>Key Concept: The objective creates a real image (which can be projected) that the eyepiece then magnifies. Total magnification = M<sub>objective</sub> x M<sub>eyepiece</sub>. The final image seen by the eye is virtual, inverted relative to the original specimen, and highly magnified.</p>"
+  },
+  "Q10": {
+    "id": "phys-190",
+    "subject": "physics",
+    "topic": "Microscope Optics",
+    "question": "The resolving power of a light microscope is ultimately limited by:",
+    "options": [
+      "The magnification of the eyepiece",
+      "The thickness of the glass lenses",
+      "The wavelength of light used",
+      "The brightness of the light source"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: The wavelength of light used</h4><p>The minimum distance between two points that can be distinguished as separate is given by:</p><div class='exp-diagram'><p>d<sub>min</sub> = 0.61 &lambda; / NA</p></div><p>where NA = n sin(&alpha;) is the numerical aperture. The wavelength &lambda; sets the fundamental limit. For visible light (&lambda; &asymp; 400-700 nm), the best possible resolution is about 200 nm.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Magnification of eyepiece: Higher magnification beyond the resolution limit only produces larger but blurrier images ('empty magnification'). It does not reveal finer detail.</li><li>Thickness of glass lenses: While lens quality matters, the fundamental limit is diffraction, which depends on wavelength.</li><li>Brightness of light source: Brightness affects visibility and contrast but does not improve the ability to resolve fine details.</li></ul><p class='exp-key'>Key Concept: Resolution is limited by diffraction, which depends on wavelength. This is why electron microscopes (using electrons with very short de Broglie wavelength) achieve much finer resolution than light microscopes. Using shorter-wavelength light (blue/UV) or immersion oil also improves resolution.</p>"
+  },
+  "Q11": {
+    "id": "phys-191",
+    "subject": "physics",
+    "topic": "Microscope Optics",
+    "question": "What is the purpose of immersion oil placed between the specimen slide and the objective lens of a microscope?",
+    "options": [
+      "To reduce the brightness of the light",
+      "To increase the numerical aperture and improve resolution",
+      "To magnify the specimen before it reaches the objective",
+      "To protect the objective lens from scratches"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: To increase the numerical aperture and improve resolution</h4><p>The numerical aperture is NA = n sin(&alpha;), where n is the refractive index of the medium between the specimen and the objective. Air has n = 1.0, but immersion oil has n &asymp; 1.5 (similar to glass).</p><p>By replacing air with oil, the numerical aperture increases by a factor of about 1.5, and the minimum resolvable distance decreases proportionally:</p><div class='exp-diagram'><p>d<sub>min</sub> = 0.61 &lambda; / NA</p><p>Higher NA → smaller d<sub>min</sub> → better resolution</p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>Reduce brightness: Immersion oil does not reduce brightness. In fact, it captures more light by reducing reflection at the glass-air interface.</li><li>Magnify before the objective: The oil has no magnifying effect. Its role is purely to improve the light-gathering ability.</li><li>Protect the lens: While physical contact occurs, the purpose is optical, not mechanical.</li></ul><p class='exp-key'>Key Concept: Immersion oil has a refractive index close to glass, eliminating the refraction and total internal reflection that would occur at a glass-air boundary. This lets more light enter the objective and increases the effective NA.</p>"
+  },
+  "Q12": {
+    "id": "phys-192",
+    "subject": "physics",
+    "topic": "Microscope Optics",
+    "question": "A compound microscope has an objective with focal length 4 mm, an eyepiece with focal length 25 mm, and an optical interval (tube length) of 160 mm. What is the total magnification? (Assume the near point distance D = 250 mm.)",
+    "options": [
+      "100x",
+      "200x",
+      "400x",
+      "40x"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 400x</h4><p>The total magnification of a compound microscope is:</p><div class='exp-diagram'><p>M<sub>total</sub> = M<sub>obj</sub> x M<sub>eye</sub></p><p>M<sub>obj</sub> = d / f<sub>obj</sub> = 160 / 4 = 40</p><p>M<sub>eye</sub> = D / f<sub>eye</sub> = 250 / 25 = 10</p><p>M<sub>total</sub> = 40 x 10 = <strong>400x</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>100x: This might be obtained by using only the objective magnification and dividing by something incorrectly.</li><li>200x: Possibly from miscalculating one of the magnifications.</li><li>40x: This is only the objective magnification, ignoring the eyepiece.</li></ul><p class='exp-key'>Key Concept: Total magnification = (optical interval / f<sub>objective</sub>) x (near point distance / f<sub>eyepiece</sub>). The near point distance D = 25 cm is the closest distance at which a healthy young eye can focus.</p>"
+  },
+  "Q13": {
+    "id": "phys-193",
+    "subject": "physics",
+    "topic": "Microscope Optics",
+    "question": "In a compound microscope, the eyepiece functions as a:",
+    "options": [
+      "Simple magnifying glass viewing the intermediate image",
+      "Projector that casts the image on a screen",
+      "Filter that selects specific wavelengths of light",
+      "Collimating lens that makes light rays parallel"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Simple magnifying glass viewing the intermediate image</h4><p>The eyepiece (ocular) acts as a magnifying glass. It takes the real intermediate image produced by the objective and creates a virtual, magnified image that the observer's eye can focus on.</p><p>The intermediate image falls just inside the focal point of the eyepiece, so the eyepiece works exactly like holding a magnifying glass over a small object.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Projector: A projector casts real images. The eyepiece creates a virtual image for the eye to view directly.</li><li>Wavelength filter: The eyepiece does not filter light. Separate filters can be added to a microscope for this purpose, but that is not the eyepiece's function.</li><li>Collimating lens: A collimator makes light parallel, which is a different function entirely. The eyepiece's job is to magnify.</li></ul><p class='exp-key'>Key Concept: The microscope's optical chain is: specimen → objective (creates real magnified image) → eyepiece (magnifies that image again as a virtual image for the eye). The eyepiece is essentially a magnifying glass for the intermediate image.</p>"
+  },
+  "Q14": {
+    "id": "phys-194",
+    "subject": "physics",
+    "topic": "Semiconductor Diodes",
+    "question": "In a PN junction diode under forward bias, the depletion region:",
+    "options": [
+      "Widens, and no current flows",
+      "Narrows, and current flows easily",
+      "Disappears completely, and the diode behaves like a superconductor",
+      "Stays the same width, and a small leakage current flows"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Narrows, and current flows easily</h4><p>In <strong>forward bias</strong>, the positive terminal of the battery is connected to the P-type side and the negative terminal to the N-type side. This pushes majority carriers (holes in P, electrons in N) toward the junction, shrinking the depletion region and allowing current to flow.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Widens / no current: This describes reverse bias, where the external voltage pulls carriers away from the junction.</li><li>Disappears / superconductor: The depletion region narrows but does not vanish entirely. The diode still has a small forward voltage drop (~0.6 V for silicon), so it is not a superconductor.</li><li>Same width / leakage: This partially describes reverse bias conditions, where only a tiny leakage current flows due to minority carriers.</li></ul><p class='exp-key'>Key Concept: Forward bias shrinks the depletion region, allowing current. Reverse bias widens it, blocking current. The diode acts as a one-way valve. The silicon diode begins conducting significantly at about 0.6 V forward bias.</p>"
+  },
+  "Q15": {
+    "id": "phys-195",
+    "subject": "physics",
+    "topic": "Semiconductor Diodes",
+    "question": "An N-type semiconductor is created by doping silicon with:",
+    "options": [
+      "An element with 3 valence electrons (e.g., boron)",
+      "An element with 5 valence electrons (e.g., phosphorus)",
+      "A metal such as copper or gold",
+      "An element with 4 valence electrons (e.g., germanium)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: An element with 5 valence electrons (e.g., phosphorus)</h4><p>Silicon has 4 valence electrons. Doping with a Group V element (5 valence electrons) introduces extra electrons as majority carriers, creating N-type material:</p><table class='exp-table'><tr><th>Dopant Type</th><th>Valence Electrons</th><th>Example</th><th>Result</th><th>Majority Carrier</th></tr><tr><td>Donor (Group V)</td><td>5</td><td>Phosphorus, arsenic</td><td>N-type</td><td>Electrons</td></tr><tr><td>Acceptor (Group III)</td><td>3</td><td>Boron, gallium</td><td>P-type</td><td>Holes</td></tr></table><p><strong>Why the other answers are wrong:</strong></p><ul><li>3 valence electrons (boron): This creates P-type, not N-type. Boron accepts an electron, creating a hole.</li><li>A metal (copper): Metals do not integrate into the silicon crystal lattice in the same way. Doping uses elements that substitute into the lattice.</li><li>4 valence electrons (germanium): Germanium has the same number of valence electrons as silicon and would just replace a silicon atom without creating extra carriers.</li></ul><p class='exp-key'>Key Concept: N-type = extra Negative charge carriers (electrons) from a 5-electron dopant. P-type = extra Positive charge carriers (holes) from a 3-electron dopant. The 'N' and 'P' refer to the majority carrier, not the overall charge (the material is still electrically neutral).</p>"
+  },
+  "Q16": {
+    "id": "phys-196",
+    "subject": "physics",
+    "topic": "Semiconductor Diodes",
+    "question": "What is the approximate forward voltage drop across a silicon diode when it is conducting?",
+    "options": [
+      "0.1 V",
+      "0.3 V",
+      "0.6 V",
+      "1.5 V"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 0.6 V</h4><p>A silicon diode has a forward voltage drop of approximately 0.6 to 0.7 V when conducting in forward bias. This voltage is needed to overcome the built-in potential of the PN junction.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>0.1 V: This is too low for any common diode type.</li><li>0.3 V: This is the approximate forward voltage drop for a germanium diode, not silicon.</li><li>1.5 V: This is the voltage of a typical AA battery, not a silicon diode drop. LEDs can have forward drops of 1.5-3 V depending on color, but standard silicon diodes are about 0.6 V.</li></ul><p class='exp-key'>Key Concept: Silicon diode: ~0.6 V forward drop. Germanium diode: ~0.3 V forward drop. This forward voltage drop must be accounted for in circuit analysis. In reverse bias, virtually no current flows until the breakdown voltage is reached.</p>"
+  },
+  "Q17": {
+    "id": "phys-197",
+    "subject": "physics",
+    "topic": "Semiconductor Diodes",
+    "question": "A half-wave rectifier circuit uses a single diode to convert AC to DC. What fraction of the AC input cycle produces output?",
+    "options": [
+      "The full cycle (100%)",
+      "Three-quarters of the cycle (75%)",
+      "Half the cycle (50%)",
+      "One-quarter of the cycle (25%)"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Half the cycle (50%)</h4><p>In a half-wave rectifier, a single diode allows current to flow during only one half of the AC cycle (the positive half-cycle, when the diode is forward biased). During the other half (negative half-cycle), the diode blocks current.</p><p>The output is a series of positive pulses separated by gaps where the voltage is zero. The average output voltage is V<sub>peak</sub>/&pi; &asymp; 0.318 x V<sub>peak</sub>.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Full cycle (100%): This would require a full-wave rectifier using four diodes in a bridge configuration.</li><li>Three-quarters (75%): No standard rectifier arrangement produces this fraction.</li><li>One-quarter (25%): The diode blocks exactly one half-cycle, not three-quarters.</li></ul><p class='exp-key'>Key Concept: Half-wave rectification passes only positive (or only negative) half-cycles. Full-wave rectification (using a diode bridge) flips the negative half-cycles to positive, using the entire AC cycle. A smoothing capacitor can then be added to reduce the ripple.</p>"
+  },
+  "Q18": {
+    "id": "phys-198",
+    "subject": "physics",
+    "topic": "Semiconductor Diodes",
+    "question": "In a reverse-biased PN junction, the depletion region acts primarily as:",
+    "options": [
+      "A conductor with very low resistance",
+      "An insulator that blocks current flow",
+      "A source of free electrons",
+      "A region of very high current density"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: An insulator that blocks current flow</h4><p>Under reverse bias, the depletion region widens because the external voltage pulls majority carriers away from the junction. This leaves a wider region with no free charge carriers, effectively acting as an insulating barrier.</p><p>Only a tiny <strong>leakage current</strong> flows, carried by minority carriers (thermally generated electrons in the P-side and holes in the N-side).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Conductor with low resistance: This describes forward bias, not reverse bias.</li><li>Source of free electrons: The depletion region is specifically depleted of free carriers.</li><li>High current density: Current in reverse bias is negligible (microamperes or less) unless breakdown voltage is exceeded.</li></ul><p class='exp-key'>Key Concept: The depletion region has no free charge carriers. In forward bias it shrinks (allows current), in reverse bias it widens (blocks current). If the reverse voltage is too high, avalanche breakdown occurs and current flows suddenly.</p>"
+  },
+  "Q19": {
+    "id": "phys-199",
+    "subject": "physics",
+    "topic": "Electromagnetic Induction",
+    "question": "According to Faraday's law, an EMF is induced in a coil when:",
+    "options": [
+      "A constant magnetic flux passes through the coil",
+      "The magnetic flux through the coil changes with time",
+      "The coil is placed in a uniform, steady magnetic field",
+      "The coil carries a constant direct current"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The magnetic flux through the coil changes with time</h4><p>Faraday's law states:</p><div class='exp-diagram'><p>EMF = -N d&Phi;/dt</p></div><p>An EMF is induced only when the magnetic flux (&Phi; = B x A x cos&theta;) is changing. This can happen by changing B (field strength), A (area of the loop), or &theta; (angle between field and loop normal).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Constant flux: If the flux is constant, d&Phi;/dt = 0, and no EMF is induced.</li><li>Uniform, steady field: A coil sitting still in a steady, uniform field has constant flux and no induced EMF.</li><li>Constant DC current: A constant current produces a constant magnetic field, which does not induce an EMF in the same coil (self-inductance only matters when current changes).</li></ul><p class='exp-key'>Key Concept: It is the CHANGE in flux that matters, not the flux itself. A very strong but constant magnetic field induces no EMF. Even a weak field, if changing rapidly, can induce a large EMF. This is the basis of generators, transformers, and induction cooktops.</p>"
+  },
+  "Q20": {
+    "id": "phys-200",
+    "subject": "physics",
+    "topic": "Electromagnetic Induction",
+    "question": "Lenz's law states that the direction of an induced current is such that it:",
+    "options": [
+      "Enhances the change in magnetic flux that caused it",
+      "Is always clockwise when viewed from above",
+      "Opposes the change in magnetic flux that caused it",
+      "Is parallel to the magnetic field lines"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Opposes the change in magnetic flux that caused it</h4><p>Lenz's law is the reason for the negative sign in Faraday's law (EMF = <strong>-</strong>N d&Phi;/dt). The induced current creates its own magnetic field that opposes whatever change in flux triggered the induction.</p><p>For example: if a magnet approaches a coil (flux increasing), the induced current flows in a direction that creates a field opposing the magnet, effectively trying to push it away.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Enhances the change: This would violate conservation of energy. If the induced current increased the flux change, it would induce more current, creating a runaway effect (perpetual motion).</li><li>Always clockwise: The direction depends on the situation. It could be clockwise or counterclockwise depending on which way the flux is changing.</li><li>Parallel to field lines: Induced current flows in a loop, not along field lines.</li></ul><p class='exp-key'>Key Concept: Lenz's law is a consequence of conservation of energy. The induced current always acts to maintain the status quo of the magnetic flux. This opposition is what makes generators require mechanical work to produce electrical energy.</p>"
+  },
+  "Q21": {
+    "id": "phys-201",
+    "subject": "physics",
+    "topic": "Electromagnetic Induction",
+    "question": "A coil with 200 turns experiences a change in magnetic flux from 0.05 Wb to 0.01 Wb in 0.02 seconds. What is the magnitude of the induced EMF?",
+    "options": [
+      "4 V",
+      "40 V",
+      "400 V",
+      "0.4 V"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 400 V</h4><p>Using Faraday's law:</p><div class='exp-diagram'><p>|EMF| = N x |&Delta;&Phi;/&Delta;t|</p><p>|EMF| = 200 x |0.01 - 0.05| / 0.02</p><p>|EMF| = 200 x 0.04 / 0.02</p><p>|EMF| = 200 x 2 = <strong>400 V</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>4 V: This ignores the number of turns (divides by 200 instead of multiplying).</li><li>40 V: This might come from an error in the time calculation or forgetting a factor.</li><li>0.4 V: This divides by the number of turns and mishandles the flux change.</li></ul><p class='exp-key'>Key Concept: Each turn of the coil contributes the same induced EMF, and they add up (series connection). More turns = more EMF. Faster flux change = more EMF. This is why transformers have many turns of wire.</p>"
+  },
+  "Q22": {
+    "id": "phys-202",
+    "subject": "physics",
+    "topic": "Electromagnetic Induction",
+    "question": "A transformer has 100 primary turns and 2000 secondary turns. If the primary voltage is 12 V, what is the secondary voltage?",
+    "options": [
+      "0.6 V",
+      "24 V",
+      "240 V",
+      "2400 V"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 240 V</h4><p>The transformer equation relates voltages and turns:</p><div class='exp-diagram'><p>V<sub>s</sub> / V<sub>p</sub> = N<sub>s</sub> / N<sub>p</sub></p><p>V<sub>s</sub> = V<sub>p</sub> x N<sub>s</sub> / N<sub>p</sub></p><p>V<sub>s</sub> = 12 x 2000 / 100 = 12 x 20 = <strong>240 V</strong></p></div><p>This is a step-up transformer (N<sub>s</sub> > N<sub>p</sub>), increasing voltage by a factor of 20.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>0.6 V: This uses the inverse ratio (N<sub>p</sub>/N<sub>s</sub>), as if it were stepping down.</li><li>24 V: This only doubles the voltage, not multiplying by the turns ratio of 20.</li><li>2400 V: This multiplies by 200 instead of 20, confusing the turns ratio.</li></ul><p class='exp-key'>Key Concept: V<sub>s</sub>/V<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub>. More secondary turns = higher secondary voltage (step-up). Power is conserved: if voltage goes up, current goes down proportionally (ideal transformer).</p>"
+  },
+  "Q23": {
+    "id": "phys-203",
+    "subject": "physics",
+    "topic": "Electromagnetic Induction",
+    "question": "The energy stored in an inductor carrying current I is given by:",
+    "options": [
+      "E = L x I",
+      "E = 1/2 x L x I<sup>2</sup>",
+      "E = L x I<sup>2</sup>",
+      "E = 1/2 x L<sup>2</sup> x I"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: E = 1/2 x L x I<sup>2</sup></h4><p>The energy stored in the magnetic field of an inductor is:</p><div class='exp-diagram'><p>E = 1/2 L I<sup>2</sup></p></div><p>This is analogous to the energy stored in a capacitor (E = 1/2 CV<sup>2</sup>) and the kinetic energy formula (KE = 1/2 mv<sup>2</sup>).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>E = LI: Missing the 1/2 factor and the square on I. Energy has a quadratic dependence on current.</li><li>E = LI<sup>2</sup>: Missing the 1/2 factor.</li><li>E = 1/2 L<sup>2</sup> I: The inductance should not be squared, and the current should be squared.</li></ul><p class='exp-key'>Key Concept: E = 1/2 LI<sup>2</sup> for inductors, E = 1/2 CV<sup>2</sup> for capacitors. In an LC oscillating circuit, energy swings back and forth between these two forms, analogous to kinetic and potential energy in a pendulum.</p>"
+  },
+  "Q24": {
+    "id": "phys-204",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "In a series RLC circuit, the impedance is given by Z = &radic;(R<sup>2</sup> + (X<sub>L</sub> - X<sub>C</sub>)<sup>2</sup>). At resonance (X<sub>L</sub> = X<sub>C</sub>), the impedance equals:",
+    "options": [
+      "Zero",
+      "R",
+      "X<sub>L</sub> + X<sub>C</sub>",
+      "Infinity"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: R</h4><p>At resonance, the inductive reactance equals the capacitive reactance (X<sub>L</sub> = X<sub>C</sub>), so their difference is zero:</p><div class='exp-diagram'><p>Z = &radic;(R<sup>2</sup> + (X<sub>L</sub> - X<sub>C</sub>)<sup>2</sup>)</p><p>Z = &radic;(R<sup>2</sup> + 0) = <strong>R</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>Zero: Impedance would only be zero if R were also zero (a theoretical superconducting circuit).</li><li>X<sub>L</sub> + X<sub>C</sub>: The formula uses the difference (X<sub>L</sub> - X<sub>C</sub>), not the sum. At resonance, this difference is zero.</li><li>Infinity: At resonance, impedance is at its minimum, not maximum. Current is maximum at resonance.</li></ul><p class='exp-key'>Key Concept: At resonance, the inductor and capacitor effects cancel perfectly. The circuit behaves as if only the resistor were present. Current is maximum (I = V/R), and the circuit draws maximum power. This is the principle behind radio tuning circuits.</p>"
+  },
+  "Q25": {
+    "id": "phys-205",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "The capacitive reactance X<sub>C</sub> of a capacitor in an AC circuit is given by X<sub>C</sub> = 1/(&omega;C). If the frequency of the AC source is doubled, what happens to X<sub>C</sub>?",
+    "options": [
+      "It doubles",
+      "It is halved",
+      "It quadruples",
+      "It stays the same"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: It is halved</h4><p>Since X<sub>C</sub> = 1/(&omega;C) and &omega; = 2&pi;f:</p><div class='exp-diagram'><p>X<sub>C</sub> = 1/(2&pi;fC)</p><p>If f doubles: X<sub>C,new</sub> = 1/(2&pi;(2f)C) = 1/(2 x 2&pi;fC) = X<sub>C</sub>/2</p></div><p>Capacitive reactance is inversely proportional to frequency.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Doubles: This would be true for inductive reactance (X<sub>L</sub> = &omega;L), which is directly proportional to frequency.</li><li>Quadruples: No squared relationship exists here.</li><li>Stays the same: Reactance depends on frequency. Only pure resistance is frequency-independent.</li></ul><p class='exp-key'>Key Concept: X<sub>C</sub> = 1/(&omega;C) decreases with frequency. X<sub>L</sub> = &omega;L increases with frequency. This is why capacitors block DC (infinite reactance at f=0) but pass AC, while inductors pass DC but block high-frequency AC.</p>"
+  },
+  "Q26": {
+    "id": "phys-206",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "In an AC circuit with only an ideal inductor (no resistance), the current:",
+    "options": [
+      "Is in phase with the voltage",
+      "Leads the voltage by 90 degrees",
+      "Lags behind the voltage by 90 degrees",
+      "Lags behind the voltage by 180 degrees"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Lags behind the voltage by 90 degrees</h4><p>In a purely inductive circuit, the voltage across the inductor leads the current by 90 degrees (equivalently, the current lags the voltage by 90 degrees).</p><p>This happens because the inductor opposes changes in current. When voltage is at its peak, the current is still at zero and rising. The current reaches its peak one-quarter cycle later.</p><p><strong>Memory aid: 'ELI the ICE man'</strong></p><ul><li><strong>ELI:</strong> In an inductor (L), EMF (E) leads current (I)</li><li><strong>ICE:</strong> In a capacitor (C), current (I) leads EMF (E)</li></ul><p><strong>Why the other answers are wrong:</strong></p><ul><li>In phase: This only occurs in a purely resistive circuit.</li><li>Current leads voltage: This describes a capacitive circuit, not an inductive one.</li><li>Lags by 180 degrees: 180 degrees would mean the current is exactly opposite (anti-phase), which does not occur in a simple inductor.</li></ul><p class='exp-key'>Key Concept: In L: voltage leads current by 90°. In C: current leads voltage by 90°. In R: voltage and current are in phase. These phase relationships are fundamental to understanding AC power and impedance.</p>"
+  },
+  "Q27": {
+    "id": "phys-207",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "The resonant frequency of a series RLC circuit with L = 0.1 H and C = 10 &mu;F is approximately:",
+    "options": [
+      "16 Hz",
+      "50 Hz",
+      "159 Hz",
+      "1000 Hz"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 159 Hz</h4><p>The resonant frequency of an RLC circuit is:</p><div class='exp-diagram'><p>f<sub>0</sub> = 1 / (2&pi;&radic;(LC))</p><p>f<sub>0</sub> = 1 / (2 x 3.14 x &radic;(0.1 x 10 x 10<sup>-6</sup>))</p><p>f<sub>0</sub> = 1 / (6.28 x &radic;(10<sup>-6</sup>))</p><p>f<sub>0</sub> = 1 / (6.28 x 10<sup>-3</sup>)</p><p>f<sub>0</sub> = <strong>159 Hz</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>16 Hz: Likely from a calculation error involving incorrect unit conversion of the capacitance.</li><li>50 Hz: This is the mains frequency in many countries, but it is not the resonant frequency here.</li><li>1000 Hz: Off by a factor, possibly from converting micro to milli incorrectly.</li></ul><p class='exp-key'>Key Concept: f<sub>0</sub> = 1/(2&pi;&radic;(LC)). At this frequency, X<sub>L</sub> = X<sub>C</sub>, impedance is minimum, and current is maximum. Always convert &mu;F to F (multiply by 10<sup>-6</sup>) before calculating.</p>"
+  },
+  "Q28": {
+    "id": "phys-208",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "The average power dissipated in an AC circuit is P = V<sub>rms</sub> I<sub>rms</sub> cos(&phi;). What is the power factor cos(&phi;) for a purely resistive circuit?",
+    "options": [
+      "0",
+      "0.5",
+      "0.707",
+      "1"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 1</h4><p>In a purely resistive circuit, voltage and current are perfectly in phase, meaning the phase angle &phi; = 0:</p><div class='exp-diagram'><p>cos(&phi;) = cos(0) = <strong>1</strong></p><p>P = V<sub>rms</sub> x I<sub>rms</sub> x 1 = V<sub>rms</sub> x I<sub>rms</sub></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>0: cos(&phi;) = 0 means &phi; = 90°, which occurs in a purely reactive circuit (only inductor or only capacitor). No power is dissipated in that case.</li><li>0.5: cos(&phi;) = 0.5 means &phi; = 60°, which would be a specific RLC combination but not a pure resistor.</li><li>0.707: cos(&phi;) = 0.707 means &phi; = 45°, occurring when R = |X<sub>L</sub> - X<sub>C</sub>|.</li></ul><p class='exp-key'>Key Concept: The power factor cos(&phi;) ranges from 0 to 1. It equals 1 for a pure resistor, 0 for a pure inductor or pure capacitor. Only the resistive component dissipates real power. Inductors and capacitors store and return energy without net dissipation.</p>"
+  },
+  "Q29": {
+    "id": "phys-209",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "The relationship V<sub>rms</sub> = V<sub>peak</sub> / &radic;2 means that for European mains voltage of 230 V (rms), the peak voltage is approximately:",
+    "options": [
+      "115 V",
+      "163 V",
+      "230 V",
+      "325 V"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 325 V</h4><p>Rearranging the RMS relationship:</p><div class='exp-diagram'><p>V<sub>peak</sub> = V<sub>rms</sub> x &radic;2 = 230 x 1.414 &asymp; <strong>325 V</strong></p></div><p>The quoted mains voltage (230 V) is the RMS value. The actual voltage oscillates between +325 V and -325 V fifty times per second (at 50 Hz).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>115 V: This is 230/2, which would be dividing by 2 instead of multiplying by &radic;2.</li><li>163 V: This is 230/&radic;2, which would give a lower value, not higher. RMS is always less than peak, so peak must be larger than 230 V.</li><li>230 V: This is the RMS value itself, not the peak.</li></ul><p class='exp-key'>Key Concept: V<sub>rms</sub> = V<sub>peak</sub>/&radic;2. The RMS value is what's quoted for household power and what's used in power calculations. Peak voltage is always &radic;2 &asymp; 1.414 times larger than RMS. When someone says '230 V outlet,' they mean 230 V RMS.</p>"
+  },
+  "Q30": {
+    "id": "phys-210",
+    "subject": "physics",
+    "topic": "AC Circuits",
+    "question": "An inductor with reactance X<sub>L</sub> = 100 &Omega; and a capacitor with reactance X<sub>C</sub> = 60 &Omega; are connected in series with a resistor R = 30 &Omega;. What is the total impedance of the circuit?",
+    "options": [
+      "190 &Omega;",
+      "50 &Omega;",
+      "70 &Omega;",
+      "110 &Omega;"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 50 &Omega;</h4><p>The impedance of a series RLC circuit is:</p><div class='exp-diagram'><p>Z = &radic;(R<sup>2</sup> + (X<sub>L</sub> - X<sub>C</sub>)<sup>2</sup>)</p><p>Z = &radic;(30<sup>2</sup> + (100 - 60)<sup>2</sup>)</p><p>Z = &radic;(900 + 1600)</p><p>Z = &radic;2500 = <strong>50 &Omega;</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>190 &Omega;: This adds all three values (R + X<sub>L</sub> + X<sub>C</sub>), ignoring that reactances partially cancel and that impedance is calculated using the Pythagorean theorem.</li><li>70 &Omega;: This adds R + (X<sub>L</sub> - X<sub>C</sub>) directly instead of using the square root of the sum of squares.</li><li>110 &Omega;: This adds R + X<sub>L</sub> - X<sub>C</sub>/2 or some other incorrect combination.</li></ul><p class='exp-key'>Key Concept: Impedance combines R and net reactance (X<sub>L</sub> - X<sub>C</sub>) using the Pythagorean theorem because R and the net reactance are 90° out of phase. You cannot simply add them. X<sub>L</sub> and X<sub>C</sub> do subtract directly because they are 180° apart.</p>"
+  },
+  "Q31": {
+    "id": "phys-211",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "An electron moves at 2 x 10<sup>6</sup> m/s perpendicular to a magnetic field of 0.5 T. What is the magnitude of the magnetic force on the electron? (e = 1.6 x 10<sup>-19</sup> C)",
+    "options": [
+      "1.6 x 10<sup>-13</sup> N",
+      "1.6 x 10<sup>-14</sup> N",
+      "3.2 x 10<sup>-13</sup> N",
+      "8 x 10<sup>-14</sup> N"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: 1.6 x 10<sup>-13</sup> N</h4><p>The magnetic force on a moving charge is:</p><div class='exp-diagram'><p>F = qvB sin(&theta;)</p><p>F = (1.6 x 10<sup>-19</sup>)(2 x 10<sup>6</sup>)(0.5) sin(90°)</p><p>F = (1.6 x 10<sup>-19</sup>)(10<sup>6</sup>)</p><p>F = <strong>1.6 x 10<sup>-13</sup> N</strong></p></div><p>Since the velocity is perpendicular to B, sin(90°) = 1.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>1.6 x 10<sup>-14</sup>: Off by a factor of 10, likely from a calculation error in handling the exponents.</li><li>3.2 x 10<sup>-13</sup>: This doubles the answer, possibly by using 2e instead of e.</li><li>8 x 10<sup>-14</sup>: Another exponent error or using a wrong value for one of the quantities.</li></ul><p class='exp-key'>Key Concept: F = qvB sin(&theta;). Maximum force when v is perpendicular to B (&theta; = 90°). Zero force when v is parallel to B (&theta; = 0). The force is always perpendicular to velocity, so it changes the direction of motion but not the speed.</p>"
+  },
+  "Q32": {
+    "id": "phys-212",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "A charged particle moves in a circle of radius r in a uniform magnetic field. If the particle's speed is doubled while the field stays the same, the radius of the circular path:",
+    "options": [
+      "Is halved",
+      "Stays the same",
+      "Doubles",
+      "Quadruples"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Doubles</h4><p>The radius of circular motion in a magnetic field is:</p><div class='exp-diagram'><p>r = mv / (qB)</p></div><p>Since r is directly proportional to v, doubling the speed doubles the radius.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Halved: This would be the case if r were inversely proportional to v, but it is directly proportional.</li><li>Stays the same: The radius depends on speed. Only the period (T = 2&pi;m/qB) is independent of speed.</li><li>Quadruples: This would require r to be proportional to v<sup>2</sup>, but the relationship is linear.</li></ul><p class='exp-key'>Key Concept: r = mv/(qB). The radius is proportional to speed (faster particles orbit in larger circles). However, the period T = 2&pi;m/(qB) does NOT depend on speed. This remarkable property is what makes the cyclotron work: the AC frequency stays constant regardless of the particle's speed.</p>"
+  },
+  "Q33": {
+    "id": "phys-213",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "In a cyclotron, a proton spirals outward as it gains energy. The frequency of the alternating voltage applied to the dees must:",
+    "options": [
+      "Increase as the proton speeds up",
+      "Decrease as the proton speeds up",
+      "Remain constant throughout the acceleration",
+      "Alternate between two different values"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Remain constant throughout the acceleration</h4><p>The cyclotron frequency depends only on the charge-to-mass ratio and the magnetic field:</p><div class='exp-diagram'><p>f = qB / (2&pi;m)</p></div><p>Since q, B, and m are all constant, the frequency does not change even as the proton gains speed and orbits at larger radii.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Increase: A faster proton does travel a larger circle, but it completes each revolution in the same time, so no frequency change is needed.</li><li>Decrease: Same reasoning. The period is constant.</li><li>Alternate between two values: The voltage alternates in polarity (positive/negative), but the frequency stays the same.</li></ul><p class='exp-key'>Key Concept: The cyclotron works because T = 2&pi;m/(qB) is independent of speed and radius. This allows a fixed-frequency oscillator to accelerate the particle at every gap crossing. At very high speeds (relativistic), the mass increases and the cyclotron frequency assumption breaks down, requiring a synchrocyclotron.</p>"
+  },
+  "Q34": {
+    "id": "phys-214",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "An electron enters a region with both an electric field E pointing upward and a magnetic field B pointing into the page. The electron moves to the right. For the electron to travel in a straight line (undeflected), the magnitudes must satisfy:",
+    "options": [
+      "E = B",
+      "E = vB",
+      "E = v/B",
+      "E = qvB"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: E = vB</h4><p>For the electron to travel in a straight line, the electric force must exactly cancel the magnetic force:</p><div class='exp-diagram'><p>F<sub>electric</sub> = F<sub>magnetic</sub></p><p>qE = qvB</p><p>E = vB</p></div><p>The charge q cancels out. This arrangement is called a <strong>velocity selector</strong>: only particles with exactly v = E/B pass through undeflected.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>E = B: This ignores the velocity and has mismatched units (V/m vs T).</li><li>E = v/B: This inverts the relationship. Rearranging gives v = EB, which is wrong.</li><li>E = qvB: This keeps the charge in the equation, but it cancels when equating forces (qE = qvB).</li></ul><p class='exp-key'>Key Concept: A velocity selector uses crossed E and B fields. Only particles with v = E/B pass straight through. Faster or slower particles are deflected. This device is used in mass spectrometers and particle physics experiments to select particles of a specific speed.</p>"
+  },
+  "Q35": {
+    "id": "phys-215",
+    "subject": "physics",
+    "topic": "Lorentz Force",
+    "question": "A proton and an α particle (charge 2e, mass 4m<sub>p</sub>) enter the same magnetic field with the same speed. The ratio of the radius of the α particle's path to the proton's path is:",
+    "options": [
+      "1:1",
+      "2:1",
+      "4:1",
+      "1:2"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 2:1</h4><p>The radius formula is r = mv/(qB):</p><div class='exp-diagram'><p>r<sub>proton</sub> = m<sub>p</sub> v / (eB)</p><p>r<sub>α</sub> = 4m<sub>p</sub> v / (2eB) = 2m<sub>p</sub> v / (eB)</p><p>r<sub>α</sub> / r<sub>proton</sub> = 2m<sub>p</sub>v/(eB) &divide; m<sub>p</sub>v/(eB) = <strong>2</strong></p></div><p>The α particle has 4 times the mass but 2 times the charge, so its radius is 4/2 = 2 times larger.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>1:1: This would require the same m/q ratio, but 4m/2e = 2m/e, not m/e.</li><li>4:1: This would be the ratio if only mass mattered and charge were equal.</li><li>1:2: This reverses the ratio. The heavier particle has the larger radius.</li></ul><p class='exp-key'>Key Concept: The radius depends on the mass-to-charge ratio (m/q). A particle with a larger m/q follows a larger circle at the same speed and field strength. This principle is used in mass spectrometry to separate isotopes and ions by their m/q ratios.</p>"
+  },
+  "Q36": {
+    "id": "phys-216",
+    "subject": "physics",
+    "topic": "Black Body Radiation",
+    "question": "According to Wien's displacement law, if the temperature of a black body is doubled, the peak emission wavelength:",
+    "options": [
+      "Doubles",
+      "Is halved",
+      "Stays the same",
+      "Quadruples"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Is halved</h4><p>Wien's displacement law states:</p><div class='exp-diagram'><p>&lambda;<sub>max</sub> x T = b (constant)</p><p>&lambda;<sub>max</sub> = b / T</p></div><p>The peak wavelength is inversely proportional to temperature. Doubling T means &lambda;<sub>max</sub> is halved.</p><p>For example, an object at 3000 K has &lambda;<sub>max</sub> &asymp; 966 nm (infrared). At 6000 K, &lambda;<sub>max</sub> &asymp; 483 nm (visible blue-green).</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Doubles: This reverses the inverse relationship.</li><li>Stays the same: The peak wavelength definitely shifts with temperature.</li><li>Quadruples: No squared relationship exists in Wien's law.</li></ul><p class='exp-key'>Key Concept: Wien's law (&lambda;<sub>max</sub> T = 2.898 x 10<sup>-3</sup> m K) tells us that hotter objects emit at shorter wavelengths. Cool stars appear red, hot stars appear blue-white. The Sun (5800 K) peaks in the green-yellow range.</p>"
+  },
+  "Q37": {
+    "id": "phys-217",
+    "subject": "physics",
+    "topic": "Black Body Radiation",
+    "question": "The total power radiated by a black body is proportional to the fourth power of its absolute temperature (Stefan-Boltzmann law). If the temperature increases from 300 K to 600 K, the radiated power increases by a factor of:",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 16</h4><p>The Stefan-Boltzmann law states P &prop; T<sup>4</sup>:</p><div class='exp-diagram'><p>P<sub>2</sub>/P<sub>1</sub> = (T<sub>2</sub>/T<sub>1</sub>)<sup>4</sup> = (600/300)<sup>4</sup> = 2<sup>4</sup> = <strong>16</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>2: This would apply if power were proportional to T (first power), not T<sup>4</sup>.</li><li>4: This would apply if power were proportional to T<sup>2</sup>.</li><li>8: This would apply if power were proportional to T<sup>3</sup>.</li></ul><p class='exp-key'>Key Concept: P = &sigma;AT<sup>4</sup>. The fourth-power dependence means even small temperature increases produce large changes in radiated power. This is why a light bulb filament at 3000 K radiates enormously more than a warm object at 300 K (ratio = 10<sup>4</sup> = 10,000 times).</p>"
+  },
+  "Q38": {
+    "id": "phys-218",
+    "subject": "physics",
+    "topic": "Black Body Radiation",
+    "question": "The 'ultraviolet catastrophe' refers to the failure of classical physics to explain:",
+    "options": [
+      "Why UV light causes sunburn",
+      "Why hot objects emit radiation at all frequencies",
+      "Why classical theory predicted infinite energy emission at short wavelengths from a black body",
+      "Why ultraviolet light is invisible to the human eye"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Why classical theory predicted infinite energy emission at short wavelengths from a black body</h4><p>The Rayleigh-Jeans law (classical physics) predicted that the energy radiated by a black body should increase without limit as wavelength decreases (toward the ultraviolet and beyond). This prediction of infinite total energy was clearly wrong and was called the 'ultraviolet catastrophe.'</p><p>Max Planck resolved this in 1900 by proposing that energy is emitted in discrete packets (quanta) with E = hf. At high frequencies, the energy per quantum is so large that fewer quanta are emitted, preventing the infinite energy prediction.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>UV causing sunburn: This is a biological effect explained by photon energy damaging DNA, not the ultraviolet catastrophe.</li><li>Emission at all frequencies: Black bodies do emit at all frequencies, and that is not a problem. The problem was the predicted intensity distribution.</li><li>UV being invisible: This is simply because our eyes' photoreceptors are not sensitive to UV wavelengths.</li></ul><p class='exp-key'>Key Concept: The ultraviolet catastrophe was resolved by quantization of energy (E = hf), marking the birth of quantum mechanics. Planck's hypothesis that energy comes in discrete packets was revolutionary and later confirmed by Einstein's explanation of the photoelectric effect.</p>"
+  },
+  "Q39": {
+    "id": "phys-219",
+    "subject": "physics",
+    "topic": "Radioactive Decay",
+    "question": "A radioactive sample has an initial activity of 800 Bq and a half-life of 4 hours. What is the activity after 12 hours?",
+    "options": [
+      "200 Bq",
+      "100 Bq",
+      "50 Bq",
+      "400 Bq"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 100 Bq</h4><p>First, find how many half-lives have elapsed:</p><div class='exp-diagram'><p>Number of half-lives = 12 / 4 = 3</p><p>A = A<sub>0</sub> x (1/2)<sup>3</sup> = 800 x 1/8 = <strong>100 Bq</strong></p></div><table class='exp-table'><tr><th>Time (hours)</th><th>Half-lives</th><th>Activity (Bq)</th></tr><tr><td>0</td><td>0</td><td>800</td></tr><tr><td>4</td><td>1</td><td>400</td></tr><tr><td>8</td><td>2</td><td>200</td></tr><tr><td>12</td><td>3</td><td>100</td></tr></table><p><strong>Why the other answers are wrong:</strong></p><ul><li>200 Bq: This is the activity after 2 half-lives (8 hours), not 3.</li><li>50 Bq: This would be the activity after 4 half-lives (16 hours).</li><li>400 Bq: This is the activity after only 1 half-life (4 hours).</li></ul><p class='exp-key'>Key Concept: After n half-lives, the remaining fraction is (1/2)<sup>n</sup>. This applies equally to the number of atoms, the mass of the radioactive substance, and the activity. Count the number of half-lives first, then apply the formula.</p>"
+  },
+  "Q40": {
+    "id": "phys-220",
+    "subject": "physics",
+    "topic": "Radioactive Decay",
+    "question": "The decay constant &lambda; of a radioactive isotope with a half-life of 10 days is approximately:",
+    "options": [
+      "0.1 per day",
+      "0.069 per day",
+      "0.693 per day",
+      "10 per day"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: 0.069 per day</h4><p>The decay constant is related to the half-life by:</p><div class='exp-diagram'><p>&lambda; = ln(2) / t<sub>1/2</sub> = 0.693 / 10 = <strong>0.0693 per day</strong></p></div><p>This means that on any given day, each atom has about a 6.9% probability of decaying.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>0.1 per day: This would correspond to a half-life of ln(2)/0.1 = 6.93 days, not 10 days.</li><li>0.693 per day: This uses ln(2) directly without dividing by the half-life. It would correspond to a half-life of 1 day.</li><li>10 per day: This is just the half-life value, not the decay constant.</li></ul><p class='exp-key'>Key Concept: &lambda; = ln(2)/t<sub>1/2</sub> = 0.693/t<sub>1/2</sub>. The decay constant has units of inverse time. It gives the probability per unit time of any single atom decaying. A shorter half-life means a larger decay constant (more rapid decay).</p>"
+  },
+  "Q41": {
+    "id": "phys-221",
+    "subject": "physics",
+    "topic": "Radioactive Decay",
+    "question": "In α decay, a nucleus emits an α particle (helium-4 nucleus). If uranium-238 undergoes α decay, what is the resulting daughter nucleus?",
+    "options": [
+      "Thorium-234 (Z=90, A=234)",
+      "Radium-234 (Z=88, A=234)",
+      "Protactinium-234 (Z=91, A=234)",
+      "Thorium-236 (Z=90, A=236)"
+    ],
+    "correct": 0,
+    "explanation": "<h4>Correct Answer: Thorium-234 (Z=90, A=234)</h4><p>In α decay, the parent nucleus loses 2 protons and 2 neutrons (an α particle = He-4):</p><div class='exp-diagram'><p><sup>238</sup><sub>92</sub>U → <sup>234</sup><sub>90</sub>Th + <sup>4</sup><sub>2</sub>He</p><p>Mass number: 238 - 4 = 234</p><p>Atomic number: 92 - 2 = 90 (thorium)</p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>Radium-234 (Z=88): This would mean losing 4 protons instead of 2, which does not happen in α decay.</li><li>Protactinium-234 (Z=91): Z=91 means losing only 1 proton, which is β-plus decay, not α.</li><li>Thorium-236 (Z=90, A=236): The mass number should decrease by 4 (from 238), giving 234, not 236.</li></ul><p class='exp-key'>Key Concept: Α decay: Z decreases by 2, A decreases by 4. Β-minus: Z increases by 1, A unchanged. Β-plus: Z decreases by 1, A unchanged. Γ: no change in Z or A. Always check that both Z and A balance in nuclear equations.</p>"
+  },
+  "Q42": {
+    "id": "phys-222",
+    "subject": "physics",
+    "topic": "Radioactive Decay",
+    "question": "A radioactive sample initially contains 6.4 x 10<sup>8</sup> atoms. After 5 half-lives, how many atoms remain?",
+    "options": [
+      "1.28 x 10<sup>8</sup>",
+      "3.2 x 10<sup>7</sup>",
+      "2 x 10<sup>7</sup>",
+      "6.4 x 10<sup>3</sup>"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 2 x 10<sup>7</sup></h4><p>After n half-lives, the number of remaining atoms is:</p><div class='exp-diagram'><p>N = N<sub>0</sub> x (1/2)<sup>n</sup></p><p>N = 6.4 x 10<sup>8</sup> x (1/2)<sup>5</sup></p><p>N = 6.4 x 10<sup>8</sup> x 1/32</p><p>N = <strong>2 x 10<sup>7</sup></strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>1.28 x 10<sup>8</sup>: This is 6.4 x 10<sup>8</sup> / 5, dividing by the number of half-lives instead of by 2<sup>5</sup> = 32.</li><li>3.2 x 10<sup>7</sup>: This is 6.4 x 10<sup>8</sup> / 20, not dividing by the correct power of 2.</li><li>6.4 x 10<sup>3</sup>: This divides by 10<sup>5</sup> instead of 2<sup>5</sup>.</li></ul><p class='exp-key'>Key Concept: After n half-lives: remaining fraction = (1/2)<sup>n</sup> = 1/2<sup>n</sup>. After 5 half-lives: 1/32 remains (3.125%). The most common error is dividing by n instead of by 2<sup>n</sup>. Always calculate 2<sup>n</sup> first: 2<sup>1</sup>=2, 2<sup>2</sup>=4, 2<sup>3</sup>=8, 2<sup>4</sup>=16, 2<sup>5</sup>=32.</p>"
+  },
+  "Q43": {
+    "id": "phys-223",
+    "subject": "physics",
+    "topic": "Polarization of Dielectrics",
+    "question": "When a dielectric material is placed between the plates of a parallel-plate capacitor, the capacitance:",
+    "options": [
+      "Decreases",
+      "Stays the same",
+      "Increases",
+      "Becomes zero"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Increases</h4><p>Inserting a dielectric with dielectric constant &kappa; increases the capacitance by that factor:</p><div class='exp-diagram'><p>C = &kappa; x C<sub>0</sub> = &kappa; x &epsilon;<sub>0</sub> A / d</p></div><p>Since &kappa; > 1 for all real dielectrics, the capacitance always increases.</p><p>The dielectric's polarized molecules create an internal field opposing the external field, which effectively reduces the voltage across the plates (for a given charge), meaning more charge can be stored at the same voltage.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Decreases: The dielectric reduces the effective electric field, which increases (not decreases) the capacitance.</li><li>Stays the same: Only a vacuum (or air, approximately) between the plates gives the base capacitance.</li><li>Becomes zero: The capacitor still works with a dielectric. In fact, it works better.</li></ul><p class='exp-key'>Key Concept: Dielectrics increase capacitance because their polarization partially cancels the internal electric field. C = &kappa;&epsilon;<sub>0</sub>A/d. Common values: paper (&kappa; &asymp; 3), glass (&kappa; &asymp; 5-10), water (&kappa; &asymp; 80). This is why capacitors contain insulating materials between their plates.</p>"
+  },
+  "Q44": {
+    "id": "phys-224",
+    "subject": "physics",
+    "topic": "Polarization of Dielectrics",
+    "question": "Which of the following best explains why water has a very high dielectric constant (~80)?",
+    "options": [
+      "Water molecules are nonpolar and easily deformed",
+      "Water molecules are strongly polar and align readily in an electric field",
+      "Water is an excellent electrical conductor",
+      "Water molecules are very large compared to other molecules"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Water molecules are strongly polar and align readily in an electric field</h4><p>Water (H<sub>2</sub>O) has a permanent electric dipole moment due to its bent molecular shape and the electronegativity difference between oxygen and hydrogen. In an electric field, these polar molecules rotate to align with the field, creating a strong internal polarization that significantly reduces the net field inside the material.</p><p><strong>Why the other answers are wrong:</strong></p><ul><li>Nonpolar and easily deformed: Water is strongly polar, not nonpolar. Nonpolar molecules have much lower dielectric constants.</li><li>Excellent conductor: Pure water is actually a poor conductor. A high dielectric constant and electrical conductivity are different properties.</li><li>Very large molecules: Water molecules are actually quite small (molecular weight 18). The high dielectric constant comes from polarity, not size.</li></ul><p class='exp-key'>Key Concept: The dielectric constant depends on how strongly a material's molecules respond to an electric field. Polar molecules (like water) rotate to align, producing large dielectric constants. Nonpolar molecules only develop weak induced dipoles, giving smaller dielectric constants.</p>"
+  },
+  "Q45": {
+    "id": "phys-225",
+    "subject": "physics",
+    "topic": "Polarization of Dielectrics",
+    "question": "If a parallel-plate capacitor without a dielectric has capacitance C<sub>0</sub> = 5 &mu;F, and a dielectric with &kappa; = 4 is inserted to fill the entire space between the plates, what is the new capacitance?",
+    "options": [
+      "1.25 &mu;F",
+      "5 &mu;F",
+      "9 &mu;F",
+      "20 &mu;F"
+    ],
+    "correct": 3,
+    "explanation": "<h4>Correct Answer: 20 &mu;F</h4><p>The dielectric multiplies the capacitance by &kappa;:</p><div class='exp-diagram'><p>C = &kappa; x C<sub>0</sub> = 4 x 5 = <strong>20 &mu;F</strong></p></div><p><strong>Why the other answers are wrong:</strong></p><ul><li>1.25 &mu;F: This divides by &kappa; instead of multiplying. The dielectric increases capacitance, not decreases it.</li><li>5 &mu;F: This ignores the dielectric entirely.</li><li>9 &mu;F: This adds &kappa; to C<sub>0</sub> (5 + 4 = 9) instead of multiplying.</li></ul><p class='exp-key'>Key Concept: C = &kappa; C<sub>0</sub>. The dielectric constant &kappa; is always a multiplicative factor. A &kappa; = 4 dielectric quadruples the capacitance. This allows capacitors to store more charge and energy in the same physical size, which is why practical capacitors always contain dielectric materials.</p>"
+  },
+  "Q46": {
+    "id": "phys-226",
+    "subject": "physics",
+    "topic": "AC Circuits - Inductive Reactance",
+    "question": "The inductive reactance (XL) of a coil with inductance L in an AC circuit of angular frequency w is given by:",
+    "options": [
+      "XL = 1/(wL)",
+      "XL = wL",
+      "XL = w<sup>2</sup> L",
+      "XL = L/w"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: XL = wL</h4><p>Inductive reactance is the opposition to current flow offered by an inductor in an AC circuit. It is directly proportional to both the <strong>angular frequency (w = 2 π f)</strong> and the <strong>inductance (L)</strong>:</p><p style='text-align:center'><strong>XL = wL = 2 π f L</strong></p><p>The unit of inductive reactance is the <strong>ohm (Ω)</strong>, the same as resistance. As frequency increases, the inductor opposes current more strongly because the changing current produces a larger back-EMF.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XL = 1/(wL):</strong> This is the formula for <strong>capacitive reactance</strong> (XC = 1/(wC)), not inductive reactance. If you see an inverse relationship with frequency, think capacitor. If you see a direct relationship, think inductor.</p><p><strong>C. XL = w<sup>2</sup> L:</strong> This has the wrong power dependence on frequency. Reactance depends on the first power of w, not w squared. There is no standard circuit element with w<sup>2</sup> dependence in its reactance formula.</p><p><strong>D. XL = L/w:</strong> This inverts the frequency dependence. It would imply that higher frequencies lead to lower reactance, which is the opposite of how inductors behave. Inductors resist rapid changes in current, so higher frequencies mean greater opposition.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XL = 0, meaning an ideal inductor behaves like a short circuit (zero resistance to steady current).</li><li>At very high frequencies, XL becomes very large, and the inductor effectively blocks AC current (acts like an open circuit).</li><li>An inductor stores energy in its <strong>magnetic field</strong>: E = (1/2)LI<sup>2</sup>.</li></ul><p class='exp-key'>Bottom Line: XL = wL. Inductive reactance increases linearly with both frequency and inductance. Inductors pass DC freely but increasingly block higher-frequency AC signals.</p>"
+  },
+  "Q47": {
+    "id": "phys-227",
+    "subject": "physics",
+    "topic": "AC Circuits - Capacitive Reactance",
+    "question": "In an AC circuit, a capacitor with capacitance C is connected to a source of angular frequency w. The capacitive reactance (XC) is:",
+    "options": [
+      "XC = wC",
+      "XC = w/C",
+      "XC = 1/(wC)",
+      "XC = C/w"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: XC = 1/(wC)</h4><p>Capacitive reactance is the opposition to current flow offered by a capacitor in an AC circuit. It is <strong>inversely proportional</strong> to both the angular frequency and the capacitance:</p><p style='text-align:center'><strong>XC = 1/(wC) = 1/(2 π f C)</strong></p><p>The unit is the <strong>ohm</strong>. Unlike inductive reactance, capacitive reactance <strong>decreases</strong> as frequency increases, because a rapidly alternating voltage can charge and discharge the capacitor more effectively.</p><h4>Why the other choices are wrong:</h4><p><strong>A. XC = wC:</strong> This incorrectly shows a direct proportionality between reactance and frequency. That relationship (XL = wL) applies to <strong>inductors</strong>, not capacitors. Capacitors behave oppositely: they pass high frequencies easily.</p><p><strong>B. XC = w/C:</strong> This shows reactance increasing with frequency, which is wrong for a capacitor. Additionally, the dimensional analysis fails: (rad/s)/F does not yield ohms.</p><p><strong>D. XC = C/w:</strong> This has the correct inverse relationship with w but incorrectly places C in the numerator. Larger capacitance should mean <strong>lower</strong> reactance (easier for current to flow), so C must be in the denominator.</p><h4>Key Educational Points:</h4><ul><li>At DC (w = 0), XC approaches infinity, meaning a capacitor blocks DC completely (acts as an open circuit after fully charging).</li><li>At very high frequencies, XC approaches zero, and the capacitor behaves like a short circuit (passes high-frequency signals freely).</li><li>A capacitor stores energy in its <strong>electric field</strong>: E = (1/2)CV<sup>2</sup>.</li><li>The contrasting behavior of inductors (block high f) and capacitors (block low f) is the basis for electronic filters.</li></ul><p class='exp-key'>Bottom Line: XC = 1/(wC). Capacitive reactance decreases with increasing frequency and capacitance. Capacitors block DC but pass high-frequency AC -- the opposite behavior of inductors.</p>"
+  },
+  "Q48": {
+    "id": "phys-228",
+    "subject": "physics",
+    "topic": "AC Circuits - Series RLC Impedance",
+    "question": "The total impedance Z of a series RLC circuit is given by:",
+    "options": [
+      "Z = R + XL + XC",
+      "Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)",
+      "Z = sqrt(R<sup>2</sup> + (XL + XC)<sup>2</sup>)",
+      "Z = R + (XL - XC)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)</h4><p>In a series RLC circuit, the impedance combines resistance and net reactance using <strong>vector (phasor) addition</strong>. The resistance R is along the real axis, while the net reactance (XL - XC) is along the imaginary axis. The magnitude of impedance is:</p><p style='text-align:center'><strong>Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>)</strong></p><p>This is because the voltage across the resistor is in phase with the current, while the voltages across L and C are 90 degrees out of phase (and opposite to each other).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Z = R + XL + XC:</strong> Simple arithmetic addition is incorrect because R, XL, and XC are not in phase with each other. The voltage across the inductor leads the current by 90 degrees, the voltage across the capacitor lags by 90 degrees, and the voltage across the resistor is in phase. They must be combined as <strong>phasors</strong>, not scalars.</p><p><strong>C. Z = sqrt(R<sup>2</sup> + (XL + XC)<sup>2</sup>):</strong> The reactances of L and C should be <strong>subtracted</strong>, not added. Since the inductor voltage leads by +90 degrees and the capacitor voltage lags by -90 degrees, they are 180 degrees apart and partially cancel each other. The net reactance is their difference.</p><p><strong>D. Z = R + (XL - XC):</strong> While (XL - XC) correctly represents the net reactance, you cannot simply add it arithmetically to R because they are perpendicular in the impedance phasor diagram. The Pythagorean theorem (vector addition) must be used.</p><h4>Key Educational Points:</h4><ul><li>The phase angle between voltage and current: tan(φ) = (XL - XC)/R. If XL > XC, the circuit is inductive (voltage leads current). If XC > XL, the circuit is capacitive (current leads voltage).</li><li>At resonance, XL = XC, and Z = R (minimum impedance, maximum current).</li><li>Impedance is measured in ohms and can be represented as a complex number: Z = R + j(XL - XC).</li></ul><p class='exp-key'>Bottom Line: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>). The reactances subtract (they oppose each other), and the net reactance combines with resistance by the Pythagorean theorem because they are 90 degrees out of phase.</p>"
+  },
+  "Q49": {
+    "id": "phys-229",
+    "subject": "physics",
+    "topic": "AC Circuits - Resonance",
+    "question": "In a series RLC circuit, resonance occurs when:",
+    "options": [
+      "The resistance equals the total reactance (R = XL + XC)",
+      "The inductive reactance equals the capacitive reactance (XL = XC)",
+      "The current and voltage are 90 degrees out of phase",
+      "The impedance reaches its maximum value"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The inductive reactance equals the capacitive reactance (XL = XC)</h4><p>Resonance in a series RLC circuit occurs at the angular frequency w0 where <strong>XL = XC</strong>. At this condition:</p><p style='text-align:center'><strong>w0 L = 1/(w0 C)</strong><br/>Solving: <strong>w0 = 1/sqrt(LC)</strong></p><p>At resonance, the net reactance is zero (XL - XC = 0), so the impedance equals <strong>Z = R</strong> (its minimum value). This means the current reaches its <strong>maximum amplitude</strong> and is exactly in phase with the applied voltage.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The resistance equals the total reactance (R = XL + XC):</strong> This condition has no special physical significance in RLC circuit theory. Resonance is defined by the cancellation of inductive and capacitive reactances, not by any relationship between R and the sum of reactances.</p><p><strong>C. The current and voltage are 90 degrees out of phase:</strong> At resonance, current and voltage are <strong>in phase</strong> (phase angle = 0), not 90 degrees out of phase. A 90-degree phase difference occurs in purely reactive circuits (containing only an inductor or only a capacitor), not at resonance.</p><p><strong>D. The impedance reaches its maximum value:</strong> This is the opposite of what happens. At resonance in a series RLC circuit, impedance is at its <strong>minimum</strong> (Z = R), and current is at its maximum. Note: in a parallel RLC circuit, resonance does produce maximum impedance, which may cause confusion.</p><h4>Key Educational Points:</h4><ul><li>The resonant frequency f0 = 1/(2 π sqrt(LC)) depends only on L and C, <strong>not on R</strong>.</li><li>The quality factor Q = w0L/R = 1/(w0CR) measures the sharpness of the resonance peak. Higher Q means a narrower, taller peak.</li><li>At resonance, the voltages across L and C can individually be much larger than the source voltage (voltage magnification), but they are equal and opposite and cancel each other.</li><li>Resonance is exploited in radio tuning circuits to select specific frequencies.</li></ul><p class='exp-key'>Bottom Line: Series RLC resonance occurs when XL = XC (at w0 = 1/sqrt(LC)). At resonance: impedance is minimum (Z = R), current is maximum, and voltage and current are in phase.</p>"
+  },
+  "Q50": {
+    "id": "phys-230",
+    "subject": "physics",
+    "topic": "AC Circuits - Inductor Phase",
+    "question": "In a purely inductive AC circuit, the phase relationship between voltage and current is:",
+    "options": [
+      "Voltage and current are in phase",
+      "Voltage leads current by 90 degrees",
+      "Current leads voltage by 90 degrees",
+      "Voltage leads current by 180 degrees"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Voltage leads current by 90 degrees</h4><p>In a purely inductive circuit, the voltage across the inductor <strong>leads the current by 90 degrees</strong> (π/2 radians). This is because the voltage across an inductor is proportional to the rate of change of current (V = L di/dt). The current must change before the voltage responds, meaning the voltage waveform peaks one-quarter cycle (90 degrees) before the current waveform.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Voltage and current are in phase:</strong> This describes a <strong>purely resistive</strong> circuit. In a resistor, V = IR at every instant, so voltage and current rise and fall together with zero phase difference.</p><p><strong>C. Current leads voltage by 90 degrees:</strong> This describes a <strong>purely capacitive</strong> circuit, not an inductive one. In a capacitor, current flows in response to voltage changes (I = C dV/dt), so current peaks before voltage. The mnemonic is \"ELI the ICE man\": E (voltage) Leads I (current) in an Inductor; I (current) leads E (voltage) in a Capacitor.</p><p><strong>D. Voltage leads current by 180 degrees:</strong> A 180-degree phase difference would mean voltage and current are exactly opposite (when one is maximum positive, the other is maximum negative). This does not occur in any single ideal circuit element; it would require a negative resistance, which is not physically standard.</p><h4>Key Educational Points:</h4><ul><li>Mnemonic: <strong>\"ELI the ICE man\"</strong> -- In an inductor (L), E leads I. In a capacitor (C), I leads E.</li><li>The 90-degree phase difference means that in a pure inductor, the average power dissipated is <strong>zero</strong> (reactive power only). Energy oscillates between the circuit and the inductor's magnetic field.</li><li>In real circuits, inductors have some resistance (wire resistance), so the phase angle is less than 90 degrees.</li></ul><p class='exp-key'>Bottom Line: In an inductor, voltage leads current by 90 degrees (ELI). In a capacitor, current leads voltage by 90 degrees (ICE). In a resistor, they are in phase. Remember: ELI the ICE man.</p>"
+  },
+  "Q51": {
+    "id": "phys-231",
+    "subject": "physics",
+    "topic": "AC Circuits - Capacitor Phase",
+    "question": "When an AC voltage is applied to a purely capacitive circuit, which statement about the current is correct?",
+    "options": [
+      "The current lags the voltage by 90 degrees",
+      "The current is in phase with the voltage",
+      "The current leads the voltage by 90 degrees",
+      "The current leads the voltage by 45 degrees"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: The current leads the voltage by 90 degrees</h4><p>In a purely capacitive circuit, the current <strong>leads the voltage by 90 degrees</strong>. This occurs because current must flow to charge the capacitor before a voltage can build up across its plates. Mathematically, I = C dV/dt, so current is maximum when voltage is changing most rapidly (at zero crossing), and current is zero when voltage is at its peak (not changing).</p><h4>Why the other choices are wrong:</h4><p><strong>A. The current lags the voltage by 90 degrees:</strong> This describes the behavior of a <strong>purely inductive circuit</strong>, where voltage leads current. In a capacitor, the relationship is reversed: current leads voltage. Confusing the two is a very common exam error.</p><p><strong>B. The current is in phase with the voltage:</strong> In-phase behavior occurs only in a <strong>purely resistive circuit</strong> (or at resonance in an RLC circuit). Capacitors always introduce a phase shift between voltage and current.</p><p><strong>D. The current leads the voltage by 45 degrees:</strong> A 45-degree phase angle occurs in a circuit where the <strong>resistance equals the capacitive reactance</strong> (R = XC), not in a purely capacitive circuit. The 45-degree case represents equal resistive and reactive components in a series RC circuit.</p><h4>Key Educational Points:</h4><ul><li>Recall <strong>\"ICE\"</strong>: I (current) leads E (voltage) in a Capacitor. Combined with \"ELI\": E leads I in an Inductor.</li><li>Since current leads voltage by 90 degrees, and instantaneous power = VI, the average power over a full cycle is zero. The capacitor alternately stores and returns energy to the circuit.</li><li>This 90-degree lead can be visualized: imagine applying a sine wave voltage. At t=0, V=0 but dV/dt is maximum, so I = C(dV/dt) is maximum. When V reaches its peak, dV/dt = 0, so I = 0.</li></ul><p class='exp-key'>Bottom Line: In a capacitor, current leads voltage by 90 degrees (ICE). Current is maximum when voltage is at zero (changing fastest) and zero when voltage is at its peak (momentarily not changing).</p>"
+  },
+  "Q52": {
+    "id": "phys-232",
+    "subject": "physics",
+    "topic": "AC Circuits - Ohm's Law",
+    "question": "In an AC circuit, the generalized form of Ohm's law relates the peak (or RMS) voltage and current through:",
+    "options": [
+      "V = IR, where R is the resistance only",
+      "V = I x XL, where XL is the inductive reactance only",
+      "V = IZ, where Z is the total impedance of the circuit",
+      "V = I/(XL - XC), where the reactances determine the current"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: V = IZ, where Z is the total impedance of the circuit</h4><p>The generalized Ohm's law for AC circuits replaces resistance (R) with <strong>impedance (Z)</strong>:</p><p style='text-align:center'><strong>V = IZ</strong></p><p>where V and I are either both peak values or both RMS values. Impedance Z accounts for <strong>all opposition to current flow</strong>: resistance (energy dissipation), inductive reactance (magnetic field energy storage), and capacitive reactance (electric field energy storage).</p><h4>Why the other choices are wrong:</h4><p><strong>A. V = IR, where R is the resistance only:</strong> This is the DC form of Ohm's law and applies only to the <strong>resistive component</strong> of an AC circuit. It gives the voltage across the resistor but not the total source voltage, which must also account for the voltages across inductors and capacitors.</p><p><strong>B. V = I x XL, where XL is the inductive reactance only:</strong> This gives only the voltage across the <strong>inductor</strong>. It ignores the resistor and capacitor contributions. While VL = I x XL is correct for the inductor alone, it does not represent the total circuit relationship.</p><p><strong>D. V = I/(XL - XC):</strong> This expression is dimensionally incorrect. V/I should equal impedance (ohms), but I/(XL-XC) has units of amperes/ohms = siemens, which is the unit of conductance, not voltage. The correct relationship involving reactance difference is Z = sqrt(R<sup>2</sup> + (XL-XC)<sup>2</sup>).</p><h4>Key Educational Points:</h4><ul><li>The RMS (root mean square) values are used for practical AC measurements: VRMS = Vpeak/sqrt(2) and IRMS = Ipeak/sqrt(2).</li><li>Average power in AC: P = VRMS x IRMS x cos(φ), where cos(φ) is the power factor. Only the resistive component dissipates power.</li><li>V = IZ is valid for the entire circuit; for individual components: VR = IR, VL = IXL, VC = IXC.</li></ul><p class='exp-key'>Bottom Line: The AC generalization of Ohm's law is V = IZ, where Z (impedance) replaces R. Impedance combines resistance and reactance: Z = sqrt(R<sup>2</sup> + (XL - XC)<sup>2</sup>). Use RMS values for practical calculations.</p>"
+  },
+  "Q53": {
+    "id": "phys-233",
+    "subject": "physics",
+    "topic": "Acoustics - Hearing Thresholds",
+    "question": "The threshold of hearing for a healthy young human ear corresponds to approximately 0 dB. The threshold of pain corresponds to approximately:",
+    "options": [
+      "60 dB",
+      "90 dB",
+      "120 dB",
+      "160 dB"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: 120 dB</h4><p>The <strong>threshold of hearing</strong> (the quietest sound a healthy young ear can detect at 1 kHz) is defined as <strong>0 dB</strong>, corresponding to a sound intensity of <strong>I0 = 10<sup>-12</sup> W/m<sup>2</sup></strong>. The <strong>threshold of pain</strong>, where sound becomes physically painful, is approximately <strong>120 dB</strong>, corresponding to an intensity of <strong>1 W/m<sup>2</sup></strong>.</p><p>Since the decibel scale is logarithmic (dB = 10 log10(I/I0)), the range from threshold of hearing to threshold of pain spans <strong>12 orders of magnitude</strong> in intensity (10<sup>-12</sup> to 10<sup>0</sup> W/m<sup>2</sup>).</p><h4>Why the other choices are wrong:</h4><p><strong>A. 60 dB:</strong> This corresponds to normal conversational speech at about 1 meter distance. While clearly audible, it is far from painful. 60 dB represents an intensity of 10<sup>-6</sup> W/m<sup>2</sup>, one million times the hearing threshold but one million times below the pain threshold.</p><p><strong>B. 90 dB:</strong> This is the approximate level of a lawnmower or heavy traffic. Prolonged exposure at 90 dB can cause hearing damage (OSHA limits occupational exposure to 8 hours at this level), but it is not the threshold of pain. There is a 30 dB (1000-fold intensity) difference between 90 dB and the pain threshold.</p><p><strong>D. 160 dB:</strong> This level (10<sup>4</sup> W/m<sup>2</sup>) is well beyond the pain threshold and approaches levels that can cause immediate, permanent hearing damage or even eardrum rupture. Levels around 160-180 dB are produced near jet engines or explosions.</p><h4>Key Educational Points:</h4><ul><li>Each 10 dB increase represents a <strong>10-fold increase</strong> in sound intensity. Each 20 dB increase represents a <strong>10-fold increase</strong> in sound pressure.</li><li>The human ear can perceive sounds across an enormous dynamic range: 12 orders of magnitude in intensity (0 to 120 dB).</li><li>Common reference levels: whisper ~20 dB, conversation ~60 dB, vacuum cleaner ~70 dB, rock concert ~110 dB, jet engine ~140 dB.</li></ul><p class='exp-key'>Bottom Line: Threshold of hearing = 0 dB (10<sup>-12</sup> W/m<sup>2</sup>). Threshold of pain = 120 dB (1 W/m<sup>2</sup>). The 120 dB range spans 12 orders of magnitude in intensity, demonstrating the extraordinary sensitivity range of human hearing.</p>"
+  },
+  "Q54": {
+    "id": "phys-234",
+    "subject": "physics",
+    "topic": "Acoustics - Sound Velocity",
+    "question": "The speed of sound is fastest in which of the following media?",
+    "options": [
+      "Air at room temperature",
+      "Distilled water at room temperature",
+      "A steel rail",
+      "A vacuum"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: A steel rail</h4><p>Sound travels fastest in <strong>solids</strong>, followed by liquids, then gases. Approximate values at room temperature:</p><table class='exp-table'><tr><th>Medium</th><th>Speed of Sound</th></tr><tr><td>Steel</td><td>~5,960 m/s</td></tr><tr><td>Water</td><td>~1,480 m/s</td></tr><tr><td>Air</td><td>~343 m/s</td></tr><tr><td>Vacuum</td><td>0 m/s (no sound)</td></tr></table><p>Sound is a <strong>mechanical wave</strong> that requires a medium to propagate. In solids, atoms are tightly packed and strongly bonded, allowing vibrations to transfer rapidly from one atom to the next.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Air at room temperature:</strong> Air has the lowest density and weakest intermolecular interactions among the options, so sound propagates slowest here (~343 m/s). The molecules are far apart and collisions are the primary mechanism of energy transfer.</p><p><strong>B. Distilled water at room temperature:</strong> Water transmits sound faster than air (~1,480 m/s) because it is denser and relatively incompressible compared to gases. However, it is still much slower than steel because liquid molecules are less rigidly bound than those in a solid.</p><p><strong>D. A vacuum:</strong> Sound <strong>cannot propagate through a vacuum</strong> because there are no particles to vibrate and transmit the mechanical wave. This is why space is silent. Only electromagnetic waves (like light) can travel through a vacuum.</p><h4>Key Educational Points:</h4><ul><li>General rule: v(solid) > v(liquid) > v(gas). Speed depends on the medium's <strong>elasticity</strong> (stiffness) and <strong>density</strong>: v = sqrt(elastic modulus/density). Solids have much higher elastic moduli despite also being denser.</li><li>In air, the speed of sound increases with temperature: v ≈ 331 + 0.6T m/s (where T is in degrees Celsius).</li><li>This principle explains why you can hear a distant train by placing your ear on the rail long before the sound through air reaches you.</li></ul><p class='exp-key'>Bottom Line: Sound travels fastest in solids (steel ~5,960 m/s), intermediate in liquids (water ~1,480 m/s), slowest in gases (air ~343 m/s), and not at all in a vacuum. Sound requires a material medium for propagation.</p>"
+  },
+  "Q55": {
+    "id": "phys-235",
+    "subject": "physics",
+    "topic": "Acoustics - Frequency Ranges",
+    "question": "Ultrasound is defined as sound with a frequency:",
+    "options": [
+      "Below 20 Hz",
+      "Between 20 Hz and 20,000 Hz",
+      "Above 20,000 Hz (20 kHz)",
+      "Above 1,000,000 Hz (1 MHz) only"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Above 20,000 Hz (20 kHz)</h4><p>The frequency spectrum of sound is divided into three ranges based on human hearing:</p><table class='exp-table'><tr><th>Category</th><th>Frequency Range</th><th>Examples</th></tr><tr><td>Infrasound</td><td>Below 20 Hz</td><td>Earthquakes, elephants, volcanoes</td></tr><tr><td>Audible sound</td><td>20 Hz - 20 kHz</td><td>Speech, music, most environmental sounds</td></tr><tr><td>Ultrasound</td><td>Above 20 kHz</td><td>Medical imaging, bat echolocation, dog whistles</td></tr></table><h4>Why the other choices are wrong:</h4><p><strong>A. Below 20 Hz:</strong> This defines <strong>infrasound</strong>, not ultrasound. Infrasonic waves are produced by phenomena like earthquakes, volcanic eruptions, and ocean waves. Some animals (elephants, whales) communicate using infrasound because these low-frequency waves travel long distances with little attenuation.</p><p><strong>B. Between 20 Hz and 20,000 Hz:</strong> This is the range of <strong>audible sound</strong> for a healthy young human ear. The upper limit decreases with age (presbycusis), and many adults cannot hear above 15-16 kHz.</p><p><strong>D. Above 1,000,000 Hz (1 MHz) only:</strong> While medical diagnostic ultrasound typically uses frequencies in the 1-20 MHz range, ultrasound by definition begins at 20 kHz (0.02 MHz). Frequencies between 20 kHz and 1 MHz are also ultrasound and are used in applications like industrial cleaning, sonar, and pest deterrent devices.</p><h4>Key Educational Points:</h4><ul><li>Medical ultrasound uses high frequencies (1-20 MHz) because higher frequency means <strong>shorter wavelength</strong> and <strong>better resolution</strong>, though at the cost of reduced penetration depth.</li><li>Bats use ultrasound echolocation (20-200 kHz) to navigate and hunt insects in darkness.</li><li>The Doppler effect in ultrasound is used to measure blood flow velocity in clinical settings.</li></ul><p class='exp-key'>Bottom Line: Infrasound < 20 Hz; audible sound 20 Hz - 20 kHz; ultrasound > 20 kHz. Medical ultrasound typically uses 1-20 MHz for imaging. The boundary between audible and ultrasound is the upper limit of human hearing (20 kHz).</p>"
+  },
+  "Q56": {
+    "id": "phys-236",
+    "subject": "physics",
+    "topic": "Acoustics - Doppler Effect",
+    "question": "An ambulance is approaching a stationary observer with its siren blaring. The observer perceives the siren frequency as:",
+    "options": [
+      "Lower than the actual frequency emitted by the siren",
+      "Equal to the actual frequency emitted by the siren",
+      "Higher than the actual frequency emitted by the siren",
+      "Alternating between higher and lower than the actual frequency"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: Higher than the actual frequency emitted by the siren</h4><p>The <strong>Doppler effect</strong> states that when a sound source moves <strong>toward</strong> an observer, the observed frequency is <strong>higher</strong> than the emitted frequency. This occurs because each successive wavefront is emitted from a position closer to the observer, effectively compressing the wavelength and increasing the frequency perceived.</p><p style='text-align:center'><strong>f<sub>observed</sub> = f<sub>source</sub> x (v<sub>sound</sub>)/(v<sub>sound</sub> - v<sub>source</sub>)</strong></p><p>Since v<sub>source</sub> is subtracted in the denominator (source approaching), the denominator is smaller than the numerator, making f<sub>observed</sub> > f<sub>source</sub>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. Lower than the actual frequency:</strong> A lower perceived frequency (redshift in sound) occurs when the source is moving <strong>away</strong> from the observer. As the ambulance passes and recedes, the observer would then perceive a drop in frequency. This explains the familiar pitch change as an ambulance drives by.</p><p><strong>B. Equal to the actual frequency:</strong> The perceived frequency equals the emitted frequency only when there is <strong>no relative motion</strong> between source and observer along the line connecting them (or when the source moves perpendicular to that line at the closest approach).</p><p><strong>D. Alternating between higher and lower:</strong> The frequency does not alternate. It is consistently higher while approaching and consistently lower while receding. The abrupt apparent change in pitch occurs at the moment the ambulance passes the observer, but at any given instant, the frequency is either higher or lower than the true value -- never oscillating.</p><h4>Key Educational Points:</h4><ul><li>The Doppler effect applies to all waves, not just sound. In light, approaching sources appear <strong>blueshifted</strong> (higher frequency) and receding sources appear <strong>redshifted</strong> (lower frequency).</li><li>In medicine, Doppler ultrasound uses this principle to measure blood flow velocity: blood flowing toward the transducer reflects higher-frequency echoes.</li><li>The Doppler shift does not change the speed of the wave in the medium, only the perceived frequency and wavelength.</li></ul><p class='exp-key'>Bottom Line: Approaching source = higher perceived frequency (wavefronts compressed). Receding source = lower perceived frequency (wavefronts stretched). This is the Doppler effect, used in medical ultrasound, radar, and astronomy.</p>"
+  },
+  "Q57": {
+    "id": "phys-237",
+    "subject": "physics",
+    "topic": "Acoustics - Frequency and Period",
+    "question": "If the frequency of a sound wave is doubled, what happens to its period?",
+    "options": [
+      "The period doubles",
+      "The period is halved",
+      "The period remains unchanged",
+      "The period is quadrupled"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: The period is halved</h4><p>Frequency (f) and period (T) are <strong>inversely related</strong>:</p><p style='text-align:center'><strong>T = 1/f</strong> &nbsp; or equivalently &nbsp; <strong>f = 1/T</strong></p><p>If frequency doubles (f → 2f), the period becomes: T' = 1/(2f) = T/2. The period is <strong>halved</strong>.</p><h4>Why the other choices are wrong:</h4><p><strong>A. The period doubles:</strong> This would require a <strong>direct</strong> proportionality between frequency and period, which contradicts their inverse relationship. If frequency increases, period must decrease. Doubling the period would actually require <strong>halving</strong> the frequency.</p><p><strong>C. The period remains unchanged:</strong> Period and frequency are fundamentally linked; changing one necessarily changes the other. They can only remain unchanged simultaneously. This answer might be confused with the behavior of wavelength in a different context (e.g., standing waves in a fixed medium).</p><p><strong>D. The period is quadrupled:</strong> This would imply T is proportional to f<sup>2</sup>, which is not the case. The inverse relationship means if f is multiplied by any factor n, T is divided by the same factor n.</p><h4>Key Educational Points:</h4><ul><li>Period is the time for one complete oscillation (measured in seconds). Frequency is the number of complete oscillations per second (measured in hertz, Hz).</li><li>The wave equation connects frequency, wavelength, and speed: <strong>v = f x λ</strong>. If frequency doubles in the same medium (constant v), the wavelength is halved.</li><li>This inverse relationship applies to all periodic phenomena: sound waves, electromagnetic waves, pendulums, and any oscillatory motion.</li></ul><p class='exp-key'>Bottom Line: T = 1/f. Doubling frequency halves the period. Tripling frequency gives one-third the period. Frequency and period are always inversely proportional -- they are reciprocals of each other.</p>"
+  },
+  "Q58": {
+    "id": "phys-238",
+    "subject": "physics",
+    "topic": "Semiconductors - Doping",
+    "question": "An N-type semiconductor is created by doping a silicon crystal with atoms from which group of the periodic table?",
+    "options": [
+      "Group IIIA (e.g., boron, gallium)",
+      "Group VA (e.g., phosphorus, arsenic)",
+      "Group IA (e.g., sodium, potassium)",
+      "Group VIIA (e.g., chlorine, bromine)"
+    ],
+    "correct": 1,
+    "explanation": "<h4>Correct Answer: Group VA (e.g., phosphorus, arsenic)</h4><p>N-type semiconductors are produced by doping silicon (Group IVA, 4 valence electrons) with elements from <strong>Group VA</strong> (5 valence electrons), such as phosphorus, arsenic, or antimony. These <strong>donor</strong> atoms contribute four electrons to covalent bonds with silicon and have one <strong>extra electron</strong> that is loosely bound and easily freed to become a conduction electron. The \"N\" stands for <strong>negative</strong>, referring to the excess negative charge carriers (electrons).</p><h4>Why the other choices are wrong:</h4><p><strong>A. Group IIIA (e.g., boron, gallium):</strong> Group IIIA elements have only 3 valence electrons. When they substitute for silicon, they create an electron <strong>deficiency</strong> (a \"hole\") in the crystal lattice. This produces a <strong>P-type</strong> semiconductor, where the majority charge carriers are positive holes. These dopants are called <strong>acceptors</strong> because they accept electrons from neighboring bonds.</p><p><strong>C. Group IA (e.g., sodium, potassium):</strong> Alkali metals with 1 valence electron are not used as semiconductor dopants. They do not substitute properly into the silicon crystal lattice (wrong size and bonding characteristics) and would disrupt the tetrahedral crystal structure rather than creating controlled n-type or p-type regions.</p><p><strong>D. Group VIIA (e.g., chlorine, bromine):</strong> Halogens with 7 valence electrons are not standard semiconductor dopants. They are highly electronegative and reactive, and they do not integrate into the silicon lattice in the controlled manner needed for semiconductor doping.</p><h4>Key Educational Points:</h4><ul><li><strong>N-type:</strong> Group VA dopant (donor) → extra electron → majority carriers are electrons.</li><li><strong>P-type:</strong> Group IIIA dopant (acceptor) → electron hole → majority carriers are holes.</li><li>The dopant concentrations are extremely small (about 1 dopant per 10<sup>6</sup> to 10<sup>8</sup> silicon atoms), yet they dramatically change the conductivity.</li><li>Combining N-type and P-type regions creates a <strong>PN junction</strong>, the basis for diodes, transistors, and all modern electronics.</li></ul><p class='exp-key'>Bottom Line: N-type = Group VA dopant (5 valence electrons, 1 extra → donor → excess electrons). P-type = Group IIIA dopant (3 valence electrons, 1 missing → acceptor → excess holes). Silicon is Group IVA with 4 valence electrons.</p>"
+  },
+  "Q59": {
+    "id": "phys-239",
+    "subject": "physics",
+    "topic": "Semiconductors - Forward Bias",
+    "question": "When a PN junction diode is connected in forward bias, which of the following occurs?",
+    "options": [
+      "The depletion region widens and current flow is negligible",
+      "The diode has high resistance and blocks current flow",
+      "The depletion region narrows and a relatively large current flows",
+      "Only holes can cross the junction while electrons are blocked"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: The depletion region narrows and a relatively large current flows</h4><p>In <strong>forward bias</strong>, the positive terminal of the battery is connected to the P-side and the negative terminal to the N-side. This arrangement:</p><ul><li>Pushes holes from the P-side toward the junction</li><li>Pushes electrons from the N-side toward the junction</li><li><strong>Narrows the depletion region</strong> by reducing the potential barrier</li><li>Allows <strong>large current</strong> to flow once the threshold voltage is exceeded (~0.7 V for silicon, ~0.3 V for germanium)</li></ul><h4>Why the other choices are wrong:</h4><p><strong>A. The depletion region widens and current flow is negligible:</strong> This describes <strong>reverse bias</strong>, not forward bias. In reverse bias, the external voltage reinforces the built-in potential, widening the depletion region and preventing significant current flow (only a tiny leakage current passes).</p><p><strong>B. The diode has high resistance and blocks current flow:</strong> Again, this is the behavior under <strong>reverse bias</strong>. In forward bias, the diode's effective resistance drops dramatically once the threshold voltage is reached, allowing substantial current flow.</p><p><strong>D. Only holes can cross the junction while electrons are blocked:</strong> In forward bias, <strong>both</strong> charge carriers contribute to current flow. Holes move from P to N across the junction, while electrons simultaneously move from N to P. The conventional current direction is from P to N (anode to cathode).</p><h4>Key Educational Points:</h4><ul><li>Forward bias: external voltage opposes the built-in potential → depletion region shrinks → low resistance → large current.</li><li>Reverse bias: external voltage reinforces the built-in potential → depletion region expands → high resistance → negligible current.</li><li>The diode acts as a one-way valve for current: it conducts easily in forward bias and blocks in reverse bias. This property is used for rectification (converting AC to DC).</li></ul><p class='exp-key'>Bottom Line: Forward bias (P to +, N to -) narrows the depletion region, reduces resistance, and allows large current flow. Reverse bias does the opposite. The threshold voltage for silicon diodes is approximately 0.7 V.</p>"
+  },
+  "Q60": {
+    "id": "phys-240",
+    "subject": "physics",
+    "topic": "Semiconductors - Reverse Bias",
+    "question": "A PN junction diode under reverse bias exhibits:",
+    "options": [
+      "Low resistance and large forward current",
+      "A narrowed depletion region and increased conductivity",
+      "High resistance and only a very small leakage current",
+      "Zero resistance due to quantum tunneling effects"
+    ],
+    "correct": 2,
+    "explanation": "<h4>Correct Answer: High resistance and only a very small leakage current</h4><p>In <strong>reverse bias</strong>, the positive terminal is connected to the N-side and the negative terminal to the P-side. This pulls majority carriers <strong>away</strong> from the junction: electrons in the N-region are pulled toward the positive terminal, and holes in the P-region are pulled toward the negative terminal. The result:</p><ul><li>The <strong>depletion region widens</strong> substantially</li><li>The potential barrier <strong>increases</strong></li><li>The diode presents <strong>very high resistance</strong></li><li>Only a tiny <strong>reverse saturation current</strong> (leakage current) flows, due to thermally generated minority carriers</li></ul><h4>Why the other choices are wrong:</h4><p><strong>A. Low resistance and large forward current:</strong> This describes <strong>forward bias</strong> behavior. Under reverse bias, the resistance is very high (megaohms or higher) and the current is negligible (typically nanoamperes to microamperes for silicon diodes).</p><p><strong>B. A narrowed depletion region and increased conductivity:</strong> The depletion region <strong>widens</strong> under reverse bias, not narrows. The widened depletion region acts as an insulating layer, decreasing conductivity rather than increasing it.</p><p><strong>D. Zero resistance due to quantum tunneling effects:</strong> Quantum tunneling does occur in heavily doped PN junctions (Zener diodes) at specific reverse voltages (Zener breakdown), but this is a specialized case, not the general behavior. Normal reverse-biased diodes have very high resistance, not zero resistance.</p><h4>Key Educational Points:</h4><ul><li>If the reverse voltage exceeds the <strong>breakdown voltage</strong>, the diode can conduct heavily in reverse (avalanche or Zener breakdown). This is destructive for normal diodes but is the operating principle of Zener diodes (used for voltage regulation).</li><li>The reverse leakage current approximately <strong>doubles for every 10 degrees C</strong> increase in temperature, since it depends on thermally generated minority carriers.</li><li>The widened depletion region under reverse bias increases the diode's capacitance area, which is exploited in varactor (varicap) diodes for tuning circuits.</li></ul><p class='exp-key'>Bottom Line: Reverse bias widens the depletion region, creates high resistance, and allows only a tiny leakage current. The diode effectively blocks current in this configuration, which is the basis for its rectifying behavior.</p>"
+  }
+}

@@ -487,10 +487,11 @@ for (const Q of QS) {
 section('8. nothing outside the block moved');
 
 ok(BANK.length === 280, 'the physics bank still holds 280 records');
-/* The third physics review block (phys-121..phys-180) was pruned from this
-   fixture when it was implemented, so the records this suite still guards are
-   the 160 outside BOTH this block and that one. Those 60 are guarded by
-   test/phys-review-b3.test.js and its own before-fixture instead. */
+/* The third and fourth physics review blocks (phys-121..phys-240) were pruned
+   from this fixture as each was implemented, so the records this suite still
+   guards are the 100 outside this block and those two. Those 120 are guarded
+   by test/phys-review-b3.test.js and test/phys-review-b4.test.js and their own
+   before-fixtures instead. */
 {
   let checked = 0; const drifted = [];
   for (const q of BANK) {
@@ -499,9 +500,9 @@ ok(BANK.length === 280, 'the physics bank still holds 280 records');
     checked++;
     if (untouched.physics[q.id] !== hash(q)) drifted.push(q.id);
   }
-  ok(checked === 160, '160 physics records lie outside both this block and the third (got ' + checked + ')');
+  ok(checked === 100, '100 physics records lie outside this block and the two later ones (got ' + checked + ')');
   ok(drifted.length === 0, 'none of them changed' + (drifted.length ? ': ' + drifted.join(', ') : ''));
-  ok(Object.keys(untouched.physics).length === 160, 'the untouched fixture covers all 160');
+  ok(Object.keys(untouched.physics).length === 100, 'the untouched fixture covers all 100');
   ok(BANK.filter(q => !PACK.has(q.id)).length === 220, 'and 220 records lie outside this block in all');
 }
 ok(new Set(BANK.map(q => q.id)).size === 280, 'all physics ids are still distinct');
