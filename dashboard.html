@@ -187,7 +187,7 @@
                 <div id="overviewProgressBar" style="background:linear-gradient(90deg, var(--accent), #e8a44c); height:100%; border-radius:8px; width:0%; transition:width 0.6s ease;"></div>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:wrap; gap:8px;">
-                <span id="qbankScopeLabel" style="font-size:0.75rem; color:var(--gray-500);">Bio + Chem (LF3 syllabus)</span>
+                <span id="qbankScopeLabel" style="font-size:0.75rem; color:var(--gray-500);">Biology + Chemistry</span>
                 <span id="overviewProgressPct" style="font-size:0.75rem; font-weight:600; color:var(--gray-500);">0%</span>
               </div>
               <!-- Physics inclusion toggle. Default state follows the user's
@@ -5102,23 +5102,30 @@
       const label = document.getElementById('qbankScopeLabel');
       if (label) {
         label.textContent = includePhysics
-          ? 'Bio + Chem + Physics · ' + total.toLocaleString() + ' questions'
-          : 'Bio + Chem (LF3 syllabus) · ' + total.toLocaleString() + ' questions';
+          ? 'Biology + Chemistry + Physics · ' + total.toLocaleString() + ' questions'
+          : 'Biology + Chemistry · ' + total.toLocaleString() + ' questions';
       }
 
       // Canonical "answered" source: the qbankData/progress doc.
       // Falls back to the union of test questionIds if the doc is empty
       // (older accounts before per-question tracking).
+      // Count only answers that fall inside the scope the bar measures.
+      // Question ids carry their subject as a prefix (bio-, chem-, phys-).
+      // `total` is already scoped, so counting every answered id against it
+      // let a user who had done physics questions with the toggle OFF read
+      // as 1,393 / 1,114 -- more answered than the pool contains.
+      const inScope = id => /^(bio|chem)-/.test(id)
+        || (includePhysics && /^phys-/.test(id));
       let uniqueAnswered = 0;
       try {
         const qbankDoc = await db.collection('users').doc(uid)
           .collection('qbankData').doc('progress').get();
         const completed = qbankDoc.exists ? (qbankDoc.data().completedQuestions || {}) : {};
-        uniqueAnswered = Object.keys(completed).length;
+        uniqueAnswered = Object.keys(completed).filter(inScope).length;
       } catch (_) {}
       if (uniqueAnswered === 0 && Array.isArray(tests)) {
         const ids = new Set();
-        tests.forEach(t => { (t.questionIds || []).forEach(id => ids.add(id)); });
+        tests.forEach(t => { (t.questionIds || []).forEach(id => { if (inScope(id)) ids.add(id); }); });
         uniqueAnswered = ids.size;
       }
 
