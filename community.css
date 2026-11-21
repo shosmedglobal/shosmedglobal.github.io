@@ -42,6 +42,27 @@
   display: block;
 }
 
+/* The questions for a stage sit at the foot of that stage's panel, under a
+   rule, so they read as the tail of the section rather than a second page. */
+.panel-qa {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.panel-qa .featured-qa-sub {
+  margin-bottom: 32px;
+}
+
+/* Two cards in a three-column grid leave a hole that reads as a broken
+   layout, so a short list centres itself instead. */
+.blog-article-grid--sparse {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ===== Featured Q&A (static, SEO) ===== */
 .featured-qa {
   margin-bottom: 48px;

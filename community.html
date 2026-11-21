@@ -44,7 +44,7 @@
   })();
   </script>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="community.css?v=20260902-xss">
+  <link rel="stylesheet" href="community.css?v=20261121-tabs">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -211,53 +211,32 @@
   <!-- Tab Navigation -->
   <section class="section" id="community-main">
     <div class="container">
-      <div class="community-tabs">
-        <button class="community-tab active" data-tab="blog">Blog &amp; Articles</button>
-        <button class="community-tab" data-tab="forum">Questions &amp; Answers</button>
+      <div class="community-tabs" role="tablist" aria-label="Community topics">
+        <button class="community-tab active" id="tab-medschool" role="tab" aria-selected="true" aria-controls="panel-medschool" data-tab="medschool">Medical School</button>
+        <button class="community-tab" id="tab-residency" role="tab" aria-selected="false" aria-controls="panel-residency" data-tab="residency">Residency &amp; USMLE</button>
       </div>
 
-      <!-- ========== SECTION A: Blog / Articles (default visible, owned editorial content,
-                       primary topic signal for SEO since search engines weight first content blocks) ========== -->
-      <div class="community-panel active" id="panel-blog">
+      <!-- ========== Panel A: medical school. Default visible, so it is the
+                       primary topic signal for search engines and what most
+                       first-time visitors came for. Each panel ends with the
+                       questions for that stage rather than sending the reader
+                       to a Q&A tab that mixed both audiences. ========== -->
+      <div class="community-panel active" id="panel-medschool" role="tabpanel" aria-labelledby="tab-medschool">
         <div class="section-header" style="margin-bottom:40px;">
-          <h2>Guides &amp; Insights</h2>
-          <p class="section-sub">Free resources for applicants and current students.</p>
+          <h2>Medical School in Prague</h2>
+          <p class="section-sub">Applying to LF3, the entrance exam, what it costs, and what studying there is actually like.</p>
         </div>
         <div class="blog-article-grid">
-          <a href="blog/czech-student-visa-us-canada-medical-students-2026.html" class="blog-article-card">
-            <div class="blog-tag">Applying</div>
-            <h4>Czech Student Visa for US and Canadian Medical Students: Step-by-Step (2026)</h4>
-            <p>Once you have your acceptance letter, the visa is the next big task. Step-by-step on timing, documents, embassy process, and OAMP residence permit registration after arrival.</p>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
           <a href="blog/lf3-entrance-exam-what-is-on-it.html" class="blog-article-card">
-            <div class="blog-tag">Applying</div>
+            <div class="blog-tag">Entrance Exam</div>
             <h4>Charles University LF3 Entrance Exam: What's Actually On It</h4>
             <p>Topic-by-topic breakdown of the LF3 entrance exam: format, biology and chemistry topics tested, sample question types, and how to prepare for 2026.</p>
             <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
           </a>
           <a href="blog/mcat-vs-charles-university-entrance-exam.html" class="blog-article-card">
-            <div class="blog-tag">Applying</div>
+            <div class="blog-tag">Entrance Exam</div>
             <h4>MCAT vs. Charles University Entrance Exam: A Direct Comparison</h4>
             <p>Direct side-by-side comparison: length, scope, cost, timing, difficulty. Which path suits which student.</p>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
-          <a href="blog/charles-university-tuition-2026-cost-breakdown.html" class="blog-article-card">
-            <div class="blog-tag">Applying</div>
-            <h4>Charles University Tuition and Total Cost in 2026: A Real Breakdown</h4>
-            <p>Honest 6-year cost breakdown for studying medicine at Charles University in Prague: tuition, housing, food, transit, books, fees. No marketing math.</p>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
-          <a href="blog/usmle-step-1-pass-fail-img-2026.html" class="blog-article-card">
-            <div class="blog-tag">Residency</div>
-            <h4>USMLE Step 1 Pass/Fail: What It Actually Means for IMGs in 2026</h4>
-            <p>Four years after the switch to pass/fail, here is what actually changed for IMGs and how programs filter applicants now. Honest answers from a physician who matched as an IMG.</p>
-            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
-          </a>
-          <a href="blog/from-acceptance-to-residency.html" class="blog-article-card">
-            <div class="blog-tag">Residency</div>
-            <h4>From Acceptance to Residency: Planning Your US Pathway from Day One</h4>
-            <p>A year-by-year roadmap for European medical students who want to practice in the United States. USMLE timing, clinical rotations, and match strategy.</p>
             <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
           </a>
           <a href="blog/applying-to-charles-university.html" class="blog-article-card">
@@ -266,18 +245,23 @@
             <p>Practical advice from a Charles University grad who is now a US physician. What I would tell my younger self about the application process.</p>
             <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
           </a>
+          <a href="blog/charles-university-tuition-2026-cost-breakdown.html" class="blog-article-card">
+            <div class="blog-tag">Cost</div>
+            <h4>Charles University Tuition and Total Cost in 2026: A Real Breakdown</h4>
+            <p>Honest 6-year cost breakdown for studying medicine at Charles University in Prague: tuition, housing, food, transit, books, fees. No marketing math.</p>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+          <a href="blog/czech-student-visa-us-canada-medical-students-2026.html" class="blog-article-card">
+            <div class="blog-tag">Visa</div>
+            <h4>Czech Student Visa for US and Canadian Medical Students: Step-by-Step (2026)</h4>
+            <p>Once you have your acceptance letter, the visa is the next big task. Step-by-step on timing, documents, embassy process, and OAMP residence permit registration after arrival.</p>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
         </div>
-      </div>
 
-      <!-- ========== SECTION B: Forum / Q&A (community discussion, supplements blog
-                       articles with long-tail Q&A; FAQPage schema markup intact) ========== -->
-      <div class="community-panel" id="panel-forum">
-
-        <!-- Featured Q&A (static, SEO-indexable) -->
-        <div class="featured-qa">
-          <h3 class="featured-qa-title">Featured Questions</h3>
-          <p class="featured-qa-sub">Answers verified by practicing physicians. Have a question? <a href="#" data-contact-modal="consultation">Ask us directly</a>.</p>
-
+        <div class="panel-qa">
+          <h3 class="featured-qa-title">Common Questions</h3>
+          <p class="featured-qa-sub">Answered by physicians and graduates who went through it. Have a different question? <a href="#" data-contact-modal="consultation">Ask us directly</a>.</p>
           <article class="qa-card" itemscope itemtype="https://schema.org/Question">
             <div class="qa-question">
               <span class="post-category">Entrance Exams</span>
@@ -293,23 +277,6 @@
               </div>
             </div>
           </article>
-
-          <article class="qa-card" itemscope itemtype="https://schema.org/Question">
-            <div class="qa-question">
-              <span class="post-category">Residency Match</span>
-              <h4 itemprop="name">Can international medical graduates (IMGs) from European schools match into competitive US residencies?</h4>
-              <p itemprop="text">I'm currently a student at a European medical school and want to do my residency in the US. Is it realistic for IMGs from Europe to match into competitive specialties, or should I only aim for primary care? What's the match rate like?</p>
-            </div>
-            <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div itemprop="text">
-                <p>100% yes. But here's the thing - you have to start thinking about it early, not in your last year when everyone's panicking. I went through this myself - matched into Internal Medicine, now doing a Hem/Onc fellowship.</p>
-                <p>The stuff that actually matters: your <strong>Step 2 CK score</strong> (Step 1 is pass/fail now so just pass it), <strong>US clinical rotations</strong> (programs want to see you can work in the American system), <strong>research</strong> (even one publication helps), and <strong>letters from US attendings</strong>. That's basically your checklist.</p>
-                <p>And yeah, competitive specialties are doable. I know European grads who matched derm, radiology, surgery. It's harder than for US grads, no question - but it's not some impossible thing. You just need to be more intentional about it.</p>
-                <p>Biggest thing I'd tell you: don't wait until after graduation to figure this stuff out. Start USMLE prep during preclinical years, line up your US rotations by 5th year. The people who don't match are usually the ones who started too late.</p>
-              </div>
-            </div>
-          </article>
-
           <article class="qa-card" itemscope itemtype="https://schema.org/Question">
             <div class="qa-question">
               <span class="post-category">Med School Life</span>
@@ -325,7 +292,66 @@
               </div>
             </div>
           </article>
+          <article class="qa-card" itemscope itemtype="https://schema.org/Question">
+            <div class="qa-question">
+              <span class="post-category">Cost &amp; Tuition</span>
+              <h4 itemprop="name">How much does it cost to study medicine at Charles University compared to US and Caribbean medical schools?</h4>
+              <p itemprop="text">I'm comparing options for medical school and trying to understand the real cost. How does Charles University tuition compare to Caribbean schools and US medical schools? Are there hidden costs?</p>
+            </div>
+            <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>OK so the numbers are pretty wild when you compare them side by side:</p>
+                <p><strong>Charles University:</strong> tuition is 440,000 CZK/year, which is about $20,000. Over 6 years that's around $120,000 in tuition. Add Prague living costs and you're still well under what most US and Caribbean programs charge in tuition alone.</p>
+                <p><strong>Caribbean schools:</strong> usually $20,000-$30,000 per semester. Full program runs $200,000-$350,000. And honestly, the attrition rates at some of those schools are scary - 30-50% of students don't make it to graduation.</p>
+                <p><strong>US medical schools:</strong> $40,000-$60,000/year, so $200,000-$350,000 total. And that's after you already paid for 4 years of undergrad.</p>
+                <p>Living in Prague is also way cheaper than most US cities. You can get by on $800-$1,200/month for rent, food, and getting around. Try doing that in New York or Boston.</p>
+                <p><strong>Stuff people forget to budget for:</strong> USMLE exams ($600-$1,000 each step), flights and housing for US rotations, and ERAS application fees plus interview travel. That's probably another $5,000-$10,000 in your last couple years. Still way less than the alternatives though.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
 
+      <!-- ========== Panel B: residency. Fewer articles, so the grid centres
+                       them rather than leaving an empty third column. ========== -->
+      <div class="community-panel" id="panel-residency" role="tabpanel" aria-labelledby="tab-residency" hidden>
+        <div class="section-header" style="margin-bottom:40px;">
+          <h2>Residency in the United States</h2>
+          <p class="section-sub">USMLE timing, US clinical rotations, and matching as an international medical graduate.</p>
+        </div>
+        <div class="blog-article-grid blog-article-grid--sparse">
+          <a href="blog/usmle-step-1-pass-fail-img-2026.html" class="blog-article-card">
+            <div class="blog-tag">USMLE</div>
+            <h4>USMLE Step 1 Pass/Fail: What It Actually Means for IMGs in 2026</h4>
+            <p>Four years after the switch to pass/fail, here is what actually changed for IMGs and how programs filter applicants now. Honest answers from a physician who matched as an IMG.</p>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+          <a href="blog/from-acceptance-to-residency.html" class="blog-article-card">
+            <div class="blog-tag">Match</div>
+            <h4>From Acceptance to Residency: Planning Your US Pathway from Day One</h4>
+            <p>A year-by-year roadmap for European medical students who want to practice in the United States. USMLE timing, clinical rotations, and match strategy.</p>
+            <span class="blog-read-link">Read Article <span class="arrow">&rarr;</span></span>
+          </a>
+        </div>
+
+        <div class="panel-qa">
+          <h3 class="featured-qa-title">Common Questions</h3>
+          <p class="featured-qa-sub">Answered by physicians who matched as IMGs. Have a different question? <a href="#" data-contact-modal="consultation">Ask us directly</a>.</p>
+          <article class="qa-card" itemscope itemtype="https://schema.org/Question">
+            <div class="qa-question">
+              <span class="post-category">Residency Match</span>
+              <h4 itemprop="name">Can international medical graduates (IMGs) from European schools match into competitive US residencies?</h4>
+              <p itemprop="text">I'm currently a student at a European medical school and want to do my residency in the US. Is it realistic for IMGs from Europe to match into competitive specialties, or should I only aim for primary care? What's the match rate like?</p>
+            </div>
+            <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>100% yes. But here's the thing - you have to start thinking about it early, not in your last year when everyone's panicking. I went through this myself - matched into Internal Medicine, now doing a Hem/Onc fellowship.</p>
+                <p>The stuff that actually matters: your <strong>Step 2 CK score</strong> (Step 1 is pass/fail now so just pass it), <strong>US clinical rotations</strong> (programs want to see you can work in the American system), <strong>research</strong> (even one publication helps), and <strong>letters from US attendings</strong>. That's basically your checklist.</p>
+                <p>And yeah, competitive specialties are doable. I know European grads who matched derm, radiology, surgery. It's harder than for US grads, no question - but it's not some impossible thing. You just need to be more intentional about it.</p>
+                <p>Biggest thing I'd tell you: don't wait until after graduation to figure this stuff out. Start USMLE prep during preclinical years, line up your US rotations by 5th year. The people who don't match are usually the ones who started too late.</p>
+              </div>
+            </div>
+          </article>
           <article class="qa-card" itemscope itemtype="https://schema.org/Question">
             <div class="qa-question">
               <span class="post-category">USMLE &amp; Boards</span>
@@ -342,34 +368,8 @@
               </div>
             </div>
           </article>
-
-          <article class="qa-card" itemscope itemtype="https://schema.org/Question">
-            <div class="qa-question">
-              <span class="post-category">Entrance Exams</span>
-              <h4 itemprop="name">How much does it cost to study medicine at Charles University compared to US and Caribbean medical schools?</h4>
-              <p itemprop="text">I'm comparing options for medical school and trying to understand the real cost. How does Charles University tuition compare to Caribbean schools and US medical schools? Are there hidden costs?</p>
-            </div>
-            <div class="qa-answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-              <div itemprop="text">
-                <p>OK so the numbers are pretty wild when you compare them side by side:</p>
-                <p><strong>Charles University:</strong> tuition is 440,000 CZK/year, which is about $20,000. Over 6 years that's around $120,000 in tuition. Add Prague living costs and you're still well under what most US and Caribbean programs charge in tuition alone.</p>
-                <p><strong>Caribbean schools:</strong> usually $20,000-$30,000 per semester. Full program runs $200,000-$350,000. And honestly, the attrition rates at some of those schools are scary - 30-50% of students don't make it to graduation.</p>
-                <p><strong>US medical schools:</strong> $40,000-$60,000/year, so $200,000-$350,000 total. And that's after you already paid for 4 years of undergrad.</p>
-                <p>Living in Prague is also way cheaper than most US cities. You can get by on $800-$1,200/month for rent, food, and getting around. Try doing that in New York or Boston.</p>
-                <p><strong>Stuff people forget to budget for:</strong> USMLE exams ($600-$1,000 each step), flights and housing for US rotations, and ERAS application fees plus interview travel. That's probably another $5,000-$10,000 in your last couple years. Still way less than the alternatives though.</p>
-              </div>
-            </div>
-          </article>
         </div>
-
-        <!-- The user-generated forum (Community Discussion: post list, thread
-             view, ask-question modal) was removed on 2026-09-02. The static
-             Featured Questions above remain — they carry the FAQPage schema
-             and the long-tail SEO value. community.js is no longer loaded;
-             the tab switching it used to own is now inline at the foot of
-             this page. -->
       </div>
-
     </div>
   </section>
 
@@ -479,17 +479,37 @@
       });
     });
 
-    // Featured Q&A "ask" link opens the ask modal
-    // Tab switching (Blog & Articles / Q&A). Previously lived in community.js,
-    // which is no longer loaded now that the user-generated forum is gone.
-    document.querySelectorAll('.community-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.community-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.community-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        const panel = document.getElementById('panel-' + tab.dataset.tab);
-        if (panel) panel.classList.add('active');
+    // Tab switching (Medical School / Residency & USMLE). The chosen tab goes
+    // into the URL hash so the residency half can be linked to directly, from
+    // another page or from a reader's own bookmark.
+    function showCommunityTab(name, writeHash) {
+      var tab = document.querySelector('.community-tab[data-tab="' + name + '"]');
+      var panel = document.getElementById('panel-' + name);
+      if (!tab || !panel) return false;
+      document.querySelectorAll('.community-tab').forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
       });
+      document.querySelectorAll('.community-panel').forEach(function (p) {
+        p.classList.remove('active');
+        p.hidden = true;
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      panel.classList.add('active');
+      panel.hidden = false;
+      if (writeHash && history.replaceState) history.replaceState(null, '', '#' + name);
+      return true;
+    }
+
+    document.querySelectorAll('.community-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () { showCommunityTab(tab.dataset.tab, true); });
+    });
+
+    // A #residency or #medschool link opens that tab on arrival.
+    showCommunityTab((location.hash || '').replace('#', ''), false);
+    window.addEventListener('hashchange', function () {
+      showCommunityTab((location.hash || '').replace('#', ''), false);
     });
 
     // Animate elements on scroll
