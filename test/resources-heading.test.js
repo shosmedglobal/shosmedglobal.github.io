@@ -1,0 +1,98 @@
+'use strict';
+/* The Free Resources view used to carry a fixed "Free Resources" heading,
+   which only repeated the sidebar item the reader had just clicked. The
+   heading now names the open tab. Two things can break that: the heading and
+   a tab label drifting apart, and the Study Plan's subject tabs, which share
+   the .resource-tab class, retitling a view they have nothing to do with. */
+
+const fs = require('fs');
+const path = require('path');
+
+const html = fs.readFileSync(path.join(__dirname, '..', 'dashboard.html'), 'utf8');
+
+let passed = 0;
+const failures = [];
+function check(name, cond) {
+  if (cond) passed++;
+  else failures.push(name);
+}
+
+const view = (() => {
+  const a = html.indexOf('id="viewResources"');
+  const b = html.indexOf('VIEW: STORE', a);
+  return html.slice(a, b);
+})();
+
+// ---------------------------------------------------------------------------
+// 1. The heading exists, inside the view, above the tabs.
+// ---------------------------------------------------------------------------
+check('1a heading element', html.includes('<h1 id="resourcesTitle">'));
+check('1b heading is in the resources view', view.includes('id="resourcesTitle"'));
+check('1c heading precedes the tab rows',
+  view.indexOf('id="resourcesTitle"') < view.indexOf('id="applicantResourceTabs"'));
+check('1d the old fixed heading is gone', !html.includes('<h1>Free Resources</h1>'));
+check('1e the old subtitle is gone', !html.includes('id="resourcesDesc"'));
+
+// ---------------------------------------------------------------------------
+// 2. The first tab names both halves of what its panel holds: the exam
+//    section and the seven numbered application steps.
+// ---------------------------------------------------------------------------
+check('2a first tab renamed', html.includes('data-tab="examGuides">Entrance Exam &amp; How to Apply<'));
+check('2b the vaguer old label is gone', !html.includes('Entrance Exam &amp; Application<'));
+check('2c its panel really does hold the steps', view.includes('How to Apply</h3>'));
+check('2d and the exam section', view.includes('LF3 Entrance Exam</h3>'));
+const steps = (view.match(/>[1-7]<\/span>\n\s+(Register|Apply|Pay|Take|Send|Before|Enroll)/g) || []);
+check('2e seven numbered steps are present', steps.length === 7);
+
+// The heading is written from the label, so the default heading in the markup
+// has to match the tab that is active in the markup.
+const activeTab = view.match(/<button class="resource-tab active" data-tab="examGuides">([^<]+)<\/button>/);
+const defaultHeading = html.match(/<h1 id="resourcesTitle">([^<]+)<\/h1>/);
+check('2f default heading matches the active tab',
+  !!activeTab && !!defaultHeading && activeTab[1] === defaultHeading[1]);
+
+// ---------------------------------------------------------------------------
+// 3. The heading follows the tab, and only the tabs that own this view.
+// ---------------------------------------------------------------------------
+check('3a there is a setter', html.includes('function setResourcesTitle(tab)'));
+check('3b it reads the tab label', html.includes("heading.textContent = tab.textContent.trim()"));
+check('3c clicking a tab calls it', html.includes('setResourcesTitle(tab);'));
+check('3d only the two resource rows drive it',
+  html.includes("const RESOURCE_TAB_ROWS = ['applicantResourceTabs', 'studentResourceTabs'];"));
+check('3e rows outside that list are ignored',
+  html.includes("if (!row || RESOURCE_TAB_ROWS.indexOf(row.id) === -1) return;"));
+check('3f the study plan subject tabs are such a row',
+  html.includes('data-sp-tab="chemistry"') && !html.includes('data-sp-tab="chemistry" data-tab'));
+check('3g switching applicant/residency retitles too',
+  html.includes('const activeResourceRow = isStudent ? studentResourceTabs : applicantResourceTabs;'));
+
+// ---------------------------------------------------------------------------
+// 4. The source-of-truth notice closes the view rather than opening it.
+// ---------------------------------------------------------------------------
+check('4a notice still present', view.includes('Always verify with the official source.'));
+check('4b it sits after the last panel',
+  view.indexOf('Always verify with the official source.') > view.indexOf('id="tabImgTips"'));
+check('4c it is outside the panels, so every tab shows it',
+  view.lastIndexOf('resource-panel') < view.indexOf('Always verify with the official source.'));
+
+// ---------------------------------------------------------------------------
+// 5. Every inline script still parses. A heading rewrite that throws would
+//    take the whole dashboard with it.
+// ---------------------------------------------------------------------------
+let blocks = 0;
+let parseError = null;
+for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
+  try {
+    new Function(m[1]);
+    blocks++;
+  } catch (e) {
+    parseError = e.message;
+  }
+}
+check('5a inline scripts parse', parseError === null);
+check('5b both script blocks checked', blocks === 2);
+
+// ---------------------------------------------------------------------------
+console.log('resources-heading: ' + passed + ' passed, ' + failures.length + ' failed');
+for (const f of failures) console.log('\n  FAIL ' + f);
+process.exit(failures.length ? 1 : 0);

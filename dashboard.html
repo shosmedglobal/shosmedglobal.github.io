@@ -662,9 +662,17 @@
 
         <!-- ========== VIEW: FREE RESOURCES ========== -->
         <div class="view" id="viewResources">
+          <!-- The heading names whichever tab is open, so the reader
+               always has a title for what is actually on screen. It is
+               written from the active tab's own label in
+               setResourcesTitle(), so the two can never drift apart. -->
+          <div class="dashboard-header">
+            <h1 id="resourcesTitle">Entrance Exam &amp; How to Apply</h1>
+          </div>
+
           <!-- Applicant Resource Tabs -->
           <div class="resource-tabs" id="applicantResourceTabs">
-            <button class="resource-tab active" data-tab="examGuides">Entrance Exam &amp; Application</button>
+            <button class="resource-tab active" data-tab="examGuides">Entrance Exam &amp; How to Apply</button>
             <button class="resource-tab" data-tab="timeline">Timeline</button>
             <button class="resource-tab" data-tab="costs">Costs &amp; Living</button>
           </div>
@@ -4746,6 +4754,12 @@
         const studentResourceTabs = document.getElementById('studentResourceTabs');
         if (applicantResourceTabs) applicantResourceTabs.style.display = isStudent ? 'none' : 'flex';
         if (studentResourceTabs) studentResourceTabs.style.display = isStudent ? 'flex' : 'none';
+        // the visible row changed, so the heading follows its active tab
+        const activeResourceRow = isStudent ? studentResourceTabs : applicantResourceTabs;
+        const activeResourceTab = activeResourceRow
+          && (activeResourceRow.querySelector('.resource-tab.active')
+              || activeResourceRow.querySelector('.resource-tab'));
+        if (typeof setResourcesTitle === 'function') setResourcesTitle(activeResourceTab);
         // Show correct default resource panel
         document.querySelectorAll('.resource-panel').forEach(p => p.style.display = 'none');
         if (isStudent) {
@@ -5427,6 +5441,19 @@
     }
 
     // ===== Resource Tabs =====
+    // The Free Resources heading follows the open tab. Only the two tab rows
+    // in that view drive it: the Study Plan uses .resource-tab as well, and a
+    // subject tab there must not retitle a view it does not belong to.
+    const RESOURCE_TAB_ROWS = ['applicantResourceTabs', 'studentResourceTabs'];
+
+    function setResourcesTitle(tab) {
+      const heading = document.getElementById('resourcesTitle');
+      if (!heading || !tab) return;
+      const row = tab.closest('.resource-tabs');
+      if (!row || RESOURCE_TAB_ROWS.indexOf(row.id) === -1) return;
+      heading.textContent = tab.textContent.trim();
+    }
+
     document.querySelectorAll('.resource-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         // Only deactivate tabs within the same tab group
@@ -5438,6 +5465,7 @@
         const panelId = 'tab' + tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1);
         const panel = document.getElementById(panelId);
         if (panel) { panel.classList.add('active'); panel.style.display = 'block'; }
+        setResourcesTitle(tab);
       });
     });
 
