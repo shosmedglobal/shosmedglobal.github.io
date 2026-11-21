@@ -57,7 +57,7 @@ check('2d2 the exam table moved into the steps',
   view.includes('Biology (30 MCQ) + Chemistry (30 MCQ)'));
 check('2d3 the table sits inside step 4',
   view.indexOf('Biology (30 MCQ)') > view.indexOf('Take the exam of the Third Faculty')
-  && view.indexOf('Biology (30 MCQ)') < view.indexOf('Send your documents to the Third Faculty'));
+  && view.indexOf('Biology (30 MCQ)') < view.indexOf('Send LF3 your documents'));
 check('2d4 no leftover exam card above the steps',
   !view.includes('>LF3 Entrance Exam</h3>'));
 const steps = (view.match(/>[1-7]<\/span>\n\s+(Register|Apply|Pay|Take|Send|Before|Enroll)/g) || []);
@@ -115,23 +115,34 @@ check('5b both script blocks checked', blocks === 2);
 // 6. Headings and titles in this tab name the faculty in full. Body text
 //    keeps LF3, which by then the reader has been told the meaning of.
 // ---------------------------------------------------------------------------
-const TITLES = [
+// The faculty is named in full where a reader first meets it, then the
+// short form carries the rest. Expanding it in every title turned three
+// headings in one screen into the same long phrase.
+const EXPANDED = [
+  // the first thing in the tab, before any step
   'You need a high school diploma to start at the Third Faculty of Medicine (LF3).',
-  'Pay the Third Faculty of Medicine (LF3) application fee',
+  // the step about the exam itself
   'Take the exam of the Third Faculty of Medicine (LF3)',
-  'Send your documents to the Third Faculty of Medicine (LF3)',
-  '<h4>Third Faculty of Medicine (LF3) <span class="faculty-badge">Prague</span></h4>',
+  // the Costs tab is its own screen, so it introduces the name again
   '>Third Faculty of Medicine (LF3) Tuition</h3>',
 ];
-for (const t of TITLES) check('6a title spelled out: ' + t.slice(0, 48), view.includes(t));
-check('6b no title says LF3 on its own',
-  !view.includes('Pay the LF3 application fee')
-  && !view.includes('Send LF3 your documents')
-  && !view.includes('>LF3 Tuition</h3>'));
-check('6c the card title is not doubled',
+for (const t of EXPANDED) check('6a spelled out: ' + t.slice(0, 48), view.includes(t));
+
+const SHORT = [
+  'Pay the LF3 application fee',
+  'Send LF3 your documents',
+  'both written to the LF3 exam scope',
+];
+for (const t of SHORT) check('6b short form kept: ' + t.slice(0, 40), view.includes(t));
+
+check('6c the callout comes before every other mention',
+  view.indexOf('start at the Third Faculty of Medicine (LF3)')
+  < view.indexOf('Pay the LF3 application fee'));
+check('6d the exam card does not repeat its step heading',
+  !view.includes('<h4>Third Faculty of Medicine (LF3) <span class="faculty-badge">')
+  && view.includes('<h4>LF3 Entrance Exam <span class="faculty-badge">Prague</span></h4>'));
+check('6e no title doubles the name',
   !view.includes('Third Faculty of Medicine (LF3) - Third Faculty of Medicine'));
-check('6d body text still uses the short form',
-  view.includes('both written to the LF3 exam scope'));
 
 check('6e the step checklists are indented to the step text',
   (view.match(/class="resource-checklist step-checklist"/g) || []).length === 2);
