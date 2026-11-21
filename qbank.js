@@ -772,6 +772,10 @@ function renderQuestion() {
     container.appendChild(div);
   });
 
+  // Stem and answer choices are rebuilt on every question, so the watermark
+  // has to be re-applied here rather than once at start-up.
+  qbWatermarkLiveCard();
+
   const expBox = document.getElementById('explanationBox');
   const reportWrap = document.getElementById('reportBtnWrap');
   const reportForm = document.getElementById('reportForm');
@@ -907,7 +911,7 @@ function showExplanation(q, isCorrect) {
   wrapTablesForResponsive(content);
   box.style.display = 'block';
 
-  // Apply personal watermark
+  // Apply personal watermark. innerHTML above wipes the previous one.
   applyQBankWatermark(content);
 
   // Restore saved highlights for this question
@@ -919,34 +923,38 @@ function showExplanation(q, isCorrect) {
 }
 
 // ===== Personal Watermark =====
-function applyQBankWatermark(container) {
-  if (!container) return;
+// The tile itself lives in content-watermark.js, shared with the mock exams
+// and the study plan chapters. This file decides WHAT gets painted.
+
+/** The email the QBank is being read by. qbank.html has no "view as user". */
+function qbWatermarkEmail() {
   try {
     const user = typeof auth !== 'undefined' && auth.currentUser;
-    if (!user || !user.email) return;
+    return (user && user.email) || '';
+  } catch (e) { return ''; }
+}
 
-    // Canvas-based watermark (works with all email characters)
-    const email = user.email;
-    const canvas = document.createElement('canvas');
-    canvas.width = 500;
-    canvas.height = 180;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.save();
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.rotate(-25 * Math.PI / 180);
-    ctx.font = '15px Inter, Arial, sans-serif';
-    ctx.fillStyle = 'rgba(120, 120, 140, 0.07)';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(email + '     ' + email, 0, 0);
-    ctx.restore();
+/** Kept for the existing call sites that paint a single container. */
+function applyQBankWatermark(container) {
+  if (!container || !window.SHOSWatermark) return;
+  window.SHOSWatermark.paint(container, qbWatermarkEmail());
+}
 
-    const dataUrl = canvas.toDataURL('image/png');
-    container.style.backgroundImage = 'url("' + dataUrl + '")';
-    container.style.backgroundRepeat = 'repeat';
-    container.style.backgroundSize = '500px 180px';
-  } catch (e) { /* auth not ready yet */ }
+/* The stem, every answer choice and the explanation are each painted in
+   their own right. A watermark on the surrounding card would be hidden
+   behind each answer choice's own opaque background, which is precisely
+   where a cropped screenshot of "one answer" would be taken. */
+const QB_LIVE_TARGETS = '#questionText, #optionsContainer .quiz-option, #explanationContent';
+const QB_REVIEW_TARGETS = '.review-item .review-question, .review-item .review-answer, .review-item .review-explanation';
+
+function qbWatermarkLiveCard() {
+  if (!window.SHOSWatermark) return 0;
+  return window.SHOSWatermark.paintAll(document, QB_LIVE_TARGETS, qbWatermarkEmail());
+}
+
+function qbWatermarkReview(root) {
+  if (!window.SHOSWatermark) return 0;
+  return window.SHOSWatermark.paintAll(root || document, QB_REVIEW_TARGETS, qbWatermarkEmail());
 }
 
 // ===== Highlighter Feature (same approach as Study Plan) =====
@@ -1791,6 +1799,9 @@ function showReview() {
       wrapTablesForResponsive(expEl);
       applyQBankWatermark(expEl);
       restoreHighlights(q.id, expEl);
+      // ... and the question and each answer choice of this item, so a crop
+      // of any one of them carries the email too.
+      qbWatermarkReview(item);
     }
   });
 

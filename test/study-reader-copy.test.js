@@ -31,6 +31,7 @@ const vm = require('vm');
 const ROOT = path.join(__dirname, '..');
 const DASH = fs.readFileSync(path.join(ROOT, 'dashboard.html'), 'utf8');
 const GUARD = fs.readFileSync(path.join(ROOT, 'exam-copy-guard.js'), 'utf8');
+const WATERMARK = fs.readFileSync(path.join(ROOT, 'content-watermark.js'), 'utf8');
 
 let passed = 0;
 const failures = [];
@@ -53,7 +54,24 @@ check('0b and brace-matches', iEnd > iOpen);
 const BLOCK = DASH.slice(iOpen, iEnd) + ')();';
 
 /* ------------------------------------------------------------ stubs ---- */
+/* A canvas good enough for content-watermark.js: it measures text, scales,
+   and records every string drawn so the test can assert WHOSE email the
+   watermark carries. */
+function makeCanvas(drawn) {
+  return {
+    width: 0, height: 0, style: {},
+    getContext: () => ({
+      scale() {}, clearRect() {}, save() {}, translate() {}, rotate() {}, restore() {},
+      measureText: t => ({ width: t.length * 6 }),
+      fillText: t => drawn.push(t),
+      set font(v) {}, set fillStyle(v) {}, set textAlign(v) {}, set textBaseline(v) {}
+    }),
+    toDataURL: () => 'data:image/png;base64,AA'
+  };
+}
+
 function makeEnv() {
+  const drawn = [];
   const bodyClasses = new Set();
   const listeners = { content: {}, view: {}, document: {} };
   const mk = bag => ({
@@ -64,7 +82,11 @@ function makeEnv() {
       toggle(c, on) { on ? this._s.add(c) : this._s.delete(c); }
     },
     style: {},
-    setAttribute() {}, getContext: () => null,
+    attrs: {},
+    setAttribute(k, v) { this.attrs[k] = String(v); },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; },
+    removeAttribute(k) { delete this.attrs[k]; },
+    getContext: () => null,
     addEventListener(t, fn) { (bag[t] = bag[t] || []).push(fn); }
   });
   const readerContent = mk(listeners.content);
@@ -93,15 +115,7 @@ function makeEnv() {
   const document = {
     readyState: 'complete', body,
     getElementById: id => els[id] || null,
-    createElement: () => ({
-      width: 0, height: 0, style: {},
-      getContext: () => ({
-        clearRect() {}, save() {}, translate() {}, rotate() {},
-        fillText() {}, restore() {}, set font(v) {}, set fillStyle(v) {},
-        set textAlign(v) {}, set textBaseline(v) {}
-      }),
-      toDataURL: () => 'data:image/png;base64,AA'
-    }),
+    createElement: () => makeCanvas(drawn),
     addEventListener(t, fn) { (listeners.document[t] = listeners.document[t] || []).push(fn); }
   };
   win.document = document;
@@ -121,6 +135,7 @@ function makeEnv() {
   ctx.global = ctx;
   vm.createContext(ctx);
   vm.runInContext(GUARD, ctx);        // the real guard, same as the page
+  vm.runInContext(WATERMARK, ctx);    // the real shared watermark module
   vm.runInContext(BLOCK, ctx);        // the real protection block
 
   const fire = (bag, type, ev) => {
@@ -131,7 +146,7 @@ function makeEnv() {
   };
 
   return {
-    win, ctx, bodyClasses,
+    win, ctx, bodyClasses, drawn,
     signIn(email, impersonating) {
       ctx.__currentUser = email ? { email } : null;
       win._impersonatedProfile = impersonating ? { email: impersonating } : null;
@@ -214,19 +229,10 @@ for (const [label, email, impersonating, mayCopy] of PEOPLE) {
   check('4d an admin is watermarked too: copying does not mean unbranded', e.watermarked());
 }
 {
-  // The email the watermark is drawn with is the EFFECTIVE one. Asserted via
-  // the canvas text, captured through a spying stub.
+  // The email the watermark is drawn with is the EFFECTIVE one, asserted via
+  // the strings the canvas was actually asked to draw.
   const e = makeEnv();
-  const drawn = [];
-  e.ctx.document.createElement = () => ({
-    width: 0, height: 0, style: {},
-    getContext: () => ({
-      clearRect() {}, save() {}, translate() {}, rotate() {},
-      fillText: t => drawn.push(t), restore() {},
-      set font(v) {}, set fillStyle(v) {}, set textAlign(v) {}, set textBaseline(v) {}
-    }),
-    toDataURL: () => 'data:image/png;base64,AA'
-  });
+  const drawn = e.drawn;
   e.signIn('eli@shosmed.com', 'student@example.com');
   check('4e while impersonating, the watermark names the TARGET',
     drawn.length > 0 && drawn.every(t => t.includes('student@example.com')), drawn);

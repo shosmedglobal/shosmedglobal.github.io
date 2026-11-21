@@ -974,6 +974,10 @@
       list.appendChild(li);
     });
 
+    // The stem and the four choices are rebuilt here on every question, so
+    // the watermark is re-applied here rather than once at start-up.
+    examWatermarkTargets();
+
     $('prevQBtn').disabled = state.currentIndex === 0;
     $('nextQBtn').disabled = state.currentIndex === examQuestions.length - 1;
   }
@@ -1190,6 +1194,41 @@
     catch (_) { return null; }
   }
   let _reviewingAsAdmin = false;   // set true when we successfully hydrate a target's attempt
+
+  /* ---- Personal watermark -------------------------------------------
+   * The mock exams carried no watermark at all: of the three product
+   * surfaces this was the unmarked one. The tile comes from
+   * content-watermark.js, shared with the QBank and the chapters.
+   *
+   * The email is the one the paper is being shown FOR. While an admin
+   * reviews someone else's attempt the watermark names that user, not the
+   * admin, matching the dashboard and the copy policy. The target's address
+   * is resolved asynchronously, so the first paint may use the admin's and
+   * is redone once the lookup lands. */
+  let _watermarkEmail = '';
+
+  function examWatermarkTargets(root) {
+    if (!window.SHOSWatermark || !_watermarkEmail) return 0;
+    return window.SHOSWatermark.paintAll(root || document,
+      /* during the exam */
+      '#qText, #qOptionsList .q-option,' +
+      /* in the results review */
+      '.q-text-rev, .review-option, .review-explanation',
+      _watermarkEmail);
+  }
+
+  async function initExamWatermark() {
+    const user = firebase.auth().currentUser;
+    _watermarkEmail = (user && user.email) || '';
+    examWatermarkTargets();
+    const targetUid = viewAsUidFromUrl();
+    if (!targetUid) return;
+    try {
+      const snap = await firebase.firestore().collection('users').doc(targetUid).get();
+      const email = snap.exists && (snap.data() || {}).email;
+      if (email) { _watermarkEmail = email; examWatermarkTargets(); }
+    } catch (_) { /* keep the signed-in address rather than none */ }
+  }
 
   // Read the user's Firestore attempt for the active year. If found, mirror
   // it into local state so we can force the results view — critical for the
@@ -1419,6 +1458,9 @@
 
       reviewList.appendChild(block);
     });
+
+    // Every reviewed question, choice and explanation gets the watermark.
+    examWatermarkTargets(reviewList);
   }
 
   /* =======================================================================
@@ -1566,6 +1608,9 @@
       if (window.SHOSExamCopy) {
         window.SHOSExamCopy.apply({ isAdmin: isAdmin && !isViewingAnother });
       }
+      // Not awaited: the first paint uses the signed-in address and is
+      // redone if a viewAs lookup resolves a different one.
+      initExamWatermark();
 
       // 2) Load mock-exam data (config + questions for the active year).
       //    Errors here mean the year isn't released yet or the JSON was
@@ -1688,5 +1733,6 @@
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="exam-copy-guard.js?v=20261120b-mockresults"></script>
+  <script src="content-watermark.js?v=20261120-wm1"></script>
 </body>
 </html>

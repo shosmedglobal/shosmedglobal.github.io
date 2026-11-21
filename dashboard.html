@@ -4115,6 +4115,7 @@
   <!-- Copy guard for the study plan chapter reader. Must load before the
        inline script below, which calls SHOSExamCopy.apply(). -->
   <script src="exam-copy-guard.js?v=20261120-adminonly"></script>
+  <script src="content-watermark.js?v=20261120-wm1"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -9738,35 +9739,22 @@
         const contentEl = document.getElementById('spReaderContent');
         if (!contentEl) return;
 
-        // Use Canvas to generate watermark pattern (works with all characters)
-        const canvas = document.createElement('canvas');
-        canvas.width = 500;
-        canvas.height = 180;
-        const ctx = canvas.getContext('2d');
+        // The tile comes from content-watermark.js, shared with the QBank
+        // and the mock exams: one repeating pattern, dense enough that a
+        // screenshot cropped to a single paragraph still carries the email.
+        // It is a background image, so it adds no nodes and cannot disturb
+        // the chapter highlighter's text offsets.
+        const painted = !!(window.SHOSWatermark
+          && window.SHOSWatermark.paint(contentEl, email));
 
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw diagonal text
-        ctx.save();
-        ctx.translate(canvas.width / 2, canvas.height / 2);
-        ctx.rotate(-25 * Math.PI / 180);
-        ctx.font = '15px Inter, Arial, sans-serif';
-        ctx.fillStyle = 'rgba(120, 120, 140, 0.07)';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(email + '     ' + email, 0, 0);
-        ctx.restore();
-
-        // Convert to data URL and set as repeating background
-        const dataUrl = canvas.toDataURL('image/png');
-        contentEl.style.backgroundImage = 'url("' + dataUrl + '")';
-        contentEl.style.backgroundRepeat = 'repeat';
-        contentEl.style.backgroundSize = '500px 180px';
-
-        // Also set the CSS class for the ::before fallback
         contentEl.classList.add('watermarked');
-        contentEl.setAttribute('data-watermark', (email + '   ').repeat(200));
+        if (painted) {
+          // The ::before fallback would double up on the tile, so it is left
+          // empty unless the tile could not be produced at all.
+          contentEl.removeAttribute('data-watermark');
+        } else {
+          contentEl.setAttribute('data-watermark', (email + '   ').repeat(200));
+        }
         document.getElementById('spProtectionNotice').style.display = '';
       }
 
