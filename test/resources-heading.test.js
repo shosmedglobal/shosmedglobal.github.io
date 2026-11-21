@@ -40,7 +40,17 @@ check('1e the old subtitle is gone', !html.includes('id="resourcesDesc"'));
 check('2a first tab renamed', html.includes('data-tab="examGuides">Entrance Exam &amp; How to Apply<'));
 check('2b the vaguer old label is gone', !html.includes('Entrance Exam &amp; Application<'));
 check('2c its panel really does hold the steps', view.includes('How to Apply</h3>'));
-check('2d and the exam section', view.includes('LF3 Entrance Exam</h3>'));
+// The exam's shape was a card of its own above the steps. It is now inside
+// step 4, which is where a reader meets the exam in the route.
+check('2d step 4 names the faculty',
+  view.includes('Take the exam of the Third Faculty of Medicine (LF3)'));
+check('2d2 the exam table moved into the steps',
+  view.includes('Biology (30 MCQ) + Chemistry (30 MCQ)'));
+check('2d3 the table sits inside step 4',
+  view.indexOf('Biology (30 MCQ)') > view.indexOf('Take the exam of the Third Faculty')
+  && view.indexOf('Biology (30 MCQ)') < view.indexOf('Send LF3 your documents'));
+check('2d4 no leftover exam card above the steps',
+  !view.includes('>LF3 Entrance Exam</h3>'));
 const steps = (view.match(/>[1-7]<\/span>\n\s+(Register|Apply|Pay|Take|Send|Before|Enroll)/g) || []);
 check('2e seven numbered steps are present', steps.length === 7);
 
