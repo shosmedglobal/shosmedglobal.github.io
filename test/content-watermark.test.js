@@ -361,6 +361,19 @@ for (const page of ['qbank.html', 'practice-exam.html', 'dashboard.html']) {
   check('10 ' + page + ' loads it synchronously', at !== -1 && !/\basync\b/.test(tag), tag);
 }
 
+/* The three pages must agree on the cache-busting version, and it has to
+   move whenever the module does. A stale ?v= is not a cosmetic slip: the
+   browser keeps serving the old module from cache while the new file sits
+   on the server, which is exactly how the first deploy of this redesign
+   appeared not to have shipped. */
+const wmVersions = ['qbank.html', 'practice-exam.html', 'dashboard.html'].map(f => {
+  const m = /content-watermark\.js\?v=([^"']+)/.exec(
+    fs.readFileSync(path.join(ROOT, f), 'utf8'));
+  return m && m[1];
+});
+check('10j every page asks for the same version of the module',
+  wmVersions.every(Boolean) && new Set(wmVersions).size === 1, wmVersions);
+
 const QBJS = fs.readFileSync(path.join(ROOT, 'qbank.js'), 'utf8');
 const EXAM = fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8');
 const QBHTML = fs.readFileSync(path.join(ROOT, 'qbank.html'), 'utf8');
