@@ -119,11 +119,12 @@ const EMAIL = 'student@example.com';
   const guarantee = e.api.guaranteedCropHeight();
   check('3a the guarantee is the line spacing plus one line height',
     guarantee === CFG.PITCH_Y + CFG.FONT_PX, guarantee);
-  // The smallest thing the requirement names is a single answer choice.
-  // Measured on the live QBank and mock exam, those rows are >= 44px.
-  check('3b a 44px answer row is guaranteed to contain a whole email',
-    guarantee <= 44, guarantee);
-  check('3c so is a 60px question stem or chapter paragraph', guarantee <= 60);
+  // Heights measured on the live site, not assumed: a one-line question
+  // stem is 31px and an answer choice is 68px. The stem is the smallest
+  // thing worth cropping, so it sets the bar.
+  check('3b a 31px one-line question stem is guaranteed a whole email',
+    guarantee <= 31, guarantee);
+  check('3c so is a 68px answer choice', guarantee <= 68);
   // And the watermark must stay faint enough to read through.
   const alpha = Number(/rgba\([^)]*,\s*([\d.]+)\s*\)/.exec(CFG.COLOR)[1]);
   check('3d it is faint enough not to compete with the content', alpha <= 0.2, alpha);

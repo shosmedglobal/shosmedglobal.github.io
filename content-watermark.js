@@ -37,10 +37,10 @@
  * the vertical distance between consecutive lines is PITCH_Y, not 2*PITCH_Y.
  * Any crop at least (PITCH_Y + line height) tall therefore contains at least
  * one COMPLETE line, wherever the crop happens to fall. With the values
- * below that threshold is about 39px: comfortably inside one answer row, a
- * question stem, an explanation, or any chapter paragraph of two lines or
- * more. A single short line of text is smaller than the guarantee and may
- * catch only part of an email.
+ * below that threshold is 31px, which is the height of a ONE-LINE question
+ * stem as the live QBank renders it, and the smallest thing worth cropping.
+ * An answer choice (68px), an explanation and a chapter paragraph are all
+ * comfortably above it.
  * ======================================================================== */
 (function (global) {
   'use strict';
@@ -52,9 +52,12 @@
     /* Dark enough to read when a crop is blown up, light enough to sit under
        body text without competing with it. Tuned against real screenshots at
        desktop and phone widths, not picked from the air. */
-    COLOR: 'rgba(15, 23, 42, 0.13)',
+    COLOR: 'rgba(15, 23, 42, 0.115)',
     GAP_X: 58,      /* horizontal space between repeats */
-    PITCH_Y: 28     /* vertical distance between consecutive lines */
+    /* 20px, so the guarantee below lands at 31px. Measured against the live
+       QBank: a one-line question stem is 31px tall and a 28px pitch caught a
+       whole email only depending on where the line happened to fall. */
+    PITCH_Y: 20     /* vertical distance between consecutive lines */
   };
 
   var cache = Object.create(null);
