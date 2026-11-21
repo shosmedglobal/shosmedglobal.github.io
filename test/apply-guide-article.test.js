@@ -37,16 +37,12 @@ const visible = html
 // ---------------------------------------------------------------------------
 // 1. The facts, against the faculty's own pages.
 // ---------------------------------------------------------------------------
+// Deliberately no calendar dates: section 8 asserts their absence. These
+// are the facts that hold across cycles.
 const FACTS = [
-  ['1 November 2026', 'applications open'],
-  ['30 April 2027', 'application and fee deadline'],
   ['CZK 2,000', 'faculty admission fee'],
-  ['28 May 2027', 'the faculty sitting in Prague'],
-  ['1 July 2027', 'the alternative Prague date'],
   ['CZK 440,000', 'annual tuition'],
   ['CZK 1,050', 'school-leaving certificate recognition fee'],
-  ['30 October', 'tuition due date and last enrolment date'],
-  ['1 October 2027', 'studies begin'],
   ['60 multiple-choice questions', 'exam length'],
   ['30 Biology and 30 Chemistry', 'exam split'],
   ['10-minute interview', 'oral part'],
@@ -88,14 +84,24 @@ check('2c names both vaccines',
 //    from ours, and must not think the $199 covers the CZK 2,000.
 // ---------------------------------------------------------------------------
 check('3a both routes are explained', visible.includes('Direct to the faculty')
-  && visible.includes('Through a listed representative'));
-check('3b the SHOS sitting fee is stated', visible.includes('$199'));
-check('3c the fee-handling charge is stated', visible.includes('$149'));
-check('3d it says the $199 is not the faculty fee',
-  visible.includes('not</em>') || /is .{0,8}not.{0,8} the faculty/i.test(visible));
-check('3e it says who receives the SHOS fee', visible.includes('paid to SHOS Med'));
-check('3f it says the faculty fee is still owed',
-  visible.includes('you still owe Charles University'));
+  && visible.includes('Through a representative'));
+check('3b no SHOS price is quoted, so none can go stale',
+  !/\$199|\$149|\$99|\$69/.test(visible));
+check('3b2 the only dollar figure is the tuition conversion',
+  (visible.match(/\$[\d,]+/g) || []).every(x => x === '$20,000'));
+check('3c the registration link points at the Store, through sign-up',
+  html.includes('href="../signup.html?redirect=store"'));
+check('3d the faculty fee is named as separate',
+  visible.includes("The faculty's CZK 2,000 fee is separate"));
+check('3e both ways to pay the faculty fee are offered',
+  visible.includes('You can pay Charles University directly')
+  && visible.includes('we can take care of it for you'));
+check('3f the agreed sentence about the listing is used verbatim',
+  visible.includes('LF3 lists SHOS Med as a representative for Canada and the United States'));
+check('3f2 the other agency is acknowledged',
+  visible.includes('another agency covering both countries'));
+check('3f3 both routes are open to US and Canadian applicants',
+  visible.includes('both routes are open to you'));
 check('3g the waiver criteria are linked',
   html.includes('https://www.lf3.cuni.cz/3LFEN-818.html#5'));
 
@@ -129,20 +135,29 @@ check('4h cost guide linked', html.includes('charles-university-tuition-2026-cos
 // ---------------------------------------------------------------------------
 check('5a qbank link uses the agreed wording',
   visible.includes('Try 40 free LF3 biology and chemistry questions'));
-check('5b mock link uses the agreed wording',
-  visible.includes('Ready to test your pacing?')
-  && visible.includes('Take a full-length SHOS LF3 mock exam'));
+check('5b the mock is named as a SHOS mock, not a past paper',
+  visible.includes('Our full-length SHOS LF3 mock exams'));
+check('5b2 the closing copy is the agreed wording',
+  visible.includes('Start with 40 free LF3 practice questions: 20 biology and 20 chemistry, each with an explanation.')
+  && visible.includes("When you're ready to practice pacing, take a free 60-question SHOS mock exam under a two-hour timer."));
+check('5b3 the primary action is the questions, the mock is secondary',
+  /class="btn btn-primary"[^>]*data-shos-cta="qbank-footer">Try 40 free questions</.test(html)
+  && /data-shos-cta="mock-footer"[^>]*>Take the free timed mock</.test(html));
 check('5c qbank link points at the qbank', html.includes('href="../qbank.html?v=20260423a"'));
 check('5d mock link points at the mock', html.includes('href="../practice-exam.html"'));
 check('5e free allowance matches the product (40, 20+20)',
   visible.includes('40 free') && visible.includes('20 of each'));
-check('5f full access price and span', visible.includes('$99 for six months'));
+check('5f full access is described without a price that will drift',
+  visible.includes('Full access opens the rest of the bank'));
 check('5g mock length and timing match the product',
-  visible.includes('60 questions in 120 minutes'));
-check('5h free mock year matches config',
-  visible.includes('The 2021/2022 mock is free'));
-check('5i paid mock years match config',
-  visible.includes('2022/2023 through 2024/2025'));
+  visible.includes('60 questions against a two-hour timer'));
+// Cycle labels were removed from the copy on purpose: they date the page
+// and have to be re-edited every year. The article says "the first one is
+// free", which stays true whichever cycle freeYear points at.
+check('5h the free mock is described without a cycle label',
+  visible.includes('The first one is free with an account'));
+check('5i no mock cycle labels in the copy',
+  !/20\d\d\/20\d\d mock/.test(visible));
 
 const cfg = JSON.parse(read('data/mock-exams/config.json'));
 check('5j the free mock really is 2021/2022',
@@ -242,7 +257,16 @@ const howto = ld['@graph'].find(n => n['@type'] === 'HowTo');
 check('8g HowTo has the full route', howto.step.length >= 6);
 check('8h no em dashes in visible copy', !visible.includes('—'));
 check('8i the verification date is shown', visible.includes('21 November 2026'));
-check('8j the admissions cycle is shown', visible.includes('2027/2028 entry'));
+// The page carries no calendar dates or cycle labels: it is written to stay
+// correct across admission cycles, and the faculty's own pages are linked
+// for the dates that move. A year creeping back in is the regression.
+const YEARY = visible.replace('21 November 2026', '');
+check('8j no admissions-cycle label in the copy', !/20\d\d\/20\d\d entry/.test(YEARY));
+check('8k no calendar dates in the copy',
+  !/\d{1,2} (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d/.test(YEARY));
+check('8l no bare year in the title', !/<title>[^<]*20\d\d/.test(html));
+check('8m the dates live behind the faculty link instead',
+  visible.includes('The faculty publishes the current dates here'));
 
 // ---------------------------------------------------------------------------
 console.log('apply-guide-article: ' + passed + ' passed, ' + failures.length + ' failed');

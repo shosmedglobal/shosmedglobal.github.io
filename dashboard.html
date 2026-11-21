@@ -378,9 +378,9 @@
               </a>
               <a href="#" onclick="switchView('contact'); document.getElementById('contactCategory').value='booking'; document.getElementById('contactCategory').dispatchEvent(new Event('change')); document.getElementById('contactService').value='free-consultation'; document.getElementById('contactService').dispatchEvent(new Event('change')); return false;" class="student-overview-card student-overview-cta-card">
                 <div class="student-overview-icon">📞</div>
-                <h3>Free Consultation</h3>
-                <p>Book a free call to build your residency application plan.</p>
-                <span class="student-overview-cta">Book Free Call →</span>
+                <h3>Get in Touch</h3>
+                <p>Message us to build your residency application plan.</p>
+                <span class="student-overview-cta">Contact Us →</span>
               </a>
             </div>
           </div>
@@ -1285,25 +1285,25 @@
           <div id="storeStudentServices" style="display:none;">
 
             <h3 class="view-section-title">Residency Application Plans</h3>
-            <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start with a free call. Take a Strategy Session for a clear plan. Add specific services as your cycle progresses.</p>
+            <p style="color:var(--gray-500); margin:0 0 20px; font-size:0.92rem;">Start by getting in touch. Take a Strategy Session for a clear plan. Add specific services as your cycle progresses.</p>
 
             <!-- 3-step pricing grid (matches students.html) -->
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:20px; max-width:1180px; margin:0 0 32px 0; align-items:start;">
 
-              <!-- STEP 1: Free Strategy Call -->
+              <!-- STEP 1: Free First Consult -->
               <div class="pricing-card">
                 <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px;">Step 1 of 3</div>
                 <div class="pricing-header-card">
-                  <h3>Free Strategy Call</h3>
+                  <h3>Free First Consult</h3>
                   <div class="price">Free</div>
                   <p class="price-sub">Start here if you're not sure where you stand.</p>
                 </div>
                 <ul class="pricing-features">
-                  <li class="included">1-on-1 call with a US-matched physician</li>
+                  <li class="included">1-on-1 with a US-matched physician</li>
                   <li class="included">Honest read on whether your timeline is realistic</li>
                   <li class="included">Concrete next step you can take this week</li>
                 </ul>
-                <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Book a Free Strategy Call</a>
+                <a href="#" onclick="switchView('contact'); var c=document.getElementById('contactCategory'); if(c){c.value='booking'; c.dispatchEvent(new Event('change'));} return false;" class="btn btn-secondary">Contact Us</a>
               </div>
 
               <!-- STEP 2: Strategy Session $99 (featured) -->
@@ -1487,7 +1487,7 @@
                   <select id="contactService" class="form-select">
                     <option value="">Select a service...</option>
                     <optgroup label="Free">
-                      <option value="free-consultation">Free Strategy Call (Free)</option>
+                      <option value="free-consultation">Free First Consult (Free)</option>
                     </optgroup>
                     <optgroup label="Med School Application">
                       <option value="full-qbank">Full QBank Access &middot; $99</option>
@@ -8536,8 +8536,8 @@
       });
       if (noteEl) {
         noteEl.textContent = adminView === 'overview'
-          ? 'All bookings. The Free Strategy Call is offered to both audiences, so it is marked Shared and appears only here.'
-          : 'Bookings for ' + ADMIN_VIEW_META[adminView].name + ' services. Shared services (Free Strategy Call) appear in Overview.';
+          ? 'All bookings. The Free First Consult is offered to both audiences, so it is marked Shared and appears only here.'
+          : 'Bookings for ' + ADMIN_VIEW_META[adminView].name + ' services. Shared services (Free First Consult) appear in Overview.';
       }
       listEl.innerHTML = '';
       if (bookings.length === 0) {
