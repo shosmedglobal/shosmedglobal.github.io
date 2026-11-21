@@ -9599,6 +9599,8 @@
       e.stopPropagation();
       document.getElementById('spHlDropdown').classList.toggle('open');
     });
+    // Opening the menu must not cost the selection the menu acts on.
+    document.getElementById('spHlBtn').addEventListener('mousedown', e => e.preventDefault());
 
     // Close highlight dropdown on outside click
     document.addEventListener('click', (e) => {
@@ -9610,6 +9612,12 @@
 
     // Highlight color swatches
     document.querySelectorAll('.sp-hl-swatch').forEach(swatch => {
+      /* Keep the selection alive across the click. A mousedown on a plain
+         element collapses the document selection before the click lands,
+         and this handler colours whatever is selected. Admins no longer get
+         a highlight from the drag itself, so this IS their way to highlight:
+         without it they could not highlight at all. */
+      swatch.addEventListener('mousedown', e => e.preventDefault());
       swatch.addEventListener('click', () => {
         document.querySelectorAll('.sp-hl-swatch').forEach(s => s.classList.remove('selected'));
         swatch.classList.add('selected');
@@ -9619,7 +9627,9 @@
       });
     });
 
-    // Clear highlight button
+    // Clear highlight button. Same reason as the swatches: it acts on the
+    // current selection, so the mousedown must not collapse it first.
+    document.getElementById('spHlClear').addEventListener('mousedown', e => e.preventDefault());
     document.getElementById('spHlClear').addEventListener('click', () => {
       spClearSelectionHighlight();
     });

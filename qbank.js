@@ -1193,12 +1193,25 @@ function qbApplyHighlight(color) {
     const dx = Math.abs(e.clientX - qbMouseDownPos.x);
     const dy = Math.abs(e.clientY - qbMouseDownPos.y);
     if (dx < 5 && dy < 5) return;
+    // Same rule as the chapter reader: dragging is also how an admin selects
+    // text in order to copy it, and qbApplyHighlight() ends by clearing the
+    // selection. Highlighting the drag would leave Ctrl+C and right-click >
+    // Copy with nothing to take. Admins colour a selection deliberately,
+    // through the swatches. Nobody else can copy, so for everyone else drag
+    // to highlight is unchanged.
+    if (document.body.classList.contains('exam-copy-allowed')) return;
     qbApplyHighlight(qbHlColor);
   });
 })();
 
 // Color swatch click handlers
 document.querySelectorAll('.qbank-hl-swatch').forEach(swatch => {
+  /* Keep the selection alive across the click. A mousedown on a plain
+     element collapses the document selection before the click lands,
+     and this handler colours whatever is selected. Admins no longer get
+     a highlight from the drag itself, so this IS their way to highlight:
+     without it they could not highlight at all. */
+  swatch.addEventListener('mousedown', e => e.preventDefault());
   swatch.addEventListener('click', () => {
     document.querySelectorAll('.qbank-hl-swatch').forEach(s => s.classList.remove('selected'));
     swatch.classList.add('selected');

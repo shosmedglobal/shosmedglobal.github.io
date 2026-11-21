@@ -293,6 +293,66 @@ check('7a .qbank-section is a real container in qbank.html',
 check('7b .exam-app is a real container in practice-exam.html',
   /class="exam-app"/.test(fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8')));
 
+/* ==========================================================================
+ * The QBank highlighter, which had the same defect as the chapter reader.
+ *
+ * qbank.js turns any deliberate drag inside an explanation, a review item or
+ * a question stem into a highlight, and qbApplyHighlight() ends by clearing
+ * the selection. For the one role allowed to copy, that meant the drag that
+ * selected a stem or an explanation destroyed its own selection before
+ * Ctrl+C could reach it.
+ * ======================================================================= */
+const QBJS = fs.readFileSync(path.join(ROOT, 'qbank.js'), 'utf8');
+
+const iUp = QBJS.indexOf("document.addEventListener('mouseup', (e) => {");
+check('9a the QBank still highlights a drag', iUp > 0);
+let d9 = 0, iEnd9 = -1;
+for (let i = QBJS.indexOf('{', iUp + 40); i < QBJS.length; i++) {
+  if (QBJS[i] === '{') d9++;
+  else if (QBJS[i] === '}') { d9--; if (d9 === 0) { iEnd9 = i + 1; break; } }
+}
+const QB_MOUSEUP = QBJS.slice(QBJS.indexOf('(e) => {', iUp), iEnd9);
+check('9b and its handler brace-matches', QB_MOUSEUP.length > 60, QB_MOUSEUP.length);
+
+function qbDrag(allowed) {
+  let highlighted = 0;
+  const ctx = {
+    qbJustRemovedHighlight: false,
+    qbMouseDownPos: { x: 100, y: 200 },
+    qbHlColor: 'yellow',
+    qbApplyHighlight: function () { highlighted++; },
+    document: {
+      body: { classList: { contains: c => c === 'exam-copy-allowed' && allowed } }
+    },
+    window: {
+      getSelection: () => ({
+        isCollapsed: false,
+        toString: () => 'An ideal gas with constant adiabatic index.'
+      })
+    }
+  };
+  ctx.global = ctx;
+  vm.createContext(ctx);
+  vm.runInContext(
+    'var h = ' + QB_MOUSEUP + ';\n'
+    + 'h({ clientX: 700, clientY: 203, target: { closest: () => null } });', ctx);
+  return highlighted;
+}
+
+check('9c an admin dragging in the QBank keeps the selection to copy',
+  qbDrag(true) === 0, qbDrag(true));
+check('9d everyone else still highlights by dragging',
+  qbDrag(false) === 1, qbDrag(false));
+check('9e and the QBank swatches keep the selection they colour',
+  /qbank-hl-swatch[\s\S]{0,600}?addEventListener\('mousedown', e => e\.preventDefault\(\)\)/.test(QBJS));
+check('9f while still applying it on click',
+  /qbank-hl-swatch[\s\S]{0,900}?qbApplyHighlight\(qbHlColor\)/.test(QBJS));
+
+/* The mock exams have no highlighter, so nothing there can eat a selection. */
+check('9g the mock exam has no drag-to-highlight to conflict with copying',
+  !/addEventListener\('mouseup'/.test(
+    fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8')));
+
 console.log(`exam-copy-guard: ${passed} passed, ${failures.length} failed`);
 if (failures.length) {
   console.log();

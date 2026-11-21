@@ -377,6 +377,20 @@ check('6j and still says "content protected" to everyone else',
 check('6k no em dash reached the reader notice',
   !/[—].{0,80}watermark applied/i.test(DASH));
 
+/* The admin's only remaining route to a highlight is the Color menu, and a
+   mousedown on a plain element collapses the document selection before the
+   click lands. Without preventDefault on these three the menu would act on
+   nothing, which would leave admins unable to highlight at all. */
+const hlBlock = (/spHlBtn[\s\S]*?spHlClear[\s\S]{0,400}?\}\);/.exec(DASH) || [''])[0];
+check('6l opening the colour menu keeps the selection',
+  /spHlBtn'\)\.addEventListener\('mousedown', e => e\.preventDefault\(\)\)/.test(DASH));
+check('6m choosing a colour keeps the selection it is about to use',
+  /sp-hl-swatch[\s\S]{0,600}?addEventListener\('mousedown', e => e\.preventDefault\(\)\)/.test(DASH));
+check('6n and so does clearing one',
+  /spHlClear'\)\.addEventListener\('mousedown', e => e\.preventDefault\(\)\)/.test(DASH));
+check('6o the swatch still applies the colour on click',
+  /sp-hl-swatch[\s\S]{0,900}?spApplyHighlight\(spReaderState\.hlColor\)/.test(DASH));
+
 console.log('study-reader-copy: ' + passed + ' passed, ' + failures.length + ' failed');
 if (failures.length) {
   console.log();
