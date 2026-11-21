@@ -170,7 +170,7 @@ const TUITION_COPY = {
     "tuition is 440,000 CZK/year, which is about $20,000. Over 6 years that's around $120,000 in tuition.",
   ],
   'dashboard.html': [
-    'Approximately 440,000 CZK / year (~$20,000 USD)',
+    'about <strong>440,000 CZK a year</strong> (roughly $20,000 USD)',
     '<strong>~440,000 CZK (~$20,000 USD)</strong>',
   ],
   'blog/charles-university-tuition-2026-cost-breakdown.html': [
