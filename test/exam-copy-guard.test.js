@@ -218,8 +218,11 @@ for (const page of ['qbank.html', 'practice-exam.html', 'dashboard.html']) {
   const scriptAt = src.search(/<script\b[^>]*src="exam-copy-guard\.js/);
   check(`6a ${page} loads the stylesheet`, linkAt !== -1);
   check(`6b ${page} loads the script`, scriptAt !== -1);
-  check(`6c ${page} applies the admin flag and nothing else`,
-    /SHOSExamCopy\.apply\(\{ isAdmin \}\)/.test(src));
+  // The argument may be a bare `{ isAdmin }` or a computed `{ isAdmin: ... }`
+  // (practice-exam lowers it while viewing another user). What is fixed is
+  // that isAdmin is the flag being passed -- 6f pins what must NOT be.
+  check(`6c ${page} applies the admin flag`,
+    /SHOSExamCopy\.apply\(\{\s*isAdmin\b/.test(src));
   // The whole point of the change: no call site may hand the guard a
   // reviewer flag any more, however the page computes its roles.
   check(`6f ${page} never passes isReviewer to the guard`,
@@ -241,6 +244,46 @@ for (const page of ['qbank.html', 'practice-exam.html', 'dashboard.html']) {
   check(`6g ${page} really calls apply() in code, not just a comment`, useAt !== -1);
   check(`6e ${page} does not call apply() at parse time above the tag`,
     useAt > scriptAt || /DOMContentLoaded/.test(src), [scriptAt, useAt]);
+}
+
+// --------------------------------- 6h. practice-exam's early returns
+// A completed attempt short-circuits straight to the results view and
+// returns. The copy policy has to be decided BEFORE that, or it never runs
+// for anyone who has submitted -- which is exactly how this shipped: an
+// admin could not copy the mock exam they had just taken, the one view an
+// exam most needs to be copyable from. Ordering is the whole of the bug, so
+// ordering is what is pinned.
+{
+  const src = fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8');
+  const code = src.replace(/<!--[\s\S]*?-->/g, m => ' '.repeat(m.length));
+  // Scope to the auth handler. renderResults() and showView('results') are
+  // also called from the submit path EARLIER in the file, so comparing
+  // offsets across the whole document compares the wrong call sites.
+  const hStart = code.indexOf('onAuthStateChanged(async (user) =>');
+  let d = 0, hEnd = -1;
+  for (let i = code.indexOf('{', hStart); i < code.length; i++) {
+    if (code[i] === '{') d++;
+    else if (code[i] === '}') { d--; if (d === 0) { hEnd = i; break; } }
+  }
+  check('6h the init handler was located', hStart > 0 && hEnd > hStart);
+  const init = code.slice(hStart, hEnd);
+  const applyAt = init.indexOf('SHOSExamCopy.apply');
+  check('6i the copy policy is decided inside the init handler', applyAt !== -1);
+  check('6j before the results short-circuit',
+    applyAt !== -1 && applyAt < init.indexOf("showView('results')"),
+    [applyAt, init.indexOf("showView('results')")]);
+  check('6k before the review is rendered',
+    applyAt !== -1 && applyAt < init.indexOf('renderResults('),
+    [applyAt, init.indexOf('renderResults(')]);
+  check('6m before the paywall decides who may take the exam',
+    applyAt !== -1 && applyAt < init.indexOf('mockExamConfig.freeYear'));
+  check('6n it is applied exactly once, so no later path can contradict it',
+    code.split('SHOSExamCopy.apply').length - 1 === 1,
+    code.split('SHOSExamCopy.apply').length - 1);
+  // Viewing another user's attempt follows that user, as impersonation does
+  // everywhere else.
+  check('6o viewing another user\'s attempt drops the admin\'s copy rights',
+    /apply\(\{\s*isAdmin:\s*isAdmin\s*&&\s*!isViewingAnother\s*\}\)/.test(code));
 }
 
 // The exam roots the handler checks must be the containers the pages use.
