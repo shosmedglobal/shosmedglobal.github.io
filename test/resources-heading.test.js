@@ -57,7 +57,7 @@ check('2d2 the exam table moved into the steps',
   view.includes('Biology (30 MCQ) + Chemistry (30 MCQ)'));
 check('2d3 the table sits inside step 4',
   view.indexOf('Biology (30 MCQ)') > view.indexOf('Take the exam of the Third Faculty')
-  && view.indexOf('Biology (30 MCQ)') < view.indexOf('Send LF3 your documents'));
+  && view.indexOf('Biology (30 MCQ)') < view.indexOf('Send your documents to the Third Faculty'));
 check('2d4 no leftover exam card above the steps',
   !view.includes('>LF3 Entrance Exam</h3>'));
 const steps = (view.match(/>[1-7]<\/span>\n\s+(Register|Apply|Pay|Take|Send|Before|Enroll)/g) || []);
@@ -110,6 +110,28 @@ for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
 }
 check('5a inline scripts parse', parseError === null);
 check('5b both script blocks checked', blocks === 2);
+
+// ---------------------------------------------------------------------------
+// 6. Headings and titles in this tab name the faculty in full. Body text
+//    keeps LF3, which by then the reader has been told the meaning of.
+// ---------------------------------------------------------------------------
+const TITLES = [
+  'You need a high school diploma to start at the Third Faculty of Medicine (LF3).',
+  'Pay the Third Faculty of Medicine (LF3) application fee',
+  'Take the exam of the Third Faculty of Medicine (LF3)',
+  'Send your documents to the Third Faculty of Medicine (LF3)',
+  '<h4>Third Faculty of Medicine (LF3) <span class="faculty-badge">Prague</span></h4>',
+  '>Third Faculty of Medicine (LF3) Tuition</h3>',
+];
+for (const t of TITLES) check('6a title spelled out: ' + t.slice(0, 48), view.includes(t));
+check('6b no title says LF3 on its own',
+  !view.includes('Pay the LF3 application fee')
+  && !view.includes('Send LF3 your documents')
+  && !view.includes('>LF3 Tuition</h3>'));
+check('6c the card title is not doubled',
+  !view.includes('Third Faculty of Medicine (LF3) - Third Faculty of Medicine'));
+check('6d body text still uses the short form',
+  view.includes('both written to the LF3 exam scope'));
 
 // ---------------------------------------------------------------------------
 console.log('resources-heading: ' + passed + ' passed, ' + failures.length + ' failed');
