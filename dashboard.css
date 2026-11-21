@@ -1233,6 +1233,26 @@
   padding: 16px 20px;
 }
 
+/* The exam card lives inside step 4 of How to Apply. It lines up with the
+   step heading's text rather than the card edge, and it is only as wide as
+   what it holds: a full-width box around one short line reads as a table
+   with its data missing. The other faculty cards, which are the whole
+   content of their panel, keep the full width. */
+.step-faculty-card {
+  margin-left: 32px;
+  margin-bottom: 0;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+}
+
+@media (max-width: 768px) {
+  .step-faculty-card {
+    margin-left: 0;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
 .faculty-detail-row {
   display: flex;
   padding: 8px 0;

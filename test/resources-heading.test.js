@@ -39,7 +39,16 @@ check('1e the old subtitle is gone', !html.includes('id="resourcesDesc"'));
 // ---------------------------------------------------------------------------
 check('2a first tab renamed', html.includes('data-tab="examGuides">Entrance Exam &amp; How to Apply<'));
 check('2b the vaguer old label is gone', !html.includes('Entrance Exam &amp; Application<'));
-check('2c its panel really does hold the steps', view.includes('How to Apply</h3>'));
+check('2c the card does not repeat the view heading',
+  !view.includes('>How to Apply</h3>'));
+check('2c2 its panel really does hold the route',
+  view.includes('Register for the entrance exam')
+  && view.includes('Enroll and start'));
+check('2c3 the eligibility callout sits above the card, under the tabs',
+  view.indexOf('You need a high school diploma to start at LF3.') <
+  view.indexOf('class="dash-card"'));
+check('2c4 the prep sentence comes before the exam table',
+  view.indexOf('Prepare with the') < view.indexOf('Biology (30 MCQ)'));
 // The exam's shape was a card of its own above the steps. It is now inside
 // step 4, which is where a reader meets the exam in the route.
 check('2d step 4 names the faculty',
