@@ -912,7 +912,7 @@ function showExplanation(q, isCorrect) {
   box.style.display = 'block';
 
   // The explanation has just changed the card's height, which is what
-  // decides between one mark and one per screenful, so re-mark the card.
+  // decides how many watermarks it carries, so re-mark the card.
   qbWatermarkLiveCard();
 
   // Restore saved highlights for this question
@@ -942,10 +942,9 @@ function applyQBankWatermark(container) {
 }
 
 /* One area per question, not one mark per element. The card holds the stem,
-   the answer choices and the explanation, and takes a single diagonal email;
-   once the explanation makes it taller than a screenful the shared module
-   repeats that mark per screen on its own. Each review item is the same
-   thing for a finished quiz. */
+   the answer choices and the explanation, and the shared module spaces the
+   marks down it on its own, from its measured height. Each review item is
+   the same thing for a finished quiz. */
 const QB_LIVE_TARGETS = '.quiz-card';
 const QB_REVIEW_TARGETS = '.review-item';
 
@@ -1814,7 +1813,7 @@ function showReview() {
       wrapTablesForResponsive(expEl);
       restoreHighlights(q.id, expEl);
       // Mark the whole review item, now that its explanation has set the
-      // height that decides one mark against one per screenful.
+      // height the spacing is worked out from.
       qbWatermarkReview(item);
     }
   });

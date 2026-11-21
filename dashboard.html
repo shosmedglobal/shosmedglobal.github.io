@@ -4115,7 +4115,7 @@
   <!-- Copy guard for the study plan chapter reader. Must load before the
        inline script below, which calls SHOSExamCopy.apply(). -->
   <script src="exam-copy-guard.js?v=20261120-adminonly"></script>
-  <script src="content-watermark.js?v=20261120-wm4"></script>
+  <script src="content-watermark.js?v=20261120-wm5"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -9804,16 +9804,10 @@
         const email = window.spEffectiveEmail().toLowerCase();
         const isAdmin = SP_ADMIN_EMAILS.includes(email);
         if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin });
-        // Say which of the two behaviours is in force, because a drag means
-        // different things under each: for an admin it selects text (so it
-        // can be copied) and a colour from the Color menu highlights it; for
-        // everyone else a drag highlights immediately and copying is blocked.
-        const notice = document.getElementById('spProtectionNotice');
-        if (notice) {
-          notice.textContent = isAdmin
-            ? 'Personal watermark applied. Copying is enabled for admins: drag to select, then pick a colour to highlight.'
-            : 'Content protected. Personal watermark applied.';
-        }
+        // The reader deliberately says the same thing to everyone. An admin
+        // notice would advertise that an account type exists which can lift
+        // the text out, which is worth more to someone looking for a way in
+        // than it is to the one admin, who already knows.
       };
 
       firebase.auth().onAuthStateChanged(user => {

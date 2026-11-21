@@ -9,10 +9,11 @@
  * did. It also made the pages hard to read, and that cost is not one the
  * watermark is allowed to impose. The rules now are:
  *
- *   1. ONE area, ONE mark. An area is a question card, a review block or a
+ *   1. The AREA is what gets marked: a question card, a review block or a
  *      chapter. Nothing is painted per answer choice.
- *   2. The mark repeats only when the area is taller than a screenful, and
- *      then roughly once per screenful.
+ *   2. The marks are spaced down the area at a pitch of just under half a
+ *      viewport, so a card carries two or three and a chapter a few per
+ *      screen. An area shorter than the pitch gets one centred mark.
  *   3. It is tilted 45 degrees, in light gray.
  *   4. It is an inert OVERLAY with no text in it. Opaque children (answer
  *      choices, explanation panes, callout boxes) would otherwise cut a
@@ -109,7 +110,7 @@ const CARD_W = 760;
 /* ------------------------------------------------- 1. one mark, tilted - */
 {
   const e = makeEnv();
-  const card = el(CARD_W, 320);
+  const card = el(CARD_W, 260);   // shorter than the pitch: one mark
   check('1a a question card is marked', e.api.paint(card, EMAIL) === true);
   check('1b exactly one overlay is added', card.children.length === 1, card.children.length);
 
@@ -135,33 +136,37 @@ const CARD_W = 760;
   check('1i re-painting does not stack overlays', card.children.length === 1, card.children.length);
 }
 
-/* ----------------------------------- 2. once per screenful when long --- */
+/* --------------------------------- 2. how far apart the marks sit ------ */
 {
-  const e = makeEnv({ vh: 800 });                 // screenful = 720
-  const pitch = e.api.screenful();
-  check('2a a screenful tracks the viewport', pitch === 720, pitch);
+  const e = makeEnv({ vh: 800 });
+  const CFG = e.api.CFG;
+  const pitch = e.api.pitchY();
+  check('2a the pitch tracks the viewport',
+    pitch === Math.round(800 * CFG.PITCH_FRACTION), pitch);
+  check('2b and is well under one screen, so a card carries more than one mark',
+    CFG.PITCH_FRACTION < 0.5, CFG.PITCH_FRACTION);
 
-  const short = el(CARD_W, pitch);                 // exactly one screen
+  const short = el(CARD_W, pitch - 40);
   e.api.paint(short, EMAIL);
-  check('2b an area of one screenful gets a single mark',
+  check('2c an area shorter than the pitch gets one centred mark, rather '
+    + 'than a band that might miss it entirely',
     /background-repeat:no-repeat/.test(short.children[0].style.cssText));
 
-  const chapter = el(CARD_W, pitch * 6);           // a long chapter
-  e.api.paint(chapter, EMAIL);
-  const css = chapter.children[0].style.cssText;
-  check('2c a long area repeats instead', /background-repeat:repeat/.test(css), css);
-  const size = /background-size:(\d+)px (\d+)px/.exec(css);
-  check('2d and the vertical pitch is one screenful',
-    size && Number(size[2]) === pitch, size && size[2]);
-  check('2e so a six-screen chapter carries about six marks',
-    Math.round((pitch * 6) / Number(size[2])) === 6);
+  const card = el(CARD_W, 1300);                   // a typical answered card
+  e.api.paint(card, EMAIL);
+  const cardCss = card.children[0].style.cssText;
+  check('2d a question card repeats', /background-repeat:repeat/.test(cardCss), cardCss);
+  const size = /background-size:(\d+)px (\d+)px/.exec(cardCss);
+  check('2e at the pitch', size && Number(size[2]) === pitch, size && size[2]);
+  const marksOnCard = Math.floor(1300 / pitch);
+  check('2f so it carries two or three marks down its height, not one',
+    marksOnCard >= 2 && marksOnCard <= 4, marksOnCard);
 
-  // The boundary is forgiving, so an area a little over one screen is not
-  // suddenly marked twice.
-  const slightlyTall = el(CARD_W, Math.round(pitch * 1.1));
-  e.api.paint(slightlyTall, EMAIL);
-  check('2f an area just over one screenful still gets a single mark',
-    /background-repeat:no-repeat/.test(slightlyTall.children[0].style.cssText));
+  const chapter = el(CARD_W, 8000);
+  e.api.paint(chapter, EMAIL);
+  const perScreen = 800 / pitch;
+  check('2g and a chapter a few per screen, not a wall of them',
+    perScreen >= 1.5 && perScreen <= 3.5, perScreen);
 }
 
 /* ------------------------------------------- 3. readable, not shouty --- */
@@ -175,8 +180,9 @@ const CARD_W = 760;
     const [r, g, b] = /rgba\((\d+),\s*(\d+),\s*(\d+)/.exec(CFG.COLOR).slice(1).map(Number);
     return Math.max(r, g, b) - Math.min(r, g, b) <= 45;
   })(), CFG.COLOR);
-  check('3d the type is big enough to read when looked for', CFG.FONT_PX >= 18, CFG.FONT_PX);
-  check('3e the tilt is 45 degrees', Math.abs(CFG.ANGLE_DEG) === 45, CFG.ANGLE_DEG);
+  check('3d the type is small', CFG.FONT_PX <= 18, CFG.FONT_PX);
+  check('3e but still big enough to read when looked for', CFG.FONT_PX >= 13, CFG.FONT_PX);
+  check('3f the tilt is 45 degrees', Math.abs(CFG.ANGLE_DEG) === 45, CFG.ANGLE_DEG);
 }
 
 /* -------------------------------------- 4. an inert, text-free layer --- */
@@ -237,7 +243,7 @@ const CARD_W = 760;
   const CFG = e.api.CFG;
 
   const phone = el(320, 300);
-  const p = e.api.plan(phone, 'a.very.long.address@university.example.edu');
+  const p = e.api.plan(phone, 'an.extremely.long.address@university-of-somewhere.example.edu');
   check('6a a long address in a phone column is shrunk, not cropped',
     p.font < CFG.FONT_PX && p.font >= CFG.MIN_FONT_PX, p);
   check('6b and its tile still fits the column', p.tw <= 320, p);
@@ -304,7 +310,7 @@ const CARD_W = 760;
    results review while the results view is still display:none, so every
    block measured zero and none of the 60 was marked. The old watermark was
    a per-element background and never measured anything, so this could not
-   happen to it; deciding one mark against one per screenful can. An area
+   happen to it; working the spacing out from the height can. An area
    that cannot be measured is remembered and retried once it has a size. */
 {
   const e = makeEnv();

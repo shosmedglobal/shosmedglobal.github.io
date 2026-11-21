@@ -7,21 +7,21 @@
  *   SHOSWatermark.paint(el, email)              one area
  *   SHOSWatermark.paintAll(root, sel, email)    every match under root
  *
- * ONE MARK PER AREA, NOT ONE PER ELEMENT
+ * MARKED BY AREA, NOT BY ELEMENT
  * The first version tiled a small horizontal email every 20px and painted it
  * onto each element in turn, including every answer choice, so that a crop of
  * any single line still carried an address. It did carry one. It also made
  * the page hard to read, which is the thing the watermark is not allowed to
  * cost. An area is now a whole question card, a whole review block, or a
- * chapter, and it gets ONE diagonal email:
+ * chapter, and the marks are spaced down it:
  *
- *   area no taller than a screenful  ->  a single mark, centred, no repeat
- *   taller than that                 ->  the same mark repeated once per
- *                                        screenful as the reader scrolls
+ *   area no taller than the pitch  ->  a single mark, centred, no repeat
+ *   taller than that               ->  the same mark every PITCH_Y down
  *
- * The switch is on measured height, so a question card with a short
- * explanation gets one mark and the same card with a long one gets a mark
- * per screen without the caller deciding anything.
+ * The pitch is just under half a viewport, so a question card carries two or
+ * three marks and a chapter a few per screen. The switch is on measured
+ * height, so a card with a short explanation gets one and the same card with
+ * a long one gets several, without the caller deciding anything.
  *
  * WHY AN OVERLAY ELEMENT AND NOT A BACKGROUND IMAGE
  * A background-image paints above its own element's background-color but
@@ -45,21 +45,24 @@
   'use strict';
 
   var CFG = {
-    FONT_PX: 22,        /* the size asked for: readable when looked for */
-    MIN_FONT_PX: 12,    /* floor, for a long address in a narrow column */
+    FONT_PX: 16,        /* small enough to read past, large enough to read */
+    MIN_FONT_PX: 10,    /* floor, for a long address in a narrow column */
     WEIGHT: 600,
     FAMILY: "Inter, 'Segoe UI', Arial, sans-serif",
     /* Light gray. Over white this lands around #e3e5e8: legible when you
        look for it, quiet enough to read straight through. */
     COLOR: 'rgba(100, 116, 139, 0.17)',
     ANGLE_DEG: -45,     /* a 45 degree tilt, rising to the right */
-    /* Horizontal pitch cap. Wide enough that a normal reading column of
-       900 to 1300px carries ONE mark per row, so with the vertical pitch
-       below that comes to about one mark per screenful. */
-    MAX_TILE_W: 1100,
-    MIN_PITCH_Y: 420,
-    MAX_PITCH_Y: 900,
-    PAD: 24             /* breathing room around the mark inside its tile */
+    /* Horizontal pitch cap. A normal reading column of 900 to 1300px
+       carries one or two marks per row at this width. */
+    MAX_TILE_W: 820,
+    /* Vertical pitch, as a fraction of the viewport, clamped. Just under
+       half a screen, so a question card gets two or three marks rather than
+       the single one it started with, and a chapter a few per screen. */
+    PITCH_FRACTION: 0.45,
+    MIN_PITCH_Y: 230,
+    MAX_PITCH_Y: 440,
+    PAD: 20             /* breathing room around the mark inside its tile */
   };
 
   var CLASS = 'shos-watermark';
@@ -68,10 +71,11 @@
 
   function radians() { return CFG.ANGLE_DEG * Math.PI / 180; }
 
-  /** One screenful, which is the vertical pitch when an area is scrolled. */
-  function screenful() {
+  /** The vertical distance between marks, derived from the viewport. */
+  function pitchY() {
     var vh = global.innerHeight || 700;
-    return Math.max(CFG.MIN_PITCH_Y, Math.min(CFG.MAX_PITCH_Y, Math.round(vh * 0.9)));
+    return Math.max(CFG.MIN_PITCH_Y,
+                    Math.min(CFG.MAX_PITCH_Y, Math.round(vh * CFG.PITCH_FRACTION)));
   }
 
   /* One measuring canvas for the life of the page. Text is measured on
@@ -132,10 +136,11 @@
     var h = el.clientHeight || el.offsetHeight || 0;
     if (w <= CFG.PAD) return null;                 /* nothing worth marking */
 
-    var pitch = screenful();
-    /* A little past one screenful before it starts repeating, so an area that
-       is merely a bit tall still reads as having one mark. */
-    var repeat = h > pitch * 1.15;
+    var pitch = pitchY();
+    /* Anything taller than the pitch repeats. Shorter areas, such as a
+       single answer row or a stub of a card, get one centred mark instead
+       of a band that might fall outside them entirely. */
+    var repeat = h > pitch;
 
     var avail = (repeat ? Math.min(w, CFG.MAX_TILE_W) : w) - CFG.PAD;
     var fontPx = CFG.FONT_PX;
@@ -215,7 +220,7 @@
      still display:none, and a collapsed panel behaves the same way. The old
      watermark was a background set per element, so it never had to measure
      anything and this did not arise; deciding one mark against one per
-     screenful does. Rather than make every call site wait for layout, an
+     how often to repeat does. Rather than make every call site wait, an
      area that cannot be measured is remembered and retried, so a caller that
      paints too early still ends up with its mark. */
   var pending = [];
@@ -274,8 +279,8 @@
     el.removeAttribute(ATTR);
   }
 
-  /* The tile depends on the area's width and on the height of a screenful,
-     so a resize or a phone rotation has to redraw it. */
+  /* The tile depends on the area's width and on the viewport height, so a
+     resize or a phone rotation has to redraw it. */
   function refresh() {
     if (!document.querySelectorAll) return 0;
     var marked = document.querySelectorAll('[' + ATTR + ']');
@@ -303,7 +308,7 @@
     refresh: refresh,
     tile: tile,
     plan: plan,
-    screenful: screenful,
+    pitchY: pitchY,
     CFG: CFG,
     CLASS: CLASS,
     ATTR: ATTR

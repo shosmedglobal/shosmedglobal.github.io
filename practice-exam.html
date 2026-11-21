@@ -1461,8 +1461,8 @@
 
     // One watermark per reviewed question. renderResults() runs while the
     // results view is still hidden, so this is deferred to the next frame:
-    // a hidden block measures zero, and the size is what decides between one
-    // mark and one per screenful. The module retries anyway, but painting
+    // a hidden block measures zero, and the size is what the spacing is
+    // worked out from. The module retries anyway, but painting
     // once, at the right moment, beats painting four times and failing three.
     const markReview = () => examWatermarkTargets(reviewList);
     if (window.requestAnimationFrame) window.requestAnimationFrame(markReview);
@@ -1739,6 +1739,6 @@
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="exam-copy-guard.js?v=20261120b-mockresults"></script>
-  <script src="content-watermark.js?v=20261120-wm4"></script>
+  <script src="content-watermark.js?v=20261120-wm5"></script>
 </body>
 </html>

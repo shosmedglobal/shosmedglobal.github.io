@@ -100,7 +100,7 @@ function makeEnv() {
     style: {},
     attrs: {},
     /* A chapter column, several screens long: the watermark measures the
-       area to decide between one mark and one per screenful. */
+       area to work out how far apart the marks go. */
     clientWidth: 760, clientHeight: 4200,
     offsetWidth: 760, offsetHeight: 4200,
     children: [], className: '',
@@ -266,7 +266,7 @@ for (const [label, email, impersonating, mayCopy] of PEOPLE) {
   check('4d it adds nothing the highlighter can see: the overlay holds no text '
     + 'and cannot be selected, so stored highlight offsets are untouched',
     /user-select:none/.test(e.overlayCss()) && /pointer-events:none/.test(e.overlayCss()));
-  check('4e a chapter is longer than a screenful, so the mark repeats',
+  check('4e a chapter is longer than the pitch, so the mark repeats',
     /background-repeat:repeat/.test(e.overlayCss()), e.overlayCss());
   check('4f and the protection notice is shown', e.notice() === '');
 }
@@ -274,14 +274,6 @@ for (const [label, email, impersonating, mayCopy] of PEOPLE) {
   const e = makeEnv();
   e.signIn('eli@shosmed.com', null);
   check('4g an admin is watermarked too: copying does not mean unbranded', e.watermarked());
-  check('4h and the notice says copying is on for admins',
-    /Copying is enabled for admins/.test(e.noticeText()), e.noticeText());
-}
-{
-  const e = makeEnv();
-  e.signIn('student@example.com', null);
-  check('4i a guarded reader is told the content is protected',
-    /Content protected/.test(e.noticeText()), e.noticeText());
 }
 {
   // The email the watermark is drawn with is the EFFECTIVE one, asserted via
@@ -423,13 +415,17 @@ check('6g including a guarded one', drag(false, false).highlighted === 0);
 check('6h a colour swatch still applies to the live selection',
   /sp-hl-swatch[\s\S]{0,600}?spApplyHighlight\(spReaderState\.hlColor\)/.test(DASH));
 
-/* And the reader says which of the two behaviours is in force. */
-check('6i the notice tells an admin that copying is on',
-  /notice\.textContent\s*=\s*isAdmin/.test(DASH)
-  && /Copying is enabled for admins/.test(DASH));
-check('6j and still says "content protected" to everyone else',
+/* The reader says the SAME thing to everyone. A notice naming an admin
+   exception would advertise that an account type exists which can lift the
+   text out, which is worth more to someone looking for a way in than it is
+   to the one admin, who already knows it. */
+check('6i the reader notice does not mention admins at all',
+  !/Copying is enabled for admins/.test(DASH));
+check('6j and is not branched on the role',
+  !/notice\.textContent\s*=\s*isAdmin/.test(DASH));
+check('6k it still says "content protected" to everyone',
   /Content protected\. Personal watermark applied\./.test(DASH));
-check('6k no em dash reached the reader notice',
+check('6l no em dash reached it',
   !/[—].{0,80}watermark applied/i.test(DASH));
 
 /* The admin's only remaining route to a highlight is the Color menu, and a
