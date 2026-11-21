@@ -662,21 +662,6 @@
 
         <!-- ========== VIEW: FREE RESOURCES ========== -->
         <div class="view" id="viewResources">
-          <div class="dashboard-header">
-            <h1>Free Resources</h1>
-            <p class="dashboard-sub" id="resourcesDesc">Everything you need to know about applying to LF3 at Charles University.</p>
-          </div>
-
-          <!-- Source-of-truth callout: applies to all resources below.
-               Sets the right expectation up front so applicants know to verify
-               specifics with LF3 / the Czech authorities. -->
-          <div style="margin:0 0 22px; padding:12px 16px; background:rgba(13,148,136,0.06); border:1px solid rgba(13,148,136,0.25); border-radius:8px; font-size:0.86rem; color:#475569; line-height:1.55; display:flex; gap:10px; align-items:flex-start;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <div>
-              <strong style="color:#0F172A;">Always verify with the official source.</strong> The figures and dates here reflect publicly available LF3 / Charles University data. Specific deadlines, tuition, fees, and document requirements can change between admission cycles. Confirm the current details on the official portal at <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color:var(--accent); font-weight:600;">is.cuni.cz</a>.
-            </div>
-          </div>
-
           <!-- Applicant Resource Tabs -->
           <div class="resource-tabs" id="applicantResourceTabs">
             <button class="resource-tab active" data-tab="examGuides">Entrance Exam &amp; Application</button>
@@ -1109,6 +1094,19 @@
                   <p style="padding: 12px 16px; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6;">Apply broadly - IMGs should target 50-100+ programs depending on specialty competitiveness. Focus on IMG-friendly programs (check NRMP data for IMG match rates). Apply on day one when ERAS opens - early applications get more interview invitations. Use Residency Explorer and FREIDA to research programs.</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Source-of-truth callout. It used to open the view, where it
+               greeted every reader with a disclaimer before they had seen
+               anything to verify. It now closes the view, which is where a
+               reader is when the question "is this still current?" actually
+               occurs to them. It sits outside the panels, so it applies to
+               whichever one is open. -->
+          <div style="margin:24px 0 0; padding:12px 16px; background:rgba(13,148,136,0.06); border:1px solid rgba(13,148,136,0.25); border-radius:8px; font-size:0.86rem; color:#475569; line-height:1.55; display:flex; gap:10px; align-items:flex-start;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              <strong style="color:#0F172A;">Always verify with the official source.</strong> The figures and dates here reflect publicly available LF3 / Charles University data. Specific deadlines, tuition, fees, and document requirements can change between admission cycles. Confirm the current details on the official portal at <a href="https://is.cuni.cz/studium/eng/prijimacky/" target="_blank" style="color:var(--accent); font-weight:600;">is.cuni.cz</a>.
             </div>
           </div>
         </div>
@@ -4748,11 +4746,6 @@
         const studentResourceTabs = document.getElementById('studentResourceTabs');
         if (applicantResourceTabs) applicantResourceTabs.style.display = isStudent ? 'none' : 'flex';
         if (studentResourceTabs) studentResourceTabs.style.display = isStudent ? 'flex' : 'none';
-        // Update resources description
-        const resourcesDesc = document.getElementById('resourcesDesc');
-        if (resourcesDesc) resourcesDesc.textContent = isStudent
-          ? 'Guides and resources for USMLE preparation and residency match.'
-          : 'Everything you need to know about applying to LF3 at Charles University.';
         // Show correct default resource panel
         document.querySelectorAll('.resource-panel').forEach(p => p.style.display = 'none');
         if (isStudent) {
