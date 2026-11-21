@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261119a-sup">
-  <link rel="stylesheet" href="qbank.css?v=20261119b-rev">
+  <link rel="stylesheet" href="qbank.css?v=20261120-wm3">
   <link rel="stylesheet" href="exam-copy-guard.css?v=20261120-adminonly">
 </head>
 <body>
@@ -391,9 +391,9 @@
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="exam-copy-guard.js?v=20261120-adminonly"></script>
-  <script src="content-watermark.js?v=20261120-wm2"></script>
+  <script src="content-watermark.js?v=20261120-wm3"></script>
   <script src="qbank-sanitizer.js?v=20260511-richhtml"></script>
-  <script src="qbank.js?v=20261120-wm1"></script>
+  <script src="qbank.js?v=20261120-wm3"></script>
   <script>
     // ===== Access Control =====
     // Free tier: 40 questions (20 bio + 20 chem). Full Access: $99 for 6 months.
@@ -716,26 +716,12 @@
       // without blocking legitimate use.
       // ========================================================================
 
-      // Watermark: apply user email as SVG data URI to explanation areas
-      function qbApplyWatermark(email) {
-        if (!email) return;
-        const svgText = encodeURIComponent(email);
-        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='160'><text transform='rotate(-35 150 80)' x='50%' y='50%' font-family='Arial,sans-serif' font-size='13' fill='%23000' text-anchor='middle' dominant-baseline='middle'>${svgText}</text></svg>`;
-        let styleEl = document.getElementById('qbWatermarkStyle');
-        if (!styleEl) {
-          styleEl = document.createElement('style');
-          styleEl.id = 'qbWatermarkStyle';
-          document.head.appendChild(styleEl);
-        }
-        styleEl.textContent = `.quiz-explanation::after, .review-card::after { background-image: url("data:image/svg+xml,${svg}"); }`;
-      }
-
-      // Apply watermark when auth resolves
-      auth.onAuthStateChanged(user => {
-        if (user && user.email) {
-          qbApplyWatermark(user.email);
-        }
-      });
+      // The watermark itself now lives in content-watermark.js, shared with
+      // the mock exams and the study plan chapters, and is applied by
+      // qbank.js per question area. A second layer used to be painted here
+      // as a repeating SVG on .quiz-explanation::after, at a different
+      // angle and spacing from the first, which is part of why explanations
+      // read as cluttered.
     })();
 
     function loadQuestionsWithAccess() {

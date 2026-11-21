@@ -1,146 +1,263 @@
 /* ===========================================================================
  * Personal content watermark
  * ---------------------------------------------------------------------------
- * One tiled, repeating watermark of the reader's email, used by all three
- * product surfaces: the QBank, the mock exams and the study plan chapters.
- * It replaces two near-identical canvas implementations that had drifted
- * apart and only covered part of each page.
+ * One faint diagonal copy of the reader's email, shared by all three product
+ * surfaces: the QBank, the mock exams and the study plan chapters.
  *
- *   SHOSWatermark.paint(el, email)              one element
+ *   SHOSWatermark.paint(el, email)              one area
  *   SHOSWatermark.paintAll(root, sel, email)    every match under root
  *
- * WHY A BACKGROUND IMAGE, NOT AN OVERLAY ELEMENT
- * A tiled background-image adds no nodes to the DOM. That matters more here
- * than it looks: both the QBank and the chapter reader highlight text by
- * walking text nodes and rebuilding Ranges from stored offsets. An injected
- * overlay node, or any element inside the flow, shifts those offsets and
- * silently corrupts saved highlights. A background cannot. It is also
- * inert for selection and for copy: the email never lands in the clipboard,
- * so an admin's legitimate copy is clean.
+ * ONE MARK PER AREA, NOT ONE PER ELEMENT
+ * The first version tiled a small horizontal email every 20px and painted it
+ * onto each element in turn, including every answer choice, so that a crop of
+ * any single line still carried an address. It did carry one. It also made
+ * the page hard to read, which is the thing the watermark is not allowed to
+ * cost. An area is now a whole question card, a whole review block, or a
+ * chapter, and it gets ONE diagonal email:
  *
- * WHY IT IS PAINTED ON LEAVES, NOT ON THE CARD
+ *   area no taller than a screenful  ->  a single mark, centred, no repeat
+ *   taller than that                 ->  the same mark repeated once per
+ *                                        screenful as the reader scrolls
+ *
+ * The switch is on measured height, so a question card with a short
+ * explanation gets one mark and the same card with a long one gets a mark
+ * per screen without the caller deciding anything.
+ *
+ * WHY AN OVERLAY ELEMENT AND NOT A BACKGROUND IMAGE
  * A background-image paints above its own element's background-color but
- * BELOW any child's. An answer choice draws its own opaque background, so a
- * watermark on the surrounding card is invisible exactly where the answer
- * is. Each content element is therefore painted in its own right.
+ * BELOW any child's. Answer choices, explanation panes and callout boxes all
+ * draw opaque backgrounds, so a background on the card showed through only in
+ * the gaps and a single diagonal came out chopped into pieces. One absolutely
+ * positioned, inert overlay per area sits above all of that and reads as one
+ * continuous mark.
  *
- * WHY THE TEXT IS HORIZONTAL
- * The requirement is that a screenshot cropped to a single question, answer,
- * explanation or chapter paragraph still carries a readable email. An answer
- * row is around 44px tall. An email is ~110px wide, so at even a 20 degree
- * tilt it spans ~49px vertically and CANNOT fit inside that crop. Horizontal
- * text occupies one line height, so it can. Legibility in a crop was the
- * requirement; the diagonal look was not.
+ * The overlay holds NO TEXT: the email is painted into a canvas tile and
+ * applied as that overlay's background. So it is never selected, never
+ * copied into an admin's clipboard, never read out by a screen reader
+ * (aria-hidden), never hit by a click (pointer-events:none), and invisible to
+ * the QBank and chapter highlighters, which walk text nodes and rebuild
+ * ranges from stored offsets.
  *
- * COVERAGE GUARANTEE
- * The tile carries the email twice in a brick pattern, half a tile apart, so
- * the vertical distance between consecutive lines is PITCH_Y, not 2*PITCH_Y.
- * Any crop at least (PITCH_Y + line height) tall therefore contains at least
- * one COMPLETE line, wherever the crop happens to fall. With the values
- * below that threshold is 31px, which is the height of a ONE-LINE question
- * stem as the live QBank renders it, and the smallest thing worth cropping.
- * An answer choice (68px), an explanation and a chapter paragraph are all
- * comfortably above it.
+ * Deliberately not a lock. It is a deterrent against passing screenshots and
+ * PDFs around, not a claim that the text was never sent to the browser.
  * ======================================================================== */
 (function (global) {
   'use strict';
 
   var CFG = {
-    FONT_PX: 11,
+    FONT_PX: 22,        /* the size asked for: readable when looked for */
+    MIN_FONT_PX: 12,    /* floor, for a long address in a narrow column */
     WEIGHT: 600,
     FAMILY: "Inter, 'Segoe UI', Arial, sans-serif",
-    /* Dark enough to read when a crop is blown up, light enough to sit under
-       body text without competing with it. Tuned against real screenshots at
-       desktop and phone widths, not picked from the air. */
-    COLOR: 'rgba(15, 23, 42, 0.115)',
-    GAP_X: 58,      /* horizontal space between repeats */
-    /* 20px, so the guarantee below lands at 31px. Measured against the live
-       QBank: a one-line question stem is 31px tall and a 28px pitch caught a
-       whole email only depending on where the line happened to fall. */
-    PITCH_Y: 20     /* vertical distance between consecutive lines */
+    /* Light gray. Over white this lands around #e3e5e8: legible when you
+       look for it, quiet enough to read straight through. */
+    COLOR: 'rgba(100, 116, 139, 0.17)',
+    ANGLE_DEG: -45,     /* a 45 degree tilt, rising to the right */
+    /* Horizontal pitch cap. Wide enough that a normal reading column of
+       900 to 1300px carries ONE mark per row, so with the vertical pitch
+       below that comes to about one mark per screenful. */
+    MAX_TILE_W: 1100,
+    MIN_PITCH_Y: 420,
+    MAX_PITCH_Y: 900,
+    PAD: 24             /* breathing room around the mark inside its tile */
   };
 
+  var CLASS = 'shos-watermark';
+  var ATTR = 'data-wm-email';
   var cache = Object.create(null);
 
-  /** Build (and memoise) the repeating tile for one email. */
-  function tile(email) {
-    if (cache[email]) return cache[email];
-    var font = CFG.WEIGHT + ' ' + CFG.FONT_PX + 'px ' + CFG.FAMILY;
+  function radians() { return CFG.ANGLE_DEG * Math.PI / 180; }
 
-    var probe = document.createElement('canvas').getContext('2d');
-    probe.font = font;
-    var textW = Math.ceil(probe.measureText(email).width);
-
-    var W = textW + CFG.GAP_X;
-    var H = CFG.PITCH_Y * 2;                 /* two lines per tile */
-    var dpr = Math.min(global.devicePixelRatio || 1, 2);
-
-    var canvas = document.createElement('canvas');
-    canvas.width = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    var ctx = canvas.getContext('2d');
-    if (!ctx) return null;
-    ctx.scale(dpr, dpr);
-    ctx.font = font;
-    ctx.fillStyle = CFG.COLOR;
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'middle';
-
-    /* Brick layout: the second line sits half a tile across, so the pattern
-       does not read as columns and every PITCH_Y band carries an email.
-       Each is drawn nine times, offset by whole tiles, so a line crossing an
-       edge reappears on the opposite side and the tile stays seamless. */
-    var spots = [[0, CFG.PITCH_Y * 0.5], [W / 2, CFG.PITCH_Y * 1.5]];
-    for (var s = 0; s < spots.length; s++) {
-      for (var ix = -1; ix <= 1; ix++) {
-        for (var iy = -1; iy <= 1; iy++) {
-          ctx.fillText(email, spots[s][0] + ix * W, spots[s][1] + iy * H);
-        }
-      }
-    }
-
-    cache[email] = { url: canvas.toDataURL('image/png'), w: W, h: H };
-    return cache[email];
+  /** One screenful, which is the vertical pitch when an area is scrolled. */
+  function screenful() {
+    var vh = global.innerHeight || 700;
+    return Math.max(CFG.MIN_PITCH_Y, Math.min(CFG.MAX_PITCH_Y, Math.round(vh * 0.9)));
   }
 
-  /** Paint one element. Returns true when it was painted. */
+  /* One measuring canvas for the life of the page. Text is measured on
+     every paint, including every resize, and a throwaway canvas per call
+     adds up on a chapter full of areas. */
+  var probeCtx = null;
+  function probe() {
+    if (!probeCtx) {
+      var c = document.createElement('canvas');
+      probeCtx = c && c.getContext ? c.getContext('2d') : null;
+    }
+    return probeCtx;
+  }
+
+  /** The bounding box of the email once it has been tilted. */
+  function measure(email, fontPx) {
+    var ctx = probe();
+    if (!ctx) return null;
+    ctx.font = CFG.WEIGHT + ' ' + fontPx + 'px ' + CFG.FAMILY;
+    var tw = Math.ceil(ctx.measureText(email).width);
+    var th = Math.ceil(fontPx * 1.25);
+    var c = Math.abs(Math.cos(radians()));
+    var s = Math.abs(Math.sin(radians()));
+    return { w: Math.ceil(tw * c + th * s), h: Math.ceil(tw * s + th * c) };
+  }
+
+  /** Draw the email once, tilted, centred in a tileW x tileH canvas. */
+  function tile(email, tileW, tileH, fontPx) {
+    var key = email + '|' + tileW + '|' + tileH + '|' + fontPx;
+    if (cache[key]) return cache[key];
+
+    var dpr = Math.min(global.devicePixelRatio || 1, 2);
+    var canvas = document.createElement('canvas');
+    canvas.width = Math.round(tileW * dpr);
+    canvas.height = Math.round(tileH * dpr);
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+
+    ctx.scale(dpr, dpr);
+    ctx.font = CFG.WEIGHT + ' ' + fontPx + 'px ' + CFG.FAMILY;
+    ctx.fillStyle = CFG.COLOR;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.translate(tileW / 2, tileH / 2);
+    ctx.rotate(radians());
+    ctx.fillText(email, 0, 0);
+
+    cache[key] = { url: canvas.toDataURL('image/png'), w: tileW, h: tileH, font: fontPx };
+    return cache[key];
+  }
+
+  /**
+   * Decide how one area should be marked, from its measured size.
+   * @returns {{repeat:boolean, tw:number, th:number, font:number}|null}
+   */
+  function plan(el, email) {
+    var w = el.clientWidth || el.offsetWidth || 0;
+    var h = el.clientHeight || el.offsetHeight || 0;
+    if (w <= CFG.PAD) return null;                 /* nothing worth marking */
+
+    var pitch = screenful();
+    /* A little past one screenful before it starts repeating, so an area that
+       is merely a bit tall still reads as having one mark. */
+    var repeat = h > pitch * 1.15;
+
+    var avail = (repeat ? Math.min(w, CFG.MAX_TILE_W) : w) - CFG.PAD;
+    var fontPx = CFG.FONT_PX;
+    var m = measure(email, fontPx);
+    if (!m) return null;
+    /* A long address in a narrow column is shrunk rather than cropped.
+       Stepping down rather than scaling once, because the tilted box does
+       not shrink linearly with the type size and one pass can overshoot. */
+    while (m.w > avail && fontPx > CFG.MIN_FONT_PX) {
+      fontPx = Math.max(CFG.MIN_FONT_PX,
+                        Math.min(fontPx - 1, Math.floor(fontPx * avail / m.w)));
+      m = measure(email, fontPx);
+    }
+
+    if (repeat) {
+      return {
+        repeat: true,
+        tw: Math.max(m.w + CFG.PAD, Math.min(w, CFG.MAX_TILE_W)),
+        th: pitch,
+        font: fontPx
+      };
+    }
+    return { repeat: false, tw: m.w + CFG.PAD, th: m.h + CFG.PAD, font: fontPx };
+  }
+
+  function overlayIn(el) {
+    var kids = el.children || [];
+    for (var i = 0; i < kids.length; i++) {
+      if (kids[i].className === CLASS) return kids[i];
+    }
+    return null;
+  }
+
+  /** Mark one area. Returns true when it was marked. */
   function paint(el, email) {
     if (!el || !email || !el.style) return false;
-    var t = tile(email);
+    var p = plan(el, email);
+    if (!p) return false;
+    var t = tile(email, p.tw, p.th, p.font);
     if (!t) return false;
-    el.style.backgroundImage = 'url("' + t.url + '")';
-    el.style.backgroundRepeat = 'repeat';
-    el.style.backgroundSize = t.w + 'px ' + t.h + 'px';
-    el.setAttribute('data-watermarked', '1');
+
+    /* The overlay is positioned against the area, so the area must be a
+       containing block. Anything already positioned is left alone. */
+    var cs = global.getComputedStyle ? global.getComputedStyle(el) : null;
+    if (cs && cs.position === 'static') el.style.position = 'relative';
+
+    var ov = overlayIn(el);
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.className = CLASS;
+      ov.setAttribute('aria-hidden', 'true');
+      el.appendChild(ov);
+    }
+    ov.style.cssText = [
+      'position:absolute',
+      'top:0', 'left:0', 'right:0', 'bottom:0',
+      'pointer-events:none',
+      'user-select:none', '-webkit-user-select:none',
+      'z-index:4',
+      'background-repeat:' + (p.repeat ? 'repeat' : 'no-repeat'),
+      /* Aligned to the top when it repeats, so the first mark sits whole
+         inside the first band instead of being sliced by the area's top
+         edge the way a centred grid slices it. */
+      'background-position:' + (p.repeat ? 'center top' : 'center center'),
+      'background-size:' + t.w + 'px ' + t.h + 'px',
+      'background-image:url("' + t.url + '")'
+    ].join(';');
+
+    el.setAttribute(ATTR, email);
     return true;
   }
 
-  /** Paint every match of `selectors` under `root`. Returns the count. */
+  /** Mark every match of `selectors` under `root`. Returns the count. */
   function paintAll(root, selectors, email) {
     if (!email) return 0;
     var scope = root || document;
     var n = 0;
     var list = scope.querySelectorAll(selectors);
     for (var i = 0; i < list.length; i++) if (paint(list[i], email)) n++;
-    /* The root itself may be one of the targets. */
+    /* The root itself may be one of the areas. */
     if (scope.matches && scope.matches(selectors) && paint(scope, email)) n++;
     return n;
   }
 
-  /** Remove the watermark. Used when a container is re-rendered from scratch. */
+  /** Remove the mark. Used when an area is rebuilt from scratch. */
   function clear(el) {
-    if (!el || !el.style) return;
-    el.style.backgroundImage = '';
-    el.removeAttribute('data-watermarked');
+    if (!el || !el.removeAttribute) return;
+    var ov = overlayIn(el);
+    if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+    el.removeAttribute(ATTR);
+  }
+
+  /* The tile depends on the area's width and on the height of a screenful,
+     so a resize or a phone rotation has to redraw it. */
+  function refresh() {
+    if (!document.querySelectorAll) return 0;
+    var marked = document.querySelectorAll('[' + ATTR + ']');
+    var n = 0;
+    for (var i = 0; i < marked.length; i++) {
+      if (paint(marked[i], marked[i].getAttribute(ATTR))) n++;
+    }
+    return n;
+  }
+
+  var resizeTimer = null;
+  if (global.addEventListener) {
+    global.addEventListener('resize', function () {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(refresh, 200);
+    });
   }
 
   global.SHOSWatermark = {
     paint: paint,
     paintAll: paintAll,
     clear: clear,
+    refresh: refresh,
     tile: tile,
+    plan: plan,
+    screenful: screenful,
     CFG: CFG,
-    /* The smallest crop height guaranteed to contain one whole email. */
-    guaranteedCropHeight: function () { return CFG.PITCH_Y + CFG.FONT_PX; }
+    CLASS: CLASS,
+    ATTR: ATTR
   };
 }(typeof window !== 'undefined' ? window : globalThis));

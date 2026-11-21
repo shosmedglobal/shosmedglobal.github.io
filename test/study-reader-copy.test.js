@@ -62,11 +62,27 @@ function makeCanvas(drawn) {
     width: 0, height: 0, style: {},
     getContext: () => ({
       scale() {}, clearRect() {}, save() {}, translate() {}, rotate() {}, restore() {},
-      measureText: t => ({ width: t.length * 6 }),
+      measureText: t => ({ width: t.length * 8 }),
       fillText: t => drawn.push(t),
       set font(v) {}, set fillStyle(v) {}, set textAlign(v) {}, set textBaseline(v) {}
     }),
     toDataURL: () => 'data:image/png;base64,AA'
+  };
+}
+
+/* A plain element, for the inert overlay the watermark appends. */
+function makeNode() {
+  return {
+    style: {}, attrs: {}, children: [], className: '',
+    setAttribute(k, v) { this.attrs[k] = String(v); },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; },
+    removeAttribute(k) { delete this.attrs[k]; },
+    appendChild(c) { this.children.push(c); c.parentNode = this; return c; },
+    removeChild(c) {
+      const i = this.children.indexOf(c);
+      if (i >= 0) this.children.splice(i, 1);
+      return c;
+    }
   };
 }
 
@@ -83,9 +99,20 @@ function makeEnv() {
     },
     style: {},
     attrs: {},
+    /* A chapter column, several screens long: the watermark measures the
+       area to decide between one mark and one per screenful. */
+    clientWidth: 760, clientHeight: 4200,
+    offsetWidth: 760, offsetHeight: 4200,
+    children: [], className: '',
     setAttribute(k, v) { this.attrs[k] = String(v); },
     getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; },
     removeAttribute(k) { delete this.attrs[k]; },
+    appendChild(c) { this.children.push(c); c.parentNode = this; return c; },
+    removeChild(c) {
+      const i = this.children.indexOf(c);
+      if (i >= 0) this.children.splice(i, 1);
+      return c;
+    },
     getContext: () => null,
     addEventListener(t, fn) { (bag[t] = bag[t] || []).push(fn); }
   });
@@ -103,7 +130,10 @@ function makeEnv() {
   let authCb = null;
   const win = {
     _impersonatedProfile: null,
-    getSelection: () => ({ isCollapsed: true, rangeCount: 0 })
+    innerHeight: 760,
+    getSelection: () => ({ isCollapsed: true, rangeCount: 0 }),
+    getComputedStyle: () => ({ position: 'static' }),
+    addEventListener: () => {}
   };
   const body = {
     classList: {
@@ -115,7 +145,7 @@ function makeEnv() {
   const document = {
     readyState: 'complete', body,
     getElementById: id => els[id] || null,
-    createElement: () => makeCanvas(drawn),
+    createElement: tag => (tag === 'canvas' ? makeCanvas(drawn) : makeNode()),
     addEventListener(t, fn) { (listeners.document[t] = listeners.document[t] || []).push(fn); }
   };
   win.document = document;
@@ -166,8 +196,18 @@ function makeEnv() {
       keydown: (listeners.view.keydown || []).length
     },
     notice: () => els.spProtectionNotice.style.display,
+    noticeText: () => els.spProtectionNotice.textContent || '',
     watermarked: () => els.spReaderContent.classList.contains('watermarked'),
-    bg: () => els.spReaderContent.style.backgroundImage || ''
+    /* The mark is an overlay appended to the chapter, not a background on
+       the chapter itself: opaque callout boxes inside a chapter would
+       otherwise cut a single diagonal into pieces. */
+    overlays: () => els.spReaderContent.children.filter(
+      c => c.className === 'shos-watermark'),
+    overlayCss: () => {
+      const ov = els.spReaderContent.children.find(
+        c => c.className === 'shos-watermark');
+      return (ov && ov.style.cssText) || '';
+    }
   };
 }
 
@@ -220,13 +260,28 @@ for (const [label, email, impersonating, mayCopy] of PEOPLE) {
   const e = makeEnv();
   e.signIn('student@example.com', null);
   check('4a a chapter is watermarked for a regular user', e.watermarked());
-  check('4b with a generated background image', e.bg().startsWith('url("data:image/png'));
-  check('4c and the protection notice is shown', e.notice() === '');
+  check('4b by exactly one inert overlay', e.overlays().length === 1, e.overlays().length);
+  check('4c carrying a generated image, not text',
+    /background-image:url\("data:image\/png/.test(e.overlayCss()), e.overlayCss());
+  check('4d it adds nothing the highlighter can see: the overlay holds no text '
+    + 'and cannot be selected, so stored highlight offsets are untouched',
+    /user-select:none/.test(e.overlayCss()) && /pointer-events:none/.test(e.overlayCss()));
+  check('4e a chapter is longer than a screenful, so the mark repeats',
+    /background-repeat:repeat/.test(e.overlayCss()), e.overlayCss());
+  check('4f and the protection notice is shown', e.notice() === '');
 }
 {
   const e = makeEnv();
   e.signIn('eli@shosmed.com', null);
-  check('4d an admin is watermarked too: copying does not mean unbranded', e.watermarked());
+  check('4g an admin is watermarked too: copying does not mean unbranded', e.watermarked());
+  check('4h and the notice says copying is on for admins',
+    /Copying is enabled for admins/.test(e.noticeText()), e.noticeText());
+}
+{
+  const e = makeEnv();
+  e.signIn('student@example.com', null);
+  check('4i a guarded reader is told the content is protected',
+    /Content protected/.test(e.noticeText()), e.noticeText());
 }
 {
   // The email the watermark is drawn with is the EFFECTIVE one, asserted via
@@ -234,9 +289,9 @@ for (const [label, email, impersonating, mayCopy] of PEOPLE) {
   const e = makeEnv();
   const drawn = e.drawn;
   e.signIn('eli@shosmed.com', 'student@example.com');
-  check('4e while impersonating, the watermark names the TARGET',
+  check('4j while impersonating, the watermark names the TARGET',
     drawn.length > 0 && drawn.every(t => t.includes('student@example.com')), drawn);
-  check('4f and never the admin', drawn.every(t => !t.includes('eli@shosmed.com')), drawn);
+  check('4k and never the admin', drawn.every(t => !t.includes('eli@shosmed.com')), drawn);
 }
 
 /* ------------------------------------------------- 5. page and guard --- */

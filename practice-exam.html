@@ -1210,10 +1210,10 @@
   function examWatermarkTargets(root) {
     if (!window.SHOSWatermark || !_watermarkEmail) return 0;
     return window.SHOSWatermark.paintAll(root || document,
-      /* during the exam */
-      '#qText, #qOptionsList .q-option,' +
-      /* in the results review */
-      '.q-text-rev, .review-option, .review-explanation',
+      /* one area per question: the stem and its options during the exam, */
+      '.exam-question,' +
+      /* and the whole block, explanation included, in the results review */
+      '.review-question',
       _watermarkEmail);
   }
 
@@ -1733,6 +1733,6 @@
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="exam-copy-guard.js?v=20261120b-mockresults"></script>
-  <script src="content-watermark.js?v=20261120-wm2"></script>
+  <script src="content-watermark.js?v=20261120-wm3"></script>
 </body>
 </html>

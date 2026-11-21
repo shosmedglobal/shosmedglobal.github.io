@@ -3,21 +3,21 @@
  *
  * Run:  node test/content-watermark.test.js
  *
- * The requirement this module exists to meet: a screenshot cropped to a
- * single question, answer choice, explanation or chapter paragraph must
- * still carry a readable email. Two properties follow from that and are
- * pinned here, because both are easy to undo by "tidying" the drawing code:
+ * Rewritten 20 November 2026. The first version tiled a small HORIZONTAL
+ * email every 20px and painted it onto each element in turn, including every
+ * answer choice, so that a crop of any single line carried an address. It
+ * did. It also made the pages hard to read, and that cost is not one the
+ * watermark is allowed to impose. The rules now are:
  *
- *   1. The text is HORIZONTAL. An email is ~110px wide, so tilted even 20
- *      degrees it spans ~49px vertically and cannot fit inside a ~44px
- *      answer row. A rotate() call reintroduces the bug the layout avoids.
- *   2. The tile carries the email TWICE, half a tile apart, so consecutive
- *      lines are PITCH_Y apart rather than 2*PITCH_Y. That halves the crop
- *      height needed to catch a whole line.
- *
- * It must also add no DOM nodes: the QBank and the chapter reader rebuild
- * highlight Ranges from stored text offsets, and any injected element
- * inside the content would shift them.
+ *   1. ONE area, ONE mark. An area is a question card, a review block or a
+ *      chapter. Nothing is painted per answer choice.
+ *   2. The mark repeats only when the area is taller than a screenful, and
+ *      then roughly once per screenful.
+ *   3. It is tilted 45 degrees, in light gray.
+ *   4. It is an inert OVERLAY with no text in it. Opaque children (answer
+ *      choices, explanation panes, callout boxes) would otherwise cut a
+ *      background-image mark into pieces, and any element carrying text
+ *      inside the content would shift the offsets both highlighters store.
  */
 'use strict';
 const fs = require('fs');
@@ -29,33 +29,55 @@ const SRC = fs.readFileSync(path.join(ROOT, 'content-watermark.js'), 'utf8');
 
 let passed = 0;
 const failures = [];
-const check = (n, c, d) => { if (c) { passed++; return; } failures.push(n + (d === undefined ? '' : '  [got: ' + JSON.stringify(d) + ']')); };
+const check = (n, c, d) => {
+  if (c) { passed++; return; }
+  failures.push(n + (d === undefined ? '' : '  [got: ' + JSON.stringify(d) + ']'));
+};
 
-const CHAR_W = 6;   // the stub's measureText
+const CHAR_W = 10;   // the stub's measureText, per character
 
-function makeEnv(dpr) {
-  const calls = { fillText: [], rotate: 0, scale: [], created: 0, appended: 0 };
+/* ------------------------------------------------------------- stubs --- */
+function makeEnv(opts) {
+  const o = opts || {};
+  const calls = { draws: [], rotate: [], scale: [], created: 0, sizes: [] };
   const canvasFor = () => {
     calls.created++;
-    return {
+    const c = {
       width: 0, height: 0,
-      getContext: () => ({
-        scale: (x, y) => calls.scale.push([x, y]),
-        rotate: () => { calls.rotate++; },
-        clearRect() {}, save() {}, translate() {}, restore() {},
-        measureText: t => ({ width: t.length * CHAR_W }),
-        fillText: (t, x, y) => calls.fillText.push({ t, x, y }),
-        set font(v) { calls.font = v; },
-        set fillStyle(v) { calls.fillStyle = v; },
-        set textAlign(v) {}, set textBaseline(v) {}
-      }),
-      toDataURL: () => 'data:image/png;base64,' + calls.created
+      getContext: () => {
+        let fontPx = 22;      // text measures proportionally to the type size
+        return {
+          scale: (x, y) => calls.scale.push([x, y]),
+          rotate: a => calls.rotate.push(a),
+          translate() {}, clearRect() {}, save() {}, restore() {},
+          measureText: t => ({ width: Math.round(t.length * CHAR_W * fontPx / 22) }),
+          fillText: (t, x, y) => calls.draws.push({ t, x, y }),
+          set font(v) {
+            calls.font = v;
+            const m = /(\d+)px/.exec(v);
+            if (m) fontPx = Number(m[1]);
+          },
+          set fillStyle(v) { calls.fillStyle = v; },
+          set textAlign(v) {}, set textBaseline(v) {}
+        };
+      },
+      toDataURL: () => 'data:image/png;base64,' + (c.width + 'x' + c.height)
     };
+    return c;
   };
-  const win = { devicePixelRatio: dpr === undefined ? 1 : dpr };
+  const win = {
+    devicePixelRatio: o.dpr === undefined ? 1 : o.dpr,
+    innerHeight: o.vh === undefined ? 700 : o.vh,
+    getComputedStyle: el => ({ position: (el && el._position) || 'static' }),
+    addEventListener: () => {}
+  };
   const ctx = {
-    window: win, globalThis: win,
-    document: { createElement: canvasFor, body: { appendChild: () => { calls.appended++; } } }
+    window: win, globalThis: win, setTimeout: () => 0, clearTimeout: () => {},
+    document: {
+      createElement: tag => (tag === 'canvas' ? canvasFor() : el()),
+      querySelectorAll: () => [],
+      body: {}
+    }
   };
   ctx.global = ctx;
   vm.createContext(ctx);
@@ -63,161 +85,257 @@ function makeEnv(dpr) {
   return { api: win.SHOSWatermark, calls, ctx };
 }
 
-const el = () => ({
-  style: {}, attrs: {}, children: 0,
-  setAttribute(k, v) { this.attrs[k] = String(v); },
-  getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; },
-  removeAttribute(k) { delete this.attrs[k]; },
-  appendChild() { this.children++; }
-});
-
-const EMAIL = 'student@example.com';
-
-/* ------------------------------------------------- 1. the geometry ---- */
-{
-  const e = makeEnv();
-  const t = e.api.tile(EMAIL);
-  const CFG = e.api.CFG;
-  check('1a the tile is as wide as the email plus a gap',
-    t.w === EMAIL.length * CHAR_W + CFG.GAP_X, t.w);
-  check('1b and two lines tall', t.h === CFG.PITCH_Y * 2, t.h);
-  check('1c it returns a data URL', /^data:image\/png/.test(t.url));
-
-  // Two brick positions, each drawn 9 times so an edge-crossing line wraps.
-  check('1d the email is drawn 18 times: 2 positions x a 3x3 wrap',
-    e.calls.fillText.length === 18, e.calls.fillText.length);
-  check('1e every draw is the email itself',
-    e.calls.fillText.every(f => f.t === EMAIL));
-
-  // The y positions inside the tile, reduced modulo the tile height, must
-  // be exactly PITCH_Y apart: that is the coverage guarantee.
-  const ys = [...new Set(e.calls.fillText.map(f => ((f.y % t.h) + t.h) % t.h))].sort((a, b) => a - b);
-  check('1f there are two distinct lines per tile', ys.length === 2, ys);
-  check('1g spaced exactly PITCH_Y apart', ys[1] - ys[0] === CFG.PITCH_Y, ys);
-  check('1h and PITCH_Y apart again across the tile seam',
-    (ys[0] + t.h) - ys[1] === CFG.PITCH_Y, ys);
-
-  // The second line is offset horizontally, so the pattern is bricks, not
-  // columns; a narrow crop then still catches text.
-  const xs = [...new Set(e.calls.fillText.map(f => ((f.x % t.w) + t.w) % t.w))].sort((a, b) => a - b);
-  check('1i the two lines are offset horizontally', xs.length === 2, xs);
-  check('1j by half a tile', Math.abs((xs[1] - xs[0]) - t.w / 2) < 1, xs);
+/** A DOM element good enough for paint(): size, children, style, attributes. */
+function el(w, h) {
+  return {
+    clientWidth: w || 0, clientHeight: h || 0,
+    offsetWidth: w || 0, offsetHeight: h || 0,
+    style: {}, attrs: {}, children: [], className: '',
+    setAttribute(k, v) { this.attrs[k] = String(v); },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; },
+    removeAttribute(k) { delete this.attrs[k]; },
+    appendChild(c) { this.children.push(c); c.parentNode = this; return c; },
+    removeChild(c) {
+      const i = this.children.indexOf(c);
+      if (i >= 0) this.children.splice(i, 1);
+      return c;
+    }
+  };
 }
 
-/* --------------------------------------- 2. horizontal, by design ----- */
+const EMAIL = 'student@example.com';         // 19 chars -> 190px at CHAR_W 10
+const CARD_W = 760;
+
+/* ------------------------------------------------- 1. one mark, tilted - */
 {
   const e = makeEnv();
-  e.api.tile(EMAIL);
-  check('2a the text is never rotated', e.calls.rotate === 0, e.calls.rotate);
-  check('2b the source contains no rotate() call at all', !/\.rotate\s*\(/.test(SRC));
+  const card = el(CARD_W, 320);
+  check('1a a question card is marked', e.api.paint(card, EMAIL) === true);
+  check('1b exactly one overlay is added', card.children.length === 1, card.children.length);
+
+  const ov = card.children[0];
+  check('1c the email is drawn once, not tiled across the card',
+    e.calls.draws.length === 1, e.calls.draws.length);
+  check('1d and it is the email', e.calls.draws[0].t === EMAIL);
+  check('1e tilted 45 degrees', Math.abs(e.calls.rotate[0]) === Math.PI / 4, e.calls.rotate);
+  check('1f rising to the right', e.calls.rotate[0] < 0, e.calls.rotate[0]);
+  check('1g the overlay does not repeat on a short area',
+    /background-repeat:no-repeat/.test(ov.style.cssText), ov.style.cssText);
+  check('1h and sits in the middle of it',
+    /background-position:center center/.test(ov.style.cssText));
+  check('1j a repeating area starts its grid at the top, so the first mark is '
+    + 'whole rather than sliced by the top edge', (() => {
+      const tall = el(CARD_W, 4000);
+      e.api.paint(tall, EMAIL);
+      return /background-position:center top/.test(tall.children[0].style.cssText);
+    })());
+
+  // Painting again replaces the overlay rather than stacking another on top.
+  e.api.paint(card, EMAIL);
+  check('1i re-painting does not stack overlays', card.children.length === 1, card.children.length);
 }
 
-/* --------------------------------------- 3. the coverage guarantee ---- */
+/* ----------------------------------- 2. once per screenful when long --- */
+{
+  const e = makeEnv({ vh: 800 });                 // screenful = 720
+  const pitch = e.api.screenful();
+  check('2a a screenful tracks the viewport', pitch === 720, pitch);
+
+  const short = el(CARD_W, pitch);                 // exactly one screen
+  e.api.paint(short, EMAIL);
+  check('2b an area of one screenful gets a single mark',
+    /background-repeat:no-repeat/.test(short.children[0].style.cssText));
+
+  const chapter = el(CARD_W, pitch * 6);           // a long chapter
+  e.api.paint(chapter, EMAIL);
+  const css = chapter.children[0].style.cssText;
+  check('2c a long area repeats instead', /background-repeat:repeat/.test(css), css);
+  const size = /background-size:(\d+)px (\d+)px/.exec(css);
+  check('2d and the vertical pitch is one screenful',
+    size && Number(size[2]) === pitch, size && size[2]);
+  check('2e so a six-screen chapter carries about six marks',
+    Math.round((pitch * 6) / Number(size[2])) === 6);
+
+  // The boundary is forgiving, so an area a little over one screen is not
+  // suddenly marked twice.
+  const slightlyTall = el(CARD_W, Math.round(pitch * 1.1));
+  e.api.paint(slightlyTall, EMAIL);
+  check('2f an area just over one screenful still gets a single mark',
+    /background-repeat:no-repeat/.test(slightlyTall.children[0].style.cssText));
+}
+
+/* ------------------------------------------- 3. readable, not shouty --- */
 {
   const e = makeEnv();
   const CFG = e.api.CFG;
-  const guarantee = e.api.guaranteedCropHeight();
-  check('3a the guarantee is the line spacing plus one line height',
-    guarantee === CFG.PITCH_Y + CFG.FONT_PX, guarantee);
-  // Heights measured on the live site, not assumed: a one-line question
-  // stem is 31px and an answer choice is 68px. The stem is the smallest
-  // thing worth cropping, so it sets the bar.
-  check('3b a 31px one-line question stem is guaranteed a whole email',
-    guarantee <= 31, guarantee);
-  check('3c so is a 68px answer choice', guarantee <= 68);
-  // And the watermark must stay faint enough to read through.
   const alpha = Number(/rgba\([^)]*,\s*([\d.]+)\s*\)/.exec(CFG.COLOR)[1]);
-  check('3d it is faint enough not to compete with the content', alpha <= 0.2, alpha);
-  check('3e but not invisible', alpha >= 0.07, alpha);
-  check('3f the type is small', CFG.FONT_PX <= 13 && CFG.FONT_PX >= 9, CFG.FONT_PX);
+  check('3a it is faint', alpha <= 0.25, alpha);
+  check('3b but not invisible', alpha >= 0.1, alpha);
+  check('3c in gray, not a colour', (() => {
+    const [r, g, b] = /rgba\((\d+),\s*(\d+),\s*(\d+)/.exec(CFG.COLOR).slice(1).map(Number);
+    return Math.max(r, g, b) - Math.min(r, g, b) <= 45;
+  })(), CFG.COLOR);
+  check('3d the type is big enough to read when looked for', CFG.FONT_PX >= 18, CFG.FONT_PX);
+  check('3e the tilt is 45 degrees', Math.abs(CFG.ANGLE_DEG) === 45, CFG.ANGLE_DEG);
 }
 
-/* ----------------------------------------------- 4. painting an el ---- */
+/* -------------------------------------- 4. an inert, text-free layer --- */
 {
   const e = makeEnv();
-  const node = el();
-  check('4a paint reports success', e.api.paint(node, EMAIL) === true);
-  check('4b it sets a background image', /^url\("data:image\/png/.test(node.style.backgroundImage));
-  check('4c repeating', node.style.backgroundRepeat === 'repeat');
-  const t = e.api.tile(EMAIL);
-  check('4d at the tile size', node.style.backgroundSize === t.w + 'px ' + t.h + 'px', node.style.backgroundSize);
-  check('4e and marks the element', node.getAttribute('data-watermarked') === '1');
-  check('4f it adds NO child nodes, so highlight offsets are untouched', node.children === 0);
-  check('4g and appends nothing to the document', e.calls.appended === 0);
+  const card = el(CARD_W, 300);
+  e.api.paint(card, EMAIL);
+  const ov = card.children[0];
 
-  check('4h no email, no paint', e.api.paint(el(), '') === false);
-  check('4i no element, no paint', e.api.paint(null, EMAIL) === false);
+  check('4a the overlay carries no text at all',
+    ov.textContent === undefined && !('innerHTML' in ov.attrs), Object.keys(ov.attrs));
+  check('4b so nothing inside the content gains a text node',
+    card.children.filter(c => c.className !== e.api.CLASS).length === 0);
+  check('4c the email is in a background image, never in the DOM',
+    /background-image:url\("data:image\/png/.test(ov.style.cssText));
+  check('4d clicks pass straight through', /pointer-events:none/.test(ov.style.cssText));
+  check('4e it cannot be selected, so it never lands in a copy',
+    /user-select:none/.test(ov.style.cssText));
+  check('4f and screen readers skip it', ov.attrs['aria-hidden'] === 'true');
+  check('4g it is above the content, where opaque children cannot hide it',
+    /position:absolute/.test(ov.style.cssText) && /z-index:[1-9]/.test(ov.style.cssText));
+  check('4h the area becomes the containing block', card.style.position === 'relative');
 
-  const cleared = el();
-  e.api.paint(cleared, EMAIL);
-  e.api.clear(cleared);
-  check('4j clear removes it', cleared.style.backgroundImage === ''
-    && cleared.getAttribute('data-watermarked') === null);
+  const positioned = el(CARD_W, 300);
+  positioned._position = 'relative';
+  e.api.paint(positioned, EMAIL);
+  check('4i an already positioned area is left alone',
+    positioned.style.position === undefined, positioned.style.position);
+
+  e.api.clear(card);
+  check('4j clear removes the overlay', card.children.length === 0);
+  check('4k and the marker attribute', card.getAttribute(e.api.ATTR) === null);
 }
 
-/* ------------------------------------------------- 5. whose email ----- */
+/* ------------------------------------------------- 5. whose email ------ */
 {
   const e = makeEnv();
-  e.api.tile('a@b.com');
-  e.calls.fillText.length = 0;
-  e.api.tile('c@d.com');
-  check('5a a different email is drawn, not a cached one',
-    e.calls.fillText.length === 18 && e.calls.fillText.every(f => f.t === 'c@d.com'));
+  const a = el(CARD_W, 300), b = el(CARD_W, 300);
+  e.api.paint(a, 'one@b.com');
+  e.api.paint(b, 'two@b.com');
+  check('5a each area is drawn with the email it was given',
+    e.calls.draws.map(d => d.t).join() === 'one@b.com,two@b.com', e.calls.draws.map(d => d.t));
+  check('5b the area records whose it is', a.getAttribute(e.api.ATTR) === 'one@b.com');
+
   const before = e.calls.created;
-  e.api.tile('c@d.com');
-  check('5b the same email is memoised, not redrawn', e.calls.created === before, [before, e.calls.created]);
-  check('5c and the two emails produced different tiles',
-    e.api.tile('a@b.com').url !== e.api.tile('c@d.com').url);
-  check('5d with different widths', e.api.tile('a@b.com').w !== e.api.tile('much.longer@example.com').w);
+  e.api.paint(el(CARD_W, 300), 'one@b.com');
+  check('5c an identical tile is reused rather than redrawn',
+    e.calls.created === before, [before, e.calls.created]);
+
+  check('5d no email, no mark', e.api.paint(el(CARD_W, 300), '') === false);
+  check('5e no area, no mark', e.api.paint(null, EMAIL) === false);
+  check('5f an unmeasurable area is skipped', e.api.paint(el(0, 0), EMAIL) === false);
 }
 
-/* --------------------------------------------------- 6. paintAll ------ */
+/* ------------------------------------- 6. narrow columns and phones ---- */
+{
+  const e = makeEnv({ vh: 740 });
+  const CFG = e.api.CFG;
+
+  const phone = el(320, 300);
+  const p = e.api.plan(phone, 'a.very.long.address@university.example.edu');
+  check('6a a long address in a phone column is shrunk, not cropped',
+    p.font < CFG.FONT_PX && p.font >= CFG.MIN_FONT_PX, p);
+  check('6b and its tile still fits the column', p.tw <= 320, p);
+
+  const phoneLong = el(360, 4000);
+  const q = e.api.plan(phoneLong, EMAIL);
+  check('6c a scrolled phone column tiles at its own width, so the mark is '
+    + 'never pushed off the side', q.tw <= 360, q);
+
+  const wide = el(1600, 4000);
+  const r = e.api.plan(wide, EMAIL);
+  check('6d a wide column caps the horizontal pitch rather than spreading out',
+    r.tw === CFG.MAX_TILE_W, r);
+
+  const normal = e.api.plan(el(CARD_W, 300), EMAIL);
+  check('6e a normal card uses the full size', normal.font === CFG.FONT_PX, normal);
+}
+
+/* --------------------------------------------------- 7. paintAll ------- */
 {
   const e = makeEnv();
-  const a = el(), b = el(), root = el();
+  const a = el(CARD_W, 300), b = el(CARD_W, 300);
+  const root = el(CARD_W, 900);
   root.querySelectorAll = () => [a, b];
   root.matches = () => false;
-  check('6a paintAll paints every match', e.api.paintAll(root, '.x', EMAIL) === 2);
-  check('6b both carry the mark', a.getAttribute('data-watermarked') === '1'
-    && b.getAttribute('data-watermarked') === '1');
+  check('7a paintAll marks every area', e.api.paintAll(root, '.quiz-card', EMAIL) === 2);
 
-  const selfMatching = el();
+  const selfMatching = el(CARD_W, 300);
   selfMatching.querySelectorAll = () => [];
   selfMatching.matches = () => true;
-  check('6c the root itself is painted when it matches',
-    e.api.paintAll(selfMatching, '.x', EMAIL) === 1);
-
-  const none = el();
-  none.querySelectorAll = () => [a];
-  none.matches = () => false;
-  check('6d without an email nothing is painted', e.api.paintAll(none, '.x', '') === 0);
+  check('7b the root itself is marked when it matches',
+    e.api.paintAll(selfMatching, '.quiz-card', EMAIL) === 1);
+  check('7c without an email nothing is marked',
+    e.api.paintAll(root, '.quiz-card', '') === 0);
 }
 
-/* ------------------------------------------- 7. retina sharpness ------ */
+/* ---------------------------------- 8. redraw on resize and rotate ----- */
 {
-  const e1 = makeEnv(1), e2 = makeEnv(2), e3 = makeEnv(4);
-  e1.api.tile(EMAIL); e2.api.tile(EMAIL); e3.api.tile(EMAIL);
-  check('7a at 1x the canvas is not scaled up', e1.calls.scale[0][0] === 1, e1.calls.scale[0]);
-  check('7b at 2x it is drawn double size for sharpness', e2.calls.scale[0][0] === 2, e2.calls.scale[0]);
-  check('7c and capped at 2x so the data URL stays small', e3.calls.scale[0][0] === 2, e3.calls.scale[0]);
-  check('7d while the CSS tile size is unchanged by dpr',
-    e1.api.tile(EMAIL).w === e2.api.tile(EMAIL).w);
+  const e = makeEnv();
+  const a = el(CARD_W, 300);
+  e.api.paint(a, EMAIL);
+  e.ctx.document.querySelectorAll = () => [a];
+  check('8a refresh re-marks everything already marked', e.api.refresh() === 1);
+  check('8b using the email that area was marked with',
+    e.calls.draws[e.calls.draws.length - 1].t === EMAIL);
+  check('8c and a resize is wired to it', /addEventListener\('resize'/.test(SRC));
+  check('8d debounced, so a drag does not redraw per pixel',
+    /clearTimeout\(resizeTimer\)/.test(SRC));
 }
 
-/* ------------------------------------- 8. every surface loads it ------ */
+/* ------------------------------------------------- 9. retina ----------- */
+{
+  const e1 = makeEnv({ dpr: 1 }), e2 = makeEnv({ dpr: 2 }), e4 = makeEnv({ dpr: 4 });
+  e1.api.paint(el(CARD_W, 300), EMAIL);
+  e2.api.paint(el(CARD_W, 300), EMAIL);
+  e4.api.paint(el(CARD_W, 300), EMAIL);
+  check('9a at 1x the canvas is not scaled up', e1.calls.scale[0][0] === 1);
+  check('9b at 2x it is drawn double size', e2.calls.scale[0][0] === 2);
+  check('9c and capped at 2x so the data URL stays small', e4.calls.scale[0][0] === 2);
+}
+
+/* --------------------------------- 10. every surface, one area each ---- */
 for (const page of ['qbank.html', 'practice-exam.html', 'dashboard.html']) {
   const src = fs.readFileSync(path.join(ROOT, page), 'utf8');
   const at = src.search(/<script\b[^>]*src="content-watermark\.js/);
-  check('8 ' + page + ' loads the shared watermark', at !== -1);
+  check('10 ' + page + ' loads the shared watermark', at !== -1);
   const tag = at === -1 ? '' : src.slice(at, src.indexOf('>', at) + 1);
-  check('8 ' + page + ' loads it synchronously', at !== -1 && !/\basync\b/.test(tag), tag);
+  check('10 ' + page + ' loads it synchronously', at !== -1 && !/\basync\b/.test(tag), tag);
 }
-// The two bespoke canvas watermarks it replaced must not creep back.
-for (const f of ['qbank.js', 'dashboard.html']) {
-  const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
-  check('8 ' + f + ' no longer rolls its own rotated watermark',
-    !/rotate\(-25 \* Math\.PI/.test(src));
-}
+
+const QBJS = fs.readFileSync(path.join(ROOT, 'qbank.js'), 'utf8');
+const EXAM = fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8');
+const QBHTML = fs.readFileSync(path.join(ROOT, 'qbank.html'), 'utf8');
+const QBCSS = fs.readFileSync(path.join(ROOT, 'qbank.css'), 'utf8');
+
+check('10a the QBank marks the card, not its parts',
+  /QB_LIVE_TARGETS\s*=\s*'\.quiz-card'/.test(QBJS));
+check('10b and the review item, not its parts',
+  /QB_REVIEW_TARGETS\s*=\s*'\.review-item'/.test(QBJS));
+check('10c no answer choice is marked on its own',
+  !/\.quiz-option|\.review-answer/.test(
+    (/QB_LIVE_TARGETS[\s\S]*?QB_REVIEW_TARGETS\s*=\s*'[^']*'/.exec(QBJS) || [''])[0]));
+check('10d the mock exam marks the question area during the exam',
+  /'\.exam-question,'/.test(EXAM));
+check('10e and the whole block in review',
+  /'\.review-question'/.test(EXAM));
+check('10f no mock exam option is marked on its own',
+  !/\.review-option|#qOptionsList \.q-option/.test(
+    (/examWatermarkTargets\(root\)[\s\S]{0,600}?\n  \}/.exec(EXAM) || [''])[0]));
+
+/* The two watermarks this one replaced must not creep back. Two layers at
+   different angles and spacings is what made an explanation unreadable. */
+check('10g the QBank no longer paints its own SVG layer',
+  !/qbApplyWatermark/.test(QBHTML));
+check('10h and the ::after tile is gone from the stylesheet',
+  !/\.quiz-explanation::after/.test(QBCSS));
+check('10i the chapter reader no longer rolls its own rotated canvas',
+  !/rotate\(-25 \* Math\.PI/.test(fs.readFileSync(path.join(ROOT, 'dashboard.html'), 'utf8')));
 
 console.log('content-watermark: ' + passed + ' passed, ' + failures.length + ' failed');
 if (failures.length) { console.log(); failures.forEach(f => console.log('  FAIL ' + f)); process.exit(1); }

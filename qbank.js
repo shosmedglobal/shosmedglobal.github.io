@@ -911,8 +911,9 @@ function showExplanation(q, isCorrect) {
   wrapTablesForResponsive(content);
   box.style.display = 'block';
 
-  // Apply personal watermark. innerHTML above wipes the previous one.
-  applyQBankWatermark(content);
+  // The explanation has just changed the card's height, which is what
+  // decides between one mark and one per screenful, so re-mark the card.
+  qbWatermarkLiveCard();
 
   // Restore saved highlights for this question
   restoreHighlights(q.id, content);
@@ -934,18 +935,19 @@ function qbWatermarkEmail() {
   } catch (e) { return ''; }
 }
 
-/** Kept for the existing call sites that paint a single container. */
+/** Mark one area. */
 function applyQBankWatermark(container) {
   if (!container || !window.SHOSWatermark) return;
   window.SHOSWatermark.paint(container, qbWatermarkEmail());
 }
 
-/* The stem, every answer choice and the explanation are each painted in
-   their own right. A watermark on the surrounding card would be hidden
-   behind each answer choice's own opaque background, which is precisely
-   where a cropped screenshot of "one answer" would be taken. */
-const QB_LIVE_TARGETS = '#questionText, #optionsContainer .quiz-option, #explanationContent';
-const QB_REVIEW_TARGETS = '.review-item .review-question, .review-item .review-answer, .review-item .review-explanation';
+/* One area per question, not one mark per element. The card holds the stem,
+   the answer choices and the explanation, and takes a single diagonal email;
+   once the explanation makes it taller than a screenful the shared module
+   repeats that mark per screen on its own. Each review item is the same
+   thing for a finished quiz. */
+const QB_LIVE_TARGETS = '.quiz-card';
+const QB_REVIEW_TARGETS = '.review-item';
 
 function qbWatermarkLiveCard() {
   if (!window.SHOSWatermark) return 0;
@@ -1810,10 +1812,9 @@ function showReview() {
     if (q && expEl) {
       expEl.innerHTML = qbSanitizeHtml(q.explanation);
       wrapTablesForResponsive(expEl);
-      applyQBankWatermark(expEl);
       restoreHighlights(q.id, expEl);
-      // ... and the question and each answer choice of this item, so a crop
-      // of any one of them carries the email too.
+      // Mark the whole review item, now that its explanation has set the
+      // height that decides one mark against one per screenful.
       qbWatermarkReview(item);
     }
   });
