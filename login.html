@@ -18,14 +18,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script>
   /* Auth pre-render for login page - if user is cached as authed, redirect
-     immediately to dashboard so they don't see the login form flash.
-     Firebase verifies on the dashboard side; if cache is stale, they'll
-     bounce back here. */
+     immediately (honoring ?redirect=) so they don't see the login form
+     flash. Firebase verifies on the destination side; if cache is stale,
+     they'll bounce back here. */
+  /* Where to send someone once they are authenticated. An allowlist, not a
+     free-form URL: ?redirect= arrives from a link anyone can craft, so it
+     selects one of these destinations rather than supplying one. Public
+     articles use it so a reader who clicks "try the question bank" reaches
+     the question bank and not the dashboard. */
+  function shosAuthDest(search) {
+    var want = '';
+    try { want = new URLSearchParams(search || '').get('redirect') || ''; }
+    catch (e) { want = ''; }
+    if (want === 'qbank') return 'qbank.html?v=20260423a&t=' + Date.now();
+    if (want === 'mock') return 'practice-exam.html';
+    return 'dashboard.html';
+  }
   (function() {
     try {
       var cached = localStorage.getItem('shos_authed');
       if (cached === '1') {
-        window.location.replace('dashboard.html');
+        window.location.replace(shosAuthDest(window.location.search));
         return;
       }
       document.documentElement.setAttribute('data-auth', 'anon');
@@ -121,9 +134,14 @@
     // once its checks have finished.
     let authInProgress = false;
 
+    // Where this sign-in should land. Someone who clicked a product link in
+    // a public article already said where they were going; sending them to
+    // the dashboard instead makes them look for it again.
+    const redirectTo = shosAuthDest(window.location.search);
+
     // Redirect if already logged in
     auth.onAuthStateChanged((user) => {
-      if (user && !authInProgress) window.location.href = 'dashboard.html';
+      if (user && !authInProgress) window.location.href = redirectTo;
     });
 
     // Email/Password Login
@@ -141,7 +159,7 @@
       authInProgress = true;
       const result = await signInWithEmail(email, password);
       if (result.success) {
-        window.location.href = 'dashboard.html';
+        window.location.href = redirectTo;
       } else {
         authInProgress = false;
         errorMsg.textContent = result.error;
@@ -159,9 +177,10 @@
       authInProgress = true;
       const result = await signInWithGoogle(null, false);
       if (result.success) {
-        window.location.href = 'dashboard.html';
+        window.location.href = redirectTo;
       } else if (result.needsSignup) {
-        window.location.href = 'signup.html';
+        // carry the intent across: they still want the page they clicked
+        window.location.href = 'signup.html' + window.location.search;
       } else {
         authInProgress = false;
         errorMsg.textContent = result.error;
@@ -193,6 +212,17 @@
         successMsg.style.display = 'none';
       }
     });
+  </script>
+  <script>
+    // Keep ?redirect= on the switch between sign-up and sign-in, so a reader
+    // who came from an article and picks the other door still ends up where
+    // they were going.
+    (function () {
+      var qs = window.location.search;
+      if (!qs) return;
+      var a = document.querySelector('.auth-footer a');
+      if (a) a.href = a.getAttribute('href').split('?')[0] + qs;
+    })();
   </script>
 </body>
 </html>

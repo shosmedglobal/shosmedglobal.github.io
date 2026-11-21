@@ -61,6 +61,8 @@ check('2h one tab selected', (html.match(/aria-selected="true"/g) || []).length 
 // 3. Every article sits in exactly one panel, on the right side of the split.
 // ---------------------------------------------------------------------------
 const MED_ARTICLES = [
+  // the hub article for the applying cluster, first card in the panel
+  'blog/charles-university-lf3-application-guide.html',
   'blog/lf3-entrance-exam-what-is-on-it.html',
   'blog/mcat-vs-charles-university-entrance-exam.html',
   'blog/applying-to-charles-university.html',
@@ -84,8 +86,11 @@ for (const href of RES_ARTICLES) {
 const allCards = (html.match(/class="blog-article-card"/g) || []).length;
 check('3e every article card is accounted for',
   allCards === MED_ARTICLES.length + RES_ARTICLES.length);
-check('3f medical school panel holds five',
-  (MED.match(/class="blog-article-card"/g) || []).length === 5);
+check('3f medical school panel holds six',
+  (MED.match(/class="blog-article-card"/g) || []).length === 6);
+check('3f2 the application guide is the first card in the panel',
+  MED.indexOf('charles-university-lf3-application-guide.html')
+  < MED.indexOf('lf3-entrance-exam-what-is-on-it.html'));
 check('3g residency panel holds two',
   (RES.match(/class="blog-article-card"/g) || []).length === 2);
 

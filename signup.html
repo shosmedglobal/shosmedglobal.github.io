@@ -18,17 +18,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script>
   /* Auth pre-render for signup page - if user is cached as authed, redirect
-     immediately (honoring ?redirect=qbank) so they don't see the signup
-     form flash. Firebase verifies on the destination side. */
+     immediately (honoring ?redirect=) so they don't see the signup form
+     flash. Firebase verifies on the destination side. */
+  /* Where to send someone once they are authenticated. An allowlist, not a
+     free-form URL: ?redirect= arrives from a link anyone can craft, so it
+     selects one of these destinations rather than supplying one. Public
+     articles use it so a reader who clicks "try the question bank" reaches
+     the question bank and not the dashboard. */
+  function shosAuthDest(search) {
+    var want = '';
+    try { want = new URLSearchParams(search || '').get('redirect') || ''; }
+    catch (e) { want = ''; }
+    if (want === 'qbank') return 'qbank.html?v=20260423a&t=' + Date.now();
+    if (want === 'mock') return 'practice-exam.html';
+    return 'dashboard.html';
+  }
   (function() {
     try {
       var cached = localStorage.getItem('shos_authed');
       if (cached === '1') {
-        var params = new URLSearchParams(window.location.search);
-        var dest = params.get('redirect') === 'qbank'
-          ? ('qbank.html?v=20260423a&t=' + Date.now())
-          : 'dashboard.html';
-        window.location.replace(dest);
+        window.location.replace(shosAuthDest(window.location.search));
         return;
       }
       document.documentElement.setAttribute('data-auth', 'anon');
@@ -199,9 +208,10 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script>
-    // Get redirect destination (default: dashboard)
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectTo = urlParams.get('redirect') === 'qbank' ? ('qbank.html?v=20260423a&t=' + Date.now()) : 'dashboard.html';
+    // Get redirect destination (default: dashboard). shosAuthDest is defined
+    // in the pre-render block in <head>, so both paths agree on where a
+    // reader coming from an article should land.
+    const redirectTo = shosAuthDest(window.location.search);
 
     // Set while a signup submission is in flight. The listener below must not
     // redirect during that window: createUserWithEmailAndPassword (and the
@@ -311,6 +321,17 @@
         errorMsg.style.display = 'block';
       }
     });
+  </script>
+  <script>
+    // Keep ?redirect= on the switch between sign-up and sign-in, so a reader
+    // who came from an article and picks the other door still ends up where
+    // they were going.
+    (function () {
+      var qs = window.location.search;
+      if (!qs) return;
+      var a = document.querySelector('.auth-footer a');
+      if (a) a.href = a.getAttribute('href').split('?')[0] + qs;
+    })();
   </script>
 </body>
 </html>
