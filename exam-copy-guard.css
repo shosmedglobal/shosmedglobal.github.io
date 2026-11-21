@@ -3,24 +3,29 @@
  * ---------------------------------------------------------------------------
  * Who may lift question text out of an exam.
  *
- * Staff (admins and reviewers) may select and copy the questions, options and
- * explanations of exams they have taken, so they can quote a question into an
- * email, a report, or a fix. Everyone else may not: the QBank and the four
- * mock exams are the product.
+ * Admins may select and copy the questions, options and explanations of an
+ * exam, so they can quote a question into an email, a report, or a fix.
+ * Everyone else may not, reviewers included: the QBank, the four mock exams
+ * and the study plan chapters are the product.
  *
  * Exactly one of two classes sits on <body>, set by exam-copy-guard.js:
  *
  *   .exam-copy-guarded   the default, and the state when nothing has decided
- *   .exam-copy-allowed   staff only
+ *   .exam-copy-allowed   admins only
  *
  * Neither class present means the guard has not run. The pages' own rules
  * already block selection in that case, so a script failure locks down rather
  * than opens up.
  *
- * Loaded by qbank.html and practice-exam.html. Selection is only half of it:
- * .review-explanation stays selectable for guarded users on purpose, because
- * the highlighter needs it, and the copy/cut handler in the JS is what stops
- * the text actually leaving.
+ * Loaded by qbank.html, practice-exam.html and dashboard.html. Selection is
+ * only half of it: .review-explanation stays selectable for guarded users on
+ * purpose, because the highlighter needs it, and the copy/cut handler in the
+ * JS is what stops the text actually leaving.
+ *
+ * The study plan reader (.sp-reader-content on dashboard.html) adds no rules
+ * here at all, for the same reason taken further: its text must stay
+ * selectable for the chapter highlighter, so the event handlers are the whole
+ * of its protection.
  * ======================================================================== */
 
 /* ---- Guarded: block selection across the mock exam -----------------------
@@ -40,7 +45,7 @@ body.exam-copy-guarded .exam-app .review-explanation {
   -webkit-touch-callout: none;
 }
 
-/* ---- Staff: the exam text is selectable ---------------------------------
+/* ---- Admins: the exam text is selectable --------------------------------
  * Scoped to the content itself rather than every descendant, so the
  * calculator drag in qbank.js (which sets user-select on <body>) is not
  * overridden by an !important rule it cannot beat. */
@@ -67,5 +72,5 @@ body.exam-copy-allowed .exam-app .q-text-rev {
   cursor: text;
 }
 
-/* Printing stays blocked for everyone. Staff needed copy, not a print route
+/* Printing stays blocked for everyone. Admins needed copy, not a print route
    around the @media print rule in qbank.css. */

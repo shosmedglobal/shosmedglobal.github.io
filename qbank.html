@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261119a-sup">
   <link rel="stylesheet" href="qbank.css?v=20261119b-rev">
-  <link rel="stylesheet" href="exam-copy-guard.css?v=20261114">
+  <link rel="stylesheet" href="exam-copy-guard.css?v=20261120-adminonly">
 </head>
 <body>
 
@@ -390,7 +390,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
-  <script src="exam-copy-guard.js?v=20261114"></script>
+  <script src="exam-copy-guard.js?v=20261120-adminonly"></script>
   <script src="qbank-sanitizer.js?v=20260511-richhtml"></script>
   <script src="qbank.js?v=20261119b-rev"></script>
   <script>
@@ -481,9 +481,10 @@
         const REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
         const isAdmin = ADMIN_EMAILS.includes(authUser.email);
         const isReviewer = REVIEWER_EMAILS.includes(authUser.email);
-        // Staff may lift question text out of an exam they have taken;
-        // everyone else may not. See exam-copy-guard.js.
-        if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin, isReviewer });
+        // Admins may lift question text out of the bank; everyone else may
+        // not, reviewers included. isReviewer still governs ACCESS below --
+        // it just no longer buys copy. See exam-copy-guard.js.
+        if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin });
         currentUserId = authUser.uid;
 
         let profile = null;

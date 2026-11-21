@@ -1,13 +1,17 @@
 /* ===========================================================================
  * Exam copy guard
  * ---------------------------------------------------------------------------
- * Staff may copy the questions, options and explanations out of exams they
- * have taken. Everyone else may not.
+ * Admins may copy the questions, options and explanations out of an exam,
+ * and the text of a study plan chapter. Everyone else may not, reviewers
+ * included: a reviewer reads, highlights and reports, but does not lift the
+ * text out.
  *
- *   SHOSExamCopy.apply({ isAdmin, isReviewer })
+ *   SHOSExamCopy.apply({ isAdmin })
  *
  * Call it once per page, as soon as the signed-in user's role is known.
- * qbank.html and practice-exam.html both already compute those two flags.
+ * qbank.html, practice-exam.html and dashboard.html all compute that flag.
+ * While an admin is impersonating another user, the effective (target) email
+ * decides, so "see what they see" shows the target's restrictions too.
  *
  * Two halves, because blocking selection alone is not enough and is not
  * always wanted:
@@ -33,8 +37,11 @@
   var GUARD = 'exam-copy-guarded';
 
   // The regions whose text is the product. A copy whose selection touches
-  // one of these is blocked for guarded users.
-  var EXAM_ROOTS = '.qbank-section, .exam-app';
+  // one of these is blocked for guarded users. .sp-reader-content is the
+  // study plan chapter reader on dashboard.html, which keeps its own
+  // belt-and-braces handlers because its text must stay SELECTABLE for the
+  // highlighter: blocking the event is the only lever there.
+  var EXAM_ROOTS = '.qbank-section, .exam-app, .sp-reader-content';
 
   var installed = false;
 
@@ -52,7 +59,7 @@
   }
 
   function onCopyOrCut(e) {
-    if (isAllowed()) return;                 // staff: let it through
+    if (isAllowed()) return;                 // admin: let it through
     var t = e.target;
     if (t && t.nodeType === 3) t = t.parentNode;
     // Never interfere with a real input the user is typing in, such as the
@@ -71,12 +78,14 @@
   }
 
   /**
-   * @param {{isAdmin?: boolean, isReviewer?: boolean}} role
+   * @param {{isAdmin?: boolean}} role
    * @returns {boolean} whether copying was allowed
    */
   function apply(role) {
     var r = role || {};
-    var allowed = r.isAdmin === true || r.isReviewer === true;
+    // Admins only. An isReviewer flag from an older call site is ignored
+    // rather than honoured, so a stale caller cannot re-open the door.
+    var allowed = r.isAdmin === true;
     var body = document.body;
     if (body) {
       body.classList.toggle(ALLOW, allowed);

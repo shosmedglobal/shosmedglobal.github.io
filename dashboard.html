@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261119a-sup">
   <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="exam-copy-guard.css?v=20261120-adminonly">
 </head>
 <body>
 
@@ -4111,6 +4112,9 @@
   <script src="qbank-access.js?v=20261011-expiry"></script>
   <script src="product-catalog.js?v=20260918-audience"></script>
   <script src="admin-audience.js?v=20260918-audience"></script>
+  <!-- Copy guard for the study plan chapter reader. Must load before the
+       inline script below, which calls SHOSExamCopy.apply(). -->
+  <script src="exam-copy-guard.js?v=20261120-adminonly"></script>
   <script>
     let currentProfile = null;
     let currentUser = null;
@@ -9267,11 +9271,17 @@
       // Restore saved highlights (as position data, applied on top of clean HTML)
       await spRestoreHighlights(subject, chIdx);
 
-      // Re-apply watermark (innerHTML replacement removes it)
-      const user = firebase.auth().currentUser;
-      if (user && user.email) {
-        spApplyWatermark(user.email);
-      }
+      // Re-apply watermark (innerHTML replacement removes it). Use the
+      // EFFECTIVE email, as the auth handler does: during impersonation the
+      // chapter belongs to the target, and stamping the admin's address on it
+      // both misattributes the copy and leaks the admin's address.
+      const wmEmail = (typeof window.spEffectiveEmail === 'function')
+        ? window.spEffectiveEmail()
+        : ((firebase.auth().currentUser || {}).email || '');
+      if (wmEmail) spApplyWatermark(wmEmail);
+      // Re-assert the copy policy too: impersonation can begin after the auth
+      // handler has already run.
+      if (typeof window.spApplyCopyPolicy === 'function') window.spApplyCopyPolicy();
 
       // Load notes
       spLoadNotes(subject, chIdx);
@@ -9649,22 +9659,46 @@
       const readerContent = document.getElementById('spReaderContent');
       const readerView = document.getElementById('studyReaderView');
 
+      // Admins may lift chapter text out; everyone else may not, reviewers
+      // included. exam-copy-guard.js puts .exam-copy-allowed on <body> once
+      // the role is known and never before, so a guard script that fails to
+      // load leaves the chapter closed rather than open.
+      const copyAllowed = () => !!(document.body
+        && document.body.classList.contains('exam-copy-allowed'));
+
       // Disable right-click on reader content
-      readerContent.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+      readerContent.addEventListener('contextmenu', e => {
+        if (copyAllowed()) return;
+        e.preventDefault(); return false;
+      });
 
       // Disable drag on reader content
-      readerContent.addEventListener('dragstart', e => { e.preventDefault(); return false; });
+      readerContent.addEventListener('dragstart', e => {
+        if (copyAllowed()) return;
+        e.preventDefault(); return false;
+      });
 
-      // Block copy event on reader content
-      readerContent.addEventListener('copy', e => { e.preventDefault(); return false; });
+      // Block copy event on reader content. The guard blocks copy AND cut
+      // document-wide for .sp-reader-content; this stays as the local
+      // fallback for the case where that script never loaded.
+      readerContent.addEventListener('copy', e => {
+        if (copyAllowed()) return;
+        e.preventDefault(); return false;
+      });
 
       // Block keyboard shortcuts on reader content area
       readerView.addEventListener('keydown', e => {
         // Only block when reader is visible
         if (!readerView.classList.contains('active')) return;
 
-        // Ctrl/Cmd + C, A, P, S, U (view source)
-        if ((e.ctrlKey || e.metaKey) && ['c','a','p','s','u'].includes(e.key.toLowerCase())) {
+        // Ctrl/Cmd + C, A, P, S, U (view source). Copy and select-all are
+        // released for admins, because without them the allowance is
+        // theoretical. Print, save and view-source stay blocked for everyone,
+        // as before: none of them is the copy this is about.
+        const k = (e.key || '').toLowerCase();
+        const isCopyKey = k === 'c' || k === 'a';
+        if ((e.ctrlKey || e.metaKey) && ['c','a','p','s','u'].includes(k)
+            && !(isCopyKey && copyAllowed())) {
           e.preventDefault();
           return false;
         }
@@ -9741,12 +9775,30 @@
       // is FOR (a paying user's content, branded to that user's email).
       // Otherwise the watermark leaks the admin's email onto the target's
       // rendered chapter content and misrepresents what the target sees.
-      firebase.auth().onAuthStateChanged(user => {
+      // The identity the reader is branded to and judged by. Shared with
+      // spOpenReader so a chapter opened mid-impersonation agrees with this.
+      window.spEffectiveEmail = function spEffectiveEmail() {
         const targetProfile = window._impersonatedProfile;
-        const emailToUse = (targetProfile && targetProfile.email)
-                        || (user && user.email)
-                        || '';
+        return (targetProfile && targetProfile.email)
+            || ((firebase.auth().currentUser || {}).email)
+            || '';
+      };
+
+      // Only admins may copy a chapter. Keep this list in sync with
+      // firestore.rules -> isAdmin(). Compared lowercased: copy is now the
+      // admin's alone, so a stored capital would silently take it away with
+      // no reviewer fallback to mask it.
+      const SP_ADMIN_EMAILS = ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.com', 'elizolotov@gmail.com'];
+      window.spApplyCopyPolicy = function spApplyCopyPolicy() {
+        const email = window.spEffectiveEmail().toLowerCase();
+        const isAdmin = SP_ADMIN_EMAILS.includes(email);
+        if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin });
+      };
+
+      firebase.auth().onAuthStateChanged(user => {
+        const emailToUse = window.spEffectiveEmail() || (user && user.email) || '';
         if (emailToUse) spApplyWatermark(emailToUse);
+        window.spApplyCopyPolicy();
       });
 
       // Visibility API: blur content when tab hidden (already handled by global handler,
