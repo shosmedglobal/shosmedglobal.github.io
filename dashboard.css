@@ -1245,11 +1245,21 @@
   max-width: calc(100% - 32px);
 }
 
+/* Same idea for a step's checklist: indented to the step heading's text, so
+   the items read as that step's and not as a list the card is making. */
+.step-checklist {
+  margin-left: 32px;
+}
+
 @media (max-width: 768px) {
   .step-faculty-card {
     margin-left: 0;
     width: auto;
     max-width: 100%;
+  }
+
+  .step-checklist {
+    margin-left: 0;
   }
 }
 

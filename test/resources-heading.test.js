@@ -133,6 +133,11 @@ check('6c the card title is not doubled',
 check('6d body text still uses the short form',
   view.includes('both written to the LF3 exam scope'));
 
+check('6e the step checklists are indented to the step text',
+  (view.match(/class="resource-checklist step-checklist"/g) || []).length === 2);
+check('6f the ERAS card list is left alone',
+  view.includes('<ul class="resource-checklist">'));
+
 // ---------------------------------------------------------------------------
 console.log('resources-heading: ' + passed + ' passed, ' + failures.length + ' failed');
 for (const f of failures) console.log('\n  FAIL ' + f);
