@@ -291,6 +291,92 @@ for (const email of ['eli@shosmed.com', 'contact@shosmed.com', 'privacy@shosmed.
   check('5i firestore.rules still knows ' + email, RULES.includes(email));
 }
 
+/* ============================================================== 6 =======
+ * Dragging to select, which is the only way to copy a paragraph.
+ *
+ * Reported 20 November 2026: an admin could not copy chapter text on the
+ * live site even though the guard said copying was allowed. The guard was
+ * never the problem. #spReaderContent has a mouseup handler that turns any
+ * deliberate drag into a highlight, and spApplyHighlight() finishes with
+ * sel.removeAllRanges(). So the drag that selects a paragraph destroyed its
+ * own selection before the user could press Ctrl+C, and the clipboard kept
+ * whatever had been in it before. Right-click > Copy failed identically.
+ *
+ * A triple-click does NOT reproduce it (the pointer does not move, so the
+ * dx/dy test short-circuits), which is why it survived the earlier live
+ * check. These run the real handler with the pointer moved.
+ * ==================================================================== */
+const iMU = DASH.indexOf("getElementById('spReaderContent').addEventListener('mouseup'");
+check('6a the reader still turns a drag into a highlight', iMU > 0);
+const iArrow = DASH.indexOf('(e) => {', iMU);
+let d2 = 0, iFnEnd = -1;
+for (let i = DASH.indexOf('{', iArrow); i < DASH.length; i++) {
+  if (DASH[i] === '{') d2++;
+  else if (DASH[i] === '}') { d2--; if (d2 === 0) { iFnEnd = i + 1; break; } }
+}
+check('6b and its handler brace-matches', iFnEnd > iArrow);
+const MOUSEUP_SRC = DASH.slice(iArrow, iFnEnd);
+
+/** Run the real mouseup handler for one role and report what it did.
+ *  `moved` false models a triple-click (pointer never moves). */
+function drag(allowed, moved) {
+  let highlighted = 0;
+  let cleared = false;
+  const ctx = {
+    spJustRemovedHighlight: false,
+    spMouseDownPos: { x: 100, y: 200 },
+    spReaderState: { hlColor: 'yellow' },
+    spApplyHighlight: function () { highlighted++; cleared = true; },
+    document: {
+      body: { classList: { contains: c => c === 'exam-copy-allowed' && allowed } }
+    },
+    window: {
+      getSelection: () => ({
+        isCollapsed: false,
+        toString: () => 'Prokaryotes are the oldest, smallest and most abundant organisms.'
+      })
+    }
+  };
+  ctx.global = ctx;
+  vm.createContext(ctx);
+  vm.runInContext(
+    'var h = ' + MOUSEUP_SRC + ';\n' +
+    'h({ clientX: ' + (moved ? 700 : 101) + ', clientY: 203, target: { closest: () => null } });',
+    ctx
+  );
+  // The selection survives exactly when no highlight was applied.
+  return { highlighted, selectionSurvived: !cleared };
+}
+
+const adminDrag = drag(true, true);
+check('6c an admin who drags is left with the selection intact',
+  adminDrag.selectionSurvived, adminDrag);
+check('6d and so has something for Ctrl+C and right-click > Copy to take',
+  adminDrag.highlighted === 0, adminDrag);
+
+const studentDrag = drag(false, true);
+check('6e a guarded reader still gets the highlight on drag',
+  studentDrag.highlighted === 1, studentDrag);
+
+const adminClick = drag(true, false);
+check('6f a bare click highlights for nobody', adminClick.highlighted === 0);
+check('6g including a guarded one', drag(false, false).highlighted === 0);
+
+/* The admin's route to a highlight is the Color menu, which applies the
+   chosen colour to whatever is selected. If that goes, admins lose
+   highlighting altogether rather than just losing it on drag. */
+check('6h a colour swatch still applies to the live selection',
+  /sp-hl-swatch[\s\S]{0,600}?spApplyHighlight\(spReaderState\.hlColor\)/.test(DASH));
+
+/* And the reader says which of the two behaviours is in force. */
+check('6i the notice tells an admin that copying is on',
+  /notice\.textContent\s*=\s*isAdmin/.test(DASH)
+  && /Copying is enabled for admins/.test(DASH));
+check('6j and still says "content protected" to everyone else',
+  /Content protected\. Personal watermark applied\./.test(DASH));
+check('6k no em dash reached the reader notice',
+  !/[—].{0,80}watermark applied/i.test(DASH));
+
 console.log('study-reader-copy: ' + passed + ' passed, ' + failures.length + ' failed');
 if (failures.length) {
   console.log();

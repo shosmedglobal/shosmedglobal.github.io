@@ -9652,6 +9652,19 @@
       const dy = Math.abs(e.clientY - spMouseDownPos.y);
       if (dx < 5 && dy < 5) return; // Mouse barely moved - not a deliberate selection
 
+      // Dragging is also how a person selects text in order to COPY it, and
+      // spApplyHighlight() ends by calling sel.removeAllRanges(). So for the
+      // one role allowed to copy, auto-highlighting here silently ate the
+      // selection: the admin dragged a paragraph, pressed Ctrl+C, and the
+      // clipboard kept whatever was in it before. Right-click > Copy failed
+      // the same way, because by then there was nothing left selected.
+      //
+      // Admins therefore highlight deliberately: the Color menu applies the
+      // chosen colour to the live selection (see the .sp-hl-swatch handler).
+      // Everyone else cannot copy at all, so drag-to-highlight is unchanged
+      // for reviewers and students, selection behaviour included.
+      if (document.body.classList.contains('exam-copy-allowed')) return;
+
       spApplyHighlight(spReaderState.hlColor || 'yellow');
     });
 
@@ -9781,6 +9794,16 @@
         const email = window.spEffectiveEmail().toLowerCase();
         const isAdmin = SP_ADMIN_EMAILS.includes(email);
         if (window.SHOSExamCopy) window.SHOSExamCopy.apply({ isAdmin });
+        // Say which of the two behaviours is in force, because a drag means
+        // different things under each: for an admin it selects text (so it
+        // can be copied) and a colour from the Color menu highlights it; for
+        // everyone else a drag highlights immediately and copying is blocked.
+        const notice = document.getElementById('spProtectionNotice');
+        if (notice) {
+          notice.textContent = isAdmin
+            ? 'Personal watermark applied. Copying is enabled for admins: drag to select, then pick a colour to highlight.'
+            : 'Content protected. Personal watermark applied.';
+        }
       };
 
       firebase.auth().onAuthStateChanged(user => {
