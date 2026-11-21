@@ -1459,8 +1459,14 @@
       reviewList.appendChild(block);
     });
 
-    // Every reviewed question, choice and explanation gets the watermark.
-    examWatermarkTargets(reviewList);
+    // One watermark per reviewed question. renderResults() runs while the
+    // results view is still hidden, so this is deferred to the next frame:
+    // a hidden block measures zero, and the size is what decides between one
+    // mark and one per screenful. The module retries anyway, but painting
+    // once, at the right moment, beats painting four times and failing three.
+    const markReview = () => examWatermarkTargets(reviewList);
+    if (window.requestAnimationFrame) window.requestAnimationFrame(markReview);
+    else markReview();
   }
 
   /* =======================================================================

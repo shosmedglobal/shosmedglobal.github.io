@@ -169,9 +169,11 @@
     return null;
   }
 
-  /** Mark one area. Returns true when it was marked. */
-  function paint(el, email) {
-    if (!el || !email || !el.style) return false;
+  /**
+   * Mark one area, if it can be measured right now.
+   * @returns {boolean} whether it was marked
+   */
+  function paintNow(el, email) {
     var p = plan(el, email);
     if (!p) return false;
     var t = tile(email, p.tw, p.th, p.font);
@@ -206,6 +208,50 @@
 
     el.setAttribute(ATTR, email);
     return true;
+  }
+
+  /* An area that is HIDDEN when paint() runs measures zero and cannot be
+     marked: the mock exam builds its whole results review while the view is
+     still display:none, and a collapsed panel behaves the same way. The old
+     watermark was a background set per element, so it never had to measure
+     anything and this did not arise; deciding one mark against one per
+     screenful does. Rather than make every call site wait for layout, an
+     area that cannot be measured is remembered and retried, so a caller that
+     paints too early still ends up with its mark. */
+  var pending = [];
+  var retrying = false;
+  var RETRY_MS = [120, 400, 1200, 3500];
+
+  function retryPending() {
+    if (!pending.length) return;
+    var still = [];
+    for (var i = 0; i < pending.length; i++) {
+      var p = pending[i];
+      if ('isConnected' in p.el && !p.el.isConnected) continue;  // gone
+      if (!paintNow(p.el, p.email)) still.push(p);
+    }
+    pending = still;
+  }
+
+  function scheduleRetries() {
+    if (retrying) return;
+    retrying = true;
+    var run = function () { retryPending(); };
+    if (global.requestAnimationFrame) global.requestAnimationFrame(run);
+    for (var i = 0; i < RETRY_MS.length; i++) setTimeout(run, RETRY_MS[i]);
+    setTimeout(function () { retrying = false; }, RETRY_MS[RETRY_MS.length - 1] + 50);
+  }
+
+  /** Mark one area, now or as soon as it has a size. */
+  function paint(el, email) {
+    if (!el || !email || !el.style) return false;
+    if (paintNow(el, email)) return true;
+    for (var i = 0; i < pending.length; i++) if (pending[i].el === el) return false;
+    /* Stamped even though unpainted, so refresh() finds it too. */
+    el.setAttribute(ATTR, email);
+    pending.push({ el: el, email: email });
+    scheduleRetries();
+    return false;
   }
 
   /** Mark every match of `selectors` under `root`. Returns the count. */
@@ -250,6 +296,8 @@
 
   global.SHOSWatermark = {
     paint: paint,
+    paintNow: paintNow,
+    pending: function () { return pending.length; },
     paintAll: paintAll,
     clear: clear,
     refresh: refresh,

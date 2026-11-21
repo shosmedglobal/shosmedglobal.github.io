@@ -299,6 +299,59 @@ const CARD_W = 760;
   check('9c and capped at 2x so the data URL stays small', e4.calls.scale[0][0] === 2);
 }
 
+/* ------------------------- 9b. areas that are hidden when painted ------ */
+/* Found on the live site, not in a test: the mock exam builds its ENTIRE
+   results review while the results view is still display:none, so every
+   block measured zero and none of the 60 was marked. The old watermark was
+   a per-element background and never measured anything, so this could not
+   happen to it; deciding one mark against one per screenful can. An area
+   that cannot be measured is remembered and retried once it has a size. */
+{
+  const e = makeEnv();
+  const timers = [];
+  e.ctx.setTimeout = fn => { timers.push(fn); return timers.length; };
+  e.ctx.window.requestAnimationFrame = fn => { timers.push(fn); return 1; };
+  // Re-run the module so it picks up those two.
+  vm.runInContext(SRC, e.ctx);
+  const api = e.ctx.window.SHOSWatermark;
+
+  const hidden = el(0, 0);          // display:none measures zero
+  hidden.isConnected = true;
+  check('9b-a a hidden area reports that it was not marked yet',
+    api.paint(hidden, EMAIL) === false);
+  check('9b-b but it is remembered', api.pending() === 1, api.pending());
+  check('9b-c and stamped, so refresh() finds it too',
+    hidden.getAttribute(api.ATTR) === EMAIL);
+  check('9b-d asking twice does not queue it twice', (() => {
+    api.paint(hidden, EMAIL);
+    return api.pending() === 1;
+  })(), api.pending());
+  check('9b-e a retry is scheduled', timers.length > 0, timers.length);
+
+  // The view is shown: the area now has a size, and the next retry marks it.
+  hidden.clientWidth = 978; hidden.clientHeight = 497;
+  hidden.offsetWidth = 978; hidden.offsetHeight = 497;
+  timers.shift()();
+  check('9b-f once it has a size the retry marks it', hidden.children.length === 1,
+    hidden.children.length);
+  check('9b-g and it leaves the queue', api.pending() === 0, api.pending());
+
+  // An area removed from the page before it ever became visible is dropped
+  // rather than retried forever.
+  const gone = el(0, 0);
+  gone.isConnected = true;
+  api.paint(gone, EMAIL);
+  gone.isConnected = false;
+  timers.shift()();
+  check('9b-h an area removed from the page is dropped', api.pending() === 0);
+}
+
+/* The mock exam paints after the frame in which the view is revealed, so in
+   practice the retry is a safety net rather than the mechanism. */
+check('9b-i the mock exam defers its review watermark to the next frame',
+  /requestAnimationFrame\(markReview\)/.test(
+    fs.readFileSync(path.join(ROOT, 'practice-exam.html'), 'utf8')));
+
 /* --------------------------------- 10. every surface, one area each ---- */
 for (const page of ['qbank.html', 'practice-exam.html', 'dashboard.html']) {
   const src = fs.readFileSync(path.join(ROOT, page), 'utf8');
