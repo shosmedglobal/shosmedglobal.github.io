@@ -216,7 +216,9 @@ check('7e in the sitemap', sitemap.includes('https://shosmed.com/' + ARTICLE));
 check('7f sitemap entry is high priority',
   /charles-university-lf3-application-guide\.html<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>0\.9<\/priority>/.test(sitemap));
 
-const INBOUND = ['community.html', 'blog/index.html', 'lf3.html',
+// lf3.html deliberately absent: the callout that linked the guide from the
+// overview page was removed at the user's request (it broke the page in half).
+const INBOUND = ['community.html', 'blog/index.html',
                  'blog/lf3-entrance-exam-what-is-on-it.html',
                  'blog/applying-to-charles-university.html'];
 for (const f of INBOUND) {
