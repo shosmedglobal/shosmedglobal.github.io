@@ -1,32 +1,27 @@
 # SHOS Med - robots.txt
-# Last updated: 2026-05-06
+# Last updated: 2026-11-25
 
 User-agent: *
 Allow: /
 
-# Internal app pages (already noindex via meta tag, but blocking crawl is cleaner)
-Disallow: /dashboard.html
-Disallow: /qbank.html
-Disallow: /qbank-diag.html
-Disallow: /practice-exam.html
-Disallow: /success.html
+# App, auth and transaction pages are kept out of the index by
+# <meta name="robots" content="noindex"> ON THE PAGES THEMSELVES, not by
+# Disallow. Disallow does not deindex: a blocked page that has inbound
+# links still gets indexed, titleless, and because Google may not fetch
+# it, it never sees the noindex that would remove it. That is what put
+# these URLs into "Indexed, though blocked by robots.txt". Letting the
+# crawler in is what takes them back out, so do not re-add Disallow
+# lines for:
+#   /dashboard.html  /qbank.html  /qbank-diag.html  /practice-exam.html
+#   /success.html    /login.html  /signup.html
 
-# Paid study chapters — these are HTML fragments without <head>, loaded into
-# the dashboard via JS. They can't be indexed independently and don't have
-# canonical/meta tags. Block to prevent orphan-page indexing attempts.
+# Paid study chapters. These are HTML fragments with no <head>, loaded
+# into the dashboard by JS, so they cannot carry a noindex of their own.
+# Blocking is the only control available for them.
 Disallow: /study/
 
-# Auth-gated pages — low SEO value; block to keep crawl budget on content
-Disallow: /login.html
-Disallow: /signup.html
-
-# Don't crawl Firebase Functions paths or any preview/staging URLs
+# Firebase internals and preview paths
 Disallow: /functions/
 Disallow: /__/
-
-# Allow explicitly: assets and OG cards (so they appear in image search)
-Allow: /assets/
-Allow: /favicon.ico
-Allow: /favicon.png
 
 Sitemap: https://shosmed.com/sitemap.xml
