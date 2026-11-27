@@ -39,7 +39,16 @@ function check(name, cond, detail) {
 /* ------------------------------------------------- 1. the rule itself */
 
 const CONTAINERS = ['.quiz-mainbox', '#reviewContainer', '.exam-app', '#qviewOverlay'];
-const block = CSS.slice(CSS.indexOf(':is(.quiz-mainbox'));
+// Scoped to the sup/sub rule itself, not to everything after it. This used
+// to slice to the end of the file, so 6c below ("the new rule changes no
+// spacing of its own") failed the moment any unrelated rule with a margin was
+// appended to style.css. The check is about this rule; the slice now is too.
+const _blockStart = CSS.indexOf(':is(.quiz-mainbox');
+const _subRule = CSS.indexOf(') sub {', _blockStart);
+const block = _blockStart < 0 ? '' : CSS.slice(
+  _blockStart,
+  (_subRule < 0 ? _blockStart : CSS.indexOf('}', _subRule)) + 1
+);
 
 check('1a style.css carries a scoped sup/sub rule', CSS.indexOf(':is(.quiz-mainbox') >= 0);
 for (const c of CONTAINERS) {

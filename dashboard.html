@@ -8332,7 +8332,9 @@
           'onclick="adminFixEmail(\'' + escapeJs(p.id) + '\', \'' + escapeJs(p.email || '') + '\', this)">' +
           'Change address and send verification</button>' +
         '<p class="aa-note" style="margin-top:8px;">Keeps the same account, progress and purchases. The new address ' +
-        'starts unverified and gets its own verification email. Nothing is sent to the old address.</p>' +
+        'starts unverified and gets its own verification email. We send nothing to the old address, but Firebase ' +
+        'issues its own recovery link for it: if that old mailbox is real and someone opens that link, this change ' +
+        'is undone. A mistyped domain cannot receive anything, so a typo correction stands.</p>' +
         '<p id="fixmsg-' + escapeAttr(p.id) + '" class="aa-note" style="display:none;"></p>' +
       '</div>';
     }

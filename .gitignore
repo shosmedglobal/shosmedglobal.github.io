@@ -3,3 +3,13 @@
 
 # Misc
 *.bak
+
+# Firebase emulator secret overrides — local only, never committed
+functions/.secret.local
+.secret.local
+
+# Firebase emulator debug output
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*-debug.log

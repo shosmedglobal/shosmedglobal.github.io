@@ -204,3 +204,88 @@ module.exports = {
   addressKey,
   DELIVERY_STATES
 };
+
+// ---------------------------------------------------------------------------
+// Delivery history and address suppression are two different facts, and
+// conflating them loses both.
+//
+// "The last message to this address was delivered" is a fact about a MESSAGE.
+// It is time-ordered, and the newest event wins.
+//
+// "Do not send to this address" is a fact about the ADDRESS. It is sticky: a
+// spam complaint or a hard bounce establishes it, and a later successful
+// delivery does NOT retract it. Somebody who reported us as spam and then
+// received a transactional receipt has not withdrawn the complaint, and
+// quietly resuming marketing to them because one message landed is how a
+// sending domain gets itself blocklisted.
+//
+// Before this split, both lived in a single `status` field ordered purely by
+// timestamp, so any later email.delivered silently cleared a complaint. The
+// suppression check in sendEmail also only ever looked for a hard bounce,
+// which meant a complaint suppressed nothing at all.
+// ---------------------------------------------------------------------------
+
+/* Does this event establish that we should stop sending to the address?
+ * Only two things do: a spam complaint, and a permanent recipient failure.
+ * A transient bounce, a delay, a provider-side failure and a delivery are
+ * all silent here. */
+function suppressionFromEvent(parsed) {
+  if (!parsed) return null;
+  if (parsed.status === 'suppressed') {
+    return { reason: 'complaint', atMs: parsed.atMs || null };
+  }
+  if (parsed.status === 'bounced' && parsed.permanent === true) {
+    return { reason: 'hard-bounce', atMs: parsed.atMs || null };
+  }
+  return null;
+}
+
+/* Build the patch to write for an address, given what we hold and what just
+ * arrived. Returns null when the event changes nothing.
+ *
+ * A complaint deliberately does NOT move `status`: the message it concerns
+ * was delivered, and overwriting the delivery history with a complaint would
+ * lose the delivery. It sets the suppression fields and nothing else. */
+function mergeDeliveryRecord(existing, parsed) {
+  if (!parsed || !parsed.status) return null;
+  const prev = existing || {};
+  const patch = {};
+  let changed = false;
+
+  const suppression = suppressionFromEvent(parsed);
+  const isComplaint = suppression && suppression.reason === 'complaint';
+
+  // --- the message fact: newest wins, complaints abstain ---
+  if (!isComplaint && shouldReplaceStatus(prev, parsed)) {
+    patch.status = parsed.status;
+    patch.permanent = !!parsed.permanent;
+    patch.atMs = parsed.atMs || Date.now();
+    patch.lastEventType = parsed.type;
+    patch.lastMessageId = parsed.messageId || null;
+    changed = true;
+  }
+
+  // --- the address fact: once set, it stays set ---
+  if (suppression && prev.suppressed !== true) {
+    patch.suppressed = true;
+    patch.suppressedReason = suppression.reason;
+    patch.suppressedAtMs = suppression.atMs || Date.now();
+    changed = true;
+  }
+
+  return changed ? patch : null;
+}
+
+/* The question sendEmail asks before sending anything that is not forced.
+ * Reads the sticky flag, and still honours the older record shape (a
+ * permanent bounce recorded before the split) so nothing that was suppressed
+ * yesterday starts receiving mail again today. */
+function isSuppressed(record) {
+  if (!record) return false;
+  if (record.suppressed === true) return true;
+  return record.permanent === true && record.status === 'bounced';
+}
+
+module.exports.suppressionFromEvent = suppressionFromEvent;
+module.exports.mergeDeliveryRecord = mergeDeliveryRecord;
+module.exports.isSuppressed = isSuppressed;

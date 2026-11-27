@@ -4,11 +4,30 @@ const Stripe = require('stripe');
 const emails = require('./emails');
 const payments = require('./payments');
 const integrity = require('./email-integrity');
+const identity = require('./identity');
+const isolation = require('./test-isolation');
+// Imported from the firestore entry point rather than reached for as
+// FieldValue. The namespaced statics are the legacy surface:
+// they are absent under the Functions emulator, which proxies the main
+// firebase-admin module, and they were removed outright in firebase-admin
+// v13. Taking them from here means the same code runs locally, runs in
+// production, and survives the next major version.
+const { FieldValue, FieldPath, Timestamp } = require('firebase-admin/firestore');
 const fs = require('fs');
 const path = require('path');
 
 admin.initializeApp();
 const db = admin.firestore();
+
+// Admin authorization, in one place. Membership of the list is necessary but
+// no longer sufficient: the address must also be verified, because an
+// unverified address is a string somebody typed, not a mailbox anyone has
+// proved they hold. A server-set custom claim satisfies it outright.
+function requireAdmin(context) {
+  identity.requireAdmin(context, function (code, message) {
+    return new functions.https.HttpsError(code, message);
+  });
+}
 
 // ============================================================================
 // Mock-exam private data cache.
@@ -16,13 +35,11 @@ const db = admin.firestore();
 // functions/exam-data/, which is bundled with the function code and not
 // deployed to Firebase Hosting. Loaded lazily on first call.
 // ============================================================================
-const MOCK_ADMIN_EMAILS = [
-  'eli@shosmed.com',
-  'contact@shosmed.com',
-  'privacy@shosmed.com',
-  'elizolotov@gmail.com',
-];
-const MOCK_REVIEWER_EMAILS = ['jana.fauknerova@lf3.cuni.cz'];
+// Authorization is defined once, in ./identity.js. These are aliases kept so
+// the mock-exam code below reads the same as it always did; they are NOT a
+// second copy of the list.
+const MOCK_ADMIN_EMAILS = identity.ADMIN_EMAILS;
+const MOCK_REVIEWER_EMAILS = identity.REVIEWER_EMAILS;
 const _examCache = {};
 function loadExam(year) {
   if (_examCache[year]) return _examCache[year];
@@ -193,9 +210,22 @@ exports.createCheckoutSession = functions
     // elsewhere, so an existing customer with an unconfirmed address keeps
     // everything they paid for and is merely asked to confirm it.
     //
-    // Read from the ID token, not from a field the client can set. The
-    // client-side check in the store is a courtesy; this is the control.
-    if (context.auth.token && context.auth.token.email_verified !== true) {
+    // Read it from Firebase Auth, NOT from the ID token. A token is a
+    // snapshot that stays valid for up to an hour, so a browser tab opened
+    // before an address was corrected still presents the OLD email and the
+    // OLD email_verified claim. Taking money on the strength of that
+    // snapshot is exactly how a receipt and an access grant go to an address
+    // nobody can read. So ask Firebase what is true now.
+    let account;
+    try {
+      account = await identity.liveAccount(context.auth.uid);
+    } catch (err) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Your account could not be read. Please sign in again.'
+      );
+    }
+    if (!account.email || !account.emailVerified) {
       throw new functions.https.HttpsError(
         'failed-precondition',
         'verify-email-required'
@@ -211,13 +241,15 @@ exports.createCheckoutSession = functions
       );
     }
 
-    // Diagnostic: confirm a secret is loaded and report its prefix (never log
-    // the full value). Helps spot empty/wrong-mode/wrong-type keys.
+    // The uid is the diagnostic that matters: it identifies the account
+    // without putting anybody's address in Cloud Logging. The key prefix and
+    // length used to be logged here as a configuration aid; they said
+    // test-vs-live mode out loud on every single checkout, which is a detail
+    // about our payment setup that a log reader has no need for.
     const secret = process.env.STRIPE_SECRET_KEY || '';
-    const keyPrefix = secret.slice(0, 8);
-    const keyLen = secret.length;
-    console.log(`createCheckoutSession invoked: tier=${tier}, uid=${context.auth.uid}, keyPrefix=${keyPrefix}, keyLen=${keyLen}`);
-    if (!secret || !secret.startsWith('sk_')) {
+    const stubStripe = isolation.stubStripe();
+    console.log(`createCheckoutSession invoked: tier=${tier}, uid=${context.auth.uid}`);
+    if (!stubStripe && (!secret || !secret.startsWith('sk_'))) {
       console.error('STRIPE_SECRET_KEY is missing or malformed');
       throw new functions.https.HttpsError(
         'failed-precondition',
@@ -225,7 +257,7 @@ exports.createCheckoutSession = functions
       );
     }
 
-    const stripe = Stripe(secret);
+    const stripe = stubStripe ? localStripeStub() : Stripe(secret);
 
     let prices;
     try {
@@ -269,7 +301,8 @@ exports.createCheckoutSession = functions
         mode: 'payment',
         payment_method_types: ['card'],
         line_items: [{ price: prices.data[0].id, quantity: 1 }],
-        customer_email: context.auth.token.email,
+        // The address verified a moment ago, not whatever the token held.
+        customer_email: account.email,
         client_reference_id: context.auth.uid,
         metadata: {
           firebase_uid: context.auth.uid,
@@ -333,8 +366,8 @@ exports.stripeWebhook = functions
 function paymentDeps() {
   return {
     TIERS,
-    FieldValue: admin.firestore.FieldValue,
-    Timestamp: admin.firestore.Timestamp,
+    FieldValue: FieldValue,
+    Timestamp: Timestamp,
   };
 }
 
@@ -366,9 +399,15 @@ const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
 const EMAIL_REPLY_TO = 'contact@shosmed.com';
 
 async function sendEmail({ to, subject, html, text, replyTo, force }) {
+  // Under the emulator the transport is swapped for an outbox collection, so
+  // nothing leaves the machine. Everything above the transport — suppression,
+  // the message index — still runs, because that is the part worth testing.
+  const stubbed = isolation.stubEmail();
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.warn('[email] RESEND_API_KEY not configured — skipping send to', to);
+  if (!stubbed && !apiKey) {
+    // No recipient in this line: a missing API key is a configuration fact
+    // and says nothing about who we were writing to.
+    console.warn('[email] RESEND_API_KEY not configured — skipping send');
     return { skipped: true };
   }
 
@@ -383,8 +422,11 @@ async function sendEmail({ to, subject, html, text, replyTo, force }) {
       if (key) {
         const snap = await db.collection('emailDelivery').doc(key).get();
         const rec = snap.exists ? snap.data() : null;
-        if (rec && rec.permanent === true && rec.status === 'bounced') {
-          console.warn('[email] suppressed — address previously hard-bounced');
+        // A spam complaint counts here too, not just a hard bounce. Before
+        // the suppression split this only looked for a bounce, so somebody
+        // who reported us kept receiving mail.
+        if (integrity.isSuppressed(rec)) {
+          console.warn('[email] suppressed —', (rec && rec.suppressedReason) || 'previous hard bounce');
           return { skipped: true, suppressed: true };
         }
       }
@@ -394,30 +436,47 @@ async function sendEmail({ to, subject, html, text, replyTo, force }) {
     }
   }
   try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer ' + apiKey,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: EMAIL_FROM,
-        to: [to],
-        subject,
-        html,
-        text,
-        // Admin notifications reply straight to the person who wrote in;
-        // everything else replies to the shared inbox.
-        reply_to: replyTo || EMAIL_REPLY_TO,
-      }),
-    });
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error('[email] Resend API error', res.status, errText);
-      return { ok: false, status: res.status, error: errText };
+    const payload = {
+      from: EMAIL_FROM,
+      to: [to],
+      subject,
+      html,
+      text,
+      // Admin notifications reply straight to the person who wrote in;
+      // everything else replies to the shared inbox.
+      reply_to: replyTo || EMAIL_REPLY_TO,
+    };
+    let body;
+    if (stubbed) {
+      body = { id: 'stub_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8) };
+      await db.collection('emulatorOutbox').doc(body.id).set({
+        to: to,
+        subject: subject || '',
+        text: String(text || '').slice(0, 4000),
+        replyTo: payload.reply_to,
+        force: !!force,
+        at: FieldValue.serverTimestamp(),
+      });
+    } else {
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + apiKey,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const errText = await res.text();
+        console.error('[email] Resend API error', res.status, errText);
+        return { ok: false, status: res.status, error: errText };
+      }
+      body = await res.json();
     }
-    const body = await res.json();
-    console.log('[email] sent to', to, 'id=', body.id);
+    // "Accepted for sending" is the whole of what just happened. Whether it
+    // was DELIVERED is a different fact that only a webhook event settles,
+    // so this line must not claim it.
+    console.log('[email] accepted for sending id=', body.id);
     // Index the message so a later webhook event can be attributed to an
     // address and a subject without trusting anything in the event payload
     // beyond its signature.
@@ -427,7 +486,7 @@ async function sendEmail({ to, subject, html, text, replyTo, force }) {
         await db.collection('emailMessages').doc(String(body.id)).set({
           address: key,
           subject: subject || '',
-          sentAt: admin.firestore.FieldValue.serverTimestamp()
+          sentAt: FieldValue.serverTimestamp()
         }, { merge: true });
       }
     } catch (err) {
@@ -481,13 +540,13 @@ exports.onUserCreated = functions
 
       if (result.ok) {
         await db.collection('users').doc(user.uid).set(
-          { welcomeEmailSentAt: admin.firestore.FieldValue.serverTimestamp() },
+          { welcomeEmailSentAt: FieldValue.serverTimestamp() },
           { merge: true }
         );
       }
     } catch (err) {
       // CRITICAL: never throw here — signup must succeed even if email fails.
-      console.error('[onUserCreated] email send failed for', user.uid, err);
+      console.error('[onUserCreated] email send failed for uid=', user.uid, err);
     }
   });
 
@@ -582,12 +641,7 @@ exports.resendVerification = functions
 // Auth-listed users now appear in the admin even before they re-sign-in to
 // trigger the backfill in auth.js.
 // ============================================================================
-const ADMIN_EMAILS = new Set([
-  'eli@shosmed.com',
-  'contact@shosmed.com',
-  'privacy@shosmed.com',
-  'elizolotov@gmail.com',
-]);
+const ADMIN_EMAILS = new Set(identity.ADMIN_EMAILS);
 
 // ----------------------------------------------------------------------------
 // deleteUser: admin-only. Deletes a user from both Firebase Auth AND their
@@ -603,10 +657,8 @@ exports.deleteUser = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
   }
+  requireAdmin(context);
   const callerEmail = (context.auth.token && context.auth.token.email) || '';
-  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
-    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
-  }
   const targetUid = data && data.uid;
   if (!targetUid || typeof targetUid !== 'string') {
     throw new functions.https.HttpsError('invalid-argument', 'Missing target uid.');
@@ -720,10 +772,8 @@ exports.listAllUsers = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
   }
+  requireAdmin(context);
   const callerEmail = (context.auth.token && context.auth.token.email) || '';
-  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
-    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
-  }
 
   try {
     // Pull every Auth user (paginated, max 1000 per page).
@@ -741,7 +791,7 @@ exports.listAllUsers = functions.https.onCall(async (data, context) => {
       const slice = allAuthUsers.slice(i, i + 10).map((u) => u.uid);
       const snap = await db
         .collection('users')
-        .where(admin.firestore.FieldPath.documentId(), 'in', slice)
+        .where(FieldPath.documentId(), 'in', slice)
         .get();
       snap.forEach((doc) => {
         profilesByUid[doc.id] = doc.data();
@@ -809,10 +859,8 @@ exports.cleanupOrphanUsers = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
   }
+  requireAdmin(context);
   const callerEmail = (context.auth.token && context.auth.token.email) || '';
-  if (!ADMIN_EMAILS.has(callerEmail.toLowerCase())) {
-    throw new functions.https.HttpsError('permission-denied', 'Admin only.');
-  }
 
   try {
     // 1) Enumerate every Auth UID (paginated).
@@ -956,7 +1004,7 @@ exports.reconcileStripePayments = functions
       sinceDays: req.sessionIds ? null : req.sinceDays,
       sessions: report,
     };
-    console.log('[reconcile]', context.auth.token.email, JSON.stringify(summary));
+    console.log('[reconcile] by uid=', context.auth.uid, JSON.stringify(summary));
     return summary;
   });
 
@@ -1017,7 +1065,9 @@ exports.onMessageCreated = functions
           ],
         }),
       });
-      console.log('[onMessageCreated]', snap.id, 'from', m.email || '(no email)',
+      // The document id is enough to find the message in the admin panel.
+      // The sender address does not need to be in Cloud Logging to do that.
+      console.log('[onMessageCreated]', snap.id,
         result && result.ok ? 'notified' : (result && result.skipped ? 'skipped (no API key)' : 'FAILED'));
     } catch (err) {
       // Never throw: the message is already saved, and a retry storm would
@@ -1232,14 +1282,14 @@ exports.qbankExpiryReminders = functions
           // Flag first-and-only-once per stage, so a later run this week
           // does not email the same person again.
           await doc.ref.set({
-            payments: { [`exam-bank-reminder-${stage}-sent`]: admin.firestore.FieldValue.serverTimestamp() },
+            payments: { [`exam-bank-reminder-${stage}-sent`]: FieldValue.serverTimestamp() },
           }, { merge: true });
           sent++;
-          console.log(`[qbankExpiryReminders] ${stage}-day notice -> ${email} (ends ${endDate})`);
+          console.log(`[qbankExpiryReminders] ${stage}-day notice -> uid=${doc.id} (ends ${endDate})`);
         } else {
           // No flag written: the next daily run retries.
           failed++;
-          console.error('[qbankExpiryReminders] send failed for', email, result && result.error);
+          console.error('[qbankExpiryReminders] send failed for uid=', doc.id, result && result.error);
         }
       }
     } catch (err) {
@@ -1289,7 +1339,7 @@ exports.submitMockExam = functions.https.onCall(async (data, context) => {
   }
 
   // Access check: admin, reviewer, free year, or paid.
-  const isAdmin = MOCK_ADMIN_EMAILS.includes(email);
+  const isAdmin = identity.isAdminContext(context);
   const isReviewer = MOCK_REVIEWER_EMAILS.includes(email);
   const isFree = year === cfg.freeYear;
   let isPaid = false;
@@ -1339,10 +1389,10 @@ exports.submitMockExam = functions.https.onCall(async (data, context) => {
 
   // Persist. Admin-write via admin SDK bypasses Firestore rules that
   // otherwise deny direct owner writes. Server timestamps only.
-  const now = admin.firestore.FieldValue.serverTimestamp();
+  const now = FieldValue.serverTimestamp();
   const startedAtMs = data && Number(data.startedAtMs);
   const startedAt = startedAtMs && startedAtMs > 0
-    ? admin.firestore.Timestamp.fromMillis(startedAtMs)
+    ? Timestamp.fromMillis(startedAtMs)
     : null;
   await attemptRef.set({
     year,
@@ -1383,7 +1433,7 @@ exports.getMockExamReview = functions.https.onCall(async (data, context) => {
   }
   const callerUid = context.auth.uid;
   const callerEmail = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
-  const isAdmin = MOCK_ADMIN_EMAILS.includes(callerEmail);
+  const isAdmin = identity.isAdminContext(context);
   const isReviewer = MOCK_REVIEWER_EMAILS.includes(callerEmail);
   const targetUid = (data && data.uid) ? String(data.uid) : callerUid;
   if (targetUid !== callerUid && !isAdmin && !isReviewer) {
@@ -1458,10 +1508,8 @@ exports.adminUpdateUserEmail = functions
     if (!context.auth) {
       throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
     }
+    requireAdmin(context);
     const callerEmail = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
-    if (!ADMIN_EMAILS.has(callerEmail)) {
-      throw new functions.https.HttpsError('permission-denied', 'Admin only.');
-    }
 
     const currentEmail = String((data && data.currentEmail) || '').trim().toLowerCase();
     const newEmail = String((data && data.newEmail) || '').trim().toLowerCase();
@@ -1500,7 +1548,7 @@ exports.adminUpdateUserEmail = functions
           byUid: context.auth.uid,
           byEmail: callerEmail,
           reason: reason,
-          at: admin.firestore.FieldValue.serverTimestamp(),
+          at: FieldValue.serverTimestamp(),
           result: result || {}
         }, extra || {}), { merge: true });
       } catch (err) {
@@ -1581,7 +1629,7 @@ exports.adminUpdateUserEmail = functions
     try {
       await db.collection('users').doc(target.uid).set({
         email: newEmail,
-        emailUpdatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        emailUpdatedAt: FieldValue.serverTimestamp(),
         emailCorrectedByAdmin: callerEmail
       }, { merge: true });
       profileSynced = true;
@@ -1707,7 +1755,7 @@ exports.resendWebhook = functions
           type: parsed.type,
           address: parsed.recipient || null,
           messageId: parsed.messageId || null,
-          at: admin.firestore.FieldValue.serverTimestamp()
+          at: FieldValue.serverTimestamp()
         });
       });
     } catch (err) {
@@ -1734,16 +1782,15 @@ exports.resendWebhook = functions
       await db.runTransaction(async (tx) => {
         const snap = await tx.get(ref);
         const existing = snap.exists ? snap.data() : null;
-        if (!integrity.shouldReplaceStatus(existing, parsed)) return;   // older event
-        tx.set(ref, {
-          address: key,
-          status: parsed.status,
-          permanent: !!parsed.permanent,
-          atMs: parsed.atMs || Date.now(),
-          lastEventType: parsed.type,
-          lastMessageId: parsed.messageId || null,
-          updatedAt: admin.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
+        // mergeDeliveryRecord keeps two things apart: the latest MESSAGE
+        // outcome, which is time-ordered and can move in any direction, and
+        // whether the ADDRESS is suppressed, which is sticky and is never
+        // cleared by a later delivery.
+        const patch = integrity.mergeDeliveryRecord(existing, parsed);
+        if (!patch) return;                       // older or redundant event
+        patch.address = key;
+        patch.updatedAt = FieldValue.serverTimestamp();
+        tx.set(ref, patch, { merge: true });
       });
     } catch (err) {
       console.error('[resendWebhook] delivery write failed:', err.message);
@@ -1761,7 +1808,7 @@ exports.resendWebhook = functions
         emailDeliveryStatus: parsed.status,
         emailDeliveryPermanent: !!parsed.permanent,
         emailDeliveryAddress: key,
-        emailDeliveryAt: admin.firestore.FieldValue.serverTimestamp()
+        emailDeliveryAt: FieldValue.serverTimestamp()
       };
       await Promise.all(q.docs.map(function (d) { return d.ref.set(stamp, { merge: true }); }));
     } catch (err) {
@@ -1769,4 +1816,171 @@ exports.resendWebhook = functions
     }
 
     res.status(200).send('OK');
+  });
+
+// ============================================================================
+// localStripeStub: the Stripe client used when running under the emulator.
+//
+// Even Stripe's own test mode is a real account on a real network, and a
+// local test run has no business reaching it: it needs credentials to be
+// present, it leaves records behind, and it fails when offline. The stub
+// answers the two calls createCheckoutSession makes, shaped exactly as the
+// real client shapes them, so the code under test takes the same path.
+//
+// It is unreachable in production: isolation.stubStripe() is false unless the
+// process is inside the Functions emulator, and it throws outright if a live
+// key is present there.
+// ============================================================================
+function localStripeStub() {
+  return {
+    prices: {
+      list: async function (args) {
+        const key = (args && args.lookup_keys && args.lookup_keys[0]) || 'unknown';
+        return { data: [{ id: 'price_stub_' + key, lookup_key: key }] };
+      },
+    },
+    checkout: {
+      sessions: {
+        create: async function (args) {
+          const id = 'cs_stub_' + Date.now();
+          // Record exactly what the real client would have been asked to
+          // charge, so a test can assert WHICH address the receipt would
+          // have gone to rather than taking the function's word for it.
+          try {
+            await db.collection('emulatorStripeSessions').doc(id).set({
+              customer_email: (args && args.customer_email) || null,
+              client_reference_id: (args && args.client_reference_id) || null,
+              metadata: (args && args.metadata) || {},
+              at: FieldValue.serverTimestamp(),
+            });
+          } catch (e) { /* a test convenience, never a failure path */ }
+          return {
+            id: id,
+            url: 'https://stripe.test.invalid/checkout/' + id,
+            customer_email: args && args.customer_email,
+            client_reference_id: args && args.client_reference_id,
+            metadata: (args && args.metadata) || {},
+          };
+        },
+      },
+    },
+  };
+}
+
+// ============================================================================
+// submitContactMessage: the only way a contact message gets into Firestore.
+//
+// It used to be a direct client write, with `allow create: if true` on the
+// messages collection and a hidden honeypot field in the form as the only
+// defence. A honeypot filters careless bots; it is not a control. Anybody
+// holding the public Firebase config — which is public by design, it ships in
+// every page — could write unlimited documents into that collection from a
+// console, and each one fires onMessageCreated, which sends mail. The cost of
+// that was real and was paid in sending reputation.
+//
+// So validation and the rate limit now live here, on the server, and the rule
+// that permitted the direct write is `create: if false`. Moving the check
+// without closing the old path would have left the bypass in place and just
+// added a second door, which is why both halves ship together.
+//
+// It stays callable WITHOUT authentication on purpose: a prospective
+// applicant who has not signed up is precisely who the contact form is for.
+// ============================================================================
+const CONTACT_LIMITS = { max: 5, windowMs: 60 * 60 * 1000 };
+
+function callerIpKey(context) {
+  const req = context && context.rawRequest;
+  const headers = (req && req.headers) || {};
+  const fwd = headers['x-forwarded-for'] || '';
+  const raw = String(fwd).split(',')[0].trim() || (req && req.ip) || '';
+  if (!raw) return null;
+  // A Firestore document id may not contain "/", and IPv6 addresses are full
+  // of colons. Flatten to something plainly safe rather than trusting the
+  // shape of whatever arrived in a header.
+  const key = raw.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 60);
+  return key || null;
+}
+
+// No secrets bound: this function stores the message and returns. The
+// notification email is sent by onMessageCreated, which has the key it needs.
+exports.submitContactMessage = functions.https.onCall(async (data, context) => {
+    const d = data || {};
+
+    // A person cannot fill in a field they cannot see. Answer with success so
+    // a bot learns nothing from the difference.
+    if (d.website) return { ok: true, id: null };
+
+    const name = String(d.name || '').trim().slice(0, 200);
+    const email = String(d.email || '').trim().slice(0, 200);
+    const body = String(d.body || '').trim().slice(0, 5000);
+    const subject = String(d.subject || '').trim().slice(0, 300);
+    const category = String(d.category || 'general').trim().slice(0, 60);
+
+    if (name.length < 2) {
+      throw new functions.https.HttpsError('invalid-argument', 'Please tell us your name.');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      throw new functions.https.HttpsError('invalid-argument', 'Please enter a valid email address.');
+    }
+    if (body.length < 5) {
+      throw new functions.https.HttpsError('invalid-argument', 'Please write your message.');
+    }
+
+    // Rate limit on TWO keys, and a refusal on either one is a refusal.
+    //
+    // Source address alone is not enough. It can be absent entirely (the
+    // emulator supplies no forwarding header, which silently disabled the
+    // whole limit and was caught only because a test flooded it), it is
+    // shared by everyone behind one NAT, and it is the easiest thing here for
+    // a determined sender to rotate. The submitted address is always present,
+    // so it always constrains.
+    //
+    // A transaction per key, because two simultaneous submissions that both
+    // read a count of 4 would otherwise both write 5.
+    const limitKeys = [];
+    const ipKey = callerIpKey(context);
+    if (ipKey) limitKeys.push('ip_' + ipKey);
+    const emailKey = integrity.addressKey(email);
+    if (emailKey) limitKeys.push('addr_' + emailKey.replace(/[^a-z0-9]/g, '_').slice(0, 80));
+
+    for (const key of limitKeys) {
+      const ref = db.collection('contactRateLimit').doc(key);
+      const verdict = await db.runTransaction(async (tx) => {
+        const snap = await tx.get(ref);
+        const r = integrity.rateLimitWindow(
+          snap.exists ? snap.data() : null, Date.now(), CONTACT_LIMITS);
+        if (r.allowed) tx.set(ref, r.next, { merge: true });
+        return r;
+      });
+      if (!verdict.allowed) {
+        throw new functions.https.HttpsError(
+          'resource-exhausted',
+          'That is a lot of messages in a short time. Please wait a little, '
+          + 'or write to contact@shosmed.com directly.'
+        );
+      }
+    }
+
+    const doc = {
+      userId: (context.auth && context.auth.uid) || null,
+      name: name,
+      email: email,
+      category: category,
+      subject: subject,
+      body: body,
+      status: 'new',
+      createdAt: FieldValue.serverTimestamp(),
+      repliedAt: null,
+      adminNotes: '',
+      source: 'submitContactMessage',
+    };
+    // Contact-form reason identifier (contact-modal.js REASONS key), used by
+    // the admin panel to assign the message to an audience. Only a short
+    // lowercase key is accepted; anything else is simply not stored.
+    if (typeof d.reasonKey === 'string' && /^[a-z0-9-]{1,40}$/.test(d.reasonKey)) {
+      doc.reasonKey = d.reasonKey;
+    }
+
+    const written = await db.collection('messages').add(doc);
+    return { ok: true, id: written.id };
   });

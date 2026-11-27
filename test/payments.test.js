@@ -41,9 +41,10 @@ const revenue = require(path.join(ROOT, 'revenue-stats.js'));
 
 const indexSrc = fs.readFileSync(path.join(ROOT, 'functions', 'index.js'), 'utf8');
 const TIERS = new Function(indexSrc.match(/const TIERS = (\{[\s\S]*?\n\});/)[0] + '\nreturn TIERS;')();
-const ADMIN_EMAILS = new Set(new Function(
-  indexSrc.match(/const ADMIN_EMAILS = new Set\((\[[\s\S]*?\])\);/)[0].replace('const ADMIN_EMAILS = ', 'return ')
-)());
+// Taken from the module that defines it. This used to be scraped out of
+// index.js with a regex over a literal array; the list now lives in
+// functions/identity.js, which is the whole point of that change.
+const ADMIN_EMAILS = new Set(require(path.join(ROOT, 'functions', 'identity.js')).ADMIN_EMAILS);
 
 // ============================================================ Firestore fake
 const FieldValue = {

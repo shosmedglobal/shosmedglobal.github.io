@@ -18,13 +18,32 @@ service cloud.firestore {
     function isSignedIn() {
       return request.auth != null;
     }
+    // Mirrors functions/identity.js. Rules cannot import JavaScript, so this
+    // is the one copy of the admin list that cannot be eliminated; a test
+    // asserts the two stay identical.
+    //
+    // email_verified is part of the condition because an email address is an
+    // identifier, not a credential: it only becomes one once somebody has
+    // proved they hold the mailbox. Without this, an unverified self-entered
+    // address that happened to match the list would have been enough.
+    //
+    // A server-set custom claim is accepted outright, since only the Admin
+    // SDK can write one. get() is used rather than plain member access so a
+    // token that carries neither claim evaluates to false instead of
+    // erroring.
     function isAdmin() {
-      return isSignedIn() && request.auth.token.email in [
-        'eli@shosmed.com',
-        'contact@shosmed.com',
-        'privacy@shosmed.com',
-        'elizolotov@gmail.com'
-      ];
+      return isSignedIn() && (
+        request.auth.token.get('admin', false) == true
+        || (
+          request.auth.token.get('email_verified', false) == true
+          && request.auth.token.get('email', '') in [
+            'eli@shosmed.com',
+            'contact@shosmed.com',
+            'privacy@shosmed.com',
+            'elizolotov@gmail.com'
+          ]
+        )
+      );
     }
     function isOwner(uid) {
       return isSignedIn() && request.auth.uid == uid;
@@ -174,9 +193,26 @@ service cloud.firestore {
     // submitted by anonymous visitors weren't visible to the admin.
     match /messages/{id} {
       allow read:   if isAdmin();
-      allow create: if true;
+      // Submission now goes through the submitContactMessage Cloud Function,
+      // which validates the fields and rate-limits by source address.
+      //
+      // This was `if true`. The Firebase config is public by design — it
+      // ships in every page — so anyone could write unlimited documents
+      // straight into the admin inbox from a console, and every one of them
+      // fires onMessageCreated, which sends mail. Adding the function while
+      // leaving this open would have kept the bypass and merely added a
+      // second door, so both halves change together.
+      allow create: if false;
       allow update: if isAdmin();
       allow delete: if isAdmin();
+    }
+
+    // Rate-limit counters for the contact form, keyed by source address.
+    // Server-owned: a client that could read these would learn which
+    // addresses have been writing in, and one that could write them could
+    // reset its own limit, which is the whole point of the limit.
+    match /contactRateLimit/{key} {
+      allow read, write: if false;
     }
 
     // ====== Bookings ======

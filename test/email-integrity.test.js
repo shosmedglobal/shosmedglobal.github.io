@@ -216,16 +216,26 @@ check('6c empty is refused', I.addressKey('') === null && I.addressKey(null) ===
 const fs = require('fs');
 const idx = fs.readFileSync(path.join(__dirname, '..', 'functions', 'index.js'), 'utf8');
 
-check('7a checkout requires a verified address, from the token',
-  /context\.auth\.token\.email_verified !== true/.test(idx) &&
+// Deliberately NOT the token claim. A token is a snapshot good for an hour,
+// so a tab opened before a correction still carries the old address and the
+// old email_verified. Checkout reads the account live.
+check('7a checkout reads verification from the account, not from the token',
+  /identity\.liveAccount\(context\.auth\.uid\)/.test(idx) &&
+  /!account\.email \|\| !account\.emailVerified/.test(idx) &&
   idx.indexOf('verify-email-required') > 0);
+check('7a2 and it no longer trusts the token claim for that decision',
+  !/context\.auth\.token\.email_verified !== true/.test(idx));
+check('7a3 the receipt address is the one just read, not the token\u2019s',
+  /customer_email: account\.email/.test(idx) &&
+  !/customer_email: context\.auth\.token\.email/.test(idx));
 check('7b the gate sits before any Stripe work',
-  idx.indexOf('verify-email-required') < idx.indexOf('const stripe = Stripe(secret)'));
+  idx.indexOf('verify-email-required')
+    < idx.indexOf('const stripe = stubStripe ? localStripeStub() : Stripe(secret)'));
 check('7c resend is rate limited on the server',
   idx.includes('integrity.rateLimitWindow') && idx.includes('resource-exhausted'));
 check('7d the admin correction exists and is admin-gated',
   idx.includes('exports.adminUpdateUserEmail') &&
-  /adminUpdateUserEmail[\s\S]{0,1200}ADMIN_EMAILS\.has/.test(idx));
+  /adminUpdateUserEmail[\s\S]{0,1200}requireAdmin\(context\)/.test(idx));
 check('7e it never asserts verification',
   /updateUser\(target\.uid, \{ email: newEmail, emailVerified: false \}\)/.test(idx));
 check('7f it refuses to merge on a conflict',
@@ -237,8 +247,10 @@ check('7j the webhook verifies before it parses',
   idx.indexOf('verifySvixSignature') < idx.indexOf('JSON.parse(req.rawBody'));
 check('7k the webhook is idempotent per event id',
   idx.includes("db.collection('emailEvents').doc(String(eventId))"));
-check('7l hard-bounced addresses are suppressed from later automated mail',
-  idx.includes('suppressed — address previously hard-bounced'));
+check('7l suppressed addresses are kept out of later automated mail',
+  /integrity\.isSuppressed\(rec\)/.test(idx));
+check('7l2 the webhook keeps delivery history and suppression apart',
+  /integrity\.mergeDeliveryRecord\(existing, parsed\)/.test(idx));
 check('7m a corrected address can still be mailed (force)',
   /force: true/.test(idx));
 

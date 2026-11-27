@@ -24,8 +24,14 @@ function friendlyError(error) {
     'auth/email-already-in-use': 'This email is already registered. Try logging in instead.',
     'auth/invalid-email': 'Please enter a valid email address.',
     'auth/weak-password': 'Password must be at least 6 characters.',
-    'auth/user-not-found': 'No account found with this email.',
-    'auth/wrong-password': 'Incorrect password. Please try again.',
+    // Both of these deliberately say the same thing. Telling an anonymous
+    // visitor "no account found with this email" answers, for any address
+    // they care to type, whether that person has an account here, and the
+    // separate "incorrect password" confirms it from the other direction.
+    // Together they are an account-existence oracle on a public form. One
+    // message for both failures closes it.
+    'auth/user-not-found': 'Incorrect email or password. Please try again.',
+    'auth/wrong-password': 'Incorrect email or password. Please try again.',
     'auth/invalid-credential': 'Incorrect email or password. Please try again.',
     'auth/invalid-login-credentials': 'Incorrect email or password. Please try again.',
     'auth/user-disabled': 'This account has been disabled. Please contact support.',

@@ -111,33 +111,71 @@ function getIntakeQuestions(serviceType) {
 }
 
 // ===== Submit Contact Form =====
+// This used to write straight into the `messages` collection from the
+// browser, under a rule that said `allow create: if true`. The Firebase
+// config is public by design, so that rule let anyone write unlimited
+// documents into the admin inbox, each one triggering a notification email.
+// Validation and rate limiting now happen server-side in the
+// submitContactMessage Cloud Function, and the permissive rule is closed.
+//
+// The function is invoked over the callable protocol with plain fetch rather
+// than through firebase-functions-compat. The marketing pages that carry the
+// contact modal do not load that SDK, and the protocol is a JSON POST of
+// { data: ... } answered with { result: ... } or { error: ... }. Adding 30KB
+// of SDK to seven pages to express that would be a poor trade.
+const CONTACT_FN_REGION = 'us-central1';
+
+function contactFunctionUrl() {
+  var projectId = '';
+  try { projectId = (firebase.app().options || {}).projectId || ''; } catch (e) { projectId = ''; }
+  if (!projectId) return null;
+  return 'https://' + CONTACT_FN_REGION + '-' + projectId
+    + '.cloudfunctions.net/submitContactMessage';
+}
+
 async function submitContactForm(formData) {
+  const url = contactFunctionUrl();
+  if (!url) {
+    return { success: false, error: 'Message service is unavailable right now. Please email contact@shosmed.com.' };
+  }
   try {
-    const user = auth.currentUser;
-    const doc = {
-      userId: user ? user.uid : null,
+    const payload = {
       name: (formData.name || '').substring(0, 200),
       email: (formData.email || '').substring(0, 200),
       category: formData.category || 'general',
       subject: (formData.subject || '').substring(0, 300),
       body: (formData.body || '').substring(0, 5000),
-      status: 'new',
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      repliedAt: null,
-      adminNotes: ''
     };
-    // Contact-form reason identifier (contact-modal.js REASONS key), used by
-    // the admin panel to assign the message to an audience. Only a short
-    // lowercase key is accepted; anything else is simply not stored.
     if (typeof formData.reasonKey === 'string' && /^[a-z0-9-]{1,40}$/.test(formData.reasonKey)) {
-      doc.reasonKey = formData.reasonKey;
+      payload.reasonKey = formData.reasonKey;
     }
+    // Pass the honeypot through untouched so the server, not the browser,
+    // decides what it means.
+    if (formData.website) payload.website = formData.website;
 
-    await db.collection('messages').add(doc);
-    return { success: true };
+    const headers = { 'Content-Type': 'application/json' };
+    // Signed-in senders get attributed to their account. The function reads
+    // the uid from the verified token, never from the request body.
+    try {
+      const user = auth.currentUser;
+      if (user) headers.Authorization = 'Bearer ' + (await user.getIdToken());
+    } catch (e) { /* send it anonymously; the form must still work */ }
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ data: payload }),
+    });
+    const json = await res.json().catch(function () { return null; });
+
+    if (!res.ok || (json && json.error)) {
+      const msg = (json && json.error && json.error.message) || 'Could not send your message.';
+      return { success: false, error: msg };
+    }
+    return { success: true, id: json && json.result && json.result.id };
   } catch (error) {
     console.error('submitContactForm error:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: 'Could not reach the message service. Please email contact@shosmed.com.' };
   }
 }
 
