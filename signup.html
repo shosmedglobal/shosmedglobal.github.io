@@ -142,7 +142,7 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" required placeholder="At least 6 characters" minlength="6">
+            <input type="password" id="password" required placeholder="At least 10 characters" minlength="10" autocomplete="new-password">
           </div>
           <div class="form-group">
             <label>I am:</label>
@@ -280,6 +280,43 @@
         errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
         errorMsg.style.display = 'block';
         termsCheckbox.focus();
+        return;
+      }
+
+      // Password strength, at the only moment it can be chosen freely.
+      //
+      // Firebase's own default is six characters with no other requirement,
+      // which is weaker than anything worth protecting a medical-school
+      // application behind. This is the HONEST limit of what the page can do:
+      // it is user experience, not a control, because anybody can call the
+      // Identity Toolkit REST endpoint directly with a six-character password
+      // and Firebase will accept it. The actual control is the project-level
+      // password policy, which has to be switched on in the console.
+      //
+      // It deliberately applies to NEW passwords only. Existing accounts sign
+      // in untouched, which is the same reason the server-side policy should
+      // be rolled out in notify mode first.
+      var pwProblem = (function () {
+        if (password.length < 10) return 'Please use at least 10 characters. Length is what actually makes a password hard to guess.';
+        if (!/[^0-9]/.test(password)) return 'Please use more than just digits.';
+        var local = (email || '').split('@')[0].toLowerCase();
+        if (local && local.length > 2 && password.toLowerCase().indexOf(local) !== -1) {
+          return 'Please choose a password that does not contain your email address.';
+        }
+        var weak = ['password', '123456', 'qwerty', 'letmein', 'welcome',
+                    'iloveyou', 'admin123', 'shosmed', 'medicine'];
+        var lower = password.toLowerCase();
+        for (var wi = 0; wi < weak.length; wi++) {
+          if (lower.indexOf(weak[wi]) !== -1) {
+            return 'That password contains a very common word. Please choose something less guessable.';
+          }
+        }
+        return null;
+      })();
+      if (pwProblem) {
+        errorMsg.textContent = pwProblem;
+        errorMsg.style.display = 'block';
+        document.getElementById('password').focus();
         return;
       }
 
