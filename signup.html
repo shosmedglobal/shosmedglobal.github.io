@@ -138,6 +138,7 @@
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" required placeholder="your@email.com">
+            <div class="email-typo-hint" id="emailTypoHint" hidden></div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -208,6 +209,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="email-typo.js?v=20261127"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script>
     // Get redirect destination (default: dashboard). shosAuthDest is defined
@@ -228,6 +230,11 @@
     auth.onAuthStateChanged((user) => {
       if (user && !signupInProgress) window.location.href = redirectTo;
     });
+
+    const emailTypoCheck = window.SHOSEmailTypo
+      ? window.SHOSEmailTypo.attach(document.getElementById('email'),
+                                    document.getElementById('emailTypoHint'))
+      : null;
 
     // Email/Password Sign Up
     document.getElementById('signupForm').addEventListener('submit', async (e) => {
@@ -262,6 +269,16 @@
         errorMsg.textContent = 'You must agree to the Terms of Service before creating an account.';
         errorMsg.style.display = 'block';
         termsCheckbox.focus();
+        return;
+      }
+
+      // A one-character-off domain is a valid address that does not exist:
+      // the verify email bounces and we never hear from them again. Suggest
+      // the fix once; if they meant it, the next submit goes through.
+      if (emailTypoCheck && emailTypoCheck()) {
+        errorMsg.textContent = 'Please check your email address. We send your sign-in and verification details there.';
+        errorMsg.style.display = 'block';
+        document.getElementById('email').focus();
         return;
       }
 

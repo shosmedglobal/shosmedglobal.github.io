@@ -151,6 +151,9 @@
         paying: { any: paying('any'), 'med-school': paying('med-school'), 'residency': paying('residency') },
         createdAtMs: toMs(u.createdAtMs != null ? u.createdAtMs : u.createdAt),
         visitCount: typeof u.visitCount === 'number' ? u.visitCount : 0,
+        // Tri-state on purpose. The Cloud Function knows; the Firestore
+        // fallback has no such field, and null must not render as "no".
+        emailVerified: typeof u.emailVerified === 'boolean' ? u.emailVerified : null,
         hasFirestoreDoc: u.hasFirestoreDoc !== false,
         raw: u,
       };

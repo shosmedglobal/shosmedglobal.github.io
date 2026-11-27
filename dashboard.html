@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261119a-sup">
-  <link rel="stylesheet" href="dashboard.css?v=20261121-stepindent">
+  <link rel="stylesheet" href="dashboard.css?v=20261127-unverified">
   <link rel="stylesheet" href="exam-copy-guard.css?v=20261120-adminonly">
 </head>
 <body>
@@ -2682,6 +2682,9 @@
     #adminUsersTable td { vertical-align: top; }
     .aa-name { font-weight: 600; color: var(--navy, #1B2137); }
     .aa-email { font-size: 0.8rem; color: #64748b; overflow-wrap: anywhere; }
+    .aa-unverified { display:inline-block; margin-left:6px; padding:1px 6px; border-radius:50px;
+      background:#FEF3C7; color:#92400E; font-size:0.68rem; font-weight:700; letter-spacing:0.02em;
+      text-transform:uppercase; vertical-align:1px; }
     .aa-person { min-width: 190px; }
     /* Wide enough that columns never squeeze; on narrow screens the table
        scrolls sideways inside .admin-table-wrap instead. */
@@ -8214,7 +8217,7 @@
         if (!p) return '';
         const name = p.name || '(no name)';
         const cells = [
-          `<td class="aa-person"><div class="aa-name">${escapeHtml(name)}${p.hasFirestoreDoc ? '' : ' <span class="aa-muted" title="Sign-in account without a profile record yet">(no profile)</span>'}</div><div class="aa-email">${escapeHtml(p.email || '-')}</div></td>`,
+          `<td class="aa-person"><div class="aa-name">${escapeHtml(name)}${p.hasFirestoreDoc ? '' : ' <span class="aa-muted" title="Sign-in account without a profile record yet">(no profile)</span>'}</div><div class="aa-email">${escapeHtml(p.email || '-')}${p.emailVerified === false ? ' <span class="aa-unverified" title="They never clicked the link in the welcome email. Either they ignored it or the address does not exist, so treat this address as unconfirmed.">unverified</span>' : ''}</div></td>`,
           `<td>${pathCell(p)}</td>`,
           `<td style="white-space:nowrap;">${escapeHtml(shortDate(p.createdAtMs))}</td>`,
           `<td>${purchasesCell(p)}</td>`,
