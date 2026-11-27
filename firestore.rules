@@ -42,13 +42,28 @@ service cloud.firestore {
     //
     // Uses plain `in` operator against request.resource.data — a prior
     // `hasAny/hasOnly` helper was silently permissive at runtime.
+    // Server-owned fields. `verifySendWindow` is the one that matters
+    // most: the resend rate limit is stored on the user's OWN document, so
+    // without this line the limit is advisory — clear the field, get five
+    // more emails. The delivery verdict is evidence from Resend and the
+    // correction stamp is evidence of an admin action; neither is the
+    // subject's to edit.
+    function serverOwnedAbsent(d) {
+      return !('payments' in d)
+          && !('role' in d)
+          && !('isAdmin' in d)
+          && !('banned' in d)
+          && !('disabled' in d)
+          && !('entitlements' in d)
+          && !('verifySendWindow' in d)
+          && !('emailDeliveryStatus' in d)
+          && !('emailDeliveryPermanent' in d)
+          && !('emailDeliveryAddress' in d)
+          && !('emailDeliveryAt' in d)
+          && !('emailCorrectedByAdmin' in d);
+    }
     function ownerWriteIsSafe() {
-      return !('payments' in request.resource.data)
-          && !('role' in request.resource.data)
-          && !('isAdmin' in request.resource.data)
-          && !('banned' in request.resource.data)
-          && !('disabled' in request.resource.data)
-          && !('entitlements' in request.resource.data);
+      return serverOwnedAbsent(request.resource.data);
     }
     // Update variant: same deny list, applied to the diff. `payments` etc.
     // may EXIST on the doc (from a prior Stripe webhook write) — they just
@@ -57,12 +72,7 @@ service cloud.firestore {
     // diff to see whether payments actually changed.
     function ownerUpdateIsSafe() {
       let changed = request.resource.data.diff(resource.data).affectedKeys();
-      return !('payments' in changed)
-          && !('role' in changed)
-          && !('isAdmin' in changed)
-          && !('banned' in changed)
-          && !('disabled' in changed)
-          && !('entitlements' in changed);
+      return serverOwnedAbsent(changed);
     }
 
     match /users/{uid} {
@@ -127,6 +137,33 @@ service cloud.firestore {
     // may write, so revenue figures cannot be edited from a browser.
     // Admins read it to compute Paying Users / Total Revenue.
     match /transactions/{sessionId} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
+    // ====== Admin audit log ======
+    // Written only by Cloud Functions through the Admin SDK, which bypasses
+    // these rules. No client may write, admin included, because a log an
+    // actor can edit is not a log.
+    match /adminAuditLog/{opId} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+
+    // ====== Email delivery evidence (Resend webhooks) ======
+    // The document ID of emailDelivery IS an email address. A client-readable
+    // rule here would let anyone test whether an address is known to us, so
+    // reads are admin-only; the signed-in user sees their own delivery state
+    // through the mirrored fields on their own users/{uid} document instead.
+    match /emailDelivery/{address} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+    match /emailEvents/{eventId} {
+      allow read:  if isAdmin();
+      allow write: if false;
+    }
+    match /emailMessages/{messageId} {
       allow read:  if isAdmin();
       allow write: if false;
     }

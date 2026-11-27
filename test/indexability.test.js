@@ -50,6 +50,10 @@ const NOINDEX_PAGES = [
   'success.html',
   'login.html',
   'signup.html',
+  // Step 2 of registration and the handler for the links we email. Both are
+  // reachable from a signed-out browser, so both need a tag of their own.
+  'verify-email.html',
+  'auth-action.html',
 ];
 
 for (const f of NOINDEX_PAGES) {

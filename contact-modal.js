@@ -274,6 +274,7 @@
           <div class="shos-cm-field">
             <label for="shosCmEmail">Your email</label>
             <input type="email" id="shosCmEmail" name="email" autocomplete="email" required>
+            <div class="email-typo-hint" id="shosCmEmailHint" hidden></div>
           </div>
           <div class="shos-cm-field">
             <label for="shosCmBody">Message</label>
@@ -315,6 +316,7 @@
     wireModalControls();
     wireSubmit();
     wireCharCounter();
+    wireEmailGuard();
   }
 
   function wireCharCounter() {
@@ -436,6 +438,17 @@
     }
   }
 
+  // A mistyped address here is a lead we can read and cannot answer, so
+  // the same guard runs on this form. Absent script = no guard, never a
+  // blocked form.
+  let _emailGuard = null;
+  function wireEmailGuard() {
+    const input = document.getElementById('shosCmEmail');
+    const hint  = document.getElementById('shosCmEmailHint');
+    if (!input || !hint || !window.SHOSEmailTypo) return;
+    _emailGuard = window.SHOSEmailTypo.attach(input, hint);
+  }
+
   function wireSubmit() {
     const form      = document.getElementById('shosCmForm');
     const submitBtn = document.getElementById('shosCmSubmit');
@@ -466,6 +479,15 @@
       const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       if (!emailOk) {
         status.textContent = 'Please enter a valid email address.';
+        status.className   = 'shos-cm-status err';
+        form.email.focus();
+        return;
+      }
+
+      // Shaped like an address, but the domain looks mistyped. Ask, and
+      // wait for one of the two buttons.
+      if (_emailGuard && _emailGuard.blocks()) {
+        status.textContent = 'Please check your email address, then choose one of the two options under it.';
         status.className   = 'shos-cm-status err';
         return;
       }

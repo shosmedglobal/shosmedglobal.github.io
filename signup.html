@@ -209,13 +209,22 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="email-typo.js?v=20261127"></script>
+  <script src="email-typo.js?v=20261127b"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
   <script>
     // Get redirect destination (default: dashboard). shosAuthDest is defined
     // in the pre-render block in <head>, so both paths agree on where a
     // reader coming from an article should land.
     const redirectTo = shosAuthDest(window.location.search);
+    // The errand they arrived with, as a key rather than a URL, so the
+    // verification step can hand it back to them afterwards.
+    const redirectKey = (function () {
+      try {
+        const k = new URLSearchParams(window.location.search).get('redirect') || '';
+        return ['qbank', 'mock', 'store'].indexOf(k) !== -1 ? k : 'dashboard';
+      } catch (e) { return 'dashboard'; }
+    })();
+    const verifyStep = 'verify-email.html?next=' + redirectKey;
 
     // Set while a signup submission is in flight. The listener below must not
     // redirect during that window: createUserWithEmailAndPassword (and the
@@ -231,7 +240,9 @@
       if (user && !signupInProgress) window.location.href = redirectTo;
     });
 
-    const emailTypoCheck = window.SHOSEmailTypo
+    // Degrades to nothing if the script fails to load: a missing guard
+    // must never be a locked signup form.
+    const emailGuard = window.SHOSEmailTypo
       ? window.SHOSEmailTypo.attach(document.getElementById('email'),
                                     document.getElementById('emailTypoHint'))
       : null;
@@ -273,12 +284,14 @@
       }
 
       // A one-character-off domain is a valid address that does not exist:
-      // the verify email bounces and we never hear from them again. Suggest
-      // the fix once; if they meant it, the next submit goes through.
-      if (emailTypoCheck && emailTypoCheck()) {
-        errorMsg.textContent = 'Please check your email address. We send your sign-in and verification details there.';
+      // the verification email bounces and we never hear from them again.
+      // The guard asks once and waits for an explicit answer; clicking
+      // Create Account again is not an answer.
+      if (emailGuard && emailGuard.blocks()) {
+        errorMsg.textContent = 'Please check your email address below, then choose one of the two options.';
         errorMsg.style.display = 'block';
-        document.getElementById('email').focus();
+        const hint = document.getElementById('emailTypoHint');
+        if (hint && !hint.hidden) hint.scrollIntoView({ block: 'center' });
         return;
       }
 
@@ -289,7 +302,10 @@
       const result = await signUpWithEmail(name, email, password, path);
       if (result.success) {
         // Profile write is already committed at this point; safe to leave.
-        window.location.href = redirectTo;
+        // Step 2: name the address back to them and offer to fix it. The
+        // onward link is on that page, so nothing is lost from the errand
+        // they arrived with.
+        window.location.href = verifyStep;
       } else {
         signupInProgress = false;
         errorMsg.textContent = result.error;

@@ -4312,3 +4312,49 @@ a {
 }
 :is(.quiz-mainbox, #reviewContainer, .exam-app, #qviewOverlay) sup { top: -0.42em; }
 :is(.quiz-mainbox, #reviewContainer, .exam-app, #qviewOverlay) sub { bottom: -0.20em; }
+
+/* ===== Email typo guard =========================================== */
+/* A question with two answers, not an error. It sits under the field it
+   is about, and both answers are buttons: nothing is ever rewritten by
+   the page on its own. Colours are the warning ramp, not the error ramp,
+   because the address may well be correct. */
+.email-typo-hint {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #FDE68A;
+  border-radius: 8px;
+  background: #FFFBEB;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #92400E;
+}
+.email-typo-q { margin: 0 0 8px; font-weight: 600; overflow-wrap: anywhere; }
+.email-typo-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.email-typo-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.email-typo-btn-use {
+  background: #92400E;
+  color: #fff;
+  border: 1px solid #92400E;
+}
+.email-typo-btn-use:hover { background: #78350F; }
+.email-typo-btn-keep {
+  background: #fff;
+  color: #92400E;
+  border: 1px solid #D6B370;
+}
+.email-typo-btn-keep:hover { background: #FEF3C7; }
+.email-typo-btn:focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; }
+@media (max-width: 420px) {
+  .email-typo-actions { flex-direction: column; align-items: stretch; }
+  .email-typo-btn { text-align: center; }
+}

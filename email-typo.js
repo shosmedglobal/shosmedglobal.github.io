@@ -1,60 +1,79 @@
-/* email-typo.js — "did you mean gmail.com?"
+/* email-typo.js — "did you mean gmail.com?", as an explicit choice.
  * ---------------------------------------------------------------------------
  * <input type="email"> accepts applicant1234@gmail.ocm. It is syntactically a
  * perfectly good address; it just does not exist. By the time the account is
- * created the damage is already done: the welcome-and-verify email hard
- * bounces off send.shosmed.com, the applicant never learns that we cannot
- * reach them, and the bounce counts against our sending reputation for
- * everybody else's receipts.
+ * created the damage is done: the welcome-and-verify email hard bounces off
+ * send.shosmed.com, the applicant never learns we cannot reach them, and the
+ * bounce counts against the sending reputation that carries everyone else's
+ * receipts.
  *
- * The only place to catch it is the keyboard. This suggests a correction for
- * a domain that is one or two characters away from a real one, and it never
- * blocks: a suggestion the person ignores twice goes through. Someone really
- * does own an address at a domain we have never heard of.
+ * WHAT THIS IS NOT. A suggestion is a guess about spelling. It is not
+ * evidence that a mailbox exists, and it is not evidence that the person
+ * typing owns it. Nothing here substitutes for clicking a link in the inbox.
  *
- * Usage:  SHOSEmailTypo.suggest('a@gmail.ocm')  ->  'a@gmail.com'
- *         SHOSEmailTypo.suggest('a@gmail.com')  ->  null
+ * Design rules, each one load-bearing:
+ *   - It never rewrites the address silently. The two outcomes are both
+ *     buttons the person presses: "Use <suggestion>" or "Keep <what I typed>".
+ *   - A second ordinary submit does NOT bypass it. The earlier version let
+ *     the same click-through count as consent, which is indistinguishable
+ *     from someone impatiently double-clicking. Consent now has its own
+ *     button.
+ *   - Keeping an address consents to THAT address. Edit the field afterwards
+ *     and the new value is judged on its own.
+ *   - Whitespace and domain case are normalised, because " A@GMAIL.COM " is
+ *     the same mailbox and nobody meant the spaces. The local part is never
+ *     touched: some providers treat it as case-sensitive, and "correcting"
+ *     someone's mailbox name would be a worse bug than the one being fixed.
+ *
+ * Usage:
+ *   var guard = SHOSEmailTypo.attach(inputEl, hintEl);
+ *   if (guard.blocks()) return;      // in the submit handler
  */
 (function (global) {
   'use strict';
 
-  // The providers our applicants actually use. Korean and Czech mailboxes are
-  // in here deliberately: the audience is US/Canada applicants plus students
-  // already in Prague, and hanmail/naver/seznam typos are not rare.
+  // The providers our applicants actually use. Korean and Czech mailboxes
+  // are in here deliberately: the audience is US/Canada applicants plus
+  // students already in Prague.
+  //
+  // This list is also how a genuine domain buys silence. An exact match
+  // never produces a suggestion, so anything real that sits one letter from
+  // a neighbour (mail.cz beside email.cz) belongs here.
   var DOMAINS = [
     'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.ca', 'yahoo.co.uk',
     'hotmail.com', 'hotmail.ca', 'hotmail.co.uk', 'outlook.com', 'live.com',
-    'msn.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
+    'live.ca', 'msn.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
     'proton.me', 'protonmail.com', 'pm.me',
     'comcast.net', 'verizon.net', 'sbcglobal.net', 'att.net', 'bellsouth.net',
     'rogers.com', 'shaw.ca', 'telus.net', 'sympatico.ca',
-    'mail.com', 'gmx.com', 'zoho.com', 'yandex.com',
+    'mail.com', 'gmx.com', 'gmx.de', 'zoho.com', 'yandex.com', 'yandex.ru',
     'naver.com', 'hanmail.net', 'daum.net', 'kakao.com', 'nate.com',
     'qq.com', '163.com', '126.com',
-    // mail.cz is here because it is real and sits one letter from email.cz.
-    // The known list is how a genuine domain buys silence: an exact match
-    // never produces a suggestion.
     'seznam.cz', 'centrum.cz', 'email.cz', 'mail.cz', 'volny.cz',
     'walla.com', 'walla.co.il'
   ];
 
-  // Only used for addresses whose domain we do not know, so a typo in the
-  // last label is still catchable: someone@charlesuniversity.ocm.
+  // Only consulted for a domain we do not know, so a typo in the last label
+  // is still catchable: someone@charlesuniversity.ocm. Institutional and
+  // international endings are in here so they are recognised as fine.
   var TLDS = [
-    'com', 'net', 'org', 'edu', 'gov', 'mil', 'int', 'info', 'biz',
+    'com', 'net', 'org', 'edu', 'gov', 'mil', 'int', 'info', 'biz', 'name',
     'io', 'me', 'co', 'us', 'ca', 'uk', 'eu', 'de', 'fr', 'es', 'it', 'nl',
     'se', 'no', 'dk', 'fi', 'pl', 'cz', 'sk', 'at', 'ch', 'be', 'pt', 'gr',
+    'hu', 'ro', 'bg', 'hr', 'si', 'lt', 'lv', 'ee',
     'ie', 'il', 'tr', 'ru', 'ua', 'in', 'cn', 'jp', 'kr', 'au', 'nz', 'br',
-    'mx', 'ar', 'za', 'edu.au', 'ac.uk', 'co.uk', 'co.il', 'co.kr'
+    'mx', 'ar', 'cl', 'za', 'ng', 'ke', 'eg', 'sa', 'ae', 'sg', 'hk', 'tw',
+    'ac', 'sch', 'health', 'med', 'clinic', 'care', 'university'
   ];
 
   // Damerau-Levenshtein (optimal string alignment), with an early exit.
   //
-  // The transposition rule is the whole reason this is not plain Levenshtein.
-  // ".ocm" for ".com" is two substitutions to Levenshtein and one swap to a
-  // human, and swapping two adjacent letters is the single most common way
-  // to mistype a domain. Counting it as 1 is what lets a tight cap catch the
-  // real typos without inventing suggestions for addresses that are fine.
+  // The transposition rule is the whole reason this is not plain
+  // Levenshtein. ".ocm" for ".com" is two substitutions to Levenshtein and
+  // one swap to a human, and swapping adjacent letters is the most common
+  // way a domain gets mistyped. Counting it as 1 is what lets a tight
+  // threshold catch real typos without inventing suggestions for addresses
+  // that are fine.
   function distance(a, b, cap) {
     if (a === b) return 0;
     if (Math.abs(a.length - b.length) > cap) return cap + 1;
@@ -91,19 +110,27 @@
     return best;
   }
 
+  /* Trim, and lower-case the DOMAIN only. Returns the string unchanged when
+     it is not shaped like an address, so a half-typed value survives. */
+  function normalize(raw) {
+    var s = String(raw == null ? '' : raw).trim();
+    var at = s.lastIndexOf('@');
+    if (at < 1) return s;
+    return s.slice(0, at) + '@' + s.slice(at + 1).toLowerCase();
+  }
+
   /* Returns a corrected address, or null when there is nothing to say.
-     Null means "no opinion", NOT "this address is valid". */
+     Null means "no opinion". It does NOT mean the address is valid. */
   function suggest(raw) {
-    var email = String(raw == null ? '' : raw).trim();
+    var email = normalize(raw);
     var at = email.lastIndexOf('@');
     if (at < 1 || at === email.length - 1) return null;
 
-    // The local part is echoed back exactly as typed. Some providers treat it
-    // as case-sensitive, and a "correction" that quietly lower-cases someone's
-    // mailbox name would be a worse bug than the one being fixed.
     var local = email.slice(0, at);
-    var domain = email.slice(at + 1).toLowerCase();
+    var domain = email.slice(at + 1);
+    if (local.indexOf('@') !== -1) return null;      // a@@b.com and friends
     if (domain.indexOf('.') === -1) return null;
+    if (domain.charAt(0) === '.' || domain.slice(-1) === '.') return null;
     if (DOMAINS.indexOf(domain) !== -1) return null;
 
     // A short domain gets a tighter cap, or "mail.cz" starts suggesting
@@ -113,7 +140,8 @@
     if (hit) return local + '@' + hit;
 
     // Unknown domain: the last label is still worth checking. Skip anything
-    // with more than one dot so co.uk and com.au are left alone.
+    // with more than one dot, so co.uk, edu.au and lf3.cuni.cz are left
+    // alone — university and hospital addresses must stay usable.
     if (domain.split('.').length !== 2) return null;
     var dot = domain.lastIndexOf('.');
     var sld = domain.slice(0, dot);
@@ -124,56 +152,116 @@
     return null;
   }
 
-  /* Wires a text input to a container element that shows the suggestion.
-     onAccept is optional and runs after the value has been corrected.
-     Returns a check() the submit handler calls: it returns true when the
-     caller should STOP and let the person look at the suggestion, which it
-     only ever does once per edit. */
-  function attach(input, box, onAccept) {
-    var warned = false;
+  var seq = 0;
 
-    function hide() { box.hidden = true; box.innerHTML = ''; }
+  /* Wires an email input to a container that renders the choice.
+   *
+   * Returns { blocks, reset, suggestion }:
+   *   blocks()     true when the caller must STOP and let the person choose.
+   *                Stays true until they press one of the two buttons.
+   *   reset()      forget any decision (after the form is reused).
+   *   suggestion() the current suggestion string or null.
+   *
+   * opts.onDecision(choice, value) fires with 'use' or 'keep'.
+   */
+  function attach(input, box, opts) {
+    opts = opts || {};
+    var keptValue = null;          // the exact normalized value consented to
+    var id = 'etg' + (++seq);
 
-    function show(fix) {
-      box.hidden = false;
+    function hide() {
+      box.hidden = true;
       box.innerHTML = '';
-      var span = document.createElement('span');
-      span.textContent = 'Did you mean ';
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'email-typo-fix';
-      btn.textContent = fix;
-      btn.addEventListener('click', function () {
-        input.value = fix;
-        warned = false;
-        hide();
-        if (typeof onAccept === 'function') onAccept(fix);
-        input.focus();
-      });
-      var q = document.createElement('span');
-      q.textContent = '?';
-      box.appendChild(span);
-      box.appendChild(btn);
-      box.appendChild(q);
+      input.removeAttribute('aria-describedby');
+      input.removeAttribute('aria-invalid');
     }
 
-    input.addEventListener('input', function () { warned = false; hide(); });
-    input.addEventListener('blur', function () {
-      var fix = suggest(input.value);
-      if (fix) show(fix); else hide();
-    });
+    function decide(choice, value) {
+      keptValue = value;
+      hide();
+      if (typeof opts.onDecision === 'function') opts.onDecision(choice, value);
+    }
 
-    return function check() {
-      var fix = suggest(input.value);
-      if (!fix) { hide(); return false; }
-      if (warned) return false;   // they looked at it and meant it
-      warned = true;
-      show(fix);
-      return true;
+    function render(typed, fix) {
+      box.hidden = false;
+      box.id = box.id || id;
+      box.setAttribute('role', 'group');
+      box.setAttribute('aria-live', 'polite');
+      box.setAttribute('aria-label', 'Check this email address');
+      input.setAttribute('aria-describedby', box.id);
+      input.setAttribute('aria-invalid', 'true');
+      box.innerHTML = '';
+
+      var q = document.createElement('p');
+      q.className = 'email-typo-q';
+      q.textContent = 'Did you mean ' + fix + '?';
+      box.appendChild(q);
+
+      var row = document.createElement('div');
+      row.className = 'email-typo-actions';
+
+      var useBtn = document.createElement('button');
+      useBtn.type = 'button';                       // never submits the form
+      useBtn.className = 'email-typo-btn email-typo-btn-use';
+      useBtn.textContent = 'Use ' + fix;
+      useBtn.addEventListener('click', function () {
+        input.value = fix;
+        decide('use', fix);
+        input.focus();
+      });
+
+      var keepBtn = document.createElement('button');
+      keepBtn.type = 'button';
+      keepBtn.className = 'email-typo-btn email-typo-btn-keep';
+      keepBtn.textContent = 'Keep ' + typed;
+      keepBtn.addEventListener('click', function () {
+        input.value = typed;                        // normalized, not corrected
+        decide('keep', typed);
+        input.focus();
+      });
+
+      row.appendChild(useBtn);
+      row.appendChild(keepBtn);
+      box.appendChild(row);
+    }
+
+    // Evaluate the field. `force` renders the choice even if the person has
+    // not left the field yet, which is what a blocked submit needs.
+    function evaluate(force) {
+      var typed = normalize(input.value);
+      if (typed !== input.value) input.value = typed;   // trim + domain case
+
+      // A decision only covers the value it was made about.
+      if (keptValue !== null && keptValue !== typed) keptValue = null;
+
+      var fix = suggest(typed);
+      if (!fix || keptValue === typed) { hide(); return null; }
+      if (force || document.activeElement !== input) render(typed, fix);
+      return fix;
+    }
+
+    // 'change' catches autofill and password managers, which often do not
+    // fire 'input'. 'blur' catches tabbing away. 'input' only clears, so the
+    // panel never fights someone mid-keystroke.
+    input.addEventListener('input', function () {
+      if (keptValue !== null && keptValue !== normalize(input.value)) keptValue = null;
+      hide();
+    });
+    input.addEventListener('change', function () { evaluate(false); });
+    input.addEventListener('blur', function () { evaluate(false); });
+
+    return {
+      blocks: function () { return evaluate(true) !== null; },
+      reset: function () { keptValue = null; hide(); },
+      suggestion: function () { return suggest(input.value); }
     };
   }
 
-  global.SHOSEmailTypo = { suggest: suggest, attach: attach };
+  global.SHOSEmailTypo = {
+    suggest: suggest,
+    normalize: normalize,
+    attach: attach
+  };
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = global.SHOSEmailTypo;

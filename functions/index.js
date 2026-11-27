@@ -3,6 +3,7 @@ const admin = require('firebase-admin');
 const Stripe = require('stripe');
 const emails = require('./emails');
 const payments = require('./payments');
+const integrity = require('./email-integrity');
 const fs = require('fs');
 const path = require('path');
 
@@ -183,6 +184,24 @@ exports.createCheckoutSession = functions
       );
     }
 
+    // A purchase creates a receipt, an access grant and a support
+    // relationship, and every one of them travels by email. An unverified
+    // address is one we have no evidence can receive any of it.
+    //
+    // This gate is on STARTING A NEW PURCHASE only. Access already bought
+    // is untouched: the entitlement lives on the user doc and is read
+    // elsewhere, so an existing customer with an unconfirmed address keeps
+    // everything they paid for and is merely asked to confirm it.
+    //
+    // Read from the ID token, not from a field the client can set. The
+    // client-side check in the store is a courtesy; this is the control.
+    if (context.auth.token && context.auth.token.email_verified !== true) {
+      throw new functions.https.HttpsError(
+        'failed-precondition',
+        'verify-email-required'
+      );
+    }
+
     const tier = data && data.tier;
     const tierConfig = TIERS[tier];
     if (!tierConfig) {
@@ -346,11 +365,33 @@ function paymentDeps() {
 const EMAIL_FROM = 'SHOS Med <welcome@shosmed.com>';
 const EMAIL_REPLY_TO = 'contact@shosmed.com';
 
-async function sendEmail({ to, subject, html, text, replyTo }) {
+async function sendEmail({ to, subject, html, text, replyTo, force }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn('[email] RESEND_API_KEY not configured — skipping send to', to);
     return { skipped: true };
+  }
+
+  // Never keep firing automated mail at an address the provider has told us
+  // is permanently dead. Every such send is another hard bounce counted
+  // against the sending domain, which is how a reputation gets wrecked for
+  // everybody's receipts. `force` exists for the one case that must still
+  // go out: a verification sent to a NEWLY corrected address.
+  if (!force) {
+    try {
+      const key = integrity.addressKey(to);
+      if (key) {
+        const snap = await db.collection('emailDelivery').doc(key).get();
+        const rec = snap.exists ? snap.data() : null;
+        if (rec && rec.permanent === true && rec.status === 'bounced') {
+          console.warn('[email] suppressed — address previously hard-bounced');
+          return { skipped: true, suppressed: true };
+        }
+      }
+    } catch (err) {
+      // A failed lookup must not stop the mail. Sending is the default.
+      console.warn('[email] suppression check skipped:', err.message);
+    }
   }
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -377,6 +418,21 @@ async function sendEmail({ to, subject, html, text, replyTo }) {
     }
     const body = await res.json();
     console.log('[email] sent to', to, 'id=', body.id);
+    // Index the message so a later webhook event can be attributed to an
+    // address and a subject without trusting anything in the event payload
+    // beyond its signature.
+    try {
+      const key = integrity.addressKey(to);
+      if (body.id && key) {
+        await db.collection('emailMessages').doc(String(body.id)).set({
+          address: key,
+          subject: subject || '',
+          sentAt: admin.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+      }
+    } catch (err) {
+      console.warn('[email] message index write skipped:', err.message);
+    }
     return { ok: true, id: body.id };
   } catch (err) {
     console.error('[email] send failed:', err);
@@ -457,6 +513,31 @@ exports.resendVerification = functions
     }
     if (authUser.emailVerified) {
       return { success: true, alreadyVerified: true };
+    }
+
+    // Server-enforced limit. The 60-second countdown in the browser is a
+    // courtesy to the person; this is the thing that holds when somebody
+    // calls the endpoint directly in a loop.
+    const limitRef = db.collection('users').doc(context.auth.uid);
+    let verdict;
+    try {
+      verdict = await db.runTransaction(async (tx) => {
+        const snap = await tx.get(limitRef);
+        const log = snap.exists ? (snap.data() || {}).verifySendWindow : null;
+        const r = integrity.rateLimitWindow(log, Date.now(), { max: 5, windowMs: 60 * 60 * 1000 });
+        if (r.allowed) tx.set(limitRef, { verifySendWindow: r.next }, { merge: true });
+        return r;
+      });
+    } catch (err) {
+      console.error('[resendVerification] rate-limit transaction failed:', err);
+      verdict = { allowed: true };            // never lock someone out on our bug
+    }
+    if (!verdict.allowed) {
+      throw new functions.https.HttpsError(
+        'resource-exhausted',
+        'Too many verification emails requested. Try again in ' +
+        Math.ceil(verdict.retryAfterMs / 60000) + ' minutes.'
+      );
     }
 
     try {
@@ -1341,3 +1422,351 @@ exports.getMockExamReview = functions.https.onCall(async (data, context) => {
   });
   return { correctAnswers, explanations, year };
 });
+
+
+// ============================================================================
+// ADMIN: correct the email address on an existing account
+// ----------------------------------------------------------------------------
+// For the case this was written for: an applicant typed a domain that does
+// not exist, the welcome-and-verify mail hard bounced, and nobody can reach
+// them. They cannot fix it themselves, because the self-service flow needs a
+// signed-in session and they may never have had one.
+//
+// What this deliberately does NOT do:
+//   - It never merges or deletes accounts. If the destination address
+//     already belongs to someone, it stops and says so, without disclosing
+//     anything about that other account.
+//   - It never marks the new address verified. An admin correcting a typo
+//     is evidence about spelling, not evidence that the applicant owns the
+//     mailbox. The account comes out UNVERIFIED and a fresh verification
+//     goes to the new address.
+//   - It never touches Stripe. Historical transactions and a deliberately
+//     different billing contact are both legitimate; they are reported,
+//     not rewritten.
+//
+// Everything else survives, because updateUser() mutates in place: same
+// UID, same password hash, same providers, same custom claims, same
+// Firestore document and all its subcollections, so progress, exam
+// attempts, purchases and entitlements are untouched.
+//
+// Idempotent by `opId`. A repeated call with the same opId returns the
+// first result rather than sending a second email.
+// ============================================================================
+exports.adminUpdateUserEmail = functions
+  .runWith({ secrets: ['RESEND_API_KEY'] })
+  .https.onCall(async (data, context) => {
+    if (!context.auth) {
+      throw new functions.https.HttpsError('unauthenticated', 'Sign in required.');
+    }
+    const callerEmail = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
+    if (!ADMIN_EMAILS.has(callerEmail)) {
+      throw new functions.https.HttpsError('permission-denied', 'Admin only.');
+    }
+
+    const currentEmail = String((data && data.currentEmail) || '').trim().toLowerCase();
+    const newEmail = String((data && data.newEmail) || '').trim().toLowerCase();
+    const reason = String((data && data.reason) || '').slice(0, 500);
+    const opId = String((data && data.opId) || '').slice(0, 120);
+
+    if (!currentEmail || !newEmail) {
+      throw new functions.https.HttpsError('invalid-argument', 'Both addresses are required.');
+    }
+    if (currentEmail === newEmail) {
+      throw new functions.https.HttpsError('invalid-argument', 'The two addresses are the same.');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
+      throw new functions.https.HttpsError('invalid-argument', 'The new address is not a valid email address.');
+    }
+    if (!opId) {
+      throw new functions.https.HttpsError('invalid-argument', 'Missing opId (needed to make retries safe).');
+    }
+
+    const auditRef = db.collection('adminAuditLog').doc(opId);
+
+    // --- replay: a retried click must not send a second email -------------
+    const prior = await auditRef.get();
+    if (prior.exists) {
+      const p = prior.data() || {};
+      if (p.outcome === 'applied' || p.outcome === 'conflict' || p.outcome === 'already-applied') {
+        return Object.assign({ replayed: true }, p.result || {});
+      }
+    }
+
+    async function writeAudit(outcome, result, extra) {
+      try {
+        await auditRef.set(Object.assign({
+          action: 'admin.updateUserEmail',
+          outcome: outcome,
+          byUid: context.auth.uid,
+          byEmail: callerEmail,
+          reason: reason,
+          at: admin.firestore.FieldValue.serverTimestamp(),
+          result: result || {}
+        }, extra || {}), { merge: true });
+      } catch (err) {
+        console.error('[adminUpdateUserEmail] audit write failed:', err.message);
+      }
+    }
+
+    // --- locate the account, by the exact address given -------------------
+    let target = null;
+    try {
+      target = await admin.auth().getUserByEmail(currentEmail);
+    } catch (err) {
+      if (err.code !== 'auth/user-not-found') {
+        console.error('[adminUpdateUserEmail] lookup failed:', err.code);
+        throw new functions.https.HttpsError('internal', 'Could not look up that account.');
+      }
+    }
+
+    if (!target) {
+      // Maybe an earlier run already did it. Recognising that is the
+      // difference between a safe retry and a confusing "not found".
+      let moved = null;
+      try {
+        moved = await admin.auth().getUserByEmail(newEmail);
+      } catch (e) { /* genuinely absent */ }
+      if (moved) {
+        const res = {
+          ok: true, alreadyApplied: true, uid: moved.uid,
+          email: moved.email, emailVerified: !!moved.emailVerified
+        };
+        await writeAudit('already-applied', res,
+          { uid: moved.uid, fromEmail: currentEmail, toEmail: newEmail });
+        return res;
+      }
+      await writeAudit('not-found', { ok: false, notFound: true },
+        { fromEmail: currentEmail, toEmail: newEmail });
+      throw new functions.https.HttpsError('not-found',
+        'No account uses that address. Nothing was changed, and no account was created.');
+    }
+
+    if (data && data.expectedUid && data.expectedUid !== target.uid) {
+      throw new functions.https.HttpsError('failed-precondition',
+        'That address belongs to a different account than expected. Nothing was changed.');
+    }
+
+    // --- destination conflict ---------------------------------------------
+    let holder = null;
+    try {
+      holder = await admin.auth().getUserByEmail(newEmail);
+    } catch (e) { /* free */ }
+    if (holder && holder.uid !== target.uid) {
+      await writeAudit('conflict', { ok: false, conflict: true, uid: target.uid },
+        { uid: target.uid, fromEmail: currentEmail, toEmail: newEmail, conflictUid: holder.uid });
+      throw new functions.https.HttpsError('already-exists',
+        'Another account already uses the corrected address. Nothing was changed and nothing was merged. ' +
+        'Decide what should happen to the two accounts before retrying.');
+    }
+
+    // --- apply --------------------------------------------------------------
+    await writeAudit('started', { uid: target.uid },
+      { uid: target.uid, fromEmail: currentEmail, toEmail: newEmail,
+        beforeVerified: !!target.emailVerified });
+
+    try {
+      await admin.auth().updateUser(target.uid, { email: newEmail, emailVerified: false });
+    } catch (err) {
+      await writeAudit('failed', { ok: false, stage: 'auth', code: err.code });
+      if (err.code === 'auth/email-already-exists') {
+        throw new functions.https.HttpsError('already-exists',
+          'Another account already uses that address. Nothing was changed.');
+      }
+      throw new functions.https.HttpsError('internal', 'Could not update the account.');
+    }
+
+    // Profile copy. A failure here leaves the account correct and the
+    // report stale, which is recoverable; it must not undo the Auth change.
+    let profileSynced = false;
+    try {
+      await db.collection('users').doc(target.uid).set({
+        email: newEmail,
+        emailUpdatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        emailCorrectedByAdmin: callerEmail
+      }, { merge: true });
+      profileSynced = true;
+    } catch (err) {
+      console.error('[adminUpdateUserEmail] profile sync failed:', err.message);
+    }
+
+    // Fresh verification, to the NEW address. `force` because the OLD
+    // address may be suppressed and that must not block this one; the
+    // suppression record is keyed by address, so the new one is unaffected.
+    let emailQueued = false;
+    let emailId = null;
+    try {
+      const verifyLink = await admin.auth().generateEmailVerificationLink(newEmail, {
+        url: 'https://shosmed.com/dashboard.html'
+      });
+      const profile = await loadProfile(target.uid);
+      const who = profile.name || target.displayName || '';
+      const sent = await sendEmail({
+        to: newEmail,
+        subject: 'Please confirm your email | SHOS Med',
+        html: emails.verificationEmailHtml({ name: who, verifyLink: verifyLink }),
+        text: emails.verificationEmailText({ name: who, verifyLink: verifyLink }),
+        force: true
+      });
+      emailQueued = !!sent.ok;
+      emailId = sent.id || null;
+    } catch (err) {
+      console.error('[adminUpdateUserEmail] verification send failed:', err.message);
+    }
+
+    // What exists on the billing side, reported and not touched.
+    let stripe = { inspected: true, action: 'none', transactions: 0 };
+    try {
+      const tx = await db.collection('transactions').where('uid', '==', target.uid).limit(50).get();
+      stripe.transactions = tx.size;
+      stripe.note = tx.size
+        ? 'Historical transactions left exactly as they are. The billing contact in Stripe was not changed: it may differ on purpose.'
+        : 'No transactions on this account.';
+    } catch (err) {
+      stripe = { inspected: false, action: 'none', error: err.message };
+    }
+
+    const result = {
+      ok: true,
+      uid: target.uid,                 // unchanged, by construction
+      fromEmail: currentEmail,
+      toEmail: newEmail,
+      emailVerified: false,            // never asserted by an admin edit
+      profileSynced: profileSynced,
+      verificationQueued: emailQueued, // accepted for sending, NOT delivered
+      verificationMessageId: emailId,
+      stripe: stripe
+    };
+    await writeAudit('applied', result,
+      { uid: target.uid, fromEmail: currentEmail, toEmail: newEmail });
+    return result;
+  });
+
+
+// ============================================================================
+// Resend delivery webhook
+// ----------------------------------------------------------------------------
+// Turns "we handed it to Resend" into knowledge of what happened to the
+// message. Delivery is tracked per ADDRESS, never per account, and that is
+// what stops a late bounce for a mistyped address being read as a problem
+// with the corrected one.
+//
+// Setup (none of it deployable from here):
+//   1. firebase functions:secrets:set RESEND_WEBHOOK_SECRET     <- whsec_...
+//   2. Resend dashboard -> Webhooks -> add the deployed URL, subscribed to
+//      email.sent, email.delivered, email.delivery_delayed,
+//      email.bounced, email.complained, email.failed
+// Until both exist this endpoint answers 503 and changes nothing.
+// ============================================================================
+exports.resendWebhook = functions
+  .runWith({ secrets: ['RESEND_WEBHOOK_SECRET'] })
+  .https.onRequest(async (req, res) => {
+    if (req.method !== 'POST') { res.status(405).send('Method not allowed'); return; }
+
+    const secret = process.env.RESEND_WEBHOOK_SECRET;
+    if (!secret) {
+      console.warn('[resendWebhook] RESEND_WEBHOOK_SECRET not configured');
+      res.status(503).send('Not configured');
+      return;
+    }
+
+    const check = integrity.verifySvixSignature({
+      secret: secret,
+      id: req.get('svix-id') || req.get('webhook-id'),
+      timestamp: req.get('svix-timestamp') || req.get('webhook-timestamp'),
+      signatureHeader: req.get('svix-signature') || req.get('webhook-signature'),
+      body: req.rawBody
+    });
+    if (!check.ok) {
+      // Deliberately terse to the caller. A detailed rejection is a free
+      // oracle for anyone probing the endpoint.
+      console.warn('[resendWebhook] rejected:', check.reason);
+      res.status(401).send('Invalid signature');
+      return;
+    }
+
+    let event;
+    try {
+      event = JSON.parse(req.rawBody.toString('utf8'));
+    } catch (err) {
+      res.status(400).send('Bad JSON');
+      return;
+    }
+
+    const eventId = req.get('svix-id') || req.get('webhook-id');
+    const parsed = integrity.classifyResendEvent(event);
+    if (!parsed) { res.status(200).send('Ignored'); return; }
+
+    // Retries are normal and expected. Claiming the event id first makes
+    // the handler run at most once per event.
+    const seenRef = db.collection('emailEvents').doc(String(eventId));
+    try {
+      await db.runTransaction(async (tx) => {
+        const snap = await tx.get(seenRef);
+        if (snap.exists) throw new Error('duplicate');
+        tx.set(seenRef, {
+          type: parsed.type,
+          address: parsed.recipient || null,
+          messageId: parsed.messageId || null,
+          at: admin.firestore.FieldValue.serverTimestamp()
+        });
+      });
+    } catch (err) {
+      if (err.message === 'duplicate') { res.status(200).send('Already handled'); return; }
+      console.error('[resendWebhook] dedupe failed:', err.message);
+      res.status(500).send('Retry');
+      return;
+    }
+
+    // Prefer the address recorded when the message was sent over the one in
+    // the payload: it is the address we actually addressed.
+    let address = parsed.recipient;
+    if (parsed.messageId) {
+      try {
+        const m = await db.collection('emailMessages').doc(String(parsed.messageId)).get();
+        if (m.exists && (m.data() || {}).address) address = m.data().address;
+      } catch (e) { /* fall back to the payload */ }
+    }
+    const key = integrity.addressKey(address);
+    if (!key) { res.status(200).send('No recipient'); return; }
+
+    const ref = db.collection('emailDelivery').doc(key);
+    try {
+      await db.runTransaction(async (tx) => {
+        const snap = await tx.get(ref);
+        const existing = snap.exists ? snap.data() : null;
+        if (!integrity.shouldReplaceStatus(existing, parsed)) return;   // older event
+        tx.set(ref, {
+          address: key,
+          status: parsed.status,
+          permanent: !!parsed.permanent,
+          atMs: parsed.atMs || Date.now(),
+          lastEventType: parsed.type,
+          lastMessageId: parsed.messageId || null,
+          updatedAt: admin.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+      });
+    } catch (err) {
+      console.error('[resendWebhook] delivery write failed:', err.message);
+      res.status(500).send('Retry');
+      return;
+    }
+
+    // Mirror onto the account ONLY while this is still the address on it.
+    // The match is the safeguard: a bounce for an address somebody has
+    // since corrected away from will not match, so it cannot taint the new
+    // one.
+    try {
+      const q = await db.collection('users').where('email', '==', key).limit(5).get();
+      const stamp = {
+        emailDeliveryStatus: parsed.status,
+        emailDeliveryPermanent: !!parsed.permanent,
+        emailDeliveryAddress: key,
+        emailDeliveryAt: admin.firestore.FieldValue.serverTimestamp()
+      };
+      await Promise.all(q.docs.map(function (d) { return d.ref.set(stamp, { merge: true }); }));
+    } catch (err) {
+      console.warn('[resendWebhook] account mirror skipped:', err.message);
+    }
+
+    res.status(200).send('OK');
+  });

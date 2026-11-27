@@ -154,6 +154,18 @@
         // Tri-state on purpose. The Cloud Function knows; the Firestore
         // fallback has no such field, and null must not render as "no".
         emailVerified: typeof u.emailVerified === 'boolean' ? u.emailVerified : null,
+        // Delivery is a separate axis from verification and has its own
+        // "we do not know", which is the state everything sits in until
+        // the Resend webhook is live. The address the verdict is ABOUT is
+        // carried with it: a bounce for an address since corrected away
+        // from must not be read as a verdict on the new one.
+        emailDelivery: {
+          status: u.emailDeliveryStatus || 'unknown',
+          permanent: u.emailDeliveryPermanent === true,
+          address: u.emailDeliveryAddress || null,
+          appliesToCurrent: !!(u.emailDeliveryAddress && u.email &&
+            String(u.emailDeliveryAddress).toLowerCase() === String(u.email).toLowerCase())
+        },
         hasFirestoreDoc: u.hasFirestoreDoc !== false,
         raw: u,
       };
@@ -246,15 +258,18 @@
     overview: [
       ['all', 'All applicants'], ['paying', 'Paying customers'], ['not-paying', 'No purchases'],
       ['path-med', 'Path: Med school'], ['path-res', 'Path: Residency'], ['path-none', 'Path: Not selected'],
+      ['email-unverified', 'Email: unverified'], ['email-bounced', 'Email: delivery failed'],
       ['staff', 'Staff & reviewers'],
     ],
     'med-school': [
       ['all', 'All med-school applicants'], ['paying', 'Paying customers'],
       ['access-purchased', 'QBank: Purchased'], ['access-complimentary', 'QBank: Complimentary'],
       ['access-expired', 'QBank: Ended'], ['access-none', 'QBank: No access'],
+      ['email-unverified', 'Email: unverified'], ['email-bounced', 'Email: delivery failed'],
     ],
     residency: [
       ['all', 'All residency applicants'], ['paying', 'Paying customers'], ['not-paying', 'No purchases yet'],
+      ['email-unverified', 'Email: unverified'], ['email-bounced', 'Email: delivery failed'],
     ],
   };
 
@@ -276,6 +291,16 @@
         case 'access-complimentary': return p.access.state === 'complimentary';
         case 'access-expired': return p.access.state === 'expired';
         case 'access-none': return p.access.state === 'none';
+        // Known-false only. "unknown" is not "unverified": on the
+        // Firestore-only fallback read we have no verification data at
+        // all, and listing everyone as a problem would be a lie.
+        case 'email-unverified': return p.emailVerified === false;
+        // Only a permanent failure, and only against the address the
+        // account uses NOW.
+        case 'email-bounced':
+          return p.emailDelivery.status === 'bounced'
+              && p.emailDelivery.permanent
+              && p.emailDelivery.appliesToCurrent;
         default: return true;
       }
     });

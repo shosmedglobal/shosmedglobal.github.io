@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Link - SHOS Med</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=5"><link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261127-emailguard">
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .aa-icon { font-size:2.4rem; line-height:1; margin:0 0 10px; }
+    .aa-msg { font-size:0.95rem; color:#475569; line-height:1.65; margin:0 0 20px; }
+    .aa-small { font-size:0.84rem; color:#64748B; line-height:1.55; }
+    .aa-hidden { display:none; }
+  </style>
+</head>
+<body>
+<!--
+  Custom handler for the links Firebase emails: verify an address, confirm an
+  address change, reset a password, undo an address change.
+
+  WHY THIS PAGE EXISTS. Without it the links land on Google's own hosted
+  handler, which works but says "Try resetting your password again" in
+  Google's voice on somebody else's domain, and gives an applicant no route
+  back to what they were doing. It also cannot tell them the one thing they
+  need to hear, which is that an expired link is normal and a fresh one is
+  one click away.
+
+  TO TURN IT ON (Firebase Console, one setting, not deployable from here):
+    Authentication -> Templates -> (any template) -> pencil icon ->
+    "Customize action URL" -> https://shosmed.com/auth-action.html
+  Until that is set, Firebase keeps using its own page and this file is
+  simply unused. Nothing breaks either way.
+
+  An action code is single-use and short-lived. Expired, already-used and
+  tampered-with all arrive here as the same error from Firebase, so they are
+  answered with one honest message rather than three guesses.
+-->
+
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/shos-logo-full-dark.png" alt="SHOS Med" class="logo-img logo-full logo-dark">
+      </a>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-card" style="text-align:center;">
+        <div class="aa-icon" id="aaIcon">&#9993;</div>
+        <div class="auth-header">
+          <h2 id="aaTitle">Checking your link...</h2>
+        </div>
+        <p class="aa-msg" id="aaMsg">One moment.</p>
+
+        <!-- Password reset only -->
+        <form id="aaResetForm" class="aa-hidden" style="text-align:left;" novalidate>
+          <div class="form-group">
+            <label for="aaPw1">New password</label>
+            <input type="password" id="aaPw1" autocomplete="new-password" minlength="6" required placeholder="At least 6 characters">
+          </div>
+          <div class="form-group">
+            <label for="aaPw2">Repeat new password</label>
+            <input type="password" id="aaPw2" autocomplete="new-password" minlength="6" required>
+          </div>
+          <div class="error-msg" id="aaResetErr" style="display:none;"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="aaResetBtn">Set new password</button>
+        </form>
+
+        <p id="aaActions" class="aa-hidden">
+          <a class="btn btn-primary btn-full" id="aaPrimary" href="dashboard.html">Continue</a>
+        </p>
+        <p class="aa-small" style="margin-top:16px;" id="aaHelp">
+          Need a hand? Email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="auth.js?v=20260718-visitv5"></script>
+  <script>
+  (function () {
+    'use strict';
+    var $ = function (id) { return document.getElementById(id); };
+
+    function show(icon, title, msg, primaryHref, primaryLabel) {
+      $('aaIcon').innerHTML = icon;
+      $('aaTitle').textContent = title;
+      $('aaMsg').innerHTML = msg;
+      if (primaryHref) {
+        $('aaPrimary').href = primaryHref;
+        $('aaPrimary').textContent = primaryLabel || 'Continue';
+        $('aaActions').classList.remove('aa-hidden');
+      }
+    }
+
+    var params = new URLSearchParams(location.search);
+    var mode = params.get('mode') || '';
+    var code = params.get('oobCode') || '';
+
+    // continueUrl is supplied by Firebase from what WE asked for when the
+    // mail was sent, but it still arrives as a query parameter, so it is
+    // resolved against our own origin and anything pointing elsewhere is
+    // dropped. An open redirect on an auth page is how phishing gets a
+    // trustworthy-looking first hop.
+    function safeContinue(fallback) {
+      var raw = params.get('continueUrl');
+      if (!raw) return fallback;
+      try {
+        var u = new URL(raw, location.origin);
+        if (u.origin !== location.origin) return fallback;
+        return u.pathname.replace(/^\//, '') + u.search + u.hash;
+      } catch (e) { return fallback; }
+    }
+
+    var STALE = 'That link has expired or has already been used. Links are ' +
+      'single-use and short-lived, which is normal. Sign in and ask for a fresh one.';
+
+    if (!code || !mode) {
+      show('&#9888;', 'That link is incomplete',
+        'Open the link straight from the email rather than copying part of it.',
+        'login.html', 'Sign in');
+      return;
+    }
+
+    var auth = firebase.auth();
+
+    function failure(err) {
+      var c = (err && err.code) || '';
+      if (c === 'auth/expired-action-code' || c === 'auth/invalid-action-code') {
+        show('&#8987;', 'This link is no longer valid', STALE, 'verify-email.html', 'Sign in and resend');
+      } else if (c === 'auth/user-disabled') {
+        show('&#9888;', 'This account is disabled',
+          'Please email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a> and we will look into it.');
+      } else if (c === 'auth/user-not-found') {
+        show('&#9888;', 'We cannot find that account',
+          'It may have been removed. Email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a> if that is unexpected.',
+          'signup.html', 'Create an account');
+      } else if (c === 'auth/weak-password') {
+        show('&#9888;', 'Pick a longer password', 'Use at least 6 characters.');
+      } else {
+        show('&#9888;', 'Something went wrong',
+          'Please try the link again. If it keeps failing, email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a>.',
+          'login.html', 'Sign in');
+      }
+    }
+
+    // ---- verify an address, or complete a change of address ----
+    async function doVerify(isChange) {
+      try {
+        var info = await auth.checkActionCode(code);
+        await auth.applyActionCode(code);
+        var addr = (info && info.data && (info.data.email || info.data.newEmail)) || '';
+
+        // The session in THIS browser may be a different one, or none at
+        // all: people open these links on a phone. Refresh if it is the
+        // same account, otherwise just say it worked.
+        var u = auth.currentUser;
+        if (u) {
+          try { await u.reload(); await u.getIdToken(true); } catch (e) {}
+        }
+        var dest = safeContinue('dashboard.html');
+        show('&#9989;',
+          isChange ? 'Your new email address is confirmed' : 'Your email is verified',
+          isChange
+            ? 'Your account now uses <strong>' + escapeHtml(addr) + '</strong>. Everything on it is unchanged: ' +
+              'same account, same progress, same purchases. Sign in with the new address from now on.'
+            : 'Thank you. <strong>' + escapeHtml(addr) + '</strong> is confirmed on your account.' +
+              (u ? '' : '<br><span class="aa-small">You verified on a device that is not signed in. ' +
+                        'That is fine, it counts. Sign in anywhere to carry on.</span>'),
+          u ? dest : 'login.html', u ? 'Continue' : 'Sign in');
+      } catch (err) { failure(err); }
+    }
+
+    // ---- undo an address change (Firebase sends this to the OLD address) ----
+    async function doRecover() {
+      try {
+        var info = await auth.checkActionCode(code);
+        await auth.applyActionCode(code);
+        var addr = (info && info.data && info.data.email) || '';
+        show('&#9989;', 'Address change undone',
+          'Your account is back to <strong>' + escapeHtml(addr) + '</strong>. If you did not ask for ' +
+          'the change, reset your password now.',
+          'login.html', 'Sign in');
+      } catch (err) { failure(err); }
+    }
+
+    // ---- password reset ----
+    async function doReset() {
+      var email;
+      try {
+        email = await auth.verifyPasswordResetCode(code);
+      } catch (err) { failure(err); return; }
+
+      show('&#128273;', 'Choose a new password',
+        'For <strong>' + escapeHtml(email) + '</strong>.');
+      $('aaResetForm').classList.remove('aa-hidden');
+
+      $('aaResetForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var err = $('aaResetErr');
+        err.style.display = 'none';
+        var p1 = $('aaPw1').value, p2 = $('aaPw2').value;
+        if (p1.length < 6) { err.textContent = 'Use at least 6 characters.'; err.style.display = 'block'; return; }
+        if (p1 !== p2) { err.textContent = 'Those two do not match.'; err.style.display = 'block'; return; }
+        var btn = $('aaResetBtn');
+        btn.disabled = true; btn.textContent = 'Saving...';
+        try {
+          await auth.confirmPasswordReset(code, p1);
+          $('aaResetForm').classList.add('aa-hidden');
+          show('&#9989;', 'Password changed', 'Sign in with your new password.', 'login.html', 'Sign in');
+        } catch (e2) {
+          btn.disabled = false; btn.textContent = 'Set new password';
+          var c = (e2 && e2.code) || '';
+          if (c === 'auth/weak-password') {
+            err.textContent = 'Too weak. Use at least 6 characters.';
+          } else if (c === 'auth/expired-action-code' || c === 'auth/invalid-action-code') {
+            err.textContent = 'This reset link has expired. Ask for a new one from the sign-in page.';
+          } else {
+            err.textContent = 'Could not save that. Please request a fresh reset link.';
+          }
+          err.style.display = 'block';
+        }
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+      });
+    }
+
+    if (mode === 'verifyEmail') doVerify(false);
+    else if (mode === 'verifyAndChangeEmail') doVerify(true);
+    else if (mode === 'recoverEmail') doRecover();
+    else if (mode === 'resetPassword') doReset();
+    else {
+      show('&#9888;', 'Unrecognised link',
+        'We do not know what this link is for. Email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a> if you need help.',
+        'login.html', 'Sign in');
+    }
+  })();
+  </script>
+</body>
+</html>

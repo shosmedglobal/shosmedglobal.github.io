@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261119a-sup">
+  <link rel="stylesheet" href="style.css?v=20261127-emailguard">
   <link rel="stylesheet" href="dashboard.css?v=20261127-unverified">
   <link rel="stylesheet" href="exam-copy-guard.css?v=20261120-adminonly">
 </head>
@@ -141,12 +141,13 @@
             <span style="font-size:1.4rem; flex-shrink:0; line-height:1;">&#9993;</span>
             <div style="min-width:0;">
               <strong style="display:block; font-size:0.95rem; color:#92400E;">Please verify your email</strong>
-              <span style="display:block; font-size:0.82rem; color:#78350F; line-height:1.45;">We sent a verification link to <span id="verifyEmailAddress" style="font-weight:600;"></span>. Check your inbox (and spam folder).</span>
+              <span style="display:block; font-size:0.82rem; color:#78350F; line-height:1.45;">We sent a verification link to <span id="verifyEmailAddress" style="font-weight:600;"></span>. Check your inbox (and spam folder). If that address is wrong, change it &mdash; nothing is sent to the old one.</span>
             </div>
           </div>
           <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
             <button id="verifyResendBtn" style="background:#92400E; color:#fff; border:none; padding:8px 16px; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:background 0.15s;">Resend email</button>
             <button id="verifyRefreshBtn" title="I already verified — refresh status" style="background:transparent; color:#92400E; border:1px solid #F59E0B; padding:8px 14px; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer;">I verified</button>
+            <a href="verify-email.html?next=dashboard" title="Wrong address? Change it without needing the old mailbox" style="background:transparent; color:#92400E; border:1px solid #F59E0B; padding:8px 14px; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer; text-decoration:none; display:inline-block;">Change email</a>
           </div>
           <span id="verifyBannerMsg" style="flex-basis:100%; font-size:0.82rem; color:#78350F; margin:6px 0 0; display:none;"></span>
         </div>
@@ -2682,9 +2683,16 @@
     #adminUsersTable td { vertical-align: top; }
     .aa-name { font-weight: 600; color: var(--navy, #1B2137); }
     .aa-email { font-size: 0.8rem; color: #64748b; overflow-wrap: anywhere; }
-    .aa-unverified { display:inline-block; margin-left:6px; padding:1px 6px; border-radius:50px;
-      background:#FEF3C7; color:#92400E; font-size:0.68rem; font-weight:700; letter-spacing:0.02em;
-      text-transform:uppercase; vertical-align:1px; }
+    .aa-chip-email { display:inline-block; margin-left:6px; padding:1px 6px; border-radius:50px;
+      font-size:0.68rem; font-weight:700; letter-spacing:0.02em; text-transform:uppercase; vertical-align:1px; }
+    .aa-unverified { background:#FEF3C7; color:#92400E; }
+    .aa-bounced { background:#FEE2E2; color:#991B1B; }
+    .aa-stale-bounce { background:#F1F5F9; color:#475569; }
+    .aa-delayed { background:#E0F2FE; color:#075985; }
+    .aa-fixmail { margin-top:10px; padding:12px; border:1px solid #E2E8F0; border-radius:10px; background:#F8FAFC; }
+    .aa-fixmail input { width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:8px; font:inherit; font-size:0.86rem; }
+    .aa-fixmail label { display:block; font-size:0.76rem; font-weight:700; color:#475569; margin:8px 0 4px; }
+    .aa-fixmail .aa-note { margin-top:8px; }
     .aa-person { min-width: 190px; }
     /* Wide enough that columns never squeeze; on narrow screens the table
        scrolls sideways inside .admin-table-wrap instead. */
@@ -4096,6 +4104,8 @@
        block other dashboard rendering for non-admin users. -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="auth.js?v=20260718-visitv5"></script>
+  <script src="email-typo.js?v=20261127b"></script>
+  <script src="account-email.js?v=20261127b"></script>
   <script src="contact-booking.js?v=20260918-audience"></script>
   <script src="revenue-stats.js?v=20260918-audience"></script>
   <script src="qbank-access.js?v=20261011-expiry"></script>
@@ -4458,6 +4468,13 @@
       // to refresh it. For initial check we trust the auth state as-is.
       if (!user || user.emailVerified) {
         banner.style.display = 'none';
+        // Auth is the source of truth for the address and a verified change
+        // can land in a different browser, so reconcile the profile copy
+        // whenever we see a verified session. Fire and forget: a stale copy
+        // is a reporting problem, never a sign-in problem.
+        if (user && window.SHOSAccountEmail) {
+          window.SHOSAccountEmail.syncProfileEmail(user, db).catch(function () {});
+        }
         return;
       }
       banner.style.display = 'flex';
@@ -5347,6 +5364,15 @@
         }
       } catch (err) {
         console.error('Checkout failed:', err);
+        // The server refuses checkout for an unconfirmed address, because a
+        // receipt, an access grant and every support reply all travel by
+        // email. Carry the chosen product across so they land back on it.
+        if (err && err.code === 'functions/failed-precondition'
+            && String(err.message || '').indexOf('verify-email-required') !== -1) {
+          try { sessionStorage.setItem('shos_pending_tier', tier); } catch (e) {}
+          window.location.href = 'verify-email.html?next=store';
+          return;
+        }
         alert('Sorry — we couldn\'t start checkout. Please try again, or email contact@shosmed.com.');
         btn.innerHTML = originalHtml;
         btn.style.pointerEvents = '';
@@ -7770,6 +7796,28 @@
         'Test mode': 'test', 'No charge': 'test', 'Not paid': 'test' }[status] || 'test';
       return `<span class="aa-status aa-status-${cls}">${escapeHtml(status)}</span>`;
     }
+    // Two chips, never one. Verification is about the person; delivery is
+    // about the message. Each is shown only when it says something: a
+    // verified address with a delivered message is the normal case and
+    // deserves no decoration at all.
+    function emailChips(p) {
+      var out = '';
+      if (p.emailVerified === false) {
+        out += ' <span class="aa-chip-email aa-unverified" title="They have not opened the link in the verification email. That alone says nothing about whether the address works.">unverified</span>';
+      }
+      var d = p.emailDelivery || { status: 'unknown' };
+      if (d.status === 'bounced' && d.permanent && d.appliesToCurrent) {
+        out += ' <span class="aa-chip-email aa-bounced" title="The provider permanently rejected mail to this exact address. It is almost certainly wrong. Correct it from Details.">bounced</span>';
+      } else if (d.status === 'bounced' && d.permanent && !d.appliesToCurrent) {
+        out += ' <span class="aa-chip-email aa-stale-bounce" title="A permanent failure was recorded against a PREVIOUS address on this account. It says nothing about the current one.">old address bounced</span>';
+      } else if (d.status === 'delayed' || d.status === 'failed') {
+        out += ' <span class="aa-chip-email aa-delayed" title="Temporary: a delay or a problem on our sending side. Not evidence that the address is wrong.">delivery ' + escapeHtml(d.status) + '</span>';
+      } else if (d.status === 'suppressed') {
+        out += ' <span class="aa-chip-email aa-delayed" title="Marked as spam or unsubscribed. The address works; they do not want automated mail.">suppressed</span>';
+      }
+      return out;
+    }
+
     function accessBadge(access) {
       const cls = { purchased: 'purchased', complimentary: 'comp', staff: 'staff', none: 'none' }[access.state] || 'none';
       return `<span class="aa-access aa-access-${cls}" title="${escapeAttr(access.state === 'complimentary'
@@ -8217,7 +8265,7 @@
         if (!p) return '';
         const name = p.name || '(no name)';
         const cells = [
-          `<td class="aa-person"><div class="aa-name">${escapeHtml(name)}${p.hasFirestoreDoc ? '' : ' <span class="aa-muted" title="Sign-in account without a profile record yet">(no profile)</span>'}</div><div class="aa-email">${escapeHtml(p.email || '-')}${p.emailVerified === false ? ' <span class="aa-unverified" title="They never clicked the link in the welcome email. Either they ignored it or the address does not exist, so treat this address as unconfirmed.">unverified</span>' : ''}</div></td>`,
+          `<td class="aa-person"><div class="aa-name">${escapeHtml(name)}${p.hasFirestoreDoc ? '' : ' <span class="aa-muted" title="Sign-in account without a profile record yet">(no profile)</span>'}</div><div class="aa-email">${escapeHtml(p.email || '-')}${emailChips(p)}</div></td>`,
           `<td>${pathCell(p)}</td>`,
           `<td style="white-space:nowrap;">${escapeHtml(shortDate(p.createdAtMs))}</td>`,
           `<td>${purchasesCell(p)}</td>`,
@@ -8240,6 +8288,106 @@
         if (btn) toggleUserDetails(uid, btn);
       });
     }
+
+
+    // ---------------------------------------------- email correction (admin)
+    // For the applicant who cannot fix it themselves: they mistyped the
+    // domain, the verification mail bounced, and the self-service flow
+    // needs a session they may never have had.
+    //
+    // The server does the work and the guard rails live there, not here:
+    // it refuses to merge accounts, keeps the UID, and comes out
+    // UNVERIFIED with a fresh verification sent to the new address. An
+    // admin fixing a spelling is not evidence that the applicant owns the
+    // mailbox, and this tool never pretends otherwise.
+    function deliveryLabel(p) {
+      var d = (p && p.emailDelivery) || { status: 'unknown' };
+      if (d.status === 'unknown') return 'Unknown (no delivery events recorded yet)';
+      if (d.status === 'bounced' && d.permanent && !d.appliesToCurrent) {
+        return 'A previous address bounced. Nothing recorded for the current one.';
+      }
+      var words = {
+        sent: 'Accepted for sending (not yet confirmed delivered)',
+        delivered: 'Delivered',
+        delayed: 'Delayed (temporary)',
+        bounced: 'Permanently rejected by the receiving server',
+        failed: 'Failed on our sending side (not the recipient)',
+        suppressed: 'Suppressed (spam complaint or unsubscribe)'
+      };
+      return words[d.status] || d.status;
+    }
+
+    function emailFixHtml(p) {
+      var suggestion = (window.SHOSEmailTypo && p.email) ? window.SHOSEmailTypo.suggest(p.email) : null;
+      return '<div class="aa-fixmail">' +
+        '<strong style="font-size:0.8rem; color:#0F172A;">Correct this email address</strong>' +
+        (suggestion
+          ? '<p class="aa-note" style="margin:6px 0 0;">Looks mistyped. Suggested: <code>' + escapeHtml(suggestion) + '</code></p>'
+          : '') +
+        '<label for="fix-' + escapeAttr(p.id) + '">New address</label>' +
+        '<input type="email" id="fix-' + escapeAttr(p.id) + '" value="' + escapeAttr(suggestion || '') + '" placeholder="corrected@example.com">' +
+        '<label for="fixwhy-' + escapeAttr(p.id) + '">Why (goes in the audit log)</label>' +
+        '<input type="text" id="fixwhy-' + escapeAttr(p.id) + '" placeholder="e.g. mistyped domain, confirmed by phone">' +
+        '<button class="admin-action-btn admin-btn-grant" style="margin-top:10px;" ' +
+          'onclick="adminFixEmail(\'' + escapeJs(p.id) + '\', \'' + escapeJs(p.email || '') + '\', this)">' +
+          'Change address and send verification</button>' +
+        '<p class="aa-note" style="margin-top:8px;">Keeps the same account, progress and purchases. The new address ' +
+        'starts unverified and gets its own verification email. Nothing is sent to the old address.</p>' +
+        '<p id="fixmsg-' + escapeAttr(p.id) + '" class="aa-note" style="display:none;"></p>' +
+      '</div>';
+    }
+
+    async function adminFixEmail(uid, currentEmail, btn) {
+      var input = document.getElementById('fix-' + uid);
+      var why = document.getElementById('fixwhy-' + uid);
+      var msg = document.getElementById('fixmsg-' + uid);
+      var next = (input.value || '').trim().toLowerCase();
+      function say(text, warn) {
+        msg.textContent = text;
+        msg.className = 'aa-note' + (warn ? ' aa-warn' : '');
+        msg.style.display = 'block';
+      }
+      if (!next || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(next)) { say('Enter a valid address.', true); return; }
+      if (next === String(currentEmail || '').toLowerCase()) { say('That is already the address on the account.', true); return; }
+      if (!window.confirm('Change this account from\n  ' + currentEmail + '\nto\n  ' + next +
+                          '\n\nThe account keeps its UID, progress and purchases. A verification email goes to the new address.')) return;
+
+      // A stable id per (account, target) so a double-click, a retry or a
+      // refresh cannot produce a second change or a second email.
+      var opId = 'emailfix_' + uid + '_' + next.replace(/[^a-z0-9]+/g, '_');
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = 'Working...';
+      try {
+        var fn = firebase.functions().httpsCallable('adminUpdateUserEmail');
+        var res = await fn({ currentEmail: currentEmail, newEmail: next, expectedUid: uid,
+                             reason: (why.value || '').slice(0, 500), opId: opId });
+        var d = res.data || {};
+        if (d.alreadyApplied) {
+          say('Already done earlier. UID ' + d.uid + ' now uses ' + d.email + '. No second email was sent.');
+        } else if (d.replayed) {
+          say('This exact change was already applied. Nothing was repeated.');
+        } else {
+          say('Changed. UID ' + d.uid + ' (unchanged) now uses ' + d.toEmail +
+              '. Verification ' + (d.verificationQueued ? 'accepted for sending' : 'NOT sent, send it again from the row') +
+              '. Still unverified until they open the link.' +
+              (d.profileSynced ? '' : ' Profile record did not sync, it will heal on their next sign-in.'));
+        }
+        if (typeof loadAdminUsers === 'function') loadAdminUsers();
+      } catch (err) {
+        var code = (err && err.code) || '';
+        if (code === 'functions/already-exists') {
+          say('Another account already uses that address. Nothing was changed and nothing was merged. Decide what should happen to the two accounts first.', true);
+        } else if (code === 'functions/not-found') {
+          say('No account uses the current address. Nothing was changed and no account was created.', true);
+        } else {
+          say((err && err.message) || 'Could not change it.', true);
+        }
+      }
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+    window.adminFixEmail = adminFixEmail;
 
     // ------------------------------------------------ user details
     function toggleUserDetails(uid, btn) {
@@ -8310,7 +8458,13 @@
           <div class="aa-kv"><span>Signed up</span><span>${escapeHtml(shortDate(p.createdAtMs))}</span></div>
           <div class="aa-kv"><span>Site visits</span><span>${p.visitCount}${lastVisit ? ' · last ' + escapeHtml(lastVisit) : ''}</span></div>
           ${extra.join('')}
+          <div class="aa-kv"><span>Email verification</span><span>${
+             p.emailVerified === true ? 'Verified'
+             : p.emailVerified === false ? 'Not verified'
+             : 'Unknown'}</span></div>
+          <div class="aa-kv"><span>Email delivery</span><span>${escapeHtml(deliveryLabel(p))}</span></div>
           ${p.hasFirestoreDoc ? '' : '<p class="aa-note aa-warn">Sign-in account without a profile record yet (fills in on their next visit).</p>'}
+          ${emailFixHtml(p)}
         </div>
         <div class="aa-detail-block"><h5>Bookings</h5>${bookingsHtml}</div>
         <div class="aa-detail-block aa-detail-wide"><h5>Purchases</h5>${purchases}</div>

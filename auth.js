@@ -104,7 +104,13 @@ async function ensureUserProfile(user) {
     if (!data.createdAt) {
       patch.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     }
-    if (!data.email && user.email) patch.email = user.email;
+    // Not just "missing" — STALE. Firebase Auth is the source of truth for
+    // the address, and a verified change of address lands there first (often
+    // from another browser entirely). Without this the admin list, the
+    // notification emails and the profile would keep showing the old one.
+    if (user.email && (data.email || '').toLowerCase() !== user.email.toLowerCase()) {
+      patch.email = user.email;
+    }
     if (!data.name && user.displayName) patch.name = user.displayName;
     if (Object.keys(patch).length > 0) {
       await ref.set(patch, { merge: true });

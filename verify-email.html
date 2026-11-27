@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email - SHOS Med</title>
+  <meta name="description" content="Confirm the email address on your SHOS Med account, or correct it if it is wrong.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=5"><link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=5"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261127-emailguard">
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    /* Step 2 of 2. The address is the subject of this page, so it is set
+       in the page's own voice rather than buried in a sentence. */
+    .ve-steps { display:flex; gap:10px; justify-content:center; margin:0 0 22px; }
+    .ve-step { display:flex; align-items:center; gap:7px; font-size:0.8rem; font-weight:600; color:#94A3B8; }
+    .ve-step .ve-dot { width:22px; height:22px; border-radius:50%; display:flex; align-items:center;
+      justify-content:center; font-size:0.72rem; background:#E2E8F0; color:#64748B; }
+    .ve-step.done .ve-dot { background:#0d9488; color:#fff; }
+    .ve-step.done { color:#0F172A; }
+    .ve-step.now .ve-dot { background:#CF5B2E; color:#fff; }
+    .ve-step.now { color:#0F172A; }
+    .ve-address { display:block; font-size:1.05rem; font-weight:700; color:#0F172A; word-break:break-all;
+      background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 14px; margin:14px 0 6px; }
+    .ve-note { font-size:0.86rem; color:#475569; line-height:1.6; margin:0 0 18px; }
+    .ve-actions { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
+    .ve-actions .btn { flex:1 1 auto; }
+    .ve-sep { border:none; border-top:1px solid #E2E8F0; margin:22px 0; }
+    .ve-msg { font-size:0.88rem; line-height:1.55; border-radius:8px; padding:10px 12px; margin:0 0 14px; display:none; }
+    .ve-msg.info { background:#EFF6FF; border:1px solid #BFDBFE; color:#1E40AF; display:block; }
+    .ve-msg.ok   { background:#ECFDF5; border:1px solid #6EE7B7; color:#065F46; display:block; }
+    .ve-msg.err  { background:#FEF2F2; border:1px solid #FECACA; color:#991B1B; display:block; }
+    .ve-toggle { background:none; border:none; padding:0; font:inherit; font-weight:600;
+      color:#0d9488; text-decoration:underline; cursor:pointer; }
+    .ve-small { font-size:0.82rem; color:#64748B; line-height:1.55; }
+    .ve-change { display:none; margin-top:6px; }
+    .ve-change.open { display:block; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/shos-logo-full-dark.png" alt="SHOS Med" class="logo-img logo-full logo-dark">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li id="auth-links"><a href="dashboard.html" class="nav-cta">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-card">
+
+        <div class="ve-steps" aria-label="Registration progress">
+          <span class="ve-step done"><span class="ve-dot">&#10003;</span> Account created</span>
+          <span class="ve-step now"><span class="ve-dot">2</span> Verify email</span>
+        </div>
+
+        <div class="auth-header">
+          <h2 id="veTitle">Confirm your email address</h2>
+          <p id="veLead">We sent a verification link to the address below.</p>
+        </div>
+
+        <strong class="ve-address" id="veAddress" aria-live="polite">&nbsp;</strong>
+        <p class="ve-note" id="veNote">
+          Open the link in that inbox to confirm it is yours. If the address above is wrong,
+          correct it here. Nothing is sent to the old address.
+        </p>
+
+        <div class="ve-msg" id="veMsg" role="status" aria-live="polite"></div>
+
+        <div class="ve-actions">
+          <button class="btn btn-primary" id="veResend" type="button">Resend verification email</button>
+          <button class="btn btn-outline" id="veChangeToggle" type="button" aria-expanded="false" aria-controls="veChangePanel">Change email</button>
+        </div>
+
+        <!-- Change email. Firebase mails the PROPOSED address and only moves
+             the account once that link is opened, so a wrong address here
+             costs nothing and the old mailbox is never contacted. -->
+        <div class="ve-change" id="veChangePanel">
+          <hr class="ve-sep">
+          <form id="veChangeForm" novalidate>
+            <div class="form-group">
+              <label for="veNewEmail">New email address</label>
+              <input type="email" id="veNewEmail" autocomplete="email" required placeholder="your@email.com">
+              <div class="email-typo-hint" id="veNewEmailHint" hidden></div>
+            </div>
+            <div class="form-group" id="vePasswordGroup" style="display:none;">
+              <label for="vePassword">Your password</label>
+              <input type="password" id="vePassword" autocomplete="current-password" placeholder="Confirm it is you">
+              <p class="ve-small" style="margin:6px 0 0;">Asked for because changing the address on an account is a security-sensitive action.</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="veChangeSubmit">Send verification to the new address</button>
+          </form>
+          <p class="ve-small" style="margin:12px 0 0;">
+            Your progress, purchases and sign-in stay with the same account. The address only
+            moves once you open the link we send to the new one.
+          </p>
+        </div>
+
+        <hr class="ve-sep">
+
+        <p style="margin:0 0 10px;">
+          <a class="btn btn-outline btn-full" id="veContinue" href="dashboard.html">Continue to your dashboard</a>
+        </p>
+        <p class="ve-small" id="veFreeNote">
+          You can use the free 40 practice questions straight away. Verification is needed before a purchase.
+        </p>
+
+        <p class="auth-footer" style="margin-top:18px;">
+          Already clicked the link? <button type="button" class="ve-toggle" id="veRefresh">Refresh status</button>
+          &middot; <a href="#" id="veSignOut">Sign out</a>
+        </p>
+        <p class="ve-small" style="margin-top:10px;">
+          Stuck? Email <a href="mailto:contact@shosmed.com">contact@shosmed.com</a> from any address and we will help.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+  <script src="email-typo.js?v=20261127b"></script>
+  <script src="auth.js?v=20260718-visitv5"></script>
+  <script src="account-email.js?v=20261127b"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    // Where to go once this is behind them. Allowlist, not a free-form URL:
+    // ?next= arrives from a link anyone can write.
+    var NEXT = {
+      qbank: { href: 'qbank.html?v=20260423a', label: 'Continue to the question bank', key: 'qbank' },
+      mock: { href: 'practice-exam.html', label: 'Continue to the mock exam', key: 'mock' },
+      store: { href: 'dashboard.html?view=store', label: 'Continue to the store', key: 'store' },
+      dashboard: { href: 'dashboard.html', label: 'Continue to your dashboard', key: 'dashboard' }
+    };
+    function wantedNext() {
+      var want = '';
+      try { want = new URLSearchParams(location.search).get('next') || ''; } catch (e) {}
+      return NEXT[want] || NEXT.dashboard;
+    }
+    var next = wantedNext();
+
+    var $ = function (id) { return document.getElementById(id); };
+    var msgEl = $('veMsg');
+    function say(kind, text) {
+      msgEl.className = 've-msg ' + kind;
+      msgEl.textContent = text;
+    }
+    function clearSay() { msgEl.className = 've-msg'; msgEl.textContent = ''; }
+
+    $('veContinue').href = next.href;
+    $('veContinue').textContent = next.label;
+
+    var guard = window.SHOSEmailTypo
+      ? window.SHOSEmailTypo.attach($('veNewEmail'), $('veNewEmailHint'))
+      : null;
+
+    // ---------------------------------------------------------------- state
+    var pollTimer = null;
+
+    function renderVerified(email) {
+      $('veTitle').textContent = 'Your email is verified';
+      $('veLead').textContent = 'Thank you. This address is confirmed.';
+      $('veAddress').textContent = email || '';
+      $('veNote').textContent = 'Nothing else is needed. Your account is ready.';
+      document.querySelector('.ve-actions').style.display = 'none';
+      $('veChangePanel').classList.remove('open');
+      $('veFreeNote').textContent = 'Everything on your account is available.';
+      document.querySelectorAll('.ve-step').forEach(function (s) {
+        s.classList.remove('now'); s.classList.add('done');
+      });
+      $('veContinue').className = 'btn btn-primary btn-full';
+      say('ok', 'Verified. Carry on whenever you are ready.');
+      if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+    }
+
+    function renderPending(user) {
+      $('veAddress').textContent = user.email || '(no address on this account)';
+      // A Google account arrives already verified by Google, so the password
+      // field would be meaningless for it.
+      var needsPassword = window.SHOSAccountEmail.hasPassword(user);
+      $('vePasswordGroup').style.display = needsPassword ? '' : 'none';
+    }
+
+    async function refresh(showResult) {
+      var state = await window.SHOSAccountEmail.refreshVerification();
+      if (!state.signedIn) { toLogin(); return; }
+      if (state.verified) {
+        // Auth is the source of truth and the swap may have happened in a
+        // different browser; reconcile the profile copy now.
+        try { await window.SHOSAccountEmail.syncProfileEmail(firebase.auth().currentUser, firebase.firestore()); } catch (e) {}
+        renderVerified(state.email);
+      } else if (showResult) {
+        say('info', 'Not verified yet. Open the link in the email we sent to ' + state.email +
+                    '. It can take a minute to arrive, and it is often in spam.');
+      }
+    }
+
+    function toLogin() {
+      var q = next.key === 'dashboard' ? '' : ('?redirect=' + next.key);
+      location.replace('login.html' + q);
+    }
+
+    // ------------------------------------------------------------- actions
+    var resendUntil = 0;
+    $('veResend').addEventListener('click', async function () {
+      var btn = this;
+      if (Date.now() < resendUntil) return;
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = 'Sending...';
+      clearSay();
+      try {
+        var fn = firebase.functions().httpsCallable('resendVerification');
+        var res = await fn({});
+        if (res && res.data && res.data.alreadyVerified) {
+          await refresh(false);
+          say('ok', 'That address is already verified.');
+        } else {
+          say('ok', 'Sent. Check the inbox for ' + (firebase.auth().currentUser || {}).email + ', including spam.');
+          // Client-side cooldown is a courtesy, not a control. The server
+          // enforces the real limit.
+          resendUntil = Date.now() + 60000;
+          var left = 60;
+          btn.textContent = 'Resend in ' + left + 's';
+          var tick = setInterval(function () {
+            left -= 1;
+            if (left <= 0) {
+              clearInterval(tick);
+              btn.textContent = label;
+              btn.disabled = false;
+            } else {
+              btn.textContent = 'Resend in ' + left + 's';
+            }
+          }, 1000);
+          return;
+        }
+      } catch (err) {
+        var code = (err && err.code) || '';
+        if (code === 'functions/resource-exhausted') {
+          say('err', 'We have sent several already. Please wait a few minutes before asking for another.');
+        } else {
+          say('err', 'Could not send it just now. Try again in a moment, or email contact@shosmed.com.');
+        }
+      }
+      btn.disabled = false;
+      btn.textContent = label;
+    });
+
+    $('veChangeToggle').addEventListener('click', function () {
+      var panel = $('veChangePanel');
+      var open = panel.classList.toggle('open');
+      this.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) $('veNewEmail').focus();
+    });
+
+    $('veChangeForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      clearSay();
+      if (guard && guard.blocks()) {
+        say('err', 'Please check the new address below, then choose one of the two options.');
+        return;
+      }
+      var btn = $('veChangeSubmit');
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = 'Sending...';
+
+      var result = await window.SHOSAccountEmail.requestEmailChange(
+        $('veNewEmail').value, $('vePassword').value, next.key);
+
+      btn.disabled = false;
+      btn.textContent = label;
+
+      if (result.ok) {
+        say('ok', 'Verification sent to ' + result.sentTo + '. Open the link there and the address ' +
+                  'on your account changes to it. Until then nothing has changed, and you can keep using ' +
+                  'the account exactly as before.');
+        $('veNewEmail').value = '';
+        $('vePassword').value = '';
+        if (guard) guard.reset();
+      } else {
+        if (result.needsReauth && result.code === 'need-password') {
+          $('vePasswordGroup').style.display = '';
+          $('vePassword').focus();
+        }
+        say('err', result.message);
+      }
+    });
+
+    $('veRefresh').addEventListener('click', function () { refresh(true); });
+
+    $('veSignOut').addEventListener('click', function (e) {
+      e.preventDefault();
+      try { localStorage.removeItem('shos_authed'); } catch (_) {}
+      firebase.auth().signOut().then(function () { location.href = 'login.html'; });
+    });
+
+    // ------------------------------------------------------------- startup
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (!user) { toLogin(); return; }
+      renderPending(user);
+      if (user.emailVerified) { renderVerified(user.email); return; }
+
+      // The link is very often opened somewhere else: another browser, or a
+      // phone. Nothing tells this tab about that, so poll gently and also
+      // check whenever the tab is looked at again.
+      pollTimer = setInterval(function () { refresh(false); }, 5000);
+      setTimeout(function () { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }, 300000);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) refresh(false);
+      });
+      window.addEventListener('focus', function () { refresh(false); });
+    });
+  })();
+  </script>
+</body>
+</html>

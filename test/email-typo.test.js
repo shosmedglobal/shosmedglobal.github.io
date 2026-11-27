@@ -102,11 +102,63 @@ check('5b signup loads the guard', /<script src="email-typo\.js\?v=/.test(signup
 check('5c signup has somewhere to show it', signup.includes('id="emailTypoHint"'));
 check('5d signup wires the field to it', signup.includes('window.SHOSEmailTypo.attach('));
 check('5e the check runs before the account is created',
-  signup.indexOf('emailTypoCheck()') > 0 &&
-  signup.indexOf('emailTypoCheck()') < signup.indexOf("btn.textContent = 'Creating account...'"));
+  signup.indexOf('emailGuard.blocks()') > 0 &&
+  signup.indexOf('emailGuard.blocks()') < signup.indexOf("btn.textContent = 'Creating account...'"));
 check('5f it degrades to nothing if the script fails to load',
-  signup.includes('window.SHOSEmailTypo\n') || signup.includes('window.SHOSEmailTypo ?') ||
-  /emailTypoCheck && emailTypoCheck\(\)/.test(signup));
+  /emailGuard && emailGuard\.blocks\(\)/.test(signup));
+
+// The contact form is the other door a mistyped address walks through: a
+// lead we can read and cannot answer.
+const modal = fs.readFileSync(path.join(ROOT, 'contact-modal.js'), 'utf8');
+check('5g the contact form has somewhere to show it',
+  modal.includes('id="shosCmEmailHint"'));
+check('5h the contact form wires the guard', modal.includes('window.SHOSEmailTypo.attach('));
+check('5i the contact form blocks on an unanswered suggestion',
+  /_emailGuard && _emailGuard\.blocks\(\)/.test(modal));
+
+// Every page that can open the modal must actually load the script, or the
+// guard silently is not there.
+const MODAL_PAGES = ['applicants.html', 'community.html', 'index.html',
+                     'lf3.html', 'mentors.html', 'students.html',
+                     'blog/from-acceptance-to-residency.html'];
+for (const p of MODAL_PAGES) {
+  const html = fs.readFileSync(path.join(ROOT, p), 'utf8');
+  check('5j ' + p + ' loads contact-modal.js', html.includes('contact-modal.js'));
+  check('5k ' + p + ' loads the guard too', /email-typo\.js\?v=/.test(html));
+}
+
+// ---------------------------------------------------------------------------
+// 5L. The contract that makes this a choice rather than a nag. These are
+//     source-level assertions because the behaviour is DOM behaviour; the
+//     browser pass covers the rendered side.
+// ---------------------------------------------------------------------------
+const guardSrc = fs.readFileSync(path.join(ROOT, 'email-typo.js'), 'utf8');
+check('5L1 both answers are offered', /Use .{0,10}\+ fix/.test(guardSrc) &&
+  /Keep .{0,12}\+ typed/.test(guardSrc));
+check('5L2 the buttons cannot submit the form',
+  (guardSrc.match(/\.type = 'button'/g) || []).length >= 2);
+check('5L3 consent is recorded against one exact value',
+  guardSrc.includes('keptValue !== typed'));
+check('5L4 editing after a decision voids it',
+  /keptValue !== null && keptValue !== normalize\(input\.value\)/.test(guardSrc));
+check('5L5 autofill is covered', guardSrc.includes("addEventListener('change'"));
+check('5L6 the field is described by the panel for screen readers',
+  guardSrc.includes("setAttribute('aria-describedby'") &&
+  guardSrc.includes("'aria-live', 'polite'"));
+check('5L7 no silent second-submit bypass remains', !/warned/.test(guardSrc));
+
+// ---------------------------------------------------------------------------
+// 5M. normalize(): whitespace and domain case only. The local part is
+//     load-bearing for plus-aliases and case-sensitive mailboxes.
+// ---------------------------------------------------------------------------
+check('5M1 trims', typo.normalize('  a@gmail.com  ') === 'a@gmail.com');
+check('5M2 lower-cases the domain', typo.normalize('a@GMAIL.COM') === 'a@gmail.com');
+check('5M3 leaves the local part alone', typo.normalize('A.B@GMAIL.COM') === 'A.B@gmail.com');
+check('5M4 keeps a plus alias', typo.normalize('me+lf3@Gmail.Com') === 'me+lf3@gmail.com');
+check('5M5 survives a half-typed value', typo.normalize('  abc  ') === 'abc');
+check('5M6 plus aliases are never flagged', typo.suggest('me+lf3@gmail.com') === null);
+check('5M7 a plus alias typo still resolves',
+  typo.suggest('me+lf3@gmail.ocm') === 'me+lf3@gmail.com');
 
 // ---------------------------------------------------------------------------
 // 6. Admin visibility: the row can only say "unverified" when it knows.
