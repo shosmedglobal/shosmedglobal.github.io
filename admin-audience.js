@@ -163,6 +163,11 @@
           status: u.emailDeliveryStatus || 'unknown',
           permanent: u.emailDeliveryPermanent === true,
           address: u.emailDeliveryAddress || null,
+          // Sticky: set by a complaint or a provider suppression and never
+          // cleared by a later delivery, because neither is retracted by one
+          // message getting through.
+          suppressed: u.emailSuppressed === true,
+          suppressedReason: u.emailSuppressedReason || null,
           appliesToCurrent: !!(u.emailDeliveryAddress && u.email &&
             String(u.emailDeliveryAddress).toLowerCase() === String(u.email).toLowerCase())
         },

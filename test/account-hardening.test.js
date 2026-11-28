@@ -158,8 +158,43 @@ check('5g a provider-side failure never blames the recipient', (function () {
     { status: 'failed', permanent: false, atMs: 1000, type: 'email.failed' });
   return !!p && p.suppressed === undefined;
 })());
+// Three different events arrive as a suppression and they mean different
+// things to whoever reads the admin panel. Collapsing them would turn "the
+// provider already had this address on its list" into "they reported us".
+function reasonFor(type, extra) {
+  const ev = Object.assign({
+    type: type, created_at: new Date().toISOString(),
+    data: Object.assign({ to: ['x@example.com'], email_id: 'm' }, extra || {}),
+  });
+  const s = integrity.suppressionFromEvent(integrity.classifyResendEvent(ev));
+  return s && s.reason;
+}
+check('5h1 a complaint reads as a complaint', reasonFor('email.complained') === 'complaint');
+check('5h2 a provider suppression is labelled as its own thing',
+  reasonFor('email.suppressed') === 'provider-suppression', reasonFor('email.suppressed'));
+check('5h3 a permanent bounce reads as a hard bounce',
+  reasonFor('email.bounced', { bounce: { type: 'Permanent' } }) === 'hard-bounce');
+check('5h4 a transient bounce suppresses nothing',
+  reasonFor('email.bounced', { bounce: { type: 'Transient' } }) === null);
+check('5h5 an event we do not model is ignored rather than guessed at',
+  integrity.classifyResendEvent({ type: 'email.opened', data: { to: ['x@example.com'] } }) === null);
+
 check('5h the send-time check reads the sticky flag',
   /integrity\.isSuppressed\(rec\)/.test(idx));
+check('5h6 the account mirror only moves the status when the merge moved it',
+  /if \(patch && patch\.status\) \{/.test(idx)
+  && !/emailDeliveryStatus: parsed\.status/.test(idx));
+check('5h7 the account mirror carries the sticky suppression',
+  /stamp\.emailSuppressed = true/.test(idx)
+  && /stamp\.emailSuppressedReason = suppression\.reason/.test(idx));
+check('5h8 and never writes it back to false',
+  !/emailSuppressed = false/.test(idx) && !/emailSuppressed: false/.test(idx));
+check('5h9 the new mirror fields are server-owned in the rules',
+  /!\('emailSuppressed' in d\)/.test(rules)
+  && /!\('emailSuppressedReason' in d\)/.test(rules));
+check('5h10 the admin panel carries the flag through',
+  /suppressed: u\.emailSuppressed === true/.test(read('admin-audience.js'))
+  && /suppressedReason: u\.emailSuppressedReason/.test(read('admin-audience.js')));
 check('5i a complaint is enough to stop sending',
   integrity.isSuppressed({ suppressed: true, suppressedReason: 'complaint' }) === true);
 check('5j records written before the split still suppress',

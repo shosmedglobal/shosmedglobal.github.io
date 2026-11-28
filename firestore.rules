@@ -79,6 +79,8 @@ service cloud.firestore {
           && !('emailDeliveryPermanent' in d)
           && !('emailDeliveryAddress' in d)
           && !('emailDeliveryAt' in d)
+          && !('emailSuppressed' in d)
+          && !('emailSuppressedReason' in d)
           && !('emailCorrectedByAdmin' in d);
     }
     function ownerWriteIsSafe() {

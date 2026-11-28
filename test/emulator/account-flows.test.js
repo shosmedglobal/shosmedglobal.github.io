@@ -336,22 +336,36 @@ async function main() {
     // Firebase delivers a verifyAndChangeEmail link to newEmail; this is the
     // documented difference from updateEmail, which mails the OLD address a
     // revert link and is useless when the old address was the typo.
-    check('3b exactly one new link was issued', added.length === 1, 'added=' + added.length);
+    // Filtered by request type rather than counted. onUserCreated issues a
+    // verification link of its own on a background trigger, so a count of
+    // "new codes" races against it; what this flow must produce is exactly
+    // one CHANGE link and no notice to the old address.
+    const changeLinks = added.filter(function (c) {
+      return c.requestType === 'VERIFY_AND_CHANGE_EMAIL';
+    });
+    check('3b the change request issued exactly one change link',
+      changeLinks.length === 1,
+      'change=' + changeLinks.length + ' of ' + added.length + ' new codes');
     check('3c it is a change-email link, not a plain verification',
-      added.length === 1 && added[0].requestType === 'VERIFY_AND_CHANGE_EMAIL',
-      added.length ? added[0].requestType : 'none');
+      changeLinks.length === 1 && changeLinks[0].requestType === 'VERIFY_AND_CHANGE_EMAIL');
     check('3d the link targets the PROPOSED address',
-      added.length === 1 && String(added[0].newEmail || '').toLowerCase() === 'typo@gmail.com',
-      added.length ? String(added[0].newEmail) : 'none');
+      changeLinks.length === 1
+      && String(changeLinks[0].newEmail || '').toLowerCase() === 'typo@gmail.com',
+      changeLinks.length ? String(changeLinks[0].newEmail) : 'none');
     check('3d2 no recovery notice was raised for the unconfirmed old address',
       !added.some(function (c) { return c.requestType === 'RECOVER_EMAIL'; }));
+    check('3d3 and nothing new was addressed to the old mistyped address',
+      !added.some(function (c) {
+        return String(c.email || '').toLowerCase() === 'typo@gmail.ocm'
+          && c.requestType !== 'VERIFY_EMAIL' && c.requestType !== 'VERIFY_AND_CHANGE_EMAIL';
+      }));
 
     // The account must not move until the link is opened.
     let acct = await admin.auth().getUser(u.uid);
     check('3e the account still holds the old address until the link is opened',
       acct.email === 'typo@gmail.ocm', acct.email);
 
-    await applyOob(added[0].oobCode);
+    await applyOob(changeLinks[0].oobCode);
     acct = await admin.auth().getUser(u.uid);
     check('3f opening the link moves the account', acct.email === 'typo@gmail.com', acct.email);
     check('3g the UID never changed', acct.uid === u.uid);
@@ -412,13 +426,24 @@ async function main() {
     check('4k the account moved, same UID', movedAcct.email === 'moved@example.com'
       && movedAcct.uid === u.uid, movedAcct.email);
 
-    // --- The ADMIN path behaves differently, and this is worth pinning down.
-    // An Admin SDK email change DOES raise a recovery code for the previous
-    // address, whether or not that address was ever verified. Applying it
-    // rolls the address back AND marks it verified. For a mistyped address on
-    // a domain that does not exist, nobody can ever open it, so the
-    // correction is safe. For a correction away from a REACHABLE address it
-    // is a genuine undo path, which is why the admin form says so.
+    // --- EMULATOR-ONLY behaviour, recorded so nobody mistakes it for the
+    // production contract.
+    //
+    // An administrative email change makes the Auth emulator GENERATE a
+    // RECOVER_EMAIL out-of-band code for the previous address, and applying
+    // that code rolls the address back. The emulator never sends anything;
+    // its code list is a stand-in for a mailbox, so a code appearing there is
+    // not evidence of an email.
+    //
+    // Production does not send one. The Admin SDK documentation lists, among
+    // the things elevated privileges allow, changing "a user's email without
+    // sending email links to revoke these changes". That is the whole reason
+    // an administrator can fix a mistyped address: the correction is not
+    // announced to a mailbox that does not exist.
+    //
+    // These assertions therefore pin EMULATOR behaviour. They exist so that
+    // if a future emulator version stops generating the code, the diff shows
+    // it, rather than someone quietly concluding production changed.
     const rbUser = await signUp('rollback@example.com', PW);
     await admin.auth().updateUser(rbUser.uid, { emailVerified: true });
     const beforeAdminChange = (await oobCodes()).length;
@@ -426,14 +451,14 @@ async function main() {
       { email: 'rollback-new@example.com', emailVerified: false });
     const adminIssued = (await oobCodes()).slice(beforeAdminChange);
     const recover = adminIssued.find(function (c) { return c.requestType === 'RECOVER_EMAIL'; });
-    check('4l an admin-side change raises a recovery code for the old address', !!recover,
+    check('4l (emulator) an admin-side change generates a recovery code locally', !!recover,
       JSON.stringify(adminIssued.map(function (c) { return c.requestType + '->' + c.email; })));
     check('4m the recovery code is addressed to the previous address',
       !!recover && String(recover.email).toLowerCase() === 'rollback@example.com',
       recover ? recover.email : 'none');
     if (recover) {
       const rec = await applyOob(recover.oobCode);
-      check('4n applying it rolls the address back', rec.ok);
+      check('4n (emulator) applying that code rolls the address back', rec.ok);
       const back = await admin.auth().getUser(rbUser.uid);
       check('4o the address is the original again', back.email === 'rollback@example.com',
         back.email);

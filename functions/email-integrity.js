@@ -105,6 +105,12 @@ function classifyResendEvent(event) {
       // A spam complaint is not a delivery failure: it arrived, and they
       // did not want it. Stop sending, but never call the address wrong.
       status = 'suppressed'; permanent = false; break;
+    case 'email.suppressed':
+      // The provider refused to send because the address is already on its
+      // own suppression list. Same shape as a complaint: a fact about the
+      // address, not about this message, and never a claim that the address
+      // is mistyped.
+      status = 'suppressed'; permanent = false; break;
     case 'email.bounced': {
       const b = data.bounce || {};
       const kind = String(b.type || b.bounceType || '').toLowerCase();
@@ -232,7 +238,14 @@ module.exports = {
 function suppressionFromEvent(parsed) {
   if (!parsed) return null;
   if (parsed.status === 'suppressed') {
-    return { reason: 'complaint', atMs: parsed.atMs || null };
+    // Two different events arrive as 'suppressed' and they mean different
+    // things to a person reading the admin panel: one is "they reported us",
+    // the other is "the provider already had this address on its list".
+    // Neither says the address is wrong, and they must not be conflated.
+    return {
+      reason: parsed.type === 'email.suppressed' ? 'provider-suppression' : 'complaint',
+      atMs: parsed.atMs || null,
+    };
   }
   if (parsed.status === 'bounced' && parsed.permanent === true) {
     return { reason: 'hard-bounce', atMs: parsed.atMs || null };

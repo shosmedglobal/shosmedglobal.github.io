@@ -172,6 +172,8 @@ async function main() {
     ['emailDeliveryStatus', { stringValue: 'delivered' }, 'delivery evidence is the provider’s to state'],
     ['emailDeliveryPermanent', { booleanValue: false }, 'same'],
     ['emailCorrectedByAdmin', { booleanValue: true }, 'an audit fact, not a user field'],
+    ['emailSuppressed', { booleanValue: false }, 'clearing your own suppression is the point of it'],
+    ['emailSuppressedReason', { stringValue: 'complaint' }, 'the provider states this, not the user'],
     // `payments` is the field that actually decides entitlement. Every
     // reader of paid access computes it from this array through
     // SHOSAccess.qbankActive / payments.qbankAccessActive, client and server

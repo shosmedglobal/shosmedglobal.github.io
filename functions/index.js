@@ -1778,6 +1778,7 @@ exports.resendWebhook = functions
     if (!key) { res.status(200).send('No recipient'); return; }
 
     const ref = db.collection('emailDelivery').doc(key);
+    let patch = null;
     try {
       await db.runTransaction(async (tx) => {
         const snap = await tx.get(ref);
@@ -1786,11 +1787,13 @@ exports.resendWebhook = functions
         // outcome, which is time-ordered and can move in any direction, and
         // whether the ADDRESS is suppressed, which is sticky and is never
         // cleared by a later delivery.
-        const patch = integrity.mergeDeliveryRecord(existing, parsed);
+        patch = integrity.mergeDeliveryRecord(existing, parsed);
         if (!patch) return;                       // older or redundant event
-        patch.address = key;
-        patch.updatedAt = FieldValue.serverTimestamp();
-        tx.set(ref, patch, { merge: true });
+        const write = Object.assign({}, patch, {
+          address: key,
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        tx.set(ref, write, { merge: true });
       });
     } catch (err) {
       console.error('[resendWebhook] delivery write failed:', err.message);
@@ -1805,11 +1808,23 @@ exports.resendWebhook = functions
     try {
       const q = await db.collection('users').where('email', '==', key).limit(5).get();
       const stamp = {
-        emailDeliveryStatus: parsed.status,
-        emailDeliveryPermanent: !!parsed.permanent,
         emailDeliveryAddress: key,
         emailDeliveryAt: FieldValue.serverTimestamp()
       };
+      // Only move the message status when the merge actually moved it. The
+      // mirror used to stamp parsed.status unconditionally, which meant a
+      // later email.delivered overwrote a complaint and the admin panel
+      // forgot it, even though the delivery record kept it.
+      if (patch && patch.status) {
+        stamp.emailDeliveryStatus = patch.status;
+        stamp.emailDeliveryPermanent = !!patch.permanent;
+      }
+      // Suppression is sticky here too, and is never written back to false.
+      const suppression = integrity.suppressionFromEvent(parsed);
+      if (suppression) {
+        stamp.emailSuppressed = true;
+        stamp.emailSuppressedReason = suppression.reason;
+      }
       await Promise.all(q.docs.map(function (d) { return d.ref.set(stamp, { merge: true }); }));
     } catch (err) {
       console.warn('[resendWebhook] account mirror skipped:', err.message);
