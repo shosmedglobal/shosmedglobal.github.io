@@ -396,7 +396,14 @@ check('12d it is an absolute URL, because an email has no page to be relative to
 check('12e it has alt text, since most inboxes block images by default',
   /alt="SHOS Med"/.test(emailsSrc));
 check('12f it has explicit width and height, which several clients require',
-  /width="150" height="57"/.test(emailsSrc));
+  /width="180" height="69"/.test(emailsSrc));
+// Most inboxes block remote images, so the blocked state is the common one.
+// Styling the img itself is what makes clients render the alt text as a white
+// wordmark instead of unstyled dark text on a navy bar, which is invisible.
+check('12g the blocked-image fallback is styled to stay legible',
+  /alt="SHOS Med"[\s\S]{0,400}color:#FFFFFF;[\s\S]{0,120}font-weight:700;/.test(emailsSrc));
+check('12h the fallback has a font stack of its own',
+  /alt="SHOS Med"[\s\S]{0,500}font-family:/.test(emailsSrc));
 
 // ---------------------------------------------------------------------------
 console.log('account-hardening: ' + passed + ' passed, ' + failures.length + ' failed');

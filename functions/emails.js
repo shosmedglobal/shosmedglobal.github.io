@@ -51,12 +51,19 @@ function shell({ title, preheader, bodyHtml }) {
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; background:#FFFFFF; border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(15,23,42,0.06);">
         <!-- Header -->
         <tr><td style="background:${BRAND.navy}; padding:24px 32px; text-align:left;">
-          <!-- Width and height are set explicitly because several clients
-               ignore CSS on images. The alt text carries the brand when
-               images are blocked, which is the default in most inboxes. -->
+          <!-- Most inboxes block remote images by default, so this has to
+               look right in BOTH states. Width and height are explicit
+               because several clients ignore CSS on images. The font and
+               colour styles are on the img on purpose: when the image is
+               blocked, clients render the alt text using them, so the
+               fallback is a white wordmark on the navy bar rather than
+               unstyled dark text nobody can read. -->
           <img src="https://shosmed.com/assets/shos-logo-full-white.png"
-               alt="SHOS Med" width="150" height="57"
-               style="display:block; border:0; outline:none; text-decoration:none; width:150px; height:57px;">
+               alt="SHOS Med" width="180" height="69"
+               style="display:block; border:0; outline:none; text-decoration:none;
+                      width:180px; height:69px;
+                      color:#FFFFFF; font-size:22px; font-weight:700; letter-spacing:0.5px;
+                      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
         </td></tr>
 
         <!-- Body -->
