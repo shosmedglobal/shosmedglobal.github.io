@@ -1710,7 +1710,12 @@ exports.resendWebhook = functions
   .https.onRequest(async (req, res) => {
     if (req.method !== 'POST') { res.status(405).send('Method not allowed'); return; }
 
-    const secret = process.env.RESEND_WEBHOOK_SECRET;
+    // Trimmed on the way in. A signing secret gets pasted into a console
+    // field or piped from a file, and both pick up stray whitespace.
+    // Node's base64 decoder happens to skip it, so this is belt and
+    // braces rather than a fix, but a secret that differs from what was
+    // pasted by one invisible character is a bad afternoon.
+    const secret = (process.env.RESEND_WEBHOOK_SECRET || '').trim();
     if (!secret) {
       console.warn('[resendWebhook] RESEND_WEBHOOK_SECRET not configured');
       res.status(503).send('Not configured');
