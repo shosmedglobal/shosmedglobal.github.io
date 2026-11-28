@@ -294,6 +294,49 @@ check('9d the Firestore statics come from the modular entry point, which the '
   && !/admin\.firestore\.FieldValue/.test(idx)
   && !/admin\.firestore\.FieldPath/.test(idx));
 
+
+// ---------------------------------------------------------------------------
+// 10. The admin booking card interpolates nothing attacker-controlled raw.
+//     Bookings are created by anonymous visitors under a rule that validates
+//     no fields, so every value on the document is a string an outsider
+//     chose. The status badge used to interpolate `bk.status` unescaped into
+//     BOTH a class attribute and element text, and the price string was
+//     built by concatenation and dropped in raw. Verified in isolation: the
+//     shipped template executed three separate payloads, the fixed one
+//     executed none.
+// ---------------------------------------------------------------------------
+const dash = read('dashboard.html');
+// There are three `card.innerHTML = ` templates in this file. Pick the
+// booking one by looking for its own header class, not by taking the first
+// match, which is the inbox card and would make every check below pass
+// against the wrong template.
+const bookingCard = (function () {
+  let i = -1;
+  while ((i = dash.indexOf('card.innerHTML = `', i + 1)) !== -1) {
+    const window_ = dash.slice(i, i + 200);
+    if (window_.includes('booking-card-header')) {
+      const end = dash.indexOf('card.addEventListener', i);
+      return dash.slice(i, end === -1 ? i + 3000 : end);
+    }
+  }
+  return '';
+})();
+check('10a the status badge escapes its attribute',
+  /status-\$\{escapeAttr\(bk\.status \|\| 'unknown'\)\}/.test(bookingCard));
+check('10b the status badge escapes its text',
+  /\$\{escapeHtml\(String\(bk\.status \|\| 'unknown'\)\.replace/.test(bookingCard));
+check('10c a booking with no status no longer throws on render',
+  !/\$\{bk\.status\.replace/.test(bookingCard) && /bk\.status \|\| 'unknown'/.test(bookingCard));
+check('10d the price is escaped at the point of use',
+  /\$\{escapeHtml\(priceStr\)\}/.test(bookingCard) && !/<span class="booking-price">\$\{priceStr\}/.test(bookingCard));
+check('10e a missing price reads as text, not "$undefined"',
+  /bk\.price == null \|\| bk\.price === ''/.test(dash));
+const rawInterp = (bookingCard.match(/\$\{bk\.[A-Za-z.]+\}/g) || []);
+check('10f no bk.* value is interpolated without an escaper',
+  rawInterp.length === 0, JSON.stringify(rawInterp));
+check('10g the intake answers were already escaped',
+  /intakeHtml \+= [^\n]*escapeHtml\(label\)[^\n]*escapeHtml\(val\)/.test(dash));
+
 // ---------------------------------------------------------------------------
 console.log('account-hardening: ' + passed + ' passed, ' + failures.length + ' failed');
 for (const f of failures) console.log('\n  FAIL ' + f);

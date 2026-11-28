@@ -8725,7 +8725,11 @@
             dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
           }
 
-          const priceStr = bk.price === 0 ? 'Free' : '$' + bk.price;
+          // Escaped at the point of use below. `price` arrives on a document
+          // that the security rules accept without validating any field, so it
+          // is a string an outsider chooses, not a number we computed.
+          const priceStr = bk.price === 0 ? 'Free'
+            : (bk.price == null || bk.price === '' ? 'Not set' : '$' + bk.price);
 
           // Build intake answers display
           let intakeHtml = '';
@@ -8769,10 +8773,10 @@
             <div class="booking-card-header">
               <div>
                 <span class="booking-service">${escapeHtml(bk.serviceName || bk.serviceType)}</span>
-                <span class="status-badge status-${bk.status}" style="margin-left:8px;">${bk.status.replace('_', ' ')}</span>
+                <span class="status-badge status-${escapeAttr(bk.status || 'unknown')}" style="margin-left:8px;">${escapeHtml(String(bk.status || 'unknown').replace('_', ' '))}</span>
                 ${adminView === 'overview' ? kindChip(SHOSCatalog.bookingAudience(bk).kind) : ''}
               </div>
-              <span class="booking-price">${priceStr}</span>
+              <span class="booking-price">${escapeHtml(priceStr)}</span>
             </div>
             <div class="booking-client">${escapeHtml(bk.name || 'Unknown')} &middot; ${escapeHtml(bk.email || '')} &middot; ${dateStr}</div>
             ${bk.preferredDate ? `<div style="font-size:0.82rem; color:#6b7280; margin-top:4px;">Preferred: ${escapeHtml(bk.preferredDate)}${bk.preferredTime ? ' (' + escapeHtml(bk.preferredTime) + ')' : ''}</div>` : ''}
