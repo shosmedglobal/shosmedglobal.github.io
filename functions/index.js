@@ -19,6 +19,24 @@ const path = require('path');
 admin.initializeApp();
 const db = admin.firestore();
 
+// A confirmed address, read from the account rather than from the token.
+// Same reasoning as the checkout gate: a token is a snapshot good for up to
+// an hour, so a tab opened before the address was confirmed still carries the
+// old answer, in both directions. An administrator or a reviewer is exempt
+// from nothing here; the exemption they have is on CONTENT, further down.
+async function requireVerifiedEmail(context) {
+  let account;
+  try {
+    account = await identity.liveAccount(context.auth.uid);
+  } catch (err) {
+    throw new functions.https.HttpsError(
+      'unauthenticated', 'Your account could not be read. Please sign in again.');
+  }
+  if (!account.email || !account.emailVerified) {
+    throw new functions.https.HttpsError('failed-precondition', 'verify-email-required');
+  }
+}
+
 // Admin authorization, in one place. Membership of the list is necessary but
 // no longer sufficient: the address must also be verified, because an
 // unverified address is a string somebody typed, not a mailbox anyone has
@@ -1325,6 +1343,7 @@ exports.submitMockExam = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError('unauthenticated', 'You must be signed in to submit a mock exam.');
   }
   const uid = context.auth.uid;
+  await requireVerifiedEmail(context);
   const email = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
   const year = data && String(data.year || '').trim();
   const answers = (data && typeof data.answers === 'object' && data.answers) || {};
@@ -1432,6 +1451,7 @@ exports.getMockExamReview = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError('invalid-argument', 'Bad year.');
   }
   const callerUid = context.auth.uid;
+  await requireVerifiedEmail(context);
   const callerEmail = ((context.auth.token && context.auth.token.email) || '').toLowerCase();
   const isAdmin = identity.isAdminContext(context);
   const isReviewer = MOCK_REVIEWER_EMAILS.includes(callerEmail);

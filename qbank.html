@@ -467,6 +467,24 @@
         questionsPromise, physicsPromise, authPromise
       ]);
 
+      // ---- Step 1b: Verification ----
+      // The free questions now sit behind a confirmed address, the same as a
+      // purchase. The address has to work before somebody builds up progress
+      // against it, because progress, receipts and password resets all travel
+      // by email and an address nobody has proved is just a string.
+      //
+      // Read from the live user object rather than a cached claim: reload()
+      // picks up a confirmation completed in another tab or on a phone, which
+      // is the common case for somebody who has just clicked the link.
+      if (authUser && authUser.emailVerified !== true) {
+        try { await authUser.reload(); } catch (e) { /* offline: fall through */ }
+        const fresh = auth.currentUser;
+        if (fresh && fresh.emailVerified !== true) {
+          window.location.href = 'verify-email.html?next=qbank';
+          return;
+        }
+      }
+
       // ---- Step 2: Determine access level ----
       if (!authUser) {
         // Not signed in (or Firebase unreachable).

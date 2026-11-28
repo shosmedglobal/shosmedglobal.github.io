@@ -338,6 +338,67 @@ check('10g the intake answers were already escaped',
   /intakeHtml \+= [^\n]*escapeHtml\(label\)[^\n]*escapeHtml\(val\)/.test(dash));
 
 // ---------------------------------------------------------------------------
+// 11. Verification comes before the free questions, not just before a
+//     purchase. Everything a new account can do now sits behind a confirmed
+//     address, because progress, receipts and password resets all travel by
+//     email and an unconfirmed address is a string somebody typed.
+// ---------------------------------------------------------------------------
+const qbank = read('qbank.html');
+const exam = read('practice-exam.html');
+const verify = read('verify-email.html');
+const emailsSrc = read('functions/emails.js');
+
+check('11a the question bank requires a confirmed address',
+  /authUser\.emailVerified !== true/.test(qbank)
+  && /verify-email\.html\?next=qbank/.test(qbank));
+check('11b it re-reads the account first, so a confirmation done on a phone counts',
+  /await authUser\.reload\(\)/.test(qbank) && /auth\.currentUser/.test(qbank));
+check('11c the mock exam requires it too',
+  /user\.emailVerified !== true/.test(exam)
+  && /verify-email\.html\?next=mock/.test(exam));
+check('11d and re-reads before bouncing anybody',
+  /await user\.reload\(\)/.test(exam));
+
+// The server half. The QBank gate is a product gate and not a secret, since
+// questions.json is a static file; the mock exams are only ever handed out by
+// these callables, so the check there is a real control.
+check('11e the mock exam callables check the account, not the token',
+  /async function requireVerifiedEmail\(context\)/.test(idx)
+  && /identity\.liveAccount\(context\.auth\.uid\)/.test(idx));
+check('11f submitMockExam calls it',
+  /submitMockExam[\s\S]{0,400}await requireVerifiedEmail\(context\)/.test(idx));
+check('11g getMockExamReview calls it',
+  /getMockExamReview[\s\S]{0,600}await requireVerifiedEmail\(context\)/.test(idx));
+check('11h it refuses with the code the pages route on',
+  /requireVerifiedEmail[\s\S]{0,700}'verify-email-required'/.test(idx));
+
+// The page must not offer a way around itself while unverified.
+check('11i the continue button starts hidden',
+  /id="veContinue"[^>]*hidden>/.test(verify));
+check('11j and is revealed only when verification succeeds',
+  /\$\('veContinue'\)\.hidden = false;/.test(verify));
+check('11k the copy no longer promises the questions straight away',
+  !/free 40 practice questions straight away/.test(verify)
+  && /unlocks the free 40 practice questions/.test(verify));
+check('11l the outline button is legible on this white card',
+  /\.auth-card \.btn-outline \{[\s\S]{0,160}color:#0F172A;/.test(verify));
+
+// ---------------------------------------------------------------------------
+// 12. The email itself.
+// ---------------------------------------------------------------------------
+check('12a the personal sign-off is gone',
+  !/goes straight to me/.test(emailsSrc) && !/Cheers,<br>Eli/.test(emailsSrc));
+check('12b replying is still invited', /Questions\? Just reply to this email\./.test(emailsSrc));
+check('12c the header carries the logo',
+  /<img src="https:\/\/shosmed\.com\/assets\/shos-logo-full-white\.png"/.test(emailsSrc));
+check('12d it is an absolute URL, because an email has no page to be relative to',
+  !/<img src="assets\//.test(emailsSrc));
+check('12e it has alt text, since most inboxes block images by default',
+  /alt="SHOS Med"/.test(emailsSrc));
+check('12f it has explicit width and height, which several clients require',
+  /width="150" height="57"/.test(emailsSrc));
+
+// ---------------------------------------------------------------------------
 console.log('account-hardening: ' + passed + ' passed, ' + failures.length + ' failed');
 for (const f of failures) console.log('\n  FAIL ' + f);
 process.exit(failures.length ? 1 : 0);

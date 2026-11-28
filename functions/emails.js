@@ -50,8 +50,13 @@ function shell({ title, preheader, bodyHtml }) {
     <tr><td align="center" style="padding:32px 16px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px; width:100%; background:#FFFFFF; border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(15,23,42,0.06);">
         <!-- Header -->
-        <tr><td style="background:${BRAND.navy}; padding:26px 32px; text-align:left;">
-          <span style="display:inline-block; font-size:18px; font-weight:700; color:#FFFFFF; letter-spacing:0.5px;">SHOS Med</span>
+        <tr><td style="background:${BRAND.navy}; padding:24px 32px; text-align:left;">
+          <!-- Width and height are set explicitly because several clients
+               ignore CSS on images. The alt text carries the brand when
+               images are blocked, which is the default in most inboxes. -->
+          <img src="https://shosmed.com/assets/shos-logo-full-white.png"
+               alt="SHOS Med" width="150" height="57"
+               style="display:block; border:0; outline:none; text-decoration:none; width:150px; height:57px;">
         </td></tr>
 
         <!-- Body -->
@@ -117,9 +122,7 @@ function welcomeEmailHtml({ name, path, verifyLink }) {
       ${stepsHtml}
     </table>
 
-    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:24px 0 6px;">Questions? Just reply to this email. It goes straight to me.</p>
-    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:0;">Cheers,<br>Eli</p>
-    <p style="font-size:13px; line-height:1.5; color:${BRAND.gray500}; margin:2px 0 0;">SHOS Med</p>`;
+    <p style="font-size:14px; line-height:1.65; color:${BRAND.gray700}; margin:24px 0 0;">Questions? Just reply to this email.</p>`;
 
   return shell({
     title: 'Welcome to SHOS Med',
@@ -156,11 +159,7 @@ ${verifyLink}
 WHAT TO DO NEXT:
 ${steps.map(s => '* ' + s).join('\n')}
 
-Questions? Just reply to this email. It goes straight to me.
-
-Cheers,
-Eli
-SHOS Med
+Questions? Just reply to this email.
 
 shosmed.com  ·  contact@shosmed.com`;
 }

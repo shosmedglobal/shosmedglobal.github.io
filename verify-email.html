@@ -36,6 +36,26 @@
     .ve-small { font-size:0.82rem; color:#64748B; line-height:1.55; }
     .ve-change { display:none; margin-top:6px; }
     .ve-change.open { display:block; }
+
+    /* style.css defines .btn-outline as white text on a transparent
+       background, which is right for the dark hero sections it was written
+       for and invisible on this white card: the text only appeared when
+       :hover inverted the colours. These override it for this page only. */
+    .auth-card .btn-outline {
+      background:#FFFFFF;
+      color:#0F172A;
+      border:1px solid #CBD5E1;
+    }
+    .auth-card .btn-outline:hover {
+      background:#F8FAFC;
+      color:#0F172A;
+      border-color:#94A3B8;
+      transform:none;
+    }
+    /* Hidden until Firebase says the address is confirmed. Verification is
+       required before the question bank, so this page must not hand out a
+       way around itself. */
+    #veContinue[hidden] { display:none; }
   </style>
 </head>
 <body>
@@ -105,10 +125,12 @@
         <hr class="ve-sep">
 
         <p style="margin:0 0 10px;">
-          <a class="btn btn-outline btn-full" id="veContinue" href="dashboard.html">Continue to your dashboard</a>
+          <a class="btn btn-primary btn-full" id="veContinue" href="dashboard.html" hidden>Continue to your dashboard</a>
         </p>
         <p class="ve-small" id="veFreeNote">
-          You can use the free 40 practice questions straight away. Verification is needed before a purchase.
+          Confirming your address unlocks the free 40 practice questions and is
+          required before any purchase. It takes a few seconds and keeps your
+          progress and receipts reaching you.
         </p>
 
         <p class="auth-footer" style="margin-top:18px;">
@@ -179,6 +201,9 @@
         s.classList.remove('now'); s.classList.add('done');
       });
       $('veContinue').className = 'btn btn-primary btn-full';
+      $('veContinue').hidden = false;
+      var freeNote = $('veFreeNote');
+      if (freeNote) freeNote.textContent = 'Your address is confirmed. Everything is open to you now.';
       say('ok', 'Verified. Carry on whenever you are ready.');
       if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
     }

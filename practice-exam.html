@@ -1600,6 +1600,19 @@
         return;
       }
 
+      // 1a) A confirmed address, before anything else. Mock exam results are
+      //     reported by email and an unconfirmed address cannot receive them.
+      //     reload() first, so somebody who confirmed on their phone a moment
+      //     ago is not bounced on a stale local flag.
+      if (user.emailVerified !== true) {
+        try { await user.reload(); } catch (e) { /* offline: fall through */ }
+        const freshUser = firebase.auth().currentUser;
+        if (freshUser && freshUser.emailVerified !== true) {
+          window.location.href = 'verify-email.html?next=mock';
+          return;
+        }
+      }
+
       // 1b) Copy policy, decided BEFORE any early return. Step 3 below sends
       //     anyone with a completed attempt straight to the results view and
       //     returns, so a policy applied at step 4 never ran for them: an

@@ -56,8 +56,20 @@ const msg = over => Object.assign({
   };
   const h = emails.adminAlertHtml(msg(nasty));
   const liveTags = h.replace(/&lt;[^&]*&gt;/g, '');     // ignore anything already escaped
-  check('2a no script tag survives', !/<script/i.test(liveTags), (liveTags.match(/<script[^>]*>/i) || [])[0]);
-  check('2b no img/onerror survives', !/<img/i.test(liveTags) && !/onerror=/i.test(liveTags));
+  // The template carries exactly one image of its own, the logo in the
+  // header. Remove it before asking whether any OTHER tag survived: the
+  // question this check exists to answer is whether user-supplied markup
+  // became markup, not whether the email contains any image at all.
+  const OUR_LOGO = /<img src="https:\/\/shosmed\.com\/assets\/[^"]+"[\s\S]*?>/gi;
+  const ourLogos = (liveTags.match(OUR_LOGO) || []);
+  const fromInput = liveTags.replace(OUR_LOGO, '');
+  check('2a no script tag survives', !/<script/i.test(fromInput), (fromInput.match(/<script[^>]*>/i) || [])[0]);
+  check('2b exactly one image, and it is ours', ourLogos.length === 1,
+    'count=' + ourLogos.length);
+  check('2b2 no img from the submitted values survives', !/<img/i.test(fromInput),
+    (fromInput.match(/<img[^>]*>/i) || [])[0]);
+  check('2b3 no event handler anywhere in the document', !/\son[a-z]+\s*=/i.test(liveTags),
+    (liveTags.match(/\son[a-z]+\s*=/i) || [])[0]);
   check('2c body HTML shows as text', h.includes('&lt;b&gt;there&lt;/b&gt;') && !h.includes('<b>there</b>'));
   check('2d ampersands escaped', h.includes('&amp;'));
   check('2e a quote in a value cannot break out of an attribute', !h.includes('"onmouseover="'));
